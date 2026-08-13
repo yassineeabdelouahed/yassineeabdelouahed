@@ -1,0 +1,42 @@
+import { listJobPostingsForClient } from "@/server/actions/jobs";
+import { Card } from "@/components/ui/Card";
+import { Tag } from "@/components/ui/Tag";
+import { LinkButton } from "@/components/ui/Button";
+
+export default async function ClientJobsPage() {
+  const jobs = await listJobPostingsForClient();
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="font-heading font-extrabold text-2xl text-ink-900">Mes offres publiées</h1>
+        <LinkButton href="/espace-recruteur" variant="accent">
+          Publier une offre
+        </LinkButton>
+      </div>
+
+      {jobs.length === 0 ? (
+        <Card className="p-8 text-center text-ink-500">
+          Vous n&apos;avez pas encore publié d&apos;offre sur le job board.
+        </Card>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {jobs.map((job) => (
+            <Card key={job.id} className="p-5 flex items-center justify-between">
+              <div>
+                <div className="font-bold text-[16px] text-ink-900">{job.title}</div>
+                <div className="text-sm text-ink-500 mt-0.5">
+                  {job.city} · {job.contractType}
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Tag tone="neutral">{job.applications.length} candidature(s)</Tag>
+                <Tag tone={job.status === "PUBLISHED" ? "success" : "neutral"}>{job.status}</Tag>
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

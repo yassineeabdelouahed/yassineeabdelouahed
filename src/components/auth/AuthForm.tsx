@@ -2,12 +2,14 @@
 
 import { useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 import { FloatingCard } from "@/components/ui/Card";
 import { PillTabs, UnderlineTabs } from "@/components/ui/Tabs";
 import { FormField, Input } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { registerAction } from "@/server/actions/users";
+import { homeForRole } from "@/lib/roleHome";
+import type { Role } from "@/generated/prisma/enums";
 
 type AuthRole = "CANDIDATE" | "CLIENT";
 type AuthMode = "login" | "signup";
@@ -41,7 +43,9 @@ export function AuthForm({ initialMode }: { initialMode: AuthMode }) {
           setError("Email ou mot de passe incorrect");
           return;
         }
-        router.push(callbackUrl || "/");
+        const session = await getSession();
+        const role = session?.user ? (session.user as unknown as { role: Role }).role : null;
+        router.push(callbackUrl || (role ? homeForRole(role) : "/"));
         router.refresh();
         return;
       }
@@ -64,7 +68,7 @@ export function AuthForm({ initialMode }: { initialMode: AuthMode }) {
         router.push("/login");
         return;
       }
-      router.push(result.redirectTo);
+      router.push(callbackUrl || result.redirectTo);
       router.refresh();
     });
   }

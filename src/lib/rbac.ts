@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import type { Role } from "@/generated/prisma/enums";
+import { homeForRole } from "@/lib/roleHome";
 
 export type SessionUser = {
   id: string;
@@ -13,12 +14,6 @@ export type SessionUser = {
   isAdmin: boolean;
 };
 
-const HOME_BY_ROLE: Record<Role, string> = {
-  CLIENT: "/client/dashboard",
-  CABINET: "/cabinet/dashboard",
-  CANDIDATE: "/candidate/dashboard",
-};
-
 export async function getSessionUser(): Promise<SessionUser | null> {
   const session = await auth();
   if (!session?.user) return null;
@@ -29,10 +24,10 @@ export async function getSessionUser(): Promise<SessionUser | null> {
 export async function requireRole(role: Role): Promise<SessionUser> {
   const user = await getSessionUser();
   if (!user) {
-    redirect(`/login?callbackUrl=${encodeURIComponent(HOME_BY_ROLE[role])}`);
+    redirect(`/login?callbackUrl=${encodeURIComponent(homeForRole(role))}`);
   }
   if (user.role !== role) {
-    redirect(HOME_BY_ROLE[user.role]);
+    redirect(homeForRole(user.role));
   }
   return user;
 }
@@ -46,6 +41,4 @@ export async function requireAdmin(): Promise<SessionUser> {
   return user;
 }
 
-export function homeForRole(role: Role): string {
-  return HOME_BY_ROLE[role];
-}
+export { homeForRole };

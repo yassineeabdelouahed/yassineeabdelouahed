@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --font-sans: var(--font-work-sans);
-  --font-heading: var(--font-manrope);
+  --font-sans: "Work Sans", Arial, Helvetica, sans-serif;
+  --font-heading: "Manrope", Arial, Helvetica, sans-serif;
 
   /* Talentis Consult design tokens — see plan §5 */
   --color-teal: #0f766e;

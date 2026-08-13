@@ -4,7 +4,8 @@ import { AppHeader } from "@/components/layout/AppHeader";
 const LINKS = [
   { href: "/client/dashboard", label: "Tableau de bord" },
   { href: "/client/mandats", label: "Mes mandats" },
-  { href: "/client/jobs/new", label: "Publier une offre" },
+  { href: "/client/jobs", label: "Mes offres publiées" },
+  { href: "/", label: "Job board" },
 ];
 
 export default async function ClientLayout({ children }: { children: React.ReactNode }) {

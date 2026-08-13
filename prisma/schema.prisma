@@ -1,0 +1,496 @@
+// Talentis Connect — Prisma schema
+// See /root/.claude/plans/root-claude-uploads-e0a0d049-a0b6-5d86-linear-lecun.md for design rationale.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------- Phase A: identity & accounts ----------
+
+enum Role {
+  CLIENT
+  CABINET
+  CANDIDATE
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  clientProfile   ClientProfile?
+  cabinetProfile  CabinetProfile?
+  candidate       Candidate?
+
+  sentInvites          CabinetInvite[]     @relation("InvitedBy")
+  createdMandats       Mandat[]            @relation("MandatCreatedBy")
+  mandatMessages       MandatMessage[]
+  mandatStatusEvents   MandatStatusEvent[]
+  addedApplications    MandateApplication[] @relation("ApplicationAddedBy")
+  proposedSlots        InterviewSlot[]
+  submittedFeedback    Interview[]         @relation("FeedbackBy")
+  postedJobs           JobPosting[]
+  createdCourses       TrainingCourse[]
+  confirmedEnrollments Enrollment[]        @relation("EnrollmentConfirmedBy")
+  enrollments          Enrollment[]        @relation("EnrollmentUser")
+  notifications        Notification[]
+  createdCandidates    Candidate[]         @relation("CandidateCreatedBy")
+
+  @@map("users")
+}
+
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  ice       String?
+  sector    String?
+  city      String?
+  createdAt DateTime @default(now())
+
+  clientProfiles ClientProfile[]
+  mandats        Mandat[]
+  jobPostings    JobPosting[]
+
+  @@map("companies")
+}
+
+model ClientProfile {
+  id        String  @id @default(cuid())
+  userId    String  @unique
+  companyId String
+  jobTitle  String?
+  phone     String?
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@map("client_profiles")
+}
+
+model CabinetProfile {
+  id      String  @id @default(cuid())
+  userId  String  @unique
+  isAdmin Boolean @default(false)
+  title   String?
+  phone   String?
+
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignedMandats  Mandat[]           @relation("AssignedConsultant")
+
+  @@map("cabinet_profiles")
+}
+
+model CabinetInvite {
+  id             String    @id @default(cuid())
+  email          String
+  token          String    @unique
+  invitedByUserId String
+  isAdmin        Boolean   @default(false)
+  expiresAt      DateTime
+  acceptedAt     DateTime?
+  createdAt      DateTime  @default(now())
+
+  invitedBy User @relation("InvitedBy", fields: [invitedByUserId], references: [id], onDelete: Cascade)
+
+  @@map("cabinet_invites")
+}
+
+enum CandidateSource {
+  INTERNAL_DB
+  JOBBOARD
+  NETWORK
+  COOPTATION
+  SELF_REGISTERED
+}
+
+model Candidate {
+  id              String          @id @default(cuid())
+  userId          String?         @unique
+  firstName       String
+  lastName        String
+  email           String
+  phone           String?
+  headline        String?
+  location        String?
+  yearsExperience Int?
+  skills          String[]        @default([])
+  cvUrl           String?
+  source          CandidateSource @default(SELF_REGISTERED)
+  createdByUserId String?
+  createdAt       DateTime        @default(now())
+
+  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdBy     User?    @relation("CandidateCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  applications    MandateApplication[]
+  jobApplications JobApplication[]
+  enrollments     Enrollment[]
+
+  @@map("candidates")
+}
+
+// ---------- Phase B: mandates ----------
+
+enum MandatStatus {
+  NEW
+  SOURCING
+  SHORTLIST_SENT
+  CLIENT_SELECTING
+  INTERVIEWING
+  OFFER
+  WON
+  CANCELLED
+}
+
+enum MandatUrgency {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum MandatCloseReason {
+  WON
+  CANCELLED
+}
+
+model Mandat {
+  id               String            @id @default(cuid())
+  reference        String            @unique
+  companyId        String
+  createdByUserId  String
+  title            String
+  skillsRequired   String[]          @default([])
+  experienceLevel  String?
+  salaryMin         Int?
+  salaryMax         Int?
+  currency         String            @default("MAD")
+  location         String?
+  remotePolicy     String?
+  urgency          MandatUrgency     @default(MEDIUM)
+  status           MandatStatus      @default(NEW)
+  assignedConsultantId String?
+  wonCandidateId   String?
+  closedAt         DateTime?
+  closeReason      MandatCloseReason?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  company            Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  createdBy          User                @relation("MandatCreatedBy", fields: [createdByUserId], references: [id])
+  assignedConsultant CabinetProfile?     @relation("AssignedConsultant", fields: [assignedConsultantId], references: [id])
+
+  messages     MandatMessage[]
+  applications MandateApplication[]
+  interviews   Interview[]
+  events       MandatStatusEvent[]
+  jobPostings  JobPosting[]
+
+  @@map("mandats")
+}
+
+model MandatStatusEvent {
+  id          String        @id @default(cuid())
+  mandatId    String
+  fromStatus  MandatStatus?
+  toStatus    MandatStatus
+  actorUserId String
+  note        String?
+  createdAt   DateTime      @default(now())
+
+  mandat Mandat @relation(fields: [mandatId], references: [id], onDelete: Cascade)
+  actor  User   @relation(fields: [actorUserId], references: [id])
+
+  @@map("mandat_status_events")
+}
+
+model MandatMessage {
+  id           String   @id @default(cuid())
+  mandatId     String
+  authorUserId String
+  body         String
+  createdAt    DateTime @default(now())
+
+  mandat Mandat @relation(fields: [mandatId], references: [id], onDelete: Cascade)
+  author User   @relation(fields: [authorUserId], references: [id])
+
+  @@map("mandat_messages")
+}
+
+// ---------- Phase C: shortlist ----------
+
+enum MandateApplicationStatus {
+  PROPOSED
+  PUBLISHED_TO_CLIENT
+  SELECTED_BY_CLIENT
+  REJECTED_BY_CLIENT
+  INTERVIEWING
+  VALIDATED
+  RESERVED
+  REFUSED
+  HIRED
+}
+
+model MandateApplication {
+  id            String                    @id @default(cuid())
+  mandatId      String
+  candidateId   String
+  addedByUserId String
+  prequalNotes  String?
+  strengths     String?
+  watchPoints   String?
+  status        MandateApplicationStatus  @default(PROPOSED)
+  publishedAt   DateTime?
+  selectedAt    DateTime?
+  createdAt     DateTime                  @default(now())
+
+  mandat    Mandat    @relation(fields: [mandatId], references: [id], onDelete: Cascade)
+  candidate Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  addedBy   User      @relation("ApplicationAddedBy", fields: [addedByUserId], references: [id])
+
+  interviews Interview[]
+
+  @@unique([mandatId, candidateId])
+  @@map("mandate_applications")
+}
+
+// ---------- Phase D: interviews ----------
+
+enum InterviewMode {
+  ONSITE
+  VIDEO
+  PHONE
+}
+
+enum InterviewStatus {
+  SLOT_PROPOSED
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum InterviewFeedbackOutcome {
+  VALIDATED
+  RESERVED
+  REFUSED
+}
+
+model Interview {
+  id                    String                     @id @default(cuid())
+  mandatId              String
+  mandateApplicationId  String
+  candidateId           String
+  scheduledAt           DateTime?
+  durationMinutes       Int?
+  mode                  InterviewMode?
+  meetingLink           String?
+  status                InterviewStatus            @default(SLOT_PROPOSED)
+  clientFeedbackOutcome InterviewFeedbackOutcome?
+  clientFeedbackComment String?
+  feedbackSubmittedAt   DateTime?
+  feedbackByUserId      String?
+  createdAt             DateTime                   @default(now())
+
+  mandat              Mandat              @relation(fields: [mandatId], references: [id], onDelete: Cascade)
+  mandateApplication  MandateApplication  @relation(fields: [mandateApplicationId], references: [id], onDelete: Cascade)
+  feedbackBy          User?               @relation("FeedbackBy", fields: [feedbackByUserId], references: [id])
+
+  slots InterviewSlot[]
+
+  @@map("interviews")
+}
+
+model InterviewSlot {
+  id             String   @id @default(cuid())
+  interviewId    String
+  proposedByUserId String
+  startAt        DateTime
+  endAt          DateTime
+  chosen         Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  interview  Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  proposedBy User      @relation(fields: [proposedByUserId], references: [id])
+
+  @@map("interview_slots")
+}
+
+// ---------- Phase F: public job board ----------
+
+enum JobPostingStatus {
+  DRAFT
+  PUBLISHED
+  CLOSED
+}
+
+model JobPosting {
+  id            String           @id @default(cuid())
+  companyId     String
+  mandatId      String?
+  postedByUserId String
+  title         String
+  description   String
+  missions      String[]         @default([])
+  profile       String[]         @default([])
+  city          String?
+  remoteType    String?
+  contractType  String?
+  category      String?
+  salaryMin      Int?
+  salaryMax      Int?
+  status        JobPostingStatus @default(DRAFT)
+  publishedAt   DateTime?
+  createdAt     DateTime         @default(now())
+
+  company  Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  mandat   Mandat? @relation(fields: [mandatId], references: [id], onDelete: SetNull)
+  postedBy User    @relation(fields: [postedByUserId], references: [id])
+
+  applications JobApplication[]
+
+  @@map("job_postings")
+}
+
+enum JobApplicationStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  SHORTLISTED
+  REJECTED
+  HIRED
+}
+
+model JobApplication {
+  id                              String                @id @default(cuid())
+  jobPostingId                    String
+  candidateId                     String
+  coverNote                       String?
+  cvUrl                           String?
+  status                          JobApplicationStatus  @default(SUBMITTED)
+  promotedToMandateApplicationId  String?
+  createdAt                       DateTime              @default(now())
+
+  jobPosting JobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+  candidate  Candidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@unique([jobPostingId, candidateId])
+  @@map("job_applications")
+}
+
+// ---------- Phase G: training ----------
+
+enum TrainingDomain {
+  MARKETING_DIGITAL
+  FINANCE
+  RH
+}
+
+enum TrainingCourseStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model TrainingCourse {
+  id              String                @id @default(cuid())
+  slug            String                @unique
+  title           String
+  domain          TrainingDomain
+  description     String
+  durationHours   Int?
+  status          TrainingCourseStatus  @default(DRAFT)
+  createdByUserId String
+  createdAt       DateTime              @default(now())
+
+  createdBy User              @relation(fields: [createdByUserId], references: [id])
+  sessions  TrainingSession[]
+
+  @@map("training_courses")
+}
+
+enum TrainingSessionStatus {
+  OPEN
+  FULL
+  CLOSED
+  COMPLETED
+  CANCELLED
+}
+
+model TrainingSession {
+  id             String                 @id @default(cuid())
+  courseId       String
+  startDate      DateTime
+  endDate        DateTime?
+  schedule       String?
+  price          Int
+  currency       String                 @default("MAD")
+  instructorName String?
+  capacity       Int
+  location       String?
+  status         TrainingSessionStatus  @default(OPEN)
+  createdAt      DateTime               @default(now())
+
+  course      TrainingCourse @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  enrollments Enrollment[]
+
+  @@map("training_sessions")
+}
+
+enum EnrollmentPaymentMethod {
+  VIREMENT
+  ESPECES
+  AUTRE
+}
+
+enum EnrollmentPaymentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model Enrollment {
+  id                String                   @id @default(cuid())
+  sessionId         String
+  userId            String
+  candidateId       String?
+  paymentMethod     EnrollmentPaymentMethod
+  paymentStatus     EnrollmentPaymentStatus  @default(PENDING)
+  amount            Int
+  currency          String                   @default("MAD")
+  enrolledAt        DateTime                 @default(now())
+  confirmedAt       DateTime?
+  confirmedByUserId String?
+
+  session         TrainingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  user            User            @relation("EnrollmentUser", fields: [userId], references: [id], onDelete: Cascade)
+  candidate       Candidate?      @relation(fields: [candidateId], references: [id], onDelete: SetNull)
+  confirmedBy     User?           @relation("EnrollmentConfirmedBy", fields: [confirmedByUserId], references: [id])
+
+  @@unique([sessionId, userId])
+  @@map("enrollments")
+}
+
+// ---------- Cross-cutting ----------
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String
+  body      String?
+  link      String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}

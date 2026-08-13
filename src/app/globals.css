@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-work-sans);
+  --font-heading: var(--font-manrope);
+
+  /* Talentis Consult design tokens — see plan §5 */
+  --color-teal: #0f766e;
+  --color-teal-hover: #0d5f58;
+  --color-teal-tint: #f0fdfa;
+  --color-teal-accent: #14b8a6;
+  --color-teal-deep: #0b3b36;
+
+  --color-orange: #f97316;
+  --color-orange-hover: #e2650a;
+  --color-orange-tint: #fff7ed;
+  --color-orange-text: #c2410c;
+
+  --color-ink-900: #0f172a;
+  --color-ink-700: #334155;
+  --color-ink-500: #64748b;
+  --color-ink-300: #94a3b8;
+
+  --color-border: #e2e8f0;
+  --color-border-soft: #f1f5f9;
+
+  --color-page: #f5f7f8;
+  --color-card: #ffffff;
+  --color-dark: #0f172a;
+
+  --color-success-text: #15803d;
+  --color-success-bg: #f0fdf4;
+  --color-warning-text: #b45309;
+  --color-warning-bg: #fffbeb;
+  --color-danger-text: #b91c1c;
+  --color-danger-bg: #fef2f2;
+  --color-neutral-text: #475569;
+  --color-neutral-bg: #f1f5f9;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+
+  --color-teal: var(--color-teal);
+  --color-teal-hover: var(--color-teal-hover);
+  --color-teal-tint: var(--color-teal-tint);
+  --color-teal-accent: var(--color-teal-accent);
+  --color-teal-deep: var(--color-teal-deep);
+
+  --color-orange: var(--color-orange);
+  --color-orange-hover: var(--color-orange-hover);
+  --color-orange-tint: var(--color-orange-tint);
+  --color-orange-text: var(--color-orange-text);
+
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-300: var(--color-ink-300);
+
+  --color-border: var(--color-border);
+  --color-border-soft: var(--color-border-soft);
+
+  --color-page: var(--color-page);
+  --color-card: var(--color-card);
+  --color-dark: var(--color-dark);
+
+  --color-success-text: var(--color-success-text);
+  --color-success-bg: var(--color-success-bg);
+  --color-warning-text: var(--color-warning-text);
+  --color-warning-bg: var(--color-warning-bg);
+  --color-danger-text: var(--color-danger-text);
+  --color-danger-bg: var(--color-danger-bg);
+  --color-neutral-text: var(--color-neutral-text);
+  --color-neutral-bg: var(--color-neutral-bg);
+
+  --radius-tag: 6px;
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --radius-modal: 14px;
+
+  --shadow-card-hover: 0 8px 22px rgba(15, 23, 42, 0.08);
+  --shadow-float: 0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink-900);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}

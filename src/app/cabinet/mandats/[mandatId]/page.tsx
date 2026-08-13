@@ -9,6 +9,7 @@ import { IntakeActions } from "@/components/cabinet/IntakeActions";
 import { SourcingPanel } from "@/components/cabinet/SourcingPanel";
 import { ApplicationList } from "@/components/mandats/ApplicationList";
 import { CabinetInterviewsPanel } from "@/components/cabinet/InterviewsPanel";
+import { OfferFormalizationPanel, ConfirmHirePanel } from "@/components/cabinet/ClosureActions";
 import { Card } from "@/components/ui/Card";
 import { MandatStatusTag } from "@/components/mandats/StatusTag";
 
@@ -25,6 +26,13 @@ export default async function CabinetMandatDetailPage({
   const candidates = mandat.status === "SOURCING" ? await listCandidates() : [];
   const proposed = applications.filter((a) => a.status === "PROPOSED");
   const interviews = await listInterviewsForCabinet(mandatId);
+
+  const validatedCandidates = applications
+    .filter((a) => a.status === "VALIDATED")
+    .map((a) => ({ applicationId: a.id, name: `${a.candidate.firstName} ${a.candidate.lastName}` }));
+  const wonCandidateName = mandat.wonCandidateId
+    ? applications.find((a) => a.candidateId === mandat.wonCandidateId)?.candidate
+    : null;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-7">
@@ -77,6 +85,35 @@ export default async function CabinetMandatDetailPage({
               Entretiens
             </div>
             <CabinetInterviewsPanel interviews={interviews} />
+          </Card>
+        )}
+
+        {mandat.status === "INTERVIEWING" && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-3">
+              Clôture du mandat
+            </div>
+            <OfferFormalizationPanel mandatId={mandat.id} validatedCandidates={validatedCandidates} />
+          </Card>
+        )}
+
+        {mandat.status === "OFFER" && wonCandidateName && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-3">
+              Clôture du mandat
+            </div>
+            <ConfirmHirePanel
+              mandatId={mandat.id}
+              candidateName={`${wonCandidateName.firstName} ${wonCandidateName.lastName}`}
+            />
+          </Card>
+        )}
+
+        {mandat.status === "WON" && wonCandidateName && (
+          <Card className="p-6 bg-success-bg border-success-text">
+            <div className="text-sm font-semibold text-success-text">
+              ✓ Mandat clôturé — {wonCandidateName.firstName} {wonCandidateName.lastName} recruté(e)
+            </div>
           </Card>
         )}
 

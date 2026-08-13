@@ -305,3 +305,60 @@ export async function selectShortlistCandidatesAction(
   revalidatePath(`/cabinet/mandats/${mandatId}`);
   return { ok: true };
 }
+
+/** Cabinet formalizes an offer to a validated candidate, moving INTERVIEWING -> OFFER (step 8, part 1). */
+export async function formalizeOfferAction(mandatId: string, applicationId: string): Promise<ActionResult> {
+  const user = await requireRole("CABINET");
+
+  const application = await prisma.mandateApplication.findUnique({
+    where: { id: applicationId },
+    select: { mandatId: true, candidateId: true, status: true },
+  });
+  if (!application || application.mandatId !== mandatId) {
+    return { ok: false, error: "Candidature introuvable" };
+  }
+  if (application.status !== "VALIDATED") {
+    return { ok: false, error: "Ce candidat n'a pas encore été validé par le client" };
+  }
+
+  await prisma.mandat.update({ where: { id: mandatId }, data: { wonCandidateId: application.candidateId } });
+
+  try {
+    await transitionMandat({ mandatId, toStatus: "OFFER", actorUserId: user.id });
+  } catch (err) {
+    if (err instanceof InvalidMandatTransitionError) return { ok: false, error: err.message };
+    throw err;
+  }
+
+  revalidatePath(`/cabinet/mandats/${mandatId}`);
+  revalidatePath(`/client/mandats/${mandatId}`);
+  return { ok: true };
+}
+
+/** Cabinet confirms the hire, moving OFFER -> WON and closing the mandate (step 8, part 2 — no invoicing, see plan). */
+export async function closeMandatWonAction(mandatId: string): Promise<ActionResult> {
+  const user = await requireRole("CABINET");
+
+  const mandat = await prisma.mandat.findUnique({ where: { id: mandatId }, select: { wonCandidateId: true } });
+  if (!mandat?.wonCandidateId) {
+    return { ok: false, error: "Aucun candidat retenu pour ce mandat" };
+  }
+
+  try {
+    await transitionMandat({ mandatId, toStatus: "WON", actorUserId: user.id });
+  } catch (err) {
+    if (err instanceof InvalidMandatTransitionError) return { ok: false, error: err.message };
+    throw err;
+  }
+
+  await prisma.mandateApplication.updateMany({
+    where: { mandatId, candidateId: mandat.wonCandidateId },
+    data: { status: "HIRED" },
+  });
+
+  revalidatePath(`/cabinet/mandats/${mandatId}`);
+  revalidatePath(`/client/mandats/${mandatId}`);
+  revalidatePath("/cabinet/mandats");
+  revalidatePath("/client/mandats");
+  return { ok: true };
+}

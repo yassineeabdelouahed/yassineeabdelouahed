@@ -8,6 +8,7 @@ import { SignOutButton } from "@/components/layout/SignOutButton";
 
 const NAV_LINKS = [
   { href: "/", label: "Offres d'emploi", match: ["/", "/results", "/jobs"] },
+  { href: "/trainings", label: "Formations", match: ["/trainings"] },
   { href: "/espace-recruteur", label: "Espace recruteur", match: ["/espace-recruteur"] },
   { href: "/about", label: "À propos", match: ["/about"] },
 ];

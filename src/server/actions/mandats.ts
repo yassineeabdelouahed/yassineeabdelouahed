@@ -195,3 +195,103 @@ export async function cancelMandatAction(mandatId: string, note?: string): Promi
   revalidatePath("/client/mandats");
   return { ok: true };
 }
+
+export async function listMandateApplicationsForCabinet(mandatId: string) {
+  await requireRole("CABINET");
+  return prisma.mandateApplication.findMany({
+    where: { mandatId },
+    include: { candidate: true },
+    orderBy: { createdAt: "asc" },
+  });
+}
+
+export async function listMandateApplicationsForClient(mandatId: string) {
+  const user = await requireRole("CLIENT");
+  const mandat = await prisma.mandat.findUnique({ where: { id: mandatId }, select: { companyId: true } });
+  if (!mandat || mandat.companyId !== user.companyId) return [];
+
+  return prisma.mandateApplication.findMany({
+    where: {
+      mandatId,
+      status: { not: "PROPOSED" }, // client never sees candidates the cabinet hasn't published yet
+    },
+    include: { candidate: true },
+    orderBy: { createdAt: "asc" },
+  });
+}
+
+/** Cabinet publishes all PROPOSED candidates as the mandate's short-list, moving SOURCING -> SHORTLIST_SENT. */
+export async function publishShortlistAction(mandatId: string): Promise<ActionResult> {
+  const user = await requireRole("CABINET");
+
+  const proposed = await prisma.mandateApplication.findMany({ where: { mandatId, status: "PROPOSED" } });
+  if (proposed.length === 0) {
+    return { ok: false, error: "Ajoutez au moins un candidat avant de publier la short-list" };
+  }
+
+  await prisma.mandateApplication.updateMany({
+    where: { mandatId, status: "PROPOSED" },
+    data: { status: "PUBLISHED_TO_CLIENT", publishedAt: new Date() },
+  });
+
+  try {
+    await transitionMandat({ mandatId, toStatus: "SHORTLIST_SENT", actorUserId: user.id });
+  } catch (err) {
+    if (err instanceof InvalidMandatTransitionError) return { ok: false, error: err.message };
+    throw err;
+  }
+
+  revalidatePath(`/cabinet/mandats/${mandatId}`);
+  revalidatePath(`/client/mandats/${mandatId}`);
+  return { ok: true };
+}
+
+/** Client picks which shortlisted candidates to meet, moving SHORTLIST_SENT -> CLIENT_SELECTING. */
+export async function selectShortlistCandidatesAction(
+  mandatId: string,
+  selectedApplicationIds: string[],
+): Promise<ActionResult> {
+  const user = await requireRole("CLIENT");
+
+  const mandat = await prisma.mandat.findUnique({ where: { id: mandatId }, select: { companyId: true } });
+  if (!mandat || mandat.companyId !== user.companyId) return { ok: false, error: "Mandat introuvable" };
+  if (selectedApplicationIds.length === 0) {
+    return { ok: false, error: "Sélectionnez au moins un candidat à rencontrer" };
+  }
+
+  const applications = await prisma.mandateApplication.findMany({
+    where: { mandatId, status: "PUBLISHED_TO_CLIENT" },
+  });
+  const validIds = new Set(applications.map((a) => a.id));
+  if (selectedApplicationIds.some((id) => !validIds.has(id))) {
+    return { ok: false, error: "Sélection invalide" };
+  }
+
+  const rejectedIds = applications.map((a) => a.id).filter((id) => !selectedApplicationIds.includes(id));
+
+  await prisma.$transaction([
+    prisma.mandateApplication.updateMany({
+      where: { id: { in: selectedApplicationIds } },
+      data: { status: "SELECTED_BY_CLIENT", selectedAt: new Date() },
+    }),
+    ...(rejectedIds.length > 0
+      ? [
+          prisma.mandateApplication.updateMany({
+            where: { id: { in: rejectedIds } },
+            data: { status: "REJECTED_BY_CLIENT" },
+          }),
+        ]
+      : []),
+  ]);
+
+  try {
+    await transitionMandat({ mandatId, toStatus: "CLIENT_SELECTING", actorUserId: user.id });
+  } catch (err) {
+    if (err instanceof InvalidMandatTransitionError) return { ok: false, error: err.message };
+    throw err;
+  }
+
+  revalidatePath(`/client/mandats/${mandatId}`);
+  revalidatePath(`/cabinet/mandats/${mandatId}`);
+  return { ok: true };
+}

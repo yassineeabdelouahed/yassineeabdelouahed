@@ -1,9 +1,12 @@
 import { notFound } from "next/navigation";
-import { getMandatForCabinet } from "@/server/actions/mandats";
+import { getMandatForCabinet, listMandateApplicationsForCabinet } from "@/server/actions/mandats";
+import { listCandidates } from "@/server/actions/candidates";
 import { MandatSummary } from "@/components/mandats/MandatSummary";
 import { MandatTimeline } from "@/components/mandats/Timeline";
 import { MessageThread } from "@/components/mandats/MessageThread";
 import { IntakeActions } from "@/components/cabinet/IntakeActions";
+import { SourcingPanel } from "@/components/cabinet/SourcingPanel";
+import { ApplicationList } from "@/components/mandats/ApplicationList";
 import { Card } from "@/components/ui/Card";
 import { MandatStatusTag } from "@/components/mandats/StatusTag";
 
@@ -15,6 +18,10 @@ export default async function CabinetMandatDetailPage({
   const { mandatId } = await params;
   const mandat = await getMandatForCabinet(mandatId);
   if (!mandat) notFound();
+
+  const applications = await listMandateApplicationsForCabinet(mandatId);
+  const candidates = mandat.status === "SOURCING" ? await listCandidates() : [];
+  const proposed = applications.filter((a) => a.status === "PROPOSED");
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-7">
@@ -40,6 +47,24 @@ export default async function CabinetMandatDetailPage({
               Validation du besoin
             </div>
             <IntakeActions mandatId={mandat.id} />
+          </Card>
+        )}
+
+        {mandat.status === "SOURCING" && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-3">
+              Sourcing et pré-qualification
+            </div>
+            <SourcingPanel mandatId={mandat.id} candidates={candidates} proposed={proposed} />
+          </Card>
+        )}
+
+        {applications.length > 0 && mandat.status !== "SOURCING" && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-4">
+              Short-list
+            </div>
+            <ApplicationList applications={applications} />
           </Card>
         )}
 

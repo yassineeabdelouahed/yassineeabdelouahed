@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
-import { getMandatForClient } from "@/server/actions/mandats";
+import { getMandatForClient, listMandateApplicationsForClient } from "@/server/actions/mandats";
 import { MandatSummary } from "@/components/mandats/MandatSummary";
 import { MandatTimeline } from "@/components/mandats/Timeline";
 import { MessageThread } from "@/components/mandats/MessageThread";
+import { ShortlistSelection } from "@/components/client/ShortlistSelection";
+import { ApplicationList } from "@/components/mandats/ApplicationList";
 import { Card } from "@/components/ui/Card";
 import { MandatStatusTag } from "@/components/mandats/StatusTag";
 
@@ -14,6 +16,9 @@ export default async function ClientMandatDetailPage({
   const { mandatId } = await params;
   const mandat = await getMandatForClient(mandatId);
   if (!mandat) notFound();
+
+  const applications = await listMandateApplicationsForClient(mandatId);
+  const publishedNotYetDecided = applications.filter((a) => a.status === "PUBLISHED_TO_CLIENT");
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-7">
@@ -29,6 +34,24 @@ export default async function ClientMandatDetailPage({
           location={mandat.location}
           remotePolicy={mandat.remotePolicy}
         />
+
+        {mandat.status === "SHORTLIST_SENT" && publishedNotYetDecided.length > 0 && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-3">
+              Short-list du cabinet
+            </div>
+            <ShortlistSelection mandatId={mandat.id} applications={publishedNotYetDecided} />
+          </Card>
+        )}
+
+        {applications.length > 0 && mandat.status !== "SHORTLIST_SENT" && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-4">
+              Candidats
+            </div>
+            <ApplicationList applications={applications} />
+          </Card>
+        )}
 
         <Card className="p-6">
           <div className="font-heading font-extrabold text-base text-ink-900 mb-4">

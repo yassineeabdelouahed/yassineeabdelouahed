@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
 import { getMandatForCabinet, listMandateApplicationsForCabinet } from "@/server/actions/mandats";
 import { listCandidates } from "@/server/actions/candidates";
+import { listInterviewsForCabinet } from "@/server/actions/interviews";
 import { MandatSummary } from "@/components/mandats/MandatSummary";
 import { MandatTimeline } from "@/components/mandats/Timeline";
 import { MessageThread } from "@/components/mandats/MessageThread";
 import { IntakeActions } from "@/components/cabinet/IntakeActions";
 import { SourcingPanel } from "@/components/cabinet/SourcingPanel";
 import { ApplicationList } from "@/components/mandats/ApplicationList";
+import { CabinetInterviewsPanel } from "@/components/cabinet/InterviewsPanel";
 import { Card } from "@/components/ui/Card";
 import { MandatStatusTag } from "@/components/mandats/StatusTag";
 
@@ -22,6 +24,7 @@ export default async function CabinetMandatDetailPage({
   const applications = await listMandateApplicationsForCabinet(mandatId);
   const candidates = mandat.status === "SOURCING" ? await listCandidates() : [];
   const proposed = applications.filter((a) => a.status === "PROPOSED");
+  const interviews = await listInterviewsForCabinet(mandatId);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-7">
@@ -65,6 +68,15 @@ export default async function CabinetMandatDetailPage({
               Short-list
             </div>
             <ApplicationList applications={applications} />
+          </Card>
+        )}
+
+        {interviews.length > 0 && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-4">
+              Entretiens
+            </div>
+            <CabinetInterviewsPanel interviews={interviews} />
           </Card>
         )}
 

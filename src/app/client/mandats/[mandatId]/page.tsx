@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import { getMandatForClient, listMandateApplicationsForClient } from "@/server/actions/mandats";
+import { listInterviewsForClient } from "@/server/actions/interviews";
 import { MandatSummary } from "@/components/mandats/MandatSummary";
 import { MandatTimeline } from "@/components/mandats/Timeline";
 import { MessageThread } from "@/components/mandats/MessageThread";
 import { ShortlistSelection } from "@/components/client/ShortlistSelection";
 import { ApplicationList } from "@/components/mandats/ApplicationList";
+import { ClientInterviewsPanel } from "@/components/client/InterviewsPanel";
 import { Card } from "@/components/ui/Card";
 import { MandatStatusTag } from "@/components/mandats/StatusTag";
 
@@ -19,6 +21,7 @@ export default async function ClientMandatDetailPage({
 
   const applications = await listMandateApplicationsForClient(mandatId);
   const publishedNotYetDecided = applications.filter((a) => a.status === "PUBLISHED_TO_CLIENT");
+  const interviews = await listInterviewsForClient(mandatId);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-7">
@@ -50,6 +53,15 @@ export default async function ClientMandatDetailPage({
               Candidats
             </div>
             <ApplicationList applications={applications} />
+          </Card>
+        )}
+
+        {interviews.length > 0 && (
+          <Card className="p-6">
+            <div className="font-heading font-extrabold text-base text-ink-900 mb-4">
+              Entretiens
+            </div>
+            <ClientInterviewsPanel interviews={interviews} />
           </Card>
         )}
 

@@ -134,6 +134,7 @@ model Candidate {
   applications    MandateApplication[]
   jobApplications JobApplication[]
   enrollments     Enrollment[]
+  interviews      Interview[]
 
   @@map("candidates")
 }
@@ -302,6 +303,7 @@ model Interview {
 
   mandat              Mandat              @relation(fields: [mandatId], references: [id], onDelete: Cascade)
   mandateApplication  MandateApplication  @relation(fields: [mandateApplicationId], references: [id], onDelete: Cascade)
+  candidate           Candidate           @relation(fields: [candidateId], references: [id], onDelete: Cascade)
   feedbackBy          User?               @relation("FeedbackBy", fields: [feedbackByUserId], references: [id])
 
   slots InterviewSlot[]

@@ -267,6 +267,7 @@ export async function selectShortlistCandidatesAction(
     return { ok: false, error: "Sélection invalide" };
   }
 
+  const selectedApplications = applications.filter((a) => selectedApplicationIds.includes(a.id));
   const rejectedIds = applications.map((a) => a.id).filter((id) => !selectedApplicationIds.includes(id));
 
   await prisma.$transaction([
@@ -282,6 +283,15 @@ export async function selectShortlistCandidatesAction(
           }),
         ]
       : []),
+    // Stub interviews so the client can start proposing availability slots (step 6).
+    prisma.interview.createMany({
+      data: selectedApplications.map((a) => ({
+        mandatId,
+        mandateApplicationId: a.id,
+        candidateId: a.candidateId,
+        status: "SLOT_PROPOSED" as const,
+      })),
+    }),
   ]);
 
   try {

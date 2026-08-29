@@ -6,6 +6,7 @@ const LINKS = [
   { href: "/client/dashboard", label: "Tableau de bord" },
   { href: "/client/mandats", label: "Mes mandats" },
   { href: "/client/jobs", label: "Mes offres publiées" },
+  { href: "/client/cv-database", label: "CVthèque" },
   { href: "/", label: "Job board" },
 ];
 

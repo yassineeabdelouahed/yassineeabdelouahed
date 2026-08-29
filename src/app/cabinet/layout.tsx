@@ -12,7 +12,9 @@ const LINKS = [
 export default async function CabinetLayout({ children }: { children: React.ReactNode }) {
   const user = await requireRole("CABINET");
 
-  const links = user.isAdmin ? [...LINKS, { href: "/cabinet/admin/invites", label: "Admin" }] : LINKS;
+  const links = user.isAdmin
+    ? [...LINKS, { href: "/cabinet/admin/invites", label: "Admin" }, { href: "/cabinet/admin/cv-access", label: "CVthèque" }]
+    : LINKS;
 
   return (
     <div className="flex flex-col min-h-screen">

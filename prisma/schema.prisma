@@ -51,21 +51,27 @@ model User {
   createdCandidates    Candidate[]         @relation("CandidateCreatedBy")
   emailVerificationTokens EmailVerificationToken[]
   passwordResetTokens     PasswordResetToken[]
+  requestedCvAccess    CvDatabaseAccess[]  @relation("CvAccessRequestedBy")
+  confirmedCvAccess    CvDatabaseAccess[]  @relation("CvAccessConfirmedBy")
+  companyReviews       CompanyReview[]
 
   @@map("users")
 }
 
 model Company {
-  id        String   @id @default(cuid())
-  name      String
-  ice       String?
-  sector    String?
-  city      String?
-  createdAt DateTime @default(now())
+  id         String    @id @default(cuid())
+  name       String
+  ice        String?
+  sector     String?
+  city       String?
+  verifiedAt DateTime?
+  createdAt  DateTime  @default(now())
 
-  clientProfiles ClientProfile[]
-  mandats        Mandat[]
-  jobPostings    JobPosting[]
+  clientProfiles    ClientProfile[]
+  mandats           Mandat[]
+  jobPostings       JobPosting[]
+  cvDatabaseAccess  CvDatabaseAccess[]
+  reviews           CompanyReview[]
 
   @@map("companies")
 }
@@ -359,6 +365,7 @@ model JobPosting {
   status        JobPostingStatus @default(DRAFT)
   publishedAt   DateTime?
   sponsoredUntil DateTime?
+  viewCount     Int              @default(0)
   createdAt     DateTime         @default(now())
 
   company  Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
@@ -444,6 +451,65 @@ model JobSponsorship {
   confirmedBy User?      @relation("SponsorshipConfirmedBy", fields: [confirmedByUserId], references: [id])
 
   @@map("job_sponsorships")
+}
+
+enum CvAccessPaymentMethod {
+  VIREMENT
+  ESPECES
+  AUTRE
+}
+
+enum CvAccessPaymentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+/** Paid access to the candidate database (CVthèque) for a Client's whole company — manual payment confirmation, same pattern as JobSponsorship/Enrollment. */
+model CvDatabaseAccess {
+  id                String                 @id @default(cuid())
+  companyId         String
+  requestedByUserId String
+  durationDays      Int
+  price             Int
+  currency          String                 @default("MAD")
+  paymentMethod     CvAccessPaymentMethod
+  paymentStatus     CvAccessPaymentStatus  @default(PENDING)
+  startAt           DateTime?
+  endAt             DateTime?
+  createdAt         DateTime               @default(now())
+  confirmedAt       DateTime?
+  confirmedByUserId String?
+
+  company     Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  requestedBy User    @relation("CvAccessRequestedBy", fields: [requestedByUserId], references: [id])
+  confirmedBy User?   @relation("CvAccessConfirmedBy", fields: [confirmedByUserId], references: [id])
+
+  @@map("cv_database_access")
+}
+
+enum CompanyReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+/** Candidate-authored rating of a Company, moderated by the Cabinet before it appears publicly. */
+model CompanyReview {
+  id          String              @id @default(cuid())
+  companyId   String
+  authorUserId String
+  rating      Int
+  comment     String?
+  status      CompanyReviewStatus @default(PENDING)
+  createdAt   DateTime            @default(now())
+  moderatedAt DateTime?
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  author  User    @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, authorUserId])
+  @@map("company_reviews")
 }
 
 // ---------- Phase G: training ----------

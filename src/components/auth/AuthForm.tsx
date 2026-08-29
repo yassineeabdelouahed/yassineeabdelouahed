@@ -194,6 +194,20 @@ export function AuthForm({
         <Button type="submit" className="w-full" disabled={pending}>
           {pending ? "..." : mode === "signup" ? "S'inscrire" : "Se connecter"}
         </Button>
+
+        {mode === "signup" && (
+          <p className="text-xs text-ink-300 text-center mt-3">
+            En vous inscrivant, vous acceptez nos{" "}
+            <Link href="/cgu" className="underline">
+              CGU
+            </Link>{" "}
+            et notre{" "}
+            <Link href="/confidentialite" className="underline">
+              politique de confidentialité
+            </Link>
+            .
+          </p>
+        )}
       </form>
     </FloatingCard>
   );

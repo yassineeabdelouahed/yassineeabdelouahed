@@ -4,12 +4,12 @@
   --font-sans: "Work Sans", Arial, Helvetica, sans-serif;
   --font-heading: "Manrope", Arial, Helvetica, sans-serif;
 
-  /* Talentis Consult design tokens — see plan §5 */
-  --color-teal: #0f766e;
-  --color-teal-hover: #0d5f58;
-  --color-teal-tint: #f0fdfa;
-  --color-teal-accent: #14b8a6;
-  --color-teal-deep: #0b3b36;
+  /* Talentis Consult design tokens — navy blue from the official logo (see plan §5 for the rest) */
+  --color-teal: #0b2545;
+  --color-teal-hover: #081b34;
+  --color-teal-tint: #eef2f7;
+  --color-teal-accent: #2c4a76;
+  --color-teal-deep: #061527;
 
   --color-orange: #f97316;
   --color-orange-hover: #e2650a;

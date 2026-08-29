@@ -8,7 +8,7 @@ export default async function EspaceRecruteurPage() {
     <div>
       <div
         className="px-8 py-14 text-center"
-        style={{ background: "linear-gradient(120deg,#0b3b36,#0f766e)" }}
+        style={{ background: "linear-gradient(120deg,#061527,#0b2545)" }}
       >
         <div className="font-heading font-extrabold text-[32px] text-white">
           Recrutez plus vite avec Talentis Consult

@@ -18,7 +18,7 @@ export default async function HomePage() {
     <div>
       <div
         className="relative overflow-hidden px-8 pt-16 pb-24"
-        style={{ background: "linear-gradient(120deg,#0b3b36 0%,#0f766e 55%,#14b8a6 100%)" }}
+        style={{ background: "linear-gradient(120deg,#061527 0%,#0b2545 55%,#2c4a76 100%)" }}
       >
         <div
           className="absolute -right-20 -top-20 w-80 h-80 rounded-full"

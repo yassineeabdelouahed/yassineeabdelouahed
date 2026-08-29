@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { requireRole, getSessionUser } from "@/lib/rbac";
 import { Prisma } from "@/generated/prisma/client";
 import { createJobPostingSchema, jobApplicationSchema } from "@/lib/validations/jobs";
+import { notifyMatchingAlerts } from "@/server/actions/jobAlerts";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -90,7 +91,7 @@ export async function createJobPostingAction(formData: FormData): Promise<Action
   }
   const data = parsed.data;
 
-  await prisma.jobPosting.create({
+  const job = await prisma.jobPosting.create({
     data: {
       companyId: user.companyId,
       postedByUserId: user.id,
@@ -106,6 +107,8 @@ export async function createJobPostingAction(formData: FormData): Promise<Action
       publishedAt: new Date(),
     },
   });
+
+  await notifyMatchingAlerts(job);
 
   revalidatePath("/");
   revalidatePath("/results");

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/layout/Logo";
 import { SignOutButton } from "@/components/layout/SignOutButton";
+import { NotificationBell } from "@/components/layout/NotificationBell";
 
 export function AppHeader({
   homeHref,
@@ -29,6 +30,7 @@ export function AppHeader({
           </nav>
         </div>
         <div className="flex items-center gap-4">
+          <NotificationBell />
           <span className="text-sm text-ink-500 hidden sm:inline">{userName}</span>
           <SignOutButton />
         </div>

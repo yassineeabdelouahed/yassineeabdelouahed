@@ -43,6 +43,7 @@ model User {
   confirmedEnrollments Enrollment[]        @relation("EnrollmentConfirmedBy")
   enrollments          Enrollment[]        @relation("EnrollmentUser")
   notifications        Notification[]
+  jobAlerts            JobAlert[]
   createdCandidates    Candidate[]         @relation("CandidateCreatedBy")
 
   @@map("users")
@@ -495,4 +496,18 @@ model Notification {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("notifications")
+}
+
+/** Saved search (Indeed-style job alert) — new PUBLISHED job postings matching all set criteria notify the owner. */
+model JobAlert {
+  id        String   @id @default(cuid())
+  userId    String
+  keyword   String?
+  location  String?
+  category  String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("job_alerts")
 }

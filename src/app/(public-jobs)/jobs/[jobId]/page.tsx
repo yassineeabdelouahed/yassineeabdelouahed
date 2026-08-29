@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedJob, listSimilarJobs, hasCandidateApplied } from "@/server/actions/jobs";
+import { currentCandidateHasCv } from "@/server/actions/profile";
 import { getSessionUser } from "@/lib/rbac";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
@@ -18,10 +19,11 @@ export default async function JobDetailPage({ params }: { params: Promise<{ jobI
   const job = await getPublishedJob(jobId);
   if (!job) notFound();
 
-  const [similarJobs, alreadyApplied, user] = await Promise.all([
+  const [similarJobs, alreadyApplied, user, hasCv] = await Promise.all([
     listSimilarJobs(job.category, job.id),
     hasCandidateApplied(job.id),
     getSessionUser(),
+    currentCandidateHasCv(),
   ]);
 
   const salary = formatSalary(job.salaryMin, job.salaryMax);
@@ -49,7 +51,17 @@ export default async function JobDetailPage({ params }: { params: Promise<{ jobI
               </div>
             </div>
             {user?.role === "CANDIDATE" ? (
-              <ApplyButton jobId={job.id} alreadyApplied={alreadyApplied} />
+              <div className="text-right">
+                <ApplyButton jobId={job.id} alreadyApplied={alreadyApplied} />
+                {!hasCv && !alreadyApplied && (
+                  <p className="text-xs text-ink-300 mt-2 max-w-[220px]">
+                    <Link href="/candidate/profile" className="text-teal font-semibold">
+                      Ajoutez votre CV
+                    </Link>{" "}
+                    pour postuler encore plus vite la prochaine fois.
+                  </p>
+                )}
+              </div>
             ) : !user ? (
               <Link
                 href={`/login?callbackUrl=${encodeURIComponent(`/jobs/${job.id}`)}`}

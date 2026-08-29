@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
 import { SignOutButton } from "@/components/layout/SignOutButton";
+import { NotificationBell } from "@/components/layout/NotificationBell";
 
 const NAV_LINKS = [
   { href: "/", label: "Offres d'emploi", match: ["/", "/results", "/jobs"] },
@@ -38,6 +39,7 @@ export function PublicHeader({ userName }: { userName: string | null }) {
         <div className="flex items-center gap-3.5">
           {userName ? (
             <>
+              <NotificationBell />
               <span className="text-sm text-ink-500 hidden sm:inline">{userName}</span>
               <SignOutButton />
             </>

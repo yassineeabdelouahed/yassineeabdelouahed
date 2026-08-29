@@ -1,5 +1,6 @@
-import { requireRole } from "@/lib/rbac";
+import { requireRole, getEmailVerified } from "@/lib/rbac";
 import { AppHeader } from "@/components/layout/AppHeader";
+import { EmailVerificationBanner } from "@/components/layout/EmailVerificationBanner";
 
 const LINKS = [
   { href: "/candidate/dashboard", label: "Tableau de bord" },
@@ -12,11 +13,15 @@ const LINKS = [
 
 export default async function CandidateLayout({ children }: { children: React.ReactNode }) {
   const user = await requireRole("CANDIDATE");
+  const verified = await getEmailVerified(user.id);
 
   return (
     <div className="flex flex-col min-h-screen">
       <AppHeader homeHref="/candidate/dashboard" links={LINKS} userName={user.name} />
-      <main className="flex-1 max-w-[1180px] w-full mx-auto px-8 py-10">{children}</main>
+      <main className="flex-1 max-w-[1180px] w-full mx-auto px-8 py-10">
+        {!verified && <EmailVerificationBanner />}
+        {children}
+      </main>
     </div>
   );
 }

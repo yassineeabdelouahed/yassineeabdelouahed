@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import type { Role } from "@/generated/prisma/enums";
 import { homeForRole } from "@/lib/roleHome";
 
@@ -39,6 +40,16 @@ export async function requireAdmin(): Promise<SessionUser> {
     redirect("/cabinet/dashboard");
   }
   return user;
+}
+
+/**
+ * Fetched fresh from the DB rather than the JWT session, since verification
+ * can happen mid-session (user follows the e-mail link in another tab) and
+ * NextAuth doesn't refresh the token until the next sign-in.
+ */
+export async function getEmailVerified(userId: string): Promise<boolean> {
+  const user = await prisma.user.findUnique({ where: { id: userId }, select: { emailVerified: true } });
+  return !!user?.emailVerified;
 }
 
 export { homeForRole };

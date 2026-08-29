@@ -92,6 +92,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             name,
             passwordHash,
             role: "CANDIDATE",
+            // Google/LinkedIn already verified this address — no confirmation loop needed.
+            emailVerified: new Date(),
             candidate: {
               create: {
                 firstName: name.split(" ")[0] || name,

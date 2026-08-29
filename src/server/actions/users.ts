@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { registerSchema, cabinetRegisterSchema } from "@/lib/validations/auth";
 import { homeForRole } from "@/lib/rbac";
 import { enforceRateLimit, getClientIp, RateLimitError } from "@/lib/rateLimit";
+import { sendVerificationEmail } from "@/server/actions/emailVerification";
 
 export type ActionResult = { ok: true; redirectTo: string } | { ok: false; error: string };
 
@@ -47,8 +48,9 @@ export async function registerAction(formData: FormData): Promise<ActionResult> 
 
   const passwordHash = await bcrypt.hash(data.password, 10);
 
+  let userId: string;
   if (data.role === "CLIENT") {
-    await prisma.user.create({
+    const created = await prisma.user.create({
       data: {
         email: data.email,
         name: data.name,
@@ -61,8 +63,9 @@ export async function registerAction(formData: FormData): Promise<ActionResult> 
         },
       },
     });
+    userId = created.id;
   } else {
-    await prisma.user.create({
+    const created = await prisma.user.create({
       data: {
         email: data.email,
         name: data.name,
@@ -78,7 +81,10 @@ export async function registerAction(formData: FormData): Promise<ActionResult> 
         },
       },
     });
+    userId = created.id;
   }
+
+  await sendVerificationEmail(userId, data.email, data.name);
 
   return { ok: true, redirectTo: homeForRole(data.role) };
 }
@@ -112,6 +118,9 @@ export async function registerCabinetAction(formData: FormData): Promise<ActionR
         name: data.name,
         passwordHash,
         role: "CABINET",
+        // Invite-gated flow (email already confirmed by the invite link) — no separate
+        // verification loop needed for internal staff.
+        emailVerified: new Date(),
         cabinetProfile: { create: { isAdmin: invite.isAdmin } },
       },
     }),

@@ -66,10 +66,15 @@ export async function listPublishedJobs(filters: JobFilters = {}) {
 }
 
 export async function getPublishedJob(jobId: string) {
-  return prisma.jobPosting.findFirst({
+  const job = await prisma.jobPosting.findFirst({
     where: { id: jobId, status: "PUBLISHED" },
     include: { company: true },
   });
+  if (job) {
+    // Tracked for the client's job performance dashboard (vues + taux de candidature).
+    await prisma.jobPosting.update({ where: { id: jobId }, data: { viewCount: { increment: 1 } } });
+  }
+  return job;
 }
 
 export async function listSimilarJobs(category: string | null, excludeId: string) {

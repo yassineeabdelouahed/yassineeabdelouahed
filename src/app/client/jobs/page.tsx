@@ -33,9 +33,15 @@ export default async function ClientJobsPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
+                  <Tag tone="neutral">{job.viewCount} vue(s)</Tag>
                   <Link href={`/client/jobs/${job.id}/applicants`} className="hover:opacity-80">
                     <Tag tone="neutral">{job.applications.length} candidature(s)</Tag>
                   </Link>
+                  {job.viewCount > 0 && (
+                    <Tag tone="teal">
+                      {Math.round((job.applications.length / job.viewCount) * 100)}% taux de candidature
+                    </Tag>
+                  )}
                   <Tag tone={job.status === "PUBLISHED" ? "success" : "neutral"}>{job.status}</Tag>
                 </div>
               </div>

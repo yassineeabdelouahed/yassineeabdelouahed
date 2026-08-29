@@ -110,13 +110,16 @@ export default async function JobDetailPage({ params }: { params: Promise<{ jobI
         </Card>
 
         <div className="flex flex-col gap-4">
-          <Card className="p-6">
-            <div className="w-11 h-11 rounded-[9px] bg-dark text-white flex items-center justify-center font-heading font-extrabold text-base">
-              {initials}
-            </div>
-            <div className="font-bold text-[15px] text-ink-900 mt-3">{job.company.name}</div>
-            {job.city && <div className="text-[13px] text-ink-500 mt-1">{job.city}</div>}
-          </Card>
+          <Link href={`/companies/${job.companyId}`}>
+            <Card className="p-6 hover:border-teal transition-colors">
+              <div className="w-11 h-11 rounded-[9px] bg-dark text-white flex items-center justify-center font-heading font-extrabold text-base">
+                {initials}
+              </div>
+              <div className="font-bold text-[15px] text-ink-900 mt-3">{job.company.name}</div>
+              {job.city && <div className="text-[13px] text-ink-500 mt-1">{job.city}</div>}
+              <div className="text-xs text-teal font-semibold mt-2">Voir le profil et les avis</div>
+            </Card>
+          </Link>
 
           {similarJobs.length > 0 && (
             <Card className="p-6">

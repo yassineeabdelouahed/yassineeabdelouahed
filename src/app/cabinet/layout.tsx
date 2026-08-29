@@ -13,7 +13,12 @@ export default async function CabinetLayout({ children }: { children: React.Reac
   const user = await requireRole("CABINET");
 
   const links = user.isAdmin
-    ? [...LINKS, { href: "/cabinet/admin/invites", label: "Admin" }, { href: "/cabinet/admin/cv-access", label: "CVthèque" }]
+    ? [
+        ...LINKS,
+        { href: "/cabinet/admin/invites", label: "Admin" },
+        { href: "/cabinet/admin/cv-access", label: "CVthèque" },
+        { href: "/cabinet/admin/reviews", label: "Avis" },
+      ]
     : LINKS;
 
   return (

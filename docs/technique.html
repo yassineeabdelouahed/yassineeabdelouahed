@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Talentis Connect Technique</title>
+<meta name="description" content="Talentis Connect — stack, architecture applicative, modèle de données, authentification et déploiement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7fa;
+    --surface: #ffffff;
+    --surface-alt: #eef1f6;
+    --ink: #0b2545;
+    --ink-body: #2c3a52;
+    --ink-muted: #64748b;
+    --ink-faint: #94a3b8;
+    --border: #dde3ec;
+    --accent: #a5761f;
+    --accent-ink: #7a5817;
+    --accent-soft: #f6efdd;
+    --success: #15803d;
+    --success-soft: #e9f7ee;
+    --warn: #b45309;
+    --warn-soft: #fdf3e2;
+    --danger: #b91c1c;
+    --danger-soft: #fdeaea;
+    --shadow: 0 1px 2px rgba(11,37,69,0.04), 0 8px 24px rgba(11,37,69,0.06);
+    --radius: 10px;
+    --font-display: "Manrope", Arial, sans-serif;
+    --font-body: "Work Sans", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0f1a; --surface: #121a2a; --surface-alt: #172033;
+      --ink: #eef2f8; --ink-body: #c9d3e4; --ink-muted: #8b98b3; --ink-faint: #647089;
+      --border: #263352; --accent: #d8ab52; --accent-ink: #e8c47c; --accent-soft: #241d0f;
+      --success: #4ade80; --success-soft: #0f2418; --warn: #f0b258; --warn-soft: #2a1d0c;
+      --danger: #f87171; --danger-soft: #2a1414;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0f1a; --surface: #121a2a; --surface-alt: #172033;
+    --ink: #eef2f8; --ink-body: #c9d3e4; --ink-muted: #8b98b3; --ink-faint: #647089;
+    --border: #263352; --accent: #d8ab52; --accent-ink: #e8c47c; --accent-soft: #241d0f;
+    --success: #4ade80; --success-soft: #0f2418; --warn: #f0b258; --warn-soft: #2a1d0c;
+    --danger: #f87171; --danger-soft: #2a1414;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink-body); font-family: var(--font-body); font-size: 16px; line-height: 1.65; }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+  h1 { font-weight: 800; } h2 { font-weight: 800; } h3 { font-weight: 700; }
+  a { color: var(--accent-ink); }
+  code, .mono { font-family: var(--font-mono); }
+  code { background: var(--surface-alt); padding: 1px 6px; border-radius: 5px; font-size: .9em; }
+
+  .doc-nav { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; gap: 16px; flex-wrap: wrap; }
+  .doc-nav .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 15px; }
+  .doc-nav .mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--ink), #1c3f6e); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 11px; flex-shrink: 0; }
+  .doc-nav .tabs { display: flex; gap: 4px; }
+  .doc-nav .tabs a { text-decoration: none; font-size: 13px; font-weight: 600; color: var(--ink-muted); padding: 7px 12px; border-radius: 999px; }
+  .doc-nav .tabs a.current { color: var(--ink); background: var(--surface-alt); }
+  .doc-nav .meta { font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+
+  .layout { display: grid; grid-template-columns: 250px minmax(0,760px); gap: 56px; max-width: 1080px; margin: 0 auto; padding: 44px 32px 100px; justify-content: center; }
+  .toc { position: sticky; top: 76px; align-self: start; max-height: calc(100vh - 96px); overflow-y: auto; }
+  .toc-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 12px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .toc a { display: block; text-decoration: none; color: var(--ink-muted); font-size: 13.5px; padding: 6px 10px; border-radius: 7px; }
+  .toc a:hover { background: var(--surface-alt); color: var(--ink); }
+
+  main > section { padding-top: 8px; margin-bottom: 60px; scroll-margin-top: 88px; }
+  main > section:first-of-type { margin-top: 0; }
+
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+  .hero h1 { font-size: 34px; line-height: 1.15; margin: 0 0 14px; }
+  .hero .lede { font-size: 17px; color: var(--ink-muted); max-width: 62ch; margin: 0 0 28px; }
+  .stack-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-family: var(--font-mono); font-size: 12.5px; background: var(--surface); border: 1px solid var(--border); padding: 6px 12px; border-radius: 999px; color: var(--ink-body); }
+
+  section h2 { font-size: 24px; margin: 0 0 6px; }
+  section h2 .idx { color: var(--accent-ink); font-variant-numeric: tabular-nums; margin-right: 10px; }
+  .section-intro { color: var(--ink-muted); margin: 0 0 22px; max-width: 64ch; }
+  h3 { font-size: 16.5px; margin: 26px 0 10px; }
+  p { margin: 0 0 14px; }
+  ul, ol { padding-left: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 6px; }
+
+  pre { background: var(--surface-alt); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; overflow-x: auto; font-family: var(--font-mono); font-size: 12.8px; line-height: 1.6; color: var(--ink-body); margin: 12px 0 20px; }
+  pre code { background: none; padding: 0; }
+  .tree { color: var(--ink-body); }
+  .tree .dir { color: var(--accent-ink); font-weight: 600; }
+  .tree .cmt { color: var(--ink-faint); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 14px 0 22px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-family: var(--font-display); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; }
+  tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+  td code { white-space: nowrap; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
+  .card h4 { margin: 0 0 6px; font-size: 14.5px; color: var(--ink); }
+  .card p { margin: 0; font-size: 13.5px; color: var(--ink-muted); }
+
+  .callout { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--surface); border-radius: 8px; padding: 16px 18px; margin: 20px 0; font-size: 14.5px; }
+  .callout h4 { margin: 0 0 6px; font-size: 13.5px; color: var(--ink); }
+  .callout.warn { border-left-color: var(--warn); }
+  .callout.warn h4 { color: var(--warn); }
+
+  .pill { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--surface-alt); color: var(--ink-body); font-family: var(--font-mono); }
+  .pill.get { background: var(--success-soft); color: var(--success); }
+  .pill.post { background: var(--warn-soft); color: var(--warn); }
+
+  footer.doc-footer { max-width: 1080px; margin: 0 auto; padding: 0 32px 60px; }
+  .foot-note { border-top: 1px solid var(--border); padding-top: 20px; font-size: 12.5px; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { display: none; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .doc-nav, .toc { display: none !important; }
+    body { background: #fff; font-size: 12px; }
+    .layout { grid-template-columns: 1fr; max-width: none; padding: 0 8mm; gap: 0; }
+    main > section { margin-bottom: 24px; page-break-inside: avoid; }
+    pre { white-space: pre-wrap; }
+    .card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="doc-nav">
+  <div class="brand"><span class="mark">TC</span> Talentis Connect — Documentation</div>
+  <div class="tabs">
+    <a href="fonctionnel.html">Fonctionnel</a>
+    <a href="technique.html" class="current">Technique</a>
+    <a href="architecture.html">Architecture</a>
+  </div>
+  <div class="meta">v1.0 · Août 2026</div>
+</div>
+
+<div class="layout">
+  <nav class="toc" aria-label="Sommaire">
+    <p class="toc-title">Sommaire</p>
+    <ol>
+      <li><a href="#stack">Stack technique</a></li>
+      <li><a href="#structure">Structure du projet</a></li>
+      <li><a href="#donnees">Modèle de données</a></li>
+      <li><a href="#auth">Authentification &amp; autorisation</a></li>
+      <li><a href="#actions">Server actions &amp; sécurité</a></li>
+      <li><a href="#env">Variables d'environnement</a></li>
+      <li><a href="#scripts">Scripts npm</a></li>
+      <li><a href="#tests">Vérification &amp; tests</a></li>
+      <li><a href="#deploiement">Déploiement</a></li>
+      <li><a href="#dette">Dette technique connue</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <span class="kicker">Documentation technique</span>
+      <h1>Talentis Connect</h1>
+      <p class="lede">Application Next.js full-stack (App Router) — un seul projet pour le frontend, les server actions et l'accès aux données, connecté à une base PostgreSQL via Prisma.</p>
+      <div class="stack-row">
+        <span class="chip">Next.js 16 (App Router)</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">Prisma 7</span>
+        <span class="chip">NextAuth (Auth.js) v5</span>
+        <span class="chip">Tailwind CSS v4</span>
+        <span class="chip">Zod</span>
+      </div>
+    </section>
+
+    <section id="stack">
+      <h2><span class="idx">01</span>Stack technique</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Couche</th><th>Choix</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td>Framework</td><td>Next.js 16, App Router</td><td>Rendu serveur (RSC), routage par dossier, server actions</td></tr>
+          <tr><td>Langage</td><td>TypeScript</td><td>Typage de bout en bout, y compris le client Prisma généré</td></tr>
+          <tr><td>Base de données</td><td>PostgreSQL</td><td>Stockage relationnel de l'ensemble des données</td></tr>
+          <tr><td>ORM</td><td>Prisma 7 (driver adapter <code>@prisma/adapter-pg</code>)</td><td>Schéma, migrations, requêtes typées</td></tr>
+          <tr><td>Authentification</td><td>NextAuth (Auth.js) v5, stratégie JWT</td><td>Comptes Credentials + OAuth (Google/LinkedIn)</td></tr>
+          <tr><td>Style</td><td>Tailwind CSS v4 (jetons CSS)</td><td>Design system de la marque Talentis Consult</td></tr>
+          <tr><td>Validation</td><td>Zod</td><td>Validation des formulaires côté serveur</td></tr>
+          <tr><td>Mots de passe</td><td>bcryptjs</td><td>Hachage des mots de passe Credentials</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="structure">
+      <h2><span class="idx">02</span>Structure du projet</h2>
+      <p class="section-intro">Les routes sont organisées par façade — chaque groupe de routes correspond à un espace applicatif protégé par rôle.</p>
+      <pre class="tree"><span class="cmt"># extrait — arborescence simplifiée</span>
+prisma/
+  schema.prisma          <span class="cmt"># 24 modèles, migrations versionnées</span>
+  seed.ts                <span class="cmt"># compte admin cabinet + offres de démo</span>
+src/
+  proxy.ts                <span class="cmt"># middleware — protège /client, /cabinet, /candidate</span>
+  app/
+    (public-jobs)/         <span class="cmt"># job board public : /, /results, /jobs/[id], /trainings…</span>
+    (auth)/                <span class="cmt"># /login, /register, /register/cabinet, /api/auth/*</span>
+    <span class="dir">client/</span>                 <span class="cmt"># espace Client (protégé, rôle CLIENT)</span>
+    <span class="dir">cabinet/</span>                <span class="cmt"># espace Cabinet (protégé, rôle CABINET)</span>
+    <span class="dir">candidate/</span>              <span class="cmt"># espace Candidat (protégé, rôle CANDIDATE)</span>
+  components/
+    ui/                   <span class="cmt"># Button, Card, Tag, Field, Tabs — primitives partagées</span>
+    mandats/ client/ cabinet/ candidate/ jobs/ training/ layout/
+  lib/
+    auth.ts                <span class="cmt"># config NextAuth complète (Node) — providers, callbacks</span>
+    auth.config.ts          <span class="cmt"># config partagée, compatible Edge (utilisée par proxy.ts)</span>
+    prisma.ts               <span class="cmt"># instance PrismaClient singleton</span>
+    rbac.ts                 <span class="cmt"># requireRole() / requireAdmin() / getSessionUser()</span>
+    storage.ts               <span class="cmt"># upload de fichiers (CV) — adaptateur disque local</span>
+    notify.ts                <span class="cmt"># écriture Notification + point d'extension e-mail</span>
+    validations/             <span class="cmt"># schémas Zod par domaine</span>
+  server/
+    actions/                 <span class="cmt"># logique métier ("use server") par domaine</span>
+    services/
+      mandatStateMachine.ts   <span class="cmt"># transitions de statut du mandat</span></pre>
+    </section>
+
+    <section id="donnees">
+      <h2><span class="idx">03</span>Modèle de données</h2>
+      <p class="section-intro">24 modèles Prisma, organisés en six domaines. Le détail des relations et un schéma visuel sont dans le document Architecture.</p>
+      <div class="card-grid">
+        <div class="card"><h4>Identité &amp; comptes</h4><p><code>User</code>, <code>Company</code>, <code>ClientProfile</code>, <code>CabinetProfile</code>, <code>CabinetInvite</code>, <code>Candidate</code></p></div>
+        <div class="card"><h4>Mandats</h4><p><code>Mandat</code>, <code>MandatStatusEvent</code>, <code>MandatMessage</code>, <code>MandateApplication</code></p></div>
+        <div class="card"><h4>Entretiens</h4><p><code>Interview</code>, <code>InterviewSlot</code></p></div>
+        <div class="card"><h4>Job board</h4><p><code>JobPosting</code>, <code>JobApplication</code>, <code>DirectMessage</code>, <code>JobSponsorship</code>, <code>JobAlert</code></p></div>
+        <div class="card"><h4>Formations</h4><p><code>TrainingCourse</code>, <code>TrainingSession</code>, <code>Enrollment</code></p></div>
+        <div class="card"><h4>Transverse</h4><p><code>Notification</code></p></div>
+      </div>
+      <p>Le rôle utilisateur (<code>Role</code> : <code>CLIENT</code> / <code>CABINET</code> / <code>CANDIDATE</code>) porte à lui seul l'aiguillage vers la bonne façade — aucun rôle Admin séparé : les droits d'administration cabinet sont un simple booléen <code>isAdmin</code> sur <code>CabinetProfile</code>.</p>
+    </section>
+
+    <section id="auth">
+      <h2><span class="idx">04</span>Authentification &amp; autorisation</h2>
+      <p>NextAuth est scindé en deux fichiers pour respecter la contrainte du middleware Next.js, qui s'exécute en <em>Edge Runtime</em> (aucun accès à Prisma/Node) :</p>
+      <ul>
+        <li><code>lib/auth.config.ts</code> — callbacks <code>jwt</code>/<code>session</code> uniquement, aucun accès base de données. Utilisé directement par <code>proxy.ts</code>.</li>
+        <li><code>lib/auth.ts</code> — étend la config partagée avec les providers réels (Credentials, Google, LinkedIn conditionnels) et un callback <code>signIn</code> qui interroge Prisma pour créer/retrouver l'utilisateur.</li>
+      </ul>
+      <h3>Protection des routes</h3>
+      <p><code>proxy.ts</code> (middleware) redirige vers <code>/login</code> tout accès non authentifié à <code>/client/*</code>, <code>/cabinet/*</code> ou <code>/candidate/*</code>. Chaque layout de façade revérifie ensuite le rôle côté serveur via <code>requireRole()</code>, et chaque server action revérifie indépendamment rôle et propriété des données — la protection ne repose jamais sur un seul point de contrôle.</p>
+      <h3>Connexion sociale</h3>
+      <p>Google et LinkedIn sont ajoutés dynamiquement aux providers uniquement si leurs variables d'environnement sont définies (<code>googleEnabled</code> / <code>linkedinEnabled</code>, exportées pour l'UI). Réservée au rôle Candidat : le callback <code>signIn</code> crée le <code>User</code> + <code>Candidate</code> au premier passage, et refuse la connexion si l'e-mail correspond déjà à un compte non-candidat.</p>
+    </section>
+
+    <section id="actions">
+      <h2><span class="idx">05</span>Server actions &amp; sécurité</h2>
+      <p>Toute la logique métier vit dans <code>src/server/actions/*.ts</code>, sous forme de fonctions <code>"use server"</code> appelées directement depuis les composants client — pas de couche API REST intermédiaire. Chaque action suit le même schéma :</p>
+      <pre><code>1. requireRole("CLIENT")           <span class="cmt">// rejette si non connecté / mauvais rôle</span>
+2. Validation Zod des données reçues
+3. Vérification de propriété       <span class="cmt">// ex: mandat.companyId === user.companyId</span>
+4. Écriture Prisma (transaction si plusieurs tables)
+5. revalidatePath() des pages concernées</code></pre>
+      <p>Les transitions de statut de mandat passent systématiquement par <code>mandatStateMachine.ts</code>, qui valide la transition demandée contre une table de transitions autorisées et journalise chaque changement dans <code>MandatStatusEvent</code> — aucun code applicatif n'écrit <code>Mandat.status</code> directement.</p>
+    </section>
+
+    <section id="env">
+      <h2><span class="idx">06</span>Variables d'environnement</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Variable</th><th>Requise</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td><code>DATABASE_URL</code></td><td>Oui</td><td>Connexion PostgreSQL</td></tr>
+          <tr><td><code>AUTH_SECRET</code></td><td>Oui</td><td>Secret de signature des sessions NextAuth</td></tr>
+          <tr><td><code>NEXTAUTH_URL</code></td><td>Oui</td><td>URL publique de l'application</td></tr>
+          <tr><td><code>GOOGLE_CLIENT_ID</code> / <code>_SECRET</code></td><td>Non</td><td>Active la connexion Google si définies</td></tr>
+          <tr><td><code>LINKEDIN_CLIENT_ID</code> / <code>_SECRET</code></td><td>Non</td><td>Active la connexion LinkedIn si définies</td></tr>
+          <tr><td><code>SEED_CABINET_ADMIN_EMAIL</code> / <code>_PASSWORD</code></td><td>Non</td><td>Surcharge les identifiants du compte admin créé par <code>db:seed</code></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="scripts">
+      <h2><span class="idx">07</span>Scripts npm</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Commande</th><th>Effet</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm run dev</code></td><td>Serveur de développement (Turbopack)</td></tr>
+          <tr><td><code>npm run build</code></td><td>Build de production</td></tr>
+          <tr><td><code>npm run db:migrate</code></td><td><code>prisma migrate dev</code> — applique le schéma en local</td></tr>
+          <tr><td><code>npm run db:seed</code></td><td>Crée le compte admin cabinet + les offres de démonstration</td></tr>
+          <tr><td><code>npm run db:studio</code></td><td>Ouvre Prisma Studio (exploration de la base)</td></tr>
+          <tr><td><code>npm run vercel-build</code></td><td><code>prisma migrate deploy &amp;&amp; next build</code> — build de déploiement en une étape</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="tests">
+      <h2><span class="idx">08</span>Vérification &amp; tests</h2>
+      <p>Aucune suite de tests automatisés n'a été mise en place ; la vérification a été faite en continu, à chaque fonctionnalité :</p>
+      <ul>
+        <li><code>npm run build</code> et <code>npx tsc --noEmit</code> systématiques avant chaque livraison.</li>
+        <li><code>npm run lint</code> (ESLint, config Next.js) systématique.</li>
+        <li>Parcours de bout en bout dans un navigateur réel (Playwright headless) pour chaque fonctionnalité livrée : création de compte, dépôt de mandat, sourcing, entretiens, clôture, candidature, messagerie, sponsoring, alertes — avec vérification explicite des droits d'accès (un client ne peut pas voir le mandat d'un autre, etc.).</li>
+      </ul>
+      <div class="callout">
+        <h4>Recommandation</h4>
+        Ajouter une suite de tests automatisés (Vitest/Playwright) avant toute mise en production réelle — la couverture actuelle repose sur des vérifications manuelles répétées, pas sur des tests exécutables en continu.
+      </div>
+    </section>
+
+    <section id="deploiement">
+      <h2><span class="idx">09</span>Déploiement</h2>
+      <ol>
+        <li>Créer une base PostgreSQL managée (Neon ou Supabase, offre gratuite suffisante pour démarrer).</li>
+        <li>Importer le dépôt GitHub dans un nouveau projet Vercel.</li>
+        <li>Renseigner les variables d'environnement de la section 6 dans les réglages du projet Vercel.</li>
+        <li>Vercel détecte automatiquement <code>vercel-build</code> et l'exécute — migrations puis build, en une étape.</li>
+      </ol>
+      <p>Détail pas-à-pas (y compris l'obtention des identifiants Google/LinkedIn) dans <code>README.md</code> à la racine du dépôt.</p>
+    </section>
+
+    <section id="dette">
+      <h2><span class="idx">10</span>Dette technique connue</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Sujet</th><th>État</th><th>Recommandation</th></tr></thead>
+        <tbody>
+          <tr><td>Tests automatisés</td><td>Aucun</td><td>Ajouter Vitest (unitaire) + Playwright (bout en bout)</td></tr>
+          <tr><td>E-mail transactionnel</td><td>Non implémenté (<code>lib/notify.ts</code> prêt à l'accueillir)</td><td>Brancher un fournisseur (Resend, SendGrid…)</td></tr>
+          <tr><td>Stockage de fichiers</td><td>Disque local (<code>lib/storage.ts</code>)</td><td>Basculer vers un stockage objet (S3-compatible) avant mise à l'échelle</td></tr>
+          <tr><td>Paiements</td><td>Suivi manuel (formations, sponsoring)</td><td>Intégrer une passerelle une fois un compte marchand disponible</td></tr>
+          <tr><td>Recherche</td><td>Filtrage SQL simple</td><td>Suffisant au volume actuel ; revoir si le catalogue grossit fortement</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+  </main>
+</div>
+
+<footer class="doc-footer">
+  <div class="foot-note">
+    <span>Talentis Connect — Documentation technique</span>
+    <span>Voir aussi : Documentation fonctionnelle · Architecture</span>
+  </div>
+</footer>
+
+
+</body>
+</html>

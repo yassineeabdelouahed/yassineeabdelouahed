@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Talentis Connect Fonctionnel</title>
+<meta name="description" content="Talentis Connect — description fonctionnelle des trois espaces, du processus de recrutement en 8 étapes et de toutes les fonctionnalités livrées.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7fa;
+    --surface: #ffffff;
+    --surface-alt: #eef1f6;
+    --ink: #0b2545;
+    --ink-body: #2c3a52;
+    --ink-muted: #64748b;
+    --ink-faint: #94a3b8;
+    --border: #dde3ec;
+    --accent: #a5761f;
+    --accent-ink: #7a5817;
+    --accent-soft: #f6efdd;
+    --success: #15803d;
+    --success-soft: #e9f7ee;
+    --warn: #b45309;
+    --warn-soft: #fdf3e2;
+    --shadow: 0 1px 2px rgba(11,37,69,0.04), 0 8px 24px rgba(11,37,69,0.06);
+    --radius: 10px;
+    --font-display: "Manrope", Arial, sans-serif;
+    --font-body: "Work Sans", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0f1a;
+      --surface: #121a2a;
+      --surface-alt: #17203353;
+      --surface-alt: #172033;
+      --ink: #eef2f8;
+      --ink-body: #c9d3e4;
+      --ink-muted: #8b98b3;
+      --ink-faint: #647089;
+      --border: #263352;
+      --accent: #d8ab52;
+      --accent-ink: #e8c47c;
+      --accent-soft: #241d0f;
+      --success: #4ade80;
+      --success-soft: #0f2418;
+      --warn: #f0b258;
+      --warn-soft: #2a1d0c;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0f1a;
+    --surface: #121a2a;
+    --surface-alt: #172033;
+    --ink: #eef2f8;
+    --ink-body: #c9d3e4;
+    --ink-muted: #8b98b3;
+    --ink-faint: #647089;
+    --border: #263352;
+    --accent: #d8ab52;
+    --accent-ink: #e8c47c;
+    --accent-soft: #241d0f;
+    --success: #4ade80;
+    --success-soft: #0f2418;
+    --warn: #f0b258;
+    --warn-soft: #2a1d0c;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink-body);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .print-only { display: none; }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+  h1 { font-weight: 800; }
+  h2 { font-weight: 800; }
+  h3 { font-weight: 700; }
+  a { color: var(--accent-ink); }
+  code, .mono { font-family: var(--font-mono); }
+
+  .doc-nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .doc-nav .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 15px; }
+  .doc-nav .mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--ink), #1c3f6e); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 11px; flex-shrink: 0; }
+  .doc-nav .tabs { display: flex; gap: 4px; }
+  .doc-nav .tabs a { text-decoration: none; font-size: 13px; font-weight: 600; color: var(--ink-muted); padding: 7px 12px; border-radius: 999px; }
+  .doc-nav .tabs a.current { color: var(--ink); background: var(--surface-alt); }
+  .doc-nav .meta { font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+
+  .layout { display: grid; grid-template-columns: 250px minmax(0,760px); gap: 56px; max-width: 1080px; margin: 0 auto; padding: 44px 32px 100px; justify-content: center; }
+  .toc { position: sticky; top: 76px; align-self: start; max-height: calc(100vh - 96px); overflow-y: auto; }
+  .toc-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 12px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; counter-reset: toc; }
+  .toc li { counter-increment: toc; }
+  .toc a { display: block; text-decoration: none; color: var(--ink-muted); font-size: 13.5px; padding: 6px 10px; border-radius: 7px; border-left: 2px solid transparent; }
+  .toc a:hover { background: var(--surface-alt); color: var(--ink); }
+  .toc .sub { padding-left: 22px; font-size: 12.5px; }
+
+  main > section { padding-top: 8px; margin-bottom: 64px; scroll-margin-top: 88px; }
+  main > section:first-of-type { margin-top: 0; }
+
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+  .hero h1 { font-size: 34px; line-height: 1.15; margin: 0 0 14px; }
+  .hero .lede { font-size: 17px; color: var(--ink-muted); max-width: 62ch; margin: 0 0 28px; }
+  .hero .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .stat .n { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--ink); }
+  .stat .l { font-size: 12.5px; color: var(--ink-muted); margin-top: 2px; }
+
+  section h2 { font-size: 24px; margin: 0 0 6px; }
+  section h2 .idx { color: var(--accent-ink); font-variant-numeric: tabular-nums; margin-right: 10px; }
+  .section-intro { color: var(--ink-muted); margin: 0 0 26px; max-width: 64ch; }
+  h3 { font-size: 17px; margin: 30px 0 10px; }
+  p { margin: 0 0 14px; }
+  ul, ol { padding-left: 22px; margin: 0 0 14px; }
+  li { margin-bottom: 6px; }
+
+  .steps { display: flex; flex-direction: column; gap: 0; margin: 24px 0; border-left: 2px solid var(--border); margin-left: 15px; }
+  .step { position: relative; padding: 4px 0 26px 32px; }
+  .step:last-child { padding-bottom: 4px; }
+  .step .num { position: absolute; left: -15px; top: 2px; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 13px; }
+  .step h4 { margin: 0 0 4px; font-family: var(--font-display); font-weight: 700; font-size: 15.5px; color: var(--ink); }
+  .step p { margin: 0; font-size: 14.5px; color: var(--ink-body); }
+  .step .who { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-soft); padding: 2px 8px; border-radius: 5px; margin-bottom: 6px; }
+
+  .facade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0; }
+  .facade-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+  .facade-card h4 { font-size: 15px; margin: 0 0 4px; color: var(--ink); }
+  .facade-card .role { font-size: 12px; color: var(--ink-muted); margin-bottom: 12px; }
+  .facade-card ul { padding-left: 18px; margin: 0; font-size: 13.5px; }
+  .facade-card li { margin-bottom: 5px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 18px 0; }
+  caption { text-align: left; font-size: 12px; color: var(--ink-faint); margin-bottom: 6px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-family: var(--font-display); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; }
+  tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; }
+
+  .pill { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--surface-alt); color: var(--ink-body); }
+  .pill.done { background: var(--success-soft); color: var(--success); }
+  .pill.manual { background: var(--warn-soft); color: var(--warn); }
+
+  .callout { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--surface); border-radius: 8px; padding: 16px 18px; margin: 20px 0; font-size: 14.5px; }
+  .callout h4 { margin: 0 0 6px; font-size: 13.5px; color: var(--ink); }
+  .callout.warn { border-left-color: var(--warn); }
+  .callout.warn h4 { color: var(--warn); }
+
+  .glossary dt { font-family: var(--font-display); font-weight: 700; color: var(--ink); font-size: 14px; margin-top: 14px; }
+  .glossary dd { margin: 3px 0 0; color: var(--ink-muted); font-size: 14px; }
+
+  footer.doc-footer { max-width: 1080px; margin: 0 auto; padding: 0 32px 60px; }
+  .foot-note { border-top: 1px solid var(--border); padding-top: 20px; font-size: 12.5px; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { display: none; }
+    .facade-grid, .hero .stat-row { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    .doc-nav, .toc { display: none !important; }
+    body { background: #fff; font-size: 12px; }
+    .layout { grid-template-columns: 1fr; max-width: none; padding: 0 8mm; gap: 0; }
+    main > section { margin-bottom: 26px; page-break-inside: avoid; }
+    .hero { page-break-after: avoid; }
+    a { color: var(--ink); text-decoration: none; }
+    .facade-card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="doc-nav">
+  <div class="brand"><span class="mark">TC</span> Talentis Connect — Documentation</div>
+  <div class="tabs">
+    <a href="fonctionnel.html" class="current">Fonctionnel</a>
+    <a href="technique.html">Technique</a>
+    <a href="architecture.html">Architecture</a>
+  </div>
+  <div class="meta">v1.0 · Août 2026</div>
+</div>
+
+<div class="layout">
+  <nav class="toc" aria-label="Sommaire">
+    <p class="toc-title">Sommaire</p>
+    <ol>
+      <li><a href="#contexte">Contexte &amp; objectif</a></li>
+      <li><a href="#facades">Les trois espaces</a></li>
+      <li><a href="#processus">Le processus en 8 étapes</a></li>
+      <li><a href="#client">Espace Client</a></li>
+      <li><a href="#cabinet">Espace Cabinet</a></li>
+      <li><a href="#candidat">Espace Candidat</a></li>
+      <li><a href="#jobboard">Job board public</a></li>
+      <li><a href="#formations">Module Formations</a></li>
+      <li><a href="#connexion">Connexion &amp; comptes</a></li>
+      <li><a href="#perimetre">Périmètre &amp; limites actuelles</a></li>
+      <li><a href="#glossaire">Glossaire</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <span class="kicker">Documentation fonctionnelle</span>
+      <h1>Talentis Connect</h1>
+      <p class="lede">Plateforme de gestion du processus de recrutement pour Talentis Consult (Casablanca) — elle relie l'entreprise cliente, le cabinet et le candidat sur un parcours unique, transparent et mesurable, et prolonge ce cœur de métier par un job board public.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">3</div><div class="l">espaces connectés</div></div>
+        <div class="stat"><div class="n">8</div><div class="l">étapes du processus de recrutement</div></div>
+        <div class="stat"><div class="n">12</div><div class="l">lots fonctionnels livrés</div></div>
+      </div>
+    </section>
+
+    <section id="contexte">
+      <h2><span class="idx">01</span>Contexte &amp; objectif</h2>
+      <p>Dans la majorité des cabinets de recrutement marocains, le suivi d'un mandat repose sur des échanges d'e-mails, des fichiers Excel et des relances téléphoniques : peu de traçabilité, peu de visibilité en temps réel pour le client. Talentis Connect digitalise l'intégralité de ce parcours — du dépôt de la demande par l'entreprise cliente jusqu'à l'intégration du candidat retenu — sans remplacer l'expertise humaine du recruteur (sourcing, évaluation, conseil), mais en la structurant et en la rendant visible à chaque étape.</p>
+      <p>Au-delà de ce cœur de métier, la plateforme intègre un job board public ouvert à tous les candidats, inspiré des mécaniques d'Indeed (candidature en un clic, alertes emploi, messagerie directe, offres sponsorisées) tout en conservant le modèle de cabinet géré comme activité principale.</p>
+    </section>
+
+    <section id="facades">
+      <h2><span class="idx">02</span>Les trois espaces</h2>
+      <p class="section-intro">Un même moteur de données relie trois espaces, chacun avec ses propres droits d'accès.</p>
+      <div class="facade-grid">
+        <div class="facade-card">
+          <h4>Espace Client</h4>
+          <div class="role">Entreprise qui recrute (DRH, manager)</div>
+          <ul>
+            <li>Dépose des mandats de recrutement</li>
+            <li>Suit l'avancement en temps réel</li>
+            <li>Sélectionne des candidats, planifie des entretiens</li>
+            <li>Publie des offres sur le job board</li>
+          </ul>
+        </div>
+        <div class="facade-card">
+          <h4>Espace Cabinet</h4>
+          <div class="role">Consultants Talentis Consult (interne)</div>
+          <ul>
+            <li>Valide et qualifie les mandats entrants</li>
+            <li>Source et pré-qualifie les candidats</li>
+            <li>Planifie les entretiens, clôture les mandats</li>
+            <li>Gère le catalogue de formations et le sponsoring</li>
+          </ul>
+        </div>
+        <div class="facade-card">
+          <h4>Espace Candidat</h4>
+          <div class="role">Personnes en recherche d'opportunités</div>
+          <ul>
+            <li>Complète un profil (CV, compétences)</li>
+            <li>Postule en un clic sur le job board</li>
+            <li>Crée des alertes emploi personnalisées</li>
+            <li>Échange avec les recruteurs, s'inscrit aux formations</li>
+          </ul>
+        </div>
+      </div>
+      <p>L'accès à l'espace Cabinet n'est jamais ouvert : les comptes sont créés uniquement par invitation d'un administrateur cabinet, contrairement aux espaces Client et Candidat qui s'inscrivent librement.</p>
+    </section>
+
+    <section id="processus">
+      <h2><span class="idx">03</span>Le processus en 8 étapes</h2>
+      <p class="section-intro">Le cœur du produit : chaque mandat progresse à travers ces huit étapes, visibles en temps réel par le client et le cabinet sur une frise commune.</p>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><span class="who">Client</span><h4>Dépôt de la demande</h4><p>L'entreprise cliente crée un mandat en renseignant le poste, les compétences, l'expérience, la fourchette salariale, la localisation et l'urgence.</p></div>
+        <div class="step"><span class="num">2</span><span class="who">Cabinet</span><h4>Réception et validation du besoin</h4><p>Le cabinet reçoit la demande, échange directement avec le client sur la plateforme pour clarifier les informations manquantes, puis lance le mandat.</p></div>
+        <div class="step"><span class="num">3</span><span class="who">Cabinet</span><h4>Sourcing et pré-qualification</h4><p>L'équipe source des candidats dans sa base et les pré-qualifie (notes, points forts, points de vigilance) avant de les proposer sur le mandat.</p></div>
+        <div class="step"><span class="num">4</span><span class="who">Cabinet</span><h4>Envoi de la short-list</h4><p>Le cabinet publie une liste restreinte de candidats pré-qualifiés, avec leur fiche de synthèse, visible par le client.</p></div>
+        <div class="step"><span class="num">5</span><span class="who">Client</span><h4>Sélection des candidats</h4><p>Le client consulte la short-list et sélectionne les profils qu'il souhaite rencontrer en entretien.</p></div>
+        <div class="step"><span class="num">6</span><span class="who">Client → Cabinet</span><h4>Planification des entretiens</h4><p>Le client propose ses créneaux de disponibilité ; le cabinet choisit un créneau et confirme l'entretien (mode, lien de réunion).</p></div>
+        <div class="step"><span class="num">7</span><span class="who">Client</span><h4>Retour d'entretien</h4><p>Après chaque entretien, le client renseigne son avis directement sur la plateforme (validé / réserve / refusé, avec commentaire).</p></div>
+        <div class="step"><span class="num">8</span><span class="who">Cabinet</span><h4>Validation finale et clôture</h4><p>Le cabinet formalise une offre au candidat validé, puis confirme le recrutement : le mandat est clôturé et marqué gagné.</p></div>
+      </div>
+      <div class="callout">
+        <h4>Périmètre volontairement réduit à l'étape 8</h4>
+        Sur demande explicite, la clôture n'inclut ni facturation, ni génération d'offre, ni signature électronique — uniquement le statut et le candidat retenu. Ce point est identifié comme un développement futur possible.
+      </div>
+    </section>
+
+    <section id="client">
+      <h2><span class="idx">04</span>Espace Client — détail des fonctionnalités</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Fonctionnalité</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Tableau de bord</td><td>Vue d'ensemble des mandats en cours et de leur statut.</td></tr>
+          <tr><td>Créer un mandat</td><td>Formulaire complet (poste, compétences, expérience, salaire, localisation, urgence).</td></tr>
+          <tr><td>Suivi de mandat</td><td>Frise des 8 étapes, échanges de messages avec le cabinet, consultant assigné visible.</td></tr>
+          <tr><td>Short-list</td><td>Consultation des candidats proposés (notes de pré-qualification, points forts/vigilance) et sélection de ceux à rencontrer.</td></tr>
+          <tr><td>Entretiens</td><td>Proposition de créneaux de disponibilité, consultation des entretiens planifiés, saisie du retour après entretien.</td></tr>
+          <tr><td>Offres publiées</td><td>Publication d'offres sur le job board public, suivi des candidatures reçues par offre.</td></tr>
+          <tr><td>Messagerie candidats</td><td>Échange direct avec chaque candidat ayant postulé à une offre publiée.</td></tr>
+          <tr><td>Sponsoring d'offre</td><td>Mise en avant payante d'une offre (7 / 14 / 30 jours) pour la faire remonter dans les résultats de recherche.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="cabinet">
+      <h2><span class="idx">05</span>Espace Cabinet — détail des fonctionnalités</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Fonctionnalité</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Tableau de bord</td><td>Vue d'ensemble de tous les mandats, mise en avant des mandats en attente de validation.</td></tr>
+          <tr><td>Validation d'un mandat</td><td>Revue du besoin, clarification par message, auto-affectation comme consultant, passage en sourcing.</td></tr>
+          <tr><td>CRM candidats</td><td>Base de candidats (nom, coordonnées, compétences, expérience, CV) créée manuellement par le cabinet.</td></tr>
+          <tr><td>Sourcing sur mandat</td><td>Proposer un candidat de la base sur un mandat, avec notes de pré-qualification, puis publier la short-list.</td></tr>
+          <tr><td>Planification</td><td>Sélection d'un créneau parmi les disponibilités transmises par le client, confirmation de l'entretien.</td></tr>
+          <tr><td>Clôture de mandat</td><td>Formalisation d'une offre au candidat validé, puis confirmation du recrutement.</td></tr>
+          <tr><td>Gestion des offres publiques</td><td>Confirmation des demandes de sponsoring, vue d'ensemble des offres publiées par les clients.</td></tr>
+          <tr><td>Gestion des formations</td><td>Création de formations et de sessions, confirmation manuelle des paiements d'inscription.</td></tr>
+          <tr><td>Invitations cabinet</td><td>Un administrateur cabinet invite de nouveaux collaborateurs par lien — aucune inscription libre côté cabinet.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="candidat">
+      <h2><span class="idx">06</span>Espace Candidat — détail des fonctionnalités</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Fonctionnalité</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Profil</td><td>Titre recherché, localisation, expérience, compétences, CV — base de la candidature en un clic.</td></tr>
+          <tr><td>Candidatures</td><td>Historique des candidatures envoyées, statut de chacune, fil de discussion par candidature.</td></tr>
+          <tr><td>Alertes emploi</td><td>Sauvegarde d'une recherche (mots-clés, ville, catégorie) ; notification dès qu'une offre correspondante est publiée.</td></tr>
+          <tr><td>Notifications</td><td>Centre de notifications commun (entretien planifié, message reçu, inscription confirmée, alerte déclenchée).</td></tr>
+          <tr><td>Formations</td><td>Consultation du catalogue, inscription à une session, suivi du statut de paiement.</td></tr>
+          <tr><td>Connexion sociale</td><td>Inscription/connexion via Google ou LinkedIn, en plus de l'e-mail et du mot de passe.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="jobboard">
+      <h2><span class="idx">07</span>Job board public</h2>
+      <p class="section-intro">Accessible sans compte, à l'image d'Indeed ou de Rekrute — le design reprend fidèlement la maquette fournie en amont du projet.</p>
+      <ul>
+        <li><strong>Accueil</strong> — recherche par mots-clés et ville, catégories, offres à la une, chiffres clés.</li>
+        <li><strong>Résultats de recherche</strong> — filtres (type de contrat, télétravail), tri (plus récentes / salaire), création d'alerte en un clic.</li>
+        <li><strong>Fiche offre</strong> — description complète, missions, profil recherché, candidature en un clic pour un candidat connecté.</li>
+        <li><strong>Espace recruteur</strong> — page publique présentant l'offre de service, avec accès à la publication d'offre et à la diffusion externe.</li>
+        <li><strong>Formations</strong> — catalogue public filtrable par domaine.</li>
+        <li><strong>Offres sponsorisées</strong> — badge distinctif et priorité d'affichage dans les résultats.</li>
+      </ul>
+    </section>
+
+    <section id="formations">
+      <h2><span class="idx">08</span>Module Formations</h2>
+      <p class="section-intro">Nouvelle activité du cabinet, en marketing digital, finance et RH.</p>
+      <ul>
+        <li>Catalogue public filtrable par domaine, avec sessions programmées (dates, prix, capacité, formateur).</li>
+        <li>Inscription en choisissant un mode de paiement (virement, espèces au cabinet, autre).</li>
+        <li>Le paiement est confirmé manuellement par le cabinet après réception — voir la note ci-dessous.</li>
+      </ul>
+      <div class="callout warn">
+        <h4>Pas de passerelle de paiement en ligne</h4>
+        Aucun compte marchand n'était disponible au moment du développement. Le statut de paiement (en attente / confirmé) est géré manuellement par le cabinet — l'intégration d'un vrai moyen de paiement est un développement futur possible.
+      </div>
+    </section>
+
+    <section id="connexion">
+      <h2><span class="idx">09</span>Connexion &amp; gestion des comptes</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Rôle</th><th>Inscription</th><th>Méthodes de connexion</th></tr></thead>
+        <tbody>
+          <tr><td>Client</td><td>Libre, avec création de l'entreprise</td><td>E-mail + mot de passe</td></tr>
+          <tr><td>Candidat</td><td>Libre</td><td>E-mail + mot de passe, ou Google / LinkedIn</td></tr>
+          <tr><td>Cabinet</td><td>Sur invitation uniquement (lien envoyé par un administrateur)</td><td>E-mail + mot de passe</td></tr>
+        </tbody>
+      </table></div>
+      <p>La connexion sociale (Google / LinkedIn) est réservée aux candidats — le compte est créé automatiquement à la première connexion, avec un profil à compléter ensuite.</p>
+    </section>
+
+    <section id="perimetre">
+      <h2><span class="idx">10</span>Périmètre &amp; limites actuelles</h2>
+      <p class="section-intro">Simplifications assumées pour cette première version, à arbitrer collectivement pour la suite.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Domaine</th><th>État actuel</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>E-mails</td><td>Notifications internes uniquement, aucun e-mail envoyé</td><td><span class="pill manual">à développer</span></td></tr>
+          <tr><td>Paiement formations</td><td>Statut confirmé manuellement par le cabinet</td><td><span class="pill manual">manuel</span></td></tr>
+          <tr><td>Sponsoring d'offres</td><td>Paiement confirmé manuellement par le cabinet</td><td><span class="pill manual">manuel</span></td></tr>
+          <tr><td>Facturation de mandat</td><td>Non incluse à la clôture (exclusion demandée)</td><td><span class="pill manual">hors périmètre</span></td></tr>
+          <tr><td>Diffusion vers LinkedIn / Indeed…</td><td>Statuts d'affichage uniquement, aucune intégration réelle</td><td><span class="pill manual">simulé</span></td></tr>
+          <tr><td>Multi-utilisateurs entreprise</td><td>Un seul compte par entreprise cliente</td><td><span class="pill manual">à développer</span></td></tr>
+          <tr><td>8 étapes du mandat</td><td>Fonctionnel de bout en bout, testé</td><td><span class="pill done">livré</span></td></tr>
+          <tr><td>Job board + candidature</td><td>Fonctionnel de bout en bout, testé</td><td><span class="pill done">livré</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="glossaire">
+      <h2><span class="idx">11</span>Glossaire</h2>
+      <dl class="glossary">
+        <dt>Mandat</dt><dd>Demande de recrutement ouverte par un client pour un poste donné, suivie à travers les 8 étapes.</dd>
+        <dt>Short-list</dt><dd>Liste restreinte de candidats pré-qualifiés soumise au client par le cabinet.</dd>
+        <dt>Sourcing</dt><dd>Recherche et identification de candidats potentiels par le cabinet.</dd>
+        <dt>Façade</dt><dd>Terme désignant l'un des trois espaces de la plateforme (Client, Cabinet, Candidat).</dd>
+        <dt>Job board</dt><dd>Le site public de recherche et de publication d'offres d'emploi, distinct du suivi de mandat privé.</dd>
+        <dt>Offre sponsorisée</dt><dd>Offre mise en avant contre paiement, affichée en priorité dans les résultats de recherche.</dd>
+        <dt>Alerte emploi</dt><dd>Recherche sauvegardée par un candidat, qui déclenche une notification à chaque nouvelle offre correspondante.</dd>
+      </dl>
+    </section>
+  </main>
+</div>
+
+<footer class="doc-footer">
+  <div class="foot-note">
+    <span>Talentis Connect — Documentation fonctionnelle</span>
+    <span>Voir aussi : Documentation technique · Architecture</span>
+  </div>
+</footer>
+
+
+</body>
+</html>

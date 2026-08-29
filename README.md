@@ -4,6 +4,8 @@ Plateforme de gestion du processus de recrutement pour Talentis Consult (cabinet
 
 Trois espaces : **Client** (entreprise), **Cabinet** (équipe interne), **Candidat**, plus un job board public.
 
+📄 **Documentation complète** (fonctionnelle, technique, architecture) : voir [`docs/`](./docs).
+
 ## Démarrage local
 
 ```bash

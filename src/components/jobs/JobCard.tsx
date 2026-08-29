@@ -30,17 +30,28 @@ export type JobCardData = {
   salaryMax: number | null;
   publishedAt: Date | null;
   createdAt: Date;
+  sponsoredUntil?: Date | null;
   company: { name: string };
 };
 
 export function JobCard({ job, showCategory = false }: { job: JobCardData; showCategory?: boolean }) {
   const salary = formatSalary(job.salaryMin, job.salaryMax);
+  const isSponsored = !!job.sponsoredUntil && job.sponsoredUntil > new Date();
 
   return (
     <Link href={`/jobs/${job.id}`}>
-      <Card className="p-[22px] hover:border-teal hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+      <Card
+        className={`p-[22px] hover:border-teal hover:shadow-[var(--shadow-card-hover)] transition-shadow ${
+          isSponsored ? "border-orange/50 bg-orange-tint/30" : ""
+        }`}
+      >
         <div className="flex justify-between items-start">
           <div>
+            {isSponsored && (
+              <div className="mb-1.5">
+                <Tag tone="orange">★ Sponsorisée</Tag>
+              </div>
+            )}
             <div className="font-bold text-[16px] text-ink-900">{job.title}</div>
             <div className="text-sm text-ink-500 mt-1">
               {job.company.name}

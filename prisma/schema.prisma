@@ -45,6 +45,8 @@ model User {
   notifications        Notification[]
   jobAlerts            JobAlert[]
   directMessages       DirectMessage[]
+  requestedSponsorships JobSponsorship[]   @relation("SponsorshipRequestedBy")
+  confirmedSponsorships JobSponsorship[]   @relation("SponsorshipConfirmedBy")
   createdCandidates    Candidate[]         @relation("CandidateCreatedBy")
 
   @@map("users")
@@ -353,13 +355,15 @@ model JobPosting {
   salaryMax      Int?
   status        JobPostingStatus @default(DRAFT)
   publishedAt   DateTime?
+  sponsoredUntil DateTime?
   createdAt     DateTime         @default(now())
 
   company  Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
   mandat   Mandat? @relation(fields: [mandatId], references: [id], onDelete: SetNull)
   postedBy User    @relation(fields: [postedByUserId], references: [id])
 
-  applications JobApplication[]
+  applications  JobApplication[]
+  sponsorships  JobSponsorship[]
 
   @@map("job_postings")
 }
@@ -402,6 +406,41 @@ model DirectMessage {
   sender         User           @relation(fields: [senderUserId], references: [id])
 
   @@map("direct_messages")
+}
+
+enum SponsorshipPaymentMethod {
+  VIREMENT
+  ESPECES
+  AUTRE
+}
+
+enum SponsorshipPaymentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+/** Paid boost requested by a Client on their own JobPosting — manual payment confirmation, same pattern as Enrollment. */
+model JobSponsorship {
+  id                String                   @id @default(cuid())
+  jobPostingId      String
+  requestedByUserId String
+  durationDays      Int
+  price             Int
+  currency          String                   @default("MAD")
+  paymentMethod     SponsorshipPaymentMethod
+  paymentStatus     SponsorshipPaymentStatus @default(PENDING)
+  startAt           DateTime?
+  endAt             DateTime?
+  createdAt         DateTime                 @default(now())
+  confirmedAt       DateTime?
+  confirmedByUserId String?
+
+  jobPosting  JobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+  requestedBy User       @relation("SponsorshipRequestedBy", fields: [requestedByUserId], references: [id])
+  confirmedBy User?      @relation("SponsorshipConfirmedBy", fields: [confirmedByUserId], references: [id])
+
+  @@map("job_sponsorships")
 }
 
 // ---------- Phase G: training ----------

@@ -45,13 +45,22 @@ export async function listPublishedJobs(filters: JobFilters = {}) {
   }
   if (and.length > 0) where.AND = and;
 
-  return prisma.jobPosting.findMany({
+  const jobs = await prisma.jobPosting.findMany({
     where,
     include: { company: { select: { name: true } } },
     orderBy:
       filters.sort === "salary"
         ? [{ salaryMax: { sort: "desc", nulls: "last" } }]
         : [{ publishedAt: "desc" }],
+  });
+
+  // Sponsored listings float to the top; Array.sort is stable, so the DB-level
+  // sort above is preserved within each group (sponsored vs. not).
+  const now = new Date();
+  return jobs.sort((a, b) => {
+    const aSponsored = a.sponsoredUntil && a.sponsoredUntil > now ? 1 : 0;
+    const bSponsored = b.sponsoredUntil && b.sponsoredUntil > now ? 1 : 0;
+    return bSponsored - aSponsored;
   });
 }
 
@@ -121,7 +130,10 @@ export async function listJobPostingsForClient() {
   return prisma.jobPosting.findMany({
     where: { companyId: user.companyId! },
     orderBy: { createdAt: "desc" },
-    include: { applications: { select: { id: true } } },
+    include: {
+      applications: { select: { id: true } },
+      sponsorships: { where: { paymentStatus: { not: "CANCELLED" } }, orderBy: { createdAt: "desc" }, take: 1 },
+    },
   });
 }
 

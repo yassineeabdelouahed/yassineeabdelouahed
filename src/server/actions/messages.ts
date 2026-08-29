@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { getSessionUser } from "@/lib/rbac";
 import { notifyUser } from "@/lib/notify";
+import { enforceRateLimit, RateLimitError } from "@/lib/rateLimit";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -60,6 +61,17 @@ export async function sendDirectMessageAction(applicationId: string, formData: F
 
   const body = String(formData.get("body") ?? "").trim();
   if (!body) return { ok: false, error: "Message vide" };
+
+  try {
+    await enforceRateLimit(`message:${user.id}`, {
+      maxAttempts: 60,
+      windowMinutes: 60,
+      message: "Trop de messages envoyés. Réessayez dans un moment.",
+    });
+  } catch (err) {
+    if (err instanceof RateLimitError) return { ok: false, error: err.message };
+    throw err;
+  }
 
   await prisma.directMessage.create({
     data: { jobApplicationId: applicationId, senderUserId: user.id, body },

@@ -4,10 +4,24 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { registerSchema, cabinetRegisterSchema } from "@/lib/validations/auth";
 import { homeForRole } from "@/lib/rbac";
+import { enforceRateLimit, getClientIp, RateLimitError } from "@/lib/rateLimit";
 
 export type ActionResult = { ok: true; redirectTo: string } | { ok: false; error: string };
 
 export async function registerAction(formData: FormData): Promise<ActionResult> {
+  try {
+    // 5 inscriptions / heure / IP — n'empêche pas un usage normal, ralentit la création
+    // en masse de faux comptes depuis une même machine.
+    await enforceRateLimit(`register:${await getClientIp()}`, {
+      maxAttempts: 5,
+      windowMinutes: 60,
+      message: "Trop de tentatives d'inscription depuis cette connexion. Réessayez plus tard.",
+    });
+  } catch (err) {
+    if (err instanceof RateLimitError) return { ok: false, error: err.message };
+    throw err;
+  }
+
   const raw = {
     role: String(formData.get("role") ?? ""),
     name: String(formData.get("name") ?? ""),

@@ -6,6 +6,7 @@ import { requireRole, getSessionUser } from "@/lib/rbac";
 import { Prisma } from "@/generated/prisma/client";
 import { createJobPostingSchema, jobApplicationSchema } from "@/lib/validations/jobs";
 import { notifyMatchingAlerts } from "@/server/actions/jobAlerts";
+import { enforceRateLimit, RateLimitError } from "@/lib/rateLimit";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -140,6 +141,18 @@ export async function listJobPostingsForClient() {
 export async function applyToJobAction(jobId: string, formData: FormData): Promise<ActionResult> {
   const user = await requireRole("CANDIDATE");
   if (!user.candidateId) return { ok: false, error: "Profil candidat introuvable" };
+
+  try {
+    // 20 candidatures / heure — large pour un usage normal, bloque l'envoi en masse scripté.
+    await enforceRateLimit(`apply:${user.candidateId}`, {
+      maxAttempts: 20,
+      windowMinutes: 60,
+      message: "Trop de candidatures envoyées. Réessayez dans un moment.",
+    });
+  } catch (err) {
+    if (err instanceof RateLimitError) return { ok: false, error: err.message };
+    throw err;
+  }
 
   const job = await prisma.jobPosting.findFirst({ where: { id: jobId, status: "PUBLISHED" } });
   if (!job) return { ok: false, error: "Offre introuvable" };

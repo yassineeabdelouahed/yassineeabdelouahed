@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import { randomBytes } from "node:crypto";
 import { prisma } from "@/lib/prisma";
 import { authConfig } from "@/lib/auth.config";
+import { enforceRateLimit, RateLimitError } from "@/lib/rateLimit";
 
 export const googleEnabled = !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 export const linkedinEnabled = !!(process.env.LINKEDIN_CLIENT_ID && process.env.LINKEDIN_CLIENT_SECRET);
@@ -22,9 +23,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const email = credentials?.email;
         const password = credentials?.password;
         if (typeof email !== "string" || typeof password !== "string") return null;
+        const normalizedEmail = email.toLowerCase();
+
+        try {
+          // 10 attempts / 15 min per e-mail — deliberately indistinguishable from a
+          // wrong-password failure below, so a lockout never reveals account state.
+          await enforceRateLimit(`login:${normalizedEmail}`, { maxAttempts: 10, windowMinutes: 15 });
+        } catch (err) {
+          if (err instanceof RateLimitError) return null;
+          throw err;
+        }
 
         const user = await prisma.user.findUnique({
-          where: { email: email.toLowerCase() },
+          where: { email: normalizedEmail },
           include: {
             clientProfile: true,
             cabinetProfile: true,

@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireRole, getSessionUser } from "@/lib/rbac";
-import { saveUploadedFile } from "@/lib/storage";
+import { saveUploadedFile, FileValidationError } from "@/lib/storage";
 import { updateProfileSchema } from "@/lib/validations/profile";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
@@ -49,7 +49,12 @@ export async function updateProfileAction(formData: FormData): Promise<ActionRes
   let cvUrl: string | undefined;
   const cvFile = formData.get("cv");
   if (cvFile instanceof File && cvFile.size > 0) {
-    cvUrl = await saveUploadedFile(cvFile, "cvs");
+    try {
+      cvUrl = await saveUploadedFile(cvFile, "cvs");
+    } catch (err) {
+      if (err instanceof FileValidationError) return { ok: false, error: err.message };
+      throw err;
+    }
   }
 
   await prisma.candidate.update({

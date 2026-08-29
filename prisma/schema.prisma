@@ -19,13 +19,14 @@ enum Role {
 }
 
 model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
-  passwordHash String
-  name         String
-  role         Role
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String
+  role          Role
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   clientProfile   ClientProfile?
   cabinetProfile  CabinetProfile?
@@ -48,6 +49,8 @@ model User {
   requestedSponsorships JobSponsorship[]   @relation("SponsorshipRequestedBy")
   confirmedSponsorships JobSponsorship[]   @relation("SponsorshipConfirmedBy")
   createdCandidates    Candidate[]         @relation("CandidateCreatedBy")
+  emailVerificationTokens EmailVerificationToken[]
+  passwordResetTokens     PasswordResetToken[]
 
   @@map("users")
 }
@@ -565,4 +568,40 @@ model JobAlert {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("job_alerts")
+}
+
+/** One row per rate-limited attempt (login, registration, password reset...) — see lib/rateLimit.ts. */
+model RateLimitAttempt {
+  id        String   @id @default(cuid())
+  key       String
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
+  @@map("rate_limit_attempts")
+}
+
+model EmailVerificationToken {
+  id        String    @id @default(cuid())
+  userId    String
+  token     String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("email_verification_tokens")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  token     String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("password_reset_tokens")
 }

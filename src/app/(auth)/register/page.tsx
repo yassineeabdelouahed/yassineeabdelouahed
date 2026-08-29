@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { AuthForm } from "@/components/auth/AuthForm";
 import { Logo } from "@/components/layout/Logo";
+import { googleEnabled, linkedinEnabled } from "@/lib/auth";
 
 export default function RegisterPage() {
   return (
@@ -9,7 +10,7 @@ export default function RegisterPage() {
         <Logo />
       </div>
       <Suspense>
-        <AuthForm initialMode="signup" />
+        <AuthForm initialMode="signup" googleEnabled={googleEnabled} linkedinEnabled={linkedinEnabled} />
       </Suspense>
     </div>
   );

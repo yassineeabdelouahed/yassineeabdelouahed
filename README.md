@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Talentis Connect
 
-## Getting Started
+Plateforme de gestion du processus de recrutement pour Talentis Consult (cabinet de recrutement, Casablanca) — Next.js (App Router) + TypeScript + PostgreSQL (Prisma) + NextAuth.
 
-First, run the development server:
+Trois espaces : **Client** (entreprise), **Cabinet** (équipe interne), **Candidat**, plus un job board public.
+
+## Démarrage local
 
 ```bash
+npm install
+npm run db:migrate   # applique les migrations Prisma sur DATABASE_URL
+npm run db:seed      # crée le compte admin cabinet + des offres de démo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables d'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copier `.env` et renseigner :
 
-## Learn More
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | Connexion PostgreSQL (Prisma) |
+| `AUTH_SECRET` | Secret NextAuth — générer avec `openssl rand -base64 32` |
+| `NEXTAUTH_URL` | URL publique de l'app (`http://localhost:3000` en local) |
 
-To learn more about Next.js, take a look at the following resources:
+### Connexion sociale (Google / LinkedIn)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Optionnelle — les boutons "Continuer avec Google/LinkedIn" n'apparaissent que si les variables correspondantes sont définies. Réservée aux comptes **Candidat** (le recruteur et le cabinet restent en email/mot de passe).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Google** :
+1. [Google Cloud Console](https://console.cloud.google.com/) → créer un projet
+2. "APIs & Services" → "OAuth consent screen" → configurer (type External, infos de base)
+3. "Credentials" → "Create Credentials" → "OAuth client ID" → type "Web application"
+4. Ajouter comme "Authorized redirect URI" : `<NEXTAUTH_URL>/api/auth/callback/google`
+5. Copier le Client ID et Client Secret dans `.env` :
+   ```
+   GOOGLE_CLIENT_ID="..."
+   GOOGLE_CLIENT_SECRET="..."
+   ```
 
-## Deploy on Vercel
+**LinkedIn** :
+1. [LinkedIn Developer Portal](https://www.linkedin.com/developers/apps) → créer une app
+2. Onglet "Products" → activer "Sign In with LinkedIn using OpenID Connect"
+3. Onglet "Auth" → ajouter comme "Authorized redirect URL" : `<NEXTAUTH_URL>/api/auth/callback/linkedin`
+4. Copier le Client ID et Client Secret dans `.env` :
+   ```
+   LINKEDIN_CLIENT_ID="..."
+   LINKEDIN_CLIENT_SECRET="..."
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Après avoir ajouté ces variables, redémarrer le serveur pour qu'elles soient prises en compte.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Déploiement (Vercel + Neon/Supabase)
+
+1. Créer une base PostgreSQL sur [neon.tech](https://neon.tech) ou [supabase.com](https://supabase.com), copier l'URL de connexion
+2. Sur [vercel.com](https://vercel.com), importer le dépôt GitHub
+3. Renseigner les variables d'environnement ci-dessus dans les réglages du projet Vercel
+4. Le script `npm run vercel-build` (déjà configuré) applique les migrations Prisma puis build l'app automatiquement au déploiement
+
+## Comptes de démo (après `npm run db:seed`)
+
+| Rôle | Email | Mot de passe |
+|---|---|---|
+| Cabinet (admin) | `admin@talentisconsult.com` | `TalentisAdmin2026!` |
+
+Les comptes Client et Candidat s'inscrivent librement depuis `/register`.

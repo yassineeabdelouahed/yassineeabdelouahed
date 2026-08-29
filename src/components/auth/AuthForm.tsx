@@ -14,7 +14,15 @@ import type { Role } from "@/generated/prisma/enums";
 type AuthRole = "CANDIDATE" | "CLIENT";
 type AuthMode = "login" | "signup";
 
-export function AuthForm({ initialMode }: { initialMode: AuthMode }) {
+export function AuthForm({
+  initialMode,
+  googleEnabled = false,
+  linkedinEnabled = false,
+}: {
+  initialMode: AuthMode;
+  googleEnabled?: boolean;
+  linkedinEnabled?: boolean;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
@@ -27,6 +35,7 @@ export function AuthForm({ initialMode }: { initialMode: AuthMode }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const [oauthPending, setOauthPending] = useState<"google" | "linkedin" | null>(null);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -73,6 +82,14 @@ export function AuthForm({ initialMode }: { initialMode: AuthMode }) {
     });
   }
 
+  function handleOAuth(provider: "google" | "linkedin") {
+    setOauthPending(provider);
+    // full-page redirect handled by NextAuth; no need to reset oauthPending on success
+    signIn(provider, { callbackUrl: callbackUrl || "/candidate/dashboard" });
+  }
+
+  const showOAuth = role === "CANDIDATE" && (googleEnabled || linkedinEnabled);
+
   return (
     <FloatingCard className="p-8">
       <PillTabs
@@ -95,7 +112,39 @@ export function AuthForm({ initialMode }: { initialMode: AuthMode }) {
         ]}
       />
 
-      <form onSubmit={handleSubmit} className="mt-5">
+      {showOAuth && (
+        <div className="mt-5 flex flex-col gap-2.5">
+          {googleEnabled && (
+            <Button
+              type="button"
+              variant="secondary"
+              className="w-full"
+              disabled={oauthPending !== null}
+              onClick={() => handleOAuth("google")}
+            >
+              {oauthPending === "google" ? "Redirection..." : "Continuer avec Google"}
+            </Button>
+          )}
+          {linkedinEnabled && (
+            <Button
+              type="button"
+              variant="secondary"
+              className="w-full"
+              disabled={oauthPending !== null}
+              onClick={() => handleOAuth("linkedin")}
+            >
+              {oauthPending === "linkedin" ? "Redirection..." : "Continuer avec LinkedIn"}
+            </Button>
+          )}
+          <div className="flex items-center gap-3 my-1">
+            <div className="h-px bg-border flex-1" />
+            <span className="text-xs text-ink-300">ou</span>
+            <div className="h-px bg-border flex-1" />
+          </div>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className={showOAuth ? "" : "mt-5"}>
         {mode === "signup" && (
           <FormField label="Nom complet" htmlFor="name">
             <Input id="name" required value={name} onChange={(e) => setName(e.target.value)} />

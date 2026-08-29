@@ -54,6 +54,20 @@ Optionnelle — les boutons "Continuer avec Google/LinkedIn" n'apparaissent que 
 
 Après avoir ajouté ces variables, redémarrer le serveur pour qu'elles soient prises en compte.
 
+### E-mails transactionnels (Resend)
+
+Optionnel — sans `RESEND_API_KEY`, les e-mails (notifications, vérification de compte, mot de passe oublié) sont simplement affichés dans les logs du serveur au lieu d'être envoyés, ce qui permet de développer sans compte Resend.
+
+1. Créer un compte sur [resend.com](https://resend.com) (offre gratuite suffisante pour démarrer)
+2. "API Keys" → créer une clé, la copier dans `.env` :
+   ```
+   RESEND_API_KEY="re_..."
+   ```
+3. Par défaut les e-mails partent de `onboarding@resend.dev` (domaine de test Resend, aucune configuration DNS requise). Pour envoyer depuis un domaine propre (ex. `noreply@talentisconsult.com`), le vérifier dans Resend ("Domains") puis définir :
+   ```
+   EMAIL_FROM="Talentis Connect <noreply@talentisconsult.com>"
+   ```
+
 ## Déploiement (Vercel + Neon/Supabase)
 
 1. Créer une base PostgreSQL sur [neon.tech](https://neon.tech) ou [supabase.com](https://supabase.com), copier l'URL de connexion

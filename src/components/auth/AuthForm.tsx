@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn, getSession } from "next-auth/react";
 import { FloatingCard } from "@/components/ui/Card";
@@ -179,6 +180,14 @@ export function AuthForm({
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormField>
+
+        {mode === "login" && (
+          <p className="text-sm text-right -mt-2 mb-4">
+            <Link href="/forgot-password" className="text-teal font-semibold">
+              Mot de passe oublié ?
+            </Link>
+          </p>
+        )}
 
         {error && <p className="text-sm text-danger-text mb-4">{error}</p>}
 

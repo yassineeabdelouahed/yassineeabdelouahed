@@ -167,3 +167,22 @@ export async function listCandidateApplications() {
     orderBy: { createdAt: "desc" },
   });
 }
+
+export async function getJobPostingForClient(jobId: string) {
+  const user = await requireRole("CLIENT");
+  const job = await prisma.jobPosting.findUnique({ where: { id: jobId } });
+  if (!job || job.companyId !== user.companyId) return null;
+  return job;
+}
+
+export async function listApplicantsForClient(jobId: string) {
+  const user = await requireRole("CLIENT");
+  const job = await prisma.jobPosting.findUnique({ where: { id: jobId }, select: { companyId: true } });
+  if (!job || job.companyId !== user.companyId) return [];
+
+  return prisma.jobApplication.findMany({
+    where: { jobPostingId: jobId },
+    include: { candidate: true, messages: { orderBy: { createdAt: "desc" }, take: 1 } },
+    orderBy: { createdAt: "desc" },
+  });
+}

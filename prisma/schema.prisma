@@ -44,6 +44,7 @@ model User {
   enrollments          Enrollment[]        @relation("EnrollmentUser")
   notifications        Notification[]
   jobAlerts            JobAlert[]
+  directMessages       DirectMessage[]
   createdCandidates    Candidate[]         @relation("CandidateCreatedBy")
 
   @@map("users")
@@ -383,9 +384,24 @@ model JobApplication {
 
   jobPosting JobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
   candidate  Candidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  messages   DirectMessage[]
 
   @@unique([jobPostingId, candidateId])
   @@map("job_applications")
+}
+
+/** Direct chat between the recruiter (Client) and the candidate on one public job application. */
+model DirectMessage {
+  id               String   @id @default(cuid())
+  jobApplicationId String
+  senderUserId     String
+  body             String
+  createdAt        DateTime @default(now())
+
+  jobApplication JobApplication @relation(fields: [jobApplicationId], references: [id], onDelete: Cascade)
+  sender         User           @relation(fields: [senderUserId], references: [id])
+
+  @@map("direct_messages")
 }
 
 // ---------- Phase G: training ----------

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { listJobPostingsForClient } from "@/server/actions/jobs";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
@@ -30,7 +31,9 @@ export default async function ClientJobsPage() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Tag tone="neutral">{job.applications.length} candidature(s)</Tag>
+                <Link href={`/client/jobs/${job.id}/applicants`} className="hover:opacity-80">
+                  <Tag tone="neutral">{job.applications.length} candidature(s)</Tag>
+                </Link>
                 <Tag tone={job.status === "PUBLISHED" ? "success" : "neutral"}>{job.status}</Tag>
               </div>
             </Card>

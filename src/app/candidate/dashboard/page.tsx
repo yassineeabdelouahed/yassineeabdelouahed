@@ -32,7 +32,7 @@ export default async function CandidateDashboardPage() {
       ) : (
         <div className="mt-8 flex flex-col gap-3">
           {applications.slice(0, 5).map((app) => (
-            <Link key={app.id} href={`/jobs/${app.jobPosting.id}`}>
+            <Link key={app.id} href={`/candidate/applications/${app.id}`}>
               <Card className="p-5 hover:border-teal transition-colors flex items-center justify-between">
                 <div>
                   <div className="font-bold text-[16px] text-ink-900">{app.jobPosting.title}</div>

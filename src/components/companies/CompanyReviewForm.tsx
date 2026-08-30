@@ -5,9 +5,8 @@ import { FormField, Select, Textarea } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { submitCompanyReviewAction } from "@/server/actions/companyReviews";
 
-export function CompanyReviewForm({ companyId }: { companyId: string }) {
+export function CompanyReviewForm({ companyId, onSubmitted }: { companyId: string; onSubmitted: () => void }) {
   const [error, setError] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
   const [pending, startTransition] = useTransition();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -21,20 +20,8 @@ export function CompanyReviewForm({ companyId }: { companyId: string }) {
         setError(result.error);
         return;
       }
-      // No router.refresh() here: the review is PENDING and won't appear until
-      // moderated, and a refresh would re-evaluate eligibility server-side and
-      // unmount this form (replaced by "already reviewed") before the user
-      // ever sees the confirmation below.
-      setSubmitted(true);
+      onSubmitted();
     });
-  }
-
-  if (submitted) {
-    return (
-      <p className="text-sm text-success-text">
-        Merci ! Votre avis sera visible publiquement après validation par notre équipe.
-      </p>
-    );
   }
 
   return (

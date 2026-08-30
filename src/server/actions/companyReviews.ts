@@ -69,7 +69,10 @@ export async function submitCompanyReviewAction(companyId: string, formData: For
     },
   });
 
-  revalidatePath(`/companies/${companyId}`);
+  // Not revalidating /companies/[companyId] here: a PENDING review isn't public yet, so
+  // there's nothing to refresh on that page, and doing so would trigger Next.js's automatic
+  // post-action re-render of the current route — unmounting this form (and its "merci"
+  // confirmation) before the candidate ever sees it, replaced by "already reviewed".
   revalidatePath("/cabinet/admin/reviews");
   return { ok: true };
 }

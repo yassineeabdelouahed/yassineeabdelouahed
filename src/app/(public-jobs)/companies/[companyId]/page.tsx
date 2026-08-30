@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getCompanyPublicProfile, getReviewEligibility } from "@/server/actions/companyReviews";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
-import { CompanyReviewForm } from "@/components/companies/CompanyReviewForm";
+import { CompanyReviewSection } from "@/components/companies/CompanyReviewSection";
 
 export default async function CompanyProfilePage({
   params,
@@ -70,15 +70,11 @@ export default async function CompanyProfilePage({
         </div>
       )}
 
-      {eligibility.canReview && (
-        <Card className="p-6">
-          <div className="font-heading font-extrabold text-base text-ink-900 mb-3">Laisser un avis</div>
-          <CompanyReviewForm companyId={companyId} />
-        </Card>
-      )}
-      {eligibility.alreadyReviewed && (
-        <p className="text-sm text-ink-500">Vous avez déjà laissé un avis sur cette entreprise.</p>
-      )}
+      <CompanyReviewSection
+        companyId={companyId}
+        canReview={eligibility.canReview}
+        alreadyReviewed={eligibility.alreadyReviewed}
+      />
     </div>
   );
 }

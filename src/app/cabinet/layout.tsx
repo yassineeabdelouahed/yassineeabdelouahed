@@ -4,6 +4,7 @@ import { AppHeader } from "@/components/layout/AppHeader";
 const LINKS = [
   { href: "/cabinet/dashboard", label: "Tableau de bord" },
   { href: "/cabinet/mandats", label: "Mandats" },
+  { href: "/cabinet/prospects", label: "Prospection" },
   { href: "/cabinet/candidates", label: "Candidats" },
   { href: "/cabinet/jobs", label: "Offres" },
   { href: "/cabinet/training/courses", label: "Formations" },

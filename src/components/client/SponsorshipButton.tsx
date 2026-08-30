@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Select } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
@@ -59,26 +60,35 @@ export function SponsorshipButton({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2">
-      <Select name="durationDays" defaultValue={String(SPONSORSHIP_TIERS[0].durationDays)} className="!w-auto text-xs py-2">
-        {SPONSORSHIP_TIERS.map((t) => (
-          <option key={t.durationDays} value={t.durationDays}>
-            {t.durationDays} jours — {t.price} MAD
-          </option>
-        ))}
-      </Select>
-      <Select name="paymentMethod" defaultValue="VIREMENT" className="!w-auto text-xs py-2">
-        <option value="VIREMENT">Virement</option>
-        <option value="ESPECES">Espèces</option>
-        <option value="AUTRE">Autre</option>
-      </Select>
-      <Button type="submit" size="sm" disabled={pending}>
-        {pending ? "..." : "Confirmer"}
-      </Button>
-      <button type="button" onClick={() => setOpen(false)} className="text-xs text-ink-500 cursor-pointer">
-        Annuler
-      </button>
-      {error && <p className="text-xs text-danger-text">{error}</p>}
-    </form>
+    <div>
+      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        <Select name="durationDays" defaultValue={String(SPONSORSHIP_TIERS[0].durationDays)} className="!w-auto text-xs py-2">
+          {SPONSORSHIP_TIERS.map((t) => (
+            <option key={t.durationDays} value={t.durationDays}>
+              {t.durationDays} jours — {t.price} MAD
+            </option>
+          ))}
+        </Select>
+        <Select name="paymentMethod" defaultValue="VIREMENT" className="!w-auto text-xs py-2">
+          <option value="VIREMENT">Virement</option>
+          <option value="ESPECES">Espèces</option>
+          <option value="AUTRE">Autre</option>
+        </Select>
+        <Button type="submit" size="sm" disabled={pending}>
+          {pending ? "..." : "Confirmer"}
+        </Button>
+        <button type="button" onClick={() => setOpen(false)} className="text-xs text-ink-500 cursor-pointer">
+          Annuler
+        </button>
+        {error && <p className="text-xs text-danger-text">{error}</p>}
+      </form>
+      <p className="text-xs text-ink-300 mt-1.5">
+        En confirmant, vous acceptez nos{" "}
+        <Link href="/cgv" className="underline">
+          CGV
+        </Link>
+        .
+      </p>
+    </div>
   );
 }

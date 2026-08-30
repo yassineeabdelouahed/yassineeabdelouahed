@@ -4,6 +4,7 @@ const LEGAL_LINKS = [
   { href: "/mentions-legales", label: "Mentions légales" },
   { href: "/confidentialite", label: "Confidentialité" },
   { href: "/cgu", label: "CGU" },
+  { href: "/cgv", label: "CGV" },
 ];
 
 export function PublicFooter() {

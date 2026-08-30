@@ -58,16 +58,25 @@ export function EnrollForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2">
-      <Select name="paymentMethod" defaultValue="VIREMENT" className="!w-auto text-xs py-2">
-        <option value="VIREMENT">Virement bancaire</option>
-        <option value="ESPECES">Espèces au cabinet</option>
-        <option value="AUTRE">Autre</option>
-      </Select>
-      <Button type="submit" size="sm" disabled={pending}>
-        {pending ? "..." : "S'inscrire"}
-      </Button>
-      {error && <p className="text-xs text-danger-text">{error}</p>}
-    </form>
+    <div>
+      <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        <Select name="paymentMethod" defaultValue="VIREMENT" className="!w-auto text-xs py-2">
+          <option value="VIREMENT">Virement bancaire</option>
+          <option value="ESPECES">Espèces au cabinet</option>
+          <option value="AUTRE">Autre</option>
+        </Select>
+        <Button type="submit" size="sm" disabled={pending}>
+          {pending ? "..." : "S'inscrire"}
+        </Button>
+        {error && <p className="text-xs text-danger-text">{error}</p>}
+      </form>
+      <p className="text-xs text-ink-300 mt-1.5">
+        En vous inscrivant, vous acceptez nos{" "}
+        <Link href="/cgv" className="underline">
+          CGV
+        </Link>
+        .
+      </p>
+    </div>
   );
 }

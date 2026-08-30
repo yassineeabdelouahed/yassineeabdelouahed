@@ -20,6 +20,7 @@ export default async function CabinetLayout({ children }: { children: React.Reac
         { href: "/cabinet/admin/cv-access", label: "CVthèque" },
         { href: "/cabinet/admin/reviews", label: "Avis" },
         { href: "/cabinet/admin/companies", label: "Entreprises" },
+        { href: "/cabinet/admin/kpi", label: "Statistiques" },
       ]
     : LINKS;
 

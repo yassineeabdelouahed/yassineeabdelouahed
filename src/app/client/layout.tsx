@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/client/jobs", label: "Mes offres publiées" },
   { href: "/client/cv-database", label: "CVthèque" },
   { href: "/", label: "Job board" },
+  { href: "/client/settings", label: "Paramètres" },
 ];
 
 export default async function ClientLayout({ children }: { children: React.ReactNode }) {

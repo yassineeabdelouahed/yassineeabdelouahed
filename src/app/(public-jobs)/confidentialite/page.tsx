@@ -59,8 +59,12 @@ export default function ConfidentialitePage() {
       <h2>Vos droits</h2>
       <p>
         Conformément à la loi 09-08, vous disposez d&apos;un droit d&apos;accès, de rectification et
-        d&apos;opposition sur vos données personnelles. Vous pouvez également demander la suppression de votre
-        compte. Pour exercer ces droits, contactez-nous à [e-mail de contact à compléter].
+        d&apos;opposition sur vos données personnelles. Vous pouvez supprimer votre compte à tout moment
+        depuis la rubrique &quot;Paramètres&quot; (ou &quot;Mon profil&quot; pour les candidats) de votre
+        espace : vos données personnelles sont alors supprimées ou anonymisées. Les échanges et candidatures
+        déjà liés à d&apos;autres utilisateurs sont conservés, votre identité y apparaissant comme
+        &quot;Utilisateur supprimé&quot;. Pour toute autre demande relative à vos droits, contactez-nous à
+        [e-mail de contact à compléter].
       </p>
 
       <h2>Cookies</h2>

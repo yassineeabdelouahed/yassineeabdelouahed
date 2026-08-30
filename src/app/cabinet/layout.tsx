@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/cabinet/candidates", label: "Candidats" },
   { href: "/cabinet/jobs", label: "Offres" },
   { href: "/cabinet/training/courses", label: "Formations" },
+  { href: "/cabinet/settings", label: "Paramètres" },
 ];
 
 export default async function CabinetLayout({ children }: { children: React.ReactNode }) {

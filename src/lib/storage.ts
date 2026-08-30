@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, unlink } from "node:fs/promises";
 import path from "node:path";
 
 const UPLOAD_ROOT = path.join(process.cwd(), "public", "uploads");
@@ -67,4 +67,11 @@ export async function saveUploadedFile(file: File, subdir: string): Promise<stri
   await writeFile(path.join(dir, filename), buffer);
 
   return `/uploads/${subdir}/${filename}`;
+}
+
+/** Best-effort delete of a file previously returned by saveUploadedFile(). Never throws. */
+export async function deleteUploadedFile(url: string): Promise<void> {
+  if (!url.startsWith("/uploads/")) return;
+  const filePath = path.join(process.cwd(), "public", url);
+  await unlink(filePath).catch(() => {});
 }

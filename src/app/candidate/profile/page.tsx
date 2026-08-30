@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getMyCandidateProfile } from "@/server/actions/profile";
 import { ProfileForm } from "@/components/candidate/ProfileForm";
+import { DeleteAccountSection } from "@/components/account/DeleteAccountSection";
 
 export default async function CandidateProfilePage() {
   const candidate = await getMyCandidateProfile();
@@ -13,6 +14,9 @@ export default async function CandidateProfilePage() {
         Un profil complet avec CV permet de postuler en un clic sur les offres qui vous intéressent.
       </p>
       <ProfileForm candidate={candidate} />
+      <div className="mt-8">
+        <DeleteAccountSection />
+      </div>
     </div>
   );
 }

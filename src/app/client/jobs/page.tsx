@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { listJobPostingsForClient } from "@/server/actions/jobs";
+import { getInvoiceMap } from "@/lib/invoice";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { LinkButton } from "@/components/ui/Button";
@@ -7,6 +8,11 @@ import { SponsorshipButton } from "@/components/client/SponsorshipButton";
 
 export default async function ClientJobsPage() {
   const jobs = await listJobPostingsForClient();
+  const confirmedSponsorshipIds = jobs
+    .map((job) => job.sponsorships[0])
+    .filter((s) => s?.paymentStatus === "CONFIRMED")
+    .map((s) => s!.id);
+  const invoiceMap = await getInvoiceMap("SPONSORSHIP", confirmedSponsorshipIds);
 
   return (
     <div>
@@ -51,6 +57,7 @@ export default async function ClientJobsPage() {
                     jobId={job.id}
                     sponsoredUntil={job.sponsoredUntil}
                     latestSponsorship={job.sponsorships[0] ?? null}
+                    invoiceId={job.sponsorships[0] ? invoiceMap[job.sponsorships[0].id]?.id ?? null : null}
                   />
                 </div>
               )}

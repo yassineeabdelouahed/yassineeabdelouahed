@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin, getSessionUser } from "@/lib/rbac";
 import { notifyUser } from "@/lib/notify";
+import { createInvoice } from "@/lib/invoice";
 import { createCourseSchema, createSessionSchema, enrollSchema, slugify } from "@/lib/validations/training";
 import type { TrainingDomain } from "@/generated/prisma/enums";
 
@@ -182,9 +183,19 @@ export async function confirmEnrollmentAction(enrollmentId: string): Promise<Act
   if (!enrollment) return { ok: false, error: "Inscription introuvable" };
   if (enrollment.paymentStatus !== "PENDING") return { ok: false, error: "Cette inscription a déjà été traitée" };
 
-  await prisma.enrollment.update({
-    where: { id: enrollmentId },
-    data: { paymentStatus: "CONFIRMED", confirmedAt: new Date(), confirmedByUserId: admin.id },
+  await prisma.$transaction(async (tx) => {
+    await tx.enrollment.update({
+      where: { id: enrollmentId },
+      data: { paymentStatus: "CONFIRMED", confirmedAt: new Date(), confirmedByUserId: admin.id },
+    });
+    await createInvoice(tx, {
+      sourceType: "ENROLLMENT",
+      sourceId: enrollmentId,
+      userId: enrollment.userId,
+      description: `Inscription à la formation "${enrollment.session.course.title}"`,
+      amount: enrollment.amount,
+      currency: enrollment.currency,
+    });
   });
 
   await notifyUser(enrollment.userId, {

@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireRole, requireAdmin } from "@/lib/rbac";
 import { notifyUser } from "@/lib/notify";
+import { createInvoice } from "@/lib/invoice";
 import { createSponsorshipSchema, priceForDuration } from "@/lib/validations/sponsorship";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
@@ -61,7 +62,7 @@ export async function confirmSponsorshipAction(sponsorshipId: string): Promise<A
 
   const sponsorship = await prisma.jobSponsorship.findUnique({
     where: { id: sponsorshipId },
-    include: { jobPosting: { select: { id: true, title: true } } },
+    include: { jobPosting: { select: { id: true, title: true, companyId: true } } },
   });
   if (!sponsorship) return { ok: false, error: "Demande introuvable" };
   if (sponsorship.paymentStatus !== "PENDING") return { ok: false, error: "Cette demande a déjà été traitée" };
@@ -69,13 +70,22 @@ export async function confirmSponsorshipAction(sponsorshipId: string): Promise<A
   const startAt = new Date();
   const endAt = new Date(startAt.getTime() + sponsorship.durationDays * 86400000);
 
-  await prisma.$transaction([
-    prisma.jobSponsorship.update({
+  await prisma.$transaction(async (tx) => {
+    await tx.jobSponsorship.update({
       where: { id: sponsorshipId },
       data: { paymentStatus: "CONFIRMED", startAt, endAt, confirmedAt: new Date(), confirmedByUserId: admin.id },
-    }),
-    prisma.jobPosting.update({ where: { id: sponsorship.jobPostingId }, data: { sponsoredUntil: endAt } }),
-  ]);
+    });
+    await tx.jobPosting.update({ where: { id: sponsorship.jobPostingId }, data: { sponsoredUntil: endAt } });
+    await createInvoice(tx, {
+      sourceType: "SPONSORSHIP",
+      sourceId: sponsorshipId,
+      companyId: sponsorship.jobPosting.companyId,
+      userId: sponsorship.requestedByUserId,
+      description: `Sponsorisation de l'offre "${sponsorship.jobPosting.title}" — ${sponsorship.durationDays} jours`,
+      amount: sponsorship.price,
+      currency: sponsorship.currency,
+    });
+  });
 
   await notifyUser(sponsorship.requestedByUserId, {
     type: "sponsorship_confirmed",

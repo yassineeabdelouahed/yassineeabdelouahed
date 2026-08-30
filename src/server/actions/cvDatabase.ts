@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireRole, requireAdmin } from "@/lib/rbac";
 import { notifyUser } from "@/lib/notify";
+import { createInvoice } from "@/lib/invoice";
 import { Prisma } from "@/generated/prisma/client";
 import {
   requestCvAccessSchema,
@@ -13,9 +14,14 @@ import {
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
-export async function getCvDatabaseAccessStatus(): Promise<{ unlocked: boolean; expiresAt: Date | null; hasPending: boolean }> {
+export async function getCvDatabaseAccessStatus(): Promise<{
+  unlocked: boolean;
+  expiresAt: Date | null;
+  hasPending: boolean;
+  activeAccessId: string | null;
+}> {
   const user = await requireRole("CLIENT");
-  if (!user.companyId) return { unlocked: false, expiresAt: null, hasPending: false };
+  if (!user.companyId) return { unlocked: false, expiresAt: null, hasPending: false, activeAccessId: null };
 
   const active = await prisma.cvDatabaseAccess.findFirst({
     where: { companyId: user.companyId, paymentStatus: "CONFIRMED", endAt: { gt: new Date() } },
@@ -25,7 +31,7 @@ export async function getCvDatabaseAccessStatus(): Promise<{ unlocked: boolean; 
     where: { companyId: user.companyId, paymentStatus: "PENDING" },
   });
 
-  return { unlocked: !!active, expiresAt: active?.endAt ?? null, hasPending: !!pending };
+  return { unlocked: !!active, expiresAt: active?.endAt ?? null, hasPending: !!pending, activeAccessId: active?.id ?? null };
 }
 
 export async function requestCvAccessAction(formData: FormData): Promise<ActionResult> {
@@ -80,9 +86,20 @@ export async function confirmCvAccessAction(requestId: string): Promise<ActionRe
   const startAt = new Date();
   const endAt = new Date(startAt.getTime() + request.durationDays * 86400000);
 
-  await prisma.cvDatabaseAccess.update({
-    where: { id: requestId },
-    data: { paymentStatus: "CONFIRMED", startAt, endAt, confirmedAt: new Date(), confirmedByUserId: admin.id },
+  await prisma.$transaction(async (tx) => {
+    await tx.cvDatabaseAccess.update({
+      where: { id: requestId },
+      data: { paymentStatus: "CONFIRMED", startAt, endAt, confirmedAt: new Date(), confirmedByUserId: admin.id },
+    });
+    await createInvoice(tx, {
+      sourceType: "CV_ACCESS",
+      sourceId: requestId,
+      companyId: request.companyId,
+      userId: request.requestedByUserId,
+      description: `Accès à la CVthèque — ${request.durationDays} jours`,
+      amount: request.price,
+      currency: request.currency,
+    });
   });
 
   await notifyUser(request.requestedByUserId, {

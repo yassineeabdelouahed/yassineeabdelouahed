@@ -54,6 +54,7 @@ model User {
   requestedCvAccess    CvDatabaseAccess[]  @relation("CvAccessRequestedBy")
   confirmedCvAccess    CvDatabaseAccess[]  @relation("CvAccessConfirmedBy")
   companyReviews       CompanyReview[]
+  invoices             Invoice[]
 
   @@map("users")
 }
@@ -72,6 +73,7 @@ model Company {
   jobPostings       JobPosting[]
   cvDatabaseAccess  CvDatabaseAccess[]
   reviews           CompanyReview[]
+  invoices          Invoice[]
 
   @@map("companies")
 }
@@ -513,6 +515,32 @@ model CompanyReview {
 
   @@unique([companyId, authorUserId])
   @@map("company_reviews")
+}
+
+enum InvoiceSourceType {
+  SPONSORSHIP
+  CV_ACCESS
+  ENROLLMENT
+}
+
+/** One receipt per confirmed manual payment (sponsorship, CVthèque access, formation). */
+model Invoice {
+  id          String            @id @default(cuid())
+  number      String            @unique
+  sourceType  InvoiceSourceType
+  sourceId    String
+  companyId   String?
+  userId      String
+  description String
+  amount      Int
+  currency    String            @default("MAD")
+  issuedAt    DateTime          @default(now())
+
+  company Company? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  user    User     @relation(fields: [userId], references: [id])
+
+  @@unique([sourceType, sourceId])
+  @@map("invoices")
 }
 
 // ---------- Phase G: training ----------

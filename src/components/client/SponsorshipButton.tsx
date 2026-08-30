@@ -15,10 +15,12 @@ export function SponsorshipButton({
   jobId,
   sponsoredUntil,
   latestSponsorship,
+  invoiceId,
 }: {
   jobId: string;
   sponsoredUntil: Date | null;
   latestSponsorship: Sponsorship | null;
+  invoiceId?: string | null;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -28,7 +30,14 @@ export function SponsorshipButton({
   const isActive = !!sponsoredUntil && sponsoredUntil > new Date();
   if (isActive) {
     return (
-      <Tag tone="orange">★ Sponsorisée jusqu&apos;au {sponsoredUntil!.toLocaleDateString("fr-FR")}</Tag>
+      <div className="flex items-center gap-3">
+        <Tag tone="orange">★ Sponsorisée jusqu&apos;au {sponsoredUntil!.toLocaleDateString("fr-FR")}</Tag>
+        {invoiceId && (
+          <a href={`/api/invoices/${invoiceId}`} className="text-xs text-teal font-semibold hover:underline">
+            Télécharger le reçu
+          </a>
+        )}
+      </div>
     );
   }
   if (latestSponsorship?.paymentStatus === "PENDING") {

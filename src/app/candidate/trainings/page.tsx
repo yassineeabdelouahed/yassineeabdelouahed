@@ -2,6 +2,7 @@ import Link from "next/link";
 import { requireRole } from "@/lib/rbac";
 import { listMyEnrollments } from "@/server/actions/training";
 import { DOMAIN_LABEL } from "@/lib/validations/training";
+import { getInvoiceMap } from "@/lib/invoice";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { LinkButton } from "@/components/ui/Button";
@@ -21,6 +22,8 @@ const STATUS_LABEL: Record<string, string> = {
 export default async function CandidateTrainingsPage() {
   await requireRole("CANDIDATE");
   const enrollments = await listMyEnrollments();
+  const confirmedIds = enrollments.filter((e) => e.paymentStatus === "CONFIRMED").map((e) => e.id);
+  const invoiceMap = await getInvoiceMap("ENROLLMENT", confirmedIds);
 
   return (
     <div>
@@ -36,18 +39,26 @@ export default async function CandidateTrainingsPage() {
       ) : (
         <div className="flex flex-col gap-3">
           {enrollments.map((e) => (
-            <Link key={e.id} href={`/trainings/${e.session.course.slug}`}>
-              <Card className="p-5 hover:border-teal transition-colors flex items-center justify-between">
-                <div>
-                  <Tag tone="teal">{DOMAIN_LABEL[e.session.course.domain]}</Tag>
-                  <div className="font-bold text-[16px] text-ink-900 mt-2">{e.session.course.title}</div>
-                  <div className="text-sm text-ink-500 mt-0.5">
-                    {e.session.startDate.toLocaleDateString("fr-FR")}
-                  </div>
+            <Card key={e.id} className="p-5 flex items-center justify-between">
+              <Link href={`/trainings/${e.session.course.slug}`} className="hover:opacity-80">
+                <Tag tone="teal">{DOMAIN_LABEL[e.session.course.domain]}</Tag>
+                <div className="font-bold text-[16px] text-ink-900 mt-2">{e.session.course.title}</div>
+                <div className="text-sm text-ink-500 mt-0.5">
+                  {e.session.startDate.toLocaleDateString("fr-FR")}
                 </div>
+              </Link>
+              <div className="flex items-center gap-3">
+                {invoiceMap[e.id] && (
+                  <a
+                    href={`/api/invoices/${invoiceMap[e.id].id}`}
+                    className="text-sm text-teal font-semibold hover:underline"
+                  >
+                    Reçu
+                  </a>
+                )}
                 <Tag tone={STATUS_TONE[e.paymentStatus]}>{STATUS_LABEL[e.paymentStatus]}</Tag>
-              </Card>
-            </Link>
+              </div>
+            </Card>
           ))}
         </div>
       )}

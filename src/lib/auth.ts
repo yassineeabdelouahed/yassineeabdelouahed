@@ -7,6 +7,7 @@ import { randomBytes } from "node:crypto";
 import { prisma } from "@/lib/prisma";
 import { authConfig } from "@/lib/auth.config";
 import { enforceRateLimit, RateLimitError } from "@/lib/rateLimit";
+import { verifyTotpToken, findMatchingBackupCode } from "@/lib/mfa";
 
 export const googleEnabled = !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 export const linkedinEnabled = !!(process.env.LINKEDIN_CLIENT_ID && process.env.LINKEDIN_CLIENT_SECRET);
@@ -18,10 +19,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Mot de passe", type: "password" },
+        totpCode: { label: "Code 2FA", type: "text" },
       },
       async authorize(credentials) {
         const email = credentials?.email;
         const password = credentials?.password;
+        const totpCode = typeof credentials?.totpCode === "string" ? credentials.totpCode.trim() : "";
         if (typeof email !== "string" || typeof password !== "string") return null;
         const normalizedEmail = email.toLowerCase();
 
@@ -46,6 +49,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         const valid = await bcrypt.compare(password, user.passwordHash);
         if (!valid) return null;
+
+        if (user.cabinetProfile?.totpEnabled && user.cabinetProfile.totpSecret) {
+          if (!totpCode) return null;
+
+          if (verifyTotpToken(totpCode, user.cabinetProfile.totpSecret)) {
+            // valid TOTP code
+          } else {
+            const backupIndex = await findMatchingBackupCode(totpCode, user.cabinetProfile.totpBackupCodes);
+            if (backupIndex === -1) return null;
+            // Backup codes are single-use — consume it.
+            const remaining = user.cabinetProfile.totpBackupCodes.filter((_, i) => i !== backupIndex);
+            await prisma.cabinetProfile.update({
+              where: { userId: user.id },
+              data: { totpBackupCodes: remaining },
+            });
+          }
+        }
 
         return {
           id: user.id,

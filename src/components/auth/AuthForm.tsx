@@ -9,6 +9,7 @@ import { PillTabs, UnderlineTabs } from "@/components/ui/Tabs";
 import { FormField, Input } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { registerAction } from "@/server/actions/users";
+import { checkRequiresMfa } from "@/server/actions/mfa";
 import { homeForRole } from "@/lib/roleHome";
 import type { Role } from "@/generated/prisma/enums";
 
@@ -34,6 +35,8 @@ export function AuthForm({
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [totpCode, setTotpCode] = useState("");
+  const [mfaStep, setMfaStep] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const [oauthPending, setOauthPending] = useState<"google" | "linkedin" | null>(null);
@@ -44,13 +47,22 @@ export function AuthForm({
 
     startTransition(async () => {
       if (mode === "login") {
+        if (!mfaStep) {
+          const requiresMfa = await checkRequiresMfa(email);
+          if (requiresMfa) {
+            setMfaStep(true);
+            return;
+          }
+        }
+
         const result = await signIn("credentials", {
           email,
           password,
+          totpCode,
           redirect: false,
         });
         if (result?.error) {
-          setError("Email ou mot de passe incorrect");
+          setError(mfaStep ? "Code de vérification incorrect ou expiré" : "Email ou mot de passe incorrect");
           return;
         }
         const session = await getSession();
@@ -161,31 +173,63 @@ export function AuthForm({
             />
           </FormField>
         )}
-        <FormField label="Adresse email" htmlFor="email">
-          <Input
-            id="email"
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </FormField>
-        <FormField label="Mot de passe" htmlFor="password">
-          <Input
-            id="password"
-            type="password"
-            required
-            minLength={mode === "signup" ? 8 : undefined}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormField>
+        {!(mode === "login" && mfaStep) && (
+          <>
+            <FormField label="Adresse email" htmlFor="email">
+              <Input
+                id="email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </FormField>
+            <FormField label="Mot de passe" htmlFor="password">
+              <Input
+                id="password"
+                type="password"
+                required
+                minLength={mode === "signup" ? 8 : undefined}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FormField>
+          </>
+        )}
 
-        {mode === "login" && (
+        {mode === "login" && mfaStep && (
+          <FormField label="Code de vérification (application d'authentification)" htmlFor="totpCode">
+            <Input
+              id="totpCode"
+              inputMode="numeric"
+              autoFocus
+              required
+              placeholder="123456 ou code de secours"
+              value={totpCode}
+              onChange={(e) => setTotpCode(e.target.value)}
+            />
+          </FormField>
+        )}
+
+        {mode === "login" && !mfaStep && (
           <p className="text-sm text-right -mt-2 mb-4">
             <Link href="/forgot-password" className="text-teal font-semibold">
               Mot de passe oublié ?
             </Link>
+          </p>
+        )}
+        {mode === "login" && mfaStep && (
+          <p className="text-sm -mt-2 mb-4">
+            <button
+              type="button"
+              onClick={() => {
+                setMfaStep(false);
+                setTotpCode("");
+              }}
+              className="text-teal font-semibold cursor-pointer"
+            >
+              ‹ Revenir à l&apos;e-mail et au mot de passe
+            </button>
           </p>
         )}
 

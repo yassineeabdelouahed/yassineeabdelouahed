@@ -90,11 +90,14 @@ model ClientProfile {
 }
 
 model CabinetProfile {
-  id      String  @id @default(cuid())
-  userId  String  @unique
-  isAdmin Boolean @default(false)
-  title   String?
-  phone   String?
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  isAdmin         Boolean  @default(false)
+  title           String?
+  phone           String?
+  totpSecret      String?
+  totpEnabled     Boolean  @default(false)
+  totpBackupCodes String[] @default([])
 
   user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   assignedMandats  Mandat[]           @relation("AssignedConsultant")

@@ -147,7 +147,7 @@
     <a href="technique.html" class="current">Technique</a>
     <a href="architecture.html">Architecture</a>
   </div>
-  <div class="meta">v1.0 · Août 2026</div>
+  <div class="meta">v2.0 · Août 2026</div>
 </div>
 
 <div class="layout">
@@ -159,6 +159,7 @@
       <li><a href="#donnees">Modèle de données</a></li>
       <li><a href="#auth">Authentification &amp; autorisation</a></li>
       <li><a href="#actions">Server actions &amp; sécurité</a></li>
+      <li><a href="#nouveaux-modules">Modules ajoutés (v2)</a></li>
       <li><a href="#env">Variables d'environnement</a></li>
       <li><a href="#scripts">Scripts npm</a></li>
       <li><a href="#tests">Vérification &amp; tests</a></li>
@@ -180,6 +181,9 @@
         <span class="chip">NextAuth (Auth.js) v5</span>
         <span class="chip">Tailwind CSS v4</span>
         <span class="chip">Zod</span>
+        <span class="chip">otplib (TOTP)</span>
+        <span class="chip">pdfkit</span>
+        <span class="chip">Resend</span>
       </div>
     </section>
 
@@ -192,10 +196,13 @@
           <tr><td>Langage</td><td>TypeScript</td><td>Typage de bout en bout, y compris le client Prisma généré</td></tr>
           <tr><td>Base de données</td><td>PostgreSQL</td><td>Stockage relationnel de l'ensemble des données</td></tr>
           <tr><td>ORM</td><td>Prisma 7 (driver adapter <code>@prisma/adapter-pg</code>)</td><td>Schéma, migrations, requêtes typées</td></tr>
-          <tr><td>Authentification</td><td>NextAuth (Auth.js) v5, stratégie JWT</td><td>Comptes Credentials + OAuth (Google/LinkedIn)</td></tr>
+          <tr><td>Authentification</td><td>NextAuth (Auth.js) v5, stratégie JWT</td><td>Comptes Credentials + OAuth (Google/LinkedIn) + 2FA cabinet</td></tr>
           <tr><td>Style</td><td>Tailwind CSS v4 (jetons CSS)</td><td>Design system de la marque Talentis Consult</td></tr>
           <tr><td>Validation</td><td>Zod</td><td>Validation des formulaires côté serveur</td></tr>
-          <tr><td>Mots de passe</td><td>bcryptjs</td><td>Hachage des mots de passe Credentials</td></tr>
+          <tr><td>Mots de passe</td><td>bcryptjs</td><td>Hachage des mots de passe Credentials et des codes de secours 2FA</td></tr>
+          <tr><td>Double authentification</td><td>otplib v12 (TOTP) + qrcode</td><td>Génération/validation des codes 2FA et du QR code d'enrôlement</td></tr>
+          <tr><td>Reçus PDF</td><td>pdfkit</td><td>Génération à la volée des reçus de paiement</td></tr>
+          <tr><td>E-mail transactionnel</td><td>Resend</td><td>Envoi réel des notifications, vérifications et liens de sécurité</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -205,45 +212,54 @@
       <p class="section-intro">Les routes sont organisées par façade — chaque groupe de routes correspond à un espace applicatif protégé par rôle.</p>
       <pre class="tree"><span class="cmt"># extrait — arborescence simplifiée</span>
 prisma/
-  schema.prisma          <span class="cmt"># 24 modèles, migrations versionnées</span>
+  schema.prisma          <span class="cmt"># ~35 modèles, migrations versionnées</span>
   seed.ts                <span class="cmt"># compte admin cabinet + offres de démo</span>
 src/
   proxy.ts                <span class="cmt"># middleware — protège /client, /cabinet, /candidate</span>
   app/
-    (public-jobs)/         <span class="cmt"># job board public : /, /results, /jobs/[id], /trainings…</span>
-    (auth)/                <span class="cmt"># /login, /register, /register/cabinet, /api/auth/*</span>
-    <span class="dir">client/</span>                 <span class="cmt"># espace Client (protégé, rôle CLIENT)</span>
-    <span class="dir">cabinet/</span>                <span class="cmt"># espace Cabinet (protégé, rôle CABINET)</span>
+    (public-jobs)/         <span class="cmt"># job board public : /, /results, /jobs/[id], /companies/[id]…</span>
+    (auth)/                <span class="cmt"># /login, /register, /forgot-password, /reset-password, /verify-email…</span>
+    api/invoices/[id]/      <span class="cmt"># route handler : stream du reçu PDF, contrôle d'accès</span>
+    <span class="dir">client/</span>                 <span class="cmt"># espace Client (protégé, rôle CLIENT) — dont /cv-database, /settings</span>
+    <span class="dir">cabinet/</span>                <span class="cmt"># espace Cabinet (protégé, rôle CABINET) — dont /prospects, /admin/kpi</span>
     <span class="dir">candidate/</span>              <span class="cmt"># espace Candidat (protégé, rôle CANDIDATE)</span>
   components/
     ui/                   <span class="cmt"># Button, Card, Tag, Field, Tabs — primitives partagées</span>
-    mandats/ client/ cabinet/ candidate/ jobs/ training/ layout/
+    mandats/ client/ cabinet/ candidate/ jobs/ training/ layout/ account/ companies/ prospects/
   lib/
-    auth.ts                <span class="cmt"># config NextAuth complète (Node) — providers, callbacks</span>
+    auth.ts                <span class="cmt"># config NextAuth complète (Node) — providers, callbacks, 2FA</span>
     auth.config.ts          <span class="cmt"># config partagée, compatible Edge (utilisée par proxy.ts)</span>
     prisma.ts               <span class="cmt"># instance PrismaClient singleton</span>
-    rbac.ts                 <span class="cmt"># requireRole() / requireAdmin() / getSessionUser()</span>
-    storage.ts               <span class="cmt"># upload de fichiers (CV) — adaptateur disque local</span>
-    notify.ts                <span class="cmt"># écriture Notification + point d'extension e-mail</span>
+    rbac.ts                 <span class="cmt"># requireRole() / requireAdmin() / getSessionUser() / getEmailVerified()</span>
+    storage.ts               <span class="cmt"># upload de fichiers (CV) — validation magic-bytes, adaptateur disque local</span>
+    rateLimit.ts              <span class="cmt"># limitation de fréquence par clé (connexion, inscription, candidature…)</span>
+    mfa.ts                    <span class="cmt"># génération/validation TOTP + codes de secours</span>
+    invoice.ts                <span class="cmt"># numérotation séquentielle + génération PDF des reçus</span>
+    email.ts, notify.ts        <span class="cmt"># envoi Resend + écriture Notification</span>
     validations/             <span class="cmt"># schémas Zod par domaine</span>
   server/
     actions/                 <span class="cmt"># logique métier ("use server") par domaine</span>
     services/
-      mandatStateMachine.ts   <span class="cmt"># transitions de statut du mandat</span></pre>
+      mandatStateMachine.ts   <span class="cmt"># transitions de statut du mandat</span>
+      prospectStateMachine.ts <span class="cmt"># transitions du pipeline de prospection commerciale</span></pre>
     </section>
 
     <section id="donnees">
       <h2><span class="idx">03</span>Modèle de données</h2>
-      <p class="section-intro">24 modèles Prisma, organisés en six domaines. Le détail des relations et un schéma visuel sont dans le document Architecture.</p>
+      <p class="section-intro">Une trentaine de modèles Prisma, organisés en domaines. Le détail des relations et un schéma visuel sont dans le document Architecture.</p>
       <div class="card-grid">
         <div class="card"><h4>Identité &amp; comptes</h4><p><code>User</code>, <code>Company</code>, <code>ClientProfile</code>, <code>CabinetProfile</code>, <code>CabinetInvite</code>, <code>Candidate</code></p></div>
         <div class="card"><h4>Mandats</h4><p><code>Mandat</code>, <code>MandatStatusEvent</code>, <code>MandatMessage</code>, <code>MandateApplication</code></p></div>
         <div class="card"><h4>Entretiens</h4><p><code>Interview</code>, <code>InterviewSlot</code></p></div>
         <div class="card"><h4>Job board</h4><p><code>JobPosting</code>, <code>JobApplication</code>, <code>DirectMessage</code>, <code>JobSponsorship</code>, <code>JobAlert</code></p></div>
         <div class="card"><h4>Formations</h4><p><code>TrainingCourse</code>, <code>TrainingSession</code>, <code>Enrollment</code></p></div>
+        <div class="card"><h4>CVthèque &amp; confiance</h4><p><code>CvDatabaseAccess</code>, <code>CompanyReview</code></p></div>
+        <div class="card"><h4>Facturation</h4><p><code>Invoice</code> (numérotation par année, source polymorphe : sponsoring / CVthèque / formation)</p></div>
+        <div class="card"><h4>Prospection commerciale</h4><p><code>Prospect</code>, <code>ProspectStageEvent</code></p></div>
+        <div class="card"><h4>Sécurité &amp; comptes</h4><p><code>EmailVerificationToken</code>, <code>PasswordResetToken</code>, <code>RateLimitAttempt</code></p></div>
         <div class="card"><h4>Transverse</h4><p><code>Notification</code></p></div>
       </div>
-      <p>Le rôle utilisateur (<code>Role</code> : <code>CLIENT</code> / <code>CABINET</code> / <code>CANDIDATE</code>) porte à lui seul l'aiguillage vers la bonne façade — aucun rôle Admin séparé : les droits d'administration cabinet sont un simple booléen <code>isAdmin</code> sur <code>CabinetProfile</code>.</p>
+      <p>Le rôle utilisateur (<code>Role</code> : <code>CLIENT</code> / <code>CABINET</code> / <code>CANDIDATE</code>) porte à lui seul l'aiguillage vers la bonne façade — aucun rôle Admin séparé : les droits d'administration cabinet sont un simple booléen <code>isAdmin</code> sur <code>CabinetProfile</code>, qui porte aussi les champs de la double authentification (<code>totpSecret</code>, <code>totpEnabled</code>, <code>totpBackupCodes</code>).</p>
     </section>
 
     <section id="auth">
@@ -256,37 +272,60 @@ src/
       <h3>Protection des routes</h3>
       <p><code>proxy.ts</code> (middleware) redirige vers <code>/login</code> tout accès non authentifié à <code>/client/*</code>, <code>/cabinet/*</code> ou <code>/candidate/*</code>. Chaque layout de façade revérifie ensuite le rôle côté serveur via <code>requireRole()</code>, et chaque server action revérifie indépendamment rôle et propriété des données — la protection ne repose jamais sur un seul point de contrôle.</p>
       <h3>Connexion sociale</h3>
-      <p>Google et LinkedIn sont ajoutés dynamiquement aux providers uniquement si leurs variables d'environnement sont définies (<code>googleEnabled</code> / <code>linkedinEnabled</code>, exportées pour l'UI). Réservée au rôle Candidat : le callback <code>signIn</code> crée le <code>User</code> + <code>Candidate</code> au premier passage, et refuse la connexion si l'e-mail correspond déjà à un compte non-candidat.</p>
+      <p>Google et LinkedIn sont ajoutés dynamiquement aux providers uniquement si leurs variables d'environnement sont définies (<code>googleEnabled</code> / <code>linkedinEnabled</code>, exportées pour l'UI). Réservée au rôle Candidat : le callback <code>signIn</code> crée le <code>User</code> + <code>Candidate</code> au premier passage (avec <code>emailVerified</code> déjà renseigné, l'adresse étant déjà vérifiée par le fournisseur), et refuse la connexion si l'e-mail correspond déjà à un compte non-candidat.</p>
+      <h3>Double authentification (comptes cabinet)</h3>
+      <p>Le provider Credentials accepte un champ <code>totpCode</code> optionnel. Si <code>CabinetProfile.totpEnabled</code> est vrai, <code>authorize()</code> exige un code TOTP valide (fenêtre glissante de 30&nbsp;s) ou l'un des codes de secours à usage unique (hachés en base, consommés à l'usage) avant de retourner une session. Côté client, le formulaire de connexion interroge d'abord <code>checkRequiresMfa(email)</code> — sur la même clé de limitation de fréquence que la connexion elle-même — pour savoir s'il doit révéler le second champ, sans jamais court-circuiter la vérification serveur.</p>
     </section>
 
     <section id="actions">
       <h2><span class="idx">05</span>Server actions &amp; sécurité</h2>
-      <p>Toute la logique métier vit dans <code>src/server/actions/*.ts</code>, sous forme de fonctions <code>"use server"</code> appelées directement depuis les composants client — pas de couche API REST intermédiaire. Chaque action suit le même schéma :</p>
+      <p>Toute la logique métier vit dans <code>src/server/actions/*.ts</code>, sous forme de fonctions <code>"use server"</code> appelées directement depuis les composants client — pas de couche API REST intermédiaire (seule exception : <code>api/invoices/[id]/route.ts</code>, un vrai route handler, nécessaire pour streamer un fichier binaire avec ses en-têtes). Chaque action suit le même schéma :</p>
       <pre><code>1. requireRole("CLIENT")           <span class="cmt">// rejette si non connecté / mauvais rôle</span>
 2. Validation Zod des données reçues
 3. Vérification de propriété       <span class="cmt">// ex: mandat.companyId === user.companyId</span>
 4. Écriture Prisma (transaction si plusieurs tables)
 5. revalidatePath() des pages concernées</code></pre>
-      <p>Les transitions de statut de mandat passent systématiquement par <code>mandatStateMachine.ts</code>, qui valide la transition demandée contre une table de transitions autorisées et journalise chaque changement dans <code>MandatStatusEvent</code> — aucun code applicatif n'écrit <code>Mandat.status</code> directement.</p>
+      <p>Les transitions de statut de mandat passent systématiquement par <code>mandatStateMachine.ts</code>, qui valide la transition demandée contre une table de transitions autorisées et journalise chaque changement dans <code>MandatStatusEvent</code> — même principe pour <code>prospectStateMachine.ts</code> et <code>ProspectStageEvent</code> côté prospection commerciale. Aucun code applicatif n'écrit <code>Mandat.status</code> ou <code>Prospect.stage</code> directement.</p>
+      <div class="callout">
+        <h4>Piège Next.js identifié en cours de développement</h4>
+        Après toute server action, Next.js re-rend automatiquement les Server Components de la route courante — y compris sans appel explicite à <code>revalidatePath()</code> ni <code>router.refresh()</code>. Un composant dont l'affichage dépend d'une condition calculée côté serveur (ex. "avis déjà soumis ?") peut donc se démonter avant que l'utilisateur voie la confirmation. Le correctif retenu : garder l'état de confirmation dans un composant client stable, en position fixe dans l'arbre, qui prend le pas sur les props recalculées côté serveur.
+      </div>
+    </section>
+
+    <section id="nouveaux-modules">
+      <h2><span class="idx">06</span>Modules ajoutés (v2)</h2>
+      <p class="section-intro">Ajoutés après la première version fonctionnelle, en réponse à un audit des manques pour un usage réel.</p>
+      <h3>Limitation de fréquence (<code>lib/rateLimit.ts</code>)</h3>
+      <p>Implémentation en base (table <code>RateLimitAttempt</code>), sans dépendance externe type Redis — une clé libre (<code>login:{email}</code>, <code>register:{ip}</code>, <code>apply:{candidateId}</code>…) et une fenêtre glissante en minutes. Suffisant au volume actuel ; à revoir si le trafic devait fortement augmenter.</p>
+      <h3>Validation des fichiers uploadés (<code>lib/storage.ts</code>)</h3>
+      <p>Vérification de la signature binaire (magic bytes) du fichier reçu contre une liste blanche PDF/DOC/DOCX, en plus de sa taille — l'extension et le type déclarés par le navigateur ne sont jamais utilisés seuls.</p>
+      <h3>Facturation (<code>lib/invoice.ts</code>)</h3>
+      <p>Un reçu (<code>Invoice</code>) est créé dans la même transaction que la confirmation de paiement (sponsoring, CVthèque, formation), avec un numéro séquentiel par année (<code>INV-{année}-{0000}</code>, calculé par comptage — adapté au faible volume de confirmations manuelles, pas conçu pour tenir sous forte concurrence). Le PDF est généré à la demande par <code>generateInvoicePdf()</code> (pdfkit) et servi par <code>api/invoices/[invoiceId]/route.ts</code>, qui vérifie que l'appelant est soit le titulaire du reçu, soit un compte cabinet.</p>
+      <h3>Droit à l'oubli (<code>server/actions/accountDeletion.ts</code>)</h3>
+      <p>Le compte <code>User</code> n'est jamais supprimé en base — il est référencé comme auteur/acteur dans de nombreuses tables (mandats, messages, avis, offres) à des fins d'historique. La suppression anonymise à la place les champs personnels (nom, e-mail, mot de passe rendu inutilisable) et supprime les données strictement personnelles (CV, alertes, notifications, jetons). Bloquée si le compte cabinet est le seul administrateur, pour éviter un verrouillage total de l'administration.</p>
+      <h3>Statistiques globales (<code>server/actions/kpis.ts</code>)</h3>
+      <p>Agrégations Prisma (<code>groupBy</code>, <code>count</code>, <code>aggregate</code>) exécutées en parallèle (<code>Promise.all</code>) : comptes par rôle, offres, candidatures et taux de recrutement, mandats par statut et taux de réussite, entretiens, revenu total et par source.</p>
     </section>
 
     <section id="env">
-      <h2><span class="idx">06</span>Variables d'environnement</h2>
+      <h2><span class="idx">07</span>Variables d'environnement</h2>
       <div class="table-wrap"><table>
         <thead><tr><th>Variable</th><th>Requise</th><th>Rôle</th></tr></thead>
         <tbody>
           <tr><td><code>DATABASE_URL</code></td><td>Oui</td><td>Connexion PostgreSQL</td></tr>
           <tr><td><code>AUTH_SECRET</code></td><td>Oui</td><td>Secret de signature des sessions NextAuth</td></tr>
-          <tr><td><code>NEXTAUTH_URL</code></td><td>Oui</td><td>URL publique de l'application</td></tr>
+          <tr><td><code>NEXTAUTH_URL</code></td><td>Oui</td><td>URL publique de l'application (utilisée dans les liens des e-mails)</td></tr>
           <tr><td><code>GOOGLE_CLIENT_ID</code> / <code>_SECRET</code></td><td>Non</td><td>Active la connexion Google si définies</td></tr>
           <tr><td><code>LINKEDIN_CLIENT_ID</code> / <code>_SECRET</code></td><td>Non</td><td>Active la connexion LinkedIn si définies</td></tr>
+          <tr><td><code>RESEND_API_KEY</code></td><td>Non</td><td>Active l'envoi réel d'e-mails ; sans elle, les e-mails sont journalisés côté serveur au lieu d'être envoyés</td></tr>
+          <tr><td><code>EMAIL_FROM</code></td><td>Non</td><td>Adresse d'expédition des e-mails (par défaut le domaine de test Resend)</td></tr>
           <tr><td><code>SEED_CABINET_ADMIN_EMAIL</code> / <code>_PASSWORD</code></td><td>Non</td><td>Surcharge les identifiants du compte admin créé par <code>db:seed</code></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section id="scripts">
-      <h2><span class="idx">07</span>Scripts npm</h2>
+      <h2><span class="idx">08</span>Scripts npm</h2>
       <div class="table-wrap"><table>
         <thead><tr><th>Commande</th><th>Effet</th></tr></thead>
         <tbody>
@@ -301,40 +340,41 @@ src/
     </section>
 
     <section id="tests">
-      <h2><span class="idx">08</span>Vérification &amp; tests</h2>
+      <h2><span class="idx">09</span>Vérification &amp; tests</h2>
       <p>Aucune suite de tests automatisés n'a été mise en place ; la vérification a été faite en continu, à chaque fonctionnalité :</p>
       <ul>
         <li><code>npm run build</code> et <code>npx tsc --noEmit</code> systématiques avant chaque livraison.</li>
         <li><code>npm run lint</code> (ESLint, config Next.js) systématique.</li>
-        <li>Parcours de bout en bout dans un navigateur réel (Playwright headless) pour chaque fonctionnalité livrée : création de compte, dépôt de mandat, sourcing, entretiens, clôture, candidature, messagerie, sponsoring, alertes — avec vérification explicite des droits d'accès (un client ne peut pas voir le mandat d'un autre, etc.).</li>
+        <li>Parcours de bout en bout dans un navigateur réel (Playwright headless) pour chaque fonctionnalité livrée, y compris les scénarios de sécurité : validation de CV falsifiés, dépassement de la limitation de fréquence, cycle complet d'enrôlement/connexion/désactivation de la 2FA (avec génération de codes TOTP réels), téléchargement d'un reçu et contrôle d'accès (un tiers ne peut pas le récupérer), suppression de compte suivie d'un test de connexion refusée.</li>
       </ul>
       <div class="callout">
         <h4>Recommandation</h4>
-        Ajouter une suite de tests automatisés (Vitest/Playwright) avant toute mise en production réelle — la couverture actuelle repose sur des vérifications manuelles répétées, pas sur des tests exécutables en continu.
+        Ajouter une suite de tests automatisés (Vitest/Playwright) avant toute mise en production réelle — la couverture actuelle repose sur des vérifications manuelles répétées à chaque livraison, pas sur des tests exécutables en continu (CI).
       </div>
     </section>
 
     <section id="deploiement">
-      <h2><span class="idx">09</span>Déploiement</h2>
+      <h2><span class="idx">10</span>Déploiement</h2>
       <ol>
         <li>Créer une base PostgreSQL managée (Neon ou Supabase, offre gratuite suffisante pour démarrer).</li>
         <li>Importer le dépôt GitHub dans un nouveau projet Vercel.</li>
-        <li>Renseigner les variables d'environnement de la section 6 dans les réglages du projet Vercel.</li>
+        <li>Renseigner les variables d'environnement de la section 7 dans les réglages du projet Vercel (au minimum les trois obligatoires ; <code>RESEND_API_KEY</code> fortement recommandée pour que les e-mails de sécurité partent réellement).</li>
         <li>Vercel détecte automatiquement <code>vercel-build</code> et l'exécute — migrations puis build, en une étape.</li>
       </ol>
-      <p>Détail pas-à-pas (y compris l'obtention des identifiants Google/LinkedIn) dans <code>README.md</code> à la racine du dépôt.</p>
+      <p>Détail pas-à-pas (y compris l'obtention des identifiants Google/LinkedIn/Resend) dans <code>README.md</code> à la racine du dépôt. L'application n'a pas encore été déployée en production à ce jour — elle a été développée et testée dans un environnement de développement local.</p>
     </section>
 
     <section id="dette">
-      <h2><span class="idx">10</span>Dette technique connue</h2>
+      <h2><span class="idx">11</span>Dette technique connue</h2>
       <div class="table-wrap"><table>
         <thead><tr><th>Sujet</th><th>État</th><th>Recommandation</th></tr></thead>
         <tbody>
-          <tr><td>Tests automatisés</td><td>Aucun</td><td>Ajouter Vitest (unitaire) + Playwright (bout en bout)</td></tr>
-          <tr><td>E-mail transactionnel</td><td>Non implémenté (<code>lib/notify.ts</code> prêt à l'accueillir)</td><td>Brancher un fournisseur (Resend, SendGrid…)</td></tr>
-          <tr><td>Stockage de fichiers</td><td>Disque local (<code>lib/storage.ts</code>)</td><td>Basculer vers un stockage objet (S3-compatible) avant mise à l'échelle</td></tr>
-          <tr><td>Paiements</td><td>Suivi manuel (formations, sponsoring)</td><td>Intégrer une passerelle une fois un compte marchand disponible</td></tr>
-          <tr><td>Recherche</td><td>Filtrage SQL simple</td><td>Suffisant au volume actuel ; revoir si le catalogue grossit fortement</td></tr>
+          <tr><td>Tests automatisés</td><td>Aucun</td><td>Ajouter Vitest (unitaire) + Playwright (bout en bout) et les brancher en CI</td></tr>
+          <tr><td>Stockage de fichiers</td><td>Disque local (<code>lib/storage.ts</code>)</td><td>Basculer vers un stockage objet (S3-compatible) avant mise à l'échelle — un disque local ne survit pas à un redéploiement sur la plupart des plateformes</td></tr>
+          <tr><td>Paiements</td><td>Suivi manuel (formations, sponsoring, CVthèque), reçu généré automatiquement</td><td>Intégrer une passerelle une fois un compte marchand disponible (Stripe ou CMI selon les marchés visés)</td></tr>
+          <tr><td>Recherche</td><td>Filtrage SQL simple (offres, candidats)</td><td>Suffisant au volume actuel ; revoir (Elasticsearch/OpenSearch) si le catalogue grossit fortement</td></tr>
+          <tr><td>Numérotation des reçus</td><td>Comptage simple par année, sans verrou dédié</td><td>Passer à un compteur atomique si le volume de confirmations manuelles augmente fortement</td></tr>
+          <tr><td>Mise en production</td><td>Jamais déployée en ligne</td><td>Suivre la procédure de la section 10 ; valider d'abord sur un environnement de staging</td></tr>
         </tbody>
       </table></div>
     </section>

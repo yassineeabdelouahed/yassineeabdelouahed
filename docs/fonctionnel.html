@@ -195,7 +195,7 @@
     <a href="technique.html">Technique</a>
     <a href="architecture.html">Architecture</a>
   </div>
-  <div class="meta">v1.0 · Août 2026</div>
+  <div class="meta">v2.0 · Août 2026</div>
 </div>
 
 <div class="layout">
@@ -210,7 +210,10 @@
       <li><a href="#candidat">Espace Candidat</a></li>
       <li><a href="#jobboard">Job board public</a></li>
       <li><a href="#formations">Module Formations</a></li>
+      <li><a href="#marketplace">CVthèque, avis &amp; confiance</a></li>
+      <li><a href="#pilotage">Pilotage cabinet</a></li>
       <li><a href="#connexion">Connexion &amp; comptes</a></li>
+      <li><a href="#securite">Sécurité &amp; confidentialité</a></li>
       <li><a href="#perimetre">Périmètre &amp; limites actuelles</a></li>
       <li><a href="#glossaire">Glossaire</a></li>
     </ol>
@@ -220,18 +223,18 @@
     <section class="hero" id="top">
       <span class="kicker">Documentation fonctionnelle</span>
       <h1>Talentis Connect</h1>
-      <p class="lede">Plateforme de gestion du processus de recrutement pour Talentis Consult (Casablanca) — elle relie l'entreprise cliente, le cabinet et le candidat sur un parcours unique, transparent et mesurable, et prolonge ce cœur de métier par un job board public.</p>
+      <p class="lede">Plateforme de gestion du processus de recrutement pour Talentis Consult (Casablanca) — elle relie l'entreprise cliente, le cabinet et le candidat sur un parcours unique, transparent et mesurable, prolongé par un job board public de type marketplace (CVthèque, avis d'entreprise, sponsoring) et par des outils de pilotage interne pour le cabinet (statistiques, facturation, prospection commerciale).</p>
       <div class="stat-row">
         <div class="stat"><div class="n">3</div><div class="l">espaces connectés</div></div>
         <div class="stat"><div class="n">8</div><div class="l">étapes du processus de recrutement</div></div>
-        <div class="stat"><div class="n">12</div><div class="l">lots fonctionnels livrés</div></div>
+        <div class="stat"><div class="n">28</div><div class="l">lots fonctionnels livrés</div></div>
       </div>
     </section>
 
     <section id="contexte">
       <h2><span class="idx">01</span>Contexte &amp; objectif</h2>
       <p>Dans la majorité des cabinets de recrutement marocains, le suivi d'un mandat repose sur des échanges d'e-mails, des fichiers Excel et des relances téléphoniques : peu de traçabilité, peu de visibilité en temps réel pour le client. Talentis Connect digitalise l'intégralité de ce parcours — du dépôt de la demande par l'entreprise cliente jusqu'à l'intégration du candidat retenu — sans remplacer l'expertise humaine du recruteur (sourcing, évaluation, conseil), mais en la structurant et en la rendant visible à chaque étape.</p>
-      <p>Au-delà de ce cœur de métier, la plateforme intègre un job board public ouvert à tous les candidats, inspiré des mécaniques d'Indeed (candidature en un clic, alertes emploi, messagerie directe, offres sponsorisées) tout en conservant le modèle de cabinet géré comme activité principale.</p>
+      <p>Au-delà de ce cœur de métier, la plateforme intègre un job board public ouvert à tous les candidats, inspiré des mécaniques d'Indeed (candidature en un clic, alertes emploi, messagerie directe, offres sponsorisées, accès à une base de CV, avis d'entreprise) tout en conservant le modèle de cabinet géré comme activité principale. Une seconde vague de développement a ajouté les briques nécessaires à un usage réel par une équipe : sécurité renforcée (vérification d'e-mail, double authentification, droit à l'oubli), reçus de paiement, pilotage global (statistiques, prospection commerciale) et pages légales.</p>
     </section>
 
     <section id="facades">
@@ -245,7 +248,7 @@
             <li>Dépose des mandats de recrutement</li>
             <li>Suit l'avancement en temps réel</li>
             <li>Sélectionne des candidats, planifie des entretiens</li>
-            <li>Publie des offres sur le job board</li>
+            <li>Publie des offres, accède à la CVthèque</li>
           </ul>
         </div>
         <div class="facade-card">
@@ -255,7 +258,7 @@
             <li>Valide et qualifie les mandats entrants</li>
             <li>Source et pré-qualifie les candidats</li>
             <li>Planifie les entretiens, clôture les mandats</li>
-            <li>Gère le catalogue de formations et le sponsoring</li>
+            <li>Pilote l'activité : statistiques, facturation, prospection</li>
           </ul>
         </div>
         <div class="facade-card">
@@ -265,7 +268,7 @@
             <li>Complète un profil (CV, compétences)</li>
             <li>Postule en un clic sur le job board</li>
             <li>Crée des alertes emploi personnalisées</li>
-            <li>Échange avec les recruteurs, s'inscrit aux formations</li>
+            <li>Échange avec les recruteurs, note les entreprises</li>
           </ul>
         </div>
       </div>
@@ -287,7 +290,7 @@
       </div>
       <div class="callout">
         <h4>Périmètre volontairement réduit à l'étape 8</h4>
-        Sur demande explicite, la clôture n'inclut ni facturation, ni génération d'offre, ni signature électronique — uniquement le statut et le candidat retenu. Ce point est identifié comme un développement futur possible.
+        Sur demande explicite, la clôture n'inclut ni facturation de mandat (honoraires de placement), ni génération d'offre, ni signature électronique — uniquement le statut et le candidat retenu. Un système de reçus existe désormais pour les autres flux payants (voir §10 Pilotage cabinet), mais pas pour la facturation des honoraires de placement eux-mêmes.
       </div>
     </section>
 
@@ -302,8 +305,12 @@
           <tr><td>Short-list</td><td>Consultation des candidats proposés (notes de pré-qualification, points forts/vigilance) et sélection de ceux à rencontrer.</td></tr>
           <tr><td>Entretiens</td><td>Proposition de créneaux de disponibilité, consultation des entretiens planifiés, saisie du retour après entretien.</td></tr>
           <tr><td>Offres publiées</td><td>Publication d'offres sur le job board public, suivi des candidatures reçues par offre.</td></tr>
+          <tr><td>Performance des offres</td><td>Nombre de vues et taux de candidature affichés par offre publiée.</td></tr>
           <tr><td>Messagerie candidats</td><td>Échange direct avec chaque candidat ayant postulé à une offre publiée.</td></tr>
           <tr><td>Sponsoring d'offre</td><td>Mise en avant payante d'une offre (7 / 14 / 30 jours) pour la faire remonter dans les résultats de recherche.</td></tr>
+          <tr><td>CVthèque</td><td>Recherche de candidats par mot-clé, localisation, expérience — coordonnées visibles après achat d'un accès temporaire.</td></tr>
+          <tr><td>Reçus de paiement</td><td>Téléchargement d'un reçu PDF numéroté dès qu'un paiement (sponsoring, CVthèque) est confirmé par le cabinet.</td></tr>
+          <tr><td>Paramètres du compte</td><td>Suppression du compte à tout moment (droit à l'oubli, voir §12).</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -319,9 +326,15 @@
           <tr><td>Sourcing sur mandat</td><td>Proposer un candidat de la base sur un mandat, avec notes de pré-qualification, puis publier la short-list.</td></tr>
           <tr><td>Planification</td><td>Sélection d'un créneau parmi les disponibilités transmises par le client, confirmation de l'entretien.</td></tr>
           <tr><td>Clôture de mandat</td><td>Formalisation d'une offre au candidat validé, puis confirmation du recrutement.</td></tr>
-          <tr><td>Gestion des offres publiques</td><td>Confirmation des demandes de sponsoring, vue d'ensemble des offres publiées par les clients.</td></tr>
-          <tr><td>Gestion des formations</td><td>Création de formations et de sessions, confirmation manuelle des paiements d'inscription.</td></tr>
+          <tr><td>Gestion des offres publiques</td><td>Confirmation des demandes de sponsoring (génère un reçu), vue d'ensemble des offres publiées par les clients.</td></tr>
+          <tr><td>Gestion des formations</td><td>Création de formations et de sessions, confirmation manuelle des paiements d'inscription (génère un reçu).</td></tr>
+          <tr><td>Accès CVthèque</td><td>Confirmation des demandes d'accès des entreprises clientes.</td></tr>
+          <tr><td>Modération des avis</td><td>Validation ou rejet de chaque avis d'entreprise avant publication.</td></tr>
+          <tr><td>Vérification d'entreprise</td><td>Activation manuelle du badge "Entreprise vérifiée" sur la fiche publique d'une entreprise cliente.</td></tr>
+          <tr><td>Statistiques globales</td><td>Comptes créés, offres, candidatures, mandats par statut, entretiens, revenu par source — vue d'ensemble de l'activité.</td></tr>
+          <tr><td>Prospection commerciale</td><td>Suivi des entreprises prospectées à travers un pipeline commercial dédié (voir §10), distinct du CRM candidats.</td></tr>
           <tr><td>Invitations cabinet</td><td>Un administrateur cabinet invite de nouveaux collaborateurs par lien — aucune inscription libre côté cabinet.</td></tr>
+          <tr><td>Double authentification</td><td>Chaque membre du cabinet peut activer la 2FA (application d'authentification) sur son propre compte.</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -334,9 +347,11 @@
           <tr><td>Profil</td><td>Titre recherché, localisation, expérience, compétences, CV — base de la candidature en un clic.</td></tr>
           <tr><td>Candidatures</td><td>Historique des candidatures envoyées, statut de chacune, fil de discussion par candidature.</td></tr>
           <tr><td>Alertes emploi</td><td>Sauvegarde d'une recherche (mots-clés, ville, catégorie) ; notification dès qu'une offre correspondante est publiée.</td></tr>
-          <tr><td>Notifications</td><td>Centre de notifications commun (entretien planifié, message reçu, inscription confirmée, alerte déclenchée).</td></tr>
-          <tr><td>Formations</td><td>Consultation du catalogue, inscription à une session, suivi du statut de paiement.</td></tr>
+          <tr><td>Notifications</td><td>Centre de notifications commun (entretien planifié, message reçu, inscription confirmée, alerte déclenchée), doublées d'un e-mail.</td></tr>
+          <tr><td>Formations</td><td>Consultation du catalogue, inscription à une session, suivi du statut de paiement, téléchargement du reçu une fois confirmé.</td></tr>
+          <tr><td>Avis d'entreprise</td><td>Un candidat ayant postulé chez une entreprise peut y laisser une note et un commentaire, publiés après modération du cabinet.</td></tr>
           <tr><td>Connexion sociale</td><td>Inscription/connexion via Google ou LinkedIn, en plus de l'e-mail et du mot de passe.</td></tr>
+          <tr><td>Paramètres du compte</td><td>Suppression du compte à tout moment (droit à l'oubli, voir §12).</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -347,7 +362,8 @@
       <ul>
         <li><strong>Accueil</strong> — recherche par mots-clés et ville, catégories, offres à la une, chiffres clés.</li>
         <li><strong>Résultats de recherche</strong> — filtres (type de contrat, télétravail), tri (plus récentes / salaire), création d'alerte en un clic.</li>
-        <li><strong>Fiche offre</strong> — description complète, missions, profil recherché, candidature en un clic pour un candidat connecté.</li>
+        <li><strong>Fiche offre</strong> — description complète, missions, profil recherché, candidature en un clic pour un candidat connecté, lien vers la fiche entreprise.</li>
+        <li><strong>Fiche entreprise</strong> — badge "vérifiée" le cas échéant, avis publiés et note moyenne.</li>
         <li><strong>Espace recruteur</strong> — page publique présentant l'offre de service, avec accès à la publication d'offre et à la diffusion externe.</li>
         <li><strong>Formations</strong> — catalogue public filtrable par domaine.</li>
         <li><strong>Offres sponsorisées</strong> — badge distinctif et priorité d'affichage dans les résultats.</li>
@@ -360,47 +376,90 @@
       <ul>
         <li>Catalogue public filtrable par domaine, avec sessions programmées (dates, prix, capacité, formateur).</li>
         <li>Inscription en choisissant un mode de paiement (virement, espèces au cabinet, autre).</li>
-        <li>Le paiement est confirmé manuellement par le cabinet après réception — voir la note ci-dessous.</li>
+        <li>Le paiement est confirmé manuellement par le cabinet après réception, ce qui génère automatiquement un reçu PDF téléchargeable.</li>
       </ul>
       <div class="callout warn">
         <h4>Pas de passerelle de paiement en ligne</h4>
-        Aucun compte marchand n'était disponible au moment du développement. Le statut de paiement (en attente / confirmé) est géré manuellement par le cabinet — l'intégration d'un vrai moyen de paiement est un développement futur possible.
+        Aucun compte marchand n'était disponible au moment du développement. Le statut de paiement (en attente / confirmé) est géré manuellement par le cabinet — l'intégration d'un vrai moyen de paiement reste un développement futur possible ; le système de reçus est en revanche déjà en place, prêt à documenter les paiements quel que soit le canal.
       </div>
     </section>
 
+    <section id="marketplace">
+      <h2><span class="idx">09</span>CVthèque, avis &amp; confiance</h2>
+      <p class="section-intro">Fonctionnalités de type marketplace (à la Indeed), construites au-dessus du cœur "cabinet géré" sans le remplacer.</p>
+      <h3>CVthèque payante</h3>
+      <p>Une entreprise cliente peut rechercher librement dans la base de candidats (mot-clé, localisation, expérience minimale) : le nombre de profils correspondants est toujours visible, mais les coordonnées restent masquées tant qu'un accès n'a pas été acheté (30, 90 ou 365 jours) et confirmé par le cabinet. Ce même moteur de recherche est utilisé en interne par le CRM candidats du cabinet.</p>
+      <h3>Avis d'entreprise</h3>
+      <p>Seul un candidat ayant réellement postulé à une offre d'une entreprise peut y laisser un avis (note sur 5 + commentaire), ce qui évite les avis non vérifiés. Chaque avis reste masqué au public jusqu'à validation par le cabinet ; un candidat ne peut laisser qu'un seul avis par entreprise.</p>
+      <h3>Badge "Entreprise vérifiée"</h3>
+      <p>Activé manuellement par le cabinet après vérification de l'identité de l'entreprise, affiché sur sa fiche publique et sur les offres qu'elle publie.</p>
+      <h3>Performance des offres</h3>
+      <p>Chaque consultation d'une fiche offre incrémente un compteur de vues ; le client voit, pour chacune de ses offres publiées, le nombre de vues et le taux de conversion en candidatures.</p>
+    </section>
+
+    <section id="pilotage">
+      <h2><span class="idx">10</span>Pilotage cabinet</h2>
+      <p class="section-intro">Des outils internes pour que le cabinet pilote son activité au-delà du suivi mandat par mandat.</p>
+      <h3>Statistiques globales</h3>
+      <p>Un tableau de bord agrège : comptes créés par rôle (et sur les 30 derniers jours), offres publiées, candidatures et taux de recrutement, mandats répartis par statut et taux de réussite, entretiens planifiés/réalisés, et revenu total ventilé par source (sponsoring, CVthèque, formations).</p>
+      <h3>Reçus &amp; facturation</h3>
+      <p>Chaque paiement confirmé manuellement (sponsoring, accès CVthèque, inscription formation) génère un reçu PDF numéroté séquentiellement (ex. <code>INV-2026-0001</code>), téléchargeable par l'entreprise cliente ou le candidat concerné, et consultable par le cabinet.</p>
+      <h3>Prospection commerciale</h3>
+      <p>Distinct du CRM candidats : le cabinet suit ses entreprises prospectées (avant qu'elles ne deviennent clientes) à travers un pipeline dédié — Prospect → Contacté → Qualifié → RDV → Besoin confirmé → Offre → Négociation → Client, avec possibilité de marquer un prospect comme perdu à tout moment. Chaque changement d'étape est daté, attribué et peut porter une note, formant un historique complet par prospect.</p>
+    </section>
+
     <section id="connexion">
-      <h2><span class="idx">09</span>Connexion &amp; gestion des comptes</h2>
+      <h2><span class="idx">11</span>Connexion &amp; gestion des comptes</h2>
       <div class="table-wrap"><table>
         <thead><tr><th>Rôle</th><th>Inscription</th><th>Méthodes de connexion</th></tr></thead>
         <tbody>
           <tr><td>Client</td><td>Libre, avec création de l'entreprise</td><td>E-mail + mot de passe</td></tr>
           <tr><td>Candidat</td><td>Libre</td><td>E-mail + mot de passe, ou Google / LinkedIn</td></tr>
-          <tr><td>Cabinet</td><td>Sur invitation uniquement (lien envoyé par un administrateur)</td><td>E-mail + mot de passe</td></tr>
+          <tr><td>Cabinet</td><td>Sur invitation uniquement (lien envoyé par un administrateur)</td><td>E-mail + mot de passe, + double authentification (2FA) optionnelle</td></tr>
         </tbody>
       </table></div>
-      <p>La connexion sociale (Google / LinkedIn) est réservée aux candidats — le compte est créé automatiquement à la première connexion, avec un profil à compléter ensuite.</p>
+      <p>La connexion sociale (Google / LinkedIn) est réservée aux candidats — le compte est créé automatiquement à la première connexion, avec un profil à compléter ensuite. Un compte cabinet ayant activé la 2FA doit fournir, en plus de son mot de passe, un code à 6 chiffres généré par une application d'authentification (ou un code de secours à usage unique).</p>
+    </section>
+
+    <section id="securite">
+      <h2><span class="idx">12</span>Sécurité &amp; confidentialité</h2>
+      <p class="section-intro">Ajoutée dans une deuxième vague de développement dédiée, avant tout usage réel par une équipe et de vrais utilisateurs.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Fonctionnalité</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Validation des CV</td><td>Le fichier envoyé est vérifié par sa signature binaire (pas seulement son extension) et sa taille avant d'être accepté.</td></tr>
+          <tr><td>Limitation de fréquence</td><td>Les tentatives de connexion, d'inscription et de candidature sont plafonnées pour freiner les abus automatisés.</td></tr>
+          <tr><td>Vérification d'e-mail</td><td>Un lien de confirmation est envoyé à l'inscription (candidats et clients) ; un rappel reste affiché tant que l'adresse n'est pas confirmée.</td></tr>
+          <tr><td>Mot de passe oublié</td><td>Réinitialisation par lien à usage unique envoyé par e-mail, valable une heure.</td></tr>
+          <tr><td>Double authentification (2FA)</td><td>Optionnelle pour les comptes cabinet (accès aux données candidats/entreprises) : code à 6 chiffres + codes de secours à usage unique.</td></tr>
+          <tr><td>Droit à l'oubli</td><td>Suppression du compte en libre-service depuis les paramètres ; les données personnelles sont supprimées ou anonymisées, l'historique auquel d'autres utilisateurs sont liés (messages, candidatures) est conservé sous une identité anonymisée.</td></tr>
+          <tr><td>Pages légales</td><td>Mentions légales, politique de confidentialité, CGU et CGV, accessibles depuis le pied de page public.</td></tr>
+          <tr><td>E-mails transactionnels</td><td>Notifications, confirmations et liens de sécurité sont désormais réellement envoyés par e-mail (et plus seulement affichés dans l'application).</td></tr>
+        </tbody>
+      </table></div>
     </section>
 
     <section id="perimetre">
-      <h2><span class="idx">10</span>Périmètre &amp; limites actuelles</h2>
-      <p class="section-intro">Simplifications assumées pour cette première version, à arbitrer collectivement pour la suite.</p>
+      <h2><span class="idx">13</span>Périmètre &amp; limites actuelles</h2>
+      <p class="section-intro">Simplifications assumées pour cette version, à arbitrer collectivement pour la suite.</p>
       <div class="table-wrap"><table>
         <thead><tr><th>Domaine</th><th>État actuel</th><th></th></tr></thead>
         <tbody>
-          <tr><td>E-mails</td><td>Notifications internes uniquement, aucun e-mail envoyé</td><td><span class="pill manual">à développer</span></td></tr>
-          <tr><td>Paiement formations</td><td>Statut confirmé manuellement par le cabinet</td><td><span class="pill manual">manuel</span></td></tr>
-          <tr><td>Sponsoring d'offres</td><td>Paiement confirmé manuellement par le cabinet</td><td><span class="pill manual">manuel</span></td></tr>
-          <tr><td>Facturation de mandat</td><td>Non incluse à la clôture (exclusion demandée)</td><td><span class="pill manual">hors périmètre</span></td></tr>
+          <tr><td>E-mails transactionnels</td><td>Envoi réel via un fournisseur (Resend)</td><td><span class="pill done">livré</span></td></tr>
+          <tr><td>Paiement formations / sponsoring / CVthèque</td><td>Statut confirmé manuellement par le cabinet, reçu généré automatiquement</td><td><span class="pill manual">manuel</span></td></tr>
+          <tr><td>Facturation des honoraires de placement</td><td>Non incluse à la clôture de mandat (exclusion demandée)</td><td><span class="pill manual">hors périmètre</span></td></tr>
           <tr><td>Diffusion vers LinkedIn / Indeed…</td><td>Statuts d'affichage uniquement, aucune intégration réelle</td><td><span class="pill manual">simulé</span></td></tr>
           <tr><td>Multi-utilisateurs entreprise</td><td>Un seul compte par entreprise cliente</td><td><span class="pill manual">à développer</span></td></tr>
+          <tr><td>Mise en production réelle</td><td>Application développée et testée, non encore déployée en ligne</td><td><span class="pill manual">à faire</span></td></tr>
+          <tr><td>Tests automatisés</td><td>Vérification manuelle systématique à chaque livraison, aucune suite exécutable en continu</td><td><span class="pill manual">à développer</span></td></tr>
           <tr><td>8 étapes du mandat</td><td>Fonctionnel de bout en bout, testé</td><td><span class="pill done">livré</span></td></tr>
-          <tr><td>Job board + candidature</td><td>Fonctionnel de bout en bout, testé</td><td><span class="pill done">livré</span></td></tr>
+          <tr><td>Job board, CVthèque, avis, sécurité, pilotage cabinet</td><td>Fonctionnels de bout en bout, testés</td><td><span class="pill done">livré</span></td></tr>
         </tbody>
       </table></div>
     </section>
 
     <section id="glossaire">
-      <h2><span class="idx">11</span>Glossaire</h2>
+      <h2><span class="idx">14</span>Glossaire</h2>
       <dl class="glossary">
         <dt>Mandat</dt><dd>Demande de recrutement ouverte par un client pour un poste donné, suivie à travers les 8 étapes.</dd>
         <dt>Short-list</dt><dd>Liste restreinte de candidats pré-qualifiés soumise au client par le cabinet.</dd>
@@ -409,6 +468,11 @@
         <dt>Job board</dt><dd>Le site public de recherche et de publication d'offres d'emploi, distinct du suivi de mandat privé.</dd>
         <dt>Offre sponsorisée</dt><dd>Offre mise en avant contre paiement, affichée en priorité dans les résultats de recherche.</dd>
         <dt>Alerte emploi</dt><dd>Recherche sauvegardée par un candidat, qui déclenche une notification à chaque nouvelle offre correspondante.</dd>
+        <dt>CVthèque</dt><dd>Base de candidats consultable par les entreprises clientes moyennant un accès payant temporaire.</dd>
+        <dt>Prospect</dt><dd>Entreprise en cours de prospection commerciale par le cabinet, avant de devenir cliente.</dd>
+        <dt>Reçu</dt><dd>Document PDF numéroté, généré automatiquement dès qu'un paiement manuel est confirmé.</dd>
+        <dt>2FA / MFA</dt><dd>Double authentification : un second facteur (code à usage limité) en plus du mot de passe.</dd>
+        <dt>Droit à l'oubli</dt><dd>Droit d'un utilisateur à faire supprimer ou anonymiser ses données personnelles.</dd>
       </dl>
     </section>
   </main>

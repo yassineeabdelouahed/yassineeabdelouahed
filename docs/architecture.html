@@ -125,7 +125,7 @@
     <a href="technique.html">Technique</a>
     <a href="architecture.html" class="current">Architecture</a>
   </div>
-  <div class="meta">v1.0 · Août 2026</div>
+  <div class="meta">v2.0 · Août 2026</div>
 </div>
 
 <div class="layout">
@@ -138,6 +138,7 @@
       <li><a href="#etats">Machine à états du mandat</a></li>
       <li><a href="#auth-flux">Flux d'authentification</a></li>
       <li><a href="#securite">Sécurité en profondeur</a></li>
+      <li><a href="#modules-v2">Modules ajoutés (v2)</a></li>
     </ol>
   </nav>
 
@@ -221,12 +222,43 @@
           <tr><td>Layout de façade (RSC)</td><td>Revérifie le rôle exact ; redirige vers le bon espace si mauvais rôle</td></tr>
           <tr><td>Server action</td><td>Revérifie rôle + propriété des données (ex : <code>mandat.companyId === user.companyId</code>) avant toute lecture ou écriture</td></tr>
           <tr><td>Base de données</td><td>Contraintes d'unicité et clés étrangères Prisma (ex : une seule candidature par offre et par candidat)</td></tr>
+          <tr><td>Limitation de fréquence</td><td>Table <code>RateLimitAttempt</code>, fenêtre glissante par clé (connexion, inscription, candidature…) — indépendante du succès/échec pour ne jamais révéler l'état d'un compte</td></tr>
+          <tr><td>Upload de fichiers</td><td>Signature binaire (magic bytes) vérifiée contre une liste blanche, jamais l'extension déclarée par le client</td></tr>
+          <tr><td>Double authentification</td><td>Second facteur TOTP (ou code de secours à usage unique) exigé dans <code>authorize()</code> avant toute émission de session, pour les comptes cabinet qui l'ont activée</td></tr>
         </tbody>
       </table></div>
       <div class="callout">
         <h4>Comptes cabinet</h4>
         Jamais d'inscription libre : uniquement par invitation (<code>CabinetInvite</code>) créée par un administrateur déjà en poste, à partir d'un compte d'amorçage créé par le script de seed.
       </div>
+    </section>
+
+    <section id="modules-v2">
+      <h2><span class="idx">07</span>Modules ajoutés (v2)</h2>
+      <p class="section-intro">Cinq sous-systèmes ajoutés après la première version fonctionnelle, suivant les mêmes principes architecturaux que le cœur du produit (server actions, machine à états, revérification à chaque couche).</p>
+
+      <h3>Machine à états du pipeline de prospection</h3>
+      <p><code>prospectStateMachine.ts</code> reproduit exactement le patron de <code>mandatStateMachine.ts</code> : une table de transitions autorisées (<code>PROSPECT → CONTACTED → QUALIFIED → MEETING → NEED_CONFIRMED → PROPOSAL → NEGOTIATION → WON</code>), un statut terminal <code>LOST</code> atteignable depuis n'importe quelle étape non terminale, et un journal d'audit (<code>ProspectStageEvent</code>) créé dans la même transaction que chaque changement d'étape.</p>
+
+      <h3>Facturation</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Étape</th><th>Détail</th></tr></thead>
+        <tbody>
+          <tr><td>1. Confirmation de paiement</td><td>Le cabinet confirme un paiement manuel (sponsoring, CVthèque, formation)</td></tr>
+          <tr><td>2. Création du reçu</td><td>Dans la même transaction Prisma, <code>createInvoice()</code> attribue un numéro séquentiel (<code>INV-{année}-{0000}</code>) et enregistre le montant, la devise et la source</td></tr>
+          <tr><td>3. Génération à la demande</td><td>Le PDF n'est pas stocké : <code>generateInvoicePdf()</code> (pdfkit) le régénère à chaque téléchargement à partir des données en base</td></tr>
+          <tr><td>4. Contrôle d'accès</td><td><code>api/invoices/[invoiceId]/route.ts</code> vérifie que l'appelant est le titulaire du reçu ou un compte cabinet avant de le servir</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Double authentification (TOTP)</h3>
+      <p>Enrôlement : génération d'un secret (<code>otplib</code>), affichage d'un QR code (<code>qrcode</code>) et confirmation par un premier code avant activation — le secret n'est jamais activé sans preuve que l'application d'authentification a bien été configurée. Connexion : le formulaire interroge <code>checkRequiresMfa()</code> pour savoir si un second champ doit apparaître, mais la vérification qui compte est toujours celle d'<code>authorize()</code> côté serveur, jamais une simple condition d'affichage côté client.</p>
+
+      <h3>CVthèque</h3>
+      <p>La recherche de candidats est ouverte à toute entreprise cliente ; seul l'accès aux coordonnées est conditionné à un <code>CvDatabaseAccess</code> confirmé et non expiré pour l'entreprise. Le résultat d'une recherche est calculé une seule fois côté serveur puis affiché sous deux formes différentes (identités masquées ou coordonnées visibles) selon ce même statut — pas deux requêtes séparées.</p>
+
+      <h3>Droit à l'oubli</h3>
+      <p>Le compte <code>User</code> n'est jamais supprimé par cascade — trop de tables (mandats, messages, avis, offres) le référencent comme auteur pour des besoins d'historique. La suppression anonymise les champs personnels en place et efface uniquement les données strictement personnelles (CV, alertes, notifications, jetons), dans une transaction unique. Un compte cabinet ne peut pas supprimer le sien s'il est l'unique administrateur restant.</p>
     </section>
   </main>
 </div>

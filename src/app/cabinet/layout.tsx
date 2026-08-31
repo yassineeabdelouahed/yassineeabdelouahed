@@ -24,6 +24,7 @@ export default async function CabinetLayout({ children }: { children: React.Reac
         { href: "/cabinet/admin/kpi", label: "Statistiques" },
         { href: "/cabinet/admin/facturation", label: "Facturation" },
         { href: "/cabinet/admin/retention", label: "Rétention" },
+        { href: "/cabinet/admin/monitoring", label: "Supervision" },
       ]
     : LINKS;
 

@@ -580,6 +580,24 @@ model RetentionPurgeLog {
   @@map("retention_purge_logs")
 }
 
+/**
+ * Server-side errors captured by src/instrumentation.ts (onRequestError) — a minimal,
+ * self-hosted error log so the cabinet admin can see what's failing without wiring up a
+ * third-party observability provider. Not personal data: request path/method/error text only.
+ */
+model ErrorLog {
+  id         String   @id @default(cuid())
+  message    String
+  digest     String?
+  routePath  String?
+  routeType  String?
+  method     String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("error_logs")
+}
+
 /** One receipt per confirmed manual payment (sponsorship, CVthèque access, formation). */
 model Invoice {
   id          String            @id @default(cuid())

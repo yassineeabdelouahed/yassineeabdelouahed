@@ -36,6 +36,12 @@ export const RETENTION_RULES = [
     retention: "24 mois après le refus",
     action: "Anonymisation (CV et notes supprimés, statut conservé à des fins statistiques)",
   },
+  {
+    key: "errorLogs",
+    label: "Journaux d'erreurs techniques",
+    retention: "30 jours",
+    action: "Suppression",
+  },
 ] as const;
 
 export type RetentionPurgeResult = { key: string; label: string; count: number };
@@ -89,6 +95,9 @@ export async function runRetentionPurge(triggeredBy: string): Promise<RetentionP
     label: RETENTION_RULES[3].label,
     count: jobApplications.count + mandateApplications.count,
   });
+
+  const errorLogs = await prisma.errorLog.deleteMany({ where: { createdAt: { lt: daysAgo(30) } } });
+  results.push({ key: "errorLogs", label: RETENTION_RULES[4].label, count: errorLogs.count });
 
   await prisma.retentionPurgeLog.create({
     data: { triggeredBy, summary: results },

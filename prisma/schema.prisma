@@ -546,6 +546,26 @@ enum InvoiceSourceType {
   ENROLLMENT
 }
 
+/**
+ * Single-row settings table — the cabinet's own legal/fiscal identifiers, printed on
+ * generated receipts. Left empty until an admin fills them in (see cartographie-criteres.md
+ * "Mentions légales sur facture" — génération conditionnée à leur saisie).
+ */
+model PlatformSettings {
+  id             String   @id @default("singleton")
+  legalName      String   @default("Talentis Consult")
+  ice            String?
+  rc             String?
+  identifiantFiscal String?
+  patente        String?
+  cnss           String?
+  address        String?
+  tvaRatePercent Int      @default(20)
+  updatedAt      DateTime @updatedAt
+
+  @@map("platform_settings")
+}
+
 /** One receipt per confirmed manual payment (sponsorship, CVthèque access, formation). */
 model Invoice {
   id          String            @id @default(cuid())

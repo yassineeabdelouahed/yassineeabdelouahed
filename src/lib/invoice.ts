@@ -38,6 +38,18 @@ export async function createInvoice(tx: Prisma.TransactionClient, input: CreateI
   });
 }
 
+/**
+ * `Number.toLocaleString("fr-FR")` groups thousands with a narrow no-break space (U+202F),
+ * which falls outside pdfkit's default Helvetica/WinAnsi encoding and renders as a garbled
+ * glyph. Group with a plain space instead so amounts stay legible in the generated PDF.
+ */
+function formatAmount(n: number): string {
+  const rounded = Math.round(n * 100) / 100;
+  const [intPart, decPart] = rounded.toFixed(2).split(".");
+  const withThousands = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return decPart === "00" ? withThousands : `${withThousands},${decPart}`;
+}
+
 /** Batch lookup so list pages can attach a "Télécharger le reçu" link without N+1 queries. */
 export async function getInvoiceMap(
   sourceType: CreateInvoiceInput["sourceType"],
@@ -58,18 +70,35 @@ export async function generateInvoicePdf(invoiceId: string): Promise<Buffer | nu
   });
   if (!invoice) return null;
 
+  const settings = await prisma.platformSettings.findUnique({ where: { id: "singleton" } });
+  const legalMentionsComplete = !!(
+    settings?.ice &&
+    settings?.rc &&
+    settings?.identifiantFiscal &&
+    settings?.patente &&
+    settings?.cnss
+  );
+
   const doc = new PDFDocument({ size: "A4", margin: 50 });
   const chunks: Buffer[] = [];
   doc.on("data", (chunk) => chunks.push(chunk));
   const done = new Promise<Buffer>((resolve) => doc.on("end", () => resolve(Buffer.concat(chunks))));
 
-  doc.fontSize(20).fillColor("#0b2545").text("Talentis Consult", { continued: false });
-  doc.fontSize(10).fillColor("#64748b").text("Reçu de paiement");
+  doc.fontSize(20).fillColor("#0b2545").text(settings?.legalName ?? "Talentis Consult", { continued: false });
+  doc.fontSize(10).fillColor("#64748b").text(legalMentionsComplete ? "Facture" : "Reçu de paiement");
+  if (settings?.address) doc.fontSize(9).fillColor("#64748b").text(settings.address);
   doc.moveDown(1.5);
 
-  doc.fontSize(12).fillColor("#0f172a").text(`Reçu n° ${invoice.number}`);
+  doc.fontSize(12).fillColor("#0f172a").text(`${legalMentionsComplete ? "Facture" : "Reçu"} n° ${invoice.number}`);
   doc.fontSize(10).fillColor("#64748b").text(`Date : ${invoice.issuedAt.toLocaleDateString("fr-FR")}`);
   doc.moveDown(1);
+
+  if (legalMentionsComplete) {
+    doc.fontSize(9).fillColor("#334155").text(
+      `ICE : ${settings!.ice} · RC : ${settings!.rc} · IF : ${settings!.identifiantFiscal} · Patente : ${settings!.patente} · CNSS : ${settings!.cnss}`,
+    );
+    doc.moveDown(1);
+  }
 
   doc.fontSize(11).fillColor("#0f172a").text("Facturé à :");
   doc.fontSize(10).fillColor("#334155").text(invoice.company?.name ?? invoice.user.name);
@@ -82,14 +111,23 @@ export async function generateInvoicePdf(invoiceId: string): Promise<Buffer | nu
   doc.fontSize(10).fillColor("#334155").text(invoice.description);
   doc.moveDown(1);
 
+  const tvaRatePercent = settings?.tvaRatePercent ?? 20;
+  const amountTtc = invoice.amount;
+  const amountHt = amountTtc / (1 + tvaRatePercent / 100);
+  const amountTva = amountTtc - amountHt;
+
+  doc.fontSize(10).fillColor("#334155").text(`Total HT : ${formatAmount(amountHt)} ${invoice.currency}`);
+  doc.text(`TVA (${tvaRatePercent}%) : ${formatAmount(amountTva)} ${invoice.currency}`);
   doc.fontSize(14).fillColor("#0b2545").text(
-    `Total : ${invoice.amount.toLocaleString("fr-FR")} ${invoice.currency}`,
+    `Total TTC : ${formatAmount(amountTtc)} ${invoice.currency}`,
   );
   doc.moveDown(2);
 
   doc.fontSize(8).fillColor("#94a3b8").text(
-    "Talentis Consult — Casablanca, Maroc. Ce document tient lieu de reçu de paiement confirmé manuellement ; " +
-      "il ne constitue pas une facture au sens fiscal tant que les mentions légales obligatoires n'ont pas été complétées.",
+    legalMentionsComplete
+      ? `${settings!.legalName} — Casablanca, Maroc.`
+      : "Talentis Consult — Casablanca, Maroc. Ce document tient lieu de reçu de paiement confirmé manuellement ; " +
+          "il ne constitue pas une facture au sens fiscal tant que les mentions légales obligatoires n'ont pas été complétées.",
     { width: 480 },
   );
 

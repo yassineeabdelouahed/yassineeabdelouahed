@@ -7,6 +7,7 @@ import { FormField, Input } from "@/components/ui/Field";
 import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { updateProfileAction } from "@/server/actions/profile";
+import type { CvSuggestions } from "@/lib/cvParser";
 
 type Candidate = {
   firstName: string;
@@ -22,9 +23,28 @@ type Candidate = {
 
 export function ProfileForm({ candidate }: { candidate: Candidate }) {
   const router = useRouter();
+  const [skills, setSkills] = useState(candidate.skills.join(", "));
+  const [yearsExperience, setYearsExperience] = useState(candidate.yearsExperience?.toString() ?? "");
+  const [suggestions, setSuggestions] = useState<CvSuggestions | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [pending, startTransition] = useTransition();
+
+  const currentSkills = new Set(skills.split(",").map((s) => s.trim().toLowerCase()).filter(Boolean));
+  const newSkillSuggestions = (suggestions?.skills ?? []).filter((s) => !currentSkills.has(s.toLowerCase()));
+  const experienceSuggestionUseful =
+    suggestions?.experienceYears != null && String(suggestions.experienceYears) !== yearsExperience;
+
+  function addSuggestedSkill(skill: string) {
+    setSkills((prev) => (prev.trim() ? `${prev}, ${skill}` : skill));
+  }
+
+  function addAllSuggestedSkills() {
+    setSkills((prev) => {
+      const merged = prev.trim() ? `${prev}, ${newSkillSuggestions.join(", ")}` : newSkillSuggestions.join(", ");
+      return merged;
+    });
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,6 +59,9 @@ export function ProfileForm({ candidate }: { candidate: Candidate }) {
         return;
       }
       setSuccess(true);
+      const hasSuggestions =
+        result.cvSuggestions && (result.cvSuggestions.skills.length > 0 || result.cvSuggestions.experienceYears != null);
+      setSuggestions(hasSuggestions ? result.cvSuggestions! : null);
       router.refresh();
     });
   }
@@ -71,12 +94,19 @@ export function ProfileForm({ candidate }: { candidate: Candidate }) {
               name="yearsExperience"
               type="number"
               min={0}
-              defaultValue={candidate.yearsExperience ?? ""}
+              value={yearsExperience}
+              onChange={(e) => setYearsExperience(e.target.value)}
             />
           </FormField>
 
           <FormField label="Compétences (séparées par des virgules)" htmlFor="skills">
-            <Input id="skills" name="skills" defaultValue={candidate.skills.join(", ")} placeholder="ex : React, Node.js, SQL" />
+            <Input
+              id="skills"
+              name="skills"
+              value={skills}
+              onChange={(e) => setSkills(e.target.value)}
+              placeholder="ex : React, Node.js, SQL"
+            />
           </FormField>
 
           <FormField label={candidate.cvUrl ? "Remplacer le CV (PDF)" : "CV (PDF)"} htmlFor="cv">
@@ -90,6 +120,41 @@ export function ProfileForm({ candidate }: { candidate: Candidate }) {
             {pending ? "Enregistrement..." : "Enregistrer mon profil"}
           </Button>
         </form>
+
+        {(newSkillSuggestions.length > 0 || experienceSuggestionUseful) && (
+          <div className="mt-6 pt-6 border-t border-border-soft">
+            <div className="text-sm font-bold text-ink-900 mb-1">Détecté dans votre CV</div>
+            <p className="text-xs text-ink-500 mb-3">
+              Repérage automatique par mots-clés — vérifiez avant d&apos;ajouter.
+            </p>
+            {newSkillSuggestions.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-3">
+                {newSkillSuggestions.map((skill) => (
+                  <button key={skill} type="button" onClick={() => addSuggestedSkill(skill)}>
+                    <Tag tone="teal">+ {skill}</Tag>
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="flex gap-3 items-center flex-wrap">
+              {newSkillSuggestions.length > 1 && (
+                <Button type="button" variant="secondary" size="sm" onClick={addAllSuggestedSkills}>
+                  Tout ajouter aux compétences
+                </Button>
+              )}
+              {experienceSuggestionUseful && (
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => setYearsExperience(String(suggestions!.experienceYears))}
+                >
+                  Utiliser {suggestions!.experienceYears} ans d&apos;expérience
+                </Button>
+              )}
+            </div>
+          </div>
+        )}
       </Card>
 
       <div className="flex flex-col gap-4">

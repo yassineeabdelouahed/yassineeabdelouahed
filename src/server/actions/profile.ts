@@ -5,8 +5,9 @@ import { prisma } from "@/lib/prisma";
 import { requireRole, getSessionUser } from "@/lib/rbac";
 import { saveUploadedFile, FileValidationError } from "@/lib/storage";
 import { updateProfileSchema } from "@/lib/validations/profile";
+import { extractCvSuggestions, type CvSuggestions } from "@/lib/cvParser";
 
-export type ActionResult = { ok: true } | { ok: false; error: string };
+export type ActionResult = { ok: true; cvSuggestions?: CvSuggestions } | { ok: false; error: string };
 
 function splitSkills(raw?: string): string[] {
   if (!raw) return [];
@@ -47,6 +48,7 @@ export async function updateProfileAction(formData: FormData): Promise<ActionRes
   const data = parsed.data;
 
   let cvUrl: string | undefined;
+  let cvSuggestions: CvSuggestions | undefined;
   const cvFile = formData.get("cv");
   if (cvFile instanceof File && cvFile.size > 0) {
     try {
@@ -55,6 +57,10 @@ export async function updateProfileAction(formData: FormData): Promise<ActionRes
       if (err instanceof FileValidationError) return { ok: false, error: err.message };
       throw err;
     }
+    // cvFile.type is trustworthy here: saveUploadedFile only succeeds when the
+    // declared type also matches the file's magic bytes.
+    const buffer = Buffer.from(await cvFile.arrayBuffer());
+    cvSuggestions = await extractCvSuggestions(buffer, cvFile.type);
   }
 
   await prisma.candidate.update({
@@ -70,5 +76,5 @@ export async function updateProfileAction(formData: FormData): Promise<ActionRes
   });
 
   revalidatePath("/candidate/profile");
-  return { ok: true };
+  return { ok: true, cvSuggestions };
 }

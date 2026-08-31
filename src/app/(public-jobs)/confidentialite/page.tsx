@@ -52,9 +52,23 @@ export default function ConfidentialitePage() {
 
       <h2>Durée de conservation</h2>
       <p>
-        [À compléter : durée de conservation des profils candidats après la dernière activité, durée de
-        conservation des mandats clôturés, modalités de suppression sur demande.]
+        Nous conservons vos données pendant la durée nécessaire aux finalités décrites ci-dessus, puis
+        appliquons les durées de conservation suivantes, purgées automatiquement :
       </p>
+      <ul>
+        <li>Notifications lues : 90 jours ;</li>
+        <li>Invitations d&apos;équipe (cabinet ou entreprise cliente) non acceptées : 30 jours après leur expiration ;</li>
+        <li>Jetons de vérification d&apos;e-mail et de réinitialisation de mot de passe expirés : 30 jours ;</li>
+        <li>
+          CV et notes de qualification associés à une candidature refusée (offre publique ou mandat) : 24 mois
+          après le refus, puis anonymisation (le CV et les notes sont supprimés, le statut de la candidature
+          est conservé à des fins statistiques) ;
+        </li>
+        <li>
+          Compte et profil : conservés tant que le compte est actif, supprimés ou anonymisés immédiatement en
+          cas de suppression de compte à votre demande (voir &quot;Vos droits&quot; ci-dessous).
+        </li>
+      </ul>
 
       <h2>Vos droits</h2>
       <p>

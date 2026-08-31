@@ -566,6 +566,20 @@ model PlatformSettings {
   @@map("platform_settings")
 }
 
+/**
+ * One row per run of the data retention purge (src/lib/retention.ts), kept as an audit
+ * trail of what was deleted/anonymized and when — useful to demonstrate compliance with
+ * the retention policy without re-deriving it from application logs.
+ */
+model RetentionPurgeLog {
+  id              String   @id @default(cuid())
+  ranAt           DateTime @default(now())
+  triggeredBy     String
+  summary         Json
+
+  @@map("retention_purge_logs")
+}
+
 /** One receipt per confirmed manual payment (sponsorship, CVthèque access, formation). */
 model Invoice {
   id          String            @id @default(cuid())

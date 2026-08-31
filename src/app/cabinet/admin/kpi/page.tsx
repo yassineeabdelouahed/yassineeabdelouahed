@@ -30,7 +30,12 @@ export default async function CabinetKpiPage() {
 
   return (
     <div>
-      <h1 className="font-heading font-extrabold text-2xl text-ink-900 mb-2">Statistiques globales</h1>
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="font-heading font-extrabold text-2xl text-ink-900">Statistiques globales</h1>
+        <a href="/api/export/kpi" className="text-sm font-semibold text-teal hover:text-teal-hover">
+          Exporter en CSV
+        </a>
+      </div>
       <p className="text-ink-500 mb-8">Vue d&apos;ensemble de l&apos;activité de la plateforme.</p>
 
       <div className="font-heading font-extrabold text-base text-ink-900 mb-3">Comptes</div>

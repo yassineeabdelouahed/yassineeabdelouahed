@@ -11,9 +11,14 @@ export default async function CabinetCandidatesPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-heading font-extrabold text-2xl text-ink-900">Candidats</h1>
-        <LinkButton href="/cabinet/candidates/new" variant="accent">
-          Nouveau candidat
-        </LinkButton>
+        <div className="flex items-center gap-3">
+          <a href="/api/export/candidates" className="text-sm font-semibold text-teal hover:text-teal-hover">
+            Exporter en CSV
+          </a>
+          <LinkButton href="/cabinet/candidates/new" variant="accent">
+            Nouveau candidat
+          </LinkButton>
+        </div>
       </div>
 
       {candidates.length === 0 ? (

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Talentis Connect — Annexe de traitement des données</title>
+<meta name="description" content="Modèle d'annexe encadrant le traitement de données à caractère personnel par les sous-traitants de Talentis Consult.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7fa; --surface: #ffffff; --surface-alt: #eef1f6;
+    --ink: #0b2545; --ink-body: #2c3a52; --ink-muted: #64748b; --ink-faint: #94a3b8;
+    --border: #dde3ec; --accent: #a5761f; --accent-ink: #7a5817; --accent-soft: #f6efdd;
+    --danger: #b91c1c; --danger-soft: #fdeaea;
+    --shadow: 0 1px 2px rgba(11,37,69,0.04), 0 8px 24px rgba(11,37,69,0.06);
+    --radius: 10px;
+    --font-display: "Manrope", Arial, sans-serif;
+    --font-body: "Work Sans", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink-body); font-family: var(--font-body); font-size: 15px; line-height: 1.65; }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+  h1 { font-weight: 800; } h2 { font-weight: 800; }
+
+  .doc-nav { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; padding: 14px 32px; }
+  .doc-nav .mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--ink), #1c3f6e); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 11px; }
+  .doc-nav .brand { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 15px; }
+  .doc-nav .meta { margin-left: auto; font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+
+  .layout { max-width: 760px; margin: 0 auto; padding: 40px 32px 100px; }
+
+  .hero h1 { font-size: 24px; text-align: center; margin: 0 0 8px; }
+  .hero .lede { text-align: center; font-size: 13.5px; color: var(--ink-faint); margin: 0 0 24px; }
+
+  .legal-warning { border: 1px solid var(--danger); background: var(--danger-soft); border-radius: 8px; padding: 16px 18px; margin: 0 0 32px; font-size: 14px; }
+  .legal-warning strong { color: var(--danger); }
+
+  .placeholder { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; padding: 1px 6px; border-radius: 5px; font-size: .93em; }
+
+  table.subprocessors { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0 32px; }
+  table.subprocessors th, table.subprocessors td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); }
+  table.subprocessors th { font-family: var(--font-display); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; background: var(--surface-alt); }
+  .table-wrap { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+
+  article { counter-reset: article; }
+  section.clause { margin-bottom: 26px; scroll-margin-top: 20px; }
+  section.clause h2 { font-size: 15.5px; margin: 0 0 8px; }
+  section.clause h2::before { counter-increment: article; content: "Article " counter(article) " — "; }
+  section.clause p { margin: 0 0 8px; font-size: 14px; }
+  section.clause ul { margin: 6px 0; padding-left: 20px; font-size: 14px; }
+
+  footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 12px; color: var(--ink-faint); }
+
+  @media print {
+    .doc-nav { position: static; }
+    body { background: #fff; }
+    section.clause { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="doc-nav">
+    <div class="mark">TC</div>
+    <div class="brand">Talentis Connect</div>
+    <div class="meta">Annexe de traitement des données — modèle v1.0</div>
+  </div>
+
+  <div class="layout">
+    <div class="hero">
+      <h1>Annexe de traitement des données</h1>
+      <p class="lede">Encadrement des sous-traitants — modèle à adapter — non contractuel en l'état</p>
+    </div>
+
+    <div class="legal-warning">
+      <strong>Modèle de travail, pas une DPA signée.</strong> Ce document formalise, du point de vue de
+      Talentis Consult (responsable de traitement), les engagements attendus de ses sous-traitants. Il ne
+      remplace pas les conditions contractuelles réellement proposées par chaque prestataire (contrat
+      d'hébergement, conditions Resend) : il convient de vérifier que ces conditions couvrent bien les points
+      ci-dessous, ou de faire signer la présente annexe par le sous-traitant, avant toute mise en production
+      traitant des données réelles. À faire valider par un conseil juridique.
+    </div>
+
+    <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-muted); margin: 0 0 10px;">Sous-traitants concernés à ce jour</h3>
+    <div class="table-wrap">
+      <table class="subprocessors">
+        <thead><tr><th>Sous-traitant</th><th>Prestation</th><th>Données concernées</th><th>Localisation</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Hébergeur de la base de données PostgreSQL</td>
+            <td>Stockage de l'ensemble des données de l'application</td>
+            <td>Toutes les données à caractère personnel traitées par la plateforme</td>
+            <td><span class="placeholder">[à compléter selon l'hébergeur retenu — ex. Neon, Supabase]</span></td>
+          </tr>
+          <tr>
+            <td>Resend</td>
+            <td>Envoi des e-mails transactionnels (vérification de compte, réinitialisation de mot de passe, notifications)</td>
+            <td>Adresse e-mail, nom, contenu de la notification</td>
+            <td><span class="placeholder">[à vérifier dans les conditions Resend]</span></td>
+          </tr>
+          <tr>
+            <td>Hébergeur applicatif (Vercel ou équivalent)</td>
+            <td>Exécution de l'application, journaux techniques</td>
+            <td>Adresse IP, journaux de requêtes</td>
+            <td><span class="placeholder">[à compléter selon l'hébergeur retenu]</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <article>
+      <section class="clause" id="a1">
+        <h2>Objet</h2>
+        <p>
+          La présente annexe a pour objet d'encadrer, conformément à la loi marocaine n° 09-08, le traitement
+          de données à caractère personnel réalisé par le Sous-traitant pour le compte de Talentis Consult
+          (responsable de traitement), dans le cadre de la fourniture des services listés ci-dessus.
+        </p>
+      </section>
+
+      <section class="clause" id="a2">
+        <h2>Obligations du Sous-traitant</h2>
+        <ul>
+          <li>Traiter les données uniquement sur instruction documentée du responsable de traitement, y compris s'agissant des transferts de données vers un pays tiers ;</li>
+          <li>Garantir que les personnes autorisées à traiter les données sont tenues à une obligation de confidentialité ;</li>
+          <li>Mettre en œuvre des mesures techniques et organisationnelles appropriées pour garantir un niveau de sécurité adapté au risque (chiffrement en transit, contrôle d'accès, journalisation) ;</li>
+          <li>Assister le responsable de traitement, dans la mesure du possible, pour répondre aux demandes d'exercice des droits des personnes concernées (accès, rectification, opposition, effacement) ;</li>
+          <li>Notifier le responsable de traitement de toute violation de données à caractère personnel dans un délai de <span class="placeholder">[délai à définir, ex. 48 heures]</span> après en avoir pris connaissance ;</li>
+          <li>Ne pas recourir à un sous-traitant ultérieur sans autorisation préalable, écrite, spécifique ou générale, du responsable de traitement ;</li>
+          <li>Supprimer ou restituer, au choix du responsable de traitement, l'ensemble des données à caractère personnel à l'issue de la prestation, et supprimer les copies existantes, sauf obligation légale de conservation.</li>
+        </ul>
+      </section>
+
+      <section class="clause" id="a3">
+        <h2>Durée</h2>
+        <p>
+          La présente annexe s'applique pendant toute la durée du contrat de service principal conclu avec le
+          Sous-traitant, et jusqu'à la suppression effective des données conformément à l'Article 2.
+        </p>
+      </section>
+
+      <section class="clause" id="a4">
+        <h2>Sort des données en fin de contrat</h2>
+        <p>
+          À l'expiration ou à la résiliation du contrat de service principal, pour quelque cause que ce soit, le
+          Sous-traitant s'engage à restituer au responsable de traitement l'ensemble des données à caractère
+          personnel traitées, sous un format exploitable, puis à procéder à leur suppression définitive dans un
+          délai de <span class="placeholder">[délai à définir, ex. 30 jours]</span>, sauf disposition légale
+          contraire imposant une conservation plus longue.
+        </p>
+      </section>
+    </article>
+
+    <footer>
+      Talentis Connect — Modèle d'annexe de traitement des données (sous-traitants) — document de travail, non
+      contractuel en l'état. Dernière mise à jour : 31 août 2026.
+    </footer>
+  </div>
+</body>
+</html>

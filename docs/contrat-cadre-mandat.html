@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Talentis Connect — Contrat-cadre de mandat de recrutement</title>
+<meta name="description" content="Modèle de contrat-cadre de mandat de recrutement entre Talentis Consult et une entreprise cliente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7fa; --surface: #ffffff; --surface-alt: #eef1f6;
+    --ink: #0b2545; --ink-body: #2c3a52; --ink-muted: #64748b; --ink-faint: #94a3b8;
+    --border: #dde3ec; --accent: #a5761f; --accent-ink: #7a5817; --accent-soft: #f6efdd;
+    --danger: #b91c1c; --danger-soft: #fdeaea;
+    --shadow: 0 1px 2px rgba(11,37,69,0.04), 0 8px 24px rgba(11,37,69,0.06);
+    --radius: 10px;
+    --font-display: "Manrope", Arial, sans-serif;
+    --font-body: "Work Sans", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink-body); font-family: var(--font-body); font-size: 15px; line-height: 1.65; }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+  h1 { font-weight: 800; } h2 { font-weight: 800; }
+
+  .doc-nav { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; padding: 14px 32px; }
+  .doc-nav .mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--ink), #1c3f6e); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 11px; }
+  .doc-nav .brand { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 15px; }
+  .doc-nav .meta { margin-left: auto; font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+
+  .layout { max-width: 760px; margin: 0 auto; padding: 40px 32px 100px; }
+
+  .hero h1 { font-size: 24px; text-align: center; margin: 0 0 8px; }
+  .hero .lede { text-align: center; font-size: 13.5px; color: var(--ink-faint); margin: 0 0 24px; }
+
+  .legal-warning { border: 1px solid var(--danger); background: var(--danger-soft); border-radius: 8px; padding: 16px 18px; margin: 0 0 32px; font-size: 14px; }
+  .legal-warning strong { color: var(--danger); }
+
+  .placeholder { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; padding: 1px 6px; border-radius: 5px; font-size: .93em; }
+
+  .parties { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 24px; margin-bottom: 28px; font-size: 14px; }
+  .parties p { margin: 6px 0; }
+
+  article { counter-reset: article; }
+  section.clause { margin-bottom: 26px; scroll-margin-top: 20px; }
+  section.clause h2 { font-size: 15.5px; margin: 0 0 8px; }
+  section.clause h2::before { counter-increment: article; content: "Article " counter(article) " — "; }
+  section.clause p { margin: 0 0 8px; font-size: 14px; }
+  section.clause ul { margin: 6px 0; padding-left: 20px; font-size: 14px; }
+
+  .signatures { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+  .sign-block { border-top: 1px solid var(--ink); padding-top: 10px; font-size: 13px; color: var(--ink-muted); min-height: 90px; }
+  .sign-block strong { display: block; color: var(--ink); margin-bottom: 2px; }
+
+  footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 12px; color: var(--ink-faint); }
+
+  @media print {
+    .doc-nav { position: static; }
+    body { background: #fff; }
+    section.clause { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="doc-nav">
+    <div class="mark">TC</div>
+    <div class="brand">Talentis Connect</div>
+    <div class="meta">Contrat-cadre de mandat — modèle v1.0</div>
+  </div>
+
+  <div class="layout">
+    <div class="hero">
+      <h1>Contrat-cadre de mandat de recrutement</h1>
+      <p class="lede">Modèle à personnaliser — non contractuel en l'état</p>
+    </div>
+
+    <div class="legal-warning">
+      <strong>Modèle de travail, à faire valider par un avocat avant toute signature.</strong> Les champs entre
+      crochets (<span class="placeholder">[ainsi indiqués]</span>) doivent être complétés. Les honoraires
+      (Article 3) et la garantie de remplacement (Article 6) ne sont pas définis dans cette version de la
+      plateforme Talentis Connect — leur définition relève d'une décision commerciale de Talentis Consult,
+      hors périmètre de cet outil. La juridiction compétente (Article 9) et l'applicabilité de toute
+      réglementation sectorielle (agrément de placement privé) restent à confirmer juridiquement.
+    </div>
+
+    <div class="parties">
+      <p><strong>Entre les soussignés :</strong></p>
+      <p><strong>Talentis Consult</strong>, <span class="placeholder">[forme juridique]</span>, dont le siège
+      social est situé à <span class="placeholder">[adresse]</span>, immatriculée sous le numéro ICE
+      <span class="placeholder">[ICE]</span> et RC <span class="placeholder">[RC]</span>, représentée par
+      <span class="placeholder">[nom, qualité]</span>, ci-après désignée « le Cabinet »,</p>
+      <p style="text-align:center; margin: 10px 0; color: var(--ink-faint);">d'une part, et</p>
+      <p><span class="placeholder">[Raison sociale de l'entreprise cliente]</span>, dont le siège social est
+      situé à <span class="placeholder">[adresse]</span>, immatriculée sous le numéro ICE
+      <span class="placeholder">[ICE]</span>, représentée par <span class="placeholder">[nom, qualité]</span>,
+      ci-après désignée « le Client »,</p>
+      <p style="text-align:center; margin: 10px 0; color: var(--ink-faint);">d'autre part,</p>
+      <p>ci-après désignés ensemble « les Parties ».</p>
+    </div>
+
+    <article>
+      <section class="clause" id="a1">
+        <h2>Objet</h2>
+        <p>
+          Le présent contrat-cadre a pour objet de définir les conditions générales dans lesquelles le Cabinet
+          exécute, pour le compte du Client, des mandats de recherche et de présentation de candidats en vue de
+          pourvoir les postes que le Client soumet via la plateforme Talentis Connect. Chaque mandat déposé sur
+          la plateforme constitue une mission ponctuelle exécutée dans le cadre du présent contrat-cadre, sans
+          exclusivité sauf mention contraire expressément convenue entre les Parties pour un mandat donné.
+        </p>
+      </section>
+
+      <section class="clause" id="a2">
+        <h2>Modalités d'exécution</h2>
+        <p>Chaque mandat suit le processus suivant, tel que mis en œuvre sur la plateforme Talentis Connect :</p>
+        <ul>
+          <li>Dépôt du besoin par le Client (poste, critères recherchés, conditions) ;</li>
+          <li>Validation et clarification du besoin par le Cabinet ;</li>
+          <li>Sourcing et pré-qualification des candidats par le Cabinet ;</li>
+          <li>Présentation d'une short-list au Client ;</li>
+          <li>Sélection par le Client des candidats à rencontrer ;</li>
+          <li>Planification des entretiens selon les disponibilités communiquées par le Client ;</li>
+          <li>Retour du Client sur chaque entretien (validation, réserve ou refus) ;</li>
+          <li>Clôture du mandat par le Cabinet, avec identification du candidat retenu le cas échéant.</li>
+        </ul>
+      </section>
+
+      <section class="clause" id="a3">
+        <h2>Honoraires</h2>
+        <p>
+          <span class="placeholder">[À COMPLÉTER — barème, pourcentage de la rémunération annuelle brute du
+          poste pourvu, ou forfait ; modalités et échéances de facturation ; le module de facturation des
+          honoraires de placement n'est pas implémenté dans la version actuelle de la plateforme.]</span>
+        </p>
+      </section>
+
+      <section class="clause" id="a4">
+        <h2>Obligations du Cabinet</h2>
+        <ul>
+          <li>Mettre en œuvre des moyens raisonnables de sourcing et de pré-qualification correspondant au besoin exprimé par le Client ;</li>
+          <li>Préserver la confidentialité des informations transmises par le Client dans le cadre du mandat ;</li>
+          <li>Informer le Client de l'avancement du mandat via la plateforme ;</li>
+          <li>Ne présenter que des candidats ayant donné leur accord pour être présentés au Client.</li>
+        </ul>
+      </section>
+
+      <section class="clause" id="a5">
+        <h2>Obligations du Client</h2>
+        <ul>
+          <li>Fournir une description fidèle et suffisamment précise du poste et des critères recherchés ;</li>
+          <li>Répondre dans un délai raisonnable aux short-lists et propositions de créneaux d'entretien transmises par le Cabinet ;</li>
+          <li>Informer le Cabinet de toute évolution substantielle du besoin, de l'annulation du mandat, ou du recrutement d'un candidat par un autre canal pendant la durée du mandat.</li>
+        </ul>
+      </section>
+
+      <section class="clause" id="a6">
+        <h2>Garantie de remplacement</h2>
+        <p>
+          <span class="placeholder">[À COMPLÉTER selon la politique commerciale du Cabinet — par exemple :
+          conditions et délai de remplacement gratuit en cas de départ du candidat recruté dans les N mois
+          suivant son embauche.]</span>
+        </p>
+      </section>
+
+      <section class="clause" id="a7">
+        <h2>Confidentialité et protection des données</h2>
+        <p>
+          Les données à caractère personnel des candidats et des contacts du Client sont traitées par le
+          Cabinet conformément à sa politique de confidentialité, disponible sur la plateforme Talentis
+          Connect, et le cas échéant à l'annexe de traitement des données applicable aux sous-traitants du
+          Cabinet. Chaque Partie s'engage à ne pas divulguer à des tiers les informations confidentielles
+          reçues de l'autre Partie dans le cadre de l'exécution du présent contrat.
+        </p>
+      </section>
+
+      <section class="clause" id="a8">
+        <h2>Durée et résiliation</h2>
+        <p>
+          Le présent contrat-cadre est conclu pour une durée de <span class="placeholder">[durée]</span>,
+          renouvelable par tacite reconduction sauf dénonciation par l'une des Parties avec un préavis de
+          <span class="placeholder">[durée de préavis]</span>. Les mandats en cours d'exécution à la date de
+          résiliation restent régis par les présentes conditions jusqu'à leur clôture.
+        </p>
+      </section>
+
+      <section class="clause" id="a9">
+        <h2>Droit applicable et juridiction compétente</h2>
+        <p>
+          Le présent contrat est soumis au droit marocain. Tout litige relatif à sa formation, son exécution ou
+          son interprétation relève de la compétence des tribunaux de <span class="placeholder">[ville — à
+          confirmer]</span>, à défaut de règlement amiable entre les Parties.
+        </p>
+      </section>
+    </article>
+
+    <div class="signatures">
+      <div class="sign-block">
+        <strong>Pour le Cabinet</strong>
+        Nom, qualité, date et signature
+      </div>
+      <div class="sign-block">
+        <strong>Pour le Client</strong>
+        Nom, qualité, date et signature
+      </div>
+    </div>
+
+    <footer>
+      Talentis Connect — Modèle de contrat-cadre de mandat de recrutement — document de travail, non
+      contractuel en l'état. Dernière mise à jour : 31 août 2026.
+    </footer>
+  </div>
+</body>
+</html>

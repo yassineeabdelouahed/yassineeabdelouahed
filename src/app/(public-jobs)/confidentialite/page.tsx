@@ -42,12 +42,43 @@ export default function ConfidentialitePage() {
         <li>Sécurité du compte (vérification d&apos;e-mail, réinitialisation de mot de passe, prévention des abus).</li>
       </ul>
 
+      <h2>Base légale des traitements</h2>
+      <ul>
+        <li>
+          <strong>Gestion des comptes et sécurité</strong> : exécution du contrat (conditions
+          générales d&apos;utilisation) et intérêt légitime (sécurité des comptes) ;
+        </li>
+        <li>
+          <strong>Candidatures et profils candidats</strong> : exécution du contrat (candidature volontaire à
+          une offre) et intérêt légitime du cabinet pour le sourcing de profils dans le cadre d&apos;un mandat
+          en cours ;
+        </li>
+        <li>
+          <strong>Mandats de recrutement</strong> : exécution du contrat de mandat conclu avec l&apos;entreprise
+          cliente ;
+        </li>
+        <li>
+          <strong>Facturation</strong> : exécution du contrat et obligation légale (conservation des pièces
+          comptables) ;
+        </li>
+        <li>
+          <strong>Notifications</strong> : exécution du contrat et intérêt légitime.
+        </li>
+      </ul>
+      <p>
+        Le détail par activité de traitement (catégories de données, destinataires, sous-traitants) est tenu
+        dans un registre interne des traitements, disponible sur demande.
+      </p>
+
       <h2>Destinataires des données</h2>
       <p>
         Vos données sont accessibles à l&apos;équipe de Talentis Consult et, selon le contexte, à
         l&apos;entreprise cliente pour laquelle un mandat de recrutement est en cours (uniquement les
         candidatures que vous avez soumises ou qui ont été présélectionnées pour ce mandat). Elles ne sont
-        jamais vendues à des tiers.
+        jamais vendues à des tiers. Certains prestataires techniques (hébergement de la base de données,
+        envoi des e-mails transactionnels) traitent vos données pour notre compte, dans les limites strictement
+        nécessaires à la fourniture du service, et sont contractuellement tenus à des obligations de
+        confidentialité et de sécurité.
       </p>
 
       <h2>Durée de conservation</h2>

@@ -39,8 +39,10 @@ export default function CGVPage() {
       <h2>Tarifs</h2>
       <p>
         Les tarifs affichés sur la plateforme au moment de la commande sont exprimés en dirhams marocains
-        (MAD) [À compléter : mention TVA le cas échéant]. Talentis Consult se réserve le droit de modifier ses
-        tarifs à tout moment ; le tarif applicable à une commande est celui affiché au moment de sa validation.
+        (MAD). La taxe sur la valeur ajoutée (TVA), lorsqu&apos;elle s&apos;applique, est calculée au taux en
+        vigueur et détaillée sur le reçu remis lors de la confirmation du paiement. Talentis Consult se
+        réserve le droit de modifier ses tarifs à tout moment ; le tarif applicable à une commande est celui
+        affiché au moment de sa validation.
       </p>
 
       <h2>Annulation et remboursement</h2>
@@ -49,11 +51,26 @@ export default function CGVPage() {
         modalités de remboursement en cas de non-exécution de la prestation par Talentis Consult.]
       </p>
 
+      <h2>Droit de rétractation (formations)</h2>
+      <p>
+        Lorsqu&apos;une inscription à une session de formation est souscrite par une personne physique agissant
+        à des fins non professionnelles, celle-ci peut être regardée comme un consommateur au sens de la loi
+        n° 31-08 édictant des mesures de protection du consommateur ; l&apos;applicabilité de cette loi à une
+        inscription donnée dépend des circonstances de la vente et reste à confirmer au cas par cas
+        [À valider juridiquement]. Sous cette réserve, un droit de rétractation peut s&apos;exercer par écrit
+        (e-mail à l&apos;adresse de contact ci-dessous) dans un délai de sept (7) jours à compter de la
+        confirmation de l&apos;inscription, tant que la session de formation n&apos;a pas débuté. Passé ce
+        délai, ou une fois la session commencée, l&apos;inscription ne peut plus être annulée sans l&apos;accord
+        de Talentis Consult.
+      </p>
+
       <h2>Facturation</h2>
       <p>
-        Un reçu est mis à disposition de l&apos;entreprise cliente dans son espace dès la confirmation du
-        paiement par Talentis Consult. [À compléter : mentions légales obligatoires sur facture selon la
-        réglementation marocaine applicable.]
+        Un reçu est mis à disposition de l&apos;entreprise cliente ou du candidat dans son espace dès la
+        confirmation du paiement par Talentis Consult. Ce reçu porte les mentions légales obligatoires
+        (identifiant commun de l&apos;entreprise, registre de commerce, identifiant fiscal, patente, CNSS) et
+        le détail de la TVA dès lors que ces informations ont été renseignées par l&apos;administrateur cabinet
+        ; à défaut, il reste un simple justificatif de paiement, explicitement identifié comme tel.
       </p>
 
       <h2>Responsabilité</h2>

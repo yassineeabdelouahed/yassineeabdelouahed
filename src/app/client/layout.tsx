@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/client/mandats", label: "Mes mandats" },
   { href: "/client/jobs", label: "Mes offres publiées" },
   { href: "/client/cv-database", label: "CVthèque" },
+  { href: "/client/team", label: "Mon équipe" },
   { href: "/", label: "Job board" },
   { href: "/client/settings", label: "Paramètres" },
 ];

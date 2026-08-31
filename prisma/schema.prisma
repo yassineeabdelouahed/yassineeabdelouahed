@@ -58,6 +58,7 @@ model User {
   createdProspects     Prospect[]          @relation("ProspectCreatedBy")
   assignedProspects    Prospect[]          @relation("ProspectAssignedTo")
   prospectStageEvents  ProspectStageEvent[]
+  sentClientInvites    ClientInvite[]      @relation("ClientInvitedBy")
 
   @@map("users")
 }
@@ -78,8 +79,26 @@ model Company {
   reviews           CompanyReview[]
   invoices          Invoice[]
   convertedFrom     Prospect[]
+  clientInvites     ClientInvite[]
 
   @@map("companies")
+}
+
+/** Invites a colleague to join an existing Company's client team — mirrors CabinetInvite. */
+model ClientInvite {
+  id              String    @id @default(cuid())
+  email           String
+  companyId       String
+  token           String    @unique
+  invitedByUserId String
+  expiresAt       DateTime
+  acceptedAt      DateTime?
+  createdAt       DateTime  @default(now())
+
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  invitedBy User    @relation("ClientInvitedBy", fields: [invitedByUserId], references: [id], onDelete: Cascade)
+
+  @@map("client_invites")
 }
 
 model ClientProfile {

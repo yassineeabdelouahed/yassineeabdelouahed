@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Talentis Connect — Cartographie des critères</title>
+<meta name="description" content="Talentis Connect — cartographie détaillée des critères fonctionnels, techniques et juridiques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7fa; --surface: #ffffff; --surface-alt: #eef1f6;
+    --ink: #0b2545; --ink-body: #2c3a52; --ink-muted: #64748b; --ink-faint: #94a3b8;
+    --border: #dde3ec; --accent: #a5761f; --accent-ink: #7a5817; --accent-soft: #f6efdd;
+    --success: #15803d; --success-soft: #e9f7ee;
+    --warn: #b45309; --warn-soft: #fdf3e2;
+    --danger: #b91c1c; --danger-soft: #fdeaea;
+    --shadow: 0 1px 2px rgba(11,37,69,0.04), 0 8px 24px rgba(11,37,69,0.06);
+    --radius: 10px;
+    --font-display: "Manrope", Arial, sans-serif;
+    --font-body: "Work Sans", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink-body); font-family: var(--font-body); font-size: 15.5px; line-height: 1.6; }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--ink); text-wrap: balance; }
+  h1 { font-weight: 800; } h2 { font-weight: 800; } h3 { font-weight: 700; }
+  a { color: var(--accent-ink); }
+  code { font-family: var(--font-mono); background: var(--surface-alt); padding: 1px 6px; border-radius: 5px; font-size: .88em; }
+
+  .doc-nav { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; padding: 14px 32px; }
+  .doc-nav .mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--ink), #1c3f6e); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 11px; }
+  .doc-nav .brand { font-family: var(--font-display); font-weight: 800; color: var(--ink); font-size: 15px; }
+  .doc-nav .meta { margin-left: auto; font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+
+  .layout { display: grid; grid-template-columns: 250px minmax(0,760px); gap: 48px; max-width: 1080px; margin: 0 auto; padding: 40px 32px 100px; justify-content: center; }
+  .toc { position: sticky; top: 70px; align-self: start; max-height: calc(100vh - 90px); overflow-y: auto; }
+  .toc-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 12px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .toc a { display: block; text-decoration: none; color: var(--ink-muted); font-size: 13px; padding: 6px 10px; border-radius: 7px; }
+  .toc a.part { font-weight: 700; color: var(--ink); margin-top: 10px; }
+  .toc a:hover { background: var(--surface-alt); color: var(--ink); }
+
+  .hero { margin-bottom: 44px; }
+  .kicker { display: inline-flex; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+  .hero h1 { font-size: 30px; line-height: 1.15; margin: 0 0 14px; }
+  .hero .lede { font-size: 16px; color: var(--ink-muted); max-width: 68ch; margin: 0 0 18px; }
+
+  .part-header { margin: 60px 0 24px; padding-bottom: 14px; border-bottom: 3px solid var(--ink); }
+  .part-header .part-kicker { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+  .part-header h1 { font-size: 26px; margin: 4px 0 0; }
+  .part-header:first-of-type { margin-top: 0; }
+
+  section { margin-bottom: 40px; scroll-margin-top: 84px; }
+  section h2 { font-size: 19px; margin: 0 0 4px; }
+  .section-intro { color: var(--ink-muted); margin: 0 0 16px; max-width: 68ch; font-size: 14px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 10px 0 8px; }
+  caption { text-align: left; font-size: 12px; color: var(--ink-faint); margin-bottom: 6px; }
+  th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-family: var(--font-display); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; }
+  tr:last-child td { border-bottom: none; }
+  .table-wrap { overflow-x: auto; margin-bottom: 8px; }
+  td.crit { font-weight: 600; color: var(--ink); }
+  td.notes { color: var(--ink-muted); font-size: 13px; }
+  col.col-status { width: 90px; }
+
+  .pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill.done { background: var(--success-soft); color: var(--success); }
+  .pill.partial { background: var(--warn-soft); color: var(--warn); }
+  .pill.missing { background: var(--danger-soft); color: var(--danger); }
+
+  .legal-warning { border: 1px solid var(--danger); background: var(--danger-soft); border-radius: 8px; padding: 16px 18px; margin: 0 0 28px; font-size: 14px; color: var(--ink-body); }
+  .legal-warning strong { color: var(--danger); }
+
+  .callout { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--surface); border-radius: 8px; padding: 14px 16px; margin: 16px 0; font-size: 13.5px; }
+  .callout h4 { margin: 0 0 6px; font-size: 13px; color: var(--ink); }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0 8px; }
+  .summary-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+  .summary-card .n { font-family: var(--font-display); font-weight: 800; font-size: 26px; color: var(--ink); }
+  .summary-card .l { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+  .summary-card.done .n { color: var(--success); }
+  .summary-card.partial .n { color: var(--warn); }
+  .summary-card.missing .n { color: var(--danger); }
+
+  footer.doc-footer { max-width: 1080px; margin: 0 auto; padding: 0 32px 60px; }
+  .foot-note { border-top: 1px solid var(--border); padding-top: 20px; font-size: 12.5px; color: var(--ink-faint); }
+
+  @media print {
+    .doc-nav, .toc { display: none !important; }
+    body { background: #fff; font-size: 12px; }
+    .layout { grid-template-columns: 1fr; max-width: none; padding: 0 10mm; gap: 0; }
+    .part-header { page-break-before: always; }
+    .part-header:first-of-type { page-break-before: avoid; }
+    section { page-break-inside: avoid; margin-bottom: 26px; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-nav">
+  <span class="mark">TC</span>
+  <span class="brand">Talentis Connect — Cartographie des critères</span>
+  <span class="meta">v1.0 · Août 2026</span>
+</div>
+
+<div class="layout">
+  <nav class="toc" aria-label="Sommaire">
+    <p class="toc-title">Sommaire</p>
+    <ol>
+      <li><a href="#synthese">Synthèse</a></li>
+      <li><a href="#partie1" class="part">PARTIE 1 — FONCTIONNEL</a></li>
+      <li><a href="#f1">1.1 Comptes et accès</a></li>
+      <li><a href="#f2">1.2 Mandat en 8 étapes</a></li>
+      <li><a href="#f3">1.3 Job board public</a></li>
+      <li><a href="#f4">1.4 Espace Candidat</a></li>
+      <li><a href="#f5">1.5 Marketplace / monétisation</a></li>
+      <li><a href="#f6">1.6 Pilotage cabinet</a></li>
+      <li><a href="#partie2" class="part">PARTIE 2 — TECHNIQUE</a></li>
+      <li><a href="#t1">2.1 Architecture</a></li>
+      <li><a href="#t2">2.2 Sécurité</a></li>
+      <li><a href="#t3">2.3 Qualité et exploitation</a></li>
+      <li><a href="#t4">2.4 Données</a></li>
+      <li><a href="#partie3" class="part">PARTIE 3 — JURIDIQUE</a></li>
+      <li><a href="#j1">3.1 Structure et contrats</a></li>
+      <li><a href="#j2">3.2 Données personnelles (Loi 09-08)</a></li>
+      <li><a href="#j3">3.3 Facturation et fiscalité</a></li>
+      <li><a href="#j4">3.4 Propriété intellectuelle</a></li>
+      <li><a href="#j5">3.5 Protection du consommateur</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <span class="kicker">Cartographie des critères</span>
+      <h1>Talentis Connect — état des lieux complet</h1>
+      <p class="lede">Ce document recense, critère par critère, ce qui est livré, partiel ou manquant sur les trois dimensions du projet : fonctionnelle, technique et juridique. Chaque ligne porte un statut (livré / partiel / manquant) et une note explicative.</p>
+    </section>
+
+    <section id="synthese">
+      <h2>Synthèse</h2>
+      <p class="section-intro">Vue d'ensemble avant le détail. Les décomptes portent sur l'ensemble des critères listés dans ce document.</p>
+      <div class="summary-grid">
+        <div class="summary-card done"><div class="n">48</div><div class="l">critères livrés</div></div>
+        <div class="summary-card partial"><div class="n">11</div><div class="l">critères partiels</div></div>
+        <div class="summary-card missing"><div class="n">28</div><div class="l">critères manquants</div></div>
+      </div>
+      <p style="margin-top:14px;">Le produit est fonctionnellement mature et techniquement solide pour un usage pilote : 48 des 87 critères recensés sont pleinement livrés, très majoritairement sur les dimensions fonctionnelle et technique. Les 28 critères manquants se concentrent sur trois zones : la mise en production réelle (jamais déployée), les tests automatisés / CI, et — surtout — la conformité juridique et fiscale marocaine (13 des 28 critères manquants), qui n'a jamais été validée par un professionnel.</p>
+    </section>
+
+    <!-- ==================== PARTIE 1 — FONCTIONNEL ==================== -->
+    <div class="part-header" id="partie1">
+      <div class="part-kicker">Partie 1</div>
+      <h1>Critères fonctionnels</h1>
+    </div>
+
+    <section id="f1">
+      <h2>1.1 Comptes et accès</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Inscription libre — Client</td><td><span class="pill done">Livré</span></td><td class="notes">Crée automatiquement l'entreprise associée.</td></tr>
+          <tr><td class="crit">Inscription libre — Candidat</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Connexion sociale Google / LinkedIn</td><td><span class="pill done">Livré</span></td><td class="notes">Candidats uniquement, activable/désactivable par variables d'environnement.</td></tr>
+          <tr><td class="crit">Comptes Cabinet sur invitation uniquement</td><td><span class="pill done">Livré</span></td><td class="notes">Aucune inscription libre côté cabinet, par conception.</td></tr>
+          <tr><td class="crit">Vérification d'e-mail à l'inscription</td><td><span class="pill done">Livré</span></td><td class="notes">Lien à usage unique, bandeau de rappel tant que non confirmé.</td></tr>
+          <tr><td class="crit">Mot de passe oublié</td><td><span class="pill done">Livré</span></td><td class="notes">Lien à usage unique valable 1 heure.</td></tr>
+          <tr><td class="crit">Double authentification (2FA / TOTP)</td><td><span class="pill done">Livré</span></td><td class="notes">Comptes cabinet uniquement, avec codes de secours.</td></tr>
+          <tr><td class="crit">Suppression de compte (droit à l'oubli)</td><td><span class="pill done">Livré</span></td><td class="notes">Anonymisation, pas de suppression brute (contraintes d'historique).</td></tr>
+          <tr><td class="crit">Multi-utilisateurs par entreprise cliente</td><td><span class="pill missing">Manquant</span></td><td class="notes">Un seul compte par entreprise en v1.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="f2">
+      <h2>1.2 Le mandat de recrutement en 8 étapes</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Dépôt de la demande (client)</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 1.</td></tr>
+          <tr><td class="crit">Validation et clarification (cabinet)</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 2, avec messagerie intégrée au mandat.</td></tr>
+          <tr><td class="crit">Sourcing et pré-qualification</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 3.</td></tr>
+          <tr><td class="crit">Envoi de la short-list</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 4.</td></tr>
+          <tr><td class="crit">Sélection des candidats par le client</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 5.</td></tr>
+          <tr><td class="crit">Planification des entretiens</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 6 — créneaux client puis confirmation cabinet.</td></tr>
+          <tr><td class="crit">Retour d'entretien</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 7 — validé / réserve / refusé.</td></tr>
+          <tr><td class="crit">Clôture et recrutement confirmé</td><td><span class="pill done">Livré</span></td><td class="notes">Étape 8, scope minimal (statut + candidat retenu).</td></tr>
+          <tr><td class="crit">Facturation des honoraires de placement</td><td><span class="pill missing">Manquant</span></td><td class="notes">Exclusion explicitement demandée pour cette version.</td></tr>
+          <tr><td class="crit">Génération de contrat / signature électronique</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non livré.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="f3">
+      <h2>1.3 Job board public</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Recherche par mots-clés / ville / catégorie</td><td><span class="pill done">Livré</span></td><td class="notes">Filtrage base de données.</td></tr>
+          <tr><td class="crit">Fiche offre détaillée</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Candidature en un clic</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Fiche entreprise publique (avis, badge)</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Espace recruteur (publication directe)</td><td><span class="pill done">Livré</span></td><td class="notes">Indépendant du workflow de mandat.</td></tr>
+          <tr><td class="crit">Diffusion externe (LinkedIn, Indeed…)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Statuts d'affichage simulés, aucune intégration réelle.</td></tr>
+          <tr><td class="crit">Recherche full-text avancée / SEO</td><td><span class="pill partial">Partiel</span></td><td class="notes">Filtrage SQL simple ; pas de sitemap, pas de structured data.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="f4">
+      <h2>1.4 Espace Candidat</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Profil (CV, compétences, expérience)</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Suivi des candidatures</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Alertes emploi</td><td><span class="pill done">Livré</span></td><td class="notes">Notification à chaque offre correspondante.</td></tr>
+          <tr><td class="crit">Messagerie directe avec recruteur</td><td><span class="pill done">Livré</span></td><td class="notes">Rattachée à une candidature.</td></tr>
+          <tr><td class="crit">Avis sur les entreprises</td><td><span class="pill done">Livré</span></td><td class="notes">Réservé aux candidats ayant postulé, modéré par le cabinet.</td></tr>
+          <tr><td class="crit">Parsing automatique de CV</td><td><span class="pill missing">Manquant</span></td><td class="notes">Volontairement différé (phase IA).</td></tr>
+          <tr><td class="crit">Matching IA / scoring automatique</td><td><span class="pill missing">Manquant</span></td><td class="notes">Volontairement différé.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="f5">
+      <h2>1.5 Marketplace et monétisation</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Offres sponsorisées</td><td><span class="pill done">Livré</span></td><td class="notes">Paiement manuel confirmé par le cabinet.</td></tr>
+          <tr><td class="crit">CVthèque payante (accès temporaire)</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Formations (catalogue + inscription)</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Reçus PDF automatiques</td><td><span class="pill done">Livré</span></td><td class="notes">Numérotation séquentielle par année.</td></tr>
+          <tr><td class="crit">Passerelle de paiement en ligne réelle</td><td><span class="pill missing">Manquant</span></td><td class="notes">Paiement manuel uniquement (virement / espèces).</td></tr>
+          <tr><td class="crit">Facturation légale complète</td><td><span class="pill partial">Partiel</span></td><td class="notes">Reçu généré, mais sans mentions légales obligatoires — voir Partie 3.3.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="f6">
+      <h2>1.6 Pilotage cabinet</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">CRM candidats</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Statistiques globales (KPI)</td><td><span class="pill done">Livré</span></td><td class="notes">Comptes, offres, candidatures, mandats, revenu.</td></tr>
+          <tr><td class="crit">Prospection commerciale (pipeline)</td><td><span class="pill done">Livré</span></td><td class="notes">Distinct du CRM candidats.</td></tr>
+          <tr><td class="crit">Vérification d'entreprise (badge)</td><td><span class="pill done">Livré</span></td><td class="notes">Activation manuelle par le cabinet.</td></tr>
+          <tr><td class="crit">Modération des avis</td><td><span class="pill done">Livré</span></td><td class="notes">—</td></tr>
+          <tr><td class="crit">Reporting exportable (Excel / PDF)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Les statistiques sont consultables en ligne uniquement.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ==================== PARTIE 2 — TECHNIQUE ==================== -->
+    <div class="part-header" id="partie2">
+      <div class="part-kicker">Partie 2</div>
+      <h1>Critères techniques</h1>
+    </div>
+
+    <section id="t1">
+      <h2>2.1 Architecture</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Stack applicative (Next.js / PostgreSQL / Prisma)</td><td><span class="pill done">Livré</span></td><td class="notes">Architecture monolithique moderne, cohérente de bout en bout.</td></tr>
+          <tr><td class="crit">Séparation environnements dev / staging / prod</td><td><span class="pill missing">Manquant</span></td><td class="notes">Seul un environnement de développement existe à ce jour.</td></tr>
+          <tr><td class="crit">Mise en production réelle</td><td><span class="pill missing">Manquant</span></td><td class="notes">Jamais déployée en ligne (procédure documentée, non exécutée).</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="t2">
+      <h2>2.2 Sécurité</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">HTTPS</td><td><span class="pill partial">Partiel</span></td><td class="notes">Dépend de l'hébergeur choisi au déploiement (Vercel le fournit par défaut).</td></tr>
+          <tr><td class="crit">Contrôle d'accès par rôle, triple vérification</td><td><span class="pill done">Livré</span></td><td class="notes">Middleware + layout + server action, indépendamment à chaque niveau.</td></tr>
+          <tr><td class="crit">Limitation de fréquence (anti brute-force)</td><td><span class="pill done">Livré</span></td><td class="notes">Connexion, inscription, candidature.</td></tr>
+          <tr><td class="crit">Validation stricte des fichiers uploadés</td><td><span class="pill done">Livré</span></td><td class="notes">Signature binaire, pas seulement l'extension déclarée.</td></tr>
+          <tr><td class="crit">Protection injection SQL</td><td><span class="pill done">Livré</span></td><td class="notes">ORM Prisma, requêtes paramétrées.</td></tr>
+          <tr><td class="crit">Protection XSS</td><td><span class="pill done">Livré</span></td><td class="notes">Échappement automatique React.</td></tr>
+          <tr><td class="crit">Protection CSRF</td><td><span class="pill done">Livré</span></td><td class="notes">Intrinsèque aux Server Actions Next.js.</td></tr>
+          <tr><td class="crit">Double authentification</td><td><span class="pill done">Livré</span></td><td class="notes">Comptes cabinet.</td></tr>
+          <tr><td class="crit">Journalisation des actions sensibles</td><td><span class="pill partial">Partiel</span></td><td class="notes">Historique complet sur mandats et prospects ; pas de log d'audit global.</td></tr>
+          <tr><td class="crit">Sauvegardes automatisées</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non en place, faute de déploiement en production.</td></tr>
+          <tr><td class="crit">Test de sécurité formel (audit / pentest)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Vérifications ciblées faites en interne, pas d'audit externe.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="t3">
+      <h2>2.3 Qualité et exploitation</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Tests automatisés (unitaires / bout en bout)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Vérification manuelle systématique à chaque livraison, pas de suite exécutable en continu.</td></tr>
+          <tr><td class="crit">Intégration / déploiement continus (CI/CD)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non configuré.</td></tr>
+          <tr><td class="crit">Supervision / alerting (monitoring)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non en place.</td></tr>
+          <tr><td class="crit">Documentation technique</td><td><span class="pill done">Livré</span></td><td class="notes">Fonctionnelle, technique et architecture, à jour.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="t4">
+      <h2>2.4 Données</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Stockage des CV</td><td><span class="pill partial">Partiel</span></td><td class="notes">Disque local — à basculer vers un stockage objet (S3-compatible) avant mise à l'échelle.</td></tr>
+          <tr><td class="crit">Moteur de recherche</td><td><span class="pill partial">Partiel</span></td><td class="notes">Filtrage SQL simple, suffisant au volume actuel.</td></tr>
+          <tr><td class="crit">Politique de conservation / suppression des données</td><td><span class="pill partial">Partiel</span></td><td class="notes">Le droit à l'oubli est implémenté ; les durées de conservation précises par type de donnée ne sont pas formalisées.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ==================== PARTIE 3 — JURIDIQUE ==================== -->
+    <div class="part-header" id="partie3">
+      <div class="part-kicker">Partie 3</div>
+      <h1>Critères juridiques</h1>
+    </div>
+
+    <div class="legal-warning">
+      <strong>Avertissement.</strong> Cette partie n'est pas un avis juridique. Elle identifie des points de vigilance réglementaires à faire valider par un avocat et un expert-comptable inscrits au Maroc avant tout lancement commercial — en particulier le statut de l'activité de placement, la déclaration CNDP, et les mentions de facturation. Aucune démarche listée ci-dessous comme « manquante » n'a été engagée.
+    </div>
+
+    <section id="j1">
+      <h2>3.1 Structure et cadre contractuel</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Qualification juridique de l'activité</td><td><span class="pill missing">Manquant</span></td><td class="notes">À trancher formellement : simple intermédiation, ou activité de placement/recrutement — les obligations diffèrent selon le choix.</td></tr>
+          <tr><td class="crit">Agrément d'activité de placement privé</td><td><span class="pill missing">Manquant</span></td><td class="notes">Le placement privé payant est encadré au Maroc (autorisation du Ministère chargé de l'Emploi) ; applicabilité à vérifier selon le modèle retenu.</td></tr>
+          <tr><td class="crit">Conditions générales d'utilisation (CGU)</td><td><span class="pill partial">Partiel</span></td><td class="notes">Structure et contenu de base rédigés ; portent la mention explicite « à valider par un juriste ».</td></tr>
+          <tr><td class="crit">Conditions générales de vente (CGV)</td><td><span class="pill partial">Partiel</span></td><td class="notes">Idem — sponsoring, CVthèque, formations ; clauses d'annulation/remboursement à compléter.</td></tr>
+          <tr><td class="crit">Contrat-cadre avec les entreprises clientes</td><td><span class="pill missing">Manquant</span></td><td class="notes">Aucun contrat de mandat de recrutement formalisé au-delà des CGU/CGV.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="j2">
+      <h2>3.2 Protection des données personnelles (Loi 09-08 / CNDP)</h2>
+      <p class="section-intro">Le Maroc encadre le traitement des données à caractère personnel par la loi 09-08, sous contrôle de la CNDP (Commission Nationale de contrôle de la protection des Données à caractère Personnel).</p>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Politique de confidentialité</td><td><span class="pill partial">Partiel</span></td><td class="notes">Rédigée, mentionne le droit d'accès/rectification/opposition — durées de conservation précises à compléter.</td></tr>
+          <tr><td class="crit">Déclaration ou autorisation CNDP</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non entamée. Le traitement de CV et données candidats relève potentiellement d'un régime déclaratif ou d'autorisation selon la nature des données traitées.</td></tr>
+          <tr><td class="crit">Base légale du traitement documentée</td><td><span class="pill missing">Manquant</span></td><td class="notes">Consentement / exécution contractuelle à formaliser par type de traitement.</td></tr>
+          <tr><td class="crit">Durées de conservation précises par type de donnée</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non définies (CV inactifs, mandats clôturés, etc.).</td></tr>
+          <tr><td class="crit">Droit d'accès, de rectification, d'opposition</td><td><span class="pill done">Livré</span></td><td class="notes">Mentionné dans la politique de confidentialité ; exercé par contact direct.</td></tr>
+          <tr><td class="crit">Droit à l'effacement — fonctionnalité</td><td><span class="pill done">Livré</span></td><td class="notes">Suppression de compte en self-service, implémentée techniquement.</td></tr>
+          <tr><td class="crit">Registre des traitements</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non tenu.</td></tr>
+          <tr><td class="crit">Clauses de traitement des données avec les sous-traitants</td><td><span class="pill missing">Manquant</span></td><td class="notes">Hébergeur de base de données, fournisseur d'e-mail (Resend) — aucune clause contractuelle formalisée à date.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="j3">
+      <h2>3.3 Facturation et fiscalité</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Mentions légales obligatoires sur facture (ICE, RC, IF, Patente, CNSS)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Le modèle de reçu actuel (numéro, description, montant, date) ne porte aucune de ces mentions.</td></tr>
+          <tr><td class="crit">Gestion de la TVA</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non calculée ni affichée sur les reçus.</td></tr>
+          <tr><td class="crit">Conformité comptable marocaine</td><td><span class="pill missing">Manquant</span></td><td class="notes">À valider avec un expert-comptable avant toute facturation réelle.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="j4">
+      <h2>3.4 Propriété intellectuelle et responsabilité</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Propriété du contenu utilisateur (CV, offres, avis)</td><td><span class="pill done">Livré</span></td><td class="notes">Traitée dans les CGU.</td></tr>
+          <tr><td class="crit">Clause de non-garantie de résultat</td><td><span class="pill done">Livré</span></td><td class="notes">Présente dans les CGU/CGV (mise en avant, accès CVthèque).</td></tr>
+          <tr><td class="crit">Modération des contenus frauduleux</td><td><span class="pill partial">Partiel</span></td><td class="notes">Avis modérés avant publication ; offres d'emploi publiées sans modération préalable.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="j5">
+      <h2>3.5 Protection du consommateur (candidats, formations)</h2>
+      <div class="table-wrap"><table>
+        <colgroup><col><col class="col-status"><col></colgroup>
+        <thead><tr><th>Critère</th><th>Statut</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td class="crit">Droit de rétractation (formations vendues à des particuliers)</td><td><span class="pill missing">Manquant</span></td><td class="notes">Non traité dans les CGV actuelles.</td></tr>
+          <tr><td class="crit">Applicabilité de la loi 31-08 (protection du consommateur)</td><td><span class="pill missing">Manquant</span></td><td class="notes">À vérifier — un candidat inscrit à une formation payante est un consommateur au sens de cette loi.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout">
+        <h4>Recommandation</h4>
+        Avant toute vente réelle (formations, sponsoring, CVthèque), faire valider l'ensemble de la Partie 3 par un avocat d'affaires marocain et un expert-comptable — en priorité le statut de l'activité de placement (3.1) et les mentions de facturation (3.3), qui conditionnent la légalité de toute transaction commerciale.
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="doc-footer">
+  <div class="foot-note">Talentis Connect — Cartographie des critères · Voir aussi : Documentation fonctionnelle, technique, architecture et guide illustré</div>
+</footer>
+
+</body>
+</html>

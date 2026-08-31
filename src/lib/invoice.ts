@@ -43,7 +43,7 @@ export async function createInvoice(tx: Prisma.TransactionClient, input: CreateI
  * which falls outside pdfkit's default Helvetica/WinAnsi encoding and renders as a garbled
  * glyph. Group with a plain space instead so amounts stay legible in the generated PDF.
  */
-function formatAmount(n: number): string {
+export function formatAmount(n: number): string {
   const rounded = Math.round(n * 100) / 100;
   const [intPart, decPart] = rounded.toFixed(2).split(".");
   const withThousands = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");

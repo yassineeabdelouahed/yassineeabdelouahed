@@ -68,6 +68,18 @@ Optionnel — sans `RESEND_API_KEY`, les e-mails (notifications, vérification d
    EMAIL_FROM="Talentis Connect <noreply@talentisconsult.com>"
    ```
 
+## Tests
+
+```
+npm run test       # tests unitaires (Vitest) — logique pure, sans base de données
+npm run test:e2e   # tests de bout en bout (Playwright) — nécessite une base PostgreSQL migrée
+```
+
+Les tests e2e pilotent un vrai navigateur contre l'application ; par défaut ils réutilisent un
+serveur `npm run dev` déjà lancé sur `localhost:3000` (sinon Playwright en démarre un). La CI
+GitHub Actions (`.github/workflows/ci.yml`) exécute lint, build, tests unitaires et tests e2e à
+chaque push/pull request sur `main`, contre une base PostgreSQL éphémère.
+
 ## Déploiement (Vercel + Neon/Supabase)
 
 1. Créer une base PostgreSQL sur [neon.tech](https://neon.tech) ou [supabase.com](https://supabase.com), copier l'URL de connexion

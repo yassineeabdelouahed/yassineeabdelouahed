@@ -5,12 +5,33 @@ import LinkedIn from "next-auth/providers/linkedin";
 import bcrypt from "bcryptjs";
 import { randomBytes } from "node:crypto";
 import { prisma } from "@/lib/prisma";
+import type { Prisma } from "@/generated/prisma/client";
 import { authConfig } from "@/lib/auth.config";
 import { enforceRateLimit, RateLimitError } from "@/lib/rateLimit";
 import { verifyTotpToken, findMatchingBackupCode } from "@/lib/mfa";
 
 export const googleEnabled = !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 export const linkedinEnabled = !!(process.env.LINKEDIN_CLIENT_ID && process.env.LINKEDIN_CLIENT_SECRET);
+
+type UserWithProfiles = Prisma.UserGetPayload<{
+  include: { clientProfile: true; cabinetProfile: true; candidate: true };
+}>;
+
+/**
+ * Shared by the Credentials `authorize` return value and the OAuth `signIn`
+ * callback below — both need the same role/companyId/candidateId/isAdmin
+ * fields derived from a user's profiles onto the NextAuth `user` object.
+ */
+function authFieldsFromUser(user: UserWithProfiles) {
+  return {
+    id: user.id,
+    role: user.role,
+    companyId: user.clientProfile?.companyId ?? null,
+    candidateId: user.candidate?.id ?? null,
+    cabinetProfileId: user.cabinetProfile?.id ?? null,
+    isAdmin: user.cabinetProfile?.isAdmin ?? false,
+  };
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -68,14 +89,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
 
         return {
-          id: user.id,
+          ...authFieldsFromUser(user),
           email: user.email,
           name: user.name,
-          role: user.role,
-          companyId: user.clientProfile?.companyId ?? null,
-          candidateId: user.candidate?.id ?? null,
-          cabinetProfileId: user.cabinetProfile?.id ?? null,
-          isAdmin: user.cabinetProfile?.isAdmin ?? false,
         };
       },
     }),
@@ -133,12 +149,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return false;
       }
 
-      user.id = dbUser.id;
-      user.role = dbUser.role;
-      user.companyId = dbUser.clientProfile?.companyId ?? null;
-      user.candidateId = dbUser.candidate?.id ?? null;
-      user.cabinetProfileId = dbUser.cabinetProfile?.id ?? null;
-      user.isAdmin = dbUser.cabinetProfile?.isAdmin ?? false;
+      Object.assign(user, authFieldsFromUser(dbUser));
       return true;
     },
   },

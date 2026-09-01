@@ -17,3 +17,11 @@ export type CreateProspectInput = z.infer<typeof createProspectSchema>;
 export const prospectStageNoteSchema = z.object({
   note: z.string().trim().optional(),
 });
+
+export const lushaSearchSchema = z.object({
+  jobTitle: z.string().trim().min(2, "Titre requis").optional().or(z.literal("")),
+  location: z.string().trim().optional(),
+  companyName: z.string().trim().optional(),
+});
+
+export type LushaSearchInput = z.infer<typeof lushaSearchSchema>;

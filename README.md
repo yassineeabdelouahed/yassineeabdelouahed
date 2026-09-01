@@ -54,6 +54,18 @@ Optionnelle — les boutons "Continuer avec Google/LinkedIn" n'apparaissent que 
 
 Après avoir ajouté ces variables, redémarrer le serveur pour qu'elles soient prises en compte.
 
+### Recherche de prospects (Lusha)
+
+Optionnelle — sans `LUSHA_API_KEY`, la page "Rechercher des prospects" (`/cabinet/prospects/search`) affiche un
+message indiquant que la fonctionnalité n'est pas configurée, le reste du module Prospects (saisie manuelle)
+fonctionne normalement.
+
+1. Créer un compte sur [lusha.com](https://www.lusha.com/), activer l'accès à la Prospecting API
+2. Générer une clé API depuis le compte Lusha, la copier dans `.env` :
+   ```
+   LUSHA_API_KEY="..."
+   ```
+
 ### E-mails transactionnels (Resend)
 
 Optionnel — sans `RESEND_API_KEY`, les e-mails (notifications, vérification de compte, mot de passe oublié) sont simplement affichés dans les logs du serveur au lieu d'être envoyés, ce qui permet de développer sans compte Resend.

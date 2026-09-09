@@ -1,181 +1,236 @@
 ---
 name: influencer-creator
-description: "Plan influencer and creator marketing end to end — creator discovery and audience-authenticity vetting, campaign brief development, FTC and international disclosure compliance audits, contract and usage-rights frameworks, UGC strategy, and performance measurement (EMV, ROAS, brand lift). Advisory and planning only — it does not contact creators or publish anything. Triggers on \"/digital-marketing-pro:influencer-creator\", \"find influencers for our launch\", \"are these sponsored posts FTC compliant\", \"how should we structure an influencer contract\", \"plan a UGC campaign\". Reads the brand profile, guidelines, compliance rules, and campaign history via campaign-tracker.py before planning new work."
+description: "Planifier le marketing d'influence et de créateurs de bout en bout — découverte de créateurs et vérification de l'authenticité d'audience, développement de brief de campagne, audits de conformité de divulgation FTC et internationale, cadres de contrat et de droits d'usage, stratégie UGC, et mesure de performance (EMV, ROAS, brand lift). Uniquement conseil et planification — ne contacte aucun créateur et ne publie rien. Se déclenche sur « /digital-marketing-pro:influencer-creator », « trouve des influenceurs pour notre lancement », « ces posts sponsorisés sont-ils conformes FTC », « comment structurer un contrat d'influenceur », « planifie une campagne UGC ». Lit le profil de marque, les guidelines, les règles de conformité, et l'historique des campagnes via campaign-tracker.py avant de planifier un nouveau travail."
 ---
 
-# Influencer & Creator Marketing
+# Influenceurs & créateurs
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this skill when the user's request involves any of the following:
+Activer cette compétence lorsque la demande de l'utilisateur implique l'un des éléments suivants :
 
-- Finding or vetting influencers and creators for brand partnerships
-- Building creator briefs or campaign briefs for influencer collaborations
-- Understanding FTC disclosure requirements for sponsored content
-- Structuring influencer contracts including usage rights, exclusivity, and payment terms
-- Measuring influencer campaign performance (EMV, ROAS, brand lift, engagement)
-- Planning UGC (user-generated content) campaigns or strategies
-- Licensing or repurposing influencer/UGC content in paid ads
-- Managing influencer relationships at scale (ambassador programs, always-on partnerships)
-- Navigating international influencer compliance (UK ASA, French ARPP, etc.)
-- Handling influencer controversies or compliance violations mid-campaign
-- Evaluating influencer authenticity (fake followers, engagement pods, audience quality)
-- Planning B2B influencer or thought leader partnerships
-- Designing employee advocacy programs that intersect with influencer strategy
-- Building affiliate-influencer hybrid compensation models
+- Trouver ou vérifier des influenceurs et créateurs pour des partenariats de marque
+- Construire des briefs créateurs ou des briefs de campagne pour des collaborations d'influence
+- Comprendre les exigences de divulgation FTC pour le contenu sponsorisé
+- Structurer des contrats d'influenceurs incluant droits d'usage, exclusivité, et conditions de paiement
+- Mesurer la performance de campagne d'influence (EMV, ROAS, brand lift, engagement)
+- Planifier des campagnes ou stratégies UGC (contenu généré par l'utilisateur)
+- Concéder sous licence ou réutiliser du contenu influenceur/UGC dans des publicités payantes
+- Gérer les relations avec les influenceurs à l'échelle (programmes ambassadeurs, partenariats permanents)
+- Naviguer la conformité internationale des influenceurs (ASA UK, ARPP française, etc.)
+- Gérer les controverses ou violations de conformité d'influenceurs en cours de campagne
+- Évaluer l'authenticité d'un influenceur (faux abonnés, engagement pods, qualité d'audience)
+- Planifier des partenariats B2B avec des influenceurs ou leaders d'opinion
+- Concevoir des programmes de plaidoyer employé qui recoupent la stratégie d'influence
+- Construire des modèles de rémunération hybride affiliation-influenceur
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout résultat marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — Le résumé de marque actif a été affiché au
+   démarrage de la session. Utiliser le nom de marque, le secteur, les paramètres de
+   voix, les canaux, les objectifs, la conformité, et les concurrents affichés là.
+2. **Si vous avez besoin du profil complet**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — Les niveaux de formalité, énergie, humour,
+   autorité doivent façonner tout le ton du contenu et les choix de mots
+4. **Vérifier la conformité** — Appliquer automatiquement les règles pour les
+   target_markets et le secteur de la marque en utilisant
+   `skills/context-engine/compliance-rules.md`
+5. **Référencer les benchmarks sectoriels** — Consulter
+   `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — Référencer
+   `skills/context-engine/platform-specs.md` pour les limites de caractères et les
+   exigences de format
+7. **Vérifier l'historique de campagne** — Exécuter
+   `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns`
+   avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez
+   /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les
+   meilleures pratiques générales. »
+9. **Vérifier les guidelines de marque** — Si
+   `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et
+   appliquer : `restrictions.md` pour les mots interdits, les revendications
+   restreintes, et les avertissements obligatoires ; `channel-styles.md` pour les
+   dérogations de ton spécifiques au canal (peuvent différer de la voix de base) ;
+   `messaging.md` pour les messages clés approuvés, slogans, et langage de
+   positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des
+   4 scores numériques. Lors de la production de contenu pour un canal spécifique, les
+   règles de style de canal ont priorité sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing, gather the following from the user (ask if not provided):
+Avant d'exécuter, recueillir ce qui suit auprès de l'utilisateur (demander si non fourni) :
 
-- **Campaign objective**: Awareness, consideration, conversions, content creation, or community building
-- **Product/service**: What is being promoted, including price point and purchase complexity
-- **Target audience**: Demographics, interests, platforms they use, and purchase behavior
-- **Budget**: Total influencer budget and how it should split between fees and product seeding
-- **Platforms**: Which social platforms are priorities (Instagram, TikTok, YouTube, LinkedIn, X, Pinterest, Twitch)
-- **Content type needed**: Posts, Stories, Reels, TikToks, YouTube videos, livestreams, blog posts, podcasts
-- **Usage rights**: Whether content will be repurposed for paid ads, website, or other channels
-- **Timeline**: Campaign dates, content delivery deadlines, and review periods
-- **Industry**: Needed to flag specific compliance requirements (FTC, FDA, FINRA, FCC)
-- **Geography**: Markets being targeted to determine applicable disclosure laws
-- **Past influencer work**: What has been tried before and what worked or didn't
+- **Objectif de la campagne** : Notoriété, considération, conversions, création de contenu, ou construction de communauté
+- **Produit/service** : Ce qui est promu, incluant le prix et la complexité d'achat
+- **Audience cible** : Démographie, intérêts, plateformes utilisées, et comportement d'achat
+- **Budget** : Budget influenceur total et comment il devrait se répartir entre honoraires et seeding de produit
+- **Plateformes** : Quels réseaux sociaux sont prioritaires (Instagram, TikTok, YouTube, LinkedIn, X, Pinterest, Twitch)
+- **Type de contenu nécessaire** : Posts, Stories, Reels, TikToks, vidéos YouTube, livestreams, articles de blog, podcasts
+- **Droits d'usage** : Si le contenu sera réutilisé en publicités payantes, site web, ou autres canaux
+- **Calendrier** : Dates de campagne, délais de livraison de contenu, et périodes de revue
+- **Secteur** : Nécessaire pour signaler les exigences de conformité spécifiques (FTC, FDA, FINRA, FCC)
+- **Géographie** : Marchés ciblés pour déterminer les lois de divulgation applicables
+- **Travail d'influence passé** : Ce qui a été essayé auparavant et ce qui a fonctionné ou non
 
-## Capabilities
+## Capacités
 
-### Influencer Discovery
-- **Platform-specific search**: Identification criteria for Instagram, TikTok, YouTube, LinkedIn, X, Pinterest, and Twitch creators
-- **Audience authenticity analysis**: Detecting fake followers, engagement pods, and purchased engagement. Red flags include sudden follower spikes, low comment quality, engagement rate anomalies, and follower-to-following ratio issues
-- **Engagement quality assessment**: Moving beyond vanity metrics to evaluate comment sentiment, save rates, share rates, and genuine audience interaction
-- **Niche matching**: Aligning creator content themes, audience demographics, and brand values with campaign objectives
-- **Tier classification**: Nano (1K-10K), micro (10K-100K), mid-tier (100K-500K), macro (500K-1M), and mega (1M+) with strategic use cases for each tier
-- **Competitive analysis**: Identifying creators who work with competitors and evaluating partnership opportunities or exclusion needs
+### Découverte d'influenceurs
+- **Recherche spécifique par plateforme** : Critères d'identification pour les créateurs Instagram, TikTok, YouTube, LinkedIn, X, Pinterest, et Twitch
+- **Analyse d'authenticité d'audience** : Détecter les faux abonnés, engagement pods, et l'engagement acheté. Les signaux d'alerte incluent les pics soudains d'abonnés, la faible qualité des commentaires, les anomalies de taux d'engagement, et les problèmes de ratio abonnés/abonnements
+- **Évaluation de la qualité d'engagement** : Aller au-delà des métriques de vanité pour évaluer le sentiment des commentaires, les taux de sauvegarde, les taux de partage, et l'interaction authentique de l'audience
+- **Correspondance de niche** : Aligner les thèmes de contenu du créateur, la démographie de l'audience, et les valeurs de marque avec les objectifs de campagne
+- **Classification par palier** : Nano (1K-10K), micro (10K-100K), mid-tier (100K-500K), macro (500K-1M), et mega (1M+) avec des cas d'usage stratégiques pour chaque palier
+- **Analyse concurrentielle** : Identifier les créateurs qui travaillent avec des concurrents et évaluer les opportunités de partenariat ou les besoins d'exclusion
 
-### Creator Brief Templates
-- **Campaign brief structure**: Background, objectives, key messages, creative direction, mandatory elements, do's and don'ts, timeline, and deliverables
-- **Creative freedom framework**: Balancing brand requirements with authentic creator expression. Over-scripted content underperforms.
-- **Platform-specific formats**: Adapting brief requirements for Reels vs TikTok vs YouTube vs Stories vs static posts
-- **Messaging hierarchy**: Must-say messages, should-say messages, and may-say messages to give creators structured flexibility
-- **Reference content**: Including examples of content style the brand likes (mood boards, reference posts) without asking creators to copy
+### Modèles de brief créateur
+- **Structure de brief de campagne** : Contexte, objectifs, messages clés, direction créative, éléments obligatoires, à faire/à ne pas faire, calendrier, et livrables
+- **Cadre de liberté créative** : Équilibrer les exigences de marque avec l'expression créative authentique du créateur. Le contenu trop scénarisé sous-performe.
+- **Formats spécifiques par plateforme** : Adapter les exigences de brief pour Reels vs TikTok vs YouTube vs Stories vs posts statiques
+- **Hiérarchie de messagerie** : Messages obligatoires, recommandés, et optionnels pour donner aux créateurs une flexibilité structurée
+- **Contenu de référence** : Inclure des exemples du style de contenu que la marque apprécie (mood boards, posts de référence) sans demander aux créateurs de les copier
 
-### FTC Compliance Engine
-- **Disclosure requirements**: Clear and conspicuous disclosure rules. "#ad" or "Sponsored" must be unambiguous and unavoidable
-- **Platform-specific disclosure placement**: Instagram (above the fold in captions, not buried in hashtags), TikTok (text overlay and caption), YouTube (verbal and written disclosure in first 30 seconds plus platform's paid promotion checkbox), podcasts (verbal disclosure before and during sponsored segments)
-- **Material connection definition**: Any relationship that might affect credibility must be disclosed -- free products, payment, affiliate links, family relationships, employment
-- **AI and virtual influencer rules**: Virtual influencers and AI-generated content must disclose their non-human nature. FTC has signaled enforcement focus here
-- **Consumer Review Rule**: Reviews must reflect genuine experience. Incentivized reviews require disclosure. Fake reviews and suppression of negative reviews are prohibited
-- **Contract compliance clauses**: Specific contractual language requiring FTC compliance, indemnification for non-compliance, and right to request content edits for disclosure issues
-- **International compliance**: UK ASA (clear labeling as "Ad"), French ARPP (mandatory disclosure with specific language), EU regulations, Canadian Ad Standards, Australian AANA requirements
-- **Endorsement guides updates**: FTC 2023 updated Endorsement Guides expanded disclosure requirements, increased brand liability, and addressed social media specifics
+### Moteur de conformité FTC
+- **Exigences de divulgation** : Règles de divulgation claire et non équivoque. « #ad » ou « Sponsored » doit être sans ambiguïté et inévitable
+- **Placement de divulgation spécifique par plateforme** : Instagram (au-dessus de la ligne de flottaison dans les légendes, pas enterré dans les hashtags), TikTok (superposition de texte et légende), YouTube (divulgation verbale et écrite dans les 30 premières secondes plus la case à cocher de promotion payante de la plateforme), podcasts (divulgation verbale avant et pendant les segments sponsorisés)
+- **Définition de la connexion matérielle** : Toute relation susceptible d'affecter la crédibilité doit être divulguée — produits gratuits, paiement, liens d'affiliation, relations familiales, emploi
+- **Règles IA et influenceurs virtuels** : Les influenceurs virtuels et le contenu généré par IA doivent divulguer leur nature non-humaine. La FTC a signalé un focus d'application ici
+- **Règle sur les avis consommateurs (Consumer Review Rule)** : Les avis doivent refléter une expérience authentique. Les avis incités nécessitent une divulgation. Les faux avis et la suppression d'avis négatifs sont interdits
+- **Clauses de conformité contractuelle** : Langage contractuel spécifique exigeant la conformité FTC, l'indemnisation pour non-conformité, et le droit de demander des modifications de contenu pour les problèmes de divulgation
+- **Conformité internationale** : ASA UK (étiquetage clair comme « Ad »), ARPP française (divulgation obligatoire avec langage spécifique), réglementations UE, normes publicitaires canadiennes, exigences AANA australiennes
+- **Mises à jour des guides d'approbation** : Les guides d'approbation mis à jour de la FTC en 2023 ont élargi les exigences de divulgation, augmenté la responsabilité de la marque, et abordé les spécificités des réseaux sociaux
 
-### Performance Tracking
-- **Earned Media Value (EMV)**: Calculating the equivalent advertising value of organic influencer reach and engagement
-- **Direct ROAS**: Tracking revenue from influencer-specific discount codes, UTM links, and affiliate links
-- **Brand lift measurement**: Pre/post campaign surveys, branded search volume changes, social mention increases, and sentiment shifts
-- **Engagement metrics**: Rate, quality, saves, shares, comments, and audience growth during campaign periods
-- **Content performance**: Comparing influencer content performance against brand-created content benchmarks
-- **Attribution modeling**: Multi-touch attribution for influencer as an awareness/consideration channel that assists conversions elsewhere
+### Suivi de performance
+- **Valeur média gagnée (EMV)** : Calculer la valeur publicitaire équivalente de la portée et de l'engagement organiques d'influence
+- **ROAS direct** : Suivre le revenu issu de codes de réduction spécifiques aux influenceurs, liens UTM, et liens d'affiliation
+- **Mesure du brand lift** : Enquêtes pré/post campagne, changements du volume de recherche de marque, augmentations des mentions sociales, et changements de sentiment
+- **Métriques d'engagement** : Taux, qualité, sauvegardes, partages, commentaires, et croissance d'audience pendant les périodes de campagne
+- **Performance de contenu** : Comparer la performance du contenu influenceur aux benchmarks de contenu créé par la marque
+- **Modélisation d'attribution** : Attribution multi-touch pour l'influence comme canal de notoriété/considération qui assiste les conversions ailleurs
 
-### Contract Frameworks
-- **Usage rights**: Organic only, paid amplification rights, perpetual vs time-limited, platform restrictions, territory restrictions
-- **Exclusivity terms**: Category exclusivity (competitor brands), platform exclusivity, duration, and compensation premium for exclusivity (typically 25-100% fee increase)
-- **Morality clause**: Behavior standards, grounds for termination, notification requirements, and content removal rights
-- **Payment terms**: Flat fee, performance bonus, affiliate/commission hybrid, product-only, retainer. Payment schedules (50% upfront / 50% on delivery is standard)
-- **Content approval process**: Number of revision rounds (2 is standard), approval timeline (48-72 hours), and what constitutes approval vs revision
-- **Deliverables specification**: Exact number, format, platform, posting schedule, and caption/disclosure requirements
-- **Cancellation terms**: Notice period, kill fee (typically 25-50% for cancelled campaigns), and force majeure provisions
-- **IP ownership**: Who owns the content (usually the creator), license terms granted to the brand, and derivative work rights
+### Cadres de contrat
+- **Droits d'usage** : Organique uniquement, droits d'amplification payante, perpétuel vs limité dans le temps, restrictions de plateforme, restrictions territoriales
+- **Termes d'exclusivité** : Exclusivité de catégorie (marques concurrentes), exclusivité de plateforme, durée, et prime de rémunération pour l'exclusivité (typiquement 25-100% d'augmentation d'honoraires)
+- **Clause de moralité** : Normes de comportement, motifs de résiliation, exigences de notification, et droits de retrait de contenu
+- **Conditions de paiement** : Forfait fixe, bonus de performance, hybride affiliation/commission, produit uniquement, retainer. Calendriers de paiement (50% initial / 50% à la livraison est standard)
+- **Processus d'approbation de contenu** : Nombre de tours de révision (2 est standard), délai d'approbation (48-72 heures), et ce qui constitue une approbation vs une révision
+- **Spécification des livrables** : Nombre exact, format, plateforme, calendrier de publication, et exigences de légende/divulgation
+- **Conditions d'annulation** : Préavis, kill fee (typiquement 25-50% pour les campagnes annulées), et clauses de force majeure
+- **Propriété PI** : Qui possède le contenu (généralement le créateur), termes de licence accordés à la marque, et droits d'œuvre dérivée
 
-### UGC Strategy
-- **UGC solicitation**: Branded hashtag campaigns, contests, review campaigns, unboxing encouragement, and community challenges
-- **Rights management**: Obtaining permission to use customer content, terms of service for submissions, and proper attribution
-- **UGC in paid ads**: Licensing customer content for ad creative, UGC-style ads produced by creators, and whitelisting/Spark Ads for running ads from creator handles
-- **UGC curation**: Selecting, moderating, and showcasing user content on brand channels, website, and marketing materials
-- **Quality control**: Maintaining brand safety when amplifying user content, moderation policies, and content guidelines
+### Stratégie UGC
+- **Sollicitation UGC** : Campagnes de hashtag de marque, concours, campagnes d'avis, encouragement à l'unboxing, et défis communautaires
+- **Gestion des droits** : Obtenir la permission d'utiliser le contenu client, conditions d'utilisation pour les soumissions, et attribution appropriée
+- **UGC en publicités payantes** : Concéder sous licence le contenu client pour les créations publicitaires, publicités de style UGC produites par des créateurs, et whitelisting/Spark Ads pour diffuser des publicités depuis les comptes de créateurs
+- **Curation UGC** : Sélectionner, modérer, et mettre en avant le contenu utilisateur sur les canaux de marque, le site web, et les supports marketing
+- **Contrôle qualité** : Maintenir la sécurité de marque en amplifiant le contenu utilisateur, politiques de modération, et guidelines de contenu
 
-## Process
+## Processus
 
-### Influencer Campaign Build (Most Common Use Case)
+### Construction de campagne d'influence (cas d'usage le plus courant)
 
-1. **Define campaign parameters** -- Establish objectives, budget, timeline, target audience, and platform priorities. Determine whether the campaign is awareness-focused, conversion-focused, or content-creation-focused.
-2. **Influencer identification** -- Build a candidate list using niche relevance, audience demographics, engagement quality, content style, and brand alignment. Reference `influencer-discovery.md` for platform-specific search strategies.
-3. **Audience vetting** -- Analyze each candidate's audience for authenticity and demographic match. Check for fake followers, engagement pods, and audience-brand alignment. Eliminate creators whose audience does not match the target.
-4. **Outreach and negotiation** -- Craft personalized outreach. Present the partnership opportunity with clear expectations and compensation. Negotiate deliverables, timeline, usage rights, and payment terms.
-5. **Contracting** -- Execute contracts covering deliverables, timeline, compensation, usage rights, exclusivity, FTC compliance requirements, morality clause, approval process, and cancellation terms. Reference `contract-frameworks.md`.
-6. **Brief delivery** -- Send detailed creative briefs that communicate brand requirements while preserving creative freedom. Include mandatory elements, key messages, do's and don'ts, and reference content. Reference `creator-briefs.md`.
-7. **Content review** -- Review submitted content for brand alignment, FTC compliance (disclosure placement and clarity), factual accuracy, and quality standards. Provide feedback within the agreed timeline. Limit revision requests to contracted rounds.
-8. **Publish and amplify** -- Coordinate posting schedule across creators. Boost top-performing content with paid amplification where usage rights allow. Run Spark Ads or whitelisted ads from creator handles.
-9. **Performance measurement** -- Track EMV, engagement, reach, conversions (via codes/UTMs), and brand lift. Compare against benchmarks and campaign KPIs. Reference `performance-tracking.md`.
-10. **Post-campaign analysis** -- Document what worked, what didn't, which creators overperformed, and lessons learned. Use findings to inform future campaign planning and creator relationship development.
+1. **Définir les paramètres de campagne** — Établir les objectifs, le budget, le calendrier, l'audience cible, et les priorités de plateforme. Déterminer si la campagne est focalisée sur la notoriété, la conversion, ou la création de contenu.
+2. **Identification d'influenceurs** — Construire une liste de candidats en utilisant la pertinence de niche, la démographie de l'audience, la qualité d'engagement, le style de contenu, et l'alignement de marque. Se référer à `influencer-discovery.md` pour les stratégies de recherche spécifiques par plateforme.
+3. **Vérification de l'audience** — Analyser l'audience de chaque candidat pour l'authenticité et la correspondance démographique. Vérifier les faux abonnés, les engagement pods, et l'alignement audience-marque. Éliminer les créateurs dont l'audience ne correspond pas à la cible.
+4. **Outreach et négociation** — Rédiger un outreach personnalisé. Présenter l'opportunité de partenariat avec des attentes et une rémunération claires. Négocier les livrables, le calendrier, les droits d'usage, et les conditions de paiement.
+5. **Contractualisation** — Exécuter des contrats couvrant les livrables, le calendrier, la rémunération, les droits d'usage, l'exclusivité, les exigences de conformité FTC, la clause de moralité, le processus d'approbation, et les conditions d'annulation. Se référer à `contract-frameworks.md`.
+6. **Livraison du brief** — Envoyer des briefs créatifs détaillés qui communiquent les exigences de marque tout en préservant la liberté créative. Inclure les éléments obligatoires, messages clés, à faire/à ne pas faire, et contenu de référence. Se référer à `creator-briefs.md`.
+7. **Revue de contenu** — Revoir le contenu soumis pour l'alignement de marque, la conformité FTC (placement et clarté de la divulgation), l'exactitude factuelle, et les normes de qualité. Fournir du feedback dans le délai convenu. Limiter les demandes de révision aux tours contractés.
+8. **Publier et amplifier** — Coordonner le calendrier de publication entre les créateurs. Booster le contenu le plus performant avec de l'amplification payante là où les droits d'usage le permettent. Exécuter des Spark Ads ou des publicités whitelistées depuis les comptes de créateurs.
+9. **Mesure de performance** — Suivre l'EMV, l'engagement, la portée, les conversions (via codes/UTM), et le brand lift. Comparer aux benchmarks et aux KPI de campagne. Se référer à `performance-tracking.md`.
+10. **Analyse post-campagne** — Documenter ce qui a fonctionné, ce qui n'a pas fonctionné, quels créateurs ont surperformé, et les leçons apprises. Utiliser les constats pour alimenter la planification de campagne future et le développement de relations créateurs.
 
-### FTC Compliance Audit
+### Audit de conformité FTC
 
-1. **Review all sponsored content** -- Check every piece of influencer content for clear and conspicuous disclosure.
-2. **Verify disclosure placement** -- Confirm disclosures are visible without clicking "more," are not buried in hashtag strings, are in the first line of captions, and appear as text overlays in video content.
-3. **Check disclosure language** -- Ensure disclosure is unambiguous. "#ad" and "Sponsored by [Brand]" are clear. "#ambassador," "#collab," and "#partner" are not sufficient on their own.
-4. **Audit video content** -- Verify verbal disclosure within the first 30 seconds and written disclosure in the video itself (not just the description).
-5. **Document compliance status** -- Create a compliance log for each piece of content with status, issues found, and corrective actions taken.
-6. **Remediate violations** -- Contact creators to update non-compliant content. Document the request and resolution for legal protection.
+1. **Revoir tout le contenu sponsorisé** — Vérifier chaque pièce de contenu influenceur pour une divulgation claire et non équivoque.
+2. **Vérifier le placement de la divulgation** — Confirmer que les divulgations sont visibles sans cliquer sur « plus », ne sont pas enterrées dans des chaînes de hashtags, sont dans la première ligne des légendes, et apparaissent en superposition de texte dans le contenu vidéo.
+3. **Vérifier le langage de divulgation** — S'assurer que la divulgation est sans ambiguïté. « #ad » et « Sponsored by [Brand] » sont clairs. « #ambassador », « #collab », et « #partner » ne suffisent pas seuls.
+4. **Auditer le contenu vidéo** — Vérifier la divulgation verbale dans les 30 premières secondes et la divulgation écrite dans la vidéo elle-même (pas seulement la description).
+5. **Documenter le statut de conformité** — Créer un journal de conformité pour chaque pièce de contenu avec statut, problèmes trouvés, et actions correctives prises.
+6. **Remédier aux violations** — Contacter les créateurs pour mettre à jour le contenu non conforme. Documenter la demande et la résolution pour la protection juridique.
 
-## Reference Files
+## Fichiers de référence
 
-- `influencer-discovery.md` -- Platform-specific search strategies, vetting checklists, audience analysis frameworks, and tier-level strategy guides
-- `creator-briefs.md` -- Brief templates for each content format, creative freedom guidelines, and messaging hierarchy frameworks
-- `ftc-compliance.md` -- Complete FTC Endorsement Guide requirements, platform-specific disclosure rules, international compliance matrix, and contract language templates
-- `performance-tracking.md` -- EMV calculation methods, attribution models, reporting templates, and benchmark data by industry and platform
-- `contract-frameworks.md` -- Full contract templates, clause-by-clause explanations, negotiation guides, and rate benchmarking by tier and platform
-- `ugc-strategy.md` -- UGC solicitation playbooks, rights management frameworks, UGC-to-ad pipelines, and curation best practices
-- `micro-influencer-strategy.md` -- Micro/nano tier definitions, discovery and vetting, compensation models, gifting and ambassador programs, and platform-specific micro-influencer tactics
+- `influencer-discovery.md` — Stratégies de recherche spécifiques par plateforme, checklists de vérification, cadres d'analyse d'audience, et guides de stratégie par palier
+- `creator-briefs.md` — Modèles de brief pour chaque format de contenu, guidelines de liberté créative, et cadres de hiérarchie de messagerie
+- `ftc-compliance.md` — Exigences complètes du guide d'approbation FTC, règles de divulgation spécifiques par plateforme, matrice de conformité internationale, et modèles de langage contractuel
+- `performance-tracking.md` — Méthodes de calcul EMV, modèles d'attribution, modèles de reporting, et données de benchmark par secteur et plateforme
+- `contract-frameworks.md` — Modèles de contrat complets, explications clause par clause, guides de négociation, et benchmarking de tarifs par palier et plateforme
+- `ugc-strategy.md` — Playbooks de sollicitation UGC, cadres de gestion des droits, pipelines UGC-vers-publicité, et meilleures pratiques de curation
+- `micro-influencer-strategy.md` — Définitions des paliers micro/nano, découverte et vérification, modèles de rémunération, programmes de gifting et d'ambassadeurs, et tactiques micro-influenceur spécifiques par plateforme
 
-## Output Formats
+## Formats de résultat
 
-- **Influencer campaign plan**: Campaign overview, creator shortlist with rationale, brief outline, timeline, budget breakdown, and KPI targets
-- **Creator brief**: Complete brief document ready to send to influencers with all brand requirements, creative direction, and compliance instructions
-- **FTC compliance audit**: Content-by-content compliance status, violations found, remediation actions, and updated compliance guidelines
-- **Influencer contract template**: Customized contract with all relevant clauses based on campaign specifics
-- **Campaign performance report**: Creator-level and aggregate performance metrics, ROI analysis, content performance rankings, and strategic recommendations
-- **UGC program design**: Solicitation strategy, rights management process, curation guidelines, and repurposing workflow
+- **Plan de campagne d'influence** : Aperçu de campagne, shortlist de créateurs avec justification, plan de brief, calendrier, répartition budgétaire, et cibles de KPI
+- **Brief créateur** : Document de brief complet prêt à envoyer aux influenceurs avec toutes les exigences de marque, direction créative, et instructions de conformité
+- **Audit de conformité FTC** : Statut de conformité par contenu, violations trouvées, actions de remédiation, et guidelines de conformité mises à jour
+- **Modèle de contrat d'influenceur** : Contrat personnalisé avec toutes les clauses pertinentes basées sur les spécificités de la campagne
+- **Rapport de performance de campagne** : Métriques de performance par créateur et agrégées, analyse ROI, classements de performance de contenu, et recommandations stratégiques
+- **Conception de programme UGC** : Stratégie de sollicitation, processus de gestion des droits, guidelines de curation, et workflow de réutilisation
 
-## Edge Cases
+## Cas particuliers
 
-### Influencer Posts Without Disclosure
-If a live influencer post is missing required FTC disclosure, respond within hours. Contact the creator immediately to add disclosure. Document the outreach and resolution. If the creator is unresponsive within 24 hours, escalate to their management. Maintain a compliance log that demonstrates good-faith efforts. The brand bears liability for influencer non-compliance under FTC guidelines.
+### Post d'influenceur sans divulgation
+Si un post d'influenceur en direct manque la divulgation FTC requise, répondre en
+quelques heures. Contacter le créateur immédiatement pour ajouter la divulgation.
+Documenter l'outreach et la résolution. Si le créateur ne répond pas dans les 24
+heures, escalader à son management. Maintenir un journal de conformité démontrant
+des efforts de bonne foi. La marque porte la responsabilité pour la non-conformité
+de l'influenceur selon les guidelines FTC.
 
-### Influencer Controversy Mid-Campaign
-When a partnered influencer becomes involved in controversy, assess severity immediately. For minor issues (off-brand opinion), monitor but continue. For moderate issues (offensive content unrelated to the brand), pause scheduled content and evaluate. For severe issues (illegal activity, hate speech, scandal), pause immediately, activate the morality clause, issue a brand statement distancing from the individual, and remove or de-amplify existing content. Decision speed matters -- a delayed response is perceived as endorsement.
+### Controverse d'influenceur en cours de campagne
+Quand un influenceur partenaire devient impliqué dans une controverse, évaluer la
+sévérité immédiatement. Pour les problèmes mineurs (opinion hors marque), surveiller
+mais continuer. Pour les problèmes modérés (contenu offensant sans rapport avec la
+marque), mettre en pause le contenu planifié et évaluer. Pour les problèmes graves
+(activité illégale, discours de haine, scandale), mettre en pause immédiatement,
+activer la clause de moralité, publier une déclaration de marque prenant ses
+distances avec l'individu, et retirer ou désamplifier le contenu existant. La
+vitesse de décision compte — une réponse retardée est perçue comme un
+cautionnement.
 
-### Cross-Border Campaigns with Different Disclosure Rules
-When running campaigns across multiple countries, apply the strictest applicable standard as the baseline. UK ASA requires "Ad" labels. France requires specific French-language disclosure. The EU has evolving platform-specific rules. Build a compliance matrix by market and embed market-specific instructions in creator briefs. When in doubt, over-disclose.
+### Campagnes transfrontalières avec des règles de divulgation différentes
+Lors de l'exécution de campagnes à travers plusieurs pays, appliquer la norme
+applicable la plus stricte comme référence. L'ASA UK exige des labels « Ad ». La
+France exige une divulgation spécifique en français. L'UE a des règles évolutives
+spécifiques par plateforme. Construire une matrice de conformité par marché et
+intégrer des instructions spécifiques au marché dans les briefs créateurs. En cas de
+doute, sur-divulguer.
 
-### B2B Influencer Marketing
-B2B influencer partnerships involve thought leaders, industry analysts, and professional creators rather than lifestyle influencers. KPIs shift from engagement and reach to lead quality, content authority, and pipeline influence. Payment models often involve speaking fees, co-created content, advisory roles, or event sponsorships rather than per-post fees. LinkedIn and YouTube are primary platforms. Long-form content (whitepapers, webinars, podcast interviews) outperforms short-form.
+### Marketing d'influence B2B
+Les partenariats d'influence B2B impliquent des leaders d'opinion, des analystes de
+secteur, et des créateurs professionnels plutôt que des influenceurs lifestyle. Les
+KPI passent de l'engagement et la portée à la qualité des leads, l'autorité de
+contenu, et l'influence sur le pipeline. Les modèles de paiement impliquent souvent
+des honoraires de conférence, du contenu co-créé, des rôles de conseil, ou des
+sponsorings d'événement plutôt que des honoraires par post. LinkedIn et YouTube sont
+les plateformes principales. Le contenu long format (livres blancs, webinaires,
+interviews podcast) surperforme le format court.
 
-### Employee Advocacy vs Influencer Marketing
-Employee sharing of company content is governed by different rules than influencer marketing, but disclosure is still required. Employees must disclose their employment relationship when endorsing their employer's products. Design employee advocacy programs with built-in disclosure, approved messaging, and clear guidelines separating personal opinions from company endorsements.
+### Plaidoyer employé vs marketing d'influence
+Le partage par les employés de contenu d'entreprise est régi par des règles
+différentes du marketing d'influence, mais la divulgation reste requise. Les
+employés doivent divulguer leur relation d'emploi lorsqu'ils approuvent les produits
+de leur employeur. Concevoir des programmes de plaidoyer employé avec une
+divulgation intégrée, une messagerie approuvée, et des guidelines claires séparant
+les opinions personnelles des approbations d'entreprise.
 
-### Affiliate-Influencer Hybrid Arrangements
-When influencers receive both a flat fee and affiliate commission, both the sponsorship and the affiliate relationship must be disclosed. "#ad" covers the sponsorship; affiliate links require separate disclosure (e.g., "I earn a commission if you purchase through my link"). Structure contracts to clearly delineate the fee component from the performance component for accounting and compliance purposes.
+### Arrangements hybrides affiliation-influenceur
+Quand les influenceurs reçoivent à la fois un forfait fixe et une commission
+d'affiliation, à la fois le sponsoring et la relation d'affiliation doivent être
+divulgués. « #ad » couvre le sponsoring ; les liens d'affiliation nécessitent une
+divulgation séparée (par exemple, « je gagne une commission si vous achetez via mon
+lien »). Structurer les contrats pour délimiter clairement la composante honoraires
+de la composante performance à des fins comptables et de conformité.
 
-## Related Skills
+## Compétences liées
 
-- **Paid Advertising** -- Amplifying influencer content through paid channels (whitelisting, Spark Ads, boosted content)
-- **Content Engine** -- Content strategy that incorporates influencer and UGC content into the broader content calendar
-- **Reputation Management** -- Managing brand reputation when influencer controversies arise
-- **Growth Engineering** -- Affiliate-influencer hybrid programs and referral amplification through creators
-- **Analytics & Insights** -- Attribution and measurement for influencer campaign performance
-- **Emerging Channels** -- Social commerce integration with influencer content (TikTok Shop, Instagram Shopping)
+- **Paid Advertising** — Amplifier le contenu influenceur via des canaux payants (whitelisting, Spark Ads, contenu boosté)
+- **Content Engine** — Stratégie de contenu qui incorpore le contenu influenceur et UGC dans le calendrier de contenu plus large
+- **Reputation Management** — Gérer la réputation de marque quand des controverses d'influenceurs surviennent
+- **Growth Engineering** — Programmes hybrides affiliation-influenceur et amplification de parrainage via des créateurs
+- **Analytics & Insights** — Attribution et mesure pour la performance de campagne d'influence
+- **Emerging Channels** — Intégration de commerce social avec le contenu influenceur (TikTok Shop, Instagram Shopping)

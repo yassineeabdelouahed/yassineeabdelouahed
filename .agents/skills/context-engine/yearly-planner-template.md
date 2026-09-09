@@ -1,141 +1,142 @@
-# Yearly Planner Template
+# Modèle de planificateur annuel
 
-The Yearly Planner is the second client-facing deliverable produced in Part 8 of the engagement methodology. It complements the Growth Plan with a 12-month operating calendar that ties strategy to date-by-date execution.
+Le planificateur annuel est le deuxième livrable destiné au client produit dans la partie 8 de la méthodologie d'engagement. Il complète le Growth Plan avec un calendrier opérationnel de 12 mois qui relie la stratégie à une exécution date par date.
 
-If the Growth Plan answers *"How will we grow this business?"*, the Yearly Planner answers *"What will we do, week by week, month by month?"*
+Si le Growth Plan répond à *« Comment allons-nous faire croître cette entreprise ? »*, le planificateur annuel répond à *« Que ferons-nous, semaine par semaine, mois par mois ? »*
 
 ## Structure
 
-### Section 1: Annual Themes
+### Section 1 : Thèmes annuels
 
-**Length:** 1 page.
+**Longueur :** 1 page.
 
-**Content:**
+**Contenu :**
 
-- The 4 quarterly themes (one per quarter) that organise the year's marketing work
-- Each theme stated in 1–2 sentences with strategic rationale
-- How themes ladder into the overall positioning (Core Doc 3.3)
+- Les 4 thèmes trimestriels (un par trimestre) qui organisent le travail marketing de l'année
+- Chaque thème énoncé en 1-2 phrases avec un raisonnement stratégique
+- Comment les thèmes s'articulent avec le positionnement global (document central 3.3)
 
-Example:
+Exemple :
 
-> Q1: Founder-led category education (build authority with TOFU thought leadership before launching demand-gen at scale)
-> Q2: Demand generation activation (launch full-funnel campaigns; ramp paid spend with proven creative)
-> Q3: Account expansion + community (deepen relationships with acquired accounts; launch customer community)
-> Q4: Awards + festive amplification (festive surge in B2C-adjacent segments; awards / press push to lift brand)
+> T1 : Éducation de catégorie portée par le fondateur (construire l'autorité avec du leadership éclairé TOFU avant de lancer la génération de demande à l'échelle)
+> T2 : Activation de la génération de demande (lancer des campagnes full-funnel ; augmenter la dépense payante avec des créations éprouvées)
+> T3 : Expansion de compte + communauté (approfondir les relations avec les comptes acquis ; lancer la communauté client)
+> T4 : Récompenses + amplification festive (pic festif dans les segments proches du B2C ; poussée récompenses / presse pour élever la marque)
 
-### Section 2: Monthly Calendar
+### Section 2 : Calendrier mensuel
 
-**Length:** 12 monthly sub-sections, ~1 page each.
+**Longueur :** 12 sous-sections mensuelles, ~1 page chacune.
 
-For each month:
+Pour chaque mois :
 
-- **Theme:** one-sentence summary of the month's focus
-- **Major initiatives:** 2–4 specific initiatives with owner and deadline
-- **Always-on activity:** what continues from the prior month (typically: paid ads at fixed budget, organic posting cadence, email programme, SEO content production)
-- **Key dates:** product launches, industry events, holidays/festivals relevant to the brand, planned PR moments
-- **Content calendar overview:** themes per week, content pillars covered, target volume per channel
-- **Budget:** monthly fixed spend by channel, variable budget reserve
-- **KPI targets:** primary + 2–3 secondary KPIs for the month
+- **Thème :** résumé en une phrase du focus du mois
+- **Initiatives majeures :** 2 à 4 initiatives précises avec responsable et échéance
+- **Activité permanente :** ce qui continue du mois précédent (généralement : publicités payantes à budget fixe, cadence de publication organique, programme e-mail, production de contenu SEO)
+- **Dates clés :** lancements de produit, événements sectoriels, jours fériés/festivals pertinents pour la marque, moments de relations presse planifiés
+- **Aperçu du calendrier de contenu :** thèmes par semaine, piliers de contenu couverts, volume cible par canal
+- **Budget :** dépense fixe mensuelle par canal, réserve de budget variable
+- **Objectifs de KPI :** KPI principal + 2-3 KPI secondaires pour le mois
 
-### Section 3: Seasonal Strategy
+### Section 3 : Stratégie saisonnière
 
-**Length:** 1–2 pages.
+**Longueur :** 1 à 2 pages.
 
-**Content:**
+**Contenu :**
 
-- Industry-specific seasonality (when demand peaks and dips for this brand's category)
-- Cultural / festival seasonality (relevant to the brand's geography — for India see [india-market-context.md](india-market-context.md))
-- Pre-peak preparation windows (when to start building creative for festive, etc.)
-- Post-peak follow-up windows (when to nurture recently acquired customers)
+- Saisonnalité spécifique au secteur (quand la demande atteint des pics et des creux pour la catégorie de cette marque)
+- Saisonnalité culturelle / festive (pertinente pour la géographie de la marque — pour l'Inde voir [india-market-context.md](india-market-context.md))
+- Fenêtres de préparation pré-pic (quand commencer à construire la création pour la période festive, etc.)
+- Fenêtres de suivi post-pic (quand nourrir les clients récemment acquis)
 
-### Section 4: Campaign Architecture
+### Section 4 : Architecture de campagne
 
-**Length:** 2–3 pages.
+**Longueur :** 2 à 3 pages.
 
-**Content:**
+**Contenu :**
 
-- The major campaigns planned for the year (typically 4–8 campaigns with explicit identities)
-- For each campaign: name, theme, target persona, primary channels, timing, KPIs, expected outcome
-- The campaign naming convention (see Part 9.2 Campaign Strategy)
-- How campaigns relate to always-on activity
+- Les grandes campagnes planifiées pour l'année (généralement 4 à 8 campagnes avec des identités explicites)
+- Pour chaque campagne : nom, thème, persona cible, canaux principaux, calendrier, KPI, résultat attendu
+- La convention de nommage des campagnes (voir partie 9.2, stratégie de campagne)
+- Comment les campagnes s'articulent avec l'activité permanente
 
-### Section 5: Content Pillars Calendar
+### Section 5 : Calendrier des piliers de contenu
 
-**Length:** 1–2 pages.
+**Longueur :** 1 à 2 pages.
 
-**Content:**
+**Contenu :**
 
-- The 3–5 content pillars (from Core Doc 3.3)
-- Per-pillar production target for the year (volume per format)
-- Quarterly distribution across pillars (how content mix shifts)
-- Repurposing flow (how a long-form blog becomes social posts, video, email, etc.)
+- Les 3 à 5 piliers de contenu (issus du document central 3.3)
+- Objectif de production par pilier pour l'année (volume par format)
+- Distribution trimestrielle sur les piliers (comment le mix de contenu évolue)
+- Flux de recyclage (comment un article de blog long devient des posts sociaux, une vidéo, un e-mail, etc.)
 
-### Section 6: Channel-Specific Cadence
+### Section 6 : Cadence spécifique par canal
 
-**Length:** 2–3 pages, one per channel family in scope.
+**Longueur :** 2 à 3 pages, une par famille de canal dans le périmètre.
 
-For each active channel family:
+Pour chaque famille de canal active :
 
-- Posting / sending / publishing cadence (e.g., LinkedIn: 4 posts/week; Email: 1 broadcast/week + lifecycle flows; SEO: 6 articles/month)
-- Volume targets for the year
-- Quarterly emphasis shifts
-- Resource requirements (creative production, copywriting, design, video)
+- Cadence de publication / d'envoi (par exemple, LinkedIn : 4 posts/semaine ; e-mail : 1 diffusion/semaine + flux de cycle de vie ; SEO : 6 articles/mois)
+- Objectifs de volume pour l'année
+- Évolutions d'accent trimestrielles
+- Besoins en ressources (production créative, rédaction, design, vidéo)
 
-### Section 7: Resource & Budget Pacing
+### Section 7 : Rythme des ressources et du budget
 
-**Length:** 2 pages with tables.
+**Longueur :** 2 pages avec tableaux.
 
-**Content:**
+**Contenu :**
 
-- Quarterly budget pacing (does spend ramp linearly, or front-loaded for Q1, or back-loaded for festive Q3 / Q4?)
-- Per-quarter resource requirements (FTE equivalents, creative production volume, vendor spend)
-- Cash-flow implications (working capital needed for paid media, deferred revenue from subscriptions, etc.)
+- Rythme budgétaire trimestriel (la dépense augmente-t-elle linéairement, ou est-elle concentrée en T1, ou en fin de période pour les T3/T4 festifs ?)
+- Besoins en ressources par trimestre (équivalents temps plein, volume de production créative, dépense fournisseurs)
+- Implications de trésorerie (fonds de roulement nécessaire pour le média payant, revenu différé des abonnements, etc.)
 
-### Section 8: Quarterly Review Schedule
+### Section 8 : Calendrier de revue trimestrielle
 
-**Length:** 1 page.
+**Longueur :** 1 page.
 
-**Content:**
+**Contenu :**
 
-- Quarterly Business Review dates (when the strategy gets re-evaluated)
-- Pre-QBR data preparation timeline (when each report is due before the QBR)
-- QBR participants and decision authority
-- What can be revised at QBR (channel mix, budget reallocation, persona priority) vs what is locked for the year (positioning, brand identity, major campaigns)
+- Dates de revue business trimestrielle (quand la stratégie est réévaluée)
+- Calendrier de préparation des données pré-QBR (quand chaque rapport est dû avant la QBR)
+- Participants à la QBR et autorité de décision
+- Ce qui peut être révisé lors de la QBR (mix de canaux, réallocation budgétaire, priorité de persona) vs ce qui est verrouillé pour l'année (positionnement, identité de marque, campagnes majeures)
 
-## Format and Tools
+## Format et outils
 
-The Yearly Planner is delivered as:
+Le planificateur annuel est livré sous forme de :
 
-- **A markdown file** (canonical, lives in the engagement directory)
-- **An exported PDF** (for client distribution)
-- **An exported XLSX** (the calendar in spreadsheet form for ongoing operational use)
-- **(Optional) A shared Google Calendar / Notion / Airtable view** if the client uses these tools
+- **Un fichier markdown** (canonique, vit dans le répertoire d'engagement)
+- **Un PDF exporté** (pour distribution client)
+- **Un XLSX exporté** (le calendrier sous forme de feuille de calcul pour un usage opérationnel continu)
+- **(Optionnel) Une vue partagée Google Calendar / Notion / Airtable** si le client utilise ces outils
 
-The skill that produces the Yearly Planner generates all formats from the markdown source.
+La compétence qui produit le planificateur annuel génère tous les formats à partir de la source markdown.
 
-## Production approach
+## Approche de production
 
-The Yearly Planner is produced **after the Growth Plan** because it operationalises the Growth Plan's strategic decisions into calendar form.
+Le planificateur annuel est produit **après le Growth Plan** car il opérationnalise les décisions stratégiques du Growth Plan sous forme de calendrier.
 
-Use:
+Utiliser :
 
 ```
 /digital-marketing-pro:engagement yearly-planner
 ```
 
-The output lands at `engagements/{engagement-id}/part-08-growth-plan/yearly-planner.md` (with PDF + XLSX exports alongside).
+Le résultat atterrit à `engagements/{engagement-id}/part-08-growth-plan/yearly-planner.md` (avec les exports PDF + XLSX à côté).
 
-## Quality Discipline
+## Discipline qualité
 
-- **Every initiative has an owner.** "Marketing team will do X" is not actionable. "Persona research lead [name / role] will do X by [date]" is.
-- **Every quarter has measurable KPI targets.** "Improve traffic" is not a target. "20% MoM organic traffic growth" is.
-- **Always-on activity is distinguished from initiatives.** Always-on is the baseline that runs every month. Initiatives are time-bounded efforts on top.
-- **The calendar respects realistic capacity.** A small team cannot sustain 6 major initiatives simultaneously. Sequencing prevents burnout.
-- **The Yearly Planner is a living document.** It is reviewed and adjusted at each QBR. The first version is the plan; the version at end-of-year is the actual.
+- **Chaque initiative a un responsable.** « L'équipe marketing fera X » n'est pas actionnable. « Le responsable de la recherche persona [nom / rôle] fera X d'ici [date] » l'est.
+- **Chaque trimestre a des objectifs de KPI mesurables.** « Améliorer le trafic » n'est pas un objectif. « Croissance du trafic organique de 20 % MoM » l'est.
+- **L'activité permanente est distinguée des initiatives.** L'activité permanente est la référence qui tourne chaque mois. Les initiatives sont des efforts limités dans le temps par-dessus.
+- **Le calendrier respecte une capacité réaliste.** Une petite équipe ne peut pas soutenir 6 initiatives majeures simultanément. Le séquencement évite l'épuisement.
+- **Le planificateur annuel est un document vivant.** Il est révisé et ajusté à chaque QBR. La première version est le plan ; la version de fin d'année est le réel.
 
-## Related references
+## Références liées
 
-- [growth-plan-template.md](growth-plan-template.md) — companion deliverable
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — Part 8 in context
-- [india-market-context.md](india-market-context.md) — seasonality patterns for India-operating brands
-- [monthly-report-template.md](monthly-report-template.md) — how the Yearly Planner gets reviewed monthly
+- [growth-plan-template.md](growth-plan-template.md) — livrable compagnon
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — la partie 8 en contexte
+- [india-market-context.md](india-market-context.md) — schémas de saisonnalité pour les marques opérant en Inde
+- [monthly-report-template.md](monthly-report-template.md) — comment le planificateur annuel est révisé mensuellement
+</content>

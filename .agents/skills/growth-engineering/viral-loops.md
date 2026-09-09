@@ -1,12 +1,15 @@
-# Viral Loops — Design & Optimization
+# Boucles virales — Conception & optimisation
 
-> A viral loop is a self-reinforcing cycle where existing users bring in new users through normal product usage. When designed well, each cohort of users generates the next.
+> Une boucle virale est un cycle auto-renforçant où les utilisateurs existants
+> amènent de nouveaux utilisateurs à travers l'usage normal du produit. Bien
+> conçue, chaque cohorte d'utilisateurs génère la suivante.
 
 ---
 
-## Viral Coefficient (K-Factor) Calculation
+## Calcul du coefficient viral (K-Factor)
 
-The K-factor measures how many new users each existing user generates.
+Le K-factor mesure combien de nouveaux utilisateurs chaque utilisateur existant
+génère.
 
 ```
 K = i × c
@@ -20,30 +23,32 @@ If K = 0.5-1.0 → Strong organic growth supplement
 If K < 0.5 → Minimal viral contribution
 ```
 
-### K-Factor Examples
+### Exemples de K-Factor
 
-| Product | Invites/User (i) | Conversion Rate (c) | K-Factor | Result |
+| Produit | Invitations/utilisateur (i) | Taux de conversion (c) | K-Factor | Résultat |
 |---|---|---|---|---|
-| Hotmail ("Get free email" signature) | 50+ | 4% | 2.0+ | Explosive viral growth |
-| Dropbox (storage referral) | 7 | 15% | 1.05 | Sustained viral growth |
-| Slack (team invites) | 4 | 20% | 0.8 | Strong organic amplifier |
-| Typical B2B SaaS | 2 | 5% | 0.1 | Marginal contribution |
+| Hotmail (signature « Get free email ») | 50+ | 4% | 2,0+ | Croissance virale explosive |
+| Dropbox (parrainage de stockage) | 7 | 15% | 1,05 | Croissance virale soutenue |
+| Slack (invitations d'équipe) | 4 | 20% | 0,8 | Fort amplificateur organique |
+| SaaS B2B typique | 2 | 5% | 0,1 | Contribution marginale |
 
-### Improving K-Factor
+### Améliorer le K-Factor
 
-| Lever | Tactic | Impact |
+| Levier | Tactique | Impact |
 |---|---|---|
-| Increase invites (i) | Make sharing effortless, add multiple share channels | Moderate |
-| Increase invites (i) | Embed invitations into core product actions | High |
-| Increase conversion (c) | Optimize landing page for referred visitors | High |
-| Increase conversion (c) | Offer incentive to referee (double-sided reward) | Moderate |
-| Increase conversion (c) | Personalize invitation (include referrer name, context) | Moderate |
+| Augmenter les invitations (i) | Rendre le partage sans effort, ajouter plusieurs canaux de partage | Modéré |
+| Augmenter les invitations (i) | Intégrer les invitations dans les actions clés du produit | Élevé |
+| Augmenter la conversion (c) | Optimiser la landing page pour les visiteurs parrainés | Élevé |
+| Augmenter la conversion (c) | Offrir une incitation au filleul (récompense à double face) | Modéré |
+| Augmenter la conversion (c) | Personnaliser l'invitation (inclure le nom du parrain, le contexte) | Modéré |
 
 ---
 
-## Viral Cycle Time
+## Temps de cycle viral
 
-K-factor alone does not determine growth speed. Viral cycle time — the time it takes for one user to generate a new user — is equally critical.
+Le K-factor seul ne détermine pas la vitesse de croissance. Le temps de cycle viral
+— le temps qu'il faut à un utilisateur pour générer un nouvel utilisateur — est tout
+aussi critique.
 
 ```
 Viral Cycle Time = Time from user sign-up → invite sent → invitee converts → invitee sends their own invite
@@ -51,195 +56,204 @@ Viral Cycle Time = Time from user sign-up → invite sent → invitee converts �
 Shorter cycle time = faster compounding, even with the same K-factor.
 ```
 
-| Cycle Time | K = 0.8 users after 20 days | K = 0.8 users after 40 days |
+| Temps de cycle | K = 0,8 utilisateurs après 20 jours | K = 0,8 utilisateurs après 40 jours |
 |---|---|---|
-| 1 day | ~11,000 from 1,000 seed | ~120,000 |
-| 2 days | ~3,300 | ~11,000 |
-| 5 days | ~1,600 | ~2,600 |
-| 10 days | ~1,250 | ~1,600 |
+| 1 jour | ~11 000 depuis 1 000 initiaux | ~120 000 |
+| 2 jours | ~3 300 | ~11 000 |
+| 5 jours | ~1 600 | ~2 600 |
+| 10 jours | ~1 250 | ~1 600 |
 
-### Tactics to Reduce Cycle Time
+### Tactiques pour réduire le temps de cycle
 
-- [ ] Trigger invite prompts during onboarding, not after (move invite step earlier)
-- [ ] Pre-compose invite messages (reduce effort to share)
-- [ ] Send invite reminders if initial invites have not converted within 48 hours
-- [ ] Offer instant rewards rather than delayed gratification
-- [ ] Reduce sign-up friction for invitees (SSO, pre-filled forms)
-- [ ] Enable real-time notifications when invitees take action
-
----
-
-## Loop Design Patterns
-
-### Pattern 1: Inherent Viral Loops
-
-The product requires multiple users to function. Inviting others is not optional; it is the product.
-
-| Characteristic | Detail |
-|---|---|
-| Definition | Product value requires other users to participate |
-| Friction | Very low — users must invite to use the product |
-| Example | Zoom (need someone to meet with), Venmo (need someone to pay) |
-| K-factor range | 0.5 - 2.0+ |
-| Optimization focus | Reduce sign-up friction for invitees, improve first-use experience |
-
-### Pattern 2: Artificial Viral Loops
-
-Incentives are added on top of the product to encourage sharing. The product works without sharing, but rewards make it appealing.
-
-| Characteristic | Detail |
-|---|---|
-| Definition | Users are incentivized to invite others through rewards |
-| Friction | Moderate — requires active decision to share |
-| Example | Dropbox (free storage for referrals), Uber (ride credits) |
-| K-factor range | 0.2 - 1.0 |
-| Optimization focus | Incentive design, timing of referral prompt, reward fulfillment speed |
-
-### Pattern 3: Word-of-Mouth Loops
-
-Users share because the product is remarkable, not because they are prompted or incentivized.
-
-| Characteristic | Detail |
-|---|---|
-| Definition | Users voluntarily tell others about the product |
-| Friction | High — requires strong emotional reaction to trigger sharing |
-| Example | ChatGPT (novelty), Superhuman (status), Arc Browser (design) |
-| K-factor range | 0.1 - 0.5 (harder to measure, but compounds over time) |
-| Optimization focus | Deliver exceptional experience, create shareable moments, build social proof |
-
-### Pattern 4: Exposure / Embedded Loops
-
-The product exposes itself to non-users as part of normal usage.
-
-| Characteristic | Detail |
-|---|---|
-| Definition | Non-users encounter the brand through user-generated output |
-| Friction | Zero for the existing user — sharing happens automatically |
-| Example | Calendly link in emails, "Made with Squarespace" footer, Mailchimp badge |
-| K-factor range | 0.3 - 1.5 |
-| Optimization focus | Visibility of branding, CTA on exposed content, landing page conversion |
+- [ ] Déclencher les invites d'invitation pendant l'onboarding, pas après (avancer l'étape d'invitation)
+- [ ] Pré-composer les messages d'invitation (réduire l'effort de partage)
+- [ ] Envoyer des rappels d'invitation si les invitations initiales n'ont pas converti dans les 48 heures
+- [ ] Offrir des récompenses instantanées plutôt qu'une gratification différée
+- [ ] Réduire la friction d'inscription pour les invités (SSO, formulaires pré-remplis)
+- [ ] Activer des notifications en temps réel quand les invités prennent une action
 
 ---
 
-## Virality Assessment Framework
+## Motifs de conception de boucle
 
-Score your product on each dimension (1-5) to assess viral potential.
+### Motif 1 : boucles virales inhérentes
 
-| Dimension | Score 1 (Low) | Score 5 (High) | Your Score |
+Le produit nécessite plusieurs utilisateurs pour fonctionner. Inviter d'autres
+personnes n'est pas optionnel ; c'est le produit.
+
+| Caractéristique | Détail |
+|---|---|
+| Définition | La valeur du produit nécessite la participation d'autres utilisateurs |
+| Friction | Très faible — les utilisateurs doivent inviter pour utiliser le produit |
+| Exemple | Zoom (besoin de quelqu'un avec qui se réunir), Venmo (besoin de quelqu'un à payer) |
+| Fourchette de K-factor | 0,5 - 2,0+ |
+| Focus d'optimisation | Réduire la friction d'inscription pour les invités, améliorer la première expérience |
+
+### Motif 2 : boucles virales artificielles
+
+Des incitations sont ajoutées par-dessus le produit pour encourager le partage. Le
+produit fonctionne sans partage, mais les récompenses le rendent attrayant.
+
+| Caractéristique | Détail |
+|---|---|
+| Définition | Les utilisateurs sont incités à inviter d'autres personnes via des récompenses |
+| Friction | Modérée — nécessite une décision active de partager |
+| Exemple | Dropbox (stockage gratuit pour les parrainages), Uber (crédits de course) |
+| Fourchette de K-factor | 0,2 - 1,0 |
+| Focus d'optimisation | Conception d'incitation, timing de l'invite de parrainage, vitesse d'accomplissement de récompense |
+
+### Motif 3 : boucles de bouche-à-oreille
+
+Les utilisateurs partagent parce que le produit est remarquable, pas parce qu'ils y
+sont incités ou récompensés.
+
+| Caractéristique | Détail |
+|---|---|
+| Définition | Les utilisateurs parlent volontairement du produit à d'autres |
+| Friction | Élevée — nécessite une forte réaction émotionnelle pour déclencher le partage |
+| Exemple | ChatGPT (nouveauté), Superhuman (statut), Arc Browser (design) |
+| Fourchette de K-factor | 0,1 - 0,5 (plus difficile à mesurer, mais compose dans le temps) |
+| Focus d'optimisation | Livrer une expérience exceptionnelle, créer des moments partageables, construire la preuve sociale |
+
+### Motif 4 : boucles d'exposition / intégrées
+
+Le produit s'expose lui-même aux non-utilisateurs dans le cadre de l'usage normal.
+
+| Caractéristique | Détail |
+|---|---|
+| Définition | Les non-utilisateurs rencontrent la marque via un résultat généré par l'utilisateur |
+| Friction | Nulle pour l'utilisateur existant — le partage se produit automatiquement |
+| Exemple | Lien Calendly dans les e-mails, pied de page « Made with Squarespace », badge Mailchimp |
+| Fourchette de K-factor | 0,3 - 1,5 |
+| Focus d'optimisation | Visibilité du branding, CTA sur le contenu exposé, conversion de la landing page |
+
+---
+
+## Cadre d'évaluation de viralité
+
+Notez votre produit sur chaque dimension (1-5) pour évaluer le potentiel viral.
+
+| Dimension | Score 1 (faible) | Score 5 (élevé) | Votre score |
 |---|---|---|---|
-| **Inherent multi-user need** | Product is fully useful solo | Product requires multiple users | ___ |
-| **Shareability of output** | Output is private/internal | Output is naturally shared externally | ___ |
-| **Emotional trigger** | Functional, no emotional charge | Delightful, surprising, status-granting | ___ |
-| **Invite friction** | Complex, multi-step invite process | One-click share/invite | ___ |
-| **Invitee experience** | Confusing landing, long sign-up | Instant value, frictionless entry | ___ |
-| **Network density** | Users' contacts are unlikely to need product | Users' contacts are ideal prospects | ___ |
-| **Frequency of use** | Monthly or quarterly | Daily or multiple times per day | ___ |
-| **Visibility** | Usage is invisible to others | Usage is publicly observable | ___ |
+| **Besoin multi-utilisateur inhérent** | Le produit est entièrement utile en solo | Le produit nécessite plusieurs utilisateurs | ___ |
+| **Partageabilité du résultat** | Le résultat est privé/interne | Le résultat est naturellement partagé à l'externe | ___ |
+| **Déclencheur émotionnel** | Fonctionnel, sans charge émotionnelle | Délicieux, surprenant, conférant du statut | ___ |
+| **Friction d'invitation** | Processus d'invitation complexe, multi-étapes | Partage/invitation en un clic | ___ |
+| **Expérience de l'invité** | Atterrissage confus, inscription longue | Valeur instantanée, entrée sans friction | ___ |
+| **Densité de réseau** | Les contacts des utilisateurs ne sont probablement pas des prospects | Les contacts des utilisateurs sont des prospects idéaux | ___ |
+| **Fréquence d'usage** | Mensuelle ou trimestrielle | Quotidienne ou plusieurs fois par jour | ___ |
+| **Visibilité** | L'usage est invisible pour les autres | L'usage est publiquement observable | ___ |
 
-**Scoring:**
-- 32-40: Strong viral potential — invest heavily in loop optimization
-- 24-31: Moderate potential — focus on 2-3 highest-scoring dimensions
-- 16-23: Supplemental virality — viral loops will assist but not drive growth
-- 8-15: Low viral potential — prioritize other acquisition channels
+**Notation :**
+- 32-40 : Fort potentiel viral — investir massivement dans l'optimisation de boucle
+- 24-31 : Potentiel modéré — se concentrer sur les 2-3 dimensions les mieux notées
+- 16-23 : Viralité supplémentaire — les boucles virales aideront mais ne piloteront pas la croissance
+- 8-15 : Faible potentiel viral — prioriser d'autres canaux d'acquisition
 
 ---
 
-## Social Proof Loops
+## Boucles de preuve sociale
 
-Social proof creates a secondary viral effect by making adoption visible and desirable.
+La preuve sociale crée un effet viral secondaire en rendant l'adoption visible et
+désirable.
 
-| Social Proof Type | Mechanism | Implementation |
+| Type de preuve sociale | Mécanisme | Mise en œuvre |
 |---|---|---|
-| Usage counters | "Join 500,000+ teams using [Product]" | Display on landing pages, in-app, and emails |
-| Logo walls | Recognizable brand logos build trust | Feature on home page, case study pages |
-| Activity feeds | Show real-time user actions | "Sarah from Acme just signed up" (use ethically) |
-| User-generated content | Customers create content featuring product | Hashtag campaigns, template galleries |
-| Reviews and ratings | Third-party validation | G2, Capterra, App Store ratings |
-| Milestone sharing | Users share achievements from the product | "I completed 100 workouts with [App]" — auto-generated share cards |
+| Compteurs d'usage | « Rejoignez 500 000+ équipes utilisant [Produit] » | Afficher sur les landing pages, dans l'app, et les e-mails |
+| Murs de logos | Des logos de marque reconnaissables construisent la confiance | Mettre en avant sur la page d'accueil, les pages d'étude de cas |
+| Fils d'activité | Montrer des actions utilisateur en temps réel | « Sarah d'Acme vient de s'inscrire » (utiliser de façon éthique) |
+| Contenu généré par l'utilisateur | Les clients créent du contenu mettant en avant le produit | Campagnes de hashtag, galeries de modèles |
+| Avis et notes | Validation par un tiers | G2, Capterra, notes de l'App Store |
+| Partage de jalons | Les utilisateurs partagent leurs réussites depuis le produit | « J'ai complété 100 entraînements avec [App] » — cartes de partage auto-générées |
 
 ---
 
-## Content Virality Mechanics
+## Mécaniques de viralité de contenu
 
-When the product generates content, that content can become its own viral channel.
+Quand le produit génère du contenu, ce contenu peut devenir son propre canal viral.
 
-### Content Viral Loop
+### Boucle virale de contenu
 
 ```
 User creates content → Content is shared/published → Viewer sees content →
 Viewer notices product branding/CTA → Viewer signs up → New user creates content → ...
 ```
 
-### Optimization by Content Type
+### Optimisation par type de contenu
 
-| Content Type | Viral Lever | Example |
+| Type de contenu | Levier viral | Exemple |
 |---|---|---|
-| Reports / Dashboards | Embed product branding, include "Create your own" CTA | Typeform results page |
-| Templates | Make templates publicly discoverable via SEO | Canva templates, Notion templates |
-| Interactive tools | Output includes product attribution | "Built with [Product]" watermark |
-| User profiles / portfolios | Public profiles rank in search, link back to product | Behance, LinkedIn |
-| Shared workspaces | Collaborators must sign up to participate | Google Docs, Miro boards |
+| Rapports / Tableaux de bord | Intégrer le branding du produit, inclure un CTA « Créez le vôtre » | Page de résultats Typeform |
+| Modèles | Rendre les modèles découvrables publiquement via le SEO | Modèles Canva, modèles Notion |
+| Outils interactifs | Le résultat inclut l'attribution du produit | Filigrane « Construit avec [Produit] » |
+| Profils utilisateur / portfolios | Les profils publics se classent en recherche, renvoient au produit | Behance, LinkedIn |
+| Espaces de travail partagés | Les collaborateurs doivent s'inscrire pour participer | Google Docs, tableaux Miro |
 
 ---
 
-## Network Effects vs Viral Loops
+## Effets de réseau vs boucles virales
 
-These are related but distinct concepts. Understanding the difference matters for strategy.
+Ce sont des concepts liés mais distincts. Comprendre la différence compte pour la
+stratégie.
 
-| Dimension | Network Effects | Viral Loops |
+| Dimension | Effets de réseau | Boucles virales |
 |---|---|---|
-| Definition | Product becomes more valuable as more users join | Users bring in new users through sharing |
-| Value driver | Utility increases with network size | Growth increases with sharing behavior |
-| Example | Telephone network, Facebook, Uber | Dropbox referral, Hotmail signature |
-| Moat strength | Very strong — hard to leave a large network | Moderate — can be copied by competitors |
-| Cold start problem | Severe — product has little value with few users | Mild — product works solo, sharing is bonus |
-| Measurement | Active users on platform, engagement per user | K-factor, viral cycle time |
-| Strategic focus | Reach critical mass in one segment first | Optimize each step of the invite flow |
+| Définition | Le produit devient plus précieux à mesure que plus d'utilisateurs le rejoignent | Les utilisateurs amènent de nouveaux utilisateurs via le partage |
+| Moteur de valeur | L'utilité augmente avec la taille du réseau | La croissance augmente avec le comportement de partage |
+| Exemple | Réseau téléphonique, Facebook, Uber | Parrainage Dropbox, signature Hotmail |
+| Force de la barrière | Très forte — difficile de quitter un grand réseau | Modérée — peut être copiée par les concurrents |
+| Problème de démarrage à froid | Sévère — le produit a peu de valeur avec peu d'utilisateurs | Léger — le produit fonctionne en solo, le partage est un bonus |
+| Mesure | Utilisateurs actifs sur la plateforme, engagement par utilisateur | K-factor, temps de cycle viral |
+| Focus stratégique | Atteindre une masse critique sur un segment d'abord | Optimiser chaque étape du flux d'invitation |
 
-**Combined power:** The strongest growth engines combine both. Slack has network effects (more teammates = more value) and viral loops (team invites expose new organizations).
+**Pouvoir combiné :** Les moteurs de croissance les plus forts combinent les deux.
+Slack a des effets de réseau (plus de coéquipiers = plus de valeur) et des boucles
+virales (les invitations d'équipe exposent de nouvelles organisations).
 
 ---
 
-## Optimizing Each Loop Step
+## Optimiser chaque étape de la boucle
 
-Every viral loop has discrete steps. Optimize each one independently.
+Chaque boucle virale a des étapes discrètes. Optimiser chacune indépendamment.
 
-### Step-by-Step Optimization
+### Optimisation étape par étape
 
-| Loop Step | Metric | Optimization Tactics |
+| Étape de boucle | Métrique | Tactiques d'optimisation |
 |---|---|---|
-| 1. User experiences value | Activation rate | Reduce time-to-value, improve onboarding |
-| 2. User encounters share trigger | Trigger exposure rate | Place prompts at peak-value moments |
-| 3. User decides to share | Share rate (impressions → shares) | Reduce friction, pre-compose message, add incentive |
-| 4. Invitee sees the invitation | Invite delivery rate | Optimize email deliverability, use multiple channels |
-| 5. Invitee clicks through | Click-through rate | Personalize message, clear value proposition |
-| 6. Invitee lands on product | Landing page conversion | Tailored landing page for referred visitors |
-| 7. Invitee signs up | Sign-up completion rate | Minimize fields, offer SSO, remove credit card requirement |
-| 8. New user activates | New user activation rate | Dedicated onboarding for referred users |
-| 9. New user becomes referrer | Repeat referral rate | Surface referral prompt after activation |
+| 1. L'utilisateur expérimente la valeur | Taux d'activation | Réduire le temps de mise en valeur, améliorer l'onboarding |
+| 2. L'utilisateur rencontre le déclencheur de partage | Taux d'exposition au déclencheur | Placer les invites aux moments de valeur maximale |
+| 3. L'utilisateur décide de partager | Taux de partage (impressions → partages) | Réduire la friction, pré-composer le message, ajouter une incitation |
+| 4. L'invité voit l'invitation | Taux de livraison d'invitation | Optimiser la délivrabilité e-mail, utiliser plusieurs canaux |
+| 5. L'invité clique | Taux de clic | Personnaliser le message, proposition de valeur claire |
+| 6. L'invité atterrit sur le produit | Conversion de la landing page | Landing page adaptée pour les visiteurs parrainés |
+| 7. L'invité s'inscrit | Taux de complétion d'inscription | Minimiser les champs, offrir le SSO, retirer l'exigence de carte de crédit |
+| 8. Le nouvel utilisateur s'active | Taux d'activation du nouvel utilisateur | Onboarding dédié pour les utilisateurs parrainés |
+| 9. Le nouvel utilisateur devient parrain | Taux de parrainage répété | Faire apparaître l'invite de parrainage après l'activation |
 
-### Funnel Benchmark Example
+### Exemple de benchmark de tunnel
 
-| Step | Benchmark | Your Product |
+| Étape | Benchmark | Votre produit |
 |---|---|---|
-| Users who see share prompt | 80% of activated users | ___ |
-| Share prompt → share action | 15-25% | ___ |
-| Share → invitee click | 10-20% | ___ |
-| Click → sign-up | 20-40% | ___ |
-| Sign-up → activation | 20-40% | ___ |
-| Activated → refers others | 5-15% | ___ |
+| Utilisateurs voyant l'invite de partage | 80% des utilisateurs activés | ___ |
+| Invite de partage → action de partage | 15-25% | ___ |
+| Partage → clic de l'invité | 10-20% | ___ |
+| Clic → inscription | 20-40% | ___ |
+| Inscription → activation | 20-40% | ___ |
+| Activé → parraine d'autres | 5-15% | ___ |
 
-### A/B Testing Priority for Viral Loops
+### Priorité de test A/B pour les boucles virales
 
-| Priority | What to Test | Expected Impact |
+| Priorité | Ce qu'il faut tester | Impact attendu |
 |---|---|---|
-| 1 | Share prompt timing and placement | High — determines if users even see the loop |
-| 2 | Invitation message copy and format | High — affects click-through from invitees |
-| 3 | Referred user landing page | High — conversion bottleneck for new users |
-| 4 | Incentive type and amount | Medium — affects motivation to share |
-| 5 | Number of share channels offered | Medium — more channels = broader reach |
-| 6 | Sign-up flow for referred users | Medium — fewer steps = higher completion |
+| 1 | Timing et emplacement de l'invite de partage | Élevé — détermine si les utilisateurs voient même la boucle |
+| 2 | Texte et format du message d'invitation | Élevé — affecte le clic depuis les invités |
+| 3 | Landing page de l'utilisateur parrainé | Élevé — goulot de conversion pour les nouveaux utilisateurs |
+| 4 | Type et montant de l'incitation | Moyen — affecte la motivation à partager |
+| 5 | Nombre de canaux de partage proposés | Moyen — plus de canaux = portée plus large |
+| 6 | Flux d'inscription pour les utilisateurs parrainés | Moyen — moins d'étapes = complétion plus élevée |
 
 ---
 
-*Viral growth is not magic. It is engineering. Each step in the loop is a conversion rate that can be measured, tested, and improved. Small improvements compound across the entire loop.*
+*La croissance virale n'est pas magique. C'est de l'ingénierie. Chaque étape de la
+boucle est un taux de conversion qui peut être mesuré, testé, et amélioré. De
+petites améliorations composent à travers la boucle entière.*

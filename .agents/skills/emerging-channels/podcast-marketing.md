@@ -1,97 +1,97 @@
-# Podcast Marketing — Launch, Advertise & Measure
+# Marketing podcast — Lancement, publicité & mesure
 
-> Podcasting offers unmatched depth of engagement. Listeners spend 30-60 minutes with a single piece of content, trust levels are exceptionally high, and the medium continues to grow across every demographic. This guide covers launching a branded podcast, advertising on existing shows, and measuring ROI.
+> Le podcast offre une profondeur d'engagement inégalée. Les auditeurs passent 30 à 60 minutes avec un seul contenu, les niveaux de confiance sont exceptionnellement élevés, et le média continue de croître dans toutes les démographies. Ce guide couvre le lancement d'un podcast de marque, la publicité sur des émissions existantes, et la mesure du ROI.
 
 ---
 
-## Branded Podcast Launch Guide
+## Guide de lancement de podcast de marque
 
-### Pre-Production Planning
+### Planification pré-production
 
-| Decision | Options | Recommendation |
+| Décision | Options | Recommandation |
 |----------|---------|----------------|
-| **Format** | Interview, solo/monologue, co-hosted, narrative/storytelling, panel, hybrid | Interview is easiest to launch; narrative has highest production value |
-| **Length** | Short (10-20 min), Medium (20-40 min), Long (40-60+ min) | 25-35 minutes is the sweet spot for most business podcasts |
-| **Frequency** | Weekly, biweekly, monthly, season-based | Weekly builds the fastest audience; biweekly is sustainable |
-| **Season structure** | Evergreen (ongoing) or seasonal (8-12 episodes per season) | Seasonal reduces burnout and allows promotion windows |
-| **Host** | CEO/founder, subject matter expert, hired host, rotating hosts | Choose someone with genuine enthusiasm and conversational ability |
-| **Audience** | Existing customers, prospects, industry peers, general public | Define one primary persona — do not try to serve everyone |
+| **Format** | Interview, solo/monologue, co-animé, narratif/storytelling, panel, hybride | L'interview est le plus facile à lancer ; le narratif a la valeur de production la plus élevée |
+| **Durée** | Courte (10-20 min), moyenne (20-40 min), longue (40-60+ min) | 25-35 minutes est le créneau idéal pour la plupart des podcasts d'entreprise |
+| **Fréquence** | Hebdomadaire, bimensuelle, mensuelle, par saison | L'hebdomadaire construit l'audience le plus vite ; le bimensuel est durable |
+| **Structure en saison** | Continu (evergreen) ou saisonnier (8-12 épisodes par saison) | Le saisonnier réduit l'épuisement et permet des fenêtres de promotion |
+| **Animateur** | CEO/fondateur, expert du sujet, animateur embauché, animateurs en rotation | Choisir quelqu'un avec un véritable enthousiasme et une bonne aisance conversationnelle |
+| **Audience** | Clients existants, prospects, pairs sectoriels, grand public | Définir une seule persona principale — ne pas essayer de servir tout le monde |
 
-### Production Tiers
+### Niveaux de production
 
-| Tier | Equipment | Editing | Cost Estimate |
+| Niveau | Équipement | Montage | Estimation de coût |
 |------|----------|---------|--------------|
-| **Tier 1 — Minimal** | USB microphone ($50-100), GarageBand/Audacity, Riverside.fm or Zencastr for remote | Self-edited, basic cleanup | $100-300 one-time + hosting |
-| **Tier 2 — Semi-Pro** | XLR microphone ($150-300), audio interface ($100-200), Descript or Adobe Podcast for editing | Self or contractor editing, intro/outro music, show notes | $500-1,000 setup + $200-500/episode |
-| **Tier 3 — Full Production** | Professional studio or studio-quality home setup, dedicated producer, sound designer | Full production: scripting, editing, sound design, mixing, mastering | $2,000-10,000+/episode |
+| **Niveau 1 — Minimal** | Micro USB (50-100 $), GarageBand/Audacity, Riverside.fm ou Zencastr pour le distanciel | Montage soi-même, nettoyage basique | 100-300 $ ponctuel + hébergement |
+| **Niveau 2 — Semi-pro** | Micro XLR (150-300 $), interface audio (100-200 $), Descript ou Adobe Podcast pour le montage | Montage soi-même ou par prestataire, musique d'intro/outro, notes d'épisode | 500-1 000 $ de mise en place + 200-500 $/épisode |
+| **Niveau 3 — Production complète** | Studio professionnel ou configuration maison qualité studio, producteur dédié, concepteur sonore | Production complète : script, montage, conception sonore, mixage, mastering | 2 000-10 000 $+/épisode |
 
-### Launch Checklist
+### Checklist de lancement
 
-- [ ] Define show concept, target audience, and unique angle
-- [ ] Record 3-5 episodes before launch (bank content for consistent release)
-- [ ] Create cover art (3000x3000px, bold, readable at small sizes)
-- [ ] Write a compelling show description with relevant keywords
-- [ ] Choose a hosting platform (Buzzsprout, Libsyn, Transistor, Podbean, Spotify for Creators)
-- [ ] Submit to directories: Apple Podcasts, Spotify, YouTube Music, Amazon Music, iHeartRadio
-- [ ] Set up a dedicated landing page on your website
-- [ ] Create social media assets (audiograms, quote cards, video clips)
-- [ ] Prepare launch promotion plan (email list, social, cross-promotion, PR)
-- [ ] Set up analytics tracking (hosting platform + Podtrac or Podscribe)
+- [ ] Définir le concept de l'émission, l'audience cible, et l'angle unique
+- [ ] Enregistrer 3-5 épisodes avant le lancement (constituer une réserve de contenu pour une sortie régulière)
+- [ ] Créer la pochette (3000x3000px, marquante, lisible en petite taille)
+- [ ] Rédiger une description d'émission convaincante avec des mots-clés pertinents
+- [ ] Choisir une plateforme d'hébergement (Buzzsprout, Libsyn, Transistor, Podbean, Spotify for Creators)
+- [ ] Soumettre aux annuaires : Apple Podcasts, Spotify, YouTube Music, Amazon Music, iHeartRadio
+- [ ] Mettre en place une page d'atterrissage dédiée sur votre site web
+- [ ] Créer des actifs pour les réseaux sociaux (audiogrammes, visuels de citation, extraits vidéo)
+- [ ] Préparer un plan de promotion de lancement (liste email, social, promotion croisée, RP)
+- [ ] Mettre en place le suivi analytics (plateforme d'hébergement + Podtrac ou Podscribe)
 
 ---
 
-## Podcast Advertising
+## Publicité podcast
 
-### Ad Format Comparison
+### Comparaison des formats publicitaires
 
-| Format | Description | Typical CPM | Trust Level | Skip Rate |
+| Format | Description | CPM typique | Niveau de confiance | Taux de saut |
 |--------|-------------|-------------|-------------|-----------|
-| **Host-read, baked-in** | Host personally reads ad in their own words; permanently in episode | $25-50 | Highest | Lowest |
-| **Host-read, dynamic** | Host-read ad inserted dynamically; can be swapped out | $20-40 | High | Low |
-| **Produced/announcer** | Pre-produced ad spot, not read by host | $15-25 | Medium | Medium |
-| **Programmatic** | Automated ad insertion based on listener data | $10-20 | Lower | Higher |
+| **Lu par l'animateur, intégré** | L'animateur lit personnellement la publicité avec ses propres mots ; intégré de façon permanente à l'épisode | 25-50 $ | Le plus élevé | Le plus bas |
+| **Lu par l'animateur, dynamique** | Publicité lue par l'animateur, insérée dynamiquement ; peut être remplacée | 20-40 $ | Élevé | Faible |
+| **Produite/annonceur** | Spot publicitaire préproduit, non lu par l'animateur | 15-25 $ | Moyen | Moyen |
+| **Programmatique** | Insertion publicitaire automatisée basée sur les données de l'auditeur | 10-20 $ | Plus faible | Plus élevé |
 
-### Ad Placement Positions
+### Positions d'emplacement publicitaire
 
-| Position | When | Typical CPM Premium | Best For |
+| Position | Quand | Prime CPM typique | Idéal pour |
 |----------|------|--------------------|---------|
-| **Pre-roll** | Before episode content (15-30 seconds) | Base rate | Brand awareness, short messages |
-| **Mid-roll** | During episode content (60-90 seconds) | 1.5-2x premium | Detailed messaging, conversion |
-| **Post-roll** | After episode content (15-30 seconds) | 0.5-0.7x discount | Reinforcement, lower-priority offers |
+| **Pré-roll** | Avant le contenu de l'épisode (15-30 secondes) | Tarif de base | Notoriété de marque, messages courts |
+| **Mid-roll** | Pendant le contenu de l'épisode (60-90 secondes) | Prime de 1,5-2x | Message détaillé, conversion |
+| **Post-roll** | Après le contenu de l'épisode (15-30 secondes) | Remise de 0,5-0,7x | Renforcement, offres de priorité plus basse |
 
-### CPM Benchmarks by Category
+### Benchmarks CPM par catégorie
 
-| Podcast Category | Typical CPM Range | Notes |
+| Catégorie de podcast | Fourchette CPM typique | Notes |
 |-----------------|-------------------|-------|
-| Business / Finance | $25-50 | High-value B2B audience |
-| Technology | $25-45 | Tech-savvy, early adopters |
-| True Crime | $18-30 | Large audiences, broad demo |
-| Comedy | $18-35 | Large audiences, engaged listeners |
-| Health & Wellness | $20-40 | High intent for health products |
-| News / Politics | $20-35 | Highly engaged, older skew |
-| Sports | $18-30 | Passionate, predictable demo |
-| Niche / Industry-specific | $30-50+ | Small but hyper-targeted audience |
+| Business / Finance | 25-50 $ | Audience B2B à forte valeur |
+| Technologie | 25-45 $ | Connaisseurs tech, adoptants précoces |
+| True Crime | 18-30 $ | Grandes audiences, démographie large |
+| Comédie | 18-35 $ | Grandes audiences, auditeurs engagés |
+| Santé & bien-être | 20-40 $ | Forte intention pour les produits santé |
+| Actualité / Politique | 20-35 $ | Fortement engagé, plus âgé |
+| Sport | 18-30 $ | Passionné, démographie prévisible |
+| Niche / spécifique au secteur | 30-50 $+ | Petite audience mais hyper-ciblée |
 
-### Podcast Ad Buying Process
+### Processus d'achat de publicité podcast
 
-| Step | Action | Details |
+| Étape | Action | Détails |
 |------|--------|---------|
-| 1 | Define target audience | Demo, interests, job titles, listening habits |
-| 2 | Identify candidate shows | Use Podchaser, Listen Notes, Podscribe, or work with a podcast network |
-| 3 | Request media kit | Audience size, demographics, engagement metrics, pricing |
-| 4 | Negotiate terms | CPM vs. flat rate, minimum commitment, exclusivity, tracking |
-| 5 | Provide ad copy/talking points | For host-read: bullet points and key messages (not a rigid script) |
-| 6 | Set up tracking | Vanity URL, promo code, pixel-based attribution (Spotify Ad Analytics, Podscribe) |
-| 7 | Launch and monitor | Track downloads, conversions, promo code redemptions |
-| 8 | Optimize | Scale winning shows, pause underperformers, test new shows |
+| 1 | Définir l'audience cible | Démographie, centres d'intérêt, intitulés de poste, habitudes d'écoute |
+| 2 | Identifier les émissions candidates | Utiliser Podchaser, Listen Notes, Podscribe, ou travailler avec un réseau de podcasts |
+| 3 | Demander le kit média | Taille de l'audience, démographie, métriques d'engagement, tarification |
+| 4 | Négocier les conditions | CPM vs tarif forfaitaire, engagement minimum, exclusivité, suivi |
+| 5 | Fournir le texte publicitaire/points de discussion | Pour lu par l'animateur : puces et messages clés (pas un script rigide) |
+| 6 | Mettre en place le suivi | URL vanity, code promo, attribution par pixel (Spotify Ad Analytics, Podscribe) |
+| 7 | Lancer et surveiller | Suivre les téléchargements, conversions, échanges de codes promo |
+| 8 | Optimiser | Faire monter en puissance les émissions gagnantes, mettre en pause les sous-performantes, tester de nouvelles émissions |
 
 ---
 
-## Guest Pitching Templates
+## Modèles de pitch pour invités
 
-### Pitching Yourself as a Guest
+### Se proposer comme invité
 
-**Subject:** Guest pitch — {{your topic}} for {{podcast name}}
+**Objet :** Proposition d'invité — {{votre sujet}} pour {{nom du podcast}}
 
 > Hi {{host name}},
 >
@@ -109,9 +109,9 @@
 > Thanks for considering,
 > {{your name}}
 
-### Pitching Guests for Your Show
+### Inviter des invités pour votre émission
 
-**Subject:** Invitation to appear on {{your podcast name}}
+**Objet :** Invitation à participer à {{nom de votre podcast}}
 
 > Hi {{guest name}},
 >
@@ -128,23 +128,23 @@
 
 ---
 
-## Podcast SEO
+## SEO podcast
 
-### Discoverability Optimization
+### Optimisation de la découvrabilité
 
-| Element | Optimization |
+| Élément | Optimisation |
 |---------|-------------|
-| **Show title** | Include primary keyword naturally (e.g., "The SaaS Growth Show" not "Conversations with John") |
-| **Show description** | Keyword-rich, 200-400 words, clearly state who it's for and what they'll learn |
-| **Episode titles** | Descriptive, keyword-forward, include guest name if notable |
-| **Episode descriptions** | 150-300 words, include key topics, timestamps, links, guest bio |
-| **Transcript** | Publish full transcript on your website for SEO value |
-| **Show notes** | Detailed show notes with links, resources mentioned, key takeaways |
-| **Categories** | Select the most specific Apple Podcasts categories (primary + secondary) |
-| **Tags** | Use relevant tags on Spotify and other platforms that support them |
-| **Website** | Dedicated podcast page with embedded player, episodes, and transcripts |
+| **Titre de l'émission** | Inclure naturellement le mot-clé principal (par ex. « The SaaS Growth Show » plutôt que « Conversations avec John ») |
+| **Description de l'émission** | Riche en mots-clés, 200-400 mots, indiquer clairement à qui elle s'adresse et ce qu'ils y apprendront |
+| **Titres d'épisode** | Descriptifs, avec mots-clés en avant, incluant le nom de l'invité si notable |
+| **Descriptions d'épisode** | 150-300 mots, incluant les sujets clés, horodatages, liens, bio de l'invité |
+| **Transcription** | Publier la transcription complète sur votre site web pour la valeur SEO |
+| **Notes d'épisode** | Notes détaillées avec liens, ressources mentionnées, points clés à retenir |
+| **Catégories** | Sélectionner les catégories Apple Podcasts les plus spécifiques (principale + secondaire) |
+| **Tags** | Utiliser des tags pertinents sur Spotify et les autres plateformes qui les prennent en charge |
+| **Site web** | Page podcast dédiée avec lecteur intégré, épisodes, et transcriptions |
 
-### Podcast Schema Markup
+### Balisage schema podcast
 
 ```json
 {
@@ -163,126 +163,126 @@
 
 ---
 
-## Promotion Strategy
+## Stratégie de promotion
 
-### Launch Promotion (First 30 Days)
+### Promotion de lancement (30 premiers jours)
 
-| Channel | Tactic | Timeline |
+| Canal | Tactique | Calendrier |
 |---------|--------|----------|
-| Email list | Dedicated announcement + include in regular newsletter | Day 1, then weekly |
-| Social media | Teaser clips, audiograms, behind-the-scenes, countdown | Daily during launch week |
-| Website | Banner, pop-up, dedicated page, blog post | Day 1 |
-| Cross-promotion | Guest on other podcasts; ask guests to share their episode | Weeks 1-4 |
-| Paid social | Promote trailer and first episodes to lookalike audiences | Weeks 1-4 |
-| PR | Pitch to industry publications, podcast directories, "new shows" lists | Week 1 |
-| Internal | Encourage team to share, rate, and review | Day 1 |
+| Liste email | Annonce dédiée + inclusion dans la newsletter habituelle | Jour 1, puis hebdomadaire |
+| Réseaux sociaux | Extraits teaser, audiogrammes, coulisses, compte à rebours | Quotidien pendant la semaine de lancement |
+| Site web | Bannière, pop-up, page dédiée, article de blog | Jour 1 |
+| Promotion croisée | Être invité sur d'autres podcasts ; demander aux invités de partager leur épisode | Semaines 1-4 |
+| Social payant | Promouvoir la bande-annonce et les premiers épisodes auprès d'audiences similaires | Semaines 1-4 |
+| RP | Pitcher les publications sectorielles, les annuaires de podcasts, les listes « nouvelles émissions » | Semaine 1 |
+| Interne | Encourager l'équipe à partager, noter, et laisser des avis | Jour 1 |
 
-### Ongoing Promotion
+### Promotion continue
 
-| Tactic | Frequency | Details |
+| Tactique | Fréquence | Détails |
 |--------|-----------|---------|
-| Audiograms / video clips | Every episode | 30-60 second highlights for social |
-| Quote cards | Every episode | Pull compelling quotes, brand with show art |
-| Newsletter inclusion | Weekly/biweekly | Episode summary + link in existing newsletter |
-| YouTube upload | Every episode | Full video or audiogram with waveform |
-| Blog post / show notes | Every episode | SEO-optimized post with transcript |
-| Cross-promotion swaps | Monthly | Trade promo spots with similar-sized shows |
-| Listener referral program | Ongoing | Reward listeners who share the show |
-| Podcast directories | Quarterly | Submit to new directories as they emerge |
+| Audiogrammes / extraits vidéo | Chaque épisode | Temps forts de 30-60 secondes pour le social |
+| Visuels de citation | Chaque épisode | Extraire des citations marquantes, aux couleurs de l'émission |
+| Inclusion en newsletter | Hebdomadaire/bimensuel | Résumé d'épisode + lien dans la newsletter existante |
+| Téléversement YouTube | Chaque épisode | Vidéo complète ou audiogramme avec forme d'onde |
+| Article de blog / notes d'épisode | Chaque épisode | Post optimisé SEO avec transcription |
+| Échanges de promotion croisée | Mensuel | Échanger des spots promo avec des émissions de taille similaire |
+| Programme de parrainage d'auditeurs | Continu | Récompenser les auditeurs qui partagent l'émission |
+| Annuaires de podcasts | Trimestriel | Soumettre à de nouveaux annuaires au fur et à mesure de leur apparition |
 
 ---
 
-## Analytics & Measurement
+## Analytics & Mesure
 
-### Core Podcast Metrics
+### Métriques podcast essentielles
 
-| Metric | Definition | Good Benchmark | Source |
+| Métrique | Définition | Bon benchmark | Source |
 |--------|-----------|----------------|--------|
-| **Downloads per episode** | Total downloads within 30 days of release | >500 (niche B2B), >5,000 (general) | Hosting platform |
-| **Unique listeners** | Deduplicated listener count | Growing month over month | Hosting platform (Spotify, Apple) |
-| **Completion rate** | % of episode listened to (average) | >60% | Spotify for Creators, Apple Analytics |
-| **Subscriber growth** | Net new subscribers per month | Positive trend | Platform analytics |
-| **Reviews & ratings** | Number and average star rating | 4.5+ stars, growing count | Apple Podcasts |
-| **Episode-over-episode growth** | % increase in downloads per episode | >5% month over month | Hosting platform |
+| **Téléchargements par épisode** | Total des téléchargements dans les 30 jours suivant la sortie | >500 (B2B de niche), >5 000 (grand public) | Plateforme d'hébergement |
+| **Auditeurs uniques** | Nombre d'auditeurs dédupliqué | En croissance mois après mois | Analytics de plateforme (Spotify, Apple) |
+| **Taux de complétion** | % de l'épisode écouté (moyenne) | >60 % | Spotify for Creators, Apple Analytics |
+| **Croissance des abonnés** | Nouveaux abonnés nets par mois | Tendance positive | Analytics de plateforme |
+| **Avis & notes** | Nombre et note moyenne | 4,5+ étoiles, nombre en croissance | Apple Podcasts |
+| **Croissance épisode sur épisode** | % d'augmentation des téléchargements par épisode | >5 % mois après mois | Plateforme d'hébergement |
 
-### Attribution & Conversion Metrics
+### Métriques d'attribution & de conversion
 
-| Metric | Definition | Tracking Method |
+| Métrique | Définition | Méthode de suivi |
 |--------|-----------|----------------|
-| **Vanity URL visits** | Traffic to podcast-specific URL (e.g., example.com/podcast) | Google Analytics |
-| **Promo code redemptions** | Purchases using podcast-specific code | E-commerce platform |
-| **Post-listen survey** | "How did you hear about us?" responses | CRM / checkout survey |
-| **Pixel-based attribution** | Household-level matching of listeners to converters | Spotify Ad Analytics, Podscribe |
-| **Branded search lift** | Increase in branded search queries after episode release | Google Search Console / Trends |
-| **Pipeline influence** | Deals where podcast was a touchpoint | CRM attribution (Salesforce, HubSpot) |
+| **Visites de l'URL vanity** | Trafic vers l'URL spécifique au podcast (par ex. example.com/podcast) | Google Analytics |
+| **Échanges de codes promo** | Achats utilisant un code spécifique au podcast | Plateforme e-commerce |
+| **Enquête post-écoute** | Réponses « Comment avez-vous entendu parler de nous ? » | CRM / enquête au paiement |
+| **Attribution par pixel** | Correspondance au niveau du foyer entre auditeurs et convertisseurs | Spotify Ad Analytics, Podscribe |
+| **Hausse de recherche de marque** | Augmentation des requêtes de recherche de marque après la sortie d'un épisode | Google Search Console / Trends |
+| **Influence sur le pipeline** | Deals où le podcast a été un point de contact | Attribution CRM (Salesforce, HubSpot) |
 
 ---
 
-## Interview Format Guide
+## Guide du format interview
 
-### Pre-Interview
+### Avant l'interview
 
-| Step | Details |
+| Étape | Détails |
 |------|---------|
-| Research guest | Read their recent work, listen to other podcast appearances, note unique angles |
-| Send prep document | Share 5-8 topic areas (not exact questions) so guest can prepare but not script |
-| Technical check | Test recording setup, internet, audio quality 15 minutes before |
-| Set expectations | Duration, format, editing policy, release timeline |
+| Rechercher l'invité | Lire ses travaux récents, écouter ses autres apparitions en podcast, noter les angles uniques |
+| Envoyer un document de préparation | Partager 5-8 domaines de sujet (pas des questions exactes) pour que l'invité puisse se préparer sans se scripter |
+| Vérification technique | Tester la configuration d'enregistrement, l'internet, la qualité audio 15 minutes avant |
+| Fixer les attentes | Durée, format, politique de montage, calendrier de sortie |
 
-### Interview Structure (30-45 minutes)
+### Structure de l'interview (30-45 minutes)
 
-| Segment | Time | Content |
+| Segment | Temps | Contenu |
 |---------|------|---------|
-| Warm-up | 2-3 min | Casual conversation (recorded but can be trimmed) |
-| Introduction | 1-2 min | Host introduces guest and frames the topic |
-| Background | 3-5 min | Guest's story, credentials, how they got here |
-| Core content | 15-25 min | Main topic exploration, 3-5 key questions, follow-ups |
-| Tactical advice | 5-7 min | Actionable takeaways, specific advice for listeners |
-| Rapid fire / fun | 2-3 min | Lighter questions, recommendations, unpopular opinions |
-| Close | 1-2 min | Where to find guest, CTA, teaser for next episode |
+| Échauffement | 2-3 min | Conversation informelle (enregistrée mais peut être coupée) |
+| Introduction | 1-2 min | L'animateur présente l'invité et cadre le sujet |
+| Contexte | 3-5 min | Le parcours de l'invité, ses références, comment il en est arrivé là |
+| Contenu principal | 15-25 min | Exploration du sujet principal, 3-5 questions clés, relances |
+| Conseils tactiques | 5-7 min | Enseignements actionnables, conseils précis pour les auditeurs |
+| Rafale de questions / fun | 2-3 min | Questions plus légères, recommandations, opinions impopulaires |
+| Clôture | 1-2 min | Où trouver l'invité, CTA, teaser pour le prochain épisode |
 
-### Interviewing Best Practices
-1. **Listen more than you talk.** The 80/20 rule: guest talks 80%, host 20%
-2. **Ask follow-up questions.** The best insights come from "Tell me more about that"
-3. **Avoid yes/no questions.** Start with "How," "Why," "What was it like when..."
-4. **Be comfortable with silence.** Pause after their answer — they often add the best part
-5. **Have a conversation, not an interrogation.** React naturally, share brief relevant anecdotes
+### Bonnes pratiques d'interview
+1. **Écouter plus que parler.** La règle des 80/20 : l'invité parle 80 %, l'animateur 20 %
+2. **Poser des questions de relance.** Les meilleurs insights viennent de « Dites-m'en plus sur ça »
+3. **Éviter les questions fermées.** Commencer par « Comment », « Pourquoi », « Comment c'était quand... »
+4. **Être à l'aise avec le silence.** Faire une pause après leur réponse — ils ajoutent souvent la meilleure partie
+5. **Avoir une conversation, pas un interrogatoire.** Réagir naturellement, partager de brèves anecdotes pertinentes
 
 ---
 
-## Repurposing Strategy
+## Stratégie de recyclage
 
-### Content Multiplication Framework
+### Cadre de multiplication de contenu
 
-One podcast episode can generate 10+ pieces of content:
+Un épisode de podcast peut générer 10+ contenus dérivés :
 
-| Derivative Content | Platform | Effort Level |
+| Contenu dérivé | Plateforme | Niveau d'effort |
 |-------------------|----------|-------------|
-| Full episode (audio) | Apple, Spotify, all directories | Core asset |
-| Full episode (video) | YouTube | Record with video (Riverside, Zencastr) |
-| Short video clips (3-5 per episode) | TikTok, Reels, YouTube Shorts, LinkedIn | Medium (editing required) |
-| Audiograms (2-3 per episode) | Twitter/X, LinkedIn, Instagram | Low (tools: Headliner, Descript) |
-| Quote graphics (3-5 per episode) | Instagram, Twitter/X, LinkedIn | Low (Canva template) |
-| Blog post / show notes | Website | Medium (transcript → edited post) |
-| Newsletter segment | Email | Low (excerpt key takeaways) |
-| Twitter/X thread | Twitter/X | Low (pull 5-8 key insights) |
-| LinkedIn article | LinkedIn | Medium (expand on one topic from episode) |
-| Slide deck | LinkedIn, SlideShare | Medium (visualize key frameworks) |
+| Épisode complet (audio) | Apple, Spotify, tous les annuaires | Actif principal |
+| Épisode complet (vidéo) | YouTube | Enregistrer avec vidéo (Riverside, Zencastr) |
+| Courts extraits vidéo (3-5 par épisode) | TikTok, Reels, YouTube Shorts, LinkedIn | Moyen (montage requis) |
+| Audiogrammes (2-3 par épisode) | Twitter/X, LinkedIn, Instagram | Faible (outils : Headliner, Descript) |
+| Visuels de citation (3-5 par épisode) | Instagram, Twitter/X, LinkedIn | Faible (modèle Canva) |
+| Article de blog / notes d'épisode | Site web | Moyen (transcription → article édité) |
+| Segment de newsletter | Email | Faible (extraire les points clés) |
+| Fil Twitter/X | Twitter/X | Faible (extraire 5-8 insights clés) |
+| Article LinkedIn | LinkedIn | Moyen (développer un sujet de l'épisode) |
+| Diaporama | LinkedIn, SlideShare | Moyen (visualiser les cadres clés) |
 
-### Repurposing Workflow
+### Workflow de recyclage
 
 ```
-Record Episode
+Enregistrer l'épisode
      │
-     ├─→ Edit audio → Publish to podcast platforms
-     ├─→ Edit video → Publish to YouTube
-     ├─→ Transcribe (Descript, Otter.ai) → Edit into blog post
-     ├─→ Extract 3-5 clips (60-90 sec) → Post as Reels/TikToks/Shorts
-     ├─→ Pull 3-5 quotes → Design quote graphics
-     ├─→ Summarize key points → Newsletter segment
-     └─→ Compile key insights → Twitter/X thread or LinkedIn post
+     ├─→ Monter l'audio → Publier sur les plateformes podcast
+     ├─→ Monter la vidéo → Publier sur YouTube
+     ├─→ Transcrire (Descript, Otter.ai) → Transformer en article de blog
+     ├─→ Extraire 3-5 extraits (60-90 sec) → Publier en Reels/TikToks/Shorts
+     ├─→ Extraire 3-5 citations → Concevoir des visuels de citation
+     ├─→ Résumer les points clés → Segment de newsletter
+     └─→ Compiler les insights clés → Fil Twitter/X ou post LinkedIn
 ```
 
 ---
 
-> **Podcasting is the ultimate long-game marketing channel.** It takes 25-50 episodes to build meaningful traction. The brands that commit to consistency, quality, and genuine value creation will build audiences that no algorithm change can take away.
+> **Le podcast est le canal marketing du temps long par excellence.** Il faut 25 à 50 épisodes pour construire une traction significative. Les marques qui s'engagent dans la régularité, la qualité, et la création de valeur authentique construiront des audiences qu'aucun changement d'algorithme ne pourra leur enlever.

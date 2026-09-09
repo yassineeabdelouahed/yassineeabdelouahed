@@ -1,305 +1,305 @@
-# Retail Media Networks — Amazon, Walmart & More
+# Réseaux de retail media — Amazon, Walmart et plus
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Retail Media Landscape Overview
+## Vue d'ensemble du paysage du retail media
 
-### What Are Retail Media Networks (RMNs)?
-Retail media networks are advertising platforms built on top of retailer ecosystems. They leverage first-party shopper data (purchase history, search behavior, browsing patterns) to deliver ads at or near the point of purchase. This is the fastest-growing segment of digital advertising, now exceeding ~$150B globally.
+### Que sont les réseaux de retail media (RMN) ?
+Les réseaux de retail media sont des plateformes publicitaires construites sur les écosystèmes des enseignes. Ils exploitent les données propriétaires des acheteurs (historique d'achat, comportement de recherche, motifs de navigation) pour diffuser des publicités au moment ou à proximité de l'acte d'achat. C'est le segment de la publicité numérique à la croissance la plus rapide, dépassant désormais ~150 Md$ dans le monde.
 
-### Why Retail Media Matters
-- **First-party data**: Based on actual purchase behavior, not inferred interests
-- **Closed-loop measurement**: See ad exposure through to purchase without attribution gaps
-- **High purchase intent**: Shoppers are already in buying mode on retail platforms
-- **Cookie-proof**: No reliance on third-party cookies or mobile IDs
-- **Digital shelf influence**: Ads directly impact product visibility and organic ranking
+### Pourquoi le retail media compte
+- **Données propriétaires** : Basées sur le comportement d'achat réel, pas des centres d'intérêt inférés
+- **Mesure en boucle fermée** : Voir l'exposition publicitaire jusqu'à l'achat sans lacunes d'attribution
+- **Forte intention d'achat** : Les acheteurs sont déjà en mode achat sur les plateformes de retail
+- **Résistant aux cookies** : Aucune dépendance aux cookies tiers ou identifiants mobiles
+- **Influence sur le rayon numérique** : Les publicités impactent directement la visibilité produit et le classement organique
 
-### Retail Media Network Comparison
+### Comparaison des réseaux de retail media
 
-| Network | Monthly Visitors (US) | Ad Revenue | Self-Serve | Off-Site (DSP) | Strengths |
+| Réseau | Visiteurs mensuels (US) | Revenu publicitaire | Self-Serve | Hors site (DSP) | Forces |
 |---|---|---|---|---|---|
-| **Amazon Ads** | 200M+ | $50B+ | Yes | Yes (Amazon DSP) | Deepest shopper data, largest scale |
-| **Walmart Connect** | 120M+ | $3B+ | Yes | Yes (TTD partnership) | Omnichannel (in-store + online) |
-| **Target Roundel** | 50M+ | $1.5B+ | Limited | Yes | Loyal customer base, household data |
-| **Kroger Precision Mktg** | 60M+ | $1B+ | Limited | Yes (via 84.51°) | Grocery purchase data, CPG focus |
-| **Instacart Ads** | 30M+ | $1B+ | Yes | Limited | Grocery delivery, impulse-at-cart |
-| **Albertsons Media Collective** | 30M+ | Growing | Limited | Yes | Grocery loyalty data |
-| **Best Buy Ads** | 50M+ | Growing | Limited | Yes | Electronics, appliance purchase data |
-| **Ulta Beauty** | 30M+ | Growing | Limited | Yes | Beauty category authority |
-| **Dollar General** | 20M+ | Growing | Limited | Yes | Rural, value shopper data |
-| **Wayfair** | 40M+ | Growing | Yes | Limited | Home and furniture category |
+| **Amazon Ads** | 200 M+ | 50 Md$+ | Oui | Oui (Amazon DSP) | Données d'acheteur les plus profondes, plus grande échelle |
+| **Walmart Connect** | 120 M+ | 3 Md$+ | Oui | Oui (partenariat TTD) | Omnicanal (en magasin + en ligne) |
+| **Target Roundel** | 50 M+ | 1,5 Md$+ | Limité | Oui | Base de clients fidèles, données de foyer |
+| **Kroger Precision Mktg** | 60 M+ | 1 Md$+ | Limité | Oui (via 84.51°) | Données d'achat en épicerie, focus CPG |
+| **Instacart Ads** | 30 M+ | 1 Md$+ | Oui | Limité | Livraison d'épicerie, impulsion au panier |
+| **Albertsons Media Collective** | 30 M+ | En croissance | Limité | Oui | Données de fidélité en épicerie |
+| **Best Buy Ads** | 50 M+ | En croissance | Limité | Oui | Données d'achat électronique, électroménager |
+| **Ulta Beauty** | 30 M+ | En croissance | Limité | Oui | Autorité dans la catégorie beauté |
+| **Dollar General** | 20 M+ | En croissance | Limité | Oui | Données d'acheteurs ruraux, orientés valeur |
+| **Wayfair** | 40 M+ | En croissance | Oui | Limité | Catégorie maison et mobilier |
 
-## Amazon Ads Deep-Dive
+## Approfondissement Amazon Ads
 
-### Ad Types Overview
+### Vue d'ensemble des types de publicité
 
-| Ad Type | Placement | Targeting | Billing | Avg CPC/CPM | Best For |
+| Type de publicité | Emplacement | Ciblage | Facturation | CPC/CPM moyen | Idéal pour |
 |---|---|---|---|---|---|
-| **Sponsored Products** | Search results, product pages | Keywords, product/category | CPC | $0.50–$2.00 | Direct sales, keyword conquest |
-| **Sponsored Brands** | Top of search, video | Keywords, categories | CPC | $0.75–$3.00 | Brand awareness at point of search |
-| **Sponsored Display** | Product pages, off-Amazon | Audience, product targeting | CPC/vCPM | $0.30–$1.50 | Retargeting, competitor targeting |
-| **Amazon DSP** | Amazon + open web | Audience segments, AMC | CPM | $3–$15 (CPM) | Full-funnel, awareness, off-site |
+| **Sponsored Products** | Résultats de recherche, pages produit | Mots-clés, produit/catégorie | CPC | 0,50–2,00 $ | Ventes directes, conquête de mots-clés |
+| **Sponsored Brands** | Haut de la recherche, vidéo | Mots-clés, catégories | CPC | 0,75–3,00 $ | Notoriété de marque au point de recherche |
+| **Sponsored Display** | Pages produit, hors Amazon | Audience, ciblage produit | CPC/vCPM | 0,30–1,50 $ | Retargeting, ciblage concurrentiel |
+| **Amazon DSP** | Amazon + web ouvert | Segments d'audience, AMC | CPM | 3–15 $ (CPM) | Full-funnel, notoriété, hors site |
 
-### Sponsored Products Strategy
+### Stratégie Sponsored Products
 
-#### Match Type Strategy (Amazon-Specific)
+#### Stratégie de type de correspondance (spécifique à Amazon)
 
-| Match Type | Behavior | Strategy |
+| Type de correspondance | Comportement | Stratégie |
 |---|---|---|
-| **Broad** | Widest match, includes synonyms | Discovery, keyword research |
-| **Phrase** | Contains phrase in order | Mid-funnel, category terms |
-| **Exact** | Precise term match | Proven converters, brand defense |
-| **Auto (Close Match)** | Amazon matches to product listing | Discovery and indexing |
-| **Auto (Loose Match)** | Broader automated matching | Category exploration |
-| **Auto (Substitutes)** | Competitor product pages | Competitive conquest |
-| **Auto (Complements)** | Related product pages | Cross-sell, adjacency |
+| **Large** | Correspondance la plus large, inclut les synonymes | Découverte, recherche de mots-clés |
+| **Expression** | Contient l'expression dans l'ordre | Milieu de tunnel, termes de catégorie |
+| **Exact** | Correspondance précise du terme | Convertisseurs éprouvés, défense de marque |
+| **Auto (correspondance proche)** | Amazon fait correspondre à la fiche produit | Découverte et indexation |
+| **Auto (correspondance large)** | Correspondance automatisée plus large | Exploration de catégorie |
+| **Auto (substituts)** | Pages produit concurrentes | Conquête concurrentielle |
+| **Auto (compléments)** | Pages produit associées | Cross-sell, adjacence |
 
-#### Sponsored Products Campaign Architecture
+#### Architecture de campagne Sponsored Products
 ```
-Account
-├── Brand Defense Campaign (Exact match, brand terms)
-│   └── Goal: Protect branded searches at low ACoS
-├── Category Campaign (Phrase + Broad match)
-│   └── Goal: Capture category demand
-├── Competitor Conquest Campaign (Exact match, competitor brands)
-│   └── Goal: Win competitor shoppers
-├── Auto Campaign (all match types)
-│   └── Goal: Discovery, feed keyword research to manual campaigns
-└── Product Targeting Campaign
-    └── Goal: Show on specific competitor/complementary ASINs
+Compte
+├── Campagne de défense de marque (correspondance exacte, termes de marque)
+│   └── Objectif : Protéger les recherches de marque à faible ACoS
+├── Campagne de catégorie (correspondance expression + large)
+│   └── Objectif : Capturer la demande de catégorie
+├── Campagne de conquête concurrentielle (correspondance exacte, marques concurrentes)
+│   └── Objectif : Gagner les acheteurs des concurrents
+├── Campagne auto (tous types de correspondance)
+│   └── Objectif : Découverte, alimenter la recherche de mots-clés vers les campagnes manuelles
+└── Campagne de ciblage produit
+    └── Objectif : Apparaître sur des ASIN concurrents/complémentaires spécifiques
 ```
 
-#### Keyword Research Workflow
-1. Launch auto campaign → harvest converting search terms (7–14 days)
-2. Move winners to manual exact match campaigns
-3. Negate harvested terms from auto campaign to prevent overlap
-4. Use Brand Analytics (top search terms) for category intelligence
-5. Run broad match campaigns for ongoing discovery with tight ACoS targets
-6. Review search term reports weekly; negate irrelevant terms
+#### Workflow de recherche de mots-clés
+1. Lancer une campagne auto → récolter les termes de recherche convertissant (7–14 jours)
+2. Déplacer les gagnants vers des campagnes manuelles en correspondance exacte
+3. Ajouter en négatif les termes récoltés depuis la campagne auto pour éviter le chevauchement
+4. Utiliser Brand Analytics (top termes de recherche) pour l'intelligence de catégorie
+5. Exécuter des campagnes en correspondance large pour la découverte continue avec des cibles d'ACoS strictes
+6. Revoir les rapports de termes de recherche chaque semaine ; ajouter en négatif les termes non pertinents
 
-### Sponsored Brands Strategy
+### Stratégie Sponsored Brands
 
-| Format | Description | Best For |
+| Format | Description | Idéal pour |
 |---|---|---|
-| **Product Collection** | Brand logo + headline + 3 products | Brand + category awareness |
-| **Store Spotlight** | Brand logo + 3 store pages | Driving traffic to Brand Store |
-| **Video** | Auto-playing video in search results | Product demonstration, differentiation |
+| **Collection de produits** | Logo de marque + titre + 3 produits | Notoriété de marque + catégorie |
+| **Store Spotlight** | Logo de marque + 3 pages de store | Générer du trafic vers le Brand Store |
+| **Vidéo** | Vidéo en lecture automatique dans les résultats de recherche | Démonstration produit, différenciation |
 
-### Sponsored Brands Best Practices
-- [ ] Custom headline under 50 characters, benefit-focused
-- [ ] Feature best-selling products (highest review count and rating)
-- [ ] Link to Brand Store (not product page) for collection and spotlight
-- [ ] Video: 15–30 seconds, loop-friendly, text overlays for silent viewing
-- [ ] Test headline variations monthly (benefit vs feature vs promotion)
+### Bonnes pratiques Sponsored Brands
+- [ ] Titre personnalisé de moins de 50 caractères, axé bénéfice
+- [ ] Mettre en avant les produits les plus vendus (nombre d'avis et notation les plus élevés)
+- [ ] Lier vers le Brand Store (pas la page produit) pour la collection et le spotlight
+- [ ] Vidéo : 15–30 secondes, adaptée à la boucle, superpositions de texte pour le visionnage silencieux
+- [ ] Tester les variantes de titre mensuellement (bénéfice vs fonctionnalité vs promotion)
 
-### Sponsored Display Strategy
+### Stratégie Sponsored Display
 
-| Targeting | Description | Use Case |
+| Ciblage | Description | Cas d'usage |
 |---|---|---|
-| **Product targeting** | Target specific ASINs or categories | Competitor conquest, cross-sell |
-| **Audience: Views remarketing** | Retarget product/category viewers | Re-engage shoppers who didn't convert |
-| **Audience: Purchase remarketing** | Retarget past purchasers | Replenishment, cross-sell |
-| **Audience: In-market** | Amazon in-market segments | Prospecting high-intent shoppers |
-| **Audience: Lifestyle** | Interest-based segments | Broader awareness within Amazon |
+| **Ciblage produit** | Cibler des ASIN ou catégories spécifiques | Conquête concurrentielle, cross-sell |
+| **Audience : remarketing de vues** | Recibler les personnes ayant vu le produit/la catégorie | Réengager les acheteurs qui n'ont pas converti |
+| **Audience : remarketing d'achat** | Recibler les acheteurs passés | Réapprovisionnement, cross-sell |
+| **Audience : in-market** | Segments in-market Amazon | Prospecting d'acheteurs à forte intention |
+| **Audience : lifestyle** | Segments basés sur les centres d'intérêt | Notoriété plus large au sein d'Amazon |
 
 ### Amazon DSP
 
-#### Audience Segments Available
+#### Segments d'audience disponibles
 
-| Segment Type | Examples | Source |
+| Type de segment | Exemples | Source |
 |---|---|---|
-| In-market | "In-market for running shoes" | Amazon browsing + purchase signals |
-| Lifestyle | "Health enthusiasts," "Tech early adopters" | Long-term behavioral patterns |
-| Remarketing | Product viewers, cart abandoners, past purchasers | Your product interaction data |
-| Lookalike | Modeled from your purchasers or remarketing seeds | Amazon ML modeling |
-| Advertiser audiences | CRM upload, website pixel (AAP tag) | Your first-party data |
-| AMC custom audiences | Custom queries on Amazon Marketing Cloud | Cross-signal analysis |
+| In-market | « In-market pour des chaussures de running » | Signaux de navigation + achat Amazon |
+| Lifestyle | « Passionnés de santé », « Adopteurs tech précoces » | Motifs comportementaux à long terme |
+| Remarketing | Personnes ayant vu le produit, abandons de panier, acheteurs passés | Vos données d'interaction produit |
+| Lookalike | Modélisé à partir de vos acheteurs ou seeds de remarketing | Modélisation ML Amazon |
+| Audiences annonceur | Import CRM, pixel de site (tag AAP) | Vos données propriétaires |
+| Audiences personnalisées AMC | Requêtes personnalisées sur Amazon Marketing Cloud | Analyse cross-signal |
 
-#### Amazon DSP Checklist
-- [ ] Define audience strategy: prospecting vs retargeting vs loyalty
-- [ ] Set up Amazon Attribution for off-Amazon traffic measurement
-- [ ] Create audience segments in DSP console or via AMC
-- [ ] Prepare creative: display (300x250, 728x90, 160x600, 970x250) and video (15s/30s)
-- [ ] Set frequency caps: 3–5/day (display), 2–3/day (video)
-- [ ] Enable Amazon Audiences for prospecting campaigns
-- [ ] Configure supply sources: Amazon owned (IMDb, Twitch, Fire TV) + open exchange
-- [ ] Set up AMC (Amazon Marketing Cloud) for advanced attribution and overlap analysis
+#### Checklist Amazon DSP
+- [ ] Définir la stratégie d'audience : prospecting vs retargeting vs loyauté
+- [ ] Configurer Amazon Attribution pour la mesure du trafic hors Amazon
+- [ ] Créer des segments d'audience dans la console DSP ou via AMC
+- [ ] Préparer le créatif : display (300x250, 728x90, 160x600, 970x250) et vidéo (15s/30s)
+- [ ] Fixer les plafonds de fréquence : 3–5/jour (display), 2–3/jour (vidéo)
+- [ ] Activer Amazon Audiences pour les campagnes de prospecting
+- [ ] Configurer les sources d'offre : propriétés Amazon (IMDb, Twitch, Fire TV) + échange ouvert
+- [ ] Configurer AMC (Amazon Marketing Cloud) pour l'attribution avancée et l'analyse de chevauchement
 
 ## Walmart Connect
 
-### Ad Types
+### Types de publicité
 
-| Ad Type | Placement | Targeting | Billing |
+| Type de publicité | Emplacement | Ciblage | Facturation |
 |---|---|---|---|
-| **Sponsored Products** | Search results, browse pages, product pages | Keywords (auto + manual), product | CPC |
-| **Sponsored Brands** | Search banner, brand shelf | Keywords, category | CPC |
-| **Display (onsite)** | Walmart.com + app | Audience, category, keyword | CPM |
-| **Display (offsite)** | Walmart DSP (via TTD) | Walmart purchase data | CPM |
+| **Sponsored Products** | Résultats de recherche, pages de navigation, pages produit | Mots-clés (auto + manuel), produit | CPC |
+| **Sponsored Brands** | Bannière de recherche, étagère de marque | Mots-clés, catégorie | CPC |
+| **Display (sur site)** | Walmart.com + app | Audience, catégorie, mot-clé | CPM |
+| **Display (hors site)** | Walmart DSP (via TTD) | Données d'achat Walmart | CPM |
 
-### Walmart Connect Unique Advantages
-- **Omnichannel closed-loop**: Track online ad exposure to in-store purchase (via Walmart+, loyalty data)
-- **In-store connection**: 4,700+ stores provide physical touchpoint data
-- **TTD partnership**: Use Walmart first-party data for offsite programmatic targeting
-- **Lower competition**: Less saturated than Amazon (lower CPCs for many categories)
+### Avantages uniques de Walmart Connect
+- **Boucle fermée omnicanal** : Suivre l'exposition publicitaire en ligne jusqu'à l'achat en magasin (via Walmart+, données de fidélité)
+- **Connexion en magasin** : 4 700+ magasins fournissent des données de point de contact physique
+- **Partenariat TTD** : Utiliser les données propriétaires Walmart pour le ciblage programmatique hors site
+- **Concurrence plus faible** : Moins saturé qu'Amazon (CPC plus bas pour de nombreuses catégories)
 
-### Walmart Connect Checklist
-- [ ] Ensure product listings are optimized (content, images, reviews)
-- [ ] Start with auto campaigns for keyword discovery
-- [ ] Segment by brand, category, and competitor targets
-- [ ] Set daily budget minimums ($50/day recommended for Sponsored Products)
-- [ ] Monitor search term reports weekly (available in Walmart Ad Center)
-- [ ] Leverage Walmart DSP for upper-funnel with offsite reach
-- [ ] Track in-store attribution via Walmart's closed-loop reporting
+### Checklist Walmart Connect
+- [ ] S'assurer que les fiches produit sont optimisées (contenu, images, avis)
+- [ ] Commencer avec des campagnes auto pour la découverte de mots-clés
+- [ ] Segmenter par marque, catégorie, et cibles concurrentes
+- [ ] Fixer des budgets journaliers minimums (50 $/jour recommandé pour Sponsored Products)
+- [ ] Surveiller les rapports de termes de recherche chaque semaine (disponible dans Walmart Ad Center)
+- [ ] Tirer parti du Walmart DSP pour le haut de tunnel avec une portée hors site
+- [ ] Suivre l'attribution en magasin via le reporting en boucle fermée de Walmart
 
 ## Target Roundel
 
-### Capabilities
+### Capacités
 
-| Feature | Description |
+| Fonctionnalité | Description |
 |---|---|
-| **Onsite display** | Ads on Target.com and Target app |
-| **Offsite programmatic** | Reach Target shoppers across the open web |
-| **CTV** | Connected TV ads using Target shopper data |
-| **In-store (Roundel Media Studio)** | Digital screens, sampling, in-store media |
-| **Measurement** | Closed-loop ROAS with Target Circle loyalty data |
+| **Display sur site** | Publicités sur Target.com et l'app Target |
+| **Programmatique hors site** | Atteindre les acheteurs Target à travers le web ouvert |
+| **CTV** | Publicités télévision connectée utilisant les données acheteurs de Target |
+| **En magasin (Roundel Media Studio)** | Écrans numériques, échantillonnage, médias en magasin |
+| **Mesure** | ROAS en boucle fermée avec les données de fidélité Target Circle |
 
-### Target Roundel Best Practices
-- [ ] Leverage Target Circle data for audience creation (120M+ members)
-- [ ] Combine onsite + offsite for full-funnel coverage
-- [ ] Focus on seasonal activations aligned with Target promotional calendar
-- [ ] Use CTV for reaching Target households during streaming
-- [ ] Minimum campaign investment typically $25K–$50K
+### Bonnes pratiques Target Roundel
+- [ ] Tirer parti des données Target Circle pour la création d'audience (120 M+ membres)
+- [ ] Combiner sur site + hors site pour une couverture full-funnel
+- [ ] Se concentrer sur les activations saisonnières alignées avec le calendrier promotionnel Target
+- [ ] Utiliser la CTV pour atteindre les foyers Target pendant le streaming
+- [ ] Investissement de campagne minimum typiquement 25K$–50K$
 
 ## Kroger Precision Marketing (via 84.51°)
 
-### Key Features
-- Built on Kroger loyalty card data (60M+ households)
-- Purchase-based targeting: category buyers, brand switchers, lapsed buyers
-- Onsite ads on Kroger.com ecosystem (Kroger, Ralphs, Fred Meyer, etc.)
-- Offsite programmatic via partnerships (TTD, Roku, Pinterest)
-- Closed-loop sales measurement at household level
+### Fonctionnalités clés
+- Construit sur les données de carte de fidélité Kroger (60 M+ foyers)
+- Ciblage basé sur l'achat : acheteurs de catégorie, switchers de marque, acheteurs perdus
+- Publicités sur site sur l'écosystème Kroger.com (Kroger, Ralphs, Fred Meyer, etc.)
+- Programmatique hors site via des partenariats (TTD, Roku, Pinterest)
+- Mesure des ventes en boucle fermée au niveau du foyer
 
-### Kroger Targeting Segments
+### Segments de ciblage Kroger
 
-| Segment | Description | Use Case |
+| Segment | Description | Cas d'usage |
 |---|---|---|
-| Brand buyers | Current purchasers of your brand | Loyalty, retention |
-| Competitor buyers | Purchase competitor products | Conquest, trial |
-| Category buyers | Active in category, not your brand | Category penetration |
-| Lapsed buyers | Previously purchased, stopped | Win-back |
-| New movers | Recently relocated households | Trial, introduction |
+| Acheteurs de la marque | Acheteurs actuels de votre marque | Fidélisation, rétention |
+| Acheteurs de concurrents | Achètent des produits concurrents | Conquête, essai |
+| Acheteurs de catégorie | Actifs dans la catégorie, pas votre marque | Pénétration de catégorie |
+| Acheteurs perdus | Ayant acheté précédemment, ayant arrêté | Reconquête |
+| Nouveaux emménagés | Foyers récemment déménagés | Essai, présentation |
 
 ## Instacart Ads
 
-### Ad Types
+### Types de publicité
 
-| Ad Type | Description | Placement |
+| Type de publicité | Description | Emplacement |
 |---|---|---|
-| **Sponsored Products** | Promoted items in search and browse | Search results, category pages, post-checkout |
-| **Display** | Banner ads across Instacart surfaces | Homepage, department pages, cart |
-| **Shoppable Display** | Rich media with add-to-cart functionality | Homepage, interstitials |
-| **Shoppable Video** | Video ads with direct purchase capability | In-app placements |
+| **Sponsored Products** | Articles promus dans la recherche et la navigation | Résultats de recherche, pages de catégorie, post-paiement |
+| **Display** | Publicités bannière sur les surfaces Instacart | Page d'accueil, pages de département, panier |
+| **Shoppable Display** | Média riche avec fonctionnalité ajout au panier | Page d'accueil, interstitiels |
+| **Shoppable Video** | Publicités vidéo avec capacité d'achat direct | Emplacements dans l'app |
 
-### Instacart Strategy Notes
-- Instacart captures the impulse moment — shoppers are actively building baskets
-- Sponsored Products at checkout influence last-minute additions
-- Target competitive conquesting when shoppers search category terms
-- Monitor incrementality: Instacart reports include new-to-brand metrics
-- Minimum spend varies but typically $5K/month for meaningful testing
+### Notes de stratégie Instacart
+- Instacart capture le moment d'impulsion — les acheteurs construisent activement leurs paniers
+- Les Sponsored Products au paiement influencent les ajouts de dernière minute
+- Cibler la conquête concurrentielle lorsque les acheteurs recherchent des termes de catégorie
+- Surveiller l'incrémentalité : les rapports Instacart incluent des métriques new-to-brand
+- La dépense minimum varie mais typiquement 5K$/mois pour un test significatif
 
-## Product Listing Optimization (Cross-Platform)
+## Optimisation des fiches produit (cross-plateforme)
 
-### Universal Listing Optimization Checklist
+### Checklist d'optimisation universelle des fiches
 
-| Element | Amazon | Walmart | Instacart | Priority |
+| Élément | Amazon | Walmart | Instacart | Priorité |
 |---|---|---|---|---|
-| **Title** | Brand + product + key attributes (200 chars) | Brand + product + attributes (75 chars) | Brand + product (mirror retailer) | Critical |
-| **Images** | 7+ images, infographics, lifestyle, white BG main | 4+ images, white BG main | Mirror retailer images | Critical |
-| **Bullet points** | 5 bullets, benefit-led, keyword-rich | Key features section | N/A (limited) | High |
-| **Description / A+ Content** | Enhanced Brand Content (A+ pages) | Rich media modules | N/A | High |
-| **Reviews** | 50+ reviews, 4.0+ rating target | 20+ reviews minimum | Linked to retailer reviews | Critical |
-| **Keywords (backend)** | Search terms field (250 bytes) | Hidden keywords | N/A | High |
-| **Price** | Competitive; avoid suppression | Price parity with Amazon | Set by retailer | High |
-| **Availability** | In-stock rate >95% | In-stock rate >95% | In-stock rate >95% | Critical |
+| **Titre** | Marque + produit + attributs clés (200 caractères) | Marque + produit + attributs (75 caractères) | Marque + produit (miroir de l'enseigne) | Critique |
+| **Images** | 7+ images, infographies, lifestyle, fond blanc principal | 4+ images, fond blanc principal | Miroir des images de l'enseigne | Critique |
+| **Points bullets** | 5 puces, axées bénéfice, riches en mots-clés | Section fonctionnalités clés | N/A (limité) | Élevée |
+| **Description / Contenu A+** | Enhanced Brand Content (pages A+) | Modules de média riche | N/A | Élevée |
+| **Avis** | 50+ avis, cible de notation 4,0+ | 20+ avis minimum | Lié aux avis de l'enseigne | Critique |
+| **Mots-clés (backend)** | Champ termes de recherche (250 octets) | Mots-clés cachés | N/A | Élevée |
+| **Prix** | Compétitif ; éviter la suppression | Parité de prix avec Amazon | Fixé par l'enseigne | Élevée |
+| **Disponibilité** | Taux de stock >95 % | Taux de stock >95 % | Taux de stock >95 % | Critique |
 
-### Content Quality Impact on Ad Performance
-- Products with A+ Content see 5–10% conversion rate lift on Amazon
-- Products with 4.0+ star rating have 2x the conversion rate of 3.5-star products
-- Rich, keyword-optimized titles improve ad relevance and reduce CPC
-- In-stock consistency prevents wasted ad spend on unavailable products
+### Impact de la qualité du contenu sur la performance publicitaire
+- Les produits avec du contenu A+ voient un lift de taux de conversion de 5–10 % sur Amazon
+- Les produits avec une notation de 4,0+ étoiles ont 2x le taux de conversion des produits à 3,5 étoiles
+- Des titres riches et optimisés en mots-clés améliorent la pertinence de l'annonce et réduisent le CPC
+- La cohérence des stocks évite le gaspillage de dépense publicitaire sur des produits indisponibles
 
-## Budget Allocation Across Retail Media
+## Allocation budgétaire à travers le retail media
 
-### Budget Framework by Objective
+### Cadre budgétaire par objectif
 
-| Objective | Sponsored Products | Sponsored Brands | Display / DSP | Offsite |
+| Objectif | Sponsored Products | Sponsored Brands | Display / DSP | Hors site |
 |---|---|---|---|---|
-| Launch new product | 60% | 20% | 15% | 5% |
-| Grow market share | 40% | 25% | 20% | 15% |
-| Defend category leadership | 50% | 20% | 15% | 15% |
-| Brand awareness | 15% | 25% | 30% | 30% |
-| Seasonal push | 50% | 25% | 15% | 10% |
+| Lancement d'un nouveau produit | 60 % | 20 % | 15 % | 5 % |
+| Croître la part de marché | 40 % | 25 % | 20 % | 15 % |
+| Défendre le leadership de catégorie | 50 % | 20 % | 15 % | 15 % |
+| Notoriété de marque | 15 % | 25 % | 30 % | 30 % |
+| Poussée saisonnière | 50 % | 25 % | 15 % | 10 % |
 
-### Budget Allocation by Platform (Multi-Retailer)
+### Allocation budgétaire par plateforme (multi-enseignes)
 
-| Factor | Consideration |
+| Facteur | Considération |
 |---|---|
-| Revenue share by retailer | Allocate proportionally to where your sales already happen |
-| Category competition | Higher investment where competition is fierce |
-| Data availability | Invest more where measurement is most complete |
-| Growth opportunity | Overweight emerging RMNs with less competition and lower CPCs |
-| Incrementality | Shift budget toward platforms proving incremental lift |
+| Part de revenu par enseigne | Allouer proportionnellement là où vos ventes ont déjà lieu |
+| Concurrence de catégorie | Investissement plus élevé là où la concurrence est féroce |
+| Disponibilité des données | Investir davantage là où la mesure est la plus complète |
+| Opportunité de croissance | Surpondérer les RMN émergents avec moins de concurrence et des CPC plus bas |
+| Incrémentalité | Déplacer le budget vers les plateformes prouvant un lift incrémental |
 
-### Minimum Viable Budgets
+### Budgets minimums viables
 
-| Platform | Monthly Minimum (Testing) | Monthly Recommended |
+| Plateforme | Minimum mensuel (test) | Mensuel recommandé |
 |---|---|---|
-| Amazon Ads (Sponsored) | $5,000 | $15,000–$50,000+ |
-| Amazon DSP | $10,000 (managed) | $35,000+ |
-| Walmart Connect | $3,000 | $10,000–$30,000 |
-| Target Roundel | $25,000 (campaign minimum) | $50,000+ |
-| Instacart Ads | $5,000 | $10,000–$25,000 |
-| Kroger (84.51°) | $25,000 (campaign minimum) | $50,000+ |
+| Amazon Ads (Sponsored) | 5 000 $ | 15 000–50 000 $+ |
+| Amazon DSP | 10 000 $ (géré) | 35 000 $+ |
+| Walmart Connect | 3 000 $ | 10 000–30 000 $ |
+| Target Roundel | 25 000 $ (minimum de campagne) | 50 000 $+ |
+| Instacart Ads | 5 000 $ | 10 000–25 000 $ |
+| Kroger (84.51°) | 25 000 $ (minimum de campagne) | 50 000 $+ |
 
-## Measurement Framework
+## Cadre de mesure
 
-### Key Retail Media Metrics
+### Métriques clés du retail media
 
-| Metric | Definition | Target Range | Why It Matters |
+| Métrique | Définition | Plage cible | Pourquoi c'est important |
 |---|---|---|---|
-| **ACoS** (Advertising Cost of Sales) | Ad spend / attributed revenue | 15–30% (varies by category) | Core efficiency metric on Amazon |
-| **ROAS** | Revenue / ad spend (inverse of ACoS) | 3x–7x | Universal efficiency metric |
-| **TACoS** (Total ACoS) | Ad spend / total revenue (organic + paid) | 5–15% | Shows overall ad dependency |
-| **New-to-Brand %** | % of conversions from first-time brand buyers | 40–70% (prospecting) | Measures true acquisition |
-| **Share of Voice (SOV)** | % of top search results you own (paid + organic) | Varies by objective | Competitive position metric |
-| **Conversion Rate** | Orders / clicks | 8–15% (Amazon SP average) | Listing and offer quality signal |
-| **Impressions Share** | Your impressions / total available | 15–40% (category-dependent) | Market coverage |
+| **ACoS** (coût publicitaire des ventes) | Dépense publicitaire / revenu attribué | 15–30 % (varie selon la catégorie) | Métrique d'efficacité centrale sur Amazon |
+| **ROAS** | Revenu / dépense publicitaire (inverse de l'ACoS) | 3x–7x | Métrique d'efficacité universelle |
+| **TACoS** (ACoS total) | Dépense publicitaire / revenu total (organique + payant) | 5–15 % | Montre la dépendance publicitaire globale |
+| **% new-to-brand** | % de conversions issues d'acheteurs de la marque pour la première fois | 40–70 % (prospecting) | Mesure la véritable acquisition |
+| **Part de voix (SOV)** | % des meilleurs résultats de recherche que vous possédez (payant + organique) | Varie selon l'objectif | Métrique de position concurrentielle |
+| **Taux de conversion** | Commandes / clics | 8–15 % (moyenne SP Amazon) | Signal de qualité de la fiche et de l'offre |
+| **Part d'impressions** | Vos impressions / total disponible | 15–40 % (selon la catégorie) | Couverture de marché |
 
-### Measurement Checklist
-- [ ] Set up Amazon Attribution for external traffic sources
-- [ ] Configure AMC (Amazon Marketing Cloud) for cross-channel analysis
-- [ ] Track TACoS alongside ACoS to monitor organic health
-- [ ] Measure new-to-brand % for all prospecting campaigns
-- [ ] Monitor SOV weekly using Brand Analytics or third-party tools (Helium 10, Jungle Scout)
-- [ ] Compare ROAS across RMNs using consistent attribution windows
-- [ ] Run incrementality tests (holdout markets or audiences) quarterly
-- [ ] Report total retail media ROI to leadership monthly with blended ROAS
+### Checklist de mesure
+- [ ] Configurer Amazon Attribution pour les sources de trafic externes
+- [ ] Configurer AMC (Amazon Marketing Cloud) pour l'analyse cross-canal
+- [ ] Suivre le TACoS en parallèle de l'ACoS pour surveiller la santé organique
+- [ ] Mesurer le % new-to-brand pour toutes les campagnes de prospecting
+- [ ] Surveiller la SOV chaque semaine en utilisant Brand Analytics ou des outils tiers (Helium 10, Jungle Scout)
+- [ ] Comparer le ROAS à travers les RMN en utilisant des fenêtres d'attribution cohérentes
+- [ ] Exécuter des tests d'incrémentalité (marchés ou audiences témoins) trimestriellement
+- [ ] Rapporter le ROI total du retail media à la direction chaque mois avec un ROAS consolidé
 
-### Attribution Considerations
-- Each RMN uses its own attribution model — they are not directly comparable
-- Amazon: 14-day click attribution (Sponsored), 14-day click + 14-day view (DSP)
-- Walmart: 14-day click attribution
-- Standard caveat: all platforms over-attribute; cross-reference with sales data
-- Use AMC or third-party tools (Pacvue, Skai, CommerceIQ) for unified reporting
-- The most honest metric is TACoS: total ad spend relative to total sales on the platform
+### Considérations d'attribution
+- Chaque RMN utilise son propre modèle d'attribution — ils ne sont pas directement comparables
+- Amazon : attribution au clic de 14 jours (Sponsored), clic 14 jours + vue 14 jours (DSP)
+- Walmart : attribution au clic de 14 jours
+- Mise en garde standard : toutes les plateformes surattribuent ; recouper avec les données de vente
+- Utiliser AMC ou des outils tiers (Pacvue, Skai, CommerceIQ) pour un reporting unifié
+- La métrique la plus honnête est le TACoS : dépense publicitaire totale relative aux ventes totales sur la plateforme
 
-## Troubleshooting Common Issues
+## Dépannage des problèmes courants
 
-| Issue | Cause | Fix |
+| Problème | Cause | Correctif |
 |---|---|---|
-| High ACoS on Sponsored Products | Broad targeting, weak listing | Tighten match types, optimize listing content, negate irrelevant terms |
-| Low impressions | Low bids, poor relevance, out of stock | Increase bids, ensure listing is indexed for target keywords, check inventory |
-| High spend, low sales | Poor conversion rate | Optimize images, pricing, reviews; check competitor pricing |
-| New-to-brand % declining | Retargeting existing customers | Shift budget to prospecting audiences, conquest campaigns |
-| Budget not spending (Walmart/Instacart) | Low search volume, narrow targeting | Broaden targeting, add more keywords, increase bids |
-| Share of voice declining | Competitor investment increasing | Increase investment on key terms, defend branded searches |
+| ACoS élevé sur Sponsored Products | Ciblage large, fiche faible | Resserrer les types de correspondance, optimiser le contenu de la fiche, ajouter des négatifs sur les termes non pertinents |
+| Faibles impressions | Enchères basses, pertinence faible, rupture de stock | Augmenter les enchères, s'assurer que la fiche est indexée pour les mots-clés cibles, vérifier les stocks |
+| Forte dépense, faibles ventes | Faible taux de conversion | Optimiser les images, la tarification, les avis ; vérifier la tarification des concurrents |
+| % new-to-brand en déclin | Retargeting de clients existants | Déplacer le budget vers les audiences de prospecting, campagnes de conquête |
+| Le budget ne se dépense pas (Walmart/Instacart) | Faible volume de recherche, ciblage étroit | Élargir le ciblage, ajouter plus de mots-clés, augmenter les enchères |
+| Part de voix en déclin | Investissement concurrentiel en hausse | Augmenter l'investissement sur les termes clés, défendre les recherches de marque |

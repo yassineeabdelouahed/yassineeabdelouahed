@@ -1,111 +1,119 @@
 ---
 name: video-packaging
-description: "Generate or critique video packaging — title + thumbnail-text pairs where the title carries context and keywords, the thumbnail text carries the tension, and any word echoed between them is rejected as wasted real estate. Generate mode delivers 3 pairs tagged by discovery intent (search vs browse) with a recommendation and A/B note; critique mode returns a PASS/FIX/FAIL verdict with 3 fixed pairs. Triggers on \"/digital-marketing-pro:video-packaging\", \"title for this video\", \"thumbnail text ideas\", \"why is no one clicking this video\", \"critique this title\", \"package this video\". Pairs with /digital-marketing-pro:video-script, pulls real query phrasing from /digital-marketing-pro:keyword-research for search-intent titles, and gates title claims through /digital-marketing-pro:check before anything ships."
+description: "Générer ou critiquer un packaging vidéo — des paires titre + texte de miniature où le titre porte le contexte et les mots-clés, le texte de miniature porte la tension, et tout mot répété entre les deux est rejeté comme un espace gaspillé. Le mode génération livre 3 paires étiquetées par intention de découverte (recherche vs navigation) avec une recommandation et une note de test A/B ; le mode critique renvoie un verdict PASS/FIX/FAIL avec 3 paires corrigées. Se déclenche sur \"/digital-marketing-pro:video-packaging\", \"title for this video\", \"thumbnail text ideas\", \"why is no one clicking this video\", \"critique this title\", \"package this video\". Se combine avec /digital-marketing-pro:video-script, récupère la formulation réelle des requêtes depuis /digital-marketing-pro:keyword-research pour les titres à intention de recherche, et soumet les affirmations de titre à /digital-marketing-pro:check avant toute publication."
 argument-hint: "[brand-name] [--topic <video topic>] [--critique \"<existing title> / <thumb text>\"]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:video-packaging
 
-Packaging decides whether a video gets watched; the content only decides
-whether it deserved to be. On every video surface the viewer sees two elements
-at once — the title and the thumbnail text — and the craft is that **they must
-do different jobs**:
+Le packaging détermine si une vidéo est regardée ; le contenu ne détermine que
+si elle méritait de l'être. Sur toute surface vidéo, le spectateur voit deux
+éléments à la fois — le titre et le texte de miniature — et l'art consiste
+à faire en sorte qu'**ils remplissent des rôles différents** :
 
-- **The title carries context and keywords** — what the video is, phrased the
-  way people search and the way the platform's systems read it.
-- **The thumbnail text carries the tension** — the number, the contradiction,
-  the "wait, what?" that a human reacts to in half a second.
-- **Overlap is wasted real estate.** A thumb word that already appears in the
-  title bought nothing with the scarcest pixels the brand owns.
+- **Le titre porte le contexte et les mots-clés** — ce qu'est la vidéo,
+  formulé comme les gens le recherchent et comme les systèmes de la
+  plateforme le lisent.
+- **Le texte de miniature porte la tension** — le chiffre, la contradiction,
+  le « attends, quoi ? » auquel un humain réagit en une demi-seconde.
+- **Le chevauchement est un gaspillage d'espace.** Un mot de miniature qui
+  apparaît déjà dans le titre n'a rien acheté avec les pixels les plus rares
+  que possède la marque.
 
-## Discovery intent — tag every package
+## Intention de découverte — étiqueter chaque package
 
-A video idea earns discovery one of two ways, and the packaging differs:
+Une idée de vidéo gagne sa découverte de l'une de ces deux façons, et le
+packaging diffère :
 
-| Intent | How it is found | Packaging consequence |
+| Intention | Comment elle est trouvée | Conséquence sur le packaging |
 |---|---|---|
-| **Search** | Typed queries; ranks over months | Title leads with the query phrasing (front-load the keyword); thumb adds the differentiator vs the other results |
-| **Browse** | Suggested/home feeds; spikes on click-through | Title can spend more of its length on intrigue; thumb carries the pattern-break |
-| **Both** | Rare; usually a search topic with a browse-worthy angle | Package for search, let the thumb do the browse work |
+| **Recherche** | Requêtes tapées ; se classe sur des mois | Le titre commence par la formulation de la requête (mettre le mot-clé en tête) ; la miniature ajoute le différenciateur face aux autres résultats |
+| **Navigation** | Fils suggérés/d'accueil ; pics au clic | Le titre peut consacrer plus de sa longueur à l'intrigue ; la miniature porte la rupture de motif |
+| **Les deux** | Rare ; généralement un sujet de recherche avec un angle propice à la navigation | Packager pour la recherche, laisser la miniature faire le travail de navigation |
 
-**No search or browse logic → not a video idea yet.** Route it back through
-topic development before spending packaging effort on it. For search-intent
-videos, pull the real query phrasing from
-/digital-marketing-pro:keyword-research rather than guessing it.
+**Aucune logique de recherche ou de navigation → ce n'est pas encore une
+idée de vidéo.** La renvoyer vers le développement de sujet avant de dépenser
+un effort de packaging dessus. Pour les vidéos à intention de recherche,
+récupérer la formulation réelle des requêtes depuis
+/digital-marketing-pro:keyword-research plutôt que de la deviner.
 
-## Generate mode
+## Mode génération
 
-Input: the topic or concept, the brand, target platform, intent if known.
-
-```
-# Video packaging — [topic]
-
-**Discovery intent:** Search / Browse / Both — [the reasoning in one line]
-
-## Pair 1 — [angle: curiosity / benefit / identity]
-**Title:** [≤60 chars where possible — what survives truncation comes first]
-**Thumb text:** [1-3 words]
-**Why they pair:** [the different jobs, and how they combine into one click decision]
-
-## Pair 2 — [different angle]
-## Pair 3 — [different angle]
-
-## Recommendation
-[Which pair leads and why — grounded in the intent tag, not taste]
-
-## A/B note
-[Which single element to vary if testing — never both at once]
-```
-
-## Critique mode
-
-Input: an existing title and/or thumbnail text (works from a screenshot
-description too).
+Entrée : le sujet ou concept, la marque, la plateforme cible, l'intention si connue.
 
 ```
-# Packaging critique — [the draft]
+# Packaging vidéo — [sujet]
 
-## Verdict: PASS / FIX / FAIL
+**Intention de découverte :** Recherche / Navigation / Les deux — [le raisonnement en une ligne]
 
-## The pairing check
-[Do title and thumb do different jobs? Quote any echoed words — each is the
-finding, verbatim.]
+## Paire 1 — [angle : curiosité / bénéfice / identité]
+**Titre :** [≤60 caractères si possible — ce qui survit à la troncature vient en premier]
+**Texte de miniature :** [1-3 mots]
+**Pourquoi ils se combinent :** [les rôles différents, et comment ils se combinent en une seule décision de clic]
 
-## Working
-[What earns its place]
+## Paire 2 — [angle différent]
+## Paire 3 — [angle différent]
 
-## Not working
-[Specific, quotable problems — vague titles, buried keywords, thumb text
-restating the title, curiosity with no clarity]
+## Recommandation
+[Quelle paire mener et pourquoi — ancrée dans l'étiquette d'intention, pas dans le goût]
 
-## 3 fixed pairs
-[Revised packages, same content, same claims — packaging never promises what
-the video does not deliver]
+## Note de test A/B
+[Quel élément unique faire varier en cas de test — jamais les deux à la fois]
 ```
 
-## Critical rules
+## Mode critique
 
-- **Reject any pair where a thumb word appears in the title.** This is the
-  countable core rule — check it word by word, not by impression.
-- **Titles ≤60 characters where possible**; when longer, everything that
-  matters sits before the truncation point.
-- **Thumb text: 1–3 words.** Four is a caption, not a thumbnail.
-- **Clarity beats curiosity.** A pair that intrigues but does not say what the
-  viewer gets fails — curiosity-gap packaging that the content cannot pay off
-  is churn, and on regulated brands it is a compliance finding.
-- **Packaging never outpromises the video.** The claims in a title pass the
-  same brand guardrails as any other copy; run /digital-marketing-pro:check
-  before anything ships.
-- **Three pairs minimum in Generate; three fixes minimum in Critique.** One
-  option is a decision already made; the client gets choices with reasoning.
-- **Tag the intent every time.** An untagged package is a guess about how the
-  video will be found — and search and browse reward different structures.
+Entrée : un titre existant et/ou un texte de miniature existant (fonctionne
+aussi à partir d'une description de capture d'écran).
 
-## Pairs with
+```
+# Critique de packaging — [le brouillon]
 
-- /digital-marketing-pro:video-script — the script this packaging fronts;
-  its thumbnail-concept step follows the same pairing rule
-- /digital-marketing-pro:keyword-research — real query phrasing for
-  search-intent titles
-- /digital-marketing-pro:check — claims and compliance gate before publishing
+## Verdict : PASS / FIX / FAIL
+
+## Le contrôle d'appariement
+[Le titre et la miniature remplissent-ils des rôles différents ? Citer tout mot répété — chacun est le constat, verbatim.]
+
+## Ce qui fonctionne
+[Ce qui mérite sa place]
+
+## Ce qui ne fonctionne pas
+[Problèmes précis, citables — titres vagues, mots-clés enterrés, texte de miniature répétant le titre, curiosité sans clarté]
+
+## 3 paires corrigées
+[Packages révisés, même contenu, mêmes affirmations — le packaging ne promet jamais ce que la vidéo ne livre pas]
+```
+
+## Règles critiques
+
+- **Rejeter toute paire où un mot de la miniature apparaît dans le titre.**
+  C'est la règle centrale et quantifiable — la vérifier mot par mot, pas à
+  l'impression.
+- **Titres ≤60 caractères si possible** ; s'ils sont plus longs, tout ce qui
+  compte se trouve avant le point de troncature.
+- **Texte de miniature : 1 à 3 mots.** Quatre, c'est une légende, pas une
+  miniature.
+- **La clarté l'emporte sur la curiosité.** Une paire qui intrigue mais ne dit
+  pas ce que le spectateur obtient échoue — un packaging à écart de
+  curiosité que le contenu ne peut pas honorer entraîne de l'abandon, et sur
+  des marques réglementées c'est un constat de conformité.
+- **Le packaging ne promet jamais plus que la vidéo.** Les affirmations dans
+  un titre passent les mêmes garde-fous de marque que tout autre texte ;
+  exécuter /digital-marketing-pro:check avant toute publication.
+- **Trois paires minimum en Génération ; trois corrections minimum en
+  Critique.** Une seule option est une décision déjà prise ; le client
+  obtient des choix avec un raisonnement.
+- **Étiqueter l'intention à chaque fois.** Un package non étiqueté est une
+  supposition sur la façon dont la vidéo sera trouvée — et la recherche et la
+  navigation récompensent des structures différentes.
+
+## Se combine avec
+
+- /digital-marketing-pro:video-script — le script que ce packaging présente ;
+  son étape de concept de miniature suit la même règle d'appariement
+- /digital-marketing-pro:keyword-research — formulation réelle des requêtes
+  pour les titres à intention de recherche
+- /digital-marketing-pro:check — porte d'affirmations et de conformité avant
+  publication
+</content>

@@ -1,128 +1,128 @@
-# Content Calendar — Planning & Templates
+# Calendrier de contenu — Planification et modèles
 
-## Calendar Template Structure
+## Modèle de structure de calendrier
 
-| Field | Description |
+| Champ | Description |
 |-------|-------------|
-| **Date** | Publish date |
-| **Channel** | Blog, LinkedIn, Instagram, Email, etc. |
-| **Content type** | Blog post, social post, email, video, etc. |
-| **Pillar** | Which content pillar (see framework below) |
-| **Topic/Title** | Working title |
-| **Target keyword** | For SEO content (primary keyword) |
-| **Funnel stage** | Awareness, Consideration, Decision, Retention |
-| **Target persona** | Which persona this content serves |
-| **Owner** | Person responsible for creation |
-| **Status** | Ideation → Draft → Review → Approved → Scheduled → Published |
-| **Distribution** | Where this content will be promoted (channels) |
-| **Repurpose plan** | How this content will be adapted for other channels |
+| **Date** | Date de publication |
+| **Canal** | Blog, LinkedIn, Instagram, E-mail, etc. |
+| **Type de contenu** | Article de blog, post social, e-mail, vidéo, etc. |
+| **Pilier** | Quel pilier de contenu (voir le cadre ci-dessous) |
+| **Sujet/Titre** | Titre de travail |
+| **Mot-clé cible** | Pour le contenu SEO (mot-clé primaire) |
+| **Étape du tunnel** | Notoriété, Considération, Décision, Rétention |
+| **Persona cible** | Quel persona ce contenu sert |
+| **Responsable** | Personne responsable de la création |
+| **Statut** | Idéation → Brouillon → Revue → Approuvé → Planifié → Publié |
+| **Distribution** | Où ce contenu sera promu (canaux) |
+| **Plan de recyclage** | Comment ce contenu sera adapté pour d'autres canaux |
 
 ---
 
-## Content Pillar Framework
+## Cadre de piliers de contenu
 
-Choose 3-5 pillars that represent your brand's core expertise areas.
+Choisir 3 à 5 piliers représentant les domaines d'expertise centraux de la marque.
 
-### Example: B2B SaaS Marketing Tool
-1. **Marketing Strategy** — Campaign planning, budget allocation, team management
-2. **Analytics & Data** — Reporting, metrics, attribution, insights
-3. **Content Marketing** — SEO, content creation, distribution, optimization
-4. **Industry Trends** — Market updates, predictions, benchmarks
-5. **Customer Stories** — Case studies, success stories, use cases
+### Exemple : Outil SaaS B2B marketing
+1. **Stratégie marketing** — Planification de campagne, allocation budgétaire, gestion d'équipe
+2. **Analytics et données** — Reporting, métriques, attribution, insights
+3. **Marketing de contenu** — SEO, création de contenu, distribution, optimisation
+4. **Tendances sectorielles** — Mises à jour du marché, prédictions, benchmarks
+5. **Histoires clients** — Études de cas, success stories, cas d'usage
 
-### Rules
-- Every piece of content maps to one pillar
-- Aim for balanced distribution across pillars (within ±10%)
-- Each pillar has a defined pillar page that cluster content links to
-- Review pillar balance monthly and adjust if lopsided
+### Règles
+- Chaque pièce de contenu est associée à un pilier
+- Viser une distribution équilibrée entre les piliers (à ±10 % près)
+- Chaque pilier a une page pilier définie vers laquelle le contenu du cluster lie
+- Revoir l'équilibre des piliers mensuellement et ajuster si déséquilibré
 
 ---
 
-## Publishing Cadence Recommendations
+## Recommandations de cadence de publication
 
-### By Channel
+### Par canal
 
-| Channel | Minimum | Recommended | Maximum |
+| Canal | Minimum | Recommandé | Maximum |
 |---------|---------|-------------|---------|
-| Blog | 2/month | 4-8/month | 12/month |
-| LinkedIn | 3/week | 5/week | 1-2/day |
-| Twitter/X | 1/day | 3-5/day | 10/day |
-| Instagram Feed | 3/week | 4-5/week | 1-2/day |
-| Instagram Reels | 2/week | 4-5/week | 1/day |
-| TikTok | 3/week | 5-7/week | 2-3/day |
-| YouTube | 1/month | 1-2/week | 3/week |
-| Email newsletter | 1/month | 1/week | 2/week |
-| Podcast | 2/month | 1/week | 2/week |
+| Blog | 2/mois | 4-8/mois | 12/mois |
+| LinkedIn | 3/semaine | 5/semaine | 1-2/jour |
+| Twitter/X | 1/jour | 3-5/jour | 10/jour |
+| Fil Instagram | 3/semaine | 4-5/semaine | 1-2/jour |
+| Instagram Reels | 2/semaine | 4-5/semaine | 1/jour |
+| TikTok | 3/semaine | 5-7/semaine | 2-3/jour |
+| YouTube | 1/mois | 1-2/semaine | 3/semaine |
+| Newsletter e-mail | 1/mois | 1/semaine | 2/semaine |
+| Podcast | 2/mois | 1/semaine | 2/semaine |
 
-### By Team Size
-| Team Size | Blog | Social | Email | Video |
+### Par taille d'équipe
+| Taille d'équipe | Blog | Social | E-mail | Vidéo |
 |-----------|------|--------|-------|-------|
-| Solo marketer | 2/month | 3-5/week total | 2/month | 1/month |
-| Small team (2-3) | 4/month | 1/day/platform | 1/week | 2/month |
-| Mid team (4-8) | 8/month | 1-2/day/platform | 1-2/week | 1/week |
-| Large team (8+) | 12+/month | 2+/day/platform | 2-3/week | 2-3/week |
+| Marketeur solo | 2/mois | 3-5/semaine total | 2/mois | 1/mois |
+| Petite équipe (2-3) | 4/mois | 1/jour/plateforme | 1/semaine | 2/mois |
+| Équipe moyenne (4-8) | 8/mois | 1-2/jour/plateforme | 1-2/semaine | 1/semaine |
+| Grande équipe (8+) | 12+/mois | 2+/jour/plateforme | 2-3/semaine | 2-3/semaine |
 
 ---
 
-## Seasonal & Event Calendar
+## Calendrier saisonnier et d'événements
 
-### Q1 (January - March)
-- Jan 1: New Year's (resolutions, fresh start content)
-- Jan: Chinese New Year / Lunar New Year (varies)
-- Feb 14: Valentine's Day
-- Feb: Ramadan begins (varies — check Islamic calendar)
-- Mar 8: International Women's Day
-- Mar 17: St. Patrick's Day
-- Late Mar: Holi (India)
+### T1 (Janvier - Mars)
+- 1er janvier : Nouvel An (résolutions, contenu de nouveau départ)
+- Janvier : Nouvel An chinois / lunaire (variable)
+- 14 février : Saint-Valentin
+- Février : Début du Ramadan (variable — vérifier le calendrier islamique)
+- 8 mars : Journée internationale des droits des femmes
+- 17 mars : Saint-Patrick
+- Fin mars : Holi (Inde)
 
-### Q2 (April - June)
-- Apr 22: Earth Day
-- Apr/May: Eid al-Fitr (end of Ramadan — varies)
-- May: Mental Health Awareness Month
-- May (2nd Sun): Mother's Day (US)
-- Jun: Pride Month
-- Jun (3rd Sun): Father's Day (US)
+### T2 (Avril - Juin)
+- 22 avril : Jour de la Terre
+- Avril/Mai : Aïd al-Fitr (fin du Ramadan — variable)
+- Mai : Mois de sensibilisation à la santé mentale
+- Mai (2e dim.) : Fête des Mères (US)
+- Juin : Mois des fiertés (Pride Month)
+- Juin (3e dim.) : Fête des Pères (US)
 
-### Q3 (July - September)
-- Jul 4: US Independence Day
-- Aug 15: Indian Independence Day
-- Aug/Sep: Back to school (education, productivity)
-- Sep (1st Mon): Labor Day (US)
-- Sep: Oktoberfest begins (Germany)
+### T3 (Juillet - Septembre)
+- 4 juillet : Fête de l'Indépendance des États-Unis
+- 15 août : Fête de l'Indépendance de l'Inde
+- Août/Sept. : Rentrée scolaire (éducation, productivité)
+- Sept. (1er lun.) : Labor Day (US)
+- Sept. : Début de l'Oktoberfest (Allemagne)
 
-### Q4 (October - December)
-- Oct 31: Halloween
-- Oct/Nov: Diwali (India — varies)
-- Nov 11: Singles' Day (China — massive eCommerce event)
-- Nov 11: Veterans Day (US)
-- Nov (4th Thu): Thanksgiving (US)
-- Nov (4th Fri): Black Friday
-- Nov (Mon after): Cyber Monday
-- Dec 25: Christmas
-- Dec 26: Boxing Day (UK, Canada, AU)
-- Dec 31: New Year's Eve
+### T4 (Octobre - Décembre)
+- 31 octobre : Halloween
+- Oct./Nov. : Diwali (Inde — variable)
+- 11 novembre : Journée des célibataires (Chine — événement e-commerce massif)
+- 11 novembre : Veterans Day (US)
+- Nov. (4e jeu.) : Thanksgiving (US)
+- Nov. (4e ven.) : Black Friday
+- Nov. (lun. suivant) : Cyber Monday
+- 25 décembre : Noël
+- 26 décembre : Boxing Day (UK, Canada, AU)
+- 31 décembre : Réveillon du Nouvel An
 
-### Industry Events
-- CES (January)
-- SXSW (March)
-- Industry-specific conferences (map per brand)
-- Product launch cycles
-- Fiscal year boundaries (triggers B2B budget cycles)
+### Événements sectoriels
+- CES (janvier)
+- SXSW (mars)
+- Conférences spécifiques au secteur (à cartographier par marque)
+- Cycles de lancement produit
+- Limites d'exercice fiscal (déclenchent les cycles budgétaires B2B)
 
 ---
 
-## Content Batch Production
+## Production de contenu par lot
 
-### Batch Process
-1. **Planning session** (2 hours): Map next month's topics, assign pillars, keywords
-2. **Research batch** (1 day): Pull data, sources, competitor analysis for all pieces
-3. **Writing batch** (2-3 days): Write all blog posts / long-form in one focused period
-4. **Design batch** (1-2 days): Create all visuals, thumbnails, social graphics
-5. **Editing batch** (1 day): Review all content, SEO check, brand voice check
-6. **Scheduling batch** (half day): Schedule everything in CMS, social tools, ESP
+### Processus par lot
+1. **Session de planification** (2 heures) : Cartographier les sujets du mois suivant, assigner les piliers, les mots-clés
+2. **Lot de recherche** (1 jour) : Récupérer les données, les sources, l'analyse concurrentielle pour toutes les pièces
+3. **Lot de rédaction** (2-3 jours) : Rédiger tous les articles de blog / contenus longs sur une période concentrée
+4. **Lot de design** (1-2 jours) : Créer tous les visuels, miniatures, graphiques sociaux
+5. **Lot d'édition** (1 jour) : Revoir tout le contenu, vérification SEO, vérification de voix de marque
+6. **Lot de planification** (demi-journée) : Tout planifier dans le CMS, les outils sociaux, l'ESP
 
-### Benefits
-- Faster than creating one piece at a time
-- Ensures consistent voice and messaging
-- Allows for better internal linking between related pieces
-- Reduces context-switching
+### Bénéfices
+- Plus rapide que de créer une pièce à la fois
+- Assure une voix et une messagerie cohérentes
+- Permet un meilleur maillage interne entre pièces connexes
+- Réduit le changement de contexte

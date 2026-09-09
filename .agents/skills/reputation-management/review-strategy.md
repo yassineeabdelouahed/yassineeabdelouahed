@@ -1,173 +1,174 @@
-# Review Strategy — Generation & Management
+# Stratégie d'avis — Génération et gestion
 
-> Systematic framework for generating, managing, and leveraging customer reviews across every major platform. Reviews are among the highest-trust signals in purchase decisions — surveys consistently find that most consumers say online reviews influence their buying behavior (verify the current figure against a primary source such as the annual BrightLocal Local Consumer Review Survey before citing a specific percentage).
+> Cadre systématique pour générer, gérer, et tirer parti des avis clients sur toutes les principales plateformes. Les avis sont parmi les signaux de confiance les plus élevés dans les décisions d'achat — les sondages constatent régulièrement que la plupart des consommateurs déclarent que les avis en ligne influencent leur comportement d'achat (vérifier le chiffre actuel auprès d'une source primaire telle que le Local Consumer Review Survey annuel de BrightLocal avant de citer un pourcentage précis).
 
 ---
 
-## Platform Review Landscape
+## Paysage des avis par plateforme
 
-| Platform | Primary Use | Avg. Star Threshold | Solicitation Allowed? | Review Gating Legal? |
+| Plateforme | Usage principal | Seuil moyen d'étoiles | Sollicitation autorisée ? | Filtrage d'avis légal ? |
 |----------|-------------|--------------------|-----------------------|----------------------|
-| Google Business | Local / B2C | 4.2+ | Yes (with guidelines) | No (violates policy) |
-| Yelp | Local / Hospitality | 3.8+ | **No** (strictly prohibited) | No |
-| G2 | B2B SaaS | 4.0+ | Yes (incentives OK) | No |
-| Capterra | B2B SaaS | 4.0+ | Yes (gift cards OK) | No |
-| Trustpilot | E-commerce / SaaS | 4.2+ | Yes (via invitations) | No (violates terms) |
-| Amazon | E-commerce | 4.0+ | **Restricted** (Vine only) | No |
-| Glassdoor | Employer Brand | 3.8+ | Yes (encourage, no coerce) | No |
-| TripAdvisor | Travel / Hospitality | 4.0+ | Yes (reminder tools) | No |
+| Google Business | Local / B2C | 4,2+ | Oui (avec conditions) | Non (viole la politique) |
+| Yelp | Local / Hôtellerie | 3,8+ | **Non** (strictement interdit) | Non |
+| G2 | B2B SaaS | 4,0+ | Oui (incitations OK) | Non |
+| Capterra | B2B SaaS | 4,0+ | Oui (cartes-cadeaux OK) | Non |
+| Trustpilot | E-commerce / SaaS | 4,2+ | Oui (via invitations) | Non (viole les conditions) |
+| Amazon | E-commerce | 4,0+ | **Restreint** (Vine uniquement) | Non |
+| Glassdoor | Marque employeur | 3,8+ | Oui (encourager, ne pas contraindre) | Non |
+| TripAdvisor | Voyage / Hôtellerie | 4,0+ | Oui (outils de rappel) | Non |
 
 ---
 
-## Platform-Specific Solicitation Rules
+## Règles de sollicitation spécifiques aux plateformes
 
-### Yelp — Strict Prohibition
-- **Do NOT** ask customers for Yelp reviews — ever
-- No "Find us on Yelp" signage that implies review requests
-- **Allowed:** Yelp check-in offers, claiming your profile, responding to reviews
-- Yelp's algorithm suppresses reviews from accounts with low activity; solicited reviews often get filtered
+### Yelp — Interdiction stricte
+- **NE JAMAIS** demander aux clients des avis Yelp — jamais
+- Pas de signalétique « Trouvez-nous sur Yelp » qui suggère des demandes d'avis
+- **Autorisé :** Offres de check-in Yelp, revendication de votre profil, réponse aux avis
+- L'algorithme de Yelp supprime les avis des comptes à faible activité ; les avis sollicités sont souvent filtrés
 
-### Amazon — Vine & Guardrails
-- Sellers **cannot** offer compensation for reviews (violates ToS, risks account suspension)
-- Amazon Vine program: send products to trusted reviewers (enrollment fee applies)
-- "Request a Review" button in Seller Central is the only compliant solicitation method
-- No follow-up emails that include review requests with discount offers
+### Amazon — Vine et garde-fous
+- Les vendeurs **ne peuvent pas** offrir de compensation pour des avis (viole les CGU, risque la suspension du compte)
+- Programme Amazon Vine : envoyer des produits à des évaluateurs de confiance (des frais d'inscription s'appliquent)
+- Le bouton « Demander un avis » dans Seller Central est la seule méthode de sollicitation conforme
+- Pas d'emails de suivi incluant des demandes d'avis avec des offres de réduction
 
-### Google — Permissive with Limits
-- Solicitation is allowed; review gating is not
-- Cannot offer incentives for reviews
-- Cannot set up review stations at your location on a single device (IP flagging)
-- Can use NFC tap-to-review stands, QR codes, email/SMS follow-ups
+### Google — Permissif avec des limites
+- La sollicitation est autorisée ; le filtrage d'avis ne l'est pas
+- Impossible d'offrir des incitations pour des avis
+- Impossible de mettre en place des stations d'avis à votre établissement sur un seul appareil (signalement IP)
+- Peut utiliser des présentoirs NFC tap-to-review, des codes QR, des suivis email/SMS
 
-### Trustpilot — Invitation System
-- Must use Trustpilot's invitation tools for solicitation
-- Cannot cherry-pick who receives invitations (must invite all or use automatic triggers)
-- Service reviews and product reviews have separate flows
+### Trustpilot — Système d'invitation
+- Doit utiliser les outils d'invitation de Trustpilot pour la sollicitation
+- Ne peut pas sélectionner qui reçoit les invitations (doit inviter tout le monde ou utiliser des déclencheurs automatiques)
+- Les avis de service et les avis de produit ont des flux séparés
 
 ---
 
-## Review Request Templates
+## Modèles de demande d'avis
 
-### Email — Post-Purchase (Send 3-7 days after delivery/service)
+### Email — Post-achat (envoyer 3-7 jours après la livraison/le service)
 
-**Subject Line Options:**
-- "How did we do, {{first_name}}?"
-- "Your feedback helps us improve"
-- "Quick question about your recent {{product/service}}"
+**Options d'objet :**
+- « Comment nous en sommes-nous sortis, {{first_name}} ? »
+- « Votre retour nous aide à nous améliorer »
+- « Une question rapide sur votre récent(e) {{product/service}} »
 
-**Body:**
-> Hi {{first_name}},
+**Corps :**
+> Bonjour {{first_name}},
 >
-> Thanks for choosing {{company}}. We hope {{product/service}} is working well for you.
+> Merci d'avoir choisi {{company}}. Nous espérons que {{product/service}} fonctionne bien pour vous.
 >
-> Would you mind sharing your experience? It takes about 60 seconds and helps other customers make informed decisions.
+> Cela vous dérangerait-il de partager votre expérience ? Cela prend environ 60 secondes et aide d'autres clients à prendre des décisions éclairées.
 >
-> [Leave a Review → {{direct_review_link}}]
+> [Laisser un avis → {{direct_review_link}}]
 >
-> Either way, if you have any questions or concerns, reply to this email and we'll take care of it.
+> Dans tous les cas, si vous avez des questions ou des préoccupations, répondez à cet email et nous nous en occuperons.
 >
-> Thank you,
+> Merci,
 > {{sender_name}}
 
-### SMS — Post-Purchase (Send 2-5 days after delivery/service)
+### SMS — Post-achat (envoyer 2-5 jours après la livraison/le service)
 
-> Hi {{first_name}}, thanks for your recent purchase from {{company}}! We'd love to hear how it went. Leave a quick review here: {{short_link}} — Reply STOP to opt out.
-
----
-
-## Review Response Templates
-
-### Positive Review (5 stars)
-> Thank you so much, {{reviewer_name}}! We're glad {{specific detail from review}} met your expectations. Your feedback means a lot to the team. We look forward to serving you again.
-
-### Neutral Review (3 stars)
-> Hi {{reviewer_name}}, thank you for sharing your honest feedback. We appreciate that {{positive aspect mentioned}} worked well. We'd love to learn more about how we can improve {{area of concern}}. Could you reach out to us at {{support_email}} so we can make things right?
-
-### Negative Review (1-2 stars)
-> {{reviewer_name}}, we're sorry to hear about your experience with {{specific issue}}. This isn't the standard we hold ourselves to. We'd like to make this right — please contact {{name}} directly at {{phone/email}} so we can resolve this for you. Thank you for bringing this to our attention.
-
-### Suspected Fake Review
-> We take all feedback seriously, but we're unable to find a record matching this review in our system. If you've done business with us, please contact {{support_email}} with your order details so we can investigate and resolve any concerns.
+> Bonjour {{first_name}}, merci pour votre récent achat auprès de {{company}} ! Nous aimerions savoir comment cela s'est passé. Laissez un avis rapide ici : {{short_link}} — Répondez STOP pour vous désabonner.
 
 ---
 
-## Review Management Workflow
+## Modèles de réponse aux avis
 
-| Step | Action | Frequency | Owner |
+### Avis positif (5 étoiles)
+> Merci beaucoup, {{reviewer_name}} ! Nous sommes heureux que {{détail spécifique de l'avis}} ait répondu à vos attentes. Votre retour compte beaucoup pour l'équipe. Nous avons hâte de vous servir à nouveau.
+
+### Avis neutre (3 étoiles)
+> Bonjour {{reviewer_name}}, merci d'avoir partagé votre retour honnête. Nous apprécions que {{aspect positif mentionné}} ait bien fonctionné. Nous aimerions en savoir plus sur la manière dont nous pouvons améliorer {{domaine de préoccupation}}. Pourriez-vous nous contacter à {{support_email}} afin que nous puissions corriger la situation ?
+
+### Avis négatif (1-2 étoiles)
+> {{reviewer_name}}, nous sommes désolés d'apprendre votre expérience avec {{problème spécifique}}. Ce n'est pas le standard que nous nous fixons. Nous aimerions corriger la situation — veuillez contacter {{name}} directement à {{phone/email}} afin que nous puissions résoudre cela pour vous. Merci de nous avoir signalé cela.
+
+### Avis suspecté de faux
+> Nous prenons tous les retours au sérieux, mais nous ne parvenons pas à trouver d'enregistrement correspondant à cet avis dans notre système. Si vous avez déjà fait affaire avec nous, veuillez contacter {{support_email}} avec les détails de votre commande afin que nous puissions enquêter et résoudre toute préoccupation.
+
+---
+
+## Workflow de gestion des avis
+
+| Étape | Action | Fréquence | Responsable |
 |------|--------|-----------|-------|
-| 1 | Monitor all platforms via aggregator (Birdeye, Podium, ReviewTrackers) | Real-time alerts | Community Manager |
-| 2 | Categorize incoming reviews (positive, neutral, negative, fake) | Within 2 hours | Community Manager |
-| 3 | Respond to negative reviews | Within 4 hours (business hours) | Senior CM / Manager |
-| 4 | Respond to positive reviews | Within 24 hours | Community Manager |
-| 5 | Escalate legal/defamation concerns | Immediately | Legal / Director |
-| 6 | Flag suspected fake reviews for platform removal | Within 24 hours | Community Manager |
-| 7 | Log trends and recurring themes | Weekly | Marketing Analyst |
-| 8 | Report review metrics to leadership | Monthly | Marketing Manager |
+| 1 | Surveiller toutes les plateformes via un agrégateur (Birdeye, Podium, ReviewTrackers) | Alertes en temps réel | Community Manager |
+| 2 | Catégoriser les avis entrants (positif, neutre, négatif, faux) | Dans les 2 heures | Community Manager |
+| 3 | Répondre aux avis négatifs | Dans les 4 heures (heures ouvrées) | CM senior / Manager |
+| 4 | Répondre aux avis positifs | Dans les 24 heures | Community Manager |
+| 5 | Escalader les préoccupations légales/de diffamation | Immédiatement | Légal / Directeur |
+| 6 | Signaler les avis suspectés de faux pour suppression par la plateforme | Dans les 24 heures | Community Manager |
+| 7 | Journaliser les tendances et thèmes récurrents | Hebdomadaire | Analyste marketing |
+| 8 | Rapporter les métriques d'avis à la direction | Mensuel | Responsable marketing |
 
 ---
 
-## Review Velocity Strategy
+## Stratégie de vélocité d'avis
 
-Review velocity — the rate at which new reviews arrive — is a ranking signal on Google and influences consumer trust on all platforms.
+La vélocité d'avis — le rythme auquel de nouveaux avis arrivent — est un signal de classement sur Google et influence la confiance des consommateurs sur toutes les plateformes.
 
-### Velocity Targets by Business Size
+### Cibles de vélocité par taille d'entreprise
 
-| Business Size | Monthly Review Target | Tactic Mix |
+| Taille d'entreprise | Cible d'avis mensuelle | Mix de tactiques |
 |--------------|----------------------|------------|
-| Local SMB | 5-15 new reviews/month | Email + in-person ask + QR codes |
-| Mid-Market | 15-50 new reviews/month | Automated email sequences + SMS + NFC |
-| Enterprise | 50-200+ new reviews/month | CRM-triggered automation + post-support surveys + loyalty program integration |
+| PME locale | 5-15 nouveaux avis/mois | Email + demande en personne + codes QR |
+| Milieu de marché | 15-50 nouveaux avis/mois | Séquences email automatisées + SMS + NFC |
+| Entreprise | 50-200+ nouveaux avis/mois | Automatisation déclenchée par le CRM + sondages post-support + intégration au programme de fidélité |
 
-### Velocity Acceleration Tactics
-1. **Trigger-based automation:** Send review requests after positive support interactions (CSAT 4-5)
-2. **Receipt/invoice integration:** Include review link on digital receipts
-3. **QR code placement:** In-store, on packaging, on business cards
-4. **Employee program:** Train frontline staff to mention reviews at point of sale
-5. **Loyalty program tie-in:** Offer loyalty points (not for reviews — for sharing feedback)
+### Tactiques d'accélération de la vélocité
+1. **Automatisation déclenchée** : Envoyer des demandes d'avis après des interactions de support positives (CSAT 4-5)
+2. **Intégration reçu/facture** : Inclure le lien d'avis sur les reçus numériques
+3. **Placement de codes QR** : En magasin, sur l'emballage, sur les cartes de visite
+4. **Programme employé** : Former le personnel en première ligne à mentionner les avis au point de vente
+5. **Association au programme de fidélité** : Offrir des points de fidélité (pas pour les avis — pour le partage de retour)
 
 ---
 
-## Handling Fake Reviews
+## Gestion des faux avis
 
-### Identification Checklist
-- [ ] Reviewer has no other review history or a suspicious profile
-- [ ] Review contains no specific details about the product/service
-- [ ] Language matches patterns seen in competitor attack campaigns
-- [ ] Multiple negative reviews posted in a short time window
-- [ ] Reviewer has never been a customer (no matching records)
+### Checklist d'identification
+- [ ] L'auteur de l'avis n'a pas d'autre historique d'avis ou a un profil suspect
+- [ ] L'avis ne contient aucun détail spécifique sur le produit/service
+- [ ] Le langage correspond aux motifs observés dans les campagnes d'attaque concurrentielles
+- [ ] Plusieurs avis négatifs publiés dans une courte fenêtre temporelle
+- [ ] L'auteur de l'avis n'a jamais été client (aucun enregistrement correspondant)
 
-### Removal Process by Platform
+### Processus de suppression par plateforme
 
-| Platform | Process | Typical Timeline |
+| Plateforme | Processus | Délai typique |
 |----------|---------|-----------------|
-| Google | Flag via Google Business Profile → "Report review" | 5-14 days |
-| Yelp | Report via Business Owner tools | 7-21 days |
-| Trustpilot | Report with evidence via compliance team | 3-10 days |
-| Amazon | Report via Seller Central → "Report abuse" | 7-14 days |
-| G2 | Contact G2 support with evidence | 5-10 days |
+| Google | Signaler via Google Business Profile → « Signaler l'avis » | 5-14 jours |
+| Yelp | Signaler via les outils Business Owner | 7-21 jours |
+| Trustpilot | Signaler avec des preuves via l'équipe de conformité | 3-10 jours |
+| Amazon | Signaler via Seller Central → « Signaler un abus » | 7-14 jours |
+| G2 | Contacter le support G2 avec des preuves | 5-10 jours |
 
-### If Platform Refuses Removal
-1. Respond publicly with a factual, professional reply
-2. Bury the fake review with legitimate positive reviews (velocity strategy)
-3. Consult legal counsel if review is defamatory and demonstrably false
-4. Document everything for potential future disputes
+### Si la plateforme refuse la suppression
+1. Répondre publiquement avec une réponse factuelle et professionnelle
+2. Noyer le faux avis avec des avis positifs légitimes (stratégie de vélocité)
+3. Consulter un conseiller juridique si l'avis est diffamatoire et démontrablement faux
+4. Documenter tout pour d'éventuels litiges futurs
 
 ---
 
-## Review Analytics — KPIs to Track
+## Analytics des avis — KPI à suivre
 
-| Metric | Definition | Benchmark |
+| Métrique | Définition | Référence |
 |--------|-----------|-----------|
-| Average Star Rating | Mean rating across all platforms | 4.2+ |
-| Review Volume | Total reviews per month | Varies by industry |
-| Review Velocity | New reviews per week | Steady or increasing |
-| Response Rate | % of reviews responded to | 100% negative, 80%+ positive |
-| Response Time | Average time to first response | < 4 hrs (negative), < 24 hrs (positive) |
-| Sentiment Ratio | Positive : Neutral : Negative | 70:20:10 or better |
-| Review-to-Revenue Correlation | Revenue impact per 0.1 star improvement | Track via attribution |
+| Note moyenne en étoiles | Note moyenne sur toutes les plateformes | 4,2+ |
+| Volume d'avis | Total des avis par mois | Varie selon le secteur |
+| Vélocité d'avis | Nouveaux avis par semaine | Stable ou en croissance |
+| Taux de réponse | % des avis auxquels on a répondu | 100 % négatif, 80 %+ positif |
+| Temps de réponse | Temps moyen jusqu'à la première réponse | < 4 h (négatif), < 24 h (positif) |
+| Ratio de sentiment | Positif : Neutre : Négatif | 70:20:10 ou mieux |
+| Corrélation avis-revenu | Impact sur le revenu par amélioration de 0,1 étoile | Suivre via l'attribution |
 
 ---
 
-## Key Principle
+## Principe clé
 
-> Never gate reviews. Never incentivize ratings. Never ignore criticism. The goal is volume, velocity, and authenticity — not perfection. A 4.6 with 500 reviews outperforms a 5.0 with 12 reviews every time.
+> Ne jamais filtrer les avis. Ne jamais inciter les notes. Ne jamais ignorer les critiques. L'objectif est le volume, la vélocité, et l'authenticité — pas la perfection. Un 4,6 avec 500 avis surpasse toujours un 5,0 avec 12 avis.
+</content>

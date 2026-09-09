@@ -1,350 +1,350 @@
-# Automation Workflows Reference
+# Référence des workflows d'automatisation
 
-Comprehensive reference for designing, building, and optimizing marketing automation workflows across platforms and business models.
-
----
-
-## Trigger Types
-
-Every automation workflow begins with a trigger — the event or condition that enrolls a contact into the flow.
-
-### Time-Based Triggers
-- **Date-based**: Enrollment date, subscription anniversary, contract renewal date, birthday
-- **Delay-based**: X days after signup, X hours after last purchase, X weeks since last engagement
-- **Scheduled**: Weekly digest, monthly recap, quarterly review reminder
-- **Best for**: Lifecycle campaigns, recurring communications, anniversary/renewal workflows
-
-### Event-Based Triggers
-- **Form submission**: Lead magnet download, demo request, contact form, webinar registration
-- **Purchase event**: First purchase, repeat purchase, high-value order, specific product/category
-- **Account event**: Signup, trial start, plan upgrade, plan downgrade, cancellation
-- **Best for**: Immediate-response workflows where timing sensitivity is high
-
-### Behavioral Triggers
-- **Email engagement**: Opens, clicks, replies, forwards, or lack thereof
-- **Website behavior**: Page visit (especially pricing, comparison, case study pages), session duration, scroll depth
-- **Product usage**: Feature activation, usage milestone, inactivity, approaching usage limit
-- **Content consumption**: Blog reads, video views, podcast listens, resource downloads
-- **Best for**: Intent-based workflows that respond to prospect signals
-
-### Conditional Triggers
-- **Score threshold**: Lead score crosses MQL or SQL threshold
-- **Property change**: Job title change, company size change, lifecycle stage change
-- **List membership**: Added to or removed from a specific segment or list
-- **Deal stage change**: Opportunity created, moved to negotiation, closed-won, closed-lost
-- **Best for**: CRM-driven workflows and lifecycle stage transitions
-
-### Hybrid Triggers
-- **Compound conditions**: Behavioral trigger AND score threshold (e.g., visited pricing page AND score > 50)
-- **Time-bounded behavior**: Specific action within a time window (e.g., 3 page visits in 7 days)
-- **Negative triggers**: Absence of expected behavior within a window (e.g., no login within 14 days of signup)
-- **Best for**: Sophisticated workflows that require multiple signals before activation
+Référence complète pour concevoir, construire et optimiser des workflows d'automatisation marketing à travers les plateformes et les modèles économiques.
 
 ---
 
-## Workflow Patterns
+## Types de déclencheurs
 
-### 1. Welcome Series
+Chaque workflow d'automatisation commence par un déclencheur — l'événement ou la condition qui inscrit un contact dans le flux.
 
-| Element | Detail |
-|---|---|
-| **Trigger** | New subscriber, account signup, or first form submission |
-| **Goal** | Orient, build trust, set expectations, drive first meaningful action |
-| **Steps** | 3-5 emails over 7-14 days |
-| **Timing** | Email 1: immediate. Email 2: day 2. Email 3: day 5. Email 4: day 8. Email 5: day 12. |
-| **Exit conditions** | Completed series, unsubscribed, or converted to next lifecycle stage |
-| **Success metrics** | Open rate >50%, click rate >15%, completion rate >60%, first action rate |
+### Déclencheurs basés sur le temps
+- **Basé sur une date** : Date d'inscription, anniversaire d'abonnement, date de renouvellement de contrat, anniversaire
+- **Basé sur un délai** : X jours après l'inscription, X heures après le dernier achat, X semaines depuis le dernier engagement
+- **Planifié** : Digest hebdomadaire, récapitulatif mensuel, rappel de revue trimestrielle
+- **Idéal pour** : Campagnes de cycle de vie, communications récurrentes, workflows d'anniversaire/renouvellement
 
-**Sequence structure:**
-1. **Welcome + value delivery** (immediate) — Thank them, deliver promised asset, set expectations for what comes next
-2. **Brand story + social proof** (day 2) — Who you are, who you serve, proof it works
-3. **Quick win content** (day 5) — Actionable tip or resource they can use immediately
-4. **Feature/benefit deep dive** (day 8) — Showcase your primary value proposition with specifics
-5. **Soft CTA** (day 12) — Invite to next step (demo, trial, purchase, consultation)
+### Déclencheurs basés sur des événements
+- **Soumission de formulaire** : Téléchargement de lead magnet, demande de démo, formulaire de contact, inscription à un webinaire
+- **Événement d'achat** : Premier achat, achat répété, commande à haute valeur, produit/catégorie spécifique
+- **Événement de compte** : Inscription, début d'essai, upgrade de plan, downgrade de plan, annulation
+- **Idéal pour** : Workflows à réponse immédiate où la sensibilité au timing est élevée
 
-### 2. Abandoned Cart Recovery
+### Déclencheurs comportementaux
+- **Engagement e-mail** : Ouvertures, clics, réponses, transferts, ou absence de ceux-ci
+- **Comportement sur le site web** : Visite de page (en particulier tarification, comparaison, pages d'études de cas), durée de session, profondeur de défilement
+- **Usage produit** : Activation de fonctionnalité, jalon d'usage, inactivité, approche de la limite d'usage
+- **Consommation de contenu** : Lectures de blog, visionnages vidéo, écoutes de podcast, téléchargements de ressources
+- **Idéal pour** : Workflows basés sur l'intention qui répondent aux signaux des prospects
 
-| Element | Detail |
-|---|---|
-| **Trigger** | Cart created but checkout not completed within 1 hour |
-| **Goal** | Recover abandoned revenue |
-| **Steps** | 3 emails + optional SMS over 72 hours |
-| **Timing** | Email 1: 1 hour. Email 2: 24 hours. SMS (optional): 36 hours. Email 3: 72 hours. |
-| **Exit conditions** | Purchase completed, cart emptied, or unsubscribed |
-| **Success metrics** | Recovery rate 5-15%, revenue recovered, AOV of recovered carts |
+### Déclencheurs conditionnels
+- **Seuil de score** : Le score de lead franchit le seuil MQL ou SQL
+- **Changement de propriété** : Changement de titre de poste, changement de taille d'entreprise, changement d'étape de cycle de vie
+- **Appartenance à une liste** : Ajouté à ou retiré d'un segment ou d'une liste spécifique
+- **Changement d'étape de deal** : Opportunité créée, déplacée en négociation, gagnée, perdue
+- **Idéal pour** : Workflows pilotés par le CRM et transitions d'étape de cycle de vie
 
-**Sequence structure:**
-1. **Reminder** (1 hour) — "You left something behind." Show cart contents. No discount.
-2. **Urgency + social proof** (24 hours) — Reviews, stock scarcity, or shipping deadline. Still no discount.
-3. **SMS nudge** (36 hours, optional) — Brief "Still thinking it over?" with cart link
-4. **Incentive** (72 hours) — Discount or free shipping only as last resort. If margin allows, 10-15% off.
-
-**Critical rule**: Never train customers to expect discounts by offering incentives in email 1. Start with value, escalate to urgency, and use discounts only as a final recovery attempt.
-
-### 3. Re-Engagement (Win-Back)
-
-| Element | Detail |
-|---|---|
-| **Trigger** | No email opens or clicks in 60-90 days (B2C) or 90-120 days (B2B) |
-| **Goal** | Reactivate dormant contacts or confirm they should be suppressed |
-| **Steps** | 3-4 emails over 21-30 days |
-| **Timing** | Email 1: day 0. Email 2: day 7. Email 3: day 14. Email 4 (sunset): day 21-30. |
-| **Exit conditions** | Re-engaged (opened/clicked), unsubscribed, or completed sunset (moved to suppressed) |
-| **Success metrics** | Reactivation rate 5-12%, list cleaned of truly inactive contacts |
-
-**Sequence structure:**
-1. **"We miss you"** — Highlight what they are missing, new features, or popular content since they disengaged
-2. **Best content** — Send your highest-performing content piece to maximize re-engagement chance
-3. **Preference update** — Ask if they want to change frequency or topics (give control, not just unsubscribe)
-4. **Sunset warning** — "We will stop emailing you unless you click here." Remove non-responders from active list.
-
-**Critical rule**: Do not keep emailing truly inactive contacts. They damage sender reputation. The sunset email is not optional — it is deliverability hygiene.
-
-### 4. Post-Purchase Follow-Up
-
-| Element | Detail |
-|---|---|
-| **Trigger** | Purchase completed |
-| **Goal** | Reduce buyer's remorse, drive product adoption, encourage review, create repeat buyer |
-| **Steps** | 4-6 emails over 30-60 days |
-| **Timing** | Email 1: immediate. Email 2: day 3. Email 3: day 7-10. Email 4: day 14. Email 5: day 30. Email 6: day 45-60. |
-| **Exit conditions** | Completed series or made second purchase (move to loyalty track) |
-| **Success metrics** | Review rate, NPS response, repeat purchase rate, support ticket rate |
-
-**Sequence structure:**
-1. **Order confirmation + expectations** (immediate) — Confirm purchase, set delivery expectations, provide tracking
-2. **Getting started** (day 3) — How to use the product, setup guides, tips for first use
-3. **Check-in** (day 7-10) — "How is it going?" Link to support if needed
-4. **Review request** (day 14) — Ask for review/rating once they have had time to use it
-5. **Cross-sell/upsell** (day 30) — Complementary products based on purchase
-6. **Replenishment or loyalty** (day 45-60) — Reorder reminder (consumables) or loyalty program invite
-
-### 5. Lead Nurture (B2B)
-
-| Element | Detail |
-|---|---|
-| **Trigger** | Lead created (form fill, content download, webinar registration) but not yet MQL |
-| **Goal** | Educate, build trust, and move lead toward MQL threshold |
-| **Steps** | 5-8 emails over 4-8 weeks |
-| **Timing** | Every 5-7 days for B2B (less frequent than B2C) |
-| **Exit conditions** | MQL score reached, meeting booked, unsubscribed, or disqualified |
-| **Success metrics** | MQL conversion rate, time to MQL, content engagement rates |
-
-**Sequence structure:**
-1. **Value delivery** — Deliver the promised content, introduce who you are
-2. **Problem education** — Expand on the pain point, share industry data
-3. **Solution framework** — How problems like theirs get solved (methodology, not product pitch)
-4. **Social proof** — Case study or customer story relevant to their industry/size
-5. **Deep dive content** — Webinar, guide, or report that demonstrates expertise
-6. **Comparison/evaluation** — Help them evaluate options (including yours) fairly
-7. **Soft CTA** — Offer a consultation, demo, or assessment
-8. **Direct CTA** — Specific next step with urgency or value-add
-
-### 6. SaaS Onboarding
-
-| Element | Detail |
-|---|---|
-| **Trigger** | Trial started or account created |
-| **Goal** | Drive activation (reach "aha moment"), reduce time-to-value, convert trial to paid |
-| **Steps** | 5-7 emails over trial period (7-30 days) |
-| **Timing** | Email 1: immediate. Then based on activation milestones + time-based fallbacks. |
-| **Exit conditions** | Converted to paid, trial expired, or account deleted |
-| **Success metrics** | Activation rate, feature adoption, trial-to-paid conversion rate |
-
-**Sequence structure:**
-1. **Welcome + quick start** (immediate) — Shortest path to first value. One action to complete.
-2. **Activation milestone 1** (day 1-2) — Guide to completing the first key action
-3. **Feature highlight** (day 3-5) — Showcase the feature that correlates highest with conversion
-4. **Social proof** (day 5-7) — Customer success story of similar user/company
-5. **Advanced tips** (day 7-10) — Power user features, integrations, team collaboration
-6. **Conversion CTA** (3-5 days before trial end) — Upgrade prompt with plan comparison
-7. **Last chance** (day before expiration) — Final conversion push, limited-time offer if appropriate
-
-**Branch logic**: If user completes activation milestones early, skip educational emails and move to conversion track. If inactive after day 3, trigger a re-engagement branch.
-
-### 7. Win-Back (Churned Customer)
-
-| Element | Detail |
-|---|---|
-| **Trigger** | Subscription cancelled or no purchase in X days (2x average purchase cycle) |
-| **Goal** | Recover churned customers |
-| **Steps** | 3-5 emails over 30-60 days |
-| **Timing** | Email 1: 3 days post-churn. Email 2: 14 days. Email 3: 30 days. Email 4: 45 days. Email 5: 60 days. |
-| **Exit conditions** | Reactivated, unsubscribed, or completed series (move to long-term dormant) |
-| **Success metrics** | Win-back rate 5-15%, reactivation revenue |
-
-### 8. Feedback Collection
-
-| Element | Detail |
-|---|---|
-| **Trigger** | Post-interaction event (purchase, support ticket resolved, onboarding complete, event attended) |
-| **Goal** | Collect NPS, CSAT, or product feedback |
-| **Steps** | 2-3 emails over 7-10 days |
-| **Timing** | Email 1: 1-3 days post-event. Email 2: 5-7 days. Email 3 (thank you): immediate after response. |
-| **Exit conditions** | Survey completed or series finished |
-| **Success metrics** | Response rate >15%, NPS score, actionable feedback volume |
-
-### 9. Anniversary/Birthday
-
-| Element | Detail |
-|---|---|
-| **Trigger** | Date-based: customer anniversary, birthday, or signup anniversary |
-| **Goal** | Build loyalty, drive engagement, create a purchase occasion |
-| **Steps** | 1-2 emails |
-| **Timing** | Email 1: on the day (or 1-3 days before). Email 2: reminder 3-5 days after if offer unused. |
-| **Exit conditions** | Offer redeemed, expired, or unsubscribed |
-| **Success metrics** | Redemption rate, revenue generated, engagement lift |
-
-### 10. Subscription Renewal
-
-| Element | Detail |
-|---|---|
-| **Trigger** | Subscription renewal date approaching (30-60 days out) |
-| **Goal** | Retain subscriber, reduce involuntary churn, upsell to annual |
-| **Steps** | 3-5 emails over 30-45 days |
-| **Timing** | Email 1: 30-45 days before. Email 2: 14 days before. Email 3: 3 days before. Email 4: renewal day. Email 5: post-renewal/lapsed. |
-| **Exit conditions** | Renewed, cancelled, or payment failed (move to dunning workflow) |
-| **Success metrics** | Renewal rate, voluntary churn rate, annual plan upgrade rate |
+### Déclencheurs hybrides
+- **Conditions composées** : Déclencheur comportemental ET seuil de score (par exemple, a visité la page tarifaire ET score > 50)
+- **Comportement borné dans le temps** : Action spécifique dans une fenêtre de temps (par exemple, 3 visites de page en 7 jours)
+- **Déclencheurs négatifs** : Absence de comportement attendu dans une fenêtre (par exemple, aucune connexion dans les 14 jours suivant l'inscription)
+- **Idéal pour** : Workflows sophistiqués nécessitant plusieurs signaux avant activation
 
 ---
 
-## Decision Logic & Branching
+## Schémas de workflow
 
-### If/Then Branching Patterns
+### 1. Série de bienvenue
 
-**Engagement-based branching:**
-```
-IF opened email 1 → send content-focused email 2
-IF did NOT open email 1 → resend with new subject line after 48 hours
-  IF still no open → send SMS (if consent exists) or skip to email 3
-```
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Nouvel abonné, inscription de compte, ou première soumission de formulaire |
+| **Objectif** | Orienter, construire la confiance, fixer les attentes, générer la première action significative |
+| **Étapes** | 3 à 5 e-mails sur 7 à 14 jours |
+| **Timing** | E-mail 1 : immédiat. E-mail 2 : jour 2. E-mail 3 : jour 5. E-mail 4 : jour 8. E-mail 5 : jour 12. |
+| **Conditions de sortie** | Série terminée, désabonné, ou converti vers l'étape de cycle de vie suivante |
+| **Métriques de succès** | Taux d'ouverture >50 %, taux de clic >15 %, taux de complétion >60 %, taux de première action |
 
-**Score-based branching:**
-```
-IF lead score >= 75 → exit nurture, trigger MQL handoff workflow
-IF lead score 50-74 → continue nurture with middle-funnel content
-IF lead score < 50 → continue nurture with top-funnel educational content
-```
+**Structure de la séquence :**
+1. **Bienvenue + livraison de valeur** (immédiat) — Remercier, livrer l'actif promis, fixer les attentes pour la suite
+2. **Histoire de marque + preuve sociale** (jour 2) — Qui vous êtes, qui vous servez, preuve que ça fonctionne
+3. **Contenu de gain rapide** (jour 5) — Conseil ou ressource actionnable utilisable immédiatement
+4. **Approfondissement fonctionnalité/bénéfice** (jour 8) — Mettre en avant votre proposition de valeur principale avec des détails concrets
+5. **CTA doux** (jour 12) — Inviter à l'étape suivante (démo, essai, achat, consultation)
 
-**Behavior-based branching:**
-```
-IF visited pricing page → fast-track to demo offer email
-IF downloaded case study → send related customer success story
-IF attended webinar → send on-demand recording + consultation offer
-IF no engagement in 30 days → move to re-engagement branch
-```
+### 2. Récupération de panier abandonné
 
-### Engagement Gates
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Panier créé mais paiement non finalisé dans l'heure |
+| **Objectif** | Récupérer le chiffre d'affaires abandonné |
+| **Étapes** | 3 e-mails + SMS optionnel sur 72 heures |
+| **Timing** | E-mail 1 : 1 heure. E-mail 2 : 24 heures. SMS (optionnel) : 36 heures. E-mail 3 : 72 heures. |
+| **Conditions de sortie** | Achat finalisé, panier vidé, ou désabonné |
+| **Métriques de succès** | Taux de récupération de 5 à 15 %, chiffre d'affaires récupéré, panier moyen des paniers récupérés |
 
-An engagement gate pauses a sequence until the contact demonstrates engagement. This prevents sending deeper content to contacts who are not reading earlier messages.
+**Structure de la séquence :**
+1. **Rappel** (1 heure) — « Vous avez oublié quelque chose. » Montrer le contenu du panier. Aucune réduction.
+2. **Urgence + preuve sociale** (24 heures) — Avis, rareté de stock, ou délai de livraison. Toujours aucune réduction.
+3. **Relance SMS** (36 heures, optionnel) — Bref « Vous hésitez encore ? » avec lien vers le panier
+4. **Incitation** (72 heures) — Réduction ou livraison gratuite en dernier recours seulement. Si la marge le permet, 10-15 % de réduction.
 
-**Gate logic:**
-```
-Send email 1 → Wait 3 days
-  IF opened OR clicked → proceed to email 2
-  IF no engagement → wait 4 more days, resend with new subject
-    IF still no engagement → exit sequence, mark as low-engagement
-```
+**Règle critique** : Ne jamais habituer les clients à attendre des réductions en en proposant dès le premier e-mail. Commencer par la valeur, monter en urgence, et utiliser les réductions uniquement comme tentative de récupération finale.
 
-Gates protect deliverability by ensuring you only continue emailing people who are reading.
+### 3. Ré-engagement (Win-Back)
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Aucune ouverture ni clic d'e-mail depuis 60 à 90 jours (B2C) ou 90 à 120 jours (B2B) |
+| **Objectif** | Réactiver les contacts dormants ou confirmer qu'ils doivent être supprimés |
+| **Étapes** | 3 à 4 e-mails sur 21 à 30 jours |
+| **Timing** | E-mail 1 : jour 0. E-mail 2 : jour 7. E-mail 3 : jour 14. E-mail 4 (sunset) : jour 21-30. |
+| **Conditions de sortie** | Ré-engagé (ouvert/cliqué), désabonné, ou sunset terminé (déplacé vers supprimé) |
+| **Métriques de succès** | Taux de réactivation de 5 à 12 %, liste nettoyée des contacts véritablement inactifs |
+
+**Structure de la séquence :**
+1. **« Vous nous manquez »** — Mettre en avant ce qu'ils manquent, les nouvelles fonctionnalités, ou le contenu populaire depuis leur désengagement
+2. **Meilleur contenu** — Envoyer votre pièce de contenu la plus performante pour maximiser la chance de ré-engagement
+3. **Mise à jour des préférences** — Demander s'ils veulent changer la fréquence ou les sujets (donner le contrôle, pas seulement le désabonnement)
+4. **Avertissement de sunset** — « Nous cesserons de vous envoyer des e-mails sauf si vous cliquez ici. » Retirer les non-répondants de la liste active.
+
+**Règle critique** : Ne pas continuer à envoyer des e-mails aux contacts véritablement inactifs. Ils endommagent la réputation d'expéditeur. L'e-mail de sunset n'est pas optionnel — c'est une hygiène de délivrabilité.
+
+### 4. Suivi post-achat
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Achat finalisé |
+| **Objectif** | Réduire le remords de l'acheteur, stimuler l'adoption du produit, encourager l'avis, créer un acheteur récurrent |
+| **Étapes** | 4 à 6 e-mails sur 30 à 60 jours |
+| **Timing** | E-mail 1 : immédiat. E-mail 2 : jour 3. E-mail 3 : jour 7-10. E-mail 4 : jour 14. E-mail 5 : jour 30. E-mail 6 : jour 45-60. |
+| **Conditions de sortie** | Série terminée ou second achat effectué (déplacer vers le parcours fidélité) |
+| **Métriques de succès** | Taux d'avis, taux de réponse NPS, taux de rachat, taux de tickets support |
+
+**Structure de la séquence :**
+1. **Confirmation de commande + attentes** (immédiat) — Confirmer l'achat, fixer les attentes de livraison, fournir le suivi
+2. **Premiers pas** (jour 3) — Comment utiliser le produit, guides de configuration, conseils pour la première utilisation
+3. **Point de suivi** (jour 7-10) — « Comment ça se passe ? » Lien vers le support si besoin
+4. **Demande d'avis** (jour 14) — Demander un avis/une note une fois qu'ils ont eu le temps de l'utiliser
+5. **Vente croisée/additionnelle** (jour 30) — Produits complémentaires basés sur l'achat
+6. **Réapprovisionnement ou fidélité** (jour 45-60) — Rappel de recommande (consommables) ou invitation au programme de fidélité
+
+### 5. Nurturing de lead (B2B)
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Lead créé (remplissage de formulaire, téléchargement de contenu, inscription à webinaire) mais pas encore MQL |
+| **Objectif** | Éduquer, construire la confiance, et faire avancer le lead vers le seuil MQL |
+| **Étapes** | 5 à 8 e-mails sur 4 à 8 semaines |
+| **Timing** | Tous les 5-7 jours pour le B2B (moins fréquent que le B2C) |
+| **Conditions de sortie** | Score MQL atteint, réunion réservée, désabonné, ou disqualifié |
+| **Métriques de succès** | Taux de conversion MQL, délai jusqu'au MQL, taux d'engagement au contenu |
+
+**Structure de la séquence :**
+1. **Livraison de valeur** — Livrer le contenu promis, se présenter
+2. **Éducation au problème** — Développer sur le point de douleur, partager des données sectorielles
+3. **Cadre de solution** — Comment des problèmes comme le leur se résolvent (méthodologie, pas argumentaire produit)
+4. **Preuve sociale** — Étude de cas ou histoire client pertinente pour leur secteur/taille
+5. **Contenu d'approfondissement** — Webinaire, guide, ou rapport démontrant l'expertise
+6. **Comparaison/évaluation** — Les aider à évaluer les options (y compris la vôtre) de manière honnête
+7. **CTA doux** — Proposer une consultation, une démo, ou une évaluation
+8. **CTA direct** — Prochaine étape spécifique avec urgence ou valeur ajoutée
+
+### 6. Onboarding SaaS
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Essai commencé ou compte créé |
+| **Objectif** | Stimuler l'activation (atteindre le « moment aha »), réduire le délai de valeur, convertir l'essai en payant |
+| **Étapes** | 5 à 7 e-mails sur la période d'essai (7 à 30 jours) |
+| **Timing** | E-mail 1 : immédiat. Puis basé sur les jalons d'activation + repli basé sur le temps. |
+| **Conditions de sortie** | Converti en payant, essai expiré, ou compte supprimé |
+| **Métriques de succès** | Taux d'activation, adoption de fonctionnalité, taux de conversion essai-vers-payant |
+
+**Structure de la séquence :**
+1. **Bienvenue + démarrage rapide** (immédiat) — Chemin le plus court vers la première valeur. Une seule action à accomplir.
+2. **Jalon d'activation 1** (jour 1-2) — Guide pour accomplir la première action clé
+3. **Mise en avant de fonctionnalité** (jour 3-5) — Mettre en avant la fonctionnalité la plus corrélée à la conversion
+4. **Preuve sociale** (jour 5-7) — Histoire de succès client d'un utilisateur/entreprise similaire
+5. **Conseils avancés** (jour 7-10) — Fonctionnalités power user, intégrations, collaboration d'équipe
+6. **CTA de conversion** (3-5 jours avant la fin de l'essai) — Invitation à upgrade avec comparaison de plans
+7. **Dernière chance** (jour avant expiration) — Dernière relance de conversion, offre à durée limitée si approprié
+
+**Logique de branchement** : Si l'utilisateur accomplit les jalons d'activation tôt, sauter les e-mails éducatifs et passer au parcours de conversion. S'il est inactif après le jour 3, déclencher une branche de ré-engagement.
+
+### 7. Win-Back (client churné)
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Abonnement annulé ou aucun achat depuis X jours (2x le cycle d'achat moyen) |
+| **Objectif** | Récupérer les clients churnés |
+| **Étapes** | 3 à 5 e-mails sur 30 à 60 jours |
+| **Timing** | E-mail 1 : 3 jours après le churn. E-mail 2 : 14 jours. E-mail 3 : 30 jours. E-mail 4 : 45 jours. E-mail 5 : 60 jours. |
+| **Conditions de sortie** | Réactivé, désabonné, ou série terminée (déplacer vers dormant long terme) |
+| **Métriques de succès** | Taux de win-back de 5 à 15 %, chiffre d'affaires de réactivation |
+
+### 8. Collecte de feedback
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Événement post-interaction (achat, ticket support résolu, onboarding terminé, événement assisté) |
+| **Objectif** | Collecter NPS, CSAT, ou feedback produit |
+| **Étapes** | 2 à 3 e-mails sur 7 à 10 jours |
+| **Timing** | E-mail 1 : 1-3 jours après l'événement. E-mail 2 : 5-7 jours. E-mail 3 (remerciement) : immédiat après réponse. |
+| **Conditions de sortie** | Sondage terminé ou série terminée |
+| **Métriques de succès** | Taux de réponse >15 %, score NPS, volume de feedback actionnable |
+
+### 9. Anniversaire/Date de naissance
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Basé sur une date : anniversaire client, date de naissance, ou anniversaire d'inscription |
+| **Objectif** | Construire la fidélité, stimuler l'engagement, créer une occasion d'achat |
+| **Étapes** | 1 à 2 e-mails |
+| **Timing** | E-mail 1 : le jour même (ou 1-3 jours avant). E-mail 2 : rappel 3-5 jours après si l'offre n'est pas utilisée. |
+| **Conditions de sortie** | Offre utilisée, expirée, ou désabonné |
+| **Métriques de succès** | Taux d'utilisation, chiffre d'affaires généré, hausse d'engagement |
+
+### 10. Renouvellement d'abonnement
+
+| Élément | Détail |
+|---|---|
+| **Déclencheur** | Date de renouvellement d'abonnement approchant (30 à 60 jours) |
+| **Objectif** | Retenir l'abonné, réduire le churn involontaire, upsell vers l'annuel |
+| **Étapes** | 3 à 5 e-mails sur 30 à 45 jours |
+| **Timing** | E-mail 1 : 30-45 jours avant. E-mail 2 : 14 jours avant. E-mail 3 : 3 jours avant. E-mail 4 : jour du renouvellement. E-mail 5 : post-renouvellement/expiré. |
+| **Conditions de sortie** | Renouvelé, annulé, ou paiement échoué (déplacer vers workflow de relance de paiement) |
+| **Métriques de succès** | Taux de renouvellement, taux de churn volontaire, taux d'upgrade vers plan annuel |
 
 ---
 
-## Cross-Channel Orchestration
+## Logique de décision et branchement
 
-### Channel Priority & Coordination
+### Schémas de branchement Si/Alors
 
-| Channel | Use When | Typical Content |
+**Branchement basé sur l'engagement :**
+```
+SI a ouvert l'e-mail 1 → envoyer l'e-mail 2 axé contenu
+SI n'a PAS ouvert l'e-mail 1 → renvoyer avec un nouvel objet après 48 heures
+  SI toujours aucune ouverture → envoyer un SMS (si consentement existe) ou passer à l'e-mail 3
+```
+
+**Branchement basé sur le score :**
+```
+SI score de lead >= 75 → sortir du nurturing, déclencher le workflow de transfert MQL
+SI score de lead 50-74 → continuer le nurturing avec du contenu milieu de tunnel
+SI score de lead < 50 → continuer le nurturing avec du contenu éducatif haut de tunnel
+```
+
+**Branchement basé sur le comportement :**
+```
+SI a visité la page tarifaire → accélérer vers l'e-mail d'offre de démo
+SI a téléchargé une étude de cas → envoyer une histoire de succès client connexe
+SI a assisté à un webinaire → envoyer l'enregistrement à la demande + offre de consultation
+SI aucun engagement depuis 30 jours → déplacer vers la branche de ré-engagement
+```
+
+### Portes d'engagement
+
+Une porte d'engagement met en pause une séquence jusqu'à ce que le contact démontre de l'engagement. Cela évite d'envoyer du contenu plus approfondi à des contacts qui ne lisent pas les messages précédents.
+
+**Logique de porte :**
+```
+Envoyer l'e-mail 1 → Attendre 3 jours
+  SI ouvert OU cliqué → passer à l'e-mail 2
+  SI aucun engagement → attendre 4 jours de plus, renvoyer avec un nouvel objet
+    SI toujours aucun engagement → sortir de la séquence, marquer comme faible engagement
+```
+
+Les portes protègent la délivrabilité en garantissant que vous ne continuez d'envoyer des e-mails qu'aux personnes qui les lisent.
+
+---
+
+## Orchestration cross-canal
+
+### Priorité et coordination des canaux
+
+| Canal | À utiliser quand | Contenu typique |
 |---|---|---|
-| **Email** | Primary communication, content delivery, nurture | Long-form, educational, promotional, transactional |
-| **SMS** | Time-sensitive, high-urgency, brief messages | Appointment reminders, flash sales, shipping updates, abandoned cart |
-| **Push notifications** | App users, real-time engagement, ephemeral messages | Feature updates, activity alerts, personalized recommendations |
-| **In-app messaging** | User is actively in the product, contextual guidance | Onboarding tooltips, feature announcements, upgrade prompts |
-| **Direct mail** | High-value accounts, re-engagement, brand moments | Welcome kits, anniversary gifts, win-back offers |
-| **Retargeting ads** | Awareness reinforcement, stays visible between emails | Brand awareness, social proof, offer reinforcement |
+| **E-mail** | Communication principale, livraison de contenu, nurturing | Format long, éducatif, promotionnel, transactionnel |
+| **SMS** | Sensible au temps, forte urgence, messages courts | Rappels de rendez-vous, ventes flash, mises à jour d'expédition, panier abandonné |
+| **Notifications push** | Utilisateurs d'application, engagement en temps réel, messages éphémères | Mises à jour de fonctionnalités, alertes d'activité, recommandations personnalisées |
+| **Messagerie in-app** | L'utilisateur est activement dans le produit, guidage contextuel | Infobulles d'onboarding, annonces de fonctionnalités, invites d'upgrade |
+| **Courrier direct** | Comptes à haute valeur, ré-engagement, moments de marque | Kits de bienvenue, cadeaux d'anniversaire, offres de win-back |
+| **Publicités de retargeting** | Renforcement de la notoriété, reste visible entre les e-mails | Notoriété de marque, preuve sociale, renforcement d'offre |
 
-### Orchestration Rules
+### Règles d'orchestration
 
-1. **Never send the same message through multiple channels simultaneously** — Coordinate so each channel serves a distinct purpose
-2. **Respect channel preferences** — If a contact opts out of SMS, do not attempt to compensate by emailing twice as often
-3. **Use channel escalation** — Start with email. If no engagement, escalate to SMS (with consent). If high-value, consider direct mail.
-4. **Time-zone awareness** — Send emails during business hours (B2B) or active hours (B2C) in the contact's time zone
-5. **Global frequency cap** — Total touches across all channels should not exceed a weekly maximum (3-5 for B2B, 5-7 for B2C)
+1. **Ne jamais envoyer le même message via plusieurs canaux simultanément** — Coordonner pour que chaque canal serve un objectif distinct
+2. **Respecter les préférences de canal** — Si un contact refuse le SMS, ne pas tenter de compenser en envoyant deux fois plus d'e-mails
+3. **Utiliser l'escalade de canal** — Commencer par l'e-mail. Sans engagement, escalader vers le SMS (avec consentement). Si haute valeur, envisager le courrier direct.
+4. **Sensibilité au fuseau horaire** — Envoyer les e-mails pendant les heures ouvrées (B2B) ou les heures actives (B2C) dans le fuseau horaire du contact
+5. **Plafond de fréquence global** — Le total des points de contact sur tous les canaux ne devrait pas dépasser un maximum hebdomadaire (3-5 pour le B2B, 5-7 pour le B2C)
 
-### Example: Multi-Channel Abandoned Cart
+### Exemple : panier abandonné multi-canal
 
 ```
-Hour 0: Cart abandoned
-Hour 1: Email — "You left items in your cart" with product images
-Hour 12: Push notification (if app user) — "Your cart is waiting"
-Hour 24: Email — Social proof + urgency ("Selling fast")
-Hour 36: SMS (if opted in) — Short message with cart link
-Hour 48: Retargeting ad activated — Show cart products on social/display
-Hour 72: Final email — Discount offer (last resort)
+Heure 0 : Panier abandonné
+Heure 1 : E-mail — « Vous avez laissé des articles dans votre panier » avec images produits
+Heure 12 : Notification push (si utilisateur d'application) — « Votre panier vous attend »
+Heure 24 : E-mail — Preuve sociale + urgence (« Se vend vite »)
+Heure 36 : SMS (si consenti) — Message court avec lien vers le panier
+Heure 48 : Publicité de retargeting activée — Montrer les produits du panier sur social/display
+Heure 72 : E-mail final — Offre de réduction (dernier recours)
 ```
 
 ---
 
-## Testing Automation Workflows
+## Tester les workflows d'automatisation
 
-### Pre-Launch Testing
+### Tests avant lancement
 
-1. **Path testing**: Send test contacts through every possible branch path. Verify each route delivers the correct content in the correct order.
-2. **Trigger verification**: Confirm the trigger fires correctly (and only when intended). Test edge cases: what happens if the trigger fires twice? What happens if the contact already exists in the workflow?
-3. **Timing validation**: Verify wait steps use the correct durations. Check time zone handling.
-4. **Suppression testing**: Confirm contacts in suppression lists or other active workflows are properly excluded.
-5. **Exit condition testing**: Verify contacts exit when they should (conversion, unsubscribe, disqualification). Confirm they do NOT exit prematurely.
-6. **Integration testing**: Verify CRM records update, scores change, handoff notifications fire, and list memberships update correctly.
+1. **Test de parcours** : Faire passer des contacts de test par chaque chemin de branchement possible. Vérifier que chaque route livre le bon contenu dans le bon ordre.
+2. **Vérification du déclencheur** : Confirmer que le déclencheur se déclenche correctement (et uniquement quand voulu). Tester les cas limites : que se passe-t-il si le déclencheur se déclenche deux fois ? Que se passe-t-il si le contact existe déjà dans le workflow ?
+3. **Validation du timing** : Vérifier que les étapes d'attente utilisent les bonnes durées. Vérifier la gestion des fuseaux horaires.
+4. **Test de suppression** : Confirmer que les contacts dans les listes de suppression ou d'autres workflows actifs sont correctement exclus.
+5. **Test de condition de sortie** : Vérifier que les contacts sortent quand ils le devraient (conversion, désabonnement, disqualification). Confirmer qu'ils ne sortent PAS prématurément.
+6. **Test d'intégration** : Vérifier que les enregistrements CRM se mettent à jour, que les scores changent, que les notifications de transfert se déclenchent, et que les appartenances de liste se mettent à jour correctement.
 
-### In-Flow A/B Testing
+### Tests A/B en flux
 
-- **Subject line tests**: Test within the same email step. Split 50/50 with a winner declared after 24-48 hours or sufficient volume.
-- **Content variant tests**: Test different content approaches at the same sequence step.
-- **Timing tests**: Test different wait durations between emails (e.g., 3-day gap vs. 5-day gap).
-- **Branch path tests**: Test whether behavioral branching outperforms a single linear path.
-- **Minimum sample**: Do not declare winners with fewer than 100 contacts per variant. For low-volume workflows, run tests longer rather than reducing sample size.
+- **Tests d'objet** : Tester au sein de la même étape e-mail. Diviser 50/50 avec un gagnant déclaré après 24-48 heures ou un volume suffisant.
+- **Tests de variantes de contenu** : Tester différentes approches de contenu à la même étape de séquence.
+- **Tests de timing** : Tester différentes durées d'attente entre les e-mails (par exemple, écart de 3 jours vs. 5 jours).
+- **Tests de chemin de branchement** : Tester si le branchement comportemental surperforme un chemin linéaire unique.
+- **Échantillon minimum** : Ne pas déclarer de gagnants avec moins de 100 contacts par variante. Pour les workflows à faible volume, prolonger les tests plutôt que réduire la taille de l'échantillon.
 
-### Ongoing Monitoring
+### Surveillance continue
 
-- **Enrollment rate**: Are contacts entering at expected volume?
-- **Step completion rate**: What percentage reach each step? Where is the drop-off?
-- **Error rate**: Are any steps failing (bounces, integration errors, send failures)?
-- **Goal completion rate**: What percentage achieve the workflow's defined goal?
-- **Time-to-goal**: How long does it take to achieve the goal? Is this improving over time?
-- **Unsubscribe rate per step**: Identify specific emails that drive unsubscribes.
+- **Taux d'inscription** : Les contacts entrent-ils au volume attendu ?
+- **Taux de complétion par étape** : Quel pourcentage atteint chaque étape ? Où se situe l'abandon ?
+- **Taux d'erreur** : Des étapes échouent-elles (rebonds, erreurs d'intégration, échecs d'envoi) ?
+- **Taux de complétion d'objectif** : Quel pourcentage atteint l'objectif défini du workflow ?
+- **Délai jusqu'à l'objectif** : Combien de temps faut-il pour atteindre l'objectif ? Cela s'améliore-t-il avec le temps ?
+- **Taux de désabonnement par étape** : Identifier les e-mails spécifiques qui génèrent des désabonnements.
 
 ---
 
-## Common Mistakes and Anti-Patterns
+## Erreurs courantes et anti-schémas
 
-### 1. No Exit Conditions
-**Problem**: Contacts loop endlessly or receive redundant messages after converting.
-**Fix**: Every workflow must have explicit exit conditions. At minimum: goal achieved, unsubscribed, or maximum time elapsed.
+### 1. Aucune condition de sortie
+**Problème** : Les contacts bouclent indéfiniment ou reçoivent des messages redondants après conversion.
+**Correctif** : Chaque workflow doit avoir des conditions de sortie explicites. Au minimum : objectif atteint, désabonné, ou temps maximum écoulé.
 
-### 2. Overlapping Workflows Without Suppression
-**Problem**: A contact is in a welcome series AND a promotional campaign AND a re-engagement flow simultaneously, receiving 3+ emails per day.
-**Fix**: Build a priority hierarchy. Use suppression lists or workflow exclusion rules. Implement a global frequency cap.
+### 2. Workflows qui se chevauchent sans suppression
+**Problème** : Un contact est dans une série de bienvenue ET une campagne promotionnelle ET un flux de ré-engagement simultanément, recevant 3+ e-mails par jour.
+**Correctif** : Construire une hiérarchie de priorité. Utiliser des listes de suppression ou des règles d'exclusion de workflow. Mettre en œuvre un plafond de fréquence global.
 
-### 3. Sending Too Frequently
-**Problem**: Daily emails that ignore engagement signals.
-**Fix**: Gate progression on engagement. Reduce cadence for non-openers. Respect the 3-5 touches per week maximum across all channels.
+### 3. Envoi trop fréquent
+**Problème** : E-mails quotidiens qui ignorent les signaux d'engagement.
+**Correctif** : Conditionner la progression à l'engagement. Réduire la cadence pour les non-ouvreurs. Respecter le maximum de 3-5 points de contact par semaine sur tous les canaux.
 
-### 4. One-Size-Fits-All Content
-**Problem**: The same nurture sequence for every persona, industry, and lifecycle stage.
-**Fix**: Segment workflows by at least one dimension (persona, industry, or lifecycle stage). Use dynamic content blocks for personalization within shared workflows.
+### 4. Contenu uniforme pour tous
+**Problème** : La même séquence de nurturing pour chaque persona, secteur, et étape de cycle de vie.
+**Correctif** : Segmenter les workflows selon au moins une dimension (persona, secteur, ou étape de cycle de vie). Utiliser des blocs de contenu dynamique pour la personnalisation au sein de workflows partagés.
 
-### 5. "Set and Forget" Mentality
-**Problem**: Workflows built once and never reviewed, even as products, messaging, and audience evolve.
-**Fix**: Quarterly workflow audits. Monthly performance reviews. Annual full rebuild for core workflows.
+### 5. Mentalité « configurer et oublier »
+**Problème** : Workflows construits une fois et jamais revus, même alors que les produits, le message, et l'audience évoluent.
+**Correctif** : Audits de workflow trimestriels. Revues de performance mensuelles. Reconstruction complète annuelle pour les workflows principaux.
 
-### 6. Ignoring Negative Signals
-**Problem**: Continuing to email contacts who have shown disengagement signals (multiple unopens, spam complaints).
-**Fix**: Build negative-signal branches that reduce frequency, change approach, or trigger sunset. Protecting sender reputation is more important than reaching one more contact.
+### 6. Ignorer les signaux négatifs
+**Problème** : Continuer à envoyer des e-mails à des contacts ayant montré des signaux de désengagement (non-ouvertures multiples, plaintes spam).
+**Correctif** : Construire des branches de signaux négatifs qui réduisent la fréquence, changent d'approche, ou déclenchent un sunset. Protéger la réputation d'expéditeur est plus important qu'atteindre un contact de plus.
 
-### 7. Premature Discount Offering
-**Problem**: Abandoned cart flows that immediately offer 20% off, training customers to abandon on purpose.
-**Fix**: Lead with value, not discounts. Use social proof, urgency, and product benefits before any incentive. If you must discount, do so only in the final email, and use the smallest effective amount.
+### 7. Offre de réduction prématurée
+**Problème** : Des flux de panier abandonné qui proposent immédiatement 20 % de réduction, habituant les clients à abandonner délibérément.
+**Correctif** : Commencer par la valeur, pas les réductions. Utiliser la preuve sociale, l'urgence, et les bénéfices produit avant toute incitation. Si une réduction est nécessaire, la faire uniquement dans le dernier e-mail, et utiliser le montant efficace le plus faible.
 
-### 8. Skipping Warm-Up for New Workflows
-**Problem**: Launching a workflow to 50,000 contacts on day one, triggering spam filters.
-**Fix**: Start with a small segment (5-10%), monitor deliverability, and scale up over 2-4 weeks. This applies to new IPs, new domains, and new high-volume workflows.
+### 8. Sauter le warm-up pour les nouveaux workflows
+**Problème** : Lancer un workflow vers 50 000 contacts le premier jour, déclenchant les filtres anti-spam.
+**Correctif** : Commencer avec un petit segment (5-10 %), surveiller la délivrabilité, et monter en charge sur 2 à 4 semaines. Cela s'applique aux nouvelles IP, nouveaux domaines, et nouveaux workflows à fort volume.

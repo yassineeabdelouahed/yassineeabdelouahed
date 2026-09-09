@@ -1,117 +1,117 @@
-# Email Sequences — Templates & Frameworks
+# Séquences e-mail — Modèles et cadres
 
-## Welcome Sequence (5-7 Emails)
+## Séquence de bienvenue (5-7 e-mails)
 
-| Email | Timing | Subject Line Pattern | Content Focus | CTA |
+| E-mail | Timing | Schéma d'objet | Focus du contenu | CTA |
 |-------|--------|---------------------|---------------|-----|
-| 1 | Immediately | "Welcome to [Brand]! Here's what's next" | Thank, set expectations, deliver promised content | Activate/explore |
-| 2 | Day 2 | "[First Name], here's your quick win" | Deliver immediate value, quick-start guide | Complete first action |
-| 3 | Day 4 | "How [Customer] achieved [Result]" | Social proof, success story | Explore feature |
-| 4 | Day 7 | "3 things most [role]s miss about [product]" | Education, tips, deeper features | Advanced feature |
-| 5 | Day 10 | "Your personal roadmap to [outcome]" | Personalized next steps based on behavior | Book demo/upgrade |
-| 6 | Day 14 | "[First Name], any questions?" | Address common objections, offer help | Reply or support |
-| 7 | Day 21 | "Don't miss this: [exclusive offer/content]" | Incentive or exclusive content | Convert/upgrade |
+| 1 | Immédiatement | « Bienvenue chez [Marque] ! Voici la suite » | Remercier, définir les attentes, livrer le contenu promis | Activer/explorer |
+| 2 | Jour 2 | « [Prénom], voici votre gain rapide » | Livrer une valeur immédiate, guide de démarrage rapide | Compléter la première action |
+| 3 | Jour 4 | « Comment [Client] a atteint [Résultat] » | Preuve sociale, success story | Explorer une fonctionnalité |
+| 4 | Jour 7 | « 3 choses que la plupart des [rôle] manquent sur [produit] » | Éducation, conseils, fonctionnalités plus approfondies | Fonctionnalité avancée |
+| 5 | Jour 10 | « Votre feuille de route personnelle vers [résultat] » | Prochaines étapes personnalisées basées sur le comportement | Réserver une démo/mise à niveau |
+| 6 | Jour 14 | « [Prénom], des questions ? » | Adresser les objections courantes, offrir de l'aide | Répondre ou support |
+| 7 | Jour 21 | « Ne manquez pas ceci : [offre/contenu exclusif] » | Incitation ou contenu exclusif | Convertir/mettre à niveau |
 
 ---
 
-## Cart Abandonment Sequence (3 Emails)
+## Séquence d'abandon de panier (3 e-mails)
 
-| Email | Timing | Approach | Subject Line |
+| E-mail | Timing | Approche | Objet |
 |-------|--------|----------|-------------|
-| 1 | 1 hour after | **Reminder** (no discount) — "Did you forget something?" | "Your cart is waiting" |
-| 2 | 24 hours | **Social proof + urgency** — Show reviews, limited stock | "Others are loving [product] — still interested?" |
-| 3 | 48-72 hours | **Incentive** (if margins allow) — Small discount or free shipping | "Here's 10% off to complete your order" |
+| 1 | 1 heure après | **Rappel** (pas de remise) — « Vous avez oublié quelque chose ? » | « Votre panier vous attend » |
+| 2 | 24 heures | **Preuve sociale + urgence** — Montrer les avis, stock limité | « D'autres adorent [produit] — toujours intéressé(e) ? » |
+| 3 | 48-72 heures | **Incitation** (si les marges le permettent) — Petite remise ou livraison gratuite | « Voici 10 % de réduction pour finaliser votre commande » |
 
-### Escalation Logic
-- If AOV > $100: Include phone/chat support option in email 2
-- If product has limited stock: Emphasize scarcity in email 2
-- If customer has purchased before: Skip discount, emphasize loyalty
-- Never offer discount in email 1 (trains customers to abandon carts)
+### Logique d'escalade
+- Si panier moyen > 100 $ : Inclure une option de support téléphone/chat dans l'e-mail 2
+- Si le produit a un stock limité : Souligner la rareté dans l'e-mail 2
+- Si le client a déjà acheté : Passer la remise, souligner la fidélité
+- Ne jamais proposer de remise dans l'e-mail 1 (entraîne les clients à abandonner leur panier)
 
 ---
 
-## Nurture Drip (Educational → Conversion)
+## Drip de nurturing (Éducatif → Conversion)
 
-| Email | Focus | Content Type | CTA |
+| E-mail | Focus | Type de contenu | CTA |
 |-------|-------|-------------|-----|
-| 1 | **Education** | Blog post, guide, or how-to | Read more |
-| 2 | **Education** | Different angle on same topic | Download resource |
-| 3 | **Value** | Framework, template, or tool | Use this tool |
-| 4 | **Social proof** | Case study or customer story | See the full story |
-| 5 | **Comparison** | How we compare to alternatives | View comparison |
-| 6 | **Offer** | Demo, trial, consultation | Book/start/sign up |
+| 1 | **Éducation** | Article de blog, guide, ou tutoriel | En savoir plus |
+| 2 | **Éducation** | Angle différent sur le même sujet | Télécharger la ressource |
+| 3 | **Valeur** | Cadre, modèle, ou outil | Utiliser cet outil |
+| 4 | **Preuve sociale** | Étude de cas ou histoire client | Voir l'histoire complète |
+| 5 | **Comparaison** | Comment nous nous comparons aux alternatives | Voir la comparaison |
+| 6 | **Offre** | Démo, essai, consultation | Réserver/commencer/s'inscrire |
 
-**Cadence**: 3-5 days between emails. Exit sequence when recipient converts.
+**Cadence** : 3-5 jours entre les e-mails. Sortir de la séquence lorsque le destinataire convertit.
 
 ---
 
-## Re-Engagement Sequence
+## Séquence de réengagement
 
-| Email | Timing | Approach |
+| E-mail | Timing | Approche |
 |-------|--------|----------|
-| 1 | 30 days inactive | "We miss you — here's what's new" (new features, content) |
-| 2 | 37 days | "Here's what you're missing" (value reminder + social proof) |
-| 3 | 44 days | "[Name], one last thing" (final offer or exclusive content) |
-| 4 | 60 days | "Should we part ways?" (unsubscribe option, sunset warning) |
+| 1 | 30 jours d'inactivité | « Vous nous manquez — voici quoi de neuf » (nouvelles fonctionnalités, contenu) |
+| 2 | 37 jours | « Voici ce que vous manquez » (rappel de valeur + preuve sociale) |
+| 3 | 44 jours | « [Prénom], une dernière chose » (offre finale ou contenu exclusif) |
+| 4 | 60 jours | « Devrions-nous nous séparer ? » (option de désabonnement, avertissement de désactivation) |
 
-**After email 4**: If no engagement, suppress from marketing emails for 90 days. Move to reactivation list.
+**Après l'e-mail 4** : En l'absence d'engagement, suspendre des e-mails marketing pendant 90 jours. Déplacer vers la liste de réactivation.
 
 ---
 
-## Subject Line Formulas (20 Patterns)
+## Formules d'objet (20 schémas)
 
-| Pattern | Example |
+| Schéma | Exemple |
 |---------|---------|
-| **Question** | "Are you making this [topic] mistake?" |
-| **How-to** | "How to [achieve outcome] in [timeframe]" |
-| **Number/List** | "7 ways to [benefit] (without [pain])" |
-| **Curiosity gap** | "The #1 reason your [metric] isn't growing" |
-| **Social proof** | "How [Company] increased [metric] by [%]" |
-| **Personal** | "[Name], I noticed something about your [X]" |
-| **Urgency** | "Ends tonight: [offer description]" |
-| **Benefit-first** | "Save 5 hours/week with this [tool/method]" |
-| **Contrarian** | "Stop doing [common practice] (here's why)" |
-| **FOMO** | "[Number] [role]s already signed up — join them" |
-| **Direct** | "Your [month] marketing checklist" |
-| **Story tease** | "She went from [bad state] to [good state] in [time]" |
-| **Pain point** | "Tired of [common frustration]?" |
-| **News** | "[Industry] just changed — here's what it means" |
-| **Exclusive** | "For [Brand] subscribers only: [offer]" |
-| **Re-engagement** | "It's been a while, [Name]" |
-| **Predictive** | "The [year] [topic] trends you need to know" |
-| **Comparison** | "[Option A] vs [Option B]: which is right for you?" |
-| **Challenge** | "Can you [achieve thing] in [timeframe]? Let's find out" |
-| **Confession** | "We made a mistake (and here's how we fixed it)" |
+| **Question** | « Faites-vous cette erreur de [sujet] ? » |
+| **Comment faire** | « Comment [atteindre le résultat] en [délai] » |
+| **Chiffre/Liste** | « 7 façons de [bénéfice] (sans [douleur]) » |
+| **Écart de curiosité** | « La raison n°1 pour laquelle votre [métrique] ne progresse pas » |
+| **Preuve sociale** | « Comment [Entreprise] a augmenté [métrique] de [%] » |
+| **Personnel** | « [Prénom], j'ai remarqué quelque chose à propos de votre [X] » |
+| **Urgence** | « Se termine ce soir : [description de l'offre] » |
+| **Bénéfice d'abord** | « Économisez 5 heures/semaine avec cet [outil/méthode] » |
+| **Contrarian** | « Arrêtez de faire [pratique courante] (voici pourquoi) » |
+| **FOMO** | « [Nombre] [rôle] déjà inscrits — rejoignez-les » |
+| **Direct** | « Votre checklist marketing de [mois] » |
+| **Teaser d'histoire** | « Elle est passée de [mauvais état] à [bon état] en [temps] » |
+| **Point de douleur** | « Fatigué de [frustration courante] ? » |
+| **Actualité** | « [Secteur] vient de changer — voici ce que ça signifie » |
+| **Exclusif** | « Réservé aux abonnés [Marque] : [offre] » |
+| **Réengagement** | « Ça fait un moment, [Prénom] » |
+| **Prédictif** | « Les tendances [sujet] [année] que vous devez connaître » |
+| **Comparaison** | « [Option A] vs [Option B] : lequel vous convient ? » |
+| **Défi** | « Pouvez-vous [atteindre chose] en [délai] ? Voyons voir » |
+| **Confession** | « Nous avons fait une erreur (et voici comment nous l'avons corrigée) » |
 
 ---
 
-## Email Copywriting Frameworks
+## Cadres de rédaction e-mail
 
-### PAS (Problem-Agitate-Solve)
-1. **Problem**: Identify the pain point
-2. **Agitate**: Make them feel it (consequences of inaction)
-3. **Solve**: Present your solution as the answer
+### PAS (Problème-Agitation-Solution)
+1. **Problème** : Identifier le point de douleur
+2. **Agitation** : Le leur faire ressentir (conséquences de l'inaction)
+3. **Solution** : Présenter votre solution comme la réponse
 
-### AIDA (Attention-Interest-Desire-Action)
-1. **Attention**: Subject line + opening hook
-2. **Interest**: Expand on the topic with relevant details
-3. **Desire**: Show benefits, social proof, create wanting
-4. **Action**: Clear, single CTA
+### AIDA (Attention-Intérêt-Désir-Action)
+1. **Attention** : Objet + accroche d'ouverture
+2. **Intérêt** : Développer le sujet avec des détails pertinents
+3. **Désir** : Montrer les bénéfices, la preuve sociale, créer l'envie
+4. **Action** : CTA clair et unique
 
-### Before-After-Bridge
-1. **Before**: Current state (with their problem)
-2. **After**: Desired state (problem solved)
-3. **Bridge**: Your product/service is how they get there
+### Avant-Après-Pont
+1. **Avant** : État actuel (avec leur problème)
+2. **Après** : État désiré (problème résolu)
+3. **Pont** : Votre produit/service est comment ils y arrivent
 
 ---
 
-## Sequence Timing Best Practices
+## Meilleures pratiques de timing de séquence
 
-| Sequence Type | Cadence | Best Send Days | Best Send Times |
+| Type de séquence | Cadence | Meilleurs jours d'envoi | Meilleures heures d'envoi |
 |--------------|---------|---------------|-----------------|
-| Welcome | Day 0, 2, 4, 7, 10, 14 | Any (triggered) | Within 5 min of signup |
-| Nurture | Every 3-5 days | Tue, Wed, Thu | 9-11 AM local time |
-| Cart abandonment | 1hr, 24hr, 48-72hr | Any (triggered) | Triggered timing |
-| Re-engagement | Weekly for 4 weeks | Tue or Thu | 10 AM local time |
-| Newsletter | Weekly or bi-weekly | Tue, Wed, Thu | 8-10 AM local time |
-| Promotional | As needed (max 3/week) | Tue-Thu, Sun evening | 10 AM or 8 PM |
+| Bienvenue | Jour 0, 2, 4, 7, 10, 14 | N'importe lequel (déclenché) | Dans les 5 min de l'inscription |
+| Nurturing | Tous les 3-5 jours | Mar, mer, jeu | 9h-11h heure locale |
+| Abandon de panier | 1h, 24h, 48-72h | N'importe lequel (déclenché) | Timing déclenché |
+| Réengagement | Hebdomadaire pendant 4 semaines | Mar ou jeu | 10h heure locale |
+| Newsletter | Hebdomadaire ou bihebdomadaire | Mar, mer, jeu | 8h-10h heure locale |
+| Promotionnel | Selon besoin (max 3/semaine) | Mar-jeu, dimanche soir | 10h ou 20h |

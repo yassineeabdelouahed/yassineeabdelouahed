@@ -1,101 +1,101 @@
-# Privacy-First Measurement — Cookieless Attribution
+# Mesure privacy-first — Attribution sans cookies
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** les montants en dollars de ce document sont des a priori de planification, pas des cotations — les taux de marché et d'enchère évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, rafraîchissez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et consignez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le registre (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## The Privacy Landscape
+## Le paysage de la confidentialité
 
-The era of unrestricted cross-site tracking is over. Safari and Firefox have blocked third-party cookies since 2020. Chrome has introduced significant restrictions through the Privacy Sandbox. Regulations like GDPR, CCPA/CPRA, and emerging state and international laws require explicit consent for tracking. Marketers who do not adapt their measurement infrastructure will lose visibility into 40-60% of their customer journey.
+L'ère du suivi cross-site sans restriction est révolue. Safari et Firefox bloquent les cookies tiers depuis 2020. Chrome a introduit des restrictions significatives via le Privacy Sandbox. Des réglementations comme le RGPD, le CCPA/CPRA, et des lois émergentes au niveau des États et à l'international exigent un consentement explicite pour le suivi. Les marketeurs qui n'adaptent pas leur infrastructure de mesure perdront la visibilité sur 40 à 60 % de leur parcours client.
 
-### What Has Changed
+### Ce qui a changé
 
-| Change | Impact on Measurement | Timeline |
+| Changement | Impact sur la mesure | Calendrier |
 |--------|----------------------|----------|
-| Safari ITP (Intelligent Tracking Prevention) | First-party cookies capped at 7 days (24 hours for some); cross-site tracking blocked | Active since 2020 |
-| Firefox Enhanced Tracking Protection | Third-party cookies blocked by default | Active since 2019 |
-| Chrome Privacy Sandbox / Topics API | Deprecation CANCELLED (2024–2025) — Chrome retains third-party cookies; Privacy Sandbox APIs continue in reduced form | Reversal confirmed April 2025 |
-| iOS App Tracking Transparency (ATT) | Users must opt-in to cross-app tracking; ~25% opt-in rate | Active since iOS 14.5 (2021) |
-| GDPR (EU) | Requires explicit consent for non-essential cookies; fines up to 4% of global revenue | Active since 2018 |
-| CCPA/CPRA (California) | Right to opt-out of sale/sharing of personal data | Active since 2020/2023 |
-| State privacy laws (US) | Virginia, Colorado, Connecticut, Texas, Oregon, and more with similar requirements | 2023-2026 rolling |
-| ePrivacy Regulation (EU — WITHDRAWN Feb 2025) | Proposal withdrawn from the Commission work programme; the 2002 ePrivacy Directive cookie rules remain in force | Watch the Digital Fairness Act workstream |
+| Safari ITP (Intelligent Tracking Prevention) | Cookies first-party plafonnés à 7 jours (24 heures pour certains) ; suivi cross-site bloqué | Actif depuis 2020 |
+| Firefox Enhanced Tracking Protection | Cookies tiers bloqués par défaut | Actif depuis 2019 |
+| Chrome Privacy Sandbox / Topics API | Dépréciation ANNULÉE (2024-2025) — Chrome conserve les cookies tiers ; les API Privacy Sandbox continuent sous forme réduite | Revirement confirmé en avril 2025 |
+| iOS App Tracking Transparency (ATT) | Les utilisateurs doivent opter pour le suivi cross-app ; taux d'opt-in d'environ 25 % | Actif depuis iOS 14.5 (2021) |
+| RGPD (UE) | Exige un consentement explicite pour les cookies non essentiels ; amendes jusqu'à 4 % du revenu mondial | Actif depuis 2018 |
+| CCPA/CPRA (Californie) | Droit de refuser la vente/le partage des données personnelles | Actif depuis 2020/2023 |
+| Lois de confidentialité étatiques (États-Unis) | Virginie, Colorado, Connecticut, Texas, Oregon, et d'autres avec des exigences similaires | Déploiement continu 2023-2026 |
+| Règlement ePrivacy (UE — RETIRÉ en février 2025) | Proposition retirée du programme de travail de la Commission ; les règles sur les cookies de la Directive ePrivacy de 2002 restent en vigueur | Surveiller le chantier du Digital Fairness Act |
 
 ---
 
-## Cookieless Attribution Approaches
+## Approches d'attribution sans cookies
 
-### The New Measurement Stack
+### La nouvelle pile de mesure
 
-The replacement for cookie-based attribution is not a single solution but a combination of approaches.
+Le remplacement de l'attribution basée sur les cookies n'est pas une solution unique mais une combinaison d'approches.
 
-| Approach | What It Does | Privacy Level | Accuracy | Implementation Effort |
+| Approche | Ce qu'elle fait | Niveau de confidentialité | Précision | Effort de mise en œuvre |
 |----------|-------------|---------------|----------|----------------------|
-| **Server-side tracking** | Sends conversion data from your server to ad platforms (bypasses browser restrictions) | Medium (still processes user data) | High | Medium-High |
-| **First-party data matching** | Matches your CRM/email data to platform users via hashed identifiers | Medium | Medium-High | Medium |
-| **Consent-based tracking** | Full tracking for users who consent; modeled data for those who do not | High | Medium (depends on consent rate) | Medium |
-| **Marketing Mix Modeling** | Aggregate statistical analysis requiring no user data | Very High | Medium (strategic, not tactical) | High |
-| **Incrementality testing** | Controlled experiments measuring causal lift | Very High | High (for tested channels) | High |
-| **Privacy Sandbox APIs** | Chrome's Topics, Attribution Reporting, Protected Audiences | High | Medium (still evolving) | Medium |
-| **Data clean rooms** | Secure environments for matching advertiser + publisher data without exposing PII | High | Medium-High | High |
-| **Self-reported attribution** | Asking users directly how they found you | Very High | Low-Medium (recall bias) | Low |
+| **Suivi côté serveur** | Envoie les données de conversion de votre serveur vers les plateformes publicitaires (contourne les restrictions du navigateur) | Moyen (traite encore des données utilisateur) | Élevée | Moyen-élevé |
+| **Appariement de données first-party** | Fait correspondre vos données CRM/e-mail aux utilisateurs de la plateforme via des identifiants hachés | Moyen | Moyenne-élevée | Moyen |
+| **Suivi basé sur le consentement** | Suivi complet pour les utilisateurs consentants ; données modélisées pour les autres | Élevé | Moyenne (dépend du taux de consentement) | Moyen |
+| **Marketing Mix Modeling** | Analyse statistique agrégée ne nécessitant aucune donnée utilisateur | Très élevé | Moyenne (stratégique, pas tactique) | Élevé |
+| **Tests d'incrémentalité** | Expériences contrôlées mesurant le lift causal | Très élevé | Élevée (pour les canaux testés) | Élevé |
+| **API Privacy Sandbox** | Topics, Attribution Reporting, Protected Audiences de Chrome | Élevé | Moyenne (encore en évolution) | Moyen |
+| **Data clean rooms** | Environnements sécurisés pour l'appariement de données annonceur + éditeur sans exposer les PII | Élevé | Moyenne-élevée | Élevé |
+| **Attribution auto-déclarée** | Demander directement aux utilisateurs comment ils vous ont trouvé | Très élevé | Faible-moyenne (biais de mémoire) | Faible |
 
 ---
 
-## Consent Management Architecture
+## Architecture de gestion du consentement
 
-### Consent Management Platform (CMP) Requirements
+### Exigences de la plateforme de gestion du consentement (CMP)
 
-A CMP is the foundation of privacy-compliant measurement. It must handle:
+Une CMP est le fondement de la mesure conforme à la confidentialité. Elle doit gérer :
 
-| Requirement | Detail |
+| Exigence | Détail |
 |-------------|--------|
-| **Consent collection** | Display a compliant banner on first visit; collect granular consent by purpose |
-| **Consent storage** | Store consent state server-side (not just in a cookie that expires) |
-| **Consent propagation** | Pass consent signals to all tags, pixels, and server-side integrations |
-| **Consent withdrawal** | Allow users to change preferences at any time via a persistent link |
-| **Geo-based rules** | Apply GDPR rules to EU visitors, CCPA to California, etc. |
-| **TCF 2.2 compliance** | Support IAB Transparency & Consent Framework for programmatic |
-| **Google Consent Mode v2** | Required for ads in EEA — sends consent signals to Google tags |
+| **Collecte du consentement** | Afficher une bannière conforme à la première visite ; collecter un consentement granulaire par finalité |
+| **Stockage du consentement** | Stocker l'état du consentement côté serveur (pas seulement dans un cookie qui expire) |
+| **Propagation du consentement** | Transmettre les signaux de consentement à toutes les balises, pixels, et intégrations côté serveur |
+| **Retrait du consentement** | Permettre aux utilisateurs de modifier leurs préférences à tout moment via un lien persistant |
+| **Règles basées sur la géographie** | Appliquer les règles RGPD aux visiteurs de l'UE, le CCPA à la Californie, etc. |
+| **Conformité TCF 2.2** | Prendre en charge le IAB Transparency & Consent Framework pour le programmatique |
+| **Google Consent Mode v2** | Requis pour les publicités dans l'EEE — envoie des signaux de consentement aux balises Google |
 
-### CMP Tool Options
+### Options d'outils CMP
 
-| Tool | Best For | Pricing |
+| Outil | Idéal pour | Tarification |
 |------|----------|---------|
-| Cookiebot (Usercentrics) | SMB to mid-market, easy setup | Free (< 100 pages), paid from ~$15/mo |
-| OneTrust | Enterprise, complex multi-geo requirements | Custom pricing |
-| Osano | Mid-market, good UX | From ~$199/mo |
-| TrustArc | Enterprise, regulatory compliance focus | Custom pricing |
-| Sourcepoint | Publishers and ad-tech focused | Custom pricing |
+| Cookiebot (Usercentrics) | PME à mid-market, configuration facile | Gratuit (< 100 pages), payant à partir de ~15 $/mois |
+| OneTrust | Entreprise, exigences multi-géo complexes | Tarification sur mesure |
+| Osano | Mid-market, bonne UX | À partir de ~199 $/mois |
+| TrustArc | Entreprise, focus sur la conformité réglementaire | Tarification sur mesure |
+| Sourcepoint | Éditeurs et ad-tech | Tarification sur mesure |
 
-### Consent Mode Implementation
+### Mise en œuvre du Consent Mode
 
-Google Consent Mode v2 allows your tags to adjust behavior based on user consent:
+Google Consent Mode v2 permet à vos balises d'ajuster leur comportement selon le consentement de l'utilisateur :
 
-| Consent State | Tag Behavior | Data Collected |
+| État du consentement | Comportement de la balise | Données collectées |
 |--------------|-------------|----------------|
-| `ad_storage = granted` | Full ad tracking, remarketing | Cookies, click IDs, conversion data |
-| `ad_storage = denied` | Cookieless pings for conversion modeling | Aggregated, modeled conversions |
-| `analytics_storage = granted` | Full GA4 tracking | User-level analytics data |
-| `analytics_storage = denied` | Cookieless pings for analytics modeling | Modeled, aggregated analytics |
+| `ad_storage = granted` | Suivi publicitaire complet, remarketing | Cookies, ID de clic, données de conversion |
+| `ad_storage = denied` | Pings sans cookies pour la modélisation des conversions | Conversions agrégées, modélisées |
+| `analytics_storage = granted` | Suivi GA4 complet | Données analytiques au niveau utilisateur |
+| `analytics_storage = denied` | Pings sans cookies pour la modélisation analytique | Analytics modélisées, agrégées |
 
-**Implementation checklist:**
+**Liste de contrôle de mise en œuvre :**
 
-- [ ] CMP installed and configured for all applicable jurisdictions
-- [ ] Google Consent Mode v2 integrated with CMP
-- [ ] Default consent state set correctly by region (denied for EEA, granted for US unless opted out)
-- [ ] All Google tags (GA4, Ads, Floodlight) updated to respect consent signals
-- [ ] Meta Pixel configured to respect consent (via CMP integration or Meta Consent Mode)
-- [ ] Consent rates monitored and optimized (target > 70% opt-in with compliant UX)
-- [ ] Server-side backup measurement active for non-consented users
+- [ ] CMP installée et configurée pour toutes les juridictions applicables
+- [ ] Google Consent Mode v2 intégré avec la CMP
+- [ ] État de consentement par défaut correctement défini par région (refusé pour l'EEE, accordé pour les États-Unis sauf opt-out)
+- [ ] Toutes les balises Google (GA4, Ads, Floodlight) mises à jour pour respecter les signaux de consentement
+- [ ] Meta Pixel configuré pour respecter le consentement (via intégration CMP ou Meta Consent Mode)
+- [ ] Taux de consentement surveillés et optimisés (objectif > 70 % d'opt-in avec une UX conforme)
+- [ ] Mesure de secours côté serveur active pour les utilisateurs non consentants
 
 ---
 
-## Server-Side Tracking Implementation
+## Mise en œuvre du suivi côté serveur
 
 ### Meta Conversions API (CAPI)
 
-CAPI sends conversion events from your server directly to Meta, bypassing browser-based pixel limitations.
+CAPI envoie les événements de conversion depuis votre serveur directement à Meta, contournant les limites du pixel basé sur le navigateur.
 
-**Architecture:**
+**Architecture :**
 
 ```
 User converts on your site
@@ -105,208 +105,208 @@ User converts on your site
     → Meta uses the event for optimization and reporting
 ```
 
-**Implementation options:**
+**Options de mise en œuvre :**
 
-| Method | Complexity | Best For |
+| Méthode | Complexité | Idéal pour |
 |--------|-----------|----------|
-| **Shopify native integration** | Low | Shopify merchants (toggle on in settings) |
-| **GTM Server-Side** | Medium | Teams using Google Tag Manager |
-| **Direct API integration** | High | Custom platforms, maximum control |
-| **Partner integration (Segment, mParticle)** | Medium | Teams using a CDP |
+| **Intégration native Shopify** | Faible | Marchands Shopify (activer dans les paramètres) |
+| **GTM Server-Side** | Moyenne | Équipes utilisant Google Tag Manager |
+| **Intégration API directe** | Élevée | Plateformes personnalisées, contrôle maximal |
+| **Intégration partenaire (Segment, mParticle)** | Moyenne | Équipes utilisant un CDP |
 
-**Data to send via CAPI:**
+**Données à envoyer via CAPI :**
 
-| Parameter | Required? | Purpose |
+| Paramètre | Requis ? | Objectif |
 |-----------|----------|---------|
-| `event_name` | Yes | Purchase, AddToCart, Lead, etc. |
-| `event_time` | Yes | Unix timestamp of the event |
-| `action_source` | Yes | `website`, `app`, `email`, etc. |
-| `user_data.em` | Strongly recommended | Hashed email for matching |
-| `user_data.ph` | Recommended | Hashed phone for matching |
-| `user_data.fn` / `user_data.ln` | Recommended | Hashed first/last name |
-| `user_data.external_id` | Recommended | Your internal user ID (hashed) |
-| `user_data.fbc` | If available | Facebook click ID from URL parameter |
-| `user_data.fbp` | If available | Facebook browser ID from _fbp cookie |
-| `custom_data.value` | For purchase events | Transaction revenue |
-| `custom_data.currency` | For purchase events | Currency code (USD, EUR) |
+| `event_name` | Oui | Achat, AddToCart, Lead, etc. |
+| `event_time` | Oui | Horodatage Unix de l'événement |
+| `action_source` | Oui | `website`, `app`, `email`, etc. |
+| `user_data.em` | Fortement recommandé | E-mail haché pour l'appariement |
+| `user_data.ph` | Recommandé | Téléphone haché pour l'appariement |
+| `user_data.fn` / `user_data.ln` | Recommandé | Prénom/nom hachés |
+| `user_data.external_id` | Recommandé | Votre ID utilisateur interne (haché) |
+| `user_data.fbc` | Si disponible | ID de clic Facebook depuis le paramètre d'URL |
+| `user_data.fbp` | Si disponible | ID de navigateur Facebook depuis le cookie _fbp |
+| `custom_data.value` | Pour les événements d'achat | Revenu de la transaction |
+| `custom_data.currency` | Pour les événements d'achat | Code devise (USD, EUR) |
 
-**Deduplication:** If you run both the browser pixel and CAPI, you must include an `event_id` in both to prevent double-counting. Use the same unique ID (e.g., order ID) in both the pixel event and the CAPI event.
+**Déduplication :** si vous exécutez à la fois le pixel navigateur et CAPI, vous devez inclure un `event_id` dans les deux pour éviter le double comptage. Utilisez le même identifiant unique (par ex. l'ID de commande) dans l'événement du pixel et l'événement CAPI.
 
 ### Google Enhanced Conversions
 
-Enhanced Conversions sends hashed first-party data (email, phone, address) with your Google Ads conversion tags, improving match rates.
+Enhanced Conversions envoie des données first-party hachées (e-mail, téléphone, adresse) avec vos balises de conversion Google Ads, améliorant les taux de correspondance.
 
-**Types:**
+**Types :**
 
-| Type | How It Works | Best For |
+| Type | Fonctionnement | Idéal pour |
 |------|-------------|----------|
-| **Enhanced Conversions for Web** | Hashed user data sent with the gtag conversion event | Lead gen, eCommerce with on-site purchases |
-| **Enhanced Conversions for Leads** | Upload offline conversion data matched via hashed identifiers | B2B with offline sales cycle |
+| **Enhanced Conversions for Web** | Données utilisateur hachées envoyées avec l'événement de conversion gtag | Génération de leads, e-commerce avec achats sur site |
+| **Enhanced Conversions for Leads** | Données de conversion hors ligne importées et appariées via des identifiants hachés | B2B avec cycle de vente hors ligne |
 
-**Implementation checklist:**
+**Liste de contrôle de mise en œuvre :**
 
-- [ ] Accept Google Ads Enhanced Conversions terms
-- [ ] Identify where user data is captured (checkout, lead form, account creation)
-- [ ] Configure gtag.js or GTM to capture and hash user data fields (email, phone, name, address)
-- [ ] Verify Enhanced Conversions in Google Ads diagnostics (check match rate — target > 60%)
-- [ ] For leads: Set up offline conversion import with GCLID or hashed email matching
-- [ ] Test with Google Tag Assistant to confirm hashed data is sending correctly
+- [ ] Accepter les conditions Enhanced Conversions de Google Ads
+- [ ] Identifier où les données utilisateur sont capturées (paiement, formulaire de lead, création de compte)
+- [ ] Configurer gtag.js ou GTM pour capturer et hacher les champs de données utilisateur (e-mail, téléphone, nom, adresse)
+- [ ] Vérifier Enhanced Conversions dans les diagnostics Google Ads (vérifier le taux de correspondance — objectif > 60 %)
+- [ ] Pour les leads : configurer l'import de conversions hors ligne avec appariement par GCLID ou e-mail haché
+- [ ] Tester avec Google Tag Assistant pour confirmer que les données hachées sont envoyées correctement
 
 ### TikTok Events API
 
-| Element | Detail |
+| Élément | Détail |
 |---------|--------|
-| **Endpoint** | TikTok Events API (server-to-server) |
-| **Matching** | Hashed email, phone, or TikTok click ID (ttclid) |
-| **Key events** | ViewContent, AddToCart, CompletePayment, SubmitForm |
-| **Deduplication** | Use `event_id` matching between pixel and Events API |
-| **Setup** | Via TikTok Business Center or partner integration |
+| **Point de terminaison** | TikTok Events API (serveur à serveur) |
+| **Appariement** | E-mail, téléphone hachés, ou ID de clic TikTok (ttclid) |
+| **Événements clés** | ViewContent, AddToCart, CompletePayment, SubmitForm |
+| **Déduplication** | Utiliser l'appariement `event_id` entre le pixel et Events API |
+| **Configuration** | Via TikTok Business Center ou intégration partenaire |
 
 ---
 
-## First-Party Data Strategy
+## Stratégie de données first-party
 
-### Building a First-Party Data Foundation
+### Construire une fondation de données first-party
 
-| Data Source | What to Capture | Storage | Use Case |
+| Source de données | Ce qu'il faut capturer | Stockage | Cas d'usage |
 |-------------|----------------|---------|----------|
-| Email signups | Email, name, acquisition source | CRM / CDP | Server-side matching, email marketing, lookalike audiences |
-| Purchases | Email, phone, address, purchase history | eCommerce platform + CRM | CAPI matching, segmentation, LTV modeling |
-| Account creation | Email, profile data, preferences | Auth system + CRM | Personalization, cross-device matching |
-| Loyalty program | Email, phone, purchase frequency, preferences | Loyalty platform + CRM | High-match-rate audiences, retention measurement |
-| Quizzes / surveys | Email, preferences, intent signals | CRM / CDP | Segmentation, personalized retargeting |
-| On-site behavior | Page views, search queries, clicks (with consent) | Analytics + CDP | Behavioral audiences, content optimization |
+| Inscriptions e-mail | E-mail, nom, source d'acquisition | CRM / CDP | Appariement côté serveur, marketing e-mail, audiences similaires (lookalike) |
+| Achats | E-mail, téléphone, adresse, historique d'achat | Plateforme e-commerce + CRM | Appariement CAPI, segmentation, modélisation de LTV |
+| Création de compte | E-mail, données de profil, préférences | Système d'authentification + CRM | Personnalisation, appariement cross-device |
+| Programme de fidélité | E-mail, téléphone, fréquence d'achat, préférences | Plateforme de fidélité + CRM | Audiences à fort taux de correspondance, mesure de la rétention |
+| Quiz / enquêtes | E-mail, préférences, signaux d'intention | CRM / CDP | Segmentation, retargeting personnalisé |
+| Comportement sur site | Vues de page, requêtes de recherche, clics (avec consentement) | Analytics + CDP | Audiences comportementales, optimisation de contenu |
 
-### First-Party Audience Activation
+### Activation d'audience first-party
 
-| Platform | Audience Feature | Match Method | Typical Match Rate |
+| Plateforme | Fonctionnalité d'audience | Méthode d'appariement | Taux de correspondance typique |
 |----------|-----------------|-------------|-------------------|
-| Meta | Custom Audiences | Hashed email, phone | 60-80% |
-| Google | Customer Match | Hashed email, phone, address | 50-70% |
-| TikTok | Custom Audiences | Hashed email, phone | 40-60% |
-| LinkedIn | Matched Audiences | Hashed email, company name | 30-50% |
-| Pinterest | Customer Lists | Hashed email | 40-60% |
+| Meta | Custom Audiences | E-mail, téléphone hachés | 60-80 % |
+| Google | Customer Match | E-mail, téléphone, adresse hachés | 50-70 % |
+| TikTok | Custom Audiences | E-mail, téléphone hachés | 40-60 % |
+| LinkedIn | Matched Audiences | E-mail haché, nom d'entreprise | 30-50 % |
+| Pinterest | Customer Lists | E-mail haché | 40-60 % |
 
-**Match rate optimization:**
-- Include as many identifiers as possible (email + phone + name + address)
-- Clean and standardize data before upload (lowercase, trim whitespace, consistent formatting)
-- Update lists regularly (weekly or automated sync via CDP)
-- Use double opt-in email to ensure valid addresses
-- Enrich data with phone number capture at checkout
+**Optimisation du taux de correspondance :**
+- Inclure autant d'identifiants que possible (e-mail + téléphone + nom + adresse)
+- Nettoyer et standardiser les données avant l'import (minuscules, suppression des espaces, formatage cohérent)
+- Mettre à jour les listes régulièrement (synchronisation hebdomadaire ou automatisée via un CDP)
+- Utiliser un double opt-in e-mail pour garantir des adresses valides
+- Enrichir les données avec la capture du numéro de téléphone au paiement
 
 ---
 
-## Data Clean Rooms
+## Data clean rooms
 
-### What Are Data Clean Rooms?
+### Que sont les data clean rooms ?
 
-A data clean room is a secure, privacy-preserving environment where two or more parties can match and analyze their data without either party seeing the other's raw data.
+Une data clean room est un environnement sécurisé, préservant la confidentialité, où deux parties ou plus peuvent apparier et analyser leurs données sans qu'aucune des deux ne voie les données brutes de l'autre.
 
-| Provider | Type | Best For |
+| Fournisseur | Type | Idéal pour |
 |----------|------|----------|
-| **Google Ads Data Hub** | Platform-specific | Analyzing Google Ads performance with your first-party data |
-| **Meta Advanced Analytics** | Platform-specific | Cross-referencing Meta ad exposure with your conversion data |
-| **AWS Clean Rooms** | Cloud-based (neutral) | Multi-party data collaboration (retailer + brand, publisher + advertiser) |
-| **Snowflake Data Clean Rooms** | Cloud-based (neutral) | Enterprise data collaboration with existing Snowflake infrastructure |
-| **LiveRamp Data Collaboration** | Identity-based | Cross-platform audience matching and measurement |
-| **InfoSum** | Decentralized | Privacy-first collaboration without data movement |
+| **Google Ads Data Hub** | Spécifique à la plateforme | Analyser la performance Google Ads avec vos données first-party |
+| **Meta Advanced Analytics** | Spécifique à la plateforme | Recouper l'exposition publicitaire Meta avec vos données de conversion |
+| **AWS Clean Rooms** | Basé sur le cloud (neutre) | Collaboration de données multi-partenaire (détaillant + marque, éditeur + annonceur) |
+| **Snowflake Data Clean Rooms** | Basé sur le cloud (neutre) | Collaboration de données d'entreprise avec une infrastructure Snowflake existante |
+| **LiveRamp Data Collaboration** | Basé sur l'identité | Appariement et mesure d'audience cross-plateforme |
+| **InfoSum** | Décentralisé | Collaboration privacy-first sans mouvement de données |
 
-### Use Cases
+### Cas d'usage
 
-| Use Case | How It Works | Privacy Benefit |
+| Cas d'usage | Fonctionnement | Bénéfice pour la confidentialité |
 |----------|-------------|-----------------|
-| **Cross-platform measurement** | Match your conversion data with ad platform exposure data | No raw data leaves either party's environment |
-| **Retail media attribution** | Brand matches sales data with retailer's ad exposure data | Brand does not see retailer's customer data and vice versa |
-| **Publisher audience insight** | Advertiser learns about overlap between their customers and a publisher's audience | No PII exchanged |
-| **Multi-touch analysis** | Combine exposure data from multiple platforms in one clean room | Platforms do not see each other's data |
+| **Mesure cross-plateforme** | Apparier vos données de conversion avec les données d'exposition publicitaire de la plateforme | Aucune donnée brute ne quitte l'environnement de l'une ou l'autre partie |
+| **Attribution retail media** | La marque apparie les données de vente avec les données d'exposition publicitaire du détaillant | La marque ne voit pas les données clients du détaillant et vice versa |
+| **Insight d'audience éditeur** | L'annonceur découvre le chevauchement entre ses clients et l'audience d'un éditeur | Aucune PII échangée |
+| **Analyse multi-touch** | Combiner les données d'exposition de plusieurs plateformes dans une seule clean room | Les plateformes ne voient pas les données des autres |
 
 ---
 
-## Privacy-Preserving Reporting
+## Reporting préservant la confidentialité
 
-### Aggregated Reporting Standards
+### Standards de reporting agrégé
 
-| Principle | Implementation |
+| Principe | Mise en œuvre |
 |-----------|---------------|
-| **Minimum aggregation thresholds** | Never report on segments with fewer than 50 users (some platforms require 100+) |
-| **Differential privacy** | Add statistical noise to small segments to prevent individual identification |
-| **Cohort-level reporting** | Report on user groups (cohorts), not individuals |
-| **Time-delayed reporting** | Accept 24-72 hour data delays in exchange for privacy compliance |
-| **Modeled conversions** | Use platform-modeled data to fill gaps from non-consented users |
+| **Seuils d'agrégation minimaux** | Ne jamais rapporter sur des segments de moins de 50 utilisateurs (certaines plateformes exigent 100+) |
+| **Confidentialité différentielle** | Ajouter du bruit statistique aux petits segments pour empêcher l'identification individuelle |
+| **Reporting au niveau cohorte** | Rapporter sur des groupes d'utilisateurs (cohortes), pas des individus |
+| **Reporting à délai** | Accepter des délais de données de 24-72 heures en échange de la conformité en matière de confidentialité |
+| **Conversions modélisées** | Utiliser les données modélisées de la plateforme pour combler les lacunes des utilisateurs non consentants |
 
-### GA4 Privacy Configuration
+### Configuration de confidentialité GA4
 
-- [ ] Data retention set to appropriate period (14 months max, or shorter per policy)
-- [ ] IP anonymization confirmed (default in GA4)
-- [ ] Google Signals enabled only if consent is collected
-- [ ] User-ID tracking implemented only with consent
-- [ ] Data deletion requests automated via API
-- [ ] Consent Mode v2 active and verified
-- [ ] Thresholding understood (GA4 hides rows when sample size is too small)
-- [ ] BigQuery export configured for raw data analysis (where consent supports it)
+- [ ] Rétention des données définie à la période appropriée (14 mois max, ou plus court selon la politique)
+- [ ] Anonymisation IP confirmée (par défaut dans GA4)
+- [ ] Google Signals activé uniquement si le consentement est collecté
+- [ ] Suivi User-ID mis en œuvre uniquement avec consentement
+- [ ] Demandes de suppression de données automatisées via API
+- [ ] Consent Mode v2 actif et vérifié
+- [ ] Seuillage (thresholding) compris (GA4 masque les lignes lorsque la taille d'échantillon est trop faible)
+- [ ] Export BigQuery configuré pour l'analyse de données brutes (là où le consentement le permet)
 
 ---
 
-## Privacy Regulation Compliance for Measurement
+## Conformité aux réglementations de confidentialité pour la mesure
 
-### Compliance Checklist by Regulation
+### Liste de contrôle de conformité par réglementation
 
-| Requirement | GDPR | CCPA/CPRA | Other US State Laws |
+| Exigence | RGPD | CCPA/CPRA | Autres lois d'États américains |
 |-------------|------|-----------|-------------------|
-| Consent required before tracking? | Yes (opt-in) | No (opt-out model) | Varies (mostly opt-out) |
-| Must disclose data collection? | Yes (privacy policy) | Yes (privacy policy) | Yes |
-| Right to deletion? | Yes | Yes | Yes (most) |
-| Data Processing Agreement required? | Yes (with all processors) | Yes (service provider agreements) | Yes (most) |
-| Cross-border transfer restrictions? | Yes (SCCs, adequacy decisions) | Limited | Limited |
-| Consent for profiling/targeting? | Yes (legitimate interest may apply for some) | Opt-out right | Varies |
-| Cookie consent banner required? | Yes (prior consent) | Not specifically (but recommended) | Varies |
+| Consentement requis avant le suivi ? | Oui (opt-in) | Non (modèle opt-out) | Variable (majoritairement opt-out) |
+| Divulgation de la collecte de données obligatoire ? | Oui (politique de confidentialité) | Oui (politique de confidentialité) | Oui |
+| Droit à l'effacement ? | Oui | Oui | Oui (la plupart) |
+| Accord de traitement des données requis ? | Oui (avec tous les sous-traitants) | Oui (accords de prestataire de service) | Oui (la plupart) |
+| Restrictions de transfert transfrontalier ? | Oui (CCT, décisions d'adéquation) | Limitées | Limitées |
+| Consentement pour le profilage/ciblage ? | Oui (l'intérêt légitime peut s'appliquer dans certains cas) | Droit d'opt-out | Variable |
+| Bannière de consentement cookies requise ? | Oui (consentement préalable) | Pas spécifiquement (mais recommandé) | Variable |
 
-### Measurement-Specific Compliance Actions
+### Actions de conformité spécifiques à la mesure
 
-- [ ] Privacy policy updated to disclose all tracking technologies and data sharing with ad platforms
-- [ ] Data Processing Agreements (DPAs) signed with all analytics and ad platform vendors
-- [ ] Consent records stored and auditable (which users consented, when, to what)
-- [ ] Data subject requests (deletion, access) can be fulfilled within 30 days
-- [ ] Server-side tracking processes only consented data (or aggregated, non-personal data)
-- [ ] Hashing of PII occurs client-side before transmission to third parties
-- [ ] Regular privacy audit of all tags, pixels, and server-side connections (quarterly minimum)
-- [ ] Marketing team trained on privacy requirements relevant to their tools and workflows
-- [ ] Legal review of any new tracking implementation before deployment
+- [ ] Politique de confidentialité mise à jour pour divulguer toutes les technologies de suivi et le partage de données avec les plateformes publicitaires
+- [ ] Accords de traitement des données (DPA) signés avec tous les fournisseurs analytiques et de plateformes publicitaires
+- [ ] Enregistrements de consentement stockés et auditables (quels utilisateurs ont consenti, quand, à quoi)
+- [ ] Les demandes des personnes concernées (suppression, accès) peuvent être satisfaites sous 30 jours
+- [ ] Le suivi côté serveur ne traite que des données consenties (ou des données agrégées, non personnelles)
+- [ ] Le hachage des PII se produit côté client avant la transmission à des tiers
+- [ ] Audit de confidentialité régulier de toutes les balises, pixels, et connexions côté serveur (trimestriel minimum)
+- [ ] Équipe marketing formée sur les exigences de confidentialité pertinentes pour leurs outils et workflows
+- [ ] Revue juridique de toute nouvelle implémentation de suivi avant déploiement
 
 ---
 
-## Implementation Roadmap
+## Feuille de route de mise en œuvre
 
-### Phase 1: Foundation (Month 1)
+### Phase 1 : fondations (mois 1)
 
-- [ ] Deploy CMP with geo-based consent rules
-- [ ] Implement Google Consent Mode v2
-- [ ] Audit all existing tracking tags for consent compliance
-- [ ] Enable Meta CAPI (use Shopify native or GTM server-side)
-- [ ] Enable Google Enhanced Conversions
-- [ ] Monitor consent rates and optimize banner UX
+- [ ] Déployer une CMP avec des règles de consentement basées sur la géographie
+- [ ] Mettre en œuvre Google Consent Mode v2
+- [ ] Auditer toutes les balises de suivi existantes pour la conformité au consentement
+- [ ] Activer Meta CAPI (utiliser l'intégration native Shopify ou GTM server-side)
+- [ ] Activer Google Enhanced Conversions
+- [ ] Surveiller les taux de consentement et optimiser l'UX de la bannière
 
-### Phase 2: First-Party Data (Month 2-3)
+### Phase 2 : données first-party (mois 2-3)
 
-- [ ] Audit first-party data collection points (email, phone, account creation)
-- [ ] Implement server-side event streaming for key conversions
-- [ ] Set up first-party audience syncs to major ad platforms (Custom Audiences, Customer Match)
-- [ ] Deploy deduplication between browser and server-side events
-- [ ] Verify match rates across all platforms (target > 60%)
+- [ ] Auditer les points de collecte de données first-party (e-mail, téléphone, création de compte)
+- [ ] Mettre en œuvre le streaming d'événements côté serveur pour les conversions clés
+- [ ] Configurer les synchronisations d'audience first-party vers les principales plateformes publicitaires (Custom Audiences, Customer Match)
+- [ ] Déployer la déduplication entre les événements navigateur et côté serveur
+- [ ] Vérifier les taux de correspondance sur toutes les plateformes (objectif > 60 %)
 
-### Phase 3: Advanced Measurement (Month 3-6)
+### Phase 3 : mesure avancée (mois 3-6)
 
-- [ ] Implement or commission Marketing Mix Modeling
-- [ ] Design and run first incrementality test
-- [ ] Evaluate data clean room options for cross-platform measurement
-- [ ] Build privacy-compliant reporting dashboard with modeled conversions
-- [ ] Establish quarterly measurement accuracy review
+- [ ] Mettre en œuvre ou commander un Marketing Mix Modeling
+- [ ] Concevoir et exécuter le premier test d'incrémentalité
+- [ ] Évaluer les options de data clean room pour la mesure cross-plateforme
+- [ ] Construire un tableau de bord de reporting conforme à la confidentialité avec des conversions modélisées
+- [ ] Établir une revue trimestrielle de la précision de mesure
 
-### Phase 4: Optimization (Ongoing)
+### Phase 4 : optimisation (continu)
 
-- [ ] Continuously improve consent rates through UX optimization
-- [ ] Expand first-party data collection (loyalty program, quizzes, progressive profiling)
-- [ ] Calibrate MMM with incrementality test results
-- [ ] Update privacy compliance as new regulations take effect
-- [ ] Train team quarterly on evolving privacy landscape and measurement approaches
-- [ ] Document measurement methodology and known limitations for stakeholder transparency
+- [ ] Améliorer continuellement les taux de consentement via l'optimisation de l'UX
+- [ ] Étendre la collecte de données first-party (programme de fidélité, quiz, profilage progressif)
+- [ ] Calibrer le MMM avec les résultats des tests d'incrémentalité
+- [ ] Mettre à jour la conformité en matière de confidentialité à mesure que de nouvelles réglementations entrent en vigueur
+- [ ] Former l'équipe trimestriellement sur l'évolution du paysage de la confidentialité et les approches de mesure
+- [ ] Documenter la méthodologie de mesure et les limites connues pour la transparence envers les parties prenantes

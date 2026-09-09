@@ -1,323 +1,323 @@
-# Retargeting & Remarketing — Audience Strategy Reference
+# Retargeting et remarketing — Référence de stratégie d'audience
 
-## Audience Segment Taxonomy
+## Taxonomie des segments d'audience
 
-### Website-Based Segments
+### Segments basés sur le site web
 
-| Segment | Definition | Typical Size | Intent Level | Recommended Window |
+| Segment | Définition | Taille typique | Niveau d'intention | Fenêtre recommandée |
 |---------|-----------|-------------|-------------|-------------------|
-| All website visitors | Anyone who visited any page | Large | Low | 30-90 days |
-| Specific page visitors | Visited product, pricing, or feature pages | Medium | Medium-High | 14-30 days |
-| Category browsers | Viewed multiple products in same category | Medium | Medium | 14-30 days |
-| Cart abandoners | Added to cart but did not purchase | Small-Medium | High | 7-14 days |
-| Checkout starters | Began checkout flow, did not complete | Small | Very High | 3-7 days |
-| Form starters | Started lead form, did not submit | Small | Very High | 7-14 days |
-| Repeat visitors | 3+ visits in past 14 days | Small-Medium | High | 14-30 days |
-| High-engagement visitors | Session duration >3 minutes or >5 pages | Small-Medium | Medium-High | 30-60 days |
-| Blog/content readers | Visited blog or resource pages | Large | Low-Medium | 30-90 days |
+| Tous les visiteurs du site | Toute personne ayant visité une page quelconque | Grande | Faible | 30-90 jours |
+| Visiteurs de pages spécifiques | Ont visité des pages produit, tarification, ou fonctionnalité | Moyenne | Moyen-élevé | 14-30 jours |
+| Navigateurs de catégorie | Ont vu plusieurs produits dans la même catégorie | Moyenne | Moyen | 14-30 jours |
+| Abandons de panier | Ont ajouté au panier mais n'ont pas acheté | Petite-moyenne | Élevé | 7-14 jours |
+| Démarreurs de checkout | Ont commencé le tunnel de paiement, non complété | Petite | Très élevé | 3-7 jours |
+| Démarreurs de formulaire | Ont commencé un formulaire de lead, non soumis | Petite | Très élevé | 7-14 jours |
+| Visiteurs récurrents | 3+ visites dans les 14 derniers jours | Petite-moyenne | Élevé | 14-30 jours |
+| Visiteurs à fort engagement | Durée de session >3 minutes ou >5 pages | Petite-moyenne | Moyen-élevé | 30-60 jours |
+| Lecteurs de blog/contenu | Ont visité le blog ou des pages de ressources | Grande | Faible-moyen | 30-90 jours |
 
-### Customer-Based Segments
+### Segments basés sur le client
 
-| Segment | Definition | Use Case |
+| Segment | Définition | Cas d'usage |
 |---------|-----------|----------|
-| Past purchasers (recent) | Purchased in last 30-60 days | Cross-sell, complementary products |
-| Past purchasers (lapsed) | Purchased 60-180 days ago, no repeat | Win-back, re-engagement offers |
-| High-value customers | Top 20% by LTV or order value | VIP offers, loyalty, exclusions from discount ads |
-| Subscription churned | Cancelled subscription in last 90 days | Win-back with improved offer |
-| One-time buyers | Purchased once, never repeated | Second purchase incentive |
-| Multi-buyers | 2+ purchases | Loyalty programs, referral asks |
+| Acheteurs passés (récents) | Ont acheté dans les 30-60 derniers jours | Cross-sell, produits complémentaires |
+| Acheteurs passés (inactifs) | Ont acheté il y a 60-180 jours, sans rachat | Reconquête, offres de réengagement |
+| Clients à forte valeur | Top 20 % par LTV ou valeur de commande | Offres VIP, loyauté, exclusions des publicités de remise |
+| Abonnement résilié | Abonnement annulé dans les 90 derniers jours | Reconquête avec une offre améliorée |
+| Acheteurs uniques | Ont acheté une fois, jamais renouvelé | Incitation au deuxième achat |
+| Multi-acheteurs | 2+ achats | Programmes de loyauté, demandes de parrainage |
 
-### Engagement-Based Segments
+### Segments basés sur l'engagement
 
-| Segment | Definition | Platform |
+| Segment | Définition | Plateforme |
 |---------|-----------|----------|
-| Video viewers (25/50/75/95%) | Watched video to specific completion | Meta, YouTube, TikTok |
-| App users (active) | Used app in last 7-30 days | Meta, Google, TikTok |
-| App users (lapsed) | Haven't opened app in 30+ days | Meta, Google, TikTok |
-| Email openers | Opened email in last 30 days | Meta (Custom Audiences), Google (Customer Match) |
-| Email non-openers | On list but no opens in 90+ days | Meta, Google |
-| Social engagers | Liked, commented, shared, saved | Meta, TikTok, LinkedIn |
-| Lead form openers | Opened in-platform lead form | Meta, LinkedIn, TikTok |
-| Event attendees | Attended or RSVPed to event | Meta, LinkedIn |
+| Spectateurs vidéo (25/50/75/95 %) | Ont regardé la vidéo jusqu'à un pourcentage d'achèvement spécifique | Meta, YouTube, TikTok |
+| Utilisateurs d'app (actifs) | Ont utilisé l'app dans les 7-30 derniers jours | Meta, Google, TikTok |
+| Utilisateurs d'app (inactifs) | N'ont pas ouvert l'app depuis 30+ jours | Meta, Google, TikTok |
+| Ouvreurs d'email | Ont ouvert un email dans les 30 derniers jours | Meta (Custom Audiences), Google (Customer Match) |
+| Non-ouvreurs d'email | Sur la liste mais aucune ouverture depuis 90+ jours | Meta, Google |
+| Personnes engagées sur le social | Ont aimé, commenté, partagé, enregistré | Meta, TikTok, LinkedIn |
+| Ouvreurs de formulaire de lead | Ont ouvert un formulaire de lead in-platform | Meta, LinkedIn, TikTok |
+| Participants à un événement | Ont assisté ou confirmé leur présence à un événement | Meta, LinkedIn |
 
-### Expansion Segments
+### Segments d'expansion
 
-| Segment | Definition | Use Case |
+| Segment | Définition | Cas d'usage |
 |---------|-----------|----------|
-| Lookalike / Similar (1%) | Top 1% most similar to seed audience | Highest-quality prospecting |
-| Lookalike / Similar (1-3%) | Broader similarity match | Scaled prospecting |
-| Lookalike / Similar (3-5%) | Widest useful similarity | Volume-focused prospecting |
-| Customer Match lookalike | Similar to uploaded customer list | Acquisition of look-alike customers |
-| High-value lookalike | Similar to top 20% customers by LTV | Best-customer acquisition |
+| Lookalike / Similaire (1 %) | Top 1 % le plus similaire à l'audience seed | Prospecting de la plus haute qualité |
+| Lookalike / Similaire (1-3 %) | Correspondance de similarité plus large | Prospecting à l'échelle |
+| Lookalike / Similaire (3-5 %) | Similarité utile la plus large | Prospecting axé volume |
+| Lookalike Customer Match | Similaire à la liste clients chargée | Acquisition de clients similaires |
+| Lookalike à forte valeur | Similaire aux 20 % de clients les plus élevés par LTV | Acquisition des meilleurs clients |
 
 ---
 
-## Platform-Specific Retargeting Capabilities
+## Capacités de retargeting spécifiques à la plateforme
 
 ### Google Ads
 
-| Feature | How It Works | Setup Requirement |
+| Fonctionnalité | Fonctionnement | Exigence de configuration |
 |---------|-------------|-------------------|
-| RLSA (Remarketing Lists for Search Ads) | Bid adjustments or targeting for past visitors on search | Google Tag + audience list (1,000 minimum for search) |
-| Display Remarketing | Banner ads to past visitors across Google Display Network | Google Tag + audience list (100 minimum for display) |
-| YouTube Remarketing | Video ads to past visitors or channel engagers | Google Tag + linked YouTube channel |
-| Dynamic Remarketing | Auto-generated ads showing specific products viewed | Google Tag + Merchant Center product feed |
-| Customer Match | Upload email/phone lists for targeting on Search, YouTube, Gmail | Hashed customer list (minimum 1,000 matched users) |
-| Similar Segments | Auto-generated audiences similar to your lists | Existing audience with 100+ users |
+| RLSA (Remarketing Lists for Search Ads) | Ajustements d'enchère ou ciblage pour les anciens visiteurs sur le search | Tag Google + liste d'audience (1 000 minimum pour le search) |
+| Remarketing Display | Bannières aux anciens visiteurs à travers le réseau Display de Google | Tag Google + liste d'audience (100 minimum pour le display) |
+| Remarketing YouTube | Publicités vidéo aux anciens visiteurs ou aux personnes engagées avec la chaîne | Tag Google + chaîne YouTube liée |
+| Remarketing dynamique | Publicités auto-générées montrant les produits spécifiques consultés | Tag Google + flux produit Merchant Center |
+| Customer Match | Charger des listes email/téléphone pour le ciblage sur Search, YouTube, Gmail | Liste client hachée (minimum 1 000 utilisateurs correspondants) |
+| Segments similaires | Audiences auto-générées similaires à vos listes | Audience existante avec 100+ utilisateurs |
 
 ### Meta (Facebook & Instagram)
 
-| Feature | How It Works | Setup Requirement |
+| Fonctionnalité | Fonctionnement | Exigence de configuration |
 |---------|-------------|-------------------|
-| Website Custom Audiences | Target visitors by URL, time spent, events | Meta Pixel + Conversions API (CAPI) |
-| Dynamic Product Ads (DPA) | Auto-show products users viewed/carted | Meta Pixel + Product Catalog |
-| Engagement Custom Audiences | Target based on Instagram/Facebook engagement | Connected business page/account |
-| Video Custom Audiences | Target by video view completion percentage | Video content published on Meta |
-| Customer List Audiences | Upload email/phone for matching | Customer list (CSV upload or CRM integration) |
-| Lookalike Audiences | Find similar users to seed audience | Seed audience (100+ people, 1,000+ recommended) |
-| Advantage+ Catalog Ads | ML-optimized dynamic ads from catalog | Product catalog + Pixel + CAPI |
+| Audiences personnalisées de site web | Cibler les visiteurs par URL, temps passé, événements | Pixel Meta + API Conversions (CAPI) |
+| Publicités dynamiques de produit (DPA) | Afficher automatiquement les produits vus/mis au panier | Pixel Meta + catalogue produit |
+| Audiences personnalisées d'engagement | Cibler selon l'engagement Instagram/Facebook | Page/compte professionnel connecté |
+| Audiences personnalisées vidéo | Cibler par pourcentage d'achèvement de visionnage vidéo | Contenu vidéo publié sur Meta |
+| Audiences de liste client | Charger email/téléphone pour la correspondance | Liste client (import CSV ou intégration CRM) |
+| Audiences lookalike | Trouver des utilisateurs similaires à l'audience seed | Audience seed (100+ personnes, 1 000+ recommandé) |
+| Publicités catalogue Advantage+ | Publicités dynamiques optimisées par ML à partir du catalogue | Catalogue produit + Pixel + CAPI |
 
 ### LinkedIn
 
-| Feature | How It Works | Setup Requirement |
+| Fonctionnalité | Fonctionnement | Exigence de configuration |
 |---------|-------------|-------------------|
-| Website Retargeting | Target visitors who triggered LinkedIn Insight Tag | LinkedIn Insight Tag (300+ matched members) |
-| Contact Targeting | Upload company or contact email lists | CSV list (10,000+ recommended for match rates) |
-| Company Targeting | Target employees of specific companies | Company name or LinkedIn Company Page URL list |
-| Video Viewers | Target users who viewed LinkedIn video ads | Previous video ad campaigns |
-| Lead Gen Form Openers | Target users who opened but didn't submit form | Previous Lead Gen Form campaigns |
-| Event Attendees | Target attendees of LinkedIn Events | LinkedIn Event association |
-| Lookalike Audiences | Similar professionals to seed audience | Matched Audience with 300+ members |
+| Retargeting de site web | Cibler les visiteurs ayant déclenché le LinkedIn Insight Tag | LinkedIn Insight Tag (300+ membres correspondants) |
+| Ciblage par contact | Charger des listes d'emails d'entreprise ou de contact | Liste CSV (10 000+ recommandé pour les taux de correspondance) |
+| Ciblage par entreprise | Cibler les employés d'entreprises spécifiques | Liste de noms d'entreprise ou d'URL de page entreprise LinkedIn |
+| Spectateurs vidéo | Cibler les utilisateurs ayant vu des publicités vidéo LinkedIn | Campagnes de publicité vidéo précédentes |
+| Ouvreurs de Lead Gen Form | Cibler les utilisateurs ayant ouvert mais pas soumis le formulaire | Campagnes Lead Gen Form précédentes |
+| Participants à un événement | Cibler les participants aux LinkedIn Events | Association à un LinkedIn Event |
+| Audiences lookalike | Professionnels similaires à l'audience seed | Matched Audience avec 300+ membres |
 
 ### TikTok
 
-| Feature | How It Works | Setup Requirement |
+| Fonctionnalité | Fonctionnement | Exigence de configuration |
 |---------|-------------|-------------------|
-| Website Custom Audiences | Target visitors based on TikTok Pixel events | TikTok Pixel + Events API |
-| App Activity Audiences | Target based on in-app events | App SDK integration |
-| Engagement Audiences | Users who engaged with TikTok content | Published TikTok content or ad campaigns |
-| Customer File Audiences | Upload email, phone, or device IDs | Customer list (CSV or partner integration) |
-| Lookalike Audiences | Expand reach beyond seed audiences | Seed audience with 10,000+ users |
+| Audiences personnalisées de site web | Cibler les visiteurs selon les événements du TikTok Pixel | TikTok Pixel + Events API |
+| Audiences d'activité d'app | Cibler selon les événements in-app | Intégration SDK d'app |
+| Audiences d'engagement | Utilisateurs ayant engagé avec le contenu TikTok | Contenu ou campagnes publicitaires TikTok publiés |
+| Audiences de fichier client | Charger email, téléphone, ou ID d'appareil | Liste client (CSV ou intégration partenaire) |
+| Audiences lookalike | Étendre la portée au-delà des audiences seed | Audience seed avec 10 000+ utilisateurs |
 
 ---
 
-## Sequential Retargeting Strategies
+## Stratégies de retargeting séquentiel
 
-### Awareness to Conversion Sequence
+### Séquence notoriété vers conversion
 
 ```
-Stage 1: Awareness (Days 1-7 post-visit)
-├── Creative: Brand story, social proof, educational content
-├── Format: Video (15-30s), carousel showcasing range
-├── Frequency cap: 1 impression/day
-└── Goal: Build familiarity and trust
+Étape 1 : Notoriété (Jours 1-7 post-visite)
+├── Créatif : Histoire de marque, preuve sociale, contenu éducatif
+├── Format : Vidéo (15-30s), carrousel montrant la gamme
+├── Plafond de fréquence : 1 impression/jour
+└── Objectif : Construire la familiarité et la confiance
 
-Stage 2: Consideration (Days 8-14)
-├── Creative: Product benefits, comparison, testimonials
-├── Format: Carousel, collection ads, case studies
-├── Frequency cap: 2 impressions/day
-└── Goal: Drive deeper engagement
+Étape 2 : Considération (Jours 8-14)
+├── Créatif : Bénéfices produit, comparaison, témoignages
+├── Format : Carrousel, publicités collection, études de cas
+├── Plafond de fréquence : 2 impressions/jour
+└── Objectif : Générer un engagement plus profond
 
-Stage 3: Conversion (Days 15-21)
-├── Creative: Specific offer, urgency, direct CTA
-├── Format: Single image/video with strong CTA
-├── Frequency cap: 3 impressions/day
-└── Goal: Drive purchase or lead submission
+Étape 3 : Conversion (Jours 15-21)
+├── Créatif : Offre spécifique, urgence, CTA direct
+├── Format : Image/vidéo unique avec un CTA fort
+├── Plafond de fréquence : 3 impressions/jour
+└── Objectif : Générer l'achat ou la soumission de lead
 
-Stage 4: Re-engagement (Days 22-30)
-├── Creative: Final offer, scarcity, alternative products
-├── Format: Dynamic ads, new angle messaging
-├── Frequency cap: 1 impression/day
-└── Goal: Capture remaining intent before audience expires
+Étape 4 : Réengagement (Jours 22-30)
+├── Créatif : Offre finale, rareté, produits alternatifs
+├── Format : Publicités dynamiques, message d'angle nouveau
+├── Plafond de fréquence : 1 impression/jour
+└── Objectif : Capturer l'intention restante avant l'expiration de l'audience
 ```
 
-### Cart Abandonment Sequence
+### Séquence d'abandon de panier
 
-| Touchpoint | Timing | Channel | Message |
+| Point de contact | Timing | Canal | Message |
 |-----------|--------|---------|---------|
-| Email 1 | 1 hour | Email | Cart reminder, no discount |
-| Retargeting ad | 2-6 hours | Meta/Google Display | Dynamic product ad, social proof |
-| Email 2 | 24 hours | Email | Urgency + reviews |
-| Retargeting ad | 24-72 hours | Meta/Google Display | Scarcity messaging, limited stock |
-| Email 3 | 48-72 hours | Email | Small incentive (if margins allow) |
-| Retargeting ad | 72+ hours | Meta/Google Display | Discount offer or free shipping |
+| Email 1 | 1 heure | Email | Rappel de panier, sans remise |
+| Publicité retargeting | 2-6 heures | Meta/Google Display | Publicité dynamique de produit, preuve sociale |
+| Email 2 | 24 heures | Email | Urgence + avis |
+| Publicité retargeting | 24-72 heures | Meta/Google Display | Message de rareté, stock limité |
+| Email 3 | 48-72 heures | Email | Petite incitation (si les marges le permettent) |
+| Publicité retargeting | 72+ heures | Meta/Google Display | Offre de remise ou livraison gratuite |
 
 ---
 
-## Frequency Capping Guidelines
+## Directives de plafonnement de fréquence
 
-| Segment Intent Level | Recommended Frequency Cap | Rationale |
+| Niveau d'intention du segment | Plafond de fréquence recommandé | Justification |
 |---------------------|--------------------------|-----------|
-| Very high (checkout abandoners) | 5-7 impressions/week | High conversion probability justifies frequency |
-| High (cart abandoners, repeat visitors) | 4-6 impressions/week | Strong intent, avoid oversaturation |
-| Medium (page visitors, category browsers) | 3-5 impressions/week | Balance between reminder and annoyance |
-| Low (all visitors, content readers) | 2-3 impressions/week | Light touch to stay top of mind |
-| Prospecting (lookalikes) | 2-3 impressions/week | Cold audience, focus on reach over frequency |
+| Très élevé (abandons de checkout) | 5-7 impressions/semaine | La forte probabilité de conversion justifie la fréquence |
+| Élevé (abandons de panier, visiteurs récurrents) | 4-6 impressions/semaine | Forte intention, éviter la sursaturation |
+| Moyen (visiteurs de page, navigateurs de catégorie) | 3-5 impressions/semaine | Équilibre entre rappel et agacement |
+| Faible (tous visiteurs, lecteurs de contenu) | 2-3 impressions/semaine | Touche légère pour rester présent à l'esprit |
+| Prospecting (lookalikes) | 2-3 impressions/semaine | Audience froide, se concentrer sur la portée plutôt que la fréquence |
 
-### Burn Pixels and Exclusions
+### Pixels de brûlure et exclusions
 
-A burn pixel is a tracking event placed on the conversion/thank-you page that triggers audience exclusion.
+Un pixel de brûlure est un événement de suivi placé sur la page de conversion/remerciement qui déclenche l'exclusion d'audience.
 
-- [ ] Place burn pixels on all conversion confirmation pages
-- [ ] Exclude purchasers from acquisition campaigns (save budget, reduce annoyance)
-- [ ] Re-include purchasers only in cross-sell or loyalty campaigns
-- [ ] Exclude employees via IP, email list, or company targeting exclusion
-- [ ] Exclude existing customers from free trial or demo campaigns
-- [ ] Exclude users who completed forms from lead gen retargeting
-- [ ] Set maximum exposure caps per user across all campaigns (platform-level)
+- [ ] Placer des pixels de brûlure sur toutes les pages de confirmation de conversion
+- [ ] Exclure les acheteurs des campagnes d'acquisition (économiser le budget, réduire l'agacement)
+- [ ] Réinclure les acheteurs uniquement dans les campagnes de cross-sell ou de loyauté
+- [ ] Exclure les employés via IP, liste d'emails, ou exclusion de ciblage par entreprise
+- [ ] Exclure les clients existants des campagnes d'essai gratuit ou de démo
+- [ ] Exclure les utilisateurs ayant complété des formulaires du retargeting de génération de leads
+- [ ] Fixer des plafonds d'exposition maximum par utilisateur à travers toutes les campagnes (au niveau plateforme)
 
 ---
 
-## Dynamic Retargeting Setup
+## Configuration du retargeting dynamique
 
-### Product Catalog Requirements
+### Exigences du catalogue produit
 
-| Platform | Feed Format | Key Attributes | Refresh Frequency |
+| Plateforme | Format de flux | Attributs clés | Fréquence de rafraîchissement |
 |----------|-----------|----------------|-------------------|
-| Google Merchant Center | XML, TSV, CSV | id, title, description, image, price, availability, link | Every 6 hours minimum |
-| Meta Catalog | CSV, XML, Google Sheets | id, title, description, image_link, price, availability, url | Daily minimum |
-| TikTok Catalog | CSV, XML | sku_id, title, description, image_link, price, availability_status, landing_page_url | Daily minimum |
+| Google Merchant Center | XML, TSV, CSV | id, title, description, image, price, availability, link | Toutes les 6 heures minimum |
+| Catalogue Meta | CSV, XML, Google Sheets | id, title, description, image_link, price, availability, url | Quotidien minimum |
+| Catalogue TikTok | CSV, XML | sku_id, title, description, image_link, price, availability_status, landing_page_url | Quotidien minimum |
 
-### Dynamic Ad Personalization Layers
+### Couches de personnalisation publicitaire dynamique
 
-| Layer | What Changes | Example |
+| Couche | Ce qui change | Exemple |
 |-------|-------------|---------|
-| Product | Shows specific items the user viewed | "Still interested in the Blue Running Shoes?" |
-| Category | Shows top products from browsed category | "Popular in Men's Running Shoes" |
-| Price | Displays current price (including sales) | "$89.99 (was $129.99)" |
-| Availability | Shows stock status | "Only 3 left in stock" |
-| Social proof | Adds review stars or purchase count | "Rated 4.8/5 by 2,341 customers" |
-| Recommendations | ML-driven cross-sell suggestions | "Customers also bought..." |
+| Produit | Montre les articles spécifiques que l'utilisateur a consultés | « Toujours intéressé par les baskets de running bleues ? » |
+| Catégorie | Montre les meilleurs produits de la catégorie parcourue | « Populaire dans les baskets de running homme » |
+| Prix | Affiche le prix actuel (incluant les soldes) | « 89,99 $ (au lieu de 129,99 $) » |
+| Disponibilité | Montre le statut de stock | « Plus que 3 en stock » |
+| Preuve sociale | Ajoute des étoiles d'avis ou un nombre d'achats | « Noté 4,8/5 par 2 341 clients » |
+| Recommandations | Suggestions de cross-sell pilotées par ML | « Les clients ont aussi acheté... » |
 
 ---
 
-## Cross-Device Retargeting
+## Retargeting cross-appareil
 
-### Matching Methods
+### Méthodes de correspondance
 
-| Method | Accuracy | Coverage | Requirement |
+| Méthode | Précision | Couverture | Exigence |
 |--------|----------|----------|-------------|
-| Deterministic (logged-in) | Very high (~95%) | Limited to logged-in users | User login across devices |
-| Probabilistic (device graph) | Moderate (~60-70%) | Broader reach | Platform's device graph |
-| Platform-native (Google, Meta) | High (~80-90%) | Platform-dependent | Platform tags + user logged in |
-| Customer Match (email-based) | High | Limited to known users | Email list upload |
-| First-party data (CDP) | High | Depends on data collection | CDP implementation |
+| Déterministe (connecté) | Très élevée (~95 %) | Limitée aux utilisateurs connectés | Connexion utilisateur à travers les appareils |
+| Probabiliste (graphe d'appareils) | Modérée (~60-70 %) | Portée plus large | Graphe d'appareils de la plateforme |
+| Natif à la plateforme (Google, Meta) | Élevée (~80-90 %) | Dépendant de la plateforme | Tags de plateforme + utilisateur connecté |
+| Customer Match (basé sur l'email) | Élevée | Limitée aux utilisateurs connus | Import de liste email |
+| Données propriétaires (CDP) | Élevée | Dépend de la collecte de données | Mise en œuvre CDP |
 
-### Cross-Device Strategy
+### Stratégie cross-appareil
 
-- [ ] Ensure tracking tags fire on all devices (responsive site)
-- [ ] Use Customer Match to unify known users across devices
-- [ ] Enable Google Signals for cross-device GA4 reporting
-- [ ] Implement Meta Conversions API (server-side) for better cross-device matching
-- [ ] Design creatives for the device context (mobile-first creative for mobile retargeting)
-- [ ] Attribute cross-device conversions in reporting (don't under-credit mobile)
+- [ ] S'assurer que les tags de suivi se déclenchent sur tous les appareils (site responsive)
+- [ ] Utiliser Customer Match pour unifier les utilisateurs connus à travers les appareils
+- [ ] Activer Google Signals pour le reporting GA4 cross-appareil
+- [ ] Mettre en œuvre l'API Conversions Meta (côté serveur) pour une meilleure correspondance cross-appareil
+- [ ] Concevoir les créatifs pour le contexte de l'appareil (créatif mobile-first pour le retargeting mobile)
+- [ ] Attribuer les conversions cross-appareil dans le reporting (ne pas sous-créditer le mobile)
 
 ---
 
-## Privacy Impact on Retargeting
+## Impact de la vie privée sur le retargeting
 
-### Current Landscape
+### Paysage actuel
 
-| Change | Impact | Status |
+| Changement | Impact | Statut |
 |--------|--------|--------|
-| iOS ATT (App Tracking Transparency) | ~75% of iOS users opt out, reducing Meta audience sizes 30-40% | Active since iOS 14.5 |
-| Third-party cookie deprecation | Cancelled — Chrome keeps 3P cookies (2024–2025 reversal); Safari/Firefox already block them | Closed |
-| Privacy Sandbox (Google) | Topics API and Attribution Reporting API replace 3P cookies | Rolling out |
-| GDPR/CCPA consent | Requires explicit consent for tracking in EU and California | Active |
-| Email privacy (Apple MPP) | Apple Mail open rates inflated, can't reliably segment by opens | Active since iOS 15 |
+| ATT iOS (App Tracking Transparency) | ~75 % des utilisateurs iOS refusent, réduisant les tailles d'audience Meta de 30-40 % | Actif depuis iOS 14.5 |
+| Dépréciation des cookies tiers | Annulée — Chrome conserve les cookies tiers (revirement 2024-2025) ; Safari/Firefox les bloquent déjà | Clos |
+| Privacy Sandbox (Google) | L'API Topics et l'API Attribution Reporting remplacent les cookies tiers | Déploiement en cours |
+| Consentement RGPD/CCPA | Nécessite un consentement explicite pour le suivi dans l'UE et en Californie | Actif |
+| Confidentialité email (Apple MPP) | Les taux d'ouverture Apple Mail sont gonflés, impossible de segmenter fiablement par ouvertures | Actif depuis iOS 15 |
 
-### Adaptation Strategies
+### Stratégies d'adaptation
 
-| Strategy | Implementation | Impact |
+| Stratégie | Mise en œuvre | Impact |
 |----------|---------------|--------|
-| First-party data collection | Email capture, account creation, loyalty programs | Build owned audience data |
-| Server-side tracking | Conversions API (Meta), Enhanced Conversions (Google) | Recover 15-25% of lost signal |
-| Contextual targeting | Target based on page content, not user history | Privacy-compliant alternative |
-| Google Enhanced Conversions | Send hashed first-party data with conversion tag | Better attribution and audience building |
-| Meta CAPI | Server-to-server event passing | Recover lost iOS events |
-| Customer Match / Custom Audiences | Upload first-party lists for targeting | Cookie-independent targeting |
-| Modeled conversions | Platform ML estimates conversions from partial data | Fill attribution gaps |
+| Collecte de données propriétaires | Capture d'email, création de compte, programmes de fidélité | Construire des données d'audience propriétaires |
+| Suivi côté serveur | API Conversions (Meta), Conversions améliorées (Google) | Récupérer 15-25 % du signal perdu |
+| Ciblage contextuel | Cibler selon le contenu de la page, pas l'historique utilisateur | Alternative conforme à la vie privée |
+| Conversions améliorées Google | Envoyer des données propriétaires hachées avec le tag de conversion | Meilleure attribution et construction d'audience |
+| Meta CAPI | Transmission d'événements serveur-à-serveur | Récupérer les événements iOS perdus |
+| Customer Match / Audiences personnalisées | Charger des listes propriétaires pour le ciblage | Ciblage indépendant des cookies |
+| Conversions modélisées | Le ML de la plateforme estime les conversions à partir de données partielles | Combler les lacunes d'attribution |
 
 ---
 
-## Retargeting Window Optimization
+## Optimisation de la fenêtre de retargeting
 
-### Window Duration by Business Model
+### Durée de la fenêtre par modèle économique
 
-| Business Model | Consideration Period | Recommended Primary Window | Extended Window |
+| Modèle économique | Période de considération | Fenêtre principale recommandée | Fenêtre étendue |
 |---------------|---------------------|---------------------------|-----------------|
-| Impulse eCommerce (<$50) | Hours to days | 7 days | 14 days |
-| Considered eCommerce ($50-500) | Days to weeks | 14 days | 30 days |
-| High-value eCommerce (>$500) | Weeks to months | 30 days | 60-90 days |
-| B2B SaaS (SMB) | 1-4 weeks | 30 days | 60 days |
-| B2B SaaS (Enterprise) | 1-6 months | 60 days | 90-180 days |
-| Local services | Days to weeks | 14 days | 30 days |
-| Travel / hospitality | Weeks to months | 30 days | 90 days |
+| eCommerce d'impulsion (<50 $) | Heures à jours | 7 jours | 14 jours |
+| eCommerce considéré (50-500 $) | Jours à semaines | 14 jours | 30 jours |
+| eCommerce à forte valeur (>500 $) | Semaines à mois | 30 jours | 60-90 jours |
+| SaaS B2B (TPE/PME) | 1-4 semaines | 30 jours | 60 jours |
+| SaaS B2B (Entreprise) | 1-6 mois | 60 jours | 90-180 jours |
+| Services locaux | Jours à semaines | 14 jours | 30 jours |
+| Voyage / hôtellerie | Semaines à mois | 30 jours | 90 jours |
 
-### Layered Window Strategy
+### Stratégie de fenêtres en couches
 
-Create separate audience segments by recency and adjust bids accordingly:
+Créer des segments d'audience séparés par récence et ajuster les enchères en conséquence :
 
-| Window | Audience Label | Bid Adjustment | Creative Approach |
+| Fenêtre | Étiquette d'audience | Ajustement d'enchère | Approche créative |
 |--------|---------------|---------------|-------------------|
-| 0-3 days | Hot visitors | +50-80% | Direct CTA, urgency |
-| 4-7 days | Warm visitors | +30-50% | Benefits, social proof |
-| 8-14 days | Cooling visitors | +10-20% | New angle, testimonials |
-| 15-30 days | Cool visitors | Baseline | Brand reinforcement |
-| 31-60 days | Cold visitors | -20-30% | Re-awareness, new content |
-| 61-90 days | Dormant visitors | -40-50% | Brand story, education |
+| 0-3 jours | Visiteurs chauds | +50-80 % | CTA direct, urgence |
+| 4-7 jours | Visiteurs tièdes | +30-50 % | Bénéfices, preuve sociale |
+| 8-14 jours | Visiteurs en refroidissement | +10-20 % | Nouvel angle, témoignages |
+| 15-30 jours | Visiteurs froids | Référence | Renforcement de marque |
+| 31-60 jours | Visiteurs très froids | -20-30 % | Renotoriété, nouveau contenu |
+| 61-90 jours | Visiteurs dormants | -40-50 % | Histoire de marque, éducation |
 
 ---
 
-## Creative Strategy by Segment
+## Stratégie créative par segment
 
-| Segment | Creative Tone | Message Focus | CTA Style |
+| Segment | Ton créatif | Focus du message | Style de CTA |
 |---------|-------------|---------------|-----------|
-| Cart abandoners | Urgent, helpful | Product-specific, address friction | "Complete your order" |
-| Product page viewers | Informative, persuasive | Product benefits, reviews, comparisons | "Shop now" or "Learn more" |
-| Category browsers | Discovery, curated | Category highlights, bestsellers | "Explore collection" |
-| Blog/content readers | Educational, thought leadership | Related content, deeper resources | "Read more" or "Download guide" |
-| Past customers (recent) | Appreciative, exclusive | Complementary products, new arrivals | "Shop new arrivals" |
-| Past customers (lapsed) | Win-back, personal | "We miss you" + incentive or what's new | "Come back and save" |
-| High-value customers | VIP, exclusive | Early access, loyalty perks, premium | "Exclusive access" |
-| Form abandoners | Reassuring, simple | Simplify the ask, address concerns | "It only takes 2 minutes" |
-| Video viewers (75%+) | Direct, next-step | Deeper product/service information | "See how it works" |
+| Abandons de panier | Urgent, serviable | Spécifique au produit, adresser la friction | « Complétez votre commande » |
+| Visiteurs de page produit | Informatif, persuasif | Bénéfices produit, avis, comparaisons | « Achetez maintenant » ou « En savoir plus » |
+| Navigateurs de catégorie | Découverte, curaté | Points forts de la catégorie, meilleures ventes | « Explorez la collection » |
+| Lecteurs de blog/contenu | Éducatif, leadership éclairé | Contenu associé, ressources plus approfondies | « Lire la suite » ou « Télécharger le guide » |
+| Clients passés (récents) | Reconnaissant, exclusif | Produits complémentaires, nouveautés | « Découvrez les nouveautés » |
+| Clients passés (inactifs) | Reconquête, personnel | « Vous nous manquez » + incitation ou nouveautés | « Revenez et économisez » |
+| Clients à forte valeur | VIP, exclusif | Accès anticipé, avantages de loyauté, premium | « Accès exclusif » |
+| Abandons de formulaire | Rassurant, simple | Simplifier la demande, adresser les préoccupations | « Ça ne prend que 2 minutes » |
+| Spectateurs vidéo (75 %+) | Direct, étape suivante | Informations plus approfondies sur le produit/service | « Voyez comment ça marche » |
 
 ---
 
-## Measurement Framework
+## Cadre de mesure
 
-### Attribution Models for Retargeting
+### Modèles d'attribution pour le retargeting
 
-| Model | How It Counts | Best For | Watch Out For |
+| Modèle | Comment il compte | Idéal pour | À surveiller |
 |-------|-------------|----------|---------------|
-| Click-through (7-day) | Conversion within 7 days of click | Direct response, conservative measurement | Misses view-through influence |
-| Click-through (28-day) | Conversion within 28 days of click | Longer consideration products | May over-credit if window is too long |
-| View-through (1-day) | Conversion within 1 day of impression (no click) | Understanding full retargeting influence | Can over-credit for high-frequency campaigns |
-| View-through (7-day) | Conversion within 7 days of impression | Brand awareness retargeting | Likely over-credits; use for directional data only |
-| Data-driven attribution | ML-distributed credit across touchpoints | Holistic measurement across channels | Requires significant conversion volume |
+| Au clic (7 jours) | Conversion dans les 7 jours suivant le clic | Réponse directe, mesure conservatrice | Rate l'influence de la vue |
+| Au clic (28 jours) | Conversion dans les 28 jours suivant le clic | Produits à considération plus longue | Peut sur-créditer si la fenêtre est trop longue |
+| À la vue (1 jour) | Conversion dans le jour suivant l'impression (sans clic) | Comprendre l'influence complète du retargeting | Peut sur-créditer pour les campagnes à haute fréquence |
+| À la vue (7 jours) | Conversion dans les 7 jours suivant l'impression | Retargeting de notoriété de marque | Sur-crédite probablement ; à utiliser pour des données directionnelles uniquement |
+| Attribution pilotée par les données | Crédit distribué par ML entre les points de contact | Mesure holistique à travers les canaux | Nécessite un volume de conversion significatif |
 
-### Incrementality Testing
+### Test d'incrémentalité
 
-To measure the true lift of retargeting (not just capturing conversions that would happen anyway):
+Pour mesurer le véritable lift du retargeting (pas seulement capturer des conversions qui se seraient produites de toute façon) :
 
-1. **Holdout test** — Suppress retargeting ads for a random 10-20% of your audience for 2-4 weeks
-2. **Measure the gap** — Compare conversion rates between exposed group and holdout group
-3. **Calculate incremental lift** — (Exposed CVR - Holdout CVR) / Holdout CVR = true retargeting lift
-4. **Typical finding** — Retargeting usually drives 10-30% incremental lift (not 100% of attributed conversions)
-5. **Adjust ROAS expectations** — True retargeting ROAS is typically 40-70% of reported ROAS after incrementality
+1. **Test avec groupe témoin** — Suspendre les publicités de retargeting pour un échantillon aléatoire de 10-20 % de votre audience pendant 2-4 semaines
+2. **Mesurer l'écart** — Comparer les taux de conversion entre le groupe exposé et le groupe témoin
+3. **Calculer le lift incrémental** — (TdC exposé - TdC témoin) / TdC témoin = véritable lift de retargeting
+4. **Constat typique** — Le retargeting génère généralement un lift incrémental de 10-30 % (pas 100 % des conversions attribuées)
+5. **Ajuster les attentes de ROAS** — Le véritable ROAS de retargeting représente typiquement 40-70 % du ROAS rapporté après incrémentalité
 
-### Key Metrics to Track
+### Métriques clés à suivre
 
-| Metric | Definition | Benchmark Range |
+| Métrique | Définition | Plage de benchmark |
 |--------|-----------|-----------------|
-| Frequency | Avg impressions per user per week | 3-7 (varies by segment) |
-| Reach | Unique users in audience | Depends on site traffic |
-| View-through conversions | Conversions after ad view, no click | 20-50% of total retargeting conversions |
-| Audience decay rate | Drop in conversion rate as window lengthens | 40-60% drop from Day 1-7 to Day 14-30 |
-| Incremental ROAS | Revenue from true incremental conversions / Ad spend | 3-8x for well-optimized retargeting |
-| Audience overlap | % of users appearing in multiple segments | Keep <30% to avoid bid competition |
+| Fréquence | Impressions moyennes par utilisateur et par semaine | 3-7 (varie selon le segment) |
+| Portée | Utilisateurs uniques dans l'audience | Dépend du trafic du site |
+| Conversions à la vue | Conversions après vue de la publicité, sans clic | 20-50 % du total des conversions de retargeting |
+| Taux de décroissance de l'audience | Baisse du taux de conversion à mesure que la fenêtre s'allonge | Baisse de 40-60 % entre les jours 1-7 et 14-30 |
+| ROAS incrémental | Revenu des vraies conversions incrémentales / dépense publicitaire | 3-8x pour un retargeting bien optimisé |
+| Chevauchement d'audience | % d'utilisateurs apparaissant dans plusieurs segments | Garder <30 % pour éviter la concurrence d'enchères |
 
 ---
 
-*Retargeting is not about following people around the internet. It is about delivering the right message to the right person at the right moment in their decision process. The best retargeting strategies feel helpful, not invasive, and they adapt to privacy changes by building first-party data foundations rather than relying on third-party cookies.*
+*Le retargeting ne consiste pas à suivre les gens sur Internet. Il s'agit de délivrer le bon message à la bonne personne au bon moment de leur processus de décision. Les meilleures stratégies de retargeting donnent l'impression d'être utiles, pas envahissantes, et elles s'adaptent aux évolutions de la vie privée en construisant des fondations de données propriétaires plutôt qu'en s'appuyant sur des cookies tiers.*

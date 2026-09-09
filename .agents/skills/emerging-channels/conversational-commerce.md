@@ -1,143 +1,143 @@
-# Conversational Commerce — Chat, SMS & Messaging
+# Commerce conversationnel — Chat, SMS & Messagerie
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** les chiffres en dollars présents dans ce document sont des estimations de planification, pas des cotations — les taux de marché et d'enchères évoluent en permanence. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, l'actualiser en direct (les tableaux de bord de plateforme et les rapports publiés récents valent mieux que la mémoire) et l'enregistrer avec `python scripts/benchmark_book.py --action record ... --source <url>` ; le citer ensuite depuis le livre de référence (`--action quote`). Ne jamais présenter un chiffre non validé comme un fait de marché actuel.
 
-> Conversational commerce is the intersection of messaging and buying. Customers increasingly expect to discover, evaluate, and purchase products within chat interfaces. This guide covers every major messaging channel, compliance requirements, and measurement frameworks.
+> Le commerce conversationnel est l'intersection entre la messagerie et l'achat. Les clients s'attendent de plus en plus à découvrir, évaluer, et acheter des produits au sein d'interfaces de chat. Ce guide couvre tous les principaux canaux de messagerie, les exigences de conformité, et les cadres de mesure.
 
 ---
 
-## Channel Landscape
+## Paysage des canaux
 
-| Channel | Monthly Active Users | Commerce Maturity | Best For |
+| Canal | Utilisateurs actifs mensuels | Maturité du commerce | Idéal pour |
 |---------|---------------------|-------------------|----------|
-| **WhatsApp Business** | 2B+ | High (especially outside US) | International commerce, support, notifications |
-| **SMS / MMS** | Universal | High | Promotions, alerts, re-engagement, transactional |
-| **Facebook Messenger** | 1B+ | Medium-High | Lead gen, customer support, automated flows |
-| **Instagram DMs** | 2B+ (Instagram total) | Medium | Product inquiries, influencer commerce |
-| **RCS (Rich Communication Services)** | Growing (Android default) | Emerging | Rich media messaging, branded sender |
-| **Live Chat (Website)** | N/A | High | Real-time support, sales conversion |
-| **Chatbots (AI)** | N/A | Medium-High | Automated support, qualification, FAQ |
-| **Apple Business Messages** | iOS users | Medium | Premium support, appointment booking |
+| **WhatsApp Business** | 2 Mds+ | Élevée (notamment hors États-Unis) | Commerce international, support, notifications |
+| **SMS / MMS** | Universel | Élevée | Promotions, alertes, réengagement, transactionnel |
+| **Facebook Messenger** | 1 Md+ | Moyenne-élevée | Génération de leads, support client, flux automatisés |
+| **DM Instagram** | 2 Mds+ (Instagram total) | Moyenne | Demandes produit, commerce d'influenceur |
+| **RCS (Rich Communication Services)** | En croissance (par défaut sur Android) | Émergent | Messagerie riche en médias, expéditeur de marque |
+| **Chat en direct (site web)** | N/A | Élevée | Support en temps réel, conversion des ventes |
+| **Chatbots (IA)** | N/A | Moyenne-élevée | Support automatisé, qualification, FAQ |
+| **Apple Business Messages** | Utilisateurs iOS | Moyenne | Support premium, prise de rendez-vous |
 
 ---
 
-## WhatsApp Business — Setup & Marketing
+## WhatsApp Business — Mise en place & Marketing
 
-### Account Tiers
+### Niveaux de compte
 
-| Tier | WhatsApp Business App | WhatsApp Business Platform (API) |
+| Niveau | Application WhatsApp Business | Plateforme WhatsApp Business (API) |
 |------|----------------------|--------------------------------|
-| Best for | Small businesses (<5 agents) | Mid-market and enterprise |
-| Cost | Free | Per-message pricing since 1 July 2025 (varies by country and template type — India marketing template ≈ USD 0.0118; service messages in the 24-hr customer-care window and 72-hr free window from CTWA/Page CTAs are free) |
-| Automation | Basic quick replies, labels | Full chatbot, CRM integration, workflows |
-| Broadcasting | Broadcast lists (256 contacts) | Unlimited template messages (pre-approved) |
-| Commerce | Product catalog in-app | Full catalog + cart + payment integration |
-| Verification | Green checkmark available | Green checkmark available |
+| Idéal pour | Petites entreprises (<5 agents) | Marché intermédiaire et entreprise |
+| Coût | Gratuit | Tarification au message depuis le 1er juillet 2025 (varie selon le pays et le type de modèle — modèle marketing en Inde ≈ 0,0118 USD ; les messages de service dans la fenêtre de service client de 24h et la fenêtre gratuite de 72h depuis les CTA de CTWA/Page sont gratuits) |
+| Automatisation | Réponses rapides basiques, étiquettes | Chatbot complet, intégration CRM, workflows |
+| Diffusion | Listes de diffusion (256 contacts) | Messages modèles illimités (pré-approuvés) |
+| Commerce | Catalogue produit dans l'app | Catalogue complet + panier + intégration de paiement |
+| Vérification | Coche verte disponible | Coche verte disponible |
 
-### WhatsApp Message Types
+### Types de messages WhatsApp
 
-| Type | Use Case | Requires Opt-In? | Template Approval? |
+| Type | Cas d'usage | Opt-in requis ? | Approbation de modèle ? |
 |------|---------|-------------------|-------------------|
-| **Utility** | Order confirmations, shipping updates, receipts | Yes | Yes |
-| **Authentication** | OTP, login verification | Yes | Yes |
-| **Marketing** | Promotions, product launches, re-engagement | Yes (explicit) | Yes |
-| **Service** | Customer-initiated support conversations | No (customer initiated) | No (free-form within 24hr window) |
+| **Utilitaire** | Confirmations de commande, mises à jour d'expédition, reçus | Oui | Oui |
+| **Authentification** | OTP, vérification de connexion | Oui | Oui |
+| **Marketing** | Promotions, lancements de produit, réengagement | Oui (explicite) | Oui |
+| **Service** | Conversations de support initiées par le client | Non (initiées par le client) | Non (format libre dans la fenêtre de 24h) |
 
-### WhatsApp Marketing Best Practices
-1. Obtain explicit opt-in before sending any marketing messages
-2. Segment audiences — do not blast entire contact list
-3. Personalize messages with customer name and relevant product data
-4. Include clear CTA (shop now, book appointment, reply to order)
-5. Respect frequency: 2-4 marketing messages per month maximum
-6. Always provide easy opt-out mechanism
-7. Use rich media: images, videos, product carousels, interactive buttons
+### Bonnes pratiques marketing WhatsApp
+1. Obtenir un opt-in explicite avant d'envoyer tout message marketing
+2. Segmenter les audiences — ne pas diffuser à toute la liste de contacts
+3. Personnaliser les messages avec le nom du client et des données produit pertinentes
+4. Inclure un CTA clair (acheter maintenant, réserver un rendez-vous, répondre à la commande)
+5. Respecter la fréquence : 2-4 messages marketing par mois maximum
+6. Toujours fournir un mécanisme de désabonnement facile
+7. Utiliser des médias riches : images, vidéos, carrousels de produits, boutons interactifs
 
 ---
 
-## Chatbot Design Framework
+## Cadre de conception de chatbot
 
-### Conversation Architecture
+### Architecture de conversation
 
 ```
-Entry Point → Greeting → Intent Detection → Flow Routing
+Point d'entrée → Accueil → Détection d'intention → Routage de flux
                                                │
                     ┌──────────┬────────────────┼────────────────┐
                     ▼          ▼                ▼                ▼
-               Product     Support         Appointment       Lead
-               Browse      Issue           Booking           Qualification
+               Parcours    Problème        Prise de         Qualification
+               produit     de support      rendez-vous       de lead
                     │          │                │                │
                     ▼          ▼                ▼                ▼
-               Add to      Resolve /       Confirm /        Capture /
-               Cart        Escalate        Remind           Route to Sales
+               Ajouter     Résoudre /      Confirmer /      Capturer /
+               au panier   Escalader       Rappeler         Router vers vente
                     │          │                │                │
                     └──────────┴────────────────┴────────────────┘
                                                │
-                                          Close / Survey
+                                          Clôturer / Enquête
 ```
 
-### Chatbot Design Principles
+### Principes de conception de chatbot
 
-| Principle | Implementation |
+| Principe | Mise en œuvre |
 |-----------|---------------|
-| **Identify the bot** | Always disclose that the user is chatting with a bot, not a human |
-| **Limit scope** | Define 5-10 core intents the bot handles well; escalate everything else |
-| **Provide human escalation** | "Talk to a human" option available at every step |
-| **Use quick replies** | Offer button options to guide the conversation (reduce free-text friction) |
-| **Handle dead ends** | Every unrecognized input gets a graceful fallback ("I didn't quite get that. Here are some things I can help with:") |
-| **Personalize** | Use customer name, order history, browsing context when available |
-| **Keep it short** | Messages under 60 words; break long responses into multiple messages |
-| **Confirm actions** | Always confirm before processing orders, bookings, or account changes |
+| **Identifier le bot** | Toujours divulguer que l'utilisateur discute avec un bot, pas un humain |
+| **Limiter le périmètre** | Définir 5 à 10 intentions clés que le bot gère bien ; escalader tout le reste |
+| **Fournir une escalade humaine** | Option « parler à un humain » disponible à chaque étape |
+| **Utiliser des réponses rapides** | Proposer des options de bouton pour guider la conversation (réduire la friction du texte libre) |
+| **Gérer les impasses** | Toute saisie non reconnue reçoit un repli élégant (« Je n'ai pas bien compris. Voici ce que je peux faire pour vous : ») |
+| **Personnaliser** | Utiliser le nom du client, l'historique de commande, le contexte de navigation lorsque disponibles |
+| **Rester concis** | Messages de moins de 60 mots ; découper les longues réponses en plusieurs messages |
+| **Confirmer les actions** | Toujours confirmer avant de traiter les commandes, réservations, ou changements de compte |
 
-### Chatbot Platform Comparison
+### Comparaison des plateformes de chatbot
 
-| Platform | Best For | AI Capability | Channels Supported | Pricing |
+| Plateforme | Idéal pour | Capacité IA | Canaux pris en charge | Tarification |
 |----------|---------|---------------|-------------------|---------|
-| **ManyChat** | SMBs, e-commerce | Rule-based + AI | Messenger, Instagram, WhatsApp, SMS | Free tier + $15+/mo |
-| **Intercom** | SaaS, support | AI (Fin) + rules | Web chat, email, Messenger, WhatsApp | $74+/mo |
-| **Drift** | B2B lead gen | AI + playbooks | Web chat, email | Custom pricing |
-| **Zendesk Chat** | Support teams | AI + agent routing | Web chat, Messenger, WhatsApp | $49+/agent/mo |
-| **Tidio** | Small e-commerce | AI + templates | Web chat, Messenger, email | Free tier + $29+/mo |
-| **Custom (GPT/Claude API)** | Enterprise, custom needs | Full LLM capability | Any (via integration) | API usage costs |
+| **ManyChat** | PME, e-commerce | Basé sur des règles + IA | Messenger, Instagram, WhatsApp, SMS | Offre gratuite + 15 $+/mois |
+| **Intercom** | SaaS, support | IA (Fin) + règles | Chat web, email, Messenger, WhatsApp | 74 $+/mois |
+| **Drift** | Génération de leads B2B | IA + playbooks | Chat web, email | Tarification personnalisée |
+| **Zendesk Chat** | Équipes de support | IA + routage d'agent | Chat web, Messenger, WhatsApp | 49 $+/agent/mois |
+| **Tidio** | Petit e-commerce | IA + modèles | Chat web, Messenger, email | Offre gratuite + 29 $+/mois |
+| **Personnalisé (API GPT/Claude)** | Entreprise, besoins personnalisés | Capacité LLM complète | Tout (via intégration) | Coûts d'usage API |
 
 ---
 
-## SMS Compliance Guide
+## Guide de conformité SMS
 
-### TCPA (Telephone Consumer Protection Act) — United States
+### TCPA (Telephone Consumer Protection Act) — États-Unis
 
-| Requirement | Details |
+| Exigence | Détails |
 |------------|---------|
-| **Express written consent** | Required before sending any marketing SMS |
-| **Consent must be clear** | Cannot be buried in terms; must be conspicuous |
-| **Opt-out** | Must honor STOP/UNSUBSCRIBE immediately |
-| **Identification** | Every message must identify the sender |
-| **Quiet hours** | Do not send before 8AM or after 9PM (recipient's time zone) |
-| **Record keeping** | Maintain consent records for at least 4 years |
-| **Penalties** | $500-$1,500 per unsolicited message (class action risk) |
+| **Consentement écrit explicite** | Requis avant l'envoi de tout SMS marketing |
+| **Le consentement doit être clair** | Ne peut pas être enfoui dans des conditions générales ; doit être visible |
+| **Désabonnement** | Doit honorer immédiatement STOP/UNSUBSCRIBE |
+| **Identification** | Chaque message doit identifier l'expéditeur |
+| **Heures de silence** | Ne pas envoyer avant 8h ou après 21h (fuseau horaire du destinataire) |
+| **Conservation des dossiers** | Conserver les enregistrements de consentement pendant au moins 4 ans |
+| **Sanctions** | 500-1 500 $ par message non sollicité (risque de recours collectif) |
 
-### 10DLC (10-Digit Long Code) Registration
+### Enregistrement 10DLC (10-Digit Long Code)
 
-Since 2023, all businesses sending SMS via standard phone numbers must register with The Campaign Registry (TCR).
+Depuis 2023, toutes les entreprises envoyant des SMS via des numéros de téléphone standard doivent s'enregistrer auprès du Campaign Registry (TCR).
 
-| Step | Action | Details |
+| Étape | Action | Détails |
 |------|--------|---------|
-| 1 | Register your brand | Company name, EIN, website, vertical |
-| 2 | Register your campaign | Use case, sample messages, opt-in flow description |
-| 3 | Receive trust score | Score determines throughput limits (messages per second) |
-| 4 | Carrier approval | AT&T, T-Mobile, Verizon review and approve |
-| 5 | Begin sending | Stay within approved use case and throughput |
+| 1 | Enregistrer votre marque | Nom de l'entreprise, EIN, site web, secteur |
+| 2 | Enregistrer votre campagne | Cas d'usage, exemples de messages, description du flux d'opt-in |
+| 3 | Recevoir un score de confiance | Le score détermine les limites de débit (messages par seconde) |
+| 4 | Approbation de l'opérateur | AT&T, T-Mobile, Verizon examinent et approuvent |
+| 5 | Commencer l'envoi | Rester dans le cadre du cas d'usage et du débit approuvés |
 
-### Opt-In Best Practices
+### Bonnes pratiques d'opt-in
 
-| Method | Example | Compliance Level |
+| Méthode | Exemple | Niveau de conformité |
 |--------|---------|-----------------|
-| Web form with checkbox | "[ ] I agree to receive text messages from {{brand}}. Msg & data rates may apply. Reply STOP to unsubscribe." | Strong |
-| Keyword opt-in | "Text JOIN to 55555" (with terms displayed) | Strong |
-| Point-of-sale | Paper or tablet consent form at checkout | Strong (if documented) |
-| Pre-checked box | Any pre-checked consent box | **Non-compliant** (do not use) |
-| Implied consent | Purchasing = consent to marketing | **Non-compliant** (do not use) |
+| Formulaire web avec case à cocher | « [ ] J'accepte de recevoir des SMS de {{marque}}. Des frais SMS/données peuvent s'appliquer. Répondez STOP pour vous désabonner. » | Solide |
+| Opt-in par mot-clé | « Envoyez JOIN au 55555 » (avec conditions affichées) | Solide |
+| Point de vente | Formulaire de consentement papier ou tablette à la caisse | Solide (si documenté) |
+| Case précochée | Toute case de consentement précochée | **Non conforme** (à ne pas utiliser) |
+| Consentement implicite | Achat = consentement au marketing | **Non conforme** (à ne pas utiliser) |
 
-### Required SMS Disclosures (First Message)
+### Divulgations SMS requises (premier message)
 
 ```
 Welcome to {{brand}} alerts! You'll receive up to {{frequency}} msgs/mo.
@@ -147,9 +147,9 @@ Terms: {{URL}} Privacy: {{URL}}
 
 ---
 
-## Conversation Flow Templates
+## Modèles de flux de conversation
 
-### E-Commerce — Product Recommendation Flow
+### E-commerce — Flux de recommandation de produit
 
 ```
 Bot: Hey {{name}}! 👋 Looking for something specific today?
@@ -175,7 +175,7 @@ Bot: Here are 3 picks I think you'll love:
      [Show More] [Talk to a Stylist]
 ```
 
-### B2B — Lead Qualification Flow
+### B2B — Flux de qualification de lead
 
 ```
 Bot: Hi there! I'm {{bot_name}} from {{company}}.
@@ -204,97 +204,97 @@ Bot: Based on your team size and needs, our {{Plan Name}} at
 
 ---
 
-## Live Chat Best Practices
+## Bonnes pratiques du chat en direct
 
-| Best Practice | Details |
+| Bonne pratique | Détails |
 |--------------|---------|
-| Response time | First response within 30 seconds; aim for <15 seconds |
-| Availability | Display chat only during staffed hours; use bot for off-hours |
-| Proactive triggers | Fire chat invite after 30+ seconds on pricing page, cart page, or high-intent pages |
-| Canned responses | Pre-write responses for top 20 FAQs; personalize before sending |
-| Routing | Route by page (pricing → sales, support → CS, product → specialist) |
-| Context | Pass page URL, customer history, and cart contents to agent |
-| Multitasking | Agents handle max 3 simultaneous chats for quality |
-| Handoff | Seamless bot-to-human handoff with full conversation history |
-| Post-chat | Send transcript via email; trigger CSAT survey |
-| Mobile optimization | Chat widget must work on mobile without obscuring content |
+| Temps de réponse | Première réponse sous 30 secondes ; viser <15 secondes |
+| Disponibilité | N'afficher le chat que pendant les heures dotées en personnel ; utiliser un bot en dehors |
+| Déclencheurs proactifs | Déclencher une invitation au chat après 30+ secondes sur la page de tarification, la page panier, ou les pages à forte intention |
+| Réponses préenregistrées | Pré-rédiger des réponses pour les 20 principales FAQ ; personnaliser avant l'envoi |
+| Routage | Router par page (tarification → ventes, support → SAV, produit → spécialiste) |
+| Contexte | Transmettre l'URL de la page, l'historique du client, et le contenu du panier à l'agent |
+| Multitâche | Les agents gèrent au maximum 3 chats simultanés pour la qualité |
+| Transfert | Transfert fluide du bot vers l'humain avec l'historique complet de la conversation |
+| Après le chat | Envoyer la transcription par email ; déclencher une enquête CSAT |
+| Optimisation mobile | Le widget de chat doit fonctionner sur mobile sans obscurcir le contenu |
 
 ---
 
-## Facebook Messenger Marketing
+## Marketing Facebook Messenger
 
-### Messenger Entry Points
+### Points d'entrée Messenger
 
-| Entry Point | Setup | Best For |
+| Point d'entrée | Mise en place | Idéal pour |
 |-------------|-------|----------|
-| "Send Message" button on Page | Automatic | General inquiries |
-| Click-to-Messenger ads | Facebook Ads Manager | Lead gen, promotions |
-| m.me links | m.me/YourPageName | Email, website, QR codes |
-| Messenger Ref URL | m.me/YourPageName?ref=campaign | Campaign-specific flows |
-| Customer Chat Plugin | Website embed | Website → Messenger handoff |
-| Checkbox Plugin | On web forms | Opt-in during checkout/registration |
+| Bouton « Envoyer un message » sur la Page | Automatique | Demandes générales |
+| Publicités click-to-Messenger | Facebook Ads Manager | Génération de leads, promotions |
+| Liens m.me | m.me/VotrePage | Email, site web, codes QR |
+| URL de référence Messenger | m.me/VotrePage?ref=campagne | Flux spécifiques à une campagne |
+| Plugin de chat client | Intégration sur le site web | Transfert site web → Messenger |
+| Plugin case à cocher | Sur les formulaires web | Opt-in pendant le paiement/l'inscription |
 
-### Messenger Policy Essentials
-- **24-hour rule:** Free-form messages only within 24 hours of user's last message
-- **Outside 24 hours:** Must use approved message tags (confirmed event, post-purchase update, account update) or sponsored messages (paid)
-- **No promotional content** in message tags — this will get your page restricted
-- **Subscription messaging** requires approval for news bots only
+### Points essentiels de la politique Messenger
+- **Règle des 24 heures :** messages au format libre uniquement dans les 24 heures suivant le dernier message de l'utilisateur
+- **Au-delà de 24 heures :** doit utiliser des tags de message approuvés (événement confirmé, mise à jour post-achat, mise à jour de compte) ou des messages sponsorisés (payants)
+- **Aucun contenu promotionnel** dans les tags de message — cela entraînera une restriction de votre Page
+- **La messagerie par abonnement** nécessite une approbation, réservée aux bots d'actualité
 
 ---
 
-## RCS (Rich Communication Services) Overview
+## Aperçu du RCS (Rich Communication Services)
 
-| Attribute | SMS | RCS |
+| Attribut | SMS | RCS |
 |-----------|-----|-----|
-| Media support | MMS (limited) | High-res images, video, audio, files |
-| Branding | No sender branding | Verified sender name, logo, color |
-| Interactivity | None | Buttons, carousels, quick replies |
-| Read receipts | No | Yes |
-| Typing indicators | No | Yes |
-| Fallback | N/A | Falls back to SMS if RCS unavailable |
-| Availability | Universal | Android (default in Google Messages); Apple adopted in iOS 18 |
-| Cost | Per-message | Per-message (similar to SMS) |
+| Support des médias | MMS (limité) | Images haute résolution, vidéo, audio, fichiers |
+| Identité de marque | Pas d'identité d'expéditeur | Nom d'expéditeur vérifié, logo, couleur |
+| Interactivité | Aucune | Boutons, carrousels, réponses rapides |
+| Accusés de lecture | Non | Oui |
+| Indicateurs de frappe | Non | Oui |
+| Repli | N/A | Repli sur SMS si RCS indisponible |
+| Disponibilité | Universelle | Android (par défaut dans Google Messages) ; adopté par Apple dans iOS 18 |
+| Coût | Au message | Au message (similaire au SMS) |
 
-### RCS Marketing Checklist
-- [ ] Register as verified RCS sender through Google or aggregator
-- [ ] Design branded sender profile (logo, colors, description)
-- [ ] Create rich media message templates (carousels, buttons)
-- [ ] Set up SMS fallback for non-RCS devices
-- [ ] Test across multiple Android devices and carriers
-- [ ] Track RCS-specific metrics (read rates, button clicks)
+### Checklist marketing RCS
+- [ ] S'enregistrer comme expéditeur RCS vérifié via Google ou un agrégateur
+- [ ] Concevoir un profil d'expéditeur de marque (logo, couleurs, description)
+- [ ] Créer des modèles de messages riches en médias (carrousels, boutons)
+- [ ] Mettre en place un repli SMS pour les appareils non-RCS
+- [ ] Tester sur plusieurs appareils Android et opérateurs
+- [ ] Suivre les métriques spécifiques au RCS (taux de lecture, clics sur bouton)
 
 ---
 
-## Measurement Framework
+## Cadre de mesure
 
-| Metric | Definition | Benchmark |
+| Métrique | Définition | Benchmark |
 |--------|-----------|-----------|
-| **Response Rate** | % of messages that receive a reply | SMS: 45%+, Chat: 70%+ |
-| **First Response Time** | Time to first agent/bot response | <30 seconds (live chat), instant (bot) |
-| **Resolution Rate** | % of conversations resolved without escalation | Bot: 60-80%, Live chat: 85%+ |
-| **CSAT (Customer Satisfaction)** | Post-conversation survey score | 4.2+ / 5.0 |
-| **Conversion Rate** | % of conversations resulting in purchase/lead | 5-15% (varies by channel) |
-| **Revenue per Conversation** | Total revenue / total conversations | Track and improve over time |
-| **Opt-Out Rate** | % of subscribers who unsubscribe | SMS: <2% per campaign |
-| **Cost per Conversation** | Total channel cost / conversations | Lower than phone support |
-| **Bot Containment Rate** | % handled by bot without human | Target: 60-70% |
-| **Click-Through Rate** | % who click links/buttons in messages | SMS: 15-30%, RCS: 25-40% |
+| **Taux de réponse** | % de messages recevant une réponse | SMS : 45 %+, Chat : 70 %+ |
+| **Temps de première réponse** | Délai jusqu'à la première réponse agent/bot | <30 secondes (chat en direct), instantané (bot) |
+| **Taux de résolution** | % de conversations résolues sans escalade | Bot : 60-80 %, Chat en direct : 85 %+ |
+| **CSAT (satisfaction client)** | Score d'enquête post-conversation | 4,2+ / 5,0 |
+| **Taux de conversion** | % de conversations aboutissant à un achat/lead | 5-15 % (varie selon le canal) |
+| **Chiffre d'affaires par conversation** | Chiffre d'affaires total / total des conversations | Suivre et améliorer dans le temps |
+| **Taux de désabonnement** | % d'abonnés qui se désabonnent | SMS : <2 % par campagne |
+| **Coût par conversation** | Coût total du canal / conversations | Inférieur au support téléphonique |
+| **Taux de résolution par bot** | % géré par le bot sans intervention humaine | Objectif : 60-70 % |
+| **Taux de clic** | % qui cliquent sur les liens/boutons dans les messages | SMS : 15-30 %, RCS : 25-40 % |
 
 ---
 
-## Channel Selection Matrix
+## Matrice de sélection de canal
 
-| If your goal is... | Best Channel(s) |
+| Si votre objectif est... | Meilleur(s) canal/canaux |
 |--------------------|----------------|
-| Promotional campaigns (US market) | SMS + RCS |
-| International commerce | WhatsApp Business |
-| Real-time sales support | Live chat on website |
-| Automated lead qualification | Chatbot (Messenger, website, WhatsApp) |
-| Post-purchase engagement | SMS + WhatsApp + Email |
-| High-touch B2B sales | Live chat + Drift/Intercom |
-| Gen Z / millennial engagement | Instagram DMs + SMS |
-| Rich media promotions | RCS (Android) + Messenger |
+| Campagnes promotionnelles (marché US) | SMS + RCS |
+| Commerce international | WhatsApp Business |
+| Support de vente en temps réel | Chat en direct sur le site web |
+| Qualification de lead automatisée | Chatbot (Messenger, site web, WhatsApp) |
+| Engagement post-achat | SMS + WhatsApp + Email |
+| Vente B2B à fort accompagnement | Chat en direct + Drift/Intercom |
+| Engagement Gen Z / millennials | DM Instagram + SMS |
+| Promotions riches en médias | RCS (Android) + Messenger |
 
 ---
 
-> **Conversational commerce collapses the funnel.** Discovery, consideration, and purchase happen in a single thread. The brands that master messaging will outperform those still forcing customers through traditional funnels.
+> **Le commerce conversationnel effondre le tunnel.** La découverte, la considération, et l'achat se déroulent dans un seul fil. Les marques qui maîtrisent la messagerie surpasseront celles qui forcent encore les clients à traverser des tunnels traditionnels.

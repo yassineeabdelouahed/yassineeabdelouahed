@@ -1,79 +1,81 @@
-# Referral Systems — Program Design & Optimization
+# Systèmes de parrainage — Conception & optimisation de programme
 
-> A structured referral program turns satisfied customers into a scalable, low-CAC acquisition channel. The best programs align incentives for both referrer and referee.
+> Un programme de parrainage structuré transforme des clients satisfaits en un canal
+> d'acquisition évolutif et à faible CAC. Les meilleurs programmes alignent les
+> incitations à la fois pour le parrain et le filleul.
 
 ---
 
-## Referral Program Templates
+## Modèles de programme de parrainage
 
-### Template Comparison
+### Comparaison de modèles
 
-| Model | How It Works | Best For | Example |
+| Modèle | Fonctionnement | Idéal pour | Exemple |
 |---|---|---|---|
-| Double-Sided | Both referrer and referee get rewarded | SaaS, fintech, marketplaces | Dropbox — both get extra storage |
-| Single-Sided (Referrer) | Only the referrer is rewarded | High-consideration purchases | Amex — referrer gets bonus points |
-| Single-Sided (Referee) | Only the new user gets a benefit | Low-friction trials, e-commerce | "Give your friend $20 off" |
-| Tiered | Rewards escalate with number of referrals | Community-driven products | Morning Brew — unlock swag at milestones |
-| Milestone | Unlock rewards at specific referral counts | Waitlist and launch campaigns | Harry's pre-launch — 5, 10, 25, 50 referral tiers |
-| Leaderboard | Top referrers win premium rewards | Time-bound campaigns, contests | Launch competitions with grand prizes |
-| Embedded / Native | Referral is built into the product UX | Collaboration and network tools | Calendly — every link is a referral |
+| Double face | Le parrain et le filleul sont tous deux récompensés | SaaS, fintech, marketplaces | Dropbox — les deux reçoivent du stockage supplémentaire |
+| Face unique (parrain) | Seul le parrain est récompensé | Achats à forte considération | Amex — le parrain reçoit des points bonus |
+| Face unique (filleul) | Seul le nouvel utilisateur reçoit un avantage | Essais à faible friction, e-commerce | « Offrez 20 $ de réduction à votre ami » |
+| À paliers | Les récompenses s'escaladent avec le nombre de parrainages | Produits pilotés par la communauté | Morning Brew — débloquer des goodies à des jalons |
+| À jalons | Débloquer des récompenses à des nombres de parrainage spécifiques | Campagnes de liste d'attente et de lancement | Pré-lancement Harry's — paliers de parrainage 5, 10, 25, 50 |
+| Classement | Les meilleurs parrains gagnent des récompenses premium | Campagnes limitées dans le temps, concours | Compétitions de lancement avec grands prix |
+| Intégré / natif | Le parrainage est intégré dans l'UX du produit | Outils de collaboration et de réseau | Calendly — chaque lien est un parrainage |
 
-### Double-Sided Program Design
+### Conception d'un programme à double face
 
 ```
 Referrer Action → Unique Link/Code Generated → Referee Signs Up →
 Referee Qualifies (activation event) → Both Parties Rewarded
 ```
 
-| Component | Decision | Recommendation |
+| Composant | Décision | Recommandation |
 |---|---|---|
-| Referrer reward | Cash, credit, free months, points | Match to what users already value in your product |
-| Referee reward | Discount, extended trial, bonus | Remove friction for first purchase/activation |
-| Qualification event | Sign-up, activation, purchase, retention | Tie to meaningful value moment, not just registration |
-| Reward timing | Instant vs delayed | Instant for referrer motivation; delayed for fraud prevention |
-| Cap per referrer | Unlimited vs capped | Cap at 10-20 initially; raise for power referrers |
+| Récompense parrain | Argent, crédit, mois gratuits, points | Faire correspondre à ce que les utilisateurs valorisent déjà dans votre produit |
+| Récompense filleul | Réduction, essai prolongé, bonus | Retirer la friction pour le premier achat/activation |
+| Événement de qualification | Inscription, activation, achat, rétention | Lier à un moment de valeur significatif, pas juste l'enregistrement |
+| Timing de la récompense | Instantané vs différé | Instantané pour la motivation du parrain ; différé pour la prévention de fraude |
+| Plafond par parrain | Illimité vs plafonné | Plafonner à 10-20 initialement ; augmenter pour les power referrers |
 
 ---
 
-## Incentive Design Principles
+## Principes de conception d'incitation
 
-### Reward Type Selection
+### Sélection du type de récompense
 
-| Reward Type | Pros | Cons | Best For |
+| Type de récompense | Avantages | Inconvénients | Idéal pour |
 |---|---|---|---|
-| Account credit | High perceived value, keeps users in ecosystem | No value if user churns | SaaS, platforms |
-| Cash / gift cards | Universally appealing, easy to understand | Expensive, attracts fraud | Fintech, high-ACV products |
-| Free months | Low marginal cost, extends retention | Only valuable if user is paying | Subscription products |
-| Feature unlocks | Zero marginal cost, drives engagement | Limited appeal if features aren't compelling | Freemium products |
-| Physical goods / swag | Tangible, shareable, social proof | Logistics complexity, cost | Brand-driven companies |
-| Charitable donation | Aligns with values, positive brand | Lower direct motivation | Mission-driven brands |
+| Crédit de compte | Valeur perçue élevée, garde les utilisateurs dans l'écosystème | Pas de valeur si l'utilisateur churne | SaaS, plateformes |
+| Argent / cartes-cadeaux | Universellement attrayant, facile à comprendre | Coûteux, attire la fraude | Fintech, produits à ACV élevée |
+| Mois gratuits | Coût marginal faible, prolonge la rétention | Valable seulement si l'utilisateur paie | Produits d'abonnement |
+| Déblocages de fonctionnalités | Coût marginal nul, pilote l'engagement | Attrait limité si les fonctionnalités ne sont pas convaincantes | Produits freemium |
+| Produits physiques / goodies | Tangible, partageable, preuve sociale | Complexité logistique, coût | Entreprises pilotées par la marque |
+| Don caritatif | Aligné avec les valeurs, image de marque positive | Motivation directe plus faible | Marques à mission |
 
-### Incentive Calibration Checklist
+### Checklist de calibrage d'incitation
 
-- [ ] Reward value is 10-25% of customer LTV (ensures positive ROI)
-- [ ] Reward is immediately understandable (no complex calculations)
-- [ ] Reward matches user motivation (intrinsic vs extrinsic)
-- [ ] Double-sided rewards are roughly balanced (neither party feels shortchanged)
-- [ ] Escalating rewards exist for power referrers (5+ successful referrals)
-- [ ] Reward fulfillment is automated (no manual approval bottleneck)
-- [ ] Tax implications are documented for cash rewards above reporting thresholds
-- [ ] Reward expiration policy is clearly communicated
+- [ ] La valeur de la récompense représente 10-25% de la LTV client (garantit un ROI positif)
+- [ ] La récompense est immédiatement compréhensible (pas de calculs complexes)
+- [ ] La récompense correspond à la motivation de l'utilisateur (intrinsèque vs extrinsèque)
+- [ ] Les récompenses à double face sont à peu près équilibrées (aucune partie ne se sent lésée)
+- [ ] Des récompenses escaladées existent pour les power referrers (5+ parrainages réussis)
+- [ ] L'accomplissement de la récompense est automatisé (pas de goulot d'approbation manuelle)
+- [ ] Les implications fiscales sont documentées pour les récompenses en argent au-delà des seuils de déclaration
+- [ ] La politique d'expiration de récompense est clairement communiquée
 
 ---
 
-## Referral Mechanics
+## Mécaniques de parrainage
 
-### Tracking Infrastructure
+### Infrastructure de suivi
 
-| Mechanism | How It Works | Strengths | Weaknesses |
+| Mécanisme | Fonctionnement | Forces | Faiblesses |
 |---|---|---|---|
-| Unique referral link | URL with referrer ID parameter | Easy to share, trackable | Can be lost if user clears cookies |
-| Referral code | Alphanumeric code entered at sign-up | Works offline, memorable | Requires manual entry, friction |
-| Email invite | Direct email sent from product | High intent signal, personalized | Limited reach vs social sharing |
-| In-app invite | Share directly within product UI | Contextual, low friction | Requires active product usage |
-| QR code | Scannable code linking to referral URL | Works for physical/event contexts | Niche use case |
+| Lien de parrainage unique | URL avec paramètre d'ID de parrain | Facile à partager, traçable | Peut être perdu si l'utilisateur efface les cookies |
+| Code de parrainage | Code alphanumérique saisi à l'inscription | Fonctionne hors ligne, mémorisable | Nécessite une saisie manuelle, friction |
+| Invitation e-mail | E-mail direct envoyé depuis le produit | Signal d'intention élevé, personnalisé | Portée limitée vs partage social |
+| Invitation dans l'app | Partage directement dans l'UI du produit | Contextuel, faible friction | Nécessite un usage actif du produit |
+| Code QR | Code scannable menant à l'URL de parrainage | Fonctionne pour les contextes physiques/événements | Cas d'usage de niche |
 
-### Link Architecture
+### Architecture de lien
 
 ```
 https://yourapp.com/invite?ref=USER_ID&campaign=CAMPAIGN_NAME
@@ -85,98 +87,98 @@ Parameters tracked:
 - timestamp: when the link was generated
 ```
 
-### Attribution Rules
+### Règles d'attribution
 
-| Scenario | Recommended Rule |
+| Scénario | Règle recommandée |
 |---|---|
-| Multiple referral links clicked | Last-click attribution within 30-day window |
-| Referral link + paid ad touchpoint | Referral takes priority (reward the advocate) |
-| User signs up without link but enters code | Code attribution honored |
-| Cookie expires before conversion | No attribution (extend cookie to 90 days) |
-| Referred user already exists in system | No reward (de-duplicate on email) |
+| Plusieurs liens de parrainage cliqués | Attribution au dernier clic dans une fenêtre de 30 jours |
+| Lien de parrainage + point de contact publicitaire payant | Le parrainage a priorité (récompenser l'ambassadeur) |
+| L'utilisateur s'inscrit sans lien mais saisit un code | Attribution au code honorée |
+| Le cookie expire avant la conversion | Pas d'attribution (étendre le cookie à 90 jours) |
+| L'utilisateur parrainé existe déjà dans le système | Pas de récompense (dédupliquer par e-mail) |
 
 ---
 
-## Fraud Prevention Tactics
+## Tactiques de prévention de fraude
 
-### Common Fraud Patterns
+### Motifs de fraude courants
 
-| Fraud Type | Description | Detection Method |
+| Type de fraude | Description | Méthode de détection |
 |---|---|---|
-| Self-referral | User creates multiple accounts to refer themselves | IP matching, device fingerprinting, email domain analysis |
-| Referral rings | Groups of users refer each other in circles | Network graph analysis, timestamp clustering |
-| Incentive abuse | Users sign up solely for the reward, then churn | Require activation event before reward; monitor 7-day retention |
-| Bot-generated signups | Automated account creation to claim rewards | CAPTCHA, behavioral analysis, signup velocity monitoring |
-| Fake email accounts | Disposable emails used for referee accounts | Block disposable email domains, require email verification |
+| Auto-parrainage | L'utilisateur crée plusieurs comptes pour se parrainer lui-même | Correspondance IP, fingerprinting d'appareil, analyse du domaine e-mail |
+| Cercles de parrainage | Des groupes d'utilisateurs se parrainent mutuellement en cercle | Analyse de graphe de réseau, regroupement par horodatage |
+| Abus d'incitation | Les utilisateurs s'inscrivent uniquement pour la récompense, puis churnent | Exiger un événement d'activation avant la récompense ; surveiller la rétention à 7 jours |
+| Inscriptions générées par bot | Création de compte automatisée pour réclamer des récompenses | CAPTCHA, analyse comportementale, surveillance de la vélocité d'inscription |
+| Faux comptes e-mail | E-mails jetables utilisés pour les comptes filleul | Bloquer les domaines e-mail jetables connus, exiger la vérification e-mail |
 
-### Fraud Prevention Checklist
+### Checklist de prévention de fraude
 
-- [ ] Require a meaningful activation event before issuing rewards (not just sign-up)
-- [ ] Implement device fingerprinting to detect multi-accounting
-- [ ] Set velocity limits (max 5 referrals per day, 20 per week)
-- [ ] Block known disposable email domains
-- [ ] Hold rewards for 7-14 day cooling period before payout
-- [ ] Monitor referral-to-activation ratio by referrer (flag if <20%)
-- [ ] Review top referrers manually each month
-- [ ] Build an automated flagging system for anomalous patterns
-- [ ] Include anti-fraud terms in referral program T&Cs
-- [ ] Reserve the right to revoke rewards retroactively
+- [ ] Exiger un événement d'activation significatif avant d'émettre des récompenses (pas juste l'inscription)
+- [ ] Mettre en œuvre le fingerprinting d'appareil pour détecter le multi-compte
+- [ ] Fixer des limites de vélocité (max 5 parrainages par jour, 20 par semaine)
+- [ ] Bloquer les domaines e-mail jetables connus
+- [ ] Retenir les récompenses pendant une période de refroidissement de 7-14 jours avant le paiement
+- [ ] Surveiller le ratio parrainage-vers-activation par parrain (signaler si <20%)
+- [ ] Revoir manuellement les meilleurs parrains chaque mois
+- [ ] Construire un système de signalement automatisé pour les motifs anormaux
+- [ ] Inclure des conditions anti-fraude dans les CGV du programme de parrainage
+- [ ] Réserver le droit de révoquer les récompenses rétroactivement
 
 ---
 
-## Launch Playbook
+## Playbook de lancement
 
-### Pre-Launch (2-4 Weeks Before)
+### Pré-lancement (2-4 semaines avant)
 
-| Week | Action | Owner |
+| Semaine | Action | Responsable |
 |---|---|---|
-| -4 | Define program goals, KPIs, and budget | Growth / Marketing |
-| -4 | Select referral platform or build in-house tracking | Engineering |
-| -3 | Design reward structure and fraud prevention rules | Growth / Finance |
-| -3 | Create referral landing page and email templates | Design / Content |
-| -2 | Build referral dashboard (referrer view + admin view) | Engineering |
-| -2 | Write program terms and conditions | Legal / Marketing |
-| -1 | QA referral flow end-to-end (link generation → reward fulfillment) | QA |
-| -1 | Seed program with 50-100 power users for soft launch | Growth |
+| -4 | Définir les objectifs, KPI, et budget du programme | Croissance / Marketing |
+| -4 | Sélectionner une plateforme de parrainage ou construire un suivi interne | Ingénierie |
+| -3 | Concevoir la structure de récompense et les règles de prévention de fraude | Croissance / Finance |
+| -3 | Créer la landing page de parrainage et les modèles d'e-mail | Design / Contenu |
+| -2 | Construire le tableau de bord de parrainage (vue parrain + vue admin) | Ingénierie |
+| -2 | Rédiger les conditions générales du programme | Juridique / Marketing |
+| -1 | Contrôler qualité le flux de parrainage de bout en bout (génération de lien → accomplissement de récompense) | QA |
+| -1 | Amorcer le programme avec 50-100 power users pour un soft launch | Croissance |
 
-### Launch Day Checklist
+### Checklist du jour du lancement
 
-- [ ] Referral widget or page is live in product
-- [ ] Triggered email sent to top 20% most active users announcing program
-- [ ] In-app notification or banner promoting referral program
-- [ ] Social media announcement with shareable assets
-- [ ] Support team briefed on program details and FAQ
-- [ ] Analytics dashboards confirmed working (referrals, conversions, rewards)
-- [ ] Fraud monitoring active and alerting configured
-- [ ] Referral link generation tested across all platforms (web, mobile, email)
+- [ ] Le widget ou la page de parrainage est en direct dans le produit
+- [ ] E-mail déclenché envoyé aux 20% d'utilisateurs les plus actifs annonçant le programme
+- [ ] Notification ou bannière dans l'app promouvant le programme de parrainage
+- [ ] Annonce sur les réseaux sociaux avec des actifs partageables
+- [ ] Équipe de support briefée sur les détails du programme et la FAQ
+- [ ] Tableaux de bord analytics confirmés fonctionnels (parrainages, conversions, récompenses)
+- [ ] Surveillance de fraude active et alertes configurées
+- [ ] Génération de lien de parrainage testée sur toutes les plateformes (web, mobile, e-mail)
 
-### Post-Launch (First 30 Days)
+### Post-lancement (30 premiers jours)
 
-| Day | Action |
+| Jour | Action |
 |---|---|
-| 1-3 | Monitor conversion rates, fix broken flows, address support tickets |
-| 7 | First performance review — referral rate, share rate, conversion rate |
-| 14 | A/B test reward messaging and CTA placement |
-| 21 | Identify and engage top referrers with personalized outreach |
-| 30 | Full program review — ROI analysis, fraud audit, optimization plan |
+| 1-3 | Surveiller les taux de conversion, corriger les flux cassés, traiter les tickets de support |
+| 7 | Première revue de performance — taux de parrainage, taux de partage, taux de conversion |
+| 14 | Tester A/B le messaging de récompense et l'emplacement du CTA |
+| 21 | Identifier et engager les meilleurs parrains avec un outreach personnalisé |
+| 30 | Revue complète du programme — analyse ROI, audit de fraude, plan d'optimisation |
 
 ---
 
 ## Benchmarks
 
-### Key Metrics
+### Métriques clés
 
-| Metric | Formula | Good | Great | Elite |
+| Métrique | Formule | Bien | Très bien | Élite |
 |---|---|---|---|---|
-| Referral Rate | Referrers / Total active users | 2-5% | 5-15% | 15%+ |
-| Share Rate | Users who share link / Users who see referral prompt | 10-15% | 15-25% | 25%+ |
-| Invite Conversion Rate | Referred sign-ups / Total invites sent | 5-10% | 10-20% | 20%+ |
-| K-Factor | Invites per user x conversion rate | 0.1-0.3 | 0.3-0.7 | 0.7+ |
-| CAC Reduction | (Standard CAC - Referral CAC) / Standard CAC | 30-50% | 50-70% | 70%+ |
-| Referral LTV vs Organic LTV | Referred user LTV / Organic user LTV | 1.0x | 1.1-1.25x | 1.25x+ |
-| Time to Referral | Median days from sign-up to first referral | 30-60 days | 14-30 days | <14 days |
+| Taux de parrainage | Parrains / Total des utilisateurs actifs | 2-5% | 5-15% | 15%+ |
+| Taux de partage | Utilisateurs qui partagent le lien / Utilisateurs voyant l'invite de parrainage | 10-15% | 15-25% | 25%+ |
+| Taux de conversion d'invitation | Inscriptions parrainées / Total des invitations envoyées | 5-10% | 10-20% | 20%+ |
+| K-Factor | Invitations par utilisateur x taux de conversion | 0,1-0,3 | 0,3-0,7 | 0,7+ |
+| Réduction du CAC | (CAC standard - CAC de parrainage) / CAC standard | 30-50% | 50-70% | 70%+ |
+| LTV de parrainage vs LTV organique | LTV utilisateur parrainé / LTV utilisateur organique | 1,0x | 1,1-1,25x | 1,25x+ |
+| Temps jusqu'au parrainage | Jours médians de l'inscription au premier parrainage | 30-60 jours | 14-30 jours | <14 jours |
 
-### K-Factor Calculation
+### Calcul du K-Factor
 
 ```
 K = i × c
@@ -192,30 +194,32 @@ Example:
 
 ---
 
-## Integration Points
+## Points d'intégration
 
-### Where to Surface Referrals in the Product
+### Où faire apparaître les parrainages dans le produit
 
-| Touchpoint | Timing | Why It Works |
+| Point de contact | Timing | Pourquoi ça fonctionne |
 |---|---|---|
-| Post-activation prompt | After user completes key action | User just experienced value — peak motivation |
-| Settings / Account page | Persistent, always accessible | Power users seek it out |
-| Post-purchase confirmation | After payment or upgrade | Buyer's high — social proof motivation |
-| Share / Export flow | When user shares content externally | Natural sharing moment, embedded referral |
-| Milestone celebrations | After achievement or usage milestone | Emotional high, gratitude response |
-| NPS follow-up | After user rates 9-10 on NPS | Promoters are pre-qualified referrers |
-| Billing / invoice page | During renewal or plan review | Budget-conscious moment, credit appeals |
-| Help / Support resolution | After successful support interaction | Gratitude and relief drive advocacy |
+| Invite post-activation | Après que l'utilisateur complète une action clé | L'utilisateur vient de vivre la valeur — motivation maximale |
+| Page paramètres / compte | Persistante, toujours accessible | Les power users la cherchent |
+| Confirmation post-achat | Après paiement ou mise à niveau | Euphorie de l'acheteur — motivation de preuve sociale |
+| Flux de partage / export | Quand l'utilisateur partage du contenu à l'externe | Moment de partage naturel, parrainage intégré |
+| Célébrations de jalon | Après une réussite ou un jalon d'usage | Pic émotionnel, réponse de gratitude |
+| Suivi NPS | Après que l'utilisateur note 9-10 au NPS | Les promoteurs sont des parrains pré-qualifiés |
+| Page facturation / facture | Pendant le renouvellement ou la revue de plan | Moment sensible au budget, l'appel du crédit |
+| Résolution d'aide / support | Après une interaction de support réussie | La gratitude et le soulagement pilotent la recommandation |
 
-### Tech Stack Considerations
+### Considérations de stack technique
 
-| Approach | Pros | Cons | Best For |
+| Approche | Avantages | Inconvénients | Idéal pour |
 |---|---|---|---|
-| In-house build | Full control, deep integration | Engineering time, maintenance burden | Products with unique referral mechanics |
-| Referral SaaS (ReferralCandy, Friendbuy) | Fast to launch, proven UX | Monthly cost, limited customization | E-commerce, standard programs |
-| Affiliate platform (Impact, PartnerStack) | Scales to partners + affiliates | Complexity, cost | B2B SaaS with partner channels |
-| CRM integration (HubSpot, Salesforce) | Links referrals to sales pipeline | Requires CRM maturity | Sales-assisted referral programs |
+| Construction interne | Contrôle total, intégration profonde | Temps d'ingénierie, charge de maintenance | Produits avec des mécaniques de parrainage uniques |
+| SaaS de parrainage (ReferralCandy, Friendbuy) | Rapide à lancer, UX éprouvée | Coût mensuel, personnalisation limitée | E-commerce, programmes standards |
+| Plateforme d'affiliation (Impact, PartnerStack) | S'étend aux partenaires + affiliés | Complexité, coût | SaaS B2B avec canaux partenaires |
+| Intégration CRM (HubSpot, Salesforce) | Relie les parrainages au pipeline commercial | Nécessite une maturité CRM | Programmes de parrainage assistés par les ventes |
 
 ---
 
-*The best referral programs don't feel like marketing programs. They feel like one friend helping another discover something valuable. Design for that.*
+*Les meilleurs programmes de parrainage ne ressemblent pas à des programmes
+marketing. Ils ressemblent à un ami qui en aide un autre à découvrir quelque chose
+de précieux. Concevez pour cela.*

@@ -1,99 +1,99 @@
-# Content Decay — Detection & Refresh Strategy
+# Déclin du contenu — Détection et stratégie de rafraîchissement
 
-## Decay Detection Signals
+## Signaux de détection de déclin
 
-| Signal | Measurement | Threshold |
+| Signal | Mesure | Seuil |
 |--------|------------|-----------|
-| Traffic decline | Organic sessions vs 3-month rolling average | >20% decline |
-| Ranking drop | Position change for target keyword | Drop 5+ positions |
-| CTR decline | Search Console CTR vs historical average | >15% decline |
-| Engagement decay | Time on page, scroll depth, bounce rate | Worsening trend for 4+ weeks |
-| Backlink loss | Referring domains to the page | >10% loss in 90 days |
-| Competitor surpassing | Competitor ranks higher with newer content | Confirmed in SERP review |
+| Déclin de trafic | Sessions organiques vs moyenne mobile sur 3 mois | >20 % de déclin |
+| Baisse de classement | Changement de position pour le mot-clé cible | Chute de 5+ positions |
+| Déclin du CTR | CTR Search Console vs moyenne historique | >15 % de déclin |
+| Déclin d'engagement | Temps sur la page, profondeur de scroll, taux de rebond | Tendance en aggravation sur 4+ semaines |
+| Perte de backlinks | Domaines référents vers la page | >10 % de perte sur 90 jours |
+| Concurrent qui dépasse | Le concurrent se classe plus haut avec du contenu plus récent | Confirmé dans la revue SERP |
 
 ---
 
-## Content Audit Spreadsheet Template
+## Modèle de tableur d'audit de contenu
 
-| URL | Title | Published | Last Updated | Monthly Traffic | Traffic Trend | Ranking Keyword | Position | Decay Type | Priority | Action |
+| URL | Titre | Publié | Dernière mise à jour | Trafic mensuel | Tendance de trafic | Mot-clé de classement | Position | Type de déclin | Priorité | Action |
 |-----|-------|-----------|-------------|----------------|--------------|----------------|----------|-----------|----------|--------|
 
-**Fill quarterly. Sort by traffic decline to find biggest opportunities.**
+**À remplir trimestriellement. Trier par déclin de trafic pour trouver les plus grandes opportunités.**
 
 ---
 
-## Decay Categories
+## Catégories de déclin
 
-| Category | Symptoms | Common Causes |
+| Catégorie | Symptômes | Causes courantes |
 |----------|----------|---------------|
-| **Outdated information** | Facts, stats, or dates are wrong | Time passage, industry changes |
-| **Ranking decline** | Lost positions for target keywords | Competitor published better content, algorithm update |
-| **Broken experience** | Broken links, missing images, broken embeds | Site changes, external link rot |
-| **Competitor surpassed** | Competitor content now ranks higher | Their content is more comprehensive, recent, or authoritative |
-| **Format outdated** | Content looks old, lacks modern formatting | Design trends changed, mobile expectations evolved |
-| **Intent shift** | Search intent for target keyword changed | Google now shows different content type (videos, lists, tools) |
+| **Information obsolète** | Faits, statistiques, ou dates erronés | Passage du temps, changements sectoriels |
+| **Déclin de classement** | Positions perdues sur les mots-clés cibles | Un concurrent a publié un meilleur contenu, mise à jour d'algorithme |
+| **Expérience cassée** | Liens cassés, images manquantes, embeds cassés | Changements de site, pourriture de liens externes |
+| **Concurrent dépassé** | Le contenu concurrent se classe désormais plus haut | Leur contenu est plus complet, récent, ou faisant autorité |
+| **Format obsolète** | Le contenu paraît ancien, manque de formatage moderne | Les tendances de design ont changé, les attentes mobiles ont évolué |
+| **Changement d'intention** | L'intention de recherche pour le mot-clé cible a changé | Google montre désormais un type de contenu différent (vidéos, listes, outils) |
 
 ---
 
-## Refresh vs Rewrite vs Retire Decision
+## Décision Rafraîchir vs Réécrire vs Retirer
 
-| Scenario | Decision | Reasoning |
+| Scénario | Décision | Justification |
 |----------|----------|-----------|
-| Content still accurate, needs minor updates | **Refresh** | Update stats, add sections, improve formatting |
-| Content fundamentally outdated or wrong | **Rewrite** | Keep the URL, completely new content |
-| Content on a topic no longer relevant | **Retire** | 301 redirect to most relevant page |
-| Content cannibalized by another page | **Consolidate** | Merge best parts, redirect the weaker page |
-| Content never performed (no traffic ever) | **Evaluate** | Fix if topic is strategic, retire if not |
+| Contenu toujours exact, besoin de mises à jour mineures | **Rafraîchir** | Mettre à jour les stats, ajouter des sections, améliorer le formatage |
+| Contenu fondamentalement obsolète ou erroné | **Réécrire** | Garder l'URL, contenu entièrement nouveau |
+| Contenu sur un sujet n'étant plus pertinent | **Retirer** | Redirection 301 vers la page la plus pertinente |
+| Contenu cannibalisé par une autre page | **Consolider** | Fusionner les meilleures parties, rediriger la page la plus faible |
+| Contenu n'ayant jamais performé (aucun trafic jamais) | **Évaluer** | Corriger si le sujet est stratégique, retirer sinon |
 
 ---
 
-## Content Refresh Checklist
+## Checklist de rafraîchissement de contenu
 
-- [ ] Update all statistics and data with current-year sources
-- [ ] Fix or remove all broken links
-- [ ] Replace outdated screenshots or images
-- [ ] Add new sections covering subtopics competitors address
-- [ ] Update examples to be current and relevant
-- [ ] Improve internal links (link to newer content, update old links)
-- [ ] Add FAQ section if one doesn't exist (target featured snippets)
-- [ ] Optimize for any new keyword opportunities discovered
-- [ ] Improve readability (shorter sentences, better formatting, subheadings)
-- [ ] Update schema markup (dateModified, new FAQ schema)
-- [ ] Update meta title and description if CTR is declining
-- [ ] Add or update table of contents for long content
-- [ ] Ensure mobile formatting is optimal
-- [ ] Re-submit URL to Google Search Console for re-indexing
+- [ ] Mettre à jour toutes les statistiques et données avec des sources de l'année en cours
+- [ ] Corriger ou supprimer tous les liens cassés
+- [ ] Remplacer les captures d'écran ou images obsolètes
+- [ ] Ajouter de nouvelles sections couvrant les sous-thèmes que les concurrents abordent
+- [ ] Mettre à jour les exemples pour qu'ils soient actuels et pertinents
+- [ ] Améliorer les liens internes (lier vers du contenu plus récent, mettre à jour les anciens liens)
+- [ ] Ajouter une section FAQ si elle n'existe pas (cibler les featured snippets)
+- [ ] Optimiser pour toute nouvelle opportunité de mot-clé découverte
+- [ ] Améliorer la lisibilité (phrases plus courtes, meilleur formatage, sous-titres)
+- [ ] Mettre à jour le balisage de schéma (dateModified, nouveau schéma FAQ)
+- [ ] Mettre à jour le title et la meta description si le CTR décline
+- [ ] Ajouter ou mettre à jour la table des matières pour le contenu long
+- [ ] S'assurer que le formatage mobile est optimal
+- [ ] Resoumettre l'URL à Google Search Console pour réindexation
 
 ---
 
-## Refresh Priority Scoring
+## Notation de priorité de rafraîchissement
 
-Score each piece of decaying content:
+Noter chaque pièce de contenu en déclin :
 
-| Factor | Weight | Scoring (1-10) |
+| Facteur | Poids | Notation (1-10) |
 |--------|--------|----------------|
-| **Traffic impact** (current/historical traffic) | 30% | 10 = 1,000+ monthly visits, 1 = <50 |
-| **Revenue connection** (converts or assists conversions) | 25% | 10 = direct revenue page, 1 = informational only |
-| **Refresh effort** (time/resources to update) | 20% | 10 = quick refresh (1-2 hours), 1 = full rewrite needed |
-| **Strategic value** (pillar page, key topic, competitive) | 15% | 10 = core pillar content, 1 = peripheral |
-| **Competitive urgency** (competitors gaining) | 10% | 10 = competitor recently published, 1 = no competition |
+| **Impact trafic** (trafic actuel/historique) | 30% | 10 = 1 000+ visites mensuelles, 1 = <50 |
+| **Lien avec le revenu** (convertit ou assiste des conversions) | 25% | 10 = page de revenu direct, 1 = informatif uniquement |
+| **Effort de rafraîchissement** (temps/ressources pour mettre à jour) | 20% | 10 = rafraîchissement rapide (1-2 heures), 1 = réécriture complète nécessaire |
+| **Valeur stratégique** (page pilier, sujet clé, concurrentiel) | 15% | 10 = contenu pilier central, 1 = périphérique |
+| **Urgence concurrentielle** (concurrents en progression) | 10% | 10 = concurrent récemment publié, 1 = pas de concurrence |
 
-**Priority Score** = Weighted sum. Address highest scores first.
+**Score de priorité** = Somme pondérée. Traiter d'abord les scores les plus élevés.
 
 ---
 
-## Update Tracking
+## Suivi des mises à jour
 
-For each refresh, document:
+Pour chaque rafraîchissement, documenter :
 
-| Field | Value |
+| Champ | Valeur |
 |-------|-------|
-| URL | [page URL] |
-| Refresh date | [date] |
-| Changes made | [summary of what was updated] |
-| Pre-refresh traffic (30-day avg) | [number] |
-| Pre-refresh ranking | [position for target keyword] |
-| Post-refresh traffic (30-day avg) | [measure 30 days after refresh] |
-| Post-refresh ranking | [measure 2-4 weeks after] |
-| Traffic change | [% change] |
-| Next review date | [schedule next check] |
+| URL | [URL de la page] |
+| Date de rafraîchissement | [date] |
+| Changements effectués | [résumé de ce qui a été mis à jour] |
+| Trafic pré-rafraîchissement (moyenne 30 jours) | [nombre] |
+| Classement pré-rafraîchissement | [position pour le mot-clé cible] |
+| Trafic post-rafraîchissement (moyenne 30 jours) | [mesurer 30 jours après le rafraîchissement] |
+| Classement post-rafraîchissement | [mesurer 2-4 semaines après] |
+| Changement de trafic | [% de changement] |
+| Prochaine date de revue | [planifier la prochaine vérification] |

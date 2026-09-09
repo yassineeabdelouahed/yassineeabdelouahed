@@ -1,12 +1,16 @@
-# Retention Loops — Engagement & Churn Prevention
+# Boucles de rétention — Engagement & prévention du churn
 
-> Retention is the foundation of sustainable growth. No acquisition strategy survives a leaky bucket. This guide covers frameworks for building habit-forming products, predicting churn, and re-engaging lapsed users.
+> La rétention est le fondement d'une croissance durable. Aucune stratégie
+> d'acquisition ne survit à un seau percé. Ce guide couvre les cadres pour construire
+> des produits qui créent l'habitude, prédire le churn, et réengager les
+> utilisateurs perdus.
 
 ---
 
-## Hook Model Framework
+## Cadre du Hook Model
 
-Nir Eyal's Hook Model explains how products create habitual usage through a four-step loop.
+Le Hook Model de Nir Eyal explique comment les produits créent un usage habituel à
+travers une boucle en quatre étapes.
 
 ```
 Trigger → Action → Variable Reward → Investment
@@ -14,116 +18,122 @@ Trigger → Action → Variable Reward → Investment
    └──────────────────────────────────────┘
 ```
 
-### Step 1: Trigger
+### Étape 1 : déclencheur (Trigger)
 
-Triggers prompt the user to take action. They come in two forms.
+Les déclencheurs incitent l'utilisateur à agir. Ils se présentent sous deux formes.
 
-| Trigger Type | Description | Examples |
+| Type de déclencheur | Description | Exemples |
 |---|---|---|
-| **External triggers** | Environmental cues that prompt action | Push notification, email, ad, CTA button, colleague mention |
-| **Internal triggers** | Emotional states or routines that prompt action | Boredom (scroll Instagram), anxiety (check Slack), curiosity (open Reddit) |
+| **Déclencheurs externes** | Signaux environnementaux qui incitent à l'action | Notification push, e-mail, publicité, bouton CTA, mention d'un collègue |
+| **Déclencheurs internes** | États émotionnels ou routines qui incitent à l'action | Ennui (scroller Instagram), anxiété (vérifier Slack), curiosité (ouvrir Reddit) |
 
-**Goal:** Start with external triggers, then associate the product with internal triggers through repeated positive experiences.
+**Objectif :** Commencer avec des déclencheurs externes, puis associer le produit à
+des déclencheurs internes via des expériences positives répétées.
 
-### Step 2: Action
+### Étape 2 : action
 
-The simplest behavior done in anticipation of a reward. Follows BJ Fogg's behavior model: B = MAT (Behavior = Motivation + Ability + Trigger).
+Le comportement le plus simple réalisé en anticipation d'une récompense. Suit le
+modèle comportemental de BJ Fogg : B = MAT (Behavior = Motivation + Ability +
+Trigger).
 
-| Design Principle | Implementation |
+| Principe de conception | Mise en œuvre |
 |---|---|
-| Reduce friction | Fewer clicks, faster load, simpler UI |
-| Increase motivation | Clear value proposition at point of action |
-| Ensure trigger visibility | Notification lands when user can act on it |
+| Réduire la friction | Moins de clics, chargement plus rapide, UI plus simple |
+| Augmenter la motivation | Proposition de valeur claire au point d'action |
+| Assurer la visibilité du déclencheur | La notification arrive quand l'utilisateur peut agir dessus |
 
-### Step 3: Variable Reward
+### Étape 3 : récompense variable
 
-The reward must be variable (unpredictable) to maintain engagement over time. Fixed rewards lose their power.
+La récompense doit être variable (imprévisible) pour maintenir l'engagement dans le
+temps. Les récompenses fixes perdent leur pouvoir.
 
-| Reward Type | Description | Product Example |
+| Type de récompense | Description | Exemple de produit |
 |---|---|---|
-| Rewards of the Tribe | Social validation, acceptance, belonging | Likes, comments, follower counts |
-| Rewards of the Hunt | Resources, information, deals | News feed content, search results, deal alerts |
-| Rewards of the Self | Mastery, competence, completion | Leveling up, skill badges, streak counts |
+| Récompenses de la tribu | Validation sociale, acceptation, appartenance | Likes, commentaires, nombres d'abonnés |
+| Récompenses de la chasse | Ressources, informations, offres | Contenu du fil d'actualité, résultats de recherche, alertes de bonnes affaires |
+| Récompenses du soi | Maîtrise, compétence, accomplissement | Passage de niveau, badges de compétence, compteurs de série |
 
-### Step 4: Investment
+### Étape 4 : investissement
 
-The user puts something into the product that makes it more valuable over time and increases switching costs.
+L'utilisateur investit quelque chose dans le produit qui le rend plus précieux dans
+le temps et augmente les coûts de changement.
 
-| Investment Type | Example | Retention Effect |
+| Type d'investissement | Exemple | Effet sur la rétention |
 |---|---|---|
-| Data | Saved preferences, history, files | More personalization, harder to leave |
-| Content | Posts, documents, projects | Accumulated value stored in product |
-| Reputation | Reviews, ratings, follower count | Social capital that cannot transfer |
-| Skill | Learned workflows, keyboard shortcuts | Efficiency advantage in current product |
-| Social connections | Team members, contacts, followers | Network locked into the platform |
+| Données | Préférences sauvegardées, historique, fichiers | Plus de personnalisation, plus difficile de partir |
+| Contenu | Posts, documents, projets | Valeur accumulée stockée dans le produit |
+| Réputation | Avis, notes, nombre d'abonnés | Capital social qui ne se transfère pas |
+| Compétence | Workflows appris, raccourcis clavier | Avantage d'efficacité dans le produit actuel |
+| Connexions sociales | Membres d'équipe, contacts, abonnés | Réseau enfermé dans la plateforme |
 
 ---
 
-## Churn Prediction Models
+## Modèles de prédiction du churn
 
-### Leading Indicators of Churn
+### Indicateurs avancés de churn
 
-Identify users at risk before they cancel. These signals typically appear 2-4 weeks before churn.
+Identifier les utilisateurs à risque avant qu'ils n'annulent. Ces signaux
+apparaissent typiquement 2-4 semaines avant le churn.
 
-| Signal Category | Specific Indicators | Risk Level |
+| Catégorie de signal | Indicateurs spécifiques | Niveau de risque |
 |---|---|---|
-| **Usage decline** | Login frequency drops 40%+, session duration decreases, fewer core actions | High |
-| **Feature disengagement** | Stops using advanced features, reverts to basic usage only | Medium-High |
-| **Support signals** | Multiple unresolved tickets, negative CSAT scores, complaint escalation | High |
-| **Billing signals** | Failed payment, downgrade inquiry, cancellation page visit | Critical |
-| **Team signals** | Admin account goes inactive, seat count decreases, key user leaves | High |
-| **Engagement signals** | Stops opening emails, ignores in-app messages, unsubscribes from updates | Medium |
-| **Competitive signals** | Visits competitor pricing pages (if tracked), mentions competitors in support | Medium-High |
+| **Baisse d'usage** | Fréquence de connexion en baisse de 40%+, durée de session en diminution, moins d'actions clés | Élevé |
+| **Désengagement de fonctionnalité** | Arrête d'utiliser les fonctionnalités avancées, revient à un usage basique uniquement | Moyen-élevé |
+| **Signaux de support** | Plusieurs tickets non résolus, scores CSAT négatifs, escalade de plainte | Élevé |
+| **Signaux de facturation** | Paiement échoué, demande de rétrogradation, visite de la page d'annulation | Critique |
+| **Signaux d'équipe** | Le compte admin devient inactif, le nombre de sièges diminue, un utilisateur clé part | Élevé |
+| **Signaux d'engagement** | Arrête d'ouvrir les e-mails, ignore les messages dans l'app, se désabonne des mises à jour | Moyen |
+| **Signaux concurrentiels** | Visite les pages de tarification concurrentes (si suivi), mentionne des concurrents en support | Moyen-élevé |
 
-### Churn Risk Scoring Model
+### Modèle de notation du risque de churn
 
-| Factor | Weight | Score Range | Scoring Method |
+| Facteur | Poids | Fourchette de score | Méthode de notation |
 |---|---|---|---|
-| Login frequency trend (14-day) | 25% | 0-100 | 100 if stable/growing, 0 if >60% decline |
-| Core feature usage (14-day) | 20% | 0-100 | Based on actions vs historical average |
-| Support ticket sentiment | 15% | 0-100 | NLP sentiment analysis on recent tickets |
-| Days since last login | 15% | 0-100 | 100 if <3 days, 50 if 3-7, 25 if 7-14, 0 if >14 |
-| Contract/billing status | 10% | 0-100 | 100 if healthy, 0 if payment failed or cancel page visited |
-| Onboarding completion | 10% | 0-100 | Percentage of onboarding steps completed |
-| NPS / CSAT score | 5% | 0-100 | Latest survey response normalized to 0-100 |
+| Tendance de fréquence de connexion (14 jours) | 25% | 0-100 | 100 si stable/en croissance, 0 si déclin de plus de 60% |
+| Usage des fonctionnalités clés (14 jours) | 20% | 0-100 | Basé sur les actions vs moyenne historique |
+| Sentiment des tickets de support | 15% | 0-100 | Analyse de sentiment NLP sur les tickets récents |
+| Jours depuis la dernière connexion | 15% | 0-100 | 100 si <3 jours, 50 si 3-7, 25 si 7-14, 0 si >14 |
+| Statut de contrat/facturation | 10% | 0-100 | 100 si sain, 0 si paiement échoué ou visite de la page d'annulation |
+| Complétion de l'onboarding | 10% | 0-100 | Pourcentage des étapes d'onboarding complétées |
+| Score NPS / CSAT | 5% | 0-100 | Dernière réponse d'enquête normalisée sur 0-100 |
 
-**Risk Tiers:**
-- 80-100: Healthy — nurture and upsell
-- 60-79: Monitor — proactive check-in
-- 40-59: At risk — intervention required
-- 0-39: Critical — immediate personal outreach
+**Paliers de risque :**
+- 80-100 : Sain — nurturing et upsell
+- 60-79 : À surveiller — point de contact proactif
+- 40-59 : À risque — intervention requise
+- 0-39 : Critique — outreach personnel immédiat
 
 ---
 
-## Win-Back Sequences
+## Séquences de winback
 
-### Email Win-Back Flow
+### Flux e-mail de winback
 
-| Email | Timing After Churn | Subject Line Approach | Content Strategy |
+| E-mail | Timing après churn | Approche d'objet | Stratégie de contenu |
 |---|---|---|---|
-| 1 | Day 1 | "We're sorry to see you go" | Ask for feedback, offer help resolving issues |
-| 2 | Day 7 | "Here's what you're missing" | Highlight new features or improvements since they left |
-| 3 | Day 14 | "We've made changes based on your feedback" | Show specific improvements relevant to their churn reason |
-| 4 | Day 30 | "Come back with [X% discount / free month]" | Time-limited incentive to return |
-| 5 | Day 60 | "A lot has changed at [Product]" | Major update roundup, no hard sell |
-| 6 | Day 90 | "Last chance: special offer for returning customers" | Final incentive, then move to quarterly nurture |
+| 1 | Jour 1 | « Nous sommes désolés de vous voir partir » | Demander du feedback, offrir de l'aide pour résoudre les problèmes |
+| 2 | Jour 7 | « Voici ce que vous manquez » | Mettre en avant les nouvelles fonctionnalités ou améliorations depuis leur départ |
+| 3 | Jour 14 | « Nous avons apporté des changements basés sur votre feedback » | Montrer les améliorations spécifiques liées à leur raison de churn |
+| 4 | Jour 30 | « Revenez avec [X% de réduction / mois gratuit] » | Incitation à durée limitée pour revenir |
+| 5 | Jour 60 | « Beaucoup a changé chez [Produit] » | Récapitulatif des mises à jour majeures, pas de vente forcée |
+| 6 | Jour 90 | « Dernière chance : offre spéciale pour les clients de retour » | Incitation finale, puis passer au nurturing trimestriel |
 
-### Win-Back Tactics by Churn Reason
+### Tactiques de winback par raison de churn
 
-| Churn Reason | Win-Back Approach | Offer |
+| Raison de churn | Approche de winback | Offre |
 |---|---|---|
-| Price / budget | Downgrade option, annual discount, pause subscription | 20-30% discount or free month |
-| Missing feature | Notify when feature ships, invite to beta | Early access to requested feature |
-| Poor experience | Personal apology from leadership, dedicated support | White-glove onboarding, dedicated CSM |
-| Switched to competitor | Competitive comparison content, migration assistance | Free migration service, extended trial |
-| No longer needed | Stay in touch with value content, seasonal re-engagement | Free tier to maintain relationship |
-| Bad onboarding | Offer guided setup session, improved onboarding flow | 1-on-1 onboarding call with product expert |
+| Prix / budget | Option de rétrogradation, réduction annuelle, suspension d'abonnement | 20-30% de réduction ou mois gratuit |
+| Fonctionnalité manquante | Notifier quand la fonctionnalité sort, inviter à la bêta | Accès anticipé à la fonctionnalité demandée |
+| Mauvaise expérience | Excuses personnelles de la direction, support dédié | Onboarding sur-mesure, CSM dédié |
+| A basculé vers un concurrent | Contenu de comparaison concurrentielle, assistance à la migration | Service de migration gratuit, essai prolongé |
+| N'en a plus besoin | Rester en contact avec du contenu de valeur, réengagement saisonnier | Palier gratuit pour maintenir la relation |
+| Mauvais onboarding | Proposer une session de mise en place guidée, flux d'onboarding amélioré | Appel d'onboarding individuel avec un expert produit |
 
 ---
 
-## Cohort Analysis Methodology
+## Méthodologie d'analyse de cohorte
 
-### Setting Up Cohort Analysis
+### Mettre en place l'analyse de cohorte
 
 ```
 Cohort Definition: Group users by sign-up week or month
@@ -131,137 +141,140 @@ Metric: Retention rate (% of cohort still active in period N)
 Periods: Week 0, Week 1, Week 2, ... Week 12 (or Month 0-12)
 ```
 
-### Cohort Retention Table Template
+### Modèle de tableau de rétention de cohorte
 
-| Cohort | Week 0 | Week 1 | Week 2 | Week 4 | Week 8 | Week 12 |
+| Cohorte | Semaine 0 | Semaine 1 | Semaine 2 | Semaine 4 | Semaine 8 | Semaine 12 |
 |---|---|---|---|---|---|---|
-| Jan W1 (500 users) | 100% | 45% | 32% | 22% | 18% | 15% |
-| Jan W2 (600 users) | 100% | 48% | 35% | 25% | 20% | 17% |
-| Jan W3 (550 users) | 100% | 52% | 38% | 28% | 23% | 20% |
+| Jan S1 (500 utilisateurs) | 100% | 45% | 32% | 22% | 18% | 15% |
+| Jan S2 (600 utilisateurs) | 100% | 48% | 35% | 25% | 20% | 17% |
+| Jan S3 (550 utilisateurs) | 100% | 52% | 38% | 28% | 23% | 20% |
 
-### What to Look For
+### Ce qu'il faut chercher
 
-| Pattern | Interpretation | Action |
+| Motif | Interprétation | Action |
 |---|---|---|
-| Retention curve flattens | Users who survive early weeks tend to stick | Focus on improving early retention (Week 1-2) |
-| Recent cohorts retain better | Product or onboarding improvements are working | Continue iterating on what changed |
-| Recent cohorts retain worse | Something broke — regression, quality issue, wrong audience | Investigate recent changes, review acquisition sources |
-| Sharp drop at specific week | Users hit a wall at that point in their journey | Map user journey to that week, identify friction |
-| One segment retains much better | You have found your ideal customer profile | Double down on acquiring that segment |
+| La courbe de rétention s'aplatit | Les utilisateurs qui survivent aux premières semaines ont tendance à rester | Se concentrer sur l'amélioration de la rétention précoce (Semaine 1-2) |
+| Les cohortes récentes retiennent mieux | Les améliorations produit ou d'onboarding fonctionnent | Continuer à itérer sur ce qui a changé |
+| Les cohortes récentes retiennent moins bien | Quelque chose s'est cassé — régression, problème de qualité, mauvaise audience | Investiguer les changements récents, revoir les sources d'acquisition |
+| Chute nette à une semaine spécifique | Les utilisateurs heurtent un mur à ce point de leur parcours | Cartographier le parcours utilisateur jusqu'à cette semaine, identifier la friction |
+| Un segment retient beaucoup mieux | Vous avez trouvé votre profil client idéal | Doubler la mise sur l'acquisition de ce segment |
 
 ---
 
-## Habit Loop Design
+## Conception de boucle d'habitude
 
-### Daily Active Usage Checklist
+### Checklist d'usage actif quotidien
 
-Design your product to support daily habits.
+Concevoir votre produit pour soutenir des habitudes quotidiennes.
 
-- [ ] There is a clear daily use case (not just a weekly/monthly tool)
-- [ ] Users receive a meaningful trigger each day (notification, email digest, dashboard)
-- [ ] The first action upon opening the product takes less than 5 seconds
-- [ ] Variable content or data refreshes daily (new insights, updated feeds, fresh tasks)
-- [ ] Completing the core action delivers immediate visible feedback
-- [ ] Users invest something with each session (data, content, preferences)
-- [ ] Streak or consistency tracking is visible (optional but powerful)
-- [ ] Social elements create accountability (team visibility, shared goals)
+- [ ] Il existe un cas d'usage quotidien clair (pas juste un outil hebdomadaire/mensuel)
+- [ ] Les utilisateurs reçoivent un déclencheur significatif chaque jour (notification, digest e-mail, tableau de bord)
+- [ ] La première action à l'ouverture du produit prend moins de 5 secondes
+- [ ] Le contenu ou les données variables se rafraîchissent quotidiennement (nouveaux insights, fils mis à jour, tâches fraîches)
+- [ ] Compléter l'action clé délivre un feedback visible immédiat
+- [ ] Les utilisateurs investissent quelque chose à chaque session (données, contenu, préférences)
+- [ ] Le suivi de série ou de constance est visible (optionnel mais puissant)
+- [ ] Les éléments sociaux créent de la responsabilisation (visibilité d'équipe, objectifs partagés)
 
-### Habit Formation Timeline
+### Chronologie de formation d'habitude
 
-| Phase | Duration | User Behavior | Product Role |
+| Phase | Durée | Comportement de l'utilisateur | Rôle du produit |
 |---|---|---|---|
-| Learning | Days 1-7 | Exploring, evaluating, deciding | Hand-hold through activation, demonstrate value |
-| Practicing | Days 8-21 | Using with conscious effort, building routine | Reinforce triggers, celebrate progress |
-| Habituation | Days 22-60 | Usage becomes automatic, part of workflow | Reduce friction further, introduce advanced features |
-| Mastery | Days 60+ | Power user, advocate, invested | Expansion opportunities, referral prompts, community |
+| Apprentissage | Jours 1-7 | Explore, évalue, décide | Accompagner à travers l'activation, démontrer la valeur |
+| Pratique | Jours 8-21 | Utilise avec un effort conscient, construit une routine | Renforcer les déclencheurs, célébrer la progression |
+| Habituation | Jours 22-60 | L'usage devient automatique, fait partie du workflow | Réduire davantage la friction, introduire des fonctionnalités avancées |
+| Maîtrise | Jours 60+ | Power user, ambassadeur, investi | Opportunités d'expansion, invites de parrainage, communauté |
 
 ---
 
-## Re-Engagement Triggers
+## Déclencheurs de réengagement
 
-### Trigger Types and Timing
+### Types de déclencheurs et timing
 
-| Trigger | Channel | Timing | Content |
+| Déclencheur | Canal | Timing | Contenu |
 |---|---|---|---|
-| Inactivity nudge | Email | 3 days without login | "Your [project/task/data] is waiting for you" |
-| Social trigger | Push / Email | When a teammate takes action | "Alex commented on your document" |
-| Value trigger | Email | Weekly | Personalized digest of insights, metrics, or updates |
-| Achievement trigger | In-app + Email | Upon milestone | "You're 80% to your goal — keep going" |
-| Content trigger | Email | When new relevant content is published | "New template in your category" |
-| Feature trigger | In-app + Email | When relevant new feature ships | "New: the feature you requested is live" |
-| External trigger | Push | Calendar-based or event-based | "Your report is ready for Monday's meeting" |
-| FOMO trigger | Email / Push | When peers are active | "Your team completed 15 tasks this week" |
+| Relance d'inactivité | E-mail | 3 jours sans connexion | « Votre [projet/tâche/donnée] vous attend » |
+| Déclencheur social | Push / E-mail | Quand un coéquipier prend une action | « Alex a commenté votre document » |
+| Déclencheur de valeur | E-mail | Hebdomadaire | Digest personnalisé d'insights, métriques, ou mises à jour |
+| Déclencheur d'accomplissement | Dans l'app + E-mail | Lors d'un jalon | « Vous êtes à 80% de votre objectif — continuez » |
+| Déclencheur de contenu | E-mail | Quand un nouveau contenu pertinent est publié | « Nouveau modèle dans votre catégorie » |
+| Déclencheur de fonctionnalité | Dans l'app + E-mail | Quand une nouvelle fonctionnalité pertinente sort | « Nouveau : la fonctionnalité que vous avez demandée est en direct » |
+| Déclencheur externe | Push | Basé sur calendrier ou événement | « Votre rapport est prêt pour la réunion de lundi » |
+| Déclencheur FOMO | E-mail / Push | Quand les pairs sont actifs | « Votre équipe a complété 15 tâches cette semaine » |
 
-### Re-Engagement Priority Matrix
+### Matrice de priorité de réengagement
 
-| User Segment | Days Inactive | Priority | Approach |
+| Segment utilisateur | Jours d'inactivité | Priorité | Approche |
 |---|---|---|---|
-| High-value, recently lapsed | 3-7 days | Critical | Personal outreach, in-app message, email |
-| High-value, moderately lapsed | 7-30 days | High | Win-back email sequence, phone call from CSM |
-| Low-value, recently lapsed | 3-7 days | Medium | Automated nudge email, push notification |
-| Low-value, moderately lapsed | 7-30 days | Low | Automated email sequence, no manual effort |
-| Any segment, long-term lapsed | 30+ days | Evaluate | Cost-benefit analysis — may not be worth pursuing |
+| Haute valeur, récemment perdu | 3-7 jours | Critique | Outreach personnel, message dans l'app, e-mail |
+| Haute valeur, modérément perdu | 7-30 jours | Élevée | Séquence e-mail de winback, appel téléphonique du CSM |
+| Faible valeur, récemment perdu | 3-7 jours | Moyenne | E-mail de relance automatisé, notification push |
+| Faible valeur, modérément perdu | 7-30 jours | Faible | Séquence e-mail automatisée, pas d'effort manuel |
+| Tout segment, perdu à long terme | 30+ jours | À évaluer | Analyse coût-bénéfice — peut ne pas valoir la peine d'être poursuivi |
 
 ---
 
-## Retention Benchmarks by Business Model
+## Benchmarks de rétention par modèle économique
 
-### Monthly Retention (% active after N months)
+### Rétention mensuelle (% actifs après N mois)
 
-| Business Model | Month 1 | Month 3 | Month 6 | Month 12 | Notes |
+| Modèle économique | Mois 1 | Mois 3 | Mois 6 | Mois 12 | Notes |
 |---|---|---|---|---|---|
-| B2B SaaS (SMB) | 70-80% | 55-65% | 45-55% | 35-45% | Higher if annual contracts |
-| B2B SaaS (Enterprise) | 90-95% | 85-92% | 80-88% | 75-85% | Multi-year contracts stabilize |
-| Consumer Subscription | 60-70% | 40-50% | 30-40% | 20-30% | Highly variable by category |
-| Mobile App (Social) | 25-35% | 12-18% | 8-12% | 5-8% | Day 1 retention: 25-40% |
-| Mobile App (Utility) | 30-40% | 18-25% | 12-18% | 8-12% | Higher if daily use case exists |
-| E-commerce (Repeat Purchase) | 25-35% | 15-22% | 10-15% | 8-12% | Measured by repeat purchase |
-| Marketplace | 30-40% | 20-30% | 15-22% | 10-18% | Supply-side retains better than demand |
+| SaaS B2B (PME) | 70-80% | 55-65% | 45-55% | 35-45% | Plus élevé avec des contrats annuels |
+| SaaS B2B (Entreprise) | 90-95% | 85-92% | 80-88% | 75-85% | Les contrats pluriannuels stabilisent |
+| Abonnement grand public | 60-70% | 40-50% | 30-40% | 20-30% | Très variable selon la catégorie |
+| Application mobile (Social) | 25-35% | 12-18% | 8-12% | 5-8% | Rétention Jour 1 : 25-40% |
+| Application mobile (Utilitaire) | 30-40% | 18-25% | 12-18% | 8-12% | Plus élevé si un cas d'usage quotidien existe |
+| E-commerce (achat répété) | 25-35% | 15-22% | 10-15% | 8-12% | Mesuré par achat répété |
+| Marketplace | 30-40% | 20-30% | 15-22% | 10-18% | Le côté offre retient mieux que le côté demande |
 
-### Net Revenue Retention Benchmarks (B2B SaaS)
+### Benchmarks de Net Revenue Retention (SaaS B2B)
 
-| NRR Range | Assessment | Examples |
+| Fourchette NRR | Évaluation | Exemples |
 |---|---|---|
-| >130% | Elite — expansion significantly outpaces churn | Snowflake, Twilio, Datadog |
-| 110-130% | Strong — healthy expansion motion | HubSpot, Slack, Zoom |
-| 100-110% | Acceptable — expansion roughly offsets churn | Most mature B2B SaaS |
-| 90-100% | Concerning — slight net contraction | Churn problem emerging |
-| <90% | Critical — revenue is shrinking from existing customers | Urgent retention intervention needed |
+| >130% | Élite — l'expansion dépasse significativement le churn | Snowflake, Twilio, Datadog |
+| 110-130% | Solide — mécanique d'expansion saine | HubSpot, Slack, Zoom |
+| 100-110% | Acceptable — l'expansion compense à peu près le churn | La plupart des SaaS B2B matures |
+| 90-100% | Préoccupant — légère contraction nette | Un problème de churn émerge |
+| <90% | Critique — le revenu se contracte à partir des clients existants | Intervention de rétention urgente nécessaire |
 
 ---
 
-## Customer Health Scoring
+## Notation de la santé client
 
-### Health Score Components
+### Composantes du score de santé
 
-| Component | Weight | Data Source | Scoring |
+| Composante | Poids | Source de données | Notation |
 |---|---|---|---|
-| Product usage depth | 25% | Product analytics | Features used / Total features available |
-| Usage frequency | 20% | Product analytics | Actual logins / Expected logins for plan |
-| Support health | 15% | Help desk | Inverse of open tickets + sentiment |
-| Relationship depth | 15% | CRM | Number of stakeholders engaged, executive sponsor |
-| Contract value trend | 10% | Billing system | Growing, stable, or declining |
-| Onboarding progress | 10% | Onboarding tracker | % of implementation milestones completed |
-| Survey sentiment | 5% | NPS / CSAT tool | Latest survey score |
+| Profondeur d'usage du produit | 25% | Analytics produit | Fonctionnalités utilisées / Total des fonctionnalités disponibles |
+| Fréquence d'usage | 20% | Analytics produit | Connexions réelles / Connexions attendues pour le plan |
+| Santé du support | 15% | Help desk | Inverse des tickets ouverts + sentiment |
+| Profondeur de relation | 15% | CRM | Nombre de parties prenantes engagées, sponsor exécutif |
+| Tendance de valeur de contrat | 10% | Système de facturation | En croissance, stable, ou en déclin |
+| Progression de l'onboarding | 10% | Suivi d'onboarding | % des jalons de mise en œuvre complétés |
+| Sentiment d'enquête | 5% | Outil NPS / CSAT | Dernier score d'enquête |
 
-### Health Score Actions
+### Actions par score de santé
 
-| Health Score | Label | Color | Action |
+| Score de santé | Libellé | Couleur | Action |
 |---|---|---|---|
-| 85-100 | Thriving | Green | Upsell/expand, request referral, case study candidate |
-| 70-84 | Healthy | Light Green | Standard check-ins, feature adoption nudges |
-| 50-69 | Neutral | Yellow | Proactive outreach, usage review call, training offer |
-| 30-49 | At Risk | Orange | Escalate to CSM, executive check-in, create success plan |
-| 0-29 | Critical | Red | Immediate intervention, executive-to-executive call, save offer |
+| 85-100 | Florissant | Vert | Upsell/expansion, demander un parrainage, candidat pour étude de cas |
+| 70-84 | Sain | Vert clair | Points de contact standards, incitations d'adoption de fonctionnalité |
+| 50-69 | Neutre | Jaune | Outreach proactif, appel de revue d'usage, offre de formation |
+| 30-49 | À risque | Orange | Escalader au CSM, point de contact exécutif, créer un plan de réussite |
+| 0-29 | Critique | Rouge | Intervention immédiate, appel exécutif-à-exécutif, offre de sauvegarde |
 
-### Health Score Review Cadence
+### Cadence de revue du score de santé
 
-- [ ] Automated alerts for any account dropping below 50 (immediate)
-- [ ] Weekly review of all accounts in Yellow or below by CS team
-- [ ] Monthly health score trend analysis across full customer base
-- [ ] Quarterly correlation analysis: health score vs actual churn outcomes (calibrate model)
-- [ ] Semi-annual model refinement based on prediction accuracy
+- [ ] Alertes automatisées pour tout compte tombant sous 50 (immédiat)
+- [ ] Revue hebdomadaire de tous les comptes en Jaune ou en dessous par l'équipe CS
+- [ ] Analyse de tendance du score de santé mensuelle sur toute la base client
+- [ ] Analyse de corrélation trimestrielle : score de santé vs résultats de churn réels (calibrer le modèle)
+- [ ] Raffinement du modèle semestriel basé sur la précision de prédiction
 
 ---
 
-*Retention is not a feature. It is the cumulative result of delivering consistent value, building habits, and catching problems before users give up. Every percentage point of improved retention compounds into dramatically better unit economics.*
+*La rétention n'est pas une fonctionnalité. C'est le résultat cumulé de la livraison
+constante de valeur, de la construction d'habitudes, et de la détection des
+problèmes avant que les utilisateurs n'abandonnent. Chaque point de pourcentage de
+rétention amélioré compose en une économie unitaire dramatiquement meilleure.*

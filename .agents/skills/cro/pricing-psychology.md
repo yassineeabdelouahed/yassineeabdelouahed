@@ -1,241 +1,242 @@
-# Pricing Psychology — Page Optimization
+# Psychologie des prix — Optimisation de page
 
-A deep reference for designing pricing pages that convert. This guide covers page layout templates, psychological principles with concrete implementation examples, tier structure frameworks, and the tactical details that turn pricing pages from confusion points into conversion engines.
+Une référence approfondie pour concevoir des pages de tarification qui convertissent. Ce guide couvre les modèles de mise en page, les principes psychologiques avec des exemples de mise en œuvre concrets, les cadres de structure de paliers, et les détails tactiques qui transforment les pages de tarification de points de confusion en moteurs de conversion.
 
 ---
 
-## Pricing Page Templates
+## Modèles de page de tarification
 
-### Template 1: Good / Better / Best (Three-Tier)
+### Modèle 1 : Bien / Mieux / Meilleur (trois paliers)
 
-The most widely used SaaS pricing structure. Works because it provides a clear comparison framework while nudging toward the middle or highest tier.
+La structure de tarification SaaS la plus répandue. Fonctionne car elle offre un cadre de comparaison clair tout en orientant vers le palier intermédiaire ou le plus élevé.
 
-| Element | Starter / Good | Professional / Better | Enterprise / Best |
+| Élément | Starter / Bien | Professional / Mieux | Enterprise / Meilleur |
 |---|---|---|---|
-| Position | Left column | Center column (highlighted) | Right column |
-| Visual treatment | Standard | Highlighted border, "Most Popular" badge, slightly elevated | Standard or "Contact Us" |
-| Target user | Individual or small team | Growing team, core ICP | Large organization |
-| Price display | Low anchor price | Full price, shown as best value | "Contact Sales" or high anchor |
-| Feature presentation | Limited set — enough to start | Everything in Starter + core differentiators | Everything in Pro + enterprise needs |
-| CTA | "Start Free" or "Get Started" | "Start Free Trial" (emphasized) | "Talk to Sales" |
+| Position | Colonne de gauche | Colonne centrale (mise en évidence) | Colonne de droite |
+| Traitement visuel | Standard | Bordure mise en évidence, badge « Le plus populaire », légèrement surélevée | Standard ou « Nous contacter » |
+| Utilisateur cible | Individu ou petite équipe | Équipe en croissance, ICP principal | Grande organisation |
+| Affichage du prix | Prix d'ancrage bas | Prix complet, présenté comme la meilleure valeur | « Contacter les ventes » ou ancrage élevé |
+| Présentation des fonctionnalités | Ensemble limité — suffisant pour démarrer | Tout dans Starter + différenciateurs clés | Tout dans Pro + besoins entreprise |
+| Appel à l'action | « Démarrer gratuitement » ou « Commencer » | « Démarrer l'essai gratuit » (mis en évidence) | « Parler aux ventes » |
 
-**Why three tiers work:** The center option benefits from the compromise effect — when uncertain, people choose the middle. The left column acts as a price anchor, making the middle feel reasonable. The right column signals that serious buyers are welcome.
+**Pourquoi trois paliers fonctionnent :** L'option centrale bénéficie de l'effet de compromis — en cas d'incertitude, les gens choisissent le milieu. La colonne de gauche agit comme ancrage de prix, rendant le milieu raisonnable. La colonne de droite signale que les acheteurs sérieux sont bienvenus.
 
-### Template 2: Comparison Table
+### Modèle 2 : Tableau comparatif
 
-Best for products with complex feature sets where buyers need to evaluate specific capabilities.
+Idéal pour les produits avec des ensembles de fonctionnalités complexes où les acheteurs doivent évaluer des capacités précises.
 
-| Layout Rule | Implementation |
+| Règle de mise en page | Mise en œuvre |
 |---|---|
-| Sticky header row | Tier names and prices remain visible while scrolling feature rows |
-| Feature grouping | Group features by category (Core, Advanced, Admin, Support) with section headers |
-| Checkmarks vs. specifics | Use checkmarks for boolean features; use specific values (e.g., "50 GB", "Unlimited") for quantitative features |
-| Highlighting | The recommended tier column has a distinct background color |
-| CTA repetition | Place a CTA button at both the top and bottom of the comparison table |
-| Row count | Limit visible rows to 15–20; put the rest under "See all features" toggle |
+| Ligne d'en-tête collante | Les noms de palier et prix restent visibles pendant le défilement des lignes de fonctionnalités |
+| Regroupement des fonctionnalités | Regrouper les fonctionnalités par catégorie (Cœur, Avancé, Admin, Support) avec des en-têtes de section |
+| Coches vs valeurs précises | Utiliser des coches pour les fonctionnalités booléennes ; utiliser des valeurs précises (par exemple, « 50 Go », « Illimité ») pour les fonctionnalités quantitatives |
+| Mise en évidence | La colonne du palier recommandé a une couleur d'arrière-plan distincte |
+| Répétition de l'appel à l'action | Placer un bouton d'appel à l'action en haut et en bas du tableau comparatif |
+| Nombre de lignes | Limiter les lignes visibles à 15-20 ; placer le reste sous une bascule « Voir toutes les fonctionnalités » |
 
-### Template 3: Usage-Based / Calculator
+### Modèle 3 : Basé sur l'usage / Calculateur
 
-Best for infrastructure, API, and consumption-based products.
+Idéal pour les produits d'infrastructure, d'API, et à consommation.
 
-| Component | Purpose | Implementation |
+| Composant | Objectif | Mise en œuvre |
 |---|---|---|
-| Interactive slider or input | Let visitors estimate their usage level | Slider for range; input field for precise amounts |
-| Real-time price calculation | Show monthly cost as usage inputs change | Update price dynamically without page reload |
-| Breakpoint indicators | Show where tier boundaries are | Visual markers on the slider ("You'll move to Growth tier here") |
-| Comparison to alternatives | "This would cost $X with [Competitor]" | Side-by-side only if legally defensible and genuinely cheaper |
-| Starting price anchor | "Starting at $X/month" | Draws attention before the calculator adds complexity |
+| Curseur ou champ de saisie interactif | Laisser les visiteurs estimer leur niveau d'usage | Curseur pour une plage ; champ de saisie pour des montants précis |
+| Calcul de prix en temps réel | Afficher le coût mensuel à mesure que les entrées d'usage changent | Mettre à jour le prix dynamiquement sans rechargement de page |
+| Indicateurs de seuils | Montrer où se situent les limites de palier | Marqueurs visuels sur le curseur (« Vous passerez au palier Growth ici ») |
+| Comparaison aux alternatives | « Cela coûterait X $ avec [Concurrent] » | Comparaison côte à côte uniquement si légalement défendable et réellement moins cher |
+| Ancrage du prix de départ | « À partir de X $/mois » | Attire l'attention avant que le calculateur n'ajoute de la complexité |
 
 ---
 
-## Psychological Principles — With Implementation Examples
+## Principes psychologiques — avec exemples de mise en œuvre
 
-### 1. Anchoring
+### 1. Ancrage
 
-**Principle:** The first number people see heavily influences their perception of subsequent numbers. The anchor doesn't even need to be directly related.
+**Principe :** Le premier chiffre que les gens voient influence fortement leur perception des chiffres suivants. L'ancre n'a même pas besoin d'être directement liée.
 
-| Tactic | Implementation | Example |
+| Tactique | Mise en œuvre | Exemple |
 |---|---|---|
-| High-to-low tier ordering | Display the most expensive tier first (left or top) | Enterprise ($599) → Professional ($199) → Starter ($49) |
-| Original price strikethrough | Show the "normal" price crossed out next to the discounted price | ~~$99/mo~~ $79/mo (billed annually) |
-| Per-unit anchoring | Show the total cost, then break it down per unit | "$299/month — less than $10/user/day" |
-| Competitor comparison | Reference a known expensive alternative | "Salesforce-level CRM at 1/10th the cost" |
-| Annual total shown first | Show annual price before monthly equivalent | "$948/year ($79/mo)" — the large number anchors, then the monthly feels small |
+| Ordre des paliers du plus cher au moins cher | Afficher le palier le plus cher en premier (gauche ou haut) | Enterprise (599 $) → Professional (199 $) → Starter (49 $) |
+| Prix d'origine barré | Afficher le prix « normal » barré à côté du prix réduit | ~~99 $/mois~~ 79 $/mois (facturé annuellement) |
+| Ancrage par unité | Afficher le coût total, puis le décomposer par unité | « 299 $/mois — moins de 10 $/utilisateur/jour » |
+| Comparaison avec un concurrent | Référencer une alternative connue et chère | « Un CRM de niveau Salesforce à 1/10e du coût » |
+| Total annuel affiché en premier | Afficher le prix annuel avant l'équivalent mensuel | « 948 $/an (79 $/mois) » — le grand nombre ancre, puis le mensuel semble petit |
 
-### 2. Charm Pricing
+### 2. Prix charme
 
-**Principle:** Prices ending in 9 or 7 convert better than round numbers in most consumer contexts. However, round numbers signal premium quality.
+**Principe :** Les prix se terminant par 9 ou 7 convertissent mieux que les nombres ronds dans la plupart des contextes grand public. Cependant, les nombres ronds signalent une qualité premium.
 
-| Context | Price Format | Rationale |
+| Contexte | Format de prix | Justification |
 |---|---|---|
-| Consumer SaaS / mass market | $29/mo, $49/mo, $99/mo | Left-digit effect — $49 reads as "forty-something" |
-| Premium / luxury / enterprise | $50/mo, $200/mo, $500/mo | Round numbers signal quality and confidence |
-| E-commerce products | $19.99, $47, $97 | Charm pricing is strongest in transactional contexts |
-| Annual plans | $468/yr ($39/mo) | Show monthly equivalent with charm pricing; annual total can be round |
-| Free trials | $0 (not "Free") | "$0 for 14 days" feels like a price offer, creating perceived value |
+| SaaS grand public / marché de masse | 29 $/mois, 49 $/mois, 99 $/mois | Effet du premier chiffre — 49 $ se lit comme « quarante-quelque chose » |
+| Premium / luxe / entreprise | 50 $/mois, 200 $/mois, 500 $/mois | Les nombres ronds signalent qualité et confiance |
+| Produits e-commerce | 19,99 $, 47 $, 97 $ | Le prix charme est le plus puissant dans les contextes transactionnels |
+| Plans annuels | 468 $/an (39 $/mois) | Afficher l'équivalent mensuel avec un prix charme ; le total annuel peut être rond |
+| Essais gratuits | 0 $ (pas « Gratuit ») | « 0 $ pendant 14 jours » ressemble à une offre de prix, créant une valeur perçue |
 
-### 3. Decoy Effect (Asymmetric Dominance)
+### 3. Effet leurre (dominance asymétrique)
 
-**Principle:** Introducing a third option that is clearly worse than one of the existing options (but similar in price) makes the better option look more attractive.
+**Principe :** Introduire une troisième option clairement inférieure à l'une des options existantes (mais similaire en prix) rend la meilleure option plus attrayante.
 
-| Tier | Price | Features | Role |
+| Palier | Prix | Fonctionnalités | Rôle |
 |---|---|---|---|
-| Basic | $29/mo | 5 users, 10 GB, email support | Budget anchor |
-| Professional | $79/mo | 25 users, 100 GB, priority support | Target tier (the one you want them to buy) |
-| Professional Plus (Decoy) | $74/mo | 10 users, 50 GB, priority support | Decoy — almost the same price as Professional but clearly inferior |
+| Basic | 29 $/mois | 5 utilisateurs, 10 Go, support par e-mail | Ancre budget |
+| Professional | 79 $/mois | 25 utilisateurs, 100 Go, support prioritaire | Palier cible (celui que vous voulez qu'ils achètent) |
+| Professional Plus (leurre) | 74 $/mois | 10 utilisateurs, 50 Go, support prioritaire | Leurre — presque le même prix que Professional mais clairement inférieur |
 
-*In this example, Professional Plus makes Professional look like an obvious bargain. The $5 difference gets you 15 more users and 50 more GB.*
+*Dans cet exemple, Professional Plus fait paraître Professional comme une évidente affaire. Les 5 $ de différence vous donnent 15 utilisateurs et 50 Go de plus.*
 
-### 4. Loss Aversion
+### 4. Aversion à la perte
 
-**Principle:** People feel the pain of losing something roughly twice as intensely as the pleasure of gaining the equivalent. Frame pricing around what they will lose by not acting.
+**Principe :** Les gens ressentent la douleur de perdre quelque chose environ deux fois plus intensément que le plaisir d'obtenir l'équivalent. Cadrez la tarification autour de ce qu'ils perdront en n'agissant pas.
 
-| Tactic | Example | Context |
+| Tactique | Exemple | Contexte |
 |---|---|---|
-| Cost of inaction | "Companies without this spend an average of 12 hours/week on manual reporting" | B2B SaaS |
-| Trial expiration framing | "Your workspace and data will be archived in 3 days" | Free trial conversion |
-| Feature comparison | "On Basic, you won't have access to: [list of specific valuable features]" | Upsell to higher tier |
-| Grandfathered pricing | "Lock in this price — it increases to $X for new customers on [date]" | Annual plan conversion |
-| Savings calculator | "You'll save $2,400/year compared to your current solution" | Competitive displacement |
+| Coût de l'inaction | « Les entreprises sans cet outil passent en moyenne 12 heures/semaine en reporting manuel » | SaaS B2B |
+| Cadrage de l'expiration d'essai | « Votre espace de travail et vos données seront archivés dans 3 jours » | Conversion d'essai gratuit |
+| Comparaison de fonctionnalités | « Sur Basic, vous n'aurez pas accès à : [liste de fonctionnalités précieuses précises] » | Vente incitative vers un palier supérieur |
+| Tarification héritée (grandfathered) | « Verrouillez ce prix — il passe à X $ pour les nouveaux clients à partir du [date] » | Conversion vers un plan annuel |
+| Calculateur d'économies | « Vous économiserez 2 400 $/an par rapport à votre solution actuelle » | Déplacement concurrentiel |
 
-### 5. Price Partitioning
+### 5. Partitionnement du prix
 
-**Principle:** Breaking a total price into smaller components makes it feel more affordable — but only when each component feels justified.
+**Principe :** Décomposer un prix total en composantes plus petites le fait paraître plus abordable — mais seulement lorsque chaque composante semble justifiée.
 
-| Approach | Example | When It Works |
+| Approche | Exemple | Quand cela fonctionne |
 |---|---|---|
-| Per-user pricing | "$12/user/month" instead of "$600/month for your team" | When teams vary in size and the per-unit cost is low |
-| Per-day breakdown | "Less than $2/day" instead of "$59/month" | Consumer subscriptions; emphasizes affordability |
-| Base + add-ons | "$49/mo base + $10/mo per add-on module" | When product has modular capabilities |
-| Setup fee separated | "$99 setup + $29/mo" | When the ongoing cost is the key comparison point |
+| Tarification par utilisateur | « 12 $/utilisateur/mois » plutôt que « 600 $/mois pour votre équipe » | Quand les équipes varient en taille et que le coût par unité est faible |
+| Décomposition par jour | « Moins de 2 $/jour » plutôt que « 59 $/mois » | Abonnements grand public ; met l'accent sur l'accessibilité |
+| Base + modules | « 49 $/mois de base + 10 $/mois par module complémentaire » | Quand le produit a des capacités modulaires |
+| Frais d'installation séparés | « 99 $ d'installation + 29 $/mois » | Quand le coût récurrent est le point de comparaison clé |
 
-### 6. Endowment Effect
+### 6. Effet de dotation
 
-**Principle:** People overvalue things they already possess or feel ownership of. The goal is to create a sense of ownership before the payment decision.
+**Principe :** Les gens surévaluent les choses qu'ils possèdent déjà ou dont ils se sentent propriétaires. L'objectif est de créer un sentiment d'appropriation avant la décision de paiement.
 
-| Tactic | Implementation |
+| Tactique | Mise en œuvre |
 |---|---|
-| Free trial with full features | Give access to the top tier during trial — downgrading feels like loss |
-| Personalized onboarding | Invested setup time creates switching cost before payment |
-| "Your" language | "Your dashboard", "Your team's data", "Your reports" — not "the" |
-| Data accumulation | The longer the trial, the more data they have in the system and the harder it is to leave |
+| Essai gratuit avec fonctionnalités complètes | Donner accès au palier supérieur pendant l'essai — rétrograder ressemble à une perte |
+| Intégration personnalisée | Le temps de configuration investi crée un coût de changement avant le paiement |
+| Langage « votre » | « Votre tableau de bord », « Les données de votre équipe », « Vos rapports » — pas « le/la » |
+| Accumulation de données | Plus l'essai est long, plus ils ont de données dans le système, et plus il est difficile de partir |
 
 ---
 
-## Tier Structure Frameworks
+## Cadres de structure de paliers
 
-### Framework 1: Feature Gating
+### Cadre 1 : Verrouillage de fonctionnalités
 
-Gate access to specific features at each tier. Best for products with distinct feature modules.
+Verrouiller l'accès à des fonctionnalités précises à chaque palier. Idéal pour les produits avec des modules de fonctionnalités distincts.
 
-| Decision Criteria | Gate at Higher Tier | Include in All Tiers |
+| Critère de décision | Verrouiller au palier supérieur | Inclure dans tous les paliers |
 |---|---|---|
-| Used by all customers daily | — | Yes |
-| Used by power users or large teams | Yes | — |
-| Competitive differentiator | — | Yes (it drives acquisition) |
-| High infrastructure cost to you | Yes | — |
-| Generates clear ROI for the customer | Yes (they will pay for the value) | — |
+| Utilisé par tous les clients quotidiennement | — | Oui |
+| Utilisé par les utilisateurs avancés ou grandes équipes | Oui | — |
+| Différenciateur concurrentiel | — | Oui (cela stimule l'acquisition) |
+| Coût d'infrastructure élevé pour vous | Oui | — |
+| Génère un ROI clair pour le client | Oui (ils paieront pour cette valeur) | — |
 
-### Framework 2: Usage/Volume Limits
+### Cadre 2 : Limites d'usage/volume
 
-Gate based on usage volume. Best for metered or consumption-based products.
+Verrouillage basé sur le volume d'usage. Idéal pour les produits mesurés ou à consommation.
 
-| Tier | Usage Limit | Overage Handling |
+| Palier | Limite d'usage | Gestion des dépassements |
 |---|---|---|
-| Free / Starter | Hard cap (e.g., 100 records) | Must upgrade to continue |
-| Growth | Generous limit (e.g., 10,000 records) | Soft limit with notification + auto-upgrade option |
-| Enterprise | Unlimited or negotiated | Custom contract |
+| Free / Starter | Plafond strict (par exemple, 100 enregistrements) | Doit mettre à niveau pour continuer |
+| Growth | Limite généreuse (par exemple, 10 000 enregistrements) | Limite souple avec notification + option de mise à niveau automatique |
+| Enterprise | Illimité ou négocié | Contrat personnalisé |
 
-### Framework 3: Support/SLA Tiering
+### Cadre 3 : Paliers de support/SLA
 
-Same product, different service levels. Best for infrastructure and platform products.
+Même produit, différents niveaux de service. Idéal pour les produits d'infrastructure et de plateforme.
 
-| Tier | Support Level | SLA | Price Premium |
+| Palier | Niveau de support | SLA | Prime de prix |
 |---|---|---|---|
-| Standard | Community + email (48h response) | 99.5% uptime | Base price |
-| Premium | Priority email (4h) + chat | 99.9% uptime | 2–3x base |
-| Enterprise | Dedicated CSM + phone + Slack | 99.99% uptime + custom SLA | 5–10x base |
+| Standard | Communauté + e-mail (réponse sous 48h) | 99,5 % de disponibilité | Prix de base |
+| Premium | E-mail prioritaire (4h) + chat | 99,9 % de disponibilité | 2 à 3 fois le prix de base |
+| Enterprise | CSM dédié + téléphone + Slack | 99,99 % de disponibilité + SLA personnalisé | 5 à 10 fois le prix de base |
 
 ---
 
-## Free Trial vs. Freemium Decision Tree
+## Arbre de décision essai gratuit vs freemium
 
-| Question | If Yes → | If No → |
+| Question | Si oui → | Si non → |
 |---|---|---|
-| Can users experience core value within 14 days? | Free Trial | Freemium |
-| Is your product complex with a learning curve >1 week? | Freemium (needs more time) | Free Trial |
-| Do you have a self-serve onboarding flow? | Either works | Free Trial with guided setup |
-| Is your ARPU >$100/month? | Free Trial (higher intent users) | Freemium (volume acquisition) |
-| Do free users generate network effects or content? | Freemium (free users add value) | Free Trial |
-| Is your market highly competitive with many alternatives? | Freemium (lower barrier) | Free Trial |
-| Do you have the infrastructure to support free users at scale? | Freemium | Free Trial |
+| Les utilisateurs peuvent-ils expérimenter la valeur clé en 14 jours ? | Essai gratuit | Freemium |
+| Votre produit est-il complexe avec une courbe d'apprentissage >1 semaine ? | Freemium (nécessite plus de temps) | Essai gratuit |
+| Avez-vous un flux d'intégration en libre-service ? | Les deux fonctionnent | Essai gratuit avec configuration guidée |
+| Votre ARPU est-il >100 $/mois ? | Essai gratuit (utilisateurs à plus forte intention) | Freemium (acquisition en volume) |
+| Les utilisateurs gratuits génèrent-ils des effets de réseau ou du contenu ? | Freemium (les utilisateurs gratuits ajoutent de la valeur) | Essai gratuit |
+| Votre marché est-il très concurrentiel avec de nombreuses alternatives ? | Freemium (barrière plus faible) | Essai gratuit |
+| Avez-vous l'infrastructure pour soutenir des utilisateurs gratuits à grande échelle ? | Freemium | Essai gratuit |
 
-**Hybrid approach:** Offer a time-limited free trial of the premium tier, then downgrade to a free plan. The user experiences premium, loses it (loss aversion), and is motivated to upgrade.
+**Approche hybride :** Proposer un essai gratuit à durée limitée du palier premium, puis rétrograder vers un plan gratuit. L'utilisateur expérimente le premium, le perd (aversion à la perte), et est motivé à passer à niveau supérieur.
 
 ---
 
-## Annual vs. Monthly Display Tactics
+## Tactiques d'affichage annuel vs mensuel
 
-| Tactic | Implementation | Psychological Mechanism |
+| Tactique | Mise en œuvre | Mécanisme psychologique |
 |---|---|---|
-| Show monthly price, bill annually | "$39/mo (billed annually at $468)" | Lower monthly anchor; annual total is secondary |
-| Default to annual toggle | Annual tab is pre-selected on page load | Default bias — most users accept the default |
-| Savings badge | "Save 20%" badge on the annual option | Explicit gain framing |
-| Monthly penalty framing | Show monthly as the higher price: "$49/mo or $39/mo billed annually" | Loss aversion — monthly feels like overpaying |
-| Annual-only deep discount | Offer 30–40% off for annual, but only display it alongside monthly | Creates urgency and a clear value gap |
+| Afficher le prix mensuel, facturer annuellement | « 39 $/mois (facturé annuellement à 468 $) » | Ancre mensuelle plus basse ; le total annuel est secondaire |
+| Bascule par défaut sur l'annuel | L'onglet annuel est présélectionné au chargement de la page | Biais du défaut — la plupart des utilisateurs acceptent le défaut |
+| Badge d'économies | Badge « Économisez 20 % » sur l'option annuelle | Cadrage explicite du gain |
+| Cadrage de pénalité mensuelle | Afficher le mensuel comme le prix le plus élevé : « 49 $/mois ou 39 $/mois facturé annuellement » | Aversion à la perte — le mensuel paraît comme une surpaie |
+| Remise profonde réservée à l'annuel | Offrir 30 à 40 % de réduction pour l'annuel, mais ne l'afficher qu'à côté du mensuel | Crée l'urgence et un écart de valeur clair |
 
-**Benchmark:** Best-in-class SaaS companies achieve 40–60% annual plan adoption on their pricing page. If yours is below 30%, the display tactics above can close the gap.
+**Repère :** Les meilleures entreprises SaaS atteignent 40 à 60 % d'adoption du plan annuel sur leur page de tarification. Si la vôtre est en dessous de 30 %, les tactiques d'affichage ci-dessus peuvent combler l'écart.
 
 ---
 
-## Enterprise "Contact Sales" Optimization
+## Optimisation du « Contacter les ventes » pour l'entreprise
 
-The "Contact Sales" CTA is one of the highest-friction conversion points on any pricing page. These tactics reduce friction while maintaining qualification.
+L'appel à l'action « Contacter les ventes » est l'un des points de conversion à plus forte friction sur toute page de tarification. Ces tactiques réduisent la friction tout en maintenant la qualification.
 
-| Optimization | Implementation | Impact |
+| Optimisation | Mise en œuvre | Impact |
 |---|---|---|
-| Replace "Contact Sales" with "Get a Custom Quote" | Reframe around what the buyer receives, not what they must do | 10–25% more clicks |
-| Add starting price indicator | "Starting at $X/user/month for 100+ seats" | Sets expectations; filters unqualified leads |
-| Show the sales process | "15-minute call → Custom demo → Quote in 24 hours" | Reduces uncertainty about what happens next |
-| Inline qualification form | 3–4 fields right on the pricing page instead of a separate page | Reduces drop-off from page transition |
-| Calendar embed | Embed Calendly/HubSpot scheduling directly | Eliminates the "wait for a sales rep to email you" gap |
-| Social proof specific to enterprise | "Trusted by 200+ companies with 1,000+ employees" | Validates that enterprise buyers choose this product |
+| Remplacer « Contacter les ventes » par « Obtenir un devis personnalisé » | Recadrer autour de ce que l'acheteur reçoit, pas de ce qu'il doit faire | 10 à 25 % de clics en plus |
+| Ajouter un indicateur de prix de départ | « À partir de X $/utilisateur/mois pour 100+ postes » | Fixe les attentes ; filtre les leads non qualifiés |
+| Montrer le processus de vente | « Appel de 15 minutes → Démo personnalisée → Devis sous 24 heures » | Réduit l'incertitude sur ce qui se passe ensuite |
+| Formulaire de qualification en ligne | 3-4 champs directement sur la page de tarification au lieu d'une page séparée | Réduit l'abandon lié à la transition de page |
+| Intégration de calendrier | Intégrer directement la planification Calendly/HubSpot | Élimine l'attente d'un e-mail d'un commercial |
+| Preuve sociale spécifique à l'entreprise | « La confiance de 200+ entreprises de 1 000+ employés » | Valide que les acheteurs entreprise choisissent ce produit |
 
 ---
 
-## Social Proof on Pricing Pages
+## Preuve sociale sur les pages de tarification
 
-### Placement Strategy
+### Stratégie de placement
 
-| Location | Social Proof Type | Purpose |
+| Emplacement | Type de preuve sociale | Objectif |
 |---|---|---|
-| Above pricing table | Total customer count or notable logos | Establish credibility before price evaluation |
-| Next to recommended tier | Testimonial from an ICP customer on that tier | Validate the specific plan choice |
-| Below pricing table | Case study snippet with quantified ROI | Justify the investment with concrete returns |
-| Near "Contact Sales" | Enterprise customer logo cluster | Signal that large companies trust this product |
-| Footer / FAQ area | Review scores (G2, Capterra, Trustpilot) | Third-party validation for buyers doing due diligence |
+| Au-dessus du tableau de tarification | Nombre total de clients ou logos notables | Établir la crédibilité avant l'évaluation du prix |
+| À côté du palier recommandé | Témoignage d'un client ICP sur ce palier | Valider le choix du plan précis |
+| Sous le tableau de tarification | Extrait d'étude de cas avec ROI chiffré | Justifier l'investissement avec des retours concrets |
+| Près de « Contacter les ventes » | Groupe de logos de clients entreprise | Signaler que les grandes entreprises font confiance à ce produit |
+| Pied de page / zone FAQ | Scores d'avis (G2, Capterra, Trustpilot) | Validation par un tiers pour les acheteurs en phase de diligence raisonnable |
 
-### Social Proof Hierarchy (Strongest to Weakest)
+### Hiérarchie de la preuve sociale (du plus fort au plus faible)
 
-| Rank | Type | Example | Impact |
+| Rang | Type | Exemple | Impact |
 |---|---|---|---|
-| 1 | Quantified customer results | "Reduced churn by 34% in 90 days — Acme Corp" | Highest — ties directly to ROI |
-| 2 | Named testimonial with photo | "This tool changed how we work" — Jane Doe, VP Marketing, Acme | High — specific and personal |
-| 3 | Customer count | "Trusted by 12,000+ companies" | Moderate — bandwagon effect |
-| 4 | Logo bar | Recognizable brand logos | Moderate — authority by association |
-| 5 | Star ratings / review counts | "4.8/5 on G2 (500+ reviews)" | Moderate — third-party credibility |
-| 6 | Generic testimonial | "Great product!" — J.D. | Low — unverifiable and vague |
+| 1 | Résultats clients chiffrés | « A réduit le churn de 34 % en 90 jours — Acme Corp » | Le plus élevé — lié directement au ROI |
+| 2 | Témoignage nommé avec photo | « Cet outil a changé notre façon de travailler » — Jane Doe, VP Marketing, Acme | Élevé — précis et personnel |
+| 3 | Nombre de clients | « La confiance de 12 000+ entreprises » | Modéré — effet d'entraînement |
+| 4 | Bandeau de logos | Logos de marques reconnaissables | Modéré — autorité par association |
+| 5 | Notes en étoiles / nombre d'avis | « 4,8/5 sur G2 (500+ avis) » | Modéré — crédibilité tierce |
+| 6 | Témoignage générique | « Excellent produit ! » — J.D. | Faible — invérifiable et vague |
 
 ---
 
-## Pricing Page Conversion Benchmarks
+## Repères de conversion de la page de tarification
 
-| Metric | Below Average | Average | Above Average | Best-in-Class |
+| Indicateur | En dessous de la moyenne | Moyenne | Au-dessus de la moyenne | Excellence |
 |---|---|---|---|---|
-| Pricing page → signup/trial | <5% | 5–10% | 10–20% | 20%+ |
-| Pricing page → Contact Sales | <1% | 1–3% | 3–6% | 6%+ |
-| Annual plan selection rate | <20% | 20–35% | 35–55% | 55%+ |
-| Pricing page bounce rate | >70% | 50–70% | 30–50% | <30% |
-| Time on pricing page | <30s (confusion) | 1–3 min | 3–5 min | 2–4 min (decisive) |
+| Page de tarification → inscription/essai | <5 % | 5-10 % | 10-20 % | 20 %+ |
+| Page de tarification → Contacter les ventes | <1 % | 1-3 % | 3-6 % | 6 %+ |
+| Taux de sélection du plan annuel | <20 % | 20-35 % | 35-55 % | 55 %+ |
+| Taux de rebond de la page de tarification | >70 % | 50-70 % | 30-50 % | <30 % |
+| Temps passé sur la page de tarification | <30s (confusion) | 1-3 min | 3-5 min | 2-4 min (décisif) |
 
-*Note: Very high time on pricing page (>5 min) often signals confusion rather than engagement. Pair with scroll depth and heatmap data to diagnose.*
+*Remarque : un temps très élevé sur la page de tarification (>5 min) signale souvent de la confusion plutôt que de l'engagement. À combiner avec les données de profondeur de défilement et de carte de chaleur pour diagnostiquer.*
+</content>

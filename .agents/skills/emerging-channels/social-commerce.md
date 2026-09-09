@@ -1,254 +1,254 @@
-# Social Commerce — Platform Setup & Strategy
+# Commerce social — Mise en place & stratégie par plateforme
 
-> Social commerce removes the friction between discovery and purchase. Instead of redirecting users to a website, they browse, evaluate, and buy without leaving the social platform. This guide covers setup, optimization, and strategy for every major social commerce channel.
+> Le commerce social supprime la friction entre découverte et achat. Au lieu de rediriger les utilisateurs vers un site web, ils parcourent, évaluent, et achètent sans quitter la plateforme sociale. Ce guide couvre la mise en place, l'optimisation, et la stratégie pour tous les principaux canaux de commerce social.
 
 ---
 
-## Platform Comparison
+## Comparaison des plateformes
 
-| Platform | Commerce Feature | Monthly Active Users | Commission | Checkout Location | Best For |
+| Plateforme | Fonctionnalité commerce | Utilisateurs actifs mensuels | Commission | Emplacement du paiement | Idéal pour |
 |----------|-----------------|---------------------|-----------|-------------------|----------|
-| **Instagram Shopping** | Product Tags, Shop Tab, Checkout | 2B+ | 5% (in-app checkout) or 0% (website redirect) | In-app or website | Fashion, beauty, lifestyle, DTC |
-| **TikTok Shop** | In-feed shopping, LIVE shopping, Shop Tab | 1.5B+ | 2-8% (category-dependent) | In-app | Trending products, Gen Z, viral items |
-| **Facebook Shops** | Full storefront, Checkout | 3B+ | 5% (in-app) or 0% (website redirect) | In-app or website | Broad demographics, SMBs |
-| **Pinterest Shopping** | Product Pins, Shop Tab, Catalogs | 450M+ | 0% (website redirect only) | Website | Home, fashion, food, wedding, DIY |
-| **YouTube Shopping** | Product shelf, end screens, live shopping | 2.5B+ | Varies (affiliate or direct) | In-app or website | Tech, beauty, reviews, tutorials |
-| **Snapchat** | AR Try-On, Dynamic Ads | 750M+ | 0% (website redirect) | Website | Gen Z, beauty, fashion, AR-forward brands |
+| **Instagram Shopping** | Tags produit, onglet Boutique, Checkout | 2 Mds+ | 5 % (paiement dans l'app) ou 0 % (redirection site web) | Dans l'app ou site web | Mode, beauté, lifestyle, DTC |
+| **TikTok Shop** | Shopping in-feed, live shopping, onglet Boutique | 1,5 Md+ | 2-8 % (selon la catégorie) | Dans l'app | Produits tendance, Gen Z, articles viraux |
+| **Facebook Shops** | Vitrine complète, Checkout | 3 Mds+ | 5 % (dans l'app) ou 0 % (redirection site web) | Dans l'app ou site web | Démographie large, PME |
+| **Pinterest Shopping** | Épingles produit, onglet Boutique, catalogues | 450 M+ | 0 % (redirection site web uniquement) | Site web | Maison, mode, alimentation, mariage, bricolage |
+| **YouTube Shopping** | Étagère produit, écrans de fin, live shopping | 2,5 Mds+ | Variable (affiliation ou direct) | Dans l'app ou site web | Tech, beauté, avis, tutoriels |
+| **Snapchat** | Essayage AR, publicités dynamiques | 750 M+ | 0 % (redirection site web) | Site web | Gen Z, beauté, mode, marques axées AR |
 
 ---
 
-## Instagram Shopping — Complete Setup
+## Instagram Shopping — Mise en place complète
 
-### Prerequisites
-- Instagram Business or Creator account
-- Connected Facebook Page
-- Facebook Commerce Manager account
-- Product catalog (manual, Shopify, WooCommerce, or partner platform)
-- Compliance with Instagram Commerce Policies
+### Prérequis
+- Compte Instagram professionnel ou créateur
+- Page Facebook connectée
+- Compte Facebook Commerce Manager
+- Catalogue produit (manuel, Shopify, WooCommerce, ou plateforme partenaire)
+- Conformité avec les politiques commerce d'Instagram
 
-### Setup Steps
+### Étapes de mise en place
 
-| Step | Action | Details |
+| Étape | Action | Détails |
 |------|--------|---------|
-| 1 | Connect to Commerce Manager | Business Settings → Commerce Manager → Create Catalog |
-| 2 | Upload product catalog | Manual (CSV), Shopify/BigCommerce sync, or Meta Pixel auto-detection |
-| 3 | Submit for Commerce review | Instagram Settings → Business → Shopping → Submit |
-| 4 | Enable Shopping features | Once approved, access Product Tagging in posts, Stories, Reels |
-| 5 | Set up Shop layout | Commerce Manager → Shops → Customize layout, collections, featured products |
+| 1 | Se connecter à Commerce Manager | Paramètres de l'entreprise → Commerce Manager → Créer un catalogue |
+| 2 | Téléverser le catalogue produit | Manuel (CSV), synchronisation Shopify/BigCommerce, ou détection auto par Meta Pixel |
+| 3 | Soumettre pour revue commerce | Paramètres Instagram → Entreprise → Shopping → Soumettre |
+| 4 | Activer les fonctionnalités Shopping | Une fois approuvé, accéder au tag produit dans les posts, Stories, Reels |
+| 5 | Configurer la mise en page de la Boutique | Commerce Manager → Boutiques → Personnaliser la mise en page, collections, produits en vedette |
 
-### Instagram Shopping Content Strategy
+### Stratégie de contenu Instagram Shopping
 
-| Content Type | Commerce Feature | Best Practice |
+| Type de contenu | Fonctionnalité commerce | Bonne pratique |
 |-------------|-----------------|---------------|
-| Feed Posts | Product Tags (up to 5 per image) | Lifestyle imagery with natural product integration |
-| Stories | Product Stickers | Show product in use, swipe-up to shop |
-| Reels | Product Tags | Trending audio + product showcase, 15-30 seconds |
-| Shop Tab | Full storefront + Collections | Organize into collections ("Top 10 Summer Essentials"), feature seasonal items |
+| Posts du fil | Tags produit (jusqu'à 5 par image) | Imagerie d'ambiance avec intégration naturelle du produit |
+| Stories | Stickers produit | Montrer le produit en usage, glisser vers le haut pour acheter |
+| Reels | Tags produit | Audio tendance + mise en avant du produit, 15-30 secondes |
+| Onglet Boutique | Vitrine complète + collections | Organiser en collections (« Top 10 des essentiels de l'été »), mettre en avant les articles saisonniers |
 
-### Product Listing Optimization (Instagram)
+### Optimisation des fiches produit (Instagram)
 
-| Element | Best Practice |
+| Élément | Bonne pratique |
 |---------|--------------|
-| Product title | Clear, descriptive, include key attributes (color, size, material) |
-| Description | Benefit-led first sentence, key specs, sizing info, care instructions |
-| Images | Minimum 4 images: lifestyle, flat lay, detail, scale reference |
-| Pricing | Display sale prices prominently; use "was/now" format |
-| Variants | List all available sizes, colors, configurations |
-| Collections | Group products thematically (New Arrivals, Best Sellers, Under $50) |
+| Titre du produit | Clair, descriptif, incluant les attributs clés (couleur, taille, matériau) |
+| Description | Première phrase axée bénéfice, spécifications clés, infos de taille, instructions d'entretien |
+| Images | Minimum 4 images : ambiance, à plat, détail, référence d'échelle |
+| Tarification | Afficher les prix soldés bien en évidence ; utiliser le format « avant/maintenant » |
+| Variantes | Lister toutes les tailles, couleurs, configurations disponibles |
+| Collections | Regrouper les produits thématiquement (Nouveautés, Meilleures ventes, Moins de 50 $) |
 
 ---
 
-## TikTok Shop — Setup & Strategy
+## TikTok Shop — Mise en place & stratégie
 
-### Setup Steps
+### Étapes de mise en place
 
-| Step | Action | Details |
+| Étape | Action | Détails |
 |------|--------|---------|
-| 1 | Apply for TikTok Shop Seller | seller.tiktok.com → register business account |
-| 2 | Verify business | Upload business license, ID verification |
-| 3 | Upload product catalog | Manual or sync with Shopify, WooCommerce |
-| 4 | Set up shipping and returns | Configure shipping templates, return policy |
-| 5 | Link to TikTok account | Connect Shop to your TikTok creator/business account |
-| 6 | Enable affiliate program | Optional: allow creators to earn commission promoting your products |
+| 1 | Postuler en tant que vendeur TikTok Shop | seller.tiktok.com → enregistrer un compte entreprise |
+| 2 | Vérifier l'entreprise | Téléverser la licence commerciale, vérification d'identité |
+| 3 | Téléverser le catalogue produit | Manuel ou synchronisation avec Shopify, WooCommerce |
+| 4 | Configurer expédition et retours | Configurer les modèles d'expédition, la politique de retour |
+| 5 | Lier au compte TikTok | Connecter la Boutique à votre compte créateur/entreprise TikTok |
+| 6 | Activer le programme d'affiliation | Optionnel : permettre aux créateurs de gagner une commission en promouvant vos produits |
 
-### TikTok Shop Content Strategy
+### Stratégie de contenu TikTok Shop
 
-| Format | Details | Conversion Potential |
+| Format | Détails | Potentiel de conversion |
 |--------|---------|---------------------|
-| **Shoppable Videos** | Tag products in organic TikToks; product link appears at bottom | Medium (discovery-driven) |
-| **TikTok LIVE Shopping** | Pin products during live stream, real-time demos and Q&A | High (urgency + interaction) |
-| **Shop Tab** | Storefront accessible from your profile | Medium (browse-driven) |
-| **Affiliate Creator Content** | Creators feature your products with commission links | High (trust + reach) |
-| **Spark Ads** | Boost organic posts that feature Shop products | High (paid amplification) |
+| **Vidéos shoppables** | Taguer les produits dans les TikToks organiques ; le lien produit apparaît en bas | Moyen (porté par la découverte) |
+| **TikTok LIVE Shopping** | Épingler les produits pendant le live, démos et Q&R en temps réel | Élevé (urgence + interaction) |
+| **Onglet Boutique** | Vitrine accessible depuis votre profil | Moyen (porté par la navigation) |
+| **Contenu créateur affilié** | Les créateurs présentent vos produits avec des liens à commission | Élevé (confiance + portée) |
+| **Spark Ads** | Booster les posts organiques mettant en avant des produits de la Boutique | Élevé (amplification payante) |
 
-### TikTok Shop Best Practices
-1. **Product-market fit matters most.** TikTok Shop thrives with impulse-friendly, visually demonstrable products under $50
-2. **Leverage the affiliate program.** Enable commissions (10-20%) and recruit micro-creators
-3. **Go LIVE regularly.** 2-3x per week minimum for algorithm favor and direct sales
-4. **Hook in 1 second.** Video must capture attention immediately — lead with the product in action
-5. **Use trending sounds.** Algorithm boosts content that uses trending audio
-6. **Show, don't tell.** Demonstrations and transformations outperform talking-head reviews
+### Bonnes pratiques TikTok Shop
+1. **L'adéquation produit-marché compte le plus.** TikTok Shop prospère avec des produits propices à l'achat impulsif, visuellement démontrables, à moins de 50 $
+2. **Exploiter le programme d'affiliation.** Activer des commissions (10-20 %) et recruter des micro-créateurs
+3. **Passer en LIVE régulièrement.** 2-3x par semaine minimum pour bénéficier de l'algorithme et des ventes directes
+4. **Accrocher en 1 seconde.** La vidéo doit capter l'attention immédiatement — commencer par le produit en action
+5. **Utiliser des sons tendance.** L'algorithme booste le contenu utilisant de l'audio tendance
+6. **Montrer, ne pas raconter.** Les démonstrations et transformations surperforment les avis en tête-à-caméra
 
 ---
 
 ## Facebook Shops
 
-### Setup
-- Created through Facebook Commerce Manager (same catalog as Instagram)
-- Customize Shop layout: collections, featured products, brand story
-- Enable Checkout on Facebook (in-app) or redirect to website
+### Mise en place
+- Créé via Facebook Commerce Manager (même catalogue qu'Instagram)
+- Personnaliser la mise en page de la Boutique : collections, produits en vedette, histoire de la marque
+- Activer le paiement sur Facebook (dans l'app) ou rediriger vers le site web
 
-### Facebook Shop Optimization
+### Optimisation Facebook Shop
 
-| Element | Best Practice |
+| Élément | Bonne pratique |
 |---------|--------------|
-| Shop layout | Feature hero collection at top, seasonal collections, "Best Sellers" |
-| Product images | Lifestyle-first (not white background — Facebook is a social environment) |
-| Descriptions | Conversational tone, benefits-first, size/fit guides |
-| Customer messages | Enable Messenger for pre-purchase questions |
-| Ads integration | Use Dynamic Product Ads to retarget Shop viewers |
+| Mise en page de la boutique | Mettre en avant la collection phare en haut, les collections saisonnières, « Meilleures ventes » |
+| Images produit | Ambiance en premier (pas de fond blanc — Facebook est un environnement social) |
+| Descriptions | Ton conversationnel, bénéfices en premier, guides de taille/coupe |
+| Messages clients | Activer Messenger pour les questions pré-achat |
+| Intégration publicitaire | Utiliser les publicités produit dynamiques pour retargeter les visiteurs de la Boutique |
 
 ---
 
 ## Pinterest Shopping
 
-### Setup Steps
+### Étapes de mise en place
 
-| Step | Action |
+| Étape | Action |
 |------|--------|
-| 1 | Convert to Pinterest Business account |
-| 2 | Claim your website (meta tag or HTML file) |
-| 3 | Upload product catalog (Catalogs → Data Source → auto-feed or manual) |
-| 4 | Enable Rich Pins (auto-sync price, availability, descriptions) |
-| 5 | Apply for Verified Merchant Program (blue checkmark + Shop tab) |
-| 6 | Organize products into Pin boards matching catalog categories |
+| 1 | Convertir en compte Pinterest Business |
+| 2 | Revendiquer votre site web (balise meta ou fichier HTML) |
+| 3 | Téléverser le catalogue produit (Catalogues → Source de données → flux auto ou manuel) |
+| 4 | Activer les Rich Pins (synchronisation auto du prix, disponibilité, descriptions) |
+| 5 | Postuler au programme marchand vérifié (coche bleue + onglet Boutique) |
+| 6 | Organiser les produits en tableaux d'épingles correspondant aux catégories du catalogue |
 
-### Pinterest Shopping Strategy
+### Stratégie Pinterest Shopping
 
-| Tactic | Details |
+| Tactique | Détails |
 |--------|---------|
-| Catalog Pins | Auto-generated from product feed; keep feed fresh and accurate |
-| Pins with Product Tags | Create styled content and tag featured products |
-| Shopping Ads | Promote product Pins to appear in search and home feed |
-| Collections Ads | Showcase lifestyle hero image with tagged products below |
-| Trends tool | Use Pinterest Trends to align products with seasonal search demand |
-| SEO | Pinterest is a visual search engine — optimize Pin descriptions, board names, alt text |
+| Épingles de catalogue | Générées automatiquement à partir du flux produit ; garder le flux frais et exact |
+| Épingles avec tags produit | Créer du contenu stylisé et taguer les produits mis en avant |
+| Shopping Ads | Promouvoir les épingles produit pour qu'elles apparaissent dans la recherche et le fil d'accueil |
+| Publicités de collections | Mettre en avant une image hero d'ambiance avec des produits tagués en dessous |
+| Outil Tendances | Utiliser Pinterest Trends pour aligner les produits avec la demande de recherche saisonnière |
+| SEO | Pinterest est un moteur de recherche visuel — optimiser les descriptions d'épingle, noms de tableau, texte alternatif |
 
 ---
 
 ## YouTube Shopping
 
-### Setup Requirements
-- YouTube Partner Program membership (1,000 subscribers + 4,000 watch hours)
-- Google Merchant Center account with product feed
-- Link Merchant Center to YouTube channel
+### Exigences de mise en place
+- Adhésion au programme partenaire YouTube (1 000 abonnés + 4 000 heures de visionnage)
+- Compte Google Merchant Center avec flux produit
+- Lier Merchant Center à la chaîne YouTube
 
-### YouTube Shopping Features
+### Fonctionnalités YouTube Shopping
 
-| Feature | Description | Where It Appears |
+| Fonctionnalité | Description | Où elle apparaît |
 |---------|-------------|-----------------|
-| Product shelf | Row of tagged products below video | Video watch page |
-| End screen products | Product cards in last 20 seconds | End of video |
-| Live shopping | Pin products during live stream | Live stream interface |
-| Shorts shopping | Tag products in YouTube Shorts | Shorts player |
-| Store tab | Full product catalog on channel page | Channel page tab |
+| Étagère produit | Rangée de produits tagués sous la vidéo | Page de visionnage de la vidéo |
+| Produits sur écran de fin | Cartes produit dans les 20 dernières secondes | Fin de la vidéo |
+| Live shopping | Épingler des produits pendant le live | Interface du live |
+| Shopping sur Shorts | Taguer des produits dans les YouTube Shorts | Lecteur de Shorts |
+| Onglet Boutique | Catalogue produit complet sur la page de chaîne | Onglet de la page de chaîne |
 
-### YouTube Shopping Content Strategy
-1. **Product reviews and demos** — tag the reviewed product directly
-2. **"Best of" lists** — tag all featured products for maximum discovery
-3. **Tutorial / how-to content** — tag products used in the tutorial
-4. **Haul videos** — tag every item showcased
-5. **Live shopping events** — scheduled, promoted, with exclusive offers
+### Stratégie de contenu YouTube Shopping
+1. **Avis et démos produit** — taguer directement le produit examiné
+2. **Listes « meilleurs de »** — taguer tous les produits mis en avant pour une découverte maximale
+3. **Contenu tutoriel/pratique** — taguer les produits utilisés dans le tutoriel
+4. **Vidéos de haul** — taguer chaque article présenté
+5. **Événements de live shopping** — planifiés, promus, avec des offres exclusives
 
 ---
 
-## Live Shopping Playbook
+## Playbook du live shopping
 
-### Pre-Stream Checklist
-- [ ] Announce live shopping event 48-72 hours in advance (posts, Stories, email)
-- [ ] Prepare product lineup (10-20 products for a 60-minute stream)
-- [ ] Stage products for quick access during stream
-- [ ] Test lighting, camera angle, audio, and internet connection
-- [ ] Load all products into platform's live shopping feature
-- [ ] Prepare talking points and product details for each item
-- [ ] Set up exclusive live-only discount codes or offers
-- [ ] Assign a moderator to manage comments and questions
+### Checklist avant le live
+- [ ] Annoncer l'événement de live shopping 48-72 heures à l'avance (posts, Stories, email)
+- [ ] Préparer la sélection de produits (10-20 produits pour un live de 60 minutes)
+- [ ] Préparer les produits pour un accès rapide pendant le live
+- [ ] Tester l'éclairage, l'angle de caméra, l'audio, et la connexion internet
+- [ ] Charger tous les produits dans la fonctionnalité de live shopping de la plateforme
+- [ ] Préparer les points de discussion et détails produit pour chaque article
+- [ ] Configurer des codes de réduction ou offres exclusives au live
+- [ ] Assigner un modérateur pour gérer les commentaires et questions
 
-### During Stream Best Practices
+### Bonnes pratiques pendant le live
 
-| Tactic | Details |
+| Tactique | Détails |
 |--------|---------|
-| Open strong | Announce biggest offer or most exciting product in first 5 minutes |
-| Pin products | Pin the currently discussed product so viewers can purchase immediately |
-| Create urgency | Limited quantities, flash prices, countdown timers |
-| Engage chat | Read and respond to viewer comments and questions in real time |
-| Demonstrate | Show products in use — not just hold them up |
-| Pace | Spend 3-5 minutes per product, transition with energy |
-| Recap | Summarize top deals at the 30-minute mark and before closing |
+| Ouvrir fort | Annoncer la plus grosse offre ou le produit le plus excitant dans les 5 premières minutes |
+| Épingler les produits | Épingler le produit en cours de discussion pour que les spectateurs puissent acheter immédiatement |
+| Créer l'urgence | Quantités limitées, prix flash, comptes à rebours |
+| Engager le chat | Lire et répondre aux commentaires et questions des spectateurs en temps réel |
+| Démontrer | Montrer les produits en usage — pas seulement les tenir |
+| Rythme | Consacrer 3-5 minutes par produit, transitionner avec énergie |
+| Récapituler | Résumer les meilleures offres à la marque des 30 minutes et avant de clôturer |
 
-### Post-Stream Actions
-- [ ] Share stream highlights as clips (Reels, TikToks, Shorts)
-- [ ] Send follow-up to viewers with products they engaged with
-- [ ] Analyze metrics: peak viewers, products sold, revenue, engagement rate
-- [ ] Schedule next live shopping event (consistency builds audience)
+### Actions post-live
+- [ ] Partager les temps forts du live sous forme d'extraits (Reels, TikToks, Shorts)
+- [ ] Envoyer un suivi aux spectateurs avec les produits qui les ont intéressés
+- [ ] Analyser les métriques : pic de spectateurs, produits vendus, chiffre d'affaires, taux d'engagement
+- [ ] Planifier le prochain événement de live shopping (la régularité construit l'audience)
 
 ---
 
-## Social Storefront Best Practices
+## Bonnes pratiques de la vitrine sociale
 
-| Principle | Implementation |
+| Principe | Mise en œuvre |
 |-----------|---------------|
-| **Curate, don't dump** | Feature 20-50 hero products, not your entire 5,000-SKU catalog |
-| **Collection strategy** | Organize by use case/occasion, not just category |
-| **Seasonal rotation** | Update featured collections monthly or with seasons |
-| **Social-native imagery** | Use lifestyle photos, UGC, and styled shots — not catalog white-background images |
-| **Pricing transparency** | Show prices clearly; use "from $X" for variable pricing |
-| **Reviews/ratings** | Display ratings where possible to build trust |
-| **Cross-platform consistency** | Same products, pricing, and descriptions across all social storefronts |
+| **Sélectionner, ne pas déverser** | Mettre en avant 20-50 produits phares, pas l'intégralité de votre catalogue de 5 000 références |
+| **Stratégie de collection** | Organiser par cas d'usage/occasion, pas seulement par catégorie |
+| **Rotation saisonnière** | Mettre à jour les collections en vedette mensuellement ou selon les saisons |
+| **Imagerie native au social** | Utiliser des photos d'ambiance, du UGC, et des prises de vue stylisées — pas des images catalogue à fond blanc |
+| **Transparence des prix** | Afficher les prix clairement ; utiliser « à partir de X $ » pour une tarification variable |
+| **Avis/notes** | Afficher les notes lorsque possible pour construire la confiance |
+| **Cohérence cross-plateforme** | Mêmes produits, tarification, et descriptions sur toutes les vitrines sociales |
 
 ---
 
 ## Analytics & Attribution
 
-### Key Metrics by Platform
+### Métriques clés par plateforme
 
-| Metric | Instagram | TikTok Shop | Facebook | Pinterest | YouTube |
+| Métrique | Instagram | TikTok Shop | Facebook | Pinterest | YouTube |
 |--------|-----------|-------------|----------|-----------|---------|
-| Product views | Commerce Manager | Seller Center | Commerce Manager | Analytics | Merchant Center |
-| Add to cart | Commerce Manager | Seller Center | Commerce Manager | N/A (redirect) | Merchant Center |
-| Checkout initiated | Commerce Manager | Seller Center | Commerce Manager | N/A | Merchant Center |
-| Purchases | Commerce Manager | Seller Center | Commerce Manager | Website analytics | Merchant Center |
-| Revenue | Commerce Manager | Seller Center | Commerce Manager | Website analytics | Merchant Center |
+| Vues produit | Commerce Manager | Seller Center | Commerce Manager | Analytics | Merchant Center |
+| Ajout au panier | Commerce Manager | Seller Center | Commerce Manager | N/A (redirection) | Merchant Center |
+| Paiement initié | Commerce Manager | Seller Center | Commerce Manager | N/A | Merchant Center |
+| Achats | Commerce Manager | Seller Center | Commerce Manager | Analytics du site web | Merchant Center |
+| Chiffre d'affaires | Commerce Manager | Seller Center | Commerce Manager | Analytics du site web | Merchant Center |
 | ROAS | Ads Manager | Ads Manager | Ads Manager | Ads Manager | Google Ads |
 
-### Attribution Considerations
-- Social commerce attribution is messy — users discover on social but may purchase later on website
-- Use UTM parameters on all product links that redirect to website
-- Implement platform pixels (Meta Pixel, TikTok Pixel, Pinterest Tag) for conversion tracking
-- Track view-through conversions (users who saw product but purchased later)
-- Consider incrementality testing to measure true lift from social commerce
+### Considérations d'attribution
+- L'attribution du commerce social est complexe — les utilisateurs découvrent sur le social mais peuvent acheter plus tard sur le site web
+- Utiliser des paramètres UTM sur tous les liens produit qui redirigent vers le site web
+- Mettre en œuvre les pixels de plateforme (Meta Pixel, TikTok Pixel, Pinterest Tag) pour le suivi de conversion
+- Suivre les conversions post-vue (utilisateurs ayant vu le produit mais acheté plus tard)
+- Envisager des tests d'incrémentalité pour mesurer le véritable gain apporté par le commerce social
 
 ---
 
-## Influencer-Driven Commerce
+## Commerce porté par les influenceurs
 
-### Commission Structure Benchmarks
+### Benchmarks de structure de commission
 
-| Influencer Tier | Follower Count | Typical Commission | Payment Model |
+| Niveau d'influenceur | Nombre d'abonnés | Commission typique | Modèle de paiement |
 |----------------|---------------|-------------------|---------------|
-| Nano | 1K-10K | 15-25% | Commission only |
-| Micro | 10K-100K | 10-20% | Flat fee + commission |
-| Mid-tier | 100K-500K | 8-15% | Flat fee + commission |
-| Macro | 500K-1M | 5-12% | Flat fee + commission |
-| Mega | 1M+ | 3-8% | Flat fee (primarily) |
+| Nano | 1K-10K | 15-25 % | Commission uniquement |
+| Micro | 10K-100K | 10-20 % | Forfait + commission |
+| Intermédiaire | 100K-500K | 8-15 % | Forfait + commission |
+| Macro | 500K-1M | 5-12 % | Forfait + commission |
+| Méga | 1M+ | 3-8 % | Forfait (principalement) |
 
-### Influencer Commerce Tactics
-1. **Affiliate storefronts** — Give creators their own curated shop page (LTK, Amazon Storefront, TikTok Affiliate)
-2. **Discount codes** — Unique codes for tracking and incentivizing purchases
-3. **Live shopping collaborations** — Co-host live streams with influencers
-4. **Product seeding** — Send products for organic content (no obligation, high authenticity)
-5. **Co-created products** — Collaborate on limited editions (highest engagement and conversion)
+### Tactiques de commerce d'influenceur
+1. **Vitrines d'affiliation** — donner aux créateurs leur propre page boutique sélectionnée (LTK, Amazon Storefront, TikTok Affiliate)
+2. **Codes de réduction** — codes uniques pour le suivi et l'incitation à l'achat
+3. **Collaborations de live shopping** — co-animer des lives avec des influenceurs
+4. **Amorçage produit (seeding)** — envoyer des produits pour du contenu organique (sans obligation, forte authenticité)
+5. **Produits co-créés** — collaborer sur des éditions limitées (engagement et conversion les plus élevés)
 
 ---
 
-> **Social commerce is not e-commerce with a social layer.** It is social media with a commerce layer. Content comes first. Discovery is organic. Purchase is frictionless. The brands that win treat their social storefronts as entertainment destinations, not product catalogs.
+> **Le commerce social n'est pas de l'e-commerce avec une couche sociale.** C'est du réseau social avec une couche commerce. Le contenu vient en premier. La découverte est organique. L'achat est sans friction. Les marques qui gagnent traitent leurs vitrines sociales comme des destinations de divertissement, pas comme des catalogues produit.

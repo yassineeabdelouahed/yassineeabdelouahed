@@ -1,341 +1,341 @@
-# Lead Scoring Reference
+# Référence du lead scoring
 
-Comprehensive reference for building, calibrating, and maintaining lead scoring models that accurately predict purchase intent and sales readiness.
-
----
-
-## Scoring Fundamentals
-
-Lead scoring assigns numeric values to contacts based on two dimensions:
-
-1. **Explicit scoring (fit)** — How well does this person match your ideal customer profile? Based on demographic and firmographic data.
-2. **Implicit scoring (engagement)** — How interested is this person in your product or service? Based on behavioral signals.
-
-The combined score determines lifecycle stage (cold, warm, MQL, SQL) and triggers appropriate actions (continue nurture, alert sales, escalate priority).
-
-**Scoring scale**: Use 0-100. Scores above 100 indicate exceptional fit + engagement and should still trigger the SQL handoff — they do not need a higher ceiling.
+Référence complète pour construire, calibrer, et maintenir des modèles de lead scoring qui prédisent avec précision l'intention d'achat et la maturité commerciale.
 
 ---
 
-## Explicit Scoring (Demographic/Firmographic Fit)
+## Fondamentaux de la notation
 
-Explicit scoring measures how closely a lead matches your ideal customer profile (ICP). These points are assigned based on who the person is, not what they do.
+Le lead scoring attribue des valeurs numériques aux contacts selon deux dimensions :
 
-### B2B Explicit Scoring Criteria
+1. **Notation explicite (adéquation)** — Dans quelle mesure cette personne correspond-elle à votre profil de client idéal ? Basée sur des données démographiques et firmographiques.
+2. **Notation implicite (engagement)** — Quel est le niveau d'intérêt de cette personne pour votre produit ou service ? Basée sur des signaux comportementaux.
 
-| Criterion | Strong Fit | Moderate Fit | Weak Fit | Disqualifier |
+Le score combiné détermine l'étape de cycle de vie (froid, tiède, MQL, SQL) et déclenche les actions appropriées (continuer le nurturing, alerter les ventes, escalader la priorité).
+
+**Échelle de notation** : Utiliser 0-100. Les scores au-dessus de 100 indiquent une adéquation + un engagement exceptionnels et devraient tout de même déclencher le transfert SQL — ils n'ont pas besoin d'un plafond plus élevé.
+
+---
+
+## Notation explicite (adéquation démographique/firmographique)
+
+La notation explicite mesure dans quelle mesure un lead correspond à votre profil de client idéal (ICP). Ces points sont attribués en fonction de qui est la personne, pas de ce qu'elle fait.
+
+### Critères de notation explicite B2B
+
+| Critère | Forte adéquation | Adéquation modérée | Adéquation faible | Disqualifiant |
 |---|---|---|---|---|
-| **Company size (employees)** | 50-500 (+15) | 501-2000 (+10) | 10-49 (+5) | <10 or >5000 (+0) |
-| **Annual revenue** | $5M-$50M (+15) | $50M-$200M (+10) | $1M-$5M (+5) | <$1M (+0) |
-| **Industry** | Target industry (+15) | Adjacent industry (+8) | Neutral industry (+3) | Excluded industry (-10) |
-| **Job title/role** | Decision maker (VP+) (+20) | Influencer (Director/Manager) (+12) | End user (+5) | Intern/Student (-5) |
-| **Department** | Primary buyer dept (+10) | Related dept (+5) | Unrelated dept (+0) | — |
-| **Geography** | Target market (+10) | Serviceable market (+5) | Distant/unsupported (+0) | Restricted region (-15) |
+| **Taille d'entreprise (employés)** | 50-500 (+15) | 501-2000 (+10) | 10-49 (+5) | <10 ou >5000 (+0) |
+| **Chiffre d'affaires annuel** | 5M$-50M$ (+15) | 50M$-200M$ (+10) | 1M$-5M$ (+5) | <1M$ (+0) |
+| **Secteur** | Secteur cible (+15) | Secteur adjacent (+8) | Secteur neutre (+3) | Secteur exclu (-10) |
+| **Titre de poste/rôle** | Décideur (VP+) (+20) | Influenceur (directeur/manager) (+12) | Utilisateur final (+5) | Stagiaire/étudiant (-5) |
+| **Département** | Département acheteur principal (+10) | Département lié (+5) | Département non lié (+0) | — |
+| **Géographie** | Marché cible (+10) | Marché desservi (+5) | Distant/non pris en charge (+0) | Région restreinte (-15) |
 
-**Notes:**
-- Point values above are starting templates. Calibrate after 90 days of conversion data.
-- "Strong fit" criteria should reflect your top 20% of closed-won deals.
-- Adjust company size and revenue ranges to match YOUR ICP, not generic benchmarks.
+**Notes :**
+- Les valeurs de points ci-dessus sont des modèles de départ. Calibrer après 90 jours de données de conversion.
+- Les critères de « forte adéquation » devraient refléter votre top 20 % des deals gagnés.
+- Ajuster les fourchettes de taille d'entreprise et de chiffre d'affaires selon VOTRE ICP, pas des benchmarks génériques.
 
-### B2C Explicit Scoring Criteria
+### Critères de notation explicite B2C
 
-| Criterion | High Value | Medium Value | Low Value |
+| Critère | Haute valeur | Valeur moyenne | Faible valeur |
 |---|---|---|---|
-| **Location** | Primary market (+10) | Secondary market (+5) | Out of service area (+0) |
-| **Age/demographic** | Core demographic (+10) | Adjacent demographic (+5) | Outside target (+0) |
-| **Income bracket** | Target bracket (+10) | Adjacent bracket (+5) | Below threshold (+0) |
-| **Customer type** | Past customer (+15) | Referral (+10) | Cold lead (+0) |
-| **Product interest** | High-margin product (+10) | Standard product (+5) | Low-margin/free tier (+0) |
+| **Localisation** | Marché principal (+10) | Marché secondaire (+5) | Hors zone de service (+0) |
+| **Âge/démographie** | Démographie cœur de cible (+10) | Démographie adjacente (+5) | Hors cible (+0) |
+| **Tranche de revenu** | Tranche cible (+10) | Tranche adjacente (+5) | Sous le seuil (+0) |
+| **Type de client** | Ancien client (+15) | Parrainage (+10) | Lead froid (+0) |
+| **Intérêt produit** | Produit à forte marge (+10) | Produit standard (+5) | Faible marge/niveau gratuit (+0) |
 
-### eCommerce Explicit Scoring
+### Notation explicite e-commerce
 
-| Criterion | Points |
+| Critère | Points |
 |---|---|
-| Created account | +10 |
-| Added payment method | +15 |
-| Past purchase history (1-2 orders) | +10 |
-| Past purchase history (3+ orders) | +20 |
-| High AOV (>2x average) | +15 |
-| Opted into SMS | +5 |
-| Loyalty program member | +10 |
+| Compte créé | +10 |
+| Moyen de paiement ajouté | +15 |
+| Historique d'achat passé (1-2 commandes) | +10 |
+| Historique d'achat passé (3+ commandes) | +20 |
+| Panier moyen élevé (>2x la moyenne) | +15 |
+| Inscrit au SMS | +5 |
+| Membre du programme de fidélité | +10 |
 
 ---
 
-## Implicit Scoring (Behavioral Engagement)
+## Notation implicite (engagement comportemental)
 
-Implicit scoring measures intent through actions. What someone does reveals how interested they are.
+La notation implicite mesure l'intention à travers les actions. Ce que quelqu'un fait révèle son niveau d'intérêt.
 
-### Email Engagement
+### Engagement e-mail
 
-| Action | Points | Decay |
+| Action | Points | Déclin |
 |---|---|---|
-| Opened email | +1 | Per email, cap at +5/week |
-| Clicked email link | +3 | Per click, cap at +10/week |
-| Clicked CTA (not just any link) | +5 | Per CTA click |
-| Replied to email | +10 | Per reply |
-| Forwarded email | +8 | Per forward |
-| Opened 5+ emails in 30 days | +5 | Bonus for sustained engagement |
+| A ouvert un e-mail | +1 | Par e-mail, plafonné à +5/semaine |
+| A cliqué sur un lien e-mail | +3 | Par clic, plafonné à +10/semaine |
+| A cliqué sur un CTA (pas juste un lien) | +5 | Par clic sur CTA |
+| A répondu à un e-mail | +10 | Par réponse |
+| A transféré un e-mail | +8 | Par transfert |
+| A ouvert 5+ e-mails en 30 jours | +5 | Bonus pour engagement soutenu |
 
-### Website Behavior
+### Comportement sur le site web
 
 | Action | Points | Notes |
 |---|---|---|
-| General page visit | +1 | Per page, cap at +5/session |
-| Blog post read (>60s on page) | +2 | Only count meaningful reads |
-| Product/service page visit | +5 | High-intent pages |
-| Pricing page visit | +15 | Strongest buying signal short of demo request |
-| Comparison/alternative page visit | +10 | Evaluation stage signal |
-| Case study/testimonial page | +8 | Social proof seeking = consideration stage |
-| Careers page visit | +0 or -5 | Likely a job seeker, not a buyer |
-| 3+ sessions in 7 days | +10 | Bonus for repeated engagement |
-| 5+ pages per session | +5 | Deep site engagement |
+| Visite de page générale | +1 | Par page, plafonné à +5/session |
+| Lecture d'article de blog (>60s sur la page) | +2 | Ne compter que les lectures significatives |
+| Visite de page produit/service | +5 | Pages à forte intention |
+| Visite de la page tarifaire | +15 | Signal d'achat le plus fort avant la demande de démo |
+| Visite de page comparaison/alternative | +10 | Signal d'étape d'évaluation |
+| Page d'étude de cas/témoignage | +8 | Recherche de preuve sociale = étape de considération |
+| Visite de la page carrières | +0 ou -5 | Probablement un candidat à l'emploi, pas un acheteur |
+| 3+ sessions en 7 jours | +10 | Bonus pour engagement répété |
+| 5+ pages par session | +5 | Engagement profond sur le site |
 
-### Content Downloads
-
-| Action | Points | Notes |
-|---|---|---|
-| Top-funnel content (checklist, infographic) | +5 | Awareness stage |
-| Mid-funnel content (whitepaper, guide, report) | +10 | Consideration stage |
-| Bottom-funnel content (ROI calculator, buying guide) | +15 | Decision stage |
-| Webinar registration | +10 | — |
-| Webinar attended (live) | +15 | Higher intent than registration alone |
-| Webinar watched on-demand | +8 | Intent but lower urgency |
-
-### High-Intent Actions
+### Téléchargements de contenu
 
 | Action | Points | Notes |
 |---|---|---|
-| Demo request | +25 | Direct sales intent |
-| Free trial signup | +20 | Product evaluation |
-| Contact sales form | +25 | Explicit buying signal |
-| Chat with sales | +15 | Real-time engagement with sales |
-| RFP/quote request | +30 | Active buying process |
-| Attended in-person event or meeting | +20 | High-commitment action |
+| Contenu haut de tunnel (checklist, infographie) | +5 | Étape de notoriété |
+| Contenu milieu de tunnel (livre blanc, guide, rapport) | +10 | Étape de considération |
+| Contenu bas de tunnel (calculateur de ROI, guide d'achat) | +15 | Étape de décision |
+| Inscription à un webinaire | +10 | — |
+| Assistance à un webinaire (en direct) | +15 | Intention plus élevée que la seule inscription |
+| Webinaire visionné à la demande | +8 | Intention mais urgence plus faible |
 
-### Product Usage (SaaS)
+### Actions à forte intention
 
 | Action | Points | Notes |
 |---|---|---|
-| Completed onboarding | +15 | Activated user |
-| Used core feature | +10 | Found primary value |
-| Invited team member | +20 | Expansion signal — strongest PQL indicator |
-| Connected integration | +15 | Deepening commitment |
-| Approaching usage limit | +10 | Natural upgrade trigger |
-| Daily active usage (7+ days) | +15 | Habitual user |
+| Demande de démo | +25 | Intention d'achat directe |
+| Inscription à l'essai gratuit | +20 | Évaluation du produit |
+| Formulaire de contact commercial | +25 | Signal d'achat explicite |
+| Chat avec les ventes | +15 | Engagement en temps réel avec les ventes |
+| Demande de RFP/devis | +30 | Processus d'achat actif |
+| Assistance à un événement ou une réunion en personne | +20 | Action de fort engagement |
+
+### Usage produit (SaaS)
+
+| Action | Points | Notes |
+|---|---|---|
+| Onboarding terminé | +15 | Utilisateur activé |
+| Fonctionnalité principale utilisée | +10 | A trouvé la valeur principale |
+| Membre d'équipe invité | +20 | Signal d'expansion — indicateur PQL le plus fort |
+| Intégration connectée | +15 | Approfondissement de l'engagement |
+| Approche de la limite d'usage | +10 | Déclencheur d'upgrade naturel |
+| Usage quotidien actif (7+ jours) | +15 | Utilisateur habituel |
 
 ---
 
-## Negative Scoring
+## Notation négative
 
-Negative scoring is as important as positive scoring. It prevents unqualified leads from reaching sales and protects scoring accuracy.
+La notation négative est aussi importante que la notation positive. Elle empêche les leads non qualifiés d'atteindre les ventes et protège la précision de la notation.
 
-### Engagement-Based Negative Scoring
-
-| Signal | Points | Notes |
-|---|---|---|
-| Email bounced (hard) | -15 | Invalid contact — also flag for data hygiene |
-| Email bounced (soft, 3+ times) | -10 | Deliverability problem |
-| Unsubscribed from emails | -25 | Clear disengagement signal |
-| Marked email as spam | -50 | Remove from scoring entirely |
-| No email engagement in 30 days | -5 | Apply as ongoing decay |
-| No email engagement in 60 days | -10 | Additional decay |
-| No email engagement in 90 days | -15 | Additional decay — trigger re-engagement workflow |
-| No website visit in 60 days | -10 | — |
-
-### Fit-Based Negative Scoring
+### Notation négative basée sur l'engagement
 
 | Signal | Points | Notes |
 |---|---|---|
-| Competitor domain email | -50 | Likely competitive intelligence, not a buyer |
-| Free email domain (gmail, yahoo) for B2B | -10 | May be valid but lower confidence for enterprise |
-| Student/academic email (.edu) | -15 | Research, not purchase intent (unless ed-tech) |
-| Job title: intern, student, assistant | -10 | Low decision-making authority |
-| Company size below minimum | -15 | Below serviceable threshold |
-| Disqualified industry | -20 | Cannot serve this industry |
-| Visited only careers page | -15 | Job seeker, not prospect |
+| E-mail rejeté (rebond dur) | -15 | Contact invalide — signaler aussi pour l'hygiène des données |
+| E-mail rejeté (rebond doux, 3+ fois) | -10 | Problème de délivrabilité |
+| Désabonné des e-mails | -25 | Signal de désengagement clair |
+| E-mail marqué comme spam | -50 | Retirer entièrement de la notation |
+| Aucun engagement e-mail depuis 30 jours | -5 | Appliquer comme déclin continu |
+| Aucun engagement e-mail depuis 60 jours | -10 | Déclin supplémentaire |
+| Aucun engagement e-mail depuis 90 jours | -15 | Déclin supplémentaire — déclencher le workflow de ré-engagement |
+| Aucune visite de site depuis 60 jours | -10 | — |
 
-### Behavioral Negative Scoring
+### Notation négative basée sur l'adéquation
 
 | Signal | Points | Notes |
 |---|---|---|
-| Unsubscribed from product/trial | -20 | Active rejection |
-| Requested data deletion (GDPR) | Remove from scoring | Compliance requirement — stop all scoring |
-| Downloaded competitor comparison and never returned | -5 | Window shopper |
-| Canceled meeting/demo no-show | -10 | Low commitment |
-| Repeated form fills with fake data | -25 | Bot or low-quality lead |
+| E-mail de domaine concurrent | -50 | Probablement de la veille concurrentielle, pas un acheteur |
+| Domaine e-mail gratuit (gmail, yahoo) pour B2B | -10 | Peut être valide mais confiance plus faible pour l'entreprise |
+| E-mail étudiant/académique (.edu) | -15 | Recherche, pas intention d'achat (sauf ed-tech) |
+| Titre de poste : stagiaire, étudiant, assistant | -10 | Faible autorité décisionnelle |
+| Taille d'entreprise sous le minimum | -15 | Sous le seuil desservable |
+| Secteur disqualifié | -20 | Impossible de servir ce secteur |
+| A visité uniquement la page carrières | -15 | Candidat à l'emploi, pas prospect |
+
+### Notation négative comportementale
+
+| Signal | Points | Notes |
+|---|---|---|
+| Désabonné du produit/essai | -20 | Rejet actif |
+| Demande de suppression de données (RGPD) | Retirer de la notation | Exigence de conformité — arrêter toute notation |
+| A téléchargé une comparaison concurrent et jamais revenu | -5 | Simple curieux |
+| Rendez-vous/démo annulé sans se présenter | -10 | Faible engagement |
+| Remplissages de formulaire répétés avec de fausses données | -25 | Bot ou lead de faible qualité |
 
 ---
 
-## Score Thresholds & Lifecycle Stages
+## Seuils de score et étapes de cycle de vie
 
-| Score Range | Stage | Definition | Action |
+| Plage de score | Étape | Définition | Action |
 |---|---|---|---|
-| 0-25 | **Cold** | Low fit or low engagement. May be early-stage or poor fit. | Continue top-funnel nurture. Do not pass to sales. |
-| 26-50 | **Warm** | Moderate fit and/or engagement. Showing initial interest. | Mid-funnel nurture. Personalize based on behavior. |
-| 51-75 | **MQL** (Marketing Qualified Lead) | Strong fit + meaningful engagement. Ready for sales evaluation. | Alert sales team. Begin MQL-to-SQL handoff process. |
-| 76-100 | **SQL** (Sales Qualified Lead) | High fit + high engagement. Demonstrated buying signals. | Immediate sales follow-up. SLA: respond within 4 hours (B2B) or 1 hour (B2C). |
+| 0-25 | **Froid** | Faible adéquation ou faible engagement. Peut-être en début d'étape ou mauvaise adéquation. | Continuer le nurturing haut de tunnel. Ne pas transférer aux ventes. |
+| 26-50 | **Tiède** | Adéquation et/ou engagement modérés. Montre un intérêt initial. | Nurturing milieu de tunnel. Personnaliser selon le comportement. |
+| 51-75 | **MQL** (Marketing Qualified Lead) | Forte adéquation + engagement significatif. Prêt pour l'évaluation commerciale. | Alerter l'équipe commerciale. Démarrer le processus de transfert MQL-vers-SQL. |
+| 76-100 | **SQL** (Sales Qualified Lead) | Forte adéquation + fort engagement. A démontré des signaux d'achat. | Suivi commercial immédiat. SLA : répondre sous 4 heures (B2B) ou 1 heure (B2C). |
 
-### Threshold Calibration Process
+### Processus de calibration des seuils
 
-1. **Start with the defaults above** for the first 90 days.
-2. **After 90 days**, pull conversion data: What score did closed-won deals reach before converting?
-3. **Find the natural break point**: The score range where conversion rate jumps significantly. That is your MQL threshold.
-4. **Validate with sales**: Ask sales which MQLs were actually qualified. If >60% of MQLs convert to SQL, your threshold is right. If <40%, your MQL threshold is too low (you are sending unready leads).
-5. **Recalibrate quarterly**: Buying behavior changes, product changes, and market shifts all affect scoring accuracy.
+1. **Commencer avec les valeurs par défaut ci-dessus** pour les 90 premiers jours.
+2. **Après 90 jours**, extraire les données de conversion : quel score les deals gagnés ont-ils atteint avant de convertir ?
+3. **Trouver le point de rupture naturel** : la plage de score où le taux de conversion bondit significativement. C'est votre seuil MQL.
+4. **Valider avec les ventes** : demander aux ventes quels MQL étaient réellement qualifiés. Si >60 % des MQL convertissent en SQL, votre seuil est correct. Si <40 %, votre seuil MQL est trop bas (vous envoyez des leads pas prêts).
+5. **Recalibrer trimestriellement** : les comportements d'achat, les changements de produit, et les évolutions de marché affectent tous la précision de la notation.
 
 ---
 
-## Progressive Profiling
+## Profilage progressif
 
-Progressive profiling collects lead information incrementally across multiple interactions rather than asking for everything upfront.
+Le profilage progressif collecte les informations de lead de manière incrémentale à travers plusieurs interactions plutôt que de tout demander d'emblée.
 
-### Data Collection by Engagement Level
+### Collecte de données par niveau d'engagement
 
-| Engagement Level | Data to Collect | Method |
+| Niveau d'engagement | Données à collecter | Méthode |
 |---|---|---|
-| **First touch** | Email address only | Single-field form, inline subscription |
-| **Second engagement** (content download) | First name, company name | 2-3 field form |
-| **Third engagement** (deeper content) | Job title, company size | 3-4 field form (pre-fill known fields) |
-| **Fourth engagement** (high-intent) | Phone, industry, pain points | Longer form acceptable at this intent level |
-| **MQL threshold** | Budget, timeline, decision process | Sales discovery call (not forms) |
+| **Premier contact** | Adresse e-mail uniquement | Formulaire à un seul champ, inscription en ligne |
+| **Deuxième engagement** (téléchargement de contenu) | Prénom, nom d'entreprise | Formulaire à 2-3 champs |
+| **Troisième engagement** (contenu plus approfondi) | Titre de poste, taille d'entreprise | Formulaire à 3-4 champs (préremplir les champs connus) |
+| **Quatrième engagement** (forte intention) | Téléphone, secteur, points de douleur | Formulaire plus long acceptable à ce niveau d'intention |
+| **Seuil MQL** | Budget, calendrier, processus de décision | Appel de découverte commercial (pas des formulaires) |
 
-**Rules:**
-- Never ask for information you already have. Pre-fill known fields.
-- Never gate top-funnel content behind forms with 5+ fields. The conversion rate drop is not worth the data.
-- Every additional form field reduces completion rate by approximately 10%.
-- Use enrichment tools (Clearbit, ZoomInfo, Apollo) to fill firmographic data without asking the prospect.
-
----
-
-## Lead Scoring Models by Business Type
-
-### B2B SaaS
-
-- **Emphasis**: Product usage signals > email engagement > content consumption
-- **Key PQL indicators**: Invited team member, connected integration, daily active usage
-- **MQL criteria**: Score 55+ with at least one high-intent action (demo request, pricing page visit + trial signup)
-- **SQL criteria**: Score 80+ OR PQL threshold met (specific product usage milestones)
-- **Unique consideration**: Free tier usage must be scored carefully — high product engagement does not always mean purchase intent if the free tier is sufficient
-
-### B2B Professional Services
-
-- **Emphasis**: Content consumption (case studies, methodology content) > direct inquiry > event attendance
-- **Key signals**: Downloaded multiple case studies in same industry, attended webinar, returned to site 3+ times
-- **MQL criteria**: Score 50+ with industry fit confirmed and engagement with solution-level content
-- **SQL criteria**: Score 75+ OR direct consultation request
-- **Unique consideration**: Long sales cycles (3-12 months). Score decay must be slower (monthly, not weekly). Weight industry fit heavily — misaligned industry almost never converts.
-
-### B2C eCommerce
-
-- **Emphasis**: Browse behavior > cart activity > purchase history > email engagement
-- **Key signals**: Repeat site visits, cart creation, wishlist additions, product page views (especially 3+ products in same category)
-- **Scoring application**: Trigger abandoned cart, browse abandonment, and replenishment workflows rather than traditional MQL handoff
-- **Unique consideration**: No "sales team" handoff. Score drives automated workflow enrollment and promotional targeting.
-
-### Local Business
-
-- **Emphasis**: Location proximity > direct inquiry > review engagement
-- **Key signals**: Visited directions/location page, called the business, submitted contact form, clicked "book appointment"
-- **Scoring application**: Simple 3-tier model (cold/warm/hot) triggering automated follow-up
-- **Unique consideration**: Volume is typically low enough that complex scoring is unnecessary. Focus on response speed over scoring sophistication.
+**Règles :**
+- Ne jamais demander une information que vous avez déjà. Préremplir les champs connus.
+- Ne jamais verrouiller du contenu haut de tunnel derrière des formulaires de 5+ champs. La baisse de taux de conversion n'en vaut pas la peine.
+- Chaque champ de formulaire supplémentaire réduit le taux de complétion d'environ 10 %.
+- Utiliser des outils d'enrichissement (Clearbit, ZoomInfo, Apollo) pour remplir les données firmographiques sans demander au prospect.
 
 ---
 
-## Score Decay
+## Modèles de lead scoring par type d'entreprise
 
-Scores must decay over time to reflect that engagement fades. A lead who was highly engaged 6 months ago but silent since then is not the same as one who is active today.
+### SaaS B2B
 
-### Decay Models
+- **Accent** : Signaux d'usage produit > engagement e-mail > consommation de contenu
+- **Indicateurs PQL clés** : Membre d'équipe invité, intégration connectée, usage quotidien actif
+- **Critères MQL** : Score 55+ avec au moins une action à forte intention (demande de démo, visite page tarifaire + inscription à l'essai)
+- **Critères SQL** : Score 80+ OU seuil PQL atteint (jalons d'usage produit spécifiques)
+- **Considération unique** : L'usage du niveau gratuit doit être noté avec soin — un fort engagement produit ne signifie pas toujours une intention d'achat si le niveau gratuit suffit
 
-**Time-based decay (recommended for most businesses):**
+### Services professionnels B2B
 
-| Inactivity Period | Decay Action |
+- **Accent** : Consommation de contenu (études de cas, contenu méthodologique) > demande directe > assistance à des événements
+- **Signaux clés** : A téléchargé plusieurs études de cas du même secteur, a assisté à un webinaire, est revenu sur le site 3+ fois
+- **Critères MQL** : Score 50+ avec adéquation sectorielle confirmée et engagement avec du contenu au niveau solution
+- **Critères SQL** : Score 75+ OU demande de consultation directe
+- **Considération unique** : Cycles de vente longs (3-12 mois). Le déclin de score doit être plus lent (mensuel, pas hebdomadaire). Pondérer fortement l'adéquation sectorielle — un secteur mal aligné convertit presque jamais.
+
+### E-commerce B2C
+
+- **Accent** : Comportement de navigation > activité panier > historique d'achat > engagement e-mail
+- **Signaux clés** : Visites répétées du site, création de panier, ajouts à la liste de souhaits, vues de pages produits (surtout 3+ produits dans la même catégorie)
+- **Application de la notation** : Déclencher les workflows d'abandon de panier, d'abandon de navigation, et de réapprovisionnement plutôt que le transfert MQL traditionnel
+- **Considération unique** : Aucun transfert vers une « équipe commerciale ». Le score pilote l'inscription à des workflows automatisés et le ciblage promotionnel.
+
+### Entreprise locale
+
+- **Accent** : Proximité de localisation > demande directe > engagement aux avis
+- **Signaux clés** : A visité la page itinéraire/localisation, a appelé l'entreprise, a soumis un formulaire de contact, a cliqué sur « prendre rendez-vous »
+- **Application de la notation** : Modèle simple à 3 niveaux (froid/tiède/chaud) déclenchant un suivi automatisé
+- **Considération unique** : Le volume est généralement assez faible pour qu'une notation complexe soit inutile. Se concentrer sur la vitesse de réponse plutôt que sur la sophistication de la notation.
+
+---
+
+## Déclin du score
+
+Les scores doivent décliner avec le temps pour refléter que l'engagement s'estompe. Un lead qui était très engagé il y a 6 mois mais silencieux depuis n'est pas le même qu'un lead actif aujourd'hui.
+
+### Modèles de déclin
+
+**Déclin basé sur le temps (recommandé pour la plupart des entreprises) :**
+
+| Période d'inactivité | Action de déclin |
 |---|---|
-| 14 days no activity | -2 points (gentle nudge) |
-| 30 days no activity | -5 points |
-| 60 days no activity | -10 points + trigger re-engagement workflow |
-| 90 days no activity | -15 points |
-| 180 days no activity | Reset to baseline (keep explicit fit score, zero out behavioral score) |
+| 14 jours sans activité | -2 points (rappel doux) |
+| 30 jours sans activité | -5 points |
+| 60 jours sans activité | -10 points + déclencher le workflow de ré-engagement |
+| 90 jours sans activité | -15 points |
+| 180 jours sans activité | Réinitialiser à la ligne de base (conserver le score d'adéquation explicite, remettre à zéro le score comportemental) |
 
-**Activity-based decay (for high-engagement models):**
-- Decay only behavioral scores, not fit scores (someone's company size does not change because they stopped emailing you)
-- Apply decay proportionally: high-engagement contacts decay faster because their inflated scores are more misleading if stale
-- Reset behavioral score to zero after 6 months of no activity, then re-score only on new actions
+**Déclin basé sur l'activité (pour les modèles à fort engagement) :**
+- Ne décliner que les scores comportementaux, pas les scores d'adéquation (la taille d'une entreprise ne change pas parce qu'elle a arrêté de lire vos e-mails)
+- Appliquer le déclin proportionnellement : les contacts à fort engagement déclinent plus vite car leurs scores gonflés sont plus trompeurs s'ils sont obsolètes
+- Remettre le score comportemental à zéro après 6 mois d'inactivité, puis renoter uniquement sur les nouvelles actions
 
-**Seasonal adjustment:**
-- Pause decay during known low-activity periods (holidays, summer) for B2B
-- For B2C, reverse: increase scoring during seasonal peaks (Black Friday, back-to-school) to capture urgency
-
----
-
-## Sales Handoff Rules
-
-### MQL-to-SQL Handoff Process
-
-1. **Lead reaches MQL threshold** (score 51-75)
-2. **Automated notification** sent to assigned sales rep (or round-robin to SDR team)
-3. **Handoff SLA**: Sales must contact MQL within defined window
-   - B2B SaaS: 4 business hours
-   - B2B enterprise: 24 business hours (research needed before outreach)
-   - B2C/eCommerce: 1 hour (or automated — no human needed)
-4. **Sales qualification**: SDR/AE determines if MQL is truly sales-ready
-   - **Accepted** → SQL (score adjusted to 76+, enters sales pipeline)
-   - **Rejected** → Recycled back to marketing nurture with feedback reason
-   - **Disqualified** → Removed from scoring (bad fit, wrong person, competitor)
-5. **Feedback loop**: Sales rejection reasons feed back into scoring model calibration
-   - If 50%+ of MQLs are rejected, MQL threshold is too low
-   - If <5% of MQLs are rejected, threshold might be too high (missing opportunities)
-
-### Handoff Data Package
-
-When handing an MQL to sales, include:
-- Lead score breakdown (explicit vs. implicit)
-- Full activity timeline (pages visited, content downloaded, emails engaged)
-- Company/contact enrichment data
-- Source of first touch and most recent engagement
-- Active nurture sequence (so sales does not repeat what marketing already said)
-- Any known pain points or use case signals from content engagement patterns
+**Ajustement saisonnier :**
+- Suspendre le déclin pendant les périodes de faible activité connues (fêtes, été) pour le B2B
+- Pour le B2C, inverser : augmenter la notation pendant les pics saisonniers (Black Friday, rentrée scolaire) pour capter l'urgence
 
 ---
 
-## Re-Scoring Triggers
+## Règles de transfert commercial
 
-Certain events should trigger a complete re-evaluation of a contact's score rather than incremental changes.
+### Processus de transfert MQL-vers-SQL
 
-| Trigger | Action |
+1. **Le lead atteint le seuil MQL** (score 51-75)
+2. **Notification automatisée** envoyée au commercial assigné (ou en round-robin à l'équipe SDR)
+3. **SLA de transfert** : les ventes doivent contacter le MQL dans une fenêtre définie
+   - SaaS B2B : 4 heures ouvrées
+   - Entreprise B2B : 24 heures ouvrées (recherche nécessaire avant la prise de contact)
+   - B2C/e-commerce : 1 heure (ou automatisé — aucun humain nécessaire)
+4. **Qualification commerciale** : le SDR/AE détermine si le MQL est réellement prêt pour les ventes
+   - **Accepté** → SQL (score ajusté à 76+, entre dans le pipeline commercial)
+   - **Rejeté** → Recyclé vers le nurturing marketing avec une raison de feedback
+   - **Disqualifié** → Retiré de la notation (mauvaise adéquation, mauvaise personne, concurrent)
+5. **Boucle de rétroaction** : les raisons de rejet commercial réalimentent la calibration du modèle de notation
+   - Si 50 %+ des MQL sont rejetés, le seuil MQL est trop bas
+   - Si <5 % des MQL sont rejetés, le seuil pourrait être trop haut (opportunités manquées)
+
+### Package de données de transfert
+
+Lors du transfert d'un MQL aux ventes, inclure :
+- Décomposition du score du lead (explicite vs. implicite)
+- Chronologie complète d'activité (pages visitées, contenu téléchargé, e-mails engagés)
+- Données d'enrichissement entreprise/contact
+- Source du premier contact et de l'engagement le plus récent
+- Séquence de nurturing active (pour que les ventes ne répètent pas ce que le marketing a déjà dit)
+- Tout point de douleur connu ou signal de cas d'usage issu des schémas d'engagement au contenu
+
+---
+
+## Déclencheurs de re-notation
+
+Certains événements devraient déclencher une réévaluation complète du score d'un contact plutôt que des changements incrémentaux.
+
+| Déclencheur | Action |
 |---|---|
-| Job title change (promotion) | Re-score explicit fit. VP promotion = significant score increase. |
-| Company change | Re-score all explicit criteria. New company may not be ICP. |
-| Re-engagement after dormancy | Reset behavioral score to zero, then re-score from new activity only |
-| Closed-lost deal | Reset to warm (30-40 points), enter long-term nurture. Do not zero out. |
-| Customer churned | Move to win-back track. Score separately from new lead scoring. |
-| Requested to be removed from sales pipeline | Remove from SQL, return to MQL nurture. Reduce score by 20. |
-| Merged duplicate records | Combine scores: take higher explicit score + sum of behavioral (capped at 100) |
+| Changement de titre de poste (promotion) | Renoter l'adéquation explicite. Une promotion VP = augmentation significative du score. |
+| Changement d'entreprise | Renoter tous les critères explicites. La nouvelle entreprise pourrait ne pas être l'ICP. |
+| Ré-engagement après dormance | Remettre le score comportemental à zéro, puis renoter uniquement à partir de la nouvelle activité |
+| Deal perdu | Réinitialiser à tiède (30-40 points), entrer en nurturing long terme. Ne pas remettre à zéro. |
+| Client churné | Déplacer vers le parcours win-back. Noter séparément du lead scoring de nouveaux leads. |
+| Demande de retrait du pipeline commercial | Retirer du SQL, retourner au nurturing MQL. Réduire le score de 20. |
+| Enregistrements en double fusionnés | Combiner les scores : prendre le score explicite le plus élevé + somme du comportemental (plafonné à 100) |
 
 ---
 
-## Measuring Scoring Model Accuracy
+## Mesurer la précision du modèle de notation
 
-### Key Metrics
+### Métriques clés
 
-| Metric | Target | What It Tells You |
+| Métrique | Objectif | Ce qu'elle indique |
 |---|---|---|
-| **MQL-to-SQL conversion rate** | 40-60% | Are MQLs actually qualified? |
-| **SQL-to-Opportunity conversion rate** | 50-70% | Are SQLs truly sales-ready? |
-| **MQL-to-Closed-Won rate** | 5-15% (B2B) | End-to-end scoring effectiveness |
-| **Average score at conversion** | Cluster analysis | Where conversions actually happen on the scale |
-| **False positive rate** | <40% | High-score leads that never convert |
-| **False negative rate** | <10% | Low-score leads that convert anyway (missed opportunities) |
-| **Score-to-revenue correlation** | R > 0.5 | Does score actually predict revenue? |
-| **Time from MQL to SQL** | Decreasing QoQ | Is scoring identifying readiness earlier? |
+| **Taux de conversion MQL-vers-SQL** | 40-60 % | Les MQL sont-ils réellement qualifiés ? |
+| **Taux de conversion SQL-vers-Opportunité** | 50-70 % | Les SQL sont-ils vraiment prêts pour les ventes ? |
+| **Taux MQL-vers-Deal gagné** | 5-15 % (B2B) | Efficacité de la notation de bout en bout |
+| **Score moyen à la conversion** | Analyse de clusters | Où les conversions se produisent réellement sur l'échelle |
+| **Taux de faux positifs** | <40 % | Leads à score élevé qui ne convertissent jamais |
+| **Taux de faux négatifs** | <10 % | Leads à faible score qui convertissent quand même (opportunités manquées) |
+| **Corrélation score-chiffre d'affaires** | R > 0,5 | Le score prédit-il réellement le chiffre d'affaires ? |
+| **Délai de MQL à SQL** | En baisse trimestre après trimestre | La notation identifie-t-elle la maturité plus tôt ? |
 
-### Quarterly Scoring Audit Checklist
+### Checklist d'audit de notation trimestriel
 
-1. Pull all leads that converted to customer in the last quarter
-2. Analyze their score at time of MQL handoff — what was the distribution?
-3. Pull all MQLs that were rejected by sales — what was their score at handoff?
-4. Identify any customers who were never scored as MQL (false negatives) — what signals were missed?
-5. Compare average score at conversion vs. MQL threshold — adjust threshold if they diverge
-6. Review top 5 highest-scored leads that did NOT convert — why? Are certain scoring criteria overweighted?
-7. Check decay effectiveness — are stale leads being properly deprioritized?
-8. Validate with sales team — qualitative feedback on MQL quality trend
+1. Extraire tous les leads convertis en client au cours du dernier trimestre
+2. Analyser leur score au moment du transfert MQL — quelle était la distribution ?
+3. Extraire tous les MQL rejetés par les ventes — quel était leur score au transfert ?
+4. Identifier tout client jamais noté comme MQL (faux négatifs) — quels signaux ont été manqués ?
+5. Comparer le score moyen à la conversion par rapport au seuil MQL — ajuster le seuil s'ils divergent
+6. Revoir les 5 leads les mieux notés qui n'ont PAS converti — pourquoi ? Certains critères de notation sont-ils surpondérés ?
+7. Vérifier l'efficacité du déclin — les leads obsolètes sont-ils correctement déprioritisés ?
+8. Valider avec l'équipe commerciale — feedback qualitatif sur la tendance de qualité des MQL

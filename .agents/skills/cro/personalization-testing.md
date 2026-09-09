@@ -1,283 +1,284 @@
-# Personalization Testing — Optimization & Experimentation Reference
+# Test de personnalisation — Référence d'optimisation et d'expérimentation
 
-A systematic framework for testing personalized experiences against one-size-fits-all approaches. Covers when to personalize, how to design segment-based experiments, holdout methodology, and measurement frameworks that isolate true incremental lift.
+Un cadre systématique pour tester des expériences personnalisées face à des approches uniformes. Couvre quand personnaliser, comment concevoir des expériences basées sur des segments, la méthodologie de contrôle témoin, et les cadres de mesure qui isolent la véritable hausse incrémentale.
 
 ---
 
-## Personalization vs Traditional A/B Testing
+## Personnalisation vs test A/B traditionnel
 
-Not every page or experience benefits from personalization. Use this decision framework before investing in segment-specific variations.
+Toutes les pages ou expériences ne bénéficient pas de la personnalisation. Utilisez ce cadre de décision avant d'investir dans des variantes spécifiques à un segment.
 
-### When to Use Standard A/B Testing (One-Size-Fits-All)
+### Quand utiliser le test A/B standard (approche uniforme)
 
-- Your audience is relatively homogeneous in intent and behavior
-- You have a single dominant traffic source or user type
-- You lack the traffic volume to split into meaningful segments (< 50K monthly visitors)
-- The change you are testing is universally applicable (page speed, trust badges, form length)
-- You are early in your optimization program and need foundational wins first
+- Votre audience est relativement homogène en intention et en comportement
+- Vous avez une source de trafic ou un type d'utilisateur dominant unique
+- Vous manquez de volume de trafic pour diviser en segments significatifs (< 50 000 visiteurs mensuels)
+- Le changement que vous testez est universellement applicable (vitesse de page, badges de confiance, longueur de formulaire)
+- Vous êtes tôt dans votre programme d'optimisation et avez besoin de gains fondamentaux d'abord
 
-### When to Personalize
+### Quand personnaliser
 
-- Analytics show clear behavioral or demographic segments with different conversion patterns
-- You have sufficient traffic to power tests within individual segments (each segment needs its own sample size calculation)
-- Different traffic sources arrive with fundamentally different intent (branded search vs. cold display)
-- Your product serves multiple distinct use cases or buyer personas
-- You have the technical infrastructure to serve dynamic content reliably
+- L'analytique montre des segments comportementaux ou démographiques clairs avec des schémas de conversion différents
+- Vous avez suffisamment de trafic pour alimenter des tests au sein de segments individuels (chaque segment nécessite son propre calcul de taille d'échantillon)
+- Différentes sources de trafic arrivent avec des intentions fondamentalement différentes (recherche de marque vs display froid)
+- Votre produit sert plusieurs cas d'usage ou personas d'acheteur distincts
+- Vous disposez de l'infrastructure technique pour servir du contenu dynamique de manière fiable
 
-### Decision Matrix
+### Matrice de décision
 
-| Scenario | Approach | Rationale |
+| Scénario | Approche | Justification |
 |----------|----------|-----------|
-| Homepage for all traffic | Start with A/B, then personalize by source | Establish baseline before fragmenting |
-| Pricing page | A/B test globally, then personalize by geography | Pricing sensitivity varies by market |
-| Product page | Personalize by browse history / purchase history | Past behavior strongly predicts intent |
-| Landing pages from paid ads | Personalize by ad group / keyword | Intent varies dramatically by search query |
-| Email campaigns | Segment-based personalization from day one | Email lists have rich segmentation data |
+| Page d'accueil pour tout le trafic | Commencer par A/B, puis personnaliser par source | Établir une référence avant de fragmenter |
+| Page de tarification | Test A/B global, puis personnaliser par géographie | La sensibilité au prix varie selon le marché |
+| Page produit | Personnaliser par historique de navigation / d'achat | Le comportement passé prédit fortement l'intention |
+| Landing pages issues de publicités payantes | Personnaliser par groupe d'annonces / mot-clé | L'intention varie considérablement selon la requête de recherche |
+| Campagnes e-mail | Personnalisation basée sur les segments dès le départ | Les listes e-mail disposent de données de segmentation riches |
 
 ---
 
-## Segment-Based Testing
+## Test basé sur les segments
 
-### Core Concept
+### Concept fondamental
 
-Instead of testing Variant A vs Variant B across all visitors, test different variants within different segments simultaneously. Each segment gets its own experiment with its own control.
+Au lieu de tester la variante A contre la variante B sur l'ensemble des visiteurs, testez différentes variantes au sein de différents segments simultanément. Chaque segment reçoit sa propre expérience avec son propre contrôle.
 
-### Segment Definition Criteria
+### Critères de définition des segments
 
-| Segment Dimension | Examples | Data Source |
+| Dimension du segment | Exemples | Source de données |
 |-------------------|----------|-------------|
-| **Traffic source** | Organic, paid search, paid social, email, direct, referral | Analytics UTM parameters |
-| **Device type** | Desktop, mobile, tablet | User-agent / device detection |
-| **Geography** | Country, state/region, city, timezone | IP geolocation |
-| **Visitor type** | New visitor, returning visitor, logged-in customer | Cookie / session data |
-| **Funnel stage** | First visit, product viewer, cart abandoner, past purchaser | Behavioral tracking |
-| **Engagement level** | Low (1 page), medium (2-4 pages), high (5+ pages or 3+ minutes) | Session analytics |
+| **Source de trafic** | Organique, recherche payante, social payant, e-mail, direct, référencement | Paramètres UTM de l'analytique |
+| **Type d'appareil** | Bureau, mobile, tablette | Détection user-agent / appareil |
+| **Géographie** | Pays, état/région, ville, fuseau horaire | Géolocalisation IP |
+| **Type de visiteur** | Nouveau visiteur, visiteur récurrent, client connecté | Données de cookie / session |
+| **Étape du tunnel** | Première visite, consultation de produit, abandon de panier, acheteur passé | Suivi comportemental |
+| **Niveau d'engagement** | Faible (1 page), moyen (2-4 pages), élevé (5+ pages ou 3+ minutes) | Analytique de session |
 
-### Minimum Segment Size
+### Taille minimale de segment
 
-Each segment must independently meet sample size requirements. A segment with 200 monthly visitors cannot power a meaningful test.
+Chaque segment doit indépendamment satisfaire les exigences de taille d'échantillon. Un segment avec 200 visiteurs mensuels ne peut pas alimenter un test significatif.
 
-| Baseline CVR | MDE 20% Relative | MDE 30% Relative | MDE 50% Relative |
+| CVR de référence | MDE 20 % relatif | MDE 30 % relatif | MDE 50 % relatif |
 |---|---|---|---|
-| 2% | 21,000 per variation | 9,800 per variation | 3,800 per variation |
-| 5% | 8,200 | 3,800 | 1,500 |
-| 10% | 3,800 | 1,800 | 680 |
-| 20% | 1,700 | 770 | 290 |
+| 2 % | 21 000 par variante | 9 800 par variante | 3 800 par variante |
+| 5 % | 8 200 | 3 800 | 1 500 |
+| 10 % | 3 800 | 1 800 | 680 |
+| 20 % | 1 700 | 770 | 290 |
 
-*Values computed with `scripts/sample-size-calculator.py` (`--mde-type relative`, 95% significance, 80% power).*
+*Valeurs calculées avec `scripts/sample-size-calculator.py` (`--mde-type relative`, significativité de 95 %, puissance de 80 %).*
 
-**Rule of thumb:** If a segment cannot reach sample size within 6 weeks, merge it with an adjacent segment or test with a larger MDE.
+**Règle empirique :** Si un segment ne peut pas atteindre la taille d'échantillon en 6 semaines, fusionnez-le avec un segment adjacent ou testez avec un MDE plus large.
 
 ---
 
-## Behavioral Targeting Experiments
+## Expériences de ciblage comportemental
 
-### Cart Value Thresholds
+### Seuils de valeur de panier
 
-| Cart Value Tier | Personalized Experience | Hypothesis |
+| Palier de valeur de panier | Expérience personnalisée | Hypothèse |
 |-----------------|------------------------|------------|
-| Below average ($0–$49) | Show free shipping threshold message: "Add $X more for free shipping" | Increases AOV by 15-25% |
-| Average ($50–$99) | Show bundle recommendations: "Frequently bought together" | Increases items per order |
-| Above average ($100+) | Show loyalty benefits: "You qualify for VIP free returns" | Reduces cart abandonment |
-| High value ($250+) | Offer concierge chat or phone support | Reduces friction for high-stakes purchases |
+| En dessous de la moyenne (0-49 $) | Afficher le message de seuil de livraison gratuite : « Ajoutez X $ de plus pour la livraison gratuite » | Augmente la valeur moyenne de commande de 15 à 25 % |
+| Moyenne (50-99 $) | Afficher des recommandations de lot : « Souvent achetés ensemble » | Augmente les articles par commande |
+| Au-dessus de la moyenne (100 $+) | Afficher les avantages de fidélité : « Vous êtes éligible aux retours gratuits VIP » | Réduit l'abandon de panier |
+| Valeur élevée (250 $+) | Proposer un chat de conciergerie ou un support téléphonique | Réduit la friction pour les achats à fort enjeu |
 
-### Browse History Personalization
+### Personnalisation par historique de navigation
 
-- **Viewed category 3+ times, no purchase:** Show category-specific discount or social proof ("187 people bought this today")
-- **Viewed product 2+ times:** Show urgency signal ("Only 3 left in stock") or price drop notification
-- **Browsed comparison content:** Show comparison table or "why us" content on next visit
-- **Read blog content only:** Show softer CTA (guide download) instead of hard CTA (buy now)
+- **Catégorie consultée 3 fois ou plus, sans achat :** Afficher une remise spécifique à la catégorie ou une preuve sociale (« 187 personnes ont acheté ceci aujourd'hui »)
+- **Produit consulté 2 fois ou plus :** Afficher un signal d'urgence (« Plus que 3 en stock ») ou une notification de baisse de prix
+- **A parcouru du contenu comparatif :** Afficher un tableau comparatif ou du contenu « pourquoi nous » lors de la prochaine visite
+- **A lu uniquement le contenu du blog :** Afficher un appel à l'action plus doux (téléchargement de guide) au lieu d'un appel à l'action direct (acheter maintenant)
 
-### Visit Frequency Experiments
+### Expériences par fréquence de visite
 
-| Visit Count | Visitor Type | Test Variations |
+| Nombre de visites | Type de visiteur | Variantes de test |
 |-------------|-------------|-----------------|
-| 1st visit | Explorer | Broad value proposition, educational content, social proof |
-| 2nd–3rd visit | Evaluator | Feature comparisons, testimonials, case studies |
-| 4th–6th visit | Deliberator | Risk reducers (guarantees, trials), urgency, direct CTA |
-| 7+ visits | Stalled | Discount offer, live chat prompt, "still deciding?" email trigger |
+| 1ère visite | Explorateur | Proposition de valeur large, contenu éducatif, preuve sociale |
+| 2e-3e visite | Évaluateur | Comparaisons de fonctionnalités, témoignages, études de cas |
+| 4e-6e visite | Délibérateur | Réducteurs de risque (garanties, essais), urgence, appel à l'action direct |
+| 7+ visites | Stagnant | Offre de remise, invite de chat en direct, déclencheur d'e-mail « encore hésitant ? » |
 
 ---
 
-## Dynamic Content Testing
+## Test de contenu dynamique
 
-### Headline Variations by Traffic Source
+### Variations de titre par source de trafic
 
-| Source | Headline Approach | Example |
+| Source | Approche de titre | Exemple |
 |--------|-------------------|---------|
-| **Branded search** | Product-focused, direct | "Start your free trial — no credit card required" |
-| **Non-branded search** | Problem/solution match to keyword | "[Keyword pain point]? Here's how to fix it" |
-| **Paid social** | Matches ad creative tone and offer | Mirror the exact promise from the ad |
-| **Email** | Continuity with email subject line | Extend the narrative started in the email |
-| **Referral** | Credibility from the referrer | "Recommended by [Referral Source] — see why" |
+| **Recherche de marque** | Centré sur le produit, direct | « Démarrez votre essai gratuit — sans carte bancaire » |
+| **Recherche non-marque** | Correspondance problème/solution avec le mot-clé | « [Point de douleur du mot-clé] ? Voici comment le résoudre » |
+| **Social payant** | Correspond au ton et à l'offre du texte publicitaire | Refléter exactement la promesse de la publicité |
+| **E-mail** | Continuité avec l'objet de l'e-mail | Prolonger le récit commencé dans l'e-mail |
+| **Recommandation** | Crédibilité issue du référent | « Recommandé par [source de référence] — découvrez pourquoi » |
 
-### CTA Variations by Funnel Stage
+### Variations d'appel à l'action par étape du tunnel
 
-| Stage | Awareness | Consideration | Decision |
+| Étape | Notoriété | Considération | Décision |
 |-------|-----------|---------------|----------|
-| **Primary CTA** | "Learn More" / "See How It Works" | "Compare Plans" / "View Demo" | "Start Free Trial" / "Buy Now" |
-| **Secondary CTA** | "Download Guide" | "Talk to Sales" | "Get Custom Quote" |
-| **Urgency layer** | None | "Limited beta spots" | "Offer ends [date]" |
+| **Appel à l'action principal** | « En savoir plus » / « Voir comment ça marche » | « Comparer les plans » / « Voir la démo » | « Démarrer l'essai gratuit » / « Acheter maintenant » |
+| **Appel à l'action secondaire** | « Télécharger le guide » | « Parler aux ventes » | « Obtenir un devis personnalisé » |
+| **Couche d'urgence** | Aucune | « Places limitées en bêta » | « L'offre se termine le [date] » |
 
-### Pricing Display by Geography
+### Affichage de prix par géographie
 
-- **Test by purchasing power:** Show localized pricing in local currency with purchasing-power-adjusted tiers
-- **Test annual vs. monthly default:** Some markets respond better to monthly (lower sticker shock), others to annual (value-oriented)
-- **Test payment methods:** Prominently display regionally preferred payment methods (BACS in UK, iDEAL in Netherlands, Pix in Brazil)
+- **Tester par pouvoir d'achat :** Afficher un prix localisé dans la devise locale avec des paliers ajustés au pouvoir d'achat
+- **Tester le défaut annuel vs mensuel :** Certains marchés répondent mieux au mensuel (choc du prix plus faible), d'autres à l'annuel (orienté valeur)
+- **Tester les modes de paiement :** Afficher de manière proéminente les modes de paiement préférés régionalement (BACS au Royaume-Uni, iDEAL aux Pays-Bas, Pix au Brésil)
 
 ---
 
-## Progressive Disclosure Testing
+## Test de divulgation progressive
 
-Test how much information to reveal at each interaction point.
+Testez combien d'informations révéler à chaque point d'interaction.
 
-### Information Layering Framework
+### Cadre de superposition de l'information
 
-| Layer | Content | Test Variables |
+| Couche | Contenu | Variables de test |
 |-------|---------|----------------|
-| **Layer 1 — Above fold** | Core value prop, primary CTA, hero visual | How much detail in initial view? |
-| **Layer 2 — Scroll or click** | Features, social proof, supporting details | Accordion vs. full display vs. tabbed |
-| **Layer 3 — Deep engagement** | Pricing, technical specs, comparison tables | Gate behind click vs. show immediately |
-| **Layer 4 — Committed** | Checkout, form, account creation | Single-page vs. multi-step |
+| **Couche 1 — Au-dessus de la ligne de flottaison** | Proposition de valeur clé, appel à l'action principal, visuel héro | Quel niveau de détail dans la vue initiale ? |
+| **Couche 2 — Défilement ou clic** | Fonctionnalités, preuve sociale, détails de soutien | Accordéon vs affichage complet vs onglets |
+| **Couche 3 — Engagement approfondi** | Tarification, spécifications techniques, tableaux comparatifs | Verrouiller derrière un clic vs afficher immédiatement |
+| **Couche 4 — Engagé** | Paiement, formulaire, création de compte | Une seule page vs multi-étapes |
 
-### Test Ideas by Disclosure Level
+### Idées de test par niveau de divulgation
 
-- **Short vs. long landing page:** Test a focused above-fold-only design against a long-form page for the same audience
-- **Feature tours:** Inline feature tour (visible) vs. "See features" button (click to reveal)
-- **Pricing visibility:** Show pricing on the landing page vs. "See pricing" link vs. require demo request
-- **Form length:** Full form upfront vs. progressive form (name + email first, then details on next step)
+- **Landing page courte vs longue :** Tester une conception focalisée uniquement au-dessus de la ligne de flottaison contre une page longue pour la même audience
+- **Visites de fonctionnalités :** Visite de fonctionnalités en ligne (visible) vs bouton « Voir les fonctionnalités » (cliquer pour révéler)
+- **Visibilité de la tarification :** Afficher la tarification sur la landing page vs lien « Voir la tarification » vs exiger une demande de démo
+- **Longueur du formulaire :** Formulaire complet d'emblée vs formulaire progressif (nom + e-mail d'abord, puis détails à l'étape suivante)
 
 ---
 
-## Holdout Testing for Personalization
+## Test par contrôle témoin pour la personnalisation
 
-### Why Holdouts Matter
+### Pourquoi les contrôles témoins comptent
 
-Without a holdout group, you cannot measure whether personalization actually improves outcomes versus a well-optimized generic experience. Many personalization programs show apparent lifts that disappear when measured against a proper holdout.
+Sans groupe de contrôle témoin, vous ne pouvez pas mesurer si la personnalisation améliore réellement les résultats par rapport à une expérience générique bien optimisée. De nombreux programmes de personnalisation montrent des hausses apparentes qui disparaissent lorsqu'elles sont mesurées par rapport à un contrôle témoin approprié.
 
-### Holdout Design
+### Conception du contrôle témoin
 
-| Component | Specification |
+| Composant | Spécification |
 |-----------|---------------|
-| **Holdout size** | 5–10% of total traffic (must be large enough to detect expected personalization lift) |
-| **Assignment** | Random, cookie-based, persistent across sessions |
-| **Duration** | Minimum 4 weeks; ideally ongoing |
-| **Experience** | Holdout sees the best-performing generic version (not an unoptimized baseline) |
-| **Measurement** | Compare personalized cohort aggregate performance vs. holdout aggregate |
+| **Taille du contrôle témoin** | 5 à 10 % du trafic total (doit être suffisamment grand pour détecter la hausse de personnalisation attendue) |
+| **Attribution** | Aléatoire, basée sur les cookies, persistante entre les sessions |
+| **Durée** | Minimum 4 semaines ; idéalement continue |
+| **Expérience** | Le contrôle témoin voit la version générique la plus performante (pas une référence non optimisée) |
+| **Mesure** | Comparer la performance agrégée de la cohorte personnalisée vs l'agrégat du contrôle témoin |
 
-### Holdout Metrics to Track
+### Indicateurs de contrôle témoin à suivre
 
-| Metric | Purpose |
+| Indicateur | Objectif |
 |--------|---------|
-| Conversion rate (personalized vs. holdout) | Core lift measurement |
-| Revenue per visitor (personalized vs. holdout) | Ensures personalization drives revenue, not just clicks |
-| Return visit rate | Does personalization improve retention? |
-| Customer lifetime value (30/60/90 day) | Long-term impact beyond initial conversion |
-| Segment-level performance | Which segments benefit most from personalization? |
+| Taux de conversion (personnalisé vs contrôle témoin) | Mesure de hausse fondamentale |
+| Revenu par visiteur (personnalisé vs contrôle témoin) | Garantit que la personnalisation génère du revenu, pas seulement des clics |
+| Taux de visite de retour | La personnalisation améliore-t-elle la rétention ? |
+| Valeur vie client (30/60/90 jours) | Impact à long terme au-delà de la conversion initiale |
+| Performance au niveau du segment | Quels segments bénéficient le plus de la personnalisation ? |
 
-### Interpreting Holdout Results
+### Interprétation des résultats du contrôle témoin
 
-| Result | Interpretation | Action |
+| Résultat | Interprétation | Action |
 |--------|---------------|--------|
-| Personalized > holdout by 5%+ (significant) | Personalization is delivering real value | Continue and expand |
-| Personalized > holdout by 1-4% (not significant) | Marginal lift, may not justify complexity | Simplify or focus on highest-lift segments only |
-| Personalized = holdout | Personalization adds complexity without value | Roll back; optimize the generic experience instead |
-| Personalized < holdout | Personalization is actively harming performance | Diagnose immediately — likely over-segmentation or poor targeting |
+| Personnalisé > contrôle témoin de 5 %+ (significatif) | La personnalisation apporte une valeur réelle | Continuer et étendre |
+| Personnalisé > contrôle témoin de 1-4 % (non significatif) | Hausse marginale, peut ne pas justifier la complexité | Simplifier ou se concentrer uniquement sur les segments à plus forte hausse |
+| Personnalisé = contrôle témoin | La personnalisation ajoute de la complexité sans valeur | Revenir en arrière ; optimiser l'expérience générique à la place |
+| Personnalisé < contrôle témoin | La personnalisation nuit activement à la performance | Diagnostiquer immédiatement — probablement une sur-segmentation ou un mauvais ciblage |
 
 ---
 
-## Personalization Pitfalls
+## Pièges de la personnalisation
 
-| Pitfall | Description | Prevention |
+| Piège | Description | Prévention |
 |---------|-------------|------------|
-| **Over-personalization** | So many segments that each receives a barely-tested experience | Cap active segments at 3-5 until each is validated with holdout data |
-| **Filter bubbles** | Showing users only what they've already engaged with, limiting discovery | Include 10-20% "exploration" content in personalized feeds |
-| **Privacy backlash** | Personalization feels invasive ("How do they know I looked at this?") | Use behavioral cues subtly; never expose the data you used to personalize |
-| **Segment size too small** | Testing within segments that cannot reach statistical significance | Pre-calculate segment sample sizes; merge small segments |
-| **Complexity creep** | Maintaining 15+ personalized experiences becomes unmanageable | Start simple; add complexity only when validated by holdout lift |
-| **Stale personalization** | Rules based on outdated behavior or expired intent signals | Set expiration windows on behavioral data (7 days for browse, 30 days for purchase) |
-| **Assuming personalization wins** | Deploying personalized experiences without testing against generic | Always run holdout tests before declaring personalization a success |
+| **Sur-personnalisation** | Tant de segments que chacun reçoit une expérience à peine testée | Plafonner les segments actifs à 3-5 jusqu'à ce que chacun soit validé par des données de contrôle témoin |
+| **Bulles de filtre** | Ne montrer aux utilisateurs que ce avec quoi ils se sont déjà engagés, limitant la découverte | Inclure 10-20 % de contenu « exploration » dans les flux personnalisés |
+| **Réaction contre l'atteinte à la vie privée** | La personnalisation semble intrusive (« Comment savent-ils que j'ai regardé ça ? ») | Utiliser les indices comportementaux avec subtilité ; ne jamais exposer les données utilisées pour personnaliser |
+| **Taille de segment trop petite** | Tester au sein de segments qui ne peuvent pas atteindre la significativité statistique | Précalculer les tailles d'échantillon des segments ; fusionner les petits segments |
+| **Dérive de complexité** | Maintenir 15+ expériences personnalisées devient ingérable | Commencer simple ; ajouter de la complexité seulement lorsque validée par une hausse de contrôle témoin |
+| **Personnalisation obsolète** | Règles basées sur un comportement dépassé ou des signaux d'intention expirés | Définir des fenêtres d'expiration sur les données comportementales (7 jours pour la navigation, 30 jours pour l'achat) |
+| **Supposer que la personnalisation gagne** | Déployer des expériences personnalisées sans les tester contre le générique | Toujours exécuter des tests de contrôle témoin avant de déclarer la personnalisation un succès |
 
 ---
 
-## Testing Roadmap — Maturity Progression
+## Feuille de route de test — Progression de maturité
 
-### Stage 1: Segmented A/B Testing (Months 1–3)
-- Segment traffic by 2-3 major dimensions (source, device, new/returning)
-- Run standard A/B tests within each segment
-- Identify which segments behave differently
-- **Goal:** Understand where one-size-fits-all fails
+### Étape 1 : Test A/B segmenté (mois 1-3)
+- Segmenter le trafic par 2-3 dimensions majeures (source, appareil, nouveau/récurrent)
+- Exécuter des tests A/B standards au sein de chaque segment
+- Identifier quels segments se comportent différemment
+- **Objectif :** Comprendre où l'approche uniforme échoue
 
-### Stage 2: Rule-Based Personalization (Months 4–6)
-- Implement simple if/then rules: "If returning visitor from paid search, show Variant B"
-- Test each rule against generic experience with holdout
-- Build 3-5 validated personalization rules
-- **Goal:** Prove personalization lift with holdout data
+### Étape 2 : Personnalisation basée sur des règles (mois 4-6)
+- Mettre en œuvre des règles simples si/alors : « Si visiteur récurrent depuis la recherche payante, afficher la variante B »
+- Tester chaque règle contre l'expérience générique avec un contrôle témoin
+- Construire 3-5 règles de personnalisation validées
+- **Objectif :** Prouver la hausse de personnalisation avec des données de contrôle témoin
 
-### Stage 3: Behavioral Personalization (Months 7–12)
-- Layer in behavioral signals: browse history, engagement depth, cart behavior
-- Build dynamic content blocks that respond to user behavior
-- Expand holdout testing to measure cumulative personalization lift
-- **Goal:** Personalization contributes measurable revenue lift
+### Étape 3 : Personnalisation comportementale (mois 7-12)
+- Superposer les signaux comportementaux : historique de navigation, profondeur d'engagement, comportement de panier
+- Construire des blocs de contenu dynamique qui répondent au comportement de l'utilisateur
+- Étendre les tests de contrôle témoin pour mesurer la hausse cumulée de personnalisation
+- **Objectif :** La personnalisation contribue à une hausse de revenu mesurable
 
-### Stage 4: Predictive Personalization (Year 2+)
-- Use ML models to predict optimal experience per visitor
-- Real-time content assembly based on predictive scores
-- Continuous holdout testing with automated segment discovery
-- **Goal:** Autonomous optimization at individual level
+### Étape 4 : Personnalisation prédictive (année 2+)
+- Utiliser des modèles de ML pour prédire l'expérience optimale par visiteur
+- Assemblage de contenu en temps réel basé sur des scores prédictifs
+- Test de contrôle témoin continu avec découverte automatisée de segments
+- **Objectif :** Optimisation autonome au niveau individuel
 
 ---
 
-## Measurement Framework
+## Cadre de mesure
 
-### Core Personalization Metrics
+### Indicateurs de personnalisation fondamentaux
 
-| Metric | Formula | Target |
+| Indicateur | Formule | Cible |
 |--------|---------|--------|
-| **Personalization lift** | (Personalized CVR - Holdout CVR) / Holdout CVR | > 5% to justify program |
-| **Segment performance variance** | Std dev of CVR across active segments | Lower variance = better targeting |
-| **Revenue per visitor delta** | Personalized RPV - Holdout RPV | Positive and statistically significant |
-| **Personalization coverage** | % of traffic receiving a personalized experience | 60-90% (leave holdout + unmatched) |
-| **Rule hit rate** | % of sessions matching at least one personalization rule | > 70% indicates good rule coverage |
+| **Hausse de personnalisation** | (CVR personnalisé - CVR contrôle témoin) / CVR contrôle témoin | > 5 % pour justifier le programme |
+| **Variance de performance par segment** | Écart-type du CVR entre les segments actifs | Variance plus faible = meilleur ciblage |
+| **Écart de revenu par visiteur** | RPV personnalisé - RPV contrôle témoin | Positif et statistiquement significatif |
+| **Couverture de personnalisation** | % du trafic recevant une expérience personnalisée | 60-90 % (laisser le contrôle témoin + non apparié) |
+| **Taux de correspondance des règles** | % de sessions correspondant à au moins une règle de personnalisation | > 70 % indique une bonne couverture des règles |
 
-### Segment Performance Comparison Template
+### Modèle de comparaison de performance par segment
 
 ```
-SEGMENT: [Name]
-TRAFFIC VOLUME: [Monthly visitors]
-PERIOD: [Date range]
+SEGMENT : [Nom]
+VOLUME DE TRAFIC : [Visiteurs mensuels]
+PÉRIODE : [Plage de dates]
 
-PERSONALIZED EXPERIENCE:
-- Visitors: [N]
-- Conversions: [N]
-- CVR: [X%]
-- RPV: [$X]
+EXPÉRIENCE PERSONNALISÉE :
+- Visiteurs : [N]
+- Conversions : [N]
+- CVR : [X %]
+- RPV : [X $]
 
-HOLDOUT (GENERIC):
-- Visitors: [N]
-- Conversions: [N]
-- CVR: [X%]
-- RPV: [$X]
+CONTRÔLE TÉMOIN (GÉNÉRIQUE) :
+- Visiteurs : [N]
+- Conversions : [N]
+- CVR : [X %]
+- RPV : [X $]
 
-LIFT: [X%] (p = [X], CI: [X% to X%])
-REVENUE IMPACT: [$X incremental per month]
+HAUSSE : [X %] (p = [X], IC : [X % à X %])
+IMPACT SUR LE REVENU : [X $ incrémental par mois]
 
-DECISION: [Expand / Maintain / Optimize / Retire]
+DÉCISION : [Étendre / Maintenir / Optimiser / Retirer]
 ```
 
 ---
 
-## Tool Integration Reference
+## Référence d'intégration d'outils
 
-| Tool | Strength | Personalization Type | Price Tier |
+| Outil | Force | Type de personnalisation | Palier de prix |
 |------|----------|---------------------|------------|
-| **Optimizely** | Enterprise experimentation with advanced targeting | Rule-based + audience-based | Enterprise ($$$) |
-| **VWO** | Visual editor + behavioral targeting | Rule-based + heatmap-informed | Mid-market ($$) |
-| **Dynamic Yield** | AI-driven personalization + recommendations | Predictive + behavioral | Enterprise ($$$) |
-| **LaunchDarkly** | Feature flag-driven personalization for product teams | Feature flags + progressive rollout | Mid-market ($$) |
-| **Mutiny** | B2B website personalization by firmographic data | Account-based personalization | Mid-market ($$) |
-| **Intellimize** | AI-powered, automatically tests combinations | Generative + predictive | Mid-market ($$) |
-| **Convert** | Privacy-focused experimentation | Rule-based + audience-based | SMB–Mid ($–$$) |
-| **Google Tag Manager + GA4** | Free audience-based content swaps | Basic rule-based (DIY) | Free |
+| **Optimizely** | Expérimentation entreprise avec ciblage avancé | Basé sur des règles + basé sur l'audience | Entreprise ($$$) |
+| **VWO** | Éditeur visuel + ciblage comportemental | Basé sur des règles + informé par cartes de chaleur | Marché intermédiaire ($$) |
+| **Dynamic Yield** | Personnalisation pilotée par IA + recommandations | Prédictif + comportemental | Entreprise ($$$) |
+| **LaunchDarkly** | Personnalisation pilotée par feature flags pour les équipes produit | Feature flags + déploiement progressif | Marché intermédiaire ($$) |
+| **Mutiny** | Personnalisation de site web B2B par données firmographiques | Personnalisation basée sur les comptes | Marché intermédiaire ($$) |
+| **Intellimize** | Piloté par IA, teste automatiquement les combinaisons | Génératif + prédictif | Marché intermédiaire ($$) |
+| **Convert** | Expérimentation axée sur la confidentialité | Basé sur des règles + basé sur l'audience | PME-intermédiaire ($-$$) |
+| **Google Tag Manager + GA4** | Échanges de contenu gratuits basés sur l'audience | Basé sur des règles basique (bricolage) | Gratuit |
 
-**Integration requirements:** Any personalization tool needs clean data from your analytics platform, CRM, and CDP. Poor data quality makes personalization worse, not better — you end up targeting the wrong experiences to the wrong people.
+**Exigences d'intégration :** Tout outil de personnalisation a besoin de données propres provenant de votre plateforme analytique, de votre CRM, et de votre CDP. Une mauvaise qualité de données rend la personnalisation pire, pas meilleure — vous finissez par cibler les mauvaises expériences vers les mauvaises personnes.
+</content>

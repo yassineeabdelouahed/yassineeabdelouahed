@@ -1,88 +1,89 @@
-# In-Market vs Out-Market — Budget Split Logic
+# In-Market vs Out-Market — Logique de répartition budgétaire
 
-One of the most consequential frameworks in digital marketing. Most junior marketers do not learn this, and most marketing tools do not enforce it. It fundamentally changes how budget is allocated.
+L'un des cadres les plus déterminants du marketing digital. La plupart des marketeurs juniors ne l'apprennent pas, et la plupart des outils marketing ne l'appliquent pas. Il change fondamentalement la façon dont le budget est réparti.
 
-## The two states
+## Les deux états
 
-**In-market:** People who are actively looking to buy right now. They are searching, comparing, evaluating. They are in the market. **They convert at the highest rate but represent a small percentage of the total addressable audience — typically 3–5% at any given time.**
+**In-market :** Les personnes qui cherchent activement à acheter dès maintenant. Elles recherchent, comparent, évaluent. Elles sont « dans le marché ». **Elles convertissent au taux le plus élevé mais représentent un faible pourcentage de l'audience totale adressable — généralement 3 à 5 % à un instant donné.**
 
-**Out-market:** People who will need your product or service in the future but are not looking right now. **They represent 95–97% of your addressable audience.** They will not convert today, but if they know and trust your brand when they do enter the market, you win.
+**Out-market :** Les personnes qui auront besoin de votre produit ou service à l'avenir mais qui ne cherchent pas actuellement. **Elles représentent 95 à 97 % de votre audience adressable.** Elles ne convertiront pas aujourd'hui, mais si elles connaissent et font confiance à votre marque au moment où elles entreront dans le marché, vous gagnez.
 
-## Strategic implication
+## Implication stratégique
 
-Most digital marketing budget defaults to chasing the 3–5% who are in-market today. That feels logical because:
+La majorité du budget marketing digital est par défaut consacrée à courtiser les 3 à 5 % qui sont in-market aujourd'hui. Cela semble logique car :
 
-- Conversions are immediate
-- ROAS is high
-- Attribution is clear
-- The CFO can see direct revenue
+- Les conversions sont immédiates
+- Le ROAS est élevé
+- L'attribution est claire
+- Le directeur financier peut voir un revenu direct
 
-But this ignores the 95–97%. If no investment goes into building awareness, trust, and recall with the out-market 95%, the brand has no pipeline of future in-market customers. Eventually the in-market pool dries up because the brand is invisible to them when they enter.
+Mais cela ignore les 95 à 97 %. Si aucun investissement ne va à la construction de la notoriété, de la confiance, et du rappel auprès des 95 % out-market, la marque n'a pas de pipeline de futurs clients in-market. Finalement, le bassin in-market s'assèche parce que la marque leur est invisible au moment où ils entrent dans le marché.
 
-## Channel mapping
+## Correspondance des canaux
 
-| Bucket | Channels | Mode |
+| Catégorie | Canaux | Mode |
 |---|---|---|
-| **In-market** | Google Search ads, Bing Search, retargeting, brand-search, comparison-keyword campaigns, BOFU email, abandoned-cart, sales outreach | Demand capture |
-| **Out-market** | Display advertising, programmatic, YouTube in-stream / Demand Gen, Meta Reach campaigns, LinkedIn brand campaigns, content marketing, organic social, PR, podcast advertising, sponsorships, influencer partnerships | Demand generation |
+| **In-market** | Annonces Google Search, Bing Search, retargeting, recherche de marque, campagnes de mots-clés comparatifs, e-mail BOFU, panier abandonné, prospection commerciale | Captation de la demande |
+| **Out-market** | Publicité display, programmatique, YouTube in-stream / Demand Gen, campagnes Meta Reach, campagnes de marque LinkedIn, marketing de contenu, social organique, relations presse, publicité podcast, parrainages, partenariats avec des influenceurs | Génération de la demande |
 
-## Recommended starting allocations
+## Allocations de départ recommandées
 
-Allocations vary by business stage and category, but as a starting point:
+Les allocations varient selon l'étape de l'entreprise et la catégorie, mais comme point de départ :
 
-| Business stage | In-market % | Out-market % | Reasoning |
+| Étape de l'entreprise | % In-market | % Out-market | Raisonnement |
 |---|---|---|---|
-| Early-stage / startup needing immediate revenue | 80% | 20% | Survival mode — must convert what is in-market today. Out-market investment is the seed of future in-market. |
-| Growth-stage with proven product-market fit | 60% | 40% | Need to scale beyond the in-market ceiling. Out-market builds the pipeline. |
-| Mature brand defending share | 40% | 60% | Defensive posture — protect category mind-share. |
-| Mature brand growing into new category | 30% | 70% | New category requires creating demand, not just capturing it. |
+| Démarrage / startup ayant besoin d'un chiffre d'affaires immédiat | 80 % | 20 % | Mode survie — il faut convertir ce qui est in-market aujourd'hui. L'investissement out-market est la graine du futur in-market. |
+| Croissance avec adéquation produit-marché prouvée | 60 % | 40 % | Besoin de croître au-delà du plafond in-market. L'out-market construit le pipeline. |
+| Marque mature défendant sa part de marché | 40 % | 60 % | Posture défensive — protéger la part d'esprit de la catégorie. |
+| Marque mature s'étendant vers une nouvelle catégorie | 30 % | 70 % | Une nouvelle catégorie nécessite de créer la demande, pas seulement de la capter. |
 
-The Binet & Field research (IPA, "The Long and the Short of It") finds that the long-term-optimal split is around **60% brand (out-market) / 40% performance (in-market)** — though this varies by category and business stage.
+La recherche de Binet & Field (IPA, « The Long and the Short of It ») trouve que la répartition optimale à long terme se situe autour de **60 % marque (out-market) / 40 % performance (in-market)** — bien que cela varie selon la catégorie et l'étape de l'entreprise.
 
-## How to size the out-market opportunity
+## Comment dimensionner l'opportunité out-market
 
-The out-market is large but not infinite. Sizing helps decide how much investment makes sense.
+Le marché out-market est vaste mais pas infini. Le dimensionner aide à décider quel niveau d'investissement est pertinent.
 
-**Step 1:** Estimate the Total Addressable Market (TAM). This is everyone who could possibly buy your product / service.
+**Étape 1 :** Estimer le marché total adressable (TAM). C'est l'ensemble de tous ceux qui pourraient potentiellement acheter votre produit / service.
 
-**Step 2:** Estimate the in-market percentage at any given time. For most categories, this is 3–5%. For high-frequency categories (groceries, dining), it can be 10–20%. For low-frequency categories (cars, mortgages, B2B enterprise software), it can be 1–2%.
+**Étape 2 :** Estimer le pourcentage in-market à un instant donné. Pour la plupart des catégories, c'est 3 à 5 %. Pour les catégories à haute fréquence (épicerie, restauration), cela peut être de 10 à 20 %. Pour les catégories à basse fréquence (voitures, prêts immobiliers, logiciels entreprise B2B), cela peut être de 1 à 2 %.
 
-**Step 3:** The remainder is the out-market. If TAM is 1,000,000 and in-market is 5%, then in-market = 50,000 and out-market = 950,000.
+**Étape 3 :** Le reste est l'out-market. Si le TAM est de 1 000 000 et l'in-market de 5 %, alors l'in-market = 50 000 et l'out-market = 950 000.
 
-**Step 4:** Estimate the cost to build awareness with the out-market. Typically far cheaper per impression than in-market clicks, but requires accumulated frequency (3+ exposures over time) to register.
+**Étape 4 :** Estimer le coût de construction de la notoriété auprès de l'out-market. Généralement bien moins cher par impression que les clics in-market, mais nécessite une fréquence accumulée (3 expositions ou plus dans le temps) pour s'inscrire.
 
-**Step 5:** Decide what percentage of out-market the brand wants to be top-of-mind for. Then size the investment accordingly.
+**Étape 5 :** Décider pour quel pourcentage de l'out-market la marque veut être top of mind. Puis dimensionner l'investissement en conséquence.
 
-## How to know if your out-market investment is working
+## Comment savoir si votre investissement out-market fonctionne
 
-Out-market does not produce immediate ROAS. Measuring it requires different metrics:
+L'out-market ne produit pas de ROAS immédiat. Le mesurer nécessite des indicateurs différents :
 
-- **Brand search volume trend** — Are more people Googling your brand name? (Track in Google Search Console + Google Trends.)
-- **Direct traffic trend** — Are more people typing your URL directly?
-- **Branded organic CTR** — Is your organic CTR on branded keywords rising? (Indicates better recall.)
-- **Aided + unaided brand recall surveys** — Periodic surveys to track brand awareness.
-- **Share of voice** — Your share of all category-related social/PR mentions.
-- **Time-to-conversion lengthening** — A counter-intuitive signal: as out-market investment grows, more people enter the funnel earlier (longer journeys, more touchpoints).
-- **Lift studies** — Conversion lift tests on Meta, geo experiments where out-market campaigns are paused in some geos and not others.
+- **Tendance du volume de recherche de marque** — De plus en plus de personnes recherchent-elles le nom de votre marque sur Google ? (À suivre dans Google Search Console + Google Trends.)
+- **Tendance du trafic direct** — De plus en plus de personnes tapent-elles directement votre URL ?
+- **CTR organique sur les mots-clés de marque** — Votre CTR organique sur les mots-clés de marque augmente-t-il ? (Indique un meilleur rappel.)
+- **Enquêtes de rappel de marque assisté + spontané** — Enquêtes périodiques pour suivre la notoriété de marque.
+- **Part de voix** — Votre part de toutes les mentions social/relations presse liées à la catégorie.
+- **Allongement du temps de conversion** — Un signal contre-intuitif : à mesure que l'investissement out-market croît, davantage de personnes entrent dans le tunnel plus tôt (parcours plus longs, plus de points de contact).
+- **Études de lift** — Tests de lift de conversion sur Meta, expériences géographiques où les campagnes out-market sont mises en pause dans certaines zones et pas dans d'autres.
 
-## How this plays in the engagement methodology
+## Comment cela s'inscrit dans la méthodologie d'engagement
 
-Core Doc 3.4 (DMFlow) explicitly documents the in-market vs out-market split decision and the rationale.
+Le document central 3.4 (DMFlow) documente explicitement la décision de répartition in-market vs out-market et son raisonnement.
 
-The decision is revisited in Part 12 (Continuous Improvement) quarterly: are we under-investing in out-market? Is the in-market pool growing or shrinking?
+La décision est réexaminée dans la partie 12 (amélioration continue) chaque trimestre : sous-investissons-nous dans l'out-market ? Le bassin in-market croît-il ou se réduit-il ?
 
-Performance reports (monthly + quarterly) report performance separately for in-market campaigns vs out-market campaigns to prevent direct comparison (out-market should never be measured by ROAS alone).
+Les rapports de performance (mensuels + trimestriels) rendent compte de la performance séparément pour les campagnes in-market vs out-market afin d'éviter une comparaison directe (l'out-market ne devrait jamais être mesuré uniquement par le ROAS).
 
-## Common mistakes
+## Erreurs courantes
 
-1. **Spending 100% on in-market** because direct ROAS is highest. Drains the funnel over 6–12 months.
-2. **Spending too much on out-market too early** when the in-market is not yet captured. Wasteful — go after the immediate revenue first, then invest the gains in out-market.
-3. **Measuring out-market by direct ROAS.** It will look terrible because that is not how it works. Use the metrics above.
-4. **Cutting out-market budget when business slows.** This is exactly when out-market matters most — if competitors keep advertising while you go dark, share-of-mind shifts to them.
-5. **Believing brand and performance are different teams.** They are different functions of the same budget. Both must be measured and optimised together.
+1. **Dépenser 100 % en in-market** parce que le ROAS direct est le plus élevé. Cela assèche le tunnel sur 6 à 12 mois.
+2. **Dépenser trop en out-market trop tôt** alors que l'in-market n'est pas encore capté. Gaspillage — allez d'abord chercher le chiffre d'affaires immédiat, puis réinvestissez les gains dans l'out-market.
+3. **Mesurer l'out-market par le ROAS direct.** Cela paraîtra terrible car ce n'est pas ainsi que cela fonctionne. Utilisez les indicateurs ci-dessus.
+4. **Couper le budget out-market quand l'activité ralentit.** C'est exactement le moment où l'out-market compte le plus — si les concurrents continuent à faire de la publicité pendant que vous disparaissez, la part d'esprit se déplace vers eux.
+5. **Croire que la marque et la performance sont des équipes différentes.** Ce sont des fonctions différentes du même budget. Les deux doivent être mesurées et optimisées ensemble.
 
-## Related references
+## Références liées
 
-- [five-digital-markets.md](five-digital-markets.md) — channel taxonomy
-- [four-core-documents-spec.md](four-core-documents-spec.md) — DMFlow (Core Doc 3.4)
-- [unit-economics-framework.md](unit-economics-framework.md) — CAC / LTV that gates investment decisions
+- [five-digital-markets.md](five-digital-markets.md) — taxonomie des canaux
+- [four-core-documents-spec.md](four-core-documents-spec.md) — DMFlow (document central 3.4)
+- [unit-economics-framework.md](unit-economics-framework.md) — fondation CAC / LTV sur laquelle se vérifie chaque décision d'investissement
+</content>

@@ -1,257 +1,257 @@
-# TikTok Ads — Creative & Campaign Reference
+# TikTok Ads — Référence créatif et campagne
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Campaign Types Overview
+## Vue d'ensemble des types de campagnes
 
-| Campaign Objective | Use Case | Optimization Event | Billing Model |
+| Objectif de campagne | Cas d'usage | Événement d'optimisation | Modèle de facturation |
 |---|---|---|---|
-| Reach | Maximum brand exposure | Impressions | CPM |
-| Traffic | Drive website/app visits | Clicks or landing page views | CPC / oCPM |
-| Video Views | Video engagement at scale | 2-sec, 6-sec, or full view | CPV |
-| Community Interaction | Follower growth, profile visits | Profile visits, follows | oCPM |
-| Lead Generation | In-app lead capture | Form submission | oCPM |
-| App Promotion | App installs and events | Install, purchase, subscribe | oCPM / CPI |
-| Website Conversions | On-site actions | Add to cart, purchase, sign-up | oCPM |
-| Product Sales (TikTok Shop) | Direct commerce | Purchase | oCPM |
+| Reach (portée) | Exposition de marque maximale | Impressions | CPM |
+| Traffic (trafic) | Générer des visites de site/app | Clics ou vues de landing page | CPC / oCPM |
+| Video Views (vues vidéo) | Engagement vidéo à l'échelle | Vue 2s, 6s, ou complète | CPV |
+| Community Interaction | Croissance d'abonnés, visites de profil | Visites de profil, abonnements | oCPM |
+| Lead Generation | Capture de leads in-app | Soumission de formulaire | oCPM |
+| App Promotion | Installations d'app et événements | Installation, achat, abonnement | oCPM / CPI |
+| Website Conversions | Actions sur le site | Ajout au panier, achat, inscription | oCPM |
+| Product Sales (TikTok Shop) | Commerce direct | Achat | oCPM |
 
-### Campaign Structure
+### Structure de campagne
 ```
-Campaign (Objective + Budget)
-├── Ad Group 1 (Targeting + Placement + Schedule + Bid)
-│   ├── Ad 1 (Creative + CTA)
-│   ├── Ad 2
-│   └── Ad 3
-├── Ad Group 2
-│   ├── Ad 1
-│   └── Ad 2
-└── Ad Group 3
+Campagne (Objectif + Budget)
+├── Groupe d'annonces 1 (Ciblage + Emplacement + Calendrier + Enchère)
+│   ├── Annonce 1 (Créatif + CTA)
+│   ├── Annonce 2
+│   └── Annonce 3
+├── Groupe d'annonces 2
+│   ├── Annonce 1
+│   └── Annonce 2
+└── Groupe d'annonces 3
     └── ...
 ```
 
-### Structure Best Practices
-- [ ] 3–5 ad groups per campaign to allow testing
-- [ ] 3–6 creatives per ad group — TikTok burns through creative fast
-- [ ] Minimum daily budget: $20/ad group for conversion campaigns
-- [ ] Avoid audience overlap between ad groups (use exclusions)
-- [ ] Consolidate when possible — give the algorithm enough data per ad group
+### Bonnes pratiques de structure
+- [ ] 3–5 groupes d'annonces par campagne pour permettre le test
+- [ ] 3–6 créatifs par groupe d'annonces — TikTok consomme le créatif rapidement
+- [ ] Budget journalier minimum : 20 $/groupe d'annonces pour les campagnes de conversion
+- [ ] Éviter le chevauchement d'audience entre les groupes d'annonces (utiliser des exclusions)
+- [ ] Consolider quand possible — donner à l'algorithme suffisamment de données par groupe d'annonces
 
-## TikTok-Native Creative Best Practices
+## Bonnes pratiques créatives natives TikTok
 
-### The 3-Second Rule
-TikTok's average attention span demands an instant hook. If you don't capture attention in the first frame, you lose the viewer.
+### La règle des 3 secondes
+La durée d'attention moyenne sur TikTok exige une accroche instantanée. Si vous ne captez pas l'attention dans la première image, vous perdez le spectateur.
 
-### Creative Framework: Hook → Body → CTA
+### Cadre créatif : Accroche → Corps → CTA
 
-| Phase | Timing | Purpose | Techniques |
+| Phase | Timing | Objectif | Techniques |
 |---|---|---|---|
-| **Hook** | 0–3 seconds | Stop the scroll | Bold text overlay, surprising visual, direct question, controversy, "Wait for it" |
-| **Body** | 3–15 seconds | Deliver value or story | Demo, transformation, problem/solution, testimonial, tutorial |
-| **CTA** | Last 2–5 seconds | Drive action | Text overlay + verbal CTA, urgency, promo code, "Link in bio" |
+| **Accroche** | 0–3 secondes | Arrêter le défilement | Superposition de texte en gras, visuel surprenant, question directe, controverse, « Attendez la suite » |
+| **Corps** | 3–15 secondes | Délivrer la valeur ou l'histoire | Démo, transformation, problème/solution, témoignage, tutoriel |
+| **CTA** | Dernières 2–5 secondes | Générer l'action | Superposition de texte + CTA verbal, urgence, code promo, « Lien dans la bio » |
 
-### Creative Dos and Don'ts
+### À faire et à ne pas faire créatif
 
-| Do | Don't |
+| À faire | À ne pas faire |
 |---|---|
-| Shoot vertical (9:16) natively on phone | Repurpose horizontal TV/YouTube spots |
-| Use trending sounds and music | Use copyrighted music without licensing |
-| Feature real people and authentic voices | Use overly polished, corporate production |
-| Add text overlays for silent viewing | Rely solely on audio to convey message |
-| Match organic TikTok aesthetic | Use static images or stock footage |
-| Test new hooks every 3–5 days | Run same creative longer than 7–14 days |
-| Show the product in use within first 3 seconds | Bury the product reveal at the end |
-| Use native transitions (jump cuts, zooms) | Use heavy graphic transitions |
+| Filmer en vertical (9:16) nativement sur téléphone | Réadapter des spots TV/YouTube horizontaux |
+| Utiliser des sons et musiques tendance | Utiliser de la musique protégée sans licence |
+| Mettre en avant de vraies personnes et des voix authentiques | Utiliser une production trop léchée, corporate |
+| Ajouter des superpositions de texte pour le visionnage silencieux | S'appuyer uniquement sur l'audio pour transmettre le message |
+| Correspondre à l'esthétique organique de TikTok | Utiliser des images statiques ou des banques d'images |
+| Tester de nouvelles accroches tous les 3–5 jours | Diffuser le même créatif plus de 7–14 jours |
+| Montrer le produit en utilisation dans les 3 premières secondes | Enterrer la révélation du produit à la fin |
+| Utiliser des transitions natives (jump cuts, zooms) | Utiliser des transitions graphiques lourdes |
 
-### Top-Performing Creative Formats
+### Formats créatifs les plus performants
 
-| Format | Description | Best For |
+| Format | Description | Idéal pour |
 |---|---|---|
-| UGC Testimonial | Real person talking to camera about experience | D2C, app promotion |
-| Product Demo | Show product in action, ASMR-style or unboxing | E-commerce, CPG |
-| Before/After | Transformation or comparison | Beauty, fitness, home |
-| Day-in-the-Life | Lifestyle integration of product | Apparel, food, wellness |
-| Trending Sound Remix | Brand message overlaid on trending audio | Awareness, engagement |
-| Green Screen Explainer | Person in front of screenshot/image | SaaS, education, finance |
-| Stitch/Duet Style | React to or build on existing content | Community, engagement |
-| Listicle / Countdown | "3 reasons why..." or "Top 5..." | Education, consideration |
+| Témoignage UGC | Vraie personne s'adressant à la caméra sur son expérience | D2C, promotion d'app |
+| Démo produit | Montrer le produit en action, style ASMR ou déballage | E-commerce, CPG |
+| Avant/Après | Transformation ou comparaison | Beauté, fitness, maison |
+| Journée dans la vie | Intégration lifestyle du produit | Habillement, alimentaire, bien-être |
+| Remix de son tendance | Message de marque superposé sur un audio tendance | Notoriété, engagement |
+| Explicateur écran vert | Personne devant une capture d'écran/image | SaaS, éducation, finance |
+| Style stitch/duet | Réagir ou construire sur du contenu existant | Communauté, engagement |
+| Liste/compte à rebours | « 3 raisons pour lesquelles... » ou « Top 5... » | Éducation, considération |
 
-### Creative Specs
+### Spécifications créatives
 
-| Element | Specification |
+| Élément | Spécification |
 |---|---|
-| Aspect ratio | 9:16 (required for best performance) |
-| Resolution | 1080x1920 minimum |
-| Video length | 15–60 seconds (sweet spot: 21–34 seconds) |
-| File size | Max 500 MB |
-| File type | MP4, MOV, MPEG, AVI |
-| Text overlay | Keep within safe zone (leave 150px top/bottom margin) |
-| Ad copy | Max 100 characters (keep under 80 for full visibility) |
-| CTA button | Select from preset options (Shop Now, Learn More, Sign Up, etc.) |
+| Ratio d'aspect | 9:16 (requis pour la meilleure performance) |
+| Résolution | 1080x1920 minimum |
+| Durée de la vidéo | 15–60 secondes (zone idéale : 21–34 secondes) |
+| Taille de fichier | 500 Mo max |
+| Type de fichier | MP4, MOV, MPEG, AVI |
+| Superposition de texte | Rester dans la zone sûre (laisser une marge de 150px en haut/bas) |
+| Texte de l'annonce | 100 caractères max (rester sous 80 pour une visibilité complète) |
+| Bouton CTA | Sélectionner parmi les options prédéfinies (Achetez maintenant, En savoir plus, S'inscrire, etc.) |
 
-## Spark Ads Setup
+## Configuration des Spark Ads
 
-### What Are Spark Ads?
-Spark Ads let you boost organic TikTok posts (your own or a creator's) as paid ads. They retain social proof (likes, comments, shares) and drive traffic to the TikTok profile or an external URL.
+### Que sont les Spark Ads ?
+Les Spark Ads permettent de booster des publications TikTok organiques (les vôtres ou celles d'un créateur) en tant que publicités payantes. Elles conservent la preuve sociale (likes, commentaires, partages) et génèrent du trafic vers le profil TikTok ou une URL externe.
 
-### Spark Ads Checklist
-- [ ] Identify high-performing organic post (or creator partnership post)
-- [ ] Creator enables ad authorization in TikTok settings
-- [ ] Creator generates authorization code (valid 7, 30, or 60 days)
-- [ ] Enter authorization code in TikTok Ads Manager under Spark Ads
-- [ ] Link post to campaign with appropriate objective
-- [ ] Select landing page: TikTok profile (Instant Page) or external URL
-- [ ] Verify that social proof (engagement) carries over
-- [ ] Monitor organic + paid metrics in unified view
+### Checklist des Spark Ads
+- [ ] Identifier une publication organique performante (ou une publication de partenariat créateur)
+- [ ] Le créateur active l'autorisation publicitaire dans les paramètres TikTok
+- [ ] Le créateur génère un code d'autorisation (valide 7, 30, ou 60 jours)
+- [ ] Saisir le code d'autorisation dans TikTok Ads Manager sous Spark Ads
+- [ ] Lier la publication à la campagne avec l'objectif approprié
+- [ ] Sélectionner la landing page : profil TikTok (Instant Page) ou URL externe
+- [ ] Vérifier que la preuve sociale (engagement) se reporte bien
+- [ ] Surveiller les métriques organiques + payantes dans une vue unifiée
 
-### Spark Ads vs Standard Ads
+### Spark Ads vs publicités standard
 
-| Feature | Spark Ads | Standard In-Feed Ads |
+| Fonctionnalité | Spark Ads | Publicités in-feed standard |
 |---|---|---|
-| Social proof | Retained (organic engagement) | Starts from zero |
-| Profile link | Creator's profile | Brand page or no profile |
-| Authenticity | Higher perceived authenticity | More "ad-like" |
-| Creative control | Limited to existing post | Full creative flexibility |
-| Performance | Typically 30–50% higher engagement | Consistent but lower engagement |
-| Landing page | Profile or external URL | External URL only |
+| Preuve sociale | Conservée (engagement organique) | Démarre de zéro |
+| Lien vers le profil | Profil du créateur | Page de marque ou aucun profil |
+| Authenticité | Authenticité perçue plus élevée | Plus « publicitaire » |
+| Contrôle créatif | Limité à la publication existante | Flexibilité créative totale |
+| Performance | Typiquement 30–50 % d'engagement supérieur | Cohérent mais engagement plus faible |
+| Landing page | Profil ou URL externe | URL externe uniquement |
 
-## TikTok Shop Integration
+## Intégration TikTok Shop
 
-### TikTok Shop Ad Formats
+### Formats publicitaires TikTok Shop
 
-| Format | Description | Setup Required |
+| Format | Description | Configuration requise |
 |---|---|---|
-| Product Shopping Ads | Product cards in For You feed | Product catalog synced |
-| LIVE Shopping Ads | Boost live stream with shoppable products | TikTok Shop + LIVE enabled |
-| Video Shopping Ads | Shoppable tags on video content | Product link in video |
+| Product Shopping Ads | Cartes produit dans le fil Pour Toi | Catalogue produit synchronisé |
+| LIVE Shopping Ads | Booster un live avec des produits achetables | TikTok Shop + LIVE activé |
+| Video Shopping Ads | Tags achetables sur le contenu vidéo | Lien produit dans la vidéo |
 
-### TikTok Shop Setup Checklist
-- [ ] Apply for TikTok Shop access (business account required)
-- [ ] Upload product catalog (sync from Shopify, BigCommerce, or CSV)
-- [ ] Configure shipping templates and return policies
-- [ ] Link TikTok Shop to Ads Manager
-- [ ] Tag products in organic videos
-- [ ] Set up affiliate program for creator-driven sales
-- [ ] Enable Fulfilled by TikTok (optional; faster shipping)
+### Checklist de configuration TikTok Shop
+- [ ] Postuler pour l'accès TikTok Shop (compte business requis)
+- [ ] Charger le catalogue produit (synchronisation depuis Shopify, BigCommerce, ou CSV)
+- [ ] Configurer les modèles d'expédition et les politiques de retour
+- [ ] Lier TikTok Shop à Ads Manager
+- [ ] Taguer les produits dans les vidéos organiques
+- [ ] Configurer un programme d'affiliation pour les ventes générées par les créateurs
+- [ ] Activer Fulfilled by TikTok (optionnel ; expédition plus rapide)
 
-## Audience Targeting
+## Ciblage d'audience
 
-### Targeting Options
+### Options de ciblage
 
-| Category | Options | Precision |
+| Catégorie | Options | Précision |
 |---|---|---|
-| Demographics | Age, gender, location, language | High |
-| Interests | 15 categories, 97 subcategories | Medium |
-| Behaviors | Video interactions, creator interactions, hashtag interactions | Medium-High |
-| Device | OS, model, carrier, connection type, price range | High |
-| Custom Audiences | Website traffic, app activity, customer list, engagement, lead form, shop activity | Highest |
-| Lookalike Audiences | Based on any custom audience (narrow, balanced, broad) | High |
-| Automatic Targeting | TikTok ML-driven (similar to Meta Advantage+) | Variable |
+| Démographie | Âge, genre, localisation, langue | Élevée |
+| Centres d'intérêt | 15 catégories, 97 sous-catégories | Moyenne |
+| Comportements | Interactions vidéo, interactions créateur, interactions hashtag | Moyenne-élevée |
+| Appareil | OS, modèle, opérateur, type de connexion, gamme de prix | Élevée |
+| Audiences personnalisées | Trafic site, activité app, liste client, engagement, formulaire de lead, activité shop | La plus élevée |
+| Audiences lookalike | Basées sur n'importe quelle audience personnalisée (étroite, équilibrée, large) | Élevée |
+| Ciblage automatique | Piloté par ML TikTok (similaire à Meta Advantage+) | Variable |
 
-### Targeting Strategy by Funnel Stage
+### Stratégie de ciblage par étape du tunnel
 
-| Stage | Targeting Approach | Audience Size |
+| Étape | Approche de ciblage | Taille d'audience |
 |---|---|---|
-| TOF (Awareness) | Broad demographics + interests, or automatic targeting | 10M+ |
-| MOF (Consideration) | Interest + behavior layering, or video viewer lookalikes | 2M–10M |
-| BOF (Conversion) | Custom audiences (website visitors, cart abandoners), narrow lookalikes | 500K–5M |
-| Retention | Customer list, purchaser custom audiences | Varies |
+| Haut de tunnel (notoriété) | Démographie large + centres d'intérêt, ou ciblage automatique | 10M+ |
+| Milieu de tunnel (considération) | Superposition centre d'intérêt + comportement, ou lookalike de spectateurs vidéo | 2M–10M |
+| Bas de tunnel (conversion) | Audiences personnalisées (visiteurs du site, abandons de panier), lookalikes étroits | 500K–5M |
+| Fidélisation | Liste client, audiences personnalisées d'acheteurs | Varie |
 
 ## Creator Marketplace (TTCM)
 
-### Overview
-TikTok Creator Marketplace connects brands with creators for sponsored content that can be amplified via Spark Ads.
+### Vue d'ensemble
+Le TikTok Creator Marketplace connecte les marques avec des créateurs pour du contenu sponsorisé qui peut être amplifié via les Spark Ads.
 
-### Creator Selection Criteria
+### Critères de sélection des créateurs
 
-| Factor | What to Evaluate |
+| Facteur | Ce qu'il faut évaluer |
 |---|---|
-| Niche alignment | Does their content naturally relate to your product? |
-| Engagement rate | Target 3%+ (higher for smaller creators) |
-| Audience demographics | Age, location, gender match your ICP |
-| Content quality | Consistency, production value, storytelling ability |
-| Authenticity | Does sponsored content feel natural? |
-| Follower count | Nano (1K–10K), Micro (10K–100K), Mid (100K–1M), Macro (1M+) |
+| Alignement de niche | Leur contenu se rapporte-t-il naturellement à votre produit ? |
+| Taux d'engagement | Viser 3 %+ (plus élevé pour les créateurs plus petits) |
+| Démographie de l'audience | Âge, localisation, genre correspondant à votre ICP |
+| Qualité du contenu | Cohérence, valeur de production, capacité de storytelling |
+| Authenticité | Le contenu sponsorisé donne-t-il une impression naturelle ? |
+| Nombre d'abonnés | Nano (1K–10K), Micro (10K–100K), Mid (100K–1M), Macro (1M+) |
 
-### Creator Tier Strategy
+### Stratégie par niveau de créateur
 
-| Tier | Followers | Cost Range | Best For |
+| Niveau | Abonnés | Fourchette de coût | Idéal pour |
 |---|---|---|---|
-| Nano | 1K–10K | $50–$200 | Authentic UGC, niche communities |
-| Micro | 10K–100K | $200–$2,500 | Targeted reach, high engagement |
-| Mid | 100K–1M | $800–$5,000 | Balanced reach + credibility |
-| Macro | 1M+ | $5,000–$50,000+ | Mass awareness, trend creation |
+| Nano | 1K–10K | 50–200 $ | UGC authentique, communautés de niche |
+| Micro | 10K–100K | 200–2 500 $ | Portée ciblée, fort engagement |
+| Mid | 100K–1M | 800–5 000 $ | Portée + crédibilité équilibrées |
+| Macro | 1M+ | 5 000–50 000 $+ | Notoriété de masse, création de tendance |
 
-## Pixel & Events API Setup
+## Configuration du Pixel et de l'Events API
 
-### TikTok Pixel Setup Checklist
-- [ ] Install base pixel code in website `<head>` section
-- [ ] Configure standard events: ViewContent, AddToCart, InitiateCheckout, CompletePayment, SubmitForm
-- [ ] Verify events firing in Events Manager
-- [ ] Enable Advanced Matching (email, phone) for better attribution
-- [ ] Set attribution window (default: 7-day click, 1-day view)
+### Checklist de configuration du TikTok Pixel
+- [ ] Installer le code du pixel de base dans la section `<head>` du site
+- [ ] Configurer les événements standard : ViewContent, AddToCart, InitiateCheckout, CompletePayment, SubmitForm
+- [ ] Vérifier que les événements se déclenchent dans Events Manager
+- [ ] Activer la correspondance avancée (email, téléphone) pour une meilleure attribution
+- [ ] Fixer la fenêtre d'attribution (par défaut : clic 7 jours, vue 1 jour)
 
-### Events API (Server-Side)
-- [ ] Generate access token in TikTok Events Manager
-- [ ] Set up server endpoint to forward events
-- [ ] Include parameters: event, event_time, user data (email hash, phone hash, IP, user agent)
-- [ ] Send event_id for deduplication with browser pixel
-- [ ] Verify via Test Events in Events Manager
-- [ ] Target Event Match Quality > 4.0
+### Events API (côté serveur)
+- [ ] Générer un jeton d'accès dans TikTok Events Manager
+- [ ] Configurer un point de terminaison serveur pour transmettre les événements
+- [ ] Inclure les paramètres : event, event_time, données utilisateur (hash email, hash téléphone, IP, user agent)
+- [ ] Envoyer event_id pour la déduplication avec le pixel navigateur
+- [ ] Vérifier via Test Events dans Events Manager
+- [ ] Viser un Event Match Quality > 4,0
 
-### Event Priority for Optimization
+### Priorité des événements pour l'optimisation
 
-| Priority | Event | Use For |
+| Priorité | Événement | À utiliser pour |
 |---|---|---|
-| 1 | CompletePayment / Purchase | E-commerce conversion |
-| 2 | SubmitForm / CompleteRegistration | Lead generation |
-| 3 | AddToCart | Mid-funnel signal |
-| 4 | ViewContent | Broad signal, learning phase |
+| 1 | CompletePayment / Purchase | Conversion e-commerce |
+| 2 | SubmitForm / CompleteRegistration | Génération de leads |
+| 3 | AddToCart | Signal de milieu de tunnel |
+| 4 | ViewContent | Signal large, phase d'apprentissage |
 
-## Content Trends & Templates
+## Tendances de contenu et modèles
 
-### Evergreen TikTok Templates
-1. **"POV" format** — First-person scenario that audience relates to
-2. **"Things I wish I knew"** — Advice/tips formatted as relatable revelation
-3. **"Get Ready With Me" (GRWM)** — Routine showing product integration
-4. **"That girl/guy" aesthetic** — Aspirational lifestyle featuring product
-5. **"Storytime"** — Narrative hook that builds curiosity
-6. **"Expectation vs Reality"** — Humor-driven comparison
-7. **"Silent review/unboxing"** — ASMR-style product showcase
-8. **"Ranking/tier list"** — Opinionated product comparison
+### Modèles TikTok evergreen
+1. **Format « POV »** — Scénario à la première personne auquel l'audience s'identifie
+2. **« Ce que j'aurais aimé savoir »** — Conseils/astuces présentés comme une révélation relatable
+3. **« Get Ready With Me » (GRWM)** — Routine montrant l'intégration du produit
+4. **Esthétique « that girl/guy »** — Style de vie aspirationnel mettant en scène le produit
+5. **« Storytime »** — Accroche narrative qui construit la curiosité
+6. **« Attente vs réalité »** — Comparaison motivée par l'humour
+7. **« Avis silencieux/déballage »** — Vitrine produit style ASMR
+8. **« Classement/liste »** — Comparaison produit avec un point de vue tranché
 
-### Trend Monitoring
-- [ ] Check TikTok Creative Center trending tab weekly
-- [ ] Monitor trending sounds in the app (sort by "New")
-- [ ] Follow TikTok's official @tiktokforbusiness for platform updates
-- [ ] Track competitor activity using TikTok Ad Library
-- [ ] Set up Google Alerts for "TikTok trend" in your industry
+### Suivi des tendances
+- [ ] Vérifier l'onglet tendances de TikTok Creative Center chaque semaine
+- [ ] Surveiller les sons tendance dans l'app (trier par « Nouveau »)
+- [ ] Suivre le compte officiel @tiktokforbusiness pour les mises à jour de plateforme
+- [ ] Suivre l'activité des concurrents via TikTok Ad Library
+- [ ] Configurer des alertes Google pour « tendance TikTok » dans votre secteur
 
-## Measurement & Attribution
+## Mesure et attribution
 
-### Key Metrics by Objective
+### Métriques clés par objectif
 
-| Objective | Primary KPI | Secondary KPIs |
+| Objectif | KPI principal | KPI secondaires |
 |---|---|---|
-| Awareness | CPM, Reach, Frequency | Video view rate (2s, 6s), brand lift |
-| Consideration | CPC, CTR, Video completion | Engagement rate, profile visits |
-| Conversion | CPA, ROAS, Conv Rate | Add-to-cart rate, checkout rate |
-| Commerce (Shop) | ROAS, GMV, Units Sold | Order volume, AOV, return rate |
+| Notoriété | CPM, portée, fréquence | Taux de vue vidéo (2s, 6s), brand lift |
+| Considération | CPC, CTR, achèvement vidéo | Taux d'engagement, visites de profil |
+| Conversion | CPA, ROAS, taux de conv. | Taux d'ajout au panier, taux de checkout |
+| Commerce (Shop) | ROAS, GMV, unités vendues | Volume de commandes, panier moyen, taux de retour |
 
-### Attribution Considerations
-- Default attribution window: 7-day click, 1-day view
-- TikTok tends to overcount view-through conversions — cross-reference with GA4
-- Use UTM parameters on all destination URLs for platform-independent measurement
-- Consider incrementality testing (holdout studies) for true impact measurement
-- TikTok Attribution Analytics provides cross-channel assisted conversion data
+### Considérations d'attribution
+- Fenêtre d'attribution par défaut : clic 7 jours, vue 1 jour
+- TikTok a tendance à surcompter les conversions à la vue — recouper avec GA4
+- Utiliser des paramètres UTM sur toutes les URL de destination pour une mesure indépendante de la plateforme
+- Envisager un test d'incrémentalité (études avec groupe témoin) pour la mesure d'impact réel
+- TikTok Attribution Analytics fournit des données de conversion assistée cross-canal
 
-### Benchmarks (Cross-Industry Averages)
+### Benchmarks (moyennes cross-secteurs)
 
-| Metric | In-Feed Ads | Spark Ads | TopView |
+| Métrique | Publicités in-feed | Spark Ads | TopView |
 |---|---|---|---|
-| CTR | 0.8–1.5% | 1.5–3.0% | 12–16% |
-| CPC | $0.50–$2.00 | $0.30–$1.50 | N/A (CPM buy) |
-| CPM | $6–$15 | $5–$12 | $11–$19 |
-| Video View Rate (6s) | 15–25% | 20–35% | 40–60% |
-| Conv Rate (landing page) | 1–3% | 1.5–4% | 2–5% |
+| CTR | 0,8–1,5 % | 1,5–3,0 % | 12–16 % |
+| CPC | 0,50–2,00 $ | 0,30–1,50 $ | N/A (achat CPM) |
+| CPM | 6–15 $ | 5–12 $ | 11–19 $ |
+| Taux de vue vidéo (6s) | 15–25 % | 20–35 % | 40–60 % |
+| Taux de conv. (landing page) | 1–3 % | 1,5–4 % | 2–5 % |
 
-> **Note:** TikTok performance is heavily creative-dependent. Top-performing creative can outperform averages by 3–5x. Refresh creative every 7–14 days to maintain performance and combat fatigue.
+> **Remarque :** La performance TikTok dépend fortement du créatif. Le créatif le plus performant peut surpasser les moyennes de 3 à 5 fois. Rafraîchir le créatif tous les 7 à 14 jours pour maintenir la performance et combattre la fatigue.

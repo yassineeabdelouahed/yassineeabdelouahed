@@ -1,8 +1,8 @@
-# Landing Pages — Structure, Copy & Conversion
+# Landing pages — Structure, texte et conversion
 
-## Landing Page Structure Template
+## Modèle de structure de landing page
 
-### Standard Conversion Page
+### Page de conversion standard
 
 ```
 [1. Hero Section] — Above the fold
@@ -30,104 +30,104 @@
 
 ---
 
-## Hero Section Formulas
+## Formules de section héroïque
 
-### Formula 1: Outcome-First
-- **Headline**: "[Achieve specific outcome] without [common pain]"
-- **Subheadline**: "[Product] helps [audience] [benefit] by [how]"
-- **Example**: "Close 30% more deals without hiring more reps"
+### Formule 1 : Résultat d'abord
+- **Titre** : « [Atteignez un résultat spécifique] sans [douleur courante] »
+- **Sous-titre** : « [Produit] aide [audience] à [bénéfice] en [comment] »
+- **Exemple** : « Concluez 30 % de deals en plus sans embaucher plus de commerciaux »
 
-### Formula 2: Audience-First
-- **Headline**: "The [category] built for [specific audience]"
-- **Subheadline**: "[Feature] + [Feature] + [Feature] in one place"
-- **Example**: "The project management tool built for remote teams"
+### Formule 2 : Audience d'abord
+- **Titre** : « Le/La [catégorie] conçu(e) pour [audience spécifique] »
+- **Sous-titre** : « [Fonctionnalité] + [Fonctionnalité] + [Fonctionnalité] en un seul endroit »
+- **Exemple** : « L'outil de gestion de projet conçu pour les équipes en télétravail »
 
-### Formula 3: Social Proof-First
-- **Headline**: "Join [number]+ [audience] who [achieved outcome]"
-- **Subheadline**: "[Product] is the #1 rated [category] for [use case]"
-- **Example**: "Join 50,000+ marketers who automated their reporting"
+### Formule 3 : Preuve sociale d'abord
+- **Titre** : « Rejoignez plus de [nombre] [audience] qui ont [atteint le résultat] »
+- **Sous-titre** : « [Produit] est le/la [catégorie] n°1 pour [cas d'usage] »
+- **Exemple** : « Rejoignez plus de 50 000 marketeurs qui ont automatisé leur reporting »
 
-### Formula 4: Pain-First
-- **Headline**: "Stop [painful activity]. Start [desired outcome]."
-- **Subheadline**: "[Product] replaces [old way] with [better way]"
-- **Example**: "Stop drowning in spreadsheets. Start making data-driven decisions."
-
----
-
-## Above-the-Fold Checklist
-
-- [ ] Can a visitor understand what you offer in 5 seconds?
-- [ ] Is the headline clear and specific (not clever/vague)?
-- [ ] Does the subheadline support the headline with detail?
-- [ ] Is there ONE clear CTA button visible without scrolling?
-- [ ] Is the CTA button high-contrast and action-oriented?
-- [ ] Is there a relevant hero image or product visual?
-- [ ] Is the page free of navigation that could distract from the CTA?
+### Formule 4 : Douleur d'abord
+- **Titre** : « Arrêtez [activité douloureuse]. Commencez [résultat désiré]. »
+- **Sous-titre** : « [Produit] remplace [ancienne méthode] par [meilleure méthode] »
+- **Exemple** : « Arrêtez de vous noyer dans les tableurs. Commencez à prendre des décisions basées sur les données. »
 
 ---
 
-## CTA Optimization
+## Checklist au-dessus de la ligne de flottaison
 
-### CTA Copy Formula
+- [ ] Un visiteur peut-il comprendre ce que vous offrez en 5 secondes ?
+- [ ] Le titre est-il clair et spécifique (pas trop malin/vague) ?
+- [ ] Le sous-titre soutient-il le titre avec du détail ?
+- [ ] Y a-t-il UN CTA clair visible sans défilement ?
+- [ ] Le bouton CTA est-il à fort contraste et orienté action ?
+- [ ] Y a-t-il une image héroïque ou un visuel de produit pertinent ?
+- [ ] La page est-elle exempte de navigation pouvant distraire du CTA ?
+
+---
+
+## Optimisation des CTA
+
+### Formule de texte CTA
 ```
 [Action Verb] + [Value/Outcome] + [Optional: Time/Ease Qualifier]
 ```
 
-**Examples**:
-- "Start My Free Trial" (better than "Sign Up")
-- "Get My Marketing Report" (better than "Download")
-- "See Pricing Plans" (better than "Learn More")
-- "Book a 15-Min Demo" (better than "Contact Us")
+**Exemples** :
+- « Démarrer mon essai gratuit » (mieux que « S'inscrire »)
+- « Obtenir mon rapport marketing » (mieux que « Télécharger »)
+- « Voir les tarifs » (mieux que « En savoir plus »)
+- « Réserver une démo de 15 min » (mieux que « Nous contacter »)
 
-### CTA Button Best Practices
-- High-contrast color (stands out from page background)
-- Minimum 44px height for mobile tap targets
-- White space around the button
-- Repeat CTA at top and bottom of page (minimum)
-- Consider adding sub-CTA text: "No credit card required" / "Free forever plan"
+### Meilleures pratiques pour les boutons CTA
+- Couleur à fort contraste (se démarque du fond de page)
+- Hauteur minimum de 44px pour les zones tactiles mobiles
+- Espace blanc autour du bouton
+- Répéter le CTA en haut et en bas de page (minimum)
+- Envisager d'ajouter un sous-texte CTA : « Aucune carte bancaire requise » / « Forfait gratuit pour toujours »
 
 ---
 
-## Social Proof Types & Placement
+## Types et placement de preuve sociale
 
-| Type | Best Placement | Impact Level |
+| Type | Meilleur placement | Niveau d'impact |
 |------|---------------|-------------|
-| **Customer logos** | Below hero, social proof bar | High (instant trust) |
-| **Specific metrics** | Hero or near CTA ("50,000+ teams") | Very High |
-| **Testimonial quotes** | After features section | High |
-| **Video testimonials** | Dedicated section | Very High |
-| **Star ratings** | Near CTA button | High |
-| **Case study previews** | After social proof section | Medium-High |
-| **Trust badges** | Near form/checkout (security, compliance) | Medium |
-| **Media mentions** | Social proof bar ("As seen in...") | Medium |
+| **Logos clients** | Sous le hero, barre de preuve sociale | Élevé (confiance instantanée) |
+| **Métriques spécifiques** | Hero ou près du CTA (« plus de 50 000 équipes ») | Très élevé |
+| **Citations de témoignage** | Après la section fonctionnalités | Élevé |
+| **Témoignages vidéo** | Section dédiée | Très élevé |
+| **Notes en étoiles** | Près du bouton CTA | Élevé |
+| **Aperçus d'études de cas** | Après la section de preuve sociale | Moyen-élevé |
+| **Badges de confiance** | Près du formulaire/checkout (sécurité, conformité) | Moyen |
+| **Mentions médias** | Barre de preuve sociale (« Vu dans... ») | Moyen |
 
 ---
 
-## Page Templates by Use Case
+## Modèles de page par cas d'usage
 
-### SaaS Free Trial
-Hero → Logo bar → 3 Benefits (icon + copy) → Screenshot/Demo → Testimonial → How It Works (3 steps) → Feature grid → FAQ → Final CTA
+### Essai gratuit SaaS
+Hero → Barre de logos → 3 Bénéfices (icône + texte) → Capture d'écran/Démo → Témoignage → Comment ça marche (3 étapes) → Grille de fonctionnalités → FAQ → CTA final
 
-### eCommerce Product
-Hero (product image + description) → Reviews → Key features → Use cases / lifestyle images → Comparison table → FAQ → Add to cart
+### Produit e-commerce
+Hero (image produit + description) → Avis → Fonctionnalités clés → Cas d'usage / images de style de vie → Tableau comparatif → FAQ → Ajouter au panier
 
-### Lead Gen (B2B)
-Hero → Logo bar → Problem statement → Solution overview → Key benefits → Case study → Form (short) → FAQ
+### Génération de leads (B2B)
+Hero → Barre de logos → Déclaration du problème → Aperçu de la solution → Bénéfices clés → Étude de cas → Formulaire (court) → FAQ
 
-### Event Registration
-Hero (event details + date) → Speaker lineup → Agenda → Past event photos/testimonials → Registration form → FAQ
+### Inscription à un événement
+Hero (détails de l'événement + date) → Liste des intervenants → Programme → Photos/témoignages d'événements passés → Formulaire d'inscription → FAQ
 
 ---
 
-## Message Match Principles
+## Principes de correspondance des messages
 
-The landing page must match the referral source:
+La landing page doit correspondre à la source de référence :
 
-| Source | Landing Page Must Match |
+| Source | La landing page doit correspondre à |
 |--------|----------------------|
-| Google Ad | Headline echoes ad headline, offer matches ad promise |
-| Meta Ad | Visual style matches ad creative, copy continues the story |
-| Email | Headline references email subject/offer |
-| Organic search | H1 matches search intent (answer the query) |
+| Publicité Google | Le titre reprend le titre de l'annonce, l'offre correspond à la promesse de l'annonce |
+| Publicité Meta | Le style visuel correspond à la créa publicitaire, le texte continue l'histoire |
+| E-mail | Le titre référence l'objet/l'offre de l'e-mail |
+| Recherche organique | Le H1 correspond à l'intention de recherche (répond à la requête) |
 
-**Mismatch = high bounce rate.** The visitor should feel they arrived at the right place immediately.
+**Décalage = taux de rebond élevé.** Le visiteur doit sentir immédiatement qu'il est arrivé au bon endroit.

@@ -1,21 +1,21 @@
-# Email Automation — Workflows & Triggers
+# Automatisation e-mail — Workflows et déclencheurs
 
-## Trigger Taxonomy
+## Taxonomie des déclencheurs
 
-| Trigger Type | Examples | Use Case |
+| Type de déclencheur | Exemples | Cas d'usage |
 |-------------|---------|----------|
-| **Behavioral** | Page visit, form submit, link click, cart add, product view | Respond to user actions |
-| **Time-based** | X days after signup, X days before renewal, anniversary | Lifecycle timing |
-| **Attribute-based** | Segment change, lead score threshold, tag added | Profile changes |
-| **Engagement** | Email opened, not opened in X days, clicked specific link | Email behavior |
-| **Transactional** | Purchase made, subscription started, payment failed | Commerce events |
-| **Predictive** | Churn risk score increase, predicted next purchase date | ML-based triggers |
+| **Comportemental** | Visite de page, soumission de formulaire, clic de lien, ajout au panier, vue de produit | Répondre aux actions de l'utilisateur |
+| **Basé sur le temps** | X jours après inscription, X jours avant renouvellement, anniversaire | Timing du cycle de vie |
+| **Basé sur l'attribut** | Changement de segment, seuil de score de lead, tag ajouté | Changements de profil |
+| **Engagement** | E-mail ouvert, non ouvert depuis X jours, lien spécifique cliqué | Comportement e-mail |
+| **Transactionnel** | Achat effectué, abonnement démarré, paiement échoué | Événements commerce |
+| **Prédictif** | Augmentation du score de risque de churn, date d'achat prévue | Déclencheurs basés sur le ML |
 
 ---
 
-## Common Automation Workflows
+## Workflows d'automatisation courants
 
-### Welcome Flow
+### Flux de bienvenue
 ```
 Trigger: New subscriber / signup
 → Email 1 (immediate): Welcome + value delivery
@@ -30,7 +30,7 @@ Trigger: New subscriber / signup
 → Exit: Move to regular nurture
 ```
 
-### Browse Abandonment
+### Abandon de navigation
 ```
 Trigger: Viewed product page, did NOT add to cart (within 1 hour)
 → Wait 2 hours
@@ -41,7 +41,7 @@ Trigger: Viewed product page, did NOT add to cart (within 1 hour)
 → Exit
 ```
 
-### Re-Engagement
+### Réengagement
 ```
 Trigger: No email open or click for 60 days
 → Email 1: "We miss you" + what's new
@@ -57,59 +57,59 @@ Trigger: No email open or click for 60 days
 
 ---
 
-## Dynamic Content Rules
+## Règles de contenu dynamique
 
-| Rule Type | Logic | Example |
+| Type de règle | Logique | Exemple |
 |-----------|-------|---------|
-| **Segment-based** | Show different content per segment | Enterprise sees case study; SMB sees quick-start guide |
-| **Behavioral** | Based on past actions | Show "upgrade" CTA to free users; "renew" to expiring |
-| **Location** | Based on geography | Local event invites, regional offers |
-| **Product interest** | Based on browsing/purchase history | Product recommendations matching viewed categories |
-| **Lifecycle stage** | Based on customer stage | New customer sees onboarding; active sees advanced tips |
+| **Basé sur le segment** | Montrer un contenu différent par segment | L'entreprise voit une étude de cas ; la PME voit un guide de démarrage rapide |
+| **Comportemental** | Basé sur des actions passées | Montrer un CTA « mise à niveau » aux utilisateurs gratuits ; « renouveler » à ceux qui expirent |
+| **Localisation** | Basé sur la géographie | Invitations à des événements locaux, offres régionales |
+| **Intérêt produit** | Basé sur l'historique de navigation/achat | Recommandations de produits correspondant aux catégories consultées |
+| **Étape du cycle de vie** | Basé sur l'étape du client | Le nouveau client voit l'onboarding ; l'actif voit des conseils avancés |
 
 ---
 
-## Send Time Optimization
+## Optimisation du moment d'envoi
 
-### Methods
-1. **Historical analysis**: Send at times with highest open rates from past campaigns
-2. **Per-subscriber optimization**: ML-based prediction of each subscriber's optimal time
-3. **Time zone adjustment**: Send at target time in each subscriber's local time zone
-4. **Day optimization**: Test different days, analyze by segment
+### Méthodes
+1. **Analyse historique** : Envoyer aux moments avec les taux d'ouverture les plus élevés des campagnes passées
+2. **Optimisation par abonné** : Prédiction basée sur le ML du moment optimal pour chaque abonné
+3. **Ajustement de fuseau horaire** : Envoyer au moment cible dans le fuseau horaire local de chaque abonné
+4. **Optimisation du jour** : Tester différents jours, analyser par segment
 
-### General Benchmarks
-- B2B: Tuesday-Thursday, 9-11 AM local time
-- B2C: Tuesday-Thursday, 10 AM or 7-9 PM local time
-- eCommerce: Sunday evenings, Tuesday mornings (varies by industry)
+### Référentiels généraux
+- B2B : Mardi-jeudi, 9h-11h heure locale
+- B2C : Mardi-jeudi, 10h ou 19h-21h heure locale
+- E-commerce : Dimanche soir, mardi matin (varie selon le secteur)
 
 ---
 
-## Frequency Capping
+## Plafonnement de fréquence
 
-| Subscriber Segment | Max Emails/Week | Types |
+| Segment d'abonné | Max e-mails/semaine | Types |
 |-------------------|----------------|-------|
-| New subscriber (first 30 days) | 3-4 | Welcome + 1 marketing |
-| Active engaged | 2-3 | Marketing + triggered |
-| Moderately engaged | 1-2 | Marketing only |
-| Low engagement | 1/2 weeks | Re-engagement only |
-| Transactional-only | As needed | Receipts, notifications |
+| Nouvel abonné (30 premiers jours) | 3-4 | Bienvenue + 1 marketing |
+| Actif engagé | 2-3 | Marketing + déclenché |
+| Modérément engagé | 1-2 | Marketing uniquement |
+| Faible engagement | 1/2 semaines | Réengagement uniquement |
+| Transactionnel uniquement | Selon besoin | Reçus, notifications |
 
-### Priority Rules
-When multiple automations trigger for the same subscriber:
-1. Transactional emails always send (receipts, confirmations)
-2. Triggered automations take priority over scheduled campaigns
-3. Most recent trigger takes priority if multiple trigger simultaneously
-4. Always respect global frequency cap
+### Règles de priorité
+Lorsque plusieurs automatisations se déclenchent pour le même abonné :
+1. Les e-mails transactionnels s'envoient toujours (reçus, confirmations)
+2. Les automatisations déclenchées priment sur les campagnes planifiées
+3. Le déclencheur le plus récent prime si plusieurs se déclenchent simultanément
+4. Toujours respecter le plafond de fréquence global
 
 ---
 
-## Automation Performance Metrics
+## Métriques de performance d'automatisation
 
-| Metric | Target | Action if Below |
+| Métrique | Cible | Action si en dessous |
 |--------|--------|----------------|
-| Open rate | >25% | Test subject lines, send time, from name |
-| Click rate | >3% | Improve content, CTA, personalization |
-| Conversion rate | Varies by flow | Optimize offer, landing page, segmentation |
-| Unsubscribe rate | <0.5% per email | Reduce frequency, improve targeting |
-| Revenue per email | Increasing trend | Optimize product recommendations, offers |
-| Automation completion rate | >60% | Check for friction points, improve content |
+| Taux d'ouverture | >25% | Tester les objets, le moment d'envoi, le nom d'expéditeur |
+| Taux de clic | >3% | Améliorer le contenu, le CTA, la personnalisation |
+| Taux de conversion | Varie selon le flux | Optimiser l'offre, la landing page, la segmentation |
+| Taux de désabonnement | <0,5 % par e-mail | Réduire la fréquence, améliorer le ciblage |
+| Revenu par e-mail | Tendance en hausse | Optimiser les recommandations de produits, les offres |
+| Taux d'achèvement d'automatisation | >60% | Vérifier les points de friction, améliorer le contenu |

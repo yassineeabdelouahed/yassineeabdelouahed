@@ -1,71 +1,71 @@
-# Decision Matrix for v2 Re-runs
+# Matrice de décision pour les relances v2
 
-After Part 5 Client Validation, the Decision Matrix governs exactly which Part 3 and Part 4 documents need to be re-run as v2 versions. The matrix prevents over-re-running (which wastes compute) and under-re-running (which leaves stale assumptions in the v2 layer).
+Après la partie 5 (validation client), la matrice de décision détermine précisément quels documents des parties 3 et 4 doivent être relancés en versions v2. La matrice évite la relance excessive (qui gaspille du calcul) et la relance insuffisante (qui laisse des hypothèses obsolètes dans la couche v2).
 
-## How it works
+## Comment cela fonctionne
 
-In Part 5, the client reviews the Client Validation Document and makes one of four decisions on each finding:
+Dans la partie 5, le client examine le document de validation client et prend l'une de quatre décisions sur chaque constat :
 
-- **ACCEPT** — finding is correct as stated
-- **REJECT** — finding is wrong; client provides correction
-- **EDIT** — finding is partially correct; client provides amended version
-- **DEFER** — needs further investigation; flag for follow-up
+- **ACCEPTER** — le constat est correct tel qu'énoncé
+- **REJETER** — le constat est faux ; le client fournit une correction
+- **MODIFIER** — le constat est partiellement correct ; le client fournit une version amendée
+- **DIFFÉRER** — nécessite une investigation plus approfondie ; à signaler pour suivi
 
-The Decision Matrix then triggers v2 re-runs based on which categories of findings were rejected or edited.
+La matrice de décision déclenche ensuite des relances v2 selon les catégories de constats rejetés ou modifiés.
 
-## The Matrix
+## La matrice
 
-| Category of change in Part 5 | Re-run these v2 documents |
+| Catégorie de changement en partie 5 | Documents v2 à relancer |
 |---|---|
-| **Competitors changed** (added new competitors, removed competitors, changed competitive tier rankings) | All four Core Documents (3.1, 3.2, 3.3, 3.4) AND 4.1 Competitor Ad Analysis AND 4.2 Competitor Positioning |
-| **Target market data changed** (geography, market sizing, addressable segments) | 4.3 Customer Analysis AND 4.4 Market Analysis |
-| **Audiences changed** (TG priorities reshuffled, new persona added, persona attributes corrected) | Core Doc 3.2 (Segmentation) + Core Doc 3.3 (Brand Positioning) + Core Doc 3.4 (DMFlow) |
-| **Positioning changed** (positioning statement amended, messaging pillars revised) | Core Doc 3.3 (Brand Positioning) only |
-| **Budget / scope changed** (budget envelope changed, channel scope changed) | Core Doc 3.4 (DMFlow) only |
-| **Pricing or offering changed** (pricing model amended, offering scope corrected) | Core Doc 3.1 (Business & SBU Analysis) — section 4 (Unit Economics) and section 7 (Pricing Architecture) |
-| **Unit economics changed** (CAC range corrected, LTV range corrected, margin corrected) | Core Doc 3.1 — section 4 only (do not re-run full doc unless other changes warrant it) |
-| **Minor corrections only** (typos, factual fixes, source updates that do not change the conclusion) | NO full re-run. Update inline in v1, tag the file as v1.1, log the change in the document's change log |
+| **Concurrents modifiés** (nouveaux concurrents ajoutés, concurrents retirés, classements de niveau concurrentiel modifiés) | Les quatre documents centraux (3.1, 3.2, 3.3, 3.4) ET le 4.1 Analyse publicitaire concurrentielle ET le 4.2 Positionnement concurrentiel |
+| **Données de marché cible modifiées** (géographie, dimensionnement du marché, segments adressables) | 4.3 Analyse client ET 4.4 Analyse de marché |
+| **Audiences modifiées** (priorités de groupes cibles réorganisées, nouveau persona ajouté, attributs de persona corrigés) | Document central 3.2 (segmentation) + document central 3.3 (positionnement de marque) + document central 3.4 (DMFlow) |
+| **Positionnement modifié** (déclaration de positionnement amendée, piliers de message révisés) | Document central 3.3 (positionnement de marque) uniquement |
+| **Budget / périmètre modifié** (enveloppe budgétaire modifiée, périmètre de canal modifié) | Document central 3.4 (DMFlow) uniquement |
+| **Tarification ou offre modifiée** (modèle de tarification amendé, périmètre de l'offre corrigé) | Document central 3.1 (analyse business et SBU) — section 4 (unité économique) et section 7 (architecture tarifaire) |
+| **Unité économique modifiée** (fourchette de CAC corrigée, fourchette de LTV corrigée, marge corrigée) | Document central 3.1 — section 4 uniquement (ne pas relancer le document complet sauf si d'autres changements le justifient) |
+| **Corrections mineures uniquement** (fautes de frappe, corrections factuelles, mises à jour de source qui ne changent pas la conclusion) | AUCUNE relance complète. Mettre à jour en ligne dans v1, taguer le fichier comme v1.1, consigner le changement dans le journal des modifications du document |
 
-## Trigger detection
+## Détection du déclencheur
 
-The `/digital-marketing-pro:engagement re-run-decision` command:
+La commande `/digital-marketing-pro:engagement re-run-decision` :
 
-1. Reads the Client Validation Document responses
-2. Categorises each REJECTED or EDITED finding by type (competitor / market / audience / positioning / budget / pricing / unit-economics / minor)
-3. Computes the union of triggered re-runs
-4. Outputs the re-run plan: which docs need v2, which can stay as v1
-5. Returns the estimated compute cost (rough token estimate for each re-run)
-6. Awaits user approval before running
+1. Lit les réponses du document de validation client
+2. Catégorise chaque constat REJETÉ ou MODIFIÉ par type (concurrent / marché / audience / positionnement / budget / tarification / unité économique / mineur)
+3. Calcule l'union des relances déclenchées
+4. Produit le plan de relance : quels documents nécessitent une v2, lesquels peuvent rester en v1
+5. Renvoie le coût de calcul estimé (estimation approximative de tokens pour chaque relance)
+6. Attend l'approbation de l'utilisateur avant d'exécuter
 
-## Rules
+## Règles
 
-1. **Never auto-execute re-runs without showing the plan.** The user always sees and approves what will run.
-2. **Re-runs always produce a "v1 → v2 changes" header** in the new document, listing what was modified and why.
-3. **If a re-run produces a v2 that is structurally identical to v1**, do not save a redundant v2 — note this in the change log instead.
-4. **Re-runs honour the original document's evidence discipline** — every change in v2 must cite a source (the client validation, in this case, with the specific finding ID).
-5. **Re-runs do not delete v1.** Always two views.
+1. **Ne jamais exécuter automatiquement les relances sans montrer le plan.** L'utilisateur voit et approuve toujours ce qui sera exécuté.
+2. **Les relances produisent toujours un en-tête « changements v1 → v2 »** dans le nouveau document, listant ce qui a été modifié et pourquoi.
+3. **Si une relance produit une v2 structurellement identique à la v1**, ne pas enregistrer une v2 redondante — noter cela dans le journal des modifications à la place.
+4. **Les relances respectent la discipline de preuve du document original** — chaque changement en v2 doit citer une source (la validation client, dans ce cas, avec l'identifiant de constat précis).
+5. **Les relances ne suppriment jamais la v1.** Toujours deux vues.
 
-## When the matrix says "no re-run" but the user wants one
+## Quand la matrice dit « pas de relance » mais que l'utilisateur en veut une
 
-The matrix is a guideline, not a hard rule. The user can override:
+La matrice est une ligne directrice, pas une règle absolue. L'utilisateur peut passer outre :
 
 ```
 /digital-marketing-pro:engagement re-run-decision --override "rerun 3.3"
 ```
 
-This forces a re-run even if the matrix didn't trigger it. Useful when the user has external context that justifies a refresh (e.g., a major industry event since v1 was produced).
+Cela force une relance même si la matrice ne l'a pas déclenchée. Utile lorsque l'utilisateur dispose d'un contexte externe justifiant une actualisation (par exemple, un événement sectoriel majeur survenu depuis la production de la v1).
 
-## When the matrix triggers re-runs but the user wants to skip
+## Quand la matrice déclenche des relances mais que l'utilisateur veut les ignorer
 
 ```
 /digital-marketing-pro:engagement re-run-decision --skip "rerun 4.4"
 ```
 
-This skips a triggered re-run. Useful when the changed information is minor and the user judges v1 is still good enough. The skipped re-run is logged so future audits can understand why v1 wasn't refreshed.
+Cela ignore une relance déclenchée. Utile lorsque l'information modifiée est mineure et que l'utilisateur juge que la v1 est encore suffisamment bonne. La relance ignorée est journalisée afin que de futurs audits puissent comprendre pourquoi la v1 n'a pas été actualisée.
 
-## Audit trail
+## Piste d'audit
 
-Every re-run decision (auto-triggered, override, skip) is logged to `_engagement.json` under the `rerun_decisions` array:
+Chaque décision de relance (déclenchée automatiquement, forcée, ignorée) est journalisée dans `_engagement.json` sous le tableau `rerun_decisions` :
 
 ```json
 {
@@ -83,10 +83,11 @@ Every re-run decision (auto-triggered, override, skip) is logged to `_engagement
 }
 ```
 
-This audit trail lets future engagement reviews understand what was re-run, when, and why.
+Cette piste d'audit permet aux futures revues d'engagement de comprendre ce qui a été relancé, quand, et pourquoi.
 
-## Related references
+## Références liées
 
-- [two-views-model.md](two-views-model.md) — the v1/v2 architecture
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — the 12-Part flow context
-- [update-back-rule.md](update-back-rule.md) — what happens for corrections AFTER Part 7
+- [two-views-model.md](two-views-model.md) — l'architecture v1/v2
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — le contexte du flux en 12 parties
+- [update-back-rule.md](update-back-rule.md) — ce qui se passe pour les corrections APRÈS la partie 7
+</content>

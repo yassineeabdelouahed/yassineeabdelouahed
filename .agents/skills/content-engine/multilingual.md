@@ -1,66 +1,66 @@
-# Multilingual Content — Localization Guide
+# Contenu multilingue — Guide de localisation
 
-## Localization Readiness Checklist
+## Checklist de préparation à la localisation
 
-### Content Readiness
-- [ ] Source content is finalized (never localize a draft)
-- [ ] Cultural references identified and flagged for adaptation
-- [ ] Idioms, slang, and humor marked for transcreation
-- [ ] Brand terms and product names that should NOT be translated are listed
-- [ ] Glossary of key terms with approved translations exists
-- [ ] Style guide adapted for each target locale
+### Préparation du contenu
+- [ ] Le contenu source est finalisé (ne jamais localiser un brouillon)
+- [ ] Les références culturelles sont identifiées et signalées pour adaptation
+- [ ] Les idiomes, l'argot, et l'humour sont marqués pour transcréation
+- [ ] Les termes de marque et noms de produits ne devant PAS être traduits sont listés
+- [ ] Un glossaire des termes clés avec traductions approuvées existe
+- [ ] Le guide de style est adapté pour chaque locale cible
 
-### Technical Readiness
-- [ ] CMS supports multilingual content (separate URLs per locale)
-- [ ] URL structure decided (subdomain, subdirectory, or ccTLD)
-- [ ] hreflang tags implemented correctly
-- [ ] Character encoding supports target languages (UTF-8)
-- [ ] RTL (right-to-left) layout support for Arabic, Hebrew, Farsi, Urdu
+### Préparation technique
+- [ ] Le CMS prend en charge le contenu multilingue (URL séparées par locale)
+- [ ] La structure d'URL est décidée (sous-domaine, sous-répertoire, ou ccTLD)
+- [ ] Les balises hreflang sont correctement implémentées
+- [ ] L'encodage de caractères prend en charge les langues cibles (UTF-8)
+- [ ] Le support de mise en page RTL (droite-à-gauche) pour l'arabe, l'hébreu, le farsi, l'ourdou
 
-### Legal Readiness
-- [ ] Required legal disclaimers per market identified
-- [ ] Privacy policy localized for each jurisdiction
-- [ ] Cookie consent adapted for local regulations
-- [ ] Product claims verified for legality in each market
+### Préparation juridique
+- [ ] Les mentions légales requises par marché sont identifiées
+- [ ] La politique de confidentialité est localisée pour chaque juridiction
+- [ ] Le consentement aux cookies est adapté aux réglementations locales
+- [ ] Les affirmations produit sont vérifiées pour leur légalité dans chaque marché
 
 ---
 
-## Cultural Adaptation Framework
+## Cadre d'adaptation culturelle
 
-| Dimension | What to Adapt | Example |
+| Dimension | Quoi adapter | Exemple |
 |-----------|-------------|---------|
-| **Tone** | Formality level varies by culture | German/Japanese: more formal; US/Australian: more casual |
-| **Humor** | What's funny varies enormously | Puns rarely translate; slapstick is more universal |
-| **Imagery** | Visual cultural norms differ | Hand gestures, clothing, family structure in images |
-| **Colors** | Color symbolism varies | White = purity (West) vs mourning (parts of Asia) |
-| **Numbers** | Lucky/unlucky numbers | 4 is unlucky in China/Japan; 13 in Western cultures |
-| **Dates** | Format varies | MM/DD/YYYY (US) vs DD/MM/YYYY (EU/UK) vs YYYY/MM/DD (ISO) |
-| **Currency** | Local currency and formatting | $1,000.00 (US) vs 1.000,00 € (Germany) |
-| **Measurement** | Imperial vs metric | US: miles, pounds, Fahrenheit. Most of world: km, kg, Celsius |
-| **Names** | Name order varies | First Last (West) vs Last First (East Asia) |
-| **Testimonials** | Social proof expectations differ | Some cultures prefer authority figures, others prefer peers |
+| **Ton** | Le niveau de formalité varie selon la culture | Allemagne/Japon : plus formel ; US/Australie : plus décontracté |
+| **Humour** | Ce qui est drôle varie énormément | Les jeux de mots se traduisent rarement ; le comique de situation est plus universel |
+| **Imagerie** | Les normes culturelles visuelles diffèrent | Gestes des mains, vêtements, structure familiale dans les images |
+| **Couleurs** | Le symbolisme des couleurs varie | Blanc = pureté (Occident) vs deuil (parties de l'Asie) |
+| **Nombres** | Chiffres porte-bonheur/malheur | 4 porte malheur en Chine/au Japon ; 13 dans les cultures occidentales |
+| **Dates** | Le format varie | MM/JJ/AAAA (US) vs JJ/MM/AAAA (UE/UK) vs AAAA/MM/JJ (ISO) |
+| **Devise** | Devise locale et formatage | 1 000,00 $ (US) vs 1.000,00 € (Allemagne) |
+| **Mesure** | Impérial vs métrique | US : miles, livres, Fahrenheit. La majeure partie du monde : km, kg, Celsius |
+| **Noms** | L'ordre des noms varie | Prénom Nom (Occident) vs Nom Prénom (Asie de l'Est) |
+| **Témoignages** | Les attentes de preuve sociale diffèrent | Certaines cultures préfèrent les figures d'autorité, d'autres les pairs |
 
 ---
 
-## Translation vs Transcreation
+## Traduction vs transcréation
 
-| Approach | When to Use | Process |
+| Approche | Quand l'utiliser | Processus |
 |----------|-----------|---------|
-| **Translation** | Technical docs, legal text, factual content | Direct translation maintaining meaning |
-| **Localization** | Marketing content, UI, product descriptions | Translation + cultural/market adaptation |
-| **Transcreation** | Ad copy, slogans, emotional content, campaigns | Complete creative recreation for target culture |
+| **Traduction** | Documentation technique, texte juridique, contenu factuel | Traduction directe préservant le sens |
+| **Localisation** | Contenu marketing, interface utilisateur, descriptions produit | Traduction + adaptation culturelle/marché |
+| **Transcréation** | Texte publicitaire, slogans, contenu émotionnel, campagnes | Recréation créative complète pour la culture cible |
 
-### Transcreation is required when:
-- The content relies on wordplay, puns, or idioms
-- The emotional appeal differs across cultures
-- The cultural context changes the meaning
-- The CTA needs to motivate differently
+### La transcréation est requise lorsque :
+- Le contenu repose sur des jeux de mots, calembours, ou idiomes
+- L'appel émotionnel diffère selon les cultures
+- Le contexte culturel change le sens
+- Le CTA doit motiver différemment
 
 ---
 
-## SEO for Multilingual Content
+## SEO pour le contenu multilingue
 
-### hreflang Implementation
+### Implémentation hreflang
 ```html
 <link rel="alternate" hreflang="en-us" href="https://example.com/page" />
 <link rel="alternate" hreflang="es-es" href="https://example.com/es/page" />
@@ -68,42 +68,42 @@
 <link rel="alternate" hreflang="x-default" href="https://example.com/page" />
 ```
 
-### URL Structure Options
-| Option | Example | Pros | Cons |
+### Options de structure d'URL
+| Option | Exemple | Avantages | Inconvénients |
 |--------|---------|------|------|
-| Subdirectory | example.com/de/ | Easy to manage, inherits domain authority | Less geo-targeting signal |
-| Subdomain | de.example.com | Clear separation | May not inherit full authority |
-| ccTLD | example.de | Strongest geo signal | Expensive, separate SEO per domain |
+| Sous-répertoire | example.com/de/ | Facile à gérer, hérite de l'autorité du domaine | Signal de géo-ciblage moindre |
+| Sous-domaine | de.example.com | Séparation claire | Peut ne pas hériter de l'autorité complète |
+| ccTLD | example.de | Signal géo le plus fort | Coûteux, SEO séparé par domaine |
 
-### Localized Keyword Research
-- Do NOT just translate English keywords — search behavior differs by language
-- Use local keyword tools (Google Keyword Planner set to target country/language)
-- Check search volume for local variations
-- Study local competitor content for keyword patterns
-
----
-
-## RTL (Right-to-Left) Considerations
-
-For Arabic, Hebrew, Farsi, Urdu content:
-- Text alignment flips (right-aligned body text)
-- Layout mirrors (navigation, sidebars, images flip horizontally)
-- Numbers remain left-to-right within RTL text
-- Icons with directional meaning flip (arrows, progress bars)
-- Bidirectional text support for mixed LTR/RTL content
-- Test thoroughly — many layouts break with RTL
+### Recherche de mots-clés localisée
+- NE PAS simplement traduire les mots-clés anglais — le comportement de recherche diffère selon la langue
+- Utiliser des outils de mots-clés locaux (Google Keyword Planner ciblé sur le pays/langue)
+- Vérifier le volume de recherche pour les variations locales
+- Étudier le contenu concurrent local pour les schémas de mots-clés
 
 ---
 
-## Quality Assurance Checklist
+## Considérations RTL (droite-à-gauche)
 
-- [ ] Native speaker reviewed all translated content
-- [ ] Brand terminology used consistently across all locales
-- [ ] No machine-translation artifacts (awkward phrasing, false friends)
-- [ ] Cultural references are appropriate for target audience
-- [ ] All localized pages have correct hreflang tags
-- [ ] Forms work with local address/phone formats
-- [ ] Payment methods are relevant to the market
-- [ ] Date, time, currency formatting matches locale
-- [ ] Images are culturally appropriate
-- [ ] Legal disclaimers are market-specific and correct
+Pour le contenu en arabe, hébreu, farsi, ourdou :
+- L'alignement du texte s'inverse (texte du corps aligné à droite)
+- La mise en page se reflète (navigation, barres latérales, images retournées horizontalement)
+- Les nombres restent de gauche à droite au sein du texte RTL
+- Les icônes à signification directionnelle se retournent (flèches, barres de progression)
+- Support du texte bidirectionnel pour le contenu mixte LTR/RTL
+- Tester minutieusement — de nombreuses mises en page se cassent avec le RTL
+
+---
+
+## Checklist d'assurance qualité
+
+- [ ] Un locuteur natif a relu tout le contenu traduit
+- [ ] La terminologie de marque est utilisée de façon cohérente sur toutes les locales
+- [ ] Aucun artefact de traduction automatique (formulation maladroite, faux amis)
+- [ ] Les références culturelles sont appropriées pour l'audience cible
+- [ ] Toutes les pages localisées ont les balises hreflang correctes
+- [ ] Les formulaires fonctionnent avec les formats d'adresse/téléphone locaux
+- [ ] Les moyens de paiement sont pertinents pour le marché
+- [ ] Le formatage de date, heure, devise correspond à la locale
+- [ ] Les images sont culturellement appropriées
+- [ ] Les mentions légales sont spécifiques au marché et correctes

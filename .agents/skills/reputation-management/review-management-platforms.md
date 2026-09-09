@@ -1,197 +1,197 @@
-# Review Management Platforms — Strategy & Operations Reference
+# Plateformes de gestion des avis — Référence stratégie et opérations
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les chiffres en dollars de ce document sont des estimations de planification, pas des cotations — les tarifs de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez ensuite depuis le livre (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-A comprehensive guide to managing online reviews across platforms. Covers review generation, response frameworks by rating, monitoring tools, fake review detection, platform-specific policies, and the legal landscape of review management.
+Un guide complet pour gérer les avis en ligne sur les plateformes. Couvre la génération d'avis, les cadres de réponse par note, les outils de suivi, la détection d'avis frauduleux, les politiques spécifiques aux plateformes, et le paysage légal de la gestion des avis.
 
 ---
 
-## Major Review Platforms by Industry
+## Principales plateformes d'avis par secteur
 
-| Platform | Primary Industries | Monthly Active Users | Review Impact |
+| Plateforme | Secteurs principaux | Utilisateurs actifs mensuels | Impact des avis |
 |----------|-------------------|---------------------|---------------|
-| **Google Business Profile** | All (universal) | 1B+ | Dominant for local search; directly influences local pack ranking |
-| **Yelp** | Restaurants, home services, local retail | 178M+ | Strong for service businesses; recommendation filter is aggressive |
-| **TripAdvisor** | Hotels, restaurants, attractions, tours | 460M+ | Primary for hospitality and travel; ranking algorithm heavily weights recency |
-| **Healthgrades** | Healthcare (doctors, dentists, hospitals) | 50M+ | Leading healthcare review site; patients trust peer reviews over credentials |
-| **Avvo** | Legal (attorneys, law firms) | 12M+ | Dominant in legal; Avvo rating combines reviews + profile completeness |
-| **G2** | SaaS, enterprise software | 80M+ | Primary B2B review site; influences procurement decisions |
-| **Capterra** | SaaS, business software | 100M+ | Gartner-owned; strong for SMB software comparison shopping |
-| **Trustpilot** | eCommerce, online services | 50M+ | European-origin, growing globally; open platform with TrustScore |
-| **BBB (Better Business Bureau)** | All (credibility-focused) | 120M+ | Trust signal for older demographics; accreditation carries weight |
-| **Facebook** | Local businesses, restaurants, retail | 3B+ | Recommendations (not star ratings); integrated with social discovery |
-| **Amazon** | eCommerce, consumer products | 300M+ | Verified purchase reviews dominate product purchase decisions |
-| **Glassdoor** | Employer brand (all industries) | 55M+ | Employee reviews affect recruiting and indirectly affect customer perception |
+| **Google Business Profile** | Tous (universel) | 1 Md+ | Dominant pour la recherche locale ; influence directement le classement du pack local |
+| **Yelp** | Restaurants, services à domicile, retail local | 178 M+ | Fort pour les entreprises de service ; le filtre de recommandation est agressif |
+| **TripAdvisor** | Hôtels, restaurants, attractions, tours | 460 M+ | Principal pour l'hôtellerie et le voyage ; l'algorithme de classement pondère fortement la récence |
+| **Healthgrades** | Santé (médecins, dentistes, hôpitaux) | 50 M+ | Site d'avis santé leader ; les patients font confiance aux avis de pairs plus qu'aux titres |
+| **Avvo** | Juridique (avocats, cabinets) | 12 M+ | Dominant en juridique ; la note Avvo combine avis + exhaustivité du profil |
+| **G2** | SaaS, logiciel entreprise | 80 M+ | Principal site d'avis B2B ; influence les décisions d'achat |
+| **Capterra** | SaaS, logiciel entreprise | 100 M+ | Propriété de Gartner ; fort pour la comparaison de logiciels PME |
+| **Trustpilot** | E-commerce, services en ligne | 50 M+ | D'origine européenne, en croissance mondiale ; plateforme ouverte avec TrustScore |
+| **BBB (Better Business Bureau)** | Tous (axé sur la crédibilité) | 120 M+ | Signal de confiance pour les démographies plus âgées ; l'accréditation compte |
+| **Facebook** | Entreprises locales, restaurants, retail | 3 Mds+ | Recommandations (pas de notes en étoiles) ; intégré à la découverte sociale |
+| **Amazon** | E-commerce, produits de consommation | 300 M+ | Les avis d'achat vérifié dominent les décisions d'achat produit |
+| **Glassdoor** | Marque employeur (tous secteurs) | 55 M+ | Les avis d'employés affectent le recrutement et indirectement la perception client |
 
-### Industry-Specific Priority Matrix
+### Matrice de priorité par secteur
 
-| Industry | Tier 1 (Must-Have) | Tier 2 (Important) | Tier 3 (Nice-to-Have) |
+| Secteur | Niveau 1 (indispensable) | Niveau 2 (important) | Niveau 3 (bonus) |
 |----------|-------------------|--------------------|-----------------------|
 | **Restaurant** | Google, Yelp, TripAdvisor | Facebook, OpenTable | Zomato, Foursquare |
-| **Hotel/Hospitality** | Google, TripAdvisor, Booking.com | Expedia, Yelp | Facebook, Hotels.com |
-| **Healthcare** | Google, Healthgrades, Zocdoc | Vitals, WebMD | Yelp, Facebook |
-| **Legal** | Google, Avvo, Lawyers.com | Justia, FindLaw | Yelp, BBB |
+| **Hôtel/Hôtellerie** | Google, TripAdvisor, Booking.com | Expedia, Yelp | Facebook, Hotels.com |
+| **Santé** | Google, Healthgrades, Zocdoc | Vitals, WebMD | Yelp, Facebook |
+| **Juridique** | Google, Avvo, Lawyers.com | Justia, FindLaw | Yelp, BBB |
 | **SaaS** | G2, Capterra, Google | Trustpilot, TrustRadius | Product Hunt, GetApp |
-| **eCommerce** | Google, Trustpilot, Amazon | Facebook, BBB | Sitejabber, ResellerRatings |
-| **Home Services** | Google, Yelp, HomeAdvisor | Angi, BBB | Facebook, Thumbtack |
-| **Automotive** | Google, DealerRater, Cars.com | Edmunds, CarGurus | Yelp, Facebook |
+| **E-commerce** | Google, Trustpilot, Amazon | Facebook, BBB | Sitejabber, ResellerRatings |
+| **Services à domicile** | Google, Yelp, HomeAdvisor | Angi, BBB | Facebook, Thumbtack |
+| **Automobile** | Google, DealerRater, Cars.com | Edmunds, CarGurus | Yelp, Facebook |
 
 ---
 
-## Review Generation Strategies
+## Stratégies de génération d'avis
 
-### Timing by Business Type
+### Timing par type d'entreprise
 
-| Business Type | Optimal Request Timing | Rationale |
+| Type d'entreprise | Timing optimal de la demande | Justification |
 |--------------|----------------------|-----------|
-| **Services (completed)** | 1-3 days after service delivery | Experience is fresh; satisfaction is confirmed |
-| **Restaurants** | Same day or next morning | Dining experience memory fades quickly |
-| **Physical products** | 7-14 days after delivery | Customer has had time to use and evaluate |
-| **SaaS / Software** | 30-60 days after onboarding (or after first success milestone) | Need enough usage to form a genuine opinion |
-| **Healthcare** | 1-2 days after appointment | Compliance-sensitive; must be careful with messaging |
-| **Hotels** | Day after checkout | Experience is complete and fresh |
+| **Services (terminés)** | 1-3 jours après la livraison du service | L'expérience est fraîche ; la satisfaction est confirmée |
+| **Restaurants** | Le jour même ou le lendemain matin | Le souvenir de l'expérience culinaire s'estompe rapidement |
+| **Produits physiques** | 7-14 jours après la livraison | Le client a eu le temps d'utiliser et d'évaluer |
+| **SaaS / Logiciel** | 30-60 jours après l'onboarding (ou après le premier jalon de succès) | Nécessite suffisamment d'usage pour se former une opinion authentique |
+| **Santé** | 1-2 jours après le rendez-vous | Sensible à la conformité ; il faut être prudent avec le message |
+| **Hôtels** | Le lendemain du check-out | L'expérience est complète et fraîche |
 
-### Request Channels
+### Canaux de demande
 
-| Channel | Response Rate | Best For | Tips |
+| Canal | Taux de réponse | Idéal pour | Conseils |
 |---------|--------------|----------|------|
-| **Email (post-purchase)** | 5-15% | eCommerce, SaaS, professional services | Personalize with order details; single CTA; mobile-optimized |
-| **SMS** | 15-25% | Local services, restaurants, healthcare | Keep to 160 characters; direct link; time within business hours |
-| **In-person ask** | 30-50% | Retail, restaurants, services | Train staff to ask after positive interaction; provide card with QR code |
-| **QR code (physical)** | 5-10% | Retail stores, restaurants, offices | Place at point of sale, on receipts, on table tents |
-| **In-app prompt** | 10-20% | SaaS, mobile apps | Trigger after success moment (not randomly); allow dismissal |
-| **Post-support follow-up** | 10-20% | Any business with support | Only request after positive resolution (CSAT 4-5) |
+| **Email (post-achat)** | 5-15 % | E-commerce, SaaS, services professionnels | Personnaliser avec les détails de commande ; un seul CTA ; optimisé mobile |
+| **SMS** | 15-25 % | Services locaux, restaurants, santé | Rester à 160 caractères ; lien direct ; envoi pendant les heures d'ouverture |
+| **Demande en personne** | 30-50 % | Retail, restaurants, services | Former le personnel à demander après une interaction positive ; fournir une carte avec un code QR |
+| **Code QR (physique)** | 5-10 % | Magasins retail, restaurants, bureaux | Placer au point de vente, sur les reçus, sur les chevalets de table |
+| **Invite in-app** | 10-20 % | SaaS, applications mobiles | Déclencher après un moment de succès (pas aléatoirement) ; permettre le rejet |
+| **Suivi post-support** | 10-20 % | Toute entreprise avec du support | Demander uniquement après une résolution positive (CSAT 4-5) |
 
-### Review Landing Page Design
+### Conception de la page d'atterrissage d'avis
 
-Create a branded review page that simplifies the process:
+Créer une page d'avis à la marque qui simplifie le processus :
 
-1. **Thank the customer** — One sentence acknowledging their business
-2. **Show platform options** — Display 2-3 platform icons with direct review links
-3. **Prioritize your target platform** — Make Google (or your priority platform) the largest/first button
-4. **Pre-fill where possible** — Some platforms allow URL parameters for star pre-selection (use cautiously — review gating is prohibited)
-5. **Mobile-optimize** — 70%+ of review requests are opened on mobile
-
----
-
-## Response Framework by Rating
-
-### 5-Star Reviews
-
-**Strategy:** Reinforce the positive, reference specifics, invite return engagement.
-
-```
-Hi [Name], thank you so much for the kind words! We're thrilled to
-hear that [specific thing they mentioned — e.g., "Sarah made your
-experience seamless"]. [That's exactly what we aim for / We'll pass
-along the compliment to the team]. We'd love to see you again —
-[relevant invitation, e.g., "our spring collection launches next
-month"]. Thank you for your support!
-```
-
-**Timing:** Within 48 hours. **Tone:** Warm, specific, brief.
-
-### 4-Star Reviews
-
-**Strategy:** Thank sincerely, acknowledge the suggestion or gap, signal improvement.
-
-```
-Thank you for the thoughtful review, [Name]. We're glad
-[specific positive they mentioned] met your expectations. We
-appreciate your note about [specific suggestion or concern] —
-that's exactly the kind of feedback that helps us improve.
-[We're already working on X / We've shared this with our team].
-Hope to earn that 5th star next time!
-```
-
-**Timing:** Within 48 hours. **Tone:** Appreciative, action-oriented.
-
-### 3-Star Reviews
-
-**Strategy:** Thank for honesty, address specific concerns, offer a path to resolution.
-
-```
-Hi [Name], thank you for taking the time to share your experience.
-We're glad [positive aspect they mentioned], but we understand that
-[specific concern] fell short of what you expected. That's not the
-standard we hold ourselves to. [Specific action: "We've spoken with
-our team about X" / "We've adjusted our process for Y"]. If you're
-open to it, we'd love the chance to make it right — please reach
-out to [contact method].
-```
-
-**Timing:** Within 24 hours. **Tone:** Empathetic, solution-focused, not defensive.
-
-### 2-Star Reviews
-
-**Strategy:** Empathize, take responsibility, move to private conversation, offer specific resolution.
-
-```
-[Name], we're sorry to hear about your experience with
-[specific issue]. That's not acceptable, and we take this
-seriously. I'd like to personally look into what happened
-and make this right. Could you reach out to me directly at
-[email/phone]? I want to understand the full situation and
-find a solution for you. — [Name, Title]
-```
-
-**Timing:** Within 12-24 hours. **Tone:** Personal, accountable, urgent.
-
-### 1-Star Reviews
-
-**Strategy:** Empathize immediately, no excuses, investigate, escalate internally, offer direct contact.
-
-```
-[Name], I'm truly sorry for this experience. This does not
-reflect who we are or the standard we set for ourselves. I
-want to investigate this personally and make it right. Please
-contact me directly at [email] or [phone] — I'll prioritize
-your case. We owe you better than this. — [Name, Title]
-```
-
-**Timing:** Within 6-12 hours. **Tone:** Empathetic, personal, executive-level when warranted.
-
-### Response Rules (All Ratings)
-
-- Never copy/paste the same response across reviews — each response must be unique
-- Never argue with a reviewer publicly
-- Never offer compensation publicly (do it privately)
-- Never ask a reviewer to change or remove their review
-- Always respond from a named person when possible (not "The Team")
-- Keep responses under 150 words for positive reviews, under 200 words for negative
-- Never reveal private customer details in a public response
+1. **Remercier le client** — Une phrase reconnaissant son activité
+2. **Afficher les options de plateforme** — Afficher 2-3 icônes de plateforme avec des liens d'avis directs
+3. **Prioriser votre plateforme cible** — Faire de Google (ou votre plateforme prioritaire) le bouton le plus grand/premier
+4. **Pré-remplir lorsque possible** — Certaines plateformes permettent des paramètres d'URL pour la pré-sélection d'étoiles (à utiliser avec prudence — le filtrage d'avis est interdit)
+5. **Optimiser pour mobile** — 70 %+ des demandes d'avis sont ouvertes sur mobile
 
 ---
 
-## Review Monitoring Tools
+## Cadre de réponse par note
 
-| Tool | Starting Price | Platforms Monitored | Key Strength |
-|------|---------------|--------------------| -------------|
-| **Google Alerts** | Free | Web mentions (not review-specific) | Free baseline monitoring; limited to web search results |
-| **BrightLocal** | $39/mo | Google, Facebook, Yelp, 80+ sites | Best for local SEO agencies managing multiple locations |
-| **ReviewTrackers** | Custom | 100+ review sites | Enterprise-grade analytics; sentiment trending |
-| **Birdeye** | $299/mo | 200+ sites; includes messaging | All-in-one: monitoring + generation + messaging |
-| **Podium** | $399/mo | Google, Facebook + messaging | Strong SMS review request automation |
-| **Reputation.com** | Custom | 100+ sites | Enterprise; multi-location management at scale |
-| **Yext** | $199/mo | 200+ directories + review sites | Listings management + review monitoring combined |
+### Avis 5 étoiles
 
-### Tool Selection Criteria
+**Stratégie :** Renforcer le positif, référencer des éléments spécifiques, inviter à un engagement de retour.
 
-| Business Type | Recommended Tool Tier |
+```
+Bonjour [Nom], merci beaucoup pour ces mots gentils ! Nous sommes ravis
+d'apprendre que [élément spécifique qu'ils ont mentionné — par ex. « Sarah a
+rendu votre expérience sans accroc »]. [C'est exactement ce que nous
+visons / Nous transmettrons le compliment à l'équipe]. Nous serions ravis
+de vous revoir — [invitation pertinente, par ex. « notre collection de
+printemps sort le mois prochain »]. Merci de votre soutien !
+```
+
+**Timing :** Dans les 48 heures. **Ton :** Chaleureux, spécifique, bref.
+
+### Avis 4 étoiles
+
+**Stratégie :** Remercier sincèrement, reconnaître la suggestion ou la lacune, signaler l'amélioration.
+
+```
+Merci pour cet avis réfléchi, [Nom]. Nous sommes heureux que
+[aspect positif spécifique mentionné] ait répondu à vos attentes. Nous
+apprécions votre note sur [suggestion ou préoccupation spécifique] —
+c'est exactement le type de retour qui nous aide à nous améliorer.
+[Nous travaillons déjà sur X / Nous avons partagé cela avec notre
+équipe]. J'espère gagner cette 5e étoile la prochaine fois !
+```
+
+**Timing :** Dans les 48 heures. **Ton :** Reconnaissant, orienté action.
+
+### Avis 3 étoiles
+
+**Stratégie :** Remercier pour l'honnêteté, traiter les préoccupations spécifiques, offrir un chemin de résolution.
+
+```
+Bonjour [Nom], merci d'avoir pris le temps de partager votre expérience.
+Nous sommes heureux que [aspect positif qu'ils ont mentionné], mais nous
+comprenons que [préoccupation spécifique] n'était pas à la hauteur de vos
+attentes. Ce n'est pas le standard que nous nous fixons. [Action spécifique :
+« Nous en avons parlé avec notre équipe à propos de X » / « Nous avons
+ajusté notre processus pour Y »]. Si vous êtes ouvert(e), nous aimerions
+avoir la chance de nous rattraper — veuillez contacter [méthode de contact].
+```
+
+**Timing :** Dans les 24 heures. **Ton :** Empathique, orienté solution, non défensif.
+
+### Avis 2 étoiles
+
+**Stratégie :** Faire preuve d'empathie, assumer la responsabilité, passer à une conversation privée, offrir une résolution spécifique.
+
+```
+[Nom], nous sommes désolés d'apprendre votre expérience avec
+[problème spécifique]. Ce n'est pas acceptable, et nous prenons cela
+au sérieux. J'aimerais examiner personnellement ce qui s'est passé
+et corriger la situation. Pourriez-vous me contacter directement à
+[email/téléphone] ? Je veux comprendre la situation complète et
+trouver une solution pour vous. — [Nom, Titre]
+```
+
+**Timing :** Dans les 12-24 heures. **Ton :** Personnel, responsable, urgent.
+
+### Avis 1 étoile
+
+**Stratégie :** Faire preuve d'empathie immédiatement, sans excuses, enquêter, escalader en interne, offrir un contact direct.
+
+```
+[Nom], je suis vraiment désolé(e) pour cette expérience. Cela ne
+reflète pas qui nous sommes ni le standard que nous nous fixons. Je
+veux enquêter sur cela personnellement et corriger la situation.
+Veuillez me contacter directement à [email] ou [téléphone] — je
+prioriserai votre cas. Nous vous devons mieux que cela. — [Nom, Titre]
+```
+
+**Timing :** Dans les 6-12 heures. **Ton :** Empathique, personnel, au niveau exécutif lorsque justifié.
+
+### Règles de réponse (toutes notes)
+
+- Ne jamais copier-coller la même réponse sur plusieurs avis — chaque réponse doit être unique
+- Ne jamais argumenter publiquement avec un auteur d'avis
+- Ne jamais offrir de compensation publiquement (le faire en privé)
+- Ne jamais demander à un auteur d'avis de changer ou de supprimer son avis
+- Toujours répondre au nom d'une personne nommée lorsque possible (pas « L'équipe »)
+- Garder les réponses sous 150 mots pour les avis positifs, sous 200 mots pour les négatifs
+- Ne jamais révéler de détails privés du client dans une réponse publique
+
+---
+
+## Outils de suivi des avis
+
+| Outil | Prix de départ | Plateformes suivies | Point fort clé |
+|------|---------------|--------------------|-------------|
+| **Google Alerts** | Gratuit | Mentions web (pas spécifique aux avis) | Suivi de base gratuit ; limité aux résultats de recherche Google |
+| **BrightLocal** | 39 $/mois | Google, Facebook, Yelp, 80+ sites | Idéal pour les agences SEO local gérant plusieurs établissements |
+| **ReviewTrackers** | Sur devis | 100+ sites d'avis | Analytics de niveau entreprise ; tendance de sentiment |
+| **Birdeye** | 299 $/mois | 200+ sites ; inclut la messagerie | Tout-en-un : suivi + génération + messagerie |
+| **Podium** | 399 $/mois | Google, Facebook + messagerie | Forte automatisation de demande d'avis par SMS |
+| **Reputation.com** | Sur devis | 100+ sites | Entreprise ; gestion multi-établissements à l'échelle |
+| **Yext** | 199 $/mois | 200+ annuaires + sites d'avis | Gestion des annuaires + suivi des avis combinés |
+
+### Critères de sélection d'outil
+
+| Type d'entreprise | Niveau d'outil recommandé |
 |--------------|----------------------|
-| Single location, bootstrap budget | Google Alerts (free) + manual monitoring |
-| Single location, growth budget | BrightLocal or Podium |
-| Multi-location (5-50 locations) | Birdeye or ReviewTrackers |
-| Enterprise (50+ locations) | Reputation.com or Yext |
-| SaaS / B2B | G2 + Capterra dashboards (free) + BrightLocal for web reviews |
+| Établissement unique, budget bootstrap | Google Alerts (gratuit) + suivi manuel |
+| Établissement unique, budget de croissance | BrightLocal ou Podium |
+| Multi-établissements (5-50 établissements) | Birdeye ou ReviewTrackers |
+| Entreprise (50+ établissements) | Reputation.com ou Yext |
+| SaaS / B2B | Tableaux de bord G2 + Capterra (gratuit) + BrightLocal pour les avis web |
 
 ---
 
-## Review Aggregation & Schema Markup
+## Agrégation d'avis et balisage schema
 
-### Aggregate Rating Schema
+### Schema de note agrégée
 
-Add structured data to your website to display star ratings in search results:
+Ajouter des données structurées à votre site web pour afficher les notes en étoiles dans les résultats de recherche :
 
 ```json
 {
@@ -208,129 +208,130 @@ Add structured data to your website to display star ratings in search results:
 }
 ```
 
-**Important:** Google requires that aggregate ratings come from genuine first-party reviews collected on your site — not scraped from third-party platforms. Misrepresenting review sources violates Google's structured data guidelines and can result in manual action.
+**Important :** Google exige que les notes agrégées proviennent d'avis authentiques de première partie collectés sur votre site — pas récupérés de plateformes tierces. Mal représenter les sources d'avis viole les guidelines de données structurées de Google et peut entraîner une action manuelle.
 
 ---
 
-## Fake Review Detection
+## Détection des avis frauduleux
 
-### Red Flag Patterns
+### Motifs de signal d'alerte
 
-| Pattern | Description | Detection Method |
+| Motif | Description | Méthode de détection |
 |---------|-------------|-----------------|
-| **Cluster timing** | Multiple 5-star reviews within hours or days | Plot review dates; look for unnatural clusters |
-| **Generic language** | Vague praise with no specific details ("Great place! Highly recommend!") | Manual read; NLP analysis for specificity score |
-| **No photos or profile history** | Reviewers with new accounts, no profile photo, no other reviews | Click through to reviewer profile |
-| **One-review accounts** | Reviewer has only ever left one review (this one) | Profile audit; common with purchased reviews |
-| **Copied text** | Same or near-identical text across multiple reviews | Search unique phrases from reviews; plagiarism detection |
-| **Reviewer location mismatch** | Reviewer is from a different country/region than the business | Check reviewer profile location vs. business location |
-| **Sudden rating shift** | Average rating jumps dramatically in a short period | Monitor rating trends over time |
-| **Competitor attack** | Sudden cluster of 1-star reviews with similar language | Analyze timing, language patterns, and reviewer profiles |
+| **Regroupement temporel** | Plusieurs avis 5 étoiles en quelques heures ou jours | Tracer les dates d'avis ; chercher des groupements non naturels |
+| **Langage générique** | Éloges vagues sans détails spécifiques (« Super endroit ! Je recommande vivement ! ») | Lecture manuelle ; analyse NLP pour le score de spécificité |
+| **Aucune photo ou historique de profil** | Auteurs avec des comptes récents, sans photo de profil, sans autres avis | Consulter le profil de l'auteur |
+| **Comptes à avis unique** | L'auteur n'a jamais laissé qu'un seul avis (celui-ci) | Audit de profil ; courant avec les avis achetés |
+| **Texte copié** | Texte identique ou quasi-identique sur plusieurs avis | Rechercher des phrases uniques des avis ; détection de plagiat |
+| **Décalage de localisation de l'auteur** | L'auteur vient d'un pays/région différent de l'entreprise | Vérifier la localisation du profil de l'auteur vs celle de l'entreprise |
+| **Changement de note soudain** | La note moyenne bondit dramatiquement sur une courte période | Surveiller les tendances de note dans le temps |
+| **Attaque concurrentielle** | Regroupement soudain d'avis 1 étoile avec un langage similaire | Analyser le timing, les motifs de langage, et les profils d'auteurs |
 
-### What to Do About Fake Reviews
+### Que faire face aux avis frauduleux
 
 | Situation | Action |
 |-----------|--------|
-| Fake positive reviews on your profile (not yours) | Remove if you can; report to platform; never solicit fake reviews |
-| Fake negative reviews (competitor attack) | Document evidence; report to platform with specific policy violations cited; respond professionally and publicly |
-| Fake reviews on competitor profiles | Do nothing — focus on earning genuine reviews; never report competitor reviews unless they violate platform policies |
+| Faux avis positifs sur votre profil (pas les vôtres) | Supprimer si possible ; signaler à la plateforme ; ne jamais solliciter de faux avis |
+| Faux avis négatifs (attaque concurrentielle) | Documenter les preuves ; signaler à la plateforme en citant les violations de politique spécifiques ; répondre de manière professionnelle et publique |
+| Faux avis sur les profils concurrents | Ne rien faire — se concentrer sur l'obtention d'avis authentiques ; ne jamais signaler les avis concurrents sauf s'ils violent les politiques de plateforme |
 
 ---
 
-## Platform-Specific Policies
+## Politiques spécifiques aux plateformes
 
 ### Google Business Profile
 
-- **Prohibited:** Review gating (routing positive to Google, negative to private feedback), fake reviews, reviews from employees, incentivized reviews (offering discounts for reviews)
-- **Allowed:** Asking all customers for reviews (without filtering by sentiment), providing a direct link, reminding customers
-- **Removal process:** Flag review > select violation > Google reviews (takes 3-14 days; no guarantee of removal)
-- **Impact on ranking:** Review quantity, quality, and recency are confirmed local ranking factors
+- **Interdit :** Filtrage d'avis (orienter le positif vers Google, le négatif vers un retour privé), faux avis, avis d'employés, avis incités (offrir des réductions en échange d'avis)
+- **Autorisé :** Demander des avis à tous les clients (sans filtrer par sentiment), fournir un lien direct, faire des rappels
+- **Processus de suppression :** Signaler l'avis > sélectionner la violation > Avis Google (prend 3-14 jours ; aucune garantie de suppression)
+- **Impact sur le classement :** La quantité, la qualité, et la récence des avis sont des facteurs de classement local confirmés
 
 ### Yelp
 
-- **Prohibited:** Asking for reviews on Yelp (Yelp's official policy discourages solicitation), offering incentives, review kiosks
-- **Recommendation filter:** Yelp's algorithm filters reviews it deems unreliable into a "not currently recommended" section; this is opaque and cannot be appealed
-- **Strategy:** Focus on great service; display Yelp badge but don't explicitly ask for Yelp reviews; respond to all reviews promptly
+- **Interdit :** Demander des avis sur Yelp (la politique officielle de Yelp décourage la sollicitation), offrir des incitations, kiosques d'avis
+- **Filtre de recommandation :** L'algorithme de Yelp filtre les avis qu'il juge peu fiables dans une section « actuellement non recommandé » ; c'est opaque et non contestable
+- **Stratégie :** Se concentrer sur un excellent service ; afficher le badge Yelp mais ne pas demander explicitement d'avis Yelp ; répondre à tous les avis rapidement
 
 ### Amazon
 
-- **Prohibited:** Incentivized reviews (except Vine program), reviews from family/friends, manipulating reviews with refunds or discounts
-- **Verified purchase badge:** Reviews from verified purchases carry significantly more weight in ranking
-- **Vine program:** Amazon's official program where trusted reviewers receive free products in exchange for honest reviews
+- **Interdit :** Avis incités (sauf programme Vine), avis de la famille/des amis, manipuler les avis avec des remboursements ou des réductions
+- **Badge d'achat vérifié :** Les avis d'achats vérifiés pèsent significativement plus dans le classement
+- **Programme Vine :** Programme officiel d'Amazon où des évaluateurs de confiance reçoivent des produits gratuits en échange d'avis honnêtes
 
 ### Trustpilot
 
-- **Open platform:** Anyone can leave a review, even without a purchase (business can flag for verification)
-- **Invitation-only option:** Businesses can close their profile to only accept reviews from invited customers
-- **Transparency reports:** Trustpilot publishes reports on fake review activity
+- **Plateforme ouverte :** N'importe qui peut laisser un avis, même sans achat (l'entreprise peut le signaler pour vérification)
+- **Option sur invitation uniquement :** Les entreprises peuvent fermer leur profil pour n'accepter que les avis de clients invités
+- **Rapports de transparence :** Trustpilot publie des rapports sur l'activité de faux avis
 
 ---
 
-## Review Analytics
+## Analytics des avis
 
-### Sentiment Analysis Framework
+### Cadre d'analyse de sentiment
 
-Track these metrics monthly across all platforms:
+Suivre ces métriques mensuellement sur toutes les plateformes :
 
-| Metric | Formula | Benchmark |
+| Métrique | Formule | Référence |
 |--------|---------|-----------|
-| **Overall sentiment score** | (Positive reviews - Negative reviews) / Total reviews | > 0.70 |
-| **Rating trend** | Average rating this month vs. prior 3-month average | Stable or improving |
-| **Review velocity** | New reviews per month | Growing month-over-month |
-| **Response rate** | Reviews responded to / Total reviews | > 90% for negative, > 50% for positive |
-| **Response time** | Median time from review posting to response | < 24 hours negative, < 48 hours positive |
+| **Score de sentiment global** | (Avis positifs - Avis négatifs) / Total des avis | > 0,70 |
+| **Tendance de note** | Note moyenne ce mois vs moyenne des 3 mois précédents | Stable ou en amélioration |
+| **Vélocité d'avis** | Nouveaux avis par mois | En croissance mois après mois |
+| **Taux de réponse** | Avis auxquels on a répondu / Total des avis | > 90 % pour le négatif, > 50 % pour le positif |
+| **Temps de réponse** | Temps médian entre la publication de l'avis et la réponse | < 24 heures pour le négatif, < 48 heures pour le positif |
 
-### Keyword Extraction Categories
+### Catégories d'extraction de mots-clés
 
-Analyze review text to identify recurring themes:
+Analyser le texte des avis pour identifier les thèmes récurrents :
 
-| Category | Example Keywords | Action |
+| Catégorie | Exemples de mots-clés | Action |
 |----------|-----------------|--------|
-| **Product quality** | "quality", "durable", "broke", "cheap", "excellent" | Product team feedback |
-| **Service experience** | "friendly", "rude", "helpful", "waited", "ignored" | Staff training |
-| **Pricing** | "expensive", "worth it", "overpriced", "great value", "deal" | Pricing strategy |
-| **Speed / timeliness** | "fast", "slow", "on time", "delayed", "quick" | Operations optimization |
-| **Cleanliness / environment** | "clean", "dirty", "ambiance", "comfortable", "run-down" | Facilities management |
-| **Specific staff** | Individual names mentioned positively or negatively | Recognition or coaching |
+| **Qualité produit** | « qualité », « durable », « cassé », « bon marché », « excellent » | Retour à l'équipe produit |
+| **Expérience de service** | « amical », « impoli », « serviable », « attendu », « ignoré » | Formation du personnel |
+| **Tarification** | « cher », « ça vaut le coup », « surévalué », « bon rapport qualité-prix », « bonne affaire » | Stratégie de tarification |
+| **Rapidité / délais** | « rapide », « lent », « à l'heure », « retardé », « rapide » | Optimisation des opérations |
+| **Propreté / environnement** | « propre », « sale », « ambiance », « confortable », « délabré » | Gestion des installations |
+| **Personnel spécifique** | Noms individuels mentionnés positivement ou négativement | Reconnaissance ou coaching |
 
-### Competitor Review Comparison
+### Comparaison des avis concurrents
 
-| Metric | Your Business | Competitor A | Competitor B | Competitor C |
+| Métrique | Votre entreprise | Concurrent A | Concurrent B | Concurrent C |
 |--------|--------------|--------------|--------------|--------------|
-| Google rating | ___ | ___ | ___ | ___ |
-| Google review count | ___ | ___ | ___ | ___ |
-| Yelp rating | ___ | ___ | ___ | ___ |
-| Top positive theme | ___ | ___ | ___ | ___ |
-| Top negative theme | ___ | ___ | ___ | ___ |
-| Response rate | ___ | ___ | ___ | ___ |
-| Review velocity (monthly) | ___ | ___ | ___ | ___ |
+| Note Google | ___ | ___ | ___ | ___ |
+| Nombre d'avis Google | ___ | ___ | ___ | ___ |
+| Note Yelp | ___ | ___ | ___ | ___ |
+| Thème positif principal | ___ | ___ | ___ | ___ |
+| Thème négatif principal | ___ | ___ | ___ | ___ |
+| Taux de réponse | ___ | ___ | ___ | ___ |
+| Vélocité d'avis (mensuelle) | ___ | ___ | ___ | ___ |
 
 ---
 
-## Legal Considerations
+## Considérations légales
 
-### Review Solicitation Laws
+### Lois sur la sollicitation d'avis
 
-- **FTC Act Section 5:** Prohibits unfair or deceptive acts; fake or undisclosed incentivized reviews violate this
-- **Consumer Review Fairness Act (2016):** Businesses cannot use contract clauses to prevent customers from leaving honest reviews; non-disparagement clauses in consumer contracts are void
-- **State laws:** California, New York, and other states have additional consumer review protection statutes
+- **FTC Act Section 5 :** Interdit les pratiques déloyales ou trompeuses ; les faux avis ou avis incités non divulgués violent cette disposition
+- **Consumer Review Fairness Act (2016) :** Les entreprises ne peuvent pas utiliser de clauses contractuelles pour empêcher les clients de laisser des avis honnêtes ; les clauses de non-dénigrement dans les contrats de consommation sont nulles
+- **Lois d'État :** La Californie, New York, et d'autres États ont des statuts additionnels de protection des avis de consommateurs
 
-### Review Gating Prohibition
+### Interdiction du filtrage d'avis
 
-- **What it is:** Asking customers for their rating first, then directing happy customers to leave a public review while routing unhappy customers to a private feedback form
-- **Why it's prohibited:** Google, Yelp, and FTC consider this deceptive; it artificially inflates public ratings
-- **The correct approach:** Ask all customers for a review on the same platform with the same process, regardless of expected sentiment
+- **De quoi s'agit-il :** Demander d'abord la note du client, puis orienter les clients satisfaits vers un avis public tout en dirigeant les clients insatisfaits vers un formulaire de retour privé
+- **Pourquoi c'est interdit :** Google, Yelp, et la FTC considèrent cela comme trompeur ; cela gonfle artificiellement les notes publiques
+- **La bonne approche :** Demander à tous les clients un avis sur la même plateforme avec le même processus, indépendamment du sentiment attendu
 
-### Defamation and False Reviews
+### Diffamation et faux avis
 
-- **A review is protected speech if:** It states an opinion, is based on actual experience, and does not contain provably false statements of fact
-- **A review may be defamatory if:** It contains provably false factual claims that damage the business, and was made with knowledge of falsity or reckless disregard for truth
-- **Practical advice:** Pursuing defamation claims against reviewers almost always generates negative publicity (the "Streisand effect"); exhaust platform dispute processes before considering legal action
+- **Un avis est une expression protégée si :** Il exprime une opinion, est basé sur une expérience réelle, et ne contient pas de fausses déclarations factuelles démontrables
+- **Un avis peut être diffamatoire si :** Il contient des allégations factuelles fausses démontrables qui nuisent à l'entreprise, et a été fait en connaissance de la fausseté ou avec un mépris téméraire pour la vérité
+- **Conseil pratique :** Poursuivre des actions en diffamation contre des auteurs d'avis génère presque toujours de la publicité négative (l'« effet Streisand ») ; épuiser les processus de contestation de plateforme avant d'envisager une action en justice
 
-### FTC Endorsement Guidelines (Updated 2023)
+### Guidelines d'endossement de la FTC (mises à jour 2023)
 
-- Reviews from employees, family, or affiliates must disclose the relationship
-- Incentivized reviews must disclose the incentive (and many platforms prohibit them entirely)
-- Businesses are liable for employee review solicitation practices even if not directly authorized
-- The FTC Trade Regulation Rule on Consumer Reviews and Testimonials (16 CFR Part 465, effective October 2024) is now the primary enforcement vehicle — it bans buying/selling fake reviews, undisclosed insider reviews, review suppression, and fake social media indicators, with civil penalties per violation
-- Penalties: per-violation maximum is inflation-adjusted annually (~$53K+ as of 2026)
+- Les avis d'employés, de la famille, ou d'affiliés doivent divulguer la relation
+- Les avis incités doivent divulguer l'incitation (et de nombreuses plateformes les interdisent entièrement)
+- Les entreprises sont responsables des pratiques de sollicitation d'avis de leurs employés même si non directement autorisées
+- Le FTC Trade Regulation Rule on Consumer Reviews and Testimonials (16 CFR Part 465, effectif octobre 2024) est désormais le principal instrument d'application — il interdit l'achat/vente de faux avis, les avis d'initiés non divulgués, la suppression d'avis, et les faux indicateurs sur les réseaux sociaux, avec des pénalités civiles par violation
+- Pénalités : le maximum par violation est ajusté annuellement à l'inflation (~53 000 $+ au 2026)
+</content>

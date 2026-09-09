@@ -1,143 +1,144 @@
-# Unit Economics Framework
+# Cadre de l'unité économique
 
-Every marketing strategy ultimately resolves to one question: does the revenue from a customer exceed the cost of acquiring them, by enough margin to sustain and grow the business?
+Toute stratégie marketing se résout finalement en une seule question : le revenu d'un client dépasse-t-il le coût de son acquisition, avec une marge suffisante pour soutenir et faire croître l'entreprise ?
 
-If the answer is no, no amount of clever creative or sophisticated targeting will save the strategy. If the answer is yes, every channel decision becomes a question of how to scale efficiently.
+Si la réponse est non, aucune création astucieuse ni ciblage sophistiqué ne sauvera la stratégie. Si la réponse est oui, chaque décision de canal devient une question de comment monter en échelle efficacement.
 
-This framework is the foundation. Every recommendation in this plugin — channel selection, budget allocation, campaign approval, scaling decisions — checks back to unit economics.
+Ce cadre est la fondation. Chaque recommandation de ce plugin — sélection de canal, allocation budgétaire, approbation de campagne, décisions de mise à l'échelle — se vérifie par rapport à l'unité économique.
 
-## The Core Metrics
+## Les indicateurs fondamentaux
 
-### Customer Acquisition Cost (CAC)
-
-```
-CAC = Total marketing and sales cost / Number of new customers acquired
-```
-
-**What goes into Total marketing and sales cost:**
-
-- Ad spend (Google, Meta, LinkedIn, TikTok, programmatic, etc.)
-- Agency fees
-- Marketing team salaries (loaded with benefits)
-- Marketing software costs (CRM, CDP, MAP, analytics, design tools, etc.)
-- Content creation costs (writers, designers, videographers, freelancers)
-- Event costs (sponsorships, booths, hosted events)
-- Sales team costs (for B2B, if marketing generates the leads sales convert)
-
-**How to calculate CAC at multiple levels:**
-
-- **Blended CAC:** total marketing+sales cost / total new customers. Headline number. Use for board reporting.
-- **Channel CAC:** for each channel, what is the per-customer cost. Use for channel optimization.
-- **Segment CAC:** for each customer segment, what is the per-customer cost. Use for segment prioritization.
-- **Cohort CAC:** for each acquisition cohort (week or month), what was the CAC. Use for trend analysis.
-
-Skills that recommend channel changes always cite Channel CAC, not Blended CAC.
-
-### Lifetime Value (LTV)
+### Coût d'acquisition client (CAC)
 
 ```
-LTV = Average revenue per customer × Average customer lifespan × Gross margin
+CAC = Coût total marketing et ventes / Nombre de nouveaux clients acquis
 ```
 
-**The gross margin is critical** — without it, LTV overstates the contribution to overheads and growth.
+**Ce qui entre dans le coût total marketing et ventes :**
 
-**Methods for calculating LTV:**
+- Dépense publicitaire (Google, Meta, LinkedIn, TikTok, programmatique, etc.)
+- Frais d'agence
+- Salaires de l'équipe marketing (chargés des avantages sociaux)
+- Coûts des logiciels marketing (CRM, CDP, MAP, analytique, outils de design, etc.)
+- Coûts de création de contenu (rédacteurs, designers, vidéastes, freelances)
+- Coûts d'événements (parrainages, stands, événements organisés)
+- Coûts de l'équipe commerciale (pour le B2B, si le marketing génère les leads que les ventes convertissent)
 
-- **Cohort-based:** Take a cohort of customers acquired N months ago. Track their cumulative revenue. The longer N, the more accurate but the older the data.
-- **Probabilistic:** Use survival analysis or BG/NBD models. Better for subscription businesses.
-- **Predictive:** Use machine learning on customer attributes to predict LTV at acquisition. Useful for early-stage prediction.
+**Comment calculer le CAC à plusieurs niveaux :**
 
-For an early-stage business without historical data, **estimate LTV with explicit assumptions**:
+- **CAC mixte :** coût total marketing+ventes / total des nouveaux clients. Chiffre phare. À utiliser pour le reporting au conseil d'administration.
+- **CAC par canal :** pour chaque canal, quel est le coût par client. À utiliser pour l'optimisation de canal.
+- **CAC par segment :** pour chaque segment de clientèle, quel est le coût par client. À utiliser pour la priorisation de segment.
+- **CAC par cohorte :** pour chaque cohorte d'acquisition (semaine ou mois), quel était le CAC. À utiliser pour l'analyse de tendance.
 
-> LTV estimate: ARPU INR 2,400 per month × estimated 14-month tenure × 65% gross margin = INR 21,840
-> Assumption: 14-month tenure based on category benchmark; revisit when 12-month cohort data is available.
+Les compétences qui recommandent des changements de canal citent toujours le CAC par canal, pas le CAC mixte.
 
-The estimate is acceptable as long as the assumptions are explicit and revisitable.
-
-### LTV:CAC Ratio
+### Valeur vie client (LTV)
 
 ```
-LTV:CAC ratio = LTV / CAC
+LTV = Revenu moyen par client × Durée de vie client moyenne × Marge brute
 ```
 
-**Health thresholds (industry standard):**
+**La marge brute est critique** — sans elle, la LTV surestime la contribution aux frais généraux et à la croissance.
 
-| Ratio | Status | Implication |
+**Méthodes de calcul de la LTV :**
+
+- **Basée sur les cohortes :** Prendre une cohorte de clients acquis il y a N mois. Suivre leur revenu cumulé. Plus N est long, plus c'est précis mais plus les données sont anciennes.
+- **Probabiliste :** Utiliser l'analyse de survie ou des modèles BG/NBD. Meilleur pour les entreprises d'abonnement.
+- **Prédictive :** Utiliser l'apprentissage automatique sur les attributs client pour prédire la LTV à l'acquisition. Utile pour la prédiction en phase précoce.
+
+Pour une entreprise en phase précoce sans données historiques, **estimer la LTV avec des hypothèses explicites** :
+
+> Estimation de LTV : ARPU 2 400 INR par mois × durée d'abonnement estimée à 14 mois × marge brute de 65 % = 21 840 INR
+> Hypothèse : durée de 14 mois basée sur le repère de catégorie ; à réviser lorsque des données de cohorte sur 12 mois sont disponibles.
+
+L'estimation est acceptable tant que les hypothèses sont explicites et révisables.
+
+### Ratio LTV:CAC
+
+```
+Ratio LTV:CAC = LTV / CAC
+```
+
+**Seuils de santé (norme du secteur) :**
+
+| Ratio | Statut | Implication |
 |---|---|---|
-| **≥ 3.0** | Healthy | Sustainable growth path. Scale with confidence. |
-| **2.0–3.0** | Warning | Marginally profitable. Optimize CAC down or LTV up before scaling. |
-| **< 2.0** | Critical | Marketing is destroying value. Stop scaling, fix unit economics first. |
-| **> 5.0** | Investigate | Often signals under-investment in marketing — could grow faster with more spend. |
+| **≥ 3,0** | Sain | Trajectoire de croissance durable. Monter en échelle avec confiance. |
+| **2,0-3,0** | Avertissement | Marginalement rentable. Optimiser le CAC à la baisse ou la LTV à la hausse avant de monter en échelle. |
+| **< 2,0** | Critique | Le marketing détruit de la valeur. Arrêter la mise à l'échelle, corriger d'abord l'unité économique. |
+| **> 5,0** | À examiner | Signale souvent un sous-investissement en marketing — pourrait croître plus vite avec plus de dépense. |
 
-The 3.0 threshold is the **minimum** for sustainable business. Above 3.0 is healthy. Above 5.0 often signals under-investment — the business could grow faster by spending more.
+Le seuil de 3,0 est le **minimum** pour une entreprise durable. Au-dessus de 3,0, c'est sain. Au-dessus de 5,0, cela signale souvent un sous-investissement — l'entreprise pourrait croître plus vite en dépensant davantage.
 
-### Payback Period
+### Période de retour sur investissement (payback)
 
 ```
-Payback Period = CAC / (Monthly contribution from average customer)
+Période de retour = CAC / (Contribution mensuelle du client moyen)
 ```
 
-For subscription businesses, the payback period is critical. A long payback period means cash is tied up in customer acquisition; a short payback period means cash recycles quickly into more acquisition.
+Pour les entreprises d'abonnement, la période de retour est critique. Une longue période de retour signifie que la trésorerie est immobilisée dans l'acquisition client ; une courte période de retour signifie que la trésorerie se recycle rapidement en davantage d'acquisition.
 
-**Health benchmarks:**
+**Repères de santé :**
 
-| Period | Implication |
+| Période | Implication |
 |---|---|
-| < 12 months | Excellent for subscription business |
-| 12–18 months | Healthy for B2B SaaS |
-| 18–24 months | Manageable if LTV:CAC > 4 |
-| > 24 months | Cash-strain risk; need strong balance sheet |
+| < 12 mois | Excellent pour une entreprise d'abonnement |
+| 12-18 mois | Sain pour le SaaS B2B |
+| 18-24 mois | Gérable si LTV:CAC > 4 |
+| > 24 mois | Risque de tension de trésorerie ; bilan solide nécessaire |
 
-For non-subscription businesses (one-time purchase), payback is the contribution from the first purchase divided into CAC.
+Pour les entreprises hors abonnement (achat ponctuel), le retour est la contribution du premier achat divisée par le CAC.
 
-## Where these metrics live in the engagement
+## Où ces indicateurs se situent dans l'engagement
 
-- **Core Doc 3.1 (Business & SBU Analysis), Step 4** — captures the unit economics for each SBU
-- **Core Doc 3.4 (DMFlow), Step 5** — uses LTV:CAC to set channel budget allocation
-- **Living Project Instruction File** — the current blended CAC, LTV, ratio, payback are visible in the "Currently True" section
-- **Monthly performance report** — performance is reported by Channel CAC vs target, with trend
-- **Quarterly strategy review** — full unit economics audit, adjustments to source docs if needed
+- **Document central 3.1 (analyse business et SBU), étape 4** — capture l'unité économique de chaque SBU
+- **Document central 3.4 (DMFlow), étape 5** — utilise le LTV:CAC pour fixer l'allocation budgétaire de canal
+- **Fichier d'instructions vivant du projet** — le CAC mixte actuel, la LTV, le ratio, le retour sont visibles dans la section « Vérité actuelle »
+- **Rapport de performance mensuel** — la performance est rapportée par CAC de canal vs objectif, avec tendance
+- **Revue de stratégie trimestrielle** — audit complet de l'unité économique, ajustements aux documents source si nécessaire
 
-## How recommendations check back to unit economics
+## Comment les recommandations se vérifient par rapport à l'unité économique
 
-Every channel recommendation, every budget allocation, every campaign approval should verify:
+Chaque recommandation de canal, chaque allocation budgétaire, chaque approbation de campagne devrait vérifier :
 
-1. **Does this maintain LTV:CAC ≥ 3.0?** If not, recommendation must address why anyway (e.g., long-term brand investment with deferred ROI).
-2. **Does this stay within payback tolerance?** If not, recommendation must address cash-flow impact.
-3. **Is the LTV assumption still valid?** If channel mix shifts toward lower-LTV segments, blended LTV may decline — recalculate.
+1. **Cela maintient-il un LTV:CAC ≥ 3,0 ?** Sinon, la recommandation doit expliquer pourquoi quand même (par exemple, investissement de marque à long terme avec ROI différé).
+2. **Cela reste-t-il dans la tolérance de retour ?** Sinon, la recommandation doit traiter l'impact sur la trésorerie.
+3. **L'hypothèse de LTV est-elle toujours valide ?** Si le mix de canaux se déplace vers des segments à plus faible LTV, la LTV mixte peut décliner — recalculer.
 
-Skills that make recommendations without showing this check produce gut-feel suggestions that may destroy unit economics.
+Les compétences qui formulent des recommandations sans montrer cette vérification produisent des suggestions à l'instinct qui peuvent détruire l'unité économique.
 
-## Common mistakes
+## Erreurs courantes
 
-1. **CAC without sales-team cost (B2B).** If marketing generates the leads but sales closes them, sales cost is part of CAC. Excluding it makes marketing look more efficient than it is.
+1. **CAC sans le coût de l'équipe commerciale (B2B).** Si le marketing génère les leads mais que les ventes les concluent, le coût des ventes fait partie du CAC. L'exclure fait paraître le marketing plus efficace qu'il ne l'est.
 
-2. **LTV using gross revenue instead of margin-adjusted revenue.** A INR 10,000 sale at 30% gross margin contributes INR 3,000 to LTV — not INR 10,000. Margin matters.
+2. **LTV utilisant le revenu brut plutôt que le revenu ajusté à la marge.** Une vente de 10 000 INR à 30 % de marge brute contribue 3 000 INR à la LTV — pas 10 000 INR. La marge compte.
 
-3. **Calculating LTV from a single product purchase when the business depends on repeat.** For subscription / consumable businesses, LTV must include retention assumptions.
+3. **Calculer la LTV à partir d'un achat de produit unique alors que l'entreprise dépend du renouvellement.** Pour les entreprises d'abonnement / de consommables, la LTV doit inclure des hypothèses de rétention.
 
-4. **Using industry-average LTV instead of brand-specific LTV.** Industry averages are starting points; brand-specific data always overrides.
+4. **Utiliser la LTV moyenne du secteur au lieu de la LTV spécifique à la marque.** Les moyennes sectorielles sont des points de départ ; les données spécifiques à la marque priment toujours.
 
-5. **Not revisiting unit economics as the business scales.** CAC typically rises as you scale (audience saturation, more expensive bid environments). LTV may fall if scaling pulls in lower-quality customers. Recalculate quarterly.
+5. **Ne pas revoir l'unité économique à mesure que l'entreprise monte en échelle.** Le CAC augmente généralement en montant en échelle (saturation d'audience, environnements d'enchères plus coûteux). La LTV peut baisser si la mise à l'échelle attire des clients de moindre qualité. Recalculer chaque trimestre.
 
-6. **Ignoring payback in cash-constrained businesses.** A business with INR 3 crore in the bank and INR 50 lakh monthly burn cannot sustain a 24-month payback period regardless of how good the LTV:CAC looks.
+6. **Ignorer le retour dans les entreprises à trésorerie contrainte.** Une entreprise avec 3 crore INR en banque et une combustion mensuelle de 50 lakh INR ne peut pas soutenir une période de retour de 24 mois, peu importe la qualité apparente du LTV:CAC.
 
-## Tools the plugin uses
+## Outils utilisés par le plugin
 
-The plugin includes scripts that compute and track unit economics:
+Le plugin inclut des scripts qui calculent et suivent l'unité économique :
 
-- `scripts/roi-calculator.py` — campaign-level ROI with attribution model selection
-- `scripts/clv-calculator.py` — cohort-based and probabilistic LTV models
-- `scripts/budget-optimizer.py` — channel budget reallocation honoring LTV:CAC constraints
-- `scripts/revenue-forecaster.py` — revenue forecasting with seasonality
-- `scripts/revenue-simulator.py` — Monte Carlo revenue simulation with scenarios
-- `scripts/churn-predictor.py` — churn risk prediction informing LTV calculations
+- `scripts/roi-calculator.py` — ROI au niveau de la campagne avec sélection de modèle d'attribution
+- `scripts/clv-calculator.py` — modèles de LTV basés sur les cohortes et probabilistes
+- `scripts/budget-optimizer.py` — réallocation budgétaire de canal respectant les contraintes LTV:CAC
+- `scripts/revenue-forecaster.py` — prévision de revenu avec saisonnalité
+- `scripts/revenue-simulator.py` — simulation de revenu Monte Carlo avec scénarios
+- `scripts/churn-predictor.py` — prédiction du risque de churn éclairant les calculs de LTV
 
-These scripts are called by skills as needed. They produce machine-readable output that Skills consume.
+Ces scripts sont appelés par les compétences selon les besoins. Ils produisent un résultat lisible par machine que les compétences consomment.
 
-## Related references
+## Références liées
 
-- [four-core-documents-spec.md](four-core-documents-spec.md) — Core Doc 3.1 Step 4 (Unit Economics)
-- [in-market-out-market.md](in-market-out-market.md) — budget split decisions
-- [decision-framework.md](decision-framework.md) — multi-dimensional decision making
-- [three-scenario-forecasting.md](three-scenario-forecasting.md) — projecting unit economics
+- [four-core-documents-spec.md](four-core-documents-spec.md) — document central 3.1, étape 4 (unité économique)
+- [in-market-out-market.md](in-market-out-market.md) — décisions de répartition budgétaire
+- [decision-framework.md](decision-framework.md) — prise de décision multidimensionnelle
+- [three-scenario-forecasting.md](three-scenario-forecasting.md) — projeter l'unité économique
+</content>

@@ -1,12 +1,12 @@
-# Jobs-to-Be-Done Framework
+# Cadre Jobs-to-Be-Done
 
-## Overview
+## Vue d'ensemble
 
-JTBD focuses on what customers are trying to accomplish (the "job") rather than who they are (demographics). People don't buy products — they hire them to make progress in their lives.
+Le JTBD se concentre sur ce que les clients essaient d'accomplir (la « tâche ») plutôt que sur qui ils sont (données démographiques). Les gens n'achètent pas des produits — ils les « embauchent » pour progresser dans leur vie.
 
 ---
 
-## Job Statement Format
+## Format de l'énoncé de tâche
 
 ```
 When [situation/context],
@@ -14,134 +14,134 @@ I want to [motivation/action],
 so I can [expected outcome/benefit].
 ```
 
-**Examples**:
-- "When I'm preparing for a board meeting, I want to quickly generate a performance dashboard, so I can demonstrate marketing ROI without spending hours on manual reporting."
-- "When I'm launching a new product, I want to identify the right influencers, so I can reach my target audience authentically without wasting budget on poor-fit partnerships."
+**Exemples** :
+- « Lorsque je me prépare pour une réunion du conseil d'administration, je veux générer rapidement un tableau de bord de performance, afin de pouvoir démontrer le ROI marketing sans passer des heures sur du reporting manuel. »
+- « Lorsque je lance un nouveau produit, je veux identifier les bons influenceurs, afin de pouvoir atteindre mon audience cible de manière authentique sans gaspiller de budget sur des partenariats mal adaptés. »
 
 ---
 
-## Job Mapping Canvas
+## Canevas de cartographie des tâches
 
-### Core Functional Job
-The primary task the customer is trying to complete.
-- What are they trying to get done?
-- What is the desired end state?
+### Tâche fonctionnelle centrale
+La tâche principale que le client essaie d'accomplir.
+- Que cherchent-ils à accomplir ?
+- Quel est l'état final désiré ?
 
-### Related Jobs
-Adjacent tasks that happen before, during, or after the core job.
-- What do they need to do BEFORE this job? (Pre-job)
-- What happens DURING the job? (Execution)
-- What do they need to do AFTER? (Post-job)
+### Tâches connexes
+Les tâches adjacentes qui se produisent avant, pendant, ou après la tâche centrale.
+- Que doivent-ils faire AVANT cette tâche ? (pré-tâche)
+- Que se passe-t-il PENDANT la tâche ? (exécution)
+- Que doivent-ils faire APRÈS ? (post-tâche)
 
-### Emotional Jobs
-How the customer wants to FEEL during and after the job.
-- Feel confident in their decisions
-- Feel in control of outcomes
-- Avoid feeling embarrassed or incompetent
-- Feel respected by peers and leadership
+### Tâches émotionnelles
+Comment le client veut se SENTIR pendant et après la tâche.
+- Se sentir confiant dans ses décisions
+- Se sentir en contrôle des résultats
+- Éviter de se sentir embarrassé ou incompétent
+- Se sentir respecté par ses pairs et sa direction
 
-### Social Jobs
-How the customer wants to be PERCEIVED by others.
-- Appear innovative / ahead of the curve
-- Be seen as a reliable/competent leader
-- Demonstrate expertise to their team
-- Show value to their organization
+### Tâches sociales
+Comment le client veut être PERÇU par les autres.
+- Paraître innovant / en avance sur son temps
+- Être perçu comme un leader fiable/compétent
+- Démontrer son expertise à son équipe
+- Montrer sa valeur à son organisation
 
 ---
 
-## Outcome-Driven Innovation Scoring
+## Notation d'innovation orientée résultats
 
-For each job, identify desired outcomes and score them:
+Pour chaque tâche, identifier les résultats désirés et les noter :
 
-### Outcome Statement Format
+### Format de l'énoncé de résultat
 ```
 [Direction] the [metric] of [outcome] when [context]
 ```
 
-**Direction**: Minimize, maximize, reduce, increase, eliminate
-**Examples**:
-- "Minimize the time it takes to generate a campaign report"
-- "Reduce the likelihood of launching an underperforming ad"
-- "Maximize the accuracy of budget allocation decisions"
+**Direction** : minimiser, maximiser, réduire, augmenter, éliminer
+**Exemples** :
+- « Minimiser le temps nécessaire pour générer un rapport de campagne »
+- « Réduire la probabilité de lancer une publicité sous-performante »
+- « Maximiser la précision des décisions d'allocation budgétaire »
 
-### Opportunity Score
+### Score d'opportunité
 
-For each outcome, survey customers on two questions (1-10 scale):
-1. **Importance**: How important is this outcome to you?
-2. **Satisfaction**: How satisfied are you with your current solution?
+Pour chaque résultat, interroger les clients sur deux questions (échelle 1-10) :
+1. **Importance** : quelle importance cela a-t-il pour vous ?
+2. **Satisfaction** : dans quelle mesure êtes-vous satisfait de votre solution actuelle ?
 
 ```
 Opportunity Score = Importance + max(Importance - Satisfaction, 0)
 ```
 
-| Score | Interpretation |
+| Score | Interprétation |
 |-------|---------------|
-| 15+ | **Underserved** — High importance, low satisfaction. Major opportunity. |
-| 10-14 | **Appropriately served** — Importance roughly matches satisfaction |
-| <10 | **Overserved** — Current solutions exceed expectations (low-priority) |
+| 15+ | **Sous-servi** — importance élevée, satisfaction faible. Opportunité majeure. |
+| 10-14 | **Correctement servi** — l'importance correspond à peu près à la satisfaction |
+| <10 | **Sur-servi** — les solutions actuelles dépassent les attentes (faible priorité) |
 
 ---
 
-## Competing Solutions Analysis
+## Analyse des solutions concurrentes
 
-For each job, map ALL ways customers currently get the job done:
+Pour chaque tâche, cartographier TOUTES les façons dont les clients accomplissent actuellement cette tâche :
 
-| Solution Type | Example | Strengths | Weaknesses |
+| Type de solution | Exemple | Forces | Faiblesses |
 |--------------|---------|-----------|-----------|
-| **Direct competitor** | Competitor product | [What they do well] | [What they lack] |
-| **Indirect competitor** | Different product, same job | [Why customers use it] | [Where it falls short] |
-| **DIY/Manual** | Spreadsheets, manual process | Free, customizable | Time-consuming, error-prone |
-| **Non-consumption** | Customer doesn't do the job at all | Zero cost/effort | Job goes unfinished |
+| **Concurrent direct** | Produit concurrent | [Ce qu'ils font bien] | [Ce qui leur manque] |
+| **Concurrent indirect** | Produit différent, même tâche | [Pourquoi les clients l'utilisent] | [Où il est insuffisant] |
+| **Bricolage/manuel** | Feuilles de calcul, processus manuel | Gratuit, personnalisable | Chronophage, sujet aux erreurs |
+| **Non-consommation** | Le client n'effectue pas la tâche du tout | Coût/effort nul | La tâche reste inachevée |
 
-### Key Insight
-Your biggest competitor is often NOT another product in your category — it's the spreadsheet, the manual process, or doing nothing at all.
-
----
-
-## Switch Interview Methodology
-
-Interview customers who recently switched TO your product (or FROM your product):
-
-### Four Forces of Progress
-
-1. **Push**: What was wrong with the old way? (Dissatisfaction with current solution)
-2. **Pull**: What attracted you to the new solution? (Appeal of new solution)
-3. **Anxiety**: What concerns did you have about switching? (Fear of the new)
-4. **Habit**: What made it hard to leave the old way? (Comfort with the old)
-
-**Switching happens when**: Push + Pull > Anxiety + Habit
-
-### Interview Questions
-- "When did you first start thinking about finding a new solution?"
-- "What specific event triggered you to start looking?"
-- "What other options did you consider?"
-- "What almost stopped you from switching?"
-- "What do you miss about the old way?"
-- "What surprised you about the new solution?"
+### Insight clé
+Votre plus grand concurrent n'est souvent PAS un autre produit de votre catégorie — c'est la feuille de calcul, le processus manuel, ou ne rien faire du tout.
 
 ---
 
-## JTBD-to-Messaging Mapping
+## Méthodologie de l'entretien de changement (switch interview)
 
-| Job Element | Marketing Application |
+Interroger les clients qui ont récemment changé VERS votre produit (ou DEPUIS votre produit) :
+
+### Les quatre forces du progrès
+
+1. **Poussée** : qu'est-ce qui n'allait pas avec l'ancienne façon de faire ? (insatisfaction envers la solution actuelle)
+2. **Attraction** : qu'est-ce qui vous a attiré vers la nouvelle solution ? (attrait de la nouvelle solution)
+3. **Anxiété** : quelles préoccupations aviez-vous à propos du changement ? (peur du nouveau)
+4. **Habitude** : qu'est-ce qui rendait difficile de quitter l'ancienne façon de faire ? (confort avec l'ancien)
+
+**Le changement se produit lorsque** : Poussée + Attraction > Anxiété + Habitude
+
+### Questions d'entretien
+- « Quand avez-vous commencé à penser à trouver une nouvelle solution ? »
+- « Quel événement spécifique vous a déclenché à commencer à chercher ? »
+- « Quelles autres options avez-vous envisagées ? »
+- « Qu'est-ce qui a failli vous empêcher de changer ? »
+- « Qu'est-ce qui vous manque de l'ancienne façon de faire ? »
+- « Qu'est-ce qui vous a surpris à propos de la nouvelle solution ? »
+
+---
+
+## Cartographie JTBD-vers-message
+
+| Élément de tâche | Application marketing |
 |-------------|---------------------|
-| Core functional job | Headline and value proposition |
-| Push (pain with current) | Problem-agitation copy |
-| Pull (desired outcome) | Benefit statements |
-| Anxiety (switching fear) | Trust signals, guarantees, testimonials |
-| Habit (attachment to old) | Comparison content, migration support |
-| Emotional job | Brand voice and tone |
-| Social job | Social proof, peer validation |
+| Tâche fonctionnelle centrale | Titre et proposition de valeur |
+| Poussée (douleur avec l'actuel) | Texte d'agitation du problème |
+| Attraction (résultat désiré) | Énoncés de bénéfice |
+| Anxiété (peur du changement) | Signaux de confiance, garanties, témoignages |
+| Habitude (attachement à l'ancien) | Contenu comparatif, support de migration |
+| Tâche émotionnelle | Voix et ton de marque |
+| Tâche sociale | Preuve sociale, validation par les pairs |
 
 ---
 
-## JTBD for Different Business Models
+## JTBD pour différents modèles économiques
 
-| Business Model | Primary Job Category | Example |
+| Modèle économique | Catégorie de tâche principale | Exemple |
 |---------------|---------------------|---------|
-| B2B SaaS | Efficiency + decision quality | "Help me make better decisions faster" |
-| eCommerce | Acquisition + identity | "Help me find the right product and feel good about it" |
-| B2B Services | Risk reduction + outcomes | "Help me achieve [outcome] without the risk of doing it wrong" |
-| DTC | Identity + convenience | "Help me express who I am effortlessly" |
-| Local Business | Convenience + trust | "Help me solve this problem with someone I can trust nearby" |
-| Marketplace | Access + comparison | "Help me find the best option among many choices" |
+| SaaS B2B | Efficacité + qualité de décision | « Aidez-moi à prendre de meilleures décisions plus rapidement » |
+| E-commerce | Acquisition + identité | « Aidez-moi à trouver le bon produit et à me sentir bien » |
+| Services B2B | Réduction du risque + résultats | « Aidez-moi à atteindre [résultat] sans le risque de mal le faire » |
+| DTC | Identité + commodité | « Aidez-moi à exprimer qui je suis sans effort » |
+| Commerce local | Commodité + confiance | « Aidez-moi à résoudre ce problème avec quelqu'un en qui je peux avoir confiance à proximité » |
+| Marketplace | Accès + comparaison | « Aidez-moi à trouver la meilleure option parmi de nombreux choix » |

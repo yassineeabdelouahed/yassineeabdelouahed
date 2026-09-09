@@ -7,6 +7,12 @@
       "skillPath": "agent_reach/skill/SKILL.md",
       "computedHash": "7887c5920f15988d7c4a9aa3b0b439332a30120e7b52169fd3eee851c3e20da6"
     },
+    "graphify": {
+      "source": "Graphify-Labs/graphify",
+      "sourceType": "github",
+      "skillPath": "graphify/skill.md",
+      "computedHash": "3e4d30df5a936965acaa25117230a6f3ff44353c137e63030e85e3bc3a391fb7"
+    },
     "cli-a2a": {
       "source": "diegosouzapw/OmniRoute",
       "sourceType": "github",

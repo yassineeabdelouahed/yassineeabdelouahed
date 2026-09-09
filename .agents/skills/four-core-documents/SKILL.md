@@ -1,6 +1,6 @@
 ---
 name: four-core-documents
-description: "Produce Part 3 of the 12-Part engagement: the four strategic-spine documents across 61 steps — 3.1 Business & SBU Analysis, 3.2 Segmentation Framework, 3.3 Brand Positioning & Communications, 3.4 DMFlow — with --doc single-document runs, --view v2 re-runs, and a --combined executive stitch. Triggers on \"/digital-marketing-pro:four-core-documents\", \"produce the four core documents\", \"run part 3 of the engagement\", \"generate the strategic spine\", \"re-run positioning as v2\". Requires an initialised engagement with Part 1 complete; reads Stone facts, Part 2 research, and the brand profile, and feeds /digital-marketing-pro:growth-plan."
+description: "Produisez la Partie 3 de l'engagement en 12 parties : les quatre documents de colonne vertébrale stratégique répartis sur 61 étapes — 3.1 Analyse de l'entreprise & des SBU, 3.2 Cadre de segmentation, 3.3 Positionnement de marque & Communications, 3.4 DMFlow — avec des exécutions --doc pour un document unique, des relances --view v2, et un assemblage exécutif --combined. Se déclenche sur « /digital-marketing-pro:four-core-documents », « produce the four core documents », « run part 3 of the engagement », « generate the strategic spine », « re-run positioning as v2 ». Nécessite un engagement initialisé avec la Partie 1 terminée ; lit les faits Stone, la recherche de la Partie 2, et le profil de marque, et alimente /digital-marketing-pro:growth-plan."
 user-invocable: true
 triggers:
   - produce the four core documents
@@ -16,113 +16,113 @@ engagement-part: "3"
 view-preference: v2-primary
 ---
 
-# /digital-marketing-pro:four-core-documents — The Strategic Spine (61 Steps)
+# /digital-marketing-pro:four-core-documents — La colonne vertébrale stratégique (61 étapes)
 
-This skill produces Part 3 of the engagement methodology: the four documents that together define the brand at strategic depth. Every channel strategy, every creative brief, every piece of copy reads back to these.
+Cette compétence produit la Partie 3 de la méthodologie d'engagement : les quatre documents qui, ensemble, définissent la marque en profondeur stratégique. Chaque stratégie de canal, chaque brief créatif, chaque texte s'y réfère.
 
-## Context efficiency
+## Efficacité contextuelle
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List the brand's workspace at `~/.claude-marketing/brands/{slug}/` (or `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` when that env var is set) before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** sur tout fichier référencé, puis `Read` uniquement les plages correspondantes avec `offset` + `limit`. Lister l'espace de travail de la marque sous `~/.claude-marketing/brands/{slug}/` (ou `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` quand cette variable d'environnement est définie) avant d'ouvrir des fichiers. En cas de réinvocation en cours de session, ignorer les fichiers déjà en contexte.
 
-**Specification:** [four-core-documents-spec.md](../context-engine/four-core-documents-spec.md) — the exact 61 steps across the four documents.
+**Spécification :** [four-core-documents-spec.md](../context-engine/four-core-documents-spec.md) — les 61 étapes exactes réparties sur les quatre documents.
 
-**Engagement context:** [engagement-flow-methodology.md](../context-engine/engagement-flow-methodology.md) — where Part 3 fits in the 12-Part flow.
+**Contexte d'engagement :** [engagement-flow-methodology.md](../context-engine/engagement-flow-methodology.md) — où la Partie 3 s'inscrit dans le flux en 12 parties.
 
-## Pre-conditions
+## Préconditions
 
-Before running this skill, verify:
+Avant d'exécuter cette compétence, vérifier :
 
-1. **Brand profile exists** at `~/.claude-marketing/brands/{brand-slug}/profile.json`. If not, run `/digital-marketing-pro:brand-setup` first.
-2. **Engagement is initialised** with state file `_engagement.json` present. If not, run `/digital-marketing-pro:engagement start` first.
-3. **Part 1 (Client Inputs) is completed**. Stone facts and Opinion hypotheses must be captured before Part 3 can begin.
-4. **Part 2 (External Research) is at least started**. Some Part 2 research may continue in parallel with Part 3, but the kickoff must have happened.
+1. **Le profil de marque existe** à `~/.claude-marketing/brands/{brand-slug}/profile.json`. Sinon, exécuter d'abord `/digital-marketing-pro:brand-setup`.
+2. **L'engagement est initialisé** avec le fichier d'état `_engagement.json` présent. Sinon, exécuter d'abord `/digital-marketing-pro:engagement start`.
+3. **La Partie 1 (Intrants client) est terminée**. Les faits Stone et les hypothèses Opinion doivent être capturés avant que la Partie 3 puisse commencer.
+4. **La Partie 2 (Recherche externe) est au moins démarrée**. Une partie de la recherche de la Partie 2 peut se poursuivre en parallèle de la Partie 3, mais le lancement doit avoir eu lieu.
 
-If any pre-condition fails, do NOT produce output. Instead, instruct the user on what to run first.
+Si une précondition échoue, NE PAS produire de résultat. Indiquer plutôt à l'utilisateur quoi exécuter d'abord.
 
-## Subcommands
+## Sous-commandes
 
-### Produce all four documents
+### Produire les quatre documents
 
 ```
 /digital-marketing-pro:four-core-documents <brand-slug> <engagement-id>
 ```
 
-Produces 3.1, 3.2, 3.3, 3.4 in sequence. Actual time varies with engagement complexity.
+Produit 3.1, 3.2, 3.3, 3.4 dans l'ordre. Le temps réel varie selon la complexité de l'engagement.
 
-### Produce a single document
+### Produire un seul document
 
 ```
 /digital-marketing-pro:four-core-documents <brand-slug> <engagement-id> --doc 3.1
 ```
 
-Produces just the specified document. Useful for re-runs (Part 6) or when one doc needs to be redone independently.
+Produit uniquement le document spécifié. Utile pour les relances (Partie 6) ou quand un document doit être refait indépendamment.
 
-### Produce v2 re-runs
+### Produire des relances v2
 
 ```
 /digital-marketing-pro:four-core-documents <brand-slug> <engagement-id> --view v2 --doc "3.1,3.3"
 ```
 
-Produces v2 versions of the specified documents. `--doc` takes a single id (`3.1`) or a comma-separated list (`"3.1,3.3"`). Used during Part 6 after the Decision Matrix has triggered re-runs. (The canonical flags are `--doc`, `--view v2`, and `--combined` — there is no `--docs`.)
+Produit les versions v2 des documents spécifiés. `--doc` prend un seul id (`3.1`) ou une liste séparée par des virgules (`"3.1,3.3"`). Utilisé pendant la Partie 6 après que la Decision Matrix a déclenché des relances. (Les indicateurs canoniques sont `--doc`, `--view v2`, et `--combined` — il n'existe pas de `--docs`.)
 
-### Produce the Combined Core Document (3.C)
+### Produire le Document Central Combiné (3.C)
 
 ```
 /digital-marketing-pro:four-core-documents <brand-slug> <engagement-id> --combined
 ```
 
-Stitches all four canonical core documents (latest version of each) into a single executive-reference file with master TOC, master assumptions table, and master source index. Produced only when an executive audience needs a single-file read.
+Assemble les quatre documents centraux canoniques (dernière version de chacun) en un seul fichier de référence exécutif avec une table des matières maîtresse, un tableau maître des hypothèses, et un index maître des sources. Produit uniquement quand une audience exécutive a besoin d'une lecture en un seul fichier.
 
-## Production Order
+## Ordre de production
 
-The four documents are produced in sequence because each builds on the prior:
+Les quatre documents sont produits dans l'ordre car chacun s'appuie sur le précédent :
 
-1. **3.1 Business & SBU Analysis** (18 steps) — foundational. Establishes the business reality.
-2. **3.2 Segmentation Framework** (15 steps) — depends on 3.1's SBU and customer data.
-3. **3.3 Brand Positioning & Communications** (19 steps) — depends on 3.2's personas.
-4. **3.4 DMFlow** (9 steps) — depends on 3.1, 3.2, and 3.3 to make channel decisions.
+1. **3.1 Analyse de l'entreprise & des SBU** (18 étapes) — fondamental. Établit la réalité de l'entreprise.
+2. **3.2 Cadre de segmentation** (15 étapes) — dépend des SBU et données client de 3.1.
+3. **3.3 Positionnement de marque & Communications** (19 étapes) — dépend des personas de 3.2.
+4. **3.4 DMFlow** (9 étapes) — dépend de 3.1, 3.2, et 3.3 pour prendre les décisions de canal.
 
-When running re-runs, only the affected documents are regenerated. Other documents remain at their current version.
+Lors des relances, seuls les documents concernés sont régénérés. Les autres documents restent à leur version actuelle.
 
-## Per-Document Production
+## Production par document
 
-### 3.1 — Business & SBU Analysis (18 steps)
+### 3.1 — Analyse de l'entreprise & des SBU (18 étapes)
 
-Read the spec section for 3.1 in [four-core-documents-spec.md](../context-engine/four-core-documents-spec.md). The 18 steps are:
+Lire la section spécification pour 3.1 dans [four-core-documents-spec.md](../context-engine/four-core-documents-spec.md). Les 18 étapes sont :
 
-1. SBU identification
-2. SBU separation rationale
-3. Revenue streams per SBU
-4. Unit economics per SBU
-5. Value chain mapping
-6. Offering portfolio at task-level granularity
-7. Pricing architecture
-8. Organisational and go-to-market model
-9. Sales and distribution architecture
-10. Full SWOT with evidence
-11. Growth levers
-12. Constraints
-13. Customer acquisition economics
-14. Customer retention economics
-15. Partnership and channel dependencies
-16. Risk profile
-17. Strategic implications for the engagement
-18. Open questions
+1. Identification des SBU
+2. Justification de la séparation des SBU
+3. Sources de revenu par SBU
+4. Économie unitaire par SBU
+5. Cartographie de la chaîne de valeur
+6. Portfolio d'offres à la granularité de la tâche
+7. Architecture de tarification
+8. Modèle organisationnel et de mise sur le marché
+9. Architecture de vente et de distribution
+10. SWOT complet avec preuves
+11. Leviers de croissance
+12. Contraintes
+13. Économie de l'acquisition client
+14. Économie de la rétention client
+15. Dépendances de partenariat et de canal
+16. Profil de risque
+17. Implications stratégiques pour l'engagement
+18. Questions ouvertes
 
-**Inputs:**
+**Entrées :**
 
-- `part-01-client-inputs/stone-facts.json` — ground-truth facts
-- `part-02-external-research/` — unbiased external research (industry data, market context)
-- Brand profile at `~/.claude-marketing/brands/{slug}/profile.json`
-- (Do NOT use Opinion hypotheses as ground truth — those are research questions, not facts)
+- `part-01-client-inputs/stone-facts.json` — faits de vérité terrain
+- `part-02-external-research/` — recherche externe non biaisée (données sectorielles, contexte de marché)
+- Profil de marque à `~/.claude-marketing/brands/{slug}/profile.json`
+- (Ne PAS utiliser les hypothèses Opinion comme vérité terrain — ce sont des questions de recherche, pas des faits)
 
-**Output:**
+**Sortie :**
 
 `engagements/{id}/part-03-four-core-documents/v1/3.1-business-and-sbu-analysis.md`
 
-(For v2 re-runs: same path but in `v2/` instead of `v1/`)
+(Pour les relances v2 : même chemin mais dans `v2/` au lieu de `v1/`)
 
-**Output structure:**
+**Structure de sortie :**
 
 ```markdown
 ---
@@ -160,135 +160,135 @@ view: v1   # or v2 for re-runs
 - Initial unbiased research version produced from Part 2 + Stone facts.
 ```
 
-### 3.2 — Segmentation Framework (15 steps)
+### 3.2 — Cadre de segmentation (15 étapes)
 
-The 15 steps:
+Les 15 étapes :
 
-1. Target Group identification
-2. TG scoring across criteria
-3. TG prioritisation
-4. Sub-TG breakdown
-5. Persona development per primary TG (using [actionable-persona-format.md](../context-engine/actionable-persona-format.md))
-6. Behavioural attributes per persona
-7. Psychographic attributes per persona
-8. Need-state mapping
-9. Geographic distribution
-10. (B2B only) Multi-stakeholder Decision Unit per persona (using [b2b-decision-making-unit.md](../context-engine/b2b-decision-making-unit.md))
-11. (B2B only) MQL definition
-12. (B2B only) SQL definition
-13. (B2B only) Pipeline logic
+1. Identification des groupes cibles (TG)
+2. Notation des TG sur les critères
+3. Priorisation des TG
+4. Décomposition en sous-TG
+5. Développement de persona par TG principal (en utilisant [actionable-persona-format.md](../context-engine/actionable-persona-format.md))
+6. Attributs comportementaux par persona
+7. Attributs psychographiques par persona
+8. Cartographie des états de besoin
+9. Distribution géographique
+10. (B2B uniquement) Unité de décision multi-parties prenantes par persona (en utilisant [b2b-decision-making-unit.md](../context-engine/b2b-decision-making-unit.md))
+11. (B2B uniquement) Définition du MQL
+12. (B2B uniquement) Définition du SQL
+13. (B2B uniquement) Logique de pipeline
 14. Anti-personas
-15. Activation guidance
+15. Consignes d'activation
 
-Steps 10–13 are skipped for B2C engagements. The skill detects B2B vs B2C from the brand profile's `business_model.type` field.
+Les étapes 10 à 13 sont ignorées pour les engagements B2C. La compétence détecte B2B vs B2C à partir du champ `business_model.type` du profil de marque.
 
-**Inputs:**
+**Entrées :**
 
-- 3.1 (just produced) for SBU + customer baseline
-- `part-04-competitive-customer-market/v1/4.3-customer-analysis.md` if available (for unbiased customer research)
-- Brand profile
+- 3.1 (venant d'être produit) pour la base SBU + client
+- `part-04-competitive-customer-market/v1/4.3-customer-analysis.md` si disponible (pour la recherche client non biaisée)
+- Profil de marque
 
-**Output:**
+**Sortie :**
 
 `engagements/{id}/part-03-four-core-documents/v1/3.2-segmentation-framework.md`
 
-### 3.3 — Brand Positioning & Communications (19 steps)
+### 3.3 — Positionnement de marque & Communications (19 étapes)
 
-The 19 steps:
+Les 19 étapes :
 
-1. Positioning options considered
-2. Per-option rationale
-3. Per-option trade-offs
-4. Chosen positioning with defence argument
-5. Positioning statement (formal one-sentence)
-6. Trade-offs explicit
-7. Brand promise
-8. Proof points for the brand promise
-9. Primary message architecture
-10. Messaging pillars (3–5)
-11. Proof points per pillar
-12. Segment-level messaging variations
-13. Full-funnel communication framework (TOFU/MOFU/BOFU/retention/advocacy)
-14. Tone-of-voice principles
-15. Explicit don't-say rules
-16. Sensitive-topic handling
-17. Crisis-communication posture
-18. Application guidance across channels
-19. Open positioning questions
+1. Options de positionnement envisagées
+2. Justification par option
+3. Arbitrages par option
+4. Positionnement retenu avec argumentaire de défense
+5. Énoncé de positionnement (une phrase formelle)
+6. Arbitrages explicites
+7. Promesse de marque
+8. Preuves à l'appui de la promesse de marque
+9. Architecture de message principale
+10. Piliers de message (3-5)
+11. Preuves par pilier
+12. Variations de message au niveau du segment
+13. Cadre de communication full-funnel (TOFU/MOFU/BOFU/rétention/défense)
+14. Principes de ton de voix
+15. Règles explicites de ce qu'il ne faut pas dire
+16. Traitement des sujets sensibles
+17. Posture de communication de crise
+18. Consignes d'application sur les canaux
+19. Questions de positionnement ouvertes
 
-**Inputs:**
+**Entrées :**
 
-- 3.1 + 3.2 (just produced)
-- `part-04-competitive-customer-market/v1/4.2-competitor-positioning.md` if available
-- Brand profile (for current brand voice signals)
+- 3.1 + 3.2 (venant d'être produits)
+- `part-04-competitive-customer-market/v1/4.2-competitor-positioning.md` si disponible
+- Profil de marque (pour les signaux de voix de marque actuels)
 
-**Output:**
+**Sortie :**
 
 `engagements/{id}/part-03-four-core-documents/v1/3.3-brand-positioning-and-communications.md`
 
-### 3.4 — DMFlow (9 steps)
+### 3.4 — DMFlow (9 étapes)
 
-The 9 steps:
+Les 9 étapes :
 
-1. Channel universe considered (using [five-digital-markets.md](../context-engine/five-digital-markets.md))
-2. Channel selection with rationale per channel
-3. Funnel architecture per channel
-4. Media mix logic across paid/organic/earned/owned
-5. Budget allocation logic at business level (with In-Market vs Out-Market split per [in-market-out-market.md](../context-engine/in-market-out-market.md))
-6. Channel interdependencies and sequencing
-7. Conversion framework
-8. Measurement approach
-9. Strategic implications and track weightages
+1. Univers de canaux envisagés (en utilisant [five-digital-markets.md](../context-engine/five-digital-markets.md))
+2. Sélection de canal avec justification par canal
+3. Architecture de tunnel par canal
+4. Logique de mix média entre payant/organique/gagné/détenu
+5. Logique d'allocation budgétaire au niveau de l'entreprise (avec répartition In-Market vs Out-Market selon [in-market-out-market.md](../context-engine/in-market-out-market.md))
+6. Interdépendances et séquencement des canaux
+7. Cadre de conversion
+8. Approche de mesure
+9. Implications stratégiques et pondérations des pistes
 
-**Inputs:**
+**Entrées :**
 
-- 3.1 + 3.2 + 3.3 (just produced)
-- Brand profile (for current channels, budget envelope)
-- [channel-families.md](../context-engine/channel-families.md) for the 7-family / 17-channel taxonomy
+- 3.1 + 3.2 + 3.3 (venant d'être produits)
+- Profil de marque (pour les canaux actuels, l'enveloppe budgétaire)
+- [channel-families.md](../context-engine/channel-families.md) pour la taxonomie à 7 familles / 17 canaux
 
-**Output:**
+**Sortie :**
 
 `engagements/{id}/part-03-four-core-documents/v1/3.4-dmflow.md`
 
-## Quality Discipline (Apply to All Four Documents)
+## Discipline qualité (s'applique aux quatre documents)
 
-1. **Every claim cites a source.** No "we think" — only "the evidence shows" with cited source.
-2. **Every assumption is explicit.** When estimating CAC, LTV, market size, etc., state the methodology and inputs.
-3. **Every recommendation flows from analysis.** No conclusions the body does not support.
-4. **No generic statements.** "Strong brand" is generic. "92% brand recall in target segment per [source]" is specific.
-5. **All four documents reference each other consistently.** A persona defined in 3.2 must be the same persona referenced in 3.3 messaging variations and 3.4 channel selection.
-6. **Open questions are documented**, not hidden.
-7. **Stone facts are facts; Opinion hypotheses are questions.** Don't elevate Opinion to fact in the document.
-8. **Multi-Dimensional Decision Framework** (see [decision-framework.md](../context-engine/decision-framework.md)) is used for any choice (channel selection, persona prioritisation, positioning trade-offs).
+1. **Chaque allégation cite une source.** Pas de « nous pensons » — seulement « les preuves montrent » avec la source citée.
+2. **Chaque hypothèse est explicite.** Lors de l'estimation du CAC, de la LTV, de la taille de marché, etc., énoncer la méthodologie et les intrants.
+3. **Chaque recommandation découle de l'analyse.** Aucune conclusion que le corps du texte ne soutient pas.
+4. **Pas de déclarations génériques.** « Marque forte » est générique. « 92 % de rappel de marque dans le segment cible selon [source] » est précis.
+5. **Les quatre documents se référencent mutuellement de façon cohérente.** Une persona définie en 3.2 doit être la même persona référencée dans les variations de message de 3.3 et la sélection de canaux de 3.4.
+6. **Les questions ouvertes sont documentées**, pas cachées.
+7. **Les faits Stone sont des faits ; les hypothèses Opinion sont des questions.** Ne pas élever une Opinion au rang de fait dans le document.
+8. **Le Cadre de décision multidimensionnel** (voir [decision-framework.md](../context-engine/decision-framework.md)) est utilisé pour tout choix (sélection de canal, priorisation de persona, arbitrages de positionnement).
 
-## Single-File Discipline
+## Discipline du fichier unique
 
-Each document is produced as a single file containing all its steps. If a document cannot be completed in one turn due to output limits:
+Chaque document est produit sous forme d'un fichier unique contenant toutes ses étapes. Si un document ne peut pas être terminé en un seul tour à cause des limites de sortie :
 
-1. Save the partial document so far
-2. Continue the same file from where it left off in the next turn (NEVER start a new file)
-3. The file is considered complete only when all steps are present
+1. Enregistrer le document partiel produit jusqu'ici
+2. Continuer le même fichier là où il s'est arrêté au tour suivant (NE JAMAIS démarrer un nouveau fichier)
+3. Le fichier n'est considéré complet que lorsque toutes les étapes sont présentes
 
-There is **no hidden continuation state** — the skill does not persist a cut-off pointer. The partial file already saved to disk is the only record. If output is interrupted mid-document, re-run the document: read the saved partial as context and continue appending the remaining steps to the **same** file. For a run interrupted at the engagement level, resume from the part's last checkpoint artifact via `/digital-marketing-pro:resume`. The saved file is always the source of truth.
+Il n'existe **aucun état de continuation caché** — la compétence ne persiste pas de pointeur de coupure. Le fichier partiel déjà enregistré sur disque est le seul enregistrement. Si la sortie est interrompue en milieu de document, relancer le document : lire le partiel enregistré comme contexte et continuer à ajouter les étapes restantes au **même** fichier. Pour une exécution interrompue au niveau de l'engagement, reprendre depuis le dernier artefact de point de contrôle de la partie via `/digital-marketing-pro:resume`. Le fichier enregistré est toujours la source de vérité.
 
-## After Production
+## Après la production
 
-Once all four documents are produced (or after each individually):
+Une fois les quatre documents produits (ou après chacun individuellement) :
 
-1. Update the Living Project Instruction File:
-   - Strategic Facts section: extract positioning statement, primary persona summary, channel selections, unit economics
-   - Version History section: add the new v1.0 entries
-2. Mark Part 3 (or the specific sub-document) as completed in `_engagement.json`
-3. Notify the user that Part 4 is the natural next step
+1. Mettre à jour le Living Project Instruction File :
+   - Section Faits stratégiques : extraire l'énoncé de positionnement, le résumé de persona principale, les sélections de canaux, l'économie unitaire
+   - Section Historique des versions : ajouter les nouvelles entrées v1.0
+2. Marquer la Partie 3 (ou le sous-document spécifique) comme terminée dans `_engagement.json`
+3. Informer l'utilisateur que la Partie 4 est la prochaine étape naturelle
 
-## v2 Re-runs
+## Relances v2
 
-When invoked with `--view v2`, the skill:
+Lorsqu'invoquée avec `--view v2`, la compétence :
 
-1. Reads the v1 version of the requested doc
-2. Reads the Part 5 Client Validation Document (the changes the client requested)
-3. Reads the relevant subset of changes that apply to this doc
-4. Produces v2 with a header section listing what changed vs v1:
+1. Lit la version v1 du document demandé
+2. Lit le Document de validation client de la Partie 5 (les changements demandés par le client)
+3. Lit le sous-ensemble pertinent de changements s'appliquant à ce document
+4. Produit la v2 avec une section d'en-tête listant ce qui a changé vs v1 :
 
 ```markdown
 ## v1 → v2 Changes
@@ -297,13 +297,13 @@ When invoked with `--view v2`, the skill:
 - Section Y: ...
 ```
 
-5. Saves to `v2/{doc-name}.md` (the v1 file remains untouched)
-6. Bumps the version in `_engagement.json` via `engagement-state.py bump-version`
-7. Updates the LIF with the changed strategic facts
+5. Enregistre dans `v2/{doc-name}.md` (le fichier v1 reste intact)
+6. Incrémente la version dans `_engagement.json` via `engagement-state.py bump-version`
+7. Met à jour le LIF avec les faits stratégiques modifiés
 
-## Examples
+## Exemples
 
-### Example 1: First-time production of all four documents
+### Exemple 1 : première production des quatre documents
 
 ```
 User: Produce the four core documents for the Acme engagement.
@@ -319,7 +319,7 @@ Skill response:
 8. Brief: "Part 3 complete. 4 documents, 61 steps. Total ~12,000 words across all four. Recommend reviewing 3.3 (positioning) carefully — the chosen positioning has notable trade-offs documented in step 6."
 ```
 
-### Example 2: v2 re-run after Part 5
+### Exemple 2 : relance v2 après la Partie 5
 
 ```
 User: Re-run 3.3 and 3.4 as v2 — client rejected the positioning and we need to redo the channel mix as a result.
@@ -333,7 +333,7 @@ Skill response:
 6. Brief: "v2 re-runs complete. 3.1 and 3.2 unchanged (still v1.0). 3.3 and 3.4 now at v2.0. Both views remain available. Operating decisions should reference v2 docs."
 ```
 
-### Example 3: Producing the Combined Core Document for executive review
+### Exemple 3 : production du Document Central Combiné pour une revue exécutive
 
 ```
 User: Produce the Combined Core Document for the executive presentation next week.
@@ -350,19 +350,19 @@ Skill response:
 5. Brief: "3.C produced. 60+ pages. Includes master TOC + assumptions table + source index. Recommended exports: PDF for the executive deck, DOCX if they want to annotate."
 ```
 
-## Related skills
+## Compétences associées
 
-- `engagement-workflow` — orchestrates the 12-Part flow that contains Part 3
-- `client-validation-document` — Part 5 deliverable that triggers v2 re-runs
-- Existing skills and agents consumed by this one: `audience-intelligence`, `competitive-intel`, `market-intelligence`, `brand-guardian`
+- `engagement-workflow` — orchestre le flux en 12 parties qui contient la Partie 3
+- `client-validation-document` — livrable de la Partie 5 qui déclenche les relances v2
+- Compétences et agents existants consommés par celle-ci : `audience-intelligence`, `competitive-intel`, `market-intelligence`, `brand-guardian`
 
-## Related references
+## Références associées
 
-- [four-core-documents-spec.md](../context-engine/four-core-documents-spec.md) — the canonical 61-step specification
-- [actionable-persona-format.md](../context-engine/actionable-persona-format.md) — Step 5 of 3.2
-- [b2b-decision-making-unit.md](../context-engine/b2b-decision-making-unit.md) — Steps 10-13 of 3.2 (B2B)
-- [five-digital-markets.md](../context-engine/five-digital-markets.md) — Step 1 of 3.4
-- [in-market-out-market.md](../context-engine/in-market-out-market.md) — Step 5 of 3.4
-- [channel-families.md](../context-engine/channel-families.md) — Step 2 of 3.4
-- [decision-framework.md](../context-engine/decision-framework.md) — used throughout for choice-making
-- [unit-economics-framework.md](../context-engine/unit-economics-framework.md) — Step 4 of 3.1
+- [four-core-documents-spec.md](../context-engine/four-core-documents-spec.md) — la spécification canonique en 61 étapes
+- [actionable-persona-format.md](../context-engine/actionable-persona-format.md) — Étape 5 de 3.2
+- [b2b-decision-making-unit.md](../context-engine/b2b-decision-making-unit.md) — Étapes 10-13 de 3.2 (B2B)
+- [five-digital-markets.md](../context-engine/five-digital-markets.md) — Étape 1 de 3.4
+- [in-market-out-market.md](../context-engine/in-market-out-market.md) — Étape 5 de 3.4
+- [channel-families.md](../context-engine/channel-families.md) — Étape 2 de 3.4
+- [decision-framework.md](../context-engine/decision-framework.md) — utilisé tout au long pour la prise de décision
+- [unit-economics-framework.md](../context-engine/unit-economics-framework.md) — Étape 4 de 3.1

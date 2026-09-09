@@ -1,141 +1,142 @@
-# Actionable Persona Format
+# Format de persona actionnable
 
-Most personas in marketing are biographical narratives that produce no useful guidance. "Meet Priya, 28, lives in Bangalore, loves yoga and online shopping, earns 12 LPA" tells you what she looks like — not what she wants, not where to find her, not how to convert her.
+La plupart des personas en marketing sont des récits biographiques qui ne produisent aucune guidance utile. « Voici Priya, 28 ans, vit à Bangalore, aime le yoga et le shopping en ligne, gagne 12 LPA » vous dit à quoi elle ressemble — pas ce qu'elle veut, pas où la trouver, pas comment la convertir.
 
-The Actionable Persona Format replaces biographical narratives with six questions whose answers directly inform marketing decisions.
+Le format de persona actionnable remplace les récits biographiques par six questions dont les réponses éclairent directement les décisions marketing.
 
-## The Six Questions
+## Les six questions
 
-### 1. What is the primary job they are trying to get done?
+### 1. Quelle est la tâche principale qu'ils essaient d'accomplir ?
 
-Not "they want our product." That is what we want them to want. The actual job is what they want for themselves.
+Pas « ils veulent notre produit ». C'est ce que nous voulons qu'ils veuillent. La tâche réelle est ce qu'ils veulent pour eux-mêmes.
 
-**Weak example:** "She wants to use our project management tool."
+**Exemple faible :** « Elle veut utiliser notre outil de gestion de projet. »
 
-**Strong example:** "She wants to stop missing deadlines because her team is using three different tools that nobody syncs."
+**Exemple fort :** « Elle veut arrêter de manquer des délais parce que son équipe utilise trois outils différents que personne ne synchronise. »
 
-The job is the outcome the person needs in their life. Use Jobs-to-Be-Done framing: "When [situation], they want to [job], so they can [ultimate outcome]."
+La tâche est le résultat dont la personne a besoin dans sa vie. Utilisez le cadrage Jobs-to-Be-Done : « Quand [situation], ils veulent [tâche], afin de [résultat ultime]. »
 
-### 2. What triggers them to start looking for a solution?
+### 2. Qu'est-ce qui les déclenche à chercher une solution ?
 
-A persona who is not actively looking is not a marketable persona — they are an out-market awareness target. The trigger is the moment the person enters the in-market state.
+Un persona qui ne cherche pas activement n'est pas un persona commercialisable — c'est une cible de notoriété out-market. Le déclencheur est le moment où la personne entre dans l'état in-market.
 
-**Weak example:** "She is always looking for productivity tools."
+**Exemple faible :** « Elle cherche toujours des outils de productivité. »
 
-**Strong example:** "She enters the market the week after a project blew its deadline and she got a difficult email from a client. The trigger is internal pressure to fix the systemic problem before another deadline blows."
+**Exemple fort :** « Elle entre sur le marché la semaine suivant un projet ayant explosé son délai et après avoir reçu un e-mail difficile d'un client. Le déclencheur est la pression interne pour résoudre le problème systémique avant qu'un autre délai n'explose. »
 
-Knowing the trigger tells you when and where to be present.
+Connaître le déclencheur vous dit quand et où être présent.
 
-### 3. Where do they search for solutions?
+### 3. Où recherchent-ils des solutions ?
 
-Specific platforms, specific search behaviour, specific information sources.
+Plateformes précises, comportement de recherche précis, sources d'information précises.
 
-**Weak example:** "She searches online."
+**Exemple faible :** « Elle cherche en ligne. »
 
-**Strong example:** "She starts with a Google search for 'best project management tool for design agencies'. Then she asks her network on LinkedIn. Then she watches 2–3 YouTube reviews from creators she trusts. Then she revisits Google for 'X vs Y' comparisons. Then she checks G2 and Capterra reviews."
+**Exemple fort :** « Elle commence par une recherche Google pour « meilleur outil de gestion de projet pour agences de design ». Puis elle demande à son réseau sur LinkedIn. Puis elle regarde 2 à 3 avis YouTube de créateurs en qui elle a confiance. Puis elle revient sur Google pour des comparaisons « X vs Y ». Puis elle vérifie les avis G2 et Capterra. »
 
-This directly tells you which channels matter (Google Search, LinkedIn, YouTube, review sites) and what content to create (comparison content, reviews, tutorials).
+Cela vous dit directement quels canaux comptent (Google Search, LinkedIn, YouTube, sites d'avis) et quel contenu créer (contenu comparatif, avis, tutoriels).
 
-### 4. What criteria do they use to evaluate options?
+### 4. Quels critères utilisent-ils pour évaluer les options ?
 
-The decision criteria. What makes one option better than another in their judgment.
+Les critères de décision. Ce qui rend une option meilleure qu'une autre à leurs yeux.
 
-**Weak example:** "She wants something that works well."
+**Exemple faible :** « Elle veut quelque chose qui fonctionne bien. »
 
-**Strong example:** "Three criteria, in order: (1) integrates with the design tools her team already uses (Figma, Notion, Slack); (2) implementation time under one week (no time for a long onboarding); (3) per-user pricing under INR 1,000/month per seat."
+**Exemple fort :** « Trois critères, dans l'ordre : (1) s'intègre aux outils de design que son équipe utilise déjà (Figma, Notion, Slack) ; (2) temps de mise en œuvre inférieur à une semaine (pas de temps pour une longue intégration) ; (3) tarification par utilisateur inférieure à 1 000 INR/mois par poste. »
 
-This tells you exactly what your messaging must lead with — integrations, fast implementation, transparent pricing.
+Cela vous dit exactement par quoi votre message doit commencer — intégrations, mise en œuvre rapide, tarification transparente.
 
-### 5. What would make them choose us over alternatives?
+### 5. Qu'est-ce qui les ferait nous choisir plutôt que les alternatives ?
 
-The reason-to-believe specific to your brand vs the alternatives they are considering.
+La raison d'y croire spécifique à votre marque par rapport aux alternatives qu'ils envisagent.
 
-**Weak example:** "Our quality."
+**Exemple faible :** « Notre qualité. »
 
-**Strong example:** "Specific case study of a similar-size design agency that went from missing 30% of deadlines to under 5% in 60 days using our tool. With named client and quantified outcome."
+**Exemple fort :** « Étude de cas précise d'une agence de design de taille similaire qui est passée de 30 % de délais manqués à moins de 5 % en 60 jours grâce à notre outil. Avec un client nommé et un résultat chiffré. »
 
-This tells your sales and content teams exactly what proof points to develop.
+Cela dit exactement à vos équipes de vente et de contenu quels arguments de preuve développer.
 
-### 6. What would make them NOT choose us?
+### 6. Qu'est-ce qui les ferait NE PAS nous choisir ?
 
-The disqualifiers. What might they discover that would push them to a competitor.
+Les facteurs disqualifiants. Ce qu'ils pourraient découvrir et qui les pousserait vers un concurrent.
 
-**Weak example:** "Bad reviews."
+**Exemple faible :** « De mauvais avis. »
 
-**Strong example:** "Three things would lose her: (1) no native Figma integration (vs Notion's deep Figma support); (2) any pricing above INR 1,200/seat/month (we exceed her budget tolerance); (3) any onboarding requirement above 5 days (she has no time for a long implementation)."
+**Exemple fort :** « Trois choses la feraient perdre : (1) aucune intégration Figma native (contre le support Figma approfondi de Notion) ; (2) toute tarification au-dessus de 1 200 INR/poste/mois (nous dépassons sa tolérance budgétaire) ; (3) toute exigence d'intégration au-dessus de 5 jours (elle n'a pas de temps pour une longue mise en œuvre). »
 
-This tells your product, sales, and pricing teams exactly what objections to address — and what to never make worse.
+Cela dit exactement à vos équipes produit, ventes, et tarification quelles objections traiter — et ce qu'il ne faut jamais aggraver.
 
-## Producing personas using this format
+## Produire des personas avec ce format
 
-Personas in this format live in Core Doc 3.2 (Segmentation Framework), Step 5.
+Les personas dans ce format vivent dans le document central 3.2 (cadre de segmentation), étape 5.
 
-The skill that generates personas (`audience-intelligence/persona-builder` and the Part 3 four-core-documents skill) outputs each persona as a structured markdown block:
+La compétence qui génère les personas (`audience-intelligence/persona-builder` et la compétence des quatre documents centraux de la partie 3) produit chaque persona sous forme de bloc markdown structuré :
 
 ```markdown
-## Persona: {Persona Name}
+## Persona : {Nom du persona}
 
-**Persona ID:** {unique identifier}
-**Target Group:** {which TG this persona belongs to}
-**Sub-segment:** {specific sub-segment}
-**Priority:** {Primary / Secondary / Tertiary}
+**ID du persona :** {identifiant unique}
+**Groupe cible :** {à quel TG appartient ce persona}
+**Sous-segment :** {sous-segment précis}
+**Priorité :** {Principal / Secondaire / Tertiaire}
 
-### 1. Primary Job to Be Done
-{1–3 sentences using JTBD framing}
+### 1. Tâche principale à accomplir
+{1-3 phrases utilisant le cadrage JTBD}
 
-### 2. Trigger
-{1–3 sentences describing the moment that puts this persona into the in-market state}
+### 2. Déclencheur
+{1-3 phrases décrivant le moment qui met ce persona en état in-market}
 
-### 3. Search Behaviour
-{Specific platforms, search queries, information sources, in sequence}
+### 3. Comportement de recherche
+{Plateformes précises, requêtes de recherche, sources d'information, en séquence}
 
-### 4. Evaluation Criteria
-{Ordered list of 3–5 specific criteria, with weights if known}
+### 4. Critères d'évaluation
+{Liste ordonnée de 3 à 5 critères précis, avec pondérations si connues}
 
-### 5. Reasons to Choose Us
-{Specific proof points tied to alternatives being considered}
+### 5. Raisons de nous choisir
+{Arguments de preuve précis liés aux alternatives envisagées}
 
-### 6. Reasons to NOT Choose Us
-{Specific disqualifiers — what might push them to a competitor}
+### 6. Raisons de NE PAS nous choisir
+{Facteurs disqualifiants précis — ce qui pourrait les pousser vers un concurrent}
 
-### Demographics & Context (Reference Only)
-{Brief — used only for media planning targeting, not for messaging direction}
+### Démographie et contexte (référence uniquement)
+{Bref — utilisé uniquement pour le ciblage de planification média, pas pour l'orientation du message}
 
-- Age range: {if relevant}
-- Geography: {city tier, region}
-- Income range: {if relevant}
-- Profession / role: {especially for B2B}
-- Tech sophistication: {if relevant}
+- Tranche d'âge : {si pertinent}
+- Géographie : {niveau de ville, région}
+- Fourchette de revenus : {si pertinent}
+- Profession / rôle : {particulièrement pour le B2B}
+- Sophistication technologique : {si pertinent}
 ```
 
-Notice that demographics come **last and brief**. They are inputs to media targeting (Meta interest targeting, LinkedIn job title targeting), not to messaging direction. The six questions drive messaging.
+Notez que la démographie vient **en dernier et brièvement**. Elle constitue un intrant pour le ciblage média (ciblage par centres d'intérêt Meta, ciblage par intitulé de poste LinkedIn), pas pour l'orientation du message. Les six questions pilotent le message.
 
-## How skills consume personas
+## Comment les compétences consomment les personas
 
-Every channel skill (Part 9), every creative skill (Part 10, Part 11), every content skill reads the relevant persona before producing output.
+Chaque compétence de canal (partie 9), chaque compétence créative (partie 10, partie 11), chaque compétence de contenu lit le persona pertinent avant de produire un résultat.
 
-A blog post for Persona X opens with the trigger ("If you are a [role] who just had [situation that matches the trigger]..."), addresses the evaluation criteria in the body, and closes with proof points that match Reason #5.
+Un article de blog pour le persona X s'ouvre avec le déclencheur (« Si vous êtes un [rôle] qui vient de vivre [situation correspondant au déclencheur]... »), traite les critères d'évaluation dans le corps, et se conclut avec des arguments de preuve correspondant à la raison n° 5.
 
-An ad for Persona X uses the search-language from Question 3, leads with the criterion #1, and addresses the top objection from Question 6.
+Une publicité pour le persona X utilise le langage de recherche de la question 3, commence par le critère n° 1, et traite la principale objection de la question 6.
 
-A landing page for Persona X mirrors the search query, demonstrates the evaluation criteria can be met, and pre-empts the disqualifiers.
+Une landing page pour le persona X reflète la requête de recherche, démontre que les critères d'évaluation peuvent être satisfaits, et anticipe les facteurs disqualifiants.
 
-This is what "actionable" means. The persona document is not a story — it is a brief.
+C'est ce que signifie « actionnable ». Le document de persona n'est pas une histoire — c'est un brief.
 
-## Personas vs Anti-Personas
+## Personas vs anti-personas
 
-Step 14 of Core Doc 3.2 documents anti-personas — who the brand explicitly does not target.
+L'étape 14 du document central 3.2 documente les anti-personas — qui la marque ne cible explicitement pas.
 
-For each anti-persona:
+Pour chaque anti-persona :
 
-- **Description:** who they are
-- **Why they are NOT a target:** misalignment of need, mismatched expectations, unprofitable to serve, brand-misalignment, etc.
-- **Implication:** what we do NOT do (e.g., "do not bid on enterprise-procurement keywords; do not show LinkedIn ads to anyone with 'Procurement' in title; do not use 'enterprise-grade' language that would attract anti-personas")
+- **Description :** qui ils sont
+- **Pourquoi ce N'EST PAS une cible :** inadéquation du besoin, attentes non concordantes, non rentable à servir, inadéquation de marque, etc.
+- **Implication :** ce que nous ne faisons PAS (par exemple, « ne pas enchérir sur les mots-clés d'achat entreprise ; ne pas montrer de publicités LinkedIn à quiconque a « Achats » dans son intitulé de poste ; ne pas utiliser un langage « de niveau entreprise » qui attirerait des anti-personas »)
 
-Anti-personas are as strategically valuable as personas. They prevent budget waste and brand-fit drift.
+Les anti-personas sont aussi stratégiquement précieux que les personas. Ils évitent le gaspillage budgétaire et la dérive d'adéquation à la marque.
 
-## Related references
+## Références liées
 
-- [four-core-documents-spec.md](four-core-documents-spec.md) — Core Doc 3.2 Step 5
-- [b2b-decision-making-unit.md](b2b-decision-making-unit.md) — B2B overlay (User / Influencer / Decision-maker / Gatekeeper)
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — where personas fit in the methodology
+- [four-core-documents-spec.md](four-core-documents-spec.md) — document central 3.2, étape 5
+- [b2b-decision-making-unit.md](b2b-decision-making-unit.md) — superposition B2B (Utilisateur / Influenceur / Décideur / Gardien)
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — où les personas s'inscrivent dans la méthodologie
+</content>

@@ -1,40 +1,40 @@
-# Newsjacking — Rapid Response Framework
+# Newsjacking — Cadre de réponse rapide
 
-## Relevance Scoring
+## Notation de la pertinence
 
-Before newsjacking, score the opportunity:
+Avant de faire du newsjacking, noter l'opportunité :
 
-| Criteria | Score (1-5) | Description |
+| Critère | Score (1-5) | Description |
 |----------|------------|-------------|
-| **Brand relevance** | | Does this topic connect to our expertise? |
-| **Audience interest** | | Does our audience care about this topic? |
-| **Unique value add** | | Can we add data, expert insight, or unique perspective? |
-| **Brand safety** | | Is it safe to associate our brand with this topic? |
-| **Timeliness** | | Can we respond fast enough to be relevant? |
+| **Pertinence pour la marque** | | Ce sujet est-il lié à notre expertise ? |
+| **Intérêt de l'audience** | | Notre audience s'intéresse-t-elle à ce sujet ? |
+| **Valeur ajoutée unique** | | Pouvons-nous apporter des données, un éclairage d'expert, ou un point de vue unique ? |
+| **Sécurité de la marque** | | Est-il sûr d'associer notre marque à ce sujet ? |
+| **Opportunité de timing** | | Pouvons-nous répondre assez vite pour être pertinents ? |
 
-**Total score 20+**: Go. **15-19**: Proceed with caution. **Below 15**: Skip.
+**Score total 20+** : Go. **15-19** : procéder avec prudence. **Moins de 15** : passer son tour.
 
 ---
 
-## Newsjacking Window
+## Fenêtre de newsjacking
 
 ```
-[News breaks] → [Initial coverage] → [Peak media interest] → [Analysis phase] → [Old news]
+[L'actualité éclate] → [Couverture initiale] → [Pic d'intérêt média] → [Phase d'analyse] → [Actualité dépassée]
                                            ↑
-                                    YOUR WINDOW
-                                  (4-24 hours)
+                                    VOTRE FENÊTRE
+                                  (4-24 heures)
 ```
 
-- **First 4 hours**: Only respond if you can add immediate data or expert commentary
-- **4-24 hours**: Analysis, frameworks, expert takes, data contributions
-- **24-72 hours**: Trend pieces, deeper analysis, "what this means for [industry]"
-- **After 72 hours**: Too late for most newsjacking (exception: developing stories)
+- **Premières 4 heures** : ne répondre que si vous pouvez apporter immédiatement des données ou un commentaire d'expert
+- **4-24 heures** : analyses, cadres de réflexion, points de vue d'expert, contributions de données
+- **24-72 heures** : articles de tendance, analyses plus poussées, « ce que cela signifie pour [secteur] »
+- **Après 72 heures** : trop tard pour la plupart des opérations de newsjacking (exception : histoires en développement)
 
 ---
 
-## Rapid-Response Templates
+## Modèles de réponse rapide
 
-### Expert Commentary (for journalists)
+### Commentaire d'expert (pour journalistes)
 ```
 RE: [News topic]
 
@@ -49,7 +49,7 @@ Regarding [news event], [Expert Name], [Title] at [Brand], offers this perspecti
 [Contact info]
 ```
 
-### Social Media Response
+### Réponse sur les réseaux sociaux
 ```
 [News hook — 1 sentence referencing the news]
 
@@ -62,7 +62,7 @@ Here's what this means for [your audience]:
 [Optional: link to longer analysis]
 ```
 
-### Blog Rapid-Response
+### Réponse rapide sur le blog
 ```
 # What [News Event] Means for [Your Industry/Audience]
 
@@ -75,25 +75,25 @@ Here's what this means for [your audience]:
 
 ---
 
-## Brand Safety Checklist
+## Checklist de sécurité de marque
 
-Before publishing any newsjacking content:
+Avant de publier tout contenu de newsjacking :
 
-- [ ] **Not political**: Unless brand has an explicit political position, avoid partisan angles
-- [ ] **Not tragic**: Do NOT newsjack tragedies, natural disasters, deaths, or violence
-- [ ] **Not controversial**: Assess whether taking a position could alienate audience segments
-- [ ] **Not legal risk**: No comments on pending litigation, SEC-sensitive topics, or unverified claims
-- [ ] **Not competitor attack**: Respond to news, don't use it to attack competitors
-- [ ] **Accurate**: All claims and data points are verified before publishing
-- [ ] **Appropriate tone**: Match the seriousness of the news (don't be flippant about serious topics)
-- [ ] **Approved**: Get quick approval from brand guardian / legal if sensitive
+- [ ] **Pas politique** : sauf si la marque a une position politique explicite, éviter les angles partisans
+- [ ] **Pas tragique** : NE PAS faire de newsjacking sur des tragédies, catastrophes naturelles, décès, ou violences
+- [ ] **Pas controversé** : évaluer si prendre position pourrait aliéner des segments d'audience
+- [ ] **Pas de risque juridique** : aucun commentaire sur des litiges en cours, des sujets sensibles pour la SEC, ou des allégations non vérifiées
+- [ ] **Pas d'attaque de concurrent** : répondre à l'actualité, ne pas l'utiliser pour attaquer des concurrents
+- [ ] **Exact** : toutes les allégations et données sont vérifiées avant publication
+- [ ] **Ton approprié** : adapter au sérieux de l'actualité (ne pas être désinvolte sur des sujets graves)
+- [ ] **Approuvé** : obtenir une approbation rapide du gardien de la marque / du service juridique si le sujet est sensible
 
 ---
 
-## Legal Considerations
+## Considérations juridiques
 
-- **Fair use**: Commenting on news is protected, but don't reproduce entire articles
-- **Defamation**: Never make unsubstantiated claims about people or companies
-- **Securities regulations**: If publicly traded, avoid commenting on financial news that could affect stock
-- **Regulated industries**: Healthcare, finance, legal industries have additional restrictions on public statements
-- **Attribution**: Always credit original sources and reporters
+- **Usage raisonnable (fair use)** : commenter l'actualité est protégé, mais ne pas reproduire des articles entiers
+- **Diffamation** : ne jamais faire d'allégations non étayées sur des personnes ou des entreprises
+- **Réglementation boursière** : si l'entreprise est cotée en bourse, éviter de commenter des actualités financières pouvant affecter le cours de l'action
+- **Secteurs réglementés** : les secteurs de la santé, de la finance, du droit ont des restrictions supplémentaires sur les déclarations publiques
+- **Attribution** : toujours créditer les sources et les journalistes d'origine

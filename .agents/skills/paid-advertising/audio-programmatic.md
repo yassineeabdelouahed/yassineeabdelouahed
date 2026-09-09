@@ -1,266 +1,266 @@
-# Audio Programmatic Advertising — Streaming, Podcasts & Digital Audio
+# Publicité audio programmatique — Streaming, podcasts et audio numérique
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Audio Advertising Ecosystem
+## Écosystème de la publicité audio
 
-### Platform Landscape
+### Paysage des plateformes
 
-| Platform | Users / Reach | Ad Model | Unique Advantage | Self-Serve |
+| Plateforme | Utilisateurs / Portée | Modèle publicitaire | Avantage unique | Self-Serve |
 |---|---|---|---|---|
-| **Spotify Ad Studio** | 600M+ users, 220M+ ad-supported | Self-serve + managed | Mood/activity targeting, playlist context, companion display | Yes ($250 min) |
-| **Pandora / SiriusXM Media** | 50M+ ad-supported listeners | Managed + programmatic | Largest audio ad network in US, Music Genome targeting | Limited (SXM Media portal) |
-| **iHeartRadio** | 150M+ monthly users | Managed + programmatic | Broadcast radio + streaming combo, local targeting strength | Managed only |
-| **Amazon Music / Alexa** | 100M+ users | Amazon DSP | Shopping intent integration, Alexa voice CTA | Via Amazon DSP |
-| **YouTube Music** | 80M+ music subscribers + ad-tier | Google Ads / DV360 | Google audience data, cross-platform with YouTube video | Yes (via Google Ads) |
-| **Deezer** | 16M+ users (strong in EU/LATAM) | Programmatic + direct | European reach, editorial playlist sponsorship | Managed only |
+| **Spotify Ad Studio** | 600 M+ utilisateurs, 220 M+ avec publicité | Self-serve + géré | Ciblage par humeur/activité, contexte de playlist, display compagnon | Oui (250 $ min.) |
+| **Pandora / SiriusXM Media** | 50 M+ auditeurs avec publicité | Géré + programmatique | Plus grand réseau publicitaire audio aux US, ciblage Music Genome | Limité (portail SXM Media) |
+| **iHeartRadio** | 150 M+ utilisateurs mensuels | Géré + programmatique | Combinaison radio diffusée + streaming, forte capacité de ciblage local | Géré uniquement |
+| **Amazon Music / Alexa** | 100 M+ utilisateurs | Amazon DSP | Intégration à l'intention d'achat, CTA vocal Alexa | Via Amazon DSP |
+| **YouTube Music** | 80 M+ abonnés musique + palier publicitaire | Google Ads / DV360 | Données d'audience Google, cross-plateforme avec la vidéo YouTube | Oui (via Google Ads) |
+| **Deezer** | 16 M+ utilisateurs (fort en UE/LATAM) | Programmatique + direct | Portée européenne, parrainage de playlist éditoriale | Géré uniquement |
 
-### Podcast Ad Networks
+### Réseaux publicitaires podcast
 
-| Network | Scale | Model | Strength |
+| Réseau | Échelle | Modèle | Force |
 |---|---|---|---|
-| **Spotify Audience Network** | 250M+ podcast listeners | Programmatic + direct | Cross-show audience targeting, Spotify first-party data |
-| **Megaphone** (Spotify-owned) | 60K+ shows, largest podcast ad server | Dynamic ad insertion (DAI) | Programmatic marketplace, enterprise podcast hosting |
-| **iHeart Podcast Network** | 400M+ monthly downloads | Host-read + DAI | Massive show catalog, celebrity/influencer hosts |
-| **Acast** | 100K+ shows, global | Marketplace + programmatic | Global reach, conversational targeting, self-serve |
-| **SiriusXM Podcast Network** | SXM Media + AdsWizz stack | Programmatic + host-read | Premium inventory, advanced measurement |
-| **Podscribe** | Attribution platform | Measurement + marketplace | Pixel attribution, cross-show measurement |
-| **Podcorn** | Micro-influencer podcasts | Marketplace (host-read) | Direct relationships with niche shows |
+| **Spotify Audience Network** | 250 M+ auditeurs de podcast | Programmatique + direct | Ciblage d'audience cross-émission, données propriétaires Spotify |
+| **Megaphone** (propriété de Spotify) | 60 K+ émissions, plus grand serveur publicitaire podcast | Insertion publicitaire dynamique (DAI) | Marketplace programmatique, hébergement de podcast entreprise |
+| **iHeart Podcast Network** | 400 M+ téléchargements mensuels | Lu par l'animateur + DAI | Catalogue d'émissions massif, animateurs célébrités/influenceurs |
+| **Acast** | 100 K+ émissions, mondial | Marketplace + programmatique | Portée mondiale, ciblage conversationnel, self-serve |
+| **SiriusXM Podcast Network** | Stack SXM Media + AdsWizz | Programmatique + lu par l'animateur | Inventaire premium, mesure avancée |
+| **Podscribe** | Plateforme d'attribution | Mesure + marketplace | Attribution par pixel, mesure cross-émission |
+| **Podcorn** | Podcasts micro-influenceurs | Marketplace (lu par l'animateur) | Relations directes avec des émissions de niche |
 
-### Buying Model Comparison
+### Comparaison des modèles d'achat
 
 ```
-Decision Tree: How to Buy Audio Ads
+Arbre de décision : Comment acheter des publicités audio
 
-├── Budget < $1K/month → Spotify Ad Studio (self-serve)
-├── Budget $1K–$10K/month → Spotify Ad Studio + Acast marketplace
-├── Budget $10K–$50K/month → Managed via SXM Media or iHeart + programmatic
-├── Budget $50K+/month → Full programmatic (DSP) + direct podcast sponsorships
-└── Podcast-only strategy → Megaphone/SAN (programmatic) + Podcorn (host-read)
+├── Budget < 1 000 $/mois → Spotify Ad Studio (self-serve)
+├── Budget 1 000 $–10 000 $/mois → Spotify Ad Studio + marketplace Acast
+├── Budget 10 000 $–50 000 $/mois → Géré via SXM Media ou iHeart + programmatique
+├── Budget 50 000 $+/mois → Programmatique complet (DSP) + parrainages de podcast en direct
+└── Stratégie podcast uniquement → Megaphone/SAN (programmatique) + Podcorn (lu par l'animateur)
 ```
 
 ---
 
-## Ad Formats
+## Formats publicitaires
 
-### Streaming Audio Formats
+### Formats audio streaming
 
-| Format | Duration | Experience | CPM Range | Best For |
+| Format | Durée | Expérience | Fourchette de CPM | Idéal pour |
 |---|---|---|---|---|
-| **Audio Spot** | 15s, 30s, 60s | Sound-only during music breaks | $5–$15 | Core format — awareness, consideration |
-| **Companion Display** | Shown during audio ad | Visual banner alongside audio playback | +$2–$5 incremental | Drive clicks, show product, reinforce brand |
-| **Video Takeover** | 15–30s | Full-screen video during streaming break (mobile) | $15–$30 | Product demos, visual branding, app installs |
-| **Sponsored Playlist** | Ongoing | Brand logo + messaging on curated playlist | $10K–$50K flat | Lifestyle association, sustained awareness |
-| **Sponsored Session** | 30 minutes | User gets ad-free session in exchange for watching video ad | $20–$40 | High-value impressions, positive brand association |
-| **Homepage Takeover** | 24 hours | Featured placement on app home screen | $50K+ flat | Tentpole launches, maximum reach |
+| **Spot audio** | 15s, 30s, 60s | Son uniquement pendant les pauses musicales | 5–15 $ | Format central — notoriété, considération |
+| **Display compagnon** | Affiché pendant le spot audio | Bannière visuelle accompagnant la lecture audio | +2–5 $ incrémental | Générer des clics, montrer le produit, renforcer la marque |
+| **Prise de contrôle vidéo** | 15–30s | Vidéo plein écran pendant une pause de streaming (mobile) | 15–30 $ | Démos produit, branding visuel, installations d'app |
+| **Playlist sponsorisée** | Continu | Logo de marque + message sur playlist éditorialisée | 10 000–50 000 $ forfait | Association lifestyle, notoriété soutenue |
+| **Session sponsorisée** | 30 minutes | L'utilisateur obtient une session sans pub en échange de regarder une vidéo publicitaire | 20–40 $ | Impressions à haute valeur, association de marque positive |
+| **Prise de contrôle de la page d'accueil** | 24 heures | Placement en vedette sur l'écran d'accueil de l'app | 50 000 $+ forfait | Lancements phares, portée maximale |
 
-### Podcast Ad Formats
+### Formats publicitaires podcast
 
-| Format | Delivery | Trust Factor | CPM Range | Best For |
+| Format | Diffusion | Facteur de confiance | Fourchette de CPM | Idéal pour |
 |---|---|---|---|---|
-| **Host-Read** | Recorded by podcast host | Highest (2–3x engagement vs pre-produced) | $25–$50 | Brand trust, direct response, niche audiences |
-| **Pre-Produced (DAI)** | Dynamically inserted, brand-recorded | Moderate | $15–$30 | Scale, consistency, A/B testing |
-| **Baked-In** | Permanent in episode recording | High (feels organic) | $30–$60 (flat per episode) | Evergreen campaigns, long-tail exposure |
-| **Pre-Roll** | Before episode content (15–30s) | Lower (easy to skip) | $15–$25 | Short awareness messages, lower budgets |
-| **Mid-Roll** | During episode content (30–60s) | Highest attention | $25–$50 | Primary placement — highest recall |
-| **Post-Roll** | After episode content (15–30s) | Lowest (audience drops off) | $10–$18 | Lowest CPM, CTA-heavy messages |
+| **Lu par l'animateur** | Enregistré par l'animateur du podcast | Le plus élevé (engagement 2 à 3x supérieur vs pré-produit) | 25–50 $ | Confiance de marque, réponse directe, audiences de niche |
+| **Pré-produit (DAI)** | Inséré dynamiquement, enregistré par la marque | Modéré | 15–30 $ | Échelle, cohérence, tests A/B |
+| **Intégré en dur** | Permanent dans l'enregistrement de l'épisode | Élevé (donne une impression organique) | 30–60 $ (forfait par épisode) | Campagnes evergreen, exposition longue traîne |
+| **Pré-roll** | Avant le contenu de l'épisode (15–30s) | Plus faible (facile à passer) | 15–25 $ | Messages de notoriété courts, budgets plus faibles |
+| **Mid-roll** | Pendant le contenu de l'épisode (30–60s) | La plus forte attention | 25–50 $ | Placement principal — meilleur rappel |
+| **Post-roll** | Après le contenu de l'épisode (15–30s) | La plus faible (l'audience décroche) | 10–18 $ | CPM le plus bas, messages orientés CTA |
 
-### Format Selection Matrix
+### Matrice de sélection de format
 
-| Goal | Streaming Format | Podcast Format | Reasoning |
+| Objectif | Format streaming | Format podcast | Justification |
 |---|---|---|---|
-| Brand awareness | Audio Spot (30s) + Companion | Host-Read Mid-Roll | Sound + visual reinforcement; host trust |
-| Direct response / CTA | Audio Spot (15s) + Companion | Host-Read Mid-Roll with promo code | Short hook + clickable companion; trackable code |
-| Product launch | Sponsored Session + Video Takeover | Branded series sponsorship | Premium attention; deep storytelling |
-| Local / SMB | Audio Spot (15s) on Spotify | Niche local podcasts via Podcorn | Geo-targeting; local audience alignment |
-| eCommerce | Audio Spot (30s) + Companion | Host-Read with vanity URL | Audio drives awareness, companion drives click |
+| Notoriété de marque | Spot audio (30s) + compagnon | Mid-roll lu par l'animateur | Renforcement son + visuel ; confiance de l'animateur |
+| Réponse directe / CTA | Spot audio (15s) + compagnon | Mid-roll lu par l'animateur avec code promo | Accroche courte + compagnon cliquable ; code traçable |
+| Lancement produit | Session sponsorisée + prise de contrôle vidéo | Parrainage de série de marque | Attention premium ; storytelling approfondi |
+| Local / TPE | Spot audio (15s) sur Spotify | Podcasts locaux de niche via Podcorn | Ciblage géo ; alignement d'audience locale |
+| eCommerce | Spot audio (30s) + compagnon | Lu par l'animateur avec URL personnalisée | L'audio génère la notoriété, le compagnon génère le clic |
 
 ---
 
-## Targeting Capabilities
+## Capacités de ciblage
 
-### Streaming Audio Targeting
+### Ciblage audio streaming
 
-| Targeting Type | Spotify | Pandora | Amazon Music | Description |
+| Type de ciblage | Spotify | Pandora | Amazon Music | Description |
 |---|---|---|---|---|
-| **Demographics** | Age, gender, location | Age, gender, location, income | Age, gender, location | Standard demo targeting |
-| **Genre / Playlist** | 1,000+ genre segments | Music Genome categories | Genre-based | Target by listening taste |
-| **Mood / Activity** | Workout, focus, party, chill, commute | Mood stations | Limited | Context-based targeting |
-| **Real-Time Context** | Platform (mobile/desktop/smart speaker), time of day | Platform, device | Device, Alexa context | Reach users in specific moments |
-| **Listening Behavior** | Podcast listeners, playlist followers, heavy streamers | Station loyalty, skip rate | Purchase behavior overlay | Behavioral segments |
-| **First-Party Data** | CRM list match (email) | CRM match | Amazon customer match | Retarget existing customers |
-| **Lookalike** | Expand from CRM seed | Expand from segments | Amazon Lookalike | Find similar listeners |
-| **Retargeting** | Ad exposure retargeting | Cross-platform retargeting | Amazon retargeting pixel | Sequential messaging |
+| **Démographie** | Âge, genre, localisation | Âge, genre, localisation, revenu | Âge, genre, localisation | Ciblage démographique standard |
+| **Genre / Playlist** | 1 000+ segments de genre | Catégories Music Genome | Basé sur le genre | Cibler par goût d'écoute |
+| **Humeur / Activité** | Sport, concentration, fête, détente, trajet | Stations d'humeur | Limité | Ciblage contextuel |
+| **Contexte en temps réel** | Plateforme (mobile/bureau/enceinte connectée), heure de la journée | Plateforme, appareil | Appareil, contexte Alexa | Atteindre les utilisateurs à des moments précis |
+| **Comportement d'écoute** | Auditeurs de podcast, abonnés à des playlists, gros streamers | Fidélité à la station, taux de skip | Superposition de comportement d'achat | Segments comportementaux |
+| **Données propriétaires (first-party)** | Correspondance de liste CRM (email) | Correspondance CRM | Correspondance client Amazon | Recibler les clients existants |
+| **Lookalike** | Extension depuis un seed CRM | Extension depuis des segments | Amazon Lookalike | Trouver des auditeurs similaires |
+| **Retargeting** | Retargeting par exposition publicitaire | Retargeting cross-plateforme | Pixel de retargeting Amazon | Messages séquentiels |
 
-### Podcast Targeting
+### Ciblage podcast
 
-| Method | How It Works | Precision | Scale |
+| Méthode | Fonctionnement | Précision | Échelle |
 |---|---|---|---|
-| **Show-level** | Select specific podcast titles | Highest (you pick the show) | Lowest |
-| **Category / Genre** | Target podcast categories (business, comedy, true crime) | Medium | High |
-| **Audience Segment** | Cross-show audience targeting based on listener behavior | Medium-high | High |
-| **Contextual** | Target by episode topic / transcript analysis | Medium | Medium |
-| **Demographic** | Age, gender, location of listeners (survey + inferred) | Medium | High |
-| **Sequential** | Listener hears Ad A → frequency cap → Ad B follows | High | Medium |
+| **Au niveau de l'émission** | Sélectionner des titres de podcast spécifiques | La plus élevée (vous choisissez l'émission) | La plus faible |
+| **Catégorie / Genre** | Cibler des catégories de podcast (business, comédie, true crime) | Moyenne | Élevée |
+| **Segment d'audience** | Ciblage d'audience cross-émission basé sur le comportement d'écoute | Moyenne-élevée | Élevée |
+| **Contextuel** | Cibler par sujet de l'épisode / analyse de transcription | Moyenne | Moyenne |
+| **Démographique** | Âge, genre, localisation des auditeurs (sondage + inféré) | Moyenne | Élevée |
+| **Séquentiel** | L'auditeur entend la publicité A → plafond de fréquence → la publicité B suit | Élevée | Moyenne |
 
-### Sequential Messaging Strategy
+### Stratégie de messages séquentiels
 
 ```
-Sequence Example (3-Touch Audio Campaign):
+Exemple de séquence (campagne audio en 3 touches) :
 
-Touch 1 (Week 1): 30s awareness spot — introduce brand + problem statement
-    ↓ (frequency cap: 3x/week)
-Touch 2 (Week 2): 15s consideration spot — social proof + differentiator
-    ↓ (frequency cap: 2x/week)
-Touch 3 (Week 3): 15s conversion spot — offer + clear CTA
+Touche 1 (Semaine 1) : Spot notoriété de 30s — présenter la marque + l'énoncé du problème
+    ↓ (plafond de fréquence : 3x/semaine)
+Touche 2 (Semaine 2) : Spot considération de 15s — preuve sociale + différenciateur
+    ↓ (plafond de fréquence : 2x/semaine)
+Touche 3 (Semaine 3) : Spot conversion de 15s — offre + CTA clair
     ↓
-Retarget on display/social: Listeners who completed sequence → visual ads
+Retargeting sur display/social : Les auditeurs ayant complété la séquence → publicités visuelles
 ```
 
 ---
 
-## Creative Production
+## Production créative
 
-### Script Templates
+### Modèles de script
 
-**15-Second Spot (Hook → Value → CTA):**
+**Spot de 15 secondes (Accroche → Valeur → CTA) :**
 ```
-[0-3s]  Hook: Attention-grabbing question or statement
-[3-10s] Value: One clear benefit or differentiator
-[10-15s] CTA: Simple, memorable action (URL, promo code, or "search for [brand]")
-```
-
-**30-Second Spot (Hook → Problem → Solution → CTA):**
-```
-[0-5s]   Hook: Relatable scenario or surprising fact
-[5-15s]  Problem: Articulate the pain point
-[15-25s] Solution: How your product/service solves it
-[25-30s] CTA: Clear next step with tracking mechanism
+[0-3s]  Accroche : Question ou affirmation qui capte l'attention
+[3-10s] Valeur : Un bénéfice ou différenciateur clair
+[10-15s] CTA : Action simple et mémorable (URL, code promo, ou « cherchez [marque] »)
 ```
 
-**60-Second Spot (Story Arc):**
+**Spot de 30 secondes (Accroche → Problème → Solution → CTA) :**
 ```
-[0-10s]  Setup: Character or scenario introduction
-[10-25s] Conflict: Problem or challenge they face
-[25-45s] Resolution: How the product helps, with specifics
-[45-55s] Social Proof: Stat, testimonial, or credibility marker
-[55-60s] CTA: Memorable, repeatable action
+[0-5s]   Accroche : Scénario relatable ou fait surprenant
+[5-15s]  Problème : Articuler le point de douleur
+[15-25s] Solution : Comment votre produit/service le résout
+[25-30s] CTA : Prochaine étape claire avec mécanisme de suivi
 ```
 
-### Audio Production Specs
+**Spot de 60 secondes (Arc narratif) :**
+```
+[0-10s]  Mise en place : Présentation d'un personnage ou d'un scénario
+[10-25s] Conflit : Problème ou défi rencontré
+[25-45s] Résolution : Comment le produit aide, avec des détails
+[45-55s] Preuve sociale : Statistique, témoignage ou marqueur de crédibilité
+[55-60s] CTA : Action mémorable, répétable
+```
 
-| Specification | Requirement |
+### Spécifications de production audio
+
+| Spécification | Exigence |
 |---|---|
-| **File format** | WAV (production) or MP3 320kbps (delivery) |
-| **Sample rate** | 44.1 kHz |
-| **Bit depth** | 16-bit minimum |
-| **Loudness** | -16 LUFS (integrated), -1 dBTP (true peak) |
-| **Background music** | -20 dB below voice, royalty-free or licensed |
-| **Voice-over** | Clear enunciation, conversational tone, no room echo |
-| **Duration** | Exact to spec (15.0s, 30.0s, or 60.0s — no tolerance) |
+| **Format de fichier** | WAV (production) ou MP3 320 kbps (livraison) |
+| **Taux d'échantillonnage** | 44,1 kHz |
+| **Profondeur de bits** | 16 bits minimum |
+| **Volume sonore** | -16 LUFS (intégré), -1 dBTP (crête vraie) |
+| **Musique de fond** | -20 dB en dessous de la voix, libre de droits ou sous licence |
+| **Voix off** | Articulation claire, ton conversationnel, sans écho de pièce |
+| **Durée** | Exacte à la spécification (15,0s, 30,0s ou 60,0s — aucune tolérance) |
 
-### Dynamic Audio Creative
+### Créatif audio dynamique
 
-Dynamic audio personalizes the ad in real time based on listener data:
+L'audio dynamique personnalise la publicité en temps réel selon les données de l'auditeur :
 
-| Variable | Source | Example |
+| Variable | Source | Exemple |
 |---|---|---|
-| **Weather** | Listener's current weather | "Rainy day in Seattle? Perfect time to..." |
-| **Location** | Geo-IP / device location | "Hey Chicago, your nearest store is on Michigan Ave" |
-| **Time of Day** | Device clock | "Good morning — start your day with..." |
-| **Day of Week** | Calendar | "Happy Friday — this weekend, try..." |
-| **Listener Name** | CRM data match (Spotify) | "Hey Sarah, we made this playlist for you" |
+| **Météo** | Météo actuelle de l'auditeur | « Jour de pluie à Seattle ? Le moment parfait pour... » |
+| **Localisation** | Géo-IP / localisation de l'appareil | « Salut Chicago, votre magasin le plus proche est sur Michigan Ave » |
+| **Heure de la journée** | Horloge de l'appareil | « Bonjour — commencez votre journée avec... » |
+| **Jour de la semaine** | Calendrier | « Bon vendredi — ce week-end, essayez... » |
+| **Nom de l'auditeur** | Correspondance de données CRM (Spotify) | « Salut Sarah, on a créé cette playlist pour toi » |
 
-**Production:** Requires modular recording — record base script + all variable inserts separately with matching tone, pace, and room acoustics.
-
----
-
-## Measurement & Attribution
-
-### Core Metrics
-
-| Metric | Definition | Benchmark (Streaming) | Benchmark (Podcast) |
-|---|---|---|---|
-| **Listen-Through Rate (LTR)** | % who hear the full ad | 90%+ (15s), 80%+ (30s) | 95%+ (host-read), 85%+ (DAI) |
-| **Completion Rate** | % who hear to the end | 85%+ (15s), 75%+ (30s) | 90%+ (mid-roll) |
-| **Frequency** | Avg times a listener hears the ad | 3–5x/week optimal | 2–3x per listener per show |
-| **Reach** | Unique listeners exposed | Varies by budget | Varies by show size |
-| **CPM** | Cost per 1,000 impressions | $5–$15 (streaming) | $15–$50 (podcast) |
-| **CPCV** | Cost per completed view/listen | $0.01–$0.03 | $0.02–$0.06 |
-| **Brand Lift** | Awareness/consideration/intent change | 5–15% lift (average) | 10–25% lift (host-read) |
-
-### Podcast Attribution Methods
-
-| Method | How It Works | Accuracy | Ease |
-|---|---|---|---|
-| **Vanity URL** | brand.com/podcastname | Medium (some type direct) | Easy |
-| **Promo Code** | Unique code per show/campaign | High (direct match) | Easy |
-| **Pixel Attribution** | Spotify Ad Analytics (formerly Podsights), Podscribe pixel on site | High (impression-to-conversion) | Medium |
-| **Post-Listen Survey** | "How did you hear about us?" | Low (recall bias) | Easy |
-| **Branded Search Lift** | Monitor branded search volume during campaign | Medium (correlation) | Medium |
-| **Household Graph** | Match podcast device to conversion device | High | Hard (requires partner) |
-
-### Brand Lift Studies
-
-Available through Spotify Brand Lift and Nielsen for campaigns with sufficient spend (typically $25K+):
-- **Ad Recall:** "Do you remember hearing an ad for [brand]?" — Benchmark: 15–30% lift
-- **Awareness:** "Have you heard of [brand]?" — Benchmark: 5–15% lift
-- **Consideration:** "Would you consider [brand]?" — Benchmark: 3–10% lift
-- **Purchase Intent:** "How likely are you to purchase from [brand]?" — Benchmark: 2–8% lift
+**Production :** Nécessite un enregistrement modulaire — enregistrer le script de base et tous les inserts variables séparément avec un ton, un rythme et une acoustique de pièce correspondants.
 
 ---
 
-## Cross-Channel Integration
+## Mesure et attribution
 
-### Audio in the Media Mix
+### Métriques clés
 
-| Strategy | How It Works | Expected Impact |
+| Métrique | Définition | Benchmark (streaming) | Benchmark (podcast) |
+|---|---|---|---|
+| **Taux d'écoute complète (LTR)** | % qui entendent la publicité en entier | 90 %+ (15s), 80 %+ (30s) | 95 %+ (lu par l'animateur), 85 %+ (DAI) |
+| **Taux d'achèvement** | % qui écoutent jusqu'à la fin | 85 %+ (15s), 75 %+ (30s) | 90 %+ (mid-roll) |
+| **Fréquence** | Nombre moyen de fois qu'un auditeur entend la publicité | 3–5x/semaine optimal | 2–3x par auditeur par émission |
+| **Portée** | Auditeurs uniques exposés | Varie selon le budget | Varie selon la taille de l'émission |
+| **CPM** | Coût pour 1 000 impressions | 5–15 $ (streaming) | 15–50 $ (podcast) |
+| **CPCV** | Coût par écoute/visionnage complet | 0,01–0,03 $ | 0,02–0,06 $ |
+| **Brand Lift** | Évolution de la notoriété/considération/intention | 5–15 % de lift (moyenne) | 10–25 % de lift (lu par l'animateur) |
+
+### Méthodes d'attribution podcast
+
+| Méthode | Fonctionnement | Précision | Facilité |
+|---|---|---|---|
+| **URL personnalisée** | marque.com/nompodcast | Moyenne (certains tapent en direct) | Facile |
+| **Code promo** | Code unique par émission/campagne | Élevée (correspondance directe) | Facile |
+| **Attribution par pixel** | Spotify Ad Analytics (anciennement Podsights), pixel Podscribe sur le site | Élevée (impression-à-conversion) | Moyenne |
+| **Sondage post-écoute** | « Comment avez-vous entendu parler de nous ? » | Faible (biais de rappel) | Facile |
+| **Lift de recherche de marque** | Surveiller le volume de recherche de marque pendant la campagne | Moyenne (corrélation) | Moyenne |
+| **Graphe de foyer** | Faire correspondre l'appareil d'écoute podcast à l'appareil de conversion | Élevée | Difficile (nécessite un partenaire) |
+
+### Études de Brand Lift
+
+Disponibles via Spotify Brand Lift et Nielsen pour les campagnes avec une dépense suffisante (typiquement 25 000 $+) :
+- **Rappel publicitaire :** « Vous souvenez-vous avoir entendu une publicité pour [marque] ? » — Benchmark : 15–30 % de lift
+- **Notoriété :** « Avez-vous entendu parler de [marque] ? » — Benchmark : 5–15 % de lift
+- **Considération :** « Envisageriez-vous [marque] ? » — Benchmark : 3–10 % de lift
+- **Intention d'achat :** « Quelle est la probabilité que vous achetiez chez [marque] ? » — Benchmark : 2–8 % de lift
+
+---
+
+## Intégration cross-canal
+
+### L'audio dans le mix média
+
+| Stratégie | Fonctionnement | Impact attendu |
 |---|---|---|
-| **Audio → Display/Social Retarget** | Listeners who heard audio ad → retarget with visual creative | 20–40% higher display CTR from audio-primed audiences |
-| **Audio + Video Sequential** | Audio ad (awareness) → Video ad (consideration) → Display (conversion) | Full-funnel coverage across contexts |
-| **Audio + Search** | Audio drives branded search → capture with branded search ads | 15–25% branded search volume lift during audio flights |
-| **Podcast + Email** | Podcast sponsor → drive to email signup → nurture sequence | High-quality leads from trusted host endorsement |
-| **Streaming + CTV** | Audio ads during music → CTV ads during streaming video | Multi-format reach within same household |
+| **Retargeting audio → Display/Social** | Les auditeurs ayant entendu la publicité audio → retargeting avec un créatif visuel | CTR display supérieur de 20 à 40 % pour les audiences amorcées par l'audio |
+| **Séquentiel audio + vidéo** | Publicité audio (notoriété) → publicité vidéo (considération) → display (conversion) | Couverture full-funnel à travers les contextes |
+| **Audio + recherche** | L'audio génère de la recherche de marque → capturer avec des publicités de recherche de marque | Lift de volume de recherche de marque de 15 à 25 % pendant les flights audio |
+| **Podcast + email** | Sponsor de podcast → générer une inscription email → séquence de nurturing | Leads de haute qualité issus de la recommandation d'un animateur de confiance |
+| **Streaming + CTV** | Publicités audio pendant la musique → publicités CTV pendant la vidéo en streaming | Portée multi-format au sein du même foyer |
 
-### Frequency Capping Across Audio
+### Plafonnement de fréquence à travers l'audio
 
-- Spotify: Platform-level frequency caps (set in Ad Studio or via DSP)
-- Podcast: Frequency is per-show; cross-show frequency requires programmatic buying via SAN or DSP
-- Cross-platform: Use DSP (The Trade Desk, DV360) to manage frequency across streaming + podcast + CTV
-- Recommended total audio frequency: 5–8 impressions per listener per week across all audio channels
+- Spotify : Plafonds de fréquence au niveau plateforme (définis dans Ad Studio ou via DSP)
+- Podcast : La fréquence est par émission ; la fréquence cross-émission nécessite un achat programmatique via SAN ou DSP
+- Cross-plateforme : Utiliser un DSP (The Trade Desk, DV360) pour gérer la fréquence à travers streaming + podcast + CTV
+- Fréquence audio totale recommandée : 5 à 8 impressions par auditeur et par semaine sur tous les canaux audio
 
 ---
 
-## Audio Creative Best Practices
+## Bonnes pratiques créatives audio
 
-### What Works
+### Ce qui fonctionne
 
-- **Conversational tone** outperforms corporate/announcer voice by 20–30% in recall
-- **Sound logos / mnemonics** (Intel bong, Netflix "ta-dum") build long-term brand recognition — invest in a 2–3 second audio signature
-- **First 3 seconds must hook** — no "This ad is brought to you by..." openings (listeners tune out)
-- **Personalization** (dynamic weather, location, time) increases recall 30%+ vs generic
-- **Repetition of brand name** — mention brand name 2–3 times in a 30s spot (beginning and end minimum)
-- **One message per spot** — do not try to cover multiple features or offers
-- **CTA clarity** — simple, repeatable action ("visit brand dot com slash podcast" or "search for Brand in the app store")
+- **Le ton conversationnel** surpasse la voix corporate/annonceur de 20 à 30 % en rappel
+- **Les logos sonores / mnémoniques** (le bong d'Intel, le « ta-dum » de Netflix) construisent une reconnaissance de marque à long terme — investir dans une signature audio de 2 à 3 secondes
+- **Les 3 premières secondes doivent accrocher** — pas d'ouverture du type « Cette publicité vous est offerte par... » (les auditeurs décrochent)
+- **La personnalisation** (météo, localisation, heure dynamiques) augmente le rappel de 30 %+ vs générique
+- **La répétition du nom de marque** — mentionner le nom de la marque 2 à 3 fois dans un spot de 30s (au minimum au début et à la fin)
+- **Un seul message par spot** — ne pas essayer de couvrir plusieurs fonctionnalités ou offres
+- **La clarté du CTA** — action simple, répétable (« visitez marque point com slash podcast » ou « cherchez Marque dans l'app store »)
 
-### What Fails
+### Ce qui échoue
 
-- Starting with "Hey listeners" or generic greetings — feels like an interruption
-- Sound effects louder than voice — jarring in headphone environments
-- Multiple CTAs (visit website AND download app AND use promo code) — pick one
-- Overly produced spots that sound nothing like the surrounding content
-- 60-second spots without a compelling story — 30 seconds is the safe default
-- Background music that competes with voice — keep it at -20 dB minimum
+- Commencer par « Salut auditeurs » ou des salutations génériques — donne une impression d'interruption
+- Effets sonores plus forts que la voix — désagréable dans un environnement casque
+- CTA multiples (visitez le site ET téléchargez l'app ET utilisez le code promo) — en choisir un seul
+- Spots trop produits qui ne ressemblent en rien au contenu environnant
+- Spots de 60 secondes sans histoire convaincante — 30 secondes est le choix par défaut sûr
+- Musique de fond qui rivalise avec la voix — la garder à -20 dB minimum
 
-### Podcast Host-Read Guidelines
+### Directives pour le lu par l'animateur en podcast
 
-When briefing podcast hosts for host-read ads:
-- [ ] Provide 3–5 key talking points, not a rigid script — hosts need to sound natural
-- [ ] Include brand pronunciation guide and any terms to avoid
-- [ ] Specify the one CTA (vanity URL or promo code)
-- [ ] Share a 1-page brand brief with tone, audience, and key differentiator
-- [ ] Allow hosts to use their own language and personal anecdotes
-- [ ] Review and approve reads before air, or accept that baked-in reads cannot be edited
-- [ ] Set clear FTC disclosure expectations ("This episode is sponsored by...")
+Lors du briefing des animateurs de podcast pour des publicités lues par l'animateur :
+- [ ] Fournir 3 à 5 points clés à évoquer, pas un script rigide — les animateurs doivent sonner naturels
+- [ ] Inclure un guide de prononciation de la marque et les termes à éviter
+- [ ] Préciser le seul CTA (URL personnalisée ou code promo)
+- [ ] Partager un brief de marque d'une page avec le ton, l'audience et le différenciateur clé
+- [ ] Permettre aux animateurs d'utiliser leur propre langage et leurs anecdotes personnelles
+- [ ] Relire et approuver les lectures avant diffusion, ou accepter que les lectures intégrées en dur ne peuvent pas être modifiées
+- [ ] Fixer des attentes claires de mention légale FTC (« Cet épisode est sponsorisé par... »)
 
-> **Key principle:** Audio advertising succeeds when it respects the listener's environment. People listen to audio during personal, often intimate moments — commuting, working out, cooking, falling asleep. Ads that match the tone and context of these moments feel like natural companions rather than interruptions. The best audio ads sound like they belong.
+> **Principe clé :** La publicité audio réussit lorsqu'elle respecte l'environnement de l'auditeur. Les gens écoutent l'audio pendant des moments personnels, souvent intimes — trajet domicile-travail, sport, cuisine, endormissement. Les publicités qui correspondent au ton et au contexte de ces moments donnent l'impression d'être des compagnons naturels plutôt que des interruptions. Les meilleures publicités audio donnent l'impression d'être à leur place.

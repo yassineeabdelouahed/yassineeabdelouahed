@@ -1,73 +1,73 @@
-# Citation Optimization — Content Restructuring for AI Citation
+# Optimisation des citations — Restructuration de contenu pour la citation par l'IA
 
-## Overview
+## Vue d'ensemble
 
-Techniques for restructuring content so AI platforms are more likely to cite it as a source in generated answers.
+Techniques pour restructurer le contenu afin que les plateformes IA soient plus susceptibles de le citer comme source dans les réponses générées.
 
-**Google AI Mode note (mid-2026):** AI Mode (the conversational search tab, default for opted-in users since I/O on 19 May 2026, Gemini 3.5 Flash backbone) is a **distinct surface from AI Overviews** and frequently selects different citations for the same query. Its multi-turn follow-up flow rewards content that can be *drilled into*, not just skimmed for a one-line snippet: put a clean definitional answer up top (wins the first citation) and layer genuine "why / how / compared-to" depth beneath it (wins the follow-up citations). Optimize for both AI Mode and AI Overviews; never treat them as one surface.
+**Note sur Google AI Mode (mi-2026) :** AI Mode (l'onglet de recherche conversationnel, par défaut pour les utilisateurs ayant opté depuis l'I/O du 19 mai 2026, architecture Gemini 3.5 Flash) est une **surface distincte d'AI Overviews** et sélectionne fréquemment des citations différentes pour la même requête. Son flux de suivi multi-tours récompense le contenu qui peut être *approfondi*, pas seulement survolé pour un extrait d'une ligne : placez une réponse définitionnelle claire en tête (remporte la première citation) et superposez une véritable profondeur « pourquoi / comment / comparé à » en dessous (remporte les citations de suivi). Optimisez pour AI Mode et AI Overviews à la fois ; ne les traitez jamais comme une seule surface.
 
 ---
 
-## Citation-Worthy Content Patterns
+## Schémas de contenu dignes de citation
 
-### 1. Definitive Statements
+### 1. Affirmations définitives
 
-AI models favor content that makes clear, unambiguous claims backed by evidence.
+Les modèles d'IA privilégient un contenu qui formule des affirmations claires et non ambiguës, étayées par des preuves.
 
-**Pattern**: "[Subject] is [definitive claim]. According to [source], [supporting data]."
+**Schéma** : « [Sujet] est [affirmation définitive]. Selon [source], [donnée à l'appui]. »
 
-**Example**: "Customer acquisition cost (CAC) for B2B SaaS companies averages $205 for organic channels and $341 for paid channels. According to a 2024 FirstPageSage study, this represents a 15% increase from 2023."
+**Exemple** : « Le coût d'acquisition client (CAC) pour les entreprises SaaS B2B s'élève en moyenne à 205 $ pour les canaux organiques et 341 $ pour les canaux payants. Selon une étude FirstPageSage de 2024, cela représente une hausse de 15 % par rapport à 2023. »
 
-### 2. Data-First Paragraphs
+### 2. Paragraphes centrés sur la donnée
 
-Lead paragraphs with specific numbers, dates, or statistics.
+Ouvrir les paragraphes avec des chiffres, dates ou statistiques précis.
 
-**Weak**: "Email marketing is very effective for businesses."
-**Strong**: "Email marketing delivers an average ROI of $36 for every $1 spent (Litmus 2023), making it the highest-ROI digital marketing channel across industries."
+**Faible** : « Le marketing par e-mail est très efficace pour les entreprises. »
+**Fort** : « Le marketing par e-mail génère un ROI moyen de 36 $ pour chaque dollar dépensé (Litmus 2023), ce qui en fait le canal de marketing digital avec le meilleur ROI, tous secteurs confondus. »
 
-### 3. Structured Definitions
+### 3. Définitions structurées
 
-AI models frequently pull definitional content for "what is" queries.
+Les modèles d'IA récupèrent fréquemment du contenu définitionnel pour les requêtes de type « qu'est-ce que ».
 
-**Format**:
+**Format** :
 ```
-[Term] is [concise definition in one sentence]. It [expanded explanation].
-Key characteristics include: [list of 3-5 defining features].
+[Terme] est [définition concise en une phrase]. Il [explication développée].
+Les caractéristiques clés incluent : [liste de 3 à 5 traits distinctifs].
 ```
 
-### 4. Comparison Tables
+### 4. Tableaux comparatifs
 
-Structured comparisons are high-value citation targets.
+Les comparaisons structurées sont des cibles de citation à forte valeur.
 
 ```markdown
-| Feature | Option A | Option B | Option C |
+| Fonctionnalité | Option A | Option B | Option C |
 |---------|----------|----------|----------|
-| Price   | $X/mo    | $Y/mo    | $Z/mo    |
-| Best for| [use case]| [use case]| [use case]|
+| Prix   | X €/mois    | Y €/mois    | Z €/mois    |
+| Idéal pour| [cas d'usage]| [cas d'usage]| [cas d'usage]|
 ```
 
-### 5. Step-by-Step Processes
+### 5. Processus étape par étape
 
-Numbered processes are frequently cited for "how to" queries.
-
----
-
-## Content Formatting Rules for LLM Ingestion
-
-1. **Concise paragraphs**: 2-4 sentences max. AI models parse shorter paragraphs more reliably
-2. **Entity-rich text**: Include full proper names, specific numbers, and verifiable facts
-3. **Clear heading hierarchy**: H1 → H2 → H3 with descriptive headings (not clever/vague)
-4. **Front-load key info**: Put the most citation-worthy statement in the first sentence of each section
-5. **Avoid hedging language**: "Arguably" and "some experts say" reduce citation likelihood
-6. **Include recency signals**: Dates, "as of [year]," version numbers
-7. **Use lists and tables**: Structured data formats are easier for AI to parse and cite
-8. **Attribute claims**: Link to primary research, not secondary sources
+Les processus numérotés sont fréquemment cités pour les requêtes de type « comment faire ».
 
 ---
 
-## Schema Markup for AI Citation
+## Règles de formatage de contenu pour l'ingestion par les LLM
 
-### FAQ Schema (JSON-LD)
+1. **Paragraphes concis** : 2 à 4 phrases maximum. Les modèles d'IA analysent plus fiablement les paragraphes courts
+2. **Texte riche en entités** : inclure des noms propres complets, des chiffres précis et des faits vérifiables
+3. **Hiérarchie de titres claire** : H1 → H2 → H3 avec des titres descriptifs (pas ingénieux/vagues)
+4. **Placer les informations clés en tête** : mettre l'affirmation la plus digne de citation dans la première phrase de chaque section
+5. **Éviter le langage hésitant** : « on pourrait dire » et « certains experts affirment » réduisent la probabilité de citation
+6. **Inclure des signaux de fraîcheur** : dates, « à partir de [année] », numéros de version
+7. **Utiliser des listes et tableaux** : les formats de données structurées sont plus faciles à analyser et citer pour l'IA
+8. **Attribuer les affirmations** : lier vers des recherches primaires, pas des sources secondaires
+
+---
+
+## Balisage schema pour la citation par l'IA
+
+### Schema FAQ (JSON-LD)
 
 ```json
 {
@@ -84,7 +84,7 @@ Numbered processes are frequently cited for "how to" queries.
 }
 ```
 
-### HowTo Schema
+### Schema HowTo
 
 ```json
 {
@@ -99,7 +99,7 @@ Numbered processes are frequently cited for "how to" queries.
 }
 ```
 
-### Organization Schema
+### Schema Organization
 
 ```json
 {
@@ -114,7 +114,7 @@ Numbered processes are frequently cited for "how to" queries.
 }
 ```
 
-### Article Schema
+### Schema Article
 
 ```json
 {
@@ -135,34 +135,34 @@ Numbered processes are frequently cited for "how to" queries.
 
 ---
 
-## Source Authority Building
+## Construction de l'autorité des sources
 
-### Tier 1: Owned Authority
-- Publish original research with proprietary data
-- Create definitive guides (3,000+ words with unique frameworks)
-- Maintain expert author profiles with verifiable credentials
-- Keep content updated (dated content loses citation preference)
+### Niveau 1 : autorité propre
+- Publier des recherches originales avec des données propriétaires
+- Créer des guides de référence (3 000 mots et plus avec des cadres uniques)
+- Maintenir des profils d'auteurs experts avec des diplômes vérifiables
+- Garder le contenu à jour (le contenu daté perd sa préférence de citation)
 
-### Tier 2: Earned Authority
-- Get cited in industry publications
-- Earn Wikipedia references (do NOT edit Wikipedia directly)
-- Build Wikidata entity with proper sourcing
-- Secure .edu or .gov backlinks
+### Niveau 2 : autorité gagnée
+- Se faire citer dans des publications sectorielles
+- Gagner des références Wikipédia (NE PAS éditer Wikipédia directement)
+- Construire une entité Wikidata avec un sourçage approprié
+- Obtenir des backlinks .edu ou .gouv
 
-### Tier 3: Structured Authority
-- Implement comprehensive schema markup
-- Ensure Knowledge Graph accuracy
-- Maintain consistent NAP (Name, Address, Phone) across directories
-- Cross-reference brand info across Crunchbase, LinkedIn, About page
+### Niveau 3 : autorité structurée
+- Mettre en place un balisage schema complet
+- Garantir l'exactitude du Knowledge Graph
+- Maintenir un NAP (Nom, Adresse, Téléphone) cohérent sur tous les annuaires
+- Recouper les informations de marque entre Crunchbase, LinkedIn et la page « À propos »
 
 ---
 
-## Citation Testing Process
+## Processus de test des citations
 
-1. **Publish optimized content** with all formatting and schema
-2. **Wait 2-4 weeks** for indexing and AI model retrieval refresh
-3. **Test target queries** across all 5 AI platforms
-4. **Document results** with exact AI text and source attribution
-5. **Compare to baseline** (pre-optimization audit)
-6. **Iterate**: If not cited, analyze what the cited source has that yours doesn't
-7. **Re-test** after each significant update
+1. **Publier le contenu optimisé** avec l'ensemble du formatage et du schema
+2. **Attendre 2 à 4 semaines** pour l'indexation et le rafraîchissement de la récupération par les modèles d'IA
+3. **Tester les requêtes cibles** sur les 5 plateformes IA
+4. **Documenter les résultats** avec le texte exact de l'IA et l'attribution de source
+5. **Comparer à la référence** (audit avant optimisation)
+6. **Itérer** : si non cité, analyser ce que la source citée possède que la vôtre n'a pas
+7. **Retester** après chaque mise à jour significative

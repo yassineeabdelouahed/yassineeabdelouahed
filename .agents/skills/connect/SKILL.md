@@ -1,72 +1,72 @@
 ---
 name: connect
-description: "Guide the connection of a known MCP integration to the plugin — looks up the connector registry via connector-status.py, checks current status, and returns transport-specific setup steps (OAuth for HTTP connectors, env-var credentials plus the exact .mcp.json block for npx connectors), verification steps, and the skills each connector unlocks. Triggers on \"/digital-marketing-pro:connect\", \"connect Google Ads\", \"hook up Slack to the plugin\", \"set up the HubSpot integration\", \"how do I add Mailchimp\". Guidance and status checks only — the user adds credentials themselves; unknown or custom servers route to /digital-marketing-pro:add-integration."
+description: "Guider la connexion d'une intégration MCP connue au plugin — consulte le registre des connecteurs via connector-status.py, vérifie le statut actuel, et renvoie les étapes de configuration spécifiques au transport (OAuth pour les connecteurs HTTP, identifiants par variables d'environnement plus le bloc .mcp.json exact pour les connecteurs npx), les étapes de vérification, et les compétences que chaque connecteur débloque. Se déclenche sur \"/digital-marketing-pro:connect\", \"connect Google Ads\", \"hook up Slack to the plugin\", \"set up the HubSpot integration\", \"how do I add Mailchimp\". Guidance et vérifications de statut uniquement — l'utilisateur ajoute lui-même les identifiants ; les serveurs inconnus ou personnalisés sont orientés vers /digital-marketing-pro:add-integration."
 argument-hint: "[connector-name]"
 ---
 
 # /digital-marketing-pro:connect
 
-## Purpose
+## Objectif
 
-Guide users through connecting a specific MCP integration to the Digital Marketing Pro plugin. Provides platform-specific setup instructions, credential requirements, configuration steps, and verification. This is the user-friendly entry point for adding integrations — it handles the common cases (known connectors with established setup paths) while `/digital-marketing-pro:add-integration` handles custom or unknown MCP servers.
+Guider les utilisateurs dans la connexion d'une intégration MCP spécifique au plugin Digital Marketing Pro. Fournit des instructions de configuration spécifiques à la plateforme, les exigences d'identifiants, les étapes de configuration, et la vérification. C'est le point d'entrée convivial pour ajouter des intégrations — il gère les cas courants (connecteurs connus avec des parcours de configuration établis) tandis que `/digital-marketing-pro:add-integration` gère les serveurs MCP personnalisés ou inconnus.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Connector name**: The service to connect — e.g., "google-ads", "salesforce", "mailchimp", "twilio", "deepl". If the user provides a partial or informal name (e.g., "google analytics", "fb ads", "linkedin"), match it to the closest connector in the registry
-- **Environment** (optional): Whether they're using Claude Code (supports HTTP + npx) or Cowork (HTTP only). Defaults to auto-detect based on available context. If the requested connector is npx-only and the user is on Cowork, explain the limitation and suggest HTTP alternatives in the same category
+- **Nom du connecteur** : Le service à connecter — par exemple, « google-ads », « salesforce », « mailchimp », « twilio », « deepl ». Si l'utilisateur fournit un nom partiel ou informel (par exemple, « google analytics », « fb ads », « linkedin »), le faire correspondre au connecteur le plus proche dans le registre
+- **Environnement (optionnel)** : Si l'utilisateur utilise Claude Code (prend en charge HTTP + npx) ou Cowork (HTTP uniquement). Par défaut, détection automatique basée sur le contexte disponible. Si le connecteur demandé est uniquement npx et que l'utilisateur est sur Cowork, expliquer la limitation et suggérer des alternatives HTTP dans la même catégorie
 
-## Process
+## Processus
 
-1. **Look up connector**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/connector-status.py" --action setup-guide --name <connector>` to get the detailed setup guide for the requested connector. If the name doesn't match exactly, search the registry for close matches and suggest the correct name.
+1. **Consulter le connecteur** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/connector-status.py" --action setup-guide --name <connector>` pour obtenir le guide de configuration détaillé pour le connecteur demandé. Si le nom ne correspond pas exactement, rechercher des correspondances proches dans le registre et suggérer le nom correct.
 
-2. **Check current status**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/connector-status.py" --action check --name <connector>` to determine if the connector is already configured. If already connected, report that and show which skills it powers — ask if the user wants to verify connectivity or reconfigure.
+2. **Vérifier le statut actuel** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/connector-status.py" --action check --name <connector>` pour déterminer si le connecteur est déjà configuré. Si déjà connecté, signaler cela et montrer quelles compétences il alimente — demander si l'utilisateur souhaite vérifier la connectivité ou reconfigurer.
 
-3. **Present setup instructions based on transport type**:
+3. **Présenter les instructions de configuration selon le type de transport** :
 
-   **For HTTP connectors** (the 10 registry-backed ones: Slack, Canva, Figma, HubSpot, Ahrefs, Similarweb, Klaviyo, Amplitude, Google Calendar, Gmail):
-   - **Nothing is pre-connected.** The shipped `.mcp.json` is empty (`{"mcpServers":{}}`) so a fresh install has zero auto-connecting MCP servers — this is deliberate (it keeps Cowork and multi-tenant installs safe). These HTTP connectors are an **opt-in catalog**, documented in `.mcp.json.connectors-reference`.
-   - To enable one, the user copies its block from `.mcp.json.connectors-reference` into their own `.mcp.json` (or adds it via `/digital-marketing-pro:add-integration`), then restarts the client. HTTP connectors need no API key in the file — once the server is added, Claude prompts for OAuth on first use.
-   - Example: "Slack isn't connected yet. Copy the Slack block from `.mcp.json.connectors-reference` into your `.mcp.json` (or run `/digital-marketing-pro:add-integration slack`), restart, then run `/digital-marketing-pro:send-notification` — you'll be prompted to authorize Slack via OAuth."
-   - Notion, Stripe, Asana, and Webflow are **catalog-only** HTTP servers: configure them directly from `.mcp.json.connectors-reference` the same way, but they are not in the connector registry, so `/digital-marketing-pro:doctor` and `connector-status.py` will not report on them.
-   - List the skills this connector would enable once added
+   **Pour les connecteurs HTTP** (les 10 supportés par le registre : Slack, Canva, Figma, HubSpot, Ahrefs, Similarweb, Klaviyo, Amplitude, Google Calendar, Gmail) :
+   - **Rien n'est pré-connecté.** Le `.mcp.json` fourni est vide (`{"mcpServers":{}}`) afin qu'une installation fraîche ait zéro serveur MCP à connexion automatique — c'est délibéré (cela sécurise Cowork et les installations multi-locataires). Ces connecteurs HTTP sont un **catalogue à activation volontaire**, documenté dans `.mcp.json.connectors-reference`.
+   - Pour en activer un, l'utilisateur copie son bloc depuis `.mcp.json.connectors-reference` dans son propre `.mcp.json` (ou l'ajoute via `/digital-marketing-pro:add-integration`), puis redémarre le client. Les connecteurs HTTP n'ont besoin d'aucune clé API dans le fichier — une fois le serveur ajouté, Claude invite à l'OAuth lors de la première utilisation.
+   - Exemple : « Slack n'est pas encore connecté. Copiez le bloc Slack depuis `.mcp.json.connectors-reference` dans votre `.mcp.json` (ou exécutez `/digital-marketing-pro:add-integration slack`), redémarrez, puis exécutez `/digital-marketing-pro:send-notification` — vous serez invité à autoriser Slack via OAuth. »
+   - Notion, Stripe, Asana, et Webflow sont des serveurs HTTP **catalogue uniquement** : configurez-les directement depuis `.mcp.json.connectors-reference` de la même manière, mais ils ne sont pas dans le registre des connecteurs, donc `/digital-marketing-pro:doctor` et `connector-status.py` ne rendront pas compte à leur sujet.
+   - Lister les compétences que ce connecteur activerait une fois ajouté
 
-   **For npx connectors** (Google Ads, Meta, Salesforce, Twilio, etc.):
-   - List the specific environment variables needed with clear descriptions
-   - Provide platform-specific instructions for obtaining credentials:
-     - Where to go in the platform's dashboard to create API keys
-     - What permissions/scopes are needed
-     - Any prerequisites (developer accounts, app creation, etc.)
-   - Show the exact `.mcp.json` entry to add (from the setup guide)
-   - Offer two setup paths:
-     1. **Quick**: "Set the environment variables and run `/digital-marketing-pro:add-integration <name>` to configure automatically"
-     2. **Manual**: Show the JSON block to add to `.mcp.json` directly
-   - Note that npx connectors work in Claude Code only, not Cowork
+   **Pour les connecteurs npx** (Google Ads, Meta, Salesforce, Twilio, etc.) :
+   - Lister les variables d'environnement spécifiques nécessaires avec des descriptions claires
+   - Fournir des instructions spécifiques à la plateforme pour obtenir les identifiants :
+     - Où aller dans le tableau de bord de la plateforme pour créer des clés API
+     - Quelles permissions/scopes sont nécessaires
+     - Tout prérequis (comptes développeur, création d'application, etc.)
+   - Montrer l'entrée `.mcp.json` exacte à ajouter (issue du guide de configuration)
+   - Proposer deux parcours de configuration :
+     1. **Rapide** : « Définissez les variables d'environnement et exécutez `/digital-marketing-pro:add-integration <name>` pour configurer automatiquement »
+     2. **Manuel** : Montrer le bloc JSON à ajouter directement à `.mcp.json`
+   - Noter que les connecteurs npx fonctionnent uniquement dans Claude Code, pas dans Cowork
 
-4. **Handle unknown connectors**: If the connector name isn't in the registry:
-   - Search for close matches and suggest them
-   - If no match found, explain that it's a custom integration and guide them to `/digital-marketing-pro:add-integration` which handles npm package discovery and custom MCP server setup
-   - List the categories of connectors available so they can explore alternatives
+4. **Gérer les connecteurs inconnus** : Si le nom du connecteur n'est pas dans le registre :
+   - Rechercher des correspondances proches et les suggérer
+   - Si aucune correspondance n'est trouvée, expliquer qu'il s'agit d'une intégration personnalisée et guider vers `/digital-marketing-pro:add-integration` qui gère la découverte de packages npm et la configuration de serveur MCP personnalisé
+   - Lister les catégories de connecteurs disponibles afin qu'ils puissent explorer des alternatives
 
-5. **Verify after setup** (for npx connectors): After the user confirms they've set up credentials, offer to verify connectivity:
-   - Check that all required environment variables are set and non-empty
-   - Suggest running a read-only test via the connector to confirm it works
-   - Report success or diagnose failure with specific guidance
+5. **Vérifier après configuration** (pour les connecteurs npx) : Après que l'utilisateur confirme avoir configuré les identifiants, proposer de vérifier la connectivité :
+   - Vérifier que toutes les variables d'environnement requises sont définies et non vides
+   - Suggérer d'exécuter un test en lecture seule via le connecteur pour confirmer qu'il fonctionne
+   - Signaler le succès ou diagnostiquer l'échec avec des conseils spécifiques
 
-## Output
+## Résultat
 
-A connector setup guide containing:
+Un guide de configuration de connecteur contenant :
 
-- **Connector info**: Name, category, description, transport type (HTTP/npx), and current status (connected/not connected)
-- **Skills unlocked**: List of all skills this connector enables, with brief descriptions of what each skill does
-- **Setup instructions**: Step-by-step guide appropriate to the transport type — OAuth flow for HTTP, credential setup for npx
-- **Credential requirements** (npx only): Exact environment variable names, where to obtain them, and required permissions
-- **Configuration entry** (npx only): The exact JSON block to add to `.mcp.json`, ready to copy
-- **Verification steps**: How to confirm the connector is working after setup
-- **Alternative connectors**: Other connectors in the same category that the user might consider (e.g., "If you prefer Salesforce over HubSpot for CRM, run `/digital-marketing-pro:connect salesforce`")
-- **Next steps**: "Run `/digital-marketing-pro:integrations` to see your updated integration dashboard" and relevant skills to try
+- **Infos sur le connecteur** : Nom, catégorie, description, type de transport (HTTP/npx), et statut actuel (connecté/non connecté)
+- **Compétences débloquées** : Liste de toutes les compétences que ce connecteur active, avec de brèves descriptions de ce que chacune fait
+- **Instructions de configuration** : Guide étape par étape adapté au type de transport — flux OAuth pour HTTP, configuration d'identifiants pour npx
+- **Exigences d'identifiants** (npx uniquement) : Noms exacts des variables d'environnement, où les obtenir, et permissions requises
+- **Entrée de configuration** (npx uniquement) : Le bloc JSON exact à ajouter à `.mcp.json`, prêt à copier
+- **Étapes de vérification** : Comment confirmer que le connecteur fonctionne après la configuration
+- **Connecteurs alternatifs** : Autres connecteurs dans la même catégorie que l'utilisateur pourrait envisager (par exemple, « Si vous préférez Salesforce à HubSpot pour le CRM, exécutez `/digital-marketing-pro:connect salesforce` »)
+- **Prochaines étapes** : « Exécutez `/digital-marketing-pro:integrations` pour voir votre tableau de bord d'intégrations mis à jour » et les compétences pertinentes à essayer
 
-## Agents Used
+## Agents utilisés
 
-- No specialized agent needed — this skill uses the `connector-status.py` script directly and provides platform-specific guidance based on the connector registry
+- Aucun agent spécialisé nécessaire — cette compétence utilise directement le script `connector-status.py` et fournit des conseils spécifiques à la plateforme basés sur le registre des connecteurs

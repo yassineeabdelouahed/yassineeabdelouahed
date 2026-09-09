@@ -1,44 +1,49 @@
 ---
 name: signal-mine
-description: "Triage a raw dump of external material — news, social threads, community discussions, competitor moves, sales-call notes — into content angles the brand has authority to make, each mapped to a pillar with a format and timeliness window, plus an explicit dropped-signals list recording why the rest were rejected. Triggers on \"/digital-marketing-pro:signal-mine\", \"mine this\", \"what content is in here\", \"turn this industry news into ideas\", \"any angles for us in this thread\". Requires the brand profile (pillars, audience, competitors) and stops without one; unverified claims route to /digital-marketing-pro:verify-claims before anything cites them; surviving angles feed /digital-marketing-pro:content-engine."
+description: "Trie un vrac brut de matériel externe — actualités, fils sociaux, discussions de communauté, mouvements de concurrents, notes d'appels commerciaux — en angles de contenu que la marque a la légitimité de traiter, chacun associé à un pilier avec un format et une fenêtre de pertinence temporelle, ainsi qu'une liste explicite des signaux écartés indiquant pourquoi le reste a été rejeté. Se déclenche sur \"/digital-marketing-pro:signal-mine\", \"mine this\", \"what content is in here\", \"turn this industry news into ideas\", \"any angles for us in this thread\". Nécessite le profil de marque (piliers, audience, concurrents) et s'arrête sans lui ; les affirmations non vérifiées sont orientées vers /digital-marketing-pro:verify-claims avant que quoi que ce soit ne les cite ; les angles retenus alimentent /digital-marketing-pro:content-engine."
 argument-hint: "[brand-name] [--signals <pasted material>]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:signal-mine
 
-The intelligence layer between "interesting" and "ours to say". Raw input comes
-from anywhere — a newsletter, a Reddit thread, three competitor posts, notes
-from yesterday's sales calls. The output is only the angles this brand has
-standing to make, each mapped to a pillar, with everything else explicitly
-dropped.
+La couche d'intelligence entre « intéressant » et « qui nous appartient de dire ». L'entrée
+brute vient de n'importe où — une newsletter, un fil Reddit, trois posts de
+concurrents, des notes des appels commerciaux d'hier. Le résultat ne contient
+que les angles que cette marque a la légitimité de traiter, chacun associé à un
+pilier, tout le reste étant explicitement écarté.
 
-The mapping is the value. Any model can turn news into generic content ideas;
-the discipline is refusing the ideas that do not serve this brand's authority.
+L'association est ce qui fait la valeur. N'importe quel modèle peut transformer
+une actualité en idées de contenu génériques ; la discipline consiste à
+refuser les idées qui ne servent pas l'autorité de cette marque.
 
-## Inputs
+## Entrées
 
-- **The dump** — pasted material, in any shape. More is fine; this skill's job
-  is triage.
-- **The brand profile** — pillars, audience, positioning, competitors from
-  `~/.claude-marketing/brands/{slug}/`. **No profile → stop**: signal-mining
-  without pillars produces trend-chasing, which is the exact failure mode this
-  skill exists to prevent. Run /digital-marketing-pro:brand-setup first.
+- **Le vrac** — matériel collé, sous n'importe quelle forme. Plus il y en a,
+  mieux c'est ; le travail de cette compétence est le triage.
+- **Le profil de marque** — piliers, audience, positionnement, concurrents
+  issus de `~/.claude-marketing/brands/{slug}/`. **Pas de profil → arrêt** :
+  miner des signaux sans piliers produit une course aux tendances, exactement
+  le mode d'échec que cette compétence existe pour empêcher. Exécutez d'abord
+  /digital-marketing-pro:brand-setup.
 
-## Process
+## Processus
 
-1. Split the dump into discrete signals (a claim, an event, a sentiment, a
-   number, a competitor move).
-2. For each signal, ask the standing question: *does this brand have something
-   to say here that its audience would rather hear from it than from anyone
-   else?* Pillar fit is necessary but not sufficient — authority fit decides.
-3. For signals that pass: name the angle (the brand's specific take, not a
-   summary of the signal), the pillar, a format, and a timeliness window.
-4. For signals that fail: list them as dropped, with the reason. This list is
-   half the deliverable — it is the record of discipline, and the user may
-   overrule it with context you lack.
+1. Décomposer le vrac en signaux discrets (une affirmation, un événement, un
+   sentiment, un chiffre, un mouvement de concurrent).
+2. Pour chaque signal, poser la question de légitimité : *cette marque a-t-elle
+   quelque chose à dire ici que son audience préférerait entendre d'elle plutôt
+   que de n'importe qui d'autre ?* La correspondance au pilier est nécessaire
+   mais pas suffisante — c'est la légitimité qui décide.
+3. Pour les signaux retenus : nommer l'angle (la prise de position spécifique
+   de la marque, pas un résumé du signal), le pilier, un format, et une
+   fenêtre de pertinence temporelle.
+4. Pour les signaux rejetés : les lister comme écartés, avec la raison. Cette
+   liste représente la moitié du livrable — c'est la trace de la discipline
+   appliquée, et l'utilisateur peut la contredire avec un contexte que vous
+   n'avez pas.
 
-## Output structure
+## Structure de sortie
 
 ```
 # Signal mine — {brand}, {date}
@@ -59,19 +64,22 @@ the discipline is refusing the ideas that do not serve this brand's authority.
 route those through /digital-marketing-pro:verify-claims before drafting]
 ```
 
-## Critical rules
+## Règles critiques
 
-- **An angle is a take, not a topic.** "AI regulation is changing" is a topic.
-  "The new rules reward exactly the disclosure work our clients already do" is
-  an angle. Return angles.
-- **Authority beats relevance.** A signal can be perfectly on-pillar and still
-  be dropped because the brand has nothing distinctive to add. Say that
-  plainly.
-- **Timeliness is honest.** A "react this week" label on something that takes
-  three weeks to produce is a plan to be late. Match the window to the brand's
-  real production speed.
-- **Claims from pasted material are unverified by definition.** Nothing cites
-  a pasted number until it has been through verification — pasted text carries
-  no provenance, and provenance is the house rule.
-- **The dropped list always ships.** An output with ten angles and no
-  rejections means the triage did not happen.
+- **Un angle est une prise de position, pas un sujet.** « La réglementation IA
+  évolue » est un sujet. « Les nouvelles règles récompensent exactement le
+  travail de transparence que nos clients font déjà » est un angle. Renvoyez
+  des angles.
+- **L'autorité l'emporte sur la pertinence.** Un signal peut correspondre
+  parfaitement à un pilier et être malgré tout écarté parce que la marque n'a
+  rien de distinctif à y ajouter. Dites-le clairement.
+- **La pertinence temporelle est honnête.** Une étiquette « réagir cette
+  semaine » sur quelque chose qui prend trois semaines à produire est un plan
+  pour être en retard. Faites correspondre la fenêtre à la vitesse de
+  production réelle de la marque.
+- **Les affirmations issues du matériel collé sont non vérifiées par
+  définition.** Rien ne cite un chiffre collé avant qu'il soit passé par la
+  vérification — un texte collé ne porte aucune provenance, et la provenance
+  est la règle de la maison.
+- **La liste des écartés est toujours livrée.** Un résultat avec dix angles et
+  aucun rejet signifie que le triage n'a pas eu lieu.

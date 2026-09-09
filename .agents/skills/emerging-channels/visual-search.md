@@ -1,55 +1,55 @@
-# Visual Search — Image Optimization Guide
+# Recherche visuelle — Guide d'optimisation d'image
 
-> Visual search allows users to search using images instead of text. With Google Lens processing billions of queries and Pinterest Lens driving product discovery, visual search is a critical and growing channel. This guide covers optimization for every major visual search platform.
+> La recherche visuelle permet aux utilisateurs de rechercher à l'aide d'images plutôt que de texte. Avec Google Lens traitant des milliards de requêtes et Pinterest Lens propulsant la découverte de produits, la recherche visuelle est un canal critique et en pleine croissance. Ce guide couvre l'optimisation pour toutes les grandes plateformes de recherche visuelle.
 
 ---
 
-## Visual Search Platform Landscape
+## Paysage des plateformes de recherche visuelle
 
-| Platform | Monthly Active Users | Primary Use Case | How It Works |
+| Plateforme | Utilisateurs actifs mensuels | Cas d'usage principal | Fonctionnement |
 |----------|---------------------|-----------------|-------------|
-| **Google Lens** | ~20B visual searches/month (Google, late 2024) | Product identification, text extraction, landmark recognition | Camera/photo → Google index → results |
-| **Pinterest Lens** | 450M+ MAU (Pinterest total) | Product discovery, style inspiration, home decor | Camera/photo → Pinterest catalog → shoppable pins |
-| **Amazon Visual Search** | Integrated into Amazon app | Product matching on Amazon catalog | Camera/photo → Amazon product catalog → purchase |
-| **Bing Visual Search** | Integrated into Bing/Edge | General visual search, product finding | Image upload → Bing index → results |
-| **Snapchat Scan** | 750M+ MAU | Product identification (via Amazon), AR experiences | Camera → brand/product recognition → shopping |
+| **Google Lens** | ~20 Mds de recherches visuelles/mois (Google, fin 2024) | Identification produit, extraction de texte, reconnaissance de monuments | Caméra/photo → index Google → résultats |
+| **Pinterest Lens** | 450 M+ MAU (Pinterest total) | Découverte de produits, inspiration de style, décoration intérieure | Caméra/photo → catalogue Pinterest → épingles shoppables |
+| **Recherche visuelle Amazon** | Intégrée à l'application Amazon | Correspondance produit dans le catalogue Amazon | Caméra/photo → catalogue produit Amazon → achat |
+| **Recherche visuelle Bing** | Intégrée à Bing/Edge | Recherche visuelle générale, recherche de produit | Téléversement d'image → index Bing → résultats |
+| **Snapchat Scan** | 750 M+ MAU | Identification produit (via Amazon), expériences en réalité augmentée | Caméra → reconnaissance marque/produit → shopping |
 
 ---
 
-## Image Optimization Checklist for Visual Search
+## Checklist d'optimisation d'image pour la recherche visuelle
 
-### Technical Image Requirements
+### Exigences techniques d'image
 
-| Factor | Requirement | Why It Matters |
+| Facteur | Exigence | Pourquoi c'est important |
 |--------|------------|----------------|
-| File format | WebP (preferred), JPEG, PNG | WebP provides best compression + quality balance |
-| Resolution | Minimum 800x800px for products; 1200px+ for hero images | Higher resolution = better object recognition |
-| File size | < 200KB (compressed) | Page speed affects ranking; lazy load below-fold images |
-| Aspect ratio | Consistent per content type (1:1 for products, 16:9 for lifestyle) | Platform display consistency |
-| Background | Clean white or light background for product images | Improves object isolation for visual search algorithms |
-| Multiple angles | 4-8 images per product (front, back, side, detail, in-use) | More visual data = higher match probability |
-| Alt text | Descriptive, keyword-rich, natural language | Primary text signal for visual search indexing |
-| File name | Descriptive (blue-leather-crossbody-bag.webp, not IMG_4521.webp) | Secondary text signal for indexing |
-| EXIF data | Include relevant metadata (remove personal GPS data) | Some platforms use EXIF for context |
-| Lazy loading | Use `loading="lazy"` for below-fold images | Performance without sacrificing indexation |
+| Format de fichier | WebP (préféré), JPEG, PNG | WebP offre le meilleur équilibre compression + qualité |
+| Résolution | Minimum 800x800px pour les produits ; 1200px+ pour les images hero | Une résolution plus élevée = meilleure reconnaissance d'objet |
+| Taille de fichier | < 200 Ko (compressé) | La vitesse de page affecte le classement ; charger en différé les images sous la ligne de flottaison |
+| Ratio d'aspect | Cohérent par type de contenu (1:1 pour les produits, 16:9 pour l'ambiance) | Cohérence d'affichage sur la plateforme |
+| Arrière-plan | Fond blanc ou clair pour les images produit | Améliore l'isolation d'objet pour les algorithmes de recherche visuelle |
+| Angles multiples | 4-8 images par produit (avant, arrière, côté, détail, en usage) | Plus de données visuelles = probabilité de correspondance plus élevée |
+| Texte alternatif | Descriptif, riche en mots-clés, langage naturel | Signal texte principal pour l'indexation en recherche visuelle |
+| Nom de fichier | Descriptif (blue-leather-crossbody-bag.webp, pas IMG_4521.webp) | Signal texte secondaire pour l'indexation |
+| Données EXIF | Inclure les métadonnées pertinentes (supprimer les données GPS personnelles) | Certaines plateformes utilisent l'EXIF pour le contexte |
+| Chargement différé | Utiliser `loading="lazy"` pour les images sous la ligne de flottaison | Performance sans sacrifier l'indexation |
 
-### Image SEO Best Practices
+### Bonnes pratiques SEO d'image
 
-| Element | Best Practice | Example |
+| Élément | Bonne pratique | Exemple |
 |---------|--------------|---------|
-| Alt text | Describe the image as if explaining to someone who cannot see it | `alt="Women's blue leather crossbody bag with gold chain strap"` |
-| File name | Use hyphens, descriptive keywords, no underscores | `womens-blue-leather-crossbody-bag.webp` |
-| Title attribute | Add supplementary context (not a duplicate of alt) | `title="Available in 6 colors — Free shipping"` |
-| Caption | When visible captions are appropriate, include keyword-rich descriptions | Displayed under image on the page |
-| Surrounding text | Ensure nearby text content is relevant to the image | Product description paragraph adjacent to product images |
-| Image sitemap | Include all key images in your XML sitemap | `<image:image>` tags in sitemap.xml |
-| CDN delivery | Serve images from a CDN for global performance | Cloudflare, CloudFront, Fastly |
+| Texte alternatif | Décrire l'image comme si vous l'expliquiez à quelqu'un qui ne peut pas la voir | `alt="Sac bandoulière en cuir bleu pour femme avec chaîne dorée"` |
+| Nom de fichier | Utiliser des tirets, des mots-clés descriptifs, pas de underscores | `sac-bandouliere-cuir-bleu-femme.webp` |
+| Attribut title | Ajouter un contexte complémentaire (pas un doublon du alt) | `title="Disponible en 6 couleurs — Livraison gratuite"` |
+| Légende | Lorsque des légendes visibles sont appropriées, inclure des descriptions riches en mots-clés | Affichée sous l'image sur la page |
+| Texte environnant | S'assurer que le texte à proximité est pertinent par rapport à l'image | Paragraphe de description produit adjacent aux images produit |
+| Sitemap d'images | Inclure toutes les images clés dans votre sitemap XML | Balises `<image:image>` dans sitemap.xml |
+| Diffusion CDN | Servir les images depuis un CDN pour la performance mondiale | Cloudflare, CloudFront, Fastly |
 
 ---
 
-## Structured Data for Images
+## Données structurées pour les images
 
-### Product Schema with Image
+### Schema produit avec image
 
 ```json
 {
@@ -81,7 +81,7 @@
 }
 ```
 
-### ImageObject Schema
+### Schema ImageObject
 
 ```json
 {
@@ -98,171 +98,171 @@
 
 ---
 
-## Platform-Specific Optimization Guides
+## Guides d'optimisation spécifiques à chaque plateforme
 
 ### Google Lens
 
-| Optimization | Details |
+| Optimisation | Détails |
 |-------------|---------|
-| High-quality product images | Multiple angles, clean backgrounds, consistent lighting |
-| Product schema markup | Full Product schema with images, price, availability, ratings |
-| Google Merchant Center | Submit product feed with high-quality images and accurate data |
-| Google Business Profile photos | Upload business, product, and interior photos regularly |
-| Open Graph tags | Ensure correct `og:image` for all product pages |
-| Image sitemap | Include all product images in XML sitemap |
-| Text in images | Google Lens can read text — ensure any text in images is relevant and accurate |
+| Images produit de haute qualité | Angles multiples, arrière-plans propres, éclairage cohérent |
+| Balisage schema produit | Schema Product complet avec images, prix, disponibilité, avis |
+| Google Merchant Center | Soumettre le flux produit avec des images de haute qualité et des données exactes |
+| Photos de la fiche Google Business Profile | Téléverser régulièrement des photos d'entreprise, de produit, et d'intérieur |
+| Balises Open Graph | S'assurer que le `og:image` est correct pour toutes les pages produit |
+| Sitemap d'images | Inclure toutes les images produit dans le sitemap XML |
+| Texte dans les images | Google Lens peut lire le texte — s'assurer que tout texte dans les images est pertinent et exact |
 
 ### Pinterest Lens
 
-| Optimization | Details |
+| Optimisation | Détails |
 |-------------|---------|
-| Rich Pins | Claim your website and enable Product Rich Pins |
-| Pinterest catalog | Upload full product catalog via Pinterest Business |
-| Pin image quality | Vertical 2:3 ratio (1000x1500px), text overlay minimal |
-| Pin descriptions | Keyword-rich, natural language, include product details |
-| Board organization | Organize boards by category for better catalog matching |
-| Shop tab | Enable the Shop tab on your Pinterest business profile |
-| Pinterest tag | Install for conversion tracking and audience building |
-| Lifestyle + product images | Mix styled shots with clean product shots for broader matching |
+| Rich Pins | Revendiquer votre site web et activer les Rich Pins Produit |
+| Catalogue Pinterest | Téléverser le catalogue produit complet via Pinterest Business |
+| Qualité de l'image d'épingle | Ratio vertical 2:3 (1000x1500px), overlay de texte minimal |
+| Descriptions d'épingle | Riches en mots-clés, langage naturel, incluant les détails du produit |
+| Organisation des tableaux | Organiser les tableaux par catégorie pour une meilleure correspondance catalogue |
+| Onglet Boutique | Activer l'onglet Boutique sur votre profil Pinterest business |
+| Tag Pinterest | Installer pour le suivi des conversions et la construction d'audience |
+| Images d'ambiance + produit | Mélanger des photos stylisées avec des photos produit propres pour une correspondance plus large |
 
-### Amazon Visual Search
+### Recherche visuelle Amazon
 
-| Optimization | Details |
+| Optimisation | Détails |
 |-------------|---------|
-| Main image | White background, product fills 85%+ of frame, 1000x1000px+ |
-| Secondary images | Lifestyle, infographic, size reference, detail shots (up to 9) |
-| A+ Content images | Enhanced brand content with comparison charts and lifestyle imagery |
-| Image compliance | Follow Amazon's image requirements exactly (no watermarks, no text on main image) |
-| Product title | Descriptive, front-loaded with key attributes (brand, product type, key feature, size, color) |
-| Backend keywords | Include visual descriptors buyers might use (color, shape, style, material) |
+| Image principale | Fond blanc, le produit remplit 85 %+ du cadre, 1000x1000px+ |
+| Images secondaires | Ambiance, infographie, référence de taille, gros plans de détail (jusqu'à 9) |
+| Images de contenu A+ | Contenu de marque enrichi avec tableaux comparatifs et imagerie d'ambiance |
+| Conformité des images | Suivre exactement les exigences d'image d'Amazon (pas de filigrane, pas de texte sur l'image principale) |
+| Titre du produit | Descriptif, avec les attributs clés en premier (marque, type de produit, caractéristique clé, taille, couleur) |
+| Mots-clés backend | Inclure les descripteurs visuels que les acheteurs pourraient utiliser (couleur, forme, style, matériau) |
 
 ---
 
-## Visual Commerce
+## Commerce visuel
 
-### Shoppable Images
+### Images shoppables
 
-| Platform | Shoppable Feature | Setup |
-|----------|-------------------|-------|
-| Instagram | Product Tags in posts and Stories | Instagram Shopping + product catalog |
-| Pinterest | Product Pins with pricing and availability | Pinterest catalog + verified merchant |
-| Google | Product tags in Google Images | Google Merchant Center product feed |
-| Your website | Hotspot/tag overlays on lifestyle images | Shoppable image tools (Tagshop, Foursixty, Bazaarvoice Galleries) |
+| Plateforme | Fonctionnalité shoppable | Mise en place |
+|----------|--------------------|-------|
+| Instagram | Tags produit dans les posts et Stories | Instagram Shopping + catalogue produit |
+| Pinterest | Épingles produit avec prix et disponibilité | Catalogue Pinterest + marchand vérifié |
+| Google | Tags produit dans Google Images | Flux produit Google Merchant Center |
+| Votre site web | Overlays de points chauds/tags sur les images d'ambiance | Outils d'image shoppable (Tagshop, Foursixty, Bazaarvoice Galleries) |
 
-### AR Try-On
+### Essayage en réalité augmentée (AR)
 
-| Category | AR Capability | Platforms |
+| Catégorie | Capacité AR | Plateformes |
 |----------|--------------|-----------|
-| Eyewear | Virtual frame try-on | Warby Parker, Zenni (custom apps); Google AR in Search |
-| Beauty/Cosmetics | Virtual makeup application | L'Oreal ModiFace, Sephora, YouTube AR ads |
-| Furniture/Home | Room placement visualization | IKEA Place, Amazon AR View, Google 3D in Search |
-| Apparel | Virtual clothing fitting | Zeekit (Walmart), Amazon Virtual Try-On |
-| Footwear | Virtual shoe try-on | Nike, Gucci (Snapchat AR), Amazon |
+| Lunetterie | Essayage virtuel de montures | Warby Parker, Zenni (applications personnalisées) ; Google AR dans la recherche |
+| Beauté/Cosmétiques | Application virtuelle de maquillage | L'Oréal ModiFace, Sephora, publicités YouTube AR |
+| Meubles/Maison | Visualisation de placement dans une pièce | IKEA Place, Amazon AR View, Google 3D dans la recherche |
+| Habillement | Essayage virtuel de vêtements | Zeekit (Walmart), Amazon Virtual Try-On |
+| Chaussures | Essayage virtuel de chaussures | Nike, Gucci (Snapchat AR), Amazon |
 
-### AR Implementation Checklist
+### Checklist de mise en œuvre AR
 
-- [ ] Create 3D models of top-selling products (USDZ for Apple, GLB for Android)
-- [ ] Implement 3D/AR schema markup for eligible products
-- [ ] Upload 3D models to Google Merchant Center for Google AR
-- [ ] Evaluate Snapchat/Instagram AR filter partnerships for brand campaigns
-- [ ] Test AR experience across multiple devices before launch
-- [ ] Track AR engagement metrics: try-on rate, time spent, conversion lift
-
----
-
-## Product Photography Guidelines
-
-### Studio Product Photography
-
-| Element | Specification |
-|---------|-------------- |
-| Background | Pure white (#FFFFFF) for e-commerce; contextual for lifestyle |
-| Lighting | Consistent, even, shadow-free (softbox or light tent) |
-| Resolution | Minimum 2000x2000px for zoom capability |
-| Angles | Front, back, left side, right side, 45-degree, top-down, detail close-ups |
-| Consistency | Same lighting, background, and angle system across all products |
-| Color accuracy | Use color checker card; calibrate monitor |
-| Post-processing | Minimal — color correction, background removal, consistent cropping |
-
-### Lifestyle Photography
-
-| Element | Specification |
-|---------|-------------- |
-| Context | Show product in realistic use scenario |
-| Models | Diverse representation matching target audience |
-| Setting | Relevant environments (kitchen for cookware, office for tech) |
-| Styling | Minimal props that complement but don't compete with product |
-| Composition | Product clearly visible and identifiable, not obscured |
+- [ ] Créer des modèles 3D des produits les plus vendus (USDZ pour Apple, GLB pour Android)
+- [ ] Mettre en œuvre le balisage schema 3D/AR pour les produits éligibles
+- [ ] Téléverser les modèles 3D vers Google Merchant Center pour Google AR
+- [ ] Évaluer les partenariats de filtres AR Snapchat/Instagram pour les campagnes de marque
+- [ ] Tester l'expérience AR sur plusieurs appareils avant le lancement
+- [ ] Suivre les métriques d'engagement AR : taux d'essayage, temps passé, hausse de conversion
 
 ---
 
-## Pinterest Visual Search Strategy
+## Consignes de photographie produit
 
-### Pin Optimization for Visual Discovery
+### Photographie produit en studio
 
-| Factor | Best Practice |
+| Élément | Spécification |
+|---------|-------------- |
+| Arrière-plan | Blanc pur (#FFFFFF) pour l'e-commerce ; contextuel pour l'ambiance |
+| Éclairage | Cohérent, uniforme, sans ombre (boîte à lumière ou tente lumineuse) |
+| Résolution | Minimum 2000x2000px pour la capacité de zoom |
+| Angles | Avant, arrière, côté gauche, côté droit, 45 degrés, vue de dessus, gros plans de détail |
+| Cohérence | Même système d'éclairage, d'arrière-plan, et d'angle sur tous les produits |
+| Précision des couleurs | Utiliser une charte de couleurs ; calibrer le moniteur |
+| Post-traitement | Minimal — correction des couleurs, suppression d'arrière-plan, recadrage cohérent |
+
+### Photographie d'ambiance
+
+| Élément | Spécification |
+|---------|-------------- |
+| Contexte | Montrer le produit dans un scénario d'usage réaliste |
+| Modèles | Représentation diverse correspondant à l'audience cible |
+| Décor | Environnements pertinents (cuisine pour les ustensiles de cuisine, bureau pour la tech) |
+| Stylisme | Accessoires minimaux qui complètent sans concurrencer le produit |
+| Composition | Produit clairement visible et identifiable, non obscurci |
+
+---
+
+## Stratégie de recherche visuelle Pinterest
+
+### Optimisation des épingles pour la découverte visuelle
+
+| Facteur | Bonne pratique |
 |--------|--------------|
-| Image quality | High resolution, bright, visually appealing |
-| Image ratio | 2:3 vertical (1000x1500px) — takes up more feed space |
-| Text overlay | Minimal or none — let the image speak; if text, keep to <20% of image |
-| Descriptions | 100-500 characters, keyword-rich, natural language |
-| Hashtags | 2-5 relevant hashtags (Pinterest uses them for categorization) |
-| Alt text | Fill in the alt text field for every Pin |
-| Boards | Organize into specific, keyword-rich board names |
-| Consistency | Pin 5-15 times per day, spread across boards |
-| Fresh content | Prioritize new images; Pinterest favors fresh Pins |
+| Qualité de l'image | Haute résolution, lumineuse, visuellement attrayante |
+| Ratio de l'image | Vertical 2:3 (1000x1500px) — occupe plus d'espace dans le fil |
+| Overlay de texte | Minimal ou absent — laisser l'image parler ; si texte, rester sous 20 % de l'image |
+| Descriptions | 100-500 caractères, riches en mots-clés, langage naturel |
+| Hashtags | 2-5 hashtags pertinents (Pinterest les utilise pour la catégorisation) |
+| Texte alternatif | Renseigner le champ de texte alternatif pour chaque épingle |
+| Tableaux | Organiser en noms de tableaux spécifiques et riches en mots-clés |
+| Cohérence | Épingler 5-15 fois par jour, réparti sur les tableaux |
+| Contenu frais | Prioriser les nouvelles images ; Pinterest favorise les épingles fraîches |
 
-### Pinterest Shopping Setup
+### Mise en place du shopping Pinterest
 
-1. Claim your website on Pinterest Business
-2. Upload product catalog (Shopify, WooCommerce, or manual CSV)
-3. Enable Product Rich Pins (auto-pulls price, availability)
-4. Verify as a Pinterest Verified Merchant
-5. Organize catalog into product groups
-6. Enable the Shop tab on your profile
-7. Create Shopping Ads to amplify top products
+1. Revendiquer votre site web sur Pinterest Business
+2. Téléverser le catalogue produit (Shopify, WooCommerce, ou CSV manuel)
+3. Activer les Rich Pins Produit (récupère automatiquement prix, disponibilité)
+4. Se faire vérifier en tant que marchand Pinterest vérifié
+5. Organiser le catalogue en groupes de produits
+6. Activer l'onglet Boutique sur votre profil
+7. Créer des Shopping Ads pour amplifier les produits phares
 
 ---
 
-## Measurement & Analytics
+## Mesure & Analytics
 
-### Visual Search KPIs
+### KPI de la recherche visuelle
 
-| KPI | Definition | Measurement Method |
+| KPI | Définition | Méthode de mesure |
 |-----|-----------|-------------------|
-| Image search traffic | Visits from Google Images, Lens referrals | Google Search Console → Search Appearance → Image |
-| Pinterest impressions | Times your Pins are shown in visual search results | Pinterest Analytics |
-| Pin click-through rate | Clicks / impressions on product Pins | Pinterest Analytics |
-| Product image conversion rate | Purchases from product image landing pages | GA4 with image-specific landing page tracking |
-| AR try-on engagement | Users who activate AR features | In-app analytics, Google Merchant Center |
-| Visual search conversion lift | Revenue from visual-search-attributed sessions | Attribution modeling |
-| Image sitemap coverage | % of product images indexed | Google Search Console |
+| Trafic de recherche d'image | Visites depuis Google Images, renvois Lens | Google Search Console → Apparence dans les résultats de recherche → Image |
+| Impressions Pinterest | Nombre de fois où vos épingles apparaissent dans les résultats de recherche visuelle | Pinterest Analytics |
+| Taux de clic sur épingle | Clics / impressions sur les épingles produit | Pinterest Analytics |
+| Taux de conversion des images produit | Achats depuis les pages d'atterrissage d'images produit | GA4 avec suivi de page d'atterrissage spécifique à l'image |
+| Engagement d'essayage AR | Utilisateurs activant les fonctionnalités AR | Analytics intégrés à l'application, Google Merchant Center |
+| Hausse de conversion de la recherche visuelle | Chiffre d'affaires issu de sessions attribuées à la recherche visuelle | Modélisation d'attribution |
+| Couverture du sitemap d'images | % d'images produit indexées | Google Search Console |
 
-### Google Search Console — Image Performance
+### Google Search Console — Performance des images
 
-Navigate to: Performance → Search Appearance → filter by "Image" to see:
-- Total image impressions and clicks
-- Top queries driving image traffic
-- Top pages with image results
-- Click-through rate for image results vs. web results
-
----
-
-## Visual Search Optimization Checklist — Summary
-
-- [ ] All product images meet minimum 800x800px resolution
-- [ ] Clean white backgrounds for primary product images
-- [ ] 4-8 images per product covering all angles
-- [ ] Descriptive alt text on every image
-- [ ] Descriptive, hyphenated file names on every image
-- [ ] Product schema with image array implemented on all product pages
-- [ ] Images included in XML sitemap
-- [ ] Google Merchant Center product feed active and current
-- [ ] Pinterest catalog uploaded, Rich Pins enabled, Verified Merchant
-- [ ] Shoppable images implemented on lifestyle content
-- [ ] 3D/AR assets created for top products (if applicable)
-- [ ] Image performance tracked in Google Search Console and Pinterest Analytics
+Naviguer vers : Performance → Apparence dans les résultats de recherche → filtrer par « Image » pour voir :
+- Total des impressions et clics d'image
+- Principales requêtes générant du trafic d'image
+- Principales pages avec des résultats d'image
+- Taux de clic des résultats d'image vs résultats web
 
 ---
 
-> **Visual search bridges the gap between seeing and buying.** When someone points their camera at a product, you have seconds to be the answer. The brands that invest in image quality, structured data, and platform-specific optimization will capture this growing channel.
+## Checklist d'optimisation de la recherche visuelle — Résumé
+
+- [ ] Toutes les images produit atteignent une résolution minimale de 800x800px
+- [ ] Arrière-plans blancs propres pour les images produit principales
+- [ ] 4-8 images par produit couvrant tous les angles
+- [ ] Texte alternatif descriptif sur chaque image
+- [ ] Noms de fichiers descriptifs et à tirets sur chaque image
+- [ ] Schema produit avec tableau d'images mis en œuvre sur toutes les pages produit
+- [ ] Images incluses dans le sitemap XML
+- [ ] Flux produit Google Merchant Center actif et à jour
+- [ ] Catalogue Pinterest téléversé, Rich Pins activés, marchand vérifié
+- [ ] Images shoppables mises en œuvre sur le contenu d'ambiance
+- [ ] Actifs 3D/AR créés pour les produits phares (le cas échéant)
+- [ ] Performance des images suivie dans Google Search Console et Pinterest Analytics
+
+---
+
+> **La recherche visuelle comble l'écart entre voir et acheter.** Lorsque quelqu'un pointe sa caméra vers un produit, vous avez quelques secondes pour être la réponse. Les marques qui investissent dans la qualité d'image, les données structurées, et l'optimisation spécifique à chaque plateforme capteront ce canal en pleine croissance.

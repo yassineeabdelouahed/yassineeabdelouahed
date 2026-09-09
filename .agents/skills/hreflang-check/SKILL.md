@@ -1,53 +1,216 @@
 ---
 name: hreflang-check
-description: "Audit hreflang implementation from supplied HTML, sitemap XML, or SEO-tool exports (it does not crawl sites) — running seven checks: self-referential tags, bidirectional pairs, valid ISO 639-1/3166-1 codes, x-default, duplicates, absolute URLs, and URL consistency — producing a 0-100 score, a language coverage matrix, and corrected code snippets per issue. Triggers on \"/digital-marketing-pro:hreflang-check\", \"audit our hreflang tags\", \"why is Google serving the wrong language version\", \"check x-default configuration\", \"validate our international SEO tags\". Compares findings against the brand's configured languages in profile.json to flag markets with no hreflang coverage."
+description: "Auditer l'implémentation hreflang à partir de HTML, XML de sitemap, ou exports d'outils SEO fournis (ne crawle pas les sites) — en exécutant sept vérifications : balises auto-référentielles, paires bidirectionnelles, codes ISO 639-1/3166-1 valides, x-default, doublons, URL absolues, et cohérence des URL — produisant un score sur 0-100, une matrice de couverture linguistique, et des extraits de code corrigés par problème. Se déclenche sur « /digital-marketing-pro:hreflang-check », « audite nos balises hreflang », « pourquoi Google sert-il la mauvaise version linguistique », « vérifie la configuration x-default », « valide nos balises SEO international ». Compare les constats aux langues configurées de la marque dans profile.json pour signaler les marchés sans couverture hreflang."
 ---
 
 # /digital-marketing-pro:hreflang-check
 
-## Purpose
+## Objectif
 
-Audit hreflang tag implementation for multilingual and multi-regional SEO. Hreflang annotations tell search engines which language and regional version of a page to serve to which audience — when implemented incorrectly, the wrong language version appears in search results, pages compete against each other for the same queries, and international organic traffic is lost to mis-served content. This command performs a thorough technical audit of hreflang implementation, checking that all language versions are properly cross-referenced with correct annotations, that every page references itself, that references are bidirectional (if page A points to page B, page B points back to page A), that language-region codes are valid, that x-default fallback is configured, and that no orphaned references point to non-existent pages.
+Auditer l'implémentation des balises hreflang pour le SEO multilingue et
+multirégional. Les annotations hreflang indiquent aux moteurs de recherche quelle
+version linguistique et régionale d'une page servir à quel public — lorsqu'elles sont
+mal implémentées, la mauvaise version linguistique apparaît dans les résultats de
+recherche, les pages entrent en concurrence entre elles pour les mêmes requêtes, et du
+trafic organique international est perdu à cause d'un contenu mal servi. Cette
+commande réalise un audit technique approfondi de l'implémentation hreflang,
+vérifiant que toutes les versions linguistiques sont correctement recoupées avec des
+annotations correctes, que chaque page se référence elle-même, que les références sont
+bidirectionnelles (si la page A pointe vers la page B, la page B pointe en retour vers
+la page A), que les codes langue-région sont valides, que le repli x-default est
+configuré, et qu'aucune référence orpheline ne pointe vers des pages inexistantes.
 
-Critical for any brand operating multilingual or multi-regional websites. Hreflang errors are among the most common international SEO issues — they are invisible to users, rarely caught in manual QA, and silently degrade search performance across every affected market. Even a single missing bidirectional reference can prevent search engines from correctly associating language versions, causing the wrong page to rank or duplicate content signals to suppress both versions. This command surfaces every implementation error with specific fix instructions and corrected code snippets.
+Critique pour toute marque exploitant des sites web multilingues ou multirégionaux.
+Les erreurs hreflang comptent parmi les problèmes de SEO international les plus
+courants — elles sont invisibles pour les utilisateurs, rarement détectées lors du
+contrôle qualité manuel, et dégradent silencieusement la performance de recherche sur
+chaque marché concerné. Même une seule référence bidirectionnelle manquante peut
+empêcher les moteurs de recherche d'associer correctement les versions linguistiques,
+provoquant le classement de la mauvaise page ou la suppression des signaux de contenu
+dupliqué pour les deux versions. Cette commande fait apparaître chaque erreur
+d'implémentation avec des instructions de correction précises et des extraits de code
+corrigés.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Website URL or sitemap URL**: The starting point for the audit. Can be a single page URL (audits hreflang on that page and its referenced alternates), a sitemap URL (audits all pages listed in the sitemap), or a list of specific page URLs to check. Note: the plugin does not crawl websites directly — if a URL is provided, the user will be guided to provide the HTML source or hreflang data for analysis. Alternatively, the user can paste HTML source, hreflang tag sets, or exported hreflang data directly
-- **Specific page URLs to check** (optional): A subset of pages to focus the audit on — useful for auditing a specific section (e.g., all product pages, all blog posts) rather than the entire site. If omitted, all pages with hreflang annotations in the provided data are audited
-- **Expected language-region codes** (optional): The set of language-region codes that should appear in hreflang annotations (e.g., en-US, de-DE, fr-FR, es-ES, ja-JP). Defaults to the brand's configured languages from the language configuration in profile.json. Used to flag missing language versions — if the brand targets de-DE but no hreflang for de-DE exists on a page, that is flagged as a gap
+- **URL du site web ou du sitemap** : Le point de départ de l'audit. Peut être une URL
+  de page unique (audite le hreflang sur cette page et ses alternatives référencées),
+  une URL de sitemap (audite toutes les pages listées dans le sitemap), ou une liste
+  d'URL de pages spécifiques à vérifier. Remarque : le plugin ne crawle pas
+  directement les sites web — si une URL est fournie, l'utilisateur sera guidé pour
+  fournir le code source HTML ou les données hreflang à analyser. Alternativement,
+  l'utilisateur peut coller directement le code source HTML, des ensembles de balises
+  hreflang, ou des données hreflang exportées
+- **URL de pages spécifiques à vérifier** (optionnel) : Un sous-ensemble de pages sur
+  lequel concentrer l'audit — utile pour auditer une section spécifique (par exemple,
+  toutes les pages produit, tous les articles de blog) plutôt que le site entier. Si
+  omis, toutes les pages avec des annotations hreflang dans les données fournies sont
+  auditées
+- **Codes langue-région attendus** (optionnel) : L'ensemble des codes langue-région
+  qui devraient apparaître dans les annotations hreflang (par exemple, en-US, de-DE,
+  fr-FR, es-ES, ja-JP). Par défaut, les langues configurées de la marque depuis la
+  configuration linguistique dans profile.json. Utilisé pour signaler les versions
+  linguistiques manquantes — si la marque cible de-DE mais qu'aucun hreflang pour
+  de-DE n'existe sur une page, ceci est signalé comme une lacune
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Load the language configuration to determine expected languages — primary language, secondary languages, and content languages. These form the expected hreflang set that every page should ideally reference. Apply compliance rules for target markets (`skills/context-engine/compliance-rules.md`) and industry context. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load any international SEO guidelines. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Obtain hreflang data**: If a URL is provided, note that actual website crawling requires external tooling — the plugin does not perform HTTP requests to arbitrary websites. Guide the user to provide hreflang data in one of these formats: (a) raw HTML source of pages containing `<link rel="alternate" hreflang="..." href="...">` tags, (b) HTTP header hreflang annotations, (c) XML sitemap with `xhtml:link` hreflang entries, (d) a structured export from an SEO tool (Screaming Frog, Sitebulb, Ahrefs) listing hreflang annotations per URL, or (e) a manually compiled list of URL-to-language mappings. If the user has already provided HTML or hreflang data inline, proceed directly to parsing.
-3. **Parse all hreflang annotations**: Extract every hreflang annotation from the provided data. For each page, build a map of: the page's own URL, and every `hreflang` attribute with its associated `href` URL. Track the source of each annotation (HTML `<link>` tag, HTTP header, or XML sitemap) since implementation method affects how fixes should be applied. Build a complete cross-reference matrix: for every page, which other pages does it reference, and in which languages.
-4. **Check each page for hreflang correctness**: For every page with hreflang annotations, run the following checks:
-   - **(a) Self-referential tag present**: Every page must include a hreflang annotation pointing to itself with its own language-region code. Missing self-referential tags are the most common hreflang error and cause search engines to ignore the entire hreflang set for that page. Severity: critical.
-   - **(b) Bidirectional references**: If page A in en-US references page B in de-DE, then page B must also reference page A in en-US. Check every reference pair for bidirectional consistency. One-directional references are treated as errors by search engines and may cause the entire annotation set to be disregarded. Severity: critical.
-   - **(c) Valid language-region codes**: Validate every hreflang value against ISO 639-1 for the language component and ISO 3166-1 Alpha-2 for the optional region component. Common errors: using `en-UK` instead of `en-GB`, using three-letter codes like `eng` instead of `en`, using country codes alone like `US` without the language prefix. Severity: critical for invalid codes (search engines ignore them), warning for non-standard but parseable codes.
-   - **(d) x-default tag present**: Check that an x-default hreflang annotation exists, pointing to the fallback page for users whose language does not match any specific hreflang. Typically points to the English version or a language selector page. Missing x-default means users in non-targeted regions may see an arbitrary language version. Severity: warning.
-   - **(e) No duplicate language codes**: Check that each page does not have multiple hreflang annotations with the same language-region code pointing to different URLs. Duplicate codes create ambiguity and search engines may ignore all annotations for that language. Severity: critical.
-   - **(f) URLs are absolute**: Verify all href values in hreflang annotations are absolute URLs (starting with https:// or http://), not relative paths. Relative URLs in hreflang are invalid per the specification. Severity: critical.
-   - **(g) URL consistency**: Check that all referenced URLs use consistent protocols (all HTTPS or all HTTP, not mixed), consistent www/non-www prefixes, and consistent trailing slash conventions. Inconsistencies may cause search engines to treat references as pointing to different pages. Severity: warning.
-5. **Cross-reference against brand language configuration**: Compare the set of language-region codes found in hreflang annotations against the brand's configured languages (from profile.json language config or user-provided expected codes). Flag any configured language that is missing from hreflang annotations — this means a language the brand actively targets has no hreflang support, so search engines cannot properly route users to that language version. Also flag any hreflang language codes that are not in the brand's configuration — these may be legitimate (languages configured elsewhere) or may indicate stale annotations for discontinued language versions.
-6. **Generate prioritized fix list with code snippets**: For every issue found, generate the specific corrected hreflang code. For missing self-referential tags: provide the exact `<link rel="alternate" hreflang="xx-XX" href="https://...">` tag to add. For bidirectional mismatches: provide the tags that need to be added to the page missing the back-reference. For invalid codes: provide the corrected code with the valid language-region value. For missing x-default: provide the recommended x-default tag with the appropriate fallback URL. Group fixes by page so implementation can be done page-by-page, and also group by issue type so systemic problems (e.g., "self-referential tags missing on all 47 blog posts") can be addressed with a single template fix rather than 47 individual corrections.
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json`
+   pour obtenir le slug actif, puis charger
+   `~/.claude-marketing/brands/{slug}/profile.json`. Charger la configuration
+   linguistique pour déterminer les langues attendues — langue principale, langues
+   secondaires, et langues de contenu. Celles-ci forment l'ensemble hreflang attendu
+   auquel chaque page devrait idéalement faire référence. Appliquer les règles de
+   conformité pour les marchés ciblés (`skills/context-engine/compliance-rules.md`) et
+   le contexte sectoriel. Vérifier aussi les guidelines dans
+   `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes,
+   charger toute guideline SEO international. Vérifier les SOP d'agence dans
+   `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer une
+   marque d'abord (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les
+   valeurs par défaut.
+2. **Obtenir les données hreflang** : Si une URL est fournie, noter que le crawl réel
+   d'un site web nécessite un outillage externe — le plugin n'effectue pas de requêtes
+   HTTP vers des sites web arbitraires. Guider l'utilisateur pour fournir les données
+   hreflang dans l'un de ces formats : (a) code source HTML brut des pages contenant
+   des balises `<link rel="alternate" hreflang="..." href="...">`, (b) annotations
+   hreflang dans les en-têtes HTTP, (c) sitemap XML avec des entrées hreflang
+   `xhtml:link`, (d) un export structuré d'un outil SEO (Screaming Frog, Sitebulb,
+   Ahrefs) listant les annotations hreflang par URL, ou (e) une liste de
+   correspondances URL-vers-langue compilée manuellement. Si l'utilisateur a déjà
+   fourni du HTML ou des données hreflang en ligne, passer directement à l'analyse.
+3. **Analyser toutes les annotations hreflang** : Extraire chaque annotation hreflang
+   des données fournies. Pour chaque page, construire une carte de : l'URL propre de
+   la page, et chaque attribut `hreflang` avec son URL `href` associée. Suivre la
+   source de chaque annotation (balise HTML `<link>`, en-tête HTTP, ou sitemap XML)
+   puisque la méthode d'implémentation affecte la façon dont les corrections doivent
+   être appliquées. Construire une matrice de référence croisée complète : pour
+   chaque page, quelles autres pages référence-t-elle, et dans quelles langues.
+4. **Vérifier chaque page pour la correction hreflang** : Pour chaque page avec des
+   annotations hreflang, exécuter les vérifications suivantes :
+   - **(a) Présence de la balise auto-référentielle** : Chaque page doit inclure une
+     annotation hreflang pointant vers elle-même avec son propre code langue-région.
+     L'absence de balises auto-référentielles est l'erreur hreflang la plus courante
+     et amène les moteurs de recherche à ignorer l'ensemble hreflang entier pour cette
+     page. Sévérité : critique.
+   - **(b) Références bidirectionnelles** : Si la page A en en-US référence la page B
+     en de-DE, alors la page B doit aussi référencer la page A en en-US. Vérifier
+     chaque paire de références pour la cohérence bidirectionnelle. Les références
+     unidirectionnelles sont traitées comme des erreurs par les moteurs de recherche
+     et peuvent entraîner l'ensemble d'annotations tout entier à être ignoré.
+     Sévérité : critique.
+   - **(c) Codes langue-région valides** : Valider chaque valeur hreflang selon ISO
+     639-1 pour la composante langue et ISO 3166-1 Alpha-2 pour la composante région
+     optionnelle. Erreurs courantes : utiliser `en-UK` au lieu de `en-GB`, utiliser
+     des codes à trois lettres comme `eng` au lieu de `en`, utiliser des codes pays
+     seuls comme `US` sans le préfixe de langue. Sévérité : critique pour les codes
+     invalides (les moteurs de recherche les ignorent), avertissement pour les codes
+     non standards mais analysables.
+   - **(d) Présence de la balise x-default** : Vérifier qu'une annotation hreflang
+     x-default existe, pointant vers la page de repli pour les utilisateurs dont la
+     langue ne correspond à aucun hreflang spécifique. Pointe généralement vers la
+     version anglaise ou une page de sélection de langue. L'absence de x-default
+     signifie que les utilisateurs dans des régions non ciblées peuvent voir une
+     version linguistique arbitraire. Sévérité : avertissement.
+   - **(e) Pas de codes de langue en double** : Vérifier que chaque page n'a pas
+     plusieurs annotations hreflang avec le même code langue-région pointant vers des
+     URL différentes. Les codes en double créent de l'ambiguïté et les moteurs de
+     recherche peuvent ignorer toutes les annotations pour cette langue. Sévérité :
+     critique.
+   - **(f) URL absolues** : Vérifier que toutes les valeurs href dans les annotations
+     hreflang sont des URL absolues (commençant par https:// ou http://), pas des
+     chemins relatifs. Les URL relatives dans hreflang sont invalides selon la
+     spécification. Sévérité : critique.
+   - **(g) Cohérence des URL** : Vérifier que toutes les URL référencées utilisent des
+     protocoles cohérents (toutes HTTPS ou toutes HTTP, pas mélangées), des préfixes
+     www/non-www cohérents, et des conventions de barre oblique finale cohérentes.
+     Les incohérences peuvent amener les moteurs de recherche à traiter les
+     références comme pointant vers des pages différentes. Sévérité : avertissement.
+5. **Recouper avec la configuration linguistique de la marque** : Comparer l'ensemble
+   des codes langue-région trouvés dans les annotations hreflang à celles configurées
+   pour la marque (depuis la configuration linguistique de profile.json ou les codes
+   attendus fournis par l'utilisateur). Signaler toute langue configurée absente des
+   annotations hreflang — cela signifie qu'une langue activement ciblée par la marque
+   n'a aucun support hreflang, donc les moteurs de recherche ne peuvent pas router
+   correctement les utilisateurs vers cette version linguistique. Signaler aussi tout
+   code de langue hreflang absent de la configuration de la marque — ceux-ci peuvent
+   être légitimes (langues configurées ailleurs) ou peuvent indiquer des annotations
+   obsolètes pour des versions linguistiques abandonnées.
+6. **Générer une liste de corrections priorisée avec extraits de code** : Pour chaque
+   problème trouvé, générer le code hreflang corrigé précis. Pour les balises
+   auto-référentielles manquantes : fournir la balise exacte
+   `<link rel="alternate" hreflang="xx-XX" href="https://...">` à ajouter. Pour les
+   incohérences bidirectionnelles : fournir les balises à ajouter sur la page à
+   laquelle manque la référence retour. Pour les codes invalides : fournir le code
+   corrigé avec la valeur langue-région valide. Pour le x-default manquant : fournir
+   la balise x-default recommandée avec l'URL de repli appropriée. Regrouper les
+   corrections par page pour permettre une mise en œuvre page par page, et aussi par
+   type de problème afin que les problèmes systémiques (par exemple, « balises
+   auto-référentielles manquantes sur les 47 articles de blog ») puissent être traités
+   par une correction unique de modèle plutôt que 47 corrections individuelles.
 
-## Output
+## Résultat
 
-A structured hreflang audit report containing:
+Un rapport d'audit hreflang structuré contenant :
 
-- **Hreflang audit score**: Overall implementation quality score (0-100) reflecting the ratio of correct annotations to total annotations, weighted by issue severity — critical issues reduce the score significantly, warnings moderately, and info items minimally
-- **Audit summary statistics**: Total pages audited, total hreflang annotations found, total unique language-region codes detected, total issues found (broken down by critical/warning/info), and percentage of pages with fully correct hreflang implementation
-- **Issues by type**: Grouped findings for each check category — missing self-referential tags (count and affected pages), orphaned references (references pointing to non-existent or non-responding pages), invalid language-region codes (with the invalid code and correction), missing x-default (pages without fallback configuration), bidirectional mismatches (page pairs where the reference is one-directional), duplicate language codes (pages with conflicting annotations for the same language), relative URLs (annotations using non-absolute paths), and URL consistency issues (mixed protocols, www/non-www, trailing slash mismatches)
-- **Specific fix recommendations**: For every issue, the exact corrected hreflang code snippet ready for implementation — the user can copy the corrected `<link>` tag or sitemap entry directly into their page. Fixes are grouped both by page (for page-level implementation) and by issue type (for systemic fixes across the site)
-- **Language coverage matrix**: A table showing pages (rows) versus language-region codes (columns), with each cell indicating whether a correct hreflang annotation exists (pass), exists with issues (warning), or is missing (gap). Immediately visualizes which pages have complete hreflang coverage and which have holes
-- **Brand language configuration comparison**: Side-by-side comparison of the brand's configured languages versus the languages found in hreflang annotations — highlighting languages that the brand targets but that have no hreflang support (missing coverage), and hreflang languages that are not in the brand's configuration (potentially stale or unmanaged)
-- **Implementation method notes**: Based on the source of annotations (HTML link tags, HTTP headers, XML sitemap), provide implementation-specific guidance for applying fixes — where to add tags in the HTML `<head>`, how to configure HTTP headers, or how to update the XML sitemap with `xhtml:link` entries
+- **Score d'audit hreflang** : Score global de qualité d'implémentation (0-100)
+  reflétant le ratio d'annotations correctes sur le total des annotations, pondéré par
+  la sévérité des problèmes — les problèmes critiques réduisent significativement le
+  score, les avertissements modérément, et les éléments informatifs minimalement
+- **Statistiques récapitulatives de l'audit** : Total des pages auditées, total des
+  annotations hreflang trouvées, total des codes langue-région uniques détectés,
+  total des problèmes trouvés (répartis en critique/avertissement/info), et
+  pourcentage de pages avec une implémentation hreflang entièrement correcte
+- **Problèmes par type** : Constats regroupés pour chaque catégorie de vérification —
+  balises auto-référentielles manquantes (décompte et pages concernées), références
+  orphelines (références pointant vers des pages inexistantes ou ne répondant pas),
+  codes langue-région invalides (avec le code invalide et la correction), x-default
+  manquant (pages sans configuration de repli), incohérences bidirectionnelles (paires
+  de pages où la référence est unidirectionnelle), codes de langue en double (pages
+  avec des annotations conflictuelles pour la même langue), URL relatives (annotations
+  utilisant des chemins non absolus), et problèmes de cohérence des URL (protocoles
+  mélangés, www/non-www, incohérences de barre oblique finale)
+- **Recommandations de correction spécifiques** : Pour chaque problème, l'extrait de
+  code hreflang corrigé précis prêt pour la mise en œuvre — l'utilisateur peut copier
+  directement la balise `<link>` corrigée ou l'entrée de sitemap dans sa page. Les
+  corrections sont regroupées à la fois par page (pour la mise en œuvre au niveau de
+  la page) et par type de problème (pour les corrections systémiques à l'échelle du
+  site)
+- **Matrice de couverture linguistique** : Un tableau montrant les pages (lignes)
+  versus les codes langue-région (colonnes), chaque cellule indiquant si une
+  annotation hreflang correcte existe (réussite), existe avec des problèmes
+  (avertissement), ou est manquante (lacune). Visualise immédiatement quelles pages
+  ont une couverture hreflang complète et lesquelles ont des trous
+- **Comparaison de la configuration linguistique de la marque** : Comparaison côte à
+  côte des langues configurées de la marque versus les langues trouvées dans les
+  annotations hreflang — mettant en évidence les langues que la marque cible mais qui
+  n'ont aucun support hreflang (couverture manquante), et les langues hreflang qui ne
+  sont pas dans la configuration de la marque (potentiellement obsolètes ou non
+  gérées)
+- **Notes de méthode d'implémentation** : Sur la base de la source des annotations
+  (balises link HTML, en-têtes HTTP, sitemap XML), fournir des conseils spécifiques à
+  l'implémentation pour appliquer les corrections — où ajouter des balises dans le
+  `<head>` du HTML, comment configurer les en-têtes HTTP, ou comment mettre à jour le
+  sitemap XML avec des entrées `xhtml:link`
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — Leads the hreflang technical audit. Parses hreflang annotations from HTML, HTTP headers, and XML sitemaps. Executes all seven validation checks (self-referential, bidirectional, valid codes, x-default, duplicate codes, absolute URLs, URL consistency) against international SEO specifications. Generates corrected hreflang code snippets for every issue found. Assesses the SEO impact of hreflang errors on international search visibility and provides prioritization guidance based on which fixes will have the greatest impact on organic traffic routing. References `skills/technical-seo/international-seo.md` for hreflang specification details and best practices
-- **localization-specialist** — Validates language-region codes against ISO 639-1 and ISO 3166-1 standards, cross-references hreflang language coverage against the brand's configured languages to identify coverage gaps, and flags language codes that may be technically valid but inappropriate for the brand's target markets (e.g., generic `zh` instead of `zh-Hans` or `zh-Hant` for distinct Chinese market targeting). Provides language-specific context for the coverage matrix and recommends language-region granularity based on the brand's market strategy
+- **seo-specialist** — Dirige l'audit technique hreflang. Analyse les annotations
+  hreflang depuis le HTML, les en-têtes HTTP et les sitemaps XML. Exécute les sept
+  vérifications de validation (auto-référentiel, bidirectionnel, codes valides,
+  x-default, codes en double, URL absolues, cohérence des URL) par rapport aux
+  spécifications SEO international. Génère des extraits de code hreflang corrigés
+  pour chaque problème trouvé. Évalue l'impact SEO des erreurs hreflang sur la
+  visibilité de recherche internationale et fournit des conseils de priorisation
+  basés sur les corrections qui auront le plus grand impact sur le routage du trafic
+  organique. Se réfère à `skills/technical-seo/international-seo.md` pour les
+  détails de la spécification hreflang et les bonnes pratiques
+- **localization-specialist** — Valide les codes langue-région par rapport aux normes
+  ISO 639-1 et ISO 3166-1, recoupe la couverture linguistique hreflang par rapport
+  aux langues configurées de la marque pour identifier les lacunes de couverture, et
+  signale les codes de langue qui peuvent être techniquement valides mais
+  inappropriés pour les marchés cibles de la marque (par exemple, `zh` générique au
+  lieu de `zh-Hans` ou `zh-Hant` pour un ciblage distinct du marché chinois). Fournit
+  un contexte spécifique à la langue pour la matrice de couverture et recommande la
+  granularité langue-région basée sur la stratégie de marché de la marque

@@ -1,70 +1,70 @@
-# LLM Content Strategy — AI-First Content Framework
+# Stratégie de contenu LLM — Cadre de contenu AI-first
 
-## Overview
+## Vue d'ensemble
 
-A content strategy specifically designed to build brand authority in AI-generated answers. Focuses on creating content that AI models trust, cite, and accurately represent.
+Une stratégie de contenu spécifiquement conçue pour construire l'autorité de marque dans les réponses générées par IA. Elle se concentre sur la création de contenu que les modèles d'IA font confiance, citent et représentent fidèlement.
 
-**Design for Google AI Mode, not just AI Overviews (mid-2026):** AI Mode — the conversational search surface that became the default for opted-in users at I/O (19 May 2026) on a Gemini 3.5 Flash backbone — is a **distinct surface** that cites differently than AI Overviews and supports multi-turn follow-ups. Structure each authority piece so it answers the headline query cleanly *and* holds up to the obvious follow-ups (definitions, comparisons, edge cases, "how do I actually do this"). Publishing structured, **dated** updates on owned channels also makes a brand more legible to the user-configured AI Information Agents launching for AI Pro / Ultra in summer 2026. Audit AI Mode and AI Overviews separately and reconcile actual impressions via `/digital-marketing-pro:gsc-ai-performance`.
+**Concevoir pour Google AI Mode, pas seulement pour AI Overviews (mi-2026) :** AI Mode — la surface de recherche conversationnelle devenue l'expérience par défaut pour les utilisateurs ayant opté à l'I/O (19 mai 2026) sur une architecture Gemini 3.5 Flash — est une **surface distincte** qui cite différemment d'AI Overviews et prend en charge les questions de suivi multi-tours. Structurez chaque contenu d'autorité pour qu'il réponde proprement à la requête principale *et* qu'il tienne la route face aux questions de suivi évidentes (définitions, comparaisons, cas limites, « comment faire concrètement »). La publication de mises à jour structurées et **datées** sur les canaux propres rend aussi une marque plus lisible pour les AI Information Agents configurés par l'utilisateur, dont le lancement est prévu pour AI Pro / Ultra à l'été 2026. Auditez AI Mode et AI Overviews séparément et réconciliez les impressions réelles via `/digital-marketing-pro:gsc-ai-performance`.
 
 ---
 
-## Topical Authority Mapping
+## Cartographie de l'autorité thématique
 
-### Methodology
+### Méthodologie
 
-1. **Define core topics** (3-5 primary topics the brand should own in AI answers)
-2. **Map subtopics** for each core topic (10-20 subtopics per core)
-3. **Audit existing coverage** (which subtopics have quality content vs gaps)
-4. **Check AI citation status** (which subtopics generate AI answers citing brand content)
-5. **Prioritize gaps** (high-value subtopics where brand has no coverage)
+1. **Définir les sujets clés** (3 à 5 sujets principaux que la marque devrait posséder dans les réponses IA)
+2. **Cartographier les sous-sujets** pour chaque sujet clé (10 à 20 sous-sujets par sujet principal)
+3. **Auditer la couverture existante** (quels sous-sujets ont un contenu de qualité vs des lacunes)
+4. **Vérifier le statut de citation IA** (quels sous-sujets génèrent des réponses IA citant le contenu de la marque)
+5. **Prioriser les lacunes** (sous-sujets à forte valeur où la marque n'a aucune couverture)
 
-### Authority Score Per Topic
+### Score d'autorité par sujet
 
-For each core topic, score:
+Pour chaque sujet clé, noter :
 
-| Signal | Weight | Scoring |
+| Signal | Pondération | Notation |
 |--------|--------|---------|
-| Content depth (word count, detail level) | 20% | 0-10 |
-| Content freshness (last updated) | 15% | 0-10 |
-| Unique data/insights | 20% | 0-10 |
-| Expert authorship | 15% | 0-10 |
-| External citations (backlinks, media mentions) | 15% | 0-10 |
-| Schema markup coverage | 10% | 0-10 |
-| AI citation rate | 5% | 0-10 |
+| Profondeur du contenu (nombre de mots, niveau de détail) | 20 % | 0-10 |
+| Fraîcheur du contenu (dernière mise à jour) | 15 % | 0-10 |
+| Données/insights uniques | 20 % | 0-10 |
+| Paternité experte | 15 % | 0-10 |
+| Citations externes (backlinks, mentions médiatiques) | 15 % | 0-10 |
+| Couverture du balisage schema | 10 % | 0-10 |
+| Taux de citation IA | 5 % | 0-10 |
 
-**Authority Score** = Weighted average × 10 (0-100 scale)
+**Score d'autorité** = moyenne pondérée × 10 (échelle 0-100)
 
 ---
 
-## Content Gap Analysis for AI Visibility
+## Analyse des lacunes de contenu pour la visibilité IA
 
-### Gap Types
+### Types de lacunes
 
-1. **Coverage gap**: Topic exists but brand has no content on it
-2. **Depth gap**: Content exists but is too shallow vs what AI cites
-3. **Freshness gap**: Content is outdated (AI prefers recent, dated sources)
-4. **Authority gap**: Content lacks expert signals (no author credentials, no data)
-5. **Structure gap**: Content isn't formatted for AI parsing (no schema, poor headings)
-6. **Entity gap**: Content doesn't connect to the brand's knowledge graph entity
+1. **Lacune de couverture** : le sujet existe mais la marque n'a aucun contenu à ce sujet
+2. **Lacune de profondeur** : le contenu existe mais est trop superficiel par rapport à ce que l'IA cite
+3. **Lacune de fraîcheur** : le contenu est obsolète (l'IA préfère les sources récentes et datées)
+4. **Lacune d'autorité** : le contenu manque de signaux d'expertise (pas de diplômes d'auteur, pas de données)
+5. **Lacune de structure** : le contenu n'est pas formaté pour l'analyse par l'IA (pas de schema, titres médiocres)
+6. **Lacune d'entité** : le contenu ne se connecte pas à l'entité du graphe de connaissances de la marque
 
-### Prioritization Matrix
+### Matrice de priorisation
 
-Score each gap: **Impact** (how much AI visibility would improve) × **Effort** (how hard to fix)
+Noter chaque lacune : **Impact** (combien la visibilité IA s'améliorerait-elle) × **Effort** (à quel point est-ce difficile à corriger)
 
-| Priority | Impact | Effort | Action |
+| Priorité | Impact | Effort | Action |
 |----------|--------|--------|--------|
-| P1 — Quick wins | High | Low | Fix immediately (schema, freshness, formatting) |
-| P2 — Strategic | High | High | Plan content creation (new pillar content) |
-| P3 — Opportunistic | Low | Low | Batch with other updates |
-| P4 — Defer | Low | High | Backlog unless resources allow |
+| P1 — Gains rapides | Élevé | Faible | Corriger immédiatement (schema, fraîcheur, formatage) |
+| P2 — Stratégique | Élevé | Élevé | Planifier la création de contenu (nouveau contenu pilier) |
+| P3 — Opportuniste | Faible | Faible | Regrouper avec d'autres mises à jour |
+| P4 — Différer | Faible | Élevé | Mettre en backlog sauf si les ressources le permettent |
 
 ---
 
-## LLM-Optimized Content Templates
+## Modèles de contenu optimisés pour les LLM
 
-### Template 1: Definitional Content
+### Modèle 1 : contenu définitionnel
 
-Best for: "What is [X]?" queries
+Idéal pour : les requêtes « Qu'est-ce que [X] ? »
 
 ```markdown
 # What Is [Term]?
@@ -86,9 +86,9 @@ Best for: "What is [X]?" queries
 [2-3 real-world examples with specifics]
 ```
 
-### Template 2: Comparative Content
+### Modèle 2 : contenu comparatif
 
-Best for: "[A] vs [B]" queries
+Idéal pour : les requêtes « [A] vs [B] »
 
 ```markdown
 # [Option A] vs [Option B]: [Year] Comparison
@@ -108,9 +108,9 @@ Best for: "[A] vs [B]" queries
 [Clear recommendation with reasoning]
 ```
 
-### Template 3: Procedural Content
+### Modèle 3 : contenu procédural
 
-Best for: "How to [do X]" queries
+Idéal pour : les requêtes « Comment [faire X] »
 
 ```markdown
 # How to [Achieve Outcome] (Step-by-Step Guide)
@@ -131,9 +131,9 @@ Best for: "How to [do X]" queries
 - [Mistake 1]: [Why it's a problem and what to do instead]
 ```
 
-### Template 4: Statistical/Data Content
+### Modèle 4 : contenu statistique/données
 
-Best for: "[topic] statistics" and benchmark queries
+Idéal pour : les requêtes « statistiques [sujet] » et de benchmark
 
 ```markdown
 # [Topic] Statistics and Benchmarks ([Year])
@@ -151,33 +151,33 @@ Best for: "[topic] statistics" and benchmark queries
 
 ---
 
-## 90-Day AI Authority Building Plan
+## Plan de construction de l'autorité IA sur 90 jours
 
-### Days 1-30: Foundation
+### Jours 1-30 : fondations
 
-- [ ] Complete AI visibility audit (baseline scores)
-- [ ] Fix all entity consistency issues
-- [ ] Implement Organization, Article, FAQ schema on key pages
-- [ ] Update or create Wikidata entry
-- [ ] Identify top 5 content gaps for priority queries
-- [ ] Publish 2-3 definitional/comparative pieces on gap topics
-- [ ] Ensure all content has expert author attribution
+- [ ] Réaliser l'audit complet de visibilité IA (scores de référence)
+- [ ] Corriger tous les problèmes de cohérence des entités
+- [ ] Mettre en place les schemas Organization, Article, FAQ sur les pages clés
+- [ ] Mettre à jour ou créer l'entrée Wikidata
+- [ ] Identifier les 5 principales lacunes de contenu pour les requêtes prioritaires
+- [ ] Publier 2 à 3 contenus définitionnels/comparatifs sur les sujets en lacune
+- [ ] S'assurer que tout le contenu porte une attribution d'auteur expert
 
-### Days 31-60: Building
+### Jours 31-60 : construction
 
-- [ ] Publish 4-6 pillar content pieces on core topics
-- [ ] Create original research or data content (survey, analysis, benchmark)
-- [ ] Implement HowTo schema on procedural content
-- [ ] Build internal linking between topic cluster pages
-- [ ] Secure 2-3 external citations (guest posts, press mentions)
-- [ ] Re-test priority queries on all AI platforms (measure improvement)
+- [ ] Publier 4 à 6 contenus piliers sur les sujets clés
+- [ ] Créer une recherche originale ou un contenu de données (enquête, analyse, benchmark)
+- [ ] Mettre en place le schema HowTo sur le contenu procédural
+- [ ] Construire un maillage interne entre les pages de cluster thématique
+- [ ] Obtenir 2 à 3 citations externes (articles invités, mentions presse)
+- [ ] Retester les requêtes prioritaires sur toutes les plateformes IA (mesurer l'amélioration)
 
-### Days 61-90: Scaling
+### Jours 61-90 : montée en puissance
 
-- [ ] Fill remaining content gaps across all core topics
-- [ ] Publish thought leadership content (unique frameworks, predictions)
-- [ ] Expand schema markup to all eligible pages
-- [ ] Build FAQ content targeting AI platform questions
-- [ ] Conduct second full AI visibility audit
-- [ ] Document score changes and identify next priority actions
-- [ ] Set up ongoing monthly monitoring cadence
+- [ ] Combler les lacunes de contenu restantes sur tous les sujets clés
+- [ ] Publier du contenu de leadership éclairé (cadres uniques, prédictions)
+- [ ] Étendre le balisage schema à toutes les pages éligibles
+- [ ] Construire du contenu FAQ ciblant les questions des plateformes IA
+- [ ] Mener un second audit complet de visibilité IA
+- [ ] Documenter les changements de score et identifier les prochaines actions prioritaires
+- [ ] Mettre en place une cadence de suivi mensuel continu

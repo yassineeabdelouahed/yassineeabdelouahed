@@ -1,6 +1,6 @@
 ---
 name: growth-plan
-description: "Produce the 11-section Growth Plan — the flagship Part 8 client-facing deliverable that synthesises Parts 1-7 of the engagement into a single 20-30 page executable strategy with three-scenario forecasts, an In-Market/Out-Market budget split, and a 30/60/90 timeline, exported to PDF and DOCX. Triggers on \"/digital-marketing-pro:growth-plan\", \"produce the growth plan\", \"write the strategy document for the client\", \"run part 8\", \"synthesise the engagement into one deliverable\". Requires Parts 1-7 complete; reads the Four Core Documents, the Living Project Instruction File, and Part 7 prep docs, and pairs with /digital-marketing-pro:yearly-planner."
+description: "Produire le Growth Plan en 11 sections — le livrable phare orienté client de la Partie 8, qui synthétise les Parties 1-7 de l'engagement en une seule stratégie exécutable de 20-30 pages avec des prévisions à trois scénarios, une répartition budgétaire In-Market/Out-Market, et un calendrier 30/60/90, exportée en PDF et DOCX. Se déclenche sur « /digital-marketing-pro:growth-plan », « produce the growth plan », « write the strategy document for the client », « run part 8 », « synthesise the engagement into one deliverable ». Nécessite les Parties 1-7 terminées ; lit les Four Core Documents, le Living Project Instruction File et les documents de préparation de la Partie 7, et se combine avec /digital-marketing-pro:yearly-planner."
 user-invocable: true
 triggers:
   - produce the growth plan
@@ -14,32 +14,42 @@ engagement-part: "8"
 view-preference: v2-primary
 ---
 
-# /digital-marketing-pro:growth-plan — Part 8 Flagship Deliverable
+# /digital-marketing-pro:growth-plan — Livrable phare de la Partie 8
 
-The Growth Plan is the flagship client-facing deliverable. It synthesises every internal document produced in Parts 1–7 into a single 11-section narrative answering: *"How will we grow this business digitally, and what will it cost?"*
+Le Growth Plan est le livrable phare orienté client. Il synthétise chaque document
+interne produit dans les Parties 1 à 7 en un seul récit en 11 sections répondant à :
+*« Comment allons-nous faire croître cette entreprise numériquement, et à quel coût ? »*
 
-## Context efficiency
+## Efficacité contextuelle
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List the brand's data dir (`~/.claude-marketing/brands/{slug}/`, or `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` when that env var is set) before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** pour tout fichier référencé, puis `Read`
+uniquement les plages correspondantes avec `offset` + `limit`. Lister le répertoire de
+données de la marque (`~/.claude-marketing/brands/{slug}/`, ou
+`$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` si cette variable
+d'environnement est définie) avant d'ouvrir des fichiers. Lors d'une réinvocation en
+cours de session, ignorer les fichiers déjà dans le contexte.
 
-**Specification:** [growth-plan-template.md](../context-engine/growth-plan-template.md) — the canonical 11-section structure.
+**Spécification :** [growth-plan-template.md](../context-engine/growth-plan-template.md) —
+la structure canonique en 11 sections.
 
-## Pre-conditions
+## Conditions préalables
 
-Before producing the Growth Plan, verify:
+Avant de produire le Growth Plan, vérifier :
 
-1. **Parts 1–7 completed** in the engagement
-2. **Four Core Documents at canonical version** (v2 if re-runs happened, v1 otherwise)
-3. **Living Project Instruction File current** — reflects the current strategic facts
-4. **Part 7 Preparation Documents completed** — campaign architecture, naming conventions, KPI tree, content pillars, asset inventory, approval chains
+1. **Parties 1–7 terminées** dans l'engagement
+2. **Four Core Documents à la version canonique** (v2 si des ré-exécutions ont eu lieu, v1 sinon)
+3. **Living Project Instruction File à jour** — reflète les faits stratégiques actuels
+4. **Documents de préparation de la Partie 7 terminés** — architecture de campagne,
+   conventions de nommage, arbre de KPI, piliers de contenu, inventaire des actifs,
+   chaînes d'approbation
 
-If any pre-condition fails, do NOT produce. Instruct the user.
+Si une condition préalable échoue, NE PAS produire. Instruire l'utilisateur.
 
-## The 11 Sections
+## Les 11 sections
 
-| # | Section | Length | Source |
+| # | Section | Longueur | Source |
 |---|---------|--------|--------|
-| 1 | Executive Summary | 1 page | Synthesis |
+| 1 | Executive Summary | 1 page | Synthèse |
 | 2 | Business Context | 2-3 pages | Core Doc 3.1 + Part 4.4 + Part 4.2 |
 | 3 | Target Audience | 2-3 pages | Core Doc 3.2 |
 | 4 | Strategic Positioning | 2 pages | Core Doc 3.3 |
@@ -47,172 +57,192 @@ If any pre-condition fails, do NOT produce. Instruct the user.
 | 6 | Budget & Media Plan | 2-3 pages | Core Doc 3.4 Step 5 + 9 |
 | 7 | KPI Framework | 2 pages | Part 7 KPI tree |
 | 8 | Implementation Timeline | 2-3 pages | Part 7 + 30/60/90 framework |
-| 9 | Team & Resource Plan | 1-2 pages | Engagement context |
+| 9 | Team & Resource Plan | 1-2 pages | Contexte d'engagement |
 | 10 | Risk & Contingency | 1-2 pages | Core Doc 3.1 Step 16 |
-| 11 | Expected Outcomes | 2 pages | Three-scenario forecasting |
+| 11 | Expected Outcomes | 2 pages | Prévisions à trois scénarios |
 
-Total target length: **20–30 pages**. Beyond 30, clients stop reading.
+Longueur cible totale : **20–30 pages**. Au-delà de 30, les clients arrêtent de lire.
 
-## Production process
+## Processus de production
 
-### Step 1: Read source documents
+### Étape 1 : Lire les documents sources
 
-Reading order (canonical version of each):
+Ordre de lecture (version canonique de chacun) :
 
-1. Living Project Instruction File (current truth)
+1. Living Project Instruction File (vérité actuelle)
 2. Core Doc 3.1 Business & SBU Analysis
 3. Core Doc 3.2 Segmentation Framework
 4. Core Doc 3.3 Brand Positioning & Communications
 5. Core Doc 3.4 DMFlow
-6. Part 4 documents (4.1, 4.2, 4.3, 4.4)
-7. Part 7 preparation documents (campaign architecture, KPI tree, content pillars)
+6. Documents de la Partie 4 (4.1, 4.2, 4.3, 4.4)
+7. Documents de préparation de la Partie 7 (architecture de campagne, arbre de KPI, piliers de contenu)
 
-### Step 2: Synthesise — do not re-state
+### Étape 2 : Synthétiser — ne pas re-formuler
 
-The Growth Plan is **synthesis**, not concatenation. Do not copy paragraphs from the Core Docs verbatim. Re-write each section in client-facing narrative form, citing the source document for traceability.
+Le Growth Plan est une **synthèse**, pas une concaténation. Ne pas copier des
+paragraphes des Core Docs mot pour mot. Réécrire chaque section sous forme de récit
+orienté client, en citant le document source pour la traçabilité.
 
-### Step 3: Apply the three-scenario discipline
+### Étape 3 : Appliquer la discipline des trois scénarios
 
-Section 11 (Expected Outcomes) presents Conservative / Moderate / Aggressive scenarios per [three-scenario-forecasting.md](../context-engine/three-scenario-forecasting.md).
+La Section 11 (Expected Outcomes) présente des scénarios Conservateur / Modéré /
+Agressif selon [three-scenario-forecasting.md](../context-engine/three-scenario-forecasting.md).
 
-Section 7 (KPI Framework) targets are also presented as three scenarios per KPI.
+La Section 7 (KPI Framework) présente également les cibles sous forme de trois
+scénarios par KPI.
 
-### Step 4: Apply the In-Market vs Out-Market split
+### Étape 4 : Appliquer la répartition In-Market vs Out-Market
 
-Section 5 (Channel Strategy) and Section 6 (Budget & Media Plan) explicitly call out the In-Market vs Out-Market budget allocation per [in-market-out-market.md](../context-engine/in-market-out-market.md).
+La Section 5 (Channel Strategy) et la Section 6 (Budget & Media Plan) mentionnent
+explicitement la répartition budgétaire In-Market vs Out-Market selon
+[in-market-out-market.md](../context-engine/in-market-out-market.md).
 
-### Step 5: Apply the 30/60/90 framework
+### Étape 5 : Appliquer le cadre 30/60/90
 
-Section 8 (Implementation Timeline) uses the 30/60/90 phasing per [30-60-90-framework.md](../context-engine/30-60-90-framework.md) for the first quarter, then quarterly milestones thereafter.
+La Section 8 (Implementation Timeline) utilise le phasage 30/60/90 selon
+[30-60-90-framework.md](../context-engine/30-60-90-framework.md) pour le premier
+trimestre, puis des jalons trimestriels ensuite.
 
-### Step 6: Output
+### Étape 6 : Résultat
 
-Save to `engagements/{id}/part-08-growth-plan/growth-plan.md`. Generate companion exports:
+Enregistrer dans `engagements/{id}/part-08-growth-plan/growth-plan.md`. Générer les
+exports complémentaires :
 
-- PDF via the existing `pdf-generator.py` script
-- DOCX via the existing document export utilities
+- PDF via le script existant `pdf-generator.py`
+- DOCX via les utilitaires d'export de documents existants
 
-## Section-by-section guidance
+## Conseils section par section
 
-### Section 1: Executive Summary
+### Section 1 : Executive Summary
 
-The CEO reads this. Make it count.
+Le PDG lit ceci. Faites en sorte que ça compte.
 
-- Key findings (3-5 bullets — most important things from analysis)
-- Recommended strategy (1-2 sentences headline)
-- Expected outcomes (moderate scenario, with conservative-aggressive band)
-- Investment required (total budget; fixed + variable breakdown)
-- Timeline (30/60/90 + quarterly milestones in one sentence)
-- The single most important thing the client needs to know
+- Constats clés (3-5 puces — les éléments les plus importants issus de l'analyse)
+- Stratégie recommandée (titre en 1-2 phrases)
+- Résultats attendus (scénario modéré, avec fourchette conservateur-agressif)
+- Investissement requis (budget total ; répartition fixe + variable)
+- Calendrier (30/60/90 + jalons trimestriels en une phrase)
+- La chose la plus importante que le client doit retenir
 
-### Section 2: Business Context
+### Section 2 : Business Context
 
-Set the stage for why the strategy is what it is.
+Planter le décor pour expliquer pourquoi la stratégie est ce qu'elle est.
 
-- Summary of business analysis (Core Doc 3.1) — what the business is, how it makes money, key strengths and constraints
-- Industry landscape — market size, growth trajectory, competitive intensity
-- Competitive position — where the brand sits, key competitors, positioning today
-- Critical assumptions — major Stone facts and validated Opinions
+- Résumé de l'analyse business (Core Doc 3.1) — ce qu'est l'entreprise, comment elle
+  génère des revenus, forces et contraintes clés
+- Paysage sectoriel — taille du marché, trajectoire de croissance, intensité concurrentielle
+- Position concurrentielle — où se situe la marque, principaux concurrents, positionnement actuel
+- Hypothèses critiques — principaux faits établis (Stone facts) et opinions validées
 
-### Section 3: Target Audience
+### Section 3 : Target Audience
 
-- Primary persona summary in actionable format (6 questions)
-- Secondary persona if relevant
-- Why these personas were chosen (tie back to TG scoring from 3.2)
-- Anti-personas — who we explicitly do NOT target
-- For B2B: Decision-Making Unit summary per persona
+- Résumé du persona principal au format actionnable (6 questions)
+- Persona secondaire si pertinent
+- Pourquoi ces personas ont été choisis (relier au scoring TG de 3.2)
+- Anti-personas — qui nous ne ciblons explicitement PAS
+- Pour le B2B : résumé de l'unité de décision d'achat (DMU) par persona
 
-### Section 4: Strategic Positioning
+### Section 4 : Strategic Positioning
 
-- Positioning statement (the formal one-sentence)
-- Brand promise + 3-5 supporting proof points
-- The 3-5 messaging pillars
-- Tone-of-voice profile with one on-tone vs off-tone example
-- Don't-say rules
+- Déclaration de positionnement (la phrase formelle unique)
+- Promesse de marque + 3-5 points de preuve à l'appui
+- Les 3-5 piliers de messaging
+- Profil de ton de voix avec un exemple on-tone et un exemple off-tone
+- Règles de « ne pas dire »
 
-### Section 5: Channel Strategy
+### Section 5 : Channel Strategy
 
-- Channel selection summary (in-scope vs deferred per [channel-families.md](../context-engine/channel-families.md))
-- Per-channel role (which funnel stage)
-- Channel sequencing logic (which feeds which)
-- In-Market vs Out-Market split with rationale
-- Media mix across paid / organic / earned / owned
+- Résumé de la sélection des canaux (dans le périmètre vs différé selon
+  [channel-families.md](../context-engine/channel-families.md))
+- Rôle par canal (quelle étape du tunnel)
+- Logique de séquencement des canaux (lequel alimente lequel)
+- Répartition In-Market vs Out-Market avec justification
+- Mix média entre payant / organique / gagné / propriétaire
 
-### Section 6: Budget & Media Plan
+### Section 6 : Budget & Media Plan
 
-- Total monthly fixed budget
-- Variable budget envelope per [fixed-vs-variable-budget.md](../context-engine/fixed-vs-variable-budget.md)
-- Per-channel allocation table with rationale
-- Quarterly budget pacing
-- Year-1 total investment
-- Investment vs expected return (LTV:CAC math per [unit-economics-framework.md](../context-engine/unit-economics-framework.md))
+- Budget fixe mensuel total
+- Enveloppe budgétaire variable selon
+  [fixed-vs-variable-budget.md](../context-engine/fixed-vs-variable-budget.md)
+- Tableau d'allocation par canal avec justification
+- Rythme budgétaire trimestriel
+- Investissement total en année 1
+- Investissement vs retour attendu (calcul LTV:CAC selon
+  [unit-economics-framework.md](../context-engine/unit-economics-framework.md))
 
-### Section 7: KPI Framework
+### Section 7 : KPI Framework
 
-- Primary KPI (the one number that matters most for the period)
-- Secondary KPIs (3-5)
-- Per-channel KPIs
-- KPI targets in three scenarios
-- Reporting cadence per [reporting-cadence.md](../context-engine/reporting-cadence.md)
-- Attribution model used
-- Known measurement limitations
+- KPI principal (le seul chiffre le plus important pour la période)
+- KPI secondaires (3-5)
+- KPI par canal
+- Cibles de KPI en trois scénarios
+- Cadence de reporting selon [reporting-cadence.md](../context-engine/reporting-cadence.md)
+- Modèle d'attribution utilisé
+- Limites de mesure connues
 
-### Section 8: Implementation Timeline
+### Section 8 : Implementation Timeline
 
-30 / 60 / 90-day milestones for the first quarter. Quarterly milestones thereafter.
+Jalons 30 / 60 / 90 jours pour le premier trimestre. Jalons trimestriels ensuite.
 
-- Days 1-30 Foundation
-- Days 31-60 Validation
-- Days 61-90 Optimisation & Scale
-- Q2 milestones
-- Q3 milestones
-- Year-end goals
+- Jours 1-30 Fondations
+- Jours 31-60 Validation
+- Jours 61-90 Optimisation & Scale
+- Jalons T2
+- Jalons T3
+- Objectifs de fin d'année
 
-### Section 9: Team & Resource Plan
+### Section 9 : Team & Resource Plan
 
-- Agency / consulting team roles
-- Client team roles (especially what client must own)
-- External partners
-- Approval workflows and SLAs
-- Critical dependencies that could delay execution
+- Rôles de l'équipe agence / conseil
+- Rôles de l'équipe client (en particulier ce que le client doit prendre en charge)
+- Partenaires externes
+- Workflows d'approbation et SLA
+- Dépendances critiques pouvant retarder l'exécution
 
-### Section 10: Risk & Contingency
+### Section 10 : Risk & Contingency
 
-- Top 3-5 risks across market, competitive, regulatory, operational, execution dimensions
-- Per risk: likelihood, impact, mitigation strategy, trigger conditions
-- Contingency budget (typically 10-15% reserve)
-- Decision-making authority for invoking contingency
+- Les 3-5 principaux risques selon les dimensions marché, concurrentielle, réglementaire,
+  opérationnelle, exécution
+- Par risque : probabilité, impact, stratégie d'atténuation, conditions de déclenchement
+- Budget de contingence (typiquement une réserve de 10-15 %)
+- Autorité de décision pour invoquer la contingence
 
-### Section 11: Expected Outcomes
+### Section 11 : Expected Outcomes
 
-- Three-scenario forecast (Conservative / Moderate / Aggressive)
-- Per-quarter forecast (Q1, Q2, Q3, Q4)
-- Triggers that move us between scenarios
-- What the team will track to know which scenario is unfolding
-- Conditions under which the plan would be revised
+- Prévision à trois scénarios (Conservateur / Modéré / Agressif)
+- Prévision par trimestre (T1, T2, T3, T4)
+- Déclencheurs qui font basculer entre scénarios
+- Ce que l'équipe suivra pour savoir quel scénario se déroule
+- Conditions dans lesquelles le plan serait révisé
 
-## Quality discipline
+## Discipline qualité
 
-1. **Every claim cites a source** — Core Doc reference with version number
-2. **Every projection states assumptions** — no naked numbers
-3. **Plain language** — the CEO is not a marketing specialist
-4. **Visual evidence where it helps** — charts, scenario tables, timeline diagrams
-5. **20-30 page target** — beyond 30, clients stop reading
-6. **Consistency with Yearly Planner** — the operational calendar from `/digital-marketing-pro:yearly-planner` must align with this Growth Plan
+1. **Chaque affirmation cite une source** — référence au Core Doc avec numéro de version
+2. **Chaque projection énonce ses hypothèses** — pas de chiffres nus
+3. **Langage simple** — le PDG n'est pas un spécialiste marketing
+4. **Preuves visuelles là où cela aide** — graphiques, tableaux de scénarios, diagrammes de calendrier
+5. **Cible de 20-30 pages** — au-delà de 30, les clients arrêtent de lire
+6. **Cohérence avec le Yearly Planner** — le calendrier opérationnel issu de
+   `/digital-marketing-pro:yearly-planner` doit s'aligner avec ce Growth Plan
 
-## After production
+## Après la production
 
-1. Save markdown to `part-08-growth-plan/growth-plan.md`
-2. Generate PDF + DOCX exports
-3. Mark Part 8 sub-complete (Growth Plan); Yearly Planner completion finishes Part 8
-4. Update LIF: Engagement phase = "Strategy approved; Channel Build pending"
-5. Brief: "Growth Plan complete. {N} pages. Run /digital-marketing-pro:yearly-planner to produce the operational companion. After client approval, /digital-marketing-pro:engagement next advances to Part 9 Channel Strategy."
+1. Enregistrer le markdown dans `part-08-growth-plan/growth-plan.md`
+2. Générer les exports PDF + DOCX
+3. Marquer la Partie 8 comme sous-terminée (Growth Plan) ; l'achèvement du Yearly
+   Planner termine la Partie 8
+4. Mettre à jour le LIF : Phase d'engagement = « Stratégie approuvée ; Channel Build en attente »
+5. Brief : « Growth Plan terminé. {N} pages. Exécuter
+   /digital-marketing-pro:yearly-planner pour produire le complément opérationnel. Après
+   approbation du client, /digital-marketing-pro:engagement next fait avancer vers la
+   Partie 9 Channel Strategy. »
 
-## Examples
+## Exemples
 
-### Example 1: First Growth Plan production
+### Exemple 1 : Première production de Growth Plan
 
-*SYNTHETIC EXAMPLE — fabricated for illustration; never reuse these numbers. The INR forecast figures below are made up.*
+*EXEMPLE SYNTHÉTIQUE — fabriqué à des fins d'illustration ; ne jamais réutiliser ces
+chiffres. Les chiffres de prévision en INR ci-dessous sont inventés.*
 
 ```
 User: Produce the Growth Plan for Acme.
@@ -228,15 +258,15 @@ Skill response:
 8. Brief: "Growth Plan v1.0 produced. 24 pages. Conservative Q1 forecast: INR 1.8 Cr new ARR; Moderate: INR 2.6 Cr; Aggressive: INR 3.4 Cr. Run /digital-marketing-pro:yearly-planner next."
 ```
 
-## Related skills
+## Compétences liées
 
-- `engagement-workflow` — orchestrates Part 8
-- `yearly-planner` — companion deliverable that completes Part 8
-- `four-core-documents` — produces the canonical Core Docs that feed the Growth Plan
+- `engagement-workflow` — orchestre la Partie 8
+- `yearly-planner` — livrable complémentaire qui achève la Partie 8
+- `four-core-documents` — produit les Core Docs canoniques qui alimentent le Growth Plan
 
-## Related references
+## Références liées
 
-- [growth-plan-template.md](../context-engine/growth-plan-template.md) — canonical 11-section structure
+- [growth-plan-template.md](../context-engine/growth-plan-template.md) — structure canonique en 11 sections
 - [three-scenario-forecasting.md](../context-engine/three-scenario-forecasting.md) — Sections 7 + 11
 - [in-market-out-market.md](../context-engine/in-market-out-market.md) — Sections 5 + 6
 - [fixed-vs-variable-budget.md](../context-engine/fixed-vs-variable-budget.md) — Section 6

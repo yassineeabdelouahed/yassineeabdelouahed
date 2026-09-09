@@ -1,171 +1,219 @@
 ---
 name: growth-engineering
-description: "Structured guidance for engineering growth systems — product-led growth motions, referral program design, viral loop mechanics, launch playbooks, retention loops, and affiliate programs — producing strategy documents, program specs, and spreadsheet-ready growth models. Recommends and designs; does not build product features or launch anything. Triggers on \"/digital-marketing-pro:growth-engineering\", \"design a referral program\", \"how do we get a viral loop\", \"plan our Product Hunt launch\", \"reduce churn with re-engagement\". Reads the brand profile, industry benchmarks, and campaign history; pairs with /digital-marketing-pro:cro for activation and onboarding optimization."
+description: "Guidance structurée pour l'ingénierie de systèmes de croissance — mécaniques de product-led growth, conception de programmes de parrainage, mécaniques de boucle virale, playbooks de lancement, boucles de rétention, et programmes d'affiliation — produisant des documents de stratégie, des spécifications de programme, et des modèles de croissance prêts pour tableur. Recommande et conçoit ; ne construit pas de fonctionnalités produit et ne lance rien. Se déclenche sur « /digital-marketing-pro:growth-engineering », « conçois un programme de parrainage », « comment obtenir une boucle virale », « planifie notre lancement Product Hunt », « réduis le churn avec du re-engagement ». Lit le profil de marque, les benchmarks sectoriels, et l'historique des campagnes ; se combine avec /digital-marketing-pro:cro pour l'optimisation de l'activation et de l'onboarding."
 ---
 
 # Growth Engineering
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this skill when the user's request involves any of the following:
+Activer cette compétence lorsque la demande de l'utilisateur implique l'un des éléments suivants :
 
-- Designing or improving a product-led growth (PLG) motion
-- Building or optimizing referral programs (customer referral, partner referral, ambassador programs)
-- Creating viral loops or increasing organic sharing mechanics
-- Planning a product or company launch (Product Hunt, beta launches, waitlists)
-- Improving user retention, reducing churn, or designing re-engagement campaigns
-- Running growth experiments and building an experimentation culture
-- Setting up or optimizing affiliate marketing programs
-- Designing activation flows and reducing time-to-value for new users
-- Building growth models or forecasting viral growth coefficients
-- Solving cold-start problems for marketplaces or platforms
-- Identifying and scoring product-qualified leads (PQLs)
-- Any question about growth levers, growth loops, or sustainable acquisition strategies
+- Concevoir ou améliorer une mécanique de product-led growth (PLG)
+- Construire ou optimiser des programmes de parrainage (parrainage client, parrainage partenaire, programmes ambassadeurs)
+- Créer des boucles virales ou augmenter les mécaniques de partage organique
+- Planifier le lancement d'un produit ou d'une entreprise (Product Hunt, lancements bêta, listes d'attente)
+- Améliorer la rétention utilisateur, réduire le churn, ou concevoir des campagnes de réengagement
+- Exécuter des expériences de croissance et bâtir une culture d'expérimentation
+- Mettre en place ou optimiser des programmes de marketing d'affiliation
+- Concevoir des flux d'activation et réduire le temps de mise en valeur pour les nouveaux utilisateurs
+- Construire des modèles de croissance ou prévoir des coefficients de croissance virale
+- Résoudre des problèmes de démarrage à froid pour les marketplaces ou plateformes
+- Identifier et noter des leads qualifiés par le produit (PQL)
+- Toute question sur les leviers de croissance, les boucles de croissance, ou les stratégies d'acquisition durable
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout résultat marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — Le résumé de marque actif a été affiché au
+   démarrage de la session. Utiliser le nom de marque, le secteur, les paramètres de
+   voix, les canaux, les objectifs, la conformité, et les concurrents affichés là.
+2. **Si vous avez besoin du profil complet**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — Les niveaux de formalité, énergie, humour,
+   autorité doivent façonner tout le ton du contenu et les choix de mots
+4. **Vérifier la conformité** — Appliquer automatiquement les règles pour les
+   target_markets et le secteur de la marque en utilisant
+   `skills/context-engine/compliance-rules.md`
+5. **Référencer les benchmarks sectoriels** — Consulter
+   `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — Référencer
+   `skills/context-engine/platform-specs.md` pour les limites de caractères et les
+   exigences de format
+7. **Vérifier l'historique de campagne** — Exécuter
+   `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns`
+   avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez
+   /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les
+   meilleures pratiques générales. »
+9. **Vérifier les guidelines de marque** — Si
+   `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et
+   appliquer : `restrictions.md` pour les mots interdits, les revendications
+   restreintes, et les avertissements obligatoires ; `channel-styles.md` pour les
+   dérogations de ton spécifiques au canal (peuvent différer de la voix de base) ;
+   `messaging.md` pour les messages clés approuvés, slogans, et langage de
+   positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des
+   4 scores numériques. Lors de la production de contenu pour un canal spécifique, les
+   règles de style de canal ont priorité sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing, gather the following from the user (ask if not provided):
+Avant d'exécuter, recueillir ce qui suit auprès de l'utilisateur (demander si non fourni) :
 
-- **Product type**: SaaS, marketplace, ecommerce, mobile app, content platform, service business
-- **Business model**: Subscription, transactional, freemium, free-trial, advertising-supported
-- **Current stage**: Pre-launch, early traction (under 1,000 users), growth stage, scale stage
-- **Key metrics**: Current MRR/ARR, user count, activation rate, retention rate, churn rate, NPS
-- **Existing growth channels**: Which acquisition channels are active and their relative performance
-- **Viral potential**: Whether the product has inherent sharing mechanics or requires artificial virality
-- **Team and resources**: Engineering capacity for growth features, marketing budget, partnership resources
-- **Target user**: Who the ideal user is and what their primary motivation for using the product is
-- **Competitive landscape**: Key competitors and their growth strategies
+- **Type de produit** : SaaS, marketplace, e-commerce, application mobile, plateforme de contenu, entreprise de services
+- **Modèle économique** : Abonnement, transactionnel, freemium, essai gratuit, financé par la publicité
+- **Étape actuelle** : Pré-lancement, traction précoce (moins de 1 000 utilisateurs), étape de croissance, étape d'échelle
+- **Métriques clés** : MRR/ARR actuel, nombre d'utilisateurs, taux d'activation, taux de rétention, taux de churn, NPS
+- **Canaux de croissance existants** : Quels canaux d'acquisition sont actifs et leur performance relative
+- **Potentiel viral** : Si le produit a des mécaniques de partage inhérentes ou nécessite une viralité artificielle
+- **Équipe et ressources** : Capacité d'ingénierie pour les fonctionnalités de croissance, budget marketing, ressources de partenariat
+- **Utilisateur cible** : Qui est l'utilisateur idéal et quelle est sa motivation principale à utiliser le produit
+- **Paysage concurrentiel** : Principaux concurrents et leurs stratégies de croissance
 
-## Capabilities
+## Capacités
 
-### Product-Led Growth (PLG) Strategy
-- **Free-to-paid conversion**: Freemium model design, free trial optimization, feature gating strategy, usage-based pricing triggers
-- **Activation metrics**: Define the "aha moment," map the steps to reach it, measure and optimize activation rate
-- **Time-to-value optimization**: Reduce friction between signup and first value experience through onboarding design, templates, sample data, and guided tours
-- **PQL scoring**: Define product-qualified lead criteria based on usage patterns, feature adoption, team size, and engagement frequency
-- **Self-serve expansion**: In-product upgrade prompts, usage limit notifications, team invite flows, seat expansion triggers
-- **Reverse trial**: Give full access first, then downgrade to free -- when this works better than traditional freemium
+### Stratégie Product-Led Growth (PLG)
+- **Conversion gratuit-vers-payant** : Conception de modèle freemium, optimisation d'essai gratuit, stratégie de limitation de fonctionnalités, déclencheurs de tarification à l'usage
+- **Métriques d'activation** : Définir le « moment aha », cartographier les étapes pour l'atteindre, mesurer et optimiser le taux d'activation
+- **Optimisation du temps de mise en valeur** : Réduire la friction entre l'inscription et la première expérience de valeur via la conception d'onboarding, les modèles, les données d'exemple, et les visites guidées
+- **Notation PQL** : Définir les critères de lead qualifié par le produit basés sur les modèles d'usage, l'adoption de fonctionnalités, la taille d'équipe, et la fréquence d'engagement
+- **Expansion en libre-service** : Invites de mise à niveau dans le produit, notifications de limite d'usage, flux d'invitation d'équipe, déclencheurs d'expansion de sièges
+- **Essai inversé** : Donner l'accès complet d'abord, puis rétrograder vers gratuit — quand cela fonctionne mieux qu'un freemium traditionnel
 
-### Referral Systems
-- **Give-and-get programs**: Both referrer and referee receive incentives (e.g., Dropbox's extra storage model)
-- **Tiered referral rewards**: Escalating incentives based on number of successful referrals
-- **Milestone referrals**: Rewards triggered at referral count milestones (1, 5, 10, 25) to maintain momentum
-- **NPS-to-referral pipeline**: Target promoters (NPS 9-10) with referral requests at the moment of highest satisfaction
-- **Double-sided incentive design**: Balancing referrer reward (motivation to share) with referee reward (motivation to convert)
-- **Referral channel optimization**: Email, unique link, social share, in-app invite, SMS -- which channels perform for which product types
-- **Fraud prevention**: Detecting self-referral, fake accounts, and incentive gaming without creating friction for legitimate referrers
+### Systèmes de parrainage
+- **Programmes give-and-get** : À la fois le parrain et le filleul reçoivent des incitations (par exemple, le modèle de stockage supplémentaire de Dropbox)
+- **Récompenses de parrainage à paliers** : Incitations escaladées basées sur le nombre de parrainages réussis
+- **Parrainages à jalons** : Récompenses déclenchées à des jalons de nombre de parrainages (1, 5, 10, 25) pour maintenir l'élan
+- **Pipeline NPS-vers-parrainage** : Cibler les promoteurs (NPS 9-10) avec des demandes de parrainage au moment de satisfaction maximale
+- **Conception d'incitation à double face** : Équilibrer la récompense du parrain (motivation à partager) avec la récompense du filleul (motivation à convertir)
+- **Optimisation du canal de parrainage** : E-mail, lien unique, partage social, invitation dans l'app, SMS — quels canaux performent pour quels types de produit
+- **Prévention de la fraude** : Détecter l'auto-parrainage, les faux comptes, et le contournement des incitations sans créer de friction pour les parrains légitimes
 
-### Viral Loop Design
-- **Inherent virality**: The product naturally requires others to use it (Slack, Zoom, Google Docs)
-- **Artificial virality**: Manufactured sharing through incentives, social features, or content creation (shareable reports, badges, results)
-- **Content virality**: User-generated content that surfaces on external platforms and drives new users back
-- **Social proof virality**: Visible usage signals (badges, signatures, "powered by" links, public profiles)
-- **Viral coefficient calculation**: K-factor = invites per user x conversion rate of invites. K > 1 means exponential growth; K between 0.5-1.0 augments paid acquisition significantly
-- **Viral cycle time**: Reducing the time between a user joining and their invitees joining. Shorter cycles compound faster even with lower K-factors
+### Conception de boucle virale
+- **Viralité inhérente** : Le produit nécessite naturellement que d'autres l'utilisent (Slack, Zoom, Google Docs)
+- **Viralité artificielle** : Partage fabriqué à travers des incitations, fonctionnalités sociales, ou création de contenu (rapports partageables, badges, résultats)
+- **Viralité de contenu** : Contenu généré par l'utilisateur qui apparaît sur des plateformes externes et ramène de nouveaux utilisateurs
+- **Viralité de preuve sociale** : Signaux d'usage visibles (badges, signatures, liens « propulsé par », profils publics)
+- **Calcul du coefficient viral** : K-factor = invitations par utilisateur x taux de conversion des invitations. K > 1 signifie une croissance exponentielle ; K entre 0,5-1,0 augmente significativement l'acquisition payante
+- **Temps de cycle viral** : Réduire le temps entre l'arrivée d'un utilisateur et l'arrivée de ses invités. Des cycles plus courts composent plus vite même avec des K-factors plus faibles
 
-### Launch Playbooks
-- **Tier 1 launch** (major product): Full press campaign, influencer seeding, Product Hunt, beta community, launch event, paid amplification
-- **Tier 2 launch** (feature/update): Existing user announcement, targeted outreach, community posts, changelog, email campaign
-- **Tier 3 launch** (minor update): In-app notification, changelog update, social media post
-- **Pre-launch waitlist**: Viral waitlist mechanics (share to move up), early access incentives, drip content to maintain interest
-- **Product Hunt launch**: Preparation timeline (2-4 weeks), hunter selection, launch day playbook, post-launch engagement
-- **Beta program design**: Closed beta recruitment, feedback loops, beta-to-launch transition, early adopter community building
+### Playbooks de lancement
+- **Lancement Tier 1** (produit majeur) : Campagne presse complète, seeding d'influenceurs, Product Hunt, communauté bêta, événement de lancement, amplification payante
+- **Lancement Tier 2** (fonctionnalité/mise à jour) : Annonce aux utilisateurs existants, outreach ciblé, publications communautaires, changelog, campagne e-mail
+- **Lancement Tier 3** (mise à jour mineure) : Notification dans l'app, mise à jour du changelog, publication sur les réseaux sociaux
+- **Liste d'attente pré-lancement** : Mécaniques de liste d'attente virale (partager pour monter dans le classement), incitations d'accès anticipé, contenu au compte-gouttes pour maintenir l'intérêt
+- **Lancement Product Hunt** : Calendrier de préparation (2-4 semaines), sélection du hunter, playbook du jour du lancement, engagement post-lancement
+- **Conception de programme bêta** : Recrutement de bêta fermée, boucles de feedback, transition bêta-vers-lancement, construction de communauté d'adopteurs précoces
 
-### Retention Loops
-- **Engagement design**: Habit loops (trigger, action, variable reward, investment), notification strategy, content cadence
-- **Re-engagement campaigns**: Email sequences, push notifications, in-app messages, retargeting ads triggered by inactivity signals
-- **Churn prediction**: Behavioral signals that indicate churn risk (login frequency drop, feature usage decline, support ticket patterns)
-- **Winback sequences**: Timed outreach to churned users with personalized value reminders, product updates, and incentive offers
-- **Cohort analysis**: Track retention by signup cohort, acquisition channel, activation status, and feature adoption to identify what drives long-term retention
-- **Expansion revenue**: Upsell and cross-sell triggers based on usage patterns, team growth, and feature engagement
+### Boucles de rétention
+- **Conception d'engagement** : Boucles d'habitude (déclencheur, action, récompense variable, investissement), stratégie de notification, cadence de contenu
+- **Campagnes de réengagement** : Séquences e-mail, notifications push, messages dans l'app, publicités de retargeting déclenchées par des signaux d'inactivité
+- **Prédiction du churn** : Signaux comportementaux indiquant un risque de churn (baisse de fréquence de connexion, déclin de l'usage de fonctionnalités, motifs de tickets de support)
+- **Séquences de winback** : Outreach chronométré vers les utilisateurs churnés avec des rappels de valeur personnalisés, mises à jour produit, et offres d'incitation
+- **Analyse de cohorte** : Suivre la rétention par cohorte d'inscription, canal d'acquisition, statut d'activation, et adoption de fonctionnalités pour identifier ce qui pilote la rétention à long terme
+- **Revenu d'expansion** : Déclencheurs d'upsell et de cross-sell basés sur les modèles d'usage, la croissance d'équipe, et l'engagement de fonctionnalités
 
-### Affiliate Marketing
-- **Program design**: Commission structure (percentage, flat fee, tiered, recurring), cookie duration, attribution rules
-- **Network selection**: When to use affiliate networks (ShareASale, CJ, Impact) vs building a custom program
-- **Affiliate recruitment**: Finding high-quality affiliates through competitor analysis, content partnerships, and niche community outreach
-- **Commission optimization**: Balancing commission rates to attract affiliates while maintaining profitability; performance tiers to reward top performers
-- **Fraud detection**: Click fraud, cookie stuffing, brand bidding violations, trademark misuse, coupon abuse
-- **Content affiliate strategy**: Working with bloggers, review sites, comparison sites, and niche publishers
-- **Affiliate-influencer hybrids**: Creator partnerships with performance-based compensation models
+### Marketing d'affiliation
+- **Conception de programme** : Structure de commission (pourcentage, forfait fixe, à paliers, récurrente), durée de cookie, règles d'attribution
+- **Sélection de réseau** : Quand utiliser les réseaux d'affiliation (ShareASale, CJ, Impact) vs construire un programme personnalisé
+- **Recrutement d'affiliés** : Trouver des affiliés de qualité via l'analyse concurrentielle, les partenariats de contenu, et l'outreach de communauté de niche
+- **Optimisation de commission** : Équilibrer les taux de commission pour attirer les affiliés tout en maintenant la rentabilité ; paliers de performance pour récompenser les meilleurs performeurs
+- **Détection de fraude** : Fraude au clic, cookie stuffing, violations de brand bidding, usage abusif de marque, abus de coupon
+- **Stratégie d'affiliation de contenu** : Travailler avec des blogueurs, sites d'avis, sites de comparaison, et éditeurs de niche
+- **Hybrides affiliation-influenceur** : Partenariats créateurs avec des modèles de rémunération basés sur la performance
 
-## Process
+## Processus
 
-### PLG Implementation (Most Common Use Case)
+### Mise en œuvre PLG (cas d'usage le plus courant)
 
-1. **Map the user journey** -- Document every step from first awareness to paid conversion. Identify where users currently drop off and where they experience value.
-2. **Define the activation metric** -- Determine the specific action or combination of actions that correlates with long-term retention. This is the "aha moment" the entire PLG motion revolves around.
-3. **Design the free offering** -- Structure the free tier or trial to give users enough value to experience the activation moment while creating natural upgrade triggers. Reference common models: feature-limited freemium, usage-limited freemium, time-limited trial, reverse trial.
-4. **Optimize time-to-value** -- Redesign onboarding to get users to the activation metric as fast as possible. Remove unnecessary steps, add templates/sample data, implement guided tours, and offer quick-start paths.
-5. **Build PQL scoring** -- Define the behavioral signals that indicate a free user is ready for a sales touch or upgrade prompt. Combine usage frequency, feature breadth, team size, and engagement depth into a composite score.
-6. **Implement expansion loops** -- Design in-product mechanisms for organic growth: team invites, shared workspaces, public outputs, integrations that touch other teams, and usage-based upgrade paths.
-7. **Measure and iterate** -- Track activation rate, free-to-paid conversion rate, time-to-activation, expansion revenue, and viral coefficient. Run experiments on each stage of the funnel.
+1. **Cartographier le parcours utilisateur** — Documenter chaque étape depuis la première notoriété jusqu'à la conversion payante. Identifier où les utilisateurs abandonnent actuellement et où ils expérimentent la valeur.
+2. **Définir la métrique d'activation** — Déterminer l'action ou combinaison d'actions spécifique qui corrèle avec la rétention à long terme. C'est le « moment aha » autour duquel toute la mécanique PLG tourne.
+3. **Concevoir l'offre gratuite** — Structurer le palier gratuit ou l'essai pour donner aux utilisateurs assez de valeur pour vivre le moment d'activation tout en créant des déclencheurs de mise à niveau naturels. Référencer les modèles courants : freemium à fonctionnalités limitées, freemium à usage limité, essai limité dans le temps, essai inversé.
+4. **Optimiser le temps de mise en valeur** — Repenser l'onboarding pour amener les utilisateurs à la métrique d'activation aussi vite que possible. Éliminer les étapes inutiles, ajouter des modèles/données d'exemple, mettre en œuvre des visites guidées, et proposer des parcours de démarrage rapide.
+5. **Construire la notation PQL** — Définir les signaux comportementaux indiquant qu'un utilisateur gratuit est prêt pour un contact commercial ou une invite de mise à niveau. Combiner la fréquence d'usage, l'étendue des fonctionnalités, la taille d'équipe, et la profondeur d'engagement en un score composite.
+6. **Mettre en œuvre des boucles d'expansion** — Concevoir des mécanismes intégrés au produit pour une croissance organique : invitations d'équipe, espaces de travail partagés, résultats publics, intégrations qui touchent d'autres équipes, et chemins de mise à niveau basés sur l'usage.
+7. **Mesurer et itérer** — Suivre le taux d'activation, le taux de conversion gratuit-vers-payant, le temps jusqu'à l'activation, le revenu d'expansion, et le coefficient viral. Exécuter des expériences à chaque étape du tunnel.
 
-### Referral Program Build
+### Construction d'un programme de parrainage
 
-1. **Assess viral potential** -- Determine whether the product has inherent sharing mechanics or requires incentive-driven referrals. Analyze NPS data to identify promoter concentration.
-2. **Design incentive structure** -- Choose the referral model (give-and-get, tiered, milestone) based on product type, customer LTV, and competitive benchmarks. Set incentive values at 10-25% of customer acquisition cost.
-3. **Build referral mechanics** -- Create unique referral links, sharing interfaces, tracking infrastructure, and reward fulfillment flows. Make sharing frictionless (one-click, pre-written messages).
-4. **Integrate referral touchpoints** -- Embed referral prompts at high-satisfaction moments: post-purchase, after achieving a milestone, after a positive support interaction, at NPS survey completion.
-5. **Launch and promote** -- Announce the program to existing users, feature it in onboarding, add it to account dashboards, and include it in email communications.
-6. **Monitor and optimize** -- Track share rate, invite conversion rate, referral revenue, and fraud signals. A/B test incentive types, sharing copy, and prompt placement.
+1. **Évaluer le potentiel viral** — Déterminer si le produit a des mécaniques de partage inhérentes ou nécessite des parrainages pilotés par incitation. Analyser les données NPS pour identifier la concentration de promoteurs.
+2. **Concevoir la structure d'incitation** — Choisir le modèle de parrainage (give-and-get, à paliers, à jalons) basé sur le type de produit, la LTV client, et les benchmarks concurrentiels. Fixer les valeurs d'incitation à 10-25% du coût d'acquisition client.
+3. **Construire les mécaniques de parrainage** — Créer des liens de parrainage uniques, des interfaces de partage, une infrastructure de suivi, et des flux d'accomplissement de récompense. Rendre le partage sans friction (un clic, messages pré-rédigés).
+4. **Intégrer les points de contact de parrainage** — Intégrer des invites de parrainage aux moments de haute satisfaction : post-achat, après avoir atteint un jalon, après une interaction de support positive, à la fin d'une enquête NPS.
+5. **Lancer et promouvoir** — Annoncer le programme aux utilisateurs existants, le mettre en avant dans l'onboarding, l'ajouter aux tableaux de bord de compte, et l'inclure dans les communications e-mail.
+6. **Surveiller et optimiser** — Suivre le taux de partage, le taux de conversion des invitations, le revenu de parrainage, et les signaux de fraude. Tester A/B les types d'incitation, le texte de partage, et l'emplacement des invites.
 
-## Reference Files
+## Fichiers de référence
 
-- `product-led-growth.md` -- PLG frameworks, freemium vs trial decision trees, activation metric identification, PQL scoring models
-- `referral-systems.md` -- Referral program templates, incentive design principles, fraud prevention tactics, and case studies
-- `viral-loops.md` -- Viral coefficient calculations, loop design patterns, virality assessment frameworks
-- `launch-strategy.md` -- Tier 1/2/3 launch playbooks, Product Hunt guide, waitlist mechanics, beta program design
-- `retention-loops.md` -- Engagement frameworks, churn prediction models, winback sequences, cohort analysis methods
-- `affiliate-marketing.md` -- Program setup guides, network comparisons, commission optimization, fraud detection systems
-- `experimentation-frameworks.md` -- Experiment prioritization (ICE/RICE), hypothesis formats, statistical foundations, AARRR experiment categories, and experimentation velocity benchmarks
+- `product-led-growth.md` — Cadres PLG, arbres de décision freemium vs essai, identification de métrique d'activation, modèles de notation PQL
+- `referral-systems.md` — Modèles de programme de parrainage, principes de conception d'incitation, tactiques de prévention de fraude, et études de cas
+- `viral-loops.md` — Calculs de coefficient viral, motifs de conception de boucle, cadres d'évaluation de viralité
+- `launch-strategy.md` — Playbooks de lancement Tier 1/2/3, guide Product Hunt, mécaniques de liste d'attente, conception de programme bêta
+- `retention-loops.md` — Cadres d'engagement, modèles de prédiction du churn, séquences de winback, méthodes d'analyse de cohorte
+- `affiliate-marketing.md` — Guides de mise en place de programme, comparaisons de réseau, optimisation de commission, systèmes de détection de fraude
+- `experimentation-frameworks.md` — Priorisation d'expériences (ICE/RICE), formats d'hypothèse, fondements statistiques, catégories d'expérience AARRR, et benchmarks de vélocité d'expérimentation
 
-## Output Formats
+## Formats de résultat
 
-- **PLG strategy document**: User journey map, activation metric definition, free tier design, PQL criteria, expansion loop mechanics, and success metrics
-- **Referral program spec**: Incentive structure, mechanics description, integration points, launch plan, and monitoring dashboard requirements
-- **Launch playbook**: Pre-launch timeline, launch day checklist, channel-by-channel activation plan, post-launch follow-up sequence
-- **Retention analysis**: Cohort retention curves, churn risk indicators, re-engagement campaign designs, and winback sequence templates
-- **Growth model**: Spreadsheet-ready model with viral coefficient, cycle time, channel-level CAC, retention curves, and projected growth trajectories
-- **Affiliate program blueprint**: Commission structure, network/platform recommendation, recruitment strategy, compliance guidelines, and fraud monitoring plan
+- **Document de stratégie PLG** : Carte du parcours utilisateur, définition de la métrique d'activation, conception du palier gratuit, critères PQL, mécaniques de boucle d'expansion, et métriques de succès
+- **Spécification de programme de parrainage** : Structure d'incitation, description des mécaniques, points d'intégration, plan de lancement, et exigences de tableau de bord de surveillance
+- **Playbook de lancement** : Calendrier pré-lancement, checklist du jour du lancement, plan d'activation canal par canal, séquence de suivi post-lancement
+- **Analyse de rétention** : Courbes de rétention par cohorte, indicateurs de risque de churn, conceptions de campagne de réengagement, et modèles de séquence de winback
+- **Modèle de croissance** : Modèle prêt pour tableur avec coefficient viral, temps de cycle, CAC par canal, courbes de rétention, et trajectoires de croissance projetées
+- **Plan de programme d'affiliation** : Structure de commission, recommandation de réseau/plateforme, stratégie de recrutement, guidelines de conformité, et plan de surveillance de fraude
 
-## Edge Cases
+## Cas particuliers
 
-### Non-Viral Products
-Some products have no inherent sharing mechanic (e.g., personal finance tools, solo productivity apps). For these, create artificial virality through shareable outputs (reports, achievements, results), social proof features (public profiles, leaderboards), content creation tools that naturally surface the brand, or incentive-driven referrals. Not every product needs a viral coefficient above 1 -- even K=0.3 meaningfully reduces CAC.
+### Produits non viraux
+Certains produits n'ont aucune mécanique de partage inhérente (par exemple, outils de
+finance personnelle, applications de productivité solo). Pour ceux-ci, créer une
+viralité artificielle via des résultats partageables (rapports, réussites,
+résultats), des fonctionnalités de preuve sociale (profils publics, classements),
+des outils de création de contenu qui font naturellement apparaître la marque, ou
+des parrainages pilotés par incitation. Tous les produits n'ont pas besoin d'un
+coefficient viral supérieur à 1 — même K=0,3 réduit significativement le CAC.
 
-### Marketplace Cold-Start Problem
-Two-sided marketplaces face the chicken-and-egg problem: no supply without demand, no demand without supply. Solve by starting with one side (usually supply) through manual recruitment, seeding content, or offering the supply side a standalone value proposition. Concentrate on a narrow geography or vertical first. Reference strategies: Uber started with black cars, Airbnb started with events, and Yelp started with reviews before transactions.
+### Problème de démarrage à froid des marketplaces
+Les marketplaces à deux faces font face au problème de l'œuf et de la poule : pas
+d'offre sans demande, pas de demande sans offre. Résoudre en commençant par un côté
+(généralement l'offre) via recrutement manuel, seeding de contenu, ou en offrant au
+côté offre une proposition de valeur autonome. Se concentrer d'abord sur une
+géographie ou verticale étroite. Stratégies de référence : Uber a commencé avec les
+voitures noires, Airbnb a commencé avec les événements, et Yelp a commencé avec les
+avis avant les transactions.
 
-### B2B vs B2C Retention Dynamics
-B2B retention depends on product becoming embedded in workflows, multi-user adoption within an organization, and integration with other tools. B2C retention depends on habit formation, content freshness, and emotional engagement. Do not apply B2C engagement tactics (daily push notifications, gamification) to B2B products. B2B retention is measured monthly or quarterly, not daily.
+### Dynamiques de rétention B2B vs B2C
+La rétention B2B dépend de l'intégration du produit dans les workflows, de
+l'adoption multi-utilisateur au sein d'une organisation, et de l'intégration avec
+d'autres outils. La rétention B2C dépend de la formation d'habitude, de la fraîcheur
+du contenu, et de l'engagement émotionnel. Ne pas appliquer des tactiques
+d'engagement B2C (notifications push quotidiennes, gamification) à des produits B2B.
+La rétention B2B se mesure mensuellement ou trimestriellement, pas quotidiennement.
 
-### Referral Fraud Prevention
-Common referral fraud patterns include self-referral with multiple accounts, referral rings between friends who churn after receiving rewards, and bot-generated fake referrals. Mitigate by requiring the referred user to complete a meaningful action (purchase, usage threshold) before rewards are distributed, implementing device fingerprinting, setting reasonable reward caps, and monitoring for anomalous patterns.
+### Prévention de la fraude de parrainage
+Les motifs courants de fraude de parrainage incluent l'auto-parrainage avec
+plusieurs comptes, les cercles de parrainage entre amis qui churnent après avoir
+reçu des récompenses, et les faux parrainages générés par bot. Atténuer en exigeant
+que l'utilisateur parrainé accomplisse une action significative (achat, seuil
+d'usage) avant que les récompenses soient distribuées, en mettant en œuvre le
+fingerprinting d'appareil, en fixant des plafonds de récompense raisonnables, et en
+surveillant les motifs anormaux.
 
-### International Launch Sequencing
-When launching internationally, do not launch everywhere simultaneously. Sequence by market attractiveness (TAM, competitive density, regulatory complexity), language/localization readiness, and existing demand signals. Start with one new market, prove the playbook, then expand. Payment methods, compliance requirements, and cultural norms vary significantly and can break launch plans built for the home market.
+### Séquencement de lancement international
+Lors d'un lancement international, ne pas lancer partout simultanément. Séquencer
+par attractivité de marché (TAM, densité concurrentielle, complexité réglementaire),
+préparation à la localisation/langue, et signaux de demande existants. Commencer par
+un nouveau marché, prouver le playbook, puis étendre. Les méthodes de paiement, les
+exigences de conformité, et les normes culturelles varient significativement et
+peuvent briser des plans de lancement construits pour le marché domestique.
 
-## Related Skills
+## Compétences liées
 
-- **Paid Advertising** -- Paid acquisition that PLG and viral loops can amplify or replace over time
-- **CRO** -- Activation and onboarding optimization overlaps heavily with CRO principles
-- **Content Engine** -- Content marketing that feeds growth loops and launch amplification
-- **Analytics & Insights** -- Cohort analysis, experiment measurement, and growth modeling
-- **Influencer & Creator Marketing** -- Creator partnerships for launch amplification and affiliate-influencer hybrids
-- **Funnel Architect** -- Growth engineering strategies plug into the broader acquisition and retention funnel
+- **Paid Advertising** — Acquisition payante que le PLG et les boucles virales peuvent amplifier ou remplacer avec le temps
+- **CRO** — L'optimisation de l'activation et de l'onboarding recoupe fortement les principes de CRO
+- **Content Engine** — Marketing de contenu qui alimente les boucles de croissance et l'amplification de lancement
+- **Analytics & Insights** — Analyse de cohorte, mesure d'expérience, et modélisation de croissance
+- **Influencer & Creator Marketing** — Partenariats créateurs pour l'amplification de lancement et hybrides affiliation-influenceur
+- **Funnel Architect** — Les stratégies d'ingénierie de croissance s'intègrent dans le tunnel d'acquisition et de rétention plus large

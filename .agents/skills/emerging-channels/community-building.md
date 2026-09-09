@@ -1,220 +1,220 @@
-# Community Building — Launch & Growth
+# Construction de communauté — Lancement & Croissance
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** les chiffres en dollars présents dans ce document sont des estimations de planification, pas des cotations — les taux de marché et d'enchères évoluent en permanence. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, l'actualiser en direct (les tableaux de bord de plateforme et les rapports publiés récents valent mieux que la mémoire) et l'enregistrer avec `python scripts/benchmark_book.py --action record ... --source <url>` ; le citer ensuite depuis le livre de référence (`--action quote`). Ne jamais présenter un chiffre non validé comme un fait de marché actuel.
 
-> Owned communities are one of the highest-ROI marketing investments available. They reduce support costs, increase retention, generate product feedback, and create organic advocacy. This guide covers platform selection, launch, moderation, measurement, and monetization.
+> Les communautés en propre comptent parmi les investissements marketing au meilleur ROI disponibles. Elles réduisent les coûts de support, augmentent la rétention, génèrent des retours produit, et créent une défense de la marque organique. Ce guide couvre la sélection de plateforme, le lancement, la modération, la mesure, et la monétisation.
 
 ---
 
-## Platform Selection Matrix
+## Matrice de sélection de plateforme
 
-| Platform | Best For | Max Size | Moderation Tools | Monetization | Cost |
+| Plateforme | Idéal pour | Taille max | Outils de modération | Monétisation | Coût |
 |----------|---------|----------|-----------------|-------------|------|
-| **Discord** | Gaming, tech, crypto, creator brands, Gen Z/Millennial | Unlimited (but quality degrades >10K without structure) | Strong (bots, roles, automod) | Server subscriptions, integrations | Free (Nitro optional) |
-| **Slack** | B2B, SaaS, professional communities | Unlimited (free tier: 90-day message history) | Moderate (channels, apps) | Limited native; integrate with paid products | Free / $7.25+/user/mo |
-| **Facebook Groups** | Broad demographics, local businesses, consumer brands | Unlimited | Strong (admin tools, membership questions, automod) | Limited native; indirect via brand loyalty | Free |
-| **Reddit** | Niche interest, technical, highly engaged | Unlimited | Moderate (AutoModerator, mod tools) | Reddit Ads; primarily organic authority | Free |
-| **Circle** | Creators, course communities, paid memberships | Plan-dependent | Good (spaces, member levels) | Native (paid memberships, courses) | $49-399/mo |
-| **Geneva** | Social clubs, local communities | Moderate | Basic | Limited | Free |
-| **Mighty Networks** | Courses + community bundles | Plan-dependent | Good | Native (memberships, courses, events) | $41-360/mo |
-| **Bettermode (Tribe)** | B2B, product communities, knowledge bases | Plan-dependent | Good (moderation queue, automation) | Native (custom) | $19-599/mo |
+| **Discord** | Gaming, tech, crypto, marques de créateurs, Gen Z/Millennials | Illimitée (mais la qualité se dégrade au-delà de 10K sans structure) | Solides (bots, rôles, automodération) | Abonnements serveur, intégrations | Gratuit (Nitro optionnel) |
+| **Slack** | B2B, SaaS, communautés professionnelles | Illimitée (offre gratuite : historique de messages sur 90 jours) | Modérés (canaux, applications) | Limitée en natif ; intégration avec des produits payants | Gratuit / 7,25 $+/utilisateur/mois |
+| **Groupes Facebook** | Démographie large, entreprises locales, marques grand public | Illimitée | Solides (outils admin, questions d'adhésion, automodération) | Limitée en natif ; indirecte via la fidélité à la marque | Gratuit |
+| **Reddit** | Centres d'intérêt de niche, technique, forte implication | Illimitée | Modérés (AutoModerator, outils de modération) | Reddit Ads ; autorité principalement organique | Gratuit |
+| **Circle** | Créateurs, communautés de formation, adhésions payantes | Selon plan | Bons (espaces, niveaux de membres) | Natif (adhésions payantes, formations) | 49-399 $/mois |
+| **Geneva** | Clubs sociaux, communautés locales | Modérée | Basique | Limitée | Gratuit |
+| **Mighty Networks** | Packages formation + communauté | Selon plan | Bons | Natif (adhésions, formations, événements) | 41-360 $/mois |
+| **Bettermode (Tribe)** | B2B, communautés produit, bases de connaissances | Selon plan | Bons (file de modération, automatisation) | Natif (personnalisé) | 19-599 $/mois |
 
-### Decision Framework
+### Cadre de décision
 
-| If your audience is... | And your goal is... | Choose... |
+| Si votre audience est... | Et votre objectif est... | Choisissez... |
 |------------------------|--------------------|-----------|
-| B2B / SaaS professionals | Product community + support | Slack or Bettermode |
-| Developers / technical | Open-source, technical discussion | Discord or GitHub Discussions |
-| Consumers / broad demographic | Brand engagement, loyalty | Facebook Groups |
-| Creators / educators | Paid community + courses | Circle or Mighty Networks |
-| Gen Z / gaming / culture | Brand community + engagement | Discord |
-| Niche enthusiast | Organic growth, SEO value | Reddit (subreddit) |
-| Mixed / uncertain | Start simple, migrate later | Facebook Groups (lowest barrier) |
+| Professionnels B2B / SaaS | Communauté produit + support | Slack ou Bettermode |
+| Développeurs / techniques | Discussion technique, open-source | Discord ou GitHub Discussions |
+| Consommateurs / démographie large | Engagement de marque, fidélité | Groupes Facebook |
+| Créateurs / éducateurs | Communauté payante + formations | Circle ou Mighty Networks |
+| Gen Z / gaming / culture | Communauté de marque + engagement | Discord |
+| Passionnés de niche | Croissance organique, valeur SEO | Reddit (subreddit) |
+| Mixte / incertain | Commencer simplement, migrer plus tard | Groupes Facebook (barrière la plus basse) |
 
 ---
 
-## Community Launch Playbook
+## Playbook de lancement de communauté
 
-### Phase 1: Pre-Launch (Weeks 1-4)
+### Phase 1 : Pré-lancement (semaines 1-4)
 
-| Week | Action | Details |
+| Semaine | Action | Détails |
 |------|--------|---------|
-| 1 | Define community purpose and positioning | Answer: "Why would someone join and stay?" — must be clear and specific |
-| 1 | Choose platform | Use selection matrix above |
-| 2 | Design community structure | Channels/spaces, roles, rules, welcome flow |
-| 2 | Create community guidelines | Tone, rules, consequences, appeals process |
-| 3 | Recruit founding members (20-50) | Personal invitations to existing customers, superfans, team members |
-| 3 | Seed initial content | 10-20 posts/threads covering different topics so new members see activity |
-| 4 | Test all systems | Onboarding flow, moderation, roles, bots, notifications |
-| 4 | Prepare launch communications | Email, social, website announcement, in-product notification |
+| 1 | Définir l'objectif et le positionnement de la communauté | Répondre à : « Pourquoi quelqu'un rejoindrait-il et resterait-il ? » — doit être clair et précis |
+| 1 | Choisir la plateforme | Utiliser la matrice de sélection ci-dessus |
+| 2 | Concevoir la structure de la communauté | Canaux/espaces, rôles, règles, flux de bienvenue |
+| 2 | Créer les consignes communautaires | Ton, règles, conséquences, processus d'appel |
+| 3 | Recruter les membres fondateurs (20-50) | Invitations personnelles à des clients existants, super-fans, membres de l'équipe |
+| 3 | Amorcer le contenu initial | 10-20 posts/fils couvrant différents sujets pour que les nouveaux membres voient de l'activité |
+| 4 | Tester tous les systèmes | Flux d'onboarding, modération, rôles, bots, notifications |
+| 4 | Préparer les communications de lancement | Email, social, annonce sur le site web, notification dans le produit |
 
-### Phase 2: Launch (Week 5)
+### Phase 2 : Lancement (semaine 5)
 
-| Day | Action | Details |
+| Jour | Action | Détails |
 |-----|--------|---------|
-| Mon | Soft launch to founding members | Final feedback, stress test, fix issues |
-| Wed | Email blast to full customer/audience list | Clear value proposition, direct join link |
-| Thu | Social media announcement | Post across all channels, pin/highlight |
-| Fri | In-product/website promotion | Banner, modal, or notification directing to community |
-| Ongoing | Daily engagement by team | Respond to every post for the first 2 weeks |
+| Lun | Lancement en douceur pour les membres fondateurs | Derniers retours, test de charge, correction des problèmes |
+| Mer | Envoi email à toute la liste client/audience | Proposition de valeur claire, lien de participation direct |
+| Jeu | Annonce sur les réseaux sociaux | Publier sur tous les canaux, épingler/mettre en avant |
+| Ven | Promotion dans le produit/sur le site web | Bannière, modal, ou notification renvoyant vers la communauté |
+| En continu | Engagement quotidien de l'équipe | Répondre à chaque post pendant les 2 premières semaines |
 
-### Phase 3: Growth (Weeks 6-12)
+### Phase 3 : Croissance (semaines 6-12)
 
-| Action | Frequency | Details |
+| Action | Fréquence | Détails |
 |--------|-----------|---------|
-| Welcome new members personally | Daily | Personal message or @mention in welcome channel |
-| Post conversation starters | 3-5x/week | Questions, polls, "what are you working on?" threads |
-| Host events (AMA, workshop, live Q&A) | Weekly or biweekly | Recurring events build habit and attendance |
-| Share exclusive content | Weekly | Content only available in the community |
-| Highlight member contributions | Weekly | "Member Spotlight," shout-outs, pinned great posts |
-| Cross-promote community | Ongoing | Email signature, social bio, website, product |
+| Accueillir personnellement les nouveaux membres | Quotidien | Message personnel ou mention @ dans le canal de bienvenue |
+| Publier des lanceurs de conversation | 3-5x/semaine | Questions, sondages, fils « sur quoi travaillez-vous ? » |
+| Organiser des événements (AMA, atelier, Q&R en direct) | Hebdomadaire ou bimensuel | Les événements récurrents construisent l'habitude et la participation |
+| Partager du contenu exclusif | Hebdomadaire | Contenu disponible uniquement dans la communauté |
+| Mettre en avant les contributions des membres | Hebdomadaire | « Membre à l'honneur », mentions, épinglage des meilleurs posts |
+| Faire la promotion croisée de la communauté | En continu | Signature email, bio sociale, site web, produit |
 
 ---
 
-## Moderation Framework
+## Cadre de modération
 
-### Community Rules Template
+### Modèle de règles communautaires
 
-| Rule | Description | Consequence |
+| Règle | Description | Conséquence |
 |------|-------------|-------------|
-| **Be respectful** | No personal attacks, harassment, hate speech, or discrimination | Warning → 24hr mute → permanent ban |
-| **Stay on topic** | Post in relevant channels; no spam or irrelevant self-promotion | Post removed + redirect to correct channel |
-| **No spam** | No unsolicited sales pitches, affiliate links, or repeated promotion | Post removed → warning → ban |
-| **No NSFW content** | Keep all content appropriate for professional/all-ages audience | Immediate removal; warning or ban depending on severity |
-| **Respect privacy** | Do not share others' personal information without consent | Immediate removal + warning |
-| **No misinformation** | Do not spread unverified claims as facts | Post flagged/removed + educational response |
-| **Constructive criticism** | Feedback welcome; complaints should be specific and actionable | Guide toward productive framing |
+| **Être respectueux** | Pas d'attaques personnelles, harcèlement, discours haineux, ou discrimination | Avertissement → mise en sourdine 24h → bannissement permanent |
+| **Rester dans le sujet** | Publier dans les canaux pertinents ; pas de spam ni d'autopromotion hors sujet | Post supprimé + redirection vers le bon canal |
+| **Pas de spam** | Pas d'argumentaires de vente non sollicités, de liens d'affiliation, ou de promotion répétée | Post supprimé → avertissement → bannissement |
+| **Pas de contenu NSFW** | Garder tout le contenu approprié pour une audience professionnelle/tout âge | Suppression immédiate ; avertissement ou bannissement selon la gravité |
+| **Respecter la vie privée** | Ne pas partager les informations personnelles d'autrui sans consentement | Suppression immédiate + avertissement |
+| **Pas de désinformation** | Ne pas diffuser d'allégations non vérifiées comme des faits | Post signalé/supprimé + réponse pédagogique |
+| **Critique constructive** | Les retours sont bienvenus ; les plaintes doivent être précises et actionnables | Orienter vers une formulation productive |
 
-### Moderation Escalation Tiers
+### Niveaux d'escalade de la modération
 
-| Tier | Trigger | Action | Who |
+| Niveau | Déclencheur | Action | Qui |
 |------|---------|--------|-----|
-| Auto-mod | Keyword match, link spam, rapid posting | Auto-remove or flag for review | Bot/automation |
-| Tier 1 | Rule violation (first offense, minor) | Warning via DM + post removal | Community moderator |
-| Tier 2 | Repeated violations or moderate offense | 24-72 hour mute/timeout | Senior moderator |
-| Tier 3 | Serious violation (harassment, threats, doxxing) | Immediate ban + documentation | Community manager |
-| Tier 4 | Legal concern (threats of violence, illegal activity) | Ban + report to platform + legal team notification | Community manager + legal |
+| Automodération | Correspondance de mot-clé, spam de liens, publication rapide | Suppression auto ou signalement pour revue | Bot/automatisation |
+| Niveau 1 | Violation de règle (première infraction, mineure) | Avertissement par MP + suppression du post | Modérateur communautaire |
+| Niveau 2 | Violations répétées ou infraction modérée | Mise en sourdine/suspension 24-72 heures | Modérateur senior |
+| Niveau 3 | Violation grave (harcèlement, menaces, doxxing) | Bannissement immédiat + documentation | Community manager |
+| Niveau 4 | Préoccupation juridique (menaces de violence, activité illégale) | Bannissement + signalement à la plateforme + notification à l'équipe juridique | Community manager + juridique |
 
-### Moderation Team Scaling
+### Montée en puissance de l'équipe de modération
 
-| Community Size | Moderators Needed | Ratio |
+| Taille de communauté | Modérateurs nécessaires | Ratio |
 |---------------|-------------------|-------|
-| 0-500 | 1-2 (founders/team) | 1:250 |
-| 500-2,000 | 2-4 (team + volunteer mods) | 1:500 |
-| 2,000-10,000 | 4-8 (mix of staff + community mods) | 1:1,000 |
-| 10,000+ | 8+ (dedicated community team + volunteer program) | 1:1,500 |
+| 0-500 | 1-2 (fondateurs/équipe) | 1:250 |
+| 500-2 000 | 2-4 (équipe + modérateurs bénévoles) | 1:500 |
+| 2 000-10 000 | 4-8 (mélange staff + modérateurs communautaires) | 1:1 000 |
+| 10 000+ | 8+ (équipe communauté dédiée + programme de bénévoles) | 1:1 500 |
 
 ---
 
-## Community Health Metrics Dashboard
+## Tableau de bord des métriques de santé communautaire
 
-### Engagement Metrics
+### Métriques d'engagement
 
-| Metric | Definition | Healthy Benchmark | Warning Sign |
+| Métrique | Définition | Benchmark sain | Signal d'alerte |
 |--------|-----------|-------------------|-------------|
-| **DAU/MAU Ratio** | Daily active / monthly active users | >20% | <10% |
-| **Posts per Day** | New posts or messages per day | Varies; trending upward | Declining for 2+ weeks |
-| **Replies per Post** | Average replies on each new post | >2 replies | <1 reply average |
-| **Response Time** | Time until first reply on a new post | <4 hours (community) or <1 hour (staff) | >24 hours |
-| **Active Contributors** | % of members who post/reply in a month | >10% | <5% |
-| **Lurker-to-Contributor Ratio** | Members who read but never post | 90/10 is normal; improve toward 80/20 | >95% lurkers |
+| **Ratio DAU/MAU** | Utilisateurs actifs quotidiens / mensuels | >20 % | <10 % |
+| **Posts par jour** | Nouveaux posts ou messages par jour | Variable ; tendance à la hausse | En déclin depuis 2+ semaines |
+| **Réponses par post** | Nombre moyen de réponses sur chaque nouveau post | >2 réponses | Moyenne <1 réponse |
+| **Temps de réponse** | Délai avant la première réponse sur un nouveau post | <4 heures (communauté) ou <1 heure (équipe) | >24 heures |
+| **Contributeurs actifs** | % de membres qui publient/répondent dans le mois | >10 % | <5 % |
+| **Ratio observateurs/contributeurs** | Membres qui lisent mais ne publient jamais | 90/10 est normal ; viser 80/20 | >95 % d'observateurs |
 
-### Retention Metrics
+### Métriques de rétention
 
-| Metric | Definition | Healthy Benchmark | Warning Sign |
+| Métrique | Définition | Benchmark sain | Signal d'alerte |
 |--------|-----------|-------------------|-------------|
-| **Day 1 Retention** | % of new members active on day 2 | >50% | <30% |
-| **Week 1 Retention** | % of new members active in week 2 | >40% | <20% |
-| **Month 1 Retention** | % of new members active in month 2 | >30% | <15% |
-| **Churn Rate** | % of members who leave per month | <5% | >10% |
-| **Return Rate** | % of members who return after 7+ day absence | >20% | <10% |
+| **Rétention jour 1** | % de nouveaux membres actifs le jour 2 | >50 % | <30 % |
+| **Rétention semaine 1** | % de nouveaux membres actifs en semaine 2 | >40 % | <20 % |
+| **Rétention mois 1** | % de nouveaux membres actifs au mois 2 | >30 % | <15 % |
+| **Taux d'attrition** | % de membres qui partent par mois | <5 % | >10 % |
+| **Taux de retour** | % de membres qui reviennent après 7+ jours d'absence | >20 % | <10 % |
 
-### Growth Metrics
+### Métriques de croissance
 
-| Metric | Definition | Healthy Benchmark |
+| Métrique | Définition | Benchmark sain |
 |--------|-----------|-------------------|
-| **Net Member Growth** | New joins - departures per month | Positive and accelerating |
-| **Invite Rate** | % of members who invite others | >5% |
-| **Join Source** | Where new members discover community | Diversified (not single-source dependent) |
-| **Organic vs. Promoted** | % of joins from organic vs. paid/promoted | >60% organic indicates product-market fit |
+| **Croissance nette des membres** | Nouvelles adhésions - départs par mois | Positive et en accélération |
+| **Taux d'invitation** | % de membres qui invitent d'autres personnes | >5 % |
+| **Source d'adhésion** | Comment les nouveaux membres découvrent la communauté | Diversifiée (pas dépendante d'une source unique) |
+| **Organique vs promu** | % d'adhésions organiques vs payantes/promues | >60 % organique indique une adéquation produit-marché |
 
 ---
 
-## Community-Led Growth (CLG)
+## Croissance portée par la communauté (CLG)
 
-### CLG Flywheel
+### Volant de croissance CLG
 
 ```
-Product Usage → Community Participation → Peer Learning & Advocacy
+Utilisation du produit → Participation communautaire → Apprentissage entre pairs & défense de marque
      ↑                                            │
-     └────────── Retention + Expansion ←──────────┘
+     └────────── Rétention + expansion ←──────────┘
 ```
 
-### CLG Tactics
+### Tactiques CLG
 
-| Tactic | Description | Impact |
+| Tactique | Description | Impact |
 |--------|-------------|--------|
-| **User-generated content** | Members create tutorials, templates, guides | Reduces content costs, increases authenticity |
-| **Peer support** | Community members answer each other's questions | Reduces support tickets (30-50% deflection) |
-| **Product feedback** | Feature requests, bug reports, beta testing | Faster product iteration, higher satisfaction |
-| **Social proof** | Testimonials, case studies from community members | Higher conversion rates |
-| **Referrals** | Members refer new customers | Lower CAC |
-| **Co-creation** | Community input on product roadmap, content | Higher engagement and loyalty |
-| **Events** | Community-organized meetups, webinars, hackathons | Stronger network effects |
+| **Contenu généré par les utilisateurs** | Les membres créent des tutoriels, modèles, guides | Réduit les coûts de contenu, augmente l'authenticité |
+| **Support entre pairs** | Les membres de la communauté répondent aux questions des autres | Réduit les tickets de support (déviation de 30-50 %) |
+| **Retours produit** | Demandes de fonctionnalités, rapports de bugs, tests bêta | Itération produit plus rapide, satisfaction plus élevée |
+| **Preuve sociale** | Témoignages, études de cas issus des membres de la communauté | Taux de conversion plus élevés |
+| **Parrainages** | Les membres recommandent de nouveaux clients | CAC plus faible |
+| **Co-création** | Contribution de la communauté sur la feuille de route produit, le contenu | Engagement et fidélité plus élevés |
+| **Événements** | Meetups, webinaires, hackathons organisés par la communauté | Effets de réseau plus forts |
 
 ---
 
-## Content Strategy for Communities
+## Stratégie de contenu pour les communautés
 
-### Content Mix (Weekly)
+### Répartition du contenu (hebdomadaire)
 
-| Content Type | Frequency | Purpose | Example |
+| Type de contenu | Fréquence | Objectif | Exemple |
 |-------------|-----------|---------|---------|
-| Discussion prompts | 3-5x/week | Drive conversation | "What's the biggest challenge you're facing with X this week?" |
-| Educational content | 2-3x/week | Provide value | How-to guide, tutorial, industry insight |
-| Member spotlight | 1x/week | Recognition and retention | Interview or feature of an active member |
-| AMA / expert session | 1x/week or biweekly | Exclusive access | Live Q&A with founder, expert, or customer |
-| Poll / survey | 1-2x/week | Engagement + data | "Which feature do you use most?" |
-| Behind-the-scenes | 1x/week | Transparency and trust | Product roadmap update, team introduction |
-| Fun / off-topic | 1-2x/week | Human connection | Friday wins, memes channel, off-topic chat |
-| Announcements | As needed | Information | Product updates, event reminders, policy changes |
+| Lanceurs de discussion | 3-5x/semaine | Générer la conversation | « Quel est le plus grand défi que vous rencontrez avec X cette semaine ? » |
+| Contenu éducatif | 2-3x/semaine | Apporter de la valeur | Guide pratique, tutoriel, éclairage sectoriel |
+| Membre à l'honneur | 1x/semaine | Reconnaissance et rétention | Interview ou mise en avant d'un membre actif |
+| AMA / session d'expert | 1x/semaine ou bimensuel | Accès exclusif | Q&R en direct avec le fondateur, un expert, ou un client |
+| Sondage / enquête | 1-2x/semaine | Engagement + données | « Quelle fonctionnalité utilisez-vous le plus ? » |
+| Coulisses | 1x/semaine | Transparence et confiance | Mise à jour de la feuille de route produit, présentation de l'équipe |
+| Fun / hors sujet | 1-2x/semaine | Connexion humaine | Réussites du vendredi, canal de mèmes, discussion hors sujet |
+| Annonces | Selon besoin | Information | Mises à jour produit, rappels d'événements, changements de politique |
 
 ---
 
-## Monetization Models
+## Modèles de monétisation
 
-| Model | Description | Best For | Revenue Potential |
+| Modèle | Description | Idéal pour | Potentiel de revenu |
 |-------|-------------|----------|------------------|
-| **Free community, paid product** | Community supports product adoption | SaaS, e-commerce | Indirect (retention, expansion) |
-| **Freemium community** | Free tier + paid tier with premium access | Creator communities, education | $10-100/mo per premium member |
-| **Paid-only community** | Membership fee to join | Expert/niche communities | $20-500/mo depending on value |
-| **Sponsorship** | Brands sponsor channels, events, or content | Large communities (5K+) | $500-10,000/mo per sponsor |
-| **Marketplace** | Members buy/sell services or products | Professional communities | Transaction fees (5-15%) |
-| **Events** | Paid workshops, conferences, masterminds | Education, professional development | $50-5,000/event ticket |
-| **Affiliate** | Recommend tools/products with affiliate links | Tool-focused communities | Variable (5-30% commission) |
+| **Communauté gratuite, produit payant** | La communauté soutient l'adoption du produit | SaaS, e-commerce | Indirect (rétention, expansion) |
+| **Communauté freemium** | Niveau gratuit + niveau payant avec accès premium | Communautés de créateurs, éducation | 10-100 $/mois par membre premium |
+| **Communauté entièrement payante** | Frais d'adhésion pour rejoindre | Communautés expertes/de niche | 20-500 $/mois selon la valeur |
+| **Sponsoring** | Les marques sponsorisent des canaux, événements, ou du contenu | Grandes communautés (5K+) | 500-10 000 $/mois par sponsor |
+| **Marketplace** | Les membres achètent/vendent des services ou produits | Communautés professionnelles | Frais de transaction (5-15 %) |
+| **Événements** | Ateliers, conférences, masterminds payants | Éducation, développement professionnel | 50-5 000 $/billet d'événement |
+| **Affiliation** | Recommander des outils/produits avec des liens d'affiliation | Communautés centrées sur des outils | Variable (commission de 5-30 %) |
 
 ---
 
-## Governance
+## Gouvernance
 
-### Leadership Structure
+### Structure de direction
 
-| Role | Responsibility | Selection |
+| Rôle | Responsabilité | Sélection |
 |------|---------------|-----------|
-| Community Manager (staff) | Day-to-day operations, strategy, reporting | Hired position |
-| Senior Moderators | Enforce rules, escalate issues, train new mods | Promoted from active members |
-| Moderators | Monitor channels, respond to reports, welcome new members | Application + interview |
-| Champions / Ambassadors | Content creation, event support, peer mentorship | Nomination or application |
-| Advisory Council | Strategic input on community direction, policy changes | Elected or appointed (quarterly rotation) |
+| Community manager (staff) | Opérations quotidiennes, stratégie, reporting | Poste salarié |
+| Modérateurs seniors | Faire appliquer les règles, escalader les problèmes, former les nouveaux modérateurs | Promus depuis les membres actifs |
+| Modérateurs | Surveiller les canaux, répondre aux signalements, accueillir les nouveaux membres | Candidature + entretien |
+| Champions / Ambassadeurs | Création de contenu, soutien aux événements, mentorat entre pairs | Nomination ou candidature |
+| Conseil consultatif | Contribution stratégique sur la direction de la communauté, les changements de politique | Élu ou nommé (rotation trimestrielle) |
 
-### Governance Principles
-1. **Transparency** — Share community decisions, policy changes, and their rationale publicly
-2. **Consistency** — Apply rules equally; no favoritism regardless of member status
-3. **Proportionality** — Punishment should match the offense
-4. **Appeal process** — Members can appeal moderation decisions through a defined channel
-5. **Evolution** — Review and update community guidelines every 6 months with member input
-6. **Data privacy** — Be clear about what member data is collected, stored, and used
+### Principes de gouvernance
+1. **Transparence** — partager publiquement les décisions communautaires, les changements de politique, et leurs justifications
+2. **Cohérence** — appliquer les règles équitablement ; pas de favoritisme quel que soit le statut du membre
+3. **Proportionnalité** — la sanction doit correspondre à l'infraction
+4. **Processus d'appel** — les membres peuvent contester les décisions de modération via un canal défini
+5. **Évolution** — revoir et mettre à jour les consignes communautaires tous les 6 mois avec la contribution des membres
+6. **Confidentialité des données** — être clair sur les données de membre collectées, stockées, et utilisées
 
 ---
 
-> **The best communities are not built by brands — they are built by members, for members.** Your role is to create the conditions for connection, provide value worth showing up for, and then get out of the way. When members feel ownership, growth takes care of itself.
+> **Les meilleures communautés ne sont pas construites par les marques — elles sont construites par les membres, pour les membres.** Votre rôle est de créer les conditions de la connexion, d'apporter une valeur qui donne envie de revenir, puis de vous effacer. Quand les membres se sentent propriétaires, la croissance se fait d'elle-même.

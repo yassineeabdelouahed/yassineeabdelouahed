@@ -1,74 +1,74 @@
 ---
 name: page-seo-analysis
-description: "Run a deep SEO audit of one URL across title/meta, headings, content depth, E-E-A-T, schema (with deprecation flags for HowTo, FAQ, SpecialAnnouncement), images, internal links, technical signals, and AI search readiness. Produces a scored /80 report with exact replacement title tags and meta descriptions, ready-to-paste JSON-LD, and optional competitor comparison. Triggers on \"/digital-marketing-pro:page-seo-analysis\", \"analyze the SEO of this page\", \"why isn't this page ranking\", \"audit this URL before publish\", \"compare my page against competitor pages\". Reads the brand profile and guidelines; analysis and recommendations only — nothing is changed on the site. For a site-wide view, pair with /digital-marketing-pro:seo-audit."
+description: "Réaliser un audit SEO approfondi d'une URL couvrant title/meta, titres, profondeur de contenu, E-E-A-T, schema (avec signaux de dépréciation pour HowTo, FAQ, SpecialAnnouncement), images, liens internes, signaux techniques et la préparation à la recherche IA. Produit un rapport noté sur /80 avec des balises title et meta descriptions de remplacement prêtes à l'emploi, du JSON-LD prêt à coller, et une comparaison concurrentielle optionnelle. Se déclenche sur \"/digital-marketing-pro:page-seo-analysis\", \"analyze the SEO of this page\", \"why isn't this page ranking\", \"audit this URL before publish\", \"compare my page against competitor pages\". Lit le profil de marque et les guidelines ; analyse et recommandations uniquement — rien n'est modifié sur le site. Pour une vue à l'échelle du site, se combine avec /digital-marketing-pro:seo-audit."
 argument-hint: "[URL]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:page-seo-analysis
 
-## Purpose
+## Objectif
 
-Deep single-page SEO analysis — examines everything about one URL across all ranking dimensions. More granular than a site-wide audit. Use for landing page optimization, content refresh prioritization, or pre-publish quality checks.
+Analyse SEO approfondie d'une page unique — examine tout ce qui concerne une URL sur toutes les dimensions de classement. Plus granulaire qu'un audit à l'échelle du site. À utiliser pour l'optimisation de landing page, la priorisation de rafraîchissement de contenu, ou les contrôles qualité avant publication.
 
-## Input Required
+## Informations requises
 
-- **URL**: The specific page to analyze
-- **Target keyword**: Primary keyword this page should rank for (optional — can be inferred)
-- **Competitors**: 1-3 competitor pages targeting the same keyword (optional)
+- **URL** : La page spécifique à analyser
+- **Mot-clé cible** : Mot-clé principal pour lequel cette page devrait se classer (optionnel — peut être déduit)
+- **Concurrents** : 1 à 3 pages concurrentes ciblant le même mot-clé (optionnel)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read active brand profile. Load brand guidelines if available.
-2. **Fetch and parse page**: Retrieve full HTML, extract all signals.
-3. **Title tag analysis**: Character count (50-60 chars ideal), keyword placement, brand inclusion, uniqueness, click-worthiness.
-4. **Meta description analysis**: Character count (150-160 chars), keyword inclusion, CTA presence, uniqueness.
-5. **Heading hierarchy**: H1 presence and uniqueness, H2-H6 logical structure, keyword distribution across headings.
-6. **Content depth analysis**: Word count, reading level, topic coverage completeness, keyword *placement* (primary keyword in title, intro, ≥2 H2s, conclusion, and meta — density is not a target; keyword-density percentages are a discredited metric, not a ranking factor), natural coverage of related/co-occurring terms, content freshness (last modified date).
-7. **E-E-A-T signals**: Author byline and bio, credentials, first-hand experience indicators, citations and sources, about page link, contact information.
-8. **Schema markup detection**: JSON-LD, Microdata, RDFa — validate against Google's supported types, check for deprecations (HowTo deprecated Sept 2023, FAQ restricted to gov/health Aug 2023, SpecialAnnouncement deprecated July 2025), suggest missing schema opportunities.
-9. **Image audit**: Alt text, dimensions, format, lazy loading, fetchpriority on LCP image (see image-seo-audit skill for full methodology).
-10. **Internal linking**: Inbound links to this page, outbound links from this page, anchor text quality, orphan page check.
-11. **Technical signals**: Canonical tag, robots directives, mobile viewport, HTTPS, page speed indicators, Core Web Vitals.
-12. **AI search readiness**: Entity consistency, citation-worthiness, structured answer formatting, concise answer blocks for featured snippets.
-13. **Competitor comparison** (if provided): Side-by-side analysis of word count, schema, headings, E-E-A-T signals vs competitor pages.
+1. **Charger le contexte de marque** : Lire le profil de marque actif. Charger les guidelines de marque si disponibles.
+2. **Récupérer et analyser la page** : Récupérer le HTML complet, extraire tous les signaux.
+3. **Analyse de la balise title** : Nombre de caractères (50-60 caractères idéal), placement du mot-clé, présence de la marque, unicité, attractivité au clic.
+4. **Analyse de la meta description** : Nombre de caractères (150-160), inclusion du mot-clé, présence d'un CTA, unicité.
+5. **Hiérarchie des titres** : Présence et unicité du H1, structure logique H2-H6, distribution des mots-clés dans les titres.
+6. **Analyse de la profondeur de contenu** : Nombre de mots, niveau de lecture, exhaustivité de la couverture du sujet, *placement* du mot-clé (mot-clé principal dans le title, l'intro, ≥2 H2 et la conclusion et la meta — la densité n'est pas un objectif ; les pourcentages de densité de mots-clés sont une métrique discréditée, pas un facteur de classement), couverture naturelle des termes associés/co-occurrents, fraîcheur du contenu (date de dernière modification).
+7. **Signaux E-E-A-T** : Signature et bio de l'auteur, qualifications, indicateurs d'expérience de première main, citations et sources, lien vers la page à propos, informations de contact.
+8. **Détection du balisage schema** : JSON-LD, Microdata, RDFa — valider par rapport aux types supportés par Google, vérifier les dépréciations (HowTo déprécié en septembre 2023, FAQ restreint aux sites gouvernementaux/santé en août 2023, SpecialAnnouncement déprécié en juillet 2025), suggérer les opportunités de schema manquantes.
+9. **Audit des images** : Texte alternatif, dimensions, format, chargement différé (lazy loading), fetchpriority sur l'image LCP (voir le skill image-seo-audit pour la méthodologie complète).
+10. **Maillage interne** : Liens entrants vers cette page, liens sortants depuis cette page, qualité des ancres, vérification des pages orphelines.
+11. **Signaux techniques** : Balise canonique, directives robots, viewport mobile, HTTPS, indicateurs de vitesse de page, Core Web Vitals.
+12. **Préparation à la recherche IA** : Cohérence des entités, aptitude à la citation, formatage de réponse structuré, blocs de réponse concis pour les extraits enrichis.
+13. **Comparaison concurrentielle** (si fournie) : Analyse côte à côte du nombre de mots, du schema, des titres, des signaux E-E-A-T vs les pages concurrentes.
 
-## Schema Deprecation Tracking
+## Suivi des dépréciations de schema
 
-Always check and flag:
-- **HowTo**: Deprecated (September 2023) — rich results removed
-- **FAQ**: Restricted to government and health authority sites (August 2023)
-- **SpecialAnnouncement**: Deprecated (July 2025)
-- **EnergyConsumptionDetails**: Replaced by Certification schema (April 2025)
+Toujours vérifier et signaler :
+- **HowTo** : Déprécié (septembre 2023) — résultats enrichis supprimés
+- **FAQ** : Restreint aux sites d'autorités gouvernementales et de santé (août 2023)
+- **SpecialAnnouncement** : Déprécié (juillet 2025)
+- **EnergyConsumptionDetails** : Remplacé par le schema Certification (avril 2025)
 
-## Output
+## Résultat
 
-### Page SEO Score: XX/80
+### Score SEO de la page : XX/80
 
-| Dimension | Score | Priority Issues |
+| Dimension | Score | Problèmes prioritaires |
 |-----------|-------|-----------------|
 | Title & Meta | /10 | ... |
-| Content Depth | /10 | ... |
+| Profondeur de contenu | /10 | ... |
 | E-E-A-T | /10 | ... |
-| Schema Markup | /10 | ... |
+| Balisage schema | /10 | ... |
 | Images | /10 | ... |
-| Internal Links | /10 | ... |
-| Technical | /10 | ... |
-| AI Readiness | /10 | ... |
+| Liens internes | /10 | ... |
+| Technique | /10 | ... |
+| Préparation IA | /10 | ... |
 
-- Specific, actionable recommendations for each dimension
-- Exact replacement title tags and meta descriptions (with character counts)
-- Missing schema markup JSON-LD code (ready to implement)
-- Content gaps vs competitors
-- Quick wins vs strategic improvements
+- Recommandations spécifiques et actionnables pour chaque dimension
+- Balises title et meta descriptions de remplacement exactes (avec nombre de caractères)
+- Code JSON-LD du balisage schema manquant (prêt à implémenter)
+- Lacunes de contenu par rapport aux concurrents
+- Gains rapides vs améliorations stratégiques
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — All page-level analysis, scoring, recommendations
+- **seo-specialist** — Toute l'analyse au niveau de la page, le scoring, les recommandations
 
-## Scripts Used
+## Scripts utilisés
 
-- **tech-seo-auditor.py** — Technical signal extraction
-- **content-scorer.py** — Content quality scoring
-- **schema-generator.py** — Generate missing schema markup
-- **competitor-scraper.py** — Competitor page comparison
+- **tech-seo-auditor.py** — Extraction des signaux techniques
+- **content-scorer.py** — Scoring de la qualité du contenu
+- **schema-generator.py** — Génération du balisage schema manquant
+- **competitor-scraper.py** — Comparaison des pages concurrentes

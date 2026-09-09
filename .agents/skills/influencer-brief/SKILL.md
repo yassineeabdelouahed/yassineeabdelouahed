@@ -1,61 +1,94 @@
 ---
 name: influencer-brief
-description: "Create a complete influencer campaign brief — creator discovery criteria, a shareable creator brief document, compensation framework, content approval workflow, FTC/ASA compliance checklist, usage rights, and a measurement framework, including AI-tool clauses and the EU deepfake disclosure clause for EU placements. Triggers on \"/digital-marketing-pro:influencer-brief\", \"write a brief for our influencer campaign\", \"what should our creator brief include\", \"set criteria for choosing creators\", \"draft the disclosure requirements for influencers\". Reads the brand profile, guidelines, and agency SOPs; references the /digital-marketing-pro:c2pa-metadata workflow for AI assets shipped for paid amplification."
+description: "Créer un brief complet de campagne d'influence — critères de découverte de créateurs, un document de brief créateur partageable, cadre de rémunération, workflow d'approbation de contenu, checklist de conformité FTC/ASA, droits d'usage, et un cadre de mesure, incluant les clauses d'outils IA et la clause de divulgation deepfake de l'UE pour les placements dans l'UE. Se déclenche sur « /digital-marketing-pro:influencer-brief », « rédige un brief pour notre campagne d'influence », « que doit inclure notre brief créateur », « fixe les critères de sélection des créateurs », « rédige les exigences de divulgation pour les influenceurs ». Lit le profil de marque, les guidelines, et les SOP d'agence ; référence le workflow /digital-marketing-pro:c2pa-metadata pour les actifs IA livrés en amplification payante."
 argument-hint: "[campaign-objective]"
 ---
 
 # /digital-marketing-pro:influencer-brief
 
-## Purpose
+## Objectif
 
-Create a complete influencer campaign brief that covers creator discovery criteria, content guidelines, compliance requirements, compensation framework, and performance measurement.
+Créer un brief complet de campagne d'influence couvrant les critères de découverte de
+créateurs, les guidelines de contenu, les exigences de conformité, le cadre de
+rémunération, et la mesure de performance.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Campaign objective**: Awareness, engagement, conversions, content generation, or event promotion
-- **Product/service**: What the influencer will promote
-- **Target audience**: Who the campaign should reach
-- **Platform(s)**: Instagram, TikTok, YouTube, X, LinkedIn, podcasts
-- **Budget**: Total influencer budget or per-creator range
-- **Creator tier**: Nano (1-10K), Micro (10-100K), Mid (100K-500K), Macro (500K-1M), Mega (1M+)
-- **Timeline**: Campaign dates and content delivery deadlines
-- **Content type**: Posts, stories, reels, videos, reviews, unboxing, tutorials, live streams
+- **Objectif de la campagne** : Notoriété, engagement, conversions, génération de contenu, ou promotion d'événement
+- **Produit/service** : Ce que l'influenceur va promouvoir
+- **Audience cible** : Qui la campagne doit atteindre
+- **Plateforme(s)** : Instagram, TikTok, YouTube, X, LinkedIn, podcasts
+- **Budget** : Budget total influenceurs ou fourchette par créateur
+- **Palier de créateur** : Nano (1-10K), Micro (10-100K), Mid (100K-500K), Macro (500K-1M), Mega (1M+)
+- **Calendrier** : Dates de campagne et délais de livraison du contenu
+- **Type de contenu** : Publications, stories, reels, vidéos, avis, unboxing, tutoriels, live streams
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Define creator discovery criteria: niche, audience demographics, engagement rate minimums, brand safety filters, aesthetic alignment
-3. Build the creator brief: campaign overview, key messages, creative freedom boundaries, required and prohibited elements, hashtags, disclosures
-4. Draft compensation framework: flat fee, performance bonus, affiliate commission, product gifting, or hybrid
-5. Create content approval workflow: draft review, revision rounds, posting timeline
-6. Build FTC/ASA compliance checklist: disclosure requirements, claim restrictions, platform-specific rules
-7. Define usage rights: organic only, paid amplification, repurposing, duration
-8. Set measurement framework: reach, engagement, clicks, conversions, CPE, EMV
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json`
+   pour obtenir le slug actif, puis charger
+   `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les
+   règles de conformité pour les marchés ciblés
+   (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel.
+   **Vérifier aussi les guidelines** dans
+   `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes,
+   charger les restrictions et les fichiers de catégorie pertinents. Vérifier les
+   templates personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`.
+   Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque
+   n'existe, demander : « Configurer une marque d'abord
+   (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. Définir les critères de découverte de créateurs : niche, démographie de l'audience, minimums de taux d'engagement, filtres de sécurité de marque, alignement esthétique
+3. Construire le brief créateur : aperçu de la campagne, messages clés, limites de liberté créative, éléments obligatoires et interdits, hashtags, divulgations
+4. Rédiger le cadre de rémunération : forfait fixe, bonus de performance, commission d'affiliation, don de produit, ou hybride
+5. Créer le workflow d'approbation de contenu : revue de brouillon, tours de révision, calendrier de publication
+6. Construire la checklist de conformité FTC/ASA : exigences de divulgation, restrictions de revendication, règles spécifiques à la plateforme
+7. Définir les droits d'usage : organique uniquement, amplification payante, réutilisation, durée
+8. Fixer le cadre de mesure : portée, engagement, clics, conversions, CPE, EMV
 
-## Output
+## Résultat
 
-A structured influencer campaign brief containing:
+Un brief structuré de campagne d'influence contenant :
 
-- Campaign overview with objectives and success metrics
-- Creator discovery criteria and ideal profile description
-- Creator brief document (shareable with influencers)
-- Key messaging framework with creative guardrails (including any AI-tool restrictions — see below)
-- Compensation structure and negotiation guidelines
-- Content approval and revision process
-- FTC/ASA compliance checklist with required disclosures
-- Usage rights and licensing terms
-- Measurement dashboard with KPIs and reporting cadence
+- Aperçu de la campagne avec objectifs et métriques de succès
+- Critères de découverte de créateurs et description du profil idéal
+- Document de brief créateur (partageable avec les influenceurs)
+- Cadre de messagerie clé avec garde-fous créatifs (incluant toute restriction d'outil IA — voir ci-dessous)
+- Structure de rémunération et guidelines de négociation
+- Processus d'approbation et de révision de contenu
+- Checklist de conformité FTC/ASA avec les divulgations requises
+- Droits d'usage et conditions de licence
+- Tableau de bord de mesure avec KPI et cadence de reporting
 
-### AI-tool clauses for creator briefs (May 2026)
+### Clauses d'outils IA pour les briefs créateurs (mai 2026)
 
-Creators increasingly use AI image/video tools (Nano Banana Pro, Gemini Omni, Veo 3.1, Kling v3.0 Pro, Runway Gen-4, Midjourney; **note:** OpenAI's consumer Sora app was discontinued 26 Apr 2026 and the Sora API ends 24 Sep 2026 — do not specify Sora in new briefs) inside sponsored content. The brief must spell out three things to keep the brand safe:
+Les créateurs utilisent de plus en plus des outils IA image/vidéo (Nano Banana Pro,
+Gemini Omni, Veo 3.1, Kling v3.0 Pro, Runway Gen-4, Midjourney ; **remarque :**
+l'application grand public Sora d'OpenAI a été abandonnée le 26 avr. 2026 et l'API Sora
+prend fin le 24 sept. 2026 — ne pas spécifier Sora dans les nouveaux briefs) dans le
+contenu sponsorisé. Le brief doit préciser trois choses pour protéger la marque :
 
-1. **Permitted AI use**: Allowed for B-roll, mood, and stylised visuals. **Not permitted for** synthetic depictions of real people (including the creator themselves in altered form), synthetic product imagery that misrepresents the brand's actual product, or AI-generated voiceover impersonating a real person without explicit release.
-2. **Required disclosures**: Any AI-generated visual or audio in the sponsored content must (a) be flagged in the creator's platform-native AI disclosure (TikTok AI label, Meta AI Content label, YouTube "altered or synthetic content" toggle) AND (b) carry C2PA Content Credentials if the creator ships the file to the brand for paid amplification — provide `/digital-marketing-pro:c2pa-metadata` workflow link in the brief.
-3. **EU deepfake clause** (mandatory for EU-distributed campaigns): Synthetic-human content (face swaps, AI voices resembling real people, AI-cloned likeness) must carry a visible deepfake disclosure perceivable at normal viewing distance. See `skills/context-engine/compliance-rules.md` §1.1b.i (Article 50 implementing guidelines — FINAL 2026; Article 50 applies 2 Aug 2026). Creators who refuse this clause should not be cleared for EU placements.
+1. **Usage IA autorisé** : Autorisé pour les plans B-roll, l'ambiance, et les visuels
+   stylisés. **Non autorisé pour** les représentations synthétiques de personnes
+   réelles (y compris le créateur lui-même sous forme altérée), l'imagerie produit
+   synthétique qui déforme le produit réel de la marque, ou la voix off générée par IA
+   imitant une personne réelle sans autorisation explicite.
+2. **Divulgations requises** : Tout visuel ou audio généré par IA dans le contenu
+   sponsorisé doit (a) être signalé dans la divulgation IA native de la plateforme du
+   créateur (label IA de TikTok, label Meta AI Content, bascule « contenu altéré ou
+   synthétique » de YouTube) ET (b) porter des Content Credentials C2PA si le créateur
+   livre le fichier à la marque pour amplification payante — fournir le lien du
+   workflow `/digital-marketing-pro:c2pa-metadata` dans le brief.
+3. **Clause deepfake UE** (obligatoire pour les campagnes diffusées dans l'UE) : Le
+   contenu à humain synthétique (échanges de visage, voix IA ressemblant à des
+   personnes réelles, image clonée par IA) doit porter une divulgation deepfake
+   visible perceptible à distance de visionnage normale. Voir
+   `skills/context-engine/compliance-rules.md` §1.1b.i (lignes directrices de mise en
+   œuvre de l'Article 50 — FINALES 2026 ; l'Article 50 s'applique le 2 août 2026). Les
+   créateurs qui refusent cette clause ne devraient pas être validés pour des
+   placements dans l'UE.
 
-## Agents Used
+## Agents utilisés
 
-- **influencer-manager** — Creator strategy, brief development, compliance, measurement, campaign architecture
+- **influencer-manager** — Stratégie créateur, développement de brief, conformité, mesure, architecture de campagne

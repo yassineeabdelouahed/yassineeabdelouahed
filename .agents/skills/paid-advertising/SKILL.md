@@ -1,191 +1,191 @@
 ---
 name: paid-advertising
-description: "Plan, structure, and audit paid media campaigns across Google, Meta, LinkedIn, TikTok, Microsoft, programmatic, retail media, native, and audio — campaign hierarchy, audience architecture, bid strategy, budget allocation and pacing, creative strategy, and current platform API changes (Google Ads v24/v25, Meta v25). Produces campaign plans, platform audit scorecards, budget models, creative briefs, and optimization playbooks. Triggers on \"/digital-marketing-pro:paid-advertising\", \"plan a Google Ads campaign\", \"audit our Meta account\", \"which bid strategy should we use\", \"allocate our paid media budget\". Reads the brand profile, guidelines, and campaign history via campaign-tracker.py; plans and recommends only — launching is handled by /digital-marketing-pro:launch-campaign."
+description: "Planifier, structurer et auditer des campagnes média payantes sur Google, Meta, LinkedIn, TikTok, Microsoft, le programmatique, les retail media, le native et l'audio — hiérarchie de campagne, architecture d'audience, stratégie d'enchères, allocation et rythme budgétaire, stratégie créative, et évolutions actuelles des API des plateformes (Google Ads v24/v25, Meta v25). Produit des plans de campagne, des scorecards d'audit de plateforme, des modèles budgétaires, des briefs créatifs et des playbooks d'optimisation. Se déclenche sur \"/digital-marketing-pro:paid-advertising\", \"plan a Google Ads campaign\", \"audit our Meta account\", \"which bid strategy should we use\", \"allocate our paid media budget\". Lit le profil de marque, les guidelines et l'historique de campagne via campaign-tracker.py ; planifie et recommande uniquement — le lancement est géré par /digital-marketing-pro:launch-campaign."
 ---
 
-# Paid Advertising
+# Publicité payante
 
-## Recent platform API changes (as of July 2026)
+## Évolutions récentes des API de plateformes (au 7 juillet 2026)
 
-Target **Google Ads API v24.2** for stable integrations (v24 line supported into 2027). **v25 (July 2026) is the new major release with breaking changes**: the legacy `CustomerLifecycleGoal`/`CampaignLifecycleGoal` resources are removed (migrate to the unified `Goal` + `CampaignGoalConfig` schema), plus new loyalty-retention optimization goals, social-engagement metrics for Shorts ads, duration-level breakdowns for non-skippable YouTube inventory, and YouTube third-party conversion attribution. Adopt v25 deliberately, not by default. Full detail — including AI Max — lives in [`google-ads.md`](google-ads.md), the single source for the Google Ads API surface. Sources: [release notes](https://developers.google.com/google-ads/api/docs/release-notes) · [v25 announcement](https://ads-developers.googleblog.com/2026/07/announcing-v25-of-google-ads-api.html).
+Ciblez **l'API Google Ads v24.2** pour des intégrations stables (la lignée v24 est supportée jusqu'en 2027). **La v25 (juillet 2026) est la nouvelle version majeure comportant des changements incompatibles** : les ressources historiques `CustomerLifecycleGoal`/`CampaignLifecycleGoal` sont supprimées (migrer vers le schéma unifié `Goal` + `CampaignGoalConfig`), avec en plus de nouveaux objectifs d'optimisation de fidélisation, des métriques d'engagement social pour les publicités Shorts, des répartitions au niveau de la durée pour l'inventaire YouTube non-skippable, et l'attribution de conversion tierce YouTube. Adoptez la v25 délibérément, pas par défaut. Le détail complet — y compris AI Max — se trouve dans [`google-ads.md`](google-ads.md), la source unique de référence pour la surface de l'API Google Ads. Sources : [notes de version](https://developers.google.com/google-ads/api/docs/release-notes) · [annonce v25](https://ads-developers.googleblog.com/2026/07/announcing-v25-of-google-ads-api.html).
 
-**Meta (Marketing API v25, in effect):** standalone Advantage+ Shopping / App campaigns can no longer be created via the API on any version (since 19 May 2026); v26 (Sept 2026) pauses remaining ones — use the unified Advantage+ setup ([details in meta-ads.md](meta-ads.md)). The new **Page Viewer metric** replaces legacy reach (Post/Page Reach, Video Impressions, and Story Impressions retire from the Graph API) — update any reporting that reads those fields. **LinkedIn:** version `202607` is live (monthly cadence); it adds an automatic "Not Interested" CTA on Message Ads and a `SHA256_IP_ADDRESS` identifier in the Conversions API.
+**Meta (Marketing API v25, en vigueur) :** les campagnes autonomes Advantage+ Shopping / App ne peuvent plus être créées via l'API sur aucune version (depuis le 19 mai 2026) ; la v26 (septembre 2026) met en pause celles restantes — utilisez la configuration Advantage+ unifiée ([détails dans meta-ads.md](meta-ads.md)). La nouvelle **métrique Page Viewer** remplace la portée héritée (Post/Page Reach, Video Impressions et Story Impressions se retirent de l'API Graph) — mettez à jour tout reporting qui lit ces champs. **LinkedIn :** la version `202607` est en production (cadence mensuelle) ; elle ajoute un CTA automatique « Pas intéressé » sur les Message Ads et un identifiant `SHA256_IP_ADDRESS` dans l'API Conversions.
 
-**Highlights that affect campaign construction:**
+**Points marquants qui affectent la construction de campagnes :**
 
-- **v24.2 (24 Jun 2026):** first-class **Local Services Ads** support (`AssetGroup.google_local_services_info`), landing-page-text auto-generation (`AssetAutomationType.GENERATE_LANDING_PAGE_TEXT`), and a beta Multi-Party Auth review resource for regulated verticals (finance, health, political).
-- **v24.1 (13 May 2026) — AI Max:** four new experiment types (`ADOPT_AI_MAX`, `ADOPT_BROAD_MATCH_KEYWORDS`, `OPTIMIZE_ASSETS`, `PMAX_REPLACEMENT_SHOPPING`). **Run an `ADOPT_AI_MAX` experiment before any AI Max rollout** — it gives statistically-clean lift numbers vs the baseline. Also adds `mobile_device_platform` (iOS vs Android) reporting segmentation.
-- **v24.0 (22 Apr 2026) — breaking:** `videos` + `logo_images` now REQUIRED on `DemandGenVideoResponsiveAdInfo`/`VideoResponsiveAdInfo` (and `business_name` on the latter); `Campaign.video_brand_safety_suitability` REMOVED (moved to the Customer level); `CallAd`/`CallAdInfo` fully removed (use Call Assets).
-- **v23.1 (25 Feb 2026):** `text_guidelines.term_exclusions` + `text_guidelines.messaging_restrictions` on AI-generated **Performance Max** and **Search** assets — pipe a brand's banned-word list (`profile.json → restrictions.md → banned_words`) and approved messaging straight into PMax asset-gen guardrails.
+- **v24.2 (24 juin 2026) :** support de première classe pour les **Local Services Ads** (`AssetGroup.google_local_services_info`), auto-génération de texte de landing page (`AssetAutomationType.GENERATE_LANDING_PAGE_TEXT`), et une ressource beta de revue Multi-Party Auth pour les verticales réglementées (finance, santé, politique).
+- **v24.1 (13 mai 2026) — AI Max :** quatre nouveaux types d'expérimentation (`ADOPT_AI_MAX`, `ADOPT_BROAD_MATCH_KEYWORDS`, `OPTIMIZE_ASSETS`, `PMAX_REPLACEMENT_SHOPPING`). **Exécutez une expérimentation `ADOPT_AI_MAX` avant tout déploiement d'AI Max** — elle donne des chiffres de lift statistiquement propres par rapport à la base de référence. Ajoute aussi la segmentation de reporting `mobile_device_platform` (iOS vs Android).
+- **v24.0 (22 avril 2026) — changement incompatible :** `videos` + `logo_images` désormais REQUIS sur `DemandGenVideoResponsiveAdInfo`/`VideoResponsiveAdInfo` (et `business_name` sur ce dernier) ; `Campaign.video_brand_safety_suitability` SUPPRIMÉ (déplacé au niveau Customer) ; `CallAd`/`CallAdInfo` totalement supprimés (utiliser les Call Assets).
+- **v23.1 (25 février 2026) :** `text_guidelines.term_exclusions` + `text_guidelines.messaging_restrictions` sur les assets générés par IA pour **Performance Max** et **Search** — injectez directement la liste des mots interdits d'une marque (`profile.json → restrictions.md → banned_words`) et les messages approuvés dans les garde-fous de génération d'assets PMax.
 
-## When to Use This Skill
+## Quand utiliser ce skill
 
-Activate this skill when the user's request involves any of the following:
+Activer ce skill lorsque la demande de l'utilisateur implique l'un des éléments suivants :
 
-- Creating, auditing, or optimizing campaigns on Google Ads, Meta/Facebook Ads, LinkedIn Ads, or TikTok Ads
-- Designing campaign structures, ad groups, or ad set hierarchies on any paid platform
-- Selecting or troubleshooting bid strategies (manual CPC, target CPA, target ROAS, maximize conversions, etc.)
-- Building audience strategies including prospecting, retargeting, lookalike/similar audiences, or custom audiences
-- Allocating or pacing budgets across platforms or campaigns
-- Setting up or optimizing Google Shopping, Performance Max, YouTube Ads, or Display campaigns
-- Working with Meta Advantage+ campaigns or manual campaign structures
-- Running LinkedIn Ads with account-based marketing (ABM) targeting
-- Launching TikTok Ads including Spark Ads or TikTok Shop integrations
-- Programmatic advertising including DSP selection, connected TV (CTV), or digital out-of-home (DOOH)
-- Retail media networks including Amazon Ads, Walmart Connect, Target Roundel, Kroger Precision Marketing, or Instacart Ads
-- Running Microsoft Advertising (Bing Ads) campaigns, including Google Ads import and Microsoft Audience Network placements
-- Planning native advertising campaigns on content discovery networks (Taboola, Outbrain, Nativo)
-- Buying audio or podcast advertising across streaming platforms (Spotify, Pandora/SiriusXM, iHeartRadio) or programmatic audio
-- Any question about paid media strategy, creative strategy for ads, or paid channel mix decisions
+- Créer, auditer ou optimiser des campagnes sur Google Ads, Meta/Facebook Ads, LinkedIn Ads ou TikTok Ads
+- Concevoir des structures de campagne, des groupes d'annonces ou des hiérarchies d'ad sets sur n'importe quelle plateforme payante
+- Sélectionner ou dépanner des stratégies d'enchères (CPC manuel, CPA cible, ROAS cible, maximiser les conversions, etc.)
+- Construire des stratégies d'audience incluant le prospecting, le retargeting, les audiences similaires/lookalike ou les audiences personnalisées
+- Allouer ou rythmer des budgets sur des plateformes ou des campagnes
+- Configurer ou optimiser Google Shopping, Performance Max, YouTube Ads ou des campagnes Display
+- Travailler avec des campagnes Meta Advantage+ ou des structures de campagne manuelles
+- Exécuter des LinkedIn Ads avec un ciblage account-based marketing (ABM)
+- Lancer des TikTok Ads incluant les Spark Ads ou les intégrations TikTok Shop
+- Publicité programmatique incluant la sélection de DSP, la télévision connectée (CTV) ou l'affichage numérique extérieur (DOOH)
+- Réseaux de retail media incluant Amazon Ads, Walmart Connect, Target Roundel, Kroger Precision Marketing ou Instacart Ads
+- Exécuter des campagnes Microsoft Advertising (Bing Ads), incluant l'import Google Ads et les placements Microsoft Audience Network
+- Planifier des campagnes de publicité native sur les réseaux de découverte de contenu (Taboola, Outbrain, Nativo)
+- Acheter de la publicité audio ou podcast sur les plateformes de streaming (Spotify, Pandora/SiriusXM, iHeartRadio) ou en audio programmatique
+- Toute question sur la stratégie média payant, la stratégie créative pour les publicités, ou les décisions de mix de canaux payants
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout livrable marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — Le résumé de marque actif a été affiché en début de session. Utiliser le nom de marque, le secteur, les réglages de voix, les canaux, les objectifs, la conformité et les concurrents indiqués là.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — Le niveau de formalité, d'énergie, d'humour et d'autorité doit façonner tout le ton et le choix des mots du contenu
+4. **Vérifier la conformité** — Appliquer automatiquement les règles pour les target_markets et le secteur de la marque en utilisant `skills/context-engine/compliance-rules.md`
+5. **Référencer les benchmarks sectoriels** — Consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — Référencer `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique de campagne** — Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les bonnes pratiques générales. »
+9. **Vérifier les guidelines de marque** — Si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les affirmations restreintes et les mentions légales obligatoires ; `channel-styles.md` pour les dérogations de ton spécifiques au canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les taglines et le langage de positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des 4 scores numériques. Si le contenu est produit pour un canal spécifique, les règles de style du canal priment sur les réglages de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing, gather the following from the user (ask if not provided):
+Avant l'exécution, recueillir les éléments suivants auprès de l'utilisateur (demander si non fourni) :
 
-- **Business type**: B2B, B2C, D2C, marketplace, local business
-- **Current platforms**: Which ad platforms are active (if any)
-- **Monthly budget**: Total paid media spend or per-platform budgets
-- **Goals**: Primary KPI (ROAS, CPA, CPL, brand awareness, traffic) and target values
-- **Audience**: Who they are trying to reach (demographics, firmographics, interests, behaviors)
-- **Funnel stage focus**: Top-of-funnel awareness, mid-funnel consideration, or bottom-funnel conversion
-- **Existing assets**: Landing pages, creative assets, product feeds, tracking setup
-- **Tracking infrastructure**: Pixel/tag status, conversion tracking, attribution model in use
-- **Industry**: Needed to flag regulated category restrictions (healthcare, finance, alcohol, cannabis, gambling)
+- **Type d'activité** : B2B, B2C, D2C, marketplace, commerce local
+- **Plateformes actuelles** : Quelles plateformes publicitaires sont actives (le cas échéant)
+- **Budget mensuel** : Dépense média payant totale ou budgets par plateforme
+- **Objectifs** : KPI principal (ROAS, CPA, CPL, notoriété de marque, trafic) et valeurs cibles
+- **Audience** : Qui l'entreprise cherche à atteindre (démographie, firmographie, centres d'intérêt, comportements)
+- **Focus d'étape du tunnel** : Notoriété en haut de tunnel, considération en milieu de tunnel, ou conversion en bas de tunnel
+- **Actifs existants** : Landing pages, actifs créatifs, flux de produits, suivi en place
+- **Infrastructure de suivi** : Statut du pixel/tag, suivi des conversions, modèle d'attribution utilisé
+- **Secteur** : Nécessaire pour signaler les restrictions de catégories réglementées (santé, finance, alcool, cannabis, jeux d'argent)
 
-## Capabilities
+## Capacités
 
-### Campaign Structure Design
-- Platform-specific campaign architecture (campaigns, ad groups/ad sets, ads)
-- Naming conventions for scalable account management
-- Campaign type selection per objective (Search, Display, Shopping, Video, App, PMax, Demand Gen)
-- Ad group theming and keyword/audience segmentation strategies
+### Conception de structure de campagne
+- Architecture de campagne spécifique à la plateforme (campagnes, groupes d'annonces/ad sets, annonces)
+- Conventions de nommage pour une gestion de compte évolutive
+- Sélection du type de campagne par objectif (Search, Display, Shopping, Video, App, PMax, Demand Gen)
+- Thématisation des groupes d'annonces et stratégies de segmentation par mots-clés/audience
 
-### Audience Strategy
-- **Prospecting**: Interest-based, behavior-based, demographic, and contextual targeting
-- **Retargeting**: Website visitors, video viewers, lead form engagers, customer lists, cart abandoners
-- **Lookalike/Similar audiences**: Source audience selection, expansion percentages, layering strategies
-- **ABM targeting**: Company lists, job title targeting, seniority filtering (LinkedIn-specific)
-- **Exclusion strategies**: Negative audiences, customer suppression, converter exclusion windows
+### Stratégie d'audience
+- **Prospecting** : Ciblage par centre d'intérêt, comportement, démographie et contexte
+- **Retargeting** : Visiteurs du site, spectateurs vidéo, personnes ayant engagé avec un formulaire de lead, listes clients, abandons de panier
+- **Audiences similaires/lookalike** : Sélection de l'audience source, pourcentages d'expansion, stratégies de superposition
+- **Ciblage ABM** : Listes d'entreprises, ciblage par intitulé de poste, filtrage par ancienneté (spécifique à LinkedIn)
+- **Stratégies d'exclusion** : Audiences négatives, suppression de clients, fenêtres d'exclusion des convertisseurs
 
-### Bid Strategy Selection
-- Manual vs automated bidding decision framework
-- Target CPA, target ROAS, maximize conversions, maximize conversion value
-- Portfolio bid strategies for Google Ads
-- Learning phase management and bid strategy transitions
-- Seasonality adjustments and bid modifiers
+### Sélection de stratégie d'enchères
+- Cadre de décision enchères manuelles vs automatisées
+- CPA cible, ROAS cible, maximiser les conversions, maximiser la valeur des conversions
+- Stratégies d'enchères de portefeuille pour Google Ads
+- Gestion de la phase d'apprentissage et transitions de stratégie d'enchères
+- Ajustements de saisonnalité et modificateurs d'enchères
 
-### Creative Strategy
-- Ad format selection per platform and objective
-- Responsive search ads (RSA) best practices and pin strategies
-- Meta creative diversification (static, video, carousel, collection, instant experience)
-- LinkedIn creative formats (single image, carousel, video, document, conversation ads)
-- TikTok native-style creative principles
-- Creative testing frameworks (variable isolation, iterative testing)
+### Stratégie créative
+- Sélection du format publicitaire par plateforme et objectif
+- Bonnes pratiques et stratégies d'épinglage pour les Responsive Search Ads (RSA)
+- Diversification créative Meta (statique, vidéo, carrousel, collection, expérience instantanée)
+- Formats créatifs LinkedIn (image unique, carrousel, vidéo, document, conversation ads)
+- Principes créatifs au style natif TikTok
+- Cadres de test créatif (isolation des variables, test itératif)
 
-### Budget Allocation and Pacing
-- Cross-platform budget distribution models
-- Campaign-level budget optimization vs ad-set level budgets
-- Daily vs lifetime budgets and when to use each
-- Pacing strategies for monthly/quarterly targets
-- Budget scaling rules (20% rule for Google, CBO adjustments for Meta)
+### Allocation et rythme budgétaire
+- Modèles de répartition budgétaire cross-plateforme
+- Optimisation du budget au niveau campagne vs budgets au niveau ad set
+- Budgets journaliers vs à vie et quand utiliser chacun
+- Stratégies de rythme pour les objectifs mensuels/trimestriels
+- Règles de montée en puissance budgétaire (règle des 20 % pour Google, ajustements CBO pour Meta)
 
-### Platform-Specific Expertise
-- **Google Ads**: Search, Display, Performance Max, YouTube (in-stream, Shorts, Discovery), Shopping, Demand Gen
-- **Meta Ads**: unified Advantage+ campaigns (ASC/AAC legacy formats retiring — see meta-ads.md), manual campaigns, catalog ads, lead gen forms
-- **LinkedIn Ads**: Sponsored Content, Message Ads, Lead Gen Forms, Document Ads, ABM list targeting
-- **TikTok Ads**: In-Feed, TopView, Spark Ads, TikTok Shop product ads, Branded Effects
-- **Programmatic**: DSP selection (DV360, The Trade Desk, Amazon DSP), CTV, DOOH, audio
-- **Retail Media**: Amazon Sponsored Products/Brands/Display, Walmart Connect, Target Roundel, Kroger Precision Marketing, Instacart Ads
+### Expertise spécifique à la plateforme
+- **Google Ads** : Search, Display, Performance Max, YouTube (in-stream, Shorts, Discovery), Shopping, Demand Gen
+- **Meta Ads** : campagnes Advantage+ unifiées (les formats hérités ASC/AAC sont en cours de retrait — voir meta-ads.md), campagnes manuelles, publicités catalogue, formulaires de génération de leads
+- **LinkedIn Ads** : Sponsored Content, Message Ads, Lead Gen Forms, Document Ads, ciblage par liste ABM
+- **TikTok Ads** : In-Feed, TopView, Spark Ads, publicités produit TikTok Shop, Branded Effects
+- **Programmatique** : Sélection de DSP (DV360, The Trade Desk, Amazon DSP), CTV, DOOH, audio
+- **Retail Media** : Amazon Sponsored Products/Brands/Display, Walmart Connect, Target Roundel, Kroger Precision Marketing, Instacart Ads
 
-## Process
+## Processus
 
-### Standard Campaign Build (Most Common Use Case)
+### Construction de campagne standard (cas d'usage le plus courant)
 
-1. **Define objectives** -- Clarify the primary KPI and success metric. Map to the correct campaign type per platform.
-2. **Audience architecture** -- Design the full-funnel audience strategy: cold prospecting segments, warm retargeting pools, and hot remarketing lists. Define exclusions.
-3. **Campaign structure** -- Build the campaign hierarchy with naming conventions. Determine budget allocation across campaigns.
-4. **Bid strategy selection** -- Choose the appropriate bid strategy based on data maturity, conversion volume, and goals. Reference `bid-strategy.md` for decision trees.
-5. **Creative strategy** -- Define ad formats, messaging angles, and creative variations. Map creative to funnel stage and audience segment.
-6. **Tracking validation** -- Confirm pixel/tag setup, conversion actions, and attribution model before launch.
-7. **Launch plan** -- Set launch budgets (often lower than steady-state), define learning phase expectations, and establish the first optimization checkpoint (typically 7-14 days).
-8. **Optimization cadence** -- Define weekly/biweekly optimization actions: bid adjustments, audience refinements, creative refreshes, budget reallocation.
+1. **Définir les objectifs** — Clarifier le KPI principal et la métrique de succès. Faire correspondre au bon type de campagne par plateforme.
+2. **Architecture d'audience** — Concevoir la stratégie d'audience full-funnel : segments de prospecting froid, pools de retargeting tièdes, et listes de remarketing chaudes. Définir les exclusions.
+3. **Structure de campagne** — Construire la hiérarchie de campagne avec les conventions de nommage. Déterminer l'allocation budgétaire entre campagnes.
+4. **Sélection de stratégie d'enchères** — Choisir la stratégie d'enchères appropriée en fonction de la maturité des données, du volume de conversion et des objectifs. Référencer `bid-strategy.md` pour les arbres de décision.
+5. **Stratégie créative** — Définir les formats publicitaires, les angles de messages et les variations créatives. Faire correspondre le créatif à l'étape du tunnel et au segment d'audience.
+6. **Validation du suivi** — Confirmer la configuration du pixel/tag, les actions de conversion et le modèle d'attribution avant le lancement.
+7. **Plan de lancement** — Fixer les budgets de lancement (souvent inférieurs au régime de croisière), définir les attentes de la phase d'apprentissage, et établir le premier point de contrôle d'optimisation (généralement 7 à 14 jours).
+8. **Cadence d'optimisation** — Définir les actions d'optimisation hebdomadaires/bihebdomadaires : ajustements d'enchères, affinements d'audience, rafraîchissements créatifs, réallocation budgétaire.
 
-### Campaign Audit Process
+### Processus d'audit de campagne
 
-1. **Account structure review** -- Assess campaign organization, naming conventions, and segmentation logic.
-2. **Audience overlap analysis** -- Check for audience fragmentation or cannibalization across campaigns.
-3. **Bid strategy assessment** -- Evaluate whether current bid strategies match conversion volume and goals.
-4. **Creative performance** -- Identify top/bottom performers, creative fatigue signals, and testing gaps.
-5. **Budget efficiency** -- Analyze spend distribution vs performance distribution. Flag underspending winners and overspending losers.
-6. **Tracking audit** -- Verify conversion tracking accuracy, attribution consistency, and data freshness.
+1. **Revue de la structure de compte** — Évaluer l'organisation des campagnes, les conventions de nommage et la logique de segmentation.
+2. **Analyse de chevauchement d'audience** — Vérifier la fragmentation ou la cannibalisation d'audience entre campagnes.
+3. **Évaluation de la stratégie d'enchères** — Évaluer si les stratégies d'enchères actuelles correspondent au volume de conversion et aux objectifs.
+4. **Performance créative** — Identifier les meilleurs/pires performeurs, les signaux de fatigue créative et les lacunes de test.
+5. **Efficacité budgétaire** — Analyser la répartition des dépenses vs la répartition de la performance. Signaler les gagnants sous-dépensés et les perdants sur-dépensés.
+6. **Audit du suivi** — Vérifier la précision du suivi des conversions, la cohérence de l'attribution et la fraîcheur des données.
 
-## Reference Files
+## Fichiers de référence
 
-- `google-ads.md` -- Google Ads campaign types, settings, optimization tactics, and platform-specific features
-- `meta-ads.md` -- Meta Ads campaign structures, Advantage+ configurations, creative specs, and iOS ATT strategies
-- `linkedin-ads.md` -- LinkedIn Ads targeting options, ABM strategies, lead gen optimization, and B2B-specific tactics
-- `tiktok-ads.md` -- TikTok Ads creative best practices, Spark Ads setup, TikTok Shop integration, and audience strategies
-- `programmatic.md` -- DSP selection criteria, CTV planning, DOOH strategies, and programmatic deal types
-- `bid-strategy.md` -- Bid strategy decision trees, learning phase management, and portfolio strategy configurations
-- `retail-media-networks.md` -- Platform-specific setup for Amazon, Walmart, Target, Kroger, and Instacart advertising
-- `microsoft-ads.md` -- Microsoft Advertising campaign guide: Search Network reach (Bing, Yahoo, AOL, DuckDuckGo), Microsoft Audience Network, and lower-CPC opportunities vs Google
-- `retargeting-audiences.md` -- Retargeting and remarketing audience taxonomy: segment definitions, intent levels, and recommended membership windows
-- `media-planning.md` -- Media planning fundamentals: reach, frequency, GRP/TRP metrics, cross-channel budget allocation, and scheduling strategies
-- `native-advertising.md` -- Native ad network landscape (Taboola, Outbrain, Nativo, and more), content discovery campaigns, and in-feed creative best practices
-- `audio-programmatic.md` -- Digital audio advertising across streaming platforms (Spotify, Pandora/SiriusXM, iHeartRadio) and podcasts, ad models, and buying paths
+- `google-ads.md` — Types de campagnes Google Ads, paramètres, tactiques d'optimisation, et fonctionnalités spécifiques à la plateforme
+- `meta-ads.md` — Structures de campagne Meta Ads, configurations Advantage+, spécifications créatives, et stratégies iOS ATT
+- `linkedin-ads.md` — Options de ciblage LinkedIn Ads, stratégies ABM, optimisation de la génération de leads, et tactiques spécifiques B2B
+- `tiktok-ads.md` — Bonnes pratiques créatives TikTok Ads, configuration Spark Ads, intégration TikTok Shop, et stratégies d'audience
+- `programmatic.md` — Critères de sélection de DSP, planification CTV, stratégies DOOH, et types de deals programmatiques
+- `bid-strategy.md` — Arbres de décision de stratégie d'enchères, gestion de la phase d'apprentissage, et configurations de stratégie de portefeuille
+- `retail-media-networks.md` — Configuration spécifique aux plateformes pour la publicité Amazon, Walmart, Target, Kroger et Instacart
+- `microsoft-ads.md` — Guide de campagne Microsoft Advertising : portée du réseau Search (Bing, Yahoo, AOL, DuckDuckGo), Microsoft Audience Network, et opportunités de CPC plus bas vs Google
+- `retargeting-audiences.md` — Taxonomie d'audience de retargeting et remarketing : définitions de segments, niveaux d'intention, et fenêtres d'appartenance recommandées
+- `media-planning.md` — Fondamentaux de la planification média : portée, fréquence, métriques GRP/TRP, allocation budgétaire cross-canal, et stratégies de calendrier
+- `native-advertising.md` — Paysage des réseaux de publicité native (Taboola, Outbrain, Nativo, et plus), campagnes de découverte de contenu, et bonnes pratiques créatives in-feed
+- `audio-programmatic.md` — Publicité audio numérique sur les plateformes de streaming (Spotify, Pandora/SiriusXM, iHeartRadio) et les podcasts, modèles publicitaires, et parcours d'achat
 
-## Output Formats
+## Formats de sortie
 
-- **Campaign plan**: Structured document with campaign hierarchy, audience definitions, bid strategies, budget allocation, creative briefs, and KPI targets
-- **Platform audit**: Scorecard with findings, severity ratings, and prioritized action items
-- **Budget allocation model**: Spreadsheet-ready breakdown of spend by platform, campaign, and funnel stage with projected outcomes
-- **Creative brief**: Per-ad-format briefs with messaging angles, CTA options, and spec requirements
-- **Optimization playbook**: Weekly/monthly checklist of optimization actions with decision criteria
+- **Plan de campagne** : Document structuré avec hiérarchie de campagne, définitions d'audience, stratégies d'enchères, allocation budgétaire, briefs créatifs, et cibles KPI
+- **Audit de plateforme** : Scorecard avec constats, notations de gravité, et actions priorisées
+- **Modèle d'allocation budgétaire** : Répartition prête à intégrer dans un tableur par plateforme, campagne et étape du tunnel avec résultats projetés
+- **Brief créatif** : Briefs par format publicitaire avec angles de messages, options de CTA, et exigences de spécifications
+- **Playbook d'optimisation** : Checklist hebdomadaire/mensuelle d'actions d'optimisation avec critères de décision
 
-## Edge Cases
+## Cas particuliers
 
-### iOS ATT Impact on Meta Targeting
-Post-iOS 14.5, Meta audience sizes shrunk and attribution windows shortened. When working with Meta campaigns, default to broader targeting with Advantage+ audience expansion, use Conversions API (CAPI) alongside the pixel, recommend 7-day click attribution, and set expectations that reported ROAS will undercount actual performance by 15-30%.
+### Impact de l'ATT iOS sur le ciblage Meta
+Depuis iOS 14.5, la taille des audiences Meta a rétréci et les fenêtres d'attribution se sont raccourcies. En travaillant sur des campagnes Meta, privilégier par défaut un ciblage plus large avec l'expansion d'audience Advantage+, utiliser l'API Conversions (CAPI) en complément du pixel, recommander une attribution au clic sur 7 jours, et fixer les attentes selon lesquelles le ROAS rapporté sous-comptera la performance réelle de 15 à 30 %.
 
-### Performance Max Cannibalizing Brand Search
-PMax campaigns frequently capture branded search traffic, inflating their reported performance. Always recommend running a brand exclusion list in PMax, maintaining a separate brand search campaign, and comparing incrementality by analyzing total account performance rather than PMax in isolation.
+### Cannibalisation de la recherche de marque par Performance Max
+Les campagnes PMax captent fréquemment le trafic de recherche de marque, gonflant leur performance rapportée. Toujours recommander l'exécution d'une liste d'exclusion de marque dans PMax, le maintien d'une campagne de recherche de marque séparée, et la comparaison de l'incrémentalité en analysant la performance globale du compte plutôt que PMax isolément.
 
-### LinkedIn High CPC Management
-LinkedIn CPCs are typically 3-10x higher than other platforms. Compensate by focusing on lead quality over volume, using lead gen forms (higher conversion rate than landing pages), tightening audience targeting to reduce waste, and evaluating on cost-per-qualified-lead rather than CPC.
+### Gestion du CPC élevé sur LinkedIn
+Les CPC LinkedIn sont typiquement 3 à 10 fois plus élevés que sur les autres plateformes. Compenser en se concentrant sur la qualité des leads plutôt que sur le volume, en utilisant les Lead Gen Forms (taux de conversion supérieur aux landing pages), en resserrant le ciblage d'audience pour réduire le gaspillage, et en évaluant sur la base du coût par lead qualifié plutôt que le CPC.
 
-### TikTok Creative Fatigue
-TikTok ad creative typically fatigues in 3-7 days. Build creative refresh cadences into every TikTok campaign plan. Recommend 3-5 active creatives per ad group with new batches produced weekly. Use Spark Ads (boosted organic) to extend creative life since they feel less like ads.
+### Fatigue créative sur TikTok
+Le créatif publicitaire TikTok se fatigue typiquement en 3 à 7 jours. Intégrer des cadences de rafraîchissement créatif dans chaque plan de campagne TikTok. Recommander 3 à 5 créatifs actifs par groupe d'annonces avec de nouveaux lots produits chaque semaine. Utiliser les Spark Ads (posts organiques boostés) pour prolonger la durée de vie du créatif car ils sont perçus comme moins publicitaires.
 
-### Retail Media Incrementality
-Retail media ads often capture purchases that would have happened organically. When auditing retail media, question whether sales are truly incremental. Recommend running incrementality tests (holdout groups), analyzing new-to-brand metrics (Amazon provides this), and comparing organic rank changes during ad pauses.
+### Incrémentalité du retail media
+Les publicités retail media captent souvent des achats qui auraient eu lieu de manière organique. Lors de l'audit du retail media, remettre en question si les ventes sont vraiment incrémentales. Recommander l'exécution de tests d'incrémentalité (groupes témoins), l'analyse des métriques new-to-brand (Amazon les fournit), et la comparaison des évolutions de classement organique pendant les pauses publicitaires.
 
-### Small Budget Cross-Platform Allocation
-When total monthly budget is under $5,000, do not spread across multiple platforms. Recommend concentrating on one primary platform that best matches the audience and objective. Only expand to a second platform after the first is optimized and hitting diminishing returns.
+### Allocation cross-plateforme pour petit budget
+Lorsque le budget mensuel total est inférieur à 5 000 $, ne pas répartir sur plusieurs plateformes. Recommander de concentrer les efforts sur une seule plateforme principale qui correspond le mieux à l'audience et à l'objectif. N'étendre à une deuxième plateforme qu'une fois la première optimisée et affichant des rendements décroissants.
 
-### Regulated Industry Restrictions
-Healthcare, finance, alcohol, cannabis, gambling, and political advertising face platform-specific restrictions. Always check platform policies before recommending campaign types. Some platforms ban certain industries entirely (TikTok restricts financial services ads in some markets). Reference platform-specific docs for current restriction lists.
+### Restrictions des secteurs réglementés
+La santé, la finance, l'alcool, le cannabis, les jeux d'argent et la publicité politique font face à des restrictions spécifiques aux plateformes. Toujours vérifier les politiques de plateforme avant de recommander des types de campagne. Certaines plateformes interdisent entièrement certains secteurs (TikTok restreint les publicités de services financiers dans certains marchés). Référencer la documentation spécifique à chaque plateforme pour les listes de restrictions actuelles.
 
-## Related Skills
+## Skills associés
 
-- **CRO** -- Landing page and conversion optimization for ad traffic destinations
-- **Analytics & Insights** -- Attribution modeling, conversion tracking setup, and performance analysis
-- **Audience Intelligence** -- Deep audience research to inform targeting strategies
-- **Content Engine** -- Ad creative copywriting and messaging frameworks
-- **Funnel Architect** -- Full-funnel strategy that paid advertising plugs into
-- **Emerging Channels** -- Social commerce and newer ad platforms (TikTok Shop, CTV)
+- **CRO** — Optimisation de landing page et de conversion pour les destinations du trafic publicitaire
+- **Analytics & Insights** — Modélisation d'attribution, configuration du suivi des conversions, et analyse de performance
+- **Audience Intelligence** — Recherche d'audience approfondie pour éclairer les stratégies de ciblage
+- **Content Engine** — Rédaction de créatifs publicitaires et cadres de messages
+- **Funnel Architect** — Stratégie full-funnel dans laquelle s'intègre la publicité payante
+- **Emerging Channels** — Social commerce et nouvelles plateformes publicitaires (TikTok Shop, CTV)

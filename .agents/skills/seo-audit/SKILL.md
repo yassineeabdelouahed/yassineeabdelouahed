@@ -1,115 +1,115 @@
 ---
 name: seo-audit
-description: "Run a comprehensive SEO audit across technical health, on-page, content quality, E-E-A-T, link profile, and local SEO — producing dated numbered outputs (crawl inventory through prioritised actions) plus a single-page PLAN.md with an impact-by-effort action plan and a four-gate quality scorecard. Triggers on \"/digital-marketing-pro:seo-audit\", \"audit my site's SEO\", \"why did our rankings drop\", \"check our technical SEO health\", \"how strong is our E-E-A-T\". Reads the brand profile; PLAN.md feeds /digital-marketing-pro:seo-implement, /digital-marketing-pro:seo-plan, and /digital-marketing-pro:seo-drift, with link prospecting handed to /digital-marketing-pro:backlink-gap."
+description: "Réalise un audit SEO complet couvrant la santé technique, l'optimisation on-page, la qualité de contenu, l'E-E-A-T, le profil de liens et le SEO local — produisant des livrables numérotés et datés (de l'inventaire de crawl aux actions priorisées) ainsi qu'un PLAN.md sur une page avec un plan d'action impact/effort et un tableau de bord qualité à quatre portes. Se déclenche sur \"/digital-marketing-pro:seo-audit\", \"audit my site's SEO\", \"why did our rankings drop\", \"check our technical SEO health\", \"how strong is our E-E-A-T\". Lit le profil de marque ; PLAN.md alimente /digital-marketing-pro:seo-implement, /digital-marketing-pro:seo-plan et /digital-marketing-pro:seo-drift, la prospection de liens étant confiée à /digital-marketing-pro:backlink-gap."
 argument-hint: "[URL]"
 ---
 
 # /digital-marketing-pro:seo-audit
 
-## Purpose
+## Objectif
 
-Perform a comprehensive SEO audit that evaluates a website across all major ranking dimensions. Produces a prioritized action plan with estimated impact and effort for each recommendation.
+Réaliser un audit SEO complet qui évalue un site web selon toutes les dimensions majeures de classement. Produit un plan d'action priorisé avec impact et effort estimés pour chaque recommandation.
 
-### May 2026 Core Update context (read before triaging volatility)
+### Contexte de la mise à jour Core de mai 2026 (à lire avant de trier la volatilité)
 
-> **Time-boxed guidance — valid until ~2026-08.** This block is specific to the May 2026 Core Update window. After ~August 2026 it is stale: re-check the [Google Search Status Dashboard](https://status.search.google.com/) for the current/most-recent core update and its dates before applying any of the timing advice below.
+> **Consigne limitée dans le temps — valable jusqu'à ~2026-08.** Ce bloc est spécifique à la fenêtre de la mise à jour Core de mai 2026. Après ~août 2026, il est obsolète : revérifiez le [Google Search Status Dashboard](https://status.search.google.com/) pour connaître la mise à jour Core actuelle ou la plus récente et ses dates avant d'appliquer l'un des conseils de timing ci-dessous.
 
-Google rolled out a **broad core algorithm update starting 21 May 2026** with the usual ~2-week deployment window. If the audit is being run inside that window (or in the 4 weeks after) and the brand is showing ranking volatility:
+Google a déployé une **mise à jour large de l'algorithme Core à partir du 21 mai 2026**, avec la fenêtre de déploiement habituelle d'environ 2 semaines. Si l'audit est réalisé dans cette fenêtre (ou dans les 4 semaines suivantes) et que la marque montre une volatilité de classement :
 
-- **Do not make reactive changes during the rollout.** Wait for the update to fully deploy (Google announces completion in the Search Status Dashboard) plus 7–14 days of post-deploy settling before drawing conclusions.
-- **Diagnose direction before scope.** A site-wide drop vs a single-section drop vs a single-template drop have very different root causes. Use Search Console to compare pre-rollout (21 days before May 21) vs in-rollout vs post-rollout impressions and clicks segmented by page-group.
-- **Core updates re-weight existing signals, they don't introduce new ones.** The audit dimensions below remain authoritative; the right response to a Core Update hit is usually to deepen E-E-A-T, improve unique value, fix thin/duplicated content, and reduce low-quality affiliate or AI-spam pages — not to chase rumoured signals.
-- **Flag in the executive summary** whether ranking deltas pre-date the rollout (likely site-specific issues) or coincide with it (likely Core Update reweighting). This determines whether quick wins are appropriate or whether the brand needs a multi-quarter quality program.
+- **Ne procédez à aucun changement réactif pendant le déploiement.** Attendez que la mise à jour soit entièrement déployée (Google annonce l'achèvement dans le Search Status Dashboard), plus 7 à 14 jours de stabilisation post-déploiement, avant de tirer des conclusions.
+- **Diagnostiquez la direction avant l'ampleur.** Une baisse à l'échelle du site, une baisse d'une seule section, ou une baisse d'un seul gabarit ont des causes profondes très différentes. Utilisez Search Console pour comparer les impressions et clics avant déploiement (21 jours avant le 21 mai), pendant le déploiement, et après le déploiement, segmentés par groupe de pages.
+- **Les mises à jour Core repondèrent des signaux existants, elles n'en introduisent pas de nouveaux.** Les dimensions d'audit ci-dessous restent la référence ; la bonne réponse à un impact de mise à jour Core consiste généralement à approfondir l'E-E-A-T, à améliorer la valeur unique, à corriger le contenu pauvre ou dupliqué, et à réduire les pages affiliées ou de spam IA de faible qualité — pas à courir après des signaux rumeurs.
+- **Signalez dans le résumé exécutif** si les écarts de classement précèdent le déploiement (problèmes probablement propres au site) ou coïncident avec lui (repondération probable liée à la mise à jour Core). Cela détermine si des gains rapides sont appropriés ou si la marque a besoin d'un programme qualité sur plusieurs trimestres.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Website URL**: The domain or specific pages to audit
-- **Target keywords**: Primary keywords the site should rank for (optional — can be researched)
-- **Competitors**: 2-3 competitor URLs for benchmarking (optional)
-- **Audit scope**: Full site or specific area (technical, content, local, links)
-- **Known issues**: Any existing problems the user is aware of
+- **URL du site web** : Le domaine ou les pages spécifiques à auditer
+- **Mots-clés cibles** : Les mots-clés principaux sur lesquels le site devrait se positionner (optionnel — peuvent être recherchés)
+- **Concurrents** : 2 à 3 URL de concurrents pour l'étalonnage (optionnel)
+- **Périmètre de l'audit** : Site complet ou zone spécifique (technique, contenu, local, liens)
+- **Problèmes connus** : Tout problème existant dont l'utilisateur a connaissance
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Technical audit**: Crawlability, indexation, Core Web Vitals, mobile usability, structured data, HTTPS, XML sitemap, robots.txt, canonical tags, redirect chains
-3. **On-page audit**: Title tags, meta descriptions, heading hierarchy, keyword usage, image alt text, internal linking structure, URL structure
-4. **Content audit**: Thin content, duplicate content, content gaps, freshness, E-E-A-T signals (author pages, citations, credentials, first-hand experience)
-5. **Local SEO** (if applicable): Google Business Profile, NAP consistency, local schema, reviews, local link profile
-6. **Link profile**: Domain authority, backlink quality, toxic links, anchor text distribution, link velocity, competitor link gap. Score the own-domain profile with the analyzer (feeds `05-link-profile.md`):
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également la présence de directives** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier la présence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier la présence de procédures d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : "Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ?" — ou procéder avec les valeurs par défaut.
+2. **Audit technique** : Crawlabilité, indexation, Core Web Vitals, ergonomie mobile, données structurées, HTTPS, sitemap XML, robots.txt, balises canoniques, chaînes de redirection
+3. **Audit on-page** : Balises title, meta descriptions, hiérarchie des titres, usage des mots-clés, texte alternatif des images, structure de maillage interne, structure des URL
+4. **Audit de contenu** : Contenu pauvre, contenu dupliqué, lacunes de contenu, fraîcheur, signaux E-E-A-T (pages auteur, citations, qualifications, expérience de première main)
+5. **SEO local** (le cas échéant) : Google Business Profile, cohérence NAP, schema local, avis, profil de liens local
+6. **Profil de liens** : Autorité de domaine, qualité des backlinks, liens toxiques, distribution du texte d'ancrage, vélocité des liens, écart de liens avec les concurrents. Notez le profil du domaine propre avec l'analyseur (alimente `05-link-profile.md`) :
    ```bash
    python "${CLAUDE_PLUGIN_ROOT}/scripts/link-profile-analyzer.py" \
        --file "${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-audit/{date}/links-export.json" \
        --brand-domain {brand-domain}
    ```
-   (`--file` is a JSON array of link objects `[{"url","anchor_text","domain","da","follow"}]`, or pass `--links '<json>'` inline; `--brand-domain` excludes internal links.) For competitor link-gap prospecting, hand off to `/digital-marketing-pro:backlink-gap`.
-7. Score each dimension on a 1-10 scale
-8. Prioritize findings by impact (high/medium/low) and effort (quick win/medium/major project)
-9. Generate the audit report with actionable recommendations
+   (`--file` est un tableau JSON d'objets de lien `[{"url","anchor_text","domain","da","follow"}]`, ou passez `--links '<json>'` en ligne ; `--brand-domain` exclut les liens internes.) Pour la prospection d'écart de liens concurrentiels, confiez la tâche à `/digital-marketing-pro:backlink-gap`.
+7. Notez chaque dimension sur une échelle de 1 à 10
+8. Priorisez les constats par impact (haut/moyen/faible) et effort (gain rapide/moyen/projet majeur)
+9. Générez le rapport d'audit avec des recommandations exploitables
 
-## Output
+## Résultat
 
-A structured SEO audit report containing:
+Un rapport d'audit SEO structuré contenant :
 
-- Executive summary with overall health score
-- Technical SEO scorecard with specific issues and fixes
-- On-page optimization findings per page/template
-- Content quality assessment with gap analysis
-- E-E-A-T evaluation and improvement recommendations
-- Local SEO assessment (if applicable)
-- Link profile analysis with opportunities
-- Prioritized action plan sorted by impact-to-effort ratio
+- Un résumé exécutif avec un score de santé global
+- Un tableau de bord SEO technique avec des problèmes spécifiques et leurs corrections
+- Des constats d'optimisation on-page par page/gabarit
+- Une évaluation de la qualité de contenu avec analyse des lacunes
+- Une évaluation E-E-A-T et des recommandations d'amélioration
+- Une évaluation SEO local (le cas échéant)
+- Une analyse du profil de liens avec les opportunités
+- Un plan d'action priorisé selon le ratio impact/effort
 
-## Numbered output convention
+## Convention de sortie numérotée
 
-All audit outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-audit/{YYYY-MM-DD}/`:
+Tous les livrables d'audit vont dans `${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-audit/{YYYY-MM-DD}/` :
 
 ```
-00-input.md                    target URL, audit scope, brand context, Core Update window flag
-01-crawl-inventory.md          discovered URLs, status codes, redirect chains
-02-technical-scorecard.md      Core Web Vitals, crawlability, schema validity (1-10 per dimension)
-03-onpage-findings.md          per-template issues with affected URL list
-04-content-quality.md          E-E-A-T, thin/duplicate, topical coverage
-05-link-profile.md             own backlink health (hand off to backlink-gap for prospect work)
-06-eeat-evaluation.md          author signals, expertise indicators, trust elements
-07-local-seo.md                only if business profile.target_markets has local intent
-08-quality-scorecard.md        the gates below — must pass for status: ready
-09-prioritised-actions.md      impact × effort matrix, top 20 actions
-PLAN.md                        single-page deliverable
+00-input.md                    URL cible, périmètre de l'audit, contexte de marque, drapeau de fenêtre de mise à jour Core
+01-crawl-inventory.md          URL découvertes, codes de statut, chaînes de redirection
+02-technical-scorecard.md      Core Web Vitals, crawlabilité, validité du schema (1-10 par dimension)
+03-onpage-findings.md          problèmes par gabarit avec liste des URL concernées
+04-content-quality.md          E-E-A-T, contenu pauvre/dupliqué, couverture thématique
+05-link-profile.md             santé du backlink propre (confier la prospection à backlink-gap)
+06-eeat-evaluation.md          signaux auteur, indicateurs d'expertise, éléments de confiance
+07-local-seo.md                uniquement si profile.target_markets a une intention locale
+08-quality-scorecard.md        les portes ci-dessous — doivent passer pour status: ready
+09-prioritised-actions.md      matrice impact × effort, top 20 des actions
+PLAN.md                        livrable sur une seule page
 ```
 
-Downstream skills (`seo-implement`, `seo-plan`, `content-engine`) consume `PLAN.md` and the relevant numbered file rather than re-querying.
+Les compétences en aval (`seo-implement`, `seo-plan`, `content-engine`) consomment `PLAN.md` et le fichier numéroté pertinent plutôt que de refaire une requête.
 
-## Quality scorecard
+## Tableau de bord qualité
 
-| Gate | What it checks |
+| Porte | Ce qu'elle vérifie |
 |---|---|
-| **crawl_coverage** | ≥ 90% of sitemap URLs successfully crawled (else input data is incomplete) |
-| **dimension_completeness** | Scores filled for all 6 mandatory dimensions (technical, on-page, content, E-E-A-T, link, local-if-applicable) |
-| **finding_actionability** | Every "high impact" finding has a named owner + effort estimate (else it's not actionable) |
-| **core_update_flag_set** | If running inside a Core Update window, `00-input.md` flags it AND `PLAN.md` carries the "wait 7-14 days before reactive changes" callout |
+| **crawl_coverage** | ≥ 90 % des URL du sitemap crawlées avec succès (sinon les données d'entrée sont incomplètes) |
+| **dimension_completeness** | Scores renseignés pour les 6 dimensions obligatoires (technique, on-page, contenu, E-E-A-T, liens, local le cas échéant) |
+| **finding_actionability** | Chaque constat « impact élevé » a un responsable nommé + une estimation d'effort (sinon il n'est pas exploitable) |
+| **core_update_flag_set** | Si l'audit se déroule dans une fenêtre de mise à jour Core, `00-input.md` le signale ET `PLAN.md` porte l'encadré « attendre 7-14 jours avant tout changement réactif » |
 
-`status: ready` requires all four gates pass.
+`status: ready` requiert la réussite des quatre portes.
 
-## Chain handoffs
+## Transmissions de la chaîne
 
-- **Upstream:** brand profile + (optional) prior `tech-seo-audit`, `aeo-audit` outputs
-- **Downstream:**
-  - `/digital-marketing-pro:seo-implement` — applies the top-N findings to CMS / dev backlog
-  - `/digital-marketing-pro:seo-plan` — consumes via dispatcher pillar scoring
-  - `/digital-marketing-pro:backlink-gap` — for the link-prospect side that `05-link-profile.md` only covers from the own-domain angle
-  - `/digital-marketing-pro:seo-drift` — next quarter, compare two audit snapshots
+- **En amont :** profil de marque + (optionnel) résultats antérieurs de `tech-seo-audit`, `aeo-audit`
+- **En aval :**
+  - `/digital-marketing-pro:seo-implement` — applique les N principaux constats au CMS / backlog de développement
+  - `/digital-marketing-pro:seo-plan` — consomme via la notation par pilier du répartiteur
+  - `/digital-marketing-pro:backlink-gap` — pour le volet prospection de liens que `05-link-profile.md` ne couvre que sous l'angle du domaine propre
+  - `/digital-marketing-pro:seo-drift` — le trimestre suivant, comparer deux instantanés d'audit
 
-## Tips & caveats
+## Astuces et mises en garde
 
-- **Run during a Core Update?** Mark it loudly in `00-input.md` and don't recommend reactive changes. The audit findings stay valid; the timing of action does not.
-- **Don't audit at the URL level for sites > 10k pages.** Sample template-typically (cluster by template, audit one representative URL per template, generalise).
-- **E-E-A-T scoring is judgement, not measurement.** Two senior SEOs will disagree by ~1 point per dimension on the same site. Calibrate against the brand's industry: a 7/10 author signal is excellent for SaaS but minimum-viable for a YMYL health publisher.
-- **Local SEO dimension** only applies if the brand profile has `business_model: local` or `target_markets` includes specific geographies with physical service. Otherwise skip.
-- **The link-profile dimension here is own-domain health** (broken links, redirect chains, anchor-text distribution on inbound links). For competitor link-gap analysis, hand off to `/digital-marketing-pro:backlink-gap` — don't try to do both in this audit.
+- **Audit réalisé pendant une mise à jour Core ?** Signalez-le clairement dans `00-input.md` et ne recommandez pas de changements réactifs. Les constats de l'audit restent valides ; c'est le timing de l'action qui ne l'est pas.
+- **N'auditez pas au niveau de l'URL pour les sites de plus de 10 000 pages.** Échantillonnez par gabarit (regroupez par gabarit, auditez une URL représentative par gabarit, généralisez).
+- **La notation E-E-A-T relève du jugement, pas de la mesure.** Deux SEO seniors seront en désaccord d'environ 1 point par dimension sur le même site. Calibrez selon le secteur de la marque : un signal auteur de 7/10 est excellent pour du SaaS mais tout juste viable pour un éditeur santé YMYL.
+- **La dimension SEO local** ne s'applique que si le profil de marque a `business_model: local` ou si `target_markets` inclut des zones géographiques spécifiques avec un service physique. Sinon, l'ignorer.
+- **La dimension profil de liens ici concerne la santé du domaine propre** (liens cassés, chaînes de redirection, distribution du texte d'ancrage sur les liens entrants). Pour l'analyse d'écart de liens concurrentiels, confiez la tâche à `/digital-marketing-pro:backlink-gap` — n'essayez pas de faire les deux dans cet audit.
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — All audit dimensions, scoring, prioritization, and recommendations
+- **seo-specialist** — Toutes les dimensions d'audit, la notation, la priorisation et les recommandations

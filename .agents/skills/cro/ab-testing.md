@@ -1,276 +1,277 @@
-# A/B Testing — Methodology & Pitfalls
+# Tests A/B — Méthodologie et pièges
 
-A rigorous framework for designing, executing, and interpreting conversion experiments. This guide covers the full lifecycle from hypothesis formation through analysis, with emphasis on the statistical and operational pitfalls that invalidate most tests.
+Un cadre rigoureux pour concevoir, exécuter et interpréter des expériences de conversion. Ce guide couvre le cycle de vie complet, de la formation de l'hypothèse à l'analyse, en insistant sur les pièges statistiques et opérationnels qui invalident la plupart des tests.
 
 ---
 
-## Test Design Framework
+## Cadre de conception de test
 
-Every valid A/B test follows this sequence. Skipping any step introduces bias or renders results uninterpretable.
+Chaque test A/B valide suit cette séquence. Sauter une étape introduit un biais ou rend les résultats ininterprétables.
 
-### Step 1: Hypothesis
+### Étape 1 : Hypothèse
 
-**Format:** "If we [change], then [metric] will [improve/decrease] by [estimated amount], because [rationale]."
+**Format :** « Si nous [changement], alors [indicateur] va [s'améliorer/diminuer] de [montant estimé], parce que [raisonnement]. »
 
-| Component | Purpose | Example |
+| Composante | Objectif | Exemple |
 |---|---|---|
-| Change | What you are modifying | Replace generic hero image with product screenshot showing dashboard |
-| Metric | Primary KPI you will measure | Free trial signup rate |
-| Direction & magnitude | Expected effect and estimated size | Increase by 10–15% |
-| Rationale | Why you believe this will work | Heatmap data shows visitors ignore the current stock image; customer interviews reveal the dashboard is the primary buying trigger |
+| Changement | Ce que vous modifiez | Remplacer l'image héro générique par une capture d'écran du produit montrant le tableau de bord |
+| Indicateur | Le KPI principal que vous allez mesurer | Taux d'inscription à l'essai gratuit |
+| Direction et ampleur | Effet attendu et taille estimée | Augmentation de 10 à 15 % |
+| Raisonnement | Pourquoi vous pensez que cela va fonctionner | Les données de carte de chaleur montrent que les visiteurs ignorent l'image de stock actuelle ; les entretiens clients révèlent que le tableau de bord est le principal déclencheur d'achat |
 
-**Hypothesis quality checklist:**
-- [ ] Based on data (analytics, heatmaps, user research, support tickets), not opinion
-- [ ] Specifies a single, measurable primary metric
-- [ ] Includes a falsifiable prediction — you can prove it wrong
-- [ ] Tied to a documented user problem or friction point
-- [ ] Estimated impact is realistic given historical test results
+**Checklist de qualité de l'hypothèse :**
+- [ ] Basée sur des données (analytics, cartes de chaleur, recherche utilisateur, tickets de support), pas sur une opinion
+- [ ] Précise un unique indicateur principal mesurable
+- [ ] Inclut une prédiction réfutable — vous pouvez prouver qu'elle est fausse
+- [ ] Liée à un problème utilisateur ou point de friction documenté
+- [ ] L'impact estimé est réaliste au regard des résultats de tests historiques
 
-### Step 2: Variable Selection
+### Étape 2 : Sélection de la variable
 
-| Variable Type | Description | Example |
+| Type de variable | Description | Exemple |
 |---|---|---|
-| Single variable | One element changed | Button color, headline text, image |
-| Compound variable | Multiple related elements changed together | Full hero section redesign (headline + image + CTA) |
-| Page-level | Entirely different page design | Current page vs. long-form vs. video-led variant |
+| Variable unique | Un seul élément changé | Couleur du bouton, texte du titre, image |
+| Variable composite | Plusieurs éléments liés changés ensemble | Refonte complète de la section héro (titre + image + CTA) |
+| Niveau page | Conception de page entièrement différente | Page actuelle vs variante longue vs variante orientée vidéo |
 
-**Rule of thumb:** Test single variables when diagnosing. Test compound variables when you have a strong hypothesis about a section. Test page-level when you have enough traffic and need step-change improvement.
+**Règle empirique :** Testez des variables uniques en phase de diagnostic. Testez des variables composites lorsque vous avez une hypothèse forte sur une section. Testez au niveau page lorsque vous avez suffisamment de trafic et avez besoin d'une amélioration en rupture.
 
-### Step 3: Primary Metric
+### Étape 3 : Indicateur principal
 
-Choose exactly one primary metric. Track secondary metrics for context but do not use them to declare a winner.
+Choisissez exactement un indicateur principal. Suivez les indicateurs secondaires pour le contexte mais ne les utilisez pas pour déclarer un gagnant.
 
-| Metric Type | When to Use | Watch Out For |
+| Type d'indicateur | Quand l'utiliser | Point de vigilance |
 |---|---|---|
-| Conversion rate | Most A/B tests on landing pages | Can be gamed by attracting lower-quality leads |
-| Revenue per visitor | E-commerce, pricing tests | Requires longer test duration due to variance |
-| Activation rate | Free trial and onboarding tests | Requires tracking beyond the initial conversion |
-| Lead quality score | Lead gen where volume alone is misleading | Needs CRM integration and sufficient time for leads to mature |
+| Taux de conversion | La plupart des tests A/B sur les landing pages | Peut être manipulé en attirant des leads de moindre qualité |
+| Revenu par visiteur | E-commerce, tests de tarification | Nécessite une durée de test plus longue en raison de la variance |
+| Taux d'activation | Tests d'essai gratuit et d'intégration | Nécessite un suivi au-delà de la conversion initiale |
+| Score de qualité de lead | Génération de leads où le volume seul est trompeur | Nécessite une intégration CRM et suffisamment de temps pour que les leads mûrissent |
 
-### Step 4: Duration & Calendar
+### Étape 4 : Durée et calendrier
 
-| Factor | Guideline |
+| Facteur | Recommandation |
 |---|---|
-| Minimum duration | 2 full business cycles (typically 2 weeks minimum) |
-| Maximum duration | 8 weeks — beyond this, external factors contaminate results |
-| Calendar awareness | Must capture all days of the week; avoid launching mid-week |
-| Exclusion periods | Black Friday, product launches, PR events, major outages |
-| Holiday overlap | If a test runs through a holiday, extend it to include equivalent non-holiday period |
+| Durée minimale | 2 cycles d'activité complets (généralement 2 semaines minimum) |
+| Durée maximale | 8 semaines — au-delà, des facteurs externes contaminent les résultats |
+| Conscience du calendrier | Doit couvrir tous les jours de la semaine ; éviter de lancer en milieu de semaine |
+| Périodes d'exclusion | Black Friday, lancements de produit, événements de relations presse, pannes majeures |
+| Chevauchement avec les jours fériés | Si un test se déroule pendant un jour férié, le prolonger pour inclure une période équivalente hors jour férié |
 
-### Step 5: Sample Size Calculation
+### Étape 5 : Calcul de la taille d'échantillon
 
-Determine required sample size **before** launching the test. Never start a test without knowing when to stop.
+Déterminez la taille d'échantillon requise **avant** de lancer le test. Ne commencez jamais un test sans savoir quand l'arrêter.
 
-**Inputs required:**
-- Baseline conversion rate (current control performance)
-- Minimum Detectable Effect (MDE) — the smallest improvement worth detecting
-- Statistical significance level (typically 95%, or alpha = 0.05)
-- Statistical power (typically 80%, or beta = 0.20)
+**Éléments requis :**
+- Taux de conversion de référence (performance actuelle du contrôle)
+- Effet minimum détectable (MDE) — la plus petite amélioration qu'il vaut la peine de détecter
+- Niveau de significativité statistique (généralement 95 %, ou alpha = 0,05)
+- Puissance statistique (généralement 80 %, ou bêta = 0,20)
 
 ---
 
-## Sample Size Reference Table
+## Tableau de référence des tailles d'échantillon
 
-*Two-tailed test, 95% significance, 80% power. Figures show visitors needed PER VARIATION.*
+*Test bilatéral, significativité de 95 %, puissance de 80 %. Les chiffres indiquent les visiteurs nécessaires PAR VARIANTE.*
 
-| Baseline CVR | MDE: 5% relative | MDE: 10% relative | MDE: 15% relative | MDE: 20% relative | MDE: 25% relative |
+| CVR de référence | MDE : 5 % relatif | MDE : 10 % relatif | MDE : 15 % relatif | MDE : 20 % relatif | MDE : 25 % relatif |
 |---|---|---|---|---|---|
-| 1% | 637,000 | 163,000 | 74,000 | 43,000 | 28,000 |
-| 2% | 315,000 | 81,000 | 37,000 | 21,000 | 14,000 |
-| 3% | 208,000 | 53,000 | 24,000 | 14,000 | 9,100 |
-| 5% | 122,000 | 31,000 | 14,000 | 8,200 | 5,300 |
-| 8% | 74,000 | 19,000 | 8,600 | 4,900 | 3,200 |
-| 10% | 58,000 | 15,000 | 6,700 | 3,800 | 2,500 |
-| 15% | 36,000 | 9,300 | 4,200 | 2,400 | 1,600 |
-| 20% | 26,000 | 6,500 | 2,900 | 1,700 | 1,100 |
-| 30% | 15,000 | 3,800 | 1,700 | 960 | 620 |
+| 1 % | 637 000 | 163 000 | 74 000 | 43 000 | 28 000 |
+| 2 % | 315 000 | 81 000 | 37 000 | 21 000 | 14 000 |
+| 3 % | 208 000 | 53 000 | 24 000 | 14 000 | 9 100 |
+| 5 % | 122 000 | 31 000 | 14 000 | 8 200 | 5 300 |
+| 8 % | 74 000 | 19 000 | 8 600 | 4 900 | 3 200 |
+| 10 % | 58 000 | 15 000 | 6 700 | 3 800 | 2 500 |
+| 15 % | 36 000 | 9 300 | 4 200 | 2 400 | 1 600 |
+| 20 % | 26 000 | 6 500 | 2 900 | 1 700 | 1 100 |
+| 30 % | 15 000 | 3 800 | 1 700 | 960 | 620 |
 
-*Values computed with `scripts/sample-size-calculator.py` (`--mde-type relative`, two-proportion Z-test).*
+*Valeurs calculées avec `scripts/sample-size-calculator.py` (`--mde-type relative`, test Z à deux proportions).*
 
-*Key insight: Low-conversion pages need massive traffic to detect small effects. If your page converts at 2% and you want to detect a 10% relative lift (2.0% to 2.2%), you need ~81,000 visitors per variation.*
+*Idée clé : les pages à faible conversion ont besoin d'un trafic massif pour détecter de petits effets. Si votre page convertit à 2 % et que vous voulez détecter une hausse relative de 10 % (de 2,0 % à 2,2 %), il vous faut environ 81 000 visiteurs par variante.*
 
 ---
 
-## Statistical Significance — What It Actually Means
+## Significativité statistique — ce que cela signifie réellement
 
-### P-Value
+### Valeur p
 
-The p-value is the probability of observing results as extreme as (or more extreme than) what you measured, assuming the null hypothesis is true (i.e., assuming there is no real difference between variations).
+La valeur p est la probabilité d'observer des résultats aussi extrêmes (ou plus extrêmes) que ceux mesurés, en supposant que l'hypothèse nulle est vraie (c'est-à-dire en supposant qu'il n'y a pas de différence réelle entre les variantes).
 
-- **p < 0.05** means there is less than a 5% chance the observed difference is due to random noise
-- It does NOT mean there is a 95% chance the variant is better
-- It does NOT tell you the magnitude of the effect — only that an effect likely exists
+- **p < 0,05** signifie qu'il y a moins de 5 % de chances que la différence observée soit due au bruit aléatoire
+- Cela ne signifie PAS qu'il y a 95 % de chances que la variante soit meilleure
+- Cela ne renseigne PAS sur l'ampleur de l'effet — seulement qu'un effet existe probablement
 
-### Confidence Intervals
+### Intervalles de confiance
 
-A 95% confidence interval gives the range within which the true conversion rate difference likely falls.
+Un intervalle de confiance à 95 % donne la plage dans laquelle se situe probablement la véritable différence de taux de conversion.
 
-| Scenario | Confidence Interval | Interpretation |
+| Scénario | Intervalle de confiance | Interprétation |
 |---|---|---|
-| Clear winner | +1.2% to +3.8% | Variant is better; effect is between 1.2% and 3.8% absolute lift |
-| Inconclusive | -0.5% to +2.1% | Interval includes zero; cannot confidently declare a winner |
-| Clear loser | -3.0% to -0.8% | Variant is worse; the control should be kept |
+| Gagnant clair | +1,2 % à +3,8 % | La variante est meilleure ; l'effet se situe entre 1,2 % et 3,8 % de hausse absolue |
+| Non concluant | -0,5 % à +2,1 % | L'intervalle inclut zéro ; impossible de déclarer un gagnant avec confiance |
+| Perdant clair | -3,0 % à -0,8 % | La variante est moins bonne ; le contrôle doit être conservé |
 
-**Always report confidence intervals, not just p-values.** A statistically significant result with a tiny confidence interval around a negligible effect is not worth implementing.
+**Rapportez toujours les intervalles de confiance, pas seulement les valeurs p.** Un résultat statistiquement significatif avec un intervalle de confiance minuscule autour d'un effet négligeable ne vaut pas la peine d'être mis en œuvre.
 
-### Minimum Detectable Effect (MDE)
+### Effet minimum détectable (MDE)
 
-The MDE is the smallest effect size your test is powered to detect. Setting this requires a business judgment:
+Le MDE est la plus petite taille d'effet que votre test est en mesure de détecter. Sa définition relève d'un jugement métier :
 
-- What is the smallest improvement that would justify the implementation cost?
-- What lift would meaningfully change downstream revenue?
+- Quelle est la plus petite amélioration qui justifierait le coût de mise en œuvre ?
+- Quelle hausse changerait significativement le revenu en aval ?
 
-**Common mistake:** Setting MDE too low (trying to detect tiny effects) leads to impractically large sample sizes. Setting it too high (only detecting huge effects) means you miss real but moderate improvements.
-
----
-
-## Common Pitfalls
-
-### 1. Peeking (Repeated Significance Testing)
-
-**What happens:** You check results daily and stop the test the moment you see p < 0.05.
-
-**Why it's wrong:** Statistical significance fluctuates. If you check a test 10 times during its run, the false positive rate inflates from 5% to approximately 26%. You will declare winners that are not actually better.
-
-**Fix:** Pre-commit to a sample size and run duration. Do not stop early. If you must monitor, use sequential testing methods (e.g., always-valid p-values, Bayesian approaches) that account for multiple looks.
-
-### 2. Seasonal & Cyclical Bias
-
-**What happens:** You run a test that starts on a Monday and ends on a Thursday, or runs through a promotional period.
-
-**Why it's wrong:** Conversion rates vary by day of week, time of month, pay cycles, and seasonal patterns. Partial-cycle data skews results.
-
-**Fix:** Always run tests for complete business cycles (full weeks minimum). Document any external events that occur during the test period.
-
-### 3. Novelty Effect
-
-**What happens:** A new design element performs well initially, but the lift fades as returning visitors become accustomed to it.
-
-**Why it's wrong:** You implement the change expecting permanent lift, but it reverts to baseline within weeks.
-
-**Fix:** Segment results by new vs. returning visitors. Run the test long enough (3–4 weeks) for the novelty to fade. Monitor post-implementation performance for 4–6 weeks.
-
-### 4. Simpson's Paradox
-
-**What happens:** Variant B wins overall, but when you segment by device type or traffic source, Variant A wins in every segment.
-
-**Why it's wrong:** Uneven traffic allocation across segments creates misleading aggregate results. The "winner" is an artifact of traffic mix, not page performance.
-
-**Fix:** Check results across major segments (device, source, new/returning). If the direction of effect reverses in segments, investigate the traffic split before declaring a winner.
-
-### 5. Underpowered Tests
-
-**What happens:** You run a test with insufficient traffic and declare "no significant difference" as proof that the variant has no effect.
-
-**Why it's wrong:** Absence of evidence is not evidence of absence. A test with 500 visitors per variation cannot detect a 10% relative lift on a 3% conversion rate — it simply did not have enough data.
-
-**Fix:** Calculate required sample size before launching. If you cannot reach it within 8 weeks, increase the MDE, test a higher-traffic page, or combine the test with other traffic sources.
-
-### 6. Multiple Comparison Problem
-
-**What happens:** You test 5 variations against a control and celebrate when one of them shows p < 0.05.
-
-**Why it's wrong:** With 5 comparisons, the probability of at least one false positive is ~23% (not 5%). You are likely celebrating noise.
-
-**Fix:** Apply a correction (Bonferroni: divide alpha by number of comparisons) or use a structured multivariate testing approach. Better yet, test fewer variations with stronger hypotheses.
-
-### 7. Survivor Bias in Funnel Tests
-
-**What happens:** You test a change on step 2 of a funnel and see higher conversion to step 3. But total funnel completion drops because the change also caused more drop-off between steps 1 and 2.
-
-**Why it's wrong:** Optimizing one step in isolation can harm the overall funnel.
-
-**Fix:** Track macro-conversion (final funnel outcome), not just micro-conversion at the tested step.
+**Erreur courante :** Fixer un MDE trop bas (essayer de détecter des effets minuscules) conduit à des tailles d'échantillon irréalistement grandes. Le fixer trop haut (ne détecter que des effets énormes) signifie que vous manquez des améliorations réelles mais modérées.
 
 ---
 
-## ICE Prioritization Framework
+## Pièges courants
 
-Score each test idea on three dimensions (1–10 scale) and multiply to get a composite score.
+### 1. Lecture anticipée (tests de significativité répétés)
 
-| Dimension | Question | Scoring Guide |
+**Ce qui se passe :** Vous vérifiez les résultats quotidiennement et arrêtez le test dès que vous voyez p < 0,05.
+
+**Pourquoi c'est faux :** La significativité statistique fluctue. Si vous vérifiez un test 10 fois pendant son exécution, le taux de faux positifs gonfle de 5 % à environ 26 %. Vous déclarerez des gagnants qui ne sont en réalité pas meilleurs.
+
+**Correction :** Engagez-vous à l'avance sur une taille d'échantillon et une durée d'exécution. N'arrêtez pas prématurément. Si vous devez surveiller, utilisez des méthodes de test séquentiel (par exemple, valeurs p toujours valides, approches bayésiennes) qui tiennent compte des observations multiples.
+
+### 2. Biais saisonnier et cyclique
+
+**Ce qui se passe :** Vous exécutez un test qui commence un lundi et se termine un jeudi, ou qui se déroule pendant une période promotionnelle.
+
+**Pourquoi c'est faux :** Les taux de conversion varient selon le jour de la semaine, le moment du mois, les cycles de paie, et les schémas saisonniers. Des données de cycle partiel faussent les résultats.
+
+**Correction :** Exécutez toujours les tests sur des cycles d'activité complets (semaines complètes au minimum). Documentez tout événement externe survenant pendant la période de test.
+
+### 3. Effet de nouveauté
+
+**Ce qui se passe :** Un nouvel élément de conception performe bien initialement, mais la hausse s'estompe à mesure que les visiteurs récurrents s'y habituent.
+
+**Pourquoi c'est faux :** Vous mettez en œuvre le changement en espérant une hausse permanente, mais elle revient à la référence en quelques semaines.
+
+**Correction :** Segmentez les résultats par nouveaux visiteurs vs visiteurs récurrents. Exécutez le test suffisamment longtemps (3 à 4 semaines) pour que la nouveauté s'estompe. Surveillez la performance post-mise en œuvre pendant 4 à 6 semaines.
+
+### 4. Paradoxe de Simpson
+
+**Ce qui se passe :** La variante B l'emporte globalement, mais lorsque vous segmentez par type d'appareil ou source de trafic, la variante A l'emporte dans chaque segment.
+
+**Pourquoi c'est faux :** Une répartition inégale du trafic entre les segments crée des résultats agrégés trompeurs. Le « gagnant » est un artefact du mix de trafic, pas de la performance de la page.
+
+**Correction :** Vérifiez les résultats sur les principaux segments (appareil, source, nouveau/récurrent). Si la direction de l'effet s'inverse dans les segments, examinez la répartition du trafic avant de déclarer un gagnant.
+
+### 5. Tests sous-alimentés
+
+**Ce qui se passe :** Vous exécutez un test avec un trafic insuffisant et déclarez « aucune différence significative » comme preuve que la variante n'a aucun effet.
+
+**Pourquoi c'est faux :** L'absence de preuve n'est pas une preuve d'absence. Un test avec 500 visiteurs par variante ne peut pas détecter une hausse relative de 10 % sur un taux de conversion de 3 % — il n'y avait simplement pas assez de données.
+
+**Correction :** Calculez la taille d'échantillon requise avant le lancement. Si vous ne pouvez pas l'atteindre en 8 semaines, augmentez le MDE, testez une page à plus fort trafic, ou combinez le test avec d'autres sources de trafic.
+
+### 6. Problème des comparaisons multiples
+
+**Ce qui se passe :** Vous testez 5 variantes contre un contrôle et vous réjouissez lorsque l'une d'elles affiche p < 0,05.
+
+**Pourquoi c'est faux :** Avec 5 comparaisons, la probabilité d'au moins un faux positif est d'environ 23 % (pas 5 %). Vous célébrez probablement du bruit.
+
+**Correction :** Appliquez une correction (Bonferroni : diviser alpha par le nombre de comparaisons) ou utilisez une approche de test multivarié structurée. Mieux encore, testez moins de variantes avec des hypothèses plus solides.
+
+### 7. Biais du survivant dans les tests de tunnel
+
+**Ce qui se passe :** Vous testez un changement à l'étape 2 d'un tunnel et observez une conversion plus élevée vers l'étape 3. Mais l'achèvement total du tunnel chute car le changement a aussi causé plus d'abandon entre les étapes 1 et 2.
+
+**Pourquoi c'est faux :** Optimiser une étape isolément peut nuire au tunnel global.
+
+**Correction :** Suivez la macro-conversion (résultat final du tunnel), pas seulement la micro-conversion à l'étape testée.
+
+---
+
+## Cadre de priorisation ICE
+
+Notez chaque idée de test sur trois dimensions (échelle de 1 à 10) et multipliez pour obtenir un score composite.
+
+| Dimension | Question | Guide de notation |
 |---|---|---|
-| **Impact** | How large will the effect be if the hypothesis is correct? | 1–3: Minor lift. 4–6: Moderate improvement. 7–10: Transformative change. |
-| **Confidence** | How certain are you this will produce a positive result? | 1–3: Gut feel only. 4–6: Supported by indirect data. 7–10: Strong evidence from research, past tests, or competitor analysis. |
-| **Ease** | How simple is it to implement and launch? | 1–3: Major dev work, multiple teams. 4–6: Moderate effort, one sprint. 7–10: Copy/image change, launchable in hours. |
+| **Impact** | Quelle sera l'ampleur de l'effet si l'hypothèse est correcte ? | 1-3 : Hausse mineure. 4-6 : Amélioration modérée. 7-10 : Changement transformateur. |
+| **Confiance** | Quelle est votre certitude que cela produira un résultat positif ? | 1-3 : Intuition uniquement. 4-6 : Soutenu par des données indirectes. 7-10 : Preuves solides issues de la recherche, de tests passés, ou d'analyse concurrentielle. |
+| **Facilité** | À quel point est-ce simple à mettre en œuvre et à lancer ? | 1-3 : Travail de développement majeur, plusieurs équipes. 4-6 : Effort modéré, un sprint. 7-10 : Changement de texte/image, lançable en quelques heures. |
 
-| Test Idea | Impact | Confidence | Ease | ICE Score | Priority |
+| Idée de test | Impact | Confiance | Facilité | Score ICE | Priorité |
 |---|---|---|---|---|---|
-| Rewrite headline to match top-performing ad copy | 7 | 8 | 9 | 504 | P1 |
-| Reduce form from 8 fields to 4 | 8 | 7 | 7 | 392 | P1 |
-| Add video testimonial above fold | 6 | 5 | 4 | 120 | P2 |
-| Redesign full page layout | 9 | 4 | 2 | 72 | P3 |
+| Réécrire le titre pour correspondre au texte publicitaire le plus performant | 7 | 8 | 9 | 504 | P1 |
+| Réduire le formulaire de 8 à 4 champs | 8 | 7 | 7 | 392 | P1 |
+| Ajouter un témoignage vidéo au-dessus de la ligne de flottaison | 6 | 5 | 4 | 120 | P2 |
+| Refondre entièrement la mise en page de la page | 9 | 4 | 2 | 72 | P3 |
 
 ---
 
-## Multivariate Testing (MVT) Guidelines
+## Directives de test multivarié (MVT)
 
-| Criterion | A/B Test | Multivariate Test |
+| Critère | Test A/B | Test multivarié |
 |---|---|---|
-| Traffic required | Moderate | High (multiplied by number of combinations) |
-| Best for | Validating a single hypothesis | Understanding interaction effects between elements |
-| Complexity | Low | High — requires careful factorial design |
-| Analysis | Simple comparison | Main effects + interaction effects |
-| When to use | Default choice for most teams | When you have >100K monthly visitors AND need to test element interactions |
+| Trafic requis | Modéré | Élevé (multiplié par le nombre de combinaisons) |
+| Idéal pour | Valider une hypothèse unique | Comprendre les effets d'interaction entre éléments |
+| Complexité | Faible | Élevée — nécessite une conception factorielle soignée |
+| Analyse | Comparaison simple | Effets principaux + effets d'interaction |
+| Quand l'utiliser | Choix par défaut pour la plupart des équipes | Lorsque vous avez plus de 100 000 visiteurs mensuels ET besoin de tester les interactions entre éléments |
 
-**MVT sample size rule:** Multiply the A/B sample size requirement by the number of combinations. A 2x2 MVT (two elements, two levels each = 4 combinations) needs roughly 4x the traffic of a simple A/B test.
+**Règle de taille d'échantillon MVT :** Multipliez l'exigence de taille d'échantillon A/B par le nombre de combinaisons. Un MVT 2x2 (deux éléments, deux niveaux chacun = 4 combinaisons) nécessite environ 4 fois le trafic d'un simple test A/B.
 
 ---
 
-## Test Documentation Template
+## Modèle de documentation de test
 
-Complete this for every test. Store in a shared test repository so the team builds institutional knowledge.
+Complétez ceci pour chaque test. Stockez-le dans un référentiel de tests partagé afin que l'équipe construise une connaissance institutionnelle.
 
 ```
-TEST ID: [Sequential number]
-TEST NAME: [Descriptive name]
-DATE: [Start] — [End]
-PAGE: [URL tested]
-TRAFFIC: [Source/segment targeted]
+ID DU TEST : [Numéro séquentiel]
+NOM DU TEST : [Nom descriptif]
+DATE : [Début] — [Fin]
+PAGE : [URL testée]
+TRAFIC : [Source/segment ciblé]
 
-HYPOTHESIS:
-If we [change], then [metric] will [direction] by [amount],
-because [evidence-based rationale].
+HYPOTHÈSE :
+Si nous [changement], alors [indicateur] va [direction] de [montant],
+parce que [raisonnement basé sur des preuves].
 
-VARIATIONS:
-- Control: [Description + screenshot link]
-- Variant A: [Description + screenshot link]
-- Variant B: [Description + screenshot link, if applicable]
+VARIANTES :
+- Contrôle : [Description + lien de capture d'écran]
+- Variante A : [Description + lien de capture d'écran]
+- Variante B : [Description + lien de capture d'écran, le cas échéant]
 
-PRIMARY METRIC: [Single metric]
-SECONDARY METRICS: [List]
-GUARDRAIL METRICS: [Metrics that must not degrade]
+INDICATEUR PRINCIPAL : [Indicateur unique]
+INDICATEURS SECONDAIRES : [Liste]
+INDICATEURS DE GARDE-FOU : [Indicateurs qui ne doivent pas se dégrader]
 
-SAMPLE SIZE REQUIRED: [Per variation]
-MDE: [Minimum detectable effect]
-SIGNIFICANCE LEVEL: [Usually 95%]
-POWER: [Usually 80%]
+TAILLE D'ÉCHANTILLON REQUISE : [Par variante]
+MDE : [Effet minimum détectable]
+NIVEAU DE SIGNIFICATIVITÉ : [Généralement 95 %]
+PUISSANCE : [Généralement 80 %]
 
-RESULTS:
-- Control CVR: [X%]
-- Variant A CVR: [X%] (p = [X], CI: [X% to X%])
-- Winner: [Control / Variant / Inconclusive]
+RÉSULTATS :
+- CVR du contrôle : [X %]
+- CVR de la variante A : [X %] (p = [X], IC : [X % à X %])
+- Gagnant : [Contrôle / Variante / Non concluant]
 
-SEGMENTS CHECKED:
-- Device: [Desktop / Mobile / Tablet]
-- Traffic Source: [Paid / Organic / Direct / Email]
-- New vs Returning: [Results by segment]
+SEGMENTS VÉRIFIÉS :
+- Appareil : [Bureau / Mobile / Tablette]
+- Source de trafic : [Payant / Organique / Direct / E-mail]
+- Nouveau vs récurrent : [Résultats par segment]
 
-DECISION: [Implement / Iterate / Archive]
-IMPLEMENTATION DATE: [When the winner was deployed]
+DÉCISION : [Mettre en œuvre / Itérer / Archiver]
+DATE DE MISE EN ŒUVRE : [Quand le gagnant a été déployé]
 
-LEARNINGS:
-[What did this test teach us? What should we test next?]
+ENSEIGNEMENTS :
+[Qu'est-ce que ce test nous a appris ? Que devrions-nous tester ensuite ?]
 ```
 
 ---
 
-## Test Velocity Benchmarks
+## Repères de vélocité de test
 
-| Company Stage | Tests per Month | Focus |
+| Étape de l'entreprise | Tests par mois | Focus |
 |---|---|---|
-| Early-stage (low traffic) | 1–2 | High-impact, page-level tests with large MDE |
-| Growth-stage | 4–8 | Section-level tests across key pages |
-| Mature / High-traffic | 10–20+ | Element-level tests with rigorous methodology |
+| Démarrage (faible trafic) | 1-2 | Tests à fort impact, au niveau page, avec un MDE élevé |
+| Croissance | 4-8 | Tests au niveau section sur les pages clés |
+| Mature / fort trafic | 10-20+ | Tests au niveau élément avec une méthodologie rigoureuse |
 
-**The compounding effect:** A team running 8 tests per quarter with a 30% win rate and an average 5% lift per winning test achieves ~14% cumulative conversion improvement per quarter. Over a year, that compounds to 60%+ total lift — far exceeding what any single redesign delivers.
+**L'effet composé :** Une équipe exécutant 8 tests par trimestre avec un taux de réussite de 30 % et une hausse moyenne de 5 % par test gagnant atteint environ 14 % d'amélioration cumulée de conversion par trimestre. Sur une année, cela se compose en plus de 60 % de hausse totale — bien au-delà de ce que livre n'importe quelle refonte isolée.
+</content>

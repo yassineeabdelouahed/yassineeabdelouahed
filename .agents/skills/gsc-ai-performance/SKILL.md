@@ -1,50 +1,73 @@
 ---
 name: gsc-ai-performance
-description: "Baseline and interpret Google Search Console's AI Performance Report — combined AI Overviews + AI Mode impressions, cited pages, country and device mix (no click data; attribution stays in GA4) — from a user-supplied CSV export, with an in-SC AI opt-out recommendation and a gated quality scorecard. Triggers on \"/digital-marketing-pro:gsc-ai-performance\", \"read the new GSC AI report\", \"baseline our AI search visibility\", \"how many AI Overviews impressions do we get\", \"should we opt out of AI results\". Parses and archives exports via gsc-ai-performance.py, reconciles actuals against /digital-marketing-pro:aeo-audit probes, and feeds /digital-marketing-pro:seo-drift."
+description: "Établir la référence et interpréter le rapport AI Performance de Google Search Console — impressions combinées AI Overviews + AI Mode, pages citées, répartition pays et appareil (pas de données de clic, l'attribution reste dans GA4) — à partir d'un export CSV fourni par l'utilisateur, avec une recommandation d'opt-out IA dans Search Console et un tableau de bord qualité verrouillé. Se déclenche sur « /digital-marketing-pro:gsc-ai-performance », « lis le nouveau rapport IA de GSC », « établis la référence de notre visibilité IA », « combien d'impressions AI Overviews recevons-nous », « devrions-nous nous retirer des résultats IA ». Analyse et archive les exports via gsc-ai-performance.py, réconcilie les sondages avec /digital-marketing-pro:aeo-audit, et alimente /digital-marketing-pro:seo-drift."
 argument-hint: "[brand-name or site URL]"
 ---
 
 # /digital-marketing-pro:gsc-ai-performance
 
-## Purpose
+## Objectif
 
-Google rolled out a new **GSC AI Performance Report** on **3 June 2026** ([Search Engine Land announcement](https://searchengineland.com/google-search-console-ai-performance-reports-and-controls-to-block-your-content-in-ai-responses-479298)) covering both AI Overviews and AI Mode in a single combined surface. This skill helps you (a) baseline a brand's visibility in the new report, (b) understand the metric trade-offs, and (c) decide whether to use the new in-SC opt-out toggle.
+Google a déployé un nouveau **rapport AI Performance de GSC** le **3 juin 2026**
+([annonce de Search Engine Land](https://searchengineland.com/google-search-console-ai-performance-reports-and-controls-to-block-your-content-in-ai-responses-479298))
+couvrant à la fois AI Overviews et AI Mode dans une seule surface combinée. Cette
+compétence vous aide à (a) établir la référence de visibilité d'une marque dans le
+nouveau rapport, (b) comprendre les compromis des métriques, et (c) décider d'utiliser
+ou non le nouveau bouton d'opt-out intégré à Search Console.
 
-## What is genuinely new (3 June 2026)
+## Ce qui est réellement nouveau (3 juin 2026)
 
-| Metric / surface | Status |
+| Métrique / surface | Statut |
 |---|---|
-| Combined AI Overviews + AI Mode impressions | NEW — one report for both surfaces |
-| Pages cited (per query group) | NEW |
-| Country breakdown | NEW |
-| Device breakdown | NEW |
-| Date range filtering | NEW |
-| **Click data** | **NOT INCLUDED** (Google explicitly excluded — important caveat for attribution) |
-| Opt-out toggle in Search Console | NEW (replaces having to ship robots.txt / meta tags for AI-specific exclusion) |
-| API surface | **NOT YET PUBLISHED** — UI only (still true as of July 2026) |
-| **Discover generative surfaces** | **NEW (June–July 2026)** — the report family now also covers generative AI features in Discover ([Google announcement](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)) |
-| Data availability | Backfilled from **18 May 2026**; access expanded broadly in July 2026, with a companion deep-dive help doc on AI controls |
-| Geographic rollout | UK first, then global ([source](https://searchengineland.com/google-search-console-ai-performance-reports-and-controls-to-block-your-content-in-ai-responses-479298)) |
+| Impressions combinées AI Overviews + AI Mode | NOUVEAU — un seul rapport pour les deux surfaces |
+| Pages citées (par groupe de requêtes) | NOUVEAU |
+| Répartition par pays | NOUVEAU |
+| Répartition par appareil | NOUVEAU |
+| Filtrage par plage de dates | NOUVEAU |
+| **Données de clic** | **NON INCLUSES** (Google les a explicitement exclues — mise en garde importante pour l'attribution) |
+| Bouton d'opt-out dans Search Console | NOUVEAU (remplace la nécessité de déployer robots.txt / balises meta pour l'exclusion spécifique à l'IA) |
+| Surface API | **PAS ENCORE PUBLIÉE** — interface uniquement (toujours vrai en juillet 2026) |
+| **Surfaces génératives de Discover** | **NOUVEAU (juin–juillet 2026)** — la famille de rapports couvre désormais aussi les fonctionnalités d'IA générative dans Discover ([annonce Google](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports)) |
+| Disponibilité des données | Rétroactif depuis le **18 mai 2026** ; accès élargi largement en juillet 2026, avec un document d'aide complémentaire approfondi sur les contrôles IA |
+| Déploiement géographique | Royaume-Uni d'abord, puis mondial ([source](https://searchengineland.com/google-search-console-ai-performance-reports-and-controls-to-block-your-content-in-ai-responses-479298)) |
 
-**Critical interpretation guidance:** The report shows when your pages were SHOWN in AI Overviews / AI Mode, not when users clicked through to them. Because click data is absent, all downstream attribution to AI traffic must come from your analytics (GA4's new `AI Assistant` channel — added 13 May 2026 — is the matching analytics-side surface; see `/digital-marketing-pro:analytics-insights`).
+**Conseil d'interprétation critique :** Le rapport montre quand vos pages ont été
+MONTRÉES dans AI Overviews / AI Mode, pas quand les utilisateurs ont cliqué pour s'y
+rendre. Comme les données de clic sont absentes, toute attribution en aval du trafic IA
+doit provenir de votre analytics (le nouveau canal `AI Assistant` de GA4 — ajouté le 13
+mai 2026 — est la surface analytics correspondante ; voir
+`/digital-marketing-pro:analytics-insights`).
 
-## When to use this skill
+## Quand utiliser cette compétence
 
-- Setting baseline AI visibility for a new brand (first 30-day capture of AI Overview + AI Mode impressions)
-- Comparing brand AI visibility against `aeo-audit` synthetic results — the GSC report shows ACTUAL impressions vs `aeo-audit`'s probe queries
-- Deciding whether to flip the in-SC AI opt-out toggle for a brand (regulated industry, brand-safety concern, or paywall/login content)
-- Quarterly business review evidence — "AI search impressions grew X%" using authoritative Google data
+- Établir la référence de visibilité IA pour une nouvelle marque (première capture de
+  30 jours des impressions AI Overview + AI Mode)
+- Comparer la visibilité IA réelle de la marque aux résultats synthétiques de
+  `aeo-audit` — le rapport GSC montre les impressions RÉELLES vs les requêtes sondées
+  par `aeo-audit`
+- Décider d'activer ou non le bouton d'opt-out IA dans GSC pour une marque (secteur
+  réglementé, préoccupation de sécurité de marque, ou contenu payant/derrière connexion)
+- Preuve pour une revue trimestrielle d'affaires — « les impressions de recherche IA ont
+  augmenté de X% » en utilisant des données Google faisant autorité
 
-## Brand context (auto-applied)
+## Contexte de marque (appliqué automatiquement)
 
-1. Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`
-2. If no brand exists: ask "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults
-3. Apply industry-specific guidance from `skills/context-engine/industry-profiles.md` (YMYL industries may want opt-out toggled ON until E-E-A-T audit is clean)
-4. Reference `skills/context-engine/compliance-rules.md` for jurisdiction-specific rules (EU markets — see `skills/context-engine/eu-code-of-practice.md` for Article 50 transparency context)
+1. Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis
+   charger `~/.claude-marketing/brands/{slug}/profile.json`
+2. Si aucune marque n'existe : demander « Configurer une marque d'abord
+   (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut
+3. Appliquer les conseils spécifiques au secteur depuis
+   `skills/context-engine/industry-profiles.md` (les secteurs YMYL pourraient vouloir
+   activer l'opt-out jusqu'à ce qu'un audit E-E-A-T soit propre)
+4. Se référer à `skills/context-engine/compliance-rules.md` pour les règles spécifiques
+   à la juridiction (marchés de l'UE — voir
+   `skills/context-engine/eu-code-of-practice.md` pour le contexte de transparence de
+   l'Article 50)
 
-## Numbered output convention
+## Convention de sortie numérotée
 
-All outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/gsc-ai-performance/{YYYY-MM-DD}/`:
+Toutes les sorties vont dans
+`${CLAUDE_PLUGIN_DATA}/{brand}/seo/gsc-ai-performance/{YYYY-MM-DD}/` :
 
 ```
 00-input.md                  brand domain, GSC access status, UK-cohort flag, date range
@@ -57,30 +80,45 @@ All outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/gsc-ai-performance/{YYYY-MM
 PLAN.md                      single-page summary with tracking cadence
 ```
 
-## Quality scorecard
+## Tableau de bord qualité
 
-| Gate | What it checks |
+| Porte | Ce qu'elle vérifie |
 |---|---|
-| **gsc_access_verified** | User has confirmed Search Console verified ownership for the brand domain |
-| **export_completeness** | CSV has ≥ 1 day of data + at minimum the impressions column |
-| **cohort_documented** | `00-input.md` notes whether the brand is in the UK rollout (data live) or pending global rollout (no data yet — wait) |
-| **reconciliation_done** | `04-reconciliation.md` cross-references against the brand's most recent aeo-audit |
+| **gsc_access_verified** | L'utilisateur a confirmé que Search Console a validé la propriété du domaine de la marque |
+| **export_completeness** | Le CSV contient ≥ 1 jour de données + au minimum la colonne des impressions |
+| **cohort_documented** | `00-input.md` note si la marque fait partie du déploiement UK (données en direct) ou du déploiement mondial en attente (pas de données encore — attendre) |
+| **reconciliation_done** | `04-reconciliation.md` recoupe avec le dernier aeo-audit de la marque |
 
-If the brand isn't in the UK rollout yet, the gate framework still applies but `export_completeness` will be `fail` until Google rolls out globally — that's expected, not a regression.
+Si la marque ne fait pas encore partie du déploiement UK, le cadre de portes s'applique
+toujours mais `export_completeness` sera `fail` jusqu'au déploiement mondial de Google —
+c'est attendu, pas une régression.
 
-## Chain handoffs
+## Transferts en chaîne
 
-- **Upstream:** `/digital-marketing-pro:brand-setup` for property verification
-- **Downstream:**
-  - `/digital-marketing-pro:aeo-geo` — optimization based on what's surfacing (or not)
-  - `/digital-marketing-pro:seo-drift` — month-over-month tracking using the exported CSVs
-  - `/digital-marketing-pro:analytics-insights` — GA4 AI Assistant channel attribution closes the click-side gap
+- **En amont :** `/digital-marketing-pro:brand-setup` pour la vérification de propriété
+- **En aval :**
+  - `/digital-marketing-pro:aeo-geo` — optimisation basée sur ce qui apparaît (ou pas)
+  - `/digital-marketing-pro:seo-drift` — suivi mois par mois à l'aide des CSV exportés
+  - `/digital-marketing-pro:analytics-insights` — l'attribution du canal AI Assistant de
+    GA4 comble l'écart côté clic
 
-## Process
+## Processus
 
-1. **Access check** — confirm the user has Google Search Console verified access for the brand's domain. If the brand is in the UK rollout cohort, the report is live; otherwise it will appear when global rollout reaches them.
-2. **Locate the report** — Search Console → left nav → **Performance** → switch tab to **Search results** → look for the new **AI Overviews & AI Mode** tab (the tab title may vary slightly during rollout; Google's working name during testing was "Search Generative AI"). On rollouts pre-tab, the data may also surface under the existing Performance report with an AI Features filter.
-3. **Run baseline export** — set the date range to "last 28 days" (or maximum available since rollout), export to CSV/Sheets via Search Console's export button. Capture: impressions, pages, country mix, device mix, top queries (if available in your cohort). Then parse and archive it with the helper script:
+1. **Vérification d'accès** — confirmer que l'utilisateur dispose d'un accès vérifié à
+   Google Search Console pour le domaine de la marque. Si la marque fait partie de la
+   cohorte du déploiement UK, le rapport est en direct ; sinon il apparaîtra quand le
+   déploiement mondial l'atteindra.
+2. **Localiser le rapport** — Search Console → menu de gauche → **Performance** →
+   basculer sur l'onglet **Résultats de recherche** → chercher le nouvel onglet **AI
+   Overviews & AI Mode** (le titre de l'onglet peut varier légèrement pendant le
+   déploiement ; le nom de travail de Google pendant les tests était « Search
+   Generative AI »). Sur les déploiements pré-onglet, les données peuvent aussi
+   apparaître dans le rapport Performance existant avec un filtre AI Features.
+3. **Exécuter l'export de référence** — définir la plage de dates sur « 28 derniers
+   jours » (ou le maximum disponible depuis le déploiement), exporter en CSV/Sheets via
+   le bouton d'export de Search Console. Capturer : impressions, pages, répartition
+   pays, répartition appareil, principales requêtes (si disponible dans votre cohorte).
+   Puis analyser et archiver avec le script d'assistance :
    ```bash
    python "${CLAUDE_PLUGIN_ROOT}/scripts/gsc-ai-performance.py" \
        --brand {slug} \
@@ -88,47 +126,91 @@ If the brand isn't in the UK rollout yet, the gate framework still applies but `
        --format json \
        --archive
    ```
-   Real flags only: `--brand` (required), `--csv` (path to the GSC export), `--api` (best-effort; Google has not published an AI-report API yet), `--site`, `--format text|json`, `--archive`. There is **no** `summary` subcommand — the script reads the CSV and emits the parsed metrics.
-4. **Reconcile against `aeo-audit`** — synthetic queries from `/digital-marketing-pro:aeo-audit` test what AI engines *might* surface; the GSC report shows what they *actually* surfaced. Significant gaps either way are signals:
-   - GSC shows much more than aeo-audit found → your test query set is too narrow; expand it
-   - aeo-audit found brand in synthetic results but GSC shows few impressions → low query volume for those topics; redirect AEO effort to higher-volume topics
-5. **Opt-out decision** — if any of the following apply, consider the in-SC opt-out toggle:
-   - Industry has YMYL / regulatory risk and brand E-E-A-T isn't fully audited yet
-   - Brand's content is paywalled or login-gated (AI surfacing of partial content can damage funnel)
-   - Brand is the subject of active reputation management — surfacing in AI answers amplifies whatever sentiment AI models have absorbed
-   - Editorial team wants to ship corrections via the brand's own properties first, not via AI synthesis
-6. **Run optimization recommendations** — for brands NOT opting out, route to `/digital-marketing-pro:aeo-geo` for the optimization playbook (entity consistency, citation-worthy snippets, knowledge graph alignment).
-7. **Set up monthly tracking** — schedule a recurring `gsc-ai-performance` baseline (CSV export → dated archive folder) so trend lines emerge over the next 6–12 months as AI search adoption grows.
+   Seuls les indicateurs réels : `--brand` (requis), `--csv` (chemin vers l'export
+   GSC), `--api` (au mieux ; Google n'a pas encore publié d'API pour le rapport IA),
+   `--site`, `--format text|json`, `--archive`. Il n'y a **pas** de sous-commande
+   `summary` — le script lit le CSV et produit les métriques analysées.
+4. **Réconcilier avec `aeo-audit`** — les requêtes synthétiques de
+   `/digital-marketing-pro:aeo-audit` testent ce que les moteurs IA *pourraient*
+   afficher ; le rapport GSC montre ce qu'ils ont *réellement* affiché. Des écarts
+   significatifs dans un sens ou dans l'autre sont des signaux :
+   - GSC montre bien plus que ce que aeo-audit a trouvé → votre ensemble de requêtes de
+     test est trop restreint ; élargissez-le
+   - aeo-audit a trouvé la marque dans les résultats synthétiques mais GSC montre peu
+     d'impressions → faible volume de requêtes pour ces sujets ; réorientez l'effort AEO
+     vers des sujets à plus fort volume
+5. **Décision d'opt-out** — si l'un des éléments suivants s'applique, envisager le
+   bouton d'opt-out dans GSC :
+   - Le secteur présente un risque YMYL / réglementaire et l'E-E-A-T de la marque n'est
+     pas encore entièrement audité
+   - Le contenu de la marque est payant ou derrière connexion (l'affichage partiel par
+     l'IA peut nuire au tunnel)
+   - La marque fait l'objet d'une gestion active de réputation — apparaître dans les
+     réponses IA amplifie le sentiment que les modèles IA ont déjà absorbé
+   - L'équipe éditoriale veut d'abord livrer des corrections via les propriétés propres
+     de la marque, pas via la synthèse IA
+6. **Exécuter des recommandations d'optimisation** — pour les marques qui NE se
+   retirent PAS, router vers `/digital-marketing-pro:aeo-geo` pour le plan
+   d'optimisation (cohérence d'entité, extraits citables, alignement du knowledge
+   graph).
+7. **Mettre en place un suivi mensuel** — planifier une référence `gsc-ai-performance`
+   récurrente (export CSV → dossier archivé daté) afin que des lignes de tendance
+   émergent au cours des 6 à 12 prochains mois à mesure que l'adoption de la recherche
+   IA croît.
 
-## Output
+## Résultat
 
-A structured GSC AI performance brief containing:
+Un rapport structuré de performance IA GSC contenant :
 
-- **Baseline metrics** — current-period impressions, pages, country mix, device mix
-- **Trend analysis** — period-over-period change (where prior data exists)
-- **Reconciliation table** — GSC actuals vs `aeo-audit` synthetic results, with gap notes
-- **Opt-out recommendation** — explicit opt-in / opt-out decision with rationale grounded in industry profile and brand context
-- **Optimization handoff** — list of high-impact topics where the brand is under-cited (route to `aeo-geo`)
-- **Tracking cadence** — recommended monthly export schedule, archive path
+- **Métriques de référence** — impressions de la période actuelle, pages, répartition
+  pays, répartition appareil
+- **Analyse de tendance** — évolution période sur période (là où des données
+  antérieures existent)
+- **Tableau de réconciliation** — réel GSC vs résultats synthétiques `aeo-audit`, avec
+  notes d'écart
+- **Recommandation d'opt-out** — décision explicite d'opt-in / opt-out avec
+  justification ancrée dans le profil sectoriel et le contexte de marque
+- **Transfert d'optimisation** — liste des sujets à fort impact où la marque est
+  sous-citée (router vers `aeo-geo`)
+- **Cadence de suivi** — calendrier d'export mensuel recommandé, chemin d'archive
 
-## Caveats and known limitations (June 2026)
+## Mises en garde et limites connues (juin 2026)
 
-1. **No click data.** Google explicitly chose not to include click metrics. AI-to-website attribution must come from GA4 (the new `AI Assistant` channel group, added 13 May 2026, captures `Medium=ai-assistant` referrals from ChatGPT/Gemini/Claude). Note: GA4's channel may or may not specifically attribute Google's own AI Mode traffic the same way — verify in your property.
-2. **UI only at launch.** No public API. Wait for Google to publish the AI report under the Search Console Search Analytics API (`searchanalytics.query`) before automating against it. Current automation must rely on CSV export + manual upload.
-3. **Rollout completed broadly July 2026.** The report started UK-first but access expanded broadly in July 2026, so most properties should now see it. Mark the date you first see data so subsequent month-over-month comparisons start from a real baseline.
-4. **Tab placement may move during rollout.** Google often refines the UI in the first 30–60 days. If the exact tab path differs from step 2 above, look anywhere in the Performance > Search results area for "AI", "Generative", "AI Mode", or "AI Overviews" labels.
-5. **Don't compare AI Overviews impressions to classic SERP impressions one-for-one.** AI Overviews surface differently — an "impression" there means your page was used as a grounding source, which is a stricter bar than appearing in a 10-blue-link result.
+1. **Pas de données de clic.** Google a explicitement choisi de ne pas inclure de
+   métriques de clic. L'attribution IA vers site web doit provenir de GA4 (le nouveau
+   groupe de canaux `AI Assistant`, ajouté le 13 mai 2026, capture les référents
+   `Medium=ai-assistant` depuis ChatGPT/Gemini/Claude). Note : le canal de GA4 peut ou
+   non attribuer spécifiquement le trafic AI Mode propre à Google de la même façon —
+   vérifiez dans votre propriété.
+2. **Interface uniquement au lancement.** Pas d'API publique. Attendre que Google
+   publie le rapport IA sous l'API Search Analytics de Search Console
+   (`searchanalytics.query`) avant d'automatiser dessus. L'automatisation actuelle doit
+   s'appuyer sur l'export CSV + téléversement manuel.
+3. **Déploiement achevé largement en juillet 2026.** Le rapport a commencé par le
+   Royaume-Uni mais l'accès s'est élargi largement en juillet 2026, donc la plupart des
+   propriétés devraient maintenant le voir. Notez la date à laquelle vous voyez des
+   données pour la première fois afin que les comparaisons mois sur mois suivantes
+   partent d'une véritable référence.
+4. **L'emplacement de l'onglet peut bouger pendant le déploiement.** Google affine
+   souvent l'interface dans les 30 à 60 premiers jours. Si le chemin exact de l'onglet
+   diffère de l'étape 2 ci-dessus, cherchez n'importe où dans la zone Performance >
+   Résultats de recherche les libellés « AI », « Generative », « AI Mode » ou « AI
+   Overviews ».
+5. **Ne comparez pas les impressions AI Overviews aux impressions SERP classiques une
+   pour une.** AI Overviews s'affiche différemment — une « impression » là-bas signifie
+   que votre page a été utilisée comme source d'ancrage, ce qui est une barre plus
+   stricte qu'apparaître dans un résultat classique à 10 liens bleus.
 
-## Agents used
+## Agents utilisés
 
-- `seo-specialist` (primary) — for interpretation and recommendation framing
-- `analytics-analyst` — for the GA4 reconciliation when AI Assistant channel data is available
-- `brand-guardian` — for the opt-out decision when brand-safety or compliance is in play
+- `seo-specialist` (principal) — pour l'interprétation et la mise en forme des recommandations
+- `analytics-analyst` — pour la réconciliation GA4 lorsque les données du canal AI Assistant sont disponibles
+- `brand-guardian` — pour la décision d'opt-out lorsque la sécurité de marque ou la conformité est en jeu
 
-## See also
+## Voir aussi
 
-- `/digital-marketing-pro:aeo-audit` — synthetic AI-engine probing
-- `/digital-marketing-pro:aeo-geo` — optimization playbook for AI visibility
-- `/digital-marketing-pro:analytics-insights` — GA4 AI Assistant channel attribution
-- `skills/context-engine/eu-code-of-practice.md` — EU Article 50 transparency context for AI-cited content
-- `scripts/gsc-ai-performance.py` — helper script (placeholder until Google publishes API; reads exported CSV today)
+- `/digital-marketing-pro:aeo-audit` — sondage synthétique des moteurs IA
+- `/digital-marketing-pro:aeo-geo` — plan d'optimisation pour la visibilité IA
+- `/digital-marketing-pro:analytics-insights` — attribution du canal AI Assistant de GA4
+- `skills/context-engine/eu-code-of-practice.md` — contexte de transparence de l'Article 50 de l'UE pour le contenu cité par l'IA
+- `scripts/gsc-ai-performance.py` — script d'assistance (placeholder en attendant que Google publie une API ; lit l'export CSV aujourd'hui)

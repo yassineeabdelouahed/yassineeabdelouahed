@@ -4,27 +4,27 @@
     {
       "id": 0,
       "prompt": "/digital-marketing-pro:seo-audit https://example.com",
-      "expected_output": "A comprehensive SEO audit covering technical health, on-page optimization, content quality, E-E-A-T signals, and prioritized action items",
+      "expected_output": "Un audit SEO complet couvrant la santé technique, l'optimisation on-page, la qualité de contenu, les signaux E-E-A-T, et des actions priorisées",
       "files": [],
       "assertions": [
         {
-          "text": "Technical SEO section covers Core Web Vitals, mobile-friendliness, crawlability, and indexation",
+          "text": "La section SEO technique couvre les Core Web Vitals, l'adaptation mobile, la crawlabilité et l'indexation",
           "type": "quantitative"
         },
         {
-          "text": "On-page analysis includes title tags, meta descriptions, heading hierarchy, and internal linking",
+          "text": "L'analyse on-page inclut les balises title, les meta descriptions, la hiérarchie des titres et le maillage interne",
           "type": "quantitative"
         },
         {
-          "text": "Content quality assessment evaluates E-E-A-T signals (Experience, Expertise, Authoritativeness, Trustworthiness)",
+          "text": "L'évaluation de la qualité de contenu évalue les signaux E-E-A-T (Expérience, Expertise, Autorité, Fiabilité)",
           "type": "quantitative"
         },
         {
-          "text": "Action items are prioritized by impact (high/medium/low) and effort",
+          "text": "Les actions sont priorisées par impact (haut/moyen/faible) et par effort",
           "type": "quantitative"
         },
         {
-          "text": "Audit includes competitive gap analysis with top-ranking competitors",
+          "text": "L'audit inclut une analyse d'écart concurrentiel avec les concurrents les mieux positionnés",
           "type": "qualitative"
         }
       ]
@@ -32,19 +32,19 @@
     {
       "id": 1,
       "prompt": "Run an SEO audit on our blog — we've been losing organic traffic for the past 3 months",
-      "expected_output": "An audit focused on traffic decline diagnosis, content decay detection, algorithm update impact, and recovery recommendations",
+      "expected_output": "Un audit centré sur le diagnostic de la baisse de trafic, la détection de dégradation de contenu, l'impact des mises à jour d'algorithme, et des recommandations de redressement",
       "files": [],
       "assertions": [
         {
-          "text": "Audit diagnoses potential causes of traffic decline (algorithm updates, content decay, technical issues, competitor gains)",
+          "text": "L'audit diagnostique les causes possibles de la baisse de trafic (mises à jour d'algorithme, dégradation de contenu, problèmes techniques, gains des concurrents)",
           "type": "qualitative"
         },
         {
-          "text": "Content decay analysis identifies pages with declining rankings and traffic",
+          "text": "L'analyse de dégradation de contenu identifie les pages dont le classement et le trafic déclinent",
           "type": "quantitative"
         },
         {
-          "text": "Recovery plan includes specific, actionable steps with priority ranking",
+          "text": "Le plan de redressement inclut des étapes spécifiques et exploitables avec un classement de priorité",
           "type": "quantitative"
         }
       ]

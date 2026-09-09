@@ -1,52 +1,52 @@
 ---
 name: campaign-plan
-description: "Generate a complete multi-channel campaign plan document — SMART objectives, audience segments with targeting criteria, channel mix with rationale, a budget allocation table with reach/cost estimates, a phased timeline from pre-launch to wrap-up, a KPI framework, and a risk register. Plans only; it does not launch or modify campaigns. Triggers on \"/digital-marketing-pro:campaign-plan\", \"plan a campaign for our product launch\", \"build the Q3 campaign plan\", \"what channels and budget for lead gen\", \"draft a campaign timeline with KPIs\". Reads the brand profile, guidelines, and agency SOPs, and reuses the /digital-marketing-pro:campaign-orchestrator reference docs for planning frameworks instead of re-deriving them."
+description: "Générer un plan de campagne multicanal complet — objectifs SMART, segments d'audience avec critères de ciblage, mix de canaux avec justification, un tableau d'allocation budgétaire avec estimations de portée/coût, une chronologie en phases de la pré-campagne au bilan, un cadre de KPI, et un registre des risques. Se contente de planifier ; ne lance ni ne modifie de campagnes. Se déclenche sur \"/digital-marketing-pro:campaign-plan\", \"plan a campaign for our product launch\", \"build the Q3 campaign plan\", \"what channels and budget for lead gen\", \"draft a campaign timeline with KPIs\". Lit le profil de marque, les guidelines et les procédures d'agence, et réutilise les documents de référence de /digital-marketing-pro:campaign-orchestrator pour les cadres de planification plutôt que de les redériver."
 argument-hint: "[campaign-objective]"
 ---
 
 # /digital-marketing-pro:campaign-plan
 
-## Purpose
+## Objectif
 
-Generate a comprehensive multi-channel campaign plan ready for execution. Covers strategic objectives, audience segmentation, channel selection, budget distribution, phased timeline, and measurable KPIs.
+Générer un plan de campagne multicanal complet, prêt pour l'exécution. Couvre les objectifs stratégiques, la segmentation d'audience, la sélection de canaux, la répartition budgétaire, la chronologie en phases, et des KPI mesurables.
 
-## Input Required
+## Données requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Campaign goal**: What the campaign should achieve (awareness, leads, sales, retention, etc.)
-- **Product/service**: What is being promoted
-- **Target audience**: Who the campaign is for (or use existing brand personas)
-- **Budget**: Total available budget or budget range
-- **Timeline**: Campaign duration or key dates (launch, event, season)
-- **Constraints**: Any channel restrictions, compliance requirements, or creative limitations
+- **Objectif de la campagne** : ce que la campagne doit accomplir (notoriété, leads, ventes, rétention, etc.)
+- **Produit/service** : ce qui est promu
+- **Audience cible** : à qui s'adresse la campagne (ou utiliser les personas de marque existants)
+- **Budget** : budget total disponible ou fourchette budgétaire
+- **Chronologie** : durée de la campagne ou dates clés (lancement, événement, saison)
+- **Contraintes** : toute restriction de canal, exigence de conformité, ou limitation créative
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Load shared planning references (don't re-derive them)**: Consume the campaign-orchestrator reference docs rather than duplicating their frameworks — `skills/campaign-orchestrator/campaign-planning.md` (planning framework), `skills/campaign-orchestrator/channel-strategy.md` (channel selection), `skills/campaign-orchestrator/budget-allocation.md` (budget-split heuristics), `skills/campaign-orchestrator/utm-tracking.md` (UTM naming conventions), and `skills/campaign-orchestrator/abm-strategy.md` (ABM). This skill produces the plan document; `/digital-marketing-pro:campaign-orchestrator` runs the broader multi-agent orchestration on top of the same references.
-3. Clarify campaign objective and classify as awareness, consideration, or conversion
-4. Define primary and secondary audience segments with targeting parameters
-5. Recommend channel mix based on audience behavior, budget, and objective
-6. Allocate budget across channels using expected CPM/CPC benchmarks for the industry
-7. Build a phased timeline: pre-launch, launch, sustain, optimize, wrap-up
-8. Define KPIs per channel and overall campaign success metrics
-9. Identify dependencies, risks, and contingency actions
-10. Output the full plan in a structured, actionable format
+1. **Charger le contexte de marque** : lisez `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis chargez `~/.claude-marketing/brands/{slug}/profile.json`. Appliquez la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. **Vérifiez aussi la présence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, chargez les restrictions et les fichiers de catégorie pertinents. Vérifiez les modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifiez les procédures d'agence (SOP) dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demandez : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou poursuivez avec les valeurs par défaut.
+2. **Charger les références de planification partagées (sans les redériver)** : consommez les documents de référence de campaign-orchestrator plutôt que de dupliquer leurs cadres — `skills/campaign-orchestrator/campaign-planning.md` (cadre de planification), `skills/campaign-orchestrator/channel-strategy.md` (sélection de canaux), `skills/campaign-orchestrator/budget-allocation.md` (heuristiques de répartition budgétaire), `skills/campaign-orchestrator/utm-tracking.md` (conventions de nommage UTM), et `skills/campaign-orchestrator/abm-strategy.md` (ABM). Cette compétence produit le document de plan ; `/digital-marketing-pro:campaign-orchestrator` exécute l'orchestration multi-agents plus large sur la base des mêmes références.
+3. Clarifiez l'objectif de la campagne et classez-le comme notoriété, considération, ou conversion
+4. Définissez les segments d'audience primaires et secondaires avec les paramètres de ciblage
+5. Recommandez un mix de canaux basé sur le comportement de l'audience, le budget, et l'objectif
+6. Allouez le budget entre les canaux en utilisant les référentiels de CPM/CPC attendus pour le secteur
+7. Construisez une chronologie en phases : pré-lancement, lancement, maintien, optimisation, bilan
+8. Définissez les KPI par canal et les métriques de succès globales de la campagne
+9. Identifiez les dépendances, les risques, et les actions de contingence
+10. Produisez le plan complet dans un format structuré et actionnable
 
-## Output
+## Résultat
 
-A structured campaign plan document containing:
+Un document de plan de campagne structuré contenant :
 
-- Campaign overview and SMART objectives
-- Audience segments with targeting criteria
-- Channel strategy with rationale for each channel
-- Budget allocation table with expected reach/cost estimates
-- Phased timeline with milestones and deliverables
-- KPI dashboard framework with targets and measurement approach
-- Risk register with mitigation strategies
+- Aperçu de la campagne et objectifs SMART
+- Segments d'audience avec critères de ciblage
+- Stratégie de canaux avec justification pour chaque canal
+- Tableau d'allocation budgétaire avec estimations de portée/coût attendues
+- Chronologie en phases avec jalons et livrables
+- Cadre de tableau de bord KPI avec objectifs et méthode de mesure
+- Registre des risques avec stratégies d'atténuation
 
-## Agents Used
+## Agents utilisés
 
-- **marketing-strategist** — Campaign architecture, audience strategy, objective setting
-- **media-buyer** — Channel selection, budget allocation, performance benchmarks
+- **marketing-strategist** — Architecture de campagne, stratégie d'audience, définition des objectifs
+- **media-buyer** — Sélection de canaux, allocation budgétaire, référentiels de performance

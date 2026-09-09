@@ -1,84 +1,84 @@
 ---
 name: cowork-setup
-description: "One-shot setup that wires Digital Marketing Pro for team use in Anthropic Cowork — verifies the sandbox via plugin-metadata.py, checks a Google Drive MCP is connected, creates the canonical Drive folder skeleton (_brands/, _runs/, _plans/), and writes the routing config via drive-sync-state.py so brand profiles, plans, and run checkpoints persist across sessions. Triggers on \"/digital-marketing-pro:cowork-setup\", \"set up DMP for my team in Cowork\", \"brand profiles aren't persisting between sessions\", \"route outputs to our shared Drive\", \"first-time Cowork install\". Run once per team; in local Claude Code it only offers optional Drive mirroring. Pairs with /digital-marketing-pro:brand-setup next and /digital-marketing-pro:doctor to verify routing."
+description: "Configuration en une fois qui prépare Digital Marketing Pro pour un usage en équipe dans Anthropic Cowork — vérifie le bac à sable via plugin-metadata.py, contrôle qu'un MCP Google Drive est connecté, crée le squelette de dossiers Drive canonique (_brands/, _runs/, _plans/), et écrit la configuration de routage via drive-sync-state.py afin que les profils de marque, les plans et les points de contrôle d'exécution persistent d'une session à l'autre. Se déclenche sur « /digital-marketing-pro:cowork-setup », « configurer DMP pour mon équipe dans Cowork », « les profils de marque ne persistent pas entre les sessions », « router les résultats vers notre Drive partagé », « première installation dans Cowork ». À exécuter une fois par équipe ; dans Claude Code en local, elle ne propose qu'une mise en miroir Drive optionnelle. Se combine avec /digital-marketing-pro:brand-setup ensuite et /digital-marketing-pro:doctor pour vérifier le routage."
 argument-hint: "[--brand <name>] [--drive-root <folder-name>]"
 effort: low
 ---
 
 # /digital-marketing-pro:cowork-setup
 
-The one-time setup that makes Digital Marketing Pro persistent in Cowork by a team. Wires up the Cowork → Drive routing so brand profiles, campaign plans, audit reports, and run records survive past the end of the current Cowork session.
+La configuration ponctuelle qui rend Digital Marketing Pro persistant dans Cowork pour une équipe. Met en place le routage Cowork → Drive afin que les profils de marque, les plans de campagne, les rapports d'audit et les journaux d'exécution survivent à la fin de la session Cowork en cours.
 
-## Why this skill exists
+## Pourquoi cette compétence existe
 
-Cowork is the friendliest Anthropic surface for marketers — agency teams, in-house marketers, growth ops — who don't live in a terminal. The natural team workflow is "everyone uses Cowork; brand state and outputs live in our shared Drive". But DMP's filesystem layer was designed for local Claude Code (writes to `~/.claude-marketing/` on the host machine). In Cowork that path is the per-session Linux sandbox — vanishes at session end, invisible to the team.
+Cowork est la surface Anthropic la plus accueillante pour les marketeurs — équipes d'agence, marketeurs internes, growth ops — qui ne vivent pas dans un terminal. Le flux de travail naturel en équipe est « tout le monde utilise Cowork ; l'état des marques et les résultats vivent dans notre Drive partagé ». Mais la couche de système de fichiers de DMP a été conçue pour Claude Code en local (écritures dans `~/.claude-marketing/` sur la machine hôte). Dans Cowork, ce chemin correspond au bac à sable Linux propre à la session — il disparaît à la fin de la session et reste invisible pour l'équipe.
 
-**`${CLAUDE_PLUGIN_DATA}` does not help here either.** Anthropic's plugin docs describe it as the persistent per-plugin storage path. In Cowork it resolves to a session-scoped VM mount that disappears the same way (open: [claude-code#51398](https://github.com/anthropics/claude-code/issues/51398)). Every OAuth-backed MCP plugin hits the same wall.
+**`${CLAUDE_PLUGIN_DATA}` n'aide pas non plus ici.** La documentation des plugins Anthropic la décrit comme le chemin de stockage persistant propre à chaque plugin. Dans Cowork, elle correspond à un montage de VM propre à la session qui disparaît de la même façon (ouvert : [claude-code#51398](https://github.com/anthropics/claude-code/issues/51398)). Chaque plugin MCP reposant sur OAuth se heurte au même mur.
 
-v3.12.0 fixed this with environment-aware routing: when Cowork is detected AND a Drive MCP is configured, brand profiles and reports round-trip through Drive instead of the ephemeral sandbox. This skill is the one-shot setup that ensures both conditions are true before you start producing real work.
+La v3.12.0 a corrigé ce problème avec un routage sensible à l'environnement : lorsque Cowork est détecté ET qu'un MCP Drive est configuré, les profils de marque et les rapports transitent par Drive au lieu du bac à sable éphémère. Cette compétence est la configuration en une fois qui garantit que les deux conditions sont réunies avant de commencer un travail réel.
 
-## Behavior
+## Comportement
 
-### Step 1 — Verify Cowork environment
+### Étape 1 — Vérifier l'environnement Cowork
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/plugin-metadata.py" --section environment
 ```
 
-Parse the JSON. Three branches:
+Analyser le JSON. Trois branches :
 
-**`environment == "cowork-sandbox"`** — Proceed to Step 2.
+**`environment == "cowork-sandbox"`** — Passer à l'étape 2.
 
-**`environment == "claude-code-windows"` / `"-mac"` / `"-linux"`** — Tell the user:
+**`environment == "claude-code-windows"` / `"-mac"` / `"-linux"`** — Indiquer à l'utilisateur :
 
-> "You're running in local Claude Code, not Cowork. The Cowork-specific Drive routing isn't needed here — brand state at `~/.claude-marketing/` persists on your host as designed. If you ALSO want Drive backups for team sharing, you can run this skill anyway and it'll mirror state to Drive as a backup. Want to proceed?"
+> « Vous exécutez Claude Code en local, pas Cowork. Le routage Drive spécifique à Cowork n'est pas nécessaire ici — l'état de la marque à `~/.claude-marketing/` persiste sur votre hôte comme prévu. Si vous voulez QUAND MÊME des sauvegardes Drive pour le partage en équipe, vous pouvez exécuter cette compétence quand même et elle mettra l'état en miroir sur Drive en tant que sauvegarde. Voulez-vous continuer ? »
 
-Only proceed if the user confirms.
+Ne continuer que si l'utilisateur confirme.
 
-**`environment == "unknown"`** — Show the indicators from the JSON and ask the user where they're running, then proceed assuming Cowork (since unknown-from-Cowork is the most likely case).
+**`environment == "unknown"`** — Afficher les indicateurs du JSON et demander à l'utilisateur où il s'exécute, puis continuer en supposant Cowork (puisque « inconnu depuis Cowork » est le cas le plus probable).
 
-### Step 2 — Verify a Drive MCP is connected
+### Étape 2 — Vérifier qu'un MCP Drive est connecté
 
-Scan your available tools for any Google Drive MCP. Common signatures:
+Parcourir les outils disponibles à la recherche d'un MCP Google Drive. Signatures courantes :
 
-- `mcp__<id>__create_file`, `mcp__<id>__read_file_content`, `mcp__<id>__search_files`, `mcp__<id>__list_folder_items` — Anthropic-platform Drive integration (Settings → Integrations → Google Drive in Cowork)
-- `mcp__pipedream-google-drive__*` — Pipedream aggregator
+- `mcp__<id>__create_file`, `mcp__<id>__read_file_content`, `mcp__<id>__search_files`, `mcp__<id>__list_folder_items` — intégration Drive de la plateforme Anthropic (Paramètres → Intégrations → Google Drive dans Cowork)
+- `mcp__pipedream-google-drive__*` — agrégateur Pipedream
 - `mcp__composio-google-drive__*` — Composio
 - `mcp__zapier-google-drive__*` — Zapier
-- Any tool whose name combines "drive" with "create" / "upload" / "search"
+- Tout outil dont le nom combine « drive » avec « create » / « upload » / « search »
 
-**If a Drive MCP is found:** confirm to the user which one ("Found: Anthropic platform Google Drive integration. I'll use this.") and proceed to Step 3.
+**Si un MCP Drive est trouvé :** confirmer à l'utilisateur lequel (« Trouvé : intégration Google Drive de la plateforme Anthropic. Je vais l'utiliser. ») et passer à l'étape 3.
 
-**If NO Drive MCP is found:** stop the wizard with a clear message:
+**Si AUCUN MCP Drive n'est trouvé :** arrêter l'assistant avec un message clair :
 
-> "Cowork-mode DMP needs a Google Drive integration before it can persist brand state for your team. Easiest setup (60 seconds):
+> « DMP en mode Cowork a besoin d'une intégration Google Drive avant de pouvoir faire persister l'état de marque pour votre équipe. Configuration la plus simple (60 secondes) :
 >
-> 1. In Cowork, click your profile menu → **Settings** → **Integrations**
-> 2. Find **Google Drive** in the list → click **Connect**
-> 3. Sign in with the Google account that owns your team's shared Drive
-> 4. Come back here and re-run `/digital-marketing-pro:cowork-setup`
+> 1. Dans Cowork, cliquez sur votre menu profil → **Paramètres** → **Intégrations**
+> 2. Trouvez **Google Drive** dans la liste → cliquez sur **Connecter**
+> 3. Connectez-vous avec le compte Google propriétaire du Drive partagé de votre équipe
+> 4. Revenez ici et relancez `/digital-marketing-pro:cowork-setup`
 >
-> Alternative: a Notion MCP also works as a persistence target — DMP will treat each brand as a Notion page. If you'd prefer that route, add Notion to your Cowork Integrations panel and re-run this skill."
+> Alternative : un MCP Notion fonctionne aussi comme cible de persistance — DMP traitera chaque marque comme une page Notion. Si vous préférez cette voie, ajoutez Notion à votre panneau d'intégrations Cowork et relancez cette compétence. »
 
-### Step 3 — Verify or create the canonical Drive folder
+### Étape 3 — Vérifier ou créer le dossier Drive canonique
 
-Default folder name: `DigitalMarketingPro` (under "My Drive" or wherever the user prefers). If `--drive-root <name>` was passed, use that instead.
+Nom de dossier par défaut : `DigitalMarketingPro` (sous « Mon Drive » ou où l'utilisateur préfère). Si `--drive-root <name>` a été passé, utiliser ce nom à la place.
 
-Use the Drive MCP to:
+Utiliser le MCP Drive pour :
 
-1. Search for a top-level folder named `DigitalMarketingPro` (or the user's `--drive-root`)
-2. If it exists, confirm the user wants to use it. Show its URL.
-3. If it doesn't exist, create it. Show the URL of the new folder.
+1. Rechercher un dossier de premier niveau nommé `DigitalMarketingPro` (ou le `--drive-root` de l'utilisateur)
+2. S'il existe, confirmer que l'utilisateur souhaite l'utiliser. Afficher son URL.
+3. S'il n'existe pas, le créer. Afficher l'URL du nouveau dossier.
 
-Then create the subfolder skeleton:
+Créer ensuite le squelette de sous-dossiers :
 
 ```
 DigitalMarketingPro/
-├── _brands/                  <- brand profile JSONs persist here per brand
-├── _runs/                    <- per-run checkpoints (resume across sessions)
-├── _plans/                   <- yearly + quarterly + campaign plans
-└── (brand folders created on first content/audit/campaign run)
-    └── <brand name>/
+├── _brands/                  <- les JSON de profil de marque persistent ici par marque
+├── _runs/                    <- points de contrôle par exécution (reprise entre sessions)
+├── _plans/                   <- plans annuels + trimestriels + de campagne
+└── (dossiers de marque créés à la première exécution de contenu/audit/campagne)
+    └── <nom de la marque>/
         ├── strategy/
         ├── seo/
         ├── campaigns/
@@ -86,16 +86,16 @@ DigitalMarketingPro/
         └── reports/
 ```
 
-Don't create empty brand subfolders yet — those auto-create during the first run for that brand. Just `_brands/`, `_runs/`, and `_plans/` need to exist.
+Ne pas créer de sous-dossiers de marque vides pour l'instant — ceux-ci se créent automatiquement lors de la première exécution pour cette marque. Seuls `_brands/`, `_runs/` et `_plans/` doivent exister.
 
-### Step 4 — Store the Drive root reference + team namespace
+### Étape 4 — Enregistrer la référence du dossier racine Drive + l'espace de noms d'équipe
 
-**Multi-team isolation**: ask the user "what's your team's Drive root folder name?" (default: `DigitalMarketingPro`). Different teams use different folder names → automatic namespace isolation. Examples:
-- Solo / small team: `DigitalMarketingPro` (default)
-- Agency named "ACME": `ACME DigitalMarketingPro`
-- Two distinct teams sharing one Drive: each picks their own name
+**Isolation multi-équipe** : demander à l'utilisateur « quel est le nom du dossier racine Drive de votre équipe ? » (par défaut : `DigitalMarketingPro`). Des équipes différentes utilisent des noms de dossier différents → isolation automatique des espaces de noms. Exemples :
+- Solo / petite équipe : `DigitalMarketingPro` (par défaut)
+- Agence nommée « ACME » : `ACME DigitalMarketingPro`
+- Deux équipes distinctes partageant un seul Drive : chacune choisit son propre nom
 
-Then write the config via the canonical script (NOT a hand-written JSON file — use the script so the format stays in sync with the rest of the toolchain):
+Écrire ensuite la configuration via le script canonique (PAS un fichier JSON écrit à la main — utiliser le script pour que le format reste synchronisé avec le reste de la chaîne d'outils) :
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/drive-sync-state.py" --action write-config --data '{
@@ -107,76 +107,77 @@ python "${CLAUDE_PLUGIN_ROOT}/scripts/drive-sync-state.py" --action write-config
 }'
 ```
 
-The script writes to `~/.claude-marketing/_cowork-config.json` and adds a `configured_at` timestamp automatically.
+Le script écrit dans `~/.claude-marketing/_cowork-config.json` et ajoute automatiquement un horodatage `configured_at`.
 
-Future Cowork sessions: every DMP operation (`brand-setup`, `status`, `seo-audit`, `campaign-plan`, etc.) reads this config first. If it exists AND the Drive folder still exists, all I/O routes to that root. If a different team picked a different folder name, their config lives at the same path but points elsewhere — no collision.
+Sessions Cowork futures : chaque opération DMP (`brand-setup`, `status`, `seo-audit`, `campaign-plan`, etc.) lit d'abord cette configuration. Si elle existe ET que le dossier Drive existe toujours, toutes les entrées/sorties sont routées vers cette racine. Si une équipe différente a choisi un nom de dossier différent, sa configuration se trouve au même chemin mais pointe ailleurs — pas de collision.
 
-To verify it was written correctly:
+Pour vérifier qu'elle a été écrite correctement :
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/drive-sync-state.py" --action read-config
 ```
 
-### Step 5 — Set the user's expectations
+### Étape 5 — Fixer les attentes de l'utilisateur
 
-Show a clean summary:
+Afficher un résumé clair :
 
 ```
-Digital Marketing Pro is now wired for Cowork team usage:
+Digital Marketing Pro est maintenant configuré pour un usage en équipe dans Cowork :
 
-Environment:           Cowork sandbox (Linux)
-Drive integration:     <name>
-Output root in Drive:  My Drive/<folder name> (link)
-Config saved at:       ~/.claude-marketing/_cowork-config.json
+Environnement :           Bac à sable Cowork (Linux)
+Intégration Drive :       <nom>
+Racine des résultats dans Drive : Mon Drive/<nom du dossier> (lien)
+Configuration enregistrée à :  ~/.claude-marketing/_cowork-config.json
 
-What this means in practice:
+Ce que cela signifie en pratique :
 
-- /digital-marketing-pro:brand-setup -> profile lands in
-  Drive/<folder>/_brands/<brand-slug>/profile.json (persists across sessions)
-- /digital-marketing-pro:campaign-plan -> plan lands in
+- /digital-marketing-pro:brand-setup -> le profil atterrit dans
+  Drive/<folder>/_brands/<brand-slug>/profile.json (persiste entre les sessions)
+- /digital-marketing-pro:campaign-plan -> le plan atterrit dans
   Drive/<folder>/<brand>/campaigns/<YYYY-MM>/<slug>/PLAN.md
-- /digital-marketing-pro:seo-audit -> audit + intermediates land in
+- /digital-marketing-pro:seo-audit -> l'audit et les intermédiaires atterrissent dans
   Drive/<folder>/<brand>/audits/<date>/
-- /digital-marketing-pro:status -> reads brand state from Drive first,
-  falls back to local sandbox if Drive call fails
-- /digital-marketing-pro:resume -> picks up an interrupted run by
-  pulling its checkpoint files from Drive/<folder>/_runs/
+- /digital-marketing-pro:status -> lit l'état de la marque depuis Drive en premier,
+  se replie sur le bac à sable local si l'appel Drive échoue
+- /digital-marketing-pro:resume -> reprend une exécution interrompue en
+  récupérant ses fichiers de point de contrôle depuis Drive/<folder>/_runs/
 
-Your team accesses everything via Google Drive directly. No
-Cowork-specific paths to remember.
+Votre équipe accède à tout directement via Google Drive. Aucun
+chemin spécifique à Cowork à retenir.
 
-Next step:
-  /digital-marketing-pro:brand-setup "Your Brand Name"
+Étape suivante :
+  /digital-marketing-pro:brand-setup "Nom de votre marque"
 ```
 
-### Step 6 — Optional: kick off a brand setup
+### Étape 6 — Optionnel : lancer une configuration de marque
 
-If `--brand <name>` was passed, automatically launch `/digital-marketing-pro:brand-setup "<name>"` after the summary. This makes the very first run "one command, fully set up."
+Si `--brand <name>` a été passé, lancer automatiquement `/digital-marketing-pro:brand-setup "<name>"` après le résumé. Cela rend la toute première exécution « une commande, entièrement configurée ».
 
-## How the Cowork-aware skills use this config
+## Comment les compétences sensibles à Cowork utilisent cette configuration
 
-When the routing is configured, brand-setup writes locally to `~/.claude-marketing/brands/{brand-slug}/profile.json` AND records a pending Drive upload via `drive-sync-state.py --action add-pending-upload`. The agent then reads the pending list and uses its Drive MCP to push the file to `<root>/_brands/{brand}/profile.json`. On a future Cowork session, the agent reverses this: it reads `_cowork-config.json`, sees the team's Drive root, downloads `<root>/_brands/{brand}/profile.json` to the local sandbox, and marks it `profile-mark-downloaded` so the local hash matches the Drive copy.
+Lorsque le routage est configuré, brand-setup écrit localement dans `~/.claude-marketing/brands/{brand-slug}/profile.json` ET enregistre un envoi Drive en attente via `drive-sync-state.py --action add-pending-upload`. L'agent lit ensuite la liste en attente et utilise son MCP Drive pour transférer le fichier vers `<root>/_brands/{brand}/profile.json`. Lors d'une future session Cowork, l'agent fait l'inverse : il lit `_cowork-config.json`, voit la racine Drive de l'équipe, télécharge `<root>/_brands/{brand}/profile.json` vers le bac à sable local, et le marque `profile-mark-downloaded` afin que le hash local corresponde à la copie Drive.
 
-Concretely: after every state-mutating DMP operation, the agent runs:
+Concrètement : après chaque opération DMP modifiant l'état, l'agent exécute :
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/drive-sync-state.py" --action profile-needs-upload --brand <brand>
 ```
 
-If `needs_upload: true`, the agent uses its Drive MCP to upload the file and then runs `--action profile-mark-uploaded` with the Drive file ID returned by the MCP.
+Si `needs_upload: true`, l'agent utilise son MCP Drive pour téléverser le fichier puis exécute `--action profile-mark-uploaded` avec l'ID de fichier Drive renvoyé par le MCP.
 
-## What this skill does NOT do
+## Ce que cette compétence NE fait PAS
 
-- It does not change DMP's behavior in local Claude Code (where host filesystem is fine).
-- It does not migrate existing local-mode brands to Drive. To do that after the fact: re-run `/digital-marketing-pro:brand-setup "<brand>"` in Cowork after this skill finishes — the brand-setup skill will upload the local profile to Drive.
-- It does not create a service-account JSON. Cowork-mode uses the MCP path exclusively (no Google Cloud setup needed).
-- It does not check whether your Drive has enough space. Brand profiles + plans are tiny (<100KB typical), so this is rarely a concern, but flag it if you hit a quota error during a real run.
-- It does not replace the local fallback — if a Drive call fails for any reason, DMP still writes locally and re-queues the upload.
+- Elle ne modifie pas le comportement de DMP dans Claude Code local (où le système de fichiers hôte convient).
+- Elle ne migre pas les marques existantes en mode local vers Drive. Pour le faire après coup : relancer `/digital-marketing-pro:brand-setup "<brand>"` dans Cowork après la fin de cette compétence — la compétence brand-setup téléversera le profil local vers Drive.
+- Elle ne crée pas de JSON de compte de service. Le mode Cowork utilise exclusivement la voie MCP (aucune configuration Google Cloud nécessaire).
+- Elle ne vérifie pas si votre Drive dispose de suffisamment d'espace. Les profils de marque + plans sont minuscules (<100 Ko en général), donc c'est rarement un problème, mais signalez-le si vous rencontrez une erreur de quota lors d'une exécution réelle.
+- Elle ne remplace pas le repli local — si un appel Drive échoue pour une raison quelconque, DMP écrit quand même localement et remet le téléversement en file d'attente.
 
-## See also
+## Voir aussi
 
-- `/digital-marketing-pro:status` — confirm Cowork+Drive is detected after setup
-- `/digital-marketing-pro:brand-setup` — actual brand setup (now Drive-default in Cowork)
-- `/digital-marketing-pro:doctor` — per-action readiness check (now reports Cowork+Drive routing too)
-- `scripts/plugin-metadata.py --section environment` — the underlying probe
-- README "Cowork team usage" section — canonical doc for which surface to use
+- `/digital-marketing-pro:status` — confirmer que Cowork+Drive est détecté après la configuration
+- `/digital-marketing-pro:brand-setup` — configuration de marque réelle (désormais Drive par défaut dans Cowork)
+- `/digital-marketing-pro:doctor` — vérification de disponibilité par action (signale désormais aussi le routage Cowork+Drive)
+- `scripts/plugin-metadata.py --section environment` — la sonde sous-jacente
+- Section README « Usage en équipe Cowork » — documentation canonique pour savoir quelle surface utiliser
+</content>

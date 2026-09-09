@@ -1,67 +1,67 @@
-# Voice Search — Optimization Guide
+# Recherche vocale — Guide d'optimisation
 
-> Voice search now accounts for a significant and growing share of all search queries. The way people speak to devices is fundamentally different from how they type. This guide covers how to optimize content, structure data, and capture voice-driven traffic across every major platform.
+> La recherche vocale représente désormais une part significative et croissante de toutes les requêtes de recherche. La façon dont les gens parlent aux appareils est fondamentalement différente de la façon dont ils tapent. Ce guide couvre comment optimiser le contenu, structurer les données, et capter le trafic généré par la voix sur toutes les grandes plateformes.
 
 ---
 
-## Voice Query Patterns
+## Schémas de requête vocale
 
-Voice queries differ from typed queries in predictable ways. Understanding these patterns is the foundation of voice search optimization.
+Les requêtes vocales diffèrent des requêtes tapées de manière prévisible. Comprendre ces schémas est le fondement de l'optimisation pour la recherche vocale.
 
-### Query Type Comparison
+### Comparaison des types de requête
 
-| Attribute | Typed Search | Voice Search |
+| Attribut | Recherche tapée | Recherche vocale |
 |-----------|-------------|-------------|
-| Length | 2-4 words | 6-10+ words (conversational) |
-| Format | Keywords, fragments | Full sentences, questions |
-| Intent signal | Implicit | Explicit (question words) |
-| Example | "best Italian restaurant NYC" | "What's the best Italian restaurant near me that's open right now?" |
-| Local intent | ~30% of queries | ~58% of queries |
-| Action intent | Low | High ("call," "directions to," "order") |
+| Longueur | 2-4 mots | 6-10+ mots (conversationnel) |
+| Format | Mots-clés, fragments | Phrases complètes, questions |
+| Signal d'intention | Implicite | Explicite (mots interrogatifs) |
+| Exemple | « meilleur restaurant italien Paris » | « Quel est le meilleur restaurant italien près de moi qui est ouvert en ce moment ? » |
+| Intention locale | ~30 % des requêtes | ~58 % des requêtes |
+| Intention d'action | Faible | Élevée (« appeler », « itinéraire vers », « commander ») |
 
-### Common Voice Query Structures
+### Structures de requête vocale courantes
 
-| Pattern | Example | Optimization Target |
+| Schéma | Exemple | Cible d'optimisation |
 |---------|---------|-------------------|
-| **Who** questions | "Who founded Tesla?" | Knowledge panel, Wikipedia, About pages |
-| **What** questions | "What is the best CRM for small business?" | Featured snippet, listicle content |
-| **Where** questions | "Where is the nearest pharmacy?" | Google Business Profile, local SEO |
-| **When** questions | "When does Target close?" | Google Business Profile hours, schema |
-| **How** questions | "How do I fix a leaky faucet?" | How-to schema, step-by-step content |
-| **How much** questions | "How much does a roof replacement cost?" | FAQ content, pricing pages |
-| **Can I / Is it** questions | "Can I return items to Costco without a receipt?" | FAQ pages, policy content |
-| **Near me** queries | "Coffee shops near me" | Local SEO, Google Business Profile |
-| **Action** queries | "Call Pizza Hut" / "Order from Amazon" | Business profile, voice commerce setup |
+| Questions en **qui** | « Qui a fondé Tesla ? » | Knowledge panel, Wikipédia, pages À propos |
+| Questions en **quoi** | « Quel est le meilleur CRM pour une petite entreprise ? » | Extrait en vedette, contenu listicle |
+| Questions en **où** | « Où se trouve la pharmacie la plus proche ? » | Fiche Google Business Profile, SEO local |
+| Questions en **quand** | « Quand ferme Target ? » | Horaires de la fiche Google Business Profile, schema |
+| Questions en **comment** | « Comment réparer un robinet qui fuit ? » | Schema How-to, contenu étape par étape |
+| Questions en **combien** | « Combien coûte le remplacement d'une toiture ? » | Contenu FAQ, pages de tarification |
+| Questions en **puis-je/est-ce que** | « Puis-je retourner des articles chez Costco sans reçu ? » | Pages FAQ, contenu de politique |
+| Requêtes « près de moi » | « Cafés près de moi » | SEO local, fiche Google Business Profile |
+| Requêtes d'**action** | « Appelle Pizza Hut » / « Commande sur Amazon » | Fiche entreprise, mise en place du commerce vocal |
 
 ---
 
-## Content Optimization for Voice
+## Optimisation du contenu pour la voix
 
-### Featured Snippet Optimization (Position Zero)
+### Optimisation de l'extrait en vedette (position zéro)
 
-Voice assistants overwhelmingly pull answers from featured snippets. Winning Position Zero is the single most impactful voice search tactic.
+Les assistants vocaux puisent massivement leurs réponses dans les extraits en vedette. Décrocher la position zéro est la tactique de recherche vocale la plus impactante.
 
-| Snippet Type | Format | Optimization Approach |
+| Type d'extrait | Format | Approche d'optimisation |
 |-------------|--------|----------------------|
-| Paragraph | 40-60 word answer block | Answer the question directly in the first paragraph, then elaborate |
-| List | Numbered or bulleted steps | Use H2/H3 with the question, follow with ordered/unordered list |
-| Table | Structured comparison | Use HTML tables with clear headers |
-| Video | YouTube result | Optimize video title as a question, add timestamps |
+| Paragraphe | Bloc de réponse de 40-60 mots | Répondre directement à la question dans le premier paragraphe, puis développer |
+| Liste | Étapes numérotées ou à puces | Utiliser un H2/H3 avec la question, suivi d'une liste ordonnée/non ordonnée |
+| Tableau | Comparaison structurée | Utiliser des tableaux HTML avec des en-têtes clairs |
+| Vidéo | Résultat YouTube | Optimiser le titre de la vidéo comme une question, ajouter des horodatages |
 
-### Content Structure Rules for Voice
+### Règles de structure du contenu pour la voix
 
-1. **Lead with the answer.** First 1-2 sentences should directly answer the target question
-2. **Use question-based H2s and H3s.** Mirror the exact phrasing people use when speaking
-3. **Write at an 8th-grade reading level.** Voice assistants favor concise, clear language
-4. **Keep answer blocks to 40-60 words.** Google's preferred featured snippet length
-5. **Include follow-up questions.** "People Also Ask" questions are voice search gold
-6. **Use conversational language.** Write as if explaining to someone face-to-face
+1. **Commencer par la réponse.** Les 1-2 premières phrases doivent répondre directement à la question ciblée
+2. **Utiliser des H2 et H3 sous forme de question.** Refléter exactement la formulation utilisée à l'oral
+3. **Écrire à un niveau de lecture accessible.** Les assistants vocaux privilégient un langage concis et clair
+4. **Limiter les blocs de réponse à 40-60 mots.** La longueur préférée de Google pour les extraits en vedette
+5. **Inclure des questions de suivi.** Les questions « Autres questions posées » sont une mine d'or pour la recherche vocale
+6. **Utiliser un langage conversationnel.** Écrire comme si vous expliquiez à quelqu'un en face à face
 
-### FAQ Page Optimization
+### Optimisation de la page FAQ
 
-FAQ pages are one of the highest-value assets for voice search because they naturally align with question-and-answer format.
+Les pages FAQ sont l'un des actifs à plus forte valeur pour la recherche vocale car elles s'alignent naturellement avec le format question-réponse.
 
-**Structure:**
+**Structure :**
 ```html
 <section itemscope itemtype="https://schema.org/FAQPage">
   <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
@@ -77,11 +77,11 @@ FAQ pages are one of the highest-value assets for voice search because they natu
 
 ---
 
-## Speakable Schema (JSON-LD)
+## Schema Speakable (JSON-LD)
 
-The `speakable` schema tells search engines which sections of your page are most suitable for text-to-speech audio playback. This is especially relevant for Google Assistant and news content.
+Le schema `speakable` indique aux moteurs de recherche quelles sections de votre page sont les plus adaptées à la lecture audio texte-vers-parole. Ceci est particulièrement pertinent pour Google Assistant et le contenu d'actualité.
 
-### JSON-LD Implementation
+### Mise en œuvre JSON-LD
 
 ```json
 {
@@ -99,87 +99,87 @@ The `speakable` schema tells search engines which sections of your page are most
 }
 ```
 
-### Speakable Content Guidelines
-- Mark only concise, self-contained sections (not entire articles)
-- Each speakable section should be under 2-3 sentences
-- Avoid abbreviations, jargon, or visual-only references ("see the chart below")
-- Write speakable sections as if they will be read aloud verbatim
-- Include the most critical information — the answer, not the context
+### Consignes pour le contenu speakable
+- Ne baliser que des sections concises et autonomes (pas des articles entiers)
+- Chaque section speakable doit faire moins de 2-3 phrases
+- Éviter les abréviations, le jargon, ou les références visuelles uniquement (« voir le graphique ci-dessous »)
+- Rédiger les sections speakable comme si elles allaient être lues à voix haute mot pour mot
+- Inclure l'information la plus critique — la réponse, pas le contexte
 
 ---
 
-## Platform-Specific Optimization
+## Optimisation spécifique à chaque plateforme
 
 ### Google Assistant
-| Factor | Optimization |
+| Facteur | Optimisation |
 |--------|-------------|
-| Primary data source | Featured snippets + Google Business Profile |
-| Local queries | Optimize GBP: accurate hours, categories, attributes, photos |
-| Action queries | Enable "Reserve with Google," "Order with Google" if applicable |
-| Content | FAQ schema, How-To schema, Speakable schema |
-| Featured snippets | Target question keywords with direct-answer content |
+| Source de données principale | Extraits en vedette + fiche Google Business Profile |
+| Requêtes locales | Optimiser la fiche GBP : horaires exacts, catégories, attributs, photos |
+| Requêtes d'action | Activer « Réserver avec Google », « Commander avec Google » si applicable |
+| Contenu | Schema FAQ, Schema How-To, Schema Speakable |
+| Extraits en vedette | Cibler les mots-clés sous forme de question avec du contenu à réponse directe |
 
 ### Amazon Alexa
-| Factor | Optimization |
+| Facteur | Optimisation |
 |--------|-------------|
-| Primary data source | Bing (not Google), Amazon product catalog, Alexa Skills |
-| Search optimization | Optimize for Bing: Bing Places, Bing Webmaster Tools |
-| Commerce | Optimize Amazon product listings for voice purchase |
-| Skills | Build an Alexa Skill for branded content or utilities |
-| Flash Briefing | Create a Flash Briefing skill for regular brand content |
+| Source de données principale | Bing (pas Google), catalogue produit Amazon, Alexa Skills |
+| Optimisation de recherche | Optimiser pour Bing : Bing Places, Bing Webmaster Tools |
+| Commerce | Optimiser les fiches produit Amazon pour l'achat vocal |
+| Skills | Construire une Alexa Skill pour du contenu ou des utilitaires de marque |
+| Flash Briefing | Créer une skill Flash Briefing pour du contenu de marque régulier |
 
 ### Apple Siri
-| Factor | Optimization |
+| Facteur | Optimisation |
 |--------|-------------|
-| Primary data source | Apple Maps, Safari/Google, Apple Business Connect |
-| Local queries | Claim Apple Business Connect listing, ensure accuracy |
-| Content | Standard web SEO best practices apply (Siri uses Google/Bing) |
-| App integration | Implement SiriKit in your iOS app for voice commands |
-| Shortcuts | Create Siri Shortcuts for repeat actions in your app |
+| Source de données principale | Apple Maps, Safari/Google, Apple Business Connect |
+| Requêtes locales | Revendiquer la fiche Apple Business Connect, garantir l'exactitude |
+| Contenu | Les bonnes pratiques SEO web standard s'appliquent (Siri utilise Google/Bing) |
+| Intégration d'application | Mettre en œuvre SiriKit dans votre application iOS pour les commandes vocales |
+| Raccourcis | Créer des raccourcis Siri pour les actions répétées dans votre application |
 
 ---
 
-## Voice Commerce (V-Commerce)
+## Commerce vocal (V-Commerce)
 
-### Current Voice Commerce Landscape
+### Paysage actuel du commerce vocal
 
-| Platform | Commerce Capability | Setup Required |
+| Plateforme | Capacité de commerce | Mise en place requise |
 |----------|-------------------|----------------|
-| Amazon Alexa | Full purchase flow via Amazon | Optimize Amazon listings, enable voice purchasing |
-| Google Assistant | "Order with Google," local inventory | Google Merchant Center, local inventory ads |
-| Apple Siri | Apple Pay integration, in-app purchases | SiriKit, Apple Pay implementation |
+| Amazon Alexa | Tunnel d'achat complet via Amazon | Optimiser les fiches Amazon, activer l'achat vocal |
+| Google Assistant | « Commander avec Google », inventaire local | Google Merchant Center, annonces d'inventaire local |
+| Apple Siri | Intégration Apple Pay, achats intégrés | SiriKit, mise en œuvre d'Apple Pay |
 
-### Voice Commerce Optimization Checklist
+### Checklist d'optimisation du commerce vocal
 
-- [ ] Product titles are descriptive and natural-language friendly (avoid keyword stuffing)
-- [ ] Top-selling products have concise, speakable descriptions
-- [ ] Pricing is competitive (voice shoppers often compare by asking)
-- [ ] Reorder flow is frictionless (voice excels at repeat purchases)
-- [ ] Brand name is phonetically clear and easy for voice assistants to recognize
-- [ ] Product is available on Amazon if targeting Alexa commerce
-- [ ] "Buy" and "order" related questions in FAQ content link to purchase flow
+- [ ] Les titres de produit sont descriptifs et adaptés au langage naturel (éviter le bourrage de mots-clés)
+- [ ] Les produits les plus vendus ont des descriptions concises et « speakable »
+- [ ] Le prix est compétitif (les acheteurs vocaux comparent souvent en posant la question)
+- [ ] Le tunnel de recommande est sans friction (la voix excelle pour les achats récurrents)
+- [ ] Le nom de marque est phonétiquement clair et facile à reconnaître pour les assistants vocaux
+- [ ] Le produit est disponible sur Amazon si vous ciblez le commerce Alexa
+- [ ] Les questions liées à « acheter » et « commander » dans le contenu FAQ renvoient vers le tunnel d'achat
 
 ---
 
-## Local Voice Search Optimization
+## Optimisation de la recherche vocale locale
 
-Local intent dominates voice search. Over half of voice queries have local intent.
+L'intention locale domine la recherche vocale. Plus de la moitié des requêtes vocales ont une intention locale.
 
-### Local Voice Search Checklist
+### Checklist de recherche vocale locale
 
-| Action | Priority | Details |
+| Action | Priorité | Détails |
 |--------|----------|---------|
-| Google Business Profile — complete and accurate | Critical | Every field filled: hours, categories, attributes, photos, services |
-| NAP consistency | Critical | Name, Address, Phone identical across all directories |
-| Local schema markup | High | LocalBusiness schema with geo-coordinates, hours, contact |
-| "Near me" content optimization | High | Include neighborhood, city, and regional terms naturally in content |
-| Reviews | High | Volume and recency directly impact local voice results |
-| Apple Business Connect | Medium | Claim and optimize for Siri local queries |
-| Bing Places | Medium | Claim and optimize for Alexa local queries |
-| Local landing pages | Medium | City/neighborhood-specific pages with unique content |
-| Q&A on Google Business Profile | Medium | Proactively add and answer common questions |
+| Fiche Google Business Profile — complète et exacte | Critique | Chaque champ rempli : horaires, catégories, attributs, photos, services |
+| Cohérence NAP | Critique | Nom, Adresse, Téléphone identiques sur tous les annuaires |
+| Balisage schema local | Élevée | Schema LocalBusiness avec géocoordonnées, horaires, contact |
+| Optimisation du contenu « près de moi » | Élevée | Inclure naturellement le quartier, la ville, et les termes régionaux dans le contenu |
+| Avis | Élevée | Le volume et la fraîcheur influencent directement les résultats vocaux locaux |
+| Apple Business Connect | Moyenne | Revendiquer et optimiser pour les requêtes locales Siri |
+| Bing Places | Moyenne | Revendiquer et optimiser pour les requêtes locales Alexa |
+| Pages de localisation | Moyenne | Pages spécifiques par ville/quartier avec du contenu unique |
+| Q&R sur la fiche Google Business Profile | Moyenne | Ajouter et répondre proactivement aux questions fréquentes |
 
-### Local Schema Example
+### Exemple de schema local
 
 ```json
 {
@@ -214,49 +214,49 @@ Local intent dominates voice search. Over half of voice queries have local inten
 
 ---
 
-## Analytics & Measurement
+## Analytics & Mesure
 
-### Tracking Voice Search Performance
+### Suivre la performance de la recherche vocale
 
-Voice search attribution is inherently challenging because voice queries don't appear distinctly in most analytics tools. Use these proxy methods:
+L'attribution de la recherche vocale est intrinsèquement difficile car les requêtes vocales n'apparaissent pas distinctement dans la plupart des outils d'analytics. Utiliser ces méthodes de substitution :
 
-| Method | What It Measures | How to Implement |
+| Méthode | Ce qu'elle mesure | Comment la mettre en œuvre |
 |--------|-----------------|------------------|
-| Featured snippet tracking | Position Zero wins for question keywords | SEMrush, Ahrefs, or dedicated SERP tracker |
-| Long-tail query analysis | Conversational query traffic in Search Console | Filter GSC for queries with 5+ words, question words |
-| "Near me" query tracking | Local voice traffic proxy | GSC filter for "near me" queries |
-| Google Business Profile insights | Calls, directions, website clicks from GBP | GBP dashboard |
-| Smart speaker skills analytics | Alexa Skill usage | Platform-specific dashboards |
-| Speakable impressions | Content read aloud by assistants | Google Search Console (limited) |
+| Suivi des extraits en vedette | Gains de position zéro pour les mots-clés sous forme de question | SEMrush, Ahrefs, ou un outil de suivi SERP dédié |
+| Analyse des requêtes longue traîne | Trafic issu de requêtes conversationnelles dans Search Console | Filtrer GSC pour les requêtes de 5+ mots, mots interrogatifs |
+| Suivi des requêtes « près de moi » | Proxy du trafic vocal local | Filtre GSC pour les requêtes « près de moi » |
+| Insights de la fiche Google Business Profile | Appels, itinéraires, clics vers le site depuis la fiche GBP | Tableau de bord GBP |
+| Analytics des skills d'enceinte connectée | Usage des Alexa Skills | Tableaux de bord spécifiques à la plateforme |
+| Impressions speakable | Contenu lu à voix haute par les assistants | Google Search Console (limité) |
 
-### Voice Search KPIs
+### KPI de la recherche vocale
 
-| KPI | Definition | Target |
+| KPI | Définition | Objectif |
 |-----|-----------|--------|
-| Featured Snippet Ownership | % of target question keywords with Position Zero | >30% of tracked queries |
-| Long-tail Question Traffic | Organic sessions from queries with 5+ words | Growing month over month |
-| Local Action Rate | Calls + directions from GBP per month | Increasing quarter over quarter |
-| FAQ Page Performance | Pageviews, time on page, bounce rate for FAQ content | Bounce rate <50%, time >1 min |
-| Voice Commerce Revenue | Revenue attributed to voice-initiated purchases | Track via platform analytics |
-| Bing Organic Traffic | Proxy for Alexa query performance | Stable or growing |
+| Détention d'extraits en vedette | % des mots-clés cibles sous forme de question avec position zéro | >30 % des requêtes suivies |
+| Trafic de questions longue traîne | Sessions organiques issues de requêtes de 5+ mots | En croissance mois après mois |
+| Taux d'action locale | Appels + itinéraires depuis la fiche GBP par mois | En hausse trimestre après trimestre |
+| Performance de la page FAQ | Pages vues, temps sur la page, taux de rebond du contenu FAQ | Taux de rebond <50 %, temps >1 min |
+| Chiffre d'affaires du commerce vocal | Chiffre d'affaires attribué aux achats initiés par la voix | Suivi via les analytics de la plateforme |
+| Trafic organique Bing | Proxy de la performance des requêtes Alexa | Stable ou en croissance |
 
 ---
 
-## Voice Search Optimization Checklist — Summary
+## Checklist d'optimisation de la recherche vocale — Résumé
 
-- [ ] Audit top 50 branded and category keywords for question-based variants
-- [ ] Create or optimize FAQ pages with FAQ schema markup
-- [ ] Implement speakable schema on key content pages
-- [ ] Optimize content for featured snippets (40-60 word answer blocks, lists, tables)
-- [ ] Ensure Google Business Profile is 100% complete with all attributes
-- [ ] Claim Apple Business Connect and Bing Places listings
-- [ ] Write content at 8th-grade reading level using natural language
-- [ ] Implement LocalBusiness schema with complete details
-- [ ] Set up featured snippet tracking for target question keywords
-- [ ] Evaluate Alexa Skill development for branded utility (for Google Assistant/Gemini, invest in structured content and schema — standalone conversational actions were sunset in June 2023)
-- [ ] Review and optimize product listings for voice commerce readiness
-- [ ] Monitor Google Search Console for conversational query growth
+- [ ] Auditer les 50 principaux mots-clés de marque et de catégorie pour les variantes sous forme de question
+- [ ] Créer ou optimiser les pages FAQ avec le balisage schema FAQ
+- [ ] Mettre en œuvre le schema speakable sur les pages de contenu clés
+- [ ] Optimiser le contenu pour les extraits en vedette (blocs de réponse de 40-60 mots, listes, tableaux)
+- [ ] S'assurer que la fiche Google Business Profile est complète à 100 % avec tous les attributs
+- [ ] Revendiquer les fiches Apple Business Connect et Bing Places
+- [ ] Rédiger le contenu à un niveau de lecture accessible en utilisant un langage naturel
+- [ ] Mettre en œuvre le schema LocalBusiness avec des détails complets
+- [ ] Mettre en place le suivi des extraits en vedette pour les mots-clés cibles sous forme de question
+- [ ] Évaluer le développement d'une Alexa Skill pour un utilitaire de marque (pour Google Assistant/Gemini, investir dans le contenu structuré et le schema — les actions conversationnelles autonomes ont été abandonnées en juin 2023)
+- [ ] Revoir et optimiser les fiches produit pour la préparation au commerce vocal
+- [ ] Surveiller Google Search Console pour la croissance des requêtes conversationnelles
 
 ---
 
-> **Voice search optimization is not a separate discipline — it is the evolution of SEO.** The brands that win in voice are the ones that answer questions clearly, structure data correctly, and show up in the moments when someone speaks instead of types.
+> **L'optimisation pour la recherche vocale n'est pas une discipline séparée — c'est l'évolution du SEO.** Les marques qui gagnent en recherche vocale sont celles qui répondent clairement aux questions, structurent correctement les données, et apparaissent au moment précis où quelqu'un parle au lieu de taper.

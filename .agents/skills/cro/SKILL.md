@@ -1,174 +1,175 @@
 ---
 name: cro
-description: "Audit landing pages, forms, pricing pages, and checkout flows for conversion killers, and design statistically sound A/B tests — ICE-prioritized recommendations, hypothesis templates, and script-computed sample sizes and significance checks. Advises and plans; it does not edit your site or run the tests. Triggers on \"/digital-marketing-pro:cro\", \"audit this landing page\", \"why is our conversion rate so low\", \"how long should this A/B test run\", \"reduce cart abandonment\". Reads the brand profile, industry benchmarks, and campaign history before making recommendations."
+description: "Auditer les landing pages, formulaires, pages de tarification et parcours de paiement à la recherche de tueurs de conversion, et concevoir des tests A/B statistiquement solides — recommandations priorisées par ICE, modèles d'hypothèse, et tailles d'échantillon et vérifications de significativité calculées par script. Conseille et planifie ; ne modifie pas votre site et ne lance pas les tests. Se déclenche sur « /digital-marketing-pro:cro », « audite cette landing page », « pourquoi notre taux de conversion est-il si bas », « combien de temps ce test A/B doit-il durer », « réduire l'abandon de panier ». Lit le profil de marque, les benchmarks sectoriels, et l'historique des campagnes avant de formuler des recommandations."
 ---
 
-# CRO (Conversion Rate Optimization)
+# CRO (Optimisation du taux de conversion)
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this skill when the user's request involves any of the following:
+Activez cette compétence lorsque la demande de l'utilisateur implique l'un des éléments suivants :
 
-- Auditing a landing page for conversion performance
-- Designing or improving a landing page layout, copy, or user flow
-- Setting up, analyzing, or interpreting A/B tests or multivariate tests
-- Optimizing web forms (lead gen, signup, contact, application)
-- Designing or auditing pricing pages and pricing presentation
-- Reducing cart abandonment or improving checkout completion rates
-- Improving any website conversion metric (lead form submissions, signups, purchases, trial starts)
-- Calculating sample sizes, test duration, or statistical significance for experiments
-- Prioritizing which conversion improvements to tackle first
-- Diagnosing why a page or funnel has a low conversion rate
-- Asking about trust signals, social proof, urgency elements, or CTA optimization
+- Auditer une landing page pour sa performance de conversion
+- Concevoir ou améliorer la mise en page, le texte, ou le parcours utilisateur d'une landing page
+- Configurer, analyser, ou interpréter des tests A/B ou multivariés
+- Optimiser des formulaires web (génération de leads, inscription, contact, candidature)
+- Concevoir ou auditer des pages de tarification et la présentation des prix
+- Réduire l'abandon de panier ou améliorer les taux de finalisation du paiement
+- Améliorer tout indicateur de conversion d'un site web (soumissions de formulaire de leads, inscriptions, achats, démarrages d'essai)
+- Calculer les tailles d'échantillon, la durée de test, ou la significativité statistique pour des expériences
+- Prioriser les améliorations de conversion à traiter en premier
+- Diagnostiquer pourquoi une page ou un tunnel a un faible taux de conversion
+- Poser des questions sur les signaux de confiance, la preuve sociale, les éléments d'urgence, ou l'optimisation des appels à l'action
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout résultat marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — Le résumé de la marque active a été affiché au démarrage de la session. Utiliser le nom de marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité, et les concurrents indiqués.
+2. **Si vous avez besoin du profil complet**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — Les niveaux de formalité, d'énergie, d'humour, et d'autorité doivent façonner tout le ton et les choix de mots du contenu
+4. **Vérifier la conformité** — Appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Référencer les benchmarks sectoriels** — Consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — Référencer `skills/context-engine/platform-specs.md` pour les limites de caractères et exigences de format
+7. **Vérifier l'historique des campagnes** — Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les meilleures pratiques générales. »
+9. **Vérifier les directives de marque** — Si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les revendications restreintes, et les mentions légales obligatoires ; `channel-styles.md` pour les déclinaisons de ton propres à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les slogans, et le langage de positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des 4 scores numériques. Si le contenu produit est destiné à un canal spécifique, les règles de style du canal priment sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne demandez pas à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing, gather the following from the user (ask if not provided):
+Avant l'exécution, rassembler les éléments suivants auprès de l'utilisateur (demander s'ils ne sont pas fournis) :
 
-- **Page URL or description**: The specific page or flow being optimized
-- **Current conversion rate**: Baseline metric to improve against (if known)
-- **Monthly traffic volume**: Needed for test duration and statistical significance calculations
-- **Conversion goal**: What counts as a conversion (form submit, purchase, signup, download)
-- **Business model**: B2B, B2C, D2C, SaaS, ecommerce, lead gen
-- **Traffic sources**: Where visitors come from (paid, organic, email, direct) since source affects intent level
-- **Device split**: Percentage of mobile vs desktop traffic
-- **Existing test history**: What has been tested before and results
-- **Tech stack**: CMS, testing tools (Optimizely, VWO, Google Optimize successor, custom), analytics platform
-- **Constraints**: Legal disclaimers required, brand guidelines, compliance restrictions
+- **URL ou description de la page** : La page ou le parcours spécifique à optimiser
+- **Taux de conversion actuel** : Indicateur de référence à améliorer (si connu)
+- **Volume de trafic mensuel** : Nécessaire pour les calculs de durée de test et de significativité statistique
+- **Objectif de conversion** : Ce qui compte comme une conversion (soumission de formulaire, achat, inscription, téléchargement)
+- **Modèle économique** : B2B, B2C, D2C, SaaS, e-commerce, génération de leads
+- **Sources de trafic** : D'où viennent les visiteurs (payant, organique, e-mail, direct) puisque la source affecte le niveau d'intention
+- **Répartition par appareil** : Pourcentage de trafic mobile vs bureau
+- **Historique de test existant** : Ce qui a été testé auparavant et les résultats
+- **Pile technologique** : CMS, outils de test (Optimizely, VWO, successeur de Google Optimize, personnalisé), plateforme analytique
+- **Contraintes** : Mentions légales requises, directives de marque, restrictions de conformité
 
-## Capabilities
+## Capacités
 
-### Landing Page Audits
-- **5-second test**: Does the page communicate its value proposition within 5 seconds of loading?
-- **Above-the-fold analysis**: Headline clarity, subheadline support, hero image relevance, primary CTA visibility
-- **Trust signal inventory**: Logos, testimonials, reviews, certifications, security badges, guarantees
-- **CTA assessment**: Clarity, contrast, placement, copy specificity, number of competing CTAs
-- **Form evaluation**: Field count, field labels, required vs optional, error handling, multi-step vs single-step
-- **Page speed impact**: Load time correlation to bounce rate, Core Web Vitals as conversion factors
-- **Mobile experience**: Touch targets, scroll depth, thumb-zone CTA placement, mobile-specific friction points
-- **Content hierarchy**: Information architecture, visual hierarchy, F-pattern or Z-pattern scanning support
-- **Objection handling**: Whether the page addresses common objections before the conversion point
+### Audits de landing page
+- **Test des 5 secondes** : La page communique-t-elle sa proposition de valeur dans les 5 secondes suivant le chargement ?
+- **Analyse au-dessus de la ligne de flottaison** : Clarté du titre, soutien du sous-titre, pertinence de l'image principale, visibilité de l'appel à l'action principal
+- **Inventaire des signaux de confiance** : Logos, témoignages, avis, certifications, badges de sécurité, garanties
+- **Évaluation de l'appel à l'action** : Clarté, contraste, placement, spécificité du texte, nombre d'appels à l'action concurrents
+- **Évaluation du formulaire** : Nombre de champs, libellés de champs, obligatoire vs optionnel, gestion des erreurs, multi-étapes vs étape unique
+- **Impact de la vitesse de page** : Corrélation entre le temps de chargement et le taux de rebond, les Core Web Vitals comme facteurs de conversion
+- **Expérience mobile** : Zones tactiles, profondeur de défilement, placement de l'appel à l'action dans la zone du pouce, points de friction spécifiques au mobile
+- **Hiérarchie du contenu** : Architecture de l'information, hiérarchie visuelle, support du balayage en motif F ou Z
+- **Gestion des objections** : Si la page traite les objections courantes avant le point de conversion
 
-### A/B Testing Framework
-- **ICE prioritization**: Score potential tests by Impact (1-10), Confidence (1-10), and Ease (1-10) to determine test order
-- **Hypothesis format**: Structured as "If we [change], then [metric] will [improve/decrease] because [rationale]"
-- **Sample size calculation**: Based on baseline conversion rate, minimum detectable effect, statistical power (80%), and significance level (95%)
-- **Test duration estimation**: Accounting for traffic volume, conversion rate, and full business cycles (minimum 1-2 weeks to capture weekly patterns)
-- **Result interpretation**: Statistical significance, practical significance, segment analysis, and revenue impact projection
-- **Sequential testing**: When to use fixed-horizon vs sequential/Bayesian methods for faster decisions
+### Cadre de test A/B
+- **Priorisation ICE** : Noter les tests potentiels par Impact (1-10), Confiance (1-10), et Facilité (1-10) pour déterminer l'ordre des tests
+- **Format d'hypothèse** : Structuré comme « Si nous [changement], alors [indicateur] va [s'améliorer/diminuer] parce que [raisonnement] »
+- **Calcul de la taille d'échantillon** : Basé sur le taux de conversion de référence, l'effet minimum détectable, la puissance statistique (80 %), et le niveau de significativité (95 %)
+- **Estimation de la durée de test** : En tenant compte du volume de trafic, du taux de conversion, et des cycles d'activité complets (minimum 1 à 2 semaines pour capturer les schémas hebdomadaires)
+- **Interprétation des résultats** : Significativité statistique, significativité pratique, analyse par segment, et projection d'impact sur le revenu
+- **Test séquentiel** : Quand utiliser des méthodes à horizon fixe vs séquentielles/bayésiennes pour des décisions plus rapides
 
-### Form Optimization
-- **Field reduction**: Remove or defer non-essential fields. Each additional field reduces conversion by approximately 2-7%
-- **Progressive profiling**: Collect information across multiple interactions rather than all at once
-- **Inline validation**: Real-time feedback as users complete fields reduces form abandonment
-- **Smart defaults**: Pre-fill known data, use sensible defaults, and provide auto-complete
-- **Multi-step forms**: Break long forms into logical steps with progress indicators
-- **Field type optimization**: Dropdowns vs radio buttons vs text inputs based on option count and context
-- **Error messaging**: Specific, helpful error messages positioned near the relevant field
+### Optimisation des formulaires
+- **Réduction des champs** : Supprimer ou différer les champs non essentiels. Chaque champ supplémentaire réduit la conversion d'environ 2 à 7 %
+- **Profilage progressif** : Collecter les informations sur plusieurs interactions plutôt que d'un seul coup
+- **Validation en ligne** : Un retour en temps réel pendant que les utilisateurs remplissent les champs réduit l'abandon de formulaire
+- **Valeurs par défaut intelligentes** : Pré-remplir les données connues, utiliser des valeurs par défaut sensées, et fournir l'auto-complétion
+- **Formulaires multi-étapes** : Découper les longs formulaires en étapes logiques avec des indicateurs de progression
+- **Optimisation du type de champ** : Menus déroulants vs boutons radio vs champs de texte selon le nombre d'options et le contexte
+- **Messages d'erreur** : Messages d'erreur précis et utiles positionnés près du champ concerné
 
-### Pricing Psychology
-- **Anchoring**: Present a higher-priced option first to make target option seem reasonable
-- **Decoy effect**: Introduce a strategically inferior option to push users toward the target plan
-- **Charm pricing**: $99 vs $100 -- when it works (B2C, impulse purchases) and when it backfires (premium B2B)
-- **Price framing**: Annual vs monthly display, per-user vs flat rate, daily equivalency ("less than a cup of coffee")
-- **Plan naming**: Naming conventions that guide self-selection (Starter/Growth/Enterprise vs Basic/Pro/Premium)
-- **Feature differentiation**: Which features to gate at each tier to create natural upgrade pressure
-- **Social proof on pricing**: Showing "Most Popular" badges, customer counts per tier, or logos
+### Psychologie des prix
+- **Ancrage** : Présenter une option plus chère en premier pour rendre l'option cible plus raisonnable
+- **Effet leurre** : Introduire une option stratégiquement inférieure pour pousser les utilisateurs vers le plan cible
+- **Prix charme** : 99 $ vs 100 $ — quand cela fonctionne (B2C, achats impulsifs) et quand cela se retourne contre vous (B2B premium)
+- **Cadrage du prix** : Affichage annuel vs mensuel, par utilisateur vs forfait unique, équivalence quotidienne (« moins qu'une tasse de café »)
+- **Nommage des plans** : Conventions de nommage guidant l'auto-sélection (Starter/Growth/Enterprise vs Basic/Pro/Premium)
+- **Différenciation des fonctionnalités** : Quelles fonctionnalités verrouiller à chaque palier pour créer une pression naturelle de mise à niveau
+- **Preuve sociale sur la tarification** : Afficher des badges « le plus populaire », le nombre de clients par palier, ou des logos
 
-### Checkout Optimization
-- **Cart abandonment reduction**: Exit-intent offers, cart recovery emails, progress indicators, persistent cart
-- **Guest checkout**: Always offer guest checkout; forced account creation causes 24% abandonment
-- **Payment method coverage**: Credit cards, PayPal, Apple Pay, Google Pay, Buy Now Pay Later, regional methods
-- **Shipping transparency**: Show costs early, offer free shipping thresholds, provide delivery estimates
-- **Order summary persistence**: Keep order details visible throughout checkout
-- **Security reinforcement**: SSL badges, payment logos, money-back guarantees at the point of payment
-- **One-page vs multi-step checkout**: Decision framework based on product complexity and information requirements
-- **Post-purchase optimization**: Confirmation page upsells, order confirmation email, account creation after purchase
+### Optimisation du paiement
+- **Réduction de l'abandon de panier** : Offres d'intention de sortie, e-mails de récupération de panier, indicateurs de progression, panier persistant
+- **Paiement invité** : Toujours proposer le paiement invité ; la création de compte forcée cause 24 % d'abandon
+- **Couverture des modes de paiement** : Cartes de crédit, PayPal, Apple Pay, Google Pay, paiement différé (Buy Now Pay Later), méthodes régionales
+- **Transparence de la livraison** : Afficher les coûts tôt, proposer des seuils de livraison gratuite, fournir des estimations de délai
+- **Persistance du résumé de commande** : Garder les détails de la commande visibles tout au long du paiement
+- **Renforcement de la sécurité** : Badges SSL, logos de paiement, garanties de remboursement au point de paiement
+- **Paiement en une page vs multi-étapes** : Cadre de décision basé sur la complexité du produit et les exigences d'information
+- **Optimisation après achat** : Ventes additionnelles sur la page de confirmation, e-mail de confirmation de commande, création de compte après l'achat
 
-## Process
+## Processus
 
-### Standard Landing Page Audit (Most Common Use Case)
+### Audit standard de landing page (cas d'usage le plus courant)
 
-1. **5-second scan** -- Review the page as a first-time visitor. Can you identify what the company does, who it is for, and what action to take within 5 seconds?
-2. **Above-the-fold audit** -- Evaluate headline specificity, subheadline support, hero relevance, and CTA prominence. The fold is the most valuable real estate.
-3. **Trust and credibility** -- Inventory all trust signals (testimonials, logos, reviews, certifications, guarantees). Identify gaps where social proof is missing at critical decision points.
-4. **CTA analysis** -- Count all CTAs on the page. Check for competing actions, button copy specificity ("Get My Free Trial" beats "Submit"), contrast ratio, and placement frequency.
-5. **Content flow** -- Walk through the page section by section. Does it follow a logical persuasion sequence? Problem, solution, proof, action?
-6. **Form/conversion point** -- Evaluate the form or conversion mechanism. Count fields, assess labels, check error handling, and evaluate the micro-copy around the submit button.
-7. **Mobile audit** -- Review the same page on mobile. Check touch targets (minimum 44x44px), scroll depth to CTA, horizontal scrolling issues, and load time.
-8. **Speed check** -- Note any visible performance issues. Recommend Core Web Vitals audit if speed appears to be a factor.
-9. **Prioritized recommendations** -- Deliver findings as a prioritized list using the ICE framework. Quick wins first, structural changes second, redesign-level changes last.
+1. **Balayage de 5 secondes** — Examiner la page comme un visiteur pour la première fois. Pouvez-vous identifier ce que fait l'entreprise, à qui elle s'adresse, et quelle action entreprendre en 5 secondes ?
+2. **Audit au-dessus de la ligne de flottaison** — Évaluer la spécificité du titre, le soutien du sous-titre, la pertinence de l'image principale, et la visibilité de l'appel à l'action. La ligne de flottaison est l'espace le plus précieux.
+3. **Confiance et crédibilité** — Inventorier tous les signaux de confiance (témoignages, logos, avis, certifications, garanties). Identifier les lacunes où la preuve sociale manque aux points de décision critiques.
+4. **Analyse des appels à l'action** — Compter tous les appels à l'action sur la page. Vérifier les actions concurrentes, la spécificité du texte de bouton (« Obtenir mon essai gratuit » l'emporte sur « Envoyer »), le ratio de contraste, et la fréquence de placement.
+5. **Flux de contenu** — Parcourir la page section par section. Suit-elle une séquence de persuasion logique ? Problème, solution, preuve, action ?
+6. **Formulaire/point de conversion** — Évaluer le formulaire ou le mécanisme de conversion. Compter les champs, évaluer les libellés, vérifier la gestion des erreurs, et évaluer le micro-texte autour du bouton de soumission.
+7. **Audit mobile** — Examiner la même page sur mobile. Vérifier les zones tactiles (minimum 44x44px), la profondeur de défilement jusqu'à l'appel à l'action, les problèmes de défilement horizontal, et le temps de chargement.
+8. **Vérification de la vitesse** — Noter tout problème de performance visible. Recommander un audit des Core Web Vitals si la vitesse semble être un facteur.
+9. **Recommandations priorisées** — Livrer les constats sous forme de liste priorisée utilisant le cadre ICE. Gains rapides d'abord, changements structurels ensuite, changements de niveau refonte en dernier.
 
-### A/B Test Design Process
+### Processus de conception de test A/B
 
-1. **Identify the problem** -- Use data (analytics, heatmaps, session recordings, user feedback) to pinpoint the conversion bottleneck.
-2. **Form hypothesis** -- Write a structured hypothesis: "If we [change X], then [metric Y] will [increase/decrease] by [estimated amount] because [rationale based on evidence]."
-3. **Score with ICE** -- Rate Impact, Confidence, and Ease on a 1-10 scale. Prioritize tests with highest composite scores.
-4. **Calculate requirements** -- Determine sample size with `python "${CLAUDE_PLUGIN_ROOT}/scripts/sample-size-calculator.py" --baseline-rate {rate} --mde {mde} --mde-type absolute --significance 0.95 --power 0.80` (pass `--mde-type relative` if the MDE is a relative lift — the two differ by roughly two orders of magnitude, ~200×, at a 5% baseline). Estimate test duration based on daily traffic.
-5. **Design variation** -- Create the test variation. Change only one variable per test (unless running a multivariate test with sufficient traffic).
-6. **QA the test** -- Verify tracking, check both variations across devices and browsers, confirm that the test does not break downstream flows.
-7. **Run and monitor** -- Launch the test. Do not peek at results before reaching calculated sample size. Monitor for technical issues only.
-8. **Analyze and document** -- At the end of the test, evaluate statistical significance with `python "${CLAUDE_PLUGIN_ROOT}/scripts/significance-tester.py" --control-visitors {n} --control-conversions {n} --variant-visitors {n} --variant-conversions {n} --confidence 0.95`, check segment-level results, calculate revenue impact, and document learnings regardless of outcome.
+1. **Identifier le problème** — Utiliser les données (analytics, cartes de chaleur, enregistrements de session, retours utilisateurs) pour cerner le goulot d'étranglement de conversion.
+2. **Formuler l'hypothèse** — Rédiger une hypothèse structurée : « Si nous [changeons X], alors [l'indicateur Y] va [augmenter/diminuer] de [montant estimé] parce que [raisonnement basé sur des preuves]. »
+3. **Noter avec ICE** — Évaluer l'Impact, la Confiance, et la Facilité sur une échelle de 1 à 10. Prioriser les tests avec les scores composites les plus élevés.
+4. **Calculer les exigences** — Déterminer la taille d'échantillon avec `python "${CLAUDE_PLUGIN_ROOT}/scripts/sample-size-calculator.py" --baseline-rate {rate} --mde {mde} --mde-type absolute --significance 0.95 --power 0.80` (passer `--mde-type relative` si le MDE est une hausse relative — les deux diffèrent d'environ deux ordres de grandeur, ~200×, à une référence de 5 %). Estimer la durée de test en fonction du trafic quotidien.
+5. **Concevoir la variation** — Créer la variation de test. Ne changer qu'une seule variable par test (sauf pour un test multivarié avec un trafic suffisant).
+6. **Contrôler qualité le test** — Vérifier le suivi, contrôler les deux variations sur tous les appareils et navigateurs, confirmer que le test ne casse pas les flux en aval.
+7. **Lancer et surveiller** — Lancer le test. Ne pas jeter un œil aux résultats avant d'atteindre la taille d'échantillon calculée. Surveiller uniquement les problèmes techniques.
+8. **Analyser et documenter** — À la fin du test, évaluer la significativité statistique avec `python "${CLAUDE_PLUGIN_ROOT}/scripts/significance-tester.py" --control-visitors {n} --control-conversions {n} --variant-visitors {n} --variant-conversions {n} --confidence 0.95`, vérifier les résultats au niveau des segments, calculer l'impact sur le revenu, et documenter les enseignements quel que soit le résultat.
 
-## Reference Files
+## Fichiers de référence
 
-- `landing-page-audit.md` -- Detailed audit checklist, scoring rubric, and benchmark conversion rates by industry
-- `ab-testing.md` -- Test design templates, sample size calculators, statistical methods, and common testing pitfalls
-- `form-optimization.md` -- Field-by-field optimization guide, progressive profiling implementation, and form UX patterns
-- `pricing-psychology.md` -- Pricing page templates, psychological principles with examples, and tier structure frameworks
-- `checkout-optimization.md` -- Cart abandonment diagnosis, checkout flow templates, and payment optimization strategies
-- `personalization-testing.md` -- Segment-based personalization test design, minimum segment sizes, and personalization measurement pitfalls
+- `landing-page-audit.md` — Checklist d'audit détaillée, grille de notation, et taux de conversion de référence par secteur
+- `ab-testing.md` — Modèles de conception de test, calculateurs de taille d'échantillon, méthodes statistiques, et pièges de test courants
+- `form-optimization.md` — Guide d'optimisation champ par champ, mise en œuvre du profilage progressif, et schémas d'expérience utilisateur de formulaire
+- `pricing-psychology.md` — Modèles de page de tarification, principes psychologiques avec exemples, et cadres de structure de paliers
+- `checkout-optimization.md` — Diagnostic de l'abandon de panier, modèles de parcours de paiement, et stratégies d'optimisation du paiement
+- `personalization-testing.md` — Conception de test de personnalisation par segment, tailles minimales de segment, et pièges de mesure de la personnalisation
 
-## Output Formats
+## Formats de résultat
 
-- **Landing page audit report**: Section-by-section findings with severity ratings (critical/high/medium/low), screenshots or references to specific elements, and prioritized action items with ICE scores
-- **A/B test plan**: Hypothesis, variation description, sample size requirements, estimated duration, success criteria, and segmentation plan
-- **Form optimization spec**: Current vs recommended field list, layout wireframe description, validation rules, and error message copy
-- **Pricing page recommendation**: Tier structure, pricing presentation, feature matrix, and psychological triggers with rationale
-- **Checkout optimization plan**: Funnel stage analysis, drop-off diagnosis, and ordered list of improvements with expected impact
+- **Rapport d'audit de landing page** : Constats section par section avec niveaux de sévérité (critique/élevé/moyen/faible), captures d'écran ou références à des éléments précis, et actions priorisées avec scores ICE
+- **Plan de test A/B** : Hypothèse, description de la variation, exigences de taille d'échantillon, durée estimée, critères de réussite, et plan de segmentation
+- **Spécification d'optimisation de formulaire** : Liste des champs actuels vs recommandés, description de wireframe de mise en page, règles de validation, et texte des messages d'erreur
+- **Recommandation de page de tarification** : Structure des paliers, présentation des prix, matrice de fonctionnalités, et déclencheurs psychologiques avec justification
+- **Plan d'optimisation du paiement** : Analyse par étape de tunnel, diagnostic des points d'abandon, et liste ordonnée d'améliorations avec impact attendu
 
-## Edge Cases
+## Cas particuliers
 
-### Low Traffic Sites
-Sites with fewer than 1,000 monthly conversions often cannot reach statistical significance within a reasonable timeframe. For these sites, skip A/B testing and instead implement best practices directly based on audit findings. Use before/after measurement with awareness of confounding variables. Consider qualitative methods (user testing with 5 users catches 85% of usability issues) over quantitative testing.
+### Sites à faible trafic
+Les sites avec moins de 1 000 conversions mensuelles ne peuvent souvent pas atteindre une significativité statistique dans un délai raisonnable. Pour ces sites, sauter le test A/B et mettre en œuvre directement les meilleures pratiques sur la base des constats d'audit. Utiliser une mesure avant/après en étant conscient des variables confondantes. Envisager des méthodes qualitatives (un test utilisateur avec 5 utilisateurs détecte 85 % des problèmes d'utilisabilité) plutôt qu'un test quantitatif.
 
-### B2B Long-Form Pages vs B2C Short-Form
-B2B landing pages often need to be longer because purchase decisions involve multiple stakeholders, higher price points, and longer evaluation cycles. Do not default to "shorter is better." Instead, ensure the above-the-fold section qualifies intent quickly, and let the rest of the page handle objections comprehensively. B2C impulse purchases benefit from short, fast, single-CTA pages.
+### Pages B2B longues vs B2C courtes
+Les landing pages B2B doivent souvent être plus longues car les décisions d'achat impliquent plusieurs parties prenantes, des prix plus élevés, et des cycles d'évaluation plus longs. Ne pas partir par défaut du principe que « plus court c'est mieux ». Au lieu de cela, s'assurer que la section au-dessus de la ligne de flottaison qualifie rapidement l'intention, et laisser le reste de la page traiter les objections de manière exhaustive. Les achats impulsifs B2C bénéficient de pages courtes, rapides, à appel à l'action unique.
 
-### Mobile-First vs Desktop-First Optimization
-Check the device split before making recommendations. If 70%+ of traffic is mobile, optimize for mobile first and ensure desktop does not break. If traffic is desktop-dominant (common in B2B), optimize for desktop but never neglect mobile. The "responsive" middle ground often serves neither well.
+### Optimisation mobile-first vs desktop-first
+Vérifier la répartition par appareil avant de formuler des recommandations. Si 70 % ou plus du trafic est mobile, optimiser pour mobile en premier et s'assurer que le bureau ne casse pas. Si le trafic est dominé par le bureau (courant en B2B), optimiser pour le bureau mais ne jamais négliger le mobile. Le terrain d'entente « responsive » ne sert souvent bien ni l'un ni l'autre.
 
-### Regulated Industries with Required Disclaimers
-Healthcare, finance, legal, and insurance pages often require lengthy disclaimers, disclosures, or compliance text. Do not recommend removing these. Instead, work on formatting (collapsible sections, footnotes, smaller but readable type) and ensure the required content does not visually compete with the primary CTA. Position disclaimers after the conversion point where legally permissible.
+### Secteurs réglementés avec mentions légales obligatoires
+Les pages de santé, finance, juridique, et assurance nécessitent souvent de longues mentions légales, divulgations, ou textes de conformité. Ne pas recommander de les supprimer. Travailler plutôt sur la mise en forme (sections repliables, notes de bas de page, police plus petite mais lisible) et s'assurer que le contenu requis ne concurrence pas visuellement l'appel à l'action principal. Positionner les mentions légales après le point de conversion là où c'est légalement permis.
 
-### Testing During Seasonal Peaks
-Avoid launching A/B tests during Black Friday, holiday seasons, or major promotional periods. User behavior during peaks is not representative of normal behavior. Tests run during these periods will produce unreliable results. If a test must run during a peak, note the caveat and plan a validation retest during a normal period.
+### Test pendant les pics saisonniers
+Éviter de lancer des tests A/B pendant le Black Friday, les périodes de fêtes, ou les grandes périodes promotionnelles. Le comportement utilisateur pendant les pics n'est pas représentatif du comportement normal. Les tests menés pendant ces périodes produiront des résultats peu fiables. Si un test doit se dérouler pendant un pic, noter cette réserve et prévoir un nouveau test de validation pendant une période normale.
 
-## Related Skills
+## Compétences liées
 
-- **Paid Advertising** -- CRO directly impacts ad campaign ROAS; landing page quality affects Quality Score and ad relevance
-- **Analytics & Insights** -- Data analysis for identifying conversion bottlenecks and measuring test results
-- **Content Engine** -- Copywriting for headlines, CTAs, and persuasive page content
-- **Funnel Architect** -- CRO fits within the broader funnel optimization strategy
-- **Growth Engineering** -- Activation and onboarding optimization overlaps with CRO for SaaS products
-- **SEO** -- Page speed and Core Web Vitals affect both rankings and conversion rates
+- **Publicité payante** — Le CRO impacte directement le ROAS des campagnes publicitaires ; la qualité de la landing page affecte le Quality Score et la pertinence des annonces
+- **Analytics et insights** — Analyse de données pour identifier les goulots d'étranglement de conversion et mesurer les résultats de test
+- **Content Engine** — Rédaction pour les titres, appels à l'action, et contenu de page persuasif
+- **Funnel Architect** — Le CRO s'inscrit dans la stratégie plus large d'optimisation du tunnel
+- **Growth Engineering** — L'optimisation de l'activation et de l'intégration recoupe le CRO pour les produits SaaS
+- **SEO** — La vitesse de page et les Core Web Vitals affectent à la fois le classement et les taux de conversion
 
-## Agents Used
+## Agents utilisés
 
-- **cro-specialist** — Primary agent for all CRO tasks: landing page audits, A/B test design, form optimization, pricing psychology, checkout optimization, statistical significance calculations, and experiment documentation
+- **cro-specialist** — Agent principal pour toutes les tâches CRO : audits de landing page, conception de tests A/B, optimisation de formulaire, psychologie des prix, optimisation du paiement, calculs de significativité statistique, et documentation d'expérience
+</content>

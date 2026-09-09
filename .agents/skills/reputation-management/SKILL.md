@@ -1,221 +1,222 @@
 ---
 name: reputation-management
-description: "Full reputation playbook: FTC-compliant review generation, negative-review response frameworks, 3-tier crisis communication with a 72-hour severe-crisis timeline, 4-layer brand safety assessment, sentiment monitoring design, and 30/60/90-day recovery plans — delivered as ready-to-use plans, drafted responses, and audits. Triggers on \"/digital-marketing-pro:reputation-management\", \"we're getting hit with negative reviews\", \"prepare a crisis communication plan\", \"how do we get more Google reviews\", \"someone is spreading misinformation about us\". Reads the brand profile, guidelines, and compliance rules; it plans and drafts — it does not post responses or monitor platforms itself. For a single review reply, /digital-marketing-pro:review-response is the focused sibling."
+description: "Playbook complet de gestion de la réputation : génération d'avis conforme FTC, cadres de réponse aux avis négatifs, communication de crise à 3 niveaux avec une chronologie de crise sévère sur 72 heures, évaluation de la sécurité de marque à 4 couches, conception du suivi de sentiment, et plans de récupération 30/60/90 jours — livrés sous forme de plans prêts à l'emploi, de réponses rédigées, et d'audits. Se déclenche sur \"/digital-marketing-pro:reputation-management\", \"we're getting hit with negative reviews\", \"prepare a crisis communication plan\", \"how do we get more Google reviews\", \"someone is spreading misinformation about us\". Lit le profil de marque, les guidelines, et les règles de conformité ; il planifie et rédige — il ne publie pas de réponses et ne surveille pas les plateformes lui-même. Pour une réponse à un avis unique, /digital-marketing-pro:review-response est le module ciblé associé."
 ---
 
-# Reputation Management
+# Gestion de la réputation
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this skill when the user's request involves any of the following:
+Activez cette compétence lorsque la demande de l'utilisateur implique l'un des éléments suivants :
 
-- Generating more customer reviews or managing existing reviews across platforms
-- Responding to negative reviews (Google, Yelp, G2, Capterra, Trustpilot, Amazon, BBB, industry-specific sites)
-- Preparing for or responding to a brand crisis (product recall, executive scandal, data breach, viral complaint, lawsuit)
-- Assessing and mitigating brand safety risks in advertising and partnerships
-- Monitoring brand sentiment across social media, review platforms, and press
-- Building a reputation recovery plan after a negative event
-- Handling negative press, unfavorable search results, or misinformation
-- Managing employee reviews on platforms like Glassdoor or Indeed
-- Designing proactive reputation-building strategies
-- Evaluating brand safety settings for ad placements and content adjacency
-- Navigating legal constraints on reputation responses (defamation, HIPAA, regulated industries)
-- Addressing fake review attacks or review manipulation by competitors
+- Générer davantage d'avis clients ou gérer les avis existants sur les plateformes
+- Répondre aux avis négatifs (Google, Yelp, G2, Capterra, Trustpilot, Amazon, BBB, sites spécifiques au secteur)
+- Se préparer à ou répondre à une crise de marque (rappel de produit, scandale d'un dirigeant, violation de données, plainte virale, action en justice)
+- Évaluer et atténuer les risques de sécurité de marque dans la publicité et les partenariats
+- Surveiller le sentiment de marque sur les réseaux sociaux, les plateformes d'avis, et la presse
+- Construire un plan de récupération de réputation après un événement négatif
+- Gérer la presse négative, des résultats de recherche défavorables, ou de la désinformation
+- Gérer les avis d'employés sur des plateformes comme Glassdoor ou Indeed
+- Concevoir des stratégies proactives de construction de réputation
+- Évaluer les paramètres de sécurité de marque pour les placements publicitaires et l'adjacence de contenu
+- Naviguer les contraintes légales sur les réponses de réputation (diffamation, HIPAA, secteurs réglementés)
+- Traiter les attaques d'avis frauduleux ou la manipulation d'avis par des concurrents
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire un quelconque résultat marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — Le résumé de marque actif a été affiché au démarrage de la session. Utiliser le nom de marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité, et les concurrents montrés là.
+2. **Si vous avez besoin du profil complet**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — Les niveaux de formalité, d'énergie, d'humour, d'autorité doivent façonner tout le ton et les choix de mots du contenu
+4. **Vérifier la conformité** — Appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Référencer les benchmarks sectoriels** — Consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — Référencer `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux procéder avec les meilleures pratiques générales. »
+9. **Vérifier les guidelines de marque** — Si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et faire respecter : `restrictions.md` pour les mots interdits, les revendications restreintes, et les avertissements obligatoires ; `channel-styles.md` pour les remplacements de ton spécifiques au canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les taglines, et le langage de positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des 4 scores numériques. Lors de la production de contenu pour un canal spécifique, les règles de style du canal priment sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations déjà présentes dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing, gather the following from the user (ask if not provided):
+Avant l'exécution, recueillir les éléments suivants auprès de l'utilisateur (demander s'ils ne sont pas fournis) :
 
-- **Current situation**: Is this proactive reputation building, reactive crisis response, or ongoing reputation maintenance?
-- **Severity level**: For crisis situations, what is the scope and intensity? (Single negative review, trending negative conversation, press coverage, legal action)
-- **Industry**: Needed for compliance constraints (healthcare/HIPAA, finance/FINRA, legal/bar rules, government)
-- **Platform landscape**: Which review platforms and social channels are most relevant to the business
-- **Current review profile**: Average rating, review volume, review trend, and response rate
-- **Brand voice**: Tone and communication style guidelines
-- **Stakeholders**: Who needs to be involved in approvals (legal, PR, C-suite, customer service)
-- **Existing monitoring**: What tools or processes are in place for sentiment tracking
-- **History**: Any past crises or reputation issues and how they were handled
-- **Resources**: Team capacity for review management, crisis response, and ongoing monitoring
+- **Situation actuelle** : S'agit-il d'une construction de réputation proactive, d'une réponse de crise réactive, ou d'une maintenance de réputation continue ?
+- **Niveau de sévérité** : Pour les situations de crise, quelle est l'ampleur et l'intensité ? (Avis négatif isolé, conversation négative en tendance, couverture presse, action en justice)
+- **Secteur** : Nécessaire pour les contraintes de conformité (santé/HIPAA, finance/FINRA, juridique/règles du barreau, gouvernement)
+- **Paysage de plateformes** : Quelles plateformes d'avis et canaux sociaux sont les plus pertinents pour l'entreprise
+- **Profil d'avis actuel** : Note moyenne, volume d'avis, tendance des avis, et taux de réponse
+- **Voix de marque** : Guidelines de ton et de style de communication
+- **Parties prenantes** : Qui doit être impliqué dans les approbations (légal, RP, direction, service client)
+- **Suivi existant** : Quels outils ou processus sont en place pour le suivi du sentiment
+- **Historique** : Toute crise ou problème de réputation passé et comment il a été géré
+- **Ressources** : Capacité d'équipe pour la gestion des avis, la réponse de crise, et le suivi continu
 
-## Capabilities
+## Capacités
 
-### Review Generation
-- **FTC-compliant solicitation**: Ask for reviews without incentivizing positive reviews specifically. Incentives for leaving a review (not a positive review) require disclosure. Never gate reviews by satisfaction level (asking happy customers to review publicly while routing unhappy customers to private feedback is prohibited)
-- **Platform-specific timing**: Google reviews (post-purchase/service completion), G2/Capterra (after meaningful product usage, typically 30-60 days), Amazon (post-delivery with review request button), Yelp (never directly solicit -- Yelp penalizes solicited reviews)
-- **Review request sequences**: Email, SMS, in-app prompts, QR codes on receipts/packaging, post-interaction follow-ups
-- **Review volume strategy**: Consistent review velocity matters more than spikes. Build automated review request flows triggered by key customer milestones
-- **Review platform prioritization**: Focus efforts on platforms that influence purchase decisions for the specific industry (Google for local, G2 for SaaS, TripAdvisor for hospitality, Healthgrades for medical)
+### Génération d'avis
+- **Sollicitation conforme FTC** : Demander des avis sans inciter spécifiquement aux avis positifs. Les incitations à laisser un avis (pas un avis positif) nécessitent une divulgation. Ne jamais filtrer les avis selon le niveau de satisfaction (demander aux clients satisfaits de laisser un avis public tout en orientant les clients insatisfaits vers un retour privé est interdit)
+- **Timing spécifique à la plateforme** : Avis Google (après achat/fin de service), G2/Capterra (après un usage significatif du produit, typiquement 30-60 jours), Amazon (après livraison avec le bouton de demande d'avis), Yelp (ne jamais solliciter directement -- Yelp pénalise les avis sollicités)
+- **Séquences de demande d'avis** : Email, SMS, invites in-app, codes QR sur les reçus/emballages, relances post-interaction
+- **Stratégie de volume d'avis** : Une vélocité d'avis constante compte plus que des pics ponctuels. Construire des flux automatisés de demande d'avis déclenchés par les jalons clients
+- **Priorisation des plateformes d'avis** : Concentrer les efforts sur les plateformes qui influencent les décisions d'achat pour le secteur spécifique (Google pour le local, G2 pour le SaaS, TripAdvisor pour l'hôtellerie, Healthgrades pour le médical)
 
-### Negative Review Response Framework
-- **Response timing**: Respond within 24 hours for public reviews. Speed demonstrates attentiveness. Delayed responses appear dismissive
-- **Response structure**: Acknowledge the concern, apologize for the experience (not admitting fault), explain what happened if appropriate, offer a resolution, and move the conversation offline
-- **Tone calibration**: Professional and empathetic regardless of review tone. Never argue, get defensive, or blame the customer publicly. The response is for future readers, not just the reviewer
-- **Legal review triggers**: Know when a response requires legal review (threatened litigation, allegations of illegal activity, regulated industry topics, potential defamation claims)
-- **Follow-up protocol**: After resolving the issue offline, politely ask if the customer would consider updating their review. Never demand or pressure
-- **Review disputes**: Platform-specific processes for flagging fake, defamatory, or policy-violating reviews for removal
+### Cadre de réponse aux avis négatifs
+- **Timing de réponse** : Répondre dans les 24 heures pour les avis publics. La rapidité démontre l'attention. Les réponses tardives paraissent désinvoltes
+- **Structure de réponse** : Reconnaître la préoccupation, s'excuser pour l'expérience (sans admettre de faute), expliquer ce qui s'est passé si approprié, offrir une résolution, et déplacer la conversation hors ligne
+- **Calibrage du ton** : Professionnel et empathique quel que soit le ton de l'avis. Ne jamais argumenter, se mettre sur la défensive, ou blâmer publiquement le client. La réponse est destinée aux futurs lecteurs, pas seulement à l'auteur de l'avis
+- **Déclencheurs de revue légale** : Savoir quand une réponse nécessite une revue légale (menace de contentieux, allégations d'activité illégale, sujets de secteur réglementé, revendications de diffamation potentielles)
+- **Protocole de suivi** : Après avoir résolu le problème hors ligne, demander poliment si le client envisagerait de mettre à jour son avis. Ne jamais exiger ou faire pression
+- **Contestations d'avis** : Processus spécifiques à la plateforme pour signaler des avis frauduleux, diffamatoires, ou violant les règles pour suppression
 
-### Crisis Communication (3-Tier Framework)
+### Communication de crise (cadre à 3 niveaux)
 
-**Tier 1 -- Minor Crisis** (isolated complaint, single negative article, localized social media issue)
-- **Severity indicators**: Limited reach, no media pickup, contained to one platform or conversation
-- **Response timeline**: Respond within 24 hours with prepared acknowledgment
-- **Actions**: Direct customer response, monitor for spread, prepare holding statement if needed
-- **Stakeholders**: Customer service lead, social media manager
+**Niveau 1 -- Crise mineure** (plainte isolée, article négatif unique, problème localisé sur les réseaux sociaux)
+- **Indicateurs de sévérité** : Portée limitée, pas de reprise médiatique, contenu sur une seule plateforme ou conversation
+- **Chronologie de réponse** : Répondre dans les 24 heures avec un accusé de réception préparé
+- **Actions** : Réponse directe au client, surveillance de la propagation, préparation d'une déclaration d'attente si nécessaire
+- **Parties prenantes** : Responsable service client, responsable réseaux sociaux
 
-**Tier 2 -- Moderate Crisis** (trending complaint, multiple media outlets, influencer amplification, regional issue)
-- **Severity indicators**: Growing reach, media inquiries, multiple customer complaints on the same issue, hashtag trending
-- **Response timeline**: Public statement within 4 hours. Internal alignment within 2 hours
-- **Actions**: Activate crisis team, issue holding statement, prepare full response, monitor real-time, brief executives
-- **Stakeholders**: VP/Director of Marketing, PR team, legal counsel, customer service leadership
-- **Stakeholder messaging matrix**: Different messages for customers (empathy + action), employees (facts + guidance), media (official statement), investors (impact assessment + response plan), partners (reassurance + timeline)
-- **Brand voice shift protocol**: Move from standard marketing voice to crisis voice -- more human, more direct, less polished, zero humor, zero promotion
+**Niveau 2 -- Crise modérée** (plainte en tendance, plusieurs médias, amplification par des influenceurs, problème régional)
+- **Indicateurs de sévérité** : Portée croissante, demandes médiatiques, plusieurs plaintes clients sur le même sujet, hashtag en tendance
+- **Chronologie de réponse** : Déclaration publique dans les 4 heures. Alignement interne dans les 2 heures
+- **Actions** : Activer l'équipe de crise, publier une déclaration d'attente, préparer la réponse complète, surveiller en temps réel, informer la direction
+- **Parties prenantes** : VP/Directeur Marketing, équipe RP, conseil juridique, direction du service client
+- **Matrice de messages par partie prenante** : Messages différents pour les clients (empathie + action), les employés (faits + orientation), les médias (déclaration officielle), les investisseurs (évaluation d'impact + plan de réponse), les partenaires (réassurance + calendrier)
+- **Protocole de changement de voix de marque** : Passer de la voix marketing standard à la voix de crise -- plus humaine, plus directe, moins polie, zéro humour, zéro promotion
 
-**Tier 3 -- Severe Crisis** (data breach, product safety issue, executive misconduct, viral outrage, regulatory action)
-- **Severity indicators**: National/international media coverage, regulatory involvement, potential legal liability, significant customer impact
-- **Response timeline**: Initial acknowledgment within 1 hour. Full response within 4 hours. Ongoing updates every 24-48 hours
-- **Actions**: CEO-level response, legal coordination, regulatory notification (if required), customer notification, operational remediation, third-party investigation (if needed)
-- **72-hour timeline**: Hour 0-1 (acknowledge, assemble team), Hour 1-4 (fact-finding, holding statement), Hour 4-24 (detailed response, customer outreach, media statement), Hour 24-48 (operational updates, stakeholder briefings), Hour 48-72 (recovery plan announcement, ongoing communication cadence)
-- **Stakeholders**: CEO/C-suite, general counsel, board of directors (if public company), PR agency, regulatory contacts
+**Niveau 3 -- Crise sévère** (violation de données, problème de sécurité produit, inconduite d'un dirigeant, indignation virale, action réglementaire)
+- **Indicateurs de sévérité** : Couverture médiatique nationale/internationale, implication réglementaire, responsabilité légale potentielle, impact client significatif
+- **Chronologie de réponse** : Accusé de réception initial dans l'heure. Réponse complète dans les 4 heures. Mises à jour continues toutes les 24-48 heures
+- **Actions** : Réponse au niveau du PDG, coordination juridique, notification réglementaire (si requise), notification client, remédiation opérationnelle, enquête tierce (si nécessaire)
+- **Chronologie de 72 heures** : Heure 0-1 (reconnaître, assembler l'équipe), Heure 1-4 (recherche de faits, déclaration d'attente), Heure 4-24 (réponse détaillée, prise de contact client, déclaration médias), Heure 24-48 (mises à jour opérationnelles, briefings des parties prenantes), Heure 48-72 (annonce du plan de récupération, cadence de communication continue)
+- **Parties prenantes** : PDG/Direction générale, conseiller juridique général, conseil d'administration (si société cotée), agence RP, contacts réglementaires
 
-### Brand Safety (4-Layer Framework)
+### Sécurité de marque (cadre à 4 couches)
 
-**Layer 1 -- Ad Placement Safety**
-- Ensuring ads do not appear alongside harmful, offensive, or brand-inappropriate content
-- Platform-specific brand safety settings (Google content exclusions, Meta inventory filters, YouTube placement exclusions)
-- Third-party verification tools (IAS, DoubleVerify) for programmatic environments
-- Keyword exclusion lists and site exclusion lists
+**Couche 1 -- Sécurité de placement publicitaire**
+- S'assurer que les publicités n'apparaissent pas aux côtés de contenu nuisible, offensant, ou inapproprié pour la marque
+- Paramètres de sécurité de marque spécifiques à la plateforme (exclusions de contenu Google, filtres d'inventaire Meta, exclusions de placement YouTube)
+- Outils de vérification tiers (IAS, DoubleVerify) pour les environnements programmatiques
+- Listes d'exclusion de mots-clés et de sites
 
-**Layer 2 -- Association Safety**
-- Vetting partners, influencers, and sponsors for brand alignment and risk
-- Due diligence on co-marketing partners, event sponsors, and media placements
-- Ongoing monitoring of brand-associated entities for emerging controversies
+**Couche 2 -- Sécurité des associations**
+- Vérifier les partenaires, influenceurs, et sponsors pour l'alignement et le risque de marque
+- Diligence raisonnable sur les partenaires de co-marketing, les sponsors d'événements, et les placements médias
+- Surveillance continue des entités associées à la marque pour les controverses émergentes
 
-**Layer 3 -- Content Safety**
-- Ensuring brand-produced content does not inadvertently create brand safety issues
-- Content review process for cultural sensitivity, inclusivity, and potential misinterpretation
-- Social media post approval workflows and crisis-proofing content calendars
+**Couche 3 -- Sécurité du contenu**
+- S'assurer que le contenu produit par la marque ne crée pas involontairement de problèmes de sécurité de marque
+- Processus de revue de contenu pour la sensibilité culturelle, l'inclusivité, et la mauvaise interprétation potentielle
+- Workflows d'approbation des publications sur les réseaux sociaux et calendriers de contenu à l'épreuve des crises
 
-**Layer 4 -- Data Safety**
-- Protecting customer data in marketing operations
-- Compliance with GDPR, CCPA, and other privacy regulations in marketing contexts
-- Vendor data handling assessments for marketing technology partners
+**Couche 4 -- Sécurité des données**
+- Protéger les données clients dans les opérations marketing
+- Conformité au RGPD, au CCPA, et à d'autres réglementations de confidentialité dans les contextes marketing
+- Évaluations du traitement des données par les fournisseurs pour les partenaires martech
 
-### Sentiment Monitoring Framework
-- **Monitoring scope**: Social media mentions, review platforms, news/press, forums, employee review sites, search results
-- **Sentiment scoring**: Positive, neutral, negative classification with intensity weighting
-- **Alert thresholds**: Define spike thresholds that trigger escalation (e.g., 3x normal negative mention volume in 24 hours)
-- **Competitive benchmarking**: Compare sentiment trends against key competitors
-- **Topic clustering**: Group sentiment by theme (product quality, customer service, pricing, leadership) to identify systemic issues
-- **Trend analysis**: Weekly/monthly sentiment trend reports to identify gradual shifts before they become crises
+### Cadre de suivi du sentiment
+- **Portée du suivi** : Mentions sur les réseaux sociaux, plateformes d'avis, actualités/presse, forums, sites d'avis employés, résultats de recherche
+- **Notation du sentiment** : Classification positive, neutre, négative avec pondération d'intensité
+- **Seuils d'alerte** : Définir des seuils de pic déclenchant une escalade (par ex. 3x le volume normal de mentions négatives en 24 heures)
+- **Benchmarking concurrentiel** : Comparer les tendances de sentiment face aux concurrents clés
+- **Regroupement thématique** : Regrouper le sentiment par thème (qualité produit, service client, tarification, direction) pour identifier les problèmes systémiques
+- **Analyse de tendance** : Rapports de tendance de sentiment hebdomadaires/mensuels pour identifier les évolutions graduelles avant qu'elles ne deviennent des crises
 
-### Reputation Recovery Playbooks
+### Playbooks de récupération de réputation
 
-**30-Day Plan (Immediate Stabilization)**
-- Audit current reputation state across all platforms
-- Respond to all outstanding negative reviews
-- Launch review generation campaign to dilute negative content with fresh positive reviews
-- Publish thought leadership or positive press content to improve search results
-- Implement monitoring infrastructure if not already in place
+**Plan à 30 jours (stabilisation immédiate)**
+- Auditer l'état actuel de réputation sur toutes les plateformes
+- Répondre à tous les avis négatifs en attente
+- Lancer une campagne de génération d'avis pour diluer le contenu négatif avec des avis positifs frais
+- Publier du leadership éclairé ou de la presse positive pour améliorer les résultats de recherche
+- Mettre en place l'infrastructure de suivi si elle n'existe pas déjà
 
-**60-Day Plan (Rebuilding)**
-- Execute content strategy targeting negative search results (SEO for reputation)
-- Launch customer success stories and case study campaigns
-- Engage in community outreach and corporate responsibility initiatives
-- Build media relationships for positive press placements
-- Implement systematic review management process
+**Plan à 60 jours (reconstruction)**
+- Exécuter une stratégie de contenu ciblant les résultats de recherche négatifs (SEO pour la réputation)
+- Lancer des campagnes de témoignages clients et d'études de cas
+- S'engager dans l'action communautaire et les initiatives de responsabilité sociale
+- Construire des relations médiatiques pour des placements presse positifs
+- Mettre en place un processus systématique de gestion des avis
 
-**90-Day Plan (Reinforcement)**
-- Measure sentiment shift and review profile improvement
-- Establish ongoing reputation monitoring and maintenance cadence
-- Create crisis communication playbook to prevent future reputation damage
-- Build brand advocacy program with satisfied customers and employees
-- Conduct reputation audit to benchmark progress and set ongoing targets
+**Plan à 90 jours (renforcement)**
+- Mesurer le changement de sentiment et l'amélioration du profil d'avis
+- Établir une cadence continue de suivi et de maintenance de la réputation
+- Créer un playbook de communication de crise pour prévenir les futurs dommages de réputation
+- Construire un programme de défense de marque avec les clients et employés satisfaits
+- Réaliser un audit de réputation pour benchmarker les progrès et fixer des objectifs continus
 
-## Process
+## Processus
 
-### Negative Review Response (Most Common Use Case)
+### Réponse aux avis négatifs (cas d'usage le plus courant)
 
-1. **Assess the review** -- Read carefully. Determine if the complaint is legitimate, exaggerated, or fabricated. Check if the reviewer is an actual customer. Assess the platform and visibility of the review.
-2. **Check for legal triggers** -- Does the review mention legal action, allege illegal behavior, or involve a regulated topic? If yes, route through legal before responding.
-3. **Draft the response** -- Follow the framework: acknowledge, empathize, explain (briefly and without excuses), offer resolution, and invite offline conversation. Keep it under 150 words for public responses.
-4. **Tone check** -- Ensure the response is empathetic, professional, and non-defensive. Read it from the perspective of a potential customer seeing both the review and the response. The response should make the brand look better, not worse.
-5. **Post and track** -- Publish the response, log it in the review management system, and set a follow-up reminder to check if the customer responded or updated their review.
-6. **Resolve offline** -- If the customer engages, resolve the issue through direct communication. Document the resolution for internal process improvement.
-7. **Pattern analysis** -- Regularly analyze negative reviews for recurring themes. Feed patterns back to product, operations, and customer service teams for systemic fixes.
+1. **Évaluer l'avis** -- Lire attentivement. Déterminer si la plainte est légitime, exagérée, ou fabriquée. Vérifier si l'auteur de l'avis est un client réel. Évaluer la plateforme et la visibilité de l'avis.
+2. **Vérifier les déclencheurs légaux** -- L'avis mentionne-t-il une action en justice, allègue-t-il un comportement illégal, ou implique-t-il un sujet réglementé ? Si oui, faire transiter par le légal avant de répondre.
+3. **Rédiger la réponse** -- Suivre le cadre : reconnaître, faire preuve d'empathie, expliquer (brièvement et sans excuses), offrir une résolution, et inviter à une conversation hors ligne. Rester sous 150 mots pour les réponses publiques.
+4. **Vérification de ton** -- S'assurer que la réponse est empathique, professionnelle, et non défensive. La lire du point de vue d'un client potentiel voyant à la fois l'avis et la réponse. La réponse doit faire paraître la marque meilleure, pas pire.
+5. **Publier et suivre** -- Publier la réponse, la journaliser dans le système de gestion des avis, et fixer un rappel de suivi pour vérifier si le client a répondu ou mis à jour son avis.
+6. **Résoudre hors ligne** -- Si le client s'engage, résoudre le problème par communication directe. Documenter la résolution pour l'amélioration des processus internes.
+7. **Analyse de motifs** -- Analyser régulièrement les avis négatifs pour les thèmes récurrents. Faire remonter les motifs aux équipes produit, opérations, et service client pour des correctifs systémiques.
 
-### Crisis Response Activation
+### Activation de la réponse de crise
 
-1. **Severity assessment** -- Classify the crisis as Tier 1, 2, or 3 based on reach, media involvement, customer impact, and legal exposure.
-2. **Assemble the team** -- Activate the appropriate stakeholders based on tier level. Establish a communication channel for real-time coordination.
-3. **Fact-finding** -- Gather all available information. What happened, when, who is affected, what is the scope, and what do we know vs what is speculation.
-4. **Holding statement** -- Issue a brief acknowledgment that the brand is aware of the situation and is investigating. This buys time without leaving a silence vacuum.
-5. **Detailed response** -- Craft the full response addressing what happened, what the brand is doing about it, and what affected parties should do. Tailor messaging per stakeholder group.
-6. **Distribution** -- Publish the response through appropriate channels (website statement, social media, email to affected customers, press release if media is involved).
-7. **Monitor and update** -- Track conversation in real time. Update stakeholders and the public at regular intervals. Correct misinformation promptly.
-8. **Post-crisis review** -- After the crisis subsides, conduct a retrospective. What caused it, how was the response, what should change in the crisis playbook, and what operational changes prevent recurrence.
+1. **Évaluation de sévérité** -- Classifier la crise comme niveau 1, 2, ou 3 selon la portée, l'implication médiatique, l'impact client, et l'exposition légale.
+2. **Assembler l'équipe** -- Activer les parties prenantes appropriées selon le niveau. Établir un canal de communication pour la coordination en temps réel.
+3. **Recherche de faits** -- Rassembler toutes les informations disponibles. Ce qui s'est passé, quand, qui est affecté, quelle est l'ampleur, et ce que l'on sait vs ce qui relève de la spéculation.
+4. **Déclaration d'attente** -- Publier un bref accusé de réception indiquant que la marque est consciente de la situation et enquête. Cela achète du temps sans laisser un vide de silence.
+5. **Réponse détaillée** -- Rédiger la réponse complète abordant ce qui s'est passé, ce que la marque fait à ce sujet, et ce que les parties affectées devraient faire. Adapter le message par groupe de parties prenantes.
+6. **Diffusion** -- Publier la réponse via les canaux appropriés (déclaration sur le site web, réseaux sociaux, email aux clients concernés, communiqué de presse si les médias sont impliqués).
+7. **Surveiller et mettre à jour** -- Suivre la conversation en temps réel. Mettre à jour les parties prenantes et le public à intervalles réguliers. Corriger la désinformation rapidement.
+8. **Revue post-crise** -- Après que la crise s'est apaisée, réaliser une rétrospective. Qu'est-ce qui l'a causée, comment était la réponse, que faut-il changer dans le playbook de crise, et quels changements opérationnels préviennent la récidive.
 
-## Reference Files
+## Fichiers de référence
 
-- `review-strategy.md` -- Review generation tactics, platform-specific solicitation rules, response templates, and review management workflows
-- `crisis-communication.md` -- 3-tier crisis framework details, stakeholder messaging templates, 72-hour timeline playbook, and post-crisis retrospective guide
-- `brand-safety.md` -- 4-layer brand safety framework, platform-specific settings, vendor evaluation criteria, and brand safety audit checklists
-- `sentiment-monitoring.md` -- Monitoring tool recommendations, alert configuration guides, reporting templates, and competitive benchmarking methods
-- `recovery-playbooks.md` -- 30/60/90-day recovery plans, SEO-for-reputation tactics, advocacy program designs, and reputation audit frameworks
-- `review-management-platforms.md` -- Review platform landscape, tool comparison, platform-specific policies, and FTC compliance guidance for review management
+- `review-strategy.md` -- Tactiques de génération d'avis, règles de sollicitation spécifiques à la plateforme, modèles de réponse, et workflows de gestion des avis
+- `crisis-communication.md` -- Détails du cadre de crise à 3 niveaux, modèles de messages par partie prenante, playbook de chronologie sur 72 heures, et guide de rétrospective post-crise
+- `brand-safety.md` -- Cadre de sécurité de marque à 4 couches, paramètres spécifiques à la plateforme, critères d'évaluation des fournisseurs, et checklists d'audit de sécurité de marque
+- `sentiment-monitoring.md` -- Recommandations d'outils de suivi, guides de configuration d'alerte, modèles de reporting, et méthodes de benchmarking concurrentiel
+- `recovery-playbooks.md` -- Plans de récupération 30/60/90 jours, tactiques SEO pour la réputation, conceptions de programme de défense, et cadres d'audit de réputation
+- `review-management-platforms.md` -- Paysage des plateformes d'avis, comparaison d'outils, politiques spécifiques aux plateformes, et guidance de conformité FTC pour la gestion des avis
 
-## Output Formats
+## Formats de sortie
 
-- **Review response**: Ready-to-publish response text tailored to the specific review, platform, and brand voice
-- **Crisis communication plan**: Severity assessment, stakeholder matrix, messaging by audience, timeline, and channel distribution plan
-- **Brand safety audit**: Layer-by-layer assessment, risk scores, gap analysis, and prioritized remediation actions
-- **Sentiment report**: Current sentiment baseline, trend analysis, competitive comparison, and topic-level breakdown
-- **Reputation recovery plan**: 30/60/90-day action plan with specific tactics, responsible parties, success metrics, and timeline
-- **Review management playbook**: Standard operating procedures for review generation, monitoring, response, and escalation
+- **Réponse d'avis** : Texte de réponse prêt à publier adapté à l'avis spécifique, à la plateforme, et à la voix de marque
+- **Plan de communication de crise** : Évaluation de sévérité, matrice de parties prenantes, messages par audience, chronologie, et plan de diffusion par canal
+- **Audit de sécurité de marque** : Évaluation couche par couche, scores de risque, analyse d'écart, et actions de remédiation priorisées
+- **Rapport de sentiment** : Référence de sentiment actuelle, analyse de tendance, comparaison concurrentielle, et ventilation au niveau thématique
+- **Plan de récupération de réputation** : Plan d'action 30/60/90 jours avec tactiques spécifiques, parties responsables, métriques de succès, et chronologie
+- **Playbook de gestion des avis** : Procédures opérationnelles standard pour la génération d'avis, le suivi, la réponse, et l'escalade
 
-## Edge Cases
+## Cas particuliers
 
-### Crisis During Campaign Launch
-If a crisis hits during a planned campaign launch, pause all scheduled marketing content immediately. Promotional content running alongside crisis response appears tone-deaf and amplifies backlash. Resume campaigns only after the crisis is resolved and public sentiment has stabilized. Factor in a buffer period -- restarting promotions too quickly can reignite criticism.
+### Crise pendant un lancement de campagne
+Si une crise survient pendant un lancement de campagne planifié, mettre en pause immédiatement tout contenu marketing programmé. Le contenu promotionnel diffusé aux côtés d'une réponse de crise paraît déconnecté de la réalité et amplifie le contrecoup. Reprendre les campagnes uniquement après que la crise est résolue et que le sentiment public s'est stabilisé. Prévoir une période tampon -- relancer les promotions trop rapidement peut raviver les critiques.
 
-### Regional Crisis Containment
-When a crisis is localized to one market or region, attempt containment before it spreads. Respond in the local language and on local platforms. Adjust global content calendars to avoid tone-deaf cross-posting. Brief regional teams immediately even if their markets are not yet affected, so they can prepare.
+### Confinement de crise régional
+Lorsqu'une crise est localisée à un marché ou une région, tenter le confinement avant qu'elle ne se propage. Répondre dans la langue locale et sur les plateformes locales. Ajuster les calendriers de contenu globaux pour éviter les publications croisées déconnectées de la réalité. Informer immédiatement les équipes régionales même si leurs marchés ne sont pas encore affectés, afin qu'elles puissent se préparer.
 
-### Influencer-Caused vs Company-Caused Crisis
-The response playbook differs based on crisis origin. For influencer-caused issues (influencer says something offensive while associated with the brand), distance the brand, invoke the morality clause, and focus messaging on brand values. For company-caused issues (product defect, employee misconduct, data breach), own the problem, take responsibility, and focus messaging on actions being taken.
+### Crise causée par un influenceur vs causée par l'entreprise
+Le playbook de réponse diffère selon l'origine de la crise. Pour les problèmes causés par un influenceur (un influenceur dit quelque chose d'offensant tout en étant associé à la marque), distancer la marque, invoquer la clause de moralité, et concentrer le message sur les valeurs de marque. Pour les problèmes causés par l'entreprise (défaut produit, inconduite d'un employé, violation de données), assumer le problème, prendre ses responsabilités, et concentrer le message sur les actions entreprises.
 
-### Regulated Industry Legal Gates
-In healthcare, finance, and legal services, every public statement may have compliance implications. Build mandatory legal review into the crisis response timeline. For HIPAA-covered entities, never acknowledge a specific patient relationship in a review response. For financial services, never make statements that could be construed as investment advice or guarantees. These legal gates add response time, so prepare pre-approved response templates for common scenarios.
+### Portes légales dans les secteurs réglementés
+Dans la santé, la finance, et les services juridiques, chaque déclaration publique peut avoir des implications de conformité. Intégrer une revue légale obligatoire dans la chronologie de réponse de crise. Pour les entités couvertes par HIPAA, ne jamais reconnaître une relation patient spécifique dans une réponse d'avis. Pour les services financiers, ne jamais faire de déclarations pouvant être interprétées comme un conseil en investissement ou des garanties. Ces portes légales ajoutent du temps de réponse, donc préparer des modèles de réponse pré-approuvés pour les scénarios courants.
 
-### Social Media Pile-On with Misinformation
-When a brand faces viral criticism built on inaccurate information, resist the urge to respond emotionally or repeatedly. Issue one clear, factual correction through official channels. Do not engage in back-and-forth arguments with individual commenters. Arm supporters and employees with accurate talking points. Monitor for influencer or media amplification and respond directly to high-reach accounts spreading misinformation.
+### Vague de critiques sur les réseaux sociaux avec désinformation
+Lorsqu'une marque fait face à des critiques virales construites sur des informations inexactes, résister à l'envie de répondre émotionnellement ou de manière répétée. Publier une correction factuelle claire et unique via les canaux officiels. Ne pas s'engager dans des échanges répétés avec des commentateurs individuels. Armer les supporters et les employés avec des éléments de langage exacts. Surveiller l'amplification par les influenceurs ou les médias et répondre directement aux comptes à forte portée diffusant de la désinformation.
 
-### Fake Review Attacks
-If a business is targeted by coordinated fake negative reviews (competitor sabotage, disgruntled ex-employee, online mob), document the pattern (timing, reviewer profiles, language similarities), report to the platform with evidence, and respond to each review professionally (the response is for genuine readers, not the fake reviewers). Consider legal action for demonstrable defamation. Accelerate genuine review generation to dilute the impact.
+### Attaques d'avis frauduleux
+Si une entreprise est ciblée par des avis négatifs frauduleux coordonnés (sabotage de concurrent, ancien employé mécontent, harcèlement en ligne), documenter le motif (timing, profils des auteurs, similarités de langage), signaler à la plateforme avec des preuves, et répondre à chaque avis de manière professionnelle (la réponse est destinée aux lecteurs authentiques, pas aux faux auteurs d'avis). Envisager une action en justice pour diffamation démontrable. Accélérer la génération d'avis authentiques pour diluer l'impact.
 
-### Employee Review Management (Glassdoor)
-Employee review platforms influence recruiting and brand perception. Respond to negative Glassdoor reviews with the same professionalism as customer reviews. Never attempt to identify anonymous reviewers. Address systemic themes in employer branding content. Encourage satisfied employees to share their experiences authentically (never mandate or incentivize specific positive reviews).
+### Gestion des avis d'employés (Glassdoor)
+Les plateformes d'avis d'employés influencent le recrutement et la perception de marque. Répondre aux avis Glassdoor négatifs avec le même professionnalisme que les avis clients. Ne jamais tenter d'identifier des auteurs d'avis anonymes. Traiter les thèmes systémiques dans le contenu de marque employeur. Encourager les employés satisfaits à partager leur expérience de manière authentique (ne jamais imposer ou inciter des avis positifs spécifiques).
 
-## Related Skills
+## Compétences liées
 
-- **Influencer & Creator Marketing** -- Managing reputation risks from influencer partnerships and controversies
-- **Paid Advertising** -- Brand safety settings in ad platforms and pausing campaigns during crises
-- **Content Engine** -- Positive content creation for reputation recovery and thought leadership
-- **Analytics & Insights** -- Sentiment data analysis and reputation metric tracking
-- **SEO** -- Search result optimization for reputation management (suppressing negative results)
-- **Emerging Channels** -- Monitoring and managing reputation on newer platforms and community channels
+- **Marketing d'influence et de créateurs** -- Gestion des risques de réputation issus des partenariats et controverses d'influenceurs
+- **Publicité payante** -- Paramètres de sécurité de marque dans les plateformes publicitaires et mise en pause des campagnes pendant les crises
+- **Moteur de contenu** -- Création de contenu positif pour la récupération de réputation et le leadership éclairé
+- **Analytics et insights** -- Analyse des données de sentiment et suivi des métriques de réputation
+- **SEO** -- Optimisation des résultats de recherche pour la gestion de la réputation (suppression des résultats négatifs)
+- **Canaux émergents** -- Suivi et gestion de la réputation sur les plateformes et canaux communautaires plus récents
+</content>

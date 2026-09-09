@@ -1,60 +1,60 @@
 ---
 name: client-onboarding
-description: "Generate a complete onboarding package for a new marketing client — kickoff meeting agenda, 20-30 question discovery questionnaire, stakeholder map with RACI matrix, platform-by-platform access checklist, 30-60-90 day milestone plan, communication cadence, escalation protocol, welcome email template, internal team brief, risk register, and a day-by-day first-week action plan. Triggers on \"/digital-marketing-pro:client-onboarding\", \"we just signed a new client\", \"build a kickoff agenda and discovery questionnaire\", \"30-60-90 day plan for the new account\", \"what access do we need from the client\". Reads the brand profile, guidelines, custom templates, and agency SOPs so the package matches house process."
+description: "Générer un dossier d'intégration complet pour un nouveau client marketing — ordre du jour de réunion de lancement, questionnaire de découverte de 20 à 30 questions, cartographie des parties prenantes avec matrice RACI, checklist d'accès plateforme par plateforme, plan de jalons à 30-60-90 jours, cadence de communication, protocole d'escalade, modèle d'e-mail de bienvenue, brief interne pour l'équipe, registre des risques, et un plan d'action jour par jour pour la première semaine. Se déclenche sur \"/digital-marketing-pro:client-onboarding\", \"we just signed a new client\", \"build a kickoff agenda and discovery questionnaire\", \"30-60-90 day plan for the new account\", \"what access do we need from the client\". Lit le profil de marque, les guidelines, les modèles personnalisés et les procédures d'agence afin que le dossier corresponde au process interne."
 ---
 
 # /digital-marketing-pro:client-onboarding
 
-## Purpose
+## Objectif
 
-Generate a comprehensive client onboarding workflow for a new marketing engagement. Covers kickoff planning, discovery, stakeholder alignment, access provisioning, milestone setting, and communication protocols to ensure a smooth transition from signed contract to active account with clear expectations on both sides.
+Générer un flux d'intégration complet pour un nouvel engagement marketing. Couvre la planification du lancement, la découverte, l'alignement des parties prenantes, le provisionnement des accès, la définition des jalons, et les protocoles de communication pour assurer une transition en douceur du contrat signé au compte actif, avec des attentes claires des deux côtés.
 
-## Input Required
+## Données requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Client name and industry**: The new client's business name, vertical, and market segment
-- **Services contracted**: Which marketing services are included in the engagement (SEO, PPC, social, content, email, analytics, etc.)
-- **Engagement timeline**: Contract duration and key dates — start date, first deliverable, first review, contract end
-- **Team structure (agency side)**: Account lead, strategist, specialists, and any shared resources assigned to the account
-- **Team structure (client side)**: Primary contact, marketing lead, approvers, and subject matter experts available
-- **Account access needs**: Platforms, tools, and accounts requiring credentials or permissions (Google Ads, Analytics, CMS, social accounts, CRM, etc.)
-- **Client maturity level**: Startup, SMB, or enterprise — determines complexity of onboarding, approval layers, and compliance requirements
-- **Stakeholder list**: All individuals involved in the engagement with roles, decision authority, and communication preferences
-- **Communication preferences**: Preferred channels (Slack, email, calls), timezone, meeting availability, and response time expectations
-- **Success criteria**: What the client considers a successful engagement at 30, 60, and 90 days — and contractual KPIs if defined
+- **Nom du client et secteur** : le nom de l'entreprise du nouveau client, son secteur d'activité, et son segment de marché
+- **Services contractualisés** : quels services marketing sont inclus dans l'engagement (SEO, PPC, social, contenu, e-mail, analytics, etc.)
+- **Chronologie de l'engagement** : durée du contrat et dates clés — date de début, premier livrable, première revue, fin de contrat
+- **Structure d'équipe (côté agence)** : responsable de compte, stratège, spécialistes, et toute ressource partagée assignée au compte
+- **Structure d'équipe (côté client)** : contact principal, responsable marketing, valideurs, et experts métier disponibles
+- **Besoins d'accès au compte** : plateformes, outils et comptes nécessitant des identifiants ou des permissions (Google Ads, Analytics, CMS, comptes sociaux, CRM, etc.)
+- **Niveau de maturité du client** : startup, PME, ou grand compte — détermine la complexité de l'intégration, les niveaux d'approbation, et les exigences de conformité
+- **Liste des parties prenantes** : toutes les personnes impliquées dans l'engagement avec rôles, autorité de décision, et préférences de communication
+- **Préférences de communication** : canaux préférés (Slack, e-mail, appels), fuseau horaire, disponibilité pour les réunions, et attentes de délai de réponse
+- **Critères de succès** : ce que le client considère comme un engagement réussi à 30, 60, et 90 jours — et les KPI contractuels s'ils sont définis
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Research client industry onboarding best practices**: Identify industry-specific onboarding considerations — regulatory requirements, seasonal timing, common data sources, and typical ramp-up periods for the client's vertical
-3. **Build kickoff meeting agenda**: Structure a 60-90 minute kickoff covering introductions, engagement overview, goals alignment, process walkthrough, access handoff, communication setup, and immediate next steps
-4. **Create discovery questionnaire**: Draft 20-30 questions covering business context, competitive landscape, past marketing efforts, brand guidelines, content assets, data access, approval workflows, and success definitions
-5. **Map stakeholders and decision-makers**: Build a stakeholder map with RACI matrix (Responsible, Accountable, Consulted, Informed) for key activities — content approval, budget changes, strategy shifts, reporting, and escalations
-6. **Define access and permissions checklist**: Create a platform-by-platform checklist of all accounts, tools, and systems needing access — with permission level, owner, and deadline for provisioning
-7. **Set 30-60-90 day milestones**: Define specific, measurable milestones for each phase — discovery and setup (30 days), optimization and early results (60 days), full operation and first performance review (90 days)
-8. **Establish communication cadence**: Design the recurring meeting and reporting schedule — weekly status calls, monthly performance reports, quarterly business reviews, and ad-hoc escalation triggers
-9. **Create escalation protocol**: Define severity tiers (informational, urgent, critical), response time expectations, escalation paths on both agency and client sides, and resolution tracking
-10. **Build knowledge transfer checklist**: List all assets, documents, logins, brand files, historical data, and institutional knowledge the client needs to provide for the agency to operate effectively
-11. **Compile into unified onboarding document**: Assemble all components into a single structured onboarding package with clear ownership, deadlines, and a first-week action plan for immediate momentum
+1. **Charger le contexte de marque** : lisez `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis chargez `~/.claude-marketing/brands/{slug}/profile.json`. Appliquez la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. **Vérifiez aussi la présence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, chargez les restrictions et les fichiers de catégorie pertinents. Vérifiez les modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifiez les procédures d'agence (SOP) dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demandez : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou poursuivez avec les valeurs par défaut.
+2. **Rechercher les meilleures pratiques d'intégration propres au secteur du client** : identifiez les considérations d'intégration spécifiques au secteur — exigences réglementaires, timing saisonnier, sources de données courantes, et périodes de montée en puissance typiques pour le secteur du client
+3. **Construire l'ordre du jour de la réunion de lancement** : structurez un lancement de 60 à 90 minutes couvrant les présentations, l'aperçu de l'engagement, l'alignement des objectifs, la présentation du processus, la remise des accès, la mise en place de la communication, et les prochaines étapes immédiates
+4. **Créer le questionnaire de découverte** : rédigez 20 à 30 questions couvrant le contexte business, le paysage concurrentiel, les efforts marketing passés, les guidelines de marque, les actifs de contenu, l'accès aux données, les flux d'approbation, et les définitions du succès
+5. **Cartographier les parties prenantes et les décideurs** : construisez une cartographie des parties prenantes avec une matrice RACI (Responsable, Approbateur, Consulté, Informé) pour les activités clés — approbation de contenu, changements de budget, changements de stratégie, reporting, et escalades
+6. **Définir la checklist d'accès et de permissions** : créez une checklist plateforme par plateforme de tous les comptes, outils et systèmes nécessitant un accès — avec le niveau de permission, le propriétaire, et la date limite de provisionnement
+7. **Fixer les jalons à 30-60-90 jours** : définissez des jalons spécifiques et mesurables pour chaque phase — découverte et mise en place (30 jours), optimisation et premiers résultats (60 jours), fonctionnement complet et première revue de performance (90 jours)
+8. **Établir la cadence de communication** : concevez le calendrier récurrent de réunions et de reporting — appels de statut hebdomadaires, rapports de performance mensuels, revues d'affaires trimestrielles, et déclencheurs d'escalade ad hoc
+9. **Créer le protocole d'escalade** : définissez les niveaux de sévérité (informatif, urgent, critique), les attentes de délai de réponse, les chemins d'escalade côté agence et côté client, et le suivi de résolution
+10. **Construire la checklist de transfert de connaissances** : listez tous les actifs, documents, identifiants, fichiers de marque, données historiques, et connaissance institutionnelle que le client doit fournir pour que l'agence puisse opérer efficacement
+11. **Compiler en un document d'intégration unifié** : assemblez tous les éléments en un dossier d'intégration structuré unique avec propriété claire, échéances, et un plan d'action pour la première semaine afin de créer une dynamique immédiate
 
-## Output
+## Résultat
 
-A structured client onboarding package containing:
+Un dossier d'intégration client structuré contenant :
 
-- **Kickoff meeting agenda**: 60-90 minute structured agenda with discussion topics, time allocations, presenters, and pre-read materials
-- **Discovery questionnaire**: 20-30 targeted questions organized by category (business, competitive, brand, technical, process) with space for responses
-- **Stakeholder map with RACI matrix**: Visual map of all stakeholders with decision authority, RACI assignments for key activities, and contact details
-- **Account access checklist**: Platform-by-platform list with required permission levels, current owner, agency contact, and provisioning deadline
-- **30-60-90 day milestone plan**: Phase-based milestone schedule with specific deliverables, success criteria, and checkpoint dates per phase
-- **Communication cadence**: Complete meeting and reporting schedule — weekly, monthly, and quarterly touchpoints with attendees and agenda templates
-- **Escalation protocol**: Severity tier definitions (informational/urgent/critical) with response times, escalation paths, and resolution tracking process
-- **Knowledge transfer checklist**: Categorized list of all assets, documents, data, and access the client must provide with deadlines and responsible parties
-- **Welcome email template**: Ready-to-send email introducing the account team, confirming kickoff details, and listing pre-kickoff action items
-- **Internal team brief**: Agency-internal document summarizing client context, key stakeholders, sensitivities, opportunities, and account strategy
-- **Risk register with mitigation**: Identified onboarding risks (delayed access, stakeholder availability, data gaps) with likelihood, impact, and mitigation steps
-- **First-week action plan**: Day-by-day schedule for the first five business days with specific tasks, owners, and completion criteria
+- **Ordre du jour de la réunion de lancement** : ordre du jour structuré de 60 à 90 minutes avec sujets de discussion, allocations de temps, intervenants, et supports à lire au préalable
+- **Questionnaire de découverte** : 20 à 30 questions ciblées organisées par catégorie (business, concurrentiel, marque, technique, processus) avec espace pour les réponses
+- **Cartographie des parties prenantes avec matrice RACI** : carte visuelle de toutes les parties prenantes avec autorité de décision, affectations RACI pour les activités clés, et coordonnées
+- **Checklist d'accès au compte** : liste plateforme par plateforme avec niveaux de permission requis, propriétaire actuel, contact agence, et échéance de provisionnement
+- **Plan de jalons à 30-60-90 jours** : calendrier de jalons par phase avec livrables spécifiques, critères de succès, et dates de point de contrôle par phase
+- **Cadence de communication** : calendrier complet de réunions et de reporting — points de contact hebdomadaires, mensuels et trimestriels avec participants et modèles d'ordre du jour
+- **Protocole d'escalade** : définitions des niveaux de sévérité (informatif/urgent/critique) avec délais de réponse, chemins d'escalade, et processus de suivi de résolution
+- **Checklist de transfert de connaissances** : liste catégorisée de tous les actifs, documents, données, et accès que le client doit fournir avec échéances et parties responsables
+- **Modèle d'e-mail de bienvenue** : e-mail prêt à envoyer présentant l'équipe de compte, confirmant les détails du lancement, et listant les actions préalables au lancement
+- **Brief interne pour l'équipe** : document interne à l'agence résumant le contexte client, les parties prenantes clés, les sensibilités, les opportunités, et la stratégie de compte
+- **Registre des risques avec atténuation** : risques d'intégration identifiés (accès retardé, disponibilité des parties prenantes, lacunes de données) avec probabilité, impact, et mesures d'atténuation
+- **Plan d'action pour la première semaine** : calendrier jour par jour des cinq premiers jours ouvrés avec tâches spécifiques, propriétaires, et critères d'achèvement
 
-## Agents Used
+## Agents utilisés
 
-- **marketing-strategist** — Stakeholder mapping, milestone planning, communication design, discovery questionnaire development, risk assessment, and onboarding workflow orchestration
+- **marketing-strategist** — Cartographie des parties prenantes, planification des jalons, conception de la communication, développement du questionnaire de découverte, évaluation des risques, et orchestration du flux d'intégration

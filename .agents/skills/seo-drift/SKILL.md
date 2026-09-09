@@ -1,57 +1,57 @@
 ---
 name: seo-drift
-description: "Compare two SEO snapshots from the same source — GSC, the GSC AI Performance report, a rank-tracker export, or aeo-audit probes — into a drift report: top gainers and losers per metric, growth/decline/reshuffle/stable/new/lost classification, and a four-gate quality scorecard. Triggers on \"/digital-marketing-pro:seo-drift\", \"compare this month's GSC export to last month's\", \"what moved after the core update\", \"did the content refresh work\", \"which queries lost AI Mode impressions\". Runs scripts/seo_drift.py on two CSVs, reads the brand profile for noise thresholds, and branches findings to /digital-marketing-pro:seo-audit, /digital-marketing-pro:aeo-geo, or /digital-marketing-pro:content-engine."
+description: "Compare deux instantanés SEO provenant de la même source — GSC, le rapport GSC AI Performance, un export d'outil de suivi de positionnement, ou des sondages aeo-audit — pour produire un rapport de dérive : principaux gagnants et perdants par métrique, classification croissance/déclin/remaniement/stable/nouveau/perdu, et un tableau de bord qualité à quatre portes. Se déclenche sur \"/digital-marketing-pro:seo-drift\", \"compare this month's GSC export to last month's\", \"what moved after the core update\", \"did the content refresh work\", \"which queries lost AI Mode impressions\". Exécute scripts/seo_drift.py sur deux fichiers CSV, lit le profil de marque pour les seuils de bruit, et oriente les constats vers /digital-marketing-pro:seo-audit, /digital-marketing-pro:aeo-geo, ou /digital-marketing-pro:content-engine."
 argument-hint: "[brand-name]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:seo-drift
 
-## Purpose
+## Objectif
 
-Take two snapshots of SEO performance data — separated by weeks, a Core Update, a content refresh, or an algorithm change — and produce a structured drift report: top gainers, top losers, classifications (growth / decline / reshuffle / stable / new / lost), and diagnostic patterns. Works with classic GSC, the new GSC AI Performance Report, rank-tracker exports, and `aeo-audit` probe results.
+Prendre deux instantanés de données de performance SEO — séparés par des semaines, une mise à jour Core, une actualisation de contenu, ou un changement d'algorithme — et produire un rapport de dérive structuré : principaux gagnants, principaux perdants, classifications (croissance / déclin / remaniement / stable / nouveau / perdu), et motifs diagnostiques. Fonctionne avec le GSC classique, le nouveau GSC AI Performance Report, les exports d'outils de suivi de positionnement, et les résultats de sondage `aeo-audit`.
 
-## Context efficiency
+## Efficacité de contexte
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List `${CLAUDE_PLUGIN_DATA}/<brand>/` before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Faites un grep avant tout Read** sur un fichier référencé, puis ne lisez (`Read`) que les plages correspondantes avec `offset` + `limit`. Listez `${CLAUDE_PLUGIN_DATA}/<brand>/` avant d'ouvrir des fichiers. Lors d'une réinvocation en cours de session, ignorez les fichiers déjà en contexte.
 
-## When to Use
+## Quand l'utiliser
 
-- **Monthly performance review** — last month vs the month before
-- **Core Update triage** — pre-update vs post-update + settling window (use 14+ days after rollout-complete)
-- **AI Mode citation tracking** — quarter-over-quarter `aeo-audit` outputs to see which queries gained / lost AI Mode citations (Google AI Mode citation diff is a leading indicator for organic decline)
-- **Content refresh attribution** — before vs after a planned content update to attribute lift to the refresh vs other factors
-- **GSC AI Performance Report** — month-over-month deltas on the new (3 Jun 2026) combined AI Overviews + AI Mode report
-- **Site migration audit** — pre-migration baseline vs post-migration settling
+- **Revue de performance mensuelle** — le mois dernier contre le mois précédent
+- **Triage de mise à jour Core** — avant la mise à jour contre après la mise à jour + fenêtre de stabilisation (utilisez 14 jours ou plus après la fin du déploiement)
+- **Suivi des citations en AI Mode** — sorties `aeo-audit` trimestrielles pour voir quelles requêtes ont gagné/perdu des citations en AI Mode (l'écart de citation Google AI Mode est un indicateur avancé de déclin organique)
+- **Attribution d'une actualisation de contenu** — avant contre après une mise à jour de contenu planifiée, pour attribuer la progression à l'actualisation plutôt qu'à d'autres facteurs
+- **Rapport GSC AI Performance** — écarts mois sur mois sur le nouveau rapport combiné AI Overviews + AI Mode (3 juin 2026)
+- **Audit de migration de site** — référence pré-migration contre stabilisation post-migration
 
-**Don't use** for single-point-in-time analysis (use the source skill — `seo-audit`, `aeo-audit`, `gsc-ai-performance`).
+**Ne pas utiliser** pour une analyse à un instant T unique (utilisez la compétence source — `seo-audit`, `aeo-audit`, `gsc-ai-performance`).
 
-## Brand context (auto-applied)
+## Contexte de marque (appliqué automatiquement)
 
-1. Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`
-2. If no brand exists: ask "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults
-3. Apply `skills/context-engine/industry-profiles.md` for industry-specific noise thresholds (YMYL industries should use higher `--noise` to filter out routine Quality Rater Guidelines volatility)
+1. Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`
+2. Si aucune marque n'existe : demander "Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ?" — ou procéder avec les valeurs par défaut
+3. Appliquer `skills/context-engine/industry-profiles.md` pour les seuils de bruit spécifiques au secteur (les secteurs YMYL devraient utiliser un `--noise` plus élevé pour filtrer la volatilité routinière liée aux Quality Rater Guidelines)
 
-## Inputs
+## Entrées
 
-| Input | Source | Required? |
+| Entrée | Source | Requis ? |
 |---|---|---|
-| Baseline CSV | Older snapshot | yes |
-| Current CSV | Newer snapshot | yes |
-| Join keys | Auto-detected (`query`, `keyword`, `page`, `url`) or `--join-on` flag | optional |
-| Noise threshold | `--noise` (default 5%) — % below which a metric is "stable" | optional |
-| Top-N | `--top` (default 20) — gainers/losers per metric | optional |
+| CSV de référence | Instantané le plus ancien | oui |
+| CSV actuel | Instantané le plus récent | oui |
+| Clés de jointure | Auto-détectées (`query`, `keyword`, `page`, `url`) ou drapeau `--join-on` | optionnel |
+| Seuil de bruit | `--noise` (5 % par défaut) — le % en dessous duquel une métrique est « stable » | optionnel |
+| Top-N | `--top` (20 par défaut) — gagnants/perdants par métrique | optionnel |
 
-**Both snapshots must come from the same source.** Mixing a GSC export with an Ahrefs export will produce nonsense — different sources count different things.
+**Les deux instantanés doivent provenir de la même source.** Mélanger un export GSC avec un export Ahrefs produira des résultats absurdes — les sources différentes comptent des choses différentes.
 
-## Process (10 steps, numbered-file output)
+## Processus (10 étapes, sortie en fichiers numérotés)
 
-All outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-drift/{YYYY-MM-DD}/`.
+Toutes les sorties vont dans `${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-drift/{YYYY-MM-DD}/`.
 
-1. **`00-input.md`** — capture baseline date range, current date range, source (GSC / GSC AI / rank-tracker / aeo-audit), brand context
-2. **`01-baseline.csv`** — copy baseline export here (so the drift run is reproducible months later)
-3. **`02-current.csv`** — copy current export here
-4. **`03-drift-run.json`** — run the script:
+1. **`00-input.md`** — capturer la plage de dates de référence, la plage de dates actuelle, la source (GSC / GSC AI / outil de suivi de positionnement / aeo-audit), le contexte de marque
+2. **`01-baseline.csv`** — copier ici l'export de référence (afin que l'exécution de dérive soit reproductible des mois plus tard)
+3. **`02-current.csv`** — copier ici l'export actuel
+4. **`03-drift-run.json`** — exécuter le script :
    ```bash
    python "${CLAUDE_PLUGIN_ROOT}/scripts/seo_drift.py" \
        --baseline "${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-drift/{date}/01-baseline.csv" \
@@ -59,21 +59,21 @@ All outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-drift/{YYYY-MM-DD}/`.
        --top 30 --noise 5 \
        --out "${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-drift/{date}/03-drift-run.json"
    ```
-5. **`04-quality-scorecard.md`** — read `quality_scorecard` from `03-drift-run.json`. If `status: needs_review`, diagnose:
-   - `date_range_distinct: warn` → script couldn't auto-validate. Manually confirm in `00-input.md` that baseline and current cover non-overlapping windows.
-   - `sample_size: fail` → either input has < 50 rows. Re-export without row limits.
-   - `metric_compatibility: fail` → no numeric metrics in BOTH inputs. Column-name mismatch — re-export from the same source.
-   - `no_lookup_collisions: fail` → duplicate keys in one input (e.g., same query × page row twice). Re-export with deduplication or use `--join-on` to add a distinguishing column.
-6. **`05-biggest-gainers.md`** — narrative on the top 10 gainers across impressions / clicks / position. For each: hypothesis on cause (new content? backlinks gained? Core Update favoured E-E-A-T? Featured Snippet rotation?). Hand off candidates to `/digital-marketing-pro:content-engine` for amplification.
-7. **`05-biggest-losers.md`** — narrative on the top 10 losers. For each: triage matrix — `is_yMYL × had_recent_change × Core_Update_window` → action (refresh content / restore reverted change / wait for next algo cycle / accept and reallocate).
-8. **`06-ai-mode-shift.md`** *(only if input source is GSC AI Performance Report)* — queries that LOST AI Mode impressions are a leading indicator. Cross-reference with `/digital-marketing-pro:aeo-audit` to verify citation loss in synthetic probes.
-9. **`07-classification-distribution.md`** — counts table:
-   - growth / decline / reshuffle / stable / new / lost
-   - If >40% in decline: likely Core Update or competitor catch-up. Run `/digital-marketing-pro:seo-audit` for diagnosis.
-   - If >20% reshuffle: likely intent shift (AI Mode reweighting). Run `/digital-marketing-pro:aeo-geo` to align with new intent patterns.
-10. **`PLAN.md`** — single-page summary: stats + scorecard + top 5 actions ranked by impact × effort, with owner suggestions (SEO lead / content lead / dev team).
+5. **`04-quality-scorecard.md`** — lire `quality_scorecard` depuis `03-drift-run.json`. Si `status: needs_review`, diagnostiquer :
+   - `date_range_distinct: warn` → le script n'a pas pu valider automatiquement. Confirmez manuellement dans `00-input.md` que la référence et l'actuel couvrent des fenêtres non chevauchantes.
+   - `sample_size: fail` → l'une des entrées a moins de 50 lignes. Réexportez sans limite de lignes.
+   - `metric_compatibility: fail` → aucune métrique numérique commune aux DEUX entrées. Incohérence de nom de colonne — réexportez depuis la même source.
+   - `no_lookup_collisions: fail` → clés en double dans une entrée (par ex. la même paire requête × page en double). Réexportez avec déduplication ou utilisez `--join-on` pour ajouter une colonne distinctive.
+6. **`05-biggest-gainers.md`** — récit sur les 10 principaux gagnants en impressions / clics / position. Pour chacun : hypothèse sur la cause (nouveau contenu ? backlinks gagnés ? la mise à jour Core a favorisé l'E-E-A-T ? rotation de Featured Snippet ?). Confier les candidats à `/digital-marketing-pro:content-engine` pour amplification.
+7. **`05-biggest-losers.md`** — récit sur les 10 principaux perdants. Pour chacun : matrice de triage — `est_YMYL × a_eu_un_changement_récent × fenêtre_de_mise_à_jour_Core` → action (actualiser le contenu / rétablir le changement annulé / attendre le prochain cycle d'algorithme / accepter et réallouer).
+8. **`06-ai-mode-shift.md`** *(uniquement si la source d'entrée est le GSC AI Performance Report)* — les requêtes qui ont PERDU des impressions en AI Mode sont un indicateur avancé. Recouper avec `/digital-marketing-pro:aeo-audit` pour vérifier la perte de citation dans les sondages synthétiques.
+9. **`07-classification-distribution.md`** — tableau de comptage :
+   - croissance / déclin / remaniement / stable / nouveau / perdu
+   - Si plus de 40 % en déclin : probablement une mise à jour Core ou un rattrapage concurrentiel. Exécuter `/digital-marketing-pro:seo-audit` pour le diagnostic.
+   - Si plus de 20 % en remaniement : probablement un glissement d'intention (repondération AI Mode). Exécuter `/digital-marketing-pro:aeo-geo` pour s'aligner sur les nouveaux motifs d'intention.
+10. **`PLAN.md`** — résumé sur une seule page : statistiques + tableau de bord + top 5 des actions classées par impact × effort, avec suggestions de responsable (responsable SEO / responsable contenu / équipe dev).
 
-## Output format
+## Format de sortie
 
 ```
 ${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-drift/2026-06-04/
@@ -84,69 +84,69 @@ ${CLAUDE_PLUGIN_DATA}/{brand}/seo/seo-drift/2026-06-04/
 ├── 04-quality-scorecard.md
 ├── 05-biggest-gainers.md
 ├── 05-biggest-losers.md
-├── 06-ai-mode-shift.md       (only when input is GSC AI Performance Report)
+├── 06-ai-mode-shift.md       (uniquement lorsque l'entrée est le GSC AI Performance Report)
 ├── 07-classification-distribution.md
 └── PLAN.md
 ```
 
-## Quality scorecard (the four gates)
+## Tableau de bord qualité (les quatre portes)
 
-| Gate | What it checks | Why it matters |
+| Porte | Ce qu'elle vérifie | Pourquoi c'est important |
 |---|---|---|
-| **date_range_distinct** | Baseline and current cover non-overlapping windows | Overlapping windows produce false-positive deltas — same data on both sides |
-| **sample_size** | Each input has ≥ 50 rows | Below this, drift is noise |
-| **metric_compatibility** | ≥ 1 numeric metric exists in both inputs | If columns differ (e.g., Ahrefs vs GSC), there's nothing to compare |
-| **no_lookup_collisions** | No duplicate keys within an input | Duplicates make the delta math ambiguous |
+| **date_range_distinct** | La référence et l'actuel couvrent des fenêtres non chevauchantes | Des fenêtres qui se chevauchent produisent des écarts faux positifs — les mêmes données des deux côtés |
+| **sample_size** | Chaque entrée a ≥ 50 lignes | En dessous de ce seuil, la dérive est du bruit |
+| **metric_compatibility** | ≥ 1 métrique numérique existe dans les deux entrées | Si les colonnes diffèrent (par ex. Ahrefs contre GSC), il n'y a rien à comparer |
+| **no_lookup_collisions** | Aucune clé en double au sein d'une entrée | Les doublons rendent le calcul de l'écart ambigu |
 
-`status: ready` requires sample, metric compatibility, and no-collision gates pass (date-range-distinct is `warn` not `fail` — the script can't always autodetect dates).
+`status: ready` requiert la réussite des portes échantillon, compatibilité de métrique et absence de collision (date-range-distinct est `warn`, pas `fail` — le script ne peut pas toujours détecter automatiquement les dates).
 
-## Classification rules
+## Règles de classification
 
-Each row in the report falls into one bucket:
+Chaque ligne du rapport tombe dans une catégorie :
 
-| Classification | Trigger | Interpretation |
+| Classification | Déclencheur | Interprétation |
 |---|---|---|
-| **growth** | ≥ 2 metrics moved up > noise%, no metric down > 10% | Clear win — investigate for amplification |
-| **decline** | ≥ 2 metrics moved down > noise%, no metric up > 10% | Clear loss — triage by YMYL × Core-Update-window |
-| **reshuffle** | Significant moves in opposite directions (e.g., impressions up, position down) | AI Mode signature — content is being shown more broadly but for slightly different intents |
-| **stable** | No metric moved more than noise% | No action |
-| **new** | Absent in baseline, present in current | New content or new SERP coverage — track |
-| **lost** | Present in baseline, absent in current | Content removed, deindexed, or fell out of tracking window |
+| **croissance** | ≥ 2 métriques en hausse de plus de X % (bruit), aucune métrique en baisse de plus de 10 % | Gain clair — étudier pour amplification |
+| **déclin** | ≥ 2 métriques en baisse de plus de X % (bruit), aucune métrique en hausse de plus de 10 % | Perte claire — trier selon YMYL × fenêtre de mise à jour Core |
+| **remaniement** | Mouvements significatifs en sens opposés (par ex. impressions en hausse, position en baisse) | Signature AI Mode — le contenu est montré plus largement mais pour des intentions légèrement différentes |
+| **stable** | Aucune métrique n'a bougé de plus que le seuil de bruit | Aucune action |
+| **nouveau** | Absent dans la référence, présent dans l'actuel | Nouveau contenu ou nouvelle couverture SERP — à suivre |
+| **perdu** | Présent dans la référence, absent dans l'actuel | Contenu supprimé, désindexé, ou sorti de la fenêtre de suivi |
 
-**Position is special**: for position, *lower numbers are better*. The script automatically inverts position-delta direction for gain/loss ranking — you'll see -85.9% under position as a top gainer (page moved from position 12 to position 2).
+**La position est un cas particulier** : pour la position, *les chiffres plus bas sont meilleurs*. Le script inverse automatiquement la direction de l'écart de position pour le classement gain/perte — vous verrez -85,9 % sous position comme un gain principal (la page est passée de la position 12 à la position 2).
 
-## Chain handoffs
+## Transmissions de la chaîne
 
-This skill is typically a consumer + diagnostician:
+Cette compétence est typiquement un consommateur + diagnosticien :
 
-1. `/digital-marketing-pro:gsc-ai-performance` or `seo-audit` or `aeo-audit` — generates the snapshots
-2. **`/digital-marketing-pro:seo-drift`** — *this skill*
-3. Branch by finding:
-   - **High decline** → `/digital-marketing-pro:seo-audit` for technical-side check + `/digital-marketing-pro:content-decay-scan` for content-side
-   - **High reshuffle** → `/digital-marketing-pro:aeo-geo` for intent realignment
-   - **High growth** → `/digital-marketing-pro:content-engine` for amplification briefs
+1. `/digital-marketing-pro:gsc-ai-performance` ou `seo-audit` ou `aeo-audit` — génère les instantanés
+2. **`/digital-marketing-pro:seo-drift`** — *cette compétence*
+3. Bifurcation selon le constat :
+   - **Déclin élevé** → `/digital-marketing-pro:seo-audit` pour la vérification côté technique + `/digital-marketing-pro:content-decay-scan` pour le côté contenu
+   - **Remaniement élevé** → `/digital-marketing-pro:aeo-geo` pour le réalignement d'intention
+   - **Croissance élevée** → `/digital-marketing-pro:content-engine` pour des briefs d'amplification
 
-## Tips & caveats
+## Astuces et mises en garde
 
-- **Don't run during a Core Update rollout.** Wait until Google announces "rollout complete" + 7–14 days of settling. Mid-rollout deltas are unreliable.
-- **Position deltas are noisier than impression/click deltas** — pages bouncing between positions 8 and 12 produce ±30% position deltas that mean nothing. Trust impression/click moves more for diagnosis.
-- **GSC's data lag is ~3 days.** When pulling "current month" data, use the date range ending 3 days ago, not yesterday.
-- **The GSC AI Performance Report (3 Jun 2026) has NO click data.** drift on AI report = impressions-only drift. Don't try to compute CTR drift from it.
-- **For Core Update triage, run drift twice**: pre-update vs day-after-rollout-complete (the "blast"), and pre-update vs 14-days-after (the "settled state"). The two often disagree, and the 14-day view is the one that matters.
-- **Reshuffle classification is a leading indicator** — when reshuffle counts spike, intent reweighting is happening. The next quarter's drift will usually show clearer growth/decline. Don't react too fast.
+- **Ne pas exécuter pendant un déploiement de mise à jour Core.** Attendez que Google annonce « déploiement terminé » + 7 à 14 jours de stabilisation. Les écarts en cours de déploiement ne sont pas fiables.
+- **Les écarts de position sont plus bruités que les écarts d'impressions/clics** — les pages qui oscillent entre les positions 8 et 12 produisent des écarts de position de ±30 % qui ne signifient rien. Faites davantage confiance aux mouvements d'impressions/clics pour le diagnostic.
+- **Le décalage de données de GSC est d'environ 3 jours.** Pour extraire les données du « mois en cours », utilisez une plage de dates se terminant il y a 3 jours, pas hier.
+- **Le GSC AI Performance Report (3 juin 2026) n'a PAS de données de clics.** La dérive sur le rapport IA se limite aux impressions. N'essayez pas d'en calculer une dérive de CTR.
+- **Pour le triage de mise à jour Core, exécutez la dérive deux fois** : avant la mise à jour contre le lendemain de la fin du déploiement (le « choc »), et avant la mise à jour contre 14 jours après (l'« état stabilisé »). Les deux sont souvent en désaccord, et c'est la vue à 14 jours qui compte.
+- **La classification remaniement est un indicateur avancé** — quand le nombre de remaniements augmente fortement, une repondération d'intention est en cours. La dérive du trimestre suivant montrera généralement une croissance/déclin plus clair. Ne réagissez pas trop vite.
 
-## Agents used
+## Agents utilisés
 
-- `analytics-analyst` (primary) — interpretation + cause hypotheses
-- `seo-specialist` — for technical-cause hypotheses on losers
-- `competitive-intel` — when decline correlates with a competitor's win
-- `market-intelligence` — for algo-update context (was there a Core Update in the window?)
+- `analytics-analyst` (principal) — interprétation + hypothèses de cause
+- `seo-specialist` — pour les hypothèses de cause technique sur les perdants
+- `competitive-intel` — quand le déclin est corrélé à un gain d'un concurrent
+- `market-intelligence` — pour le contexte de mise à jour d'algorithme (y avait-il une mise à jour Core dans la fenêtre ?)
 
-## See also
+## Voir aussi
 
-- `/digital-marketing-pro:gsc-ai-performance` — pull the GSC AI Performance Report (input source)
-- `/digital-marketing-pro:seo-audit` — diagnose decline causes
-- `/digital-marketing-pro:aeo-audit` — diagnose AI Mode citation loss
-- `/digital-marketing-pro:content-decay-scan` — for content-side decline triage
-- `/digital-marketing-pro:content-engine` — for amplifying gainers
-- `scripts/seo_drift.py` — the underlying drift engine
+- `/digital-marketing-pro:gsc-ai-performance` — récupérer le GSC AI Performance Report (source d'entrée)
+- `/digital-marketing-pro:seo-audit` — diagnostiquer les causes du déclin
+- `/digital-marketing-pro:aeo-audit` — diagnostiquer la perte de citation en AI Mode
+- `/digital-marketing-pro:content-decay-scan` — pour le triage du déclin côté contenu
+- `/digital-marketing-pro:content-engine` — pour amplifier les gagnants
+- `scripts/seo_drift.py` — le moteur de dérive sous-jacent

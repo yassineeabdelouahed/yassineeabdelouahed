@@ -1,85 +1,85 @@
 ---
 name: campaign-status
-description: "Unified status dashboard for every tracked campaign across connected platforms — produces a summary table with health indicators, live spend and performance metrics, a 7-day execution history, pending approvals with age, KPI variance classification (on track / at risk / behind), flagged issues, and next scheduled actions. Reports only; it changes nothing on any platform. Triggers on \"/digital-marketing-pro:campaign-status\", \"what campaigns are running right now\", \"any failed executions or stuck approvals\", \"status of the Q1-Launch campaign\", \"which campaigns are behind target\". Reads the brand's campaign registry, execution log, and approval queue via campaign-tracker.py, execution-tracker.py, and approval-manager.py, plus live metrics from connected platform MCPs."
+description: "Tableau de bord de statut unifié pour chaque campagne suivie sur toutes les plateformes connectées — produit un tableau récapitulatif avec indicateurs de santé, dépenses et indicateurs de performance en direct, un historique d'exécution sur 7 jours, les approbations en attente avec leur ancienneté, une classification de l'écart aux KPI (dans les temps / à risque / en retard), les problèmes signalés et les prochaines actions planifiées. Se contente de rendre compte ; ne modifie rien sur aucune plateforme. Se déclenche sur \"/digital-marketing-pro:campaign-status\", \"what campaigns are running right now\", \"any failed executions or stuck approvals\", \"status of the Q1-Launch campaign\", \"which campaigns are behind target\". Lit le registre de campagnes de la marque, le journal d'exécution et la file d'approbation via campaign-tracker.py, execution-tracker.py et approval-manager.py, ainsi que les indicateurs en direct depuis les MCP de plateformes connectés."
 ---
 
 # /digital-marketing-pro:campaign-status
 
-## Purpose
+## Objectif
 
-Provide a unified view of all active campaigns across every connected platform — ads, email, social, blog — with their current status, live performance metrics, execution history, and any pending approvals or scheduled actions. Eliminates the need to check each platform individually and surfaces issues (paused campaigns, failed executions, stale content) before they become problems.
+Fournir une vue unifiée de toutes les campagnes actives sur chaque plateforme connectée — publicité, e-mail, réseaux sociaux, blog — avec leur statut actuel, leurs indicateurs de performance en direct, leur historique d'exécution, et toute approbation ou action planifiée en attente. Élimine le besoin de vérifier chaque plateforme individuellement et met au jour les problèmes (campagnes en pause, exécutions échouées, contenu obsolète) avant qu'ils ne deviennent des incidents.
 
-## Input Required
+## Données requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Scope**: All active campaigns, a specific campaign by name or ID, or a specific platform
-  (e.g., "Google Ads campaigns only", "email campaigns", "campaign named Q1-Launch")
-- **Detail level**: Summary (one-line status per campaign) or detailed (full metrics, execution history,
-  and next actions per campaign)
-- **Time window** (optional): How far back to include execution history. Defaults to last 7 days
-- **Status filter** (optional): Filter by campaign status — active, paused, scheduled, completed, failed.
-  Defaults to active + paused + scheduled
-- **Sort order** (optional): Sort campaigns by spend, performance, recency, or status.
-  Defaults to platform grouping
+- **Périmètre** : toutes les campagnes actives, une campagne spécifique par nom ou ID, ou une plateforme spécifique
+  (ex. : « campagnes Google Ads uniquement », « campagnes e-mail », « campagne nommée Q1-Launch »)
+- **Niveau de détail** : résumé (un statut par ligne et par campagne) ou détaillé (indicateurs complets, historique d'exécution
+  et prochaines actions par campagne)
+- **Fenêtre temporelle** (facultatif) : jusqu'où remonter dans l'historique d'exécution. Par défaut, les 7 derniers jours
+- **Filtre de statut** (facultatif) : filtrer par statut de campagne — active, en pause, planifiée, terminée, échouée.
+  Par défaut, active + en pause + planifiée
+- **Ordre de tri** (facultatif) : trier les campagnes par dépense, performance, récence ou statut.
+  Par défaut, regroupement par plateforme
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **List all tracked campaigns**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns`
-   to get the campaign registry with names, platforms, statuses, creation dates, and assigned KPI targets.
-3. **Pull execution history**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/execution-tracker.py" --brand {slug} --action get-history --limit {N}`
-   to retrieve recent execution logs — what ran, when it ran, outcome (success/failure/skipped), error messages if any,
-   and the user or automation that triggered it.
-4. **Check pending approvals**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/approval-manager.py" --brand {slug} --action list-pending`
-   to surface any campaigns, creatives, or content pieces awaiting review before they can go live.
-   Include submission date and age in hours for each pending item.
-5. **Pull live metrics from connected MCPs**: For each active campaign, query the relevant platform MCP
-   (google-ads, meta-marketing, linkedin-marketing, tiktok-ads, mailchimp, etc.) for current performance:
-   - Spend: total spend, daily spend, budget consumed
-   - Performance: impressions, clicks, CTR, conversions, CPA, ROAS
-   - Engagement: open rate, click-through rate, bounce rate, video views
-   - Platform-specific: quality score, relevance score, deliverability rate
-6. **Aggregate by platform and status**: Group campaigns by platform and status, calculate platform-level totals
-   (total campaigns, total spend, total conversions, average CPA/ROAS), and flag any discrepancies between
-   tracked campaigns and what the live platform reports.
-7. **Calculate performance vs KPIs**: For each active campaign with defined targets, compute actual vs target
-   for primary KPIs. Classify as:
-   - **On track** (green): Meeting or exceeding targets
-   - **At risk** (yellow): Within 15% of target with negative trend
-   - **Behind** (red): Missing target by >15%
-8. **Flag issues requiring attention**: Identify problems that need action:
-   - Campaigns paused unexpectedly or by the platform (policy violation, billing issue)
-   - Executions that failed with errors
-   - Campaigns running past their planned end date
-   - Stale campaigns with no activity in 7+ days
-   - Campaigns exceeding budget pacing by >20%
-   - Approval bottlenecks older than 48 hours
-9. **Compile next scheduled actions**: List upcoming scheduled launches, budget changes, creative rotations,
-   A/B test completions, or automated optimizations from the execution log with dates and dependencies.
+1. **Charger le contexte de marque** : lisez `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis chargez `~/.claude-marketing/brands/{slug}/profile.json`. Appliquez la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. Vérifiez aussi la présence de guidelines dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, chargez les restrictions. Vérifiez les procédures d'agence (SOP) dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demandez : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou poursuivez avec les valeurs par défaut.
+2. **Lister toutes les campagnes suivies** : exécutez `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns`
+   pour obtenir le registre de campagnes avec noms, plateformes, statuts, dates de création et objectifs de KPI assignés.
+3. **Récupérer l'historique d'exécution** : exécutez `python "${CLAUDE_PLUGIN_ROOT}/scripts/execution-tracker.py" --brand {slug} --action get-history --limit {N}`
+   pour récupérer les journaux d'exécution récents — ce qui a tourné, quand, le résultat (succès/échec/ignoré), les messages d'erreur le cas échéant,
+   et l'utilisateur ou l'automatisation qui l'a déclenché.
+4. **Vérifier les approbations en attente** : exécutez `python "${CLAUDE_PLUGIN_ROOT}/scripts/approval-manager.py" --brand {slug} --action list-pending`
+   pour faire remonter toute campagne, création ou contenu en attente de relecture avant sa mise en ligne.
+   Incluez la date de soumission et l'ancienneté en heures pour chaque élément en attente.
+5. **Récupérer les indicateurs en direct depuis les MCP connectés** : pour chaque campagne active, interrogez le MCP de la plateforme concernée
+   (google-ads, meta-marketing, linkedin-marketing, tiktok-ads, mailchimp, etc.) pour la performance actuelle :
+   - Dépense : dépense totale, dépense journalière, budget consommé
+   - Performance : impressions, clics, CTR, conversions, CPA, ROAS
+   - Engagement : taux d'ouverture, taux de clics, taux de rebond, vues vidéo
+   - Spécifique à la plateforme : quality score, score de pertinence, taux de délivrabilité
+6. **Agréger par plateforme et par statut** : regroupez les campagnes par plateforme et par statut, calculez les totaux au niveau plateforme
+   (nombre total de campagnes, dépense totale, conversions totales, CPA/ROAS moyens), et signalez tout écart entre
+   les campagnes suivies et ce que rapporte réellement la plateforme.
+7. **Calculer la performance vs les KPI** : pour chaque campagne active avec des objectifs définis, calculez le réel vs la cible
+   pour les KPI principaux. Classez comme :
+   - **Dans les temps** (vert) : atteint ou dépasse les objectifs
+   - **À risque** (jaune) : à moins de 15 % de l'objectif avec une tendance négative
+   - **En retard** (rouge) : rate l'objectif de plus de 15 %
+8. **Signaler les problèmes nécessitant une attention** : identifiez les problèmes qui appellent une action :
+   - Campagnes mises en pause de façon inattendue ou par la plateforme (violation de politique, problème de facturation)
+   - Exécutions ayant échoué avec des erreurs
+   - Campagnes dépassant leur date de fin prévue
+   - Campagnes obsolètes sans activité depuis 7 jours ou plus
+   - Campagnes dépassant le rythme budgétaire de plus de 20 %
+   - Goulots d'approbation vieux de plus de 48 heures
+9. **Compiler les prochaines actions planifiées** : listez les lancements planifiés à venir, les changements de budget, les rotations de créations,
+   les fins de tests A/B, ou les optimisations automatisées issues du journal d'exécution, avec dates et dépendances.
 
-## Output
+## Résultat
 
-A structured campaign status dashboard containing:
+Un tableau de bord de statut de campagne structuré contenant :
 
-- **Campaign summary table**: Campaign name, platform, status (active/paused/scheduled/completed/failed),
-  days running, total spend, key metric (conversions or leads), CPA or ROAS, and health indicator (green/yellow/red)
-- **Active campaigns by platform**: Grouped view with platform-level totals — number of campaigns, total spend,
-  total conversions, average CPA, average ROAS, and platform health status
-- **Execution history** (last 7 days): Chronological log of actions taken — campaign launches, pauses, budget
-  changes, creative swaps, bid adjustments, email sends — with timestamps, outcomes, and actor (manual or automated)
-- **Pending approvals**: List of items awaiting review with requester name, submission date, type (creative,
-  campaign launch, budget change, content), age in hours, and direct reference to the item
-- **Performance vs KPIs**: For each active campaign, actual performance vs the KPI targets set at campaign
-  creation — on track, at risk, or behind, with variance percentage and trend direction
-- **Flagged issues**: Priority-ordered list of problems requiring attention with severity (critical/warning/info),
-  description, affected campaign, and recommended resolution
-- **Next scheduled actions**: Upcoming automated or planned actions with dates, descriptions, dependencies,
-  and responsible party
-- **Quick actions**: Suggested immediate next steps based on current status — approve pending items, investigate
-  failures, pause underperformers, scale winners, extend successful campaigns
+- **Tableau récapitulatif des campagnes** : nom de campagne, plateforme, statut (active/en pause/planifiée/terminée/échouée),
+  jours d'exécution, dépense totale, indicateur clé (conversions ou leads), CPA ou ROAS, et indicateur de santé (vert/jaune/rouge)
+- **Campagnes actives par plateforme** : vue regroupée avec totaux au niveau plateforme — nombre de campagnes, dépense totale,
+  conversions totales, CPA moyen, ROAS moyen, et statut de santé de la plateforme
+- **Historique d'exécution** (7 derniers jours) : journal chronologique des actions menées — lancements de campagne, mises en pause, changements
+  de budget, changements de créations, ajustements d'enchères, envois d'e-mail — avec horodatages, résultats, et acteur (manuel ou automatisé)
+- **Approbations en attente** : liste des éléments en attente de relecture avec nom du demandeur, date de soumission, type (création,
+  lancement de campagne, changement de budget, contenu), ancienneté en heures, et référence directe à l'élément
+- **Performance vs KPI** : pour chaque campagne active, performance réelle vs les objectifs de KPI définis à la création de la campagne —
+  dans les temps, à risque, ou en retard, avec pourcentage d'écart et direction de la tendance
+- **Problèmes signalés** : liste priorisée des problèmes nécessitant une attention avec sévérité (critique/avertissement/information),
+  description, campagne concernée, et résolution recommandée
+- **Prochaines actions planifiées** : actions automatisées ou planifiées à venir avec dates, descriptions, dépendances,
+  et partie responsable
+- **Actions rapides** : prochaines étapes immédiates suggérées selon le statut actuel — approuver les éléments en attente, investiguer
+  les échecs, mettre en pause les moins performants, monter en puissance les gagnants, prolonger les campagnes réussies
 
-## Agents Used
+## Agents utilisés
 
-- **execution-coordinator** — Execution history retrieval, approval queue management, scheduled action tracking, cross-platform status aggregation, and issue flagging
-- **analytics-analyst** — Live performance metrics interpretation, KPI comparison, campaign health assessment, and performance-based recommendations
+- **execution-coordinator** — Récupération de l'historique d'exécution, gestion de la file d'approbation, suivi des actions planifiées, agrégation transversale du statut, et signalement des problèmes
+- **analytics-analyst** — Interprétation des indicateurs de performance en direct, comparaison aux KPI, évaluation de la santé des campagnes, et recommandations fondées sur la performance

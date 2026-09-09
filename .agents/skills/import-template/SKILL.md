@@ -1,75 +1,97 @@
 ---
 name: import-template
-description: "Import deliverable templates — proposal formats, report structures, brief layouts — and convert them into reusable placeholder-marked templates saved per brand, so commands like /digital-marketing-pro:performance-report and /digital-marketing-pro:content-brief format their output your way instead of the default. Triggers on \"/digital-marketing-pro:import-template\", \"our reports always follow this format\", \"use this proposal structure\", \"add a template for content briefs\", \"make the output match our deliverable format\". Reads the active brand profile, maps each template to its matching command, and updates the brand's template manifest on save."
+description: "Importer des modèles de livrables — formats de proposition, structures de rapport, mises en page de brief — et les convertir en modèles réutilisables marqués par des placeholders, enregistrés par marque, afin que des commandes comme /digital-marketing-pro:performance-report et /digital-marketing-pro:content-brief formatent leur résultat à votre façon plutôt que par défaut. Se déclenche sur « /digital-marketing-pro:import-template », « nos rapports suivent toujours ce format », « utilise cette structure de proposition », « ajoute un modèle pour les briefs de contenu », « fais correspondre le résultat à notre format de livrable ». Lit le profil de marque actif, associe chaque modèle à sa commande correspondante, et met à jour le manifeste de modèles de la marque à l'enregistrement."
 ---
 
 # /digital-marketing-pro:import-template
 
-## Purpose
+## Objectif
 
-Import deliverable templates that define the output format for plugin commands. Templates specify section structure, content requirements, and formatting rules for proposals, reports, briefs, presentations, and other marketing deliverables.
+Importer des modèles de livrables qui définissent le format de sortie des commandes
+du plugin. Les modèles précisent la structure des sections, les exigences de contenu,
+et les règles de formatage pour les propositions, rapports, briefs, présentations, et
+autres livrables marketing.
 
-When a command like `/digital-marketing-pro:performance-report` runs, it checks for a custom template first. If one exists, the output follows the template format instead of the default.
+Quand une commande comme `/digital-marketing-pro:performance-report` s'exécute, elle
+vérifie d'abord l'existence d'un modèle personnalisé. Si un existe, le résultat suit
+le format du modèle plutôt que le format par défaut.
 
-## Input Required
+## Informations requises
 
-The user provides:
+L'utilisateur fournit :
 
-- **Template content**: Pasted template structure, section headings, or format specifications
-- **Template name**: What this template is for (e.g., "proposal", "performance-report", "content-brief", "campaign-plan")
-- **Description** (optional): When to use this template
+- **Contenu du modèle** : Structure de modèle collée, titres de section, ou spécifications de format
+- **Nom du modèle** : À quoi sert ce modèle (par exemple, « proposal », « performance-report », « content-brief », « campaign-plan »)
+- **Description** (optionnel) : Quand utiliser ce modèle
 
-If the user doesn't provide a name, infer it from the content structure.
+Si l'utilisateur ne fournit pas de nom, l'inférer à partir de la structure du contenu.
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for existing guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json`
+   pour obtenir le slug actif, puis charger
+   `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les
+   règles de conformité pour les marchés ciblés
+   (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel.
+   **Vérifier aussi les guidelines existantes** dans
+   `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes,
+   charger les restrictions et les fichiers de catégorie pertinents. Vérifier les
+   templates personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`.
+   Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque
+   n'existe, demander : « Configurer une marque d'abord
+   (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
 
-2. **Analyze the template structure**:
-   - Identify section headings and hierarchy
-   - Note content requirements per section (length, data points, format)
-   - Identify placeholder markers for dynamic content
-   - Detect format preferences (bullet vs. narrative, data-heavy vs. summary)
+2. **Analyser la structure du modèle** :
+   - Identifier les titres de section et la hiérarchie
+   - Noter les exigences de contenu par section (longueur, points de données, format)
+   - Identifier les marqueurs de placeholder pour le contenu dynamique
+   - Détecter les préférences de format (puces vs récit, orienté données vs synthèse)
 
-3. **Structure into a reusable template**:
-   - Preserve all section headings and ordering
-   - Add content guidance comments (what goes in each section)
-   - Mark which sections are required vs. optional
-   - Include format notes (max length, style requirements)
-   - Add placeholder syntax: `{{variable_name}}` for dynamic content
+3. **Structurer en modèle réutilisable** :
+   - Préserver tous les titres de section et leur ordre
+   - Ajouter des commentaires de guidance de contenu (ce qui va dans chaque section)
+   - Marquer les sections obligatoires vs optionnelles
+   - Inclure des notes de format (longueur max, exigences de style)
+   - Ajouter la syntaxe de placeholder : `{{variable_name}}` pour le contenu dynamique
 
-4. **Map to commands** — Identify which plugin commands should use this template:
-   - Template named "performance-report" → `/digital-marketing-pro:performance-report`
-   - Template named "proposal" → campaign plan outputs
-   - Template named "content-brief" → `/digital-marketing-pro:content-brief`
-   - Custom templates can be referenced by any module
+4. **Associer aux commandes** — Identifier quelles commandes du plugin devraient utiliser ce modèle :
+   - Modèle nommé « performance-report » → `/digital-marketing-pro:performance-report`
+   - Modèle nommé « proposal » → résultats de plan de campagne
+   - Modèle nommé « content-brief » → `/digital-marketing-pro:content-brief`
+   - Les modèles personnalisés peuvent être référencés par n'importe quel module
 
-5. **Check for existing templates** — If a template with this name already exists:
-   - Show the current template
-   - Ask: replace (overwrite) or keep both (rename new one)
+5. **Vérifier les modèles existants** — Si un modèle portant ce nom existe déjà :
+   - Montrer le modèle actuel
+   - Demander : remplacer (écraser) ou garder les deux (renommer le nouveau)
 
-6. **Save the template**:
-   - Save using `guidelines-manager.py --brand {slug} --action save-template --name {name}`
-   - Or write directly to `~/.claude-marketing/brands/{slug}/templates/{name}.md`
-   - Update the template manifest with name and description
+6. **Enregistrer le modèle** :
+   - Enregistrer avec `guidelines-manager.py --brand {slug} --action save-template --name {name}`
+   - Ou écrire directement dans `~/.claude-marketing/brands/{slug}/templates/{name}.md`
+   - Mettre à jour le manifeste de modèles avec le nom et la description
 
-7. **Confirm and explain usage**:
-   - Show which commands will use this template
-   - Explain that the template applies to this brand only
-   - Note: agency-wide templates can be duplicated across brands
+7. **Confirmer et expliquer l'usage** :
+   - Montrer quelles commandes utiliseront ce modèle
+   - Expliquer que le modèle s'applique uniquement à cette marque
+   - Remarque : les modèles à l'échelle de l'agence peuvent être dupliqués entre les marques
 
-## Output
+## Résultat
 
-- Confirmation with template name and section count
-- Preview of the structured template
-- List of commands that will use this template
-- Suggestion: "Next time you run `/digital-marketing-pro:{matching-command}`, the output will follow this template format."
+- Confirmation avec le nom du modèle et le nombre de sections
+- Aperçu du modèle structuré
+- Liste des commandes qui utiliseront ce modèle
+- Suggestion : « La prochaine fois que vous exécuterez
+  `/digital-marketing-pro:{matching-command}`, le résultat suivra le format de ce
+  modèle. »
 
-## Examples
+## Exemples
 
-**User**: "Our monthly performance reports should have these sections: Executive Summary (3 bullet max), Channel Performance (table with MTD vs target), Campaign Highlights (top 3 campaigns), Issues & Risks, Recommendations, Next Month Plan"
+**Utilisateur** : « Nos rapports de performance mensuels devraient avoir ces
+sections : Executive Summary (3 puces max), Channel Performance (tableau avec MTD vs
+objectif), Campaign Highlights (top 3 campagnes), Issues & Risks, Recommendations,
+Next Month Plan »
 
-**Result**: Saves to `~/.claude-marketing/brands/{slug}/templates/performance-report.md`:
+**Résultat** : Enregistre dans
+`~/.claude-marketing/brands/{slug}/templates/performance-report.md` :
 ```markdown
 # Monthly Performance Report Template
 
@@ -108,9 +130,11 @@ If the user doesn't provide a name, infer it from the content structure.
 - {{next_month_plan}}
 ```
 
-**User**: "Our proposals always follow this format: Cover page with client name and date, Situation Analysis, Objectives, Strategy, Tactical Plan by Channel, Budget Breakdown, Timeline, Team, Terms"
+**Utilisateur** : « Nos propositions suivent toujours ce format : Page de couverture
+avec nom du client et date, Situation Analysis, Objectives, Strategy, Tactical Plan
+by Channel, Budget Breakdown, Timeline, Team, Terms »
 
-**Result**: Saves to `~/.claude-marketing/brands/{slug}/templates/proposal.md`:
+**Résultat** : Enregistre dans `~/.claude-marketing/brands/{slug}/templates/proposal.md` :
 ```markdown
 # Client Proposal Template
 
@@ -149,7 +173,7 @@ If the user doesn't provide a name, infer it from the content structure.
 <!-- Payment terms, contract duration, deliverables, SLAs -->
 ```
 
-## Reference Files
+## Fichiers de référence
 
-- `skills/context-engine/guidelines-framework.md` — How templates integrate with the guideline system
-- `scripts/guidelines-manager.py` — CLI for template CRUD operations (--action list-templates, save-template, get-template)
+- `skills/context-engine/guidelines-framework.md` — Comment les modèles s'intègrent au système de guidelines
+- `scripts/guidelines-manager.py` — CLI pour les opérations CRUD sur les modèles (--action list-templates, save-template, get-template)

@@ -1,60 +1,60 @@
 ---
 name: content-brief
-description: "Create a production-ready content brief a writer can execute without extra context — keyword map (primary, secondary, related questions), H2/H3 outline with key points and word-count targets, brand voice guidance, on-page SEO checklist, visual/media spec with AI-generation and C2PA provenance notes, and success metrics. Triggers on \"/digital-marketing-pro:content-brief\", \"write a brief for this topic\", \"brief a blog post on X\", \"what should this article cover\", \"outline and SEO requirements for a pillar page\". Preferred upstream of /digital-marketing-pro:content-engine. Reads the brand profile, guidelines, and compliance rules."
+description: "Créer un brief de contenu prêt pour la production qu'un rédacteur peut exécuter sans contexte supplémentaire — carte de mots-clés (primaire, secondaires, questions connexes), plan H2/H3 avec points clés et objectifs de nombre de mots, guidance de voix de marque, checklist SEO on-page, spécification visuelle/média avec notes de génération IA et de provenance C2PA, et indicateurs de succès. Se déclenche sur \"/digital-marketing-pro:content-brief\", \"write a brief for this topic\", \"brief a blog post on X\", \"what should this article cover\", \"outline and SEO requirements for a pillar page\". En amont privilégié de /digital-marketing-pro:content-engine. Lit le profil de marque, les guidelines, et les règles de conformité."
 argument-hint: "[topic]"
 ---
 
 # /digital-marketing-pro:content-brief
 
-## Purpose
+## Objectif
 
-Create a production-ready content brief that a writer can execute without additional context. Includes keyword strategy, content outline, structural requirements, brand voice guidelines, and on-page SEO specifications.
+Créer un brief de contenu prêt pour la production qu'un rédacteur peut exécuter sans contexte supplémentaire. Inclut la stratégie de mots-clés, le plan de contenu, les exigences structurelles, les guidelines de voix de marque, et les spécifications SEO on-page.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Topic or working title**: What the content is about
-- **Content type**: Blog post, landing page, pillar page, guide, whitepaper, etc.
-- **Target keyword(s)**: Primary keyword or topic cluster (or ask for research)
-- **Target audience**: Who this content is for
-- **Funnel stage**: Awareness, consideration, or decision
-- **Competitive URLs**: Optional — existing content to outperform
+- **Sujet ou titre de travail** : De quoi parle le contenu
+- **Type de contenu** : Article de blog, landing page, page pilier, guide, livre blanc, etc.
+- **Mot(s)-clé(s) cible(s)** : Mot-clé primaire ou cluster thématique (ou demander une recherche)
+- **Audience cible** : Pour qui ce contenu est destiné
+- **Étape du tunnel** : Notoriété, considération, ou décision
+- **URL concurrentes** : Optionnel — contenu existant à surpasser
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Research keyword landscape: primary keyword, secondary keywords, related questions
-3. Analyze top-ranking content for the target keyword to identify gaps and opportunities
-4. Define content angle and unique value proposition versus existing results
-5. Build a detailed outline with H2/H3 structure, key points per section, and word count targets
-6. Specify on-page SEO requirements: title tag, meta description, URL slug, internal links, schema markup
-7. Document voice and tone guidelines specific to this piece
-8. Define success metrics: target ranking, traffic, engagement, conversions
+1. **Charger le contexte de la marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également l'existence de directives** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier les modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. Rechercher le paysage de mots-clés : mot-clé primaire, mots-clés secondaires, questions connexes
+3. Analyser le contenu le mieux classé pour le mot-clé cible afin d'identifier les écarts et les opportunités
+4. Définir l'angle de contenu et la proposition de valeur unique par rapport aux résultats existants
+5. Construire un plan détaillé avec structure H2/H3, points clés par section, et objectifs de nombre de mots
+6. Spécifier les exigences SEO on-page : balise title, meta description, slug d'URL, liens internes, balisage de schéma
+7. Documenter les guidelines de voix et de ton spécifiques à cette pièce
+8. Définir les indicateurs de succès : classement cible, trafic, engagement, conversions
 
-## Output
+## Résultat
 
-A structured content brief containing:
+Un brief de contenu structuré contenant :
 
-- Target keyword map (primary, secondary, related/co-occurring terms, questions to answer) — note keyword placement (title, intro, ≥2 H2s, conclusion, meta), not a density target
-- Content outline with heading hierarchy and key points per section
-- Word count target and content format specifications
-- Brand voice and tone guidance for this specific piece
-- On-page SEO checklist (title, meta, headers, links, schema)
-- Visual/media requirements — specify whether visuals are AI-generated and which model (see guidance below)
-- Internal and external linking strategy
-- Success metrics and measurement plan
+- Carte de mots-clés cible (primaire, secondaires, termes connexes/co-occurrents, questions à répondre) — noter le placement des mots-clés (title, intro, ≥2 H2, conclusion, meta), pas un objectif de densité
+- Plan de contenu avec hiérarchie de titres et points clés par section
+- Objectif de nombre de mots et spécifications de format de contenu
+- Guidance de voix et de ton spécifique à cette pièce
+- Checklist SEO on-page (title, meta, titres, liens, schéma)
+- Exigences visuelles/média — préciser si les visuels sont générés par IA et avec quel modèle (voir la guidance ci-dessous)
+- Stratégie de maillage interne et externe
+- Indicateurs de succès et plan de mesure
 
-### Visual/media spec — AI generation guidance (May 2026)
+### Spécification visuelle/média — guidance de génération IA (mai 2026)
 
-If the piece includes AI-generated images, infographics, or short video, the brief must specify:
+Si la pièce inclut des images, infographies, ou vidéos courtes générées par IA, le brief doit préciser :
 
-- **Model**: `Nano Banana Pro` for high-fidelity stills with on-image text (best text rendering in any image model as of May 2026), `Gemini Omni` for connected hero-image + cutdown-video + audio packages, or alternatives (Midjourney, Firefly, gpt-image-1) for concept work.
-- **Provenance marking**: All AI assets shipped to EU readers must carry C2PA Content Credentials. Default to "sign all AI visuals" — the cost of running `/digital-marketing-pro:c2pa-metadata` post-production is trivial vs the Article 50 penalty exposure.
-- **Deepfake / synthetic-human flag**: If the visual includes a photoreal human (real or synthetic), call this out — synthetic humans typically need a visible disclosure under the final EU Article 50 Guidelines (applicable 2 Aug 2026).
-- **Editorial-responsibility owner**: For long-form on health, finance, elections, or public-safety topics, name the human editor who will sign off. AI-written copy on these topics requires the editorial-responsibility carve-out to skip an "AI-assisted" byline disclosure — see `skills/context-engine/compliance-rules.md` §1.1b.i.
+- **Modèle** : `Nano Banana Pro` pour des images fixes haute fidélité avec du texte intégré à l'image (meilleur rendu de texte parmi tous les modèles d'image en date de mai 2026), `Gemini Omni` pour des packages connectés image héroïque + vidéo découpée + audio, ou des alternatives (Midjourney, Firefly, gpt-image-1) pour le travail de concept.
+- **Marquage de provenance** : Tous les actifs IA livrés à des lecteurs de l'UE doivent porter des Content Credentials C2PA. Par défaut, « signer tous les visuels IA » — le coût d'exécuter `/digital-marketing-pro:c2pa-metadata` en post-production est négligeable comparé à l'exposition aux sanctions de l'article 50.
+- **Signal deepfake / humain synthétique** : Si le visuel inclut un humain photoréaliste (réel ou synthétique), le signaler — les humains synthétiques nécessitent généralement une divulgation visible selon les Lignes directrices finales de l'article 50 de l'UE (applicables au 2 août 2026).
+- **Responsable éditorial** : Pour les contenus longs sur la santé, la finance, les élections, ou la sécurité publique, nommer l'éditeur humain qui donnera son aval. Le texte rédigé par IA sur ces sujets nécessite l'exception de responsabilité éditoriale pour se dispenser d'une divulgation de mention « assisté par IA » — voir `skills/context-engine/compliance-rules.md` §1.1b.i.
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** — Outline structure, angle, voice guidelines, content strategy
-- **seo-specialist** — Keyword research, on-page SEO requirements, competitive content analysis
+- **content-creator** — Structure du plan, angle, guidelines de voix, stratégie de contenu
+- **seo-specialist** — Recherche de mots-clés, exigences SEO on-page, analyse de contenu concurrentiel

@@ -1,43 +1,43 @@
-# Anomaly Diagnosis — Metric Investigation Framework
+# Diagnostic d'anomalies — Cadre d'investigation des métriques
 
-## Core Principle
+## Principe fondamental
 
-When a metric moves unexpectedly, the first question is never "What happened?" — it is "Is the data correct?" Most apparent anomalies are measurement errors. After confirming data integrity, follow a structured diagnostic tree to isolate root cause before taking action.
+Lorsqu'une métrique évolue de manière inattendue, la première question n'est jamais « Que s'est-il passé ? » — c'est « Les données sont-elles correctes ? » La plupart des anomalies apparentes sont des erreurs de mesure. Après avoir confirmé l'intégrité des données, suivre un arbre de diagnostic structuré pour isoler la cause profonde avant d'agir.
 
 ---
 
-## Verification Checklist — Run This First
+## Liste de contrôle de vérification — À exécuter en premier
 
-Before investigating any anomaly, complete this checklist to rule out data and tracking issues.
+Avant d'investiguer toute anomalie, compléter cette liste de contrôle pour écarter les problèmes de données et de suivi.
 
-### Data Integrity Checks
+### Vérifications de l'intégrité des données
 
-- [ ] **Tracking code present** — Verify the tracking pixel/tag is still firing on all relevant pages
-- [ ] **Tag manager audit** — Check for recent container changes, paused tags, or version rollbacks
-- [ ] **Consent management** — Confirm consent banners are functioning and not blocking tracking
-- [ ] **Bot filtering** — Verify bot/spider filtering is active; check for traffic spikes from known bot IPs
-- [ ] **Cross-platform reconciliation** — Compare the metric across two independent sources (e.g., GA4 vs platform data vs backend)
-- [ ] **Date range alignment** — Ensure comparison periods have equal days and account for holidays or seasonal shifts
-- [ ] **Currency / timezone consistency** — Confirm reports use consistent timezone and currency settings
-- [ ] **Attribution window** — Check if the attribution window changed (Meta's default shifts, Google Ads attribution model change)
-- [ ] **Sampling** — In GA4, check if data is sampled (yellow shield icon); switch to unsampled export if needed
-- [ ] **Conversion counting** — Verify conversion counting method (one-per-click vs every conversion) hasn't changed
-- [ ] **Server / site uptime** — Check for outages, slow load times, or 500 errors during the anomaly period
+- [ ] **Code de suivi présent** — vérifier que le pixel/tag de suivi se déclenche toujours sur toutes les pages concernées
+- [ ] **Audit du gestionnaire de balises** — vérifier les changements récents de conteneur, les balises mises en pause, ou les retours en arrière de version
+- [ ] **Gestion du consentement** — confirmer que les bannières de consentement fonctionnent et ne bloquent pas le suivi
+- [ ] **Filtrage des bots** — vérifier que le filtrage des bots/robots est actif ; contrôler les pics de trafic provenant d'IP de bots connues
+- [ ] **Réconciliation multiplateforme** — comparer la métrique entre deux sources indépendantes (par ex. GA4 vs données de plateforme vs backend)
+- [ ] **Alignement de la plage de dates** — s'assurer que les périodes de comparaison ont un nombre de jours égal et tenir compte des jours fériés ou des variations saisonnières
+- [ ] **Cohérence devise/fuseau horaire** — confirmer que les rapports utilisent des paramètres de fuseau horaire et de devise cohérents
+- [ ] **Fenêtre d'attribution** — vérifier si la fenêtre d'attribution a changé (changement du réglage par défaut de Meta, changement de modèle d'attribution de Google Ads)
+- [ ] **Échantillonnage** — dans GA4, vérifier si les données sont échantillonnées (icône de bouclier jaune) ; basculer vers un export non échantillonné si nécessaire
+- [ ] **Comptage des conversions** — vérifier que la méthode de comptage des conversions (une par clic vs chaque conversion) n'a pas changé
+- [ ] **Disponibilité du serveur/site** — vérifier les pannes, les temps de chargement lents, ou les erreurs 500 pendant la période de l'anomalie
 
-### Quick Validation Questions
+### Questions de validation rapide
 
-| Question | If Yes | If No |
+| Question | Si oui | Si non |
 |----------|--------|-------|
-| Does the anomaly appear in multiple data sources? | Likely real — proceed to diagnosis | Likely a tracking issue — investigate data pipeline |
-| Did the anomaly start on a specific date/time? | Check for deployments, config changes, or external events on that date | Gradual drift — look for algorithmic or competitive shifts |
-| Is the anomaly isolated to one segment (device, geo, channel)? | Investigate that segment specifically | Sitewide issue — check infrastructure or major external factor |
-| Are other metrics moving in expected correlation? | Pattern is consistent — likely a real shift | Broken correlation suggests data error or mixed signals |
+| L'anomalie apparaît-elle dans plusieurs sources de données ? | Probablement réelle — passer au diagnostic | Probablement un problème de suivi — investiguer le pipeline de données |
+| L'anomalie a-t-elle commencé à une date/heure précise ? | Vérifier les déploiements, changements de configuration, ou événements externes à cette date | Dérive progressive — chercher des changements algorithmiques ou concurrentiels |
+| L'anomalie est-elle isolée à un segment (appareil, géographie, canal) ? | Investiguer spécifiquement ce segment | Problème à l'échelle du site — vérifier l'infrastructure ou un facteur externe majeur |
+| D'autres métriques évoluent-elles selon la corrélation attendue ? | Le motif est cohérent — probablement un changement réel | Une corrélation rompue suggère une erreur de données ou des signaux mélangés |
 
 ---
 
-## Diagnostic Decision Trees
+## Arbres de décision diagnostiques
 
-### Traffic Drop Decision Tree
+### Arbre de décision — Baisse de trafic
 
 ```
 Traffic dropped significantly
@@ -77,7 +77,7 @@ Traffic dropped significantly
 │       └── Check for Google Analytics configuration change
 ```
 
-### Conversion Rate Drop Decision Tree
+### Arbre de décision — Baisse du taux de conversion
 
 ```
 Conversion rate dropped
@@ -107,7 +107,7 @@ Conversion rate dropped
     └── Platform algorithm change affecting traffic quality
 ```
 
-### Cost Spike Decision Tree
+### Arbre de décision — Pic de coût
 
 ```
 CPA / CPM / CPC spiked
@@ -131,7 +131,7 @@ CPA / CPM / CPC spiked
     └── If systemic → Diversify channels, improve organic/owned
 ```
 
-### Revenue Decline Decision Tree
+### Arbre de décision — Baisse de revenu
 
 ```
 Revenue declined
@@ -155,108 +155,108 @@ Revenue declined
 
 ---
 
-## Common Root Causes Table
+## Tableau des causes profondes courantes
 
-| Metric | Common Root Cause | Probability | Investigation Step |
+| Métrique | Cause profonde courante | Probabilité | Étape d'investigation |
 |--------|-------------------|-------------|-------------------|
-| Traffic drop (all) | Tracking code removed/broken | High | Check tag manager + page source |
-| Traffic drop (organic) | Google algorithm update | Medium | Check Search Console + industry chatter |
-| Traffic drop (organic) | Robots.txt blocking pages | Medium | Fetch robots.txt and compare to prior version |
-| Traffic drop (paid) | Budget exhausted mid-period | High | Check daily spend pacing |
-| Traffic drop (paid) | Ad disapprovals | High | Check ad status in platform |
-| CVR drop | Site speed regression | Medium | Check Core Web Vitals before/after |
-| CVR drop | Checkout bug on specific device | High | Test checkout on all devices + browsers |
-| CVR drop | Traffic mix shifted to lower-intent | Medium | Segment CVR by source |
-| CPC spike | Seasonal auction pressure (Q4, Black Friday) | High | Check YoY CPC trends |
-| CPC spike | Quality Score decline | Medium | Check QS trend and landing page experience |
-| CPM spike | New competitor entering auction | Medium | Check auction insights / Ad Library |
-| Revenue drop | Inventory / stockout on best sellers | High | Check product availability |
-| Revenue drop | Promotion ended (post-promo hangover) | Medium | Compare to promotion calendar |
-| ROAS decline | Attribution window change | Medium | Check platform attribution settings |
-| Email open rate drop | ISP deliverability issue | Medium | Check by ISP domain in ESP |
+| Baisse de trafic (globale) | Code de suivi retiré/cassé | Élevée | Vérifier le gestionnaire de balises + le code source de la page |
+| Baisse de trafic (organique) | Mise à jour d'algorithme Google | Moyenne | Vérifier Search Console + les échanges sectoriels |
+| Baisse de trafic (organique) | Robots.txt bloquant des pages | Moyenne | Récupérer le robots.txt et le comparer à la version précédente |
+| Baisse de trafic (payant) | Budget épuisé en cours de période | Élevée | Vérifier le rythme de dépense quotidien |
+| Baisse de trafic (payant) | Refus de publicités | Élevée | Vérifier le statut des annonces sur la plateforme |
+| Baisse du CVR | Régression de la vitesse du site | Moyenne | Vérifier les Core Web Vitals avant/après |
+| Baisse du CVR | Bug de paiement sur un appareil spécifique | Élevée | Tester le paiement sur tous les appareils + navigateurs |
+| Baisse du CVR | Mix de trafic déplacé vers une intention plus faible | Moyenne | Segmenter le CVR par source |
+| Pic de CPC | Pression saisonnière sur les enchères (T4, Black Friday) | Élevée | Vérifier les tendances de CPC en glissement annuel |
+| Pic de CPC | Baisse du Quality Score | Moyenne | Vérifier la tendance du QS et l'expérience de la landing page |
+| Pic de CPM | Nouveau concurrent entrant dans l'enchère | Moyenne | Vérifier les insights d'enchère / Ad Library |
+| Baisse de revenu | Rupture de stock sur les meilleures ventes | Élevée | Vérifier la disponibilité des produits |
+| Baisse de revenu | Fin de promotion (contrecoup post-promo) | Moyenne | Comparer au calendrier de promotions |
+| Baisse du ROAS | Changement de fenêtre d'attribution | Moyenne | Vérifier les paramètres d'attribution de la plateforme |
+| Baisse du taux d'ouverture email | Problème de délivrabilité chez un FAI | Moyenne | Vérifier par domaine de FAI dans l'ESP |
 
 ---
 
-## Resolution Playbooks
+## Playbooks de résolution
 
-### Playbook: Traffic Recovery
+### Playbook : rétablissement du trafic
 
-1. Confirm the drop is real (verification checklist complete)
-2. Identify the affected channel and segment
-3. For paid: check budget, ad status, bid strategy, approval status
-4. For organic: check GSC for crawl errors, index coverage, ranking changes
-5. For email: check deliverability, send volume, list health
-6. Implement fix and monitor recovery for 48-72 hours
-7. If no recovery, escalate to channel specialist or platform support
-8. Document root cause and update monitoring alerts
+1. Confirmer que la baisse est réelle (liste de contrôle de vérification complétée)
+2. Identifier le canal et le segment affectés
+3. Pour le payant : vérifier le budget, le statut des annonces, la stratégie d'enchères, le statut d'approbation
+4. Pour l'organique : vérifier GSC pour les erreurs de crawl, la couverture d'index, les changements de classement
+5. Pour l'e-mail : vérifier la délivrabilité, le volume d'envoi, la santé de la liste
+6. Mettre en œuvre le correctif et surveiller le rétablissement pendant 48 à 72 heures
+7. En l'absence de rétablissement, escalader vers un spécialiste du canal ou le support de la plateforme
+8. Documenter la cause profonde et mettre à jour les alertes de suivi
 
-### Playbook: Conversion Rate Recovery
+### Playbook : rétablissement du taux de conversion
 
-1. Confirm tracking integrity on conversion pages
-2. Segment CVR by device, geo, source, and landing page
-3. Check for site changes in the deployment log
-4. Run QA on the full conversion funnel (search → PDP → cart → checkout → confirmation)
-5. Test on multiple devices and browsers
-6. If site change identified, revert or A/B test the change
-7. If traffic quality issue, adjust targeting or bid strategy
-8. Monitor CVR for 7 days post-fix to confirm recovery
+1. Confirmer l'intégrité du suivi sur les pages de conversion
+2. Segmenter le CVR par appareil, géographie, source et landing page
+3. Vérifier les changements de site dans le journal de déploiement
+4. Réaliser une QA sur l'ensemble du tunnel de conversion (recherche → fiche produit → panier → paiement → confirmation)
+5. Tester sur plusieurs appareils et navigateurs
+6. Si un changement de site est identifié, annuler ou tester ce changement en A/B
+7. En cas de problème de qualité de trafic, ajuster le ciblage ou la stratégie d'enchères
+8. Surveiller le CVR pendant 7 jours après le correctif pour confirmer le rétablissement
 
-### Playbook: Cost Optimization
+### Playbook : optimisation des coûts
 
-1. Confirm cost spike is not a data lag or reporting error
-2. Isolate to specific campaigns, ad sets, or keywords
-3. Check for self-competition (audience overlap, keyword cannibalization)
-4. Review bid strategy (is automated bidding over-indexing on expensive clicks?)
-5. Reduce spend on worst-performing segments by 20-30%
-6. Refresh creative if CTR has declined (creative fatigue)
-7. Expand audience or keyword set to find cheaper inventory
-8. Monitor for 5-7 days and reassess
+1. Confirmer que le pic de coût n'est pas un retard de données ou une erreur de reporting
+2. Isoler à des campagnes, groupes d'annonces ou mots-clés spécifiques
+3. Vérifier l'auto-concurrence (chevauchement d'audience, cannibalisation de mots-clés)
+4. Revoir la stratégie d'enchères (l'enchère automatisée surindexe-t-elle sur des clics coûteux ?)
+5. Réduire la dépense de 20 à 30 % sur les segments les moins performants
+6. Rafraîchir la création si le CTR a baissé (fatigue créative)
+7. Étendre l'audience ou l'ensemble de mots-clés pour trouver un inventaire moins cher
+8. Surveiller pendant 5 à 7 jours et réévaluer
 
 ---
 
-## Alert Configuration Framework
+## Cadre de configuration des alertes
 
-### Recommended Alert Thresholds
+### Seuils d'alerte recommandés
 
-| Metric | Alert Type | Threshold | Frequency | Notification |
+| Métrique | Type d'alerte | Seuil | Fréquence | Notification |
 |--------|-----------|-----------|-----------|-------------|
-| Site sessions | Drop | > 20% below 7-day average | Daily | Slack + Email |
-| Conversion rate | Drop | > 15% below 30-day average | Daily | Slack + Email |
-| Daily revenue | Drop | > 25% below 7-day average | Daily | Slack + Email |
-| CPA / CAC | Spike | > 30% above 30-day average | Daily | Slack |
-| Ad spend pacing | Overspend | > 110% of daily budget | Daily | Slack |
-| Ad spend pacing | Underspend | < 70% of daily budget | Daily | Slack |
-| Bounce rate | Spike | > 20% above 30-day average | Daily | Email |
-| Page load time (LCP) | Degradation | > 3.0 seconds | Real-time | PagerDuty |
-| Email bounce rate | Spike | > 5% on any send | Per send | Slack |
-| 404 error rate | Spike | > 50 unique 404s per day | Daily | Slack |
+| Sessions sur le site | Baisse | > 20 % sous la moyenne sur 7 jours | Quotidienne | Slack + E-mail |
+| Taux de conversion | Baisse | > 15 % sous la moyenne sur 30 jours | Quotidienne | Slack + E-mail |
+| Revenu quotidien | Baisse | > 25 % sous la moyenne sur 7 jours | Quotidienne | Slack + E-mail |
+| CPA / CAC | Pic | > 30 % au-dessus de la moyenne sur 30 jours | Quotidienne | Slack |
+| Rythme des dépenses publicitaires | Sur-dépense | > 110 % du budget quotidien | Quotidienne | Slack |
+| Rythme des dépenses publicitaires | Sous-dépense | < 70 % du budget quotidien | Quotidienne | Slack |
+| Taux de rebond | Pic | > 20 % au-dessus de la moyenne sur 30 jours | Quotidienne | E-mail |
+| Temps de chargement de page (LCP) | Dégradation | > 3,0 secondes | Temps réel | PagerDuty |
+| Taux de rebond des e-mails | Pic | > 5 % sur un envoi | Par envoi | Slack |
+| Taux d'erreurs 404 | Pic | > 50 erreurs 404 uniques par jour | Quotidienne | Slack |
 
-### Alert Design Principles
+### Principes de conception des alertes
 
-- [ ] Use percentage deviation from rolling average, not absolute thresholds (accounts for seasonality)
-- [ ] Apply day-of-week adjustments for metrics with strong weekly patterns (e.g., B2B traffic dips on weekends)
-- [ ] Set a "cool-down" period (4-6 hours) to avoid duplicate alerts for the same issue
-- [ ] Require two consecutive data points before triggering (avoids one-off blips)
-- [ ] Include direct links to relevant dashboards in every alert message
-- [ ] Route alerts to the metric owner, not a shared channel that everyone ignores
-- [ ] Review and tune thresholds monthly — if an alert fires more than 3 times/week with no action taken, the threshold is wrong
+- [ ] Utiliser un écart en pourcentage par rapport à une moyenne glissante, pas des seuils absolus (tient compte de la saisonnalité)
+- [ ] Appliquer des ajustements par jour de la semaine pour les métriques à forts motifs hebdomadaires (par ex. baisse du trafic B2B le week-end)
+- [ ] Fixer une période de « refroidissement » (4-6 heures) pour éviter les alertes en double pour le même problème
+- [ ] Exiger deux points de données consécutifs avant de déclencher (évite les à-coups ponctuels)
+- [ ] Inclure des liens directs vers les tableaux de bord pertinents dans chaque message d'alerte
+- [ ] Router les alertes vers le propriétaire de la métrique, pas vers un canal partagé que tout le monde ignore
+- [ ] Revoir et ajuster les seuils mensuellement — si une alerte se déclenche plus de 3 fois par semaine sans action prise, le seuil est mal calibré
 
 ---
 
-## Investigation Documentation Template
+## Modèle de documentation d'investigation
 
-When completing any anomaly investigation, record findings using this format:
+Lors de la finalisation de toute investigation d'anomalie, enregistrer les constats selon ce format :
 
-| Field | Detail |
+| Champ | Détail |
 |-------|--------|
-| **Date detected** | |
-| **Metric affected** | |
-| **Magnitude** | X% change from baseline |
-| **Duration** | Start date — End date (or ongoing) |
-| **Root cause** | Confirmed / Hypothesized |
-| **Root cause detail** | |
-| **Data integrity confirmed?** | Yes / No |
-| **Resolution** | |
-| **Recovery confirmed?** | Yes / No — Date metric returned to baseline |
-| **Prevention** | Alert or process added to prevent recurrence |
-| **Documented by** | |
+| **Date de détection** | |
+| **Métrique affectée** | |
+| **Ampleur** | Variation en % par rapport à la référence |
+| **Durée** | Date de début — Date de fin (ou en cours) |
+| **Cause profonde** | Confirmée / Hypothétique |
+| **Détail de la cause profonde** | |
+| **Intégrité des données confirmée ?** | Oui / Non |
+| **Résolution** | |
+| **Rétablissement confirmé ?** | Oui / Non — Date à laquelle la métrique est revenue à la référence |
+| **Prévention** | Alerte ou processus ajouté pour éviter la récurrence |
+| **Documenté par** | |

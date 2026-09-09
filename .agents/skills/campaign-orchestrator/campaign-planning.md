@@ -1,116 +1,116 @@
-# Campaign Planning — Brief Templates & Process
+# Campaign Planning — Modèles de brief et processus
 
-## Campaign Brief Template
+## Modèle de brief de campagne
 
-### 1. Campaign Overview
-- **Campaign name**: [Descriptive name following naming convention]
-- **Campaign type**: Awareness / Lead Gen / Product Launch / Seasonal / Always-On / ABM / Event / Retention
-- **Owner**: [Person responsible]
-- **Approval required from**: [Stakeholders]
-- **Status**: Draft / In Review / Approved / Live / Complete
+### 1. Aperçu de la campagne
+- **Nom de la campagne** : [nom descriptif suivant la convention de nommage]
+- **Type de campagne** : notoriété / génération de leads / lancement produit / saisonnière / always-on / ABM / événement / rétention
+- **Propriétaire** : [personne responsable]
+- **Approbation requise de** : [parties prenantes]
+- **Statut** : brouillon / en revue / approuvé / en ligne / terminé
 
-### 2. Objective
-- **Primary objective**: [SMART goal — see framework below]
-- **Secondary objective**: [Optional]
-- **Success metric**: [How we'll measure primary objective]
-- **Target**: [Specific number]
+### 2. Objectif
+- **Objectif principal** : [objectif SMART — voir le cadre ci-dessous]
+- **Objectif secondaire** : [facultatif]
+- **Métrique de succès** : [comment nous mesurerons l'objectif principal]
+- **Cible** : [chiffre précis]
 
 ### 3. Audience
-- **Primary persona**: [Name from brand profile]
-- **Secondary persona**: [If applicable]
-- **Targeting parameters**: [Demographics, behaviors, interests, custom audiences]
-- **Exclusions**: [Who NOT to target]
-- **Estimated audience size**: [Platform estimate]
+- **Persona principal** : [nom issu du profil de marque]
+- **Persona secondaire** : [le cas échéant]
+- **Paramètres de ciblage** : [démographie, comportements, intérêts, audiences personnalisées]
+- **Exclusions** : [qui NE PAS cibler]
+- **Taille d'audience estimée** : [estimation de la plateforme]
 
-### 4. Messaging
-- **Key message**: [One sentence core message]
-- **Supporting messages**: [2-3 proof points]
-- **CTA**: [Primary call to action]
-- **Offer**: [If applicable — discount, trial, content, etc.]
-- **Tone**: [Reference brand voice profile + any campaign-specific adjustments]
+### 4. Message
+- **Message clé** : [message central en une phrase]
+- **Messages de soutien** : [2-3 points de preuve]
+- **CTA** : [appel à l'action principal]
+- **Offre** : [le cas échéant — remise, essai, contenu, etc.]
+- **Ton** : [référencer le profil de voix de marque + tout ajustement spécifique à la campagne]
 
-### 5. Channels & Budget
-| Channel | Budget | Objective | Key Formats |
+### 5. Canaux et budget
+| Canal | Budget | Objectif | Formats clés |
 |---------|--------|-----------|-------------|
-| [Channel] | $X | [Channel goal] | [Ad formats] |
+| [Canal] | X $ | [objectif du canal] | [formats publicitaires] |
 
-- **Total budget**: $X
-- **Contingency/reserve**: 10% of total
+- **Budget total** : X $
+- **Contingence/réserve** : 10 % du total
 
-### 6. Timeline
-| Phase | Dates | Key Activities |
+### 6. Chronologie
+| Phase | Dates | Activités clés |
 |-------|-------|---------------|
-| Pre-launch | [dates] | Creative production, landing pages, tracking setup |
-| Launch | [date] | Go-live, monitoring, early optimization |
-| Sustain | [dates] | Ongoing optimization, creative refresh |
-| Wrap-up | [dates] | Final optimization, reporting, post-mortem |
+| Pré-lancement | [dates] | Production créative, landing pages, mise en place du suivi |
+| Lancement | [date] | Mise en ligne, surveillance, optimisation précoce |
+| Maintien | [dates] | Optimisation continue, rafraîchissement créatif |
+| Bilan | [dates] | Optimisation finale, reporting, bilan |
 
-### 7. Creative Requirements
-- **Assets needed**: [List all creative deliverables with specs]
-- **Landing page**: [URL or spec]
-- **UTM parameters**: [Per utm-tracking.md conventions]
+### 7. Besoins créatifs
+- **Actifs nécessaires** : [liste de tous les livrables créatifs avec spécifications]
+- **Landing page** : [URL ou spécification]
+- **Paramètres UTM** : [selon les conventions d'utm-tracking.md]
 
-### 8. KPIs & Reporting
-| KPI | Target | Measurement Tool | Reporting Cadence |
+### 8. KPI et reporting
+| KPI | Cible | Outil de mesure | Cadence de reporting |
 |-----|--------|-----------------|-------------------|
-| [Metric] | [Target] | [Tool] | [Daily/Weekly] |
+| [Métrique] | [cible] | [outil] | [quotidien/hebdomadaire] |
 
-### 9. Risks & Contingencies
-| Risk | Likelihood | Impact | Mitigation |
+### 9. Risques et contingences
+| Risque | Probabilité | Impact | Atténuation |
 |------|-----------|--------|-----------|
-| [Risk] | H/M/L | H/M/L | [Plan] |
+| [Risque] | H/M/F | H/M/F | [plan] |
 
 ---
 
-## SMART Objective Framework
+## Cadre d'objectif SMART
 
-| Component | Definition | Marketing Example |
+| Composant | Définition | Exemple marketing |
 |-----------|-----------|------------------|
-| **Specific** | Exactly what will be achieved | "Generate marketing qualified leads" |
-| **Measurable** | Quantified target | "500 MQLs" |
-| **Achievable** | Realistic given resources | "Based on $50 CPL benchmark" (from brand history or a recorded benchmark-book entry — never from memory) |
-| **Relevant** | Aligned to business goal | "Supports Q2 pipeline target" |
-| **Time-bound** | Clear deadline | "By June 30" |
+| **Spécifique** | Exactement ce qui sera accompli | « Générer des leads qualifiés marketing » |
+| **Mesurable** | Objectif quantifié | « 500 MQL » |
+| **Atteignable** | Réaliste selon les ressources | « Basé sur un référentiel de CPL de 50 $ » (issu de l'historique de la marque ou d'une entrée enregistrée du livre de référentiels — jamais de mémoire) |
+| **Pertinent** | Aligné à l'objectif business | « Soutient l'objectif de pipeline du T2 » |
+| **Temporellement défini** | Échéance claire | « D'ici le 30 juin » |
 
-**Full example**: "Generate 500 MQLs at <$50 CPL by June 30 through a multi-channel campaign targeting mid-market CFOs."
+**Exemple complet** : « Générer 500 MQL à moins de 50 $ de CPL d'ici le 30 juin via une campagne multicanal ciblant les DAF du mid-market. »
 
 ---
 
-## Campaign Type Taxonomy
+## Taxonomie des types de campagne
 
-| Type | Duration | Primary Goal | Typical Channels |
+| Type | Durée | Objectif principal | Canaux typiques |
 |------|----------|-------------|-----------------|
-| **Awareness** | 4-12 weeks | Brand lift, reach | Social, display, video, PR |
-| **Lead Generation** | Ongoing | Pipeline | Search, social, content, email |
-| **Product Launch** | 2-8 weeks | Adoption, revenue | All channels, phased |
-| **Seasonal** | 2-6 weeks | Revenue spike | Paid, email, social |
-| **Always-On** | Continuous | Baseline performance | Search, retargeting, email |
-| **ABM** | 8-16 weeks | Account engagement | LinkedIn, direct mail, email, events |
-| **Event** | 6-12 weeks | Registration, attendance | Email, social, paid, partners |
-| **Retention** | Ongoing | Churn reduction | Email, in-app, success |
+| **Notoriété** | 4-12 semaines | Lift de marque, portée | Social, display, vidéo, RP |
+| **Génération de leads** | Continu | Pipeline | Recherche, social, contenu, e-mail |
+| **Lancement produit** | 2-8 semaines | Adoption, chiffre d'affaires | Tous canaux, par phases |
+| **Saisonnière** | 2-6 semaines | Pic de chiffre d'affaires | Payant, e-mail, social |
+| **Always-on** | Continu | Performance de base | Recherche, retargeting, e-mail |
+| **ABM** | 8-16 semaines | Engagement des comptes | LinkedIn, courrier direct, e-mail, événements |
+| **Événement** | 6-12 semaines | Inscription, participation | E-mail, social, payant, partenaires |
+| **Rétention** | Continu | Réduction du churn | E-mail, in-app, succès client |
 
 ---
 
-## Campaign Naming Convention
+## Convention de nommage des campagnes
 
 ```
-[Year]-[Quarter]-[Type]-[Audience]-[Short Description]
+[Année]-[Trimestre]-[Type]-[Audience]-[Description courte]
 ```
 
-Examples:
+Exemples :
 - `2026-Q2-launch-midmarket-product-v2`
 - `2026-Q3-seasonal-all-back-to-school`
 - `2026-Q1-abm-enterprise-target-accounts`
 
 ---
 
-## Resource Requirements Checklist
+## Checklist des besoins en ressources
 
-| Resource | Awareness | Lead Gen | Product Launch | Seasonal |
+| Ressource | Notoriété | Génération de leads | Lancement produit | Saisonnière |
 |----------|-----------|----------|---------------|----------|
-| Copywriter | 5-10 hrs | 10-20 hrs | 20-40 hrs | 10-15 hrs |
-| Designer | 10-20 hrs | 10-15 hrs | 20-40 hrs | 10-20 hrs |
-| Media buyer | 5-10 hrs | 10-20 hrs | 15-25 hrs | 10-15 hrs |
+| Rédacteur | 5-10 h | 10-20 h | 20-40 h | 10-15 h |
+| Designer | 10-20 h | 10-15 h | 20-40 h | 10-20 h |
+| Media buyer | 5-10 h | 10-20 h | 15-25 h | 10-15 h |
 | Landing pages | 1 | 1-3 | 2-5 | 1-2 |
-| Email sequences | 0-1 | 3-5 | 5-10 | 2-3 |
-| Ad variations | 5-10 | 10-20 | 15-30 | 10-15 |
+| Séquences e-mail | 0-1 | 3-5 | 5-10 | 2-3 |
+| Variations d'annonces | 5-10 | 10-20 | 15-30 | 10-15 |

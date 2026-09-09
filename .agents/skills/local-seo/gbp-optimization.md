@@ -1,354 +1,354 @@
-# Google Business Profile Optimization Guide
+# Guide d'optimisation de la fiche Google Business Profile
 
-> Google Business Profile (formerly Google My Business) is the single most influential factor in local pack rankings. A fully optimized GBP generates 7x more clicks than an incomplete one. Businesses with 100+ photos receive 520% more calls and 2,717% more direction requests than the average listing.
+> Google Business Profile (anciennement Google My Business) est le facteur unique le plus influent dans les classements du pack local. Une fiche GBP entièrement optimisée génère 7 fois plus de clics qu'une fiche incomplète. Les entreprises comptant plus de 100 photos reçoivent 520 % d'appels et 2 717 % de demandes d'itinéraire en plus par rapport à la fiche moyenne.
 
 ---
 
-## Profile Completeness Checklist
+## Checklist d'exhaustivité de la fiche
 
-Every field in GBP contributes to ranking signals, user trust, or conversion actions. Complete profiles rank higher and convert better.
+Chaque champ de GBP contribue aux signaux de classement, à la confiance de l'utilisateur ou aux actions de conversion. Les profils complets sont mieux classés et convertissent mieux.
 
-| Field | Impact | Priority | Notes |
+| Champ | Impact | Priorité | Notes |
 |-------|--------|----------|-------|
-| Business Name | Critical (ranking) | P0 | Must match real-world name exactly. No keyword stuffing — Google suspends for this |
-| Primary Category | Critical (ranking) | P0 | Single biggest ranking factor after proximity. Choose the most specific category available |
-| Address | Critical (ranking) | P0 | Must match NAP across all citations. Use Suite/Unit format consistently |
-| Phone Number | High (ranking + conversion) | P0 | Use a local number, not toll-free. Must match citations |
-| Website URL | High (conversion) | P0 | Link to location-specific page, not homepage (for multi-location) |
-| Hours of Operation | High (ranking + UX) | P0 | Inaccurate hours trigger negative reviews. Update holidays, seasonal changes |
-| Secondary Categories | High (ranking) | P1 | Add every legitimately relevant category (up to 9 additional). Each unlocks new attributes |
-| Business Description | Medium (conversion) | P1 | 750 characters max. Front-load keywords naturally. Describe services, differentiators, service area |
-| Attributes | Medium (ranking + UX) | P1 | Check every applicable attribute. Google uses these for filter searches |
-| Photos | High (engagement) | P1 | Minimum 25, target 100+. Cover all categories. Add new photos monthly |
-| Products | Medium (conversion) | P1 | List every product/service with descriptions, prices, and photos |
-| Services | Medium (ranking) | P1 | Structured service list with descriptions. Keywords matter here |
-| Google Posts | Medium (engagement) | P2 | Weekly minimum. Keeps profile active and adds keyword signals |
-| Q&A | Medium (conversion) | P2 | Seed 10-20 common questions with answers. Monitor for competitor sabotage |
-| Booking URL | Medium (conversion) | P2 | Direct link to appointment scheduling reduces friction |
-| Messaging | Low-Medium (conversion) | P3 | Enable only if you can respond within 24 hours consistently |
+| Nom de l'entreprise | Critique (classement) | P0 | Doit correspondre exactement au nom réel. Pas de bourrage de mots-clés — Google suspend pour cela |
+| Catégorie principale | Critique (classement) | P0 | Le facteur de classement le plus important après la proximité. Choisir la catégorie la plus spécifique disponible |
+| Adresse | Critique (classement) | P0 | Doit correspondre au NAP sur toutes les citations. Utiliser le format Suite/Unité de manière cohérente |
+| Numéro de téléphone | Élevé (classement + conversion) | P0 | Utiliser un numéro local, pas un numéro gratuit. Doit correspondre aux citations |
+| URL du site web | Élevé (conversion) | P0 | Lier vers la page spécifique à l'établissement, pas la page d'accueil (pour le multi-établissements) |
+| Horaires d'ouverture | Élevé (classement + UX) | P0 | Des horaires inexacts déclenchent des avis négatifs. Mettre à jour les jours fériés, les changements saisonniers |
+| Catégories secondaires | Élevé (classement) | P1 | Ajouter chaque catégorie légitimement pertinente (jusqu'à 9 supplémentaires). Chacune débloque de nouveaux attributs |
+| Description de l'entreprise | Moyen (conversion) | P1 | 750 caractères maximum. Placer les mots-clés en tête naturellement. Décrire les services, les différenciateurs, la zone de service |
+| Attributs | Moyen (classement + UX) | P1 | Cocher chaque attribut applicable. Google les utilise pour les recherches à filtres |
+| Photos | Élevé (engagement) | P1 | Minimum 25, cible 100+. Couvrir toutes les catégories. Ajouter de nouvelles photos chaque mois |
+| Produits | Moyen (conversion) | P1 | Lister chaque produit/service avec descriptions, prix et photos |
+| Services | Moyen (classement) | P1 | Liste de services structurée avec descriptions. Les mots-clés comptent ici |
+| Google Posts | Moyen (engagement) | P2 | Hebdomadaire au minimum. Maintient le profil actif et ajoute des signaux de mots-clés |
+| Questions-réponses | Moyen (conversion) | P2 | Alimenter avec 10 à 20 questions courantes accompagnées de réponses. Surveiller le sabotage par des concurrents |
+| URL de réservation | Moyen (conversion) | P2 | Un lien direct vers la prise de rendez-vous réduit la friction |
+| Messagerie | Faible-Moyen (conversion) | P3 | À activer uniquement si vous pouvez répondre en moins de 24 heures de manière constante |
 
 ---
 
-## Primary and Secondary Categories
+## Catégories principale et secondaires
 
-### How Categories Affect Rankings
+### Comment les catégories affectent les classements
 
-The primary category is the strongest single signal for which searches your listing appears in. Google uses it to determine relevance for query matching. A dentist with the primary category "Dentist" will outrank one with "Dental Clinic" for "dentist near me" searches, even if both offer identical services.
+La catégorie principale est le signal unique le plus fort déterminant dans quelles recherches votre fiche apparaît. Google l'utilise pour déterminer la pertinence lors de la correspondance de requêtes. Un dentiste avec la catégorie principale « Dentiste » surclassera celui utilisant « Clinique dentaire » pour les recherches « dentiste près de moi », même si les deux offrent des services identiques.
 
-### Category Selection Strategy
+### Stratégie de sélection des catégories
 
-1. **Research competitors**: Check what primary category the top 3 local pack results use for your target keywords. Use GMBSpy, Pleper, or manual inspection to identify competitor categories
-2. **Be specific**: "Personal Injury Attorney" outranks "Lawyer" for personal injury searches. "Thai Restaurant" outranks "Restaurant" for Thai food searches. Always choose the most specific applicable category
-3. **Use secondary categories liberally**: Add every category that genuinely describes your business. A dentist might add: Cosmetic Dentist, Pediatric Dentist, Emergency Dental Service, Teeth Whitening Service, Dental Implants Provider
-4. **Monitor category changes**: Google adds and removes categories regularly. Check quarterly for new categories that apply to your business
-5. **One primary only**: You cannot rank for everything. Choose the primary based on your highest-value service and search volume
+1. **Étudier les concurrents** : Vérifier quelle catégorie principale utilisent les 3 premiers résultats du pack local pour vos mots-clés cibles. Utiliser GMBSpy, Pleper, ou une inspection manuelle pour identifier les catégories des concurrents
+2. **Être spécifique** : « Avocat en dommages corporels » surclasse « Avocat » pour les recherches de dommages corporels. « Restaurant thaïlandais » surclasse « Restaurant » pour les recherches de cuisine thaïlandaise. Toujours choisir la catégorie applicable la plus spécifique
+3. **Utiliser les catégories secondaires généreusement** : Ajouter chaque catégorie qui décrit véritablement votre entreprise. Un dentiste pourrait ajouter : Dentiste esthétique, Dentiste pédiatrique, Service dentaire d'urgence, Service de blanchiment dentaire, Prestataire d'implants dentaires
+4. **Surveiller les évolutions de catégories** : Google ajoute et supprime des catégories régulièrement. Vérifier trimestriellement les nouvelles catégories applicables à votre entreprise
+5. **Une seule catégorie principale** : Vous ne pouvez pas être classé pour tout. Choisir la catégorie principale en fonction de votre service le plus rentable et du volume de recherche
 
-### Category Impact on Attributes
+### Impact des catégories sur les attributs
 
-Each category unlocks different attributes. Adding "Restaurant" gives you menu attributes. Adding "Hotel" gives you amenity attributes. The more categories you add, the more attributes become available — and attributes influence both rankings and user filtering.
+Chaque catégorie débloque des attributs différents. Ajouter « Restaurant » donne accès aux attributs de menu. Ajouter « Hôtel » donne accès aux attributs d'équipements. Plus vous ajoutez de catégories, plus d'attributs deviennent disponibles — et les attributs influencent à la fois les classements et le filtrage par l'utilisateur.
 
-### Common Category Mistakes
+### Erreurs de catégorie courantes
 
-- Adding categories for services you do not actually offer (policy violation, risks suspension)
-- Using a broad category when a specific one exists
-- Not updating categories when the business adds new service lines
-- Ignoring category-specific features that unlock (menu editor for restaurants, class schedule for fitness studios)
+- Ajouter des catégories pour des services que vous n'offrez pas réellement (infraction à la politique, risque de suspension)
+- Utiliser une catégorie large alors qu'une catégorie spécifique existe
+- Ne pas mettre à jour les catégories lorsque l'entreprise ajoute de nouvelles lignes de service
+- Ignorer les fonctionnalités spécifiques à la catégorie qui se débloquent (éditeur de menu pour les restaurants, calendrier de cours pour les studios de fitness)
 
 ---
 
-## Business Attributes
+## Attributs de l'entreprise
 
-Attributes serve two purposes: they help Google match your listing to filtered searches (e.g., "wheelchair accessible restaurants near me"), and they build user trust by answering questions before users ask.
+Les attributs remplissent deux fonctions : ils aident Google à faire correspondre votre fiche aux recherches filtrées (par exemple, « restaurants accessibles en fauteuil roulant près de moi »), et ils construisent la confiance de l'utilisateur en répondant aux questions avant même qu'elles ne soient posées.
 
-### Attribute Types
+### Types d'attributs
 
-| Type | Examples | Impact |
+| Type | Exemples | Impact |
 |------|----------|--------|
-| Factual | Wheelchair accessible, Free Wi-Fi, Outdoor seating, Parking available | Filter-based ranking and user trust |
-| Subjective | Popular for lunch, Good for groups, Cozy, Upscale | Google collects these from user input; you can suggest |
-| Identity | Black-owned, Women-led, Veteran-led, LGBTQ+ friendly | Matching for identity-based searches, growing in usage |
-| Service | Online appointments, Curbside pickup, Delivery, In-store shopping | Critical for service-based filtering post-COVID |
+| Factuel | Accessible en fauteuil roulant, Wi-Fi gratuit, Terrasse extérieure, Parking disponible | Classement basé sur les filtres et confiance de l'utilisateur |
+| Subjectif | Populaire pour le déjeuner, Bon pour les groupes, Chaleureux, Haut de gamme | Google les collecte à partir des retours utilisateurs ; vous pouvez suggérer |
+| Identité | Détenu par une personne noire, Dirigé par des femmes, Dirigé par un vétéran, LGBTQ+ friendly | Correspondance pour les recherches basées sur l'identité, usage croissant |
+| Service | Rendez-vous en ligne, Retrait en bordure de trottoir, Livraison, Shopping en magasin | Critique pour le filtrage basé sur le service post-COVID |
 
-### Attribute Best Practices
+### Bonnes pratiques d'attributs
 
-- Check every attribute that legitimately applies — leaving attributes blank is a missed signal
-- Review attributes quarterly; Google adds new ones without notification
-- Identity attributes are optional and should only be used if genuinely accurate
-- Service attributes (online appointments, curbside) significantly affect conversion for relevant searches
+- Cocher chaque attribut légitimement applicable — laisser des attributs vides est un signal manqué
+- Revoir les attributs trimestriellement ; Google en ajoute de nouveaux sans notification
+- Les attributs d'identité sont optionnels et ne doivent être utilisés que s'ils sont véritablement exacts
+- Les attributs de service (rendez-vous en ligne, retrait en bordure de trottoir) affectent significativement la conversion pour les recherches pertinentes
 
 ---
 
-## Photos Strategy
+## Stratégie photo
 
-Photos are an underinvested ranking and conversion signal. Listings with more than 100 photos receive dramatically more engagement than those with fewer than 10.
+Les photos sont un signal de classement et de conversion sous-investi. Les fiches avec plus de 100 photos reçoivent un engagement nettement supérieur à celles qui en ont moins de 10.
 
-### Required Photo Types
+### Types de photos requis
 
-| Photo Type | Minimum | Purpose | Tips |
+| Type de photo | Minimum | Objectif | Conseils |
 |------------|---------|---------|------|
-| Exterior | 3+ | Help customers find the building. Daytime, nighttime, street view | Include signage. Capture from the angle customers approach |
-| Interior | 5+ | Show the environment. Helps set expectations | Well-lit, clean, during business hours. Show key areas |
-| Team/Staff | 3+ | Build trust and personal connection | Professional but approachable. Include leadership and frontline |
-| Products | 5+ | Showcase what you sell | High quality, well-lit, consistent styling. Show variety |
-| At Work | 3+ | Demonstrate service delivery | Action shots of team serving customers or performing services |
-| Food & Drink | 10+ (restaurants) | Primary conversion driver for restaurants | Professional food photography. Show signature dishes |
-| Common Areas | 3+ | Meeting rooms, waiting areas, parking | Especially important for offices, medical, and hospitality |
+| Extérieur | 3+ | Aider les clients à trouver le bâtiment. Jour, nuit, vue de la rue | Inclure l'enseigne. Capturer sous l'angle d'approche des clients |
+| Intérieur | 5+ | Montrer l'environnement. Aide à fixer les attentes | Bien éclairé, propre, pendant les heures d'ouverture. Montrer les zones clés |
+| Équipe/Personnel | 3+ | Construire la confiance et la connexion personnelle | Professionnel mais accessible. Inclure la direction et le personnel de première ligne |
+| Produits | 5+ | Mettre en valeur ce que vous vendez | Haute qualité, bien éclairé, style cohérent. Montrer la variété |
+| En situation | 3+ | Démontrer la prestation de service | Photos d'action de l'équipe servant des clients ou réalisant des services |
+| Nourriture et boissons | 10+ (restaurants) | Principal moteur de conversion pour les restaurants | Photographie culinaire professionnelle. Montrer les plats signature |
+| Espaces communs | 3+ | Salles de réunion, zones d'attente, parking | Particulièrement important pour les bureaux, le médical et l'hôtellerie |
 
-### Photo Optimization
+### Optimisation des photos
 
-- **File naming**: Use descriptive, keyword-rich file names before upload (e.g., `chicago-dentist-office-interior.jpg` not `IMG_4521.jpg`)
-- **Geo-tagging**: Embed GPS coordinates in photo EXIF data matching the business address before upload
-- **Resolution**: Minimum 720px wide. Recommended 1200px+. Google displays photos prominently
-- **Frequency**: Upload 2-5 new photos per month to signal an active, current business
-- **Customer photos**: Encourage customers to upload photos. User-generated photos carry significant trust signals
-- **Remove bad photos**: Monitor for low-quality, irrelevant, or competitor-uploaded photos. Flag inappropriate photos for removal through GBP
-- **360 tours**: Google-approved photographers can create 360 virtual tours. These increase engagement time on the listing by 2x on average
-- **Cover photo**: Set the cover photo intentionally. While Google may override it, a strong cover photo influences first impressions
-- **Logo**: Upload a clear, correctly sized logo (250x250px minimum). This appears in Google Maps and search results
+- **Nommage des fichiers** : Utiliser des noms de fichiers descriptifs et riches en mots-clés avant le téléversement (par exemple, `interieur-cabinet-dentaire-chicago.jpg` et non `IMG_4521.jpg`)
+- **Géo-étiquetage** : Intégrer les coordonnées GPS dans les métadonnées EXIF de la photo correspondant à l'adresse de l'entreprise avant le téléversement
+- **Résolution** : Minimum 720px de large. Recommandé 1200px+. Google affiche les photos de manière proéminente
+- **Fréquence** : Téléverser 2 à 5 nouvelles photos par mois pour signaler une entreprise active et actuelle
+- **Photos des clients** : Encourager les clients à téléverser des photos. Les photos générées par les utilisateurs portent des signaux de confiance significatifs
+- **Supprimer les mauvaises photos** : Surveiller les photos de faible qualité, non pertinentes, ou téléversées par des concurrents. Signaler les photos inappropriées pour suppression via GBP
+- **Visites à 360°** : Des photographes agréés par Google peuvent créer des visites virtuelles à 360°. Celles-ci augmentent en moyenne de 2x le temps d'engagement sur la fiche
+- **Photo de couverture** : Définir intentionnellement la photo de couverture. Bien que Google puisse la remplacer, une photo de couverture forte influence les premières impressions
+- **Logo** : Téléverser un logo net et correctement dimensionné (250x250px minimum). Il apparaît dans Google Maps et les résultats de recherche
 
 ---
 
 ## Google Posts
 
-Google Posts appear directly on your GBP listing in search results and Google Maps. Recent posts are surfaced most prominently while older posts get archived on the listing (Events remain tied to the event date), so consistent posting is still essential for visibility.
+Les Google Posts apparaissent directement sur votre fiche GBP dans les résultats de recherche et Google Maps. Les publications récentes sont mises en avant le plus visiblement tandis que les plus anciennes sont archivées sur la fiche (les Événements restent liés à la date de l'événement), donc une publication régulière reste essentielle pour la visibilité.
 
-### Post Types
+### Types de publications
 
-| Type | Use Case | Character Limit | CTA Options |
+| Type | Cas d'usage | Limite de caractères | Options de CTA |
 |------|----------|-----------------|-------------|
-| What's New | News, tips, announcements, seasonal content | 1,500 chars (first 100 visible) | Learn more, Book, Order, Call, Sign up |
-| Event | Upcoming events with dates and times | 1,500 chars + date/time fields | RSVP, Get tickets, Learn more |
-| Offer | Promotions, discounts, sales | 1,500 chars + coupon code + T&C | Get offer, Order online, Redeem online |
+| Nouveautés | Actualités, conseils, annonces, contenu saisonnier | 1 500 caractères (100 premiers visibles) | En savoir plus, Réserver, Commander, Appeler, S'inscrire |
+| Événement | Événements à venir avec dates et heures | 1 500 caractères + champs date/heure | RSVP, Obtenir des billets, En savoir plus |
+| Offre | Promotions, réductions, soldes | 1 500 caractères + code promo + CGV | Obtenir l'offre, Commander en ligne, Utiliser en ligne |
 
-### Google Posts Best Practices
+### Bonnes pratiques des Google Posts
 
-- **Frequency**: Minimum 1 post per week. Top performers post 3-5 times per week
-- **Front-load the message**: Only the first 100 characters display without clicking "Read more." Put the hook and keyword in the opening
-- **Include a CTA**: Every post should have a clear call-to-action button. "Book" and "Learn More" are the highest-engagement CTAs
-- **Include a photo**: Posts with photos get 10x more engagement than text-only posts. Use 1200x900px minimum
-- **Use keywords naturally**: Google Posts contribute to keyword signals for your listing. Mention services, location, and specialties
-- **Track performance**: GBP Insights shows post views and CTA clicks. Use this to refine content strategy
-- **Seasonal content**: Align posts with holidays, local events, and seasonal services (e.g., "HVAC tune-up before summer" in April)
-- **No keyword stuffing**: Write for humans. Posts are visible to customers and should enhance trust, not look spammy
+- **Fréquence** : Minimum 1 publication par semaine. Les meilleurs publient 3 à 5 fois par semaine
+- **Message en tête** : Seuls les 100 premiers caractères s'affichent sans cliquer sur « Lire la suite ». Placer l'accroche et le mot-clé dans l'ouverture
+- **Inclure un CTA** : Chaque publication doit avoir un bouton d'appel à l'action clair. « Réserver » et « En savoir plus » sont les CTA à plus fort engagement
+- **Inclure une photo** : Les publications avec photos obtiennent 10 fois plus d'engagement que les publications textuelles seules. Utiliser 1200x900px minimum
+- **Utiliser les mots-clés naturellement** : Les Google Posts contribuent aux signaux de mots-clés de votre fiche. Mentionner les services, la localisation et les spécialités
+- **Suivre la performance** : GBP Insights affiche les vues des publications et les clics sur les CTA. Utiliser cela pour affiner la stratégie de contenu
+- **Contenu saisonnier** : Aligner les publications avec les jours fériés, les événements locaux et les services saisonniers (par exemple, « Révision CVC avant l'été » en avril)
+- **Pas de bourrage de mots-clés** : Écrire pour les humains. Les publications sont visibles par les clients et doivent renforcer la confiance, pas ressembler à du spam
 
 ---
 
-## Q&A Section Management
+## Gestion de la section questions-réponses
 
-The Q&A section on GBP is publicly visible and anyone can ask and answer questions — including competitors.
+La section Q&R sur GBP est visible publiquement et n'importe qui peut poser et répondre à des questions — y compris les concurrents.
 
-### Seeding Strategy
+### Stratégie d'alimentation
 
-Proactively seed your Q&A with 10-20 of the most common customer questions. Log into a personal Google account (not the business account) to ask the questions, then answer from the business account. This is Google-approved behavior.
+Alimenter proactivement votre section Q&R avec 10 à 20 des questions les plus courantes des clients. Se connecter avec un compte Google personnel (pas le compte de l'entreprise) pour poser les questions, puis répondre depuis le compte de l'entreprise. Ce comportement est approuvé par Google.
 
-### Recommended Seed Questions by Industry
+### Questions d'amorçage recommandées par secteur
 
-**Service Businesses (Plumbers, HVAC, Electricians)**
-- Do you offer free estimates?
-- What areas do you serve?
-- Are you licensed and insured?
-- Do you offer emergency service?
-- What are your hours?
+**Entreprises de services (plombiers, CVC, électriciens)**
+- Proposez-vous des devis gratuits ?
+- Quelles zones desservez-vous ?
+- Êtes-vous agréés et assurés ?
+- Proposez-vous un service d'urgence ?
+- Quels sont vos horaires ?
 
 **Restaurants**
-- Do you take reservations?
-- Do you have vegetarian/vegan options?
-- Is there outdoor seating?
-- Do you offer catering?
-- Is parking available?
+- Prenez-vous des réservations ?
+- Avez-vous des options végétariennes/végétaliennes ?
+- Y a-t-il une terrasse extérieure ?
+- Proposez-vous un service traiteur ?
+- Le parking est-il disponible ?
 
-**Healthcare (Dentists, Doctors, Chiropractors)**
-- Are you accepting new patients?
-- What insurance do you accept?
-- Do you offer payment plans?
-- How do I schedule an appointment?
-- What should I bring to my first visit?
+**Santé (dentistes, médecins, chiropracteurs)**
+- Acceptez-vous de nouveaux patients ?
+- Quelles assurances acceptez-vous ?
+- Proposez-vous des plans de paiement ?
+- Comment puis-je prendre rendez-vous ?
+- Que dois-je apporter à ma première visite ?
 
-**Retail**
-- Do you offer curbside pickup?
-- Can I return items in-store?
-- Do you price match?
-- What brands do you carry?
+**Commerce de détail**
+- Proposez-vous le retrait en bordure de trottoir ?
+- Puis-je retourner des articles en magasin ?
+- Faites-vous du prix aligné ?
+- Quelles marques proposez-vous ?
 
-### Q&A Monitoring
+### Surveillance des questions-réponses
 
-- Check Q&A weekly for new questions from real customers
-- Respond within 24 hours — unanswered questions erode trust
-- Watch for competitor-posted misleading questions or answers
-- Upvote your official answers to push them to the top
-- Flag inappropriate, spam, or fake questions for removal
-
----
-
-## Products and Services Sections
-
-### Products Section
-
-The Products section displays visually with photos, prices, and descriptions. It is separate from the Services section.
-
-- Add every product with a clear name, description (up to 1,000 characters), price (or price range), and photo
-- Organize products into collections for easy browsing
-- Include target keywords naturally in product descriptions
-- Link each product to the relevant page on your website
-- Update seasonally and when inventory changes
-
-### Services Section
-
-The Services section is structured as a list of service categories with individual services underneath.
-
-- Create service categories that match your primary and secondary GBP categories
-- Add every service you offer with a description (up to 300 characters per service)
-- Use keywords in service names and descriptions — Google uses these for relevance matching
-- Include pricing where possible (fixed price or range). Listings with prices receive higher engagement
-- Update when new services are added or discontinued
+- Vérifier les Q&R chaque semaine pour de nouvelles questions de vrais clients
+- Répondre dans les 24 heures — des questions sans réponse érodent la confiance
+- Surveiller les questions ou réponses trompeuses postées par des concurrents
+- Voter positivement pour vos réponses officielles afin de les faire remonter en tête
+- Signaler les questions inappropriées, spam ou fausses pour suppression
 
 ---
 
-## Business Description Optimization
+## Sections Produits et Services
 
-The business description has a 750-character limit and appears in the "About" section of the listing.
+### Section Produits
 
-### Writing Guidelines
+La section Produits s'affiche visuellement avec photos, prix et descriptions. Elle est distincte de la section Services.
 
-1. **First sentence**: State what you do, who you serve, and where. Front-load keywords. Example: "Serving Chicago's North Shore since 2005, Lakeside Dental provides comprehensive family dentistry including cleanings, implants, cosmetic dentistry, and emergency dental care."
-2. **Middle section**: Differentiate. What makes you different from competitors? Awards, specialties, unique approach, experience
-3. **Final sentence**: CTA. "Call today for a free consultation" or "Schedule your appointment online."
-4. **Keyword strategy**: Include primary service keywords, location names, and neighborhood references naturally
-5. **What to avoid**: Do not include URLs, phone numbers, promotional language ("best in town"), or ALL CAPS. These violate Google's guidelines and can trigger edits or suspension
+- Ajouter chaque produit avec un nom clair, une description (jusqu'à 1 000 caractères), un prix (ou une fourchette de prix), et une photo
+- Organiser les produits en collections pour faciliter la navigation
+- Inclure les mots-clés cibles naturellement dans les descriptions de produits
+- Lier chaque produit à la page correspondante de votre site web
+- Mettre à jour saisonnièrement et lors des changements de stock
 
----
+### Section Services
 
-## Hours and Special Hours
+La section Services est structurée comme une liste de catégories de services avec des services individuels en dessous.
 
-### Standard Hours
-- Set accurate hours for every day of the week
-- If hours vary by department (e.g., pharmacy hours vs store hours), set up separate listings for departments where applicable
-- "Open 24 hours" and "Closed" are both valid settings
-- Update immediately if hours change — incorrect hours are the number one driver of negative reviews for local businesses
-
-### Special Hours and Holidays
-- Pre-set special hours for every major holiday in your market (minimum: New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, Christmas Eve, Christmas Day, New Year's Eve)
-- Add special hours for local events, weather closures, or temporary changes
-- Google prompts businesses to confirm holiday hours — always respond to these prompts
-- Set special hours at least 2 weeks in advance; Google may surface them in search results
-
-### More Hours
-- Use "More hours" for secondary hour sets: happy hour, delivery hours, drive-through hours, senior hours, kitchen hours
-- These appear as additional information on the listing and can match niche searches
+- Créer des catégories de services correspondant à vos catégories GBP principale et secondaires
+- Ajouter chaque service que vous proposez avec une description (jusqu'à 300 caractères par service)
+- Utiliser des mots-clés dans les noms et descriptions de services — Google les utilise pour la correspondance de pertinence
+- Inclure les tarifs lorsque possible (prix fixe ou fourchette). Les fiches avec prix reçoivent plus d'engagement
+- Mettre à jour lors de l'ajout ou de l'arrêt de nouveaux services
 
 ---
 
-## Booking and Appointment Integration
+## Optimisation de la description de l'entreprise
 
-- Add your booking URL in the "Appointment" field in GBP
-- Supported booking partners (Calendly, Acuity, Reserve with Google partners) enable in-SERP booking
-- Reserve with Google (if available for your category) allows users to book without leaving Google — highest conversion path
-- Test booking links monthly to ensure they work and direct to the correct page
-- For multi-location businesses, ensure each listing links to the correct location's booking page
+La description de l'entreprise a une limite de 750 caractères et apparaît dans la section « À propos » de la fiche.
+
+### Directives de rédaction
+
+1. **Première phrase** : Énoncer ce que vous faites, à qui vous vous adressez, et où. Placer les mots-clés en tête. Exemple : « Au service du North Shore de Chicago depuis 2005, Lakeside Dental propose une dentisterie familiale complète incluant détartrages, implants, dentisterie esthétique et soins dentaires d'urgence. »
+2. **Section centrale** : Se différencier. Qu'est-ce qui vous distingue des concurrents ? Récompenses, spécialités, approche unique, expérience
+3. **Dernière phrase** : CTA. « Appelez aujourd'hui pour une consultation gratuite » ou « Prenez rendez-vous en ligne. »
+4. **Stratégie de mots-clés** : Inclure naturellement les mots-clés de service principaux, les noms de localisation et les références de quartier
+5. **Ce qu'il faut éviter** : Ne pas inclure d'URL, de numéros de téléphone, de langage promotionnel (« le meilleur en ville »), ni de MAJUSCULES. Cela enfreint les directives de Google et peut entraîner des modifications ou une suspension
 
 ---
 
-## GBP Insights and Analytics
+## Horaires et horaires spéciaux
 
-GBP provides performance data that should be reviewed monthly at minimum.
+### Horaires standards
+- Définir des horaires précis pour chaque jour de la semaine
+- Si les horaires varient par service (par exemple, horaires de la pharmacie vs horaires du magasin), configurer des fiches séparées pour les services le cas échéant
+- « Ouvert 24h/24 » et « Fermé » sont tous deux des paramètres valides
+- Mettre à jour immédiatement en cas de changement d'horaires — des horaires incorrects sont la première cause d'avis négatifs pour les entreprises locales
 
-### Key Metrics to Track
+### Horaires spéciaux et jours fériés
+- Préconfigurer des horaires spéciaux pour chaque jour férié majeur de votre marché (minimum : Jour de l'An, Fête du Travail, fête nationale, Thanksgiving [pour les marchés concernés], veille de Noël, Noël, veille du Jour de l'An)
+- Ajouter des horaires spéciaux pour les événements locaux, fermetures météorologiques, ou changements temporaires
+- Google invite les entreprises à confirmer les horaires des jours fériés — toujours répondre à ces invitations
+- Définir les horaires spéciaux au moins 2 semaines à l'avance ; Google peut les faire apparaître dans les résultats de recherche
 
-| Metric | What It Tells You | Benchmark Targets |
+### Horaires supplémentaires
+- Utiliser « Horaires supplémentaires » pour des créneaux horaires secondaires : happy hour, horaires de livraison, horaires du drive, horaires seniors, horaires de cuisine
+- Ceux-ci apparaissent comme des informations complémentaires sur la fiche et peuvent correspondre à des recherches de niche
+
+---
+
+## Intégration de la réservation et des rendez-vous
+
+- Ajouter votre URL de réservation dans le champ « Rendez-vous » de GBP
+- Les partenaires de réservation pris en charge (Calendly, Acuity, partenaires Reserve with Google) permettent la réservation directement dans les résultats de recherche
+- Reserve with Google (si disponible pour votre catégorie) permet aux utilisateurs de réserver sans quitter Google — parcours de conversion le plus performant
+- Tester les liens de réservation chaque mois pour s'assurer qu'ils fonctionnent et redirigent vers la bonne page
+- Pour les entreprises multi-établissements, s'assurer que chaque fiche renvoie vers la page de réservation du bon établissement
+
+---
+
+## GBP Insights et analytique
+
+GBP fournit des données de performance qui doivent être examinées au minimum mensuellement.
+
+### Métriques clés à suivre
+
+| Métrique | Ce qu'elle indique | Objectifs de référence |
 |--------|-------------------|-------------------|
-| Search Impressions | How often your listing appears | Increasing month-over-month |
-| Direct vs Discovery Searches | Brand awareness vs category reach | Discovery > 60% indicates strong local SEO |
-| Website Clicks | Traffic driven from GBP | Compare to total organic traffic |
-| Direction Requests | Foot traffic intent | Steady or increasing |
-| Phone Calls | Direct lead generation | Track by day/time to optimize staffing |
-| Photo Views | Profile engagement quality | 2x+ industry average |
-| Post Views | Content reach | Trending up with consistent posting |
-| Booking Clicks | Conversion actions | Increasing with booking integration |
+| Impressions de recherche | Fréquence d'apparition de votre fiche | En augmentation mois après mois |
+| Recherches directes vs de découverte | Notoriété de marque vs portée de catégorie | Découverte > 60 % indique un SEO local solide |
+| Clics vers le site web | Trafic généré depuis GBP | Comparer au trafic organique total |
+| Demandes d'itinéraire | Intention de trafic en magasin | Stable ou en augmentation |
+| Appels téléphoniques | Génération directe de leads | Suivre par jour/heure pour optimiser les effectifs |
+| Vues de photos | Qualité de l'engagement sur le profil | 2x ou plus la moyenne du secteur |
+| Vues de publications | Portée du contenu | En hausse avec une publication régulière |
+| Clics de réservation | Actions de conversion | En augmentation avec l'intégration de réservation |
 
-### Insights-Driven Optimization
+### Optimisation pilotée par les Insights
 
-- If Discovery searches are low, improve category selection and keyword signals in description, services, and posts
-- If photo views are below average, invest in higher-quality, more frequent photo uploads
-- If calls spike on certain days, align staffing and highlight availability for those days
-- If direction requests are low relative to impressions, check that address and map pin are accurate
-- Compare metrics month-over-month and quarter-over-quarter to identify trends
+- Si les recherches de découverte sont faibles, améliorer la sélection de catégorie et les signaux de mots-clés dans la description, les services et les publications
+- Si les vues de photos sont sous la moyenne, investir dans des téléversements de photos plus fréquents et de meilleure qualité
+- Si les appels connaissent des pics certains jours, aligner les effectifs et mettre en avant la disponibilité pour ces jours
+- Si les demandes d'itinéraire sont faibles par rapport aux impressions, vérifier que l'adresse et l'épingle de carte sont exactes
+- Comparer les métriques mois après mois et trimestre après trimestre pour identifier les tendances
 
 ---
 
-## GBP Suspension Prevention
+## Prévention des suspensions GBP
 
-Google suspends listings for policy violations. Suspension removes the listing from Maps and Search, and reinstatement can take weeks.
+Google suspend les fiches pour infraction à la politique. La suspension retire la fiche de Maps et de la recherche, et la réactivation peut prendre des semaines.
 
-### Common Suspension Triggers
+### Déclencheurs de suspension courants
 
-| Trigger | Description | Prevention |
+| Déclencheur | Description | Prévention |
 |---------|-------------|------------|
-| Keyword-stuffed name | Adding keywords to business name (e.g., "Joe's Plumbing - Best Plumber Chicago") | Use exact legal business name only |
-| Fake address | Using a P.O. Box, virtual office, or UPS Store for a storefront business | Use a real business address |
-| Multiple listings for one location | Creating duplicate listings for the same address | Audit and merge duplicates |
-| Fake reviews | Buying reviews or incentivizing ratings | Build reviews organically |
-| Category abuse | Claiming categories for services not offered | Only use applicable categories |
-| Address inconsistency | GBP address does not match signage or mail | Ensure exact match |
-| Prohibited business types | Operating a business Google does not allow listings for | Check Google's prohibited content policies |
+| Nom bourré de mots-clés | Ajouter des mots-clés au nom de l'entreprise (par exemple, « Plomberie Joe - Meilleur plombier Chicago ») | Utiliser uniquement la raison sociale exacte |
+| Fausse adresse | Utiliser une boîte postale, un bureau virtuel, ou un UPS Store pour une entreprise avec vitrine | Utiliser une véritable adresse d'entreprise |
+| Fiches multiples pour un même établissement | Créer des fiches en double pour la même adresse | Auditer et fusionner les doublons |
+| Faux avis | Acheter des avis ou inciter à la notation | Construire les avis de manière organique |
+| Abus de catégorie | Revendiquer des catégories pour des services non proposés | N'utiliser que les catégories applicables |
+| Incohérence d'adresse | L'adresse GBP ne correspond pas à l'enseigne ou au courrier | Assurer une correspondance exacte |
+| Types d'entreprises interdits | Exploiter une entreprise pour laquelle Google n'autorise pas les fiches | Vérifier les politiques de contenu interdit de Google |
 
-### If Suspended
+### En cas de suspension
 
-1. **Identify the cause**: Review Google's email notification. Check GBP guidelines for the specific violation
-2. **Fix the violation**: Correct the issue completely before requesting reinstatement
-3. **Request reinstatement**: Use the GBP reinstatement form. Provide clear documentation (photos of storefront, business license, utility bills proving address)
-4. **Wait and do not create a new listing**: Creating a new listing while suspended will result in the new listing being suspended too. Reinstatement takes 3-14 business days
-5. **Escalation**: If standard reinstatement fails, use the Google Business Profile Help Community or contact GBP support via social media (@GoogleMyBiz)
-
----
-
-## Fake Review Handling
-
-### Identification Signals
-
-- Reviewer has no profile photo, no other reviews, or was recently created
-- Review contains no specific details about the actual product/service/experience
-- Multiple negative reviews appear within a short time window (coordinated attack)
-- Review language matches patterns from other fake reviews (same phrasing across businesses)
-- Reviewer has never been a customer (no matching records in CRM/POS)
-- Review describes services you do not offer or references incorrect details
-
-### Reporting Process
-
-1. Open the review in GBP Manager
-2. Click the three-dot menu and select "Report review"
-3. Choose the applicable violation category (spam, fake, off-topic, conflict of interest)
-4. Google reviews the report within 5-14 days
-5. If rejected, submit an appeal through the GBP support form with documentation
-6. For large-scale fake review attacks, contact GBP support directly with a compiled evidence document showing the pattern
-
-### While Waiting for Removal
-
-- Respond professionally to each fake review (the response is for real customers reading reviews, not the fake reviewer)
-- Do not accuse the reviewer of being fake in your public response — this looks petty and litigious
-- Accelerate genuine review generation to dilute the impact
-- Document the pattern (screenshots, timestamps, reviewer profiles) for potential legal action
+1. **Identifier la cause** : Examiner la notification e-mail de Google. Vérifier les directives GBP pour l'infraction spécifique
+2. **Corriger l'infraction** : Corriger entièrement le problème avant de demander la réactivation
+3. **Demander la réactivation** : Utiliser le formulaire de réactivation GBP. Fournir une documentation claire (photos de la devanture, licence commerciale, factures de services publics prouvant l'adresse)
+4. **Attendre et ne pas créer de nouvelle fiche** : Créer une nouvelle fiche pendant la suspension entraînera la suspension de la nouvelle fiche également. La réactivation prend 3 à 14 jours ouvrés
+5. **Escalade** : Si la réactivation standard échoue, utiliser la communauté d'aide Google Business Profile ou contacter le support GBP via les réseaux sociaux (@GoogleMyBiz)
 
 ---
 
-## Multi-Department and Practitioner Listings
+## Traitement des faux avis
 
-### When to Create Separate Listings
+### Signaux d'identification
 
-- **Departments within a business**: A hospital can have separate listings for the Emergency Room, Pharmacy, and specific departments if they have distinct phone numbers and hours
-- **Practitioners within a practice**: Individual doctors, lawyers, or dentists within a practice can have their own listings if they operate semi-independently
-- **Co-located businesses**: Two distinct businesses sharing an address can each have a listing if they have different names, phone numbers, and categories
+- Le rédacteur de l'avis n'a pas de photo de profil, aucun autre avis, ou un compte récemment créé
+- L'avis ne contient aucun détail spécifique sur le produit/service/expérience réel
+- Plusieurs avis négatifs apparaissent dans une courte fenêtre de temps (attaque coordonnée)
+- Le langage de l'avis correspond à des schémas d'autres faux avis (mêmes formulations sur plusieurs entreprises)
+- Le rédacteur n'a jamais été client (aucun enregistrement correspondant dans le CRM/point de vente)
+- L'avis décrit des services que vous ne proposez pas ou fait référence à des détails incorrects
 
-### Rules for Practitioner Listings
+### Processus de signalement
 
-- Each practitioner listing must have a unique phone number (direct line or extension)
-- The practitioner must be public-facing and directly accessible to customers
-- Practitioner listings must use the practitioner's name, not the practice name
-- The primary category should reflect the practitioner's specialty
-- Link to the practitioner's page on the practice website, not the homepage
-- Ensure the practice listing and practitioner listings do not compete or confuse — they should complement each other
+1. Ouvrir l'avis dans GBP Manager
+2. Cliquer sur le menu à trois points et sélectionner « Signaler l'avis »
+3. Choisir la catégorie d'infraction applicable (spam, faux, hors sujet, conflit d'intérêts)
+4. Google examine le signalement sous 5 à 14 jours
+5. En cas de rejet, soumettre un recours via le formulaire de support GBP avec documentation
+6. Pour les attaques massives de faux avis, contacter directement le support GBP avec un dossier de preuves compilé montrant le schéma
+
+### En attendant la suppression
+
+- Répondre de manière professionnelle à chaque faux avis (la réponse s'adresse aux vrais clients qui lisent les avis, pas au faux auteur)
+- Ne pas accuser publiquement le rédacteur d'être faux dans votre réponse — cela paraît mesquin et procédurier
+- Accélérer la génération d'avis authentiques pour diluer l'impact
+- Documenter le schéma (captures d'écran, horodatages, profils des rédacteurs) en vue d'une éventuelle action légale
 
 ---
 
-## Key Principle
+## Fiches multi-services et multi-praticiens
 
-> Google Business Profile is your digital storefront. An incomplete GBP is like a store with the lights off and no sign on the door. Every field, every photo, every post, every review response is a signal — to Google for rankings and to customers for trust. The businesses that win local search are the ones that treat GBP optimization as an ongoing discipline, not a one-time setup task.
+### Quand créer des fiches séparées
+
+- **Services au sein d'une entreprise** : Un hôpital peut avoir des fiches séparées pour les urgences, la pharmacie, et des services spécifiques s'ils ont des numéros de téléphone et horaires distincts
+- **Praticiens au sein d'un cabinet** : Les médecins, avocats ou dentistes individuels au sein d'un cabinet peuvent avoir leurs propres fiches s'ils exercent de manière semi-indépendante
+- **Entreprises colocalisées** : Deux entreprises distinctes partageant une adresse peuvent chacune avoir une fiche si elles ont des noms, numéros de téléphone et catégories différents
+
+### Règles pour les fiches de praticiens
+
+- Chaque fiche de praticien doit avoir un numéro de téléphone unique (ligne directe ou poste)
+- Le praticien doit être orienté public et directement accessible aux clients
+- Les fiches de praticiens doivent utiliser le nom du praticien, pas le nom du cabinet
+- La catégorie principale doit refléter la spécialité du praticien
+- Lier vers la page du praticien sur le site web du cabinet, pas la page d'accueil
+- S'assurer que la fiche du cabinet et les fiches des praticiens ne se concurrencent pas ou ne créent pas de confusion — elles doivent se compléter
+
+---
+
+## Principe clé
+
+> Google Business Profile est votre vitrine numérique. Un GBP incomplet est comme un magasin aux lumières éteintes et sans enseigne sur la porte. Chaque champ, chaque photo, chaque publication, chaque réponse à un avis est un signal — pour Google en matière de classement, et pour les clients en matière de confiance. Les entreprises qui gagnent en recherche locale sont celles qui traitent l'optimisation de GBP comme une discipline continue, et non comme une tâche de configuration ponctuelle.

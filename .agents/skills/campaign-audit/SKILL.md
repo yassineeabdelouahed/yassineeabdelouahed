@@ -1,6 +1,6 @@
 ---
 name: campaign-audit
-description: "Inventory and score everything currently running for a brand across paid search, paid social, email, organic, SEO, AEO/GEO, CRM, and analytics — produces a dated audit document with a 4-tier triage (healthy / quick win / strategic gap / red flag), a quick-wins backlog, and a compliance posture section. Strictly read-only: it never pauses, edits, or launches anything. Triggers on \"/digital-marketing-pro:campaign-audit\", \"what's currently running for this brand\", \"audit our existing campaigns\", \"we just inherited this account\", \"where is budget leaking\". Requires a validated brand profile (run validate-profile first); missing connectors degrade gracefully into findings. Feeds /digital-marketing-pro:campaign-plan and pairs with /digital-marketing-pro:performance-check."
+description: "Inventorier et noter tout ce qui tourne actuellement pour une marque sur la recherche payante, les réseaux sociaux payants, l'e-mail, l'organique, le SEO, l'AEO/GEO, le CRM et l'analytics — produit un document d'audit daté avec un tri à 4 niveaux (sain / gain rapide / lacune stratégique / signal d'alerte), un backlog de gains rapides, et une section sur la posture de conformité. Strictement en lecture seule : ne met jamais en pause, ne modifie ni ne lance quoi que ce soit. Se déclenche sur \"/digital-marketing-pro:campaign-audit\", \"what's currently running for this brand\", \"audit our existing campaigns\", \"we just inherited this account\", \"where is budget leaking\". Nécessite un profil de marque validé (exécuter validate-profile d'abord) ; les connecteurs manquants se dégradent proprement en constats. Alimente /digital-marketing-pro:campaign-plan et se combine avec /digital-marketing-pro:performance-check."
 user-invocable: true
 triggers:
   - audit existing campaigns
@@ -12,116 +12,116 @@ triggers:
 allowed-tools: Read Bash Glob Grep
 ---
 
-# /digital-marketing-pro:campaign-audit — Cross-Channel Current-State Audit
+# /digital-marketing-pro:campaign-audit — Audit transversal de l'état actuel
 
-This skill produces a single document describing **everything currently running for a brand across every channel** — what's live, what's spending, what's performing, what's leaking budget, what's quietly broken. It's the prerequisite for any informed `/digital-marketing-pro:campaign-plan`, `/digital-marketing-pro:performance-report`, or `/digital-marketing-pro:competitor-analysis` refresh.
+Cette compétence produit un document unique décrivant **tout ce qui tourne actuellement pour une marque sur chaque canal** — ce qui est en ligne, ce qui dépense, ce qui performe, où le budget fuit, ce qui est discrètement cassé. C'est le préalable à tout `/digital-marketing-pro:campaign-plan`, `/digital-marketing-pro:performance-report` ou rafraîchissement de `/digital-marketing-pro:competitor-analysis` mené en connaissance de cause.
 
-## Context efficiency
+## Efficacité du contexte
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List the brand's data dir (`~/.claude-marketing/brands/{slug}/`, or `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` when that env var is set) before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** sur tout fichier référencé, puis `Read` uniquement les plages trouvées avec `offset` + `limit`. Listez le répertoire de données de la marque (`~/.claude-marketing/brands/{slug}/`, ou `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` quand cette variable d'environnement est définie) avant d'ouvrir les fichiers. En cas de ré-invocation en cours de session, ignorez les fichiers déjà en contexte.
 
-Use this skill:
+Utilisez cette compétence :
 
-- **During agency onboarding** (step 8 of the agency-operations workflow) — within the first week of taking over a new client, before you propose anything new.
-- **Before a quarterly campaign refresh** — establish the baseline you're going to argue against.
-- **After a brand acquisition or restructure** — when ownership of marketing changes hands and the new team needs a single source of truth for "what are we actually running?"
-- **After a long pause in account work** (vacation, paternity leave, contract gap) — to re-establish situational awareness without making changes.
+- **Pendant l'intégration d'une agence** (étape 8 du flux d'opérations d'agence) — dans la première semaine de reprise d'un nouveau client, avant de proposer quoi que ce soit de nouveau.
+- **Avant un rafraîchissement de campagne trimestriel** — pour établir la ligne de base sur laquelle vous allez argumenter.
+- **Après une acquisition ou une restructuration de marque** — quand la propriété du marketing change de mains et que la nouvelle équipe a besoin d'une source unique de vérité sur « qu'est-ce qu'on fait tourner réellement ? ».
+- **Après une longue pause dans le travail sur le compte** (vacances, congé parental, interruption de contrat) — pour rétablir la connaissance de la situation sans rien modifier.
 
-## Why this skill exists
+## Pourquoi cette compétence existe
 
-When agencies inherit a brand, the previous owner's "campaign plan" is usually a 40-tab Google Sheet, six dashboards on three platforms, and a list of API integrations nobody remembers wiring up. Without an explicit audit, the new team either (a) silently lets things keep running while they ramp up — and inherits the mistakes, or (b) tears it down and rebuilds — and loses the institutional knowledge of what was actually working.
+Quand des agences reprennent une marque, le « plan de campagne » du précédent titulaire est généralement une feuille Google à 40 onglets, six tableaux de bord sur trois plateformes, et une liste d'intégrations API dont plus personne ne se souvient. Sans audit explicite, la nouvelle équipe soit (a) laisse discrètement les choses tourner pendant qu'elle monte en puissance — et hérite des erreurs, soit (b) rase tout et reconstruit — et perd la connaissance institutionnelle de ce qui fonctionnait réellement.
 
-This skill produces the third option: a single audit document that captures the live state cleanly, scores each item, and feeds directly into the next planning conversation. It is **read-only** — it never pauses, modifies, or kills a campaign.
+Cette compétence produit la troisième option : un document d'audit unique qui capture proprement l'état en cours, note chaque élément, et alimente directement la prochaine conversation de planification. Elle est **en lecture seule** — elle ne met jamais en pause, ne modifie ni ne tue une campagne.
 
-## What gets audited
+## Ce qui est audité
 
-| Channel | What's inventoried | What's scored |
+| Canal | Ce qui est inventorié | Ce qui est noté |
 |---|---|---|
-| **Paid search** | Active Google Ads / Microsoft Ads campaigns, ad groups, keywords, daily budgets, last-modified dates | Spend efficiency, quality scores, conversion-tracking health, negative-keyword coverage, dead ad groups still spending |
-| **Paid social** | Active Meta / LinkedIn / TikTok / Pinterest / X campaigns + audiences + creatives | Frequency, learning-phase status, creative fatigue, audience overlap, attribution-window correctness |
-| **Retail media** | Amazon Ads, Walmart Connect, Instacart Ads accounts and campaigns | ACOS, branded vs non-branded split, share-of-voice for top SKUs |
-| **Email** | Active automations / journeys (Klaviyo, HubSpot, ActiveCampaign, Brevo, Marketo), send lists, deliverability metrics | Open rates, sender reputation, list hygiene age, GDPR/DPDPA consent provenance for every list, broken templates |
-| **Organic social** | Posting cadence per platform (last 90 days), engagement rate, follower trend | Cadence consistency, AI-disclosure compliance, locale coverage |
-| **Content / SEO** | Pages publishing in last 90 days, ranking keywords (top 50), schema markup state, internal-link density | Indexation health (GSC), Core Web Vitals, AI-Overview citation rate, technical-debt items |
-| **AEO / GEO** | Brand mention rate across Google AI Mode, Perplexity, ChatGPT search, Claude search, Copilot, Gemini App | Mention rate vs top 5 competitors, citation share, recommendation share |
-| **CRM + automation** | Live workflows in HubSpot / Salesforce / Pipedream / Zapier / Make, segments in use, lifecycle stage mappings | Orphaned workflows (no recent execution), broken connectors, duplicate-contact rate |
-| **Web analytics** | GA4 properties + GSC properties wired to which domains, conversion events configured, consent-mode state | Tag-firing health, event-naming consistency, attribution model selected |
-| **Influencer / PR** | Active creator deals (live + paused), contracted deliverables, FTC-disclosure compliance | Cost per engagement, creator-audience-authenticity check, disclosure completeness |
-| **Compliance posture** | Active brand-level claims, EU AI Act Article 50 disclosure state on AI content, C2PA signing state, cookie/consent banner version | Each regulated claim mapped to a primary source; missing disclosures escalated |
+| **Recherche payante** | Campagnes Google Ads / Microsoft Ads actives, groupes d'annonces, mots-clés, budgets journaliers, dates de dernière modification | Efficacité de la dépense, quality scores, santé du suivi de conversion, couverture des mots-clés négatifs, groupes d'annonces morts qui dépensent encore |
+| **Réseaux sociaux payants** | Campagnes Meta / LinkedIn / TikTok / Pinterest / X actives + audiences + créations | Fréquence, statut de phase d'apprentissage, fatigue créative, chevauchement d'audiences, exactitude de la fenêtre d'attribution |
+| **Retail media** | Comptes et campagnes Amazon Ads, Walmart Connect, Instacart Ads | ACOS, répartition marque vs non-marque, part de voix pour les SKU principaux |
+| **E-mail** | Automatisations / parcours actifs (Klaviyo, HubSpot, ActiveCampaign, Brevo, Marketo), listes d'envoi, indicateurs de délivrabilité | Taux d'ouverture, réputation d'envoi, ancienneté d'hygiène de liste, provenance du consentement RGPD/DPDPA pour chaque liste, modèles cassés |
+| **Réseaux sociaux organiques** | Cadence de publication par plateforme (90 derniers jours), taux d'engagement, tendance des abonnés | Cohérence de la cadence, conformité à la divulgation IA, couverture des locales |
+| **Contenu / SEO** | Pages publiées ces 90 derniers jours, mots-clés positionnés (top 50), état du balisage schema, densité de maillage interne | Santé de l'indexation (GSC), Core Web Vitals, taux de citation dans les AI Overviews, éléments de dette technique |
+| **AEO / GEO** | Taux de mention de la marque sur Google AI Mode, Perplexity, ChatGPT search, Claude search, Copilot, application Gemini | Taux de mention vs top 5 concurrents, part de citation, part de recommandation |
+| **CRM + automatisation** | Workflows actifs dans HubSpot / Salesforce / Pipedream / Zapier / Make, segments utilisés, correspondances d'étapes de cycle de vie | Workflows orphelins (sans exécution récente), connecteurs cassés, taux de contacts en doublon |
+| **Web analytics** | Propriétés GA4 + GSC reliées à quels domaines, événements de conversion configurés, état du mode consentement | Santé du déclenchement des tags, cohérence de la nomenclature des événements, modèle d'attribution sélectionné |
+| **Influenceurs / RP** | Contrats créateurs actifs (en cours + en pause), livrables contractualisés, conformité de divulgation FTC | Coût par engagement, vérification d'authenticité de l'audience du créateur, exhaustivité de la divulgation |
+| **Posture de conformité** | Déclarations actives au niveau marque, état de divulgation de l'article 50 de l'AI Act européen sur le contenu IA, état de signature C2PA, version de la bannière de cookies/consentement | Chaque déclaration réglementée reliée à une source primaire ; divulgations manquantes escaladées |
 
-The audit also captures **what's NOT happening** that should be — channels with zero activity, missing tracking pixels, expired API tokens, abandoned automations.
+L'audit capture aussi **ce qui NE se passe PAS** mais devrait — canaux sans aucune activité, pixels de suivi manquants, jetons API expirés, automatisations abandonnées.
 
-## Process
+## Processus
 
-### Step 0 — Prerequisites
+### Étape 0 — Prérequis
 
-This skill assumes:
+Cette compétence suppose :
 
-1. The brand profile exists and `/digital-marketing-pro:validate-profile --brand {brand}` returns `passed` or `passed_with_warnings`. If it returns `blocked`, refuse and tell the user to fix the blockers first — auditing on a broken profile produces a corrupt baseline.
-2. Connector credentials for the channels in scope are configured (Google Ads, Meta Business, LinkedIn Campaign Manager, the email platform, the CRM, GA4, GSC, etc.). Missing connectors degrade the audit gracefully — they don't block it; the audit just notes "{channel} skipped — connector not configured" in the relevant section.
+1. Le profil de marque existe et `/digital-marketing-pro:validate-profile --brand {brand}` renvoie `passed` ou `passed_with_warnings`. S'il renvoie `blocked`, refusez et dites à l'utilisateur de corriger d'abord les blocages — auditer sur un profil cassé produit une ligne de base corrompue.
+2. Les identifiants des connecteurs pour les canaux concernés sont configurés (Google Ads, Meta Business, LinkedIn Campaign Manager, la plateforme e-mail, le CRM, GA4, GSC, etc.). Les connecteurs manquants dégradent l'audit avec élégance — ils ne le bloquent pas ; l'audit note simplement « {canal} ignoré — connecteur non configuré » dans la section concernée.
 
-### Step 1 — Confirm the active brand and audit scope
+### Étape 1 — Confirmer la marque active et le périmètre de l'audit
 
-If `--brand <slug>` was supplied, use it. Otherwise use the active brand. If neither, error: `"--brand <slug> required, or run /digital-marketing-pro:switch-brand first."`
+Si `--brand <slug>` a été fourni, utilisez-le. Sinon, utilisez la marque active. Si ni l'un ni l'autre, erreur : `"--brand <slug> requis, ou exécutez d'abord /digital-marketing-pro:switch-brand."`
 
-If `--channels <list>` was supplied (e.g. `paid_search,email,seo`), restrict to those. Otherwise audit every channel for which a connector is configured.
+Si `--channels <list>` a été fourni (ex. `paid_search,email,seo`), limitez-vous à ces canaux. Sinon, auditez chaque canal pour lequel un connecteur est configuré.
 
-If `--quick` was supplied, run only the channel-level inventory pass (skip the historical performance pull and the AEO/GEO check) — useful for a fast "what's live" snapshot.
+Si `--quick` a été fourni, n'exécutez que la passe d'inventaire au niveau canal (sautez la récupération de performance historique et la vérification AEO/GEO) — utile pour un instantané rapide « qu'est-ce qui est en ligne ».
 
-### Step 2 — Inventory each channel
+### Étape 2 — Inventorier chaque canal
 
-For each in-scope channel, call the relevant data-pull script with `--read-only`. Examples:
+Pour chaque canal dans le périmètre, appelez le script de récupération de données correspondant avec `--read-only`. Exemples :
 
 ```bash
-# Paid search
+# Recherche payante
 python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand "{brand}" \
     --channel google_ads --action inventory --read-only
 
-# Paid social
+# Réseaux sociaux payants
 python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand "{brand}" \
     --channel meta_ads --action inventory --read-only
 python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand "{brand}" \
     --channel linkedin_ads --action inventory --read-only
 
-# Email
+# E-mail
 python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand "{brand}" \
     --channel email --action automations --read-only
 
-# Organic + SEO
+# Organique + SEO
 python "${CLAUDE_PLUGIN_ROOT}/scripts/seo-executor.py" --brand "{brand}" --action audit-current
 python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand "{brand}" \
     --channel organic_social --action cadence
 
-# AEO / GEO (skip for a fast audit)
+# AEO / GEO (à sauter pour un audit rapide)
 python "${CLAUDE_PLUGIN_ROOT}/scripts/ai-visibility-checker.py" --brand "{brand}" \
     --mode api --competitors "{auto-from-profile or --competitors arg}"
 
-# CRM + automation health
+# Santé CRM + automatisation
 python "${CLAUDE_PLUGIN_ROOT}/scripts/crm-sync.py" --brand "{brand}" --action audit-workflows
 
-# Web analytics health
+# Santé du web analytics
 python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand "{brand}" \
     --channel ga4_health --action diagnostic
 ```
 
-If a script returns `{"error": "..."}` instead of inventory, mark that channel as `skipped: <reason>` and continue. **Never fail the whole audit because one channel is broken** — the broken channel IS a finding.
+Si un script renvoie `{"error": "..."}` au lieu d'un inventaire, marquez ce canal comme `skipped: <reason>` et continuez. **Ne faites jamais échouer l'audit entier parce qu'un canal est cassé** — le canal cassé EST le constat.
 
-### Step 3 — Score and triage
+### Étape 3 — Noter et trier
 
-For each item discovered, apply the **scoring rubric** (4-tier, conservative):
+Pour chaque élément découvert, appliquez la **grille de notation** (4 niveaux, conservatrice) :
 
-| Tier | Meaning | Examples |
+| Niveau | Signification | Exemples |
 |---|---|---|
-| **🟢 Healthy** | Performing within benchmark, no action needed | Email automation with >25% open rate; Google Ads campaign with QS ≥ 7; SEO page in top 10 for primary keyword |
-| **🟡 Quick win** | Small fix unlocks meaningful gain (<2hr effort) | Ad copy missing a sitelink extension; email template with broken merge tag; landing page with no schema markup |
-| **🟠 Strategic gap** | Needs a real intervention (workshop, asset, decision) | No active retargeting audience; no negative-keyword list; no AEO disclosure on AI-generated content |
-| **🔴 Red flag / leak** | Actively losing money OR creating compliance risk | Campaign spending with conversion tracking broken; email list with no GDPR provenance; CRM workflow firing on duplicate contacts |
+| **🟢 Sain** | Performe dans les standards, aucune action nécessaire | Automatisation e-mail avec >25 % de taux d'ouverture ; campagne Google Ads avec QS ≥ 7 ; page SEO dans le top 10 pour le mot-clé principal |
+| **🟡 Gain rapide** | Un petit correctif débloque un gain significatif (<2h d'effort) | Texte d'annonce sans extension de liens annexes ; modèle e-mail avec balise de fusion cassée ; landing page sans balisage schema |
+| **🟠 Lacune stratégique** | Nécessite une vraie intervention (atelier, actif, décision) | Pas d'audience de retargeting active ; pas de liste de mots-clés négatifs ; pas de divulgation AEO sur le contenu généré par IA |
+| **🔴 Signal d'alerte / fuite** | Perte d'argent active OU risque de conformité | Campagne dépensant avec un suivi de conversion cassé ; liste e-mail sans provenance RGPD ; workflow CRM se déclenchant sur des contacts en doublon |
 
-A red flag is anything that meets ANY of: (a) measurable monthly waste > $X (default $500, override with `--red-flag-spend-threshold`), (b) regulatory violation (missing consent, missing AI disclosure, fabricated claim), (c) brand-safety risk (active campaign on retired product, contradiction with another live campaign).
+Un signal d'alerte est tout ce qui répond à AU MOINS UN des critères suivants : (a) gaspillage mensuel mesurable > X $ (par défaut 500 $, à surcharger avec `--red-flag-spend-threshold`), (b) violation réglementaire (consentement manquant, divulgation IA manquante, déclaration fabriquée), (c) risque pour la sécurité de la marque (campagne active sur un produit retiré, contradiction avec une autre campagne en cours).
 
-### Step 4 — Compose the audit document
+### Étape 4 — Composer le document d'audit
 
-Write the audit to `~/.claude-marketing/brands/{slug}/audits/campaign-audit-{YYYY-MM-DD}.md` AND publish a user-visible copy to `~/Documents/DigitalMarketingPro/{brand}/audits/{YYYY-MM-DD}-campaign-audit.md` (the dual-copy pattern). The document structure:
+Écrivez l'audit dans `~/.claude-marketing/brands/{slug}/audits/campaign-audit-{YYYY-MM-DD}.md` ET publiez une copie visible par l'utilisateur dans `~/Documents/DigitalMarketingPro/{brand}/audits/{YYYY-MM-DD}-campaign-audit.md` (le modèle à double copie). Structure du document :
 
 ```markdown
 # Current-State Campaign Audit — {brand_name}
@@ -186,9 +186,9 @@ Bulleted list. Each item: channel · why it's missing · what minimum viable act
 - Resolve every 🔴 red flag before the next routine work cycle.
 ```
 
-### Step 5 — Update the brand's audit history
+### Étape 5 — Mettre à jour l'historique d'audit de la marque
 
-Append a short entry to `~/.claude-marketing/brands/{slug}/audit-history.json`:
+Ajoutez une courte entrée à `~/.claude-marketing/brands/{slug}/audit-history.json` :
 
 ```json
 {
@@ -206,9 +206,9 @@ Append a short entry to `~/.claude-marketing/brands/{slug}/audit-history.json`:
 }
 ```
 
-### Step 6 — Surface the report to the user
+### Étape 6 — Présenter le rapport à l'utilisateur
 
-In the conversation, print:
+Dans la conversation, affichez :
 
 ```
 ✅ Campaign audit complete for {brand_name}.
@@ -229,13 +229,13 @@ In the conversation, print:
    or /digital-marketing-pro:campaign-plan to start the next planning cycle.
 ```
 
-## Behaviour rules
+## Règles de comportement
 
-1. **Read-only across every channel.** No campaign is paused, edited, or deleted. No email is sent. No CRM record is touched. This is an inventory + scoring pass.
-2. **One channel failure ≠ full audit failure.** A failing connector becomes a finding in the "Channels skipped" list, not an exception that aborts the whole skill.
-3. **Concrete numbers, not adjectives.** "Wasting $X/month" beats "spending inefficiently." If a number is unavailable, say "unknown — {connector} didn't return it" instead of fabricating one.
-4. **Quote primary sources for compliance findings.** Never cite Wikipedia, blog posts, or LLM output as the source for "X regulation requires Y." Use the entries in `skills/context-engine/compliance-rules.md`, and if a jurisdiction isn't covered there, mark the finding as `compliance_basis: unverified` rather than guessing.
-5. **Dual-copy the report.** Internal (tracking) under `~/.claude-marketing/brands/{slug}/audits/`; user-visible under `~/Documents/DigitalMarketingPro/{brand}/audits/` (or `$DIGITAL_MARKETING_PRO_PUBLISH_DIR` if set). The dual-copy pattern exists so the user can find the file without spelunking dotfolders.
+1. **Lecture seule sur tous les canaux.** Aucune campagne n'est mise en pause, modifiée ou supprimée. Aucun e-mail n'est envoyé. Aucun enregistrement CRM n'est touché. C'est une passe d'inventaire + de notation.
+2. **L'échec d'un canal ≠ l'échec de l'audit entier.** Un connecteur en échec devient un constat dans la liste « Channels skipped », pas une exception qui interrompt toute la compétence.
+3. **Des chiffres concrets, pas des adjectifs.** « Gaspille X $/mois » vaut mieux que « dépense inefficacement ». Si un chiffre n'est pas disponible, dites « inconnu — {connector} ne l'a pas renvoyé » plutôt que d'en inventer un.
+4. **Citez des sources primaires pour les constats de conformité.** Ne citez jamais Wikipédia, des articles de blog ou une sortie de LLM comme source pour « la réglementation X exige Y ». Utilisez les entrées de `skills/context-engine/compliance-rules.md`, et si une juridiction n'y est pas couverte, marquez le constat comme `compliance_basis: unverified` plutôt que de deviner.
+5. **Doublez la copie du rapport.** Interne (suivi) dans `~/.claude-marketing/brands/{slug}/audits/` ; visible par l'utilisateur dans `~/Documents/DigitalMarketingPro/{brand}/audits/` (ou `$DIGITAL_MARKETING_PRO_PUBLISH_DIR` si défini). Le modèle à double copie existe pour que l'utilisateur puisse trouver le fichier sans fouiller dans des dossiers cachés.
 
 ## Arguments
 
@@ -244,19 +244,19 @@ In the conversation, print:
     [--competitors <list>] [--red-flag-spend-threshold <amount>] [--json]
 ```
 
-- `--brand <slug>` — brand to audit (else uses active brand)
-- `--channels <list>` — comma-separated subset to audit (else every channel with a connector configured)
-- `--quick` — channel inventory only; skip historical pull + AEO/GEO check
-- `--competitors <list>` — explicit competitor list for the AEO/GEO section (else taken from brand profile)
-- `--red-flag-spend-threshold <amount>` — override the default $500/month threshold for flagging waste as 🔴
-- `--json` — emit a machine-readable JSON summary in addition to the markdown report
+- `--brand <slug>` — marque à auditer (sinon utilise la marque active)
+- `--channels <list>` — sous-ensemble séparé par des virgules à auditer (sinon chaque canal avec un connecteur configuré)
+- `--quick` — inventaire de canal uniquement ; saute la récupération historique + la vérification AEO/GEO
+- `--competitors <list>` — liste explicite de concurrents pour la section AEO/GEO (sinon issue du profil de marque)
+- `--red-flag-spend-threshold <amount>` — surcharge le seuil par défaut de 500 $/mois pour signaler du gaspillage en 🔴
+- `--json` — émet un résumé JSON lisible par machine en plus du rapport markdown
 
-## Related skills + commands
+## Compétences et commandes associées
 
-- [`validate-profile`](../validate-profile/SKILL.md) — prerequisite check (run first)
-- [`campaign-plan`](../campaign-plan/SKILL.md) — what to do with the strategic gaps surfaced
-- [`launch-campaign`](../launch-campaign/SKILL.md) — what to do once the plan is approved
-- [`performance-check`](../performance-check/SKILL.md) — lighter metrics-only snapshot
-- [`competitor-analysis`](../competitor-analysis/SKILL.md) — pairs naturally with the AEO/GEO section
-- [`aeo-audit`](../aeo-audit/SKILL.md) — deeper AI-engine visibility audit if Section 5 raises concerns
-- `${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py` — underlying data pulls
+- [`validate-profile`](../validate-profile/SKILL.md) — vérification préalable (à exécuter en premier)
+- [`campaign-plan`](../campaign-plan/SKILL.md) — quoi faire des lacunes stratégiques mises au jour
+- [`launch-campaign`](../launch-campaign/SKILL.md) — quoi faire une fois le plan approuvé
+- [`performance-check`](../performance-check/SKILL.md) — instantané plus léger, uniquement axé sur les indicateurs
+- [`competitor-analysis`](../competitor-analysis/SKILL.md) — s'associe naturellement à la section AEO/GEO
+- [`aeo-audit`](../aeo-audit/SKILL.md) — audit plus approfondi de la visibilité sur les moteurs IA si la section 5 soulève des inquiétudes
+- `${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py` — récupérations de données sous-jacentes

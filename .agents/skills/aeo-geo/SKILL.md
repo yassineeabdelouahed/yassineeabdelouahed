@@ -3,211 +3,211 @@ name: aeo-geo
 description: "Strategy module for Answer Engine / Generative Engine Optimization — audits AI visibility, restructures content for citation, runs entity-consistency checks across Knowledge Graph, Wikidata, Wikipedia, Crunchbase, and LinkedIn, and produces JSON-LD schema specs, monitoring frameworks, and a 90-day LLM content strategy. Triggers on \"/digital-marketing-pro:aeo-geo\", \"how do we get cited by AI\", \"optimize for AI Overviews\", \"fix our entity consistency\", \"do we need llms.txt\". Reads the brand profile, compliance rules, and industry benchmarks; its measurement counterpart is /digital-marketing-pro:aeo-audit, with GSC actuals via /digital-marketing-pro:gsc-ai-performance."
 ---
 
-# AEO/GEO Intelligence
+# Intelligence AEO/GEO
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this module when the user's request involves any of the following:
+Activer ce module lorsque la demande de l'utilisateur porte sur l'un des éléments suivants :
 
-- **AI Visibility**: Questions about how a brand, product, or person appears in AI-generated answers (ChatGPT, Perplexity, **Google AI Mode**, Google AI Overviews, Copilot, Gemini, Claude)
-- **Answer Engine Optimization (AEO)**: Optimizing content so it gets selected as a source for AI-generated answers
-- **Generative Engine Optimization (GEO)**: Structuring content and entities so generative AI platforms accurately represent a brand
-- **Citation Tracking**: Monitoring which sources AI models cite when answering queries related to a brand or industry
-- **Entity Consistency**: Ensuring brand information is uniform across all knowledge sources that AI models train on or retrieve from
-- **Knowledge Graph Optimization**: Improving how a brand is represented in Google Knowledge Graph, Wikidata, and other structured knowledge bases
-- **Structured Data for AI**: Implementing schema markup and structured data specifically to improve AI comprehension and citation likelihood
+- **Visibilité IA** : questions sur la manière dont une marque, un produit ou une personne apparaît dans les réponses générées par IA (ChatGPT, Perplexity, **Google AI Mode**, Google AI Overviews, Copilot, Gemini, Claude)
+- **Answer Engine Optimization (AEO)** : optimiser le contenu pour qu'il soit sélectionné comme source dans les réponses générées par IA
+- **Generative Engine Optimization (GEO)** : structurer le contenu et les entités pour que les plateformes d'IA générative représentent fidèlement une marque
+- **Suivi des citations** : surveiller les sources que les modèles d'IA citent en répondant à des requêtes liées à une marque ou à un secteur
+- **Cohérence des entités** : garantir que les informations de marque sont uniformes sur toutes les sources de connaissances sur lesquelles les modèles d'IA s'entraînent ou qu'ils exploitent
+- **Optimisation du Knowledge Graph** : améliorer la façon dont une marque est représentée dans le Google Knowledge Graph, Wikidata et d'autres bases de connaissances structurées
+- **Données structurées pour l'IA** : mettre en place un balisage schema et des données structurées spécifiquement pour améliorer la compréhension par l'IA et la probabilité de citation
 
-**Trigger phrases**: "AI visibility," "how does ChatGPT describe my brand," "Perplexity results," "AI Mode optimization," "AI Overview optimization," "answer engine," "generative engine," "LLM optimization," "AI citations," "entity consistency," "Knowledge Graph"
+**Expressions déclenchantes** : « visibilité IA », « comment ChatGPT décrit ma marque », « résultats Perplexity », « optimisation AI Mode », « optimisation AI Overview », « moteur de réponse », « moteur génératif », « optimisation LLM », « citations IA », « cohérence des entités », « Knowledge Graph »
 
-**Google AI Mode (May 2026 — treat as a distinct surface)**: At Google I/O on 19 May 2026 AI Mode became the default search experience for opted-in users, crossed ~1B MAUs, and switched to Gemini 3.5 Flash as the base model. AI Mode is **not** the same as AI Overviews — it is a separate conversational tab with deeper reasoning, multi-turn follow-ups, and a citation pattern that frequently diverges from AI Overviews for the same query. Brands must audit AI Mode independently. Practical implication: an AEO program that only tests AI Overviews + ChatGPT + Perplexity now has a measurable blind spot.
+**Google AI Mode (mai 2026 — à traiter comme une surface distincte)** : lors du Google I/O du 19 mai 2026, AI Mode est devenu l'expérience de recherche par défaut pour les utilisateurs ayant opté pour cette fonctionnalité, a franchi le milliard d'utilisateurs actifs mensuels, et a basculé vers Gemini 3.5 Flash comme modèle de base. AI Mode **n'est pas** la même chose que AI Overviews — c'est un onglet conversationnel distinct avec un raisonnement plus poussé, des questions de suivi multi-tours, et un schéma de citation qui diverge fréquemment de celui d'AI Overviews pour une même requête. Les marques doivent auditer AI Mode indépendamment. Implication pratique : un programme AEO qui ne teste que AI Overviews + ChatGPT + Perplexity présente désormais un angle mort mesurable.
 
-**Additional I/O 2026 announcements that change AEO scope** ([source: blog.google/products-and-platforms/products/search/search-io-2026](https://blog.google/products-and-platforms/products/search/search-io-2026/)):
+**Autres annonces de l'I/O 2026 qui modifient le périmètre de l'AEO** ([source : blog.google/products-and-platforms/products/search/search-io-2026](https://blog.google/products-and-platforms/products/search/search-io-2026/)) :
 
-- **AI Overview → AI Mode follow-up flow** is live worldwide (desktop + mobile) — users can ask a follow-up directly from an AI Overview and flow into a conversational AI Mode session. AEO implication: the *first* impression in an AI Overview is now also a gateway to multi-turn citation. Optimize for being the foundational citation, not just the brief snippet.
-- **Personal Intelligence in AI Mode** is expanding to ~200 countries and 98 languages, no subscription required, with Gmail / Photos / Calendar connections. AEO implication: AI answers are increasingly personalized — generic brand-search results will be reweighted against the user's own context. Brand schema completeness and entity consistency (NAP, services, hours) matter even more.
-- **AI Information Agents** (user-created, monitoring blogs/news/social 24/7) launch for AI Pro & Ultra subscribers in summer 2026. AEO implication: brands that publish structured, dated updates on owned channels will be more legible to user-configured agents than those relying on third-party PR pickup.
+- Le **flux de suivi AI Overview → AI Mode** est désormais actif dans le monde entier (ordinateur + mobile) — les utilisateurs peuvent poser une question de suivi directement depuis une AI Overview et enchaîner sur une session conversationnelle AI Mode. Implication AEO : la *première* impression dans une AI Overview est désormais aussi une porte d'entrée vers une citation multi-tours. Optimisez pour être la citation fondatrice, pas seulement l'extrait bref.
+- **Personal Intelligence dans AI Mode** s'étend à environ 200 pays et 98 langues, sans abonnement requis, avec des connexions Gmail / Photos / Calendar. Implication AEO : les réponses IA sont de plus en plus personnalisées — les résultats de recherche de marque génériques seront repondérés en fonction du contexte propre à chaque utilisateur. L'exhaustivité du schéma de marque et la cohérence des entités (NAP, services, horaires) comptent encore davantage.
+- Les **AI Information Agents** (créés par l'utilisateur, surveillant blogs/actualités/réseaux sociaux 24 h/24) seront lancés pour les abonnés AI Pro et Ultra à l'été 2026. Implication AEO : les marques qui publient des mises à jour structurées et datées sur leurs canaux propres seront plus lisibles pour ces agents configurés par l'utilisateur que celles qui dépendent d'une reprise par des relations presse tierces.
 
-**Official Google guidance on AI search optimization** (updated 15 May 2026 — [Google AI Optimization Guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)):
+**Directives officielles de Google sur l'optimisation pour la recherche IA** (mises à jour le 15 mai 2026 — [Google AI Optimization Guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)) :
 
-- **No `llms.txt` file is needed.** Google's official position: "You don't need to create new machine readable files, AI text files, markup, or Markdown to appear in generative AI search." Do not waste time generating `llms.txt` for Google AI Features. (Other AI search engines may or may not consume it; current Anthropic / OpenAI / Perplexity public positions are also that they do not require it. Document any client pressure to ship `llms.txt` as a low-priority deliverable with no measurable upside.)
-- **No special AI-specific schema is needed.** "Structured data isn't required for generative AI search, and there's no special schema.org markup you need to add." Schema continues to matter for classic SEO and rich results.
-- **Eligibility is standard Search.** "To be eligible to be shown in generative AI features on Google Search, a page must be indexed and eligible to be shown in Google Search with a snippet, fulfilling the Search technical requirements."
+- **Aucun fichier `llms.txt` n'est nécessaire.** Position officielle de Google : « Vous n'avez pas besoin de créer de nouveaux fichiers lisibles par machine, de fichiers texte IA, de balisage ou de Markdown pour apparaître dans la recherche IA générative. » Ne perdez pas de temps à générer un `llms.txt` pour les fonctionnalités IA de Google. (Les autres moteurs de recherche IA peuvent ou non l'exploiter ; les positions publiques actuelles d'Anthropic / OpenAI / Perplexity sont également qu'ils ne l'exigent pas. Documentez toute pression client visant à livrer un `llms.txt` comme un livrable de faible priorité, sans gain mesurable.)
+- **Aucun schéma spécifique à l'IA n'est nécessaire.** « Les données structurées ne sont pas requises pour la recherche IA générative, et il n'existe pas de balisage schema.org spécial à ajouter. » Le schema continue de compter pour le SEO classique et les résultats enrichis.
+- **L'éligibilité suit les règles standard de la recherche.** « Pour être éligible à l'affichage dans les fonctionnalités IA génératives de la recherche Google, une page doit être indexée et éligible à l'affichage dans la recherche Google avec un extrait, en respectant les exigences techniques de la recherche. »
 
-**Opt-out and AI training controls** ([Google AI Features doc](https://developers.google.com/search/docs/appearance/ai-features)):
+**Options de retrait et contrôles d'entraînement IA** ([document Google AI Features](https://developers.google.com/search/docs/appearance/ai-features)) :
 
-- For AI Overviews and AI Mode (inside Google Search): use existing snippet directives — `nosnippet`, `data-nosnippet`, `max-snippet`, `noindex`. Robots.txt for Googlebot is the canonical control. **There is no AI-specific robots/meta directive.**
-- For Google's *other* AI systems (Gemini app training, Vertex AI grounding outside Search): use the **Google-Extended** user agent in robots.txt. This is a distinct control from Googlebot.
-- **NEW (3 June 2026):** Search Console now ships an **opt-out toggle** at the property level — flip it to exclude the site from grounding AI Overviews / AI Mode responses without editing robots.txt. See `/digital-marketing-pro:gsc-ai-performance` for the decision framework on when to use it.
+- Pour AI Overviews et AI Mode (au sein de la recherche Google) : utiliser les directives d'extrait existantes — `nosnippet`, `data-nosnippet`, `max-snippet`, `noindex`. Le robots.txt pour Googlebot reste le contrôle canonique. **Il n'existe pas de directive robots/meta spécifique à l'IA.**
+- Pour les *autres* systèmes IA de Google (entraînement de l'application Gemini, grounding Vertex AI en dehors de la recherche) : utiliser le user-agent **Google-Extended** dans le robots.txt. C'est un contrôle distinct de celui de Googlebot.
+- **NOUVEAU (3 juin 2026)** : Search Console propose désormais une **bascule de retrait** au niveau de la propriété — l'activer exclut le site du grounding des réponses AI Overviews / AI Mode sans modifier le robots.txt. Voir `/digital-marketing-pro:gsc-ai-performance` pour le cadre de décision sur quand l'utiliser.
 
-**EU AI Act Article 50 (applicable 2 August 2026)** — for AI-generated marketing content surfaced in EU markets, see `skills/context-engine/eu-code-of-practice.md` for the voluntary Code of Practice (WG1 providers / WG2 deployers) and the C2PA `c2pa.ai-disclosure` assertion path. Compliance is plugin-level and applies to `c2pa-metadata` outputs.
+**Article 50 de l'AI Act européen (applicable au 2 août 2026)** — pour le contenu marketing généré par IA diffusé sur les marchés de l'UE, voir `skills/context-engine/eu-code-of-practice.md` pour le code de conduite volontaire (fournisseurs WG1 / déployeurs WG2) et le chemin d'attestation C2PA `c2pa.ai-disclosure`. La conformité s'applique au niveau du plugin et concerne les sorties de `c2pa-metadata`.
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout résultat marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — le résumé de marque actif a été affiché au démarrage de la session. Utiliser le nom de la marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité et les concurrents indiqués.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — les niveaux de formalité, d'énergie, d'humour et d'autorité doivent façonner le ton et le choix des mots de tout le contenu
+4. **Vérifier la conformité** — appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Se référer aux benchmarks sectoriels** — consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — se référer à `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les bonnes pratiques générales. »
+9. **Vérifier les guidelines de marque** — si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les allégations restreintes et les mentions légales obligatoires ; `channel-styles.md` pour les adaptations de ton spécifiques à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les slogans et le langage de positionnement ; `voice-and-tone.md` pour des règles de voix détaillées au-delà des 4 scores numériques. Pour produire du contenu destiné à un canal spécifique, les règles de style de ce canal prévalent sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing AEO/GEO work, gather:
+Avant d'exécuter un travail AEO/GEO, rassembler :
 
-1. **Brand Identity**: Official brand name, key products/services, unique value propositions, and brand positioning
-2. **Current AI Footprint**: Ask the user if they have tested how AI platforms currently describe their brand (or offer to audit)
-3. **Target Queries**: The questions and topics the brand wants to be cited for in AI-generated answers
-4. **Existing Content Assets**: Website URL, blog, knowledge base, Wikipedia presence, schema markup status
-5. **Competitive Landscape**: Key competitors who may already have strong AI visibility
-6. **Industry Vertical**: Needed to assess YMYL (Your Money Your Life) sensitivity and trust signal requirements
+1. **Identité de marque** : nom officiel de la marque, principaux produits/services, propositions de valeur uniques et positionnement de marque
+2. **Empreinte IA actuelle** : demander à l'utilisateur s'il a déjà testé la manière dont les plateformes IA décrivent actuellement sa marque (ou proposer un audit)
+3. **Requêtes cibles** : les questions et sujets pour lesquels la marque souhaite être citée dans les réponses générées par IA
+4. **Actifs de contenu existants** : URL du site web, blog, base de connaissances, présence Wikipédia, statut du balisage schema
+5. **Paysage concurrentiel** : les principaux concurrents ayant potentiellement déjà une forte visibilité IA
+6. **Secteur d'activité** : nécessaire pour évaluer la sensibilité YMYL (Your Money Your Life) et les exigences de signaux de confiance
 
-If the user cannot provide all context, proceed with what is available and flag gaps as recommendations.
+Si l'utilisateur ne peut pas fournir tout le contexte, poursuivre avec ce qui est disponible et signaler les lacunes comme des recommandations.
 
-**Minimum viable context**: Brand name and website URL. Everything else can be inferred or discovered during the audit process.
+**Contexte minimal viable** : nom de la marque et URL du site web. Tout le reste peut être déduit ou découvert pendant le processus d'audit.
 
-## Capabilities
+## Capacités
 
-- **AI Visibility Audit**: Systematic testing of how a brand appears across the 6 canonical surfaces — Google AI Mode, Google AI Overviews, ChatGPT, Perplexity, Gemini, and Copilot — for target queries (scored with the standard defined in `/digital-marketing-pro:aeo-audit`)
-- **Citation Optimization**: Restructuring content to maximize the probability of being cited as a source in AI-generated responses
-- **Entity Consistency Audit**: Cross-referencing brand information across Google Knowledge Graph, Wikidata, Wikipedia, Crunchbase, LinkedIn, and industry databases to identify inconsistencies
-- **LLM Content Strategy**: Creating content specifically designed to be ingested and accurately represented by language models
-- **AI Answer Monitoring Framework**: Setting up systematic tracking of AI mentions and citations over time
-- **Structured Data for AI Citation**: Implementing Organization, Product, FAQ, HowTo, and other schema types that improve AI comprehension
-- **Knowledge Graph Optimization**: Improving entity representation in structured knowledge bases
-- **Topical Authority Mapping**: Identifying content gaps that prevent a brand from being recognized as an authority by AI models
-- **AI-First Content Formatting**: Restructuring existing content with clear definitions, factual statements, and citation-worthy snippets
-- **Competitive AI Visibility Benchmarking**: Comparing brand AI presence against competitors across platforms
+- **Audit de visibilité IA** : test systématique de l'apparition d'une marque sur les 6 surfaces canoniques — Google AI Mode, Google AI Overviews, ChatGPT, Perplexity, Gemini et Copilot — pour des requêtes cibles (noté selon le standard défini dans `/digital-marketing-pro:aeo-audit`)
+- **Optimisation des citations** : restructuration du contenu pour maximiser la probabilité d'être cité comme source dans les réponses générées par IA
+- **Audit de cohérence des entités** : recoupement des informations de marque entre Google Knowledge Graph, Wikidata, Wikipédia, Crunchbase, LinkedIn et les bases de données sectorielles pour identifier les incohérences
+- **Stratégie de contenu pour LLM** : création de contenu spécifiquement conçu pour être ingéré et représenté fidèlement par les modèles de langage
+- **Cadre de suivi des réponses IA** : mise en place d'un suivi systématique des mentions et citations IA dans le temps
+- **Données structurées pour la citation IA** : mise en place de schémas Organization, Product, FAQ, HowTo et autres qui améliorent la compréhension par l'IA
+- **Optimisation du Knowledge Graph** : amélioration de la représentation des entités dans les bases de connaissances structurées
+- **Cartographie de l'autorité thématique** : identification des lacunes de contenu qui empêchent une marque d'être reconnue comme une autorité par les modèles d'IA
+- **Formatage de contenu AI-first** : restructuration du contenu existant avec des définitions claires, des affirmations factuelles et des extraits dignes de citation
+- **Benchmarking concurrentiel de visibilité IA** : comparaison de la présence IA de la marque face aux concurrents sur toutes les plateformes
 
-## Process
+## Processus
 
-**Primary Workflow: AI Visibility Audit & Optimization**
+**Workflow principal : audit de visibilité IA et optimisation**
 
-1. **Discovery & Baseline**
-   - Collect brand details, target queries (10-25 queries), and competitor list
-   - Document current schema markup, Knowledge Graph presence, and Wikipedia/Wikidata status
-   - Identify the business model to determine which AI platforms matter most
-   - Catalog existing authoritative content assets (whitepapers, research, data, expert bios)
-   - Assess YMYL classification — brands in health, finance, or legal face higher authority thresholds
+1. **Découverte et référence**
+   - Recueillir les informations de marque, les requêtes cibles (10-25 requêtes) et la liste des concurrents
+   - Documenter le balisage schema actuel, la présence dans le Knowledge Graph et le statut Wikipédia/Wikidata
+   - Identifier le modèle économique pour déterminer les plateformes IA les plus pertinentes
+   - Cataloguer les actifs de contenu faisant déjà autorité (livres blancs, recherches, données, biographies d'experts)
+   - Évaluer la classification YMYL — les marques dans la santé, la finance ou le juridique font face à des seuils d'autorité plus élevés
 
-2. **AI Platform Testing**
-   - For each target query, document how the brand appears (or fails to appear) on:
-     - **Google AI Mode** (default conversational surface, Gemini 3.5 Flash backbone — May 2026)
-     - Google AI Overviews (classic SERP summary block)
-     - ChatGPT (latest model, web-search mode on)
+2. **Tests sur les plateformes IA**
+   - Pour chaque requête cible, documenter comment la marque apparaît (ou n'apparaît pas) sur :
+     - **Google AI Mode** (surface conversationnelle par défaut, architecture Gemini 3.5 Flash — mai 2026)
+     - Google AI Overviews (bloc de synthèse de la SERP classique)
+     - ChatGPT (dernier modèle, mode recherche web activé)
      - Perplexity
      - Gemini (gemini.google.com)
      - Microsoft Copilot
-   - Score each result: Cited (direct mention with link), Referenced (mentioned without link), Absent, Misrepresented
-   - Capture exact AI-generated text for each query as a baseline
+   - Noter chaque résultat : Cité (mention directe avec lien), Référencé (mentionné sans lien), Absent, Mal représenté
+   - Capturer le texte exact généré par l'IA pour chaque requête comme référence de départ
 
-3. **Entity Consistency Check**
-   - Audit brand name, founding date, leadership, product descriptions, and key claims across all knowledge sources
-   - Flag inconsistencies between sources (e.g., different founding years on Crunchbase vs. Wikipedia)
-   - Prioritize fixes by source authority weight
+3. **Vérification de la cohérence des entités**
+   - Auditer le nom de la marque, la date de fondation, la direction, les descriptions de produits et les affirmations clés sur toutes les sources de connaissances
+   - Signaler les incohérences entre les sources (par ex. années de fondation différentes sur Crunchbase vs Wikipédia)
+   - Prioriser les corrections selon le poids d'autorité de la source
 
-4. **Gap Analysis & Strategy**
-   - Identify patterns: Which query types yield citations? Which don't?
-   - Map content gaps: What authoritative content is missing that AI models need?
-   - Assess structured data gaps: What schema markup is missing or incorrect?
-   - Benchmark against competitors who ARE getting cited
+4. **Analyse des écarts et stratégie**
+   - Identifier les motifs récurrents : quels types de requêtes génèrent des citations ? Lesquels n'en génèrent pas ?
+   - Cartographier les lacunes de contenu : quel contenu faisant autorité manque-t-il et dont les modèles d'IA ont besoin ?
+   - Évaluer les lacunes de données structurées : quel balisage schema manque ou est incorrect ?
+   - Comparer avec les concurrents qui SONT cités
 
-5. **Optimization Execution Plan**
-   - Prioritized list of content to create or restructure
-   - Schema markup implementation plan
-   - Knowledge Graph correction/enhancement steps
-   - Entity consistency fix checklist
-   - Content formatting guidelines for AI-first optimization
+5. **Plan d'exécution de l'optimisation**
+   - Liste priorisée du contenu à créer ou restructurer
+   - Plan de mise en œuvre du balisage schema
+   - Étapes de correction/amélioration du Knowledge Graph
+   - Liste de contrôle de correction de la cohérence des entités
+   - Directives de formatage de contenu pour l'optimisation AI-first
 
-6. **Monitoring & Iteration**
-   - Define monitoring cadence (weekly for priority queries, monthly for full audit)
-   - Set up tracking framework to detect citation changes
-   - Establish KPIs: citation rate, accuracy score, query coverage percentage
-   - Track competitor citation changes as part of ongoing monitoring
-   - Re-test after major content updates or schema implementations to measure impact
-   - Log all AI platform model updates that may affect visibility (new model releases, retrieval changes)
+6. **Suivi et itération**
+   - Définir la cadence de suivi (hebdomadaire pour les requêtes prioritaires, mensuelle pour l'audit complet)
+   - Mettre en place un cadre de suivi pour détecter les changements de citation
+   - Établir des KPI : taux de citation, score de précision, pourcentage de couverture des requêtes
+   - Suivre les changements de citation des concurrents dans le cadre du suivi continu
+   - Retester après les mises à jour majeures de contenu ou les mises en œuvre de schéma pour mesurer l'impact
+   - Consigner toutes les mises à jour de modèles des plateformes IA susceptibles d'affecter la visibilité (nouvelles versions de modèles, changements de récupération)
 
-**Secondary Workflow: Citation-Optimized Content Creation**
+**Workflow secondaire : création de contenu optimisé pour la citation**
 
-1. Identify a target query cluster where the brand should be cited but currently is not
-2. Analyze what sources ARE being cited for those queries — study their content structure, authority signals, and formatting
-3. Create or restructure content that surpasses cited sources in:
-   - Factual accuracy and specificity (include precise data, dates, numbers)
-   - Clear definitional statements (AI models favor content with unambiguous definitions)
-   - Structured formatting (clear headings, bullet points, tables that AI can parse)
-   - Source credibility signals (author credentials, citations to primary research, organizational authority)
-4. Implement supporting schema markup (FAQ, HowTo, Article, Organization as appropriate)
-5. Build inbound authority signals (internal links from high-authority pages, external citations)
-6. Re-test AI platform responses 2-4 weeks after publication to measure citation pickup
+1. Identifier un groupe de requêtes cibles où la marque devrait être citée mais ne l'est actuellement pas
+2. Analyser quelles sources SONT citées pour ces requêtes — étudier leur structure de contenu, leurs signaux d'autorité et leur formatage
+3. Créer ou restructurer un contenu qui surpasse les sources citées sur :
+   - La précision factuelle et la spécificité (inclure des données, dates et chiffres précis)
+   - Des affirmations définitionnelles claires (les modèles d'IA privilégient un contenu aux définitions non ambiguës)
+   - Un formatage structuré (titres clairs, puces, tableaux que l'IA peut analyser)
+   - Des signaux de crédibilité des sources (diplômes de l'auteur, citations de recherches primaires, autorité organisationnelle)
+4. Mettre en place le balisage schema approprié (FAQ, HowTo, Article, Organization selon le cas)
+5. Construire des signaux d'autorité entrants (liens internes depuis des pages à forte autorité, citations externes)
+6. Retester les réponses des plateformes IA 2 à 4 semaines après la publication pour mesurer la reprise en citation
 
-## Reference Files
+## Fichiers de référence
 
-- `ai-visibility-audit.md` — Step-by-step audit methodology, scoring rubric, and platform-specific testing protocols
-- `citation-optimization.md` — Content restructuring techniques, citation-worthy formatting patterns, and source authority building
-- `entity-consistency.md` — Cross-platform entity audit checklist, Knowledge Graph optimization, Wikidata editing guidelines
-- `llm-content-strategy.md` — AI-first content creation framework, topical authority mapping, and structured data implementation guide
+- `ai-visibility-audit.md` — méthodologie d'audit étape par étape, grille de notation et protocoles de test spécifiques à chaque plateforme
+- `citation-optimization.md` — techniques de restructuration de contenu, schémas de formatage dignes de citation et construction d'autorité des sources
+- `entity-consistency.md` — liste de contrôle d'audit des entités multiplateforme, optimisation du Knowledge Graph, directives d'édition Wikidata
+- `llm-content-strategy.md` — cadre de création de contenu AI-first, cartographie de l'autorité thématique et guide de mise en œuvre des données structurées
 
-## Output Formats
+## Formats de livrables
 
-| Deliverable | Format | Description |
+| Livrable | Format | Description |
 |---|---|---|
-| AI Visibility Scorecard | Table/Spreadsheet | Query-by-query visibility scores across all AI platforms |
-| Entity Consistency Report | Document | All inconsistencies found with correction instructions |
-| AEO Content Brief | Document | Content creation/restructuring briefs optimized for AI citation |
-| Schema Markup Spec | Code snippets (JSON-LD) | Ready-to-implement structured data markup |
-| Monitoring Dashboard Spec | Document | KPIs, tracking methodology, and reporting cadence |
-| Competitive AI Visibility Matrix | Table | Side-by-side comparison of brand vs. competitor AI visibility |
-| LLM Content Strategy | Document | 90-day content plan focused on building AI authority |
+| Tableau de bord de visibilité IA | Tableau/Feuille de calcul | Scores de visibilité requête par requête sur toutes les plateformes IA |
+| Rapport de cohérence des entités | Document | Toutes les incohérences trouvées avec instructions de correction |
+| Brief de contenu AEO | Document | Briefs de création/restructuration de contenu optimisés pour la citation IA |
+| Spécification de balisage schema | Extraits de code (JSON-LD) | Balisage de données structurées prêt à implémenter |
+| Spécification du tableau de bord de suivi | Document | KPI, méthodologie de suivi et cadence de reporting |
+| Matrice de visibilité IA concurrentielle | Tableau | Comparaison côte à côte de la visibilité IA de la marque vs des concurrents |
+| Stratégie de contenu LLM | Document | Plan de contenu sur 90 jours axé sur la construction de l'autorité IA |
 
-## Edge Cases
+## Cas particuliers
 
-### Brand with Negative AI Perception
-- **Situation**: AI platforms are generating inaccurate or negative information about the brand
-- **Approach**: Prioritize entity consistency fixes and authoritative source correction before any content optimization. Create factual correction content on high-authority owned properties. Do NOT attempt to manipulate AI outputs directly — focus on fixing the underlying source material. Flag potential reputation management needs to the user.
+### Marque avec une perception IA négative
+- **Situation** : les plateformes IA génèrent des informations inexactes ou négatives sur la marque
+- **Approche** : prioriser les corrections de cohérence des entités et la correction des sources faisant autorité avant toute optimisation de contenu. Créer un contenu de correction factuelle sur des propriétés propres à forte autorité. NE PAS tenter de manipuler directement les résultats de l'IA — se concentrer sur la correction du matériel source sous-jacent. Signaler à l'utilisateur les besoins potentiels de gestion de réputation.
 
-### New Brand with Zero AI Visibility
-- **Situation**: Brand does not appear in any AI-generated answers
-- **Approach**: Start with foundation-building — create a Wikipedia-worthy web presence (not necessarily Wikipedia itself), establish Wikidata entry, implement comprehensive schema markup, and build topical authority content. Set realistic timelines: AI model knowledge has lag times (weeks to months depending on platform).
+### Nouvelle marque sans aucune visibilité IA
+- **Situation** : la marque n'apparaît dans aucune réponse générée par IA
+- **Approche** : commencer par construire des fondations — créer une présence web digne de Wikipédia (pas nécessairement Wikipédia elle-même), établir une entrée Wikidata, mettre en place un balisage schema complet, et construire un contenu d'autorité thématique. Fixer des délais réalistes : la connaissance des modèles d'IA comporte des délais de latence (de quelques semaines à plusieurs mois selon la plateforme).
 
-### Common-Word Brand Names
-- **Situation**: Brand name is a common word (e.g., "Apple," "Slack," "Monday")
-- **Approach**: Entity disambiguation is critical. Emphasize co-occurring terms, use full official names in structured data, ensure Knowledge Graph correctly disambiguates, and optimize content with entity-clarifying context. Always include industry/product qualifiers in target queries.
+### Noms de marque composés de mots courants
+- **Situation** : le nom de la marque est un mot courant (par ex. « Apple », « Slack », « Monday »)
+- **Approche** : la désambiguïsation des entités est essentielle. Mettre l'accent sur les termes co-occurrents, utiliser les noms officiels complets dans les données structurées, s'assurer que le Knowledge Graph désambiguïse correctement, et optimiser le contenu avec un contexte clarifiant l'entité. Toujours inclure des qualificatifs de secteur/produit dans les requêtes cibles.
 
-### Multi-Brand Companies
-- **Situation**: Parent company with multiple sub-brands needing separate AI identities
-- **Approach**: Audit each brand entity separately. Ensure clear parent-child relationships in structured data. Avoid cannibalization where sub-brands compete with each other in AI answers. Create distinct topical authority for each brand.
+### Entreprises multi-marques
+- **Situation** : une société mère avec plusieurs sous-marques nécessitant des identités IA distinctes
+- **Approche** : auditer chaque entité de marque séparément. S'assurer de relations parent-enfant claires dans les données structurées. Éviter la cannibalisation où les sous-marques se concurrencent entre elles dans les réponses IA. Créer une autorité thématique distincte pour chaque marque.
 
-### Regional AI Engines (Baidu, Yandex)
-- **Situation**: User needs visibility on non-Western AI platforms
-- **Approach**: Acknowledge that optimization strategies differ significantly for Baidu (China) and Yandex (Russia). These require localized content, platform-specific structured data standards, and different knowledge bases. Recommend specialized regional expertise if the request goes deep. Provide general framework but flag limitations in specific platform knowledge.
+### Moteurs IA régionaux (Baidu, Yandex)
+- **Situation** : l'utilisateur a besoin de visibilité sur des plateformes IA non occidentales
+- **Approche** : reconnaître que les stratégies d'optimisation diffèrent considérablement pour Baidu (Chine) et Yandex (Russie). Celles-ci nécessitent un contenu localisé, des standards de données structurées spécifiques à la plateforme, et des bases de connaissances différentes. Recommander une expertise régionale spécialisée si la demande va en profondeur. Fournir un cadre général tout en signalant les limites de connaissance sur ces plateformes spécifiques.
 
-### YMYL Brands (Health, Finance, Legal)
-- **Situation**: Brands in Your Money Your Life categories face elevated trust requirements from AI platforms
-- **Approach**: AI platforms apply stricter source quality thresholds for YMYL topics. Prioritize: (1) Expert authorship with verifiable credentials on all content. (2) Citations to primary research, government sources, and peer-reviewed studies. (3) Medical/legal/financial review disclosures. (4) Comprehensive E-E-A-T signals (link to Digital PR module for authority building). (5) Schema markup that explicitly declares author qualifications and organizational credentials. Test AI outputs carefully for accuracy — misrepresentation in YMYL categories carries higher reputational risk.
+### Marques YMYL (santé, finance, juridique)
+- **Situation** : les marques dans les catégories Your Money Your Life font face à des exigences de confiance élevées de la part des plateformes IA
+- **Approche** : les plateformes IA appliquent des seuils de qualité de source plus stricts pour les sujets YMYL. Prioriser : (1) une paternité experte avec des diplômes vérifiables sur tout le contenu. (2) des citations vers des recherches primaires, des sources gouvernementales et des études évaluées par des pairs. (3) des mentions de relecture médicale/juridique/financière. (4) des signaux E-E-A-T complets (lien vers le module Digital PR pour la construction d'autorité). (5) un balisage schema déclarant explicitement les qualifications de l'auteur et les diplômes organisationnels. Tester soigneusement les résultats IA pour la précision — une mauvaise représentation dans les catégories YMYL comporte un risque réputationnel plus élevé.
 
-### Rapidly Evolving AI Landscape
-- **Situation**: AI platforms frequently update their models, retrieval methods, and citation behavior
-- **Approach**: Treat all AEO/GEO strategies as living processes, not one-time optimizations. Build monitoring into every engagement. When a major platform update occurs (new model release, retrieval system change, AI Overview format change), re-run the visibility audit for priority queries. Document observed behavior changes and update the workflow accordingly. Maintain a changelog of platform updates and their observed impact on brand visibility.
+### Paysage IA en évolution rapide
+- **Situation** : les plateformes IA mettent fréquemment à jour leurs modèles, méthodes de récupération et comportement de citation
+- **Approche** : traiter toutes les stratégies AEO/GEO comme des processus vivants, pas des optimisations ponctuelles. Intégrer le suivi dans chaque mission. Lorsqu'une mise à jour majeure de plateforme survient (nouvelle version de modèle, changement de système de récupération, changement de format AI Overview), relancer l'audit de visibilité pour les requêtes prioritaires. Documenter les changements de comportement observés et mettre à jour le workflow en conséquence. Tenir un journal des mises à jour de plateformes et de leur impact observé sur la visibilité de la marque.
 
-## Tips & caveats
+## Conseils et mises en garde
 
-- **Google's official position (15 May 2026):** no `llms.txt`, no AI-specific schema, no separate AI eligibility gate. Don't manufacture work around fictional ranking factors — schema + entity consistency + citation-worthy formatting are what works.
-- **AI Mode citation patterns frequently differ from AI Overviews** on the same query (internal observation, 05/2026 — the "40-60%" figure is a rough estimate, re-verify against your own probe set). Audit and optimise for both, treating them as distinct surfaces.
-- **Entity consistency across Knowledge Graph, Wikidata, Wikipedia, LinkedIn, Crunchbase is the single highest-leverage AEO investment** — more impactful than schema tweaks.
-- **AI citations are stickier than blue-link rankings** but slower to win. Expect 3-6 months of consistent work before measurable shift.
-- **Don't try to "trick" AI into citing you** with stuffed content or fake authority signals. AI platforms detect and demote this faster than traditional search.
-- **`Google-Extended` (robots.txt) opts out of Google's *other* AI systems** (Gemini training, Vertex grounding) — distinct from the in-Search-Console toggle for AI Overviews/AI Mode (rolled out 3 Jun 2026 via `/digital-marketing-pro:gsc-ai-performance`).
-- **EU markets** require Article 50 disclosure on AI-generated content (applicable 2 Aug 2026) — see `skills/context-engine/eu-code-of-practice.md`.
+- **Position officielle de Google (15 mai 2026) :** pas de `llms.txt`, pas de schéma spécifique à l'IA, pas de porte d'éligibilité IA séparée. Ne fabriquez pas de travail autour de facteurs de classement fictifs — le schema + la cohérence des entités + un formatage digne de citation sont ce qui fonctionne.
+- **Les schémas de citation d'AI Mode diffèrent fréquemment de ceux d'AI Overviews** pour une même requête (observation interne, 05/2026 — le chiffre « 40-60 % » est une estimation approximative, à revérifier avec votre propre ensemble de sondages). Auditez et optimisez pour les deux, en les traitant comme des surfaces distinctes.
+- **La cohérence des entités sur le Knowledge Graph, Wikidata, Wikipédia, LinkedIn, Crunchbase est l'investissement AEO au plus fort effet de levier** — plus impactant que les ajustements de schéma.
+- **Les citations IA sont plus durables que les classements dans les liens bleus**, mais plus lentes à obtenir. Attendez-vous à 3-6 mois de travail constant avant un changement mesurable.
+- **N'essayez pas de « tromper » l'IA pour qu'elle vous cite** avec du contenu bourré de mots-clés ou de faux signaux d'autorité. Les plateformes IA détectent et rétrogradent cela plus vite que la recherche traditionnelle.
+- **`Google-Extended` (robots.txt) permet de se retirer des *autres* systèmes IA de Google** (entraînement Gemini, grounding Vertex) — distinct de la bascule dans Search Console pour AI Overviews/AI Mode (déployée le 3 juin 2026 via `/digital-marketing-pro:gsc-ai-performance`).
+- **Les marchés de l'UE** exigent une divulgation au titre de l'article 50 sur le contenu généré par IA (applicable au 2 août 2026) — voir `skills/context-engine/eu-code-of-practice.md`.
 
-## Related Skills
+## Compétences associées
 
-- **Content Engine** — For creating and optimizing the actual content that drives AI citations
-- **Analytics & Insights** — For measuring AI visibility performance and tracking citation changes over time
-- **Digital PR & Authority** — For building the E-E-A-T signals and earned media that strengthen AI trust in a brand
-- **Audience Intelligence** — For understanding which queries your target audience is asking AI platforms
+- **Content Engine** — pour créer et optimiser le contenu réel qui génère les citations IA
+- **Analytics & Insights** — pour mesurer la performance de visibilité IA et suivre l'évolution des citations dans le temps
+- **Digital PR & Authority** — pour construire les signaux E-E-A-T et les médias gagnés qui renforcent la confiance de l'IA envers une marque
+- **Audience Intelligence** — pour comprendre quelles requêtes votre audience cible pose aux plateformes IA

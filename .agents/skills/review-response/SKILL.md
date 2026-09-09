@@ -1,59 +1,60 @@
 ---
 name: review-response
-description: "Draft ready-to-post responses to positive, neutral, and negative reviews on any platform (Google, Yelp, G2, Capterra, Trustpilot, Amazon, App Store), with formal and casual variants, brand-voice scoring, escalation recommendations, and a batch mode that varies language across similar reviews to avoid templated-sounding replies. Triggers on \"/digital-marketing-pro:review-response\", \"reply to this 1-star review\", \"write a response to this Google review\", \"we got a nasty Yelp review, what do we say\", \"draft replies for this batch of reviews\". Reads the brand profile, voice-and-tone guidelines, and custom templates; it drafts and scores the responses — posting them to the platform is up to you."
+description: "Rédiger des réponses prêtes à publier aux avis positifs, neutres et négatifs sur n'importe quelle plateforme (Google, Yelp, G2, Capterra, Trustpilot, Amazon, App Store), avec des variantes formelles et décontractées, une notation d'alignement à la voix de marque, des recommandations d'escalade, et un mode batch qui varie le langage sur des avis similaires pour éviter des réponses à l'allure de modèles préfabriqués. Se déclenche sur \"/digital-marketing-pro:review-response\", \"reply to this 1-star review\", \"write a response to this Google review\", \"we got a nasty Yelp review, what do we say\", \"draft replies for this batch of reviews\". Lit le profil de marque, les guidelines de voix et de ton, et les modèles personnalisés ; il rédige et note les réponses — leur publication sur la plateforme reste de votre ressort."
 ---
 
 # /digital-marketing-pro:review-response
 
-## Purpose
+## Objectif
 
-Generate professional, brand-aligned review responses for positive, neutral, and negative reviews across any platform. Ensures every response maintains brand voice, addresses the reviewer's specific points, and follows best practices for reputation management and customer recovery.
+Générer des réponses professionnelles et alignées à la marque pour les avis positifs, neutres et négatifs sur n'importe quelle plateforme. Garantit que chaque réponse conserve la voix de marque, traite les points spécifiques du client, et suit les meilleures pratiques de gestion de la réputation et de récupération client.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se voir demander) :
 
-- **Review text**: The full text of the review to respond to
-- **Rating**: Star rating (1-5 stars)
-- **Platform**: Where the review was posted (Google, Yelp, G2, Capterra, Trustpilot, Amazon, TripAdvisor, App Store, etc.)
-- **Reviewer name**: Display name of the reviewer (optional — for personalization)
-- **Specific issue mentioned**: Key complaint, praise, or topic raised in the review (optional — for targeted response)
-- **Business context**: Any internal context about the situation — was the issue resolved, is there a known product bug, was there a service failure (optional — helps craft an accurate response)
-- **Batch mode**: If responding to multiple reviews, provide them as a set for consistent tone and varied language
-- **Response speed requirement**: Whether the review needs an urgent response (crisis situation) or standard turnaround
-- **Internal resolution status**: Whether the issue has been fixed, is in progress, or is unresolved (for negative reviews — helps determine what to promise)
+- **Texte de l'avis** : Le texte complet de l'avis auquel répondre
+- **Note** : Note en étoiles (1 à 5 étoiles)
+- **Plateforme** : Où l'avis a été publié (Google, Yelp, G2, Capterra, Trustpilot, Amazon, TripAdvisor, App Store, etc.)
+- **Nom du client** : Nom d'affichage du client (optionnel — pour la personnalisation)
+- **Problème spécifique mentionné** : Plainte, éloge, ou sujet principal soulevé dans l'avis (optionnel — pour une réponse ciblée)
+- **Contexte métier** : Tout contexte interne sur la situation — le problème a-t-il été résolu, y a-t-il un bug produit connu, y a-t-il eu une défaillance de service (optionnel — aide à rédiger une réponse précise)
+- **Mode batch** : En cas de réponse à plusieurs avis, les fournir en un ensemble pour une cohérence de ton et une variation de langage
+- **Exigence de rapidité de réponse** : Si l'avis nécessite une réponse urgente (situation de crise) ou un délai de traitement standard
+- **Statut de résolution interne** : Si le problème a été corrigé, est en cours, ou n'est pas résolu (pour les avis négatifs — aide à déterminer ce qu'il faut promettre)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Apply brand voice settings**: Load voice-and-tone guidelines and any channel-specific style rules for the review platform — review responses often require a warmer, more personal tone than other brand communications
-3. **Classify review sentiment and severity**: Categorize as positive (4-5 stars), neutral (3 stars), or negative (1-2 stars) — further classify negative reviews by severity level: minor complaint, service failure, product defect, or safety/legal issue
-4. **For negative reviews**: Acknowledge the specific concern by name, express genuine empathy without generic platitudes, take responsibility where appropriate, offer a concrete resolution path with specifics, and move the conversation offline with a direct contact method (email or phone)
-5. **For positive reviews**: Express sincere gratitude, reinforce the specific aspect the reviewer praised, add a personal or humanizing touch, and encourage continued engagement — mention related products, services, or referral programs where natural
-6. **For neutral reviews**: Acknowledge the balanced feedback, address any specific concerns raised with actionable detail, highlight relevant brand strengths without being defensive or dismissive, and invite further dialogue to improve their experience
-7. **Check brand guidelines for approved response language**: Verify the response against any restricted terms, required disclosures, legal disclaimers, or mandated response elements in the brand guidelines
-8. **Apply platform conventions**: Adjust response length, formatting, and tone for platform norms — Google (concise), Yelp (conversational), G2 (professional), TripAdvisor (hospitality-focused), etc.
-9. **Score response for brand voice alignment**: Evaluate the drafted response against brand voice parameters — tone, formality, warmth, and personality — and adjust until the response sounds authentically on-brand
-10. **Check for common pitfalls**: Ensure the response avoids defensiveness, blame-shifting, over-promising, disclosing private information, or using repetitive language across multiple review responses
-11. **Optimize for SEO where applicable**: On platforms where responses are indexed (Google, Yelp), naturally incorporate relevant keywords and business name without sounding forced
-12. **Generate batch variations**: If responding to multiple similar reviews, vary the language, structure, and opening to avoid templated-sounding responses that damage authenticity
+1. **Charger le contexte de la marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également les guidelines** à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier les modèles personnalisés à `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les SOP d'agence à `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Appliquer les paramètres de voix de marque** : Charger les guidelines de voix et de ton et toute règle de style spécifique au canal pour la plateforme d'avis — les réponses aux avis nécessitent souvent un ton plus chaleureux et personnel que les autres communications de marque
+3. **Classifier le sentiment et la sévérité de l'avis** : Catégoriser comme positif (4-5 étoiles), neutre (3 étoiles), ou négatif (1-2 étoiles) — classifier davantage les avis négatifs par niveau de sévérité : plainte mineure, défaillance de service, défaut produit, ou problème de sécurité/légal
+4. **Pour les avis négatifs** : Reconnaître la préoccupation spécifique par son nom, exprimer une empathie sincère sans platitudes génériques, prendre ses responsabilités lorsque c'est approprié, offrir un chemin de résolution concret avec des détails, et déplacer la conversation hors ligne avec une méthode de contact directe (email ou téléphone)
+5. **Pour les avis positifs** : Exprimer une gratitude sincère, renforcer l'aspect spécifique loué par le client, ajouter une touche personnelle ou humanisante, et encourager l'engagement continu — mentionner des produits, services, ou programmes de parrainage liés lorsque c'est naturel
+6. **Pour les avis neutres** : Reconnaître le retour équilibré, traiter toute préoccupation spécifique soulevée avec des détails actionnables, mettre en avant les forces pertinentes de la marque sans être défensif ou désinvolte, et inviter à un dialogue plus poussé pour améliorer leur expérience
+7. **Vérifier les guidelines de marque pour le langage de réponse approuvé** : Vérifier la réponse par rapport à tout terme restreint, revendication limitée, avertissement légal requis, ou élément de réponse imposé dans les guidelines de marque
+8. **Appliquer les conventions de plateforme** : Ajuster la longueur, le formatage et le ton de la réponse selon les normes de la plateforme — Google (concis), Yelp (conversationnel), G2 (professionnel), TripAdvisor (orienté hospitalité), etc.
+9. **Noter la réponse pour l'alignement à la voix de marque** : Évaluer la réponse rédigée par rapport aux paramètres de voix de marque — ton, formalité, chaleur, et personnalité — et ajuster jusqu'à ce que la réponse sonne authentiquement dans le ton de la marque
+10. **Vérifier les pièges courants** : S'assurer que la réponse évite la posture défensive, le report de responsabilité, les promesses excessives, la divulgation d'informations privées, ou l'utilisation d'un langage répétitif entre plusieurs réponses d'avis
+11. **Optimiser pour le SEO le cas échéant** : Sur les plateformes où les réponses sont indexées (Google, Yelp), incorporer naturellement des mots-clés pertinents et le nom de l'entreprise sans que cela paraisse forcé
+12. **Générer des variations en batch** : En cas de réponse à plusieurs avis similaires, varier le langage, la structure, et l'ouverture pour éviter des réponses à l'allure de modèles préfabriqués qui nuisent à l'authenticité
 
-## Output
+## Résultat
 
-A structured review response package containing:
+Un ensemble structuré de réponses aux avis contenant :
 
-- **Ready-to-post review response**: Primary response tailored to the platform's character limits, conventions, and audience expectations
-- **Alternative versions**: Formal and casual variants for flexibility, plus a shorter version if the primary response exceeds platform norms
-- **Response guidelines**: Platform-specific best practices applied — recommended length, optimal tone, ideal response timing, and SEO considerations
-- **Escalation recommendation**: For negative reviews — whether this requires manager involvement, legal review, product team notification, or immediate offline outreach
-- **Response quality score**: Brand voice alignment rating and checklist of best practices applied
-- **Follow-up note**: Suggested internal action items if the review reveals a systemic issue worth addressing
-- **SEO keywords applied**: For indexed platforms, keywords naturally incorporated into the response
-- **Tone analysis**: Breakdown of the response tone (empathetic, grateful, professional, warm) matched against brand voice settings
-- **Response timing recommendation**: Optimal window for posting the response based on platform algorithms and customer expectations
-- **Template extraction**: If the response is strong, a generalized template version saved for future similar reviews
+- **Réponse d'avis prête à publier** : Réponse principale adaptée aux limites de caractères, aux conventions et aux attentes de l'audience de la plateforme
+- **Versions alternatives** : Variantes formelle et décontractée pour plus de flexibilité, plus une version plus courte si la réponse principale dépasse les normes de la plateforme
+- **Consignes de réponse** : Meilleures pratiques spécifiques à la plateforme appliquées — longueur recommandée, ton optimal, timing de réponse idéal, et considérations SEO
+- **Recommandation d'escalade** : Pour les avis négatifs — si cela nécessite l'implication d'un manager, une revue légale, une notification à l'équipe produit, ou une prise de contact hors ligne immédiate
+- **Score de qualité de la réponse** : Note d'alignement à la voix de marque et checklist des meilleures pratiques appliquées
+- **Note de suivi** : Éléments d'action internes suggérés si l'avis révèle un problème systémique valant la peine d'être traité
+- **Mots-clés SEO appliqués** : Pour les plateformes indexées, mots-clés naturellement incorporés dans la réponse
+- **Analyse de ton** : Répartition du ton de la réponse (empathique, reconnaissant, professionnel, chaleureux) confrontée aux paramètres de voix de marque
+- **Recommandation de timing de réponse** : Fenêtre optimale pour publier la réponse en fonction des algorithmes de plateforme et des attentes des clients
+- **Extraction de modèle** : Si la réponse est solide, une version modèle généralisée enregistrée pour de futurs avis similaires
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** — Response copywriting, tone calibration, personalization, platform-appropriate language, alternative version drafting
-- **brand-guardian** — Voice consistency enforcement, guideline compliance, restricted language checks, escalation assessment, legal sensitivity review
+- **content-creator** — Rédaction de la réponse, calibrage du ton, personnalisation, langage adapté à la plateforme, rédaction de versions alternatives
+- **brand-guardian** — Application de la cohérence de la voix, conformité aux guidelines, vérifications de langage restreint, évaluation d'escalade, revue de sensibilité légale
+</content>

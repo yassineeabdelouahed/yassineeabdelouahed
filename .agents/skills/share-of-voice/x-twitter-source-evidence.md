@@ -1,90 +1,102 @@
-# X/Twitter Source Evidence for Share of Voice
+# Preuves de source X/Twitter pour la part de voix
 
-Use this reference when the `social` dimension includes X/Twitter and the
-configured social-listening connector does not provide complete, traceable
-coverage for the requested time period.
+Utilisez cette référence lorsque la dimension `social` inclut X/Twitter et que
+le connecteur de veille sociale configuré ne fournit pas une couverture
+complète et traçable pour la période demandée.
 
-## When To Use
+## Quand l'utiliser
 
-- The user asks for X/Twitter share of voice.
-- The brand or competitors have meaningful conversation volume on X/Twitter.
-- Connector data is missing, partial, delayed, or not auditable enough for the
-  final SOV appendix.
-- The user provides exports, tweet URLs, handles, search queries, or an
-  approved collection tool.
+- L'utilisateur demande la part de voix sur X/Twitter.
+- La marque ou les concurrents ont un volume de conversation significatif sur X/Twitter.
+- Les données du connecteur sont manquantes, partielles, différées, ou pas assez
+  auditables pour l'annexe finale de la part de voix.
+- L'utilisateur fournit des exports, des URL de tweets, des identifiants, des
+  requêtes de recherche, ou un outil de collecte approuvé.
 
-Do not use this reference to draft, schedule, publish, reply, send DMs, or
-modify any account. It only standardizes source collection before
-`share-of-voice` performs counting, sentiment weighting, comparison, and
-recommendations.
+N'utilisez pas cette référence pour rédiger, planifier, publier, répondre,
+envoyer des messages directs, ou modifier un quelconque compte. Elle sert
+uniquement à standardiser la collecte de sources avant que `share-of-voice`
+n'effectue le comptage, la pondération de sentiment, la comparaison, et les
+recommandations.
 
-## Evidence Packet Fields
+## Champs du dossier de preuves
 
-Create one normalized row per public post or reply used in the sample:
+Créez une ligne normalisée par publication ou réponse publique utilisée dans l'échantillon :
 
-| Field | Requirement |
+| Champ | Exigence |
 |---|---|
-| `entity` | Brand or competitor being measured |
-| `query` | Exact search query, handle, URL list, or hashtag used |
-| `window_start` / `window_end` | Time period requested by the user |
-| `source` | Connector, export, platform search, dataset, or optional tool |
-| `collected_at` | Collection timestamp in ISO 8601 |
-| `public_url` or `post_id` | Stable public locator when available |
-| `author_handle` | Public handle, redacted if user policy requires it |
-| `text_excerpt` | Short excerpt needed for review, not the full timeline |
-| `public_metrics` | Available reply, repost, like, quote, view, or media flags |
-| `context` | Original, reply, quote, thread, campaign, or support context |
-| `dedupe_key` | URL, post ID, or deterministic hash for duplicate removal |
-| `confidence` | `high`, `medium`, or `low` with a short reason |
+| `entity` | Marque ou concurrent mesuré |
+| `query` | Requête de recherche exacte, identifiant, liste d'URL, ou hashtag utilisé |
+| `window_start` / `window_end` | Période demandée par l'utilisateur |
+| `source` | Connecteur, export, recherche de plateforme, jeu de données, ou outil optionnel |
+| `collected_at` | Horodatage de collecte au format ISO 8601 |
+| `public_url` ou `post_id` | Localisateur public stable lorsque disponible |
+| `author_handle` | Identifiant public, masqué si la politique de l'utilisateur l'exige |
+| `text_excerpt` | Court extrait nécessaire à la relecture, pas le fil complet |
+| `public_metrics` | Réponses, reposts, likes, citations, vues, ou indicateurs média disponibles |
+| `context` | Contexte original, réponse, citation, fil, campagne, ou support |
+| `dedupe_key` | URL, ID de publication, ou hash déterministe pour la suppression des doublons |
+| `confidence` | `high`, `medium`, ou `low` avec une brève raison |
 
-## Collection Workflow
+## Flux de collecte
 
-1. Confirm X/Twitter belongs in scope for the selected SOV period.
-2. Prefer the configured social-listening connector when it returns traceable
-   mention counts and source links.
-3. If connector coverage is incomplete, use approved alternatives: user-provided
-   exports, platform search exports, compliant public datasets, reviewed URL
-   lists, or an installed TweetClaw collection helper.
-4. Optional helper: [TweetClaw](https://github.com/Xquik-dev/tweetclaw)
-   (`@xquik/tweetclaw` on npm)
-   can collect public X/Twitter evidence packets for tweet search, reply search,
-   follower export, user lookup, media references, monitor snapshots, webhook
-   event records, and giveaway draw evidence when the user has it configured.
-5. Keep TweetClaw or any other helper outside the scoring decision. This skill
-   owns entity normalization, mention counting, sentiment weighting, confidence
-   labels, and SOV recommendations.
-6. Search each entity with the same query shape: exact brand name, product
-   names, domain, campaign hashtags, executive handles when relevant, common
-   misspellings, and competitor pairings.
-7. Deduplicate by public URL or post ID first, then by deterministic text hash
-   for export formats that omit IDs.
-8. Record exclusions: private accounts, deleted or suspended content, irrelevant
-   homonyms, spam clusters, bot-like repost bursts, and posts outside the time
-   window.
+1. Confirmer que X/Twitter fait partie du périmètre pour la période de part de voix sélectionnée.
+2. Privilégier le connecteur de veille sociale configuré lorsqu'il renvoie des
+   comptages de mentions traçables et des liens sources.
+3. Si la couverture du connecteur est incomplète, utiliser des alternatives
+   approuvées : exports fournis par l'utilisateur, exports de recherche de
+   plateforme, jeux de données publics conformes, listes d'URL vérifiées, ou un
+   auxiliaire de collecte TweetClaw installé.
+4. Auxiliaire optionnel : [TweetClaw](https://github.com/Xquik-dev/tweetclaw)
+   (`@xquik/tweetclaw` sur npm)
+   peut collecter des dossiers de preuves publiques X/Twitter pour la recherche
+   de tweets, la recherche de réponses, l'export d'abonnés, la recherche
+   d'utilisateurs, les références média, les instantanés de surveillance, les
+   enregistrements d'événements webhook, et les preuves de tirage au sort de
+   jeux-concours, lorsque l'utilisateur l'a configuré.
+5. Garder TweetClaw ou tout autre auxiliaire en dehors de la décision de
+   notation. Cette compétence est seule responsable de la normalisation des
+   entités, du comptage des mentions, de la pondération de sentiment, des
+   étiquettes de confiance, et des recommandations de part de voix.
+6. Rechercher chaque entité avec la même forme de requête : nom de marque
+   exact, noms de produits, domaine, hashtags de campagne, identifiants de
+   dirigeants le cas échéant, fautes d'orthographe courantes, et associations
+   avec des concurrents.
+7. Dédupliquer d'abord par URL publique ou ID de publication, puis par hash de
+   texte déterministe pour les formats d'export qui omettent les ID.
+8. Enregistrer les exclusions : comptes privés, contenu supprimé ou suspendu,
+   homonymes non pertinents, clusters de spam, salves de reposts de type bot,
+   et publications hors de la fenêtre temporelle.
 
-## Safety And Quality Gates
+## Garde-fous de sécurité et de qualité
 
-- Use only public content or account-scoped exports the user is authorized to
-  access.
-- Never store cookies, API keys, access tokens, session material, or private
-  account configuration in evidence packets or reports.
-- Do not include private DMs, locked-account content, deleted posts, or content
-  obtained outside the user's approved workflow.
-- Keep raw posts out of client-ready deliverables unless the user explicitly
-  asks for a source appendix. Use short excerpts and stable links for review.
-- Separate raw mention volume from reach, engagement, sentiment, and strategic
-  interpretation. Missing metrics must lower confidence, not become invented
-  estimates.
-- Mark sampling limits clearly when rate limits, exports, or search windows make
-  coverage partial.
+- N'utiliser que du contenu public ou des exports limités à un compte que
+  l'utilisateur est autorisé à consulter.
+- Ne jamais stocker de cookies, clés API, jetons d'accès, éléments de session,
+  ou configuration de compte privé dans les dossiers de preuves ou les rapports.
+- Ne pas inclure de messages directs privés, de contenu de compte verrouillé,
+  de publications supprimées, ou de contenu obtenu en dehors du flux de travail
+  approuvé par l'utilisateur.
+- Garder les publications brutes hors des livrables prêts pour le client, sauf
+  si l'utilisateur demande explicitement une annexe de sources. Utiliser de
+  courts extraits et des liens stables pour la relecture.
+- Séparer le volume de mentions brut de la portée, de l'engagement, du
+  sentiment, et de l'interprétation stratégique. Les métriques manquantes
+  doivent réduire la confiance, pas devenir des estimations inventées.
+- Signaler clairement les limites d'échantillonnage lorsque les limites de
+  taux, les exports, ou les fenêtres de recherche rendent la couverture
+  partielle.
 
-## Scoring Notes
+## Notes de notation
 
-- Count one post once per entity unless the same post mentions multiple tracked
-  entities. In multi-entity posts, assign the mention to each entity and flag it
-  as shared context.
-- Report raw mention share and sentiment-weighted share separately.
-- Use engagement metrics only as secondary context unless the user requested
-  engagement-weighted SOV.
-- For trend comparisons, keep the same query set and sampling method across
-  periods. If the method changes, label the comparison as directional.
+- Compter une publication une seule fois par entité, sauf si la même
+  publication mentionne plusieurs entités suivies. Dans les publications
+  multi-entités, attribuer la mention à chaque entité et la signaler comme
+  contexte partagé.
+- Rapporter séparément la part de mention brute et la part pondérée par
+  sentiment.
+- N'utiliser les métriques d'engagement que comme contexte secondaire, sauf
+  si l'utilisateur a demandé une part de voix pondérée par l'engagement.
+- Pour les comparaisons de tendance, conserver le même ensemble de requêtes et
+  la même méthode d'échantillonnage d'une période à l'autre. Si la méthode
+  change, étiqueter la comparaison comme directionnelle.

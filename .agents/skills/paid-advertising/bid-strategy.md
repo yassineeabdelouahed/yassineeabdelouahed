@@ -1,256 +1,256 @@
-# Bid Strategy — Optimization & Management
+# Stratégie d'enchères — Optimisation et gestion
 
-## Bid Strategy Decision Tree by Objective
+## Arbre de décision de stratégie d'enchères par objectif
 
 ```
-START: What is your primary campaign objective?
+DÉBUT : Quel est votre objectif de campagne principal ?
 │
-├── Drive Conversions (Leads, Sales, Sign-ups)
-│   ├── Have a target CPA? ──────────────────→ Target CPA (tCPA)
-│   │   └── Enough volume? (30+ conv/month) → Yes: tCPA | No: Max Conversions
-│   ├── Have a target ROAS? ─────────────────→ Target ROAS (tROAS)
-│   │   └── Enough volume? (50+ conv/month) → Yes: tROAS | No: Max Conv Value
-│   └── No specific target? ─────────────────→ Maximize Conversions (uncapped)
+├── Générer des conversions (leads, ventes, inscriptions)
+│   ├── Avez-vous un CPA cible ? ──────────────────→ CPA cible (tCPA)
+│   │   └── Volume suffisant ? (30+ conv/mois) → Oui : tCPA | Non : Maximiser les conversions
+│   ├── Avez-vous un ROAS cible ? ─────────────────→ ROAS cible (tROAS)
+│   │   └── Volume suffisant ? (50+ conv/mois) → Oui : tROAS | Non : Maximiser la valeur de conversion
+│   └── Pas de cible spécifique ? ─────────────────→ Maximiser les conversions (sans plafond)
 │
-├── Drive Traffic / Clicks
-│   ├── Budget-efficient clicks? ────────────→ Maximize Clicks (set CPC cap)
-│   └── Engagement-focused? ─────────────────→ Maximize Clicks (no cap)
+├── Générer du trafic / des clics
+│   ├── Clics rentables ? ────────────────────→ Maximiser les clics (fixer un plafond de CPC)
+│   └── Focus engagement ? ─────────────────────→ Maximiser les clics (sans plafond)
 │
-├── Build Awareness / Reach
-│   ├── Impression share goal? ──────────────→ Target Impression Share
-│   ├── Maximum reach? ──────────────────────→ CPM bidding (Meta, TikTok, Programmatic)
-│   └── Video views? ───────────────────────→ CPV / ThruPlay bidding
+├── Construire la notoriété / la portée
+│   ├── Objectif de part d'impressions ? ──────────────→ Part d'impressions cible
+│   ├── Portée maximale ? ──────────────────────→ Enchères CPM (Meta, TikTok, Programmatique)
+│   └── Vues vidéo ? ───────────────────────→ Enchères CPV / ThruPlay
 │
-└── Need Full Manual Control
-    ├── Very low volume (<15 conv/month)? ──→ Manual CPC
-    ├── Regulatory / compliance constraints? → Manual CPC
-    └── Testing new campaigns? ─────────────→ Manual CPC → transition to automated
+└── Besoin d'un contrôle manuel complet
+    ├── Volume très faible (<15 conv/mois) ? ──→ CPC manuel
+    ├── Contraintes réglementaires / de conformité ? → CPC manuel
+    └── Test de nouvelles campagnes ? ─────────────→ CPC manuel → transition vers l'automatisé
 ```
 
-## Bid Strategy Comparison Across Platforms
+## Comparaison des stratégies d'enchères entre plateformes
 
-| Strategy | Google Ads | Meta Ads | LinkedIn Ads | TikTok Ads | Programmatic (DSP) |
+| Stratégie | Google Ads | Meta Ads | LinkedIn Ads | TikTok Ads | Programmatique (DSP) |
 |---|---|---|---|---|---|
-| Max Conversions | Maximize Conversions | Maximize Conversions | Maximize Conversions | Maximum Conversion | Auto-optimize to conversion |
-| Target CPA | tCPA | Cost per result goal | Target cost | Cost cap | Target CPA |
-| Target ROAS | tROAS | ROAS goal (Adv+) | N/A | ROAS goal | Target ROAS |
-| Max Clicks | Maximize Clicks | Maximize Link Clicks | Maximize Clicks | Maximize Clicks | Max clicks optimization |
-| Impression-based | Target Imp. Share | Maximize Reach (CPM) | N/A | Reach (CPM) | Fixed / Floor CPM |
-| Manual | Manual CPC | Bid cap | Manual bid | Bid cap | Fixed CPM / Max bid |
-| Value-based | Max Conv Value | Highest Value | N/A | Max Value | Maximize revenue |
+| Max de conversions | Maximiser les conversions | Maximiser les conversions | Maximiser les conversions | Conversion maximale | Auto-optimisation vers la conversion |
+| CPA cible | tCPA | Objectif de coût par résultat | Coût cible | Plafond de coût | CPA cible |
+| ROAS cible | tROAS | Objectif ROAS (Adv+) | N/A | Objectif ROAS | ROAS cible |
+| Max de clics | Maximiser les clics | Maximiser les clics sur le lien | Maximiser les clics | Maximiser les clics | Optimisation max de clics |
+| Basé sur l'impression | Part d'impr. cible | Maximiser la portée (CPM) | N/A | Portée (CPM) | CPM fixe / plancher |
+| Manuel | CPC manuel | Plafond d'enchère | Enchère manuelle | Plafond d'enchère | CPM fixe / enchère max |
+| Basé sur la valeur | Valeur de conv. max | Valeur la plus élevée | N/A | Valeur max | Maximiser le revenu |
 
-## Learning Phase Management
+## Gestion de la phase d'apprentissage
 
-### What Is the Learning Phase?
-When you launch a new campaign or make significant changes, the platform's algorithm needs data to optimize delivery. During this period, performance fluctuates as the system explores which users, placements, and times convert best.
+### Qu'est-ce que la phase d'apprentissage ?
+Lorsque vous lancez une nouvelle campagne ou effectuez des changements significatifs, l'algorithme de la plateforme a besoin de données pour optimiser la diffusion. Pendant cette période, la performance fluctue tandis que le système explore quels utilisateurs, emplacements et moments convertissent le mieux.
 
-### Learning Phase Duration by Platform
+### Durée de la phase d'apprentissage par plateforme
 
-| Platform | Typical Duration | Conversions Needed | Reset Triggers |
+| Plateforme | Durée typique | Conversions nécessaires | Déclencheurs de réinitialisation |
 |---|---|---|---|
-| Google Ads | 1–2 weeks | 30–50 conversions | Budget change >20%, bid strategy change, conversion action change |
-| Meta Ads | 7 days (or 50 conversions) | 50 conversions per ad set | Budget change >20%, bid change, audience change, creative change, 7-day pause |
-| LinkedIn Ads | 1–2 weeks | ~15 conversions | Bid change, audience change, budget change |
-| TikTok Ads | 4–7 days (or 50 conversions) | 50 conversions per ad group | Budget change >50%, bid change, targeting change |
-| Programmatic | Varies by DSP | Campaign-dependent | Major targeting or budget shifts |
+| Google Ads | 1–2 semaines | 30–50 conversions | Changement de budget >20 %, changement de stratégie d'enchères, changement d'action de conversion |
+| Meta Ads | 7 jours (ou 50 conversions) | 50 conversions par ad set | Changement de budget >20 %, changement d'enchère, changement d'audience, changement de créatif, pause de 7 jours |
+| LinkedIn Ads | 1–2 semaines | ~15 conversions | Changement d'enchère, changement d'audience, changement de budget |
+| TikTok Ads | 4–7 jours (ou 50 conversions) | 50 conversions par groupe d'annonces | Changement de budget >50 %, changement d'enchère, changement de ciblage |
+| Programmatique | Varie selon le DSP | Dépend de la campagne | Changements majeurs de ciblage ou de budget |
 
-### Learning Phase Best Practices
-- [ ] Do not make changes during the learning phase — let the algorithm stabilize
-- [ ] Set budgets high enough to generate required conversions within the window
-- [ ] Use broader targeting at launch to give the algorithm room to explore
-- [ ] Batch your changes — make all edits at once rather than incremental tweaks
-- [ ] If CPA is 3x+ target during learning, consider pausing and restructuring
-- [ ] Track "Learning" and "Learning Limited" statuses — the latter signals insufficient data
-- [ ] Plan for 20–30% higher CPA during learning as a normal cost of optimization
+### Bonnes pratiques de la phase d'apprentissage
+- [ ] Ne pas faire de changements pendant la phase d'apprentissage — laisser l'algorithme se stabiliser
+- [ ] Fixer des budgets suffisamment élevés pour générer les conversions requises dans la fenêtre
+- [ ] Utiliser un ciblage plus large au lancement pour donner à l'algorithme de la marge pour explorer
+- [ ] Regrouper vos changements — faire toutes les modifications en une fois plutôt que des ajustements incrémentaux
+- [ ] Si le CPA est 3x+ supérieur à la cible pendant l'apprentissage, envisager de mettre en pause et de restructurer
+- [ ] Suivre les statuts « Apprentissage » et « Apprentissage limité » — ce dernier signale des données insuffisantes
+- [ ] Prévoir un CPA supérieur de 20 à 30 % pendant l'apprentissage comme coût normal de l'optimisation
 
-### Learning Phase Budget Formula
+### Formule de budget de la phase d'apprentissage
 ```
-Minimum daily budget = Target CPA x 5 (Google)
-Minimum daily budget = Target CPA x 10 (Meta, TikTok)
+Budget quotidien minimum = CPA cible x 5 (Google)
+Budget quotidien minimum = CPA cible x 10 (Meta, TikTok)
 
-Example: If target CPA = $50
-  Google: $250/day minimum per campaign
-  Meta:   $500/day minimum per ad set
+Exemple : Si le CPA cible = 50 $
+  Google : 250 $/jour minimum par campagne
+  Meta :   500 $/jour minimum par ad set
 ```
 
-## Portfolio Bid Strategies (Google Ads)
+## Stratégies d'enchères de portefeuille (Google Ads)
 
-### What Are Portfolio Strategies?
-Portfolio bid strategies apply a single automated bid strategy across multiple campaigns, allowing the algorithm to optimize holistically rather than per-campaign.
+### Qu'est-ce qu'une stratégie de portefeuille ?
+Les stratégies d'enchères de portefeuille appliquent une seule stratégie d'enchères automatisée à travers plusieurs campagnes, permettant à l'algorithme d'optimiser de manière holistique plutôt que campagne par campagne.
 
-### Portfolio Strategy Types
+### Types de stratégies de portefeuille
 
-| Strategy | How It Works | Best For |
+| Stratégie | Fonctionnement | Idéal pour |
 |---|---|---|
-| Portfolio tCPA | Averages CPA across campaigns | Multiple campaigns with same CPA goal |
-| Portfolio tROAS | Averages ROAS across campaigns | E-commerce with varied product campaigns |
-| Portfolio Max Clicks | Maximizes total clicks across campaigns | Traffic-focused multi-campaign setups |
-| Portfolio Target Impression Share | Maintains impression share across campaigns | Brand defense across multiple brand terms |
+| Portefeuille tCPA | Fait la moyenne du CPA entre campagnes | Plusieurs campagnes avec le même objectif de CPA |
+| Portefeuille tROAS | Fait la moyenne du ROAS entre campagnes | E-commerce avec des campagnes produit variées |
+| Portefeuille Max de clics | Maximise le total des clics entre campagnes | Configurations multi-campagnes axées sur le trafic |
+| Portefeuille Part d'impressions cible | Maintient la part d'impressions entre campagnes | Défense de marque sur plusieurs termes de marque |
 
-### When to Use Portfolio Strategies
-- [ ] 3+ campaigns sharing the same conversion goal
-- [ ] Individual campaigns have low conversion volume (< 30/month)
-- [ ] You want the system to shift budget toward best-performing campaigns
-- [ ] Seasonal campaigns where volume fluctuates
-- [ ] Brand campaigns where impression share consistency matters
+### Quand utiliser les stratégies de portefeuille
+- [ ] 3+ campagnes partageant le même objectif de conversion
+- [ ] Les campagnes individuelles ont un faible volume de conversion (< 30/mois)
+- [ ] Vous voulez que le système déplace le budget vers les campagnes les plus performantes
+- [ ] Campagnes saisonnières où le volume fluctue
+- [ ] Campagnes de marque où la cohérence de la part d'impressions compte
 
-### Portfolio Strategy Checklist
-- [ ] Group campaigns with similar goals and conversion types
-- [ ] Set a shared target (CPA or ROAS) that reflects the portfolio average
-- [ ] Minimum 50 total conversions per month across the portfolio
-- [ ] Monitor individual campaign performance — don't let one campaign starve
-- [ ] Review and adjust targets quarterly based on business goals
+### Checklist de stratégie de portefeuille
+- [ ] Regrouper les campagnes avec des objectifs et des types de conversion similaires
+- [ ] Fixer une cible partagée (CPA ou ROAS) qui reflète la moyenne du portefeuille
+- [ ] Minimum 50 conversions totales par mois à travers le portefeuille
+- [ ] Surveiller la performance de chaque campagne individuelle — ne pas laisser une campagne être privée de budget
+- [ ] Revoir et ajuster les cibles trimestriellement selon les objectifs métier
 
-## Bid Adjustments
+## Ajustements d'enchères
 
-### Adjustment Types and Ranges
+### Types d'ajustements et plages
 
-| Dimension | Available On | Range | When to Use |
+| Dimension | Disponible sur | Plage | Quand l'utiliser |
 |---|---|---|---|
-| Device (Mobile, Desktop, Tablet) | Google, Microsoft | -100% to +900% | Significant device performance gap |
-| Location (Geo) | Google, Microsoft | -90% to +900% | Regional performance variation |
-| Audience (RLSA, In-Market, etc.) | Google, Microsoft | -90% to +900% | High-value audience segments |
-| Time of Day / Day of Week | Google, Microsoft | -90% to +900% | B2B (business hours), local businesses |
-| Demographics (Age, Gender, Income) | Google, Microsoft | -90% to +900% | Clear demographic performance differences |
-| Placement (websites, apps) | Meta (manual bidding) | Varies | Over/underperforming placements |
+| Appareil (Mobile, Bureau, Tablette) | Google, Microsoft | -100 % à +900 % | Écart de performance significatif entre appareils |
+| Localisation (géo) | Google, Microsoft | -90 % à +900 % | Variation de performance régionale |
+| Audience (RLSA, In-Market, etc.) | Google, Microsoft | -90 % à +900 % | Segments d'audience à haute valeur |
+| Heure de la journée / Jour de la semaine | Google, Microsoft | -90 % à +900 % | B2B (heures ouvrées), commerces locaux |
+| Démographie (âge, genre, revenu) | Google, Microsoft | -90 % à +900 % | Différences de performance démographique claires |
+| Emplacement (sites web, apps) | Meta (enchère manuelle) | Varie | Emplacements sur/sous-performants |
 
-### Bid Adjustment Decision Framework
+### Cadre de décision d'ajustement d'enchère
 
-| Performance Gap | Recommended Adjustment | Review Period |
+| Écart de performance | Ajustement recommandé | Période de revue |
 |---|---|---|
-| Conv rate 50%+ higher | +20% to +50% | Wait for statistical significance (100+ clicks) |
-| Conv rate 20–50% higher | +10% to +20% | 2–4 weeks of data |
-| Conv rate within 20% | No adjustment | Normal variance |
-| Conv rate 20–50% lower | -10% to -30% | 2–4 weeks of data |
-| Conv rate 50%+ lower | -30% to -60% | Consider exclusion instead |
-| Zero conversions, high spend | -100% (exclude) | After 3x CPA spend |
+| Taux de conv. 50 %+ plus élevé | +20 % à +50 % | Attendre la significativité statistique (100+ clics) |
+| Taux de conv. 20–50 % plus élevé | +10 % à +20 % | 2 à 4 semaines de données |
+| Taux de conv. dans les 20 % | Pas d'ajustement | Variance normale |
+| Taux de conv. 20–50 % plus bas | -10 % à -30 % | 2 à 4 semaines de données |
+| Taux de conv. 50 %+ plus bas | -30 % à -60 % | Envisager l'exclusion plutôt |
+| Zéro conversion, forte dépense | -100 % (exclure) | Après 3x la dépense du CPA |
 
-### Important Notes on Bid Adjustments + Smart Bidding
-- **Smart bidding (tCPA, tROAS, Max Conversions) already adjusts bids** by device, location, time, audience, and more
-- Layering manual bid adjustments on top of smart bidding creates **compounding effects** and can cause instability
-- The only bid adjustment that works with smart bidding: **device -100%** (to fully exclude a device)
-- For smart bidding campaigns, optimize through **targeting and audience signals**, not bid adjustments
+### Remarques importantes sur les ajustements d'enchères + les enchères intelligentes
+- **Les enchères intelligentes (tCPA, tROAS, Max de conversions) ajustent déjà les enchères** par appareil, localisation, heure, audience, et plus
+- Superposer des ajustements d'enchère manuels par-dessus les enchères intelligentes crée des **effets cumulatifs** et peut provoquer de l'instabilité
+- Le seul ajustement d'enchère qui fonctionne avec les enchères intelligentes : **appareil -100 %** (pour exclure complètement un appareil)
+- Pour les campagnes en enchères intelligentes, optimiser via le **ciblage et les signaux d'audience**, pas les ajustements d'enchère
 
-## Manual vs Automated Bidding
+## Enchères manuelles vs automatisées
 
-### Comparison Matrix
+### Matrice de comparaison
 
-| Factor | Manual Bidding | Automated Bidding |
+| Facteur | Enchères manuelles | Enchères automatisées |
 |---|---|---|
-| Control | Full — you set every bid | Limited — algorithm decides |
-| Data requirement | Low (can work with few conversions) | High (30–50+ conversions/month) |
-| Optimization speed | Slow (human-limited) | Fast (real-time auction signals) |
-| Signal utilization | Limited to visible metrics | Uses 100+ signals per auction |
-| Time investment | High (daily monitoring and adjustment) | Low (set strategy, monitor outcomes) |
-| Best for | Low volume, strict compliance, testing | Scale, performance, efficiency |
-| Risk | Under-optimization (missed signals) | Over-spending during learning phase |
+| Contrôle | Total — vous fixez chaque enchère | Limité — l'algorithme décide |
+| Exigence de données | Faible (peut fonctionner avec peu de conversions) | Élevée (30–50+ conversions/mois) |
+| Vitesse d'optimisation | Lente (limitée par l'humain) | Rapide (signaux d'enchère en temps réel) |
+| Utilisation des signaux | Limitée aux métriques visibles | Utilise plus de 100 signaux par enchère |
+| Investissement temps | Élevé (surveillance et ajustement quotidiens) | Faible (fixer la stratégie, surveiller les résultats) |
+| Idéal pour | Faible volume, conformité stricte, test | Échelle, performance, efficacité |
+| Risque | Sous-optimisation (signaux manqués) | Surdépense pendant la phase d'apprentissage |
 
-### Transition Path: Manual to Automated
-1. **Start with Manual CPC** — establish baseline CPA and conversion volume
-2. **Accumulate 30+ conversions/month** — minimum data for automated bidding
-3. **Switch to Maximize Conversions (no cap)** — let algorithm learn without constraints
-4. **After 2–4 weeks, add tCPA** — set target at 10–20% above current average CPA
-5. **Gradually tighten target** — reduce tCPA by 5–10% increments every 2 weeks
-6. **Monitor for volume vs efficiency tradeoff** — tighter targets reduce volume
+### Chemin de transition : Manuel vers automatisé
+1. **Commencer avec le CPC manuel** — établir le CPA et le volume de conversion de référence
+2. **Accumuler 30+ conversions/mois** — donnée minimale pour l'enchère automatisée
+3. **Passer à Maximiser les conversions (sans plafond)** — laisser l'algorithme apprendre sans contraintes
+4. **Après 2 à 4 semaines, ajouter tCPA** — fixer la cible 10 à 20 % au-dessus du CPA moyen actuel
+5. **Resserrer graduellement la cible** — réduire tCPA par paliers de 5 à 10 % toutes les 2 semaines
+6. **Surveiller l'arbitrage volume vs efficacité** — des cibles plus strictes réduisent le volume
 
-## Seasonality Adjustments
+## Ajustements de saisonnalité
 
-### Google Ads Seasonality Adjustments
-- [ ] Use the Seasonality Adjustments tool in Google Ads for **short-term events** (1–7 days)
-- [ ] Input expected conversion rate change (e.g., +30% for Black Friday)
-- [ ] Set date range, device, and campaign scope
-- [ ] The algorithm pre-adjusts bids for the event period and reverts afterward
-- [ ] Not needed for gradual seasonal shifts — smart bidding learns those organically
+### Ajustements de saisonnalité Google Ads
+- [ ] Utiliser l'outil Ajustements de saisonnalité dans Google Ads pour les **événements de courte durée** (1 à 7 jours)
+- [ ] Saisir le changement de taux de conversion attendu (par exemple, +30 % pour le Black Friday)
+- [ ] Définir la plage de dates, l'appareil et la portée de campagne
+- [ ] L'algorithme préajuste les enchères pour la période de l'événement puis revient à la normale ensuite
+- [ ] Non nécessaire pour les évolutions saisonnières progressives — les enchères intelligentes les apprennent de manière organique
 
-### Seasonal Planning Calendar
+### Calendrier de planification saisonnière
 
-| Season / Event | Typical Impact | Advance Planning |
+| Saison / Événement | Impact typique | Planification anticipée |
 |---|---|---|
-| Q4 Holiday (Nov–Dec) | CPMs +30–80%, CVR +20–40% | Budget approved by September; creative by October |
-| Black Friday / Cyber Monday | CPMs +50–100%, CVR +30–60% | Campaigns live 1–2 weeks early for learning |
-| Back-to-School (Jul–Sep) | CPMs +10–20% | Plan by June |
-| Valentine's Day / Mother's Day | Category-specific CPM spikes | 3–4 weeks advance |
-| Post-Holiday (Jan) | CPMs drop 30–50%, opportunity for efficiency | Plan January campaigns in December |
-| Industry-specific events | Varies | Map your vertical's seasonal calendar |
+| Q4 fêtes de fin d'année (nov.–déc.) | CPM +30–80 %, TdC +20–40 % | Budget approuvé en septembre ; créatif en octobre |
+| Black Friday / Cyber Monday | CPM +50–100 %, TdC +30–60 % | Campagnes en ligne 1 à 2 semaines à l'avance pour l'apprentissage |
+| Rentrée scolaire (juil.–sept.) | CPM +10–20 % | Planifier en juin |
+| Saint-Valentin / Fête des Mères | Pics de CPM spécifiques à la catégorie | 3 à 4 semaines à l'avance |
+| Après-fêtes (janvier) | CPM baisse de 30–50 %, opportunité d'efficacité | Planifier les campagnes de janvier en décembre |
+| Événements spécifiques au secteur | Varie | Cartographier le calendrier saisonnier de votre verticale |
 
-### Seasonal Budget Allocation Framework
+### Cadre d'allocation budgétaire saisonnière
 ```
-Standard Month Budget:  100% (baseline)
-Pre-Peak Month:         120–140% (build audiences, test creative)
-Peak Month:             150–200% (maximize capture during high-intent period)
-Post-Peak Month:        80–90% (efficiency gains, lower CPMs)
-```
-
-## Budget Pacing
-
-### Pacing Models
-
-| Model | Description | Best For |
-|---|---|---|
-| **Even pacing (standard)** | Spread budget evenly across the flight | Most campaigns; predictable delivery |
-| **Accelerated pacing** | Spend as fast as possible | Limited-time offers, events, flash sales |
-| **Front-loaded** | Heavy spend early, taper off | Product launches, awareness bursts |
-| **Back-loaded** | Light spend early, ramp up | Sales events, building toward a deadline |
-| **Dayparted** | Concentrate spend in specific hours | B2B (business hours), restaurants (meal times) |
-
-### Pacing Monitoring Checklist
-- [ ] Check daily spend vs expected daily pace (total budget / flight days)
-- [ ] Alert threshold: +/-15% off pace for 3+ consecutive days
-- [ ] Under-pacing fix: broaden targeting, increase bids, add placements
-- [ ] Over-pacing fix: tighten targeting, reduce bids, add frequency caps
-- [ ] Use automated rules or scripts for daily pacing alerts
-- [ ] Account for weekday/weekend variance (B2B weekday heavy, B2C weekend heavy)
-
-### Budget Pacing Formula
-```
-Expected daily spend = Total budget / Total campaign days
-Actual pace % = (Spend to date / Expected spend to date) x 100
-
-On pace:  95–105%
-Slightly off: 85–95% or 105–115%
-Action required: <85% or >115%
+Budget mois standard :  100 % (référence)
+Mois pré-pic :          120–140 % (construire les audiences, tester le créatif)
+Mois de pic :           150–200 % (maximiser la capture pendant la période à forte intention)
+Mois post-pic :         80–90 % (gains d'efficacité, CPM plus bas)
 ```
 
-## Cross-Platform Bid Coordination
+## Rythme budgétaire
 
-### Multi-Platform Budget Allocation
+### Modèles de rythme
 
-| Platform | Role in Media Mix | Budget Share (Typical) | Primary KPI |
+| Modèle | Description | Idéal pour |
+|---|---|---|
+| **Rythme régulier (standard)** | Répartir le budget uniformément sur la période | La plupart des campagnes ; diffusion prévisible |
+| **Rythme accéléré** | Dépenser aussi vite que possible | Offres à durée limitée, événements, ventes flash |
+| **Chargé en début de période** | Forte dépense en début de période, puis atténuation | Lancements de produit, pics de notoriété |
+| **Chargé en fin de période** | Faible dépense en début, montée en puissance | Événements commerciaux, construction vers une échéance |
+| **Par tranche horaire (dayparting)** | Concentrer la dépense sur des heures spécifiques | B2B (heures ouvrées), restaurants (heures de repas) |
+
+### Checklist de surveillance du rythme
+- [ ] Vérifier la dépense quotidienne par rapport au rythme quotidien attendu (budget total / jours de la période)
+- [ ] Seuil d'alerte : +/-15 % hors rythme pendant 3+ jours consécutifs
+- [ ] Correctif sous-rythme : élargir le ciblage, augmenter les enchères, ajouter des emplacements
+- [ ] Correctif sur-rythme : resserrer le ciblage, réduire les enchères, ajouter des plafonds de fréquence
+- [ ] Utiliser des règles automatisées ou des scripts pour des alertes quotidiennes de rythme
+- [ ] Tenir compte de la variance semaine/week-end (B2B chargé en semaine, B2C chargé le week-end)
+
+### Formule de rythme budgétaire
+```
+Dépense quotidienne attendue = Budget total / Nombre total de jours de campagne
+% de rythme réel = (Dépense à ce jour / Dépense attendue à ce jour) x 100
+
+Dans le rythme :  95–105 %
+Légèrement hors rythme : 85–95 % ou 105–115 %
+Action requise : <85 % ou >115 %
+```
+
+## Coordination des enchères cross-plateforme
+
+### Allocation budgétaire multi-plateforme
+
+| Plateforme | Rôle dans le mix média | Part de budget (typique) | KPI principal |
 |---|---|---|---|
-| Google Search | Demand capture | 30–40% | CPA, ROAS |
-| Meta Ads | Demand generation + retargeting | 20–30% | CPA, ROAS, CPL |
-| YouTube / CTV | Awareness + consideration | 10–15% | CPV, VCR, Brand Lift |
-| LinkedIn | B2B demand gen | 10–15% (B2B) | CPL, SQL rate |
-| TikTok | Discovery + awareness | 5–15% | CPA, engagement |
-| Programmatic Display | Retargeting + reach | 5–10% | CPM, viewability |
+| Google Search | Capture de la demande | 30–40 % | CPA, ROAS |
+| Meta Ads | Génération de demande + retargeting | 20–30 % | CPA, ROAS, CPL |
+| YouTube / CTV | Notoriété + considération | 10–15 % | CPV, VCR, Brand Lift |
+| LinkedIn | Génération de demande B2B | 10–15 % (B2B) | CPL, taux de SQL |
+| TikTok | Découverte + notoriété | 5–15 % | CPA, engagement |
+| Display programmatique | Retargeting + portée | 5–10 % | CPM, viewability |
 
-### Cross-Platform Optimization Strategy
-- [ ] Establish unified conversion tracking (GA4, CDP, or attribution platform)
-- [ ] Use consistent UTM taxonomy across all platforms
-- [ ] Set platform-specific CPA/ROAS targets that roll up to blended goal
-- [ ] Shift budget toward platforms with best incrementality (not just last-click)
-- [ ] Run holdout tests per platform to measure true incremental impact
-- [ ] Weekly cross-platform reporting to identify over/under-investment
-- [ ] Account for attribution overlap — Google and Meta will both claim the same conversions
+### Stratégie d'optimisation cross-plateforme
+- [ ] Établir un suivi de conversion unifié (GA4, CDP, ou plateforme d'attribution)
+- [ ] Utiliser une taxonomie UTM cohérente sur toutes les plateformes
+- [ ] Fixer des cibles CPA/ROAS spécifiques à chaque plateforme qui remontent vers un objectif global
+- [ ] Déplacer le budget vers les plateformes ayant la meilleure incrémentalité (pas seulement le dernier clic)
+- [ ] Exécuter des tests avec groupe témoin par plateforme pour mesurer l'impact incrémental réel
+- [ ] Reporting cross-plateforme hebdomadaire pour identifier la sur/sous-investissement
+- [ ] Tenir compte du chevauchement d'attribution — Google et Meta revendiqueront tous deux les mêmes conversions
 
-## Troubleshooting Guide
+## Guide de dépannage
 
-| Symptom | Likely Cause | Diagnosis | Fix |
+| Symptôme | Cause probable | Diagnostic | Correctif |
 |---|---|---|---|
-| CPA spiked after bid strategy change | Learning phase reset | Check "Learning" status | Wait 2 weeks; revert if CPA > 3x target |
-| Budget not spending (under-delivery) | Target too restrictive | Check impression share lost to rank | Raise tCPA/tROAS by 10–20% or broaden targeting |
-| Spending too fast, poor CPA | Target too loose or algorithm chasing volume | Review conversion quality | Tighten tCPA, check for spam conversions, review search terms |
-| "Learning Limited" status | Insufficient conversions | Need 50+ conversions in 7 days (Meta) | Consolidate ad sets, broaden audience, increase budget |
-| Erratic daily spend | Algorithm exploring | Normal in first 7–14 days | Monitor weekly averages, not daily; adjust only if weekly CPA off |
-| Good CPA but low volume | Target too aggressive | Impression share lost to budget/rank | Raise tCPA by 10%, increase budget, add keywords/audiences |
-| High impression share but low conversions | Winning wrong auctions | Check search terms, audience overlap | Add negatives, refine audiences, check landing page conversion rate |
-| Performance degradation over time | Audience fatigue, competitive pressure | Check frequency, auction insights | Refresh creative, expand audiences, test new channels |
-| Portfolio strategy starving a campaign | Uneven performance distribution | Review per-campaign metrics | Consider removing underperformer from portfolio or adjusting structure |
+| Le CPA a bondi après un changement de stratégie d'enchères | Réinitialisation de la phase d'apprentissage | Vérifier le statut « Apprentissage » | Attendre 2 semaines ; revenir en arrière si le CPA > 3x la cible |
+| Le budget ne se dépense pas (sous-diffusion) | Cible trop restrictive | Vérifier la part d'impressions perdue par classement | Augmenter tCPA/tROAS de 10–20 % ou élargir le ciblage |
+| Dépense trop rapide, mauvais CPA | Cible trop lâche ou algorithme qui poursuit le volume | Revoir la qualité des conversions | Resserrer tCPA, vérifier les conversions parasites, revoir les termes de recherche |
+| Statut « Apprentissage limité » | Conversions insuffisantes | Besoin de 50+ conversions en 7 jours (Meta) | Consolider les ad sets, élargir l'audience, augmenter le budget |
+| Dépense quotidienne erratique | L'algorithme explore | Normal dans les 7 à 14 premiers jours | Surveiller les moyennes hebdomadaires, pas quotidiennes ; ajuster seulement si le CPA hebdomadaire est hors cible |
+| Bon CPA mais faible volume | Cible trop agressive | Part d'impressions perdue par budget/classement | Augmenter tCPA de 10 %, augmenter le budget, ajouter des mots-clés/audiences |
+| Forte part d'impressions mais faibles conversions | Gagne les mauvaises enchères | Vérifier les termes de recherche, le chevauchement d'audience | Ajouter des négatifs, affiner les audiences, vérifier le taux de conversion de la landing page |
+| Dégradation de performance dans le temps | Fatigue d'audience, pression concurrentielle | Vérifier la fréquence, les insights d'enchère | Rafraîchir le créatif, élargir les audiences, tester de nouveaux canaux |
+| La stratégie de portefeuille prive une campagne de budget | Distribution de performance inégale | Revoir les métriques par campagne | Envisager de retirer le moins performant du portefeuille ou d'ajuster la structure |
 
-### Bid Strategy Change Protocol
-1. Document current performance (CPA, ROAS, volume, spend) as baseline
-2. Make the change during a low-traffic period (Monday AM, not Friday PM)
-3. Do not change anything else simultaneously (creative, targeting, budget)
-4. Allow full learning phase before evaluating (2 weeks minimum)
-5. Compare at the weekly level, not daily
-6. Decision framework: if week 3 CPA is within 20% of target, continue; if 20–50% above, adjust target; if 50%+ above, revert and diagnose
+### Protocole de changement de stratégie d'enchères
+1. Documenter la performance actuelle (CPA, ROAS, volume, dépense) comme référence
+2. Effectuer le changement pendant une période de faible trafic (lundi matin, pas vendredi après-midi)
+3. Ne rien changer d'autre simultanément (créatif, ciblage, budget)
+4. Laisser la phase d'apprentissage se terminer avant d'évaluer (2 semaines minimum)
+5. Comparer au niveau hebdomadaire, pas quotidien
+6. Cadre de décision : si le CPA de la semaine 3 est dans les 20 % de la cible, continuer ; si 20–50 % au-dessus, ajuster la cible ; si 50 %+ au-dessus, revenir en arrière et diagnostiquer

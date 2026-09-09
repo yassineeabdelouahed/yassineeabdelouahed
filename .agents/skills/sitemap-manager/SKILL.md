@@ -1,75 +1,75 @@
 ---
 name: sitemap-manager
-description: "Audit an existing XML sitemap — URL counts vs protocol limits, lastmod validity, sampled URL status codes, robots.txt and noindex conflicts, missing pages, compression — or generate a new sitemap (plan or valid XML with index splitting) from industry templates for SaaS, ecommerce, local, publisher, or agency sites. Triggers on \"/digital-marketing-pro:sitemap-manager\", \"audit our sitemap\", \"why are there 404s in the sitemap\", \"generate a sitemap for the new site\", \"is our sitemap declared in robots.txt\". Outputs a severity-ranked issue report or ready-to-submit XML with the robots.txt line and GSC submission instructions; uses tech-seo-auditor.py for URL health checks."
+description: "Audite un sitemap XML existant — nombre d'URL par rapport aux limites du protocole, validité de lastmod, codes de statut échantillonnés des URL, conflits robots.txt et noindex, pages manquantes, compression — ou génère un nouveau sitemap (plan ou XML valide avec découpage en index) à partir de modèles sectoriels pour les sites SaaS, e-commerce, local, éditeur, ou agence. Se déclenche sur \"/digital-marketing-pro:sitemap-manager\", \"audit our sitemap\", \"why are there 404s in the sitemap\", \"generate a sitemap for the new site\", \"is our sitemap declared in robots.txt\". Produit un rapport de problèmes classé par sévérité ou un XML prêt à soumettre avec la ligne robots.txt et les instructions de soumission GSC ; utilise tech-seo-auditor.py pour les vérifications de santé des URL."
 argument-hint: "[URL or generate]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:sitemap-manager
 
-## Purpose
+## Objectif
 
-Analyze existing XML sitemaps for issues and opportunities, or generate new sitemaps with industry-specific templates and best practices.
+Analyser les sitemaps XML existants pour en identifier les problèmes et opportunités, ou générer de nouveaux sitemaps avec des modèles sectoriels et des meilleures pratiques.
 
 ## Modes
 
-### Mode 1: Analyze Existing Sitemap (`/digital-marketing-pro:sitemap-manager [URL]`)
+### Mode 1 : Analyser un sitemap existant (`/digital-marketing-pro:sitemap-manager [URL]`)
 
-Provide a sitemap URL (e.g., `https://example.com/sitemap.xml`) to audit:
+Fournissez une URL de sitemap (par ex. `https://example.com/sitemap.xml`) à auditer :
 
-1. **Fetch and parse**: Download sitemap XML, detect sitemap index vs single sitemap
-2. **URL count**: Total URLs, URLs per sitemap file (flag if approaching 50K protocol limit)
-3. **lastmod audit**: Check for presence, format (W3C datetime), staleness (>6 months without update), fake lastmod (all same date)
-4. **Priority and changefreq**: Check for deprecated/ignored signals (Google ignores both — flag if present, recommend removal to reduce file size)
-5. **URL health**: Sample 20-50 URLs and check HTTP status codes — flag 404s, 301s, 302s, 5xx errors
-6. **Indexation alignment**: Cross-reference with robots.txt and meta robots — flag noindexed URLs in sitemap, flag sitemap URLs blocked by robots.txt
-7. **Missing URLs**: Compare sitemap against site crawl or provided URL list — identify pages missing from sitemap
-8. **Image/video/news sitemaps**: Check for specialized sitemap extensions
-9. **Compression**: Check if sitemap is gzip compressed (recommended for large sitemaps)
-10. **robots.txt registration**: Verify sitemap is declared in robots.txt
+1. **Récupération et analyse** : Télécharger le XML du sitemap, détecter s'il s'agit d'un index de sitemaps ou d'un sitemap unique
+2. **Nombre d'URL** : Total d'URL, URL par fichier de sitemap (signaler en cas d'approche de la limite de protocole de 50 000)
+3. **Audit de lastmod** : Vérifier la présence, le format (datetime W3C), l'obsolescence (>6 mois sans mise à jour), les faux lastmod (toutes la même date)
+4. **Priority et changefreq** : Vérifier la présence de signaux dépréciés/ignorés (Google ignore les deux — signaler leur présence, recommander leur suppression pour réduire la taille du fichier)
+5. **Santé des URL** : Échantillonner 20 à 50 URL et vérifier les codes de statut HTTP — signaler les 404, 301, 302, erreurs 5xx
+6. **Alignement d'indexation** : Recouper avec robots.txt et meta robots — signaler les URL noindex présentes dans le sitemap, signaler les URL du sitemap bloquées par robots.txt
+7. **URL manquantes** : Comparer le sitemap au crawl du site ou à une liste d'URL fournie — identifier les pages manquantes dans le sitemap
+8. **Sitemaps image/vidéo/actualité** : Vérifier la présence d'extensions de sitemap spécialisées
+9. **Compression** : Vérifier si le sitemap est compressé en gzip (recommandé pour les grands sitemaps)
+10. **Enregistrement dans robots.txt** : Vérifier que le sitemap est déclaré dans robots.txt
 
-### Mode 2: Generate New Sitemap (`/digital-marketing-pro:sitemap-manager generate`)
+### Mode 2 : Générer un nouveau sitemap (`/digital-marketing-pro:sitemap-manager generate`)
 
-Generate a sitemap plan or actual XML:
+Générer un plan de sitemap ou un XML réel :
 
-1. **Discover site structure**: Crawl from homepage or use provided URL list
-2. **Categorize pages**: Group by type (homepage, category, product, blog, landing, legal)
-3. **Apply industry template**: Use appropriate structure based on business model (SaaS, ecommerce, local, publisher, agency)
-4. **Set lastmod**: Use actual page modification dates, not generation date
-5. **Split strategy**: Plan sitemap index structure if >50K URLs or >50MB uncompressed
-6. **Exclude rules**: Noindexed pages, paginated results, faceted URLs, utility pages (login, cart, search results)
-7. **Generate XML**: Produce valid XML sitemap following the sitemap protocol (sitemaps.org)
+1. **Découvrir la structure du site** : Crawler depuis la page d'accueil ou utiliser une liste d'URL fournie
+2. **Catégoriser les pages** : Regrouper par type (accueil, catégorie, produit, blog, landing, mentions légales)
+3. **Appliquer un modèle sectoriel** : Utiliser la structure appropriée selon le modèle économique (SaaS, e-commerce, local, éditeur, agence)
+4. **Définir lastmod** : Utiliser les dates de modification réelles des pages, pas la date de génération
+5. **Stratégie de découpage** : Planifier la structure d'index de sitemap si plus de 50 000 URL ou plus de 50 Mo non compressés
+6. **Règles d'exclusion** : Pages noindex, résultats paginés, URL à facettes, pages utilitaires (connexion, panier, résultats de recherche)
+7. **Générer le XML** : Produire un sitemap XML valide suivant le protocole de sitemap (sitemaps.org)
 
-## Industry Templates
+## Modèles sectoriels
 
 ### SaaS
-- Homepage, features, pricing, integrations, docs, blog, changelog, about, legal
-- Integration pages as separate sitemap (if 50+)
-- Blog with high update frequency
+- Accueil, fonctionnalités, tarifs, intégrations, documentation, blog, journal des modifications, à propos, mentions légales
+- Pages d'intégration en tant que sitemap séparé (si 50+)
+- Blog avec fréquence de mise à jour élevée
 
-### eCommerce
-- Homepage, categories, products, brands, collections, blog, about, legal
-- Product sitemap (largest — split if needed)
-- Image sitemap for product photos
-- Category pages with canonical handling for filtered views
+### E-commerce
+- Accueil, catégories, produits, marques, collections, blog, à propos, mentions légales
+- Sitemap produits (le plus volumineux — à découper si nécessaire)
+- Sitemap image pour les photos de produits
+- Pages de catégorie avec gestion canonique pour les vues filtrées
 
-### Local Business
-- Homepage, services, locations, about, contact, blog, reviews, legal
-- Location pages as separate sitemap (if multi-location)
-- Service area pages
+### Entreprise locale
+- Accueil, services, emplacements, à propos, contact, blog, avis, mentions légales
+- Pages d'emplacement en tant que sitemap séparé (si multi-établissements)
+- Pages de zone de service
 
-### Publisher/Media
-- Homepage, sections, articles, authors, topics, about, legal
-- News sitemap (for Google News inclusion)
-- Video sitemap (if video content)
-- High-frequency article sitemap updates
+### Éditeur/Média
+- Accueil, rubriques, articles, auteurs, thématiques, à propos, mentions légales
+- Sitemap actualité (pour l'inclusion dans Google News)
+- Sitemap vidéo (si contenu vidéo)
+- Mises à jour fréquentes du sitemap d'articles
 
-### Agency
-- Homepage, services, case studies, blog, team, about, contact, legal
-- Case study sitemap
-- Industry/vertical landing pages
+### Agence
+- Accueil, services, études de cas, blog, équipe, à propos, contact, mentions légales
+- Sitemap d'études de cas
+- Pages de destination par secteur/vertical
 
-## Sitemap Protocol Reference
+## Référence du protocole de sitemap
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -81,7 +81,7 @@ Generate a sitemap plan or actual XML:
 </urlset>
 ```
 
-### Sitemap Index (for multiple sitemaps)
+### Index de sitemap (pour plusieurs sitemaps)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -96,32 +96,32 @@ Generate a sitemap plan or actual XML:
 </sitemapindex>
 ```
 
-### Protocol Limits
-- 50,000 URLs per sitemap file
-- 50MB uncompressed per sitemap file
-- Up to 50,000 sitemaps per sitemap index file (nest indexes if more are needed)
-- Must use absolute URLs
-- UTF-8 encoding required
-- Entity escaping for special characters (&amp; &apos; &quot; &gt; &lt;)
+### Limites du protocole
+- 50 000 URL par fichier de sitemap
+- 50 Mo non compressés par fichier de sitemap
+- Jusqu'à 50 000 sitemaps par fichier d'index de sitemap (imbriquer les index si davantage sont nécessaires)
+- Doit utiliser des URL absolues
+- Encodage UTF-8 requis
+- Échappement d'entités pour les caractères spéciaux (&amp; &apos; &quot; &gt; &lt;)
 
-## Output
+## Résultat
 
-### Sitemap Analysis Report
-- Total URLs indexed, health status breakdown
-- Issues found with severity (critical/high/medium/low)
-- Missing pages that should be in the sitemap
-- Recommendations sorted by impact
+### Rapport d'analyse de sitemap
+- Total d'URL indexées, répartition du statut de santé
+- Problèmes identifiés avec sévérité (critique/élevée/moyenne/faible)
+- Pages manquantes qui devraient figurer dans le sitemap
+- Recommandations triées par impact
 
-### Sitemap Generation Output
-- Complete XML sitemap(s) or sitemap plan
-- Sitemap index if multiple files needed
-- robots.txt sitemap declaration line
-- Submission instructions for Google Search Console
+### Sortie de génération de sitemap
+- Sitemap(s) XML complet(s) ou plan de sitemap
+- Index de sitemap si plusieurs fichiers sont nécessaires
+- Ligne de déclaration du sitemap pour robots.txt
+- Instructions de soumission pour Google Search Console
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — Sitemap analysis, URL health checks, architecture recommendations
+- **seo-specialist** — Analyse de sitemap, vérifications de santé des URL, recommandations d'architecture
 
-## Scripts Used
+## Scripts utilisés
 
-- **tech-seo-auditor.py** — URL health checking (status codes, redirects)
+- **tech-seo-auditor.py** — Vérification de la santé des URL (codes de statut, redirections)

@@ -1,37 +1,39 @@
 ---
 name: image-seo-audit
-description: "Audit every image on a page for SEO, performance, and accessibility — alt text quality, tiered file-size thresholds, WebP/AVIF format adoption, srcset/sizes responsiveness, lazy loading, fetchpriority on the LCP image, and width/height for CLS — producing an optimization list sorted by file-size savings. Triggers on \"/digital-marketing-pro:image-seo-audit\", \"audit our image SEO\", \"check alt text across the page\", \"why are our images so heavy\", \"should we switch to WebP\". Fetches and analyzes the page via tech-seo-auditor.py and reads the brand profile for industry context."
+description: "Auditer chaque image d'une page pour le SEO, la performance et l'accessibilité — qualité du texte alt, seuils de taille de fichier par palier, adoption des formats WebP/AVIF, réactivité srcset/sizes, chargement différé, fetchpriority sur l'image LCP, et largeur/hauteur pour le CLS — produisant une liste d'optimisation triée par économies de taille de fichier. Se déclenche sur « /digital-marketing-pro:image-seo-audit », « audite le SEO de nos images », « vérifie le texte alt sur la page », « pourquoi nos images sont-elles si lourdes », « devrions-nous passer au WebP ». Récupère et analyse la page via tech-seo-auditor.py et lit le profil de marque pour le contexte sectoriel."
 argument-hint: "[URL]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:image-seo-audit
 
-## Purpose
+## Objectif
 
-Perform a dedicated image optimization audit that evaluates all images on a page or site for SEO, performance, and accessibility. Produces a prioritized optimization list sorted by file size impact.
+Réaliser un audit dédié à l'optimisation des images qui évalue toutes les images
+d'une page ou d'un site pour le SEO, la performance et l'accessibilité. Produit une
+liste d'optimisation priorisée triée par impact sur la taille de fichier.
 
-## Input Required
+## Informations requises
 
-- **URL**: Page or site to audit
-- **Scope**: Single page or site-wide crawl (default: single page)
+- **URL** : Page ou site à auditer
+- **Périmètre** : Page unique ou crawl à l'échelle du site (par défaut : page unique)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read active brand profile for industry context.
-2. **Discover images**: Find all `<img>`, `<picture>`, CSS `background-image`, and `<source>` elements.
-3. **Alt text audit**: Check presence, quality, keyword inclusion, length (10-125 chars). Flag: missing, filename-only ("image.jpg"), keyword-stuffed, non-descriptive ("click here").
-4. **File size audit**: Apply tiered thresholds by image category — thumbnails (<50KB target, >200KB critical), content images (<100KB target, >500KB critical), hero/banner (<200KB target, >700KB critical).
-5. **Format audit**: Check for modern formats. Recommend WebP (97%+ support) or AVIF (92%+ support) over JPEG/PNG. Check for `<picture>` element with format fallbacks. Note: JPEG XL restored in Chromium (Nov 2025) but not yet in Chrome stable — monitor, don't recommend yet.
-6. **Responsive images**: Check for `srcset` and `sizes` attributes, appropriate resolution for device pixel ratios.
-7. **Lazy loading**: Verify `loading="lazy"` on below-fold images. Flag `loading="lazy"` on above-fold/hero images (directly harms LCP).
-8. **fetchpriority**: Check for `fetchpriority="high"` on LCP/hero images. Check for `decoding="async"` on non-LCP images.
-9. **CLS prevention**: Check for `width` and `height` attributes or `aspect-ratio` CSS on all `<img>` elements. Flag images without dimensions.
-10. **File naming**: Check for descriptive, hyphenated, lowercase file names vs generic names (IMG_1234.jpg).
-11. **CDN usage**: Check if images are served from a CDN (different domain, CDN headers, edge caching).
-12. **Score and prioritize**: Sort by file size savings impact (largest first).
+1. **Charger le contexte de marque** : Lire le profil de marque actif pour le contexte sectoriel.
+2. **Découvrir les images** : Trouver tous les éléments `<img>`, `<picture>`, `background-image` CSS, et `<source>`.
+3. **Audit du texte alt** : Vérifier la présence, la qualité, l'inclusion de mots-clés, la longueur (10-125 caractères). Signaler : manquant, nom de fichier uniquement (« image.jpg »), bourré de mots-clés, non descriptif (« cliquez ici »).
+4. **Audit de la taille de fichier** : Appliquer des seuils par palier selon la catégorie d'image — miniatures (cible <50 Ko, critique >200 Ko), images de contenu (cible <100 Ko, critique >500 Ko), héros/bannière (cible <200 Ko, critique >700 Ko).
+5. **Audit des formats** : Vérifier les formats modernes. Recommander WebP (support 97%+) ou AVIF (support 92%+) plutôt que JPEG/PNG. Vérifier la présence de l'élément `<picture>` avec des repli de format. Note : JPEG XL restauré dans Chromium (nov. 2025) mais pas encore dans Chrome stable — surveiller, ne pas encore recommander.
+6. **Images réactives** : Vérifier la présence de `srcset` et `sizes`, la résolution appropriée pour les rapports de pixels d'appareil.
+7. **Chargement différé** : Vérifier `loading="lazy"` sur les images sous la ligne de flottaison. Signaler `loading="lazy"` sur les images au-dessus de la ligne de flottaison/héros (nuit directement au LCP).
+8. **fetchpriority** : Vérifier `fetchpriority="high"` sur les images LCP/héros. Vérifier `decoding="async"` sur les images non-LCP.
+9. **Prévention du CLS** : Vérifier les attributs `width` et `height` ou le CSS `aspect-ratio` sur tous les éléments `<img>`. Signaler les images sans dimensions.
+10. **Nommage des fichiers** : Vérifier les noms de fichiers descriptifs, en minuscules avec tirets, vs les noms génériques (IMG_1234.jpg).
+11. **Utilisation d'un CDN** : Vérifier si les images sont servies depuis un CDN (domaine différent, en-têtes CDN, mise en cache en périphérie).
+12. **Noter et prioriser** : Trier par impact d'économies de taille de fichier (le plus important en premier).
 
-## Recommended Picture Element Pattern
+## Motif d'élément Picture recommandé
 
 ```html
 <picture>
@@ -41,50 +43,50 @@ Perform a dedicated image optimization audit that evaluates all images on a page
 </picture>
 ```
 
-## Hero/LCP Image Pattern
+## Motif d'image héros/LCP
 
 ```html
 <img src="hero.webp" fetchpriority="high" alt="Hero image description" width="1200" height="630">
 ```
 
-Do NOT lazy-load above-fold/LCP images. Do NOT add `decoding="async"` to LCP images.
+Ne PAS charger en différé les images au-dessus de la ligne de flottaison/LCP. Ne PAS ajouter `decoding="async"` aux images LCP.
 
-## Output
+## Résultat
 
-### Image Audit Summary
+### Résumé d'audit d'image
 
-| Metric | Status | Count |
+| Métrique | Statut | Nombre |
 |--------|--------|-------|
-| Total Images | — | XX |
-| Missing Alt Text | issues | XX |
-| Oversized (>200KB) | issues | XX |
-| Wrong Format (not WebP/AVIF) | issues | XX |
-| No Dimensions (CLS risk) | issues | XX |
-| Not Lazy Loaded (below-fold) | issues | XX |
-| No fetchpriority on LCP | issues | XX |
+| Total d'images | — | XX |
+| Texte alt manquant | problèmes | XX |
+| Surdimensionnées (>200 Ko) | problèmes | XX |
+| Mauvais format (pas WebP/AVIF) | problèmes | XX |
+| Sans dimensions (risque CLS) | problèmes | XX |
+| Non chargées en différé (sous la ligne de flottaison) | problèmes | XX |
+| Pas de fetchpriority sur le LCP | problèmes | XX |
 
-### Prioritized Optimization List
+### Liste d'optimisation priorisée
 
-Sorted by estimated file size savings (largest first):
+Triée par économies de taille de fichier estimées (les plus importantes en premier) :
 
-| Image | Current Size | Format | Issues | Est. Savings |
+| Image | Taille actuelle | Format | Problèmes | Économie est. |
 |-------|-------------|--------|--------|-------------|
 | hero.jpg | 450KB | JPEG | No WebP, no fetchpriority | ~300KB |
 | ... | ... | ... | ... | ... |
 
-### Recommendations (prioritized)
-1. Convert X images to WebP format (est. XX KB total savings)
-2. Add alt text to X images
-3. Add width/height dimensions to X images
-4. Enable lazy loading on X below-fold images
-5. Add fetchpriority="high" to LCP image
-6. Compress X oversized images
-7. Implement `<picture>` element with AVIF/WebP fallbacks
+### Recommandations (priorisées)
+1. Convertir X images au format WebP (économie totale estimée de XX Ko)
+2. Ajouter un texte alt à X images
+3. Ajouter des dimensions width/height à X images
+4. Activer le chargement différé sur X images sous la ligne de flottaison
+5. Ajouter fetchpriority="high" à l'image LCP
+6. Compresser X images surdimensionnées
+7. Mettre en œuvre l'élément `<picture>` avec des replis AVIF/WebP
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — Image optimization analysis, CWV impact assessment
+- **seo-specialist** — Analyse d'optimisation d'image, évaluation de l'impact sur les CWV
 
-## Scripts Used
+## Scripts utilisés
 
-- **tech-seo-auditor.py** — Fetch page and analyze image elements
+- **tech-seo-auditor.py** — Récupérer la page et analyser les éléments d'image

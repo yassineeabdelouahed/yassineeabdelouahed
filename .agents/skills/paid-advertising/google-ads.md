@@ -1,274 +1,274 @@
-# Google Ads — Campaign Reference Guide
+# Google Ads — Guide de référence des campagnes
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## API version notes (July 2026)
+## Notes de version de l'API (juillet 2026)
 
-If you're writing code or constructing API requests against the Google Ads API, target **v24.2** (released 24 June 2026) — DMP's deliberate stable target. v24.1 and v24.2 are non-breaking additive releases on the v24 line; **v25 (July 2026)** is the new major release and contains breaking changes — adopt it deliberately, not by default.
+Si vous écrivez du code ou construisez des requêtes API contre l'API Google Ads, ciblez la **v24.2** (publiée le 24 juin 2026) — la cible stable délibérée de DMP. Les v24.1 et v24.2 sont des versions additives non incompatibles de la lignée v24 ; **la v25 (juillet 2026)** est la nouvelle version majeure et contient des changements incompatibles — adoptez-la délibérément, pas par défaut.
 
-### Google Ads API v25 (July 2026)
+### Google Ads API v25 (juillet 2026)
 
-Major release with breaking changes:
+Version majeure avec des changements incompatibles :
 
-| What | Change | Why it matters for ads ops |
+| Élément | Changement | Pourquoi c'est important pour les opérations publicitaires |
 |---|---|---|
-| `CustomerLifecycleGoal` / `CampaignLifecycleGoal` | REMOVED — legacy lifecycle-goal resources are gone | Migrate to the unified `Goal` + `CampaignGoalConfig` schema before moving any integration to v25 |
-| Loyalty-retention optimization goal | New goal type | Retention-focused campaigns can optimize directly for loyalty outcomes |
-| Social-engagement metrics for Shorts ads | New reporting metrics | First-class engagement reporting for YouTube Shorts inventory |
+| `CustomerLifecycleGoal` / `CampaignLifecycleGoal` | SUPPRIMÉ — les ressources historiques de lifecycle-goal ont disparu | Migrez vers le schéma unifié `Goal` + `CampaignGoalConfig` avant de faire passer une intégration à la v25 |
+| Objectif d'optimisation de fidélisation | Nouveau type d'objectif | Les campagnes axées sur la fidélisation peuvent optimiser directement pour des résultats de loyauté |
+| Métriques d'engagement social pour les publicités Shorts | Nouvelles métriques de reporting | Reporting d'engagement de première classe pour l'inventaire YouTube Shorts |
 
-**v24.2 remains DMP's deliberate stable target** (v24 line supported into 2027) — move to v25 only with a migration plan for the lifecycle-goal removal.
+**La v24.2 reste la cible stable délibérée de DMP** (la lignée v24 est supportée jusqu'en 2027) — ne passez à la v25 qu'avec un plan de migration pour la suppression du lifecycle-goal.
 
-### v24.2 (24 June 2026 — stable target)
+### v24.2 (24 juin 2026 — cible stable)
 
-Non-breaking additions:
+Ajouts non incompatibles :
 
-| What | Where | Why it matters for ads ops |
+| Élément | Où | Pourquoi c'est important pour les opérations publicitaires |
 |---|---|---|
-| `AssetAutomationType.GENERATE_LANDING_PAGE_TEXT` | New enum value on the asset-automation API for Demand Gen video ads | Lets PMax/Demand Gen auto-generate the landing-page text variants that Google's asset gen needs — fewer manual writes per campaign |
-| `AssetGroup.google_local_services_info` | New field on `AssetGroup` | First-class Local Services Ads (LSA) support inside the standard API. Plumbers / electricians / cleaners / locksmiths / lawyers etc. can now manage LSA from the same API surface as PMax |
-| `MultiPartyAuthReview` resource + `MultiPartyAuthReviewService` (beta) | New API resource | Lets advertisers and their agencies coordinate Multi-Party Authorization reviews via API — relevant for regulated verticals (finance, health, political ads) |
+| `AssetAutomationType.GENERATE_LANDING_PAGE_TEXT` | Nouvelle valeur d'énumération sur l'API d'automatisation d'assets pour les publicités vidéo Demand Gen | Permet à PMax/Demand Gen de générer automatiquement les variantes de texte de landing page dont la génération d'assets de Google a besoin — moins d'écritures manuelles par campagne |
+| `AssetGroup.google_local_services_info` | Nouveau champ sur `AssetGroup` | Support de première classe pour les Local Services Ads (LSA) au sein de l'API standard. Plombiers / électriciens / entreprises de nettoyage / serruriers / avocats etc. peuvent désormais gérer les LSA depuis la même surface API que PMax |
+| Ressource `MultiPartyAuthReview` + `MultiPartyAuthReviewService` (bêta) | Nouvelle ressource API | Permet aux annonceurs et à leurs agences de coordonner les revues d'autorisation multi-parties via API — pertinent pour les verticales réglementées (finance, santé, publicités politiques) |
 
-### v24.1 (13 May 2026)
+### v24.1 (13 mai 2026)
 
-Non-breaking additions:
+Ajouts non incompatibles :
 
-| What | Where | Why it matters for ads ops |
+| Élément | Où | Pourquoi c'est important pour les opérations publicitaires |
 |---|---|---|
-| 4 new experiment types: `ADOPT_AI_MAX`, `ADOPT_BROAD_MATCH_KEYWORDS`, `OPTIMIZE_ASSETS`, `PMAX_REPLACEMENT_SHOPPING` | `ExperimentType` enum | Official Google-recommended A/B framework for migrating to AI Max + broad match + Performance Max replacing standard Shopping. **Run `ADOPT_AI_MAX` before any AI Max rollout** — gives you statistically-clean lift numbers vs the baseline |
-| `mobile_device_platform` segment | Reporting segments | Split campaign-/ad-/keyword-level performance by iOS vs Android. First time the OS split has been first-class in the API |
+| 4 nouveaux types d'expérimentation : `ADOPT_AI_MAX`, `ADOPT_BROAD_MATCH_KEYWORDS`, `OPTIMIZE_ASSETS`, `PMAX_REPLACEMENT_SHOPPING` | Énumération `ExperimentType` | Cadre officiel de test A/B recommandé par Google pour migrer vers AI Max + la requête large + Performance Max remplaçant le Shopping standard. **Exécutez `ADOPT_AI_MAX` avant tout déploiement d'AI Max** — donne des chiffres de lift statistiquement propres par rapport à la référence |
+| Segment `mobile_device_platform` | Segments de reporting | Diviser la performance au niveau campagne/annonce/mot-clé entre iOS et Android. Première fois que la division par OS est de première classe dans l'API |
 
-### v24 (22 April 2026) — breaking changes
+### v24 (22 avril 2026) — changements incompatibles
 
-| Object | Change | Effect |
+| Objet | Changement | Effet |
 |---|---|---|
-| `DemandGenVideoResponsiveAdInfo` | `videos` and `logo_images` now REQUIRED | Requests without both fields fail |
-| `VideoResponsiveAdInfo` | `videos`, `logo_images`, and `business_name` now REQUIRED | Requests without all three fields fail |
-| `Campaign.video_brand_safety_suitability` | REMOVED — moved to Customer level | Set the control once on the Customer object, not per-campaign |
-| `CallAd` / `CallAdInfo` | REMOVED (deprecation completed) | Use Call Assets instead |
+| `DemandGenVideoResponsiveAdInfo` | `videos` et `logo_images` désormais REQUIS | Les requêtes sans les deux champs échouent |
+| `VideoResponsiveAdInfo` | `videos`, `logo_images` et `business_name` désormais REQUIS | Les requêtes sans les trois champs échouent |
+| `Campaign.video_brand_safety_suitability` | SUPPRIMÉ — déplacé au niveau Customer | Définir le contrôle une fois sur l'objet Customer, pas par campagne |
+| `CallAd` / `CallAdInfo` | SUPPRIMÉ (dépréciation terminée) | Utiliser les Call Assets à la place |
 
-### v23.1 (25 February 2026)
+### v23.1 (25 février 2026)
 
-Added `text_guidelines.term_exclusions` and `text_guidelines.messaging_restrictions` to AI-generated assets in **Performance Max** and **Search** — use these to pipe a brand's banned-word list and approved messaging directly into PMax's asset-gen guardrails.
+Ajout de `text_guidelines.term_exclusions` et `text_guidelines.messaging_restrictions` aux assets générés par IA dans **Performance Max** et **Search** — utilisez-les pour injecter directement la liste des mots interdits d'une marque et les messages approuvés dans les garde-fous de génération d'assets de PMax.
 
-Source: [Google Ads API release notes](https://developers.google.com/google-ads/api/docs/release-notes).
+Source : [notes de version de l'API Google Ads](https://developers.google.com/google-ads/api/docs/release-notes).
 
-### Adoption recommendation
+### Recommandation d'adoption
 
-If you have time before your next ship:
-- **Upgrade clients to v24.2** to unlock Local Services Ads + landing-page-text generation
-- **Wire `ADOPT_AI_MAX` experiments** (v24.1) into any AI Max migration plan — Google's preferred lift-measurement path
-- **Add `mobile_device_platform` segmentation** to any iOS-vs-Android performance reports (v24.1)
+Si vous avez du temps avant votre prochain déploiement :
+- **Faites passer les clients à la v24.2** pour débloquer les Local Services Ads + la génération de texte de landing page
+- **Câblez les expérimentations `ADOPT_AI_MAX`** (v24.1) dans tout plan de migration AI Max — le chemin de mesure de lift privilégié par Google
+- **Ajoutez la segmentation `mobile_device_platform`** à tout rapport de performance iOS vs Android (v24.1)
 
-## Campaign Types Overview
+## Vue d'ensemble des types de campagnes
 
-| Campaign Type | Best For | Targeting | Creative Format | Typical ROAS Range |
+| Type de campagne | Idéal pour | Ciblage | Format créatif | Fourchette de ROAS typique |
 |---|---|---|---|---|
-| Search | High-intent capture | Keywords | Text ads (RSAs) | 3x–10x |
-| Performance Max | Full-funnel automation | Signals + Google AI | All formats | 2x–8x |
-| Display | Awareness, retargeting | Audiences, placements | Image, responsive | 1x–4x |
-| YouTube (Video) | Brand lift, consideration | Demographics, intent | Video (6s–3min) | 1x–5x |
-| Shopping (Standard) | Product-level control | Product feed | Product listing ads | 3x–12x |
-| Demand Gen | Mid-funnel discovery | Lookalikes, audiences | Image + video | 2x–6x |
+| Search | Capture de forte intention | Mots-clés | Annonces texte (RSA) | 3x–10x |
+| Performance Max | Automatisation full-funnel | Signaux + IA Google | Tous formats | 2x–8x |
+| Display | Notoriété, retargeting | Audiences, emplacements | Image, responsive | 1x–4x |
+| YouTube (vidéo) | Brand lift, considération | Démographie, intention | Vidéo (6s–3min) | 1x–5x |
+| Shopping (standard) | Contrôle au niveau produit | Flux produit | Annonces liste de produits | 3x–12x |
+| Demand Gen | Découverte en milieu de tunnel | Lookalikes, audiences | Image + vidéo | 2x–6x |
 
-## Account Structure Best Practices
+## Bonnes pratiques de structure de compte
 
-### Modern Simplified Structure (Recommended)
+### Structure simplifiée moderne (recommandée)
 ```
-Account
-├── Brand Search Campaign
-│   └── 1–3 ad groups (brand, brand + product, brand + competitor)
-├── Non-Brand Search Campaign(s)
-│   └── Themed ad groups by service/product category
-├── Performance Max Campaign(s)
-│   └── Asset groups segmented by product/service line
-├── Retargeting Campaign
-│   └── Display/YouTube remarketing
-└── Video/Demand Gen Campaign
-    └── Top/mid-funnel awareness
-```
-
-### Structure Principles
-- [ ] Consolidate campaigns to feed algorithm more data per campaign
-- [ ] Minimum 30 conversions per campaign per month for automated bidding
-- [ ] Avoid single-keyword ad groups (SKAGs) — outdated with broad match + smart bidding
-- [ ] Segment by budget priority, not granular keyword themes
-- [ ] Use labels and naming conventions for reporting clarity
-
-## Bidding Strategy Decision Tree
-
-```
-START: What is your primary objective?
-│
-├── Maximize Conversions (volume)
-│   ├── Have a target CPA? → Target CPA (tCPA)
-│   └── No CPA target? → Maximize Conversions
-│
-├── Maximize Revenue (value)
-│   ├── Have a target ROAS? → Target ROAS (tROAS)
-│   └── No ROAS target? → Maximize Conversion Value
-│
-├── Traffic / Clicks
-│   └── Maximize Clicks (set max CPC cap)
-│
-├── Awareness / Impressions
-│   └── Target Impression Share
-│
-└── Full Control (low volume)
-    └── Manual CPC (Enhanced optional)
+Compte
+├── Campagne Search de marque
+│   └── 1–3 groupes d'annonces (marque, marque + produit, marque + concurrent)
+├── Campagne(s) Search hors marque
+│   └── Groupes d'annonces thématisés par catégorie de service/produit
+├── Campagne(s) Performance Max
+│   └── Groupes d'assets segmentés par ligne de produit/service
+├── Campagne de retargeting
+│   └── Remarketing Display/YouTube
+└── Campagne Vidéo/Demand Gen
+    └── Notoriété haut/milieu de tunnel
 ```
 
-### Bidding Strategy Selection Criteria
+### Principes de structure
+- [ ] Consolider les campagnes pour donner plus de données à l'algorithme par campagne
+- [ ] Minimum 30 conversions par campagne et par mois pour les enchères automatisées
+- [ ] Éviter les groupes d'annonces à mot-clé unique (SKAG) — obsolète avec la requête large + les enchères intelligentes
+- [ ] Segmenter par priorité budgétaire, pas par thèmes de mots-clés granulaires
+- [ ] Utiliser des libellés et des conventions de nommage pour la clarté du reporting
 
-| Strategy | Min. Monthly Conversions | When to Use | Watch Out For |
+## Arbre de décision de stratégie d'enchères
+
+```
+DÉBUT : Quel est votre objectif principal ?
+│
+├── Maximiser les conversions (volume)
+│   ├── Avez-vous un CPA cible ? → CPA cible (tCPA)
+│   └── Pas de cible de CPA ? → Maximiser les conversions
+│
+├── Maximiser le revenu (valeur)
+│   ├── Avez-vous un ROAS cible ? → ROAS cible (tROAS)
+│   └── Pas de cible de ROAS ? → Maximiser la valeur de conversion
+│
+├── Trafic / Clics
+│   └── Maximiser les clics (fixer un plafond de CPC max)
+│
+├── Notoriété / Impressions
+│   └── Part d'impressions cible
+│
+└── Contrôle total (faible volume)
+    └── CPC manuel (Amélioré optionnel)
+```
+
+### Critères de sélection de la stratégie d'enchères
+
+| Stratégie | Conversions mensuelles min. | Quand l'utiliser | À surveiller |
 |---|---|---|---|
-| tCPA | 30+ | Stable CPA goal, lead gen | Set realistic targets (start at 2x actual) |
-| tROAS | 50+ | E-commerce, variable values | Needs accurate conversion values |
-| Max Conversions | 15+ | New campaigns, budget-constrained | Can overspend on low-quality conversions |
-| Max Conv Value | 15+ | Revenue focus, no ROAS target | May chase high-value outliers |
-| Manual CPC | Any | Low volume, testing | Labor-intensive, misses signals |
+| tCPA | 30+ | Objectif de CPA stable, génération de leads | Fixer des cibles réalistes (commencer à 2x le réel) |
+| tROAS | 50+ | E-commerce, valeurs variables | Nécessite des valeurs de conversion précises |
+| Max de conversions | 15+ | Nouvelles campagnes, budget contraint | Peut surdépenser sur des conversions de faible qualité |
+| Max de valeur de conv. | 15+ | Focus revenu, pas de cible de ROAS | Peut poursuivre des valeurs aberrantes élevées |
+| CPC manuel | Tout | Faible volume, test | Chronophage, rate des signaux |
 
-## Keyword Match Type Strategy
+## Stratégie de types de correspondance de mots-clés
 
-| Match Type | Syntax | Behavior (2024+) | Use Case |
+| Type de correspondance | Syntaxe | Comportement (2024+) | Cas d'usage |
 |---|---|---|---|
-| Broad | `keyword` | Widest reach; meaning + intent | Pair with smart bidding; primary driver |
-| Phrase | `"keyword"` | Contains meaning in order | Mid-control; specific intent sequences |
-| Exact | `[keyword]` | Closest meaning match | High-value, proven converters |
+| Requête large | `mot-clé` | Portée la plus large ; signification + intention | Associer aux enchères intelligentes ; moteur principal |
+| Expression | `"mot-clé"` | Contient le sens dans l'ordre | Contrôle moyen ; séquences d'intention spécifiques |
+| Exact | `[mot-clé]` | Correspondance de sens la plus proche | Convertisseurs à forte valeur, éprouvés |
 
-### Modern Keyword Strategy
-1. **Start with broad match + tCPA/tROAS** — let smart bidding optimize
-2. **Use exact match for top performers** — protect budget on proven terms
-3. **Phrase match for specificity** — when broad pulls irrelevant traffic
-4. **Search term analysis weekly** — mine for negatives and new keywords
-5. **Avoid keyword overlap** — deduplicate across ad groups to prevent self-competition
+### Stratégie de mots-clés moderne
+1. **Commencer avec la requête large + tCPA/tROAS** — laisser les enchères intelligentes optimiser
+2. **Utiliser la correspondance exacte pour les meilleurs performeurs** — protéger le budget sur les termes éprouvés
+3. **Correspondance expression pour la spécificité** — quand la requête large ramène du trafic non pertinent
+4. **Analyse des termes de recherche chaque semaine** — extraire des négatifs et de nouveaux mots-clés
+5. **Éviter le chevauchement de mots-clés** — dédupliquer entre les groupes d'annonces pour éviter l'auto-concurrence
 
-## Quality Score Optimization
+## Optimisation du Quality Score
 
-### Quality Score Components
+### Composantes du Quality Score
 
-| Component | Weight | How to Improve |
+| Composante | Poids | Comment améliorer |
 |---|---|---|
-| Expected CTR | ~35% | Compelling ad copy, strong CTAs, ad extensions |
-| Ad Relevance | ~25% | Match ad copy to keyword intent, use keyword in headlines |
-| Landing Page Experience | ~40% | Page speed, mobile-friendly, relevant content, clear CTA |
+| CTR attendu | ~35 % | Texte publicitaire convaincant, CTA forts, extensions d'annonce |
+| Pertinence de l'annonce | ~25 % | Faire correspondre le texte de l'annonce à l'intention du mot-clé, utiliser le mot-clé dans les titres |
+| Expérience de la landing page | ~40 % | Vitesse de la page, adaptée au mobile, contenu pertinent, CTA clair |
 
-### Quality Score Improvement Checklist
-- [ ] Keyword appears in at least 2 of 15 RSA headlines
-- [ ] Landing page headline matches search intent
-- [ ] Page loads in under 3 seconds (mobile)
-- [ ] Mobile-responsive design verified
-- [ ] Clear above-the-fold CTA
-- [ ] Content directly addresses searcher's query
-- [ ] Minimal pop-ups and interstitials
-- [ ] HTTPS enabled
-- [ ] Structured data markup present
+### Checklist d'amélioration du Quality Score
+- [ ] Le mot-clé apparaît dans au moins 2 des 15 titres RSA
+- [ ] Le titre de la landing page correspond à l'intention de recherche
+- [ ] La page se charge en moins de 3 secondes (mobile)
+- [ ] Design responsive mobile vérifié
+- [ ] CTA clair au-dessus de la ligne de flottaison
+- [ ] Le contenu répond directement à la requête du chercheur
+- [ ] Pop-ups et interstitiels minimaux
+- [ ] HTTPS activé
+- [ ] Balisage de données structurées présent
 
-## RSA (Responsive Search Ad) Writing Strategy
+## Stratégie de rédaction RSA (Responsive Search Ad)
 
-### Headline Framework (15 Headlines)
+### Cadre des titres (15 titres)
 
-| Slot | Purpose | Example |
+| Emplacement | Objectif | Exemple |
 |---|---|---|
-| H1–H3 | Primary value prop (pin H1 to position 1) | "Award-Winning Project Management Software" |
-| H4–H6 | Features / differentiators | "Real-Time Collaboration Tools" |
-| H7–H9 | Social proof / trust signals | "Trusted by 10,000+ Teams Worldwide" |
-| H10–H12 | CTAs and offers | "Start Your Free 14-Day Trial" |
-| H13–H14 | Keyword insertion / location | "Best {KeyWord:PM Tool} for Teams" |
-| H15 | Seasonal or test variant | "New 2026 Features Now Available" |
+| H1–H3 | Proposition de valeur principale (épingler H1 en position 1) | « Logiciel de gestion de projet primé » |
+| H4–H6 | Fonctionnalités / différenciateurs | « Outils de collaboration en temps réel » |
+| H7–H9 | Preuve sociale / signaux de confiance | « Approuvé par plus de 10 000 équipes dans le monde » |
+| H10–H12 | CTA et offres | « Commencez votre essai gratuit de 14 jours » |
+| H13–H14 | Insertion de mot-clé / localisation | « Meilleur {KeyWord:Outil PM} pour les équipes » |
+| H15 | Variante saisonnière ou de test | « Nouvelles fonctionnalités 2026 désormais disponibles » |
 
-### Description Framework (4 Descriptions)
-1. **Primary value prop + CTA** — comprehensive benefit statement with action
-2. **Features and proof points** — specific capabilities, stats, awards
-3. **Objection handling** — no credit card, free trial, money-back guarantee
-4. **Urgency / offer** — limited time, seasonal hook, discount
+### Cadre des descriptions (4 descriptions)
+1. **Proposition de valeur principale + CTA** — énoncé de bénéfice complet avec action
+2. **Fonctionnalités et points de preuve** — capacités spécifiques, statistiques, récompenses
+3. **Traitement des objections** — sans carte bancaire, essai gratuit, garantie de remboursement
+4. **Urgence / offre** — durée limitée, accroche saisonnière, remise
 
-### Pinning Strategy
-- Pin your strongest brand headline to Position 1
-- Pin your strongest CTA to Position 2 (optional)
-- Never pin more than 2 headlines — let Google optimize
-- Pin one description only if compliance requires specific language
+### Stratégie d'épinglage
+- Épingler votre titre de marque le plus fort en position 1
+- Épingler votre CTA le plus fort en position 2 (optionnel)
+- Ne jamais épingler plus de 2 titres — laisser Google optimiser
+- N'épingler qu'une seule description si la conformité exige un langage spécifique
 
-## Performance Max Setup Checklist
+## Checklist de configuration Performance Max
 
-### Pre-Launch
-- [ ] Conversion tracking verified (offline + online, with values if possible)
-- [ ] Enhanced conversions enabled
-- [ ] Google Merchant Center connected (e-commerce)
-- [ ] Google Business Profile linked (local)
-- [ ] YouTube channel linked
-- [ ] Audience signals configured (custom segments, customer lists, website visitors)
-- [ ] Brand exclusions applied (if available)
+### Avant le lancement
+- [ ] Suivi de conversion vérifié (hors ligne + en ligne, avec valeurs si possible)
+- [ ] Conversions améliorées activées
+- [ ] Google Merchant Center connecté (e-commerce)
+- [ ] Google Business Profile lié (local)
+- [ ] Chaîne YouTube liée
+- [ ] Signaux d'audience configurés (segments personnalisés, listes de clients, visiteurs du site)
+- [ ] Exclusions de marque appliquées (si disponible)
 
-### Asset Group Configuration
-- [ ] 20 text assets (5 headlines, 5 long headlines, 5 descriptions, 1 business name, 4 sitelinks minimum)
-- [ ] 20 image assets (various aspect ratios: 1.91:1, 1:1, 4:5)
-- [ ] 5 video assets (landscape, portrait, square — at least 10 seconds)
-- [ ] Final URL expansion ON or OFF based on strategy
-- [ ] URL exclusions set to prevent irrelevant landing pages
+### Configuration du groupe d'assets
+- [ ] 20 assets texte (5 titres, 5 titres longs, 5 descriptions, 1 nom d'entreprise, 4 liens annexes minimum)
+- [ ] 20 assets image (divers ratios d'aspect : 1,91:1, 1:1, 4:5)
+- [ ] 5 assets vidéo (paysage, portrait, carré — au moins 10 secondes)
+- [ ] Expansion d'URL finale activée ou désactivée selon la stratégie
+- [ ] Exclusions d'URL définies pour éviter les landing pages non pertinentes
 
-### Post-Launch Monitoring
-- [ ] Allow 2–4 weeks learning phase before major changes
-- [ ] Review asset performance ratings weekly (replace "Low" assets)
-- [ ] Check Insights tab for audience and search category data
-- [ ] Monitor placement reports for brand safety
-- [ ] Compare PMax performance against brand search (cannibalization check)
+### Surveillance après le lancement
+- [ ] Laisser 2 à 4 semaines de phase d'apprentissage avant des changements majeurs
+- [ ] Revoir les notations de performance des assets chaque semaine (remplacer les assets « Faible »)
+- [ ] Consulter l'onglet Insights pour les données d'audience et de catégorie de recherche
+- [ ] Surveiller les rapports d'emplacement pour la sécurité de marque
+- [ ] Comparer la performance PMax à la recherche de marque (vérification de cannibalisation)
 
-## Negative Keyword Management
+## Gestion des mots-clés négatifs
 
-### Negative Match Types
+### Types de correspondance négative
 
-| Type | Syntax | Blocks |
+| Type | Syntaxe | Bloque |
 |---|---|---|
-| Broad Negative | `keyword` | Any query containing all negative terms (any order) |
-| Phrase Negative | `"keyword"` | Queries containing the exact phrase in order |
-| Exact Negative | `[keyword]` | Only the exact query |
+| Négatif large | `mot-clé` | Toute requête contenant tous les termes négatifs (dans n'importe quel ordre) |
+| Négatif expression | `"mot-clé"` | Requêtes contenant l'expression exacte dans l'ordre |
+| Négatif exact | `[mot-clé]` | Seulement la requête exacte |
 
-### Negative Keyword Best Practices
-- [ ] Create shared negative keyword lists at account level
-- [ ] Review search terms report weekly (daily during launch)
-- [ ] Maintain standard exclusion lists: jobs, free, DIY, reviews, competitors (if desired)
-- [ ] Add negatives at campaign level for specificity, account level for universal
-- [ ] Export and audit negative lists quarterly — over-negating kills volume
-- [ ] Cross-reference negatives against active keywords to prevent conflicts
+### Bonnes pratiques des mots-clés négatifs
+- [ ] Créer des listes de mots-clés négatifs partagées au niveau du compte
+- [ ] Revoir le rapport de termes de recherche chaque semaine (quotidien pendant le lancement)
+- [ ] Maintenir des listes d'exclusion standard : emplois, gratuit, DIY, avis, concurrents (si souhaité)
+- [ ] Ajouter des négatifs au niveau campagne pour la spécificité, au niveau compte pour l'universel
+- [ ] Exporter et auditer les listes négatives trimestriellement — trop négativer tue le volume
+- [ ] Croiser les négatifs avec les mots-clés actifs pour éviter les conflits
 
-### Standard Negative Lists to Maintain
-1. **Brand Protection**: competitor names (if not targeting)
-2. **Intent Exclusion**: "free," "jobs," "salary," "how to," "DIY"
-3. **Irrelevant Modifiers**: "cheap," "used," (industry-specific terms)
-4. **Compliance**: restricted terms for your vertical
+### Listes négatives standard à maintenir
+1. **Protection de marque** : noms de concurrents (si non ciblés)
+2. **Exclusion d'intention** : « gratuit », « emploi », « salaire », « comment faire », « DIY »
+3. **Modificateurs non pertinents** : « pas cher », « occasion » (termes spécifiques au secteur)
+4. **Conformité** : termes restreints pour votre verticale
 
-## Shopping Feed Optimization
+## Optimisation du flux Shopping
 
-### Required Feed Attributes (Optimize These)
+### Attributs de flux requis (à optimiser)
 
-| Attribute | Optimization Tip |
+| Attribut | Conseil d'optimisation |
 |---|---|
-| `title` | Front-load with brand + product type + key attribute (color, size). Max 150 chars. |
-| `description` | Include relevant keywords naturally. First 160 chars matter most. |
-| `product_type` | Use full category path: Home > Furniture > Sofas > Sectional Sofas |
-| `google_product_category` | Map to most specific Google taxonomy ID |
-| `image_link` | White background, high resolution, no watermarks, no promotional overlays |
-| `price` | Must match landing page exactly; use `sale_price` for promos |
-| `availability` | Keep in sync — disapprovals for mismatches hurt account health |
-| `gtin` / `mpn` | Always provide when available; enables richer placements |
-| `custom_labels` | Tag by margin, best-seller, seasonal, clearance for bid segmentation |
+| `title` | Commencer par marque + type de produit + attribut clé (couleur, taille). Max 150 caractères. |
+| `description` | Inclure des mots-clés pertinents naturellement. Les 160 premiers caractères comptent le plus. |
+| `product_type` | Utiliser le chemin de catégorie complet : Maison > Meubles > Canapés > Canapés d'angle |
+| `google_product_category` | Faire correspondre à l'ID de taxonomie Google le plus spécifique |
+| `image_link` | Fond blanc, haute résolution, sans filigrane, sans superposition promotionnelle |
+| `price` | Doit correspondre exactement à la landing page ; utiliser `sale_price` pour les promos |
+| `availability` | Garder synchronisé — les désapprobations pour incohérences nuisent à la santé du compte |
+| `gtin` / `mpn` | Toujours fournir quand disponible ; permet des placements plus riches |
+| `custom_labels` | Étiqueter par marge, meilleure vente, saisonnier, liquidation pour la segmentation d'enchères |
 
-### Feed Health Checklist
-- [ ] Zero disapprovals (check Diagnostics daily)
-- [ ] Supplemental feed for overrides without touching primary feed
-- [ ] Feed refresh frequency: minimum daily, ideally every 6 hours
-- [ ] All variants (size, color) listed as separate items
-- [ ] Promotional feed connected for merchant promotions
-- [ ] Feed rules configured for automated attribute fixes
-- [ ] Competitive pricing data reviewed via Price Competitiveness report
+### Checklist de santé du flux
+- [ ] Zéro désapprobation (vérifier les Diagnostics chaque jour)
+- [ ] Flux supplémentaire pour les remplacements sans toucher au flux principal
+- [ ] Fréquence de rafraîchissement du flux : quotidienne minimum, idéalement toutes les 6 heures
+- [ ] Toutes les variantes (taille, couleur) listées comme articles séparés
+- [ ] Flux promotionnel connecté pour les promotions marchand
+- [ ] Règles de flux configurées pour les correctifs automatisés d'attributs
+- [ ] Données de tarification concurrentielle revues via le rapport de compétitivité des prix
 
-## Key Metrics & Benchmarks (Cross-Industry Averages)
+## Métriques clés et benchmarks (moyennes cross-secteurs)
 
-| Metric | Search | Shopping | Display | YouTube |
+| Métrique | Search | Shopping | Display | YouTube |
 |---|---|---|---|---|
-| CTR | 3–6% | 0.8–1.5% | 0.3–0.6% | 0.5–2% (TrueView) |
-| CPC | $1–$5 | $0.30–$1.50 | $0.20–$0.80 | $0.02–$0.10 (CPV) |
-| Conv Rate | 3–7% | 1.5–3.5% | 0.5–1.5% | 0.5–2% |
-| Quality Score | 7+ target | N/A | N/A | N/A |
+| CTR | 3–6 % | 0,8–1,5 % | 0,3–0,6 % | 0,5–2 % (TrueView) |
+| CPC | 1–5 $ | 0,30–1,50 $ | 0,20–0,80 $ | 0,02–0,10 $ (CPV) |
+| Taux de conv. | 3–7 % | 1,5–3,5 % | 0,5–1,5 % | 0,5–2 % |
+| Quality Score | 7+ cible | N/A | N/A | N/A |
 
-> **Note:** Benchmarks vary dramatically by industry, geography, and season. Use these as directional starting points and calibrate to your own historical data within 30–60 days.
+> **Remarque :** Les benchmarks varient considérablement selon le secteur, la géographie et la saison. Utilisez-les comme points de départ directionnels et calibrez-les avec vos propres données historiques sur 30 à 60 jours.

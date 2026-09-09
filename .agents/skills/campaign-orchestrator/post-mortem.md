@@ -1,89 +1,89 @@
-# Campaign Post-Mortem — Analysis Framework
+# Campaign Post-Mortem — Cadre d'analyse
 
 ## Timing
 
-- **Quick debrief**: Within 48 hours of campaign end (capture fresh observations)
-- **Full post-mortem**: Within 2 weeks of campaign end (after final data settles)
-- **Benchmark update**: Within 1 month (update channel/campaign type benchmarks)
+- **Débrief rapide** : dans les 48 heures suivant la fin de campagne (pour capturer les observations à chaud)
+- **Bilan complet** : dans les 2 semaines suivant la fin de campagne (une fois les données finales stabilisées)
+- **Mise à jour des référentiels** : dans le mois (mise à jour des référentiels par canal/type de campagne)
 
 ---
 
-## Data Collection Checklist
+## Checklist de collecte de données
 
-- [ ] Final spend by channel and campaign
-- [ ] Impressions, clicks, CTR by channel
-- [ ] Conversions, conversion rate, CPA by channel
-- [ ] Revenue attributed (if applicable) and ROAS
-- [ ] Top-performing creative (by CTR, conversion rate, CPA)
-- [ ] Bottom-performing creative
-- [ ] Audience segment performance comparison
-- [ ] Landing page performance (bounce rate, conversion rate)
-- [ ] Email performance (open rate, CTR, conversions)
-- [ ] Budget pacing (under/over-spend by channel)
-- [ ] Competitive activity during campaign period
-- [ ] External factors (seasonality, news, market shifts)
+- [ ] Dépense finale par canal et par campagne
+- [ ] Impressions, clics, CTR par canal
+- [ ] Conversions, taux de conversion, CPA par canal
+- [ ] Chiffre d'affaires attribué (le cas échéant) et ROAS
+- [ ] Créatif le plus performant (par CTR, taux de conversion, CPA)
+- [ ] Créatif le moins performant
+- [ ] Comparaison de performance par segment d'audience
+- [ ] Performance de la landing page (taux de rebond, taux de conversion)
+- [ ] Performance e-mail (taux d'ouverture, CTR, conversions)
+- [ ] Rythme budgétaire (sous/sur-dépense par canal)
+- [ ] Activité concurrentielle pendant la période de campagne
+- [ ] Facteurs externes (saisonnalité, actualité, mouvements de marché)
 
 ---
 
-## Post-Mortem Meeting Agenda (60 min)
+## Ordre du jour de la réunion de bilan (60 min)
 
-| Time | Topic | Owner |
+| Temps | Sujet | Propriétaire |
 |------|-------|-------|
-| 0-5 min | Objectives recap — what we set out to do | Campaign owner |
-| 5-15 min | Results overview — what actually happened | Analytics |
-| 15-30 min | What worked and why (top 3) | All |
-| 30-45 min | What didn't work and why (top 3) | All |
-| 45-55 min | Key learnings and action items | All |
-| 55-60 min | What we'll do differently next time | Campaign owner |
+| 0-5 min | Rappel des objectifs — ce qu'on avait prévu de faire | Propriétaire de la campagne |
+| 5-15 min | Aperçu des résultats — ce qui s'est réellement passé | Analytics |
+| 15-30 min | Ce qui a fonctionné et pourquoi (top 3) | Tous |
+| 30-45 min | Ce qui n'a pas fonctionné et pourquoi (top 3) | Tous |
+| 45-55 min | Enseignements clés et actions à mener | Tous |
+| 55-60 min | Ce qu'on fera différemment la prochaine fois | Propriétaire de la campagne |
 
 ---
 
-## Analysis Template
+## Modèle d'analyse
 
-### 1. Executive Summary
-- Campaign name, dates, total spend, primary result vs target
-- One-line verdict: Exceeded / Met / Missed objective by X%
+### 1. Synthèse exécutive
+- Nom de la campagne, dates, dépense totale, résultat principal vs cible
+- Verdict en une ligne : objectif dépassé / atteint / manqué de X %
 
-### 2. Performance vs Objectives
-| Objective | Target | Actual | % of Target | Verdict |
+### 2. Performance vs objectifs
+| Objectif | Cible | Réel | % de la cible | Verdict |
 |-----------|--------|--------|-------------|---------|
-| [Primary KPI] | [#] | [#] | [%] | ✅/❌ |
-| [Secondary KPI] | [#] | [#] | [%] | ✅/❌ |
+| [KPI principal] | [#] | [#] | [%] | ✅/❌ |
+| [KPI secondaire] | [#] | [#] | [%] | ✅/❌ |
 
-### 3. Channel Performance
-| Channel | Spend | Impressions | Clicks | Conversions | CPA | ROAS |
+### 3. Performance par canal
+| Canal | Dépense | Impressions | Clics | Conversions | CPA | ROAS |
 |---------|-------|-------------|--------|-------------|-----|------|
-| [Channel] | | | | | | |
+| [Canal] | | | | | | |
 
-### 4. What Worked (Top 3)
-For each: What happened → Why it worked → How to replicate
+### 4. Ce qui a fonctionné (top 3)
+Pour chacun : ce qui s'est passé → pourquoi ça a fonctionné → comment le reproduire
 
-### 5. What Didn't Work (Top 3)
-For each: What happened → Root cause → How to fix next time
+### 5. Ce qui n'a pas fonctionné (top 3)
+Pour chacun : ce qui s'est passé → cause profonde → comment corriger la prochaine fois
 
-### 6. Key Learnings
-- Learning 1: [Insight] → **Action**: [What to do with this knowledge]
-- Learning 2: ...
+### 6. Enseignements clés
+- Enseignement 1 : [insight] → **Action** : [quoi faire de cette connaissance]
+- Enseignement 2 : ...
 
-### 7. Benchmark Updates
-| Metric | Previous Benchmark | This Campaign | New Benchmark |
+### 7. Mises à jour des référentiels
+| Métrique | Référentiel précédent | Cette campagne | Nouveau référentiel |
 |--------|-------------------|---------------|---------------|
-| [CPA] | [$X] | [$Y] | [$Z] |
+| [CPA] | [X $] | [Y $] | [Z $] |
 
-### 8. Next Campaign Recommendations
-Specific actions for the next campaign based on learnings.
+### 8. Recommandations pour la prochaine campagne
+Actions spécifiques pour la prochaine campagne basées sur les enseignements.
 
 ---
 
-## Learning Extraction Methodology
+## Méthodologie d'extraction des enseignements
 
-After completing the analysis, categorize learnings:
+Après avoir terminé l'analyse, catégorisez les enseignements :
 
-| Category | Example | Action |
+| Catégorie | Exemple | Action |
 |----------|---------|--------|
-| **Audience** | "Mid-market responded 3x better than enterprise" | Update targeting for next campaign |
-| **Creative** | "Video outperformed static by 40% on Meta" | Increase video creative investment |
-| **Channel** | "LinkedIn CPA was 2x target, Google was under" | Shift budget allocation |
-| **Timing** | "Performance dropped on weekends" | Adjust dayparting |
-| **Offer** | "Free trial outperformed demo request 2:1" | Test trial offers more broadly |
-| **Landing page** | "Short-form page converted better for cold traffic" | Create segment-specific pages |
+| **Audience** | « Le mid-market a répondu 3 fois mieux que le grand compte » | Mettre à jour le ciblage pour la prochaine campagne |
+| **Créatif** | « La vidéo a surperformé le statique de 40 % sur Meta » | Augmenter l'investissement en créatif vidéo |
+| **Canal** | « Le CPA LinkedIn était 2 fois la cible, Google était en dessous » | Réajuster l'allocation budgétaire |
+| **Timing** | « La performance a chuté le week-end » | Ajuster le dayparting |
+| **Offre** | « L'essai gratuit a surperformé la demande de démo 2:1 » | Tester plus largement les offres d'essai |
+| **Landing page** | « La page courte a mieux converti pour le trafic froid » | Créer des pages spécifiques par segment |

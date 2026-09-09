@@ -1,54 +1,54 @@
 ---
 name: social-strategy
-description: "Build a platform-specific social media strategy: 3-5 content pillars, posting cadence, content-mix ratios, an engagement playbook with response templates, growth tactics, KPI targets, and a 30-day quick-start plan across Instagram, TikTok, LinkedIn, X, YouTube, Facebook, Pinterest, and Threads. Strategy only — schedules and publishes nothing. Triggers on \"/digital-marketing-pro:social-strategy\", \"build our social media strategy\", \"how often should we post on LinkedIn\", \"define our content pillars\", \"our engagement is flat, what's the plan\". Reads the brand profile, guidelines, and agency SOPs so pillars, cadence, and playbooks match brand voice and compliance rules."
+description: "Construit une stratégie de réseaux sociaux spécifique par plateforme : 3 à 5 piliers de contenu, cadence de publication, ratios de mix de contenu, un guide d'engagement avec des modèles de réponse, des tactiques de croissance, des objectifs de KPI, et un plan de démarrage rapide sur 30 jours pour Instagram, TikTok, LinkedIn, X, YouTube, Facebook, Pinterest, et Threads. Stratégie uniquement — ne planifie ni ne publie rien. Se déclenche sur \"/digital-marketing-pro:social-strategy\", \"build our social media strategy\", \"how often should we post on LinkedIn\", \"define our content pillars\", \"our engagement is flat, what's the plan\". Lit le profil de marque, les guidelines, et les procédures d'agence afin que les piliers, la cadence, et les guides correspondent à la voix de marque et aux règles de conformité."
 argument-hint: "[platform or objective]"
 ---
 
 # /digital-marketing-pro:social-strategy
 
-## Purpose
+## Objectif
 
-Build a comprehensive, platform-specific social media strategy that defines content pillars, posting cadence, engagement playbook, community management approach, and growth tactics tailored to each platform's algorithm and audience behavior.
+Construire une stratégie de réseaux sociaux complète et spécifique par plateforme qui définit les piliers de contenu, la cadence de publication, le guide d'engagement, l'approche de gestion de communauté, et les tactiques de croissance adaptées à l'algorithme et au comportement d'audience de chaque plateforme.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Platforms**: Which social platforms to strategize for (Instagram, TikTok, LinkedIn, X, YouTube, Facebook, Pinterest, Threads)
-- **Current state**: Existing follower counts, engagement rates, content performance (if available)
-- **Goals**: Growth, engagement, traffic, leads, community building, thought leadership
-- **Resources**: Team size, content creation capacity, tools in use
-- **Audience**: Target audience per platform (or use brand personas)
-- **Competitors**: Social accounts to benchmark against (optional)
+- **Plateformes** : Pour quelles plateformes sociales élaborer une stratégie (Instagram, TikTok, LinkedIn, X, YouTube, Facebook, Pinterest, Threads)
+- **État actuel** : Nombre d'abonnés existants, taux d'engagement, performance de contenu (si disponible)
+- **Objectifs** : Croissance, engagement, trafic, leads, construction de communauté, leadership éclairé
+- **Ressources** : Taille de l'équipe, capacité de création de contenu, outils utilisés
+- **Audience** : Audience cible par plateforme (ou utiliser les personas de la marque)
+- **Concurrents** : Comptes sociaux à utiliser comme référence (optionnel)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Audit current social presence: content mix, posting frequency, engagement patterns, follower quality
-3. Define 3-5 content pillars aligned with brand expertise and audience interests
-4. Set platform-specific posting cadence based on algorithm best practices and team capacity
-5. Design content mix ratios per platform: educational, entertaining, promotional, community, trending
-6. Build engagement playbook: comment strategy, DM workflows, UGC encouragement, community rituals
-7. Define growth tactics per platform: hashtag strategy, collaboration, paid boost criteria, cross-promotion
-8. Create content format recommendations per platform (carousels, reels, stories, threads, lives)
-9. Set KPIs per platform with realistic growth benchmarks
-10. Build a 30-day quick-start action plan
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également la présence de directives** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier la présence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier la présence de procédures d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : "Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ?" — ou procéder avec les valeurs par défaut.
+2. Auditer la présence sociale actuelle : mix de contenu, fréquence de publication, motifs d'engagement, qualité des abonnés
+3. Définir 3 à 5 piliers de contenu alignés sur l'expertise de la marque et les centres d'intérêt de l'audience
+4. Définir une cadence de publication spécifique par plateforme selon les meilleures pratiques d'algorithme et la capacité de l'équipe
+5. Concevoir les ratios de mix de contenu par plateforme : éducatif, divertissant, promotionnel, communautaire, tendance
+6. Construire un guide d'engagement : stratégie de commentaires, flux de messages directs, encouragement de l'UGC, rituels de communauté
+7. Définir des tactiques de croissance par plateforme : stratégie de hashtags, collaboration, critères de boost payant, promotion croisée
+8. Créer des recommandations de format de contenu par plateforme (carrousels, reels, stories, fils, lives)
+9. Définir des KPI par plateforme avec des références de croissance réalistes
+10. Construire un plan d'action de démarrage rapide sur 30 jours
 
-## Output
+## Résultat
 
-A structured social media strategy containing:
+Une stratégie de réseaux sociaux structurée contenant :
 
-- Platform-by-platform strategy with rationale for prioritization
-- Content pillar framework with example topics per pillar
-- Posting cadence calendar with optimal times per platform
-- Content format recommendations with performance benchmarks
-- Engagement playbook with response templates and escalation rules
-- Growth tactics roadmap per platform
-- Community management guidelines
-- KPI targets and measurement framework per platform
-- 30-day quick-start action plan with specific daily/weekly tasks
+- Une stratégie plateforme par plateforme avec justification de la priorisation
+- Un cadre de piliers de contenu avec des exemples de sujets par pilier
+- Un calendrier de cadence de publication avec les horaires optimaux par plateforme
+- Des recommandations de format de contenu avec des références de performance
+- Un guide d'engagement avec des modèles de réponse et des règles d'escalade
+- Une feuille de route de tactiques de croissance par plateforme
+- Des directives de gestion de communauté
+- Des objectifs de KPI et un cadre de mesure par plateforme
+- Un plan d'action de démarrage rapide sur 30 jours avec des tâches quotidiennes/hebdomadaires spécifiques
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** — Content strategy, pillar development, format recommendations, engagement tactics
-- **social-media-manager** — Platform-native strategy, algorithm optimization, hashtag strategy, posting time optimization, community management
+- **content-creator** — Stratégie de contenu, développement des piliers, recommandations de format, tactiques d'engagement
+- **social-media-manager** — Stratégie native par plateforme, optimisation d'algorithme, stratégie de hashtags, optimisation des horaires de publication, gestion de communauté

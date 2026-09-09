@@ -1,78 +1,83 @@
 ---
 name: lead-magnet-ideas
-description: "Turn a content topic, campaign, or existing piece into 3-5 named, briefable lead-magnet ideas cut from the brand's real assets and expertise, each graded on lead-gen power × build effort, with funnel-fit and delivery notes plus a not-recommended list that pre-empts the obvious-but-weak options. Triggers on \"/digital-marketing-pro:lead-magnet-ideas\", \"lead magnet for this\", \"what should we give away\", \"opt-in ideas\", \"freebie for this campaign\", \"turn this into a lead magnet\". Reads the brand profile for audience, expertise, and existing IP; routes onward to /digital-marketing-pro:email-sequence for the post-capture nurture or /digital-marketing-pro:funnel-architect when there is nowhere to send the lead yet."
+description: "Transformer un sujet de contenu, une campagne, ou une pièce existante en 3-5 idées de lead magnets nommées et briefables, découpées dans les actifs réels et l'expertise de la marque, chacune notée sur puissance de génération de leads × effort de construction, avec adéquation au tunnel et notes de livraison plus une liste de non-recommandés qui anticipe les options évidentes mais faibles. Se déclenche sur \"/digital-marketing-pro:lead-magnet-ideas\", \"lead magnet for this\", \"what should we give away\", \"opt-in ideas\", \"freebie for this campaign\", \"turn this into a lead magnet\". Lit le profil de marque pour l'audience, l'expertise, et la PI existante ; renvoie vers /digital-marketing-pro:email-sequence pour le nurturing post-capture ou /digital-marketing-pro:funnel-architect lorsqu'il n'y a nulle part où envoyer le lead pour l'instant."
 argument-hint: "[brand-name] [--topic <topic or piece>] [--max-effort low|medium|high]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:lead-magnet-ideas
 
-The bridge between content that earns attention and a funnel that captures it.
-A good lead magnet is not "an ebook" — it is the specific artifact this
-audience would trade an email for, on this topic, from this brand, buildable
-with what the brand already has.
+Le pont entre un contenu qui capte l'attention et un tunnel qui la capture.
+Un bon lead magnet n'est pas « un ebook » — c'est l'artefact précis que cette
+audience échangerait contre un email, sur ce sujet, de cette marque, réalisable
+avec ce que la marque possède déjà.
 
-## Inputs
+## Entrées
 
-- **The topic** — a subject, a campaign, or an existing piece the magnet
-  should extend.
-- **The brand profile** — audience, expertise, existing assets, funnel stage
-  from `~/.claude-marketing/brands/{slug}/`. The best magnets are cut from IP
-  the brand already owns: the internal checklist, the template they use on
-  every engagement, the dataset nobody else has.
-- `--max-effort` — cap suggestions at what the team can actually build.
+- **Le sujet** — un thème, une campagne, ou une pièce existante que le magnet
+  doit prolonger.
+- **Le profil de marque** — audience, expertise, actifs existants, étape du
+  tunnel depuis `~/.claude-marketing/brands/{slug}/`. Les meilleurs magnets sont
+  découpés dans une PI que la marque possède déjà : la checklist interne, le
+  modèle utilisé à chaque mission, le jeu de données que personne d'autre n'a.
+- `--max-effort` — plafonner les suggestions à ce que l'équipe peut réellement
+  construire.
 
-## The grading matrix
+## La matrice de notation
 
-Every idea is graded on two axes, stated with reasons — ungraded idea lists
-outsource the real decision back to the user:
+Chaque idée est notée sur deux axes, avec justification à l'appui — des listes
+d'idées non notées revoient la vraie décision à l'utilisateur :
 
-| Grade | Lead-gen power | Build effort |
+| Note | Puissance de génération de leads | Effort de construction |
 |---|---|---|
-| **A** | Audience actively searches for this; clear next step toward the offer | Assembled from existing assets in hours |
-| **B** | Wanted once seen; adjacent to the buying decision | Days; some new material |
-| **C** | Nice-to-have; collects curiosity, not intent | A real project |
+| **A** | L'audience recherche activement cela ; prochaine étape claire vers l'offre | Assemblé à partir d'actifs existants en quelques heures |
+| **B** | Voulu une fois vu ; adjacent à la décision d'achat | Quelques jours ; du matériel nouveau |
+| **C** | Sympathique à avoir ; capte la curiosité, pas l'intention | Un vrai projet |
 
-The sweet spot is power-A × effort-A: the artifact the brand already uses
-internally, packaged. Flag any power-C × effort-C idea as not worth building.
+Le point idéal est puissance-A × effort-A : l'artefact que la marque utilise
+déjà en interne, mis en forme. Signaler toute idée puissance-C × effort-C comme
+ne valant pas la peine d'être construite.
 
-## Output structure
+## Structure de sortie
 
 ```
-# Lead magnets — [topic], {brand}
+# Lead magnets — [sujet], {marque}
 
-## 1. [Specific name — "The 23-point pre-launch QA checklist", never "a checklist"]
-**What it is:** [2-3 sentences — contents, format, length]
-**Cut from:** [the existing brand asset or expertise it is built from]
-**Power: A/B/C** — [why: search demand, intent proximity, offer fit]
-**Effort: A/B/C** — [why: what exists vs what must be made]
-**Funnel fit:** [what it qualifies the lead FOR — the next step it sets up]
-**Delivery:** [landing page + email / in-content unlock / webinar follow-up]
+## 1. [Nom précis — « La checklist QA pré-lancement en 23 points », jamais « une checklist »]
+**Ce que c'est :** [2-3 phrases — contenu, format, longueur]
+**Découpé dans :** [l'actif de marque ou l'expertise existant sur lequel c'est construit]
+**Puissance : A/B/C** — [pourquoi : demande de recherche, proximité d'intention, adéquation à l'offre]
+**Effort : A/B/C** — [pourquoi : ce qui existe vs ce qui doit être créé]
+**Adéquation au tunnel :** [pour quoi cela qualifie le lead — la prochaine étape que cela met en place]
+**Livraison :** [landing page + email / déblocage dans le contenu / suivi de webinaire]
 
-[... 3-5 ideas, best power-to-effort ratio first ...]
+[... 3-5 idées, meilleur ratio puissance/effort en premier ...]
 
-## Not recommended
-[Ideas that look obvious for this topic but grade badly here, with the grade —
-pre-empting the "what about an ebook?" conversation]
+## Non recommandé
+[Idées qui semblent évidentes pour ce sujet mais notées mal ici, avec la note —
+anticipant la conversation « et un ebook ? »]
 
-## Next steps
-[Route onward: /digital-marketing-pro:email-sequence for the nurture that
-follows capture; /digital-marketing-pro:funnel-architect if there is nowhere
-to send the lead yet]
+## Prochaines étapes
+[Transmission : /digital-marketing-pro:email-sequence pour le nurturing qui
+suit la capture ; /digital-marketing-pro:funnel-architect s'il n'y a nulle part
+où envoyer le lead pour l'instant]
 ```
 
-## Critical rules
+## Règles critiques
 
-- **Specific, or it does not ship.** Every idea carries a name a designer
-  could brief from. "A template" is a category; "the client-onboarding email
-  sequence template with the 6 send-day rules annotated" is an idea.
-- **Tied to existing IP first.** An idea requiring expertise the brand does
-  not demonstrably have is graded effort-C and flagged — a magnet the brand
-  cannot credibly deliver damages the exact trust it exists to build.
-- **Grade honestly, both axes, with reasons.** The grades are the deliverable;
-  the ideas are commodity.
-- **A magnet must lead somewhere.** Each idea names what it qualifies the lead
-  for. Capture with no next step is a list nobody emails.
-- **Compliance applies.** Gated content in regulated industries carries the
-  same disclaimer and claims rules as published content — a magnet is not a
-  compliance side door.
+- **Précis, sinon ça ne part pas.** Chaque idée porte un nom qu'un designer
+  pourrait briefer. « Un modèle » est une catégorie ; « le modèle de séquence
+  email d'onboarding client avec les 6 règles de jour d'envoi annotées » est
+  une idée.
+- **Lié à la PI existante en premier.** Une idée nécessitant une expertise que
+  la marque ne démontre pas de façon crédible est notée effort-C et signalée —
+  un magnet que la marque ne peut pas livrer de façon crédible endommage
+  exactement la confiance qu'il est censé construire.
+- **Noter honnêtement, les deux axes, avec justification.** Les notes sont le
+  livrable ; les idées sont une commodité.
+- **Un magnet doit mener quelque part.** Chaque idée nomme ce pour quoi elle
+  qualifie le lead. Une capture sans étape suivante est une liste que personne
+  n'emaile.
+- **La conformité s'applique.** Le contenu verrouillé dans les secteurs
+  réglementés porte les mêmes règles de mentions légales et d'allégations que
+  le contenu publié — un magnet n'est pas une porte dérobée de conformité.

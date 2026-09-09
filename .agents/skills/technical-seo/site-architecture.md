@@ -1,215 +1,215 @@
-# Site Architecture — URL Structure, Internal Linking & Information Architecture
+# Architecture de site — Structure d'URL, maillage interne et architecture de l'information
 
-A comprehensive reference for designing and optimizing site architecture for search engines and users. Site architecture determines how link equity flows through a site, how efficiently crawlers discover content, and how easily users find what they need. It is one of the highest-leverage technical SEO levers for large sites.
+Une référence complète pour concevoir et optimiser l'architecture de site pour les moteurs de recherche et les utilisateurs. L'architecture de site détermine comment le link equity circule à travers un site, avec quelle efficacité les crawlers découvrent le contenu, et avec quelle facilité les utilisateurs trouvent ce dont ils ont besoin. C'est l'un des leviers SEO techniques à plus fort effet de levier pour les grands sites.
 
 ---
 
-## URL Structure
+## Structure d'URL
 
-### Best Practices
+### Bonnes pratiques
 
-**Readability and keywords:**
-- URLs should be human-readable and include the primary target keyword: `/blog/technical-seo-guide` not `/blog/post?id=4827`
-- Use hyphens (`-`) to separate words, not underscores (`_`) or spaces (`%20`). Google treats hyphens as word separators but underscores as joiners
-- Keep URLs concise — under 100 characters when possible (no hard limit, but shorter URLs are easier to share and display in SERPs)
-- Use lowercase consistently. URLs are case-sensitive on most servers; mixed case creates duplicate content risk
+**Lisibilité et mots-clés :**
+- Les URL doivent être lisibles par un humain et inclure le mot-clé cible principal : `/blog/technical-seo-guide` et non `/blog/post?id=4827`
+- Utiliser des traits d'union (`-`) pour séparer les mots, pas des underscores (`_`) ni des espaces (`%20`). Google traite les traits d'union comme des séparateurs de mots mais les underscores comme des liaisons
+- Garder les URL concises — moins de 100 caractères si possible (pas de limite stricte, mais des URL plus courtes sont plus faciles à partager et à afficher dans les SERP)
+- Utiliser des minuscules de façon cohérente. Les URL sont sensibles à la casse sur la plupart des serveurs ; une casse mixte crée un risque de contenu dupliqué
 
-**Structure patterns:**
+**Schémas de structure :**
 
-| Pattern | Example | Best For |
+| Schéma | Exemple | Idéal pour |
 |---|---|---|
-| Flat | `/product-name` | Small sites, individual landing pages |
-| Category/page | `/category/page-name` | Blogs, medium sites, content hubs |
-| Hierarchical | `/category/subcategory/page-name` | Large sites, ecommerce with clear taxonomy |
-| Date-based | `/2025/11/article-name` | News sites (shows freshness), but limits future reorganization |
+| Plat | `/product-name` | Petits sites, landing pages individuelles |
+| Catégorie/page | `/category/page-name` | Blogs, sites moyens, hubs de contenu |
+| Hiérarchique | `/category/subcategory/page-name` | Grands sites, e-commerce avec une taxonomie claire |
+| Basé sur la date | `/2025/11/article-name` | Sites d'actualités (montre la fraîcheur), mais limite la réorganisation future |
 
-**What to avoid in URLs:**
-- Session IDs: `/page?sessionid=abc123` — use cookies instead
-- Excessive parameters: `/page?color=red&size=m&sort=price&page=2&ref=homepage`
-- Unnecessary depth: `/store/products/clothing/mens/shirts/casual/blue-shirt` (too deep)
-- Stop words in excess: `/the-complete-guide-to-the-best-ways-to-do-seo` — trim to `/complete-seo-guide`
-- Changing URLs after publication — every URL change requires a 301 redirect and risks ranking loss
+**Ce qu'il faut éviter dans les URL :**
+- ID de session : `/page?sessionid=abc123` — utiliser des cookies à la place
+- Paramètres excessifs : `/page?color=red&size=m&sort=price&page=2&ref=homepage`
+- Profondeur inutile : `/store/products/clothing/mens/shirts/casual/blue-shirt` (trop profond)
+- Mots vides en excès : `/the-complete-guide-to-the-best-ways-to-do-seo` — réduire à `/complete-seo-guide`
+- Changer les URL après publication — chaque changement d'URL nécessite une redirection 301 et risque une perte de classement
 
-### Trailing Slash Consistency
+### Cohérence de la barre oblique finale
 
-Choose one format and enforce it sitewide:
-- `example.com/page/` (with trailing slash)
-- `example.com/page` (without trailing slash)
+Choisir un format et l'appliquer sur tout le site :
+- `example.com/page/` (avec barre oblique finale)
+- `example.com/page` (sans barre oblique finale)
 
-Google treats these as different URLs. If both resolve with 200 status, it creates duplicate content. Enforce one format with a server-side redirect (301) from the non-canonical format.
+Google traite ces deux formats comme des URL différentes. Si les deux se résolvent avec un statut 200, cela crée du contenu dupliqué. Imposer un format unique avec une redirection côté serveur (301) depuis le format non canonique.
 
-Most CMSs have a setting for this. For custom implementations, handle it in the web server config (nginx, Apache) or application router.
+La plupart des CMS ont un paramètre pour cela. Pour les implémentations sur mesure, le gérer dans la configuration du serveur web (nginx, Apache) ou le routeur applicatif.
 
 ---
 
-## Information Architecture
+## Architecture de l'information
 
-### Principles
+### Principes
 
-1. **Every important page should be reachable within 3 clicks from the homepage.** Pages deeper than 3 levels receive less crawl frequency and less PageRank. This does not mean a flat URL structure — it means internal links create short paths.
+1. **Chaque page importante doit être accessible en 3 clics maximum depuis la page d'accueil.** Les pages à plus de 3 niveaux de profondeur reçoivent moins de fréquence de crawl et moins de PageRank. Cela ne signifie pas une structure d'URL plate — cela signifie que les liens internes créent des chemins courts.
 
-2. **Group related content together.** Search engines use content proximity (pages linking to each other, sharing URL path structure, and covering related topics) to understand topical authority.
+2. **Regrouper le contenu associé.** Les moteurs de recherche utilisent la proximité de contenu (pages se reliant entre elles, partageant une structure de chemin d'URL, et couvrant des sujets connexes) pour comprendre l'autorité thématique.
 
-3. **Build topical authority through content clusters.** A pillar page targeting a broad topic links to cluster pages targeting specific subtopics. All cluster pages link back to the pillar. This creates a self-reinforcing authority signal.
+3. **Construire l'autorité thématique via des clusters de contenu.** Une page pilier ciblant un sujet large renvoie vers des pages de cluster ciblant des sous-sujets spécifiques. Toutes les pages de cluster renvoient vers le pilier. Cela crée un signal d'autorité auto-renforçant.
 
-### Topic Cluster Model
+### Modèle de cluster thématique
 
 ```
-                    [Pillar Page]
-                   "Technical SEO Guide"
+                    [Page pilier]
+                   "Guide de SEO technique"
                   /    |    |    |    \
                  /     |    |    |     \
     [Cluster]  [Cluster] [Cluster] [Cluster] [Cluster]
-   "Core Web   "Crawl   "Site     "Schema   "Mobile-
-    Vitals"    Budget"  Migration" Markup"   First"
+   "Core Web   "Budget  "Migration  "Balisage  "Mobile-
+    Vitals"    de crawl" de site"    Schema"    First"
 ```
 
-**Pillar page**: Comprehensive overview (2,000-5,000 words) targeting the broad head term. Links to every cluster page.
+**Page pilier** : présentation complète (2 000-5 000 mots) ciblant le terme générique large. Renvoie vers chaque page de cluster.
 
-**Cluster pages**: Deep-dive articles (1,000-3,000 words) targeting specific long-tail subtopics. Each links back to the pillar and cross-links to related cluster pages.
+**Pages de cluster** : articles approfondis (1 000-3 000 mots) ciblant des sous-sujets de longue traîne spécifiques. Chacune renvoie vers le pilier et se lie de façon croisée avec les pages de cluster associées.
 
-**Result**: Search engines understand the site is an authority on the pillar topic because of the depth and interconnection of coverage.
+**Résultat** : les moteurs de recherche comprennent que le site fait autorité sur le sujet pilier en raison de la profondeur et de l'interconnexion de la couverture.
 
-### Content Siloing
+### Silotage de contenu
 
-Content siloing organizes site content into distinct thematic sections with controlled linking between them. The goal is to concentrate topical relevance within each silo.
+Le silotage de contenu organise le contenu du site en sections thématiques distinctes avec un maillage contrôlé entre elles. L'objectif est de concentrer la pertinence thématique au sein de chaque silo.
 
-**Hard silo**: URL structure mirrors the silo: `/technical-seo/core-web-vitals`, `/technical-seo/crawlability`. Internal links stay within the silo. Cross-silo links go through the top-level silo pages.
+**Silo dur** : la structure d'URL reflète le silo : `/technical-seo/core-web-vitals`, `/technical-seo/crawlability`. Les liens internes restent dans le silo. Les liens inter-silos passent par les pages de silo de niveau supérieur.
 
-**Soft silo**: URL structure may be flat, but internal linking creates virtual silos. Contextual links connect related content within the same topic area.
+**Silo souple** : la structure d'URL peut être plate, mais le maillage interne crée des silos virtuels. Des liens contextuels connectent le contenu associé au sein de la même zone thématique.
 
-**When to silo:**
-- Sites covering multiple distinct topics (a marketing agency with SEO, PPC, social, email sections)
-- Ecommerce sites with distinct product categories
-- Publishers covering multiple beats
+**Quand siloter :**
+- des sites couvrant plusieurs sujets distincts (une agence marketing avec des sections SEO, PPC, social, e-mail)
+- des sites e-commerce avec des catégories de produits distinctes
+- des éditeurs couvrant plusieurs domaines
 
-**When siloing is unnecessary:**
-- Small sites (under 50 pages) where all content is closely related
-- Single-topic niche sites where everything is one silo
+**Quand le silotage est inutile :**
+- petits sites (moins de 50 pages) où tout le contenu est étroitement lié
+- sites de niche mono-thématiques où tout est un seul silo
 
 ---
 
-## Internal Linking Strategy
+## Stratégie de maillage interne
 
-### Why Internal Links Matter
+### Pourquoi les liens internes comptent
 
-1. **Crawl discovery**: Googlebot follows internal links to discover pages. Pages with more internal links are crawled more frequently
-2. **PageRank distribution**: Internal links pass PageRank (link equity) from one page to another. Strategic internal linking concentrates authority on priority pages
-3. **Topical relevance signals**: The anchor text and surrounding context of internal links help search engines understand what the linked page is about
-4. **User navigation**: Well-placed internal links reduce bounce rate and increase pages per session
+1. **Découverte de crawl** : Googlebot suit les liens internes pour découvrir les pages. Les pages avec plus de liens internes sont crawlées plus fréquemment
+2. **Distribution du PageRank** : les liens internes transmettent le PageRank (link equity) d'une page à une autre. Un maillage interne stratégique concentre l'autorité sur les pages prioritaires
+3. **Signaux de pertinence thématique** : le texte d'ancre et le contexte environnant des liens internes aident les moteurs de recherche à comprendre le sujet de la page liée
+4. **Navigation utilisateur** : des liens internes bien placés réduisent le taux de rebond et augmentent le nombre de pages par session
 
-### Types of Internal Links
+### Types de liens internes
 
-| Type | Description | SEO Value | Example |
+| Type | Description | Valeur SEO | Exemple |
 |---|---|---|---|
-| **Navigation links** | Header, footer, sidebar menus | Medium (sitewide dilution) | Main menu linking to category pages |
-| **Contextual links** | In-content links within body copy | High (relevant context + anchor text) | Blog post linking to related article |
-| **Breadcrumb links** | Hierarchical path from homepage to current page | Medium-High (reinforces hierarchy) | Home > Category > Subcategory > Page |
-| **Related content links** | Algorithmically or manually curated related pages | Medium | "Related articles" section below blog posts |
-| **Footer links** | Links in the site footer | Low-Medium (sitewide, often ignored) | Useful for important pages not in main nav |
-| **Sidebar links** | Links in sidebar widgets | Low-Medium | Category lists, popular posts, recent posts |
+| **Liens de navigation** | Menus d'en-tête, pied de page, barre latérale | Moyenne (dilution à l'échelle du site) | Menu principal renvoyant aux pages de catégorie |
+| **Liens contextuels** | Liens dans le corps du texte | Élevée (contexte pertinent + texte d'ancre) | Article de blog renvoyant vers un article associé |
+| **Liens de fil d'Ariane** | Chemin hiérarchique de la page d'accueil à la page actuelle | Moyenne-élevée (renforce la hiérarchie) | Accueil > Catégorie > Sous-catégorie > Page |
+| **Liens de contenu associé** | Pages associées sélectionnées algorithmiquement ou manuellement | Moyenne | Section « articles associés » sous les articles de blog |
+| **Liens en pied de page** | Liens dans le pied de page du site | Faible-moyenne (à l'échelle du site, souvent ignorés) | Utile pour des pages importantes absentes de la navigation principale |
+| **Liens en barre latérale** | Liens dans les widgets de barre latérale | Faible-moyenne | Listes de catégories, articles populaires, articles récents |
 
-### Anchor Text Optimization
+### Optimisation du texte d'ancre
 
-- **Use descriptive, keyword-relevant anchor text**: "technical SEO audit checklist" not "click here" or "read more"
-- **Vary anchor text naturally**: Do not use the exact same anchor text for every link to a page. Use variations, partial matches, and natural phrases
-- **Avoid over-optimization**: Do not stuff exact-match keywords into every internal link anchor. Google's algorithms detect this pattern
-- **Context matters**: The surrounding paragraph provides additional relevance signals beyond just the anchor text
-- **Avoid generic anchors** for important links: "Learn more," "Click here," and "Read this" waste an anchor text opportunity
+- **Utiliser un texte d'ancre descriptif et pertinent au niveau des mots-clés** : « checklist d'audit SEO technique » et non « cliquez ici » ou « en savoir plus »
+- **Varier naturellement le texte d'ancre** : ne pas utiliser exactement le même texte d'ancre pour chaque lien vers une page. Utiliser des variations, correspondances partielles, et phrases naturelles
+- **Éviter la sur-optimisation** : ne pas bourrer chaque ancre de lien interne avec des mots-clés en correspondance exacte. Les algorithmes de Google détectent ce schéma
+- **Le contexte compte** : le paragraphe environnant fournit des signaux de pertinence supplémentaires au-delà du seul texte d'ancre
+- **Éviter les ancres génériques** pour les liens importants : « en savoir plus », « cliquez ici », et « lire ceci » gaspillent une opportunité de texte d'ancre
 
-### Internal Link Audit Methodology
+### Méthodologie d'audit de maillage interne
 
-1. **Crawl the site** to build a complete link graph (Screaming Frog, Sitebulb, or custom crawler)
-2. **Identify pages with low internal link counts**: Important pages (target keyword pages, revenue pages) with fewer than 5 internal links pointing to them need more
-3. **Identify pages with excessive internal links**: Pages linking to 200+ URLs dilute PageRank per link. Consolidate or prioritize
-4. **Find orphan pages**: Pages with zero internal links (see crawlability.md for detection method)
-5. **Analyze link depth**: Map click depth from homepage. Flag critical pages deeper than 3 clicks
-6. **Check for broken internal links**: 404s from internal links waste crawl budget and PageRank
-7. **Review anchor text distribution**: Ensure important pages receive keyword-relevant anchor text from multiple sources
-8. **Visualize link flow**: Use a site architecture visualization to identify PageRank bottlenecks and silos
+1. **Crawler le site** pour construire un graphe de liens complet (Screaming Frog, Sitebulb, ou un crawler personnalisé)
+2. **Identifier les pages avec un faible nombre de liens internes** : les pages importantes (pages de mots-clés cibles, pages génératrices de revenus) avec moins de 5 liens internes pointant vers elles ont besoin de plus de liens
+3. **Identifier les pages avec des liens internes excessifs** : les pages liant vers 200+ URL diluent le PageRank par lien. Consolider ou prioriser
+4. **Trouver les pages orphelines** : pages sans aucun lien interne (voir crawlability.md pour la méthode de détection)
+5. **Analyser la profondeur de lien** : cartographier la profondeur de clic depuis la page d'accueil. Signaler les pages critiques à plus de 3 clics
+6. **Vérifier les liens internes cassés** : les 404 provenant de liens internes gaspillent le budget de crawl et le PageRank
+7. **Examiner la répartition du texte d'ancre** : s'assurer que les pages importantes reçoivent un texte d'ancre pertinent au niveau des mots-clés depuis plusieurs sources
+8. **Visualiser le flux de liens** : utiliser une visualisation de l'architecture de site pour identifier les goulots d'étranglement de PageRank et les silos
 
-### Link Equity Distribution Principles
+### Principes de distribution du link equity
 
-- **Homepage has the most PageRank** (it receives the most external backlinks). Links from the homepage are the most valuable internal links
-- **PageRank flows through links and is divided among all links on a page**. A page with 10 outgoing links passes more equity per link than a page with 100 outgoing links
-- **Deep pages need intentional linking**: A blog post 5 clicks from the homepage receives minimal PageRank unless linked from higher-authority pages
-- **"Link to your money pages"**: Product pages, service pages, and high-converting landing pages should receive internal links from high-authority content (blog posts with backlinks, homepage, category pages)
-
----
-
-## Pagination Handling
-
-### Current Best Practices (Post rel=prev/next Deprecation)
-
-Google deprecated support for `rel="prev"` and `rel="next"` in 2019. Current approaches:
-
-**Option 1: View-All Page (Preferred for SEO)**
-- Create a single page with all content (`/products/shoes?view=all`)
-- Set the view-all page as the canonical for all paginated component pages
-- Best for: Product listings under 200 items, article lists
-- Caveat: Page must load reasonably fast. If 500 products cause a 10-second load time, this is not viable
-
-**Option 2: Self-Canonicalizing Paginated Pages**
-- Each paginated page (`/shoes?page=1`, `/shoes?page=2`) has a self-referencing canonical
-- Google indexes each page independently
-- Best for: Large catalogs where a view-all page is not feasible
-- Ensure each page has unique, relevant content (not just the same intro text with different products)
-
-**Option 3: Load More / Infinite Scroll (with SEO Considerations)**
-- JavaScript-powered "Load more" button or infinite scroll
-- Critical: Implement as progressive enhancement with crawlable paginated URLs underneath
-- Google recommends: `<a href="/shoes?page=2">` links in the HTML that JavaScript enhances into "Load more" functionality
-- Without crawlable fallback URLs, Googlebot cannot access content beyond the initial load
+- **La page d'accueil a le plus de PageRank** (elle reçoit le plus de backlinks externes). Les liens depuis la page d'accueil sont les liens internes les plus précieux
+- **Le PageRank circule à travers les liens et est divisé entre tous les liens d'une page**. Une page avec 10 liens sortants transmet plus d'equity par lien qu'une page avec 100 liens sortants
+- **Les pages profondes nécessitent un maillage intentionnel** : un article de blog à 5 clics de la page d'accueil reçoit un PageRank minimal sauf s'il est lié depuis des pages à plus forte autorité
+- **« Faites des liens vers vos pages money »** : les pages produit, les pages de service, et les landing pages à fort taux de conversion doivent recevoir des liens internes depuis du contenu à forte autorité (articles de blog avec des backlinks, page d'accueil, pages de catégorie)
 
 ---
 
-## Faceted Navigation (Ecommerce)
+## Gestion de la pagination
 
-### The Challenge
+### Bonnes pratiques actuelles (après la dépréciation de rel=prev/next)
 
-Ecommerce filtering (color, size, price range, brand, rating) generates enormous URL combinations. A category with 8 filter types and 5 options each creates 5^8 = 390,625 possible URL combinations from a single category.
+Google a déprécié le support de `rel="prev"` et `rel="next"` en 2019. Approches actuelles :
 
-### Strategy Matrix
+**Option 1 : page « tout afficher » (préférée pour le SEO)**
+- Créer une seule page avec tout le contenu (`/products/shoes?view=all`)
+- Définir la page « tout afficher » comme canonique pour toutes les pages composantes paginées
+- Idéal pour : les listes de produits de moins de 200 articles, les listes d'articles
+- Mise en garde : la page doit se charger raisonnablement vite. Si 500 produits causent un temps de chargement de 10 secondes, ce n'est pas viable
 
-| Facet Type | Example | Indexable? | Handling |
+**Option 2 : pages paginées auto-canonicalisées**
+- Chaque page paginée (`/shoes?page=1`, `/shoes?page=2`) a une canonique auto-référencée
+- Google indexe chaque page indépendamment
+- Idéal pour : les grands catalogues où une page « tout afficher » n'est pas réalisable
+- S'assurer que chaque page a un contenu unique et pertinent (pas seulement le même texte d'intro avec des produits différents)
+
+**Option 3 : bouton « charger plus » / défilement infini (avec considérations SEO)**
+- Bouton « charger plus » ou défilement infini propulsé par JavaScript
+- Critique : implémenter comme une amélioration progressive avec des URL paginées crawlables en dessous
+- Google recommande : des liens `<a href="/shoes?page=2">` dans le HTML que JavaScript enrichit en fonctionnalité « charger plus »
+- Sans URL de repli crawlables, Googlebot ne peut pas accéder au contenu au-delà du chargement initial
+
+---
+
+## Navigation à facettes (e-commerce)
+
+### Le défi
+
+Le filtrage e-commerce (couleur, taille, fourchette de prix, marque, note) génère d'énormes combinaisons d'URL. Une catégorie avec 8 types de filtres et 5 options chacun crée 5^8 = 390 625 combinaisons d'URL possibles à partir d'une seule catégorie.
+
+### Matrice de stratégie
+
+| Type de facette | Exemple | Indexable ? | Traitement |
 |---|---|---|---|
-| **High-demand facets** | Color, brand, material for fashion | Yes — if search volume exists for "red running shoes" | Unique title/description, self-referencing canonical, include in sitemap |
-| **Sorting parameters** | Sort by price, popularity, newest | No — same products, different order | Canonical to base category; robots.txt block or noindex |
-| **Pagination within facets** | Page 2 of red shoes | Depends on depth | Pages 1-3 may be indexable; deeper pages canonical to page 1 |
-| **Multi-select facets** | Red + blue + size 10 | No — too specific, no search demand | Canonical to broadest applicable facet; robots.txt block |
-| **Price range** | $50-$100 | Rarely | Usually canonical to base category unless "cheap [product]" has volume |
-| **Rating filters** | 4 stars and up | No | Canonical to base category |
+| **Facettes à forte demande** | Couleur, marque, matière pour la mode | Oui — s'il existe un volume de recherche pour « chaussures de course rouges » | Title/description uniques, canonique auto-référencée, inclure dans le sitemap |
+| **Paramètres de tri** | Trier par prix, popularité, nouveauté | Non — mêmes produits, ordre différent | Canonique vers la catégorie de base ; blocage robots.txt ou noindex |
+| **Pagination au sein des facettes** | Page 2 des chaussures rouges | Selon la profondeur | Les pages 1-3 peuvent être indexables ; les pages plus profondes canoniques vers la page 1 |
+| **Facettes à sélection multiple** | Rouge + bleu + taille 10 | Non — trop spécifique, pas de demande de recherche | Canonique vers la facette applicable la plus large ; blocage robots.txt |
+| **Fourchette de prix** | 50-100 € | Rarement | Généralement canonique vers la catégorie de base sauf si « [produit] pas cher » a du volume |
+| **Filtres de notation** | 4 étoiles et plus | Non | Canonique vers la catégorie de base |
 
-### Implementation Approaches
+### Approches de mise en œuvre
 
-1. **AJAX-based filtering (Best)**: Filters update content via JavaScript without generating new URLs. Use History API to update the URL for shareability without creating crawlable parameter URLs. Googlebot sees only the base category URL.
+1. **Filtrage basé sur AJAX (meilleure option)** : les filtres mettent à jour le contenu via JavaScript sans générer de nouvelles URL. Utiliser l'History API pour mettre à jour l'URL en vue du partage sans créer d'URL de paramètres crawlables. Googlebot ne voit que l'URL de catégorie de base.
 
-2. **Canonical + robots.txt (Common)**: Allow parameter URLs to exist but canonical low-value combinations to the base URL. Block high-volume parameter patterns in robots.txt to conserve crawl budget.
+2. **Canonique + robots.txt (courant)** : autoriser l'existence des URL de paramètres mais canonicaliser les combinaisons à faible valeur vers l'URL de base. Bloquer les motifs de paramètres à fort volume dans robots.txt pour préserver le budget de crawl.
 
-3. **Noindex, follow (Fallback)**: Apply noindex to parameter pages that should not rank but contain links worth following. Use when canonical signals are insufficient.
+3. **Noindex, follow (solution de repli)** : appliquer noindex aux pages de paramètres qui ne doivent pas se classer mais contiennent des liens à suivre. Utiliser lorsque les signaux canoniques sont insuffisants.
 
 ---
 
-## Breadcrumb Implementation
+## Implémentation du fil d'Ariane
 
-### SEO Benefits
+### Bénéfices SEO
 
-- Reinforces site hierarchy for search engines
-- Provides keyword-rich internal links to parent pages
-- Enables breadcrumb rich results in Google SERPs (increases click-through rate)
-- Helps users understand their location within the site
+- Renforce la hiérarchie du site pour les moteurs de recherche
+- Fournit des liens internes riches en mots-clés vers les pages parentes
+- Permet des résultats enrichis de fil d'Ariane dans les SERP de Google (augmente le taux de clic)
+- Aide les utilisateurs à comprendre leur emplacement au sein du site
 
-### HTML Implementation
+### Implémentation HTML
 
 ```html
-<nav aria-label="Breadcrumb">
+<nav aria-label="Fil d'Ariane">
   <ol itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+      <a itemprop="item" href="/"><span itemprop="name">Accueil</span></a>
       <meta itemprop="position" content="1">
     </li>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="/technical-seo"><span itemprop="name">Technical SEO</span></a>
+      <a itemprop="item" href="/technical-seo"><span itemprop="name">SEO technique</span></a>
       <meta itemprop="position" content="2">
     </li>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -220,74 +220,75 @@ Ecommerce filtering (color, size, price range, brand, rating) generates enormous
 </nav>
 ```
 
-### JSON-LD Alternative (Preferred)
+### Alternative JSON-LD (préférée)
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Technical SEO", "item": "https://example.com/technical-seo"},
+    {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://example.com/"},
+    {"@type": "ListItem", "position": 2, "name": "SEO technique", "item": "https://example.com/technical-seo"},
     {"@type": "ListItem", "position": 3, "name": "Core Web Vitals"}
   ]
 }
 ```
 
-### Best Practices
+### Bonnes pratiques
 
-- Always start with "Home" as the first breadcrumb
-- The last item (current page) should not be a link
-- Use descriptive names (not URL slugs) — "Core Web Vitals Guide" not "core-web-vitals"
-- For products in multiple categories, choose the primary category for the breadcrumb path (match canonical)
-- Implement BreadcrumbList schema for rich result eligibility
+- Toujours commencer par « Accueil » comme premier élément du fil d'Ariane
+- Le dernier élément (page actuelle) ne doit pas être un lien
+- Utiliser des noms descriptifs (pas des slugs d'URL) — « Guide des Core Web Vitals » et non « core-web-vitals »
+- Pour les produits appartenant à plusieurs catégories, choisir la catégorie principale pour le chemin de fil d'Ariane (correspondant à la canonique)
+- Implémenter le schema BreadcrumbList pour l'éligibilité aux résultats enrichis
 
 ---
 
-## Site Migration Planning
+## Planification de migration de site
 
-### Pre-Migration Checklist
+### Checklist pré-migration
 
-- [ ] Complete URL mapping: old URL to new URL for every page with organic traffic or backlinks
-- [ ] Set up 301 redirects for every mapped URL (test before launch)
-- [ ] Verify new site has no robots.txt blocking or noindex tags from development
-- [ ] Update all internal links to point to new URLs (avoid relying solely on redirects for internal navigation)
-- [ ] Update canonical tags to reference new URLs
-- [ ] Update XML sitemaps to reference new URLs
-- [ ] Update hreflang tags (if international site)
-- [ ] Update structured data (URLs in schema markup)
-- [ ] Benchmark current performance: organic traffic by page, indexed page count, crawl stats, rankings for target keywords, Core Web Vitals
-- [ ] Notify Google via GSC Change of Address tool (for domain migrations)
-- [ ] Set up monitoring: daily organic traffic checks, hourly crawl error monitoring for the first week
+- [ ] Correspondance d'URL complète : ancienne URL vers nouvelle URL pour chaque page avec du trafic organique ou des backlinks
+- [ ] Mettre en place des redirections 301 pour chaque URL mappée (tester avant le lancement)
+- [ ] Vérifier que le nouveau site n'a pas de blocage robots.txt ou de balises noindex issues du développement
+- [ ] Mettre à jour tous les liens internes pour qu'ils pointent vers les nouvelles URL (éviter de compter uniquement sur les redirections pour la navigation interne)
+- [ ] Mettre à jour les balises canoniques pour référencer les nouvelles URL
+- [ ] Mettre à jour les sitemaps XML pour référencer les nouvelles URL
+- [ ] Mettre à jour les balises hreflang (pour un site international)
+- [ ] Mettre à jour les données structurées (URL dans le balisage schema)
+- [ ] Établir une référence de la performance actuelle : trafic organique par page, nombre de pages indexées, statistiques de crawl, classements pour les mots-clés cibles, Core Web Vitals
+- [ ] Notifier Google via l'outil de changement d'adresse de GSC (pour les migrations de domaine)
+- [ ] Mettre en place une surveillance : vérifications quotidiennes du trafic organique, surveillance horaire des erreurs de crawl pendant la première semaine
 
-### Migration Day
+### Jour de migration
 
-- [ ] Deploy redirects
-- [ ] Verify redirects work (test a sample of 50+ URLs across different templates)
-- [ ] Submit new sitemap to GSC
-- [ ] Request indexing for the most important pages via URL Inspection tool
-- [ ] Monitor crawl stats in real-time for the first 24 hours
-- [ ] Check for spike in crawl errors in GSC
+- [ ] Déployer les redirections
+- [ ] Vérifier que les redirections fonctionnent (tester un échantillon de 50+ URL sur différents modèles)
+- [ ] Soumettre le nouveau sitemap à GSC
+- [ ] Demander l'indexation des pages les plus importantes via l'outil d'inspection d'URL
+- [ ] Surveiller les statistiques de crawl en temps réel pendant les premières 24 heures
+- [ ] Vérifier un pic d'erreurs de crawl dans GSC
 
-### Post-Migration Monitoring
+### Surveillance post-migration
 
-| Timeframe | Check | Expected |
+| Délai | Vérification | Attendu |
 |---|---|---|
-| Day 1-3 | Crawl errors in GSC | Spike is normal; should decrease rapidly |
-| Week 1 | Index coverage | Old URLs transitioning to new URLs |
-| Week 1 | Organic traffic | 10-30% dip is normal for well-executed migrations |
-| Week 2-4 | Rankings for target keywords | Should begin recovering to pre-migration levels |
-| Month 1-2 | Organic traffic recovery | Should reach 90-100% of pre-migration levels |
-| Month 3 | Full audit | Comparable or improved performance across all metrics |
-| Month 6-12 | Redirect maintenance | Keep old domain and redirects active for at least 12 months |
+| Jour 1-3 | Erreurs de crawl dans GSC | Un pic est normal ; devrait diminuer rapidement |
+| Semaine 1 | Couverture d'index | Les anciennes URL transitionnent vers les nouvelles |
+| Semaine 1 | Trafic organique | Une baisse de 10-30 % est normale pour des migrations bien exécutées |
+| Semaine 2-4 | Classements pour les mots-clés cibles | Devraient commencer à récupérer les niveaux pré-migration |
+| Mois 1-2 | Récupération du trafic organique | Devrait atteindre 90-100 % des niveaux pré-migration |
+| Mois 3 | Audit complet | Performance comparable ou améliorée sur toutes les métriques |
+| Mois 6-12 | Maintenance des redirections | Garder l'ancien domaine et les redirections actifs pendant au moins 12 mois |
 
-### When Rankings Do Not Recover
+### Lorsque les classements ne récupèrent pas
 
-If organic traffic has not recovered to 90% within 8 weeks:
-1. Check for redirect errors (broken redirects, redirect chains, loops)
-2. Verify no noindex or robots.txt blocks on the new site
-3. Check canonical tags are not pointing to old URLs
-4. Verify internal links are updated (not just relying on redirect chains)
-5. Check for content parity issues (missing content on new pages)
-6. Review GSC for manual actions or security issues
-7. Audit Core Web Vitals on the new site (performance regression can suppress rankings)
+Si le trafic organique n'a pas récupéré à 90 % en 8 semaines :
+1. Vérifier les erreurs de redirection (redirections cassées, chaînes de redirection, boucles)
+2. Vérifier l'absence de blocage noindex ou robots.txt sur le nouveau site
+3. Vérifier que les balises canoniques ne pointent pas vers les anciennes URL
+4. Vérifier que les liens internes sont mis à jour (pas seulement basés sur des chaînes de redirection)
+5. Vérifier les problèmes de parité de contenu (contenu manquant sur les nouvelles pages)
+6. Examiner GSC pour des actions manuelles ou des problèmes de sécurité
+7. Auditer les Core Web Vitals sur le nouveau site (une régression de performance peut pénaliser les classements)
+</content>

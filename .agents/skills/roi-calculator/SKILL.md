@@ -1,60 +1,61 @@
 ---
 name: roi-calculator
-description: "Compute campaign ROI from spend, conversion, and revenue inputs — channel-level ROI/ROAS/CPA/CPL, blended totals, five-model attribution comparison (last-touch, first-touch, linear, time-decay, position-based), LTV payback periods, industry benchmark ratings, and 2-3 modeled budget-reallocation scenarios, packaged as an executive-ready report. Triggers on \"/digital-marketing-pro:roi-calculator\", \"what's the ROI on this campaign\", \"compare ROAS across channels\", \"is our CAC sustainable against LTV\", \"where should we shift budget\". Runs roi-calculator.py, reads industry benchmarks for the brand's vertical, and logs results to the campaign tracker for period-over-period trend comparison."
+description: "Calculer le ROI de campagne à partir des données de dépenses, de conversion et de revenu — ROI/ROAS/CPA/CPL par canal, totaux consolidés, comparaison de cinq modèles d'attribution (dernier clic, premier clic, linéaire, dégressif dans le temps, basé sur la position), périodes de retour sur investissement en fonction de la LTV, notation par rapport aux benchmarks sectoriels, et 2-3 scénarios modélisés de réallocation budgétaire, le tout emballé dans un rapport prêt pour la direction. Se déclenche sur \"/digital-marketing-pro:roi-calculator\", \"what's the ROI on this campaign\", \"compare ROAS across channels\", \"is our CAC sustainable against LTV\", \"where should we shift budget\". Exécute roi-calculator.py, lit les benchmarks sectoriels pour le secteur de la marque, et journalise les résultats dans le suivi de campagne pour la comparaison de tendance d'une période à l'autre."
 argument-hint: "[campaign-name]"
 ---
 
 # /digital-marketing-pro:roi-calculator
 
-## Purpose
+## Objectif
 
-Campaign ROI calculator with multi-touch attribution models. Produces a comprehensive ROI analysis across channels for budget justification, optimization recommendations, and executive reporting.
+Calculateur de ROI de campagne avec modèles d'attribution multi-touch. Produit une analyse de ROI complète sur les canaux pour la justification budgétaire, les recommandations d'optimisation, et le reporting à la direction.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se voir demander) :
 
-- **Campaign spend by channel**: Dollar amounts invested per channel (paid search, paid social, email, SEO, content, events, etc.)
-- **Conversions and revenue by channel**: Number of conversions and total revenue attributed to each channel
-- **Time period**: The date range for the analysis (week, month, quarter, year)
-- **Attribution model preference**: Last-touch, first-touch, linear, time-decay, or position-based (or compare all models)
-- **Customer LTV**: Optional -- average customer lifetime value for long-term ROI projection
-- **Industry vertical**: For benchmark comparison context
-- **Conversion definitions**: What counts as a conversion (purchase, lead, signup, demo request, trial start, etc.)
-- **Cost inputs beyond ad spend**: Optional -- agency fees, tool costs, creative production costs, team time
+- **Dépenses de campagne par canal** : Montants investis par canal (recherche payante, social payant, email, SEO, contenu, événements, etc.)
+- **Conversions et revenu par canal** : Nombre de conversions et revenu total attribué à chaque canal
+- **Période** : La plage de dates pour l'analyse (semaine, mois, trimestre, année)
+- **Préférence de modèle d'attribution** : Dernier clic, premier clic, linéaire, dégressif dans le temps, ou basé sur la position (ou comparer tous les modèles)
+- **LTV client** : Optionnel -- valeur vie client moyenne pour une projection de ROI à long terme
+- **Secteur d'activité** : Pour le contexte de comparaison aux benchmarks
+- **Définitions de conversion** : Ce qui compte comme une conversion (achat, lead, inscription, demande de démo, début d'essai, etc.)
+- **Coûts au-delà de la dépense publicitaire** : Optionnel -- frais d'agence, coûts d'outils, coûts de production créative, temps d'équipe
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply voice, compliance, industry context. Check `guidelines/_manifest.json` for restrictions, messaging, channel styles, voice-and-tone rules, and templates. If a template matching this command exists in `~/.claude-marketing/brands/{slug}/templates/`, apply its format. If no brand exists, prompt for `/digital-marketing-pro:brand-setup` or proceed with defaults.
-2. **Check campaign history**: Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` to pull historical campaign data for trend comparison and period-over-period analysis.
-3. **Run ROI calculator**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/roi-calculator.py"` with spend, revenue, and conversion data to compute channel-level and blended metrics.
-4. **Calculate channel-level ROI and ROAS**: For each channel, compute ROI ((revenue - cost) / cost), ROAS (revenue / cost), CPA (cost / conversions), CPL (cost / leads), and contribution margin percentage.
-5. **Apply attribution model**: Redistribute credit across channels using the selected attribution model. If the user wants a comparison, run all five models (last-touch, first-touch, linear, time-decay, position-based) and show how each model shifts credit between channels.
-6. **Calculate blended ROI**: Aggregate all channels into a total campaign ROI, blended ROAS, and overall CPA. Factor in LTV if provided to project short-term vs long-term ROI and payback period.
-7. **Compare against industry benchmarks**: Reference `skills/context-engine/industry-profiles.md` to contextualize whether channel performance is above, at, or below industry averages for the brand's vertical.
-8. **Identify efficiency opportunities**: Flag channels with declining marginal returns, channels where increased spend could yield disproportionate gains, and channels where CPA exceeds LTV (unsustainable spend).
-9. **Calculate payback period**: If LTV data is provided, compute the months to break even on customer acquisition cost per channel, identifying which channels pay back fastest and which require patience for long-term value.
-10. **Model budget reallocation scenarios**: Generate 2-3 reallocation scenarios shifting budget from underperformers to high-performers, with projected impact on total ROI, total conversions, and blended CPA.
-11. **Log results to campaign tracker**: Record the ROI analysis in `campaign-tracker.py` so future analyses can compare period-over-period trends and validate whether recommended reallocations improved performance.
-12. **Compile executive report**: Format the analysis for stakeholder presentation with clear takeaways, data tables ready for visualization, and actionable next steps.
+1. **Charger le contexte de la marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix, la conformité, le contexte sectoriel. Vérifier `guidelines/_manifest.json` pour les restrictions, les messages clés, les styles par canal, les règles de voix et de ton, et les modèles. Si un modèle correspondant à cette commande existe dans `~/.claude-marketing/brands/{slug}/templates/`, appliquer son format. Si aucune marque n'existe, inviter à `/digital-marketing-pro:brand-setup` ou continuer avec les valeurs par défaut.
+2. **Vérifier l'historique des campagnes** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` pour récupérer les données de campagnes historiques pour la comparaison de tendance et l'analyse d'une période à l'autre.
+3. **Exécuter le calculateur de ROI** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/roi-calculator.py"` avec les données de dépenses, de revenu, et de conversion pour calculer les métriques par canal et consolidées.
+4. **Calculer le ROI et le ROAS par canal** : Pour chaque canal, calculer le ROI ((revenu - coût) / coût), le ROAS (revenu / coût), le CPA (coût / conversions), le CPL (coût / leads), et le pourcentage de marge de contribution.
+5. **Appliquer le modèle d'attribution** : Redistribuer le crédit entre les canaux en utilisant le modèle d'attribution sélectionné. Si l'utilisateur souhaite une comparaison, exécuter les cinq modèles (dernier clic, premier clic, linéaire, dégressif dans le temps, basé sur la position) et montrer comment chaque modèle déplace le crédit entre les canaux.
+6. **Calculer le ROI consolidé** : Agréger tous les canaux en un ROI de campagne total, un ROAS consolidé, et un CPA global. Intégrer la LTV si fournie pour projeter le ROI à court vs long terme et la période de retour sur investissement.
+7. **Comparer aux benchmarks sectoriels** : Consulter `skills/context-engine/industry-profiles.md` pour contextualiser si la performance du canal est au-dessus, dans la moyenne, ou en dessous des moyennes sectorielles pour le secteur de la marque.
+8. **Identifier les opportunités d'efficacité** : Signaler les canaux avec des rendements marginaux décroissants, les canaux où une dépense accrue pourrait produire des gains disproportionnés, et les canaux où le CPA dépasse la LTV (dépense non soutenable).
+9. **Calculer la période de retour sur investissement** : Si des données de LTV sont fournies, calculer les mois pour atteindre le seuil de rentabilité sur le coût d'acquisition client par canal, en identifiant quels canaux se rentabilisent le plus vite et lesquels nécessitent de la patience pour une valeur à long terme.
+10. **Modéliser des scénarios de réallocation budgétaire** : Générer 2-3 scénarios de réallocation déplaçant le budget des canaux sous-performants vers les canaux performants, avec l'impact projeté sur le ROI total, les conversions totales, et le CPA consolidé.
+11. **Journaliser les résultats dans le suivi de campagne** : Enregistrer l'analyse de ROI dans `campaign-tracker.py` afin que les futures analyses puissent comparer les tendances d'une période à l'autre et valider si les réallocations recommandées ont amélioré la performance.
+12. **Compiler le rapport pour la direction** : Formater l'analyse pour la présentation aux parties prenantes avec des enseignements clairs, des tableaux de données prêts pour la visualisation, et des prochaines étapes actionnables.
 
-## Output
+## Résultat
 
-A structured ROI analysis report containing:
+Un rapport d'analyse de ROI structuré contenant :
 
-- Channel-by-channel performance table (spend, revenue, conversions, ROI, ROAS, CPA, CPL)
-- Blended campaign ROI and overall ROAS with total spend and revenue summary
-- Attribution model comparison showing credit distribution shifts across models
-- LTV-adjusted ROI projection and payback period analysis (if customer LTV was provided)
-- Industry benchmark comparison with above/at/below performance ratings per channel
-- Efficiency analysis identifying diminishing returns and scaling opportunities
-- Budget reallocation recommendations with 2-3 modeled scenarios and projected outcomes
-- Underperforming channel diagnosis with specific improvement actions
-- Period-over-period trend comparison (if historical data is available from campaign tracker)
-- Executive summary with top 3 insights and recommended next steps
-- Visualization-ready data tables formatted for Google Sheets or slide deck export
+- Tableau de performance canal par canal (dépense, revenu, conversions, ROI, ROAS, CPA, CPL)
+- ROI de campagne consolidé et ROAS global avec un résumé de la dépense et du revenu totaux
+- Comparaison des modèles d'attribution montrant les changements de distribution de crédit entre modèles
+- Projection de ROI ajustée à la LTV et analyse de la période de retour sur investissement (si la LTV client a été fournie)
+- Comparaison aux benchmarks sectoriels avec notations au-dessus/dans la moyenne/en dessous de la performance par canal
+- Analyse d'efficacité identifiant les rendements décroissants et les opportunités de mise à l'échelle
+- Recommandations de réallocation budgétaire avec 2-3 scénarios modélisés et résultats projetés
+- Diagnostic des canaux sous-performants avec des actions d'amélioration spécifiques
+- Comparaison de tendance d'une période à l'autre (si des données historiques sont disponibles depuis le suivi de campagne)
+- Résumé exécutif avec les 3 principaux enseignements et les prochaines étapes recommandées
+- Tableaux de données prêts pour la visualisation, formatés pour Google Sheets ou l'export en présentation
 
-## Agents Used
+## Agents utilisés
 
-- **analytics-analyst** -- ROI computation, attribution modeling, benchmark comparison, efficiency analysis, payback period calculation, and data-driven recommendations
-- **marketing-strategist** -- Budget optimization strategy, channel mix recommendations, reallocation scenario design, and executive-level insight framing for stakeholder communication
+- **analytics-analyst** -- Calcul de ROI, modélisation d'attribution, comparaison aux benchmarks, analyse d'efficacité, calcul de la période de retour sur investissement, et recommandations fondées sur les données
+- **marketing-strategist** -- Stratégie d'optimisation budgétaire, recommandations de mix de canaux, conception de scénarios de réallocation, et formulation d'insights au niveau direction pour la communication aux parties prenantes
+</content>

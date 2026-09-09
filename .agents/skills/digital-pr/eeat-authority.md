@@ -1,47 +1,47 @@
-# E-E-A-T Authority Building Guide
+# Guide de renforcement de l'autorité E-E-A-T
 
-## E-E-A-T Audit Checklist
+## Checklist d'audit E-E-A-T
 
-### Experience
-- [ ] Content demonstrates first-hand experience with the topic
-- [ ] Author has used/tested products or services discussed
-- [ ] Original photos, screenshots, or data from actual use
-- [ ] Personal anecdotes and real-world application examples
+### Expérience
+- [ ] Le contenu démontre une expérience directe du sujet
+- [ ] L'auteur a utilisé/testé les produits ou services évoqués
+- [ ] Photos, captures d'écran, ou données originales issues d'un usage réel
+- [ ] Anecdotes personnelles et exemples d'application concrète
 
 ### Expertise
-- [ ] Author has verifiable credentials (education, certifications, work history)
-- [ ] Author bio page exists with credentials, photo, and links
-- [ ] Content demonstrates deep subject knowledge (not surface-level)
-- [ ] Technical accuracy verified by qualified reviewer
+- [ ] L'auteur a des références vérifiables (formation, certifications, parcours professionnel)
+- [ ] Une page de bio auteur existe, avec références, photo et liens
+- [ ] Le contenu démontre une connaissance approfondie du sujet (pas superficielle)
+- [ ] L'exactitude technique a été vérifiée par un relecteur qualifié
 
-### Authoritativeness
-- [ ] Brand is recognized in the industry (media mentions, awards, citations)
-- [ ] Other authoritative sources link to or cite the brand
-- [ ] Industry experts reference or endorse the brand
-- [ ] Brand participates in industry organizations and events
+### Autorité
+- [ ] La marque est reconnue dans le secteur (mentions média, récompenses, citations)
+- [ ] D'autres sources faisant autorité renvoient vers la marque ou la citent
+- [ ] Des experts du secteur référencent ou soutiennent la marque
+- [ ] La marque participe à des organisations et événements sectoriels
 
-### Trustworthiness
-- [ ] Contact information is easily accessible
-- [ ] Privacy policy and terms of service are current
-- [ ] Content is factually accurate and well-sourced
-- [ ] Corrections/updates are transparent
-- [ ] Site is secure (HTTPS) with no security warnings
-- [ ] Reviews and ratings are genuine (not manipulated)
+### Fiabilité
+- [ ] Les coordonnées sont facilement accessibles
+- [ ] La politique de confidentialité et les conditions d'utilisation sont à jour
+- [ ] Le contenu est factuellement exact et bien sourcé
+- [ ] Les corrections/mises à jour sont transparentes
+- [ ] Le site est sécurisé (HTTPS) sans avertissement de sécurité
+- [ ] Les avis et notes sont authentiques (non manipulés)
 
 ---
 
-## Author Optimization
+## Optimisation des auteurs
 
-### Author Page Requirements
-- Professional headshot
-- Full name and credentials (degrees, certifications)
-- Current role and company
-- Relevant experience (years, notable achievements)
-- Published works and media appearances
-- Social proof (speaking engagements, awards)
-- Links to social profiles (LinkedIn, Twitter)
+### Exigences de la page auteur
+- Photo professionnelle
+- Nom complet et références (diplômes, certifications)
+- Poste et entreprise actuels
+- Expérience pertinente (années, réalisations notables)
+- Publications et apparitions médiatiques
+- Preuve sociale (prises de parole, récompenses)
+- Liens vers les profils sociaux (LinkedIn, Twitter)
 
-### Author Schema
+### Schema auteur
 ```json
 {
   "@type": "Person",
@@ -57,60 +57,60 @@
 
 ---
 
-## Trust Signal Taxonomy
+## Taxonomie des signaux de confiance
 
-### Site-Level Signals
-| Signal | Implementation |
+### Signaux au niveau du site
+| Signal | Mise en œuvre |
 |--------|---------------|
-| About page | Detailed company history, mission, team, and contact info |
-| Editorial policy | How content is created, reviewed, and updated |
-| Correction policy | How errors are handled (transparency) |
-| Contact page | Multiple contact methods (phone, email, address, chat) |
-| Privacy/terms | Current, comprehensive, easy to find |
-| Security | HTTPS, security badges on transaction pages |
+| Page « À propos » | Historique détaillé de l'entreprise, mission, équipe, et coordonnées |
+| Politique éditoriale | Comment le contenu est créé, revu, et mis à jour |
+| Politique de correction | Comment les erreurs sont traitées (transparence) |
+| Page contact | Plusieurs moyens de contact (téléphone, email, adresse, chat) |
+| Confidentialité/conditions | À jour, complètes, faciles à trouver |
+| Sécurité | HTTPS, badges de sécurité sur les pages de transaction |
 
-### Content-Level Signals
-| Signal | Implementation |
+### Signaux au niveau du contenu
+| Signal | Mise en œuvre |
 |--------|---------------|
-| Source citations | Link to primary research, studies, official sources |
-| Expert quotes | Include quotes from credible third-party experts |
-| Data attribution | Every stat has a source and date |
-| Author byline | Every article has an identified, credible author |
-| Date published/updated | Visible dates show content is current |
-| Methodology transparency | Explain how conclusions were reached |
+| Citations de sources | Lien vers des recherches primaires, études, sources officielles |
+| Citations d'experts | Inclure des citations d'experts tiers crédibles |
+| Attribution des données | Chaque statistique a une source et une date |
+| Signature de l'auteur | Chaque article a un auteur identifié et crédible |
+| Date de publication/mise à jour | Des dates visibles montrent que le contenu est à jour |
+| Transparence méthodologique | Expliquer comment les conclusions ont été obtenues |
 
-### External Signals
-| Signal | How to Build |
+### Signaux externes
+| Signal | Comment le construire |
 |--------|-------------|
-| Backlinks from authoritative sites | PR, guest posting, original research |
-| Media mentions | PR outreach, expert commentary, data studies |
-| Industry citations | Publish unique data others want to reference |
-| Wikipedia references | Create citable original research (not editing Wikipedia directly) |
-| Reviews on third-party platforms | Customer review generation program |
+| Backlinks de sites faisant autorité | RP, articles invités, recherche originale |
+| Mentions média | Sollicitation RP, commentaire d'expert, études de données |
+| Citations sectorielles | Publier des données uniques que d'autres veulent référencer |
+| Références Wikipédia | Créer des recherches originales citables (sans modifier directement Wikipédia) |
+| Avis sur plateformes tierces | Programme de génération d'avis clients |
 
 ---
 
-## YMYL Content Requirements
+## Exigences de contenu YMYL
 
-For Your Money Your Life topics (health, finance, legal, safety):
+Pour les sujets « Your Money Your Life » (santé, finance, droit, sécurité) :
 
-- **Expert authorship required**: Author must have relevant professional credentials
-- **Medical/legal/financial review**: Content reviewed by licensed professional
-- **Disclosure**: Clearly state who wrote and reviewed the content
-- **Conservative claims**: No unsupported health/financial claims
-- **Current information**: Update more frequently than non-YMYL content
-- **Primary sources**: Link to government, academic, or peer-reviewed sources
-- **Disclaimers**: "Not medical/legal/financial advice" where appropriate
+- **Auteur expert requis** : l'auteur doit avoir des références professionnelles pertinentes
+- **Revue médicale/juridique/financière** : le contenu est revu par un professionnel agréé
+- **Divulgation** : indiquer clairement qui a rédigé et revu le contenu
+- **Allégations prudentes** : aucune allégation santé/financière non étayée
+- **Informations actuelles** : mettre à jour plus fréquemment que le contenu non-YMYL
+- **Sources primaires** : lien vers des sources gouvernementales, académiques, ou évaluées par des pairs
+- **Avertissements** : « Ceci ne constitue pas un conseil médical/juridique/financier » lorsque c'est approprié
 
 ---
 
-## Measurement
+## Mesure
 
-| Metric | Tool | Target |
+| Métrique | Outil | Objectif |
 |--------|------|--------|
-| Domain Authority / Domain Rating | Moz / Ahrefs | Increasing trend |
-| Referring domains | Ahrefs / SEMrush | Monthly growth |
-| Brand search volume | Google Trends | Increasing trend |
-| Knowledge Panel presence | Google Search | Active and accurate |
-| Media mentions | Google Alerts, Mention | Monthly count increasing |
-| Author Authority | Byline placements, speaking invites | Portfolio growing |
+| Domain Authority / Domain Rating | Moz / Ahrefs | Tendance à la hausse |
+| Domaines référents | Ahrefs / SEMrush | Croissance mensuelle |
+| Volume de recherche de marque | Google Trends | Tendance à la hausse |
+| Présence dans le Knowledge Panel | Google Search | Actif et exact |
+| Mentions média | Google Alerts, Mention | Nombre mensuel en hausse |
+| Autorité de l'auteur | Placements d'articles signés, invitations à parler | Portfolio en croissance |

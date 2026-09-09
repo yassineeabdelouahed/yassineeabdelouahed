@@ -1,256 +1,256 @@
-# Competitive Intelligence — Monitoring & Analysis
+# Intelligence concurrentielle — Suivi et analyse
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** les montants en dollars de ce document sont des a priori de planification, pas des cotations — les taux de marché et d'enchère évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, rafraîchissez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et consignez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le registre (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Purpose
+## Objectif
 
-Competitive intelligence is not about copying competitors. It is about understanding the market landscape to make better-informed strategic decisions — identifying gaps, anticipating threats, and finding positioning advantages that competitors have missed.
+L'intelligence concurrentielle ne consiste pas à copier les concurrents. Il s'agit de comprendre le paysage du marché pour prendre des décisions stratégiques mieux informées — identifier les lacunes, anticiper les menaces, et trouver des avantages de positionnement que les concurrents ont manqués.
 
 ---
 
-## Competitor Monitoring Framework
+## Cadre de surveillance des concurrents
 
-### What to Track
+### Que suivre
 
-| Category | Signals to Monitor | Frequency | Tool / Source |
+| Catégorie | Signaux à surveiller | Fréquence | Outil / Source |
 |----------|-------------------|-----------|---------------|
-| **Paid Advertising** | Ad creative, copy, offers, landing pages, spend estimates | Weekly | Meta Ad Library, Google Ads Transparency, SpyFu |
-| **SEO / Content** | Keyword rankings, new content published, backlink acquisition | Bi-weekly | Ahrefs, SEMrush, SimilarWeb |
-| **Website Changes** | Homepage updates, pricing changes, new features, new pages | Weekly | Visualping, Wayback Machine, manual review |
-| **Social Media** | Content themes, posting frequency, engagement rates, audience growth | Weekly | Native platform analytics, Sprout Social |
-| **Product / Offer** | New products, pricing changes, bundles, promotions, free trials | Ongoing | Email signup, price tracking tools, manual review |
-| **Reviews / Reputation** | Review volume, sentiment, common complaints, NPS proxies | Monthly | G2, Trustpilot, Reddit, App Store, Google Reviews |
-| **Hiring / Team** | Job postings (especially marketing, product, engineering roles) | Monthly | LinkedIn, company careers pages |
-| **Funding / Financials** | Fundraising, revenue milestones (if public), M&A activity | Quarterly | Crunchbase, SEC filings, press releases |
-| **Email / CRM** | Email frequency, subject lines, offers, flows (welcome, abandoned cart) | Ongoing | Sign up for competitor emails with a dedicated inbox |
-| **Partnerships** | New integrations, co-marketing, affiliate programs, influencer deals | Monthly | Press releases, social mentions, affiliate networks |
+| **Publicité payante** | Création publicitaire, texte, offres, landing pages, estimations de dépense | Hebdomadaire | Meta Ad Library, Google Ads Transparency, SpyFu |
+| **SEO / Contenu** | Classements de mots-clés, nouveau contenu publié, acquisition de backlinks | Bimensuelle | Ahrefs, SEMrush, SimilarWeb |
+| **Changements de site web** | Mises à jour de la page d'accueil, changements de tarification, nouvelles fonctionnalités, nouvelles pages | Hebdomadaire | Visualping, Wayback Machine, revue manuelle |
+| **Réseaux sociaux** | Thèmes de contenu, fréquence de publication, taux d'engagement, croissance d'audience | Hebdomadaire | Analytics natifs de la plateforme, Sprout Social |
+| **Produit / Offre** | Nouveaux produits, changements de tarification, offres groupées, promotions, essais gratuits | Continue | Inscription e-mail, outils de suivi de prix, revue manuelle |
+| **Avis / Réputation** | Volume d'avis, sentiment, plaintes courantes, proxys de NPS | Mensuelle | G2, Trustpilot, Reddit, App Store, Google Reviews |
+| **Recrutement / Équipe** | Offres d'emploi (en particulier marketing, produit, ingénierie) | Mensuelle | LinkedIn, pages carrières de l'entreprise |
+| **Financement / Finances** | Levées de fonds, jalons de revenu (si public), activité de fusion-acquisition | Trimestrielle | Crunchbase, dépôts SEC, communiqués de presse |
+| **E-mail / CRM** | Fréquence d'e-mail, objets, offres, flux (bienvenue, panier abandonné) | Continue | S'inscrire aux e-mails des concurrents avec une boîte de réception dédiée |
+| **Partenariats** | Nouvelles intégrations, co-marketing, programmes d'affiliation, accords influenceurs | Mensuelle | Communiqués de presse, mentions sociales, réseaux d'affiliation |
 
-### Competitor Tier Classification
+### Classification par niveau de concurrent
 
-| Tier | Definition | Monitoring Depth | Review Cadence |
+| Niveau | Définition | Profondeur de surveillance | Cadence de revue |
 |------|-----------|-----------------|----------------|
-| **Tier 1 — Direct** | Compete for the same customers with a similar product/service | Deep — track everything above | Weekly |
-| **Tier 2 — Adjacent** | Serve the same audience but with a different product or business model | Moderate — track ads, SEO, major moves | Bi-weekly |
-| **Tier 3 — Aspirational** | Market leaders you can learn from even if they are in a different segment | Light — track strategy, positioning, big campaigns | Monthly |
-| **Tier 4 — Emerging** | New entrants or disruptors that could become Tier 1 | Watch list — track funding, product launches, initial positioning | Quarterly |
+| **Niveau 1 — Direct** | Rivalise pour les mêmes clients avec un produit/service similaire | Approfondie — suivre tout ce qui précède | Hebdomadaire |
+| **Niveau 2 — Adjacent** | Sert la même audience mais avec un produit ou modèle économique différent | Modérée — suivre les publicités, le SEO, les mouvements majeurs | Bimensuelle |
+| **Niveau 3 — Aspirationnel** | Leaders de marché dont on peut s'inspirer même s'ils sont sur un segment différent | Légère — suivre la stratégie, le positionnement, les grandes campagnes | Mensuelle |
+| **Niveau 4 — Émergent** | Nouveaux entrants ou disrupteurs pouvant devenir Niveau 1 | Liste de surveillance — suivre le financement, les lancements de produit, le positionnement initial | Trimestrielle |
 
 ---
 
-## Tool Recommendations
+## Recommandations d'outils
 
-### Free Tools
+### Outils gratuits
 
-| Tool | Use Case | Key Data |
+| Outil | Cas d'usage | Données clés |
 |------|----------|----------|
-| **Meta Ad Library** | View all active Meta/Instagram ads from any advertiser | Creative, copy, CTA, active dates, platforms |
-| **Google Ads Transparency Center** | View active Google Ads from any advertiser | Search ads, display ads, YouTube ads |
-| **Google Trends** | Compare brand search interest over time | Relative search volume, geographic interest, related queries |
-| **BuiltWith** | Identify competitor tech stack | Analytics, CMS, email platform, payment processors |
-| **Wayback Machine** | View historical website snapshots | Messaging evolution, pricing changes, design shifts |
-| **LinkedIn** | Monitor hiring, company growth, content strategy | Job postings, employee count, company posts |
-| **Reddit / Quora** | Find unfiltered customer sentiment about competitors | Complaints, praise, feature requests, comparison questions |
-| **App Store / Play Store** | Review ratings, feature updates, user complaints | Review volume, sentiment trends, release notes |
+| **Meta Ad Library** | Voir toutes les publicités Meta/Instagram actives de n'importe quel annonceur | Création, texte, CTA, dates d'activité, plateformes |
+| **Google Ads Transparency Center** | Voir les publicités Google Ads actives de n'importe quel annonceur | Annonces de recherche, display, YouTube |
+| **Google Trends** | Comparer l'intérêt de recherche de marque dans le temps | Volume de recherche relatif, intérêt géographique, requêtes associées |
+| **BuiltWith** | Identifier la pile technologique du concurrent | Analytics, CMS, plateforme d'e-mail, processeurs de paiement |
+| **Wayback Machine** | Voir des instantanés historiques du site web | Évolution des messages, changements de tarification, évolutions de design |
+| **LinkedIn** | Surveiller le recrutement, la croissance de l'entreprise, la stratégie de contenu | Offres d'emploi, effectif, publications de l'entreprise |
+| **Reddit / Quora** | Trouver un sentiment client non filtré sur les concurrents | Plaintes, éloges, demandes de fonctionnalités, questions de comparaison |
+| **App Store / Play Store** | Notes d'avis, mises à jour de fonctionnalités, plaintes des utilisateurs | Volume d'avis, tendances de sentiment, notes de version |
 
-### Paid Tools
+### Outils payants
 
-| Tool | Use Case | Starting Price | Best For |
+| Outil | Cas d'usage | Prix de départ | Idéal pour |
 |------|----------|---------------|----------|
-| **SimilarWeb** | Traffic estimates, traffic source breakdown, audience overlap | ~$149/mo | Understanding competitor traffic strategy |
-| **SpyFu** | Competitor keyword lists, ad copy history, estimated spend | ~$39/mo | Paid search competitive analysis |
-| **SEMrush** | Full SEO + PPC competitive analysis, content gap analysis | ~$129/mo | Comprehensive SEO competitor tracking |
-| **Ahrefs** | Backlink analysis, content explorer, keyword tracking | ~$99/mo | Link building intelligence, content analysis |
-| **Crayon** | Automated competitive intelligence platform | Custom pricing | Enterprise-level CI programs |
-| **Klue** | Competitive enablement for sales teams | Custom pricing | B2B sales battlecards and win/loss |
-| **Pathmatics (Sensor Tower)** | Digital ad spend estimates across channels | Custom pricing | Media spend benchmarking |
+| **SimilarWeb** | Estimations de trafic, répartition des sources de trafic, chevauchement d'audience | ~149 $/mois | Comprendre la stratégie de trafic des concurrents |
+| **SpyFu** | Listes de mots-clés concurrents, historique de créations publicitaires, dépense estimée | ~39 $/mois | Analyse concurrentielle de recherche payante |
+| **SEMrush** | Analyse concurrentielle complète SEO + PPC, analyse des lacunes de contenu | ~129 $/mois | Suivi SEO concurrentiel complet |
+| **Ahrefs** | Analyse de backlinks, explorateur de contenu, suivi de mots-clés | ~99 $/mois | Intelligence de netlinking, analyse de contenu |
+| **Crayon** | Plateforme automatisée d'intelligence concurrentielle | Tarification sur mesure | Programmes CI de niveau entreprise |
+| **Klue** | Facilitation concurrentielle pour les équipes commerciales | Tarification sur mesure | Battlecards de vente B2B et analyse win/loss |
+| **Pathmatics (Sensor Tower)** | Estimations de dépense publicitaire digitale par canal | Tarification sur mesure | Benchmarking de dépense média |
 
 ---
 
-## Competitive Benchmarking Framework
+## Cadre de benchmarking concurrentiel
 
-### Traffic & Engagement Benchmark Template
+### Modèle de benchmark trafic et engagement
 
-| Metric | Your Brand | Competitor A | Competitor B | Competitor C | Industry Avg |
+| Métrique | Votre marque | Concurrent A | Concurrent B | Concurrent C | Moyenne sectorielle |
 |--------|-----------|-------------|-------------|-------------|-------------|
-| Est. Monthly Visits | | | | | |
-| Traffic Trend (3-mo) | | | | | |
-| Avg. Visit Duration | | | | | |
-| Pages per Visit | | | | | |
-| Bounce Rate | | | | | |
-| Traffic Source: Organic % | | | | | |
-| Traffic Source: Paid % | | | | | |
-| Traffic Source: Direct % | | | | | |
-| Traffic Source: Social % | | | | | |
-| Traffic Source: Email % | | | | | |
-| Traffic Source: Referral % | | | | | |
-| Top 3 Traffic Countries | | | | | |
+| Visites mensuelles est. | | | | | |
+| Tendance de trafic (3 mois) | | | | | |
+| Durée moyenne de visite | | | | | |
+| Pages par visite | | | | | |
+| Taux de rebond | | | | | |
+| Source de trafic : Organique % | | | | | |
+| Source de trafic : Payant % | | | | | |
+| Source de trafic : Direct % | | | | | |
+| Source de trafic : Social % | | | | | |
+| Source de trafic : E-mail % | | | | | |
+| Source de trafic : Recommandation % | | | | | |
+| Top 3 pays de trafic | | | | | |
 
-*Source: SimilarWeb or SEMrush. Note: These are estimates with +/- 20% accuracy.*
+*Source : SimilarWeb ou SEMrush. Remarque : ce sont des estimations avec une précision de +/- 20 %.*
 
-### SEO Benchmark Template
+### Modèle de benchmark SEO
 
-| Metric | Your Brand | Competitor A | Competitor B | Competitor C |
+| Métrique | Votre marque | Concurrent A | Concurrent B | Concurrent C |
 |--------|-----------|-------------|-------------|-------------|
-| Domain Authority / Rating | | | | |
-| Total Organic Keywords | | | | |
-| Keywords in Top 3 | | | | |
-| Keywords in Top 10 | | | | |
-| Est. Organic Traffic | | | | |
-| Total Backlinks | | | | |
-| Referring Domains | | | | |
-| Content Pages Published (3-mo) | | | | |
-| Top Ranking Content Themes | | | | |
+| Autorité / note de domaine | | | | |
+| Total de mots-clés organiques | | | | |
+| Mots-clés dans le top 3 | | | | |
+| Mots-clés dans le top 10 | | | | |
+| Trafic organique est. | | | | |
+| Total de backlinks | | | | |
+| Domaines référents | | | | |
+| Pages de contenu publiées (3 mois) | | | | |
+| Thèmes de contenu les mieux classés | | | | |
 
-### Paid Media Benchmark Template
+### Modèle de benchmark médias payants
 
-| Metric | Your Brand | Competitor A | Competitor B | Competitor C |
+| Métrique | Votre marque | Concurrent A | Concurrent B | Concurrent C |
 |--------|-----------|-------------|-------------|-------------|
-| Est. Monthly Ad Spend | | | | |
-| Primary Channels | | | | |
-| Number of Active Ads (Meta) | | | | |
-| Ad Creative Style | | | | |
-| Primary CTA | | | | |
-| Landing Page Type | | | | |
-| Key Offers / Promotions | | | | |
-| Estimated Keyword Overlap (%) | | | | |
+| Dépense publicitaire mensuelle est. | | | | |
+| Canaux principaux | | | | |
+| Nombre d'annonces actives (Meta) | | | | |
+| Style de création publicitaire | | | | |
+| CTA principal | | | | |
+| Type de landing page | | | | |
+| Offres/promotions clés | | | | |
+| Chevauchement de mots-clés estimé (%) | | | | |
 
-### Positioning & Messaging Benchmark
+### Benchmark positionnement et messagerie
 
-| Element | Your Brand | Competitor A | Competitor B | Competitor C |
+| Élément | Votre marque | Concurrent A | Concurrent B | Concurrent C |
 |---------|-----------|-------------|-------------|-------------|
-| Tagline / Headline | | | | |
-| Primary Value Proposition | | | | |
-| Target Audience (stated) | | | | |
-| Pricing Strategy | | | | |
-| Key Differentiator Claimed | | | | |
-| Social Proof Used | | | | |
-| Brand Tone / Voice | | | | |
-| Content Pillars | | | | |
+| Slogan / titre | | | | |
+| Proposition de valeur principale | | | | |
+| Audience cible (déclarée) | | | | |
+| Stratégie tarifaire | | | | |
+| Différenciateur clé revendiqué | | | | |
+| Preuve sociale utilisée | | | | |
+| Ton / voix de marque | | | | |
+| Piliers de contenu | | | | |
 
 ---
 
-## Competitive Response Playbooks
+## Playbooks de réponse concurrentielle
 
-### Playbook: Competitor Launches Price Cut
+### Playbook : un concurrent lance une baisse de prix
 
-1. **Assess scope** — Is it a temporary promotion or permanent price change?
-2. **Measure impact** — Monitor your CVR, traffic, and branded search volume for 2 weeks
-3. **Analyze margins** — Can the competitor sustain this price? Check their funding/financial position
-4. **Response options:**
-   - Do nothing (if your differentiation is strong and CVR is stable)
-   - Match selectively (discount for competitive switchers only, not existing customers)
-   - Add value (bundle, extended warranty, better support) instead of cutting price
-   - Emphasize differentiation in ad copy and landing pages
-5. **Avoid:** Reflexive price matching that erodes margins without evidence of customer loss
+1. **Évaluer la portée** — s'agit-il d'une promotion temporaire ou d'un changement de prix permanent ?
+2. **Mesurer l'impact** — surveiller votre CVR, votre trafic, et le volume de recherche de marque pendant 2 semaines
+3. **Analyser les marges** — le concurrent peut-il soutenir ce prix ? vérifier sa position financière/de financement
+4. **Options de réponse :**
+   - Ne rien faire (si votre différenciation est forte et le CVR est stable)
+   - Ajuster sélectivement (remise uniquement pour les changeurs concurrentiels, pas les clients existants)
+   - Ajouter de la valeur (offre groupée, garantie prolongée, meilleur support) plutôt que de baisser le prix
+   - Mettre l'accent sur la différenciation dans le texte publicitaire et les landing pages
+5. **À éviter :** un alignement réflexe des prix qui érode les marges sans preuve de perte de clients
 
-### Playbook: Competitor Launches New Feature / Product
+### Playbook : un concurrent lance une nouvelle fonctionnalité/produit
 
-1. **Assess overlap** — Does this feature compete with your core offering or a peripheral area?
-2. **Gauge demand** — Check search trends, social mentions, and customer feedback for the feature
-3. **Timeline assessment** — How long to build a comparable feature? Is it even strategic for you?
-4. **Response options:**
-   - Fast follow (if the feature aligns with your roadmap and is high-demand)
-   - Differentiate (double down on your strengths and highlight in messaging)
-   - Partner (integrate a third-party solution rather than building)
-   - Ignore (if the feature is niche and your data shows low customer demand)
-5. **Update sales enablement** — Provide talking points for sales/CS on how to position against the new feature
+1. **Évaluer le chevauchement** — cette fonctionnalité concurrence-t-elle votre offre principale ou un domaine périphérique ?
+2. **Jauger la demande** — vérifier les tendances de recherche, les mentions sociales, et les retours clients sur la fonctionnalité
+3. **Évaluer le calendrier** — combien de temps pour construire une fonctionnalité comparable ? Est-ce même stratégique pour vous ?
+4. **Options de réponse :**
+   - Suivre rapidement (si la fonctionnalité s'aligne avec votre feuille de route et est très demandée)
+   - Se différencier (miser sur vos forces et les mettre en avant dans les messages)
+   - S'associer (intégrer une solution tierce plutôt que construire)
+   - Ignorer (si la fonctionnalité est de niche et que vos données montrent une faible demande client)
+5. **Mettre à jour l'habilitation commerciale** — fournir des arguments à l'équipe commerciale/de succès client sur comment se positionner face à la nouvelle fonctionnalité
 
-### Playbook: Competitor Increases Ad Spend Significantly
+### Playbook : un concurrent augmente significativement sa dépense publicitaire
 
-1. **Verify** — Use SpyFu, Pathmatics, or Meta Ad Library to confirm the increase
-2. **Measure impact** — Track your impression share, CPCs, and auction competition metrics
-3. **Assess duration** — Is this a campaign burst or a sustained increase?
-4. **Response options:**
-   - Hold position on high-ROI campaigns; reduce spend on marginal campaigns
-   - Shift budget to channels where the competitor is not present
-   - Improve ad quality (creative, landing page) to maintain position at lower cost
-   - Increase spend only in segments where you have a clear efficiency advantage
-5. **Do not** engage in a bidding war on broad terms with poor ROAS
+1. **Vérifier** — utiliser SpyFu, Pathmatics, ou Meta Ad Library pour confirmer l'augmentation
+2. **Mesurer l'impact** — suivre votre part d'impressions, vos CPC, et les métriques de concurrence aux enchères
+3. **Évaluer la durée** — s'agit-il d'une poussée ponctuelle ou d'une augmentation soutenue ?
+4. **Options de réponse :**
+   - Maintenir la position sur les campagnes à fort ROI ; réduire la dépense sur les campagnes marginales
+   - Déplacer le budget vers des canaux où le concurrent n'est pas présent
+   - Améliorer la qualité publicitaire (création, landing page) pour maintenir la position à moindre coût
+   - N'augmenter la dépense que sur les segments où vous avez un avantage d'efficacité clair
+5. **Ne pas** s'engager dans une guerre d'enchères sur des termes génériques à faible ROAS
 
-### Playbook: New Competitor Enters Market
+### Playbook : un nouveau concurrent entre sur le marché
 
-1. **Profile immediately** — Funding, team, positioning, pricing, initial channels
-2. **Classify tier** — Usually Tier 4 initially; upgrade if traction is evident
-3. **Monitor traction signals** — Traffic growth, social following, review volume, hiring
-4. **Response options:**
-   - Strengthen your incumbent advantages (reviews, content, SEO moat, customer relationships)
-   - Consider defensive content targeting their brand name comparisons
-   - Accelerate feature/product development that widens your differentiation
-5. **Brief the team** — Update sales and CS so they can address the new competitor in conversations
+1. **Établir un profil immédiatement** — financement, équipe, positionnement, tarification, canaux initiaux
+2. **Classifier le niveau** — généralement Niveau 4 au départ ; reclasser si la traction est évidente
+3. **Surveiller les signaux de traction** — croissance du trafic, abonnés sociaux, volume d'avis, recrutement
+4. **Options de réponse :**
+   - Renforcer vos avantages d'acteur établi (avis, contenu, forteresse SEO, relations clients)
+   - Envisager du contenu défensif ciblant les comparaisons avec le nom de leur marque
+   - Accélérer le développement de fonctionnalités/produits qui élargit votre différenciation
+5. **Briefer l'équipe** — mettre à jour les équipes commerciales et de succès client pour qu'elles puissent aborder le nouveau concurrent dans les conversations
 
 ---
 
-## Win/Loss Analysis Methodology
+## Méthodologie d'analyse win/loss
 
-### Data Collection
+### Collecte de données
 
-| Source | What to Capture | Method |
+| Source | Ce qu'il faut capturer | Méthode |
 |--------|----------------|--------|
-| CRM data | Win/loss outcome, deal size, competitor involved, sales cycle length | Automated from CRM |
-| Sales team | Qualitative insights on why the deal was won or lost | Structured debrief form (within 48 hours of outcome) |
-| Customer interviews | Direct feedback from buyers (especially losses) | 15-minute interview, 3-5 losses per month minimum |
-| Review sites | Comparative mentions, switching reasons | Monitor G2, Capterra, Trustpilot |
+| Données CRM | Résultat gagné/perdu, taille de la transaction, concurrent impliqué, durée du cycle de vente | Automatisé depuis le CRM |
+| Équipe commerciale | Insights qualitatifs sur les raisons du gain ou de la perte | Formulaire de débrief structuré (dans les 48 heures suivant le résultat) |
+| Entretiens clients | Retour direct des acheteurs (en particulier les pertes) | Entretien de 15 minutes, minimum 3-5 pertes par mois |
+| Sites d'avis | Mentions comparatives, raisons de changement | Surveiller G2, Capterra, Trustpilot |
 
-### Win/Loss Interview Guide
+### Guide d'entretien win/loss
 
-1. What were you trying to solve? (Job to be done)
-2. Who else did you evaluate? (Competitive set)
-3. What were your decision criteria? (Prioritized)
-4. What did you like about our solution? (Strengths)
-5. What concerned you? (Weaknesses)
-6. Why did you ultimately choose [winner]? (Decision driver)
-7. What could we have done differently? (Actionable feedback)
+1. Qu'essayiez-vous de résoudre ? (Job to be done)
+2. Qui d'autre avez-vous évalué ? (Ensemble concurrentiel)
+3. Quels étaient vos critères de décision ? (Priorisés)
+4. Qu'avez-vous aimé dans notre solution ? (Forces)
+5. Qu'est-ce qui vous a préoccupé ? (Faiblesses)
+6. Pourquoi avez-vous finalement choisi [gagnant] ? (Facteur de décision)
+7. Qu'aurions-nous pu faire différemment ? (Retour actionnable)
 
-### Analysis Framework
+### Cadre d'analyse
 
-| Dimension | Questions to Answer |
+| Dimension | Questions à répondre |
 |-----------|-------------------|
-| Win rate by competitor | Against which competitors do we win/lose most? |
-| Loss reasons | What are the top 3-5 reasons we lose? |
-| Win reasons | What are the top 3-5 reasons we win? |
-| Segment patterns | Do we win/lose differently by company size, industry, or use case? |
-| Pricing impact | How often is pricing the primary loss driver vs. a contributing factor? |
-| Feature gaps | Which missing features are cited most frequently in losses? |
-| Sales process | Are there process improvements that could improve win rate? |
+| Taux de gain par concurrent | Face à quels concurrents gagnons/perdons-nous le plus ? |
+| Raisons de perte | Quelles sont les 3 à 5 principales raisons de nos pertes ? |
+| Raisons de gain | Quelles sont les 3 à 5 principales raisons de nos gains ? |
+| Motifs par segment | Gagnons/perdons-nous différemment selon la taille de l'entreprise, le secteur, ou le cas d'usage ? |
+| Impact tarifaire | À quelle fréquence le prix est-il le principal facteur de perte vs un facteur contributif ? |
+| Lacunes de fonctionnalités | Quelles fonctionnalités manquantes sont le plus souvent citées dans les pertes ? |
+| Processus de vente | Y a-t-il des améliorations de processus qui pourraient améliorer le taux de gain ? |
 
 ---
 
-## Monthly Competitive Review Template
+## Modèle de revue concurrentielle mensuelle
 
-**Cadence:** First week of each month.
-**Duration:** 60-minute meeting.
+**Cadence :** première semaine de chaque mois.
+**Durée :** réunion de 60 minutes.
 
-### Agenda
+### Ordre du jour
 
-1. **Tier 1 Competitor Updates** (20 min)
-   - Major moves from each direct competitor (product, pricing, campaigns, hiring)
-   - Impact assessment (actual or anticipated)
+1. **Mises à jour des concurrents de Niveau 1** (20 min)
+   - Mouvements majeurs de chaque concurrent direct (produit, tarification, campagnes, recrutement)
+   - Évaluation de l'impact (réel ou anticipé)
 
-2. **Market Signals** (10 min)
-   - New entrants, funding rounds, M&A activity
-   - Regulatory or platform changes affecting the competitive landscape
+2. **Signaux de marché** (10 min)
+   - Nouveaux entrants, tours de financement, activité de fusion-acquisition
+   - Changements réglementaires ou de plateforme affectant le paysage concurrentiel
 
-3. **Benchmarking Update** (10 min)
-   - Traffic, SEO, paid media, and share-of-voice trends
-   - Any significant ranking or positioning shifts
+3. **Mise à jour du benchmarking** (10 min)
+   - Tendances de trafic, SEO, médias payants, et part de voix
+   - Tout changement significatif de classement ou de positionnement
 
-4. **Win/Loss Summary** (10 min)
-   - Monthly win rate vs. each competitor
-   - Notable themes from losses
+4. **Résumé win/loss** (10 min)
+   - Taux de gain mensuel face à chaque concurrent
+   - Thèmes notables issus des pertes
 
-5. **Action Items** (10 min)
-   - Competitive responses needed
-   - Intelligence gaps to fill
-   - Updates to sales battlecards or marketing positioning
+5. **Actions à mener** (10 min)
+   - Réponses concurrentielles nécessaires
+   - Lacunes d'intelligence à combler
+   - Mises à jour des battlecards de vente ou du positionnement marketing
 
-### Competitive Intelligence Maintenance Checklist
+### Liste de contrôle de maintenance de l'intelligence concurrentielle
 
-- [ ] Tier 1 competitor ad libraries reviewed weekly
-- [ ] Competitor email flows reviewed (sign up refreshed if needed)
-- [ ] Keyword ranking overlap tracked bi-weekly
-- [ ] Website change monitoring active for all Tier 1 competitors
-- [ ] Win/loss interviews conducted (minimum 3-5 per month)
-- [ ] Competitive benchmarking spreadsheet updated monthly
-- [ ] Sales battlecards refreshed after any major competitor move
-- [ ] Quarterly competitive landscape presentation prepared for leadership
-- [ ] New competitor watch list reviewed and updated quarterly
-- [ ] Team trained on competitive positioning (quarterly enablement session)
+- [ ] Bibliothèques publicitaires des concurrents de Niveau 1 revues hebdomadairement
+- [ ] Flux d'e-mails des concurrents revus (inscription rafraîchie si nécessaire)
+- [ ] Chevauchement de classement de mots-clés suivi bimensuellement
+- [ ] Surveillance des changements de site web active pour tous les concurrents de Niveau 1
+- [ ] Entretiens win/loss menés (minimum 3-5 par mois)
+- [ ] Feuille de calcul de benchmarking concurrentiel mise à jour mensuellement
+- [ ] Battlecards de vente rafraîchies après tout mouvement majeur d'un concurrent
+- [ ] Présentation trimestrielle du paysage concurrentiel préparée pour la direction
+- [ ] Liste de surveillance des nouveaux concurrents revue et mise à jour trimestriellement
+- [ ] Équipe formée sur le positionnement concurrentiel (session d'habilitation trimestrielle)

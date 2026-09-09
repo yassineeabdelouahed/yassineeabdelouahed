@@ -1,269 +1,269 @@
 ---
 name: local-seo
-description: "Build local SEO strategy end to end — Google Business Profile optimization, NAP consistency and citation cleanup, local pack ranking tactics, location and service-area pages, review management, local link building, LocalBusiness schema, and multi-location management — delivered as audit reports, checklists, and a 30/60/90-day roadmap. Triggers on \"/digital-marketing-pro:local-seo\", \"optimize my Google Business Profile\", \"why aren't we in the map pack\", \"fix our NAP consistency\", \"local SEO for our 12 locations\", \"rank for near me searches\". Includes Google's 2026 agentic-booking guidance for local services, home repair, beauty, and pet care verticals. Reads the brand profile and compliance rules; its reference files also power /digital-marketing-pro:local-seo-audit."
+description: "Construire une stratégie SEO local de bout en bout — optimisation de la fiche Google Business Profile, cohérence NAP et nettoyage des citations, tactiques de classement dans le pack local, pages de localisation et de zone de service, gestion des avis, netlinking local, schéma LocalBusiness et gestion multi-établissements — livrée sous forme de rapports d'audit, de checklists et d'une feuille de route à 30/60/90 jours. Se déclenche sur \"/digital-marketing-pro:local-seo\", \"optimize my Google Business Profile\", \"why aren't we in the map pack\", \"fix our NAP consistency\", \"local SEO for our 12 locations\", \"rank for near me searches\". Intègre les recommandations 2026 de Google sur la réservation agentique pour les verticales services locaux, réparation à domicile, beauté et soins pour animaux. Lit le profil de marque et les règles de conformité ; ses fichiers de référence alimentent aussi /digital-marketing-pro:local-seo-audit."
 ---
 
 # Local SEO
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this module when the user's request involves any of the following:
+Activez ce module lorsque la demande de l'utilisateur porte sur l'un des points suivants :
 
-- **Google Business Profile Optimization**: Setting up, optimizing, or auditing a Google Business Profile (categories, attributes, photos, posts, Q&A, products, services)
-- **Local Citations**: Building, auditing, or cleaning up business listings across directories and data aggregators
-- **NAP Consistency**: Auditing Name, Address, Phone number consistency across the web
-- **Local Pack / Map Pack Rankings**: Strategies to appear in the Google 3-pack and Google Maps results
-- **Location Pages**: Creating or optimizing landing pages for individual business locations or service areas
-- **Multi-Location SEO**: Managing local SEO at scale for businesses with multiple physical locations or franchise operations
-- **"Near Me" Optimization**: Optimizing for proximity-based and implicit local searches
-- **Local Link Building**: Earning links from local organizations, chambers of commerce, community partners, sponsorships, and local media
-- **Local Schema Markup**: Implementing LocalBusiness, GeoCoordinates, OpeningHours, AggregateRating, and related structured data
-- **Review Management for Local**: Generating reviews, improving ratings, responding to reviews, and leveraging reviews for local ranking signals
-- **Service Area Businesses**: Optimizing for businesses without a physical storefront that serve customers at their locations
-- **Local Content Strategy**: City pages, neighborhood guides, local event content, and geo-targeted blog posts
-- **Google Maps Optimization**: Improving visibility and engagement within Google Maps specifically
-- **Local Competitive Analysis**: Benchmarking local search performance against nearby competitors
+- **Optimisation de la fiche Google Business Profile** : Mise en place, optimisation ou audit d'une fiche Google Business Profile (catégories, attributs, photos, publications, questions-réponses, produits, services)
+- **Citations locales** : Construction, audit ou nettoyage des fiches d'entreprise dans les annuaires et agrégateurs de données
+- **Cohérence NAP** : Audit de la cohérence du Nom, de l'Adresse et du Numéro de téléphone sur le web
+- **Classements dans le pack local / Map Pack** : Stratégies pour apparaître dans le pack de 3 résultats de Google et dans Google Maps
+- **Pages de localisation** : Création ou optimisation de landing pages pour des établissements individuels ou des zones de service
+- **SEO multi-établissements** : Gestion du SEO local à grande échelle pour des entreprises disposant de plusieurs établissements physiques ou opérant en franchise
+- **Optimisation « near me »** : Optimisation pour les recherches basées sur la proximité et les recherches locales implicites
+- **Netlinking local** : Obtention de liens depuis des organisations locales, chambres de commerce, partenaires communautaires, sponsors et médias locaux
+- **Balisage schema local** : Mise en œuvre de LocalBusiness, GeoCoordinates, OpeningHours, AggregateRating et des données structurées associées
+- **Gestion des avis pour le local** : Génération d'avis, amélioration des notes, réponse aux avis, et exploitation des avis comme signaux de classement local
+- **Entreprises à zone de service** : Optimisation pour les entreprises sans vitrine physique qui servent les clients à leur emplacement
+- **Stratégie de contenu local** : Pages villes, guides de quartier, contenu d'événements locaux et articles de blog géociblés
+- **Optimisation Google Maps** : Amélioration de la visibilité et de l'engagement spécifiquement dans Google Maps
+- **Analyse concurrentielle locale** : Benchmark de la performance en recherche locale par rapport aux concurrents à proximité
 
-**Trigger phrases**: "local seo," "google business profile," "gbp," "google maps," "local pack," "map pack," "near me," "local citations," "nap consistency," "location pages," "multi-location," "service area," "local link building," "local reviews," "local schema," "local business," "local rankings," "google 3-pack," "local directory," "local search," "store locator," "franchise seo," "city pages," "neighborhood seo"
+**Phrases déclencheuses** : « seo local », « google business profile », « gbp », « google maps », « pack local », « map pack », « près de moi », « citations locales », « cohérence nap », « pages de localisation », « multi-établissements », « zone de service », « netlinking local », « avis locaux », « schema local », « entreprise locale », « classements locaux », « pack de 3 google », « annuaire local », « recherche locale », « localisateur de magasins », « seo franchise », « pages villes », « seo quartier »
 
-## Context efficiency
+## Efficacité de contexte
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List `${CLAUDE_PLUGIN_DATA}/<brand>/` before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** sur tout fichier référencé, puis `Read` uniquement des plages correspondantes avec `offset` + `limit`. Lister `${CLAUDE_PLUGIN_DATA}/<brand>/` avant d'ouvrir des fichiers. En cas de réinvocation en cours de session, ignorer les fichiers déjà en contexte.
 
-## 2026 priority — Google Agentic Booking expansion
+## Priorité 2026 — Expansion de la réservation agentique Google
 
-At I/O 2026 Google expanded its **agentic booking flow** beyond restaurants to:
+Lors de I/O 2026, Google a étendu son **flux de réservation agentique** au-delà des restaurants vers :
 
-- **Local services** (cleaners, electricians, plumbers, handymen)
-- **Home repair** (general contractors, HVAC, appliance repair)
-- **Beauty** (hair salons, spas, nail studios)
-- **Pet care** (groomers, walkers, vets)
+- **Services locaux** (agents d'entretien, électriciens, plombiers, bricoleurs)
+- **Réparation à domicile** (entrepreneurs généraux, CVC, réparation d'électroménager)
+- **Beauté** (salons de coiffure, spas, instituts de manucure)
+- **Soins pour animaux** (toiletteurs, promeneurs, vétérinaires)
 
-If your brand is in any of these 4 verticals, agentic booking is now a high-leverage local-SEO investment. Three things matter for opt-in:
+Si votre marque appartient à l'une de ces 4 verticales, la réservation agentique constitue désormais un investissement SEO local à fort effet de levier. Trois éléments comptent pour l'activation :
 
-1. **Google Business Profile must accept bookings.** Either via Google's direct integration with supported scheduling vendors (Booksy, Vagaro, Square Appointments, Resy, Tock, etc.) or via Reserve with Google.
-2. **`AvailabilityFeed` structured data must be served** so the AI agent can reason about open slots without making the call. See `skills/context-engine/schema-templates.json` for the `LocalBusiness` + `Reservation` + `AvailabilityFeed` pairing.
-3. **Pricing transparency in Service catalog** — agents prefer businesses that list price ranges; opaque pricing pushes the agent to the next option.
+1. **La fiche Google Business Profile doit accepter les réservations.** Soit via l'intégration directe de Google avec des prestataires de planification pris en charge (Booksy, Vagaro, Square Appointments, Resy, Tock, etc.), soit via Reserve with Google.
+2. **Les données structurées `AvailabilityFeed` doivent être diffusées** afin que l'agent IA puisse raisonner sur les créneaux disponibles sans passer d'appel. Voir `skills/context-engine/schema-templates.json` pour l'association `LocalBusiness` + `Reservation` + `AvailabilityFeed`.
+3. **Transparence tarifaire dans le catalogue de services** — les agents privilégient les entreprises qui affichent des fourchettes de prix ; une tarification opaque pousse l'agent vers l'option suivante.
 
-Source: [blog.google/search-io-2026](https://blog.google/products-and-platforms/products/search/search-io-2026/). Combine with Google Ads API v24.2's new `AssetGroup.google_local_services_info` field (see `skills/paid-advertising/google-ads.md`) for the paid-side complement.
+Source : [blog.google/search-io-2026](https://blog.google/products-and-platforms/products/search/search-io-2026/). À combiner avec le nouveau champ `AssetGroup.google_local_services_info` de Google Ads API v24.2 (voir `skills/paid-advertising/google-ads.md`) pour le volet payant complémentaire.
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout livrable marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — Le résumé de la marque active a été affiché au démarrage de la session. Utiliser le nom de la marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité et les concurrents qui y figurent.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — Les niveaux de formalité, d'énergie, d'humour et d'autorité doivent façonner le ton et le choix des mots de tout le contenu
+4. **Vérifier la conformité** — Appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Consulter les benchmarks sectoriels** — Se référer à `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — Se référer à `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, indiquer : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les meilleures pratiques générales. »
+9. **Vérifier les guidelines de marque** — Si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les revendications restreintes et les mentions légales obligatoires ; `channel-styles.md` pour les adaptations de ton spécifiques à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés, slogans et éléments de positionnement approuvés ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des 4 scores numériques. Pour un contenu destiné à un canal spécifique, les règles de style de ce canal priment sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing local SEO work, gather:
+Avant d'exécuter un travail de SEO local, rassembler :
 
-1. **Business Name & Address**: Exact legal business name and full street address (or multiple addresses for multi-location)
-2. **Phone Number(s)**: Primary and tracking phone numbers in use
-3. **Service Areas**: Geographic areas served (cities, counties, zip codes, radius)
-4. **Number of Locations**: Single location, multi-location (how many), or service area business (no storefront)
-5. **GBP Access**: Does the business have a claimed and verified Google Business Profile?
-6. **Current Review Profile**: Average star rating, total review count, review velocity trend, and response rate
-7. **Industry/Category**: Primary business category and any secondary categories currently set
-8. **Local Competitors**: Top 3-5 businesses competing for the same local searches
-9. **Current Rankings**: Known local pack positions for target keywords (if tracked)
-10. **Website Structure**: Does the site have individual location pages? A store locator? Location-specific content?
-11. **Existing Citations**: Known directory listings (Yelp, YP, BBB, industry-specific) and their accuracy
-12. **Budget & Resources**: Team capacity for review management, content creation, and ongoing citation maintenance
+1. **Nom et adresse de l'entreprise** : Raison sociale exacte et adresse postale complète (ou plusieurs adresses en cas de multi-établissements)
+2. **Numéro(s) de téléphone** : Numéros principal et de suivi utilisés
+3. **Zones de service** : Zones géographiques desservies (villes, départements, codes postaux, rayon)
+4. **Nombre d'établissements** : Établissement unique, multi-établissements (combien), ou entreprise à zone de service (sans vitrine)
+5. **Accès GBP** : L'entreprise dispose-t-elle d'une fiche Google Business Profile revendiquée et vérifiée ?
+6. **Profil d'avis actuel** : Note moyenne, nombre total d'avis, tendance de vélocité des avis, et taux de réponse
+7. **Secteur/Catégorie** : Catégorie principale de l'entreprise et éventuelles catégories secondaires actuellement définies
+8. **Concurrents locaux** : Les 3 à 5 principales entreprises en concurrence pour les mêmes recherches locales
+9. **Classements actuels** : Positions connues dans le pack local pour les mots-clés cibles (si suivies)
+10. **Structure du site web** : Le site dispose-t-il de pages de localisation individuelles ? D'un localisateur de magasins ? De contenu spécifique à chaque localisation ?
+11. **Citations existantes** : Fiches d'annuaires connues (Yelp, PagesJaunes, BBB, annuaires sectoriels) et leur exactitude
+12. **Budget et ressources** : Capacité de l'équipe pour la gestion des avis, la création de contenu et la maintenance continue des citations
 
-For quick requests (e.g., "optimize my Google Business Profile"), proceed with available information. For comprehensive local SEO strategy, gather the full context.
+Pour les demandes rapides (par exemple, « optimiser notre fiche Google Business Profile »), procéder avec les informations disponibles. Pour une stratégie SEO locale complète, rassembler l'ensemble du contexte.
 
-## Capabilities
+## Capacités
 
-### Google Business Profile Optimization
-- Profile completeness audit and optimization (every field, every section)
-- Primary and secondary category selection strategy
-- Business attribute configuration for ranking signals and user engagement
-- Photo strategy (exterior, interior, team, product, at-work — quantity and quality benchmarks)
-- Google Posts publishing strategy (What's New, Events, Offers — cadence and CTA optimization)
-- Q&A section seeding and management
-- Products and Services section optimization
-- Business description keyword optimization within character limits
-- Hours, special hours, and holiday hours management
-- Booking and appointment URL integration
-- Messaging and chat setup
-- GBP suspension prevention and recovery procedures
-- GBP Insights analysis and action planning
+### Optimisation de la fiche Google Business Profile
+- Audit et optimisation de l'exhaustivité de la fiche (chaque champ, chaque section)
+- Stratégie de sélection des catégories primaire et secondaires
+- Configuration des attributs de l'entreprise pour les signaux de classement et l'engagement utilisateur
+- Stratégie photo (extérieur, intérieur, équipe, produit, en situation — quantité et qualité de référence)
+- Stratégie de publication Google Posts (Nouveautés, Événements, Offres — cadence et optimisation des CTA)
+- Alimentation et gestion de la section questions-réponses
+- Optimisation de la section Produits et Services
+- Optimisation de la description de l'entreprise par mots-clés dans la limite de caractères
+- Gestion des horaires, horaires spéciaux et horaires de fermeture
+- Intégration des URL de réservation et de prise de rendez-vous
+- Configuration de la messagerie et du chat
+- Procédures de prévention et de récupération après suspension GBP
+- Analyse des GBP Insights et plan d'action
 
-### Local Citation Building & NAP Management
-- Structured citation audit across 50+ directories
-- Unstructured citation identification (mentions in articles, press, blogs)
-- NAP consistency scoring and discrepancy resolution
-- Data aggregator submissions (Data Axle, Neustar Localeze, Foursquare)
-- Industry-specific citation source identification and prioritization
-- Duplicate listing detection and cleanup
-- Citation velocity planning for steady listing growth
+### Construction de citations locales et gestion NAP
+- Audit des citations structurées sur plus de 50 annuaires
+- Identification des citations non structurées (mentions dans des articles, la presse, des blogs)
+- Notation de la cohérence NAP et résolution des écarts
+- Soumissions aux agrégateurs de données (Data Axle, Neustar Localeze, Foursquare)
+- Identification et priorisation des sources de citation sectorielles
+- Détection et nettoyage des fiches en double
+- Planification de la vélocité des citations pour une croissance régulière des fiches
 
-### Local Search Strategy
-- Local keyword research (geo-modified terms, service+location combinations, implicit local queries)
-- Local pack ranking factor analysis (proximity, prominence, relevance)
-- Local competitive gap analysis (citations, reviews, content, links)
-- Local SERP feature targeting (local pack, knowledge panel, local finder, Google Maps)
-- "Near me" and voice search optimization for local intent
+### Stratégie de recherche locale
+- Recherche de mots-clés locaux (termes géo-modifiés, combinaisons service+localisation, requêtes locales implicites)
+- Analyse des facteurs de classement du pack local (proximité, notoriété, pertinence)
+- Analyse des écarts concurrentiels locaux (citations, avis, contenu, liens)
+- Ciblage des fonctionnalités SERP locales (pack local, knowledge panel, local finder, Google Maps)
+- Optimisation « near me » et recherche vocale pour l'intention locale
 
-### Location Page & Local Content
-- Location page template design with unique, substantive content per location
-- Service area page strategy for SABs
-- City and neighborhood landing pages (when appropriate, avoiding thin content)
-- Local blog content planning (community events, local news, neighborhood guides)
-- Localized testimonials and case studies
-- Local FAQ content by industry
+### Pages de localisation et contenu local
+- Conception de modèles de pages de localisation avec un contenu unique et substantiel par établissement
+- Stratégie de pages de zone de service pour les entreprises sans vitrine
+- Pages villes et quartiers (le cas échéant, en évitant le contenu pauvre)
+- Planification de contenu de blog local (événements communautaires, actualités locales, guides de quartier)
+- Témoignages et études de cas localisés
+- Contenu FAQ local par secteur
 
-### Local Link Building
-- Local partnership and sponsorship link opportunities
-- Chamber of commerce and business association memberships
-- Local media and press link earning
-- Community event sponsorship and participation
-- Local scholarship and charity link programs
-- Geo-relevant industry directory submissions
+### Netlinking local
+- Opportunités de liens issues de partenariats et sponsorings locaux
+- Adhésions aux chambres de commerce et associations professionnelles
+- Obtention de liens via les médias et la presse locale
+- Sponsoring et participation à des événements communautaires
+- Programmes de bourses et d'œuvres caritatives locales générant des liens
+- Soumissions à des annuaires sectoriels géo-pertinents
 
-### Local Schema Markup
-- LocalBusiness schema (and subtypes: Restaurant, Dentist, Attorney, etc.)
+### Balisage schema local
+- Schéma LocalBusiness (et sous-types : Restaurant, Dentist, Attorney, etc.)
 - GeoCoordinates, PostalAddress, OpeningHoursSpecification
-- AggregateRating and individual Review schema
-- Service, hasOfferCatalog, and areaServed markup
-- Multi-location Organization-to-LocalBusiness relationship schema
-- FAQ and HowTo schema for local content
+- AggregateRating et schéma Review individuel
+- Balisage Service, hasOfferCatalog et areaServed
+- Schéma de relation Organization-to-LocalBusiness pour le multi-établissements
+- Schéma FAQ et HowTo pour le contenu local
 
-### Multi-Location Management
-- Organizational GBP account structure and location groups
-- Scalable location page architecture
-- Store locator SEO (indexable, schema-enhanced, user-friendly)
-- Centralized vs decentralized management frameworks
-- Brand consistency enforcement across locations
-- Multi-location reporting and benchmarking
+### Gestion multi-établissements
+- Structure de compte GBP organisationnel et groupes de localisations
+- Architecture de pages de localisation évolutive
+- SEO du localisateur de magasins (indexable, enrichi de schéma, convivial)
+- Cadres de gestion centralisée vs décentralisée
+- Application de la cohérence de marque entre établissements
+- Reporting et benchmarking multi-établissements
 
-## Process
+## Processus
 
-### Primary Workflow: Local SEO Audit & Strategy
+### Workflow principal : audit et stratégie SEO local
 
-1. **Google Business Profile Audit**
-   - Verify claim and verification status
-   - Assess profile completeness: name accuracy, address, phone, website, hours, categories, attributes, description, photos, posts, Q&A, products, services
-   - Evaluate category selection (primary and secondary) against competitors
-   - Review photo quantity, quality, and recency (benchmark: 100+ photos, updated quarterly)
-   - Assess Google Posts activity and engagement
-   - Check for policy violations or suspension risks
+1. **Audit de la fiche Google Business Profile**
+   - Vérifier le statut de revendication et de vérification
+   - Évaluer l'exhaustivité de la fiche : exactitude du nom, adresse, téléphone, site web, horaires, catégories, attributs, description, photos, publications, questions-réponses, produits, services
+   - Évaluer la sélection des catégories (primaire et secondaires) par rapport aux concurrents
+   - Examiner la quantité, la qualité et la récence des photos (référence : 100+ photos, mises à jour trimestriellement)
+   - Évaluer l'activité et l'engagement des Google Posts
+   - Vérifier les infractions à la politique ou les risques de suspension
 
-2. **NAP Consistency Audit**
-   - Document the canonical NAP (the exact name, address, and phone that should appear everywhere)
-   - Scan top 50 citation sources for existing listings
-   - Score each listing for NAP accuracy (exact match, minor variation, major discrepancy)
-   - Identify the source of discrepancies (old address, former business name, incorrect phone format)
+2. **Audit de cohérence NAP**
+   - Documenter le NAP canonique (le nom, l'adresse et le téléphone exacts qui doivent apparaître partout)
+   - Scanner les 50 principales sources de citations pour les fiches existantes
+   - Noter chaque fiche pour l'exactitude NAP (correspondance exacte, variation mineure, écart majeur)
+   - Identifier la source des écarts (ancienne adresse, ancienne raison sociale, format de téléphone incorrect)
 
-3. **Citation Audit & Strategy**
-   - Count total structured citations (directory listings)
-   - Compare citation volume against top 3 local competitors
-   - Identify missing citations on high-authority directories
-   - Check data aggregator accuracy (Data Axle, Neustar Localeze, Foursquare)
-   - Prioritize citation building by domain authority and industry relevance
+3. **Audit et stratégie de citations**
+   - Compter le total des citations structurées (fiches d'annuaires)
+   - Comparer le volume de citations aux 3 principaux concurrents locaux
+   - Identifier les citations manquantes sur les annuaires à forte autorité
+   - Vérifier l'exactitude des agrégateurs de données (Data Axle, Neustar Localeze, Foursquare)
+   - Prioriser la construction de citations par autorité de domaine et pertinence sectorielle
 
-4. **Local Keyword Research**
-   - Map geo-modified keywords: [service] + [city], [service] + [neighborhood], [service] near me
-   - Identify implicit local keywords (keywords Google treats as local without a geo modifier)
-   - Analyze local search volume and competition for priority terms
-   - Map keywords to pages (location pages, service pages, blog content)
+4. **Recherche de mots-clés locaux**
+   - Cartographier les mots-clés géo-modifiés : [service] + [ville], [service] + [quartier], [service] near me
+   - Identifier les mots-clés locaux implicites (mots-clés que Google traite comme locaux sans modificateur géographique)
+   - Analyser le volume de recherche local et la concurrence pour les termes prioritaires
+   - Associer les mots-clés aux pages (pages de localisation, pages de service, contenu de blog)
 
-5. **Location Page Assessment**
-   - Audit existing location pages for content depth, uniqueness, and optimization
-   - If no location pages exist, design the page template and content plan
-   - Ensure each page has unique content (not just city name swapped into a template)
-   - Verify local schema markup implementation on each location page
+5. **Évaluation des pages de localisation**
+   - Auditer les pages de localisation existantes pour la profondeur, l'unicité et l'optimisation du contenu
+   - En l'absence de pages de localisation, concevoir le modèle de page et le plan de contenu
+   - Vérifier que chaque page dispose d'un contenu unique (pas seulement le nom de la ville substitué dans un modèle)
+   - Vérifier la mise en œuvre du balisage schema local sur chaque page de localisation
 
-6. **Local Link Profile Analysis**
-   - Identify existing links from local sources (directories, media, organizations, partners)
-   - Compare local link profile against top competitors
-   - Build a local link opportunity list (chambers, associations, sponsors, events, media)
-   - Prioritize by authority, relevance, and acquisition difficulty
+6. **Analyse du profil de netlinking local**
+   - Identifier les liens existants provenant de sources locales (annuaires, médias, organisations, partenaires)
+   - Comparer le profil de liens locaux aux principaux concurrents
+   - Construire une liste d'opportunités de liens locaux (chambres de commerce, associations, sponsors, événements, médias)
+   - Prioriser par autorité, pertinence et difficulté d'acquisition
 
-7. **Review Profile Analysis**
-   - Current average rating and total volume by platform (Google, Yelp, industry-specific)
-   - Review velocity trend (increasing, stable, or declining)
-   - Response rate and response quality assessment
-   - Sentiment analysis of recent reviews (common praise, recurring complaints)
-   - Competitor review benchmarking (their rating, volume, velocity)
+7. **Analyse du profil d'avis**
+   - Note moyenne actuelle et volume total par plateforme (Google, Yelp, plateformes sectorielles)
+   - Tendance de vélocité des avis (croissante, stable ou déclinante)
+   - Évaluation du taux de réponse et de la qualité des réponses
+   - Analyse de sentiment des avis récents (éloges fréquents, plaintes récurrentes)
+   - Benchmark des avis concurrents (leur note, volume, vélocité)
 
-8. **Local Schema Review**
-   - Test existing schema with Google's Rich Results Test and Schema Validator
-   - Identify missing schema types (LocalBusiness, GeoCoordinates, OpeningHours, AggregateRating)
-   - Recommend schema additions with implementation-ready JSON-LD
+8. **Revue du schema local**
+   - Tester le schema existant avec le Rich Results Test et le Schema Validator de Google
+   - Identifier les types de schema manquants (LocalBusiness, GeoCoordinates, OpeningHours, AggregateRating)
+   - Recommander des ajouts de schema avec du JSON-LD prêt à l'implémentation
 
-9. **Competitor Local SEO Benchmarking**
-   - Identify the top 3 local pack competitors for primary keywords
-   - Compare across all ranking factors: GBP completeness, reviews, citations, content, links, proximity
-   - Identify the specific gaps where the business can gain competitive advantage
+9. **Benchmark concurrentiel SEO local**
+   - Identifier les 3 principaux concurrents du pack local pour les mots-clés prioritaires
+   - Comparer sur tous les facteurs de classement : exhaustivité GBP, avis, citations, contenu, liens, proximité
+   - Identifier les écarts spécifiques où l'entreprise peut gagner un avantage concurrentiel
 
-10. **Prioritized Local SEO Action Plan**
-    - Rank all findings by impact and effort (quick wins first)
-    - Create a 30/60/90-day local SEO roadmap
-    - Assign specific actions with responsible parties and deadlines
-    - Define KPIs: local pack position, GBP impressions, GBP actions (calls, directions, website clicks), review volume, citation accuracy score
+10. **Plan d'action SEO local priorisé**
+    - Classer toutes les conclusions par impact et effort (gains rapides d'abord)
+    - Créer une feuille de route SEO locale à 30/60/90 jours
+    - Assigner des actions spécifiques avec des responsables et des échéances
+    - Définir les KPI : position dans le pack local, impressions GBP, actions GBP (appels, itinéraires, clics vers le site), volume d'avis, score d'exactitude des citations
 
-## Reference Files
+## Fichiers de référence
 
-- `gbp-optimization.md` — Complete Google Business Profile optimization guide: profile completeness checklist, category strategy, photo optimization, Google Posts, Q&A management, suspension prevention, and GBP analytics
-- `citation-management.md` — Citation building framework: top sources by industry, NAP consistency requirements, data aggregator strategy, audit methodology, cleanup procedures, and multi-location citation management
-- `local-content.md` — Local content strategy: geo-modified keyword research, location page best practices, city and neighborhood pages, local blog content, "near me" optimization, voice search, and local content scaling
-- `multi-location.md` — Multi-location local SEO: GBP management at scale, location page architecture, store locator SEO, franchise challenges, multi-location review management, reporting, and location opening/closing procedures
+- `gbp-optimization.md` — Guide complet d'optimisation de la fiche Google Business Profile : checklist d'exhaustivité de la fiche, stratégie de catégories, optimisation photo, Google Posts, gestion des questions-réponses, prévention des suspensions, et analytique GBP
+- `citation-management.md` — Cadre de construction de citations : principales sources par secteur, exigences de cohérence NAP, stratégie d'agrégateurs de données, méthodologie d'audit, procédures de nettoyage, et gestion multi-établissements des citations
+- `local-content.md` — Stratégie de contenu local : recherche de mots-clés géo-modifiés, bonnes pratiques de pages de localisation, pages villes et quartiers, contenu de blog local, optimisation « near me », recherche vocale, et mise à l'échelle du contenu local
+- `multi-location.md` — SEO local multi-établissements : gestion GBP à l'échelle, architecture des pages de localisation, SEO du localisateur de magasins, défis des franchises, gestion des avis multi-établissements, reporting, et procédures d'ouverture/fermeture d'établissements
 
-## Output Formats
+## Formats de livrables
 
-| Deliverable | Format | Description |
+| Livrable | Format | Description |
 |---|---|---|
-| Local SEO Audit Report | Document | Comprehensive assessment of GBP, citations, NAP, reviews, content, links, and schema with scores and priorities |
-| GBP Optimization Checklist | Checklist | Field-by-field GBP optimization guide with current state and recommended actions |
-| Citation Report | Spreadsheet | Directory-by-directory listing status, NAP accuracy, and submission priority |
-| Location Page Template | Document | Content structure, SEO requirements, schema markup, and unique content guidelines per location |
-| Local Content Calendar | Spreadsheet/Calendar | Monthly local content plan with topics, keywords, formats, and publishing schedule |
-| Review Response Templates | Document | Industry-appropriate response templates for positive, neutral, negative, and fake reviews |
-| Local Link Building Plan | Spreadsheet | Opportunity list with source, authority, contact, and outreach approach |
-| Local Schema Package | Code snippets | Implementation-ready JSON-LD for LocalBusiness, GeoCoordinates, OpeningHours, and AggregateRating |
-| Local SEO Roadmap | Document | 30/60/90-day action plan with priorities, owners, deadlines, and KPIs |
+| Rapport d'audit SEO local | Document | Évaluation complète de la fiche GBP, des citations, du NAP, des avis, du contenu, des liens et du schema, avec scores et priorités |
+| Checklist d'optimisation GBP | Checklist | Guide d'optimisation GBP champ par champ avec état actuel et actions recommandées |
+| Rapport de citations | Tableur | Statut fiche par fiche par annuaire, exactitude NAP et priorité de soumission |
+| Modèle de page de localisation | Document | Structure de contenu, exigences SEO, balisage schema et lignes directrices de contenu unique par établissement |
+| Calendrier de contenu local | Tableur/Calendrier | Plan de contenu local mensuel avec sujets, mots-clés, formats et calendrier de publication |
+| Modèles de réponse aux avis | Document | Modèles de réponse adaptés au secteur pour les avis positifs, neutres, négatifs et faux |
+| Plan de netlinking local | Tableur | Liste d'opportunités avec source, autorité, contact et approche d'outreach |
+| Package de schema local | Extraits de code | JSON-LD prêt à l'implémentation pour LocalBusiness, GeoCoordinates, OpeningHours et AggregateRating |
+| Feuille de route SEO locale | Document | Plan d'action à 30/60/90 jours avec priorités, responsables, échéances et KPI |
 
-## Edge Cases
+## Cas particuliers
 
-### Service Area Businesses (No Physical Storefront)
-SABs (plumbers, electricians, mobile services, home cleaners) cannot display a street address on GBP. Set the service area using city names or zip codes. Hide the address in GBP settings. Do not use a P.O. Box or virtual office — Google will suspend the listing. Location pages become service area pages targeting each city served. Citation building uses the hidden address consistently but relies on phone and website URL as primary identifiers. Focus content strategy on city-specific service pages rather than a single location page.
+### Entreprises à zone de service (sans vitrine physique)
+Les entreprises à zone de service (plombiers, électriciens, services mobiles, nettoyeurs à domicile) ne peuvent pas afficher d'adresse postale sur GBP. Définir la zone de service par noms de villes ou codes postaux. Masquer l'adresse dans les paramètres GBP. Ne pas utiliser de boîte postale ou de bureau virtuel — Google suspendra la fiche. Les pages de localisation deviennent des pages de zone de service ciblant chaque ville desservie. La construction de citations utilise l'adresse masquée de manière cohérente mais s'appuie sur le téléphone et l'URL du site comme identifiants principaux. Concentrer la stratégie de contenu sur des pages de service spécifiques à chaque ville plutôt que sur une page de localisation unique.
 
-### Multi-Location Chains (50+ Locations)
-At scale, manual management fails. Recommend bulk GBP management via API or third-party platforms (Yext, Rio SEO, Uberall). Implement templatized but locally unique location pages with automated data feeds for hours, staff, and offers. Centralize review response with approved templates while allowing location managers to personalize. Build reporting dashboards that benchmark locations against each other and flag underperformers. Prioritize high-revenue or underperforming locations for dedicated attention rather than spreading effort equally.
+### Chaînes multi-établissements (50+ établissements)
+À grande échelle, la gestion manuelle échoue. Recommander une gestion GBP en masse via API ou plateformes tierces (Yext, Rio SEO, Uberall). Mettre en œuvre des pages de localisation modélisées mais localement uniques, avec des flux de données automatisés pour les horaires, le personnel et les offres. Centraliser la réponse aux avis avec des modèles approuvés tout en permettant aux responsables d'établissement de personnaliser. Construire des tableaux de bord de reporting qui comparent les établissements entre eux et signalent les moins performants. Prioriser les établissements à fort chiffre d'affaires ou sous-performants pour une attention dédiée plutôt que de répartir l'effort de manière égale.
 
-### Highly Competitive Local Markets (Restaurants, Dentists, Plumbers)
-In saturated local markets, the standard playbook is table stakes — everyone has citations and reviews. Differentiation comes from: (1) review velocity and response quality that outpaces competitors, (2) GBP engagement signals from regular posts, photos, and Q&A activity, (3) local content depth that competitors do not invest in, (4) local link building from community involvement that cannot be easily replicated, and (5) hyper-local targeting at the neighborhood level rather than just the city level.
+### Marchés locaux très concurrentiels (restaurants, dentistes, plombiers)
+Sur des marchés locaux saturés, le playbook standard est un prérequis de base — tout le monde a des citations et des avis. La différenciation vient de : (1) une vélocité et une qualité de réponse aux avis supérieures aux concurrents, (2) des signaux d'engagement GBP issus de publications, photos et activité Q&A régulières, (3) une profondeur de contenu local que les concurrents n'investissent pas, (4) un netlinking local issu d'un engagement communautaire difficile à reproduire, et (5) un ciblage hyper-local au niveau du quartier plutôt qu'au seul niveau de la ville.
 
-### Businesses Spanning Multiple Cities or States
-When a business serves a wide geographic area, avoid creating thin doorway pages for every city. Instead, build substantial content for primary markets (with unique testimonials, case studies, team members, and service details per location) and use service area targeting in GBP for secondary markets. Prioritize the cities with the highest revenue potential. For multi-state businesses, account for different regulatory requirements by state and adjust compliance messaging accordingly.
+### Entreprises couvrant plusieurs villes ou régions
+Lorsqu'une entreprise dessert une large zone géographique, éviter de créer des pages passerelles pauvres pour chaque ville. Construire à la place un contenu substantiel pour les marchés prioritaires (avec témoignages, études de cas, membres d'équipe et détails de service uniques par établissement) et utiliser le ciblage de zone de service dans GBP pour les marchés secondaires. Prioriser les villes au potentiel de chiffre d'affaires le plus élevé. Pour les entreprises multi-régions, tenir compte des différentes exigences réglementaires selon la région et ajuster le message de conformité en conséquence.
 
-### New Business with Zero Local Presence
-Starting from scratch requires a phased approach: (1) Claim and fully optimize GBP on day one — this is the single highest-impact action. (2) Submit to the four major data aggregators within the first week. (3) Build 20-30 high-authority citations in month one (general + industry-specific). (4) Launch a review generation program immediately — the first 10-20 reviews are the hardest but most impactful. (5) Publish a fully optimized location page with local schema. (6) Begin local content and link building in month two once the foundation is set. Set expectations: meaningful local pack visibility typically takes 3-6 months for a new business in a moderately competitive market.
+### Nouvelle entreprise sans présence locale
+Partir de zéro nécessite une approche progressive : (1) Revendiquer et optimiser entièrement le GBP dès le premier jour — c'est l'action unique à plus fort impact. (2) Soumettre aux quatre principaux agrégateurs de données dans la première semaine. (3) Construire 20 à 30 citations à forte autorité au cours du premier mois (générales + sectorielles). (4) Lancer immédiatement un programme de génération d'avis — les 10 à 20 premiers avis sont les plus difficiles à obtenir mais les plus impactants. (5) Publier une page de localisation entièrement optimisée avec schema local. (6) Démarrer le contenu local et le netlinking au deuxième mois une fois les fondations posées. Fixer les attentes : une visibilité significative dans le pack local prend généralement 3 à 6 mois pour une nouvelle entreprise sur un marché modérément concurrentiel.
 
-## Tips & caveats
+## Conseils et mises en garde
 
-- **Google Business Profile is the single highest-leverage asset** in local SEO — practitioners commonly treat it as the majority of local-pack impact (the "60-80%" figure is an illustrative rule of thumb, not a measured statistic). Get it 100% before optimising anything else.
-- **NAP (Name/Address/Phone) consistency matters across HUNDREDS of citation sources** — not just the top 10. Use a citation-management tool quarterly to catch drift.
-- **Don't fake reviews.** Google's review-spam systems are increasingly aggressive (an April 2026 update reportedly tightened the bar further — verify current enforcement status before advising a client). One detected fake-review pattern can suppress GBP visibility for months.
-- **Service-area businesses** (no storefront) need different proximity strategy than brick-and-mortar — location pages per service area, not per store.
-- **For multi-location brands,** treat each location as its own GBP entity — don't try to consolidate. Cross-link between location pages for internal-link signal.
-- **AI Overviews are increasingly local** — for "near me" queries, AI Mode + AI Overviews now both surface local results. Run `/digital-marketing-pro:aeo-audit` against location-specific queries quarterly.
+- **La fiche Google Business Profile est l'actif à plus fort effet de levier** en SEO local — les praticiens la considèrent couramment comme représentant la majorité de l'impact du pack local (le chiffre de « 60-80 % » est une règle empirique illustrative, pas une statistique mesurée). Optimisez-la à 100 % avant tout le reste.
+- **La cohérence NAP (Nom/Adresse/Téléphone) compte sur des CENTAINES de sources de citations** — pas seulement les 10 premières. Utilisez un outil de gestion des citations chaque trimestre pour détecter les dérives.
+- **Ne fabriquez pas de faux avis.** Les systèmes anti-spam d'avis de Google sont de plus en plus agressifs (une mise à jour d'avril 2026 aurait encore durci le seuil — vérifiez le statut d'application actuel avant de conseiller un client). Un seul schéma de faux avis détecté peut supprimer la visibilité GBP pendant des mois.
+- **Les entreprises à zone de service** (sans vitrine) nécessitent une stratégie de proximité différente des commerces physiques — des pages de localisation par zone de service, pas par magasin.
+- **Pour les marques multi-établissements,** traitez chaque établissement comme sa propre entité GBP — ne cherchez pas à consolider. Créez des liens croisés entre les pages de localisation pour le signal de maillage interne.
+- **Les AI Overviews sont de plus en plus locales** — pour les requêtes « near me », l'AI Mode et les AI Overviews font désormais tous deux remonter des résultats locaux. Exécutez `/digital-marketing-pro:aeo-audit` sur des requêtes spécifiques à la localisation chaque trimestre.
 
-## Related Skills
+## Compétences associées
 
-- **Content Engine** — For creating locally-optimized blog content, location page copy, and local content calendars
-- **Reputation Management** — For comprehensive review strategy, crisis response, and sentiment monitoring beyond local-specific review tactics
-- **Paid Advertising** — For Google Ads location extensions, local campaigns, and local service ads that complement organic local SEO
-- **Digital PR & Authority** — For earning local media coverage and building local authority through press and community engagement
-- **Analytics & Insights** — For tracking local SEO performance metrics, GBP insights analysis, and local ranking monitoring
+- **Content Engine** — Pour créer du contenu de blog optimisé localement, du texte de page de localisation, et des calendriers de contenu local
+- **Reputation Management** — Pour une stratégie d'avis complète, la gestion de crise et la surveillance de sentiment au-delà des tactiques d'avis spécifiques au local
+- **Paid Advertising** — Pour les extensions de localisation Google Ads, les campagnes locales, et les annonces de service local qui complètent le SEO local organique
+- **Digital PR & Authority** — Pour obtenir une couverture médiatique locale et construire une autorité locale par la presse et l'engagement communautaire
+- **Analytics & Insights** — Pour suivre les métriques de performance SEO local, l'analyse des GBP Insights, et le suivi des classements locaux

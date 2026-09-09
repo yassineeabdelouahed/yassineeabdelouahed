@@ -1,28 +1,28 @@
-# Media Outreach — Methodology & Templates
+# Sollicitation média — Méthodologie & Modèles
 
-## Journalist Research
+## Recherche de journalistes
 
-1. **Identify relevant beats**: Match your story angle to journalists who cover that topic
-2. **Study recent coverage**: Read their last 5-10 articles to understand angle preferences
-3. **Check social media**: Follow them on Twitter/X for real-time interests and engagement style
-4. **Verify contact info**: Use tools (Muck Rack, Prowly, Cision) or check publication bios
-5. **Note preferences**: Many journalists state pitch preferences in their bios ("DM me" vs "email only")
+1. **Identifier les domaines pertinents** : faire correspondre votre angle d'histoire aux journalistes qui couvrent ce sujet
+2. **Étudier la couverture récente** : lire leurs 5 à 10 derniers articles pour comprendre leurs préférences d'angle
+3. **Vérifier les réseaux sociaux** : les suivre sur Twitter/X pour connaître leurs centres d'intérêt en temps réel et leur style d'engagement
+4. **Vérifier les coordonnées** : utiliser des outils (Muck Rack, Prowly, Cision) ou consulter les bios des publications
+5. **Noter les préférences** : de nombreux journalistes indiquent leurs préférences de pitch dans leur bio (« envoyez-moi un DM » vs « email uniquement »)
 
 ---
 
-## Media List Tiers
+## Niveaux de la liste média
 
-| Tier | Description | Outlets | Approach |
+| Niveau | Description | Médias | Approche |
 |------|-----------|---------|----------|
-| **Tier 1** | National/global publications | NYT, WSJ, Forbes, TechCrunch, BBC | Highly personalized pitch, exclusive angle |
-| **Tier 2** | Industry-leading publications | Industry-specific trade press | Strong data/angle, personalized |
-| **Tier 3** | Niche/regional outlets | Local press, niche blogs, podcasts | Broader pitch, still personalized |
+| **Niveau 1** | Publications nationales/mondiales | NYT, WSJ, Forbes, TechCrunch, BBC | Pitch hautement personnalisé, angle exclusif |
+| **Niveau 2** | Publications leaders du secteur | Presse professionnelle spécialisée | Données/angle solides, personnalisé |
+| **Niveau 3** | Médias de niche/régionaux | Presse locale, blogs de niche, podcasts | Pitch plus large, toujours personnalisé |
 
 ---
 
-## Pitch Templates
+## Modèles de pitch
 
-### Product Launch Pitch
+### Pitch de lancement de produit
 ```
 Subject: [Specific claim or data point] — new from [Brand]
 
@@ -42,7 +42,7 @@ Happy to share [demo access / exclusive data / founder interview].
 [Your name]
 ```
 
-### Data/Research Pitch
+### Pitch données/recherche
 ```
 Subject: New data: [Surprising finding] in [industry]
 
@@ -60,7 +60,7 @@ Full report available for [exclusive / early] access. Also happy to provide expe
 [Your name]
 ```
 
-### Expert Commentary Pitch
+### Pitch de commentaire d'expert
 ```
 Subject: Expert source: [Topic currently in the news]
 
@@ -79,43 +79,43 @@ Available for phone/video/email interview. Can turn around written quotes within
 
 ---
 
-## Outreach Cadence
+## Cadence de sollicitation
 
-| Step | Timing | Action |
+| Étape | Timing | Action |
 |------|--------|--------|
-| Initial pitch | Day 0 | Send personalized pitch email |
-| First follow-up | Day 3-4 | Brief reply to original email, add new angle or data point |
-| Second follow-up | Day 7-8 | Final follow-up, offer different angle or exclusive |
-| Stop | After 2 follow-ups | Do NOT send more. Move on. |
+| Pitch initial | Jour 0 | Envoyer l'email de pitch personnalisé |
+| Première relance | Jour 3-4 | Brève réponse à l'email d'origine, ajouter un nouvel angle ou une nouvelle donnée |
+| Deuxième relance | Jour 7-8 | Relance finale, proposer un angle différent ou une exclusivité |
+| Arrêt | Après 2 relances | NE PAS envoyer davantage. Passer à autre chose. |
 
-### Rules
-- Never pitch on Fridays or weekends
-- Best days: Tuesday-Thursday
-- Best times: 7-9 AM or 4-5 PM (journalist local time)
-- Never send mass emails (always personalized)
-- Never attach large files unsolicited (link instead)
+### Règles
+- Ne jamais pitcher le vendredi ou le week-end
+- Meilleurs jours : mardi-jeudi
+- Meilleurs horaires : 7h-9h ou 16h-17h (heure locale du journaliste)
+- Ne jamais envoyer d'emails de masse (toujours personnalisés)
+- Ne jamais joindre de gros fichiers non sollicités (préférer un lien)
 
 ---
 
-## Subject Line Formulas for Pitches
+## Formules d'objet pour les pitchs
 
-| Formula | Example |
+| Formule | Exemple |
 |---------|---------|
-| Data-first | "New data: 67% of CMOs plan to cut ad spend in Q3" |
-| Trend + take | "The rise of AI marketing — expert commentary available" |
-| Exclusive offer | "Exclusive: [Brand] launches [product] ahead of [event]" |
-| Question | "Is [industry trend] the end of [old practice]?" |
-| Localized | "[City] startup raises $10M to [solve problem]" |
+| Données en premier | « Nouvelles données : 67 % des CMO prévoient de réduire leur budget pub au T3 » |
+| Tendance + point de vue | « L'essor du marketing IA — commentaire d'expert disponible » |
+| Offre exclusive | « Exclusivité : [Marque] lance [produit] avant [événement] » |
+| Question | « [Tendance sectorielle] signifie-t-elle la fin de [ancienne pratique] ? » |
+| Localisé | « Une startup de [ville] lève 10 M$ pour [résoudre un problème] » |
 
 ---
 
-## Press Kit Contents
+## Contenu du dossier de presse
 
-- [ ] Company overview (1 page, current facts and figures)
-- [ ] Founder/executive bios with professional headshots
-- [ ] High-resolution logo files (PNG, SVG, dark/light versions)
-- [ ] Product screenshots or lifestyle images
-- [ ] Key statistics and milestones
-- [ ] Recent press releases
-- [ ] Media contact information
-- [ ] Brand guidelines (logo usage, colors)
+- [ ] Présentation de l'entreprise (1 page, faits et chiffres à jour)
+- [ ] Bios des fondateurs/dirigeants avec photos professionnelles
+- [ ] Fichiers de logo haute résolution (PNG, SVG, versions sombre/claire)
+- [ ] Captures d'écran produit ou images d'ambiance
+- [ ] Statistiques clés et jalons
+- [ ] Communiqués de presse récents
+- [ ] Coordonnées du contact média
+- [ ] Guidelines de marque (utilisation du logo, couleurs)

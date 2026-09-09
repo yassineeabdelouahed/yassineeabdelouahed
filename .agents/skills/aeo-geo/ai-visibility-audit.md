@@ -1,139 +1,139 @@
-# AI Visibility Audit — Methodology & Scoring
+# Audit de visibilité IA — Méthodologie et notation
 
-## Overview
+## Vue d'ensemble
 
-A systematic process for auditing how a brand appears across AI-generated answers on **6 platforms**: ChatGPT, Perplexity, **Google AI Mode**, Google AI Overviews, Gemini, and Microsoft Copilot.
+Un processus systématique pour auditer la manière dont une marque apparaît dans les réponses générées par IA sur **6 plateformes** : ChatGPT, Perplexity, **Google AI Mode**, Google AI Overviews, Gemini et Microsoft Copilot.
 
-> **Why 6, not 5 (changed May 2026):** Google split its AI search surfaces. AI Mode (Gemini 3.5 Flash, conversational, default for opted-in users since I/O 2026) and AI Overviews (classic SERP summary block) now select different citations for the same query 40–60% of the time. Audit both independently — a brand cited in AI Overviews is not necessarily cited in AI Mode.
+> **Pourquoi 6 et non 5 (changement de mai 2026) :** Google a scindé ses surfaces de recherche IA. AI Mode (Gemini 3.5 Flash, conversationnel, par défaut pour les utilisateurs ayant opté depuis l'I/O 2026) et AI Overviews (bloc de synthèse SERP classique) sélectionnent désormais des citations différentes pour la même requête dans 40 à 60 % des cas. Auditez les deux indépendamment — une marque citée dans AI Overviews ne l'est pas nécessairement dans AI Mode.
 
 ---
 
-## Step 1: Query Selection
+## Étape 1 : sélection des requêtes
 
-Select 15-25 queries across four categories:
+Sélectionner 15 à 25 requêtes réparties sur quatre catégories :
 
-### Query Categories
+### Catégories de requêtes
 
-| Category | Purpose | Example Queries |
+| Catégorie | Objectif | Exemples de requêtes |
 |----------|---------|----------------|
-| **Recommendation** | "Best [product type]" queries | "Best project management tool for startups" |
-| **Comparison** | Brand vs competitor queries | "[Brand] vs [Competitor]" |
-| **Informational** | "What is [brand]" queries | "What does [Brand] do?" |
-| **Problem-Solving** | Pain-point queries | "How to [solve problem brand addresses]" |
+| **Recommandation** | Requêtes « meilleur [type de produit] » | « Meilleur outil de gestion de projet pour les startups » |
+| **Comparaison** | Requêtes marque vs concurrent | « [Marque] vs [Concurrent] » |
+| **Informationnelle** | Requêtes « qu'est-ce que [marque] » | « Que fait [Marque] ? » |
+| **Résolution de problème** | Requêtes point de douleur | « Comment [résoudre le problème que la marque adresse] » |
 
-### Query Selection Rules
+### Règles de sélection des requêtes
 
-1. Include 4-6 queries per category
-2. Mix head terms (high volume) with long-tail (specific intent)
-3. Include at least 3 queries where the brand SHOULD be cited but may not be
-4. Include branded queries (brand name) and non-branded (category/problem)
-5. Prioritize queries that match the brand's target customer JTBD
+1. Inclure 4 à 6 requêtes par catégorie
+2. Mélanger les termes génériques (fort volume) et la longue traîne (intention spécifique)
+3. Inclure au moins 3 requêtes où la marque DEVRAIT être citée mais ne l'est peut-être pas
+4. Inclure des requêtes de marque (nom de marque) et non-marque (catégorie/problème)
+5. Prioriser les requêtes correspondant aux JTBD du client cible de la marque
 
 ---
 
-## Step 2: Platform-by-Platform Testing
+## Étape 2 : tests plateforme par plateforme
 
-### Testing Protocol
+### Protocole de test
 
-For each query, test on all 6 platforms and record:
+Pour chaque requête, tester sur les 6 plateformes et enregistrer :
 
-| Field | What to Capture |
+| Champ | Ce qu'il faut capturer |
 |-------|----------------|
-| Platform | ChatGPT / Perplexity / **Google AI Mode** / Google AI Overview / Gemini / Copilot |
-| Query | Exact query text |
-| Date tested | For tracking changes over time |
-| Model version | e.g., GPT-4, Gemini Pro |
-| Brand mentioned? | Yes / No |
-| Mention type | Cited, Recommended, Referenced, Mentioned, Absent, Misrepresented |
-| Exact text | Copy the AI-generated text mentioning (or not mentioning) the brand |
-| Position | Where in the response (first, middle, last, not present) |
-| Competitors mentioned | Which competitors appear in the same response |
-| Source cited | If Perplexity/AI Overview cites a source, record the URL |
-| Accuracy | Is the information about the brand accurate? (Yes / Partially / No) |
+| Plateforme | ChatGPT / Perplexity / **Google AI Mode** / Google AI Overview / Gemini / Copilot |
+| Requête | Texte exact de la requête |
+| Date du test | Pour suivre les changements dans le temps |
+| Version du modèle | par ex. GPT-4, Gemini Pro |
+| Marque mentionnée ? | Oui / Non |
+| Type de mention | Citée, Recommandée, Référencée, Mentionnée, Absente, Mal représentée |
+| Texte exact | Copier le texte généré par l'IA mentionnant (ou non) la marque |
+| Position | Où dans la réponse (premier, milieu, dernier, non présent) |
+| Concurrents mentionnés | Quels concurrents apparaissent dans la même réponse |
+| Source citée | Si Perplexity/AI Overview cite une source, enregistrer l'URL |
+| Précision | L'information sur la marque est-elle exacte ? (Oui / Partiellement / Non) |
 
-### Platform-Specific Notes
+### Notes spécifiques à chaque plateforme
 
-- **ChatGPT**: Test with latest model. Note that responses vary by session — test 2-3 times. Web-search mode on.
-- **Perplexity**: Check both the answer AND the cited sources list.
-- **Google AI Mode (May 2026, default)**: Test from the AI Mode tab (or directly via the conversational entry point that appears for opted-in users). Gemini 3.5 Flash backbone. Capture the full conversational thread including any follow-up clarifiers — citations evolve across turns. AI Mode often selects different sources than AI Overviews for the same query.
-- **Google AI Overviews**: Not all queries trigger AI Overviews — document which do. This is the SERP summary block, separate from AI Mode.
-- **Gemini**: Test via gemini.google.com, note any "I don't have enough info" responses.
-- **Copilot**: Test in Bing chat mode for web-grounded responses.
+- **ChatGPT** : tester avec le dernier modèle. Les réponses varient selon la session — tester 2-3 fois. Mode recherche web activé.
+- **Perplexity** : vérifier à la fois la réponse ET la liste des sources citées.
+- **Google AI Mode (mai 2026, par défaut)** : tester depuis l'onglet AI Mode (ou directement via le point d'entrée conversationnel qui apparaît pour les utilisateurs ayant opté). Architecture Gemini 3.5 Flash. Capturer l'intégralité du fil conversationnel, y compris les clarifications de suivi — les citations évoluent au fil des tours. AI Mode sélectionne souvent des sources différentes d'AI Overviews pour la même requête.
+- **Google AI Overviews** : toutes les requêtes ne déclenchent pas d'AI Overview — documenter lesquelles le font. C'est le bloc de synthèse de la SERP, distinct d'AI Mode.
+- **Gemini** : tester via gemini.google.com, noter toute réponse « Je n'ai pas assez d'informations ».
+- **Copilot** : tester en mode chat Bing pour les réponses ancrées sur le web.
 
 ---
 
-## Step 3: Scoring Rubric
+## Étape 3 : grille de notation
 
-### Per-Query Scoring
+### Notation par requête
 
-| Score | Label | Definition |
+| Score | Libellé | Définition |
 |-------|-------|-----------|
-| **5** | Cited | Brand directly mentioned with a link to brand's content as a source |
-| **4** | Recommended | Brand explicitly recommended as a top choice |
-| **3** | Referenced | Brand mentioned by name in a relevant context |
-| **2** | Mentioned | Brand appears but not in a primary/useful way |
-| **0** | Absent | Brand does not appear at all |
-| **-2** | Misrepresented | Brand appears but with inaccurate or negative information |
+| **5** | Cité | La marque est directement mentionnée avec un lien vers son contenu comme source |
+| **4** | Recommandé | La marque est explicitement recommandée comme meilleur choix |
+| **3** | Référencé | La marque est mentionnée par son nom dans un contexte pertinent |
+| **2** | Mentionné | La marque apparaît mais pas de façon principale/utile |
+| **0** | Absent | La marque n'apparaît pas du tout |
+| **-2** | Mal représenté | La marque apparaît mais avec des informations inexactes ou négatives |
 
-### Aggregate Scoring
+### Notation agrégée
 
-**AI Visibility Score** = (Sum of per-query scores across all platforms) / (Max possible score) × 100
+**Score de visibilité IA** = (somme des scores par requête sur toutes les plateformes) / (score maximum possible) × 100
 
-- **Max possible per query**: 5 points × 6 platforms = 30
-- **Max possible total**: 30 × number of queries
+- **Maximum possible par requête** : 5 points × 6 plateformes = 30
+- **Maximum possible total** : 30 × nombre de requêtes
 
-> When comparing scores against pre–May 2026 baselines (which used 5 platforms / max 25 per query), normalise by scaling the older baseline ×1.2 — or rerun the historical query set in AI Mode and reuse the original baseline. Don't compare 5-platform totals to 6-platform totals directly.
+> Lors de la comparaison des scores avec des références antérieures à mai 2026 (qui utilisaient 5 plateformes / maximum 25 par requête), normalisez en multipliant l'ancienne référence par 1,2 — ou relancez l'ensemble de requêtes historique dans AI Mode et réutilisez la référence d'origine. Ne comparez pas directement des totaux à 5 plateformes à des totaux à 6 plateformes.
 
-### Score Interpretation
+### Interprétation des scores
 
-| Score Range | Interpretation |
+| Fourchette de score | Interprétation |
 |-------------|---------------|
-| 80-100 | Excellent AI visibility — brand is a recognized authority |
-| 60-79 | Good — mentioned frequently but room to improve citation rate |
-| 40-59 | Moderate — inconsistent presence, clear gaps to address |
-| 20-39 | Weak — rarely mentioned, significant optimization needed |
-| 0-19 | Minimal — brand is essentially invisible to AI platforms |
+| 80-100 | Excellente visibilité IA — la marque est une autorité reconnue |
+| 60-79 | Bonne — mentionnée fréquemment mais marge de progression sur le taux de citation |
+| 40-59 | Modérée — présence inconsistante, lacunes claires à combler |
+| 20-39 | Faible — rarement mentionnée, optimisation significative nécessaire |
+| 0-19 | Minimale — la marque est essentiellement invisible pour les plateformes IA |
 
 ---
 
-## Step 4: Competitive Benchmarking
+## Étape 4 : benchmarking concurrentiel
 
-Run the same query set for 3-5 key competitors. Compare:
+Exécuter le même ensemble de requêtes pour 3 à 5 concurrents clés. Comparer :
 
-1. **Visibility Score**: Side-by-side total scores
-2. **Citation Rate**: % of queries where each brand is cited (score ≥ 3)
-3. **First-Mention Rate**: % of queries where brand appears first
-4. **Platform Strength**: Which platforms favor which brands
-5. **Query Category Gaps**: Where competitors win vs where you win
-
----
-
-## Step 5: Gap Analysis
-
-Identify patterns:
-
-- **Query gaps**: Which query categories have the lowest scores?
-- **Platform gaps**: Which AI platforms under-represent the brand?
-- **Competitor advantages**: What are cited competitors doing differently?
-- **Content gaps**: What authoritative content is missing from the brand's ecosystem?
-- **Structured data gaps**: What schema markup is missing?
-- **Entity gaps**: Are there knowledge graph or Wikipedia/Wikidata issues?
+1. **Score de visibilité** : scores totaux côte à côte
+2. **Taux de citation** : % de requêtes où chaque marque est citée (score ≥ 3)
+3. **Taux de première mention** : % de requêtes où la marque apparaît en premier
+4. **Force par plateforme** : quelles plateformes favorisent quelles marques
+5. **Écarts par catégorie de requête** : où les concurrents gagnent vs où vous gagnez
 
 ---
 
-## Step 6: Monitoring Cadence
+## Étape 5 : analyse des écarts
 
-| Priority Level | Audit Frequency | Scope |
+Identifier les motifs récurrents :
+
+- **Écarts de requêtes** : quelles catégories de requêtes ont les scores les plus bas ?
+- **Écarts de plateforme** : quelles plateformes IA sous-représentent la marque ?
+- **Avantages concurrentiels** : que font différemment les concurrents cités ?
+- **Lacunes de contenu** : quel contenu faisant autorité manque dans l'écosystème de la marque ?
+- **Lacunes de données structurées** : quel balisage schema manque-t-il ?
+- **Lacunes d'entité** : y a-t-il des problèmes de Knowledge Graph ou de Wikipédia/Wikidata ?
+
+---
+
+## Étape 6 : cadence de suivi
+
+| Niveau de priorité | Fréquence d'audit | Portée |
 |---------------|----------------|-------|
-| Priority queries (top 5) | Weekly | All 6 platforms |
-| Full query set | Monthly | All 6 platforms |
-| Expanded audit (new queries) | Quarterly | All 6 platforms + new query discovery |
-| Post-major update | Within 48 hours | Priority queries on affected platform |
+| Requêtes prioritaires (top 5) | Hebdomadaire | Les 6 plateformes |
+| Ensemble complet de requêtes | Mensuel | Les 6 plateformes |
+| Audit élargi (nouvelles requêtes) | Trimestriel | Les 6 plateformes + découverte de nouvelles requêtes |
+| Après mise à jour majeure | Sous 48 heures | Requêtes prioritaires sur la plateforme concernée |
 
-### Triggers for Immediate Re-Audit
+### Déclencheurs d'un ré-audit immédiat
 
-- New AI model release (GPT update, Gemini update, etc.)
-- Major content publish or site restructure
-- Significant schema markup implementation
-- Competitor AI visibility change detected
-- Brand entity correction on Wikipedia/Wikidata
+- Nouvelle version de modèle IA (mise à jour GPT, mise à jour Gemini, etc.)
+- Publication de contenu majeure ou restructuration du site
+- Mise en œuvre significative de balisage schema
+- Changement de visibilité IA d'un concurrent détecté
+- Correction d'entité de marque sur Wikipédia/Wikidata

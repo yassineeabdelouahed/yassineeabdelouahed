@@ -1,90 +1,112 @@
 ---
 name: import-guidelines
-description: "Import brand guidelines — voice and tone rules, messaging, banned words and restrictions, channel styles, visual identity — and structure them into enforceable markdown files in the brand's guidelines layer, auto-classified by category, conflict-checked against the brand profile, and merged with existing rules rather than overwritten. Triggers on \"/digital-marketing-pro:import-guidelines\", \"here's our brand voice guide\", \"add these banned words\", \"import our style guide\", \"save the rule that we never use jargon\". Reads the active brand profile and existing guidelines manifest; saved guidelines are then applied automatically across all content-producing commands."
+description: "Importer des guidelines de marque — règles de voix et de ton, messaging, mots interdits et restrictions, styles par canal, identité visuelle — et les structurer en fichiers markdown exploitables dans la couche de guidelines de la marque, classées automatiquement par catégorie, vérifiées pour d'éventuels conflits avec le profil de marque, et fusionnées avec les règles existantes plutôt qu'écrasées. Se déclenche sur « /digital-marketing-pro:import-guidelines », « voici notre guide de voix de marque », « ajoute ces mots interdits », « importe notre guide de style », « enregistre la règle qu'on n'utilise jamais de jargon ». Lit le profil de marque actif et le manifeste de guidelines existant ; les guidelines enregistrées sont ensuite appliquées automatiquement sur toutes les commandes de production de contenu."
 argument-hint: "[file-path or URL]"
 ---
 
 # /digital-marketing-pro:import-guidelines
 
-## Purpose
+## Objectif
 
-Import and structure brand guidelines into the persistent brand knowledge layer. Converts unstructured guideline documents, style guides, restriction lists, and messaging playbooks into structured, enforceable markdown files that are automatically applied across all modules and commands.
+Importer et structurer des guidelines de marque dans la couche de connaissance
+persistante de la marque. Convertit des documents de guidelines non structurés, des
+guides de style, des listes de restrictions, et des playbooks de messaging en
+fichiers markdown structurés et exploitables, automatiquement appliqués sur tous les
+modules et commandes.
 
-## Input Required
+## Informations requises
 
-The user provides one or more of:
+L'utilisateur fournit un ou plusieurs des éléments suivants :
 
-- **Pasted guideline content**: Text from an existing brand guide, style guide, or restriction list
-- **Verbal description**: Spoken/typed rules ("we never use exclamation marks", "always lead with data")
-- **Category to update**: Which guideline category to add to (voice-and-tone, messaging, restrictions, channel-styles, visual-identity, or custom)
-- **Source document reference**: Description of where these guidelines come from
+- **Contenu de guidelines collé** : Texte issu d'un guide de marque, guide de style,
+  ou liste de restrictions existant
+- **Description verbale** : Règles orales/tapées (« on n'utilise jamais de points
+  d'exclamation », « toujours commencer par les données »)
+- **Catégorie à mettre à jour** : Quelle catégorie de guideline compléter
+  (voice-and-tone, messaging, restrictions, channel-styles, visual-identity, ou custom)
+- **Référence du document source** : Description de la provenance de ces guidelines
 
-If the user doesn't specify a category, analyze the content and route it to the correct category automatically.
+Si l'utilisateur ne spécifie pas de catégorie, analyser le contenu et le router
+automatiquement vers la bonne catégorie.
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for existing guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load existing guidelines to merge with (not overwrite). If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json`
+   pour obtenir le slug actif, puis charger
+   `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les
+   règles de conformité pour les marchés ciblés
+   (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel.
+   **Vérifier aussi les guidelines existantes** dans
+   `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes,
+   charger les guidelines existantes pour fusion (pas écrasement). Si aucune marque
+   n'existe, demander : « Configurer une marque d'abord
+   (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
 
-2. **Classify the content** — Determine which guideline category (or categories) the input belongs to:
-   - Voice rules, writing style, tone → `voice-and-tone.md`
-   - Key messages, taglines, positioning, value props → `messaging.md`
-   - Banned words, restricted claims, disclaimers, prohibited topics → `restrictions.md`
-   - Per-channel format/tone rules → `channel-styles.md`
-   - Colors, fonts, logo rules, imagery style → `visual-identity.md`
-   - Anything else → `custom/{descriptive-name}.md`
+2. **Classer le contenu** — Déterminer à quelle(s) catégorie(s) de guideline l'entrée appartient :
+   - Règles de voix, style d'écriture, ton → `voice-and-tone.md`
+   - Messages clés, slogans, positionnement, propositions de valeur → `messaging.md`
+   - Mots interdits, revendications restreintes, avertissements, sujets prohibés → `restrictions.md`
+   - Règles de format/ton par canal → `channel-styles.md`
+   - Couleurs, polices, règles de logo, style visuel → `visual-identity.md`
+   - Tout le reste → `custom/{descriptive-name}.md`
 
-3. **Structure the content** — Convert unstructured input into organized markdown:
-   - Extract individual rules as bullet points
-   - Group by sub-topic with clear headings
-   - Add before/after examples where the input provides them
-   - Preserve the user's intent — don't add rules they didn't specify
-   - Use the framework structure from `skills/context-engine/guidelines-framework.md`
+3. **Structurer le contenu** — Convertir l'entrée non structurée en markdown organisé :
+   - Extraire les règles individuelles sous forme de puces
+   - Regrouper par sous-thème avec des titres clairs
+   - Ajouter des exemples avant/après là où l'entrée les fournit
+   - Préserver l'intention de l'utilisateur — ne pas ajouter de règles qu'il n'a pas spécifiées
+   - Utiliser la structure du cadre depuis `skills/context-engine/guidelines-framework.md`
 
-4. **Check for conflicts** — Compare new guidelines against existing profile settings:
-   - If guidelines say "casual tone" but profile has formality=8, flag the conflict
-   - If restrictions ban words that appear in existing brand messaging, flag it
-   - Present conflicts to the user and ask which takes precedence
-   - Note: channel-styles intentionally override base voice for specific channels (not a conflict)
+4. **Vérifier les conflits** — Comparer les nouvelles guidelines aux paramètres existants du profil :
+   - Si les guidelines disent « ton décontracté » mais que le profil a formality=8, signaler le conflit
+   - Si les restrictions interdisent des mots présents dans le messaging de marque existant, le signaler
+   - Présenter les conflits à l'utilisateur et demander lequel a priorité
+   - Remarque : les styles par canal outrepassent intentionnellement la voix de base pour des canaux spécifiques (ce n'est pas un conflit)
 
-5. **Merge with existing guidelines** — If the category already has content:
-   - Show the user what already exists
-   - Ask: merge (add new rules to existing), replace (overwrite), or cancel
-   - When merging, deduplicate rules and maintain organization
+5. **Fusionner avec les guidelines existantes** — Si la catégorie a déjà du contenu :
+   - Montrer à l'utilisateur ce qui existe déjà
+   - Demander : fusionner (ajouter les nouvelles règles aux existantes), remplacer (écraser), ou annuler
+   - Lors de la fusion, dédupliquer les règles et maintenir l'organisation
 
-6. **Save and confirm** — Write the structured guideline file:
-   - Save using `guidelines-manager.py --brand {slug} --action save --category {category}`
-   - Or write directly to `~/.claude-marketing/brands/{slug}/guidelines/{file}`
-   - Manifest is rebuilt automatically on save
-   - Confirm: show the category, rule count, and a preview of what was saved
+6. **Enregistrer et confirmer** — Écrire le fichier de guideline structuré :
+   - Enregistrer avec `guidelines-manager.py --brand {slug} --action save --category {category}`
+   - Ou écrire directement dans `~/.claude-marketing/brands/{slug}/guidelines/{file}`
+   - Le manifeste est reconstruit automatiquement à l'enregistrement
+   - Confirmer : montrer la catégorie, le nombre de règles, et un aperçu de ce qui a été enregistré
 
-7. **Ask about additional categories** — If the user's input might span multiple categories:
-   - "I also noticed messaging content — would you like me to save that to messaging.md?"
-   - "Some of these rules are channel-specific — should I also create channel-styles.md?"
+7. **Demander des catégories supplémentaires** — Si l'entrée de l'utilisateur peut couvrir plusieurs catégories :
+   - « J'ai aussi remarqué du contenu de messaging — voulez-vous que je l'enregistre dans messaging.md ? »
+   - « Certaines de ces règles sont spécifiques à un canal — devrais-je aussi créer channel-styles.md ? »
 
-## Output
+## Résultat
 
-- Confirmation of what was saved, with rule counts
-- Preview of the structured guideline file
-- Any conflicts flagged between guidelines and existing brand profile
-- Suggestion to import additional categories if relevant content was detected
-- Reminder: "These guidelines will be automatically applied when creating content. Use `/digital-marketing-pro:import-guidelines` again to add more."
+- Confirmation de ce qui a été enregistré, avec les nombres de règles
+- Aperçu du fichier de guideline structuré
+- Tout conflit signalé entre les guidelines et le profil de marque existant
+- Suggestion d'importer des catégories supplémentaires si du contenu pertinent a été détecté
+- Rappel : « Ces guidelines seront automatiquement appliquées lors de la création de
+  contenu. Utilisez à nouveau `/digital-marketing-pro:import-guidelines` pour en
+  ajouter d'autres. »
 
-## Guideline Categories Reference
+## Référence des catégories de guidelines
 
-| Category | File | What Goes Here |
+| Catégorie | Fichier | Ce qui y va |
 |----------|------|---------------|
-| Voice & Tone | `voice-and-tone.md` | Writing style, tone rules, dos/don'ts, readability, pronoun preferences |
-| Messaging | `messaging.md` | Positioning, value props, key messages, taglines, elevator pitches, proof points |
-| Restrictions | `restrictions.md` | Banned words, restricted claims, mandatory disclaimers, prohibited topics |
-| Channel Styles | `channel-styles.md` | Per-channel tone, format, hashtag/emoji policies, content types |
-| Visual Identity | `visual-identity.md` | Colors, fonts, logo rules, photography style (text descriptions) |
-| Custom | `custom/{name}.md` | Accessibility rules, legal review triggers, seasonal rules, partner guidelines |
+| Voix & ton | `voice-and-tone.md` | Style d'écriture, règles de ton, à faire/à ne pas faire, lisibilité, préférences de pronoms |
+| Messaging | `messaging.md` | Positionnement, propositions de valeur, messages clés, slogans, pitchs éclair, points de preuve |
+| Restrictions | `restrictions.md` | Mots interdits, revendications restreintes, avertissements obligatoires, sujets prohibés |
+| Styles par canal | `channel-styles.md` | Ton, format par canal, politiques hashtags/emojis, types de contenu |
+| Identité visuelle | `visual-identity.md` | Couleurs, polices, règles de logo, style de photographie (descriptions textuelles) |
+| Custom | `custom/{name}.md` | Règles d'accessibilité, déclencheurs de revue juridique, règles saisonnières, guidelines de partenaires |
 
-## Examples
+## Exemples
 
-**User**: "Here's our brand voice guide: We're friendly but professional. Never use jargon. Always explain technical concepts simply. Use 'you' not 'customers'. Sentences should be under 20 words."
+**Utilisateur** : « Voici notre guide de voix de marque : Nous sommes amicaux mais
+professionnels. Jamais de jargon. Toujours expliquer les concepts techniques
+simplement. Utiliser "vous" et non "les clients". Les phrases doivent faire moins de
+20 mots. »
 
-**Result**: Saves to `voice-and-tone.md`:
+**Résultat** : Enregistre dans `voice-and-tone.md` :
 ```markdown
 # Brand Voice & Tone Guide
 
@@ -102,9 +124,10 @@ If the user doesn't specify a category, analyze the content and route it to the 
 - DON'T: Use industry jargon or technical terminology without explanation
 ```
 
-**User**: "We can never use the words 'cheap', 'guarantee', 'best', or 'revolutionary'. Health claims need a disclaimer."
+**Utilisateur** : « On ne peut jamais utiliser les mots "cheap", "guarantee", "best",
+ou "revolutionary". Les revendications santé ont besoin d'un avertissement. »
 
-**Result**: Saves to `restrictions.md`:
+**Résultat** : Enregistre dans `restrictions.md` :
 ```markdown
 # Brand Restrictions & Guardrails
 
@@ -118,7 +141,7 @@ If the user doesn't specify a category, analyze the content and route it to the 
 - Health/wellness claims: Include "This is not medical advice. Consult your healthcare provider."
 ```
 
-## Reference Files
+## Fichiers de référence
 
-- `skills/context-engine/guidelines-framework.md` — Full framework for structuring and applying guidelines
-- `scripts/guidelines-manager.py` — CLI for guideline CRUD operations
+- `skills/context-engine/guidelines-framework.md` — Cadre complet pour structurer et appliquer les guidelines
+- `scripts/guidelines-manager.py` — CLI pour les opérations CRUD sur les guidelines

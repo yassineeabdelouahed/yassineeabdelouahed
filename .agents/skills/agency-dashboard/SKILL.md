@@ -1,6 +1,6 @@
 ---
 name: agency-dashboard
-description: "Generate a portfolio-level dashboard across ALL client brands — per-client RAG health scores, campaign activity, budget pacing, aggregate KPIs, team utilization, pending approvals, upcoming deadlines, and an alerts panel — built for agency standups and weekly reviews. Triggers on \"/digital-marketing-pro:agency-dashboard\", \"how are all our clients doing\", \"portfolio health check\", \"budget pacing across accounts\", \"which accounts are at risk\". Enumerates every brand under ~/.claude-marketing/brands/ and pulls data via campaign-tracker.py, execution-tracker.py, and team-manager.py; drill into a single client with /digital-marketing-pro:performance-report or /digital-marketing-pro:client-report."
+description: "Générer un tableau de bord au niveau du portefeuille couvrant TOUTES les marques clientes — scores de santé RAG par client, activité de campagne, rythme budgétaire, KPI agrégés, utilisation de l'équipe, approbations en attente et un panneau d'alertes — conçu pour les réunions d'équipe et les revues hebdomadaires d'agence. Se déclenche sur \"/digital-marketing-pro:agency-dashboard\", \"how are all our clients doing\", \"portfolio health check\", \"budget pacing across accounts\", \"which accounts are at risk\". Recense chaque marque sous ~/.claude-marketing/brands/ et récupère les données via campaign-tracker.py, execution-tracker.py et team-manager.py ; approfondissez un client unique avec /digital-marketing-pro:performance-report ou /digital-marketing-pro:client-report."
 user-invocable: true
 triggers:
   - agency portfolio dashboard
@@ -15,61 +15,61 @@ triggers:
 
 # /digital-marketing-pro:agency-dashboard
 
-## Purpose
+## Objectif
 
-Generate a portfolio-level dashboard aggregating health metrics across ALL client brands. Shows campaign activity, budget pacing, KPI attainment, content pipeline, and team utilization at a glance — giving agency leadership a single view of operational health without opening each account individually. Designed for daily standups, weekly agency reviews, or on-demand health checks.
+Générer un tableau de bord au niveau du portefeuille agrégeant les indicateurs de santé de TOUTES les marques clientes. Affiche en un coup d'œil l'activité de campagne, le rythme budgétaire, l'atteinte des KPI, le pipeline de contenu et l'utilisation de l'équipe — offrant à la direction d'agence une vue unique de la santé opérationnelle sans avoir à ouvrir chaque compte individuellement. Conçu pour les réunions quotidiennes, les revues d'agence hebdomadaires, ou les contrôles de santé à la demande.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Dashboard scope**: All brands or a specific list of brand slugs to include in the portfolio view
-- **Time period**: Current week, month, or quarter — determines the pacing calculations and comparison windows
-- **Detail level**: Summary (top-line health scores per client) or detailed (campaign-level breakdowns per client with individual campaign metrics)
-- **Sort/filter preferences**: Sort clients by health score, spend, revenue, or alphabetical — and optionally filter to only at-risk (amber/red) accounts
-- **Team filter (optional)**: Filter by account lead or team pod if the agency has multiple pods managing different client sets
-- **Comparison baseline (optional)**: Compare current period against prior period, same period last year, or plan/target — defaults to prior period
-- **Alert threshold overrides (optional)**: Custom thresholds for performance drop alerts or budget pacing tolerance — defaults to 20% performance drop and 10% pacing variance
-- **Export format (optional)**: Whether to output as markdown, Google Sheets, or Slack message — defaults to markdown
+- **Portée du tableau de bord** : toutes les marques ou une liste spécifique de slugs de marque à inclure dans la vue du portefeuille
+- **Période** : semaine, mois ou trimestre en cours — détermine les calculs de rythme et les fenêtres de comparaison
+- **Niveau de détail** : synthétique (scores de santé de haut niveau par client) ou détaillé (répartitions au niveau des campagnes par client avec les métriques de chaque campagne)
+- **Préférences de tri/filtrage** : trier les clients par score de santé, dépense, revenu ou ordre alphabétique — et éventuellement filtrer uniquement sur les comptes à risque (orange/rouge)
+- **Filtre d'équipe (facultatif)** : filtrer par responsable de compte ou pôle d'équipe si l'agence a plusieurs pôles gérant différents ensembles de clients
+- **Référence de comparaison (facultative)** : comparer la période actuelle à la période précédente, à la même période l'année dernière, ou au plan/objectif — par défaut, la période précédente
+- **Surcharges de seuil d'alerte (facultatives)** : seuils personnalisés pour les alertes de baisse de performance ou la tolérance de rythme budgétaire — par défaut, baisse de performance de 20 % et écart de rythme de 10 %
+- **Format d'export (facultatif)** : sortie en markdown, Google Sheets ou message Slack — par défaut, markdown
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Enumerate all brands**: Scan `~/.claude-marketing/brands/` for all configured brand directories (excluding `_active-brand.json`). For each brand, load `profile.json` to get client name, industry, engagement type, contract dates, assigned team members, and KPI targets
-3. **Pull campaign data per brand**: For each brand in scope, run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` to retrieve active campaigns, statuses, budgets, and objectives (use `--action get-campaign --id {id}` for a single campaign's detail)
-4. **Pull execution status per brand**: For each brand, run `python "${CLAUDE_PLUGIN_ROOT}/scripts/execution-tracker.py" --brand {slug} --action get-history` to get logged executions — completed deliverables, launches, and tasks — then derive pending / overdue status in analysis
-5. **Check budget pacing per brand**: For each brand, compare actual spend-to-date against planned spend for the current period — calculate pacing percentage and project end-of-period spend at current run rate
-6. **Calculate per-client health score**: Apply the RAG scoring formula from `skills/context-engine/agency-operations-guide.md`:
-   - Green: On track across KPIs, budget on pace (within 10%), no overdue items, content pipeline flowing
-   - Amber: 1-2 KPIs at risk, minor pacing drift (10-20%), items approaching deadline, or pending approvals aging
-   - Red: Significant KPI misses, budget overspend (>20%), missed deadlines, stalled campaigns, or MCP disconnections
-7. **Aggregate portfolio KPIs**: Sum total active campaigns, total monthly spend, average ROAS across clients, total leads/conversions, total pending deliverables, and overall portfolio health distribution (count and percentage of green/amber/red)
-8. **Check team utilization**: Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/team-manager.py" --action check-capacity --brand {slug}` to assess current team workload — available capacity per team member, overloaded staff flagged, accounts at risk of under-service, and billable-hours tracking. **Optionally add a Claude Code cost line — only if the user supplies the data.** The plugin cannot read Claude Code usage itself. If the user pastes the output of their own `/usage` command (a Claude Code CLI slash command they run interactively), aggregate the per-model token/cost figures it reports into a "Claude Code consumption" line so leadership can see AI cost before the monthly invoice. Label models by whatever the user's `/usage` output names — do not assume specific model IDs. Brand-per-directory workspaces (`~/work/clients/{slug}`) make the figures brand-attributable.
-9. **Identify pending approvals**: Scan execution logs across all brands for items awaiting client or internal approval — flag anything older than 48 hours as overdue, group by brand and urgency tier (routine, time-sensitive, blocking)
-10. **Surface upcoming deadlines**: Compile deadlines from all brands for the next 7 and 14 days — campaign launches, content due dates, reporting deadlines, contract milestones, renewal dates, and QBR schedules
-11. **Detect alerts and anomalies**: Flag any brand with sudden performance drops (>20% week-over-week on primary KPI), budget pacing issues (>10% ahead or behind plan), stalled campaigns (no activity in 5+ days), MCP connection failures, or expiring credentials
-12. **Check content pipeline**: Aggregate content status across all brands — items in draft, in review, approved, scheduled, and published — identify bottlenecks where content is stalling at a particular stage
-13. **Generate trend comparison**: Compare current portfolio health against the selected baseline period — show improving, stable, or declining trajectory for each client and the portfolio overall with directional arrows
-14. **Compile portfolio dashboard**: Assemble all data into a structured dashboard sorted by the user's preference, with drill-down detail available for any individual client
+1. **Charger le contexte de marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de la marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. Vérifier également l'existence de guidelines dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions. Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Recenser toutes les marques** : parcourir `~/.claude-marketing/brands/` pour identifier tous les répertoires de marques configurées (à l'exclusion de `_active-brand.json`). Pour chaque marque, charger `profile.json` afin d'obtenir le nom du client, le secteur, le type d'engagement, les dates de contrat, les membres d'équipe assignés et les objectifs de KPI
+3. **Récupérer les données de campagne par marque** : pour chaque marque dans la portée, exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` pour récupérer les campagnes actives, leurs statuts, budgets et objectifs (utiliser `--action get-campaign --id {id}` pour le détail d'une campagne unique)
+4. **Récupérer le statut d'exécution par marque** : pour chaque marque, exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/execution-tracker.py" --brand {slug} --action get-history` pour obtenir les exécutions enregistrées — livrables terminés, lancements et tâches — puis déduire le statut en attente/en retard dans l'analyse
+5. **Vérifier le rythme budgétaire par marque** : pour chaque marque, comparer la dépense réelle à date par rapport à la dépense planifiée pour la période en cours — calculer le pourcentage de rythme et projeter la dépense de fin de période au rythme actuel
+6. **Calculer le score de santé par client** : appliquer la formule de notation RAG issue de `skills/context-engine/agency-operations-guide.md` :
+   - Vert : dans les temps sur tous les KPI, budget dans le rythme (à moins de 10 %), aucun élément en retard, pipeline de contenu fluide
+   - Orange : 1 à 2 KPI à risque, léger écart de rythme (10-20 %), éléments approchant leur échéance, ou approbations en attente qui vieillissent
+   - Rouge : écarts significatifs sur les KPI, dépassement budgétaire (>20 %), échéances manquées, campagnes bloquées, ou déconnexions de MCP
+7. **Agréger les KPI du portefeuille** : additionner le nombre total de campagnes actives, la dépense mensuelle totale, le ROAS moyen tous clients confondus, le total de leads/conversions, le total des livrables en attente, et la répartition globale de la santé du portefeuille (nombre et pourcentage de vert/orange/rouge)
+8. **Vérifier l'utilisation de l'équipe** : exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/team-manager.py" --action check-capacity --brand {slug}` pour évaluer la charge de travail actuelle de l'équipe — capacité disponible par membre de l'équipe, personnel surchargé signalé, comptes à risque de sous-service, et suivi des heures facturables. **Ajouter éventuellement une ligne de coût Claude Code — uniquement si l'utilisateur fournit les données.** Le plugin ne peut pas lire lui-même l'usage de Claude Code. Si l'utilisateur colle la sortie de sa propre commande `/usage` (une commande slash de la CLI Claude Code qu'il exécute de manière interactive), agréger les chiffres de tokens/coûts par modèle qu'elle rapporte dans une ligne « Consommation Claude Code » afin que la direction voie le coût de l'IA avant la facture mensuelle. Étiqueter les modèles selon les noms indiqués dans la sortie `/usage` de l'utilisateur — ne pas présumer d'identifiants de modèle spécifiques. Les espaces de travail organisés par répertoire et par marque (`~/work/clients/{slug}`) permettent d'attribuer les chiffres à la marque.
+9. **Identifier les approbations en attente** : parcourir les journaux d'exécution de toutes les marques pour les éléments en attente d'approbation client ou interne — signaler tout élément de plus de 48 heures comme en retard, regrouper par marque et par niveau d'urgence (routine, sensible au temps, bloquant)
+10. **Faire remonter les échéances à venir** : compiler les échéances de toutes les marques pour les 7 et 14 prochains jours — lancements de campagne, dates de livraison de contenu, échéances de reporting, jalons de contrat, dates de renouvellement, et calendriers de QBR
+11. **Détecter les alertes et anomalies** : signaler toute marque présentant des baisses de performance soudaines (>20 % semaine sur semaine sur le KPI principal), des problèmes de rythme budgétaire (>10 % en avance ou en retard sur le plan), des campagnes bloquées (aucune activité depuis 5 jours ou plus), des échecs de connexion MCP, ou des identifiants expirant
+12. **Vérifier le pipeline de contenu** : agréger le statut du contenu sur toutes les marques — éléments en brouillon, en revue, approuvés, planifiés et publiés — identifier les goulots d'étranglement là où le contenu stagne à une étape particulière
+13. **Générer une comparaison de tendance** : comparer la santé actuelle du portefeuille à la période de référence sélectionnée — montrer une trajectoire en amélioration, stable ou en déclin pour chaque client et pour le portefeuille global, avec des flèches directionnelles
+14. **Compiler le tableau de bord du portefeuille** : assembler toutes les données dans un tableau de bord structuré, trié selon la préférence de l'utilisateur, avec un détail exploitable pour tout client individuel
 
-## Output
+## Résultat
 
-A structured portfolio dashboard containing:
+Un tableau de bord de portefeuille structuré contenant :
 
-- **Portfolio health summary**: Total clients in scope, health distribution (green/amber/red count and percentage), overall portfolio health score (weighted by client spend), and period-over-period trend direction
-- **Per-client health cards**: For each brand — client name, health score (RAG), active campaigns count, monthly spend with pacing status, primary KPI vs target with delta, next deadline, top alert if any, and assigned account lead
-- **Aggregate KPI table**: Total spend across portfolio, average ROAS, total active campaigns, total leads/conversions generated, cost efficiency trends, and period-over-period comparison with directional arrows
-- **Budget pacing summary**: Per-brand pacing status (on pace, underspending, overspending) with projected end-of-period spend, variance from plan in dollars and percentage, and portfolio-level pacing aggregate
-- **Team utilization matrix**: Per-team-member workload (accounts managed, hours allocated, capacity percentage, billable ratio), overloaded alerts, available bandwidth for new work, and staffing recommendations
-- **Claude Code consumption (per brand)** — *only if the user supplied `/usage` data*: aggregated per working directory mapped to brand, using whatever model tiers the user's `/usage` output reports, with token totals and USD cost for the reporting window. Flag any brand whose Claude Code spend is >2× the portfolio median for the same retainer tier as a candidate for engagement-pattern review or rate renegotiation. Omit this panel entirely if no usage data was provided.
-- **Pending approvals queue**: All items awaiting approval across brands with item description, age in hours, responsible owner, brand, urgency level, and estimated impact of delay
-- **Upcoming deadlines (7/14 day)**: Chronological list of upcoming deadlines with brand, deliverable type, responsible owner, days remaining, dependency status, and risk assessment if missed
-- **Content pipeline status**: Aggregate view of content in draft, review, approved, and scheduled stages across all brands with stage-by-stage counts and bottleneck identification
-- **Alerts and anomalies panel**: Performance drops, pacing issues, stalled campaigns, MCP connection failures, expiring credentials, or overdue items requiring immediate attention — sorted by severity
-- **Contract and renewal tracker**: Upcoming contract renewals, engagement milestones, and retention risk indicators for clients approaching renewal windows
-- **Drill-down guidance**: Instructions for investigating any individual client in detail using `/digital-marketing-pro:performance-report`, `/digital-marketing-pro:client-report`, or `/digital-marketing-pro:credential-switch` to activate that brand's context
+- **Résumé de la santé du portefeuille** : nombre total de clients dans la portée, répartition de la santé (nombre et pourcentage de vert/orange/rouge), score de santé global du portefeuille (pondéré par la dépense client), et direction de la tendance d'une période à l'autre
+- **Fiches de santé par client** : pour chaque marque — nom du client, score de santé (RAG), nombre de campagnes actives, dépense mensuelle avec statut de rythme, KPI principal vs objectif avec écart, prochaine échéance, alerte principale le cas échéant, et responsable de compte assigné
+- **Tableau des KPI agrégés** : dépense totale du portefeuille, ROAS moyen, total des campagnes actives, total de leads/conversions générés, tendances d'efficacité des coûts, et comparaison d'une période à l'autre avec flèches directionnelles
+- **Résumé du rythme budgétaire** : statut de rythme par marque (dans le rythme, sous-dépense, sur-dépense) avec projection de dépense de fin de période, écart par rapport au plan en montant et en pourcentage, et agrégat de rythme au niveau du portefeuille
+- **Matrice d'utilisation de l'équipe** : charge de travail par membre de l'équipe (comptes gérés, heures allouées, pourcentage de capacité, ratio facturable), alertes de surcharge, capacité disponible pour de nouveaux travaux, et recommandations de dotation
+- **Consommation Claude Code (par marque)** — *uniquement si l'utilisateur a fourni des données `/usage`* : agrégée par répertoire de travail associé à la marque, selon les niveaux de modèle rapportés par la sortie `/usage` de l'utilisateur, avec les totaux de tokens et le coût en dollars pour la fenêtre de reporting. Signaler toute marque dont la dépense Claude Code est >2× la médiane du portefeuille pour le même niveau de forfait, comme candidate à une revue du schéma d'engagement ou à une renégociation tarifaire. Omettre entièrement ce panneau si aucune donnée d'usage n'a été fournie.
+- **File d'approbations en attente** : tous les éléments en attente d'approbation sur toutes les marques, avec description de l'élément, ancienneté en heures, propriétaire responsable, marque, niveau d'urgence, et impact estimé du retard
+- **Échéances à venir (7/14 jours)** : liste chronologique des échéances à venir avec marque, type de livrable, propriétaire responsable, jours restants, statut de dépendance, et évaluation du risque en cas de non-respect
+- **Statut du pipeline de contenu** : vue agrégée du contenu en brouillon, en revue, approuvé et planifié sur toutes les marques, avec des comptages étape par étape et l'identification des goulots d'étranglement
+- **Panneau d'alertes et d'anomalies** : baisses de performance, problèmes de rythme, campagnes bloquées, échecs de connexion MCP, identifiants expirants, ou éléments en retard nécessitant une attention immédiate — triés par sévérité
+- **Suivi des contrats et renouvellements** : renouvellements de contrat à venir, jalons d'engagement, et indicateurs de risque de rétention pour les clients approchant de leur fenêtre de renouvellement
+- **Guide d'approfondissement** : instructions pour examiner en détail un client individuel via `/digital-marketing-pro:performance-report`, `/digital-marketing-pro:client-report`, ou `/digital-marketing-pro:credential-switch` pour activer le contexte de cette marque
 
-## Agents Used
+## Agents utilisés
 
-- **agency-operations** — Portfolio aggregation, per-client health scoring, team utilization analysis, approval tracking, deadline compilation, budget pacing calculations, content pipeline aggregation, and alert detection
-- **analytics-analyst** — Metrics analysis, KPI aggregation, trend calculations, anomaly detection, performance benchmarking across the portfolio, and comparison baseline computations
+- **agency-operations** — Agrégation de portefeuille, notation de santé par client, analyse de l'utilisation de l'équipe, suivi des approbations, compilation des échéances, calculs de rythme budgétaire, agrégation du pipeline de contenu et détection d'alertes
+- **analytics-analyst** — Analyse des métriques, agrégation des KPI, calculs de tendance, détection d'anomalies, benchmarking de performance sur le portefeuille, et calculs de la référence de comparaison

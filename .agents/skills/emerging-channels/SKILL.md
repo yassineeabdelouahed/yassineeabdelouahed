@@ -1,197 +1,197 @@
 ---
 name: emerging-channels
-description: "Evaluate and plan emerging marketing channels — voice and visual search, conversational and social commerce, communities, podcasts, and video — producing channel evaluation reports with 90-day pilot plans, setup checklists, and go/no-go recommendations. Advises and plans; it does not set platforms up for you. Triggers on \"/digital-marketing-pro:emerging-channels\", \"should we open a TikTok Shop\", \"is voice search worth optimizing for\", \"plan a community launch on Discord\", \"evaluate podcast advertising for us\". Reads the brand profile and industry benchmarks, and stamps any dollar figures through the benchmark book before they enter a plan."
+description: "Évaluez et planifiez les canaux marketing émergents — recherche vocale et visuelle, commerce conversationnel et social, communautés, podcasts, et vidéo — en produisant des rapports d'évaluation de canal avec des plans pilotes sur 90 jours, des checklists de mise en place, et des recommandations go/no-go. Conseille et planifie ; ne configure pas les plateformes à votre place. Se déclenche sur « /digital-marketing-pro:emerging-channels », « devrions-nous ouvrir une TikTok Shop », « la recherche vocale vaut-elle le coup d'être optimisée », « planifie le lancement d'une communauté sur Discord », « évalue la publicité podcast pour nous ». Lit le profil de marque et les benchmarks sectoriels, et valide tout chiffre en dollars via le livre de référence avant qu'il n'entre dans un plan."
 ---
 
-# Emerging Channels
+# Canaux émergents
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** les chiffres en dollars présents dans ce document sont des estimations de planification, pas des cotations — les taux de marché et d'enchères évoluent en permanence. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, l'actualiser en direct (les tableaux de bord de plateforme et les rapports publiés récents valent mieux que la mémoire) et l'enregistrer avec `python scripts/benchmark_book.py --action record ... --source <url>` ; le citer ensuite depuis le livre de référence (`--action quote`). Ne jamais présenter un chiffre non validé comme un fait de marché actuel.
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this skill when the user's request involves any of the following:
+Activez cette compétence lorsque la demande de l'utilisateur concerne l'un des éléments suivants :
 
-- Optimizing content for voice search (Alexa, Google Assistant, Siri, smart speakers)
-- Preparing for or leveraging visual search (Google Lens, Pinterest Lens, Amazon visual search)
-- Building conversational commerce flows (WhatsApp Business, Facebook Messenger, chatbot funnels, SMS marketing)
-- Setting up or optimizing social commerce (Instagram Shopping, TikTok Shop, Pinterest Shopping, YouTube Shopping)
-- Building, growing, or managing online communities (Discord, Slack, Circle, Facebook Groups, Reddit, forums)
-- Planning podcast marketing strategy (branded podcasts, podcast advertising, guest appearances, podcast SEO)
-- Developing video marketing strategy across formats and platforms (short-form, mid-form, long-form, live)
-- Marketing on newer or underutilized platforms and channels
-- Evaluating whether an emerging channel is worth investing in for a specific business
-- Understanding platform-specific commerce features and shoppable content
-- Designing chatbot conversations and automated messaging funnels
-- Building voice applications (Alexa Skills) or surfacing brand content in current Google Assistant/Gemini experiences
-- Exploring international messaging platforms (WeChat, LINE, KakaoTalk, Telegram) for commerce
+- Optimiser le contenu pour la recherche vocale (Alexa, Google Assistant, Siri, enceintes connectées)
+- Se préparer à ou exploiter la recherche visuelle (Google Lens, Pinterest Lens, recherche visuelle Amazon)
+- Construire des flux de commerce conversationnel (WhatsApp Business, Facebook Messenger, tunnels de chatbot, marketing SMS)
+- Mettre en place ou optimiser le commerce social (Instagram Shopping, TikTok Shop, Pinterest Shopping, YouTube Shopping)
+- Construire, développer, ou gérer des communautés en ligne (Discord, Slack, Circle, groupes Facebook, Reddit, forums)
+- Planifier une stratégie de marketing podcast (podcasts de marque, publicité podcast, apparitions en invité, SEO podcast)
+- Développer une stratégie de marketing vidéo sur différents formats et plateformes (format court, format moyen, format long, en direct)
+- Faire du marketing sur des plateformes et canaux plus récents ou sous-exploités
+- Évaluer si un canal émergent mérite un investissement pour une entreprise donnée
+- Comprendre les fonctionnalités de commerce spécifiques à chaque plateforme et le contenu shoppable
+- Concevoir des conversations de chatbot et des tunnels de messagerie automatisés
+- Construire des applications vocales (Alexa Skills) ou faire apparaître du contenu de marque dans les expériences actuelles Google Assistant/Gemini
+- Explorer les plateformes de messagerie internationales (WeChat, LINE, KakaoTalk, Telegram) pour le commerce
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout contenu marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — le résumé de la marque active a été affiché au démarrage de la session. Utiliser le nom de la marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité et les concurrents indiqués.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — les niveaux de formalité, d'énergie, d'humour et d'autorité doivent façonner le ton et les choix de mots de tout le contenu
+4. **Vérifier la conformité** — appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Se référer aux benchmarks sectoriels** — consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications des plateformes** — se référer à `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, indiquer : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux procéder avec les bonnes pratiques générales. »
+9. **Vérifier les guidelines de marque** — si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les allégations restreintes et les avertissements obligatoires ; `channel-styles.md` pour les adaptations de ton propres à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les slogans et le langage de positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des 4 scores numériques. Lors de la production de contenu pour un canal spécifique, les règles de style du canal priment sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing, gather the following from the user (ask if not provided):
+Avant l'exécution, rassembler les informations suivantes auprès de l'utilisateur (demander si non fournies) :
 
-- **Business type**: B2B, B2C, D2C, local business, marketplace, SaaS
-- **Target audience**: Demographics, digital behavior, platform preferences, and purchase patterns
-- **Current channels**: Which marketing channels are already active and performing
-- **Goals**: Awareness, engagement, lead generation, direct sales, community building, or content distribution
-- **Budget and resources**: Available investment for new channel experimentation, content production capacity, and team bandwidth
-- **Product/service**: What is being sold and its purchase complexity (impulse vs considered purchase)
-- **Geography**: Target markets, as channel adoption varies significantly by region
-- **Tech stack**: Current ecommerce platform, CRM, marketing automation, and integration capabilities
-- **Risk tolerance**: Willingness to invest in unproven channels vs preference for established channels with clearer ROI
-- **Timeline**: Short-term (testing) vs long-term (building a sustained presence)
+- **Type d'entreprise** : B2B, B2C, D2C, entreprise locale, marketplace, SaaS
+- **Audience cible** : démographie, comportement numérique, préférences de plateforme, et habitudes d'achat
+- **Canaux actuels** : quels canaux marketing sont déjà actifs et performants
+- **Objectifs** : notoriété, engagement, génération de leads, ventes directes, construction de communauté, ou distribution de contenu
+- **Budget et ressources** : investissement disponible pour l'expérimentation de nouveaux canaux, capacité de production de contenu, et disponibilité de l'équipe
+- **Produit/service** : ce qui est vendu et sa complexité d'achat (achat impulsif vs achat réfléchi)
+- **Géographie** : marchés cibles, car l'adoption des canaux varie fortement selon les régions
+- **Stack technique** : plateforme e-commerce actuelle, CRM, automatisation marketing, et capacités d'intégration
+- **Tolérance au risque** : volonté d'investir dans des canaux non éprouvés vs préférence pour des canaux établis avec un ROI plus clair
+- **Calendrier** : court terme (test) vs long terme (construction d'une présence durable)
 
-## Capabilities
+## Capacités
 
-### Voice Search Optimization
-- **Query pattern analysis**: Voice queries are longer, more conversational, and more question-based than typed queries. Optimize for natural language patterns ("What's the best Italian restaurant near me" vs "Italian restaurant NYC")
-- **Content structure for voice**: Featured snippet optimization, FAQ schema markup, concise answer paragraphs (40-60 words for Google's spoken responses), and position zero targeting
-- **Speakable schema markup**: Implementing structured data that identifies sections of content suitable for text-to-speech playback by voice assistants
-- **Local voice search**: "Near me" query optimization, Google Business Profile completeness, local schema markup, and review volume/recency
-- **Voice commerce**: Voice-initiated purchasing flows, reorder by voice, voice-exclusive promotions, and integration with Amazon Alexa shopping
-- **Voice app development**: When to build Alexa Skills, use cases (brand utilities, content delivery, customer service), and discovery optimization. Google sunset its conversational-actions platform in June 2023 — reach Google Assistant/Gemini users through well-structured web content and schema markup instead of a standalone voice app
+### Optimisation pour la recherche vocale
+- **Analyse des schémas de requête** : les requêtes vocales sont plus longues, plus conversationnelles, et davantage basées sur des questions que les requêtes tapées. Optimiser pour des schémas de langage naturel (« quel est le meilleur restaurant italien près de moi » vs « restaurant italien Paris »)
+- **Structure du contenu pour la voix** : optimisation des extraits en vedette (featured snippets), balisage schema FAQ, paragraphes de réponse concis (40-60 mots pour les réponses orales de Google), et ciblage de la position zéro
+- **Balisage schema « speakable »** : mise en œuvre de données structurées identifiant les sections de contenu adaptées à la lecture texte-vers-parole par les assistants vocaux
+- **Recherche vocale locale** : optimisation des requêtes « près de moi », exhaustivité de la fiche Google Business Profile, balisage schema local, et volume/fraîcheur des avis
+- **Commerce vocal** : tunnels d'achat initiés par la voix, recommande de commande vocale, promotions exclusives à la voix, et intégration avec les achats Amazon Alexa
+- **Développement d'applications vocales** : quand construire des Alexa Skills, cas d'usage (utilitaires de marque, diffusion de contenu, service client), et optimisation de la découvrabilité. Google a mis fin à sa plateforme conversational-actions en juin 2023 — atteindre les utilisateurs de Google Assistant/Gemini via du contenu web bien structuré et du balisage schema plutôt que par une application vocale autonome
 
-### Visual Search
-- **Image optimization for search**: Descriptive file names, comprehensive alt text, high-quality images from multiple angles, and consistent image sizing
-- **Google Lens optimization**: Product images that are easily identifiable by visual recognition, unique product design elements, and schema markup for products
-- **Pinterest Lens strategy**: Lifestyle imagery, shoppable pins, visual similarity to trending Pinterest content, and Pinterest SEO
-- **Structured data for visual search**: Product schema, image schema, and video schema that help search engines understand visual content
-- **Visual search commerce**: Enabling "search by photo" on ecommerce sites, visual similarity recommendations, and AR try-on features
-- **Platform-specific visual search**: Amazon visual search, ASOS Style Match, and retailer-specific visual search capabilities
+### Recherche visuelle
+- **Optimisation des images pour la recherche** : noms de fichiers descriptifs, texte alternatif complet, images de haute qualité sous plusieurs angles, et dimensionnement d'image cohérent
+- **Optimisation Google Lens** : images produit facilement identifiables par reconnaissance visuelle, éléments de design produit uniques, et balisage schema pour les produits
+- **Stratégie Pinterest Lens** : imagerie d'ambiance, épingles shoppables, similarité visuelle avec le contenu Pinterest tendance, et SEO Pinterest
+- **Données structurées pour la recherche visuelle** : schema produit, schema image, et schema vidéo qui aident les moteurs de recherche à comprendre le contenu visuel
+- **Commerce par recherche visuelle** : activer la « recherche par photo » sur les sites e-commerce, recommandations par similarité visuelle, et fonctionnalités d'essayage en réalité augmentée
+- **Recherche visuelle spécifique à chaque plateforme** : recherche visuelle Amazon, ASOS Style Match, et capacités de recherche visuelle propres à chaque enseigne
 
-### Conversational Commerce
-- **WhatsApp Business**: Catalog setup, automated greetings, quick replies, broadcast lists, WhatsApp Business API for scale, and click-to-WhatsApp ads
-- **Chatbot funnels**: Lead qualification bots, product recommendation bots, customer support bots, appointment booking bots, and cart recovery bots
-- **Conversation design**: Writing chatbot scripts that feel natural, handling edge cases gracefully, knowing when to escalate to human agents, and maintaining brand voice in automated interactions
-- **SMS marketing**: Opt-in compliance (TCPA), message frequency optimization, promotional vs transactional messages, segmentation, and two-way SMS conversations
-- **Messenger marketing**: Facebook Messenger bots, sponsored messages, recurring notifications, and integration with Meta ad campaigns
-- **International messaging platforms**: WeChat Official Accounts and Mini Programs (China), LINE Official Accounts (Japan/SE Asia), KakaoTalk Channels (Korea), Telegram Bots (Eastern Europe/Middle East)
-- **Conversational AI**: Using LLMs for more natural chat interactions, hybrid AI-human support models, and training conversational AI on brand knowledge bases
+### Commerce conversationnel
+- **WhatsApp Business** : mise en place du catalogue, messages d'accueil automatisés, réponses rapides, listes de diffusion, WhatsApp Business API pour la montée en charge, et publicités click-to-WhatsApp
+- **Tunnels de chatbot** : bots de qualification de leads, bots de recommandation produit, bots de support client, bots de prise de rendez-vous, et bots de récupération de panier
+- **Conception de conversation** : rédiger des scripts de chatbot naturels, gérer les cas limites avec élégance, savoir quand escalader vers un agent humain, et maintenir la voix de marque dans les interactions automatisées
+- **Marketing SMS** : conformité de l'opt-in (TCPA), optimisation de la fréquence des messages, messages promotionnels vs transactionnels, segmentation, et conversations SMS bidirectionnelles
+- **Marketing Messenger** : bots Facebook Messenger, messages sponsorisés, notifications récurrentes, et intégration avec les campagnes publicitaires Meta
+- **Plateformes de messagerie internationales** : comptes officiels et Mini Programs WeChat (Chine), comptes officiels LINE (Japon/Asie du Sud-Est), canaux KakaoTalk (Corée), bots Telegram (Europe de l'Est/Moyen-Orient)
+- **IA conversationnelle** : utiliser des LLM pour des interactions de chat plus naturelles, des modèles de support hybrides IA-humain, et entraîner l'IA conversationnelle sur les bases de connaissances de la marque
 
-### Social Commerce
-- **Instagram Shopping**: Shop setup, product tagging in posts/Stories/Reels, live shopping, Shopping from Creators, and checkout optimization
-- **TikTok Shop**: Product listing, affiliate marketplace, live shopping events, shoppable videos, and TikTok Shop Ads integration
-- **Pinterest Shopping**: Product pins, catalog integration, shopping Ads, and Pinterest's visual discovery to purchase pipeline
-- **YouTube Shopping**: Product shelves, shopping tags in videos, live shopping, and Shorts shopping integration
-- **Social storefront optimization**: Product descriptions for social context (different from website), social-first imagery, pricing strategy for social buyers
-- **Live shopping**: Platform selection, host preparation, production requirements, engagement tactics, and conversion optimization for real-time selling
-- **Shoppable content strategy**: Integrating commerce into organic content without making every post a sales pitch; editorial-to-commerce ratio guidance
+### Commerce social
+- **Instagram Shopping** : mise en place de la boutique, tag produit dans les posts/Stories/Reels, live shopping, Shopping from Creators, et optimisation du paiement
+- **TikTok Shop** : référencement de produits, marketplace d'affiliation, événements de live shopping, vidéos shoppables, et intégration TikTok Shop Ads
+- **Pinterest Shopping** : épingles produit, intégration de catalogue, Shopping Ads, et pipeline de découverte visuelle vers l'achat de Pinterest
+- **YouTube Shopping** : étagères produit, tags shopping dans les vidéos, live shopping, et intégration shopping dans les Shorts
+- **Optimisation de la vitrine sociale** : descriptions de produit adaptées au contexte social (différentes du site web), imagerie social-first, stratégie de prix pour les acheteurs sociaux
+- **Live shopping** : sélection de la plateforme, préparation de l'animateur, exigences de production, tactiques d'engagement, et optimisation de la conversion pour la vente en temps réel
+- **Stratégie de contenu shoppable** : intégrer le commerce dans le contenu organique sans transformer chaque post en argumentaire de vente ; consignes sur le ratio éditorial/commerce
 
-### Community Building
-- **Platform selection**: Discord (real-time, younger demographics, gaming/tech), Slack (professional, B2B), Circle (course/membership), Facebook Groups (broad demographics, easy onboarding), Reddit (niche interests, authenticity-focused), brand-owned forums (full control, SEO benefits)
-- **Community health metrics**: Daily/weekly/monthly active members, post frequency, response rate, member-to-member interactions (not just brand-to-member), retention rate, and NPS
-- **Growth flywheel**: Content attracts members, members create content, content attracts more members. Design the initial content and engagement loops that start this flywheel
-- **Moderation strategy**: Community guidelines, moderation team structure (paid moderators, volunteer mods, AI moderation), escalation procedures, and transparency in enforcement
-- **Community-led growth**: Using community as a top-of-funnel acquisition channel, community members as beta testers and product advisors, and community content as marketing content
-- **Monetization**: When and how to monetize (premium tiers, events, courses, marketplace), without destroying community culture
-- **Community manager role**: Skills needed, time commitment, empowerment level, and integration with marketing and product teams
+### Construction de communauté
+- **Sélection de la plateforme** : Discord (temps réel, démographie plus jeune, gaming/tech), Slack (professionnel, B2B), Circle (formation/adhésion), groupes Facebook (démographie large, onboarding facile), Reddit (centres d'intérêt de niche, axé sur l'authenticité), forums de marque en propre (contrôle total, avantages SEO)
+- **Métriques de santé de la communauté** : membres actifs quotidiens/hebdomadaires/mensuels, fréquence des publications, taux de réponse, interactions membre-à-membre (pas seulement marque-à-membre), taux de rétention, et NPS
+- **Volant de croissance (flywheel)** : le contenu attire des membres, les membres créent du contenu, le contenu attire davantage de membres. Concevoir le contenu initial et les boucles d'engagement qui amorcent ce volant
+- **Stratégie de modération** : consignes communautaires, structure de l'équipe de modération (modérateurs rémunérés, modérateurs bénévoles, modération IA), procédures d'escalade, et transparence dans l'application des règles
+- **Croissance portée par la communauté** : utiliser la communauté comme canal d'acquisition en haut de tunnel, les membres de la communauté comme bêta-testeurs et conseillers produit, et le contenu communautaire comme contenu marketing
+- **Monétisation** : quand et comment monétiser (niveaux premium, événements, formations, marketplace), sans détruire la culture communautaire
+- **Rôle du community manager** : compétences requises, disponibilité, niveau d'autonomie, et intégration avec les équipes marketing et produit
 
-### Podcast Marketing
-- **Branded podcast strategy**: When to create a branded podcast (thought leadership, audience building, customer education), format selection (interview, narrative, solo commentary, panel), and production quality tiers
-- **Podcast advertising**: Host-read vs programmatic ads, CPM benchmarks ($18-50 for host-read mid-roll), frequency and reach planning, and attribution methods (vanity URLs, promo codes, pixel-based)
-- **Guest appearance strategy**: Identifying target podcasts, crafting pitches, preparing talking points, and maximizing each appearance with social promotion and backlinks
-- **Podcast SEO**: Show titles, episode titles, show notes optimization, transcript publishing, and distribution across platforms (Apple, Spotify, YouTube, Google)
-- **Podcast-to-content pipeline**: Repurposing podcast episodes into blog posts, social clips, email content, and video snippets to maximize ROI from each recording
-- **Measurement and attribution**: Downloads, listens, completion rates, subscriber growth, and tying podcast exposure to website traffic and conversions
+### Marketing podcast
+- **Stratégie de podcast de marque** : quand créer un podcast de marque (leadership éclairé, construction d'audience, éducation client), sélection du format (interview, narratif, commentaire solo, panel), et niveaux de qualité de production
+- **Publicité podcast** : publicités lues par l'animateur vs programmatiques, benchmarks CPM (18-50 $ pour un mid-roll lu par l'animateur), planification de fréquence et de portée, et méthodes d'attribution (URL vanity, codes promo, pixel)
+- **Stratégie d'apparition en invité** : identifier les podcasts cibles, rédiger des pitchs, préparer des points de discussion, et maximiser chaque apparition avec de la promotion sociale et des backlinks
+- **SEO podcast** : titres d'émission, titres d'épisode, optimisation des notes d'épisode, publication de transcriptions, et distribution multi-plateforme (Apple, Spotify, YouTube, Google)
+- **Pipeline podcast vers contenu** : recycler les épisodes de podcast en articles de blog, extraits sociaux, contenu email, et extraits vidéo pour maximiser le ROI de chaque enregistrement
+- **Mesure et attribution** : téléchargements, écoutes, taux de complétion, croissance des abonnés, et lien entre l'exposition podcast et le trafic web/les conversions
 
-### Video Marketing
-- **Short-form strategy (under 60 seconds)**: TikTok, Instagram Reels, YouTube Shorts. Hook in first 1-3 seconds, native platform aesthetics, trending audio/formats, high-volume posting cadence (3-7x per week)
-- **Mid-form strategy (1-10 minutes)**: Instagram, Facebook, LinkedIn, TikTok. Educational content, product demos, behind-the-scenes, and story-driven content
-- **Long-form strategy (10+ minutes)**: YouTube, webinars, course content. Deep-dive tutorials, interviews, documentaries, and thought leadership. YouTube algorithm favors watch time, making longer content advantageous when retention is maintained
-- **Production tiers**: Lo-fi (smartphone, natural lighting, minimal editing -- authentic feel), mid-fi (basic lighting, external mic, simple graphics), and hi-fi (professional production, scripted, studio)
-- **Video SEO**: YouTube title and description optimization, tags, thumbnails (CTR optimization), chapters, cards, end screens, and embedding strategy for website SEO
-- **Live video**: Platform selection (YouTube Live, Instagram Live, TikTok Live, LinkedIn Live, Twitch), preparation checklist, engagement tactics, and repurposing live content
-- **Video distribution**: Platform-native uploads vs cross-posting, platform-specific optimization (aspect ratios, captions, lengths), and distribution scheduling
+### Marketing vidéo
+- **Stratégie format court (moins de 60 secondes)** : TikTok, Instagram Reels, YouTube Shorts. Accroche dans les 1-3 premières secondes, esthétique native à la plateforme, audios/formats tendance, cadence de publication élevée (3-7x par semaine)
+- **Stratégie format moyen (1-10 minutes)** : Instagram, Facebook, LinkedIn, TikTok. Contenu éducatif, démos produit, coulisses, et contenu narratif
+- **Stratégie format long (10+ minutes)** : YouTube, webinaires, contenu de formation. Tutoriels approfondis, interviews, documentaires, et leadership éclairé. L'algorithme YouTube favorise le temps de visionnage, ce qui avantage le contenu plus long lorsque la rétention est maintenue
+- **Niveaux de production** : lo-fi (smartphone, lumière naturelle, montage minimal — sensation authentique), mid-fi (éclairage basique, micro externe, graphismes simples), et hi-fi (production professionnelle, scriptée, studio)
+- **SEO vidéo** : optimisation du titre et de la description YouTube, tags, miniatures (optimisation du CTR), chapitres, cartes, écrans de fin, et stratégie d'intégration pour le SEO du site web
+- **Vidéo en direct** : sélection de la plateforme (YouTube Live, Instagram Live, TikTok Live, LinkedIn Live, Twitch), checklist de préparation, tactiques d'engagement, et recyclage du contenu en direct
+- **Distribution vidéo** : téléversements natifs à la plateforme vs republication croisée, optimisation spécifique à chaque plateforme (formats d'image, sous-titres, durées), et planification de la distribution
 
-## Process
+## Processus
 
-### New Channel Evaluation (Most Common Use Case)
+### Évaluation d'un nouveau canal (cas d'usage le plus courant)
 
-1. **Audience validation** -- Confirm the target audience is active on the channel in question. Check platform demographics, usage data, and competitor presence. Do not invest in a channel because it is trendy; invest because the audience is there.
-2. **Competitive landscape** -- Analyze what competitors and adjacent brands are doing on the channel. Identify gaps and opportunities. Determine if there is a first-mover advantage or if the channel is already saturated.
-3. **Resource assessment** -- Determine the minimum viable investment (time, budget, content production) required to test the channel meaningfully. Most emerging channels require consistent effort over 3-6 months before yielding reliable data.
-4. **Pilot design** -- Create a 90-day pilot plan with specific content cadence, engagement strategy, and success metrics. Define what "success" looks like at the end of the pilot to make a continue/stop/scale decision.
-5. **Content strategy** -- Develop channel-specific content that respects platform norms and user expectations. Repurpose existing content where possible, but always adapt to the platform format rather than cross-posting identical content.
-6. **Measurement framework** -- Set up tracking for both leading indicators (followers, engagement, reach) and lagging indicators (website traffic, leads, sales) attributed to the channel.
-7. **Execute and learn** -- Run the pilot, document what works and what doesn't, adjust the strategy based on data, and make the continue/stop/scale decision at the end of the pilot period.
-8. **Scale or sunset** -- If the pilot succeeds, build a sustained strategy with increased resources. If it fails, document the learnings, sunset the effort, and redirect resources.
+1. **Validation de l'audience** — confirmer que l'audience cible est active sur le canal en question. Vérifier les données démographiques de la plateforme, les données d'usage, et la présence des concurrents. Ne pas investir dans un canal parce qu'il est tendance ; investir parce que l'audience s'y trouve.
+2. **Paysage concurrentiel** — analyser ce que font les concurrents et les marques adjacentes sur le canal. Identifier les écarts et les opportunités. Déterminer s'il existe un avantage de premier arrivant ou si le canal est déjà saturé.
+3. **Évaluation des ressources** — déterminer l'investissement minimum viable (temps, budget, production de contenu) requis pour tester le canal de façon significative. La plupart des canaux émergents nécessitent un effort constant sur 3 à 6 mois avant de fournir des données fiables.
+4. **Conception du pilote** — créer un plan pilote sur 90 jours avec une cadence de contenu précise, une stratégie d'engagement, et des métriques de succès. Définir à quoi ressemble le « succès » à la fin du pilote pour prendre une décision continuer/arrêter/passer à l'échelle.
+5. **Stratégie de contenu** — développer du contenu spécifique au canal qui respecte les normes de la plateforme et les attentes des utilisateurs. Recycler le contenu existant lorsque possible, mais toujours l'adapter au format de la plateforme plutôt que de republier le contenu identique.
+6. **Cadre de mesure** — mettre en place le suivi des indicateurs avancés (abonnés, engagement, portée) et des indicateurs retardés (trafic web, leads, ventes) attribués au canal.
+7. **Exécuter et apprendre** — mener le pilote, documenter ce qui fonctionne et ce qui ne fonctionne pas, ajuster la stratégie selon les données, et prendre la décision continuer/arrêter/passer à l'échelle à la fin de la période pilote.
+8. **Passer à l'échelle ou arrêter** — si le pilote réussit, construire une stratégie durable avec des ressources accrues. S'il échoue, documenter les enseignements, arrêter l'effort, et rediriger les ressources.
 
-### Social Commerce Setup
+### Mise en place du commerce social
 
-1. **Platform selection** -- Choose the social commerce platform(s) based on audience presence, product type, and technical requirements. Visual products thrive on Instagram and Pinterest. Trend-driven products thrive on TikTok. Considered purchases benefit from YouTube.
-2. **Storefront setup** -- Configure the platform's shopping features: product catalog upload, collection organization, shipping and return policies, and payment integration.
-3. **Product content optimization** -- Create product listings optimized for social context. Social product descriptions should be shorter, more conversational, and benefit-focused compared to website listings. Product images should match the platform's visual style.
-4. **Shoppable content strategy** -- Plan the content calendar with a mix of shoppable and non-shoppable content. Aim for a ratio where no more than 30-40% of content is directly shoppable to avoid audience fatigue.
-5. **Live shopping integration** -- If applicable, plan live shopping events with hosts, products, and promotional cadence. Schedule during peak audience activity hours.
-6. **Measurement setup** -- Configure platform analytics, UTM tracking for external attribution, and revenue tracking per platform and content type.
+1. **Sélection de la plateforme** — choisir la ou les plateformes de commerce social en fonction de la présence de l'audience, du type de produit, et des exigences techniques. Les produits visuels prospèrent sur Instagram et Pinterest. Les produits portés par les tendances prospèrent sur TikTok. Les achats réfléchis bénéficient de YouTube.
+2. **Mise en place de la vitrine** — configurer les fonctionnalités shopping de la plateforme : téléversement du catalogue produit, organisation des collections, politiques de livraison et de retour, et intégration des paiements.
+3. **Optimisation du contenu produit** — créer des fiches produit optimisées pour le contexte social. Les descriptions produit sociales doivent être plus courtes, plus conversationnelles, et axées sur les bénéfices par rapport aux fiches du site web. Les images produit doivent correspondre au style visuel de la plateforme.
+4. **Stratégie de contenu shoppable** — planifier le calendrier de contenu avec un mélange de contenu shoppable et non-shoppable. Viser un ratio où pas plus de 30-40 % du contenu est directement shoppable pour éviter la lassitude de l'audience.
+5. **Intégration du live shopping** — le cas échéant, planifier des événements de live shopping avec animateurs, produits, et cadence promotionnelle. Programmer pendant les heures de pointe d'activité de l'audience.
+6. **Mise en place de la mesure** — configurer les analytics de la plateforme, le suivi UTM pour l'attribution externe, et le suivi du chiffre d'affaires par plateforme et type de contenu.
 
-## Reference Files
+## Fichiers de référence
 
-- `voice-search.md` -- Voice query patterns, content optimization tactics, speakable schema implementation, and voice commerce integration guides
-- `visual-search.md` -- Image optimization checklists, visual search platform guides, structured data templates, and visual commerce implementation
-- `conversational-commerce.md` -- WhatsApp Business setup, chatbot design frameworks, SMS compliance guides, and conversation flow templates
-- `social-commerce.md` -- Platform-by-platform setup guides, product listing optimization, live shopping playbooks, and social storefront best practices
-- `community-building.md` -- Platform selection matrices, community launch playbooks, moderation frameworks, health metric dashboards, and growth strategies
-- `podcast-marketing.md` -- Branded podcast launch guide, advertising rate benchmarks, guest pitching templates, and podcast SEO checklists
-- `video-marketing.md` -- Format-by-platform guides, production tier specifications, video SEO checklists, and distribution strategy frameworks
-- `web3-decentralized.md` -- Blockchain-based marketing, tokenized loyalty programs, NFT utility campaigns, decentralized social platforms, DAO marketing, and Web3 measurement frameworks
-- `ai-marketing-tools.md` -- AI marketing tool landscape, use-case selection, workflow integration, disclosure requirements, and AI content quality assurance
+- `voice-search.md` — schémas de requête vocale, tactiques d'optimisation de contenu, mise en œuvre du schema speakable, et guides d'intégration du commerce vocal
+- `visual-search.md` — checklists d'optimisation d'image, guides des plateformes de recherche visuelle, modèles de données structurées, et mise en œuvre du commerce visuel
+- `conversational-commerce.md` — mise en place de WhatsApp Business, cadres de conception de chatbot, guides de conformité SMS, et modèles de flux de conversation
+- `social-commerce.md` — guides de mise en place plateforme par plateforme, optimisation des fiches produit, playbooks de live shopping, et bonnes pratiques de vitrine sociale
+- `community-building.md` — matrices de sélection de plateforme, playbooks de lancement de communauté, cadres de modération, tableaux de bord de métriques de santé, et stratégies de croissance
+- `podcast-marketing.md` — guide de lancement de podcast de marque, benchmarks de tarifs publicitaires, modèles de pitch pour invités, et checklists de SEO podcast
+- `video-marketing.md` — guides format par plateforme, spécifications des niveaux de production, checklists de SEO vidéo, et cadres de stratégie de distribution
+- `web3-decentralized.md` — marketing basé sur la blockchain, programmes de fidélité tokenisés, campagnes d'utilité NFT, plateformes sociales décentralisées, marketing DAO, et cadres de mesure Web3
+- `ai-marketing-tools.md` — paysage des outils marketing IA, sélection de cas d'usage, intégration au workflow, exigences de divulgation, et assurance qualité du contenu IA
 
-## Output Formats
+## Formats de sortie
 
-- **Channel evaluation report**: Audience fit assessment, competitive analysis, resource requirements, 90-day pilot plan, success metrics, and go/no-go recommendation
-- **Social commerce plan**: Platform selection rationale, storefront setup checklist, content strategy, live shopping calendar, and revenue projections
-- **Conversational commerce flow**: Chatbot conversation map, message templates, escalation rules, and integration specifications
-- **Community launch plan**: Platform selection, launch timeline, initial content plan, moderation guidelines, growth milestones, and health metrics dashboard
-- **Podcast strategy**: Format recommendation, content calendar, production specifications, distribution plan, and measurement framework
-- **Video content plan**: Platform-specific content calendar, production specifications per format, SEO optimization checklist, and distribution schedule
-- **Voice/visual search audit**: Current optimization status, gap analysis, implementation roadmap, and expected impact
+- **Rapport d'évaluation de canal** : évaluation de l'adéquation avec l'audience, analyse concurrentielle, besoins en ressources, plan pilote sur 90 jours, métriques de succès, et recommandation go/no-go
+- **Plan de commerce social** : justification du choix de plateforme, checklist de mise en place de la vitrine, stratégie de contenu, calendrier de live shopping, et projections de chiffre d'affaires
+- **Flux de commerce conversationnel** : carte de conversation du chatbot, modèles de messages, règles d'escalade, et spécifications d'intégration
+- **Plan de lancement de communauté** : sélection de plateforme, calendrier de lancement, plan de contenu initial, consignes de modération, jalons de croissance, et tableau de bord des métriques de santé
+- **Stratégie podcast** : recommandation de format, calendrier de contenu, spécifications de production, plan de distribution, et cadre de mesure
+- **Plan de contenu vidéo** : calendrier de contenu spécifique à chaque plateforme, spécifications de production par format, checklist d'optimisation SEO, et calendrier de distribution
+- **Audit recherche vocale/visuelle** : statut d'optimisation actuel, analyse des écarts, feuille de route de mise en œuvre, et impact attendu
 
-## Edge Cases
+## Cas particuliers
 
-### Platform-Restricted Industries
-Cannabis, CBD, firearms, adult products, and certain pharmaceutical products cannot advertise on most platforms and face restrictions on social commerce features. For these industries, focus on owned channels (website, email, SMS with compliance), community building on platforms that permit the category, SEO and content marketing, and compliant influencer partnerships. Always verify current platform policies as they change frequently.
+### Secteurs restreints sur les plateformes
+Le cannabis, le CBD, les armes à feu, les produits pour adultes, et certains produits pharmaceutiques ne peuvent pas faire de publicité sur la plupart des plateformes et font face à des restrictions sur les fonctionnalités de commerce social. Pour ces secteurs, se concentrer sur les canaux détenus (site web, email, SMS en conformité), la construction de communauté sur les plateformes qui autorisent la catégorie, le SEO et le marketing de contenu, et les partenariats d'influenceurs conformes. Toujours vérifier les politiques actuelles des plateformes car elles changent fréquemment.
 
-### B2B Community Building
-B2B communities operate differently from B2C. Members join for professional development, networking, and problem-solving rather than brand fandom. Slack and LinkedIn Groups tend to outperform Discord for B2B. Content should be practitioner-focused, not promotional. The community must deliver professional value independent of the product. Moderation is typically lighter but quality standards are higher.
+### Construction de communauté B2B
+Les communautés B2B fonctionnent différemment des communautés B2C. Les membres rejoignent pour le développement professionnel, le réseautage, et la résolution de problèmes plutôt que pour l'engouement envers la marque. Slack et les groupes LinkedIn tendent à surperformer Discord pour le B2B. Le contenu doit être orienté praticien, pas promotionnel. La communauté doit apporter une valeur professionnelle indépendante du produit. La modération est généralement plus légère mais les standards de qualité sont plus élevés.
 
-### Podcast Measurement Limitations
-Podcast attribution remains challenging. Downloads do not equal listens. Listener demographics are estimated, not measured. Cross-device tracking is unreliable. Mitigate by using unique promo codes, vanity URLs, and post-purchase surveys ("How did you hear about us?"). Accept that podcast marketing is often a brand/awareness investment with indirect attribution. Do not hold podcasts to the same direct-response metrics as paid search.
+### Limites de la mesure des podcasts
+L'attribution des podcasts reste difficile. Les téléchargements n'équivalent pas aux écoutes. La démographie des auditeurs est estimée, pas mesurée. Le suivi cross-device n'est pas fiable. Atténuer cela en utilisant des codes promo uniques, des URL vanity, et des enquêtes post-achat (« Comment avez-vous entendu parler de nous ? »). Accepter que le marketing podcast est souvent un investissement de notoriété/marque avec une attribution indirecte. Ne pas soumettre les podcasts aux mêmes métriques de réponse directe que la recherche payante.
 
-### Voice Search for Non-English Languages
-Voice search optimization for non-English languages requires language-specific considerations. Natural language patterns, question structures, and colloquial expressions vary by language and dialect. Schema markup should use hreflang tags and language-specific structured data. Voice assistant capabilities and market penetration vary by language and region (Google Assistant vs Alexa vs Siri market share differs significantly by country).
+### Recherche vocale pour les langues non anglophones
+L'optimisation de la recherche vocale pour les langues non anglophones nécessite des considérations spécifiques à chaque langue. Les schémas de langage naturel, les structures de questions, et les expressions familières varient selon la langue et le dialecte. Le balisage schema doit utiliser des balises hreflang et des données structurées spécifiques à la langue. Les capacités des assistants vocaux et leur pénétration de marché varient selon la langue et la région (la part de marché de Google Assistant vs Alexa vs Siri diffère fortement selon les pays).
 
-### Social Commerce in Non-US Markets
-In China, WeChat Mini Programs and Douyin (Chinese TikTok) dominate social commerce with capabilities far beyond Western platforms. In Southeast Asia, LINE and Shopee Live are major channels. In Korea, KakaoTalk commerce is significant. Do not assume Instagram and TikTok Shop are the default everywhere. Research market-specific platforms and behaviors before building a social commerce strategy for international markets.
+### Commerce social dans les marchés hors États-Unis
+En Chine, les Mini Programs WeChat et Douyin (le TikTok chinois) dominent le commerce social avec des capacités bien au-delà des plateformes occidentales. En Asie du Sud-Est, LINE et Shopee Live sont des canaux majeurs. En Corée, le commerce KakaoTalk est significatif. Ne pas supposer qu'Instagram et TikTok Shop sont la référence partout. Rechercher les plateformes et comportements spécifiques à chaque marché avant de construire une stratégie de commerce social pour les marchés internationaux.
 
-### Community Toxicity Management
-Even well-managed communities face toxicity challenges. Build clear community guidelines before launching, not after problems arise. Implement graduated enforcement (warning, temporary mute, temporary ban, permanent ban). Use AI moderation for first-pass filtering combined with human review for context-dependent decisions. Establish an appeals process. Document and respond to patterns (coordinated harassment, hate speech, misinformation) with transparent policy enforcement. Burnout among community managers is a real risk; plan for adequate staffing and rotation.
+### Gestion de la toxicité communautaire
+Même les communautés bien gérées font face à des défis de toxicité. Construire des consignes communautaires claires avant le lancement, pas après l'apparition de problèmes. Mettre en œuvre une application graduée des règles (avertissement, mise en sourdine temporaire, bannissement temporaire, bannissement permanent). Utiliser la modération IA pour un premier filtrage combiné à une revue humaine pour les décisions dépendant du contexte. Établir un processus d'appel. Documenter et répondre aux schémas récurrents (harcèlement coordonné, discours haineux, désinformation) avec une application transparente des politiques. L'épuisement des community managers est un risque réel ; prévoir un effectif adéquat et une rotation.
 
-## Related Skills
+## Compétences associées
 
-- **SEO** -- Voice search and visual search overlap with organic search optimization strategies
-- **Paid Advertising** -- Social commerce ad integrations, TikTok Shop Ads, and click-to-message ad formats
-- **Content Engine** -- Content creation for video, podcast, and community channels
-- **Influencer & Creator Marketing** -- Creator partnerships for social commerce, podcast guesting, and community seeding
-- **Growth Engineering** -- Community-led growth, viral loops through social features, and referral amplification
-- **CRO** -- Conversion optimization for social storefronts, chatbot funnels, and voice commerce flows
-- **Analytics & Insights** -- Measurement and attribution for emerging channels with limited native analytics
+- **SEO** — la recherche vocale et la recherche visuelle recoupent les stratégies d'optimisation pour la recherche organique
+- **Paid Advertising** — intégrations publicitaires de commerce social, TikTok Shop Ads, et formats publicitaires click-to-message
+- **Content Engine** — création de contenu pour les canaux vidéo, podcast, et communauté
+- **Influencer & Creator Marketing** — partenariats créateurs pour le commerce social, l'invitation en podcast, et l'amorçage de communauté
+- **Growth Engineering** — croissance portée par la communauté, boucles virales via les fonctionnalités sociales, et amplification par parrainage
+- **CRO** — optimisation de la conversion pour les vitrines sociales, les tunnels de chatbot, et les flux de commerce vocal
+- **Analytics & Insights** — mesure et attribution pour les canaux émergents disposant d'analytics natifs limités
 
-## Agents Used
+## Agents utilisés
 
-- **social-media-manager** — Platform-native social commerce strategy, community management, content calendar planning, social listening, UGC curation, and cross-platform engagement optimization
+- **social-media-manager** — stratégie de commerce social native à la plateforme, gestion de communauté, planification de calendrier de contenu, veille sociale, curation de contenu généré par les utilisateurs, et optimisation de l'engagement cross-plateforme

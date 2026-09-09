@@ -1,210 +1,210 @@
-# LinkedIn Ads — B2B Advertising Reference
+# LinkedIn Ads — Référence publicité B2B
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Campaign Types Overview
+## Vue d'ensemble des types de campagnes
 
-| Campaign Type | Objective Fit | Format | Avg CPC | Best For |
+| Type de campagne | Adéquation à l'objectif | Format | CPC moyen | Idéal pour |
 |---|---|---|---|---|
-| Sponsored Content (Single Image) | Awareness, Leads, Web Visits | In-feed image + copy | $5–$12 | Thought leadership, content promotion |
-| Sponsored Content (Video) | Awareness, Engagement | In-feed video | $0.06–$0.15 (CPV) | Brand storytelling, product demos |
-| Sponsored Content (Carousel) | Engagement, Consideration | Multi-card swipeable | $4–$10 | Multi-feature showcase, case studies |
-| Document Ads | Lead Gen, Engagement | In-feed downloadable doc | $4–$10 | Whitepapers, reports, guides |
-| Message Ads (InMail) | Lead Gen, Event Promotion | Direct message | $0.30–$1.00 (per send) | High-value offers, event invites |
-| Conversation Ads | Lead Gen | Interactive message tree | $0.30–$1.00 (per send) | Multi-path CTAs, qualification flows |
-| Lead Gen Forms | Lead Capture | Native form overlay | $5–$15 | Gated content, demo requests |
-| Dynamic Ads (Follower) | Page Growth | Right rail, personalized | $3–$7 | Company page follower acquisition |
-| Dynamic Ads (Spotlight) | Traffic, Conversion | Right rail, personalized | $3–$7 | Personalized CTAs, job postings |
-| Text Ads | Traffic | Right rail, small format | $2–$5 | Low-budget awareness, remarketing supplement |
+| Sponsored Content (image unique) | Notoriété, leads, visites du site | Image in-feed + texte | 5–12 $ | Leadership éclairé, promotion de contenu |
+| Sponsored Content (vidéo) | Notoriété, engagement | Vidéo in-feed | 0,06–0,15 $ (CPV) | Storytelling de marque, démos produit |
+| Sponsored Content (carrousel) | Engagement, considération | Multi-cartes défilables | 4–10 $ | Vitrine multi-fonctionnalités, études de cas |
+| Document Ads | Génération de leads, engagement | Document téléchargeable in-feed | 4–10 $ | Livres blancs, rapports, guides |
+| Message Ads (InMail) | Génération de leads, promotion d'événement | Message direct | 0,30–1,00 $ (par envoi) | Offres à haute valeur, invitations à des événements |
+| Conversation Ads | Génération de leads | Arbre de messages interactif | 0,30–1,00 $ (par envoi) | CTA multi-chemins, parcours de qualification |
+| Lead Gen Forms | Capture de leads | Overlay de formulaire natif | 5–15 $ | Contenu réservé, demandes de démo |
+| Dynamic Ads (Follower) | Croissance de la page | Colonne de droite, personnalisé | 3–7 $ | Acquisition d'abonnés de page entreprise |
+| Dynamic Ads (Spotlight) | Trafic, conversion | Colonne de droite, personnalisé | 3–7 $ | CTA personnalisés, offres d'emploi |
+| Text Ads | Trafic | Colonne de droite, petit format | 2–5 $ | Notoriété à petit budget, complément de remarketing |
 
-## Targeting Deep-Dive
+## Approfondissement du ciblage
 
-### Professional Targeting Dimensions
+### Dimensions de ciblage professionnel
 
-| Dimension | Targeting Options | Quality Rating | Notes |
+| Dimension | Options de ciblage | Notation de qualité | Notes |
 |---|---|---|---|
-| Job Title | Exact or standardized titles | Highest | Most precise; use for narrow ABM |
-| Job Function | 26 categories (e.g., Marketing, IT, Finance) | High | Broader reach, good for awareness |
-| Seniority Level | Entry, Senior, Manager, Director, VP, CXO, Owner | High | Combine with function for precision |
-| Company Name | Specific organizations | Highest | ABM lists; min 300 company matches |
-| Company Industry | 148 industries | Medium-High | Good top-of-funnel layer |
-| Company Size | 1–10 up to 10,001+ (9 brackets) | High | Critical for SMB vs Enterprise targeting |
-| Skills | Member-listed skills (2,000+) | Medium | Self-reported; broader but less reliable |
-| Groups | LinkedIn group membership | Medium | Niche audiences; limited scale |
-| Education | School, degree, field of study | Medium | Recruiting, higher education verticals |
-| Years of Experience | 1–12+ years | Medium | Useful seniority proxy |
-| Interests | Inferred from content engagement | Low-Medium | Supplement, don't rely on alone |
+| Intitulé de poste | Titres exacts ou normalisés | La plus élevée | Le plus précis ; à utiliser pour l'ABM étroit |
+| Fonction | 26 catégories (par ex. Marketing, IT, Finance) | Élevée | Portée plus large, bon pour la notoriété |
+| Niveau d'ancienneté | Débutant, Senior, Manager, Directeur, VP, CXO, Propriétaire | Élevée | Combiner avec la fonction pour la précision |
+| Nom d'entreprise | Organisations spécifiques | La plus élevée | Listes ABM ; min. 300 correspondances d'entreprise |
+| Secteur d'entreprise | 148 secteurs | Moyenne-élevée | Bonne couche de haut de tunnel |
+| Taille d'entreprise | 1–10 jusqu'à 10 001+ (9 tranches) | Élevée | Critique pour le ciblage TPE/PME vs Entreprise |
+| Compétences | Compétences déclarées par le membre (2 000+) | Moyenne | Autodéclaré ; plus large mais moins fiable |
+| Groupes | Appartenance à un groupe LinkedIn | Moyenne | Audiences de niche ; échelle limitée |
+| Formation | École, diplôme, domaine d'étude | Moyenne | Recrutement, verticales de l'enseignement supérieur |
+| Années d'expérience | 1–12+ ans | Moyenne | Proxy d'ancienneté utile |
+| Centres d'intérêt | Inférés à partir de l'engagement avec le contenu | Faible-moyenne | Complément, à ne pas utiliser seul |
 
-### Targeting Combination Best Practices
-- [ ] Layer Job Function + Seniority for decision-maker targeting
-- [ ] Use Company Name for ABM; Company Industry + Size for broader B2B
-- [ ] Avoid overly narrow audiences — minimum 50,000 for Sponsored Content
-- [ ] Exclude competitors, agencies, and job seekers when appropriate
-- [ ] Use "OR" within a dimension, "AND" across dimensions
-- [ ] Enable Audience Expansion only for awareness campaigns — disable for precision
+### Bonnes pratiques de combinaison de ciblage
+- [ ] Superposer Fonction + Ancienneté pour cibler les décideurs
+- [ ] Utiliser le nom d'entreprise pour l'ABM ; secteur + taille d'entreprise pour un B2B plus large
+- [ ] Éviter les audiences trop étroites — minimum 50 000 pour Sponsored Content
+- [ ] Exclure les concurrents, les agences et les chercheurs d'emploi le cas échéant
+- [ ] Utiliser « OU » au sein d'une dimension, « ET » entre dimensions
+- [ ] N'activer l'Expansion d'audience que pour les campagnes de notoriété — désactiver pour la précision
 
-### Audience Size Guidelines
+### Recommandations de taille d'audience
 
-| Campaign Type | Minimum Audience | Sweet Spot |
+| Type de campagne | Audience minimale | Zone idéale |
 |---|---|---|
-| Sponsored Content | 50,000 | 100,000–500,000 |
-| Message Ads | 15,000 | 30,000–100,000 |
-| Text/Dynamic Ads | 30,000 | 60,000–300,000 |
-| ABM (Company List) | 300 companies | 1,000–10,000 companies |
+| Sponsored Content | 50 000 | 100 000–500 000 |
+| Message Ads | 15 000 | 30 000–100 000 |
+| Text/Dynamic Ads | 30 000 | 60 000–300 000 |
+| ABM (liste d'entreprises) | 300 entreprises | 1 000–10 000 entreprises |
 
-## ABM (Account-Based Marketing) Strategies
+## Stratégies ABM (Account-Based Marketing)
 
-### LinkedIn ABM Framework
+### Cadre ABM LinkedIn
 
 ```
-Tier 1: Named Accounts (1:1)
-├── Matched Audience: Upload company list (CSV)
-├── Creative: Personalized by account/industry
-├── Objective: Engagement, demo requests
-└── Budget: Highest per-account spend
+Niveau 1 : Comptes nommés (1:1)
+├── Matched Audience : Charger une liste d'entreprises (CSV)
+├── Créatif : Personnalisé par compte/secteur
+├── Objectif : Engagement, demandes de démo
+└── Budget : Dépense la plus élevée par compte
 
-Tier 2: Industry Clusters (1:Few)
-├── Targeting: Company industry + size + seniority
-├── Creative: Industry-specific messaging
-├── Objective: Content consumption, lead gen
-└── Budget: Medium per-account spend
+Niveau 2 : Groupes sectoriels (1:Quelques-uns)
+├── Ciblage : Secteur d'entreprise + taille + ancienneté
+├── Créatif : Messages spécifiques au secteur
+├── Objectif : Consommation de contenu, génération de leads
+└── Budget : Dépense moyenne par compte
 
-Tier 3: ICP Characteristics (1:Many)
-├── Targeting: Function + seniority + company size
-├── Creative: Persona-based, broad value prop
-├── Objective: Awareness, nurture
-└── Budget: Lowest per-account spend
+Niveau 3 : Caractéristiques ICP (1:Beaucoup)
+├── Ciblage : Fonction + ancienneté + taille d'entreprise
+├── Créatif : Basé sur les personas, proposition de valeur large
+├── Objectif : Notoriété, nurturing
+└── Budget : Dépense la plus faible par compte
 ```
 
-### ABM Execution Checklist
-- [ ] Upload target company list (CSV: company name, domain, industry)
-- [ ] Match rate target: 70%+ (clean and standardize names)
-- [ ] Layer with seniority/function to reach decision-makers within accounts
-- [ ] Create account-specific or industry-specific creative
-- [ ] Set up Website Demographics reporting for account-level engagement tracking
-- [ ] Track engagement metrics: company-level impressions, clicks, leads
-- [ ] Coordinate with sales team on account prioritization and follow-up
+### Checklist d'exécution ABM
+- [ ] Charger la liste des entreprises cibles (CSV : nom d'entreprise, domaine, secteur)
+- [ ] Cible de taux de correspondance : 70 %+ (nettoyer et standardiser les noms)
+- [ ] Superposer avec l'ancienneté/la fonction pour atteindre les décideurs au sein des comptes
+- [ ] Créer un créatif spécifique au compte ou au secteur
+- [ ] Configurer le reporting de démographie de site web pour le suivi d'engagement au niveau du compte
+- [ ] Suivre les métriques d'engagement : impressions, clics, leads au niveau entreprise
+- [ ] Coordonner avec l'équipe commerciale sur la priorisation des comptes et le suivi
 
-## Lead Gen Form Optimization
+## Optimisation des Lead Gen Forms
 
-### Form Fields Performance Impact
+### Impact du nombre de champs sur la performance
 
-| Number of Fields | Completion Rate | Use When |
+| Nombre de champs | Taux de complétion | À utiliser quand |
 |---|---|---|
-| 2–3 fields | 12–15% | Maximizing volume (top of funnel) |
-| 4–5 fields | 8–12% | Balanced quality and volume |
-| 6–7 fields | 4–8% | Qualifying leads (bottom of funnel) |
-| 8+ fields | < 4% | Enterprise qualification only |
+| 2–3 champs | 12–15 % | Maximiser le volume (haut de tunnel) |
+| 4–5 champs | 8–12 % | Équilibre qualité et volume |
+| 6–7 champs | 4–8 % | Qualifier les leads (bas de tunnel) |
+| 8+ champs | < 4 % | Qualification entreprise uniquement |
 
-### Recommended Field Configuration
+### Configuration de champs recommandée
 
-| Field | Auto-Filled | Include? | Notes |
+| Champ | Auto-rempli | Inclure ? | Notes |
 |---|---|---|---|
-| First Name | Yes | Always | Pre-populated; no friction |
-| Last Name | Yes | Always | Pre-populated; no friction |
-| Email (work) | Yes | Always | Work email auto-filled; highest value |
-| Job Title | Yes | Recommended | Qualification signal |
-| Company Name | Yes | Recommended | ABM attribution |
-| Phone Number | No | Optional | Adds friction; use for high-intent only |
-| Company Size | No | Optional | Manual entry; qualification |
-| Custom Question | No | Optional | Free text or multiple choice for intent |
+| Prénom | Oui | Toujours | Pré-rempli ; aucune friction |
+| Nom | Oui | Toujours | Pré-rempli ; aucune friction |
+| Email (professionnel) | Oui | Toujours | Email professionnel auto-rempli ; valeur la plus élevée |
+| Intitulé de poste | Oui | Recommandé | Signal de qualification |
+| Nom d'entreprise | Oui | Recommandé | Attribution ABM |
+| Numéro de téléphone | Non | Optionnel | Ajoute de la friction ; à utiliser pour la forte intention seulement |
+| Taille d'entreprise | Non | Optionnel | Saisie manuelle ; qualification |
+| Question personnalisée | Non | Optionnel | Texte libre ou choix multiple pour l'intention |
 
-### Lead Gen Form Best Practices
-- [ ] Offer a clear, specific value exchange (not just "Learn More")
-- [ ] Use custom thank-you message with next-step CTA
-- [ ] Set up hidden fields for UTM tracking and campaign attribution
-- [ ] Connect to CRM via integration (HubSpot, Salesforce, Zapier)
-- [ ] Respond to leads within 5 minutes — conversion rate drops 80% after 30 minutes
-- [ ] A/B test: short form (3 fields) vs qualifying form (5+ fields)
+### Bonnes pratiques des Lead Gen Forms
+- [ ] Offrir un échange de valeur clair et spécifique (pas seulement « En savoir plus »)
+- [ ] Utiliser un message de remerciement personnalisé avec un CTA d'étape suivante
+- [ ] Configurer des champs cachés pour le suivi UTM et l'attribution de campagne
+- [ ] Connecter au CRM via une intégration (HubSpot, Salesforce, Zapier)
+- [ ] Répondre aux leads dans les 5 minutes — le taux de conversion chute de 80 % après 30 minutes
+- [ ] Test A/B : formulaire court (3 champs) vs formulaire qualifiant (5+ champs)
 
-## B2B Funnel Structure
+## Structure de tunnel B2B
 
-### Full-Funnel LinkedIn Campaign Architecture
+### Architecture de campagne LinkedIn full-funnel
 
-| Stage | Objective | Campaign Type | Content Type | KPI |
+| Étape | Objectif | Type de campagne | Type de contenu | KPI |
 |---|---|---|---|---|
-| Awareness (TOF) | Brand recognition | Sponsored Content (Video) | Thought leadership, trends, POV | Video views, reach, engagement rate |
-| Consideration (MOF) | Education + interest | Sponsored Content (Image/Carousel), Document Ads | Case studies, whitepapers, webinars | CTR, content downloads, engagement |
-| Conversion (BOF) | Lead capture | Lead Gen Forms, Message Ads | Demo offers, free trial, consultation | CPL, lead volume, form completion rate |
-| Retention | Upsell + loyalty | Sponsored Content, Conversation Ads | Product updates, customer stories | Engagement, expansion revenue |
+| Notoriété (haut de tunnel) | Reconnaissance de marque | Sponsored Content (vidéo) | Leadership éclairé, tendances, point de vue | Vues vidéo, portée, taux d'engagement |
+| Considération (milieu de tunnel) | Éducation + intérêt | Sponsored Content (image/carrousel), Document Ads | Études de cas, livres blancs, webinaires | CTR, téléchargements de contenu, engagement |
+| Conversion (bas de tunnel) | Capture de leads | Lead Gen Forms, Message Ads | Offres de démo, essai gratuit, consultation | CPL, volume de leads, taux de complétion du formulaire |
+| Fidélisation | Upsell + loyauté | Sponsored Content, Conversation Ads | Mises à jour produit, témoignages clients | Engagement, revenu d'expansion |
 
-### Retargeting Layers
+### Couches de retargeting
 
-| Audience | Lookback Window | Funnel Stage |
+| Audience | Fenêtre de rétrospective | Étape du tunnel |
 |---|---|---|
-| Video viewers (50%+) | 90 days | MOF |
-| Lead form openers (not submitted) | 90 days | BOF |
-| Website visitors (key pages) | 180 days | MOF–BOF |
-| Company page engagers | 365 days | MOF |
-| Event attendees | 365 days | MOF–BOF |
-| Customer list (CRM upload) | Refreshed monthly | Retention |
+| Spectateurs vidéo (50 %+) | 90 jours | Milieu de tunnel |
+| Personnes ayant ouvert le formulaire de lead (sans soumettre) | 90 jours | Bas de tunnel |
+| Visiteurs du site (pages clés) | 180 jours | Milieu-bas de tunnel |
+| Personnes ayant engagé avec la page entreprise | 365 jours | Milieu de tunnel |
+| Participants à un événement | 365 jours | Milieu-bas de tunnel |
+| Liste clients (import CRM) | Rafraîchie mensuellement | Fidélisation |
 
-## Creative Specs & Best Practices
+## Spécifications créatives et bonnes pratiques
 
-### Sponsored Content (Single Image)
-- **Image size:** 1200x627 (1.91:1) or 1080x1080 (1:1)
-- **Headline:** Max 70 characters (recommended) / 200 (limit)
-- **Introductory text:** Max 150 characters above fold / 600 (limit)
-- **File type:** JPG, PNG
-- **Max file size:** 5 MB
+### Sponsored Content (image unique)
+- **Taille de l'image :** 1200x627 (1,91:1) ou 1080x1080 (1:1)
+- **Titre :** Max 70 caractères (recommandé) / 200 (limite)
+- **Texte introductif :** Max 150 caractères au-dessus de la ligne de flottaison / 600 (limite)
+- **Type de fichier :** JPG, PNG
+- **Taille de fichier max :** 5 Mo
 
-### Sponsored Content (Video)
-- **Aspect ratio:** 16:9 (landscape), 1:1 (square), 9:16 (vertical/mobile)
-- **Length:** 15–90 seconds (sweet spot: 30 seconds)
-- **File size:** 75 KB–200 MB
-- **Captions:** Required (add SRT or burn in)
+### Sponsored Content (vidéo)
+- **Ratio d'aspect :** 16:9 (paysage), 1:1 (carré), 9:16 (vertical/mobile)
+- **Durée :** 15–90 secondes (zone idéale : 30 secondes)
+- **Taille de fichier :** 75 Ko–200 Mo
+- **Sous-titres :** Requis (ajouter un SRT ou les incruster)
 
-### Creative Best Practices for B2B
-- [ ] Lead with insight, not product pitch — "What we learned from analyzing 10,000 B2B deals"
-- [ ] Use data and specificity — "37% reduction in onboarding time" beats "faster onboarding"
-- [ ] Include faces — posts with people get 2–3x engagement
-- [ ] Use native, editorial-style creative — avoid stock photo aesthetics
-- [ ] Test long-form vs short-form copy (LinkedIn audience reads)
-- [ ] Always include a clear, single CTA in both copy and image
+### Bonnes pratiques créatives pour le B2B
+- [ ] Ouvrir avec un insight, pas un discours produit — « Ce que nous avons appris en analysant 10 000 deals B2B »
+- [ ] Utiliser des données et de la précision — « 37 % de réduction du temps d'onboarding » l'emporte sur « onboarding plus rapide »
+- [ ] Inclure des visages — les publications avec des personnes obtiennent 2 à 3x plus d'engagement
+- [ ] Utiliser un créatif natif, de style éditorial — éviter l'esthétique banque d'images
+- [ ] Tester le texte long vs le texte court (l'audience LinkedIn lit)
+- [ ] Toujours inclure un CTA unique et clair dans le texte et dans l'image
 
-## Budget Recommendations
+## Recommandations budgétaires
 
-### Minimum Viable Budgets
+### Budgets minimums viables
 
-| Campaign Goal | Monthly Minimum | Recommended Monthly | Notes |
+| Objectif de campagne | Minimum mensuel | Mensuel recommandé | Notes |
 |---|---|---|---|
-| Awareness / Thought Leadership | $3,000 | $5,000–$10,000 | Need reach; LinkedIn CPMs are high ($30–$60) |
-| Lead Generation | $5,000 | $10,000–$25,000 | Expect $50–$200 CPL depending on offer |
-| ABM (Tier 1) | $5,000 | $10,000–$20,000 | Small audiences require sustained impressions |
-| Full-Funnel B2B | $10,000 | $25,000–$50,000+ | Supports awareness + retargeting + lead gen |
+| Notoriété / Leadership éclairé | 3 000 $ | 5 000–10 000 $ | Besoin de portée ; les CPM LinkedIn sont élevés (30–60 $) |
+| Génération de leads | 5 000 $ | 10 000–25 000 $ | Attendre un CPL de 50–200 $ selon l'offre |
+| ABM (Niveau 1) | 5 000 $ | 10 000–20 000 $ | Les petites audiences nécessitent des impressions soutenues |
+| B2B full-funnel | 10 000 $ | 25 000–50 000 $+ | Supporte notoriété + retargeting + génération de leads |
 
-### Budget Allocation by Funnel Stage (B2B)
+### Allocation budgétaire par étape du tunnel (B2B)
 
-| Stage | % of Budget | Rationale |
+| Étape | % du budget | Justification |
 |---|---|---|
-| Awareness (TOF) | 30–40% | Build audience, earn trust |
-| Consideration (MOF) | 30–40% | Drive engagement with valuable content |
-| Conversion (BOF) | 20–30% | Capture demand generated above |
+| Notoriété (haut de tunnel) | 30–40 % | Construire l'audience, gagner la confiance |
+| Considération (milieu de tunnel) | 30–40 % | Générer de l'engagement avec du contenu de valeur |
+| Conversion (bas de tunnel) | 20–30 % | Capturer la demande générée ci-dessus |
 
-## LinkedIn-Specific Benchmarks
+## Benchmarks spécifiques à LinkedIn
 
-| Metric | Sponsored Content | Message Ads | Lead Gen Forms | Text Ads |
+| Métrique | Sponsored Content | Message Ads | Lead Gen Forms | Text Ads |
 |---|---|---|---|---|
-| CTR | 0.4–0.7% | 3–5% (open rate: 30–50%) | 10–15% (form fill rate) | 0.02–0.05% |
-| CPC | $5–$12 | N/A (cost per send) | $10–$50 (CPL) | $2–$5 |
-| CPM | $30–$60 | N/A | $30–$60 | $8–$15 |
-| Engagement Rate | 0.5–1.5% | N/A | N/A | N/A |
-| Avg CPL | $50–$150 | $30–$100 | $30–$120 | $80–$200 |
+| CTR | 0,4–0,7 % | 3–5 % (taux d'ouverture : 30–50 %) | 10–15 % (taux de remplissage du formulaire) | 0,02–0,05 % |
+| CPC | 5–12 $ | N/A (coût par envoi) | 10–50 $ (CPL) | 2–5 $ |
+| CPM | 30–60 $ | N/A | 30–60 $ | 8–15 $ |
+| Taux d'engagement | 0,5–1,5 % | N/A | N/A | N/A |
+| CPL moyen | 50–150 $ | 30–100 $ | 30–120 $ | 80–200 $ |
 
-### Key Metric Notes
-- LinkedIn CPC is 3–5x higher than Meta or Google Display — that is normal and expected for B2B
-- Value is in audience quality: decision-makers in verified professional profiles
-- Measure downstream metrics (SQL rate, pipeline, revenue) not just CPL
-- B2B sales cycles are 3–12 months — attribution must account for long consideration windows
-- Use LinkedIn Insight Tag for website demographics reporting (see which companies visit)
+### Remarques clés sur les métriques
+- Le CPC LinkedIn est 3 à 5 fois plus élevé que sur Meta ou Google Display — c'est normal et attendu pour le B2B
+- La valeur réside dans la qualité de l'audience : des décideurs sur des profils professionnels vérifiés
+- Mesurer les métriques en aval (taux de SQL, pipeline, revenu) et pas seulement le CPL
+- Les cycles de vente B2B durent 3 à 12 mois — l'attribution doit tenir compte de fenêtres de considération longues
+- Utiliser le LinkedIn Insight Tag pour le reporting de démographie de site web (voir quelles entreprises visitent)
 
-## Troubleshooting Common Issues
+## Dépannage des problèmes courants
 
-| Issue | Likely Cause | Fix |
+| Problème | Cause probable | Correctif |
 |---|---|---|
-| Low delivery / impressions | Audience too narrow, bid too low | Expand audience to 100K+; increase bid above suggested range |
-| High CPC, low CTR | Weak creative or poor targeting alignment | Test new creative angles; refine targeting to remove low-relevance segments |
-| High CPL from Lead Gen Forms | Too many fields, weak offer | Reduce to 3–4 fields; strengthen value exchange |
-| Low open rate on Message Ads | Weak subject line, wrong sender | Test subject lines under 40 chars; send from a person, not a brand |
-| Low engagement rate | Content too promotional | Shift to thought leadership, data-driven, educational content |
-| Poor match rate on company list | Inconsistent company names | Standardize against LinkedIn naming conventions; include domains |
+| Faible diffusion / impressions | Audience trop étroite, enchère trop basse | Élargir l'audience à 100K+ ; augmenter l'enchère au-dessus de la fourchette suggérée |
+| CPC élevé, faible CTR | Créatif faible ou mauvais alignement de ciblage | Tester de nouveaux angles créatifs ; affiner le ciblage pour retirer les segments à faible pertinence |
+| CPL élevé depuis les Lead Gen Forms | Trop de champs, offre faible | Réduire à 3–4 champs ; renforcer l'échange de valeur |
+| Faible taux d'ouverture sur les Message Ads | Objet faible, mauvais expéditeur | Tester des objets de moins de 40 caractères ; envoyer depuis une personne, pas une marque |
+| Faible taux d'engagement | Contenu trop promotionnel | Passer à du contenu de leadership éclairé, orienté données, éducatif |
+| Faible taux de correspondance sur la liste d'entreprises | Noms d'entreprise incohérents | Standardiser selon les conventions de nommage LinkedIn ; inclure les domaines |

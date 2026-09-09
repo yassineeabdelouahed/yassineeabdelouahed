@@ -1,61 +1,61 @@
 ---
 name: client-proposal
-description: "Draft a professional agency proposal or pitch document for a prospective client — executive summary, situation analysis, scope of services with a deliverables matrix, KPI targets with baselines and stretch goals, 2-3 pricing options, team bio structure, case-study placeholders, terms outline, and next steps, written from the agency's perspective. Triggers on \"/digital-marketing-pro:client-proposal\", \"write a proposal for this prospect\", \"scope of work for a 6-month retainer\", \"respond to this RFP\", \"pitch deck outline with pricing tiers\". Loads the agency's own brand profile (not the client's), plus custom templates and agency SOPs; industry benchmarks inform the KPI and pricing sections."
+description: "Rédiger une proposition d'agence ou un document de pitch professionnel pour un client potentiel — synthèse exécutive, analyse de situation, périmètre de services avec matrice de livrables, objectifs de KPI avec lignes de base et objectifs ambitieux, 2-3 options tarifaires, structure de biographies d'équipe, emplacements réservés aux études de cas, aperçu des conditions, et prochaines étapes, rédigé du point de vue de l'agence. Se déclenche sur \"/digital-marketing-pro:client-proposal\", \"write a proposal for this prospect\", \"scope of work for a 6-month retainer\", \"respond to this RFP\", \"pitch deck outline with pricing tiers\". Charge le profil de marque de l'agence elle-même (pas celui du client), ainsi que les modèles personnalisés et les procédures d'agence ; les référentiels sectoriels alimentent les sections KPI et tarification."
 ---
 
 # /digital-marketing-pro:client-proposal
 
-## Purpose
+## Objectif
 
-Generate a professional marketing agency proposal or pitch document for a prospective client. Covers strategic analysis, service scope, deliverables, pricing, and team positioning to win new business or formalize an existing engagement with a polished, ready-to-customize document.
+Générer une proposition ou un document de pitch professionnel d'agence marketing pour un client potentiel. Couvre l'analyse stratégique, le périmètre de services, les livrables, la tarification, et le positionnement de l'équipe pour remporter de nouveaux contrats ou formaliser un engagement existant avec un document soigné et prêt à personnaliser.
 
-## Input Required
+## Données requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Client business name and industry**: Who the proposal is for and their vertical/market segment
-- **Services requested**: Which marketing services are in scope (SEO, PPC, social, content, email, strategy, creative, analytics, etc.)
-- **Estimated budget range**: Client's stated or expected budget for marketing services (monthly or annual)
-- **Timeline**: Engagement duration — 3-month pilot, 6-month contract, 12-month retainer, or project-based with defined milestones
-- **Key challenges/goals**: What the client is trying to achieve, problems they need solved, or opportunities they want to capture
-- **Competitive context**: Key competitors, market pressures, or differentiation challenges the client faces
-- **Decision criteria**: What matters most to the client — price, expertise, speed, industry experience, team size, or technology
-- **Proposal format**: Full written proposal, pitch deck outline, or scope-of-work document
-- **Existing relationship**: New prospect, referral, existing client expansion, or RFP response
-- **Internal team available**: Agency team members who would staff the account (for team bio section)
+- **Nom et secteur de l'entreprise cliente** : pour qui est la proposition et son segment de marché/secteur
+- **Services demandés** : quels services marketing sont dans le périmètre (SEO, PPC, social, contenu, e-mail, stratégie, créatif, analytics, etc.)
+- **Fourchette de budget estimée** : le budget déclaré ou attendu du client pour les services marketing (mensuel ou annuel)
+- **Chronologie** : durée de l'engagement — pilote de 3 mois, contrat de 6 mois, forfait de gestion de 12 mois, ou projet avec jalons définis
+- **Défis/objectifs clés** : ce que le client essaie d'atteindre, les problèmes qu'il doit résoudre, ou les opportunités qu'il veut saisir
+- **Contexte concurrentiel** : concurrents clés, pressions du marché, ou défis de différenciation auxquels le client fait face
+- **Critères de décision** : ce qui compte le plus pour le client — prix, expertise, rapidité, expérience sectorielle, taille de l'équipe, ou technologie
+- **Format de la proposition** : proposition écrite complète, plan de pitch deck, ou document de périmètre de travail
+- **Relation existante** : nouveau prospect, recommandation, extension de client existant, ou réponse à appel d'offres
+- **Équipe interne disponible** : membres de l'équipe agence qui staffieraient le compte (pour la section biographies d'équipe)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. The loaded brand should be the **agency brand** — the proposal will be written from the agency's perspective. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Research client industry benchmarks**: Pull relevant industry performance data, typical marketing spend ratios, competitive landscape patterns, and common pain points for the client's vertical
-3. **Define proposed scope of services**: Map requested services to specific deliverables, ownership (agency vs. client), frequency, and dependencies between service lines
-4. **Build deliverables matrix with timelines**: Create a detailed breakdown of every deliverable, its cadence (weekly, monthly, quarterly), responsible party, and approval workflow
-5. **Create KPI framework with realistic targets**: Set measurable goals for each service line — baseline assumptions, 90-day targets, 6-month targets, and stretch goals tied to business outcomes
-6. **Design pricing structure**: Develop 2-3 pricing options — retainer-based, project-based, or performance-based models with clear scope boundaries, overage terms, and upgrade paths
-7. **Include case study references**: Frame placeholders for relevant case studies or past results that demonstrate capability in the client's industry, service area, or challenge type
-8. **Draft executive summary**: Write a compelling 1-page overview that connects the client's specific challenges to the proposed solution and expected outcomes
-9. **Build team and process overview**: Outline the account team structure, communication cadence (weekly calls, monthly reports, quarterly reviews), reporting rhythm, and escalation process
-10. **Include terms and conditions framework**: Draft standard engagement terms covering scope change process, payment terms, IP ownership, confidentiality, data handling, performance guarantees, and termination clauses
-11. **Add competitive differentiation**: Articulate why the agency is the right choice based on the client's stated decision criteria — without naming competitors directly
+1. **Charger le contexte de marque** : lisez `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis chargez `~/.claude-marketing/brands/{slug}/profile.json`. Appliquez la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. La marque chargée doit être la **marque de l'agence** — la proposition sera rédigée du point de vue de l'agence. **Vérifiez aussi la présence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, chargez les restrictions et les fichiers de catégorie pertinents. Vérifiez les modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifiez les procédures d'agence (SOP) dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demandez : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou poursuivez avec les valeurs par défaut.
+2. **Rechercher les référentiels sectoriels du client** : récupérez les données de performance sectorielle pertinentes, les ratios de dépense marketing typiques, les schémas du paysage concurrentiel, et les points de douleur courants pour le secteur du client
+3. **Définir le périmètre de services proposé** : associez les services demandés à des livrables spécifiques, une répartition de propriété (agence vs. client), une fréquence, et les dépendances entre lignes de service
+4. **Construire la matrice de livrables avec chronologie** : créez une décomposition détaillée de chaque livrable, sa cadence (hebdomadaire, mensuelle, trimestrielle), la partie responsable, et le flux d'approbation
+5. **Créer le cadre de KPI avec objectifs réalistes** : fixez des objectifs mesurables pour chaque ligne de service — hypothèses de ligne de base, objectifs à 90 jours, objectifs à 6 mois, et objectifs ambitieux liés aux résultats business
+6. **Concevoir la structure tarifaire** : développez 2-3 options tarifaires — modèles basés sur un forfait de gestion, sur projet, ou sur performance, avec des limites de périmètre claires, des conditions de dépassement, et des parcours de montée en gamme
+7. **Inclure des références d'études de cas** : préparez des emplacements réservés pour des études de cas pertinentes ou des résultats passés démontrant la capacité dans le secteur, le domaine de service, ou le type de défi du client
+8. **Rédiger la synthèse exécutive** : écrivez un aperçu convaincant d'une page qui relie les défis spécifiques du client à la solution proposée et aux résultats attendus
+9. **Construire l'aperçu de l'équipe et du processus** : décrivez la structure de l'équipe de compte, la cadence de communication (appels hebdomadaires, rapports mensuels, revues trimestrielles), le rythme de reporting, et le processus d'escalade
+10. **Inclure un cadre de conditions générales** : rédigez les conditions d'engagement standard couvrant le processus de changement de périmètre, les conditions de paiement, la propriété intellectuelle, la confidentialité, le traitement des données, les garanties de performance, et les clauses de résiliation
+11. **Ajouter la différenciation concurrentielle** : formulez pourquoi l'agence est le bon choix selon les critères de décision énoncés par le client — sans nommer directement les concurrents
 
-## Output
+## Résultat
 
-A structured client proposal document containing:
+Un document de proposition client structuré contenant :
 
-- **Executive summary**: Client challenges, proposed approach, and expected outcomes in a compelling 1-page overview
-- **Situation analysis**: Client's current state, competitive landscape, market opportunity, and key assumptions
-- **Proposed strategy**: High-level strategic approach connecting services to business goals with a clear theory of change
-- **Scope of services**: Detailed service descriptions with deliverables, frequency, ownership matrix, and exclusions
-- **Deliverables timeline**: Month-by-month or phase-by-phase deliverable schedule with milestones and review gates
-- **KPI targets**: Measurable success metrics per service line with baseline, target, and stretch goals
-- **Pricing options**: 2-3 pricing tiers or models with clear scope definitions, add-on options, and payment schedule
-- **Team bios section**: Account team structure with role descriptions and placeholder bios to be filled with actual team members
-- **Case study framework**: Structured placeholders for 2-3 relevant past engagements showing challenge, approach, and results
-- **Terms outline**: Standard engagement terms covering scope, payment, IP, confidentiality, data, and termination
-- **Next steps**: Clear action items with dates for moving from proposal to signed engagement
-- **Investment justification**: ROI framework showing how the proposed services connect to measurable business outcomes
-- **Risk and assumptions**: Key assumptions underpinning projections and risks that could affect delivery or results
+- **Synthèse exécutive** : défis du client, approche proposée, et résultats attendus dans un aperçu convaincant d'une page
+- **Analyse de situation** : état actuel du client, paysage concurrentiel, opportunité de marché, et hypothèses clés
+- **Stratégie proposée** : approche stratégique de haut niveau reliant les services aux objectifs business avec une théorie du changement claire
+- **Périmètre de services** : descriptions détaillées des services avec livrables, fréquence, matrice de propriété, et exclusions
+- **Chronologie des livrables** : calendrier de livrables mois par mois ou phase par phase avec jalons et portes de revue
+- **Objectifs de KPI** : métriques de succès mesurables par ligne de service avec ligne de base, objectif, et objectifs ambitieux
+- **Options tarifaires** : 2-3 paliers ou modèles tarifaires avec définitions de périmètre claires, options d'add-on, et échéancier de paiement
+- **Section biographies d'équipe** : structure de l'équipe de compte avec descriptions de rôles et biographies à remplacer par les membres d'équipe réels
+- **Cadre d'études de cas** : emplacements réservés structurés pour 2-3 engagements passés pertinents montrant le défi, l'approche, et les résultats
+- **Aperçu des conditions** : conditions d'engagement standard couvrant le périmètre, le paiement, la PI, la confidentialité, les données, et la résiliation
+- **Prochaines étapes** : actions claires avec dates pour passer de la proposition à l'engagement signé
+- **Justification de l'investissement** : cadre de ROI montrant comment les services proposés se relient à des résultats business mesurables
+- **Risques et hypothèses** : hypothèses clés sous-tendant les projections et risques pouvant affecter la livraison ou les résultats
 
-## Agents Used
+## Agents utilisés
 
-- **marketing-strategist** — Strategic positioning, service scoping, KPI framework, competitive analysis, proposal narrative, industry benchmarking
+- **marketing-strategist** — Positionnement stratégique, définition du périmètre de service, cadre de KPI, analyse concurrentielle, narration de la proposition, benchmarking sectoriel

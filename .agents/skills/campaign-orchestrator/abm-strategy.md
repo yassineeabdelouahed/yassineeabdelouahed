@@ -1,102 +1,102 @@
-# ABM Strategy — Account-Based Marketing Framework
+# ABM Strategy — Cadre de marketing basé sur les comptes
 
-## Account Selection
+## Sélection des comptes
 
-### Scoring Model
+### Modèle de notation
 
-| Criteria | Weight | Scoring (1-10) |
+| Critère | Pondération | Notation (1-10) |
 |----------|--------|----------------|
-| **Firmographic fit** (size, industry, revenue) | 25% | Matches ICP = 10, Partial = 5, No fit = 1 |
-| **Technographic fit** (tech stack compatibility) | 15% | Uses complementary tech = 10 |
-| **Intent signals** (research activity, content consumption) | 20% | High intent = 10, No signals = 1 |
-| **Relationship** (existing contacts, prior engagement) | 15% | Champion identified = 10, No contacts = 1 |
-| **Deal potential** (estimated contract value) | 15% | Above avg deal size = 10 |
-| **Competitive** (using competitor, contract timing) | 10% | Competitor contract ending = 10 |
+| **Adéquation firmographique** (taille, secteur, chiffre d'affaires) | 25 % | Correspond à l'ICP = 10, Partiel = 5, Aucune adéquation = 1 |
+| **Adéquation technographique** (compatibilité du stack technique) | 15 % | Utilise une technologie complémentaire = 10 |
+| **Signaux d'intention** (activité de recherche, consommation de contenu) | 20 % | Intention élevée = 10, Aucun signal = 1 |
+| **Relation** (contacts existants, engagement antérieur) | 15 % | Champion identifié = 10, Aucun contact = 1 |
+| **Potentiel de deal** (valeur de contrat estimée) | 15 % | Taille de deal supérieure à la moyenne = 10 |
+| **Concurrentiel** (utilise un concurrent, timing de contrat) | 10 % | Contrat concurrent arrivant à échéance = 10 |
 
-**Account Score** = Weighted sum. Segment into tiers:
-- Tier 1 (score 80+): 1:1 personalized campaigns (10-25 accounts)
-- Tier 2 (score 60-79): 1:Few cluster campaigns (25-100 accounts)
-- Tier 3 (score 40-59): 1:Many programmatic campaigns (100-500 accounts)
-
----
-
-## Three-Tier ABM Framework
-
-### Tier 1: 1:1 Strategic ABM
-- **Accounts**: 10-25 highest-value targets
-- **Personalization**: Fully custom content, messaging, landing pages per account
-- **Channels**: Direct mail, custom events, executive outreach, LinkedIn direct
-- **Team**: Dedicated AE + marketing resource per account
-- **Content**: Account-specific case studies, ROI models, custom presentations
-- **Timeline**: 6-12 month nurture cycle
-- **Budget**: $5,000-$25,000 per account/year
-
-### Tier 2: 1:Few Cluster ABM
-- **Accounts**: 25-100 grouped by shared characteristics (industry, size, challenge)
-- **Personalization**: Cluster-level (industry-specific, challenge-specific)
-- **Channels**: LinkedIn Ads (account targeting), personalized email, webinars
-- **Content**: Industry-specific guides, benchmark reports, peer roundtables
-- **Timeline**: 3-6 month nurture cycle
-- **Budget**: $1,000-$5,000 per account/year
-
-### Tier 3: 1:Many Programmatic ABM
-- **Accounts**: 100-500+ matching ICP criteria
-- **Personalization**: Segment-level (dynamic content, firmographic personalization)
-- **Channels**: Programmatic display (account-targeted), LinkedIn, email
-- **Content**: Broadly relevant thought leadership, category education
-- **Timeline**: Ongoing with quarterly refreshes
-- **Budget**: $100-$1,000 per account/year
+**Score du compte** = somme pondérée. Segmentez en niveaux :
+- Niveau 1 (score 80+) : campagnes personnalisées 1:1 (10-25 comptes)
+- Niveau 2 (score 60-79) : campagnes en cluster 1:quelques-uns (25-100 comptes)
+- Niveau 3 (score 40-59) : campagnes programmatiques 1:beaucoup (100-500 comptes)
 
 ---
 
-## ABM Channel Playbook
+## Cadre ABM à trois niveaux
 
-| Channel | Tier 1 Use | Tier 2 Use | Tier 3 Use |
+### Niveau 1 : ABM stratégique 1:1
+- **Comptes** : 10-25 cibles à plus forte valeur
+- **Personnalisation** : contenu, message, landing pages entièrement personnalisés par compte
+- **Canaux** : courrier direct, événements sur mesure, prospection exécutive, LinkedIn direct
+- **Équipe** : AE dédié + ressource marketing par compte
+- **Contenu** : études de cas spécifiques au compte, modèles de ROI, présentations sur mesure
+- **Chronologie** : cycle de nurturing de 6 à 12 mois
+- **Budget** : 5 000-25 000 $ par compte/an
+
+### Niveau 2 : ABM en cluster 1:quelques-uns
+- **Comptes** : 25-100 regroupés par caractéristiques communes (secteur, taille, défi)
+- **Personnalisation** : au niveau du cluster (spécifique au secteur, spécifique au défi)
+- **Canaux** : LinkedIn Ads (ciblage de compte), e-mail personnalisé, webinaires
+- **Contenu** : guides sectoriels, rapports de référence, tables rondes entre pairs
+- **Chronologie** : cycle de nurturing de 3 à 6 mois
+- **Budget** : 1 000-5 000 $ par compte/an
+
+### Niveau 3 : ABM programmatique 1:beaucoup
+- **Comptes** : 100-500+ correspondant aux critères ICP
+- **Personnalisation** : au niveau segment (contenu dynamique, personnalisation firmographique)
+- **Canaux** : display programmatique (ciblé par compte), LinkedIn, e-mail
+- **Contenu** : leadership éclairé largement pertinent, éducation de catégorie
+- **Chronologie** : continu avec rafraîchissements trimestriels
+- **Budget** : 100-1 000 $ par compte/an
+
+---
+
+## Playbook de canal ABM
+
+| Canal | Usage Niveau 1 | Usage Niveau 2 | Usage Niveau 3 |
 |---------|-----------|-----------|-----------|
-| **LinkedIn** | InMail to buying committee, custom Matched Audiences | Account list ads, Sponsored Content | Broader targeting by firmographic |
-| **Email** | Hyper-personalized 1:1 outreach | Segment-personalized sequences | Dynamic content by segment |
-| **Direct Mail** | Premium gifts, custom packages ($50-200) | Branded items with personal note ($15-50) | Rarely used |
-| **Events** | Custom executive dinners, on-site visits | Industry roundtables, VIP webinars | Webinars, virtual events |
-| **Content** | Account-specific materials | Industry/challenge-specific | Category-level content |
-| **Ads (Display)** | Account-targeted programmatic | Account list display | Lookalike/similar audiences |
+| **LinkedIn** | InMail au comité d'achat, Matched Audiences sur mesure | Publicités sur liste de comptes, Sponsored Content | Ciblage plus large par critère firmographique |
+| **E-mail** | Prospection 1:1 hyper-personnalisée | Séquences personnalisées par segment | Contenu dynamique par segment |
+| **Courrier direct** | Cadeaux premium, colis sur mesure (50-200 $) | Objets de marque avec note personnelle (15-50 $) | Rarement utilisé |
+| **Événements** | Dîners exécutifs sur mesure, visites sur site | Tables rondes sectorielles, webinaires VIP | Webinaires, événements virtuels |
+| **Contenu** | Documents spécifiques au compte | Spécifique au secteur/défi | Contenu au niveau catégorie |
+| **Publicités (Display)** | Programmatique ciblé par compte | Display sur liste de comptes | Audiences similaires/proches |
 
 ---
 
-## Sales-Marketing Alignment Protocol
+## Protocole d'alignement ventes-marketing
 
-### Shared KPIs
-| KPI | Marketing Owns | Sales Owns | Shared |
+### KPI partagés
+| KPI | Propriété marketing | Propriété ventes | Partagé |
 |-----|---------------|-----------|--------|
-| Account engagement score | ✓ | | |
-| Meetings booked | | ✓ | |
-| Pipeline generated | | | ✓ |
-| Deal velocity | | | ✓ |
-| Win rate (ABM vs non-ABM) | | | ✓ |
-| Account penetration | ✓ | ✓ | |
+| Score d'engagement du compte | ✓ | | |
+| Rendez-vous pris | | ✓ | |
+| Pipeline généré | | | ✓ |
+| Vélocité des deals | | | ✓ |
+| Taux de gain (ABM vs non-ABM) | | | ✓ |
+| Pénétration du compte | ✓ | ✓ | |
 
-### Handoff Process
-1. Marketing builds engagement score per account (content consumed, ads clicked, events attended)
-2. When score exceeds threshold → alert sales with engagement summary
-3. Sales reviews and accepts/defers the account
-4. Joint strategy session for Tier 1 accounts (weekly)
-5. Shared reporting dashboard (updated daily)
+### Processus de transmission
+1. Le marketing construit un score d'engagement par compte (contenu consommé, publicités cliquées, événements suivis)
+2. Quand le score dépasse le seuil → alerte aux ventes avec le résumé d'engagement
+3. Les ventes relisent et acceptent/reportent le compte
+4. Session de stratégie conjointe pour les comptes de Niveau 1 (hebdomadaire)
+5. Tableau de bord de reporting partagé (mis à jour quotidiennement)
 
-### Feedback Loop
-- Sales provides weekly feedback: "This content resonated" / "This objection keeps coming up"
-- Marketing adjusts content and targeting based on sales feedback
-- Monthly ABM review: pipeline progress, engagement trends, program adjustments
-- Quarterly: update account lists, refresh scoring model, adjust tiers
+### Boucle de retour
+- Les ventes fournissent un retour hebdomadaire : « Ce contenu a fait mouche » / « Cette objection revient sans cesse »
+- Le marketing ajuste le contenu et le ciblage selon le retour des ventes
+- Revue ABM mensuelle : avancement du pipeline, tendances d'engagement, ajustements de programme
+- Trimestriel : mise à jour des listes de comptes, rafraîchissement du modèle de notation, ajustement des niveaux
 
 ---
 
-## ABM Measurement Framework
+## Cadre de mesure ABM
 
-| Metric | Definition | Target |
+| Métrique | Définition | Objectif |
 |--------|-----------|--------|
-| **Account engagement score** | Composite of all interactions per account | Increasing trend |
-| **Account penetration** | # of contacts engaged / total buying committee | >3 contacts per Tier 1 |
-| **Pipeline influence** | % of pipeline sourced or influenced by ABM | >40% of target pipeline |
-| **Deal velocity** | Average days from first engagement to close | Faster than non-ABM |
-| **Win rate** | ABM accounts closed / ABM accounts engaged | Higher than non-ABM |
-| **Average deal size** | ABM deal size vs. non-ABM | Larger for ABM |
-| **ROI** | Revenue from ABM / Total ABM program cost | >5:1 for mature programs |
+| **Score d'engagement du compte** | Composite de toutes les interactions par compte | Tendance en hausse |
+| **Pénétration du compte** | Nombre de contacts engagés / comité d'achat total | >3 contacts par compte de Niveau 1 |
+| **Influence sur le pipeline** | % du pipeline généré ou influencé par l'ABM | >40 % du pipeline cible |
+| **Vélocité des deals** | Jours moyens du premier engagement à la conclusion | Plus rapide que le non-ABM |
+| **Taux de gain** | Comptes ABM conclus / comptes ABM engagés | Supérieur au non-ABM |
+| **Taille de deal moyenne** | Taille de deal ABM vs non-ABM | Plus élevée pour l'ABM |
+| **ROI** | Chiffre d'affaires ABM / coût total du programme ABM | >5:1 pour les programmes matures |

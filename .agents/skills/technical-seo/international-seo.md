@@ -1,74 +1,74 @@
-# International Technical SEO — Hreflang, URL Structures & Global Site Architecture
+# SEO technique international — Hreflang, structures d'URL et architecture de site globale
 
-A comprehensive reference for building and maintaining websites that target multiple countries, languages, or regions. International SEO is one of the most technically complex areas of SEO — a single hreflang mistake can cause the wrong language version to rank in the wrong country.
+Une référence complète pour construire et maintenir des sites web ciblant plusieurs pays, langues, ou régions. Le SEO international est l'un des domaines les plus techniquement complexes du SEO — une seule erreur de hreflang peut faire classer la mauvaise version linguistique dans le mauvais pays.
 
 ---
 
-## URL Structure Strategies
+## Stratégies de structure d'URL
 
-### Three Approaches
+### Trois approches
 
-| Strategy | Example | Pros | Cons | Best For |
+| Stratégie | Exemple | Avantages | Inconvénients | Idéal pour |
 |---|---|---|---|---|
-| **ccTLD** (country code top-level domain) | `example.de`, `example.co.uk`, `example.fr` | Strongest geo-targeting signal; users trust local domains; clear separation of properties | Most expensive (multiple domains to register and maintain); link equity does not transfer between domains; requires separate GSC properties; separate SEO authority per domain | Enterprise businesses with strong local presence in each market; brand already well-known in target countries |
-| **Subdomain** | `de.example.com`, `uk.example.com`, `fr.example.com` | Easy to set up; can host on different servers/CDNs per region; separate GSC properties possible; geotargeting in GSC | Treated as semi-separate sites by Google; link equity from root domain has limited transfer; user trust slightly lower than ccTLD | Companies wanting regional separation with a single domain; sites needing different hosting per region |
-| **Subdirectory** | `example.com/de/`, `example.com/uk/`, `example.com/fr/` | All link equity stays on one domain; easiest to maintain; single hosting setup; single GSC property with filtering; strongest domain authority consolidation | Cannot host on different servers per region without complex CDN configuration; less clear geo-targeting signal than ccTLD | Most businesses; the default recommendation unless specific requirements dictate otherwise |
+| **ccTLD** (domaine de premier niveau national) | `example.de`, `example.co.uk`, `example.fr` | Signal de ciblage géographique le plus fort ; les utilisateurs font confiance aux domaines locaux ; séparation claire des propriétés | Le plus coûteux (plusieurs domaines à enregistrer et maintenir) ; le link equity ne se transfère pas entre domaines ; nécessite des propriétés GSC séparées ; autorité SEO séparée par domaine | Entreprises avec une forte présence locale dans chaque marché ; marque déjà bien connue dans les pays cibles |
+| **Sous-domaine** | `de.example.com`, `uk.example.com`, `fr.example.com` | Facile à mettre en place ; peut héberger sur différents serveurs/CDN par région ; propriétés GSC séparées possibles ; ciblage géographique dans GSC | Traité comme des sites semi-séparés par Google ; le link equity du domaine racine se transfère de façon limitée ; confiance utilisateur légèrement inférieure au ccTLD | Entreprises souhaitant une séparation régionale avec un domaine unique ; sites nécessitant un hébergement différent par région |
+| **Sous-répertoire** | `example.com/de/`, `example.com/uk/`, `example.com/fr/` | Tout le link equity reste sur un seul domaine ; le plus facile à maintenir ; configuration d'hébergement unique ; propriété GSC unique avec filtrage ; consolidation d'autorité de domaine la plus forte | Ne peut pas héberger sur différents serveurs par région sans une configuration CDN complexe ; signal de ciblage géographique moins clair que le ccTLD | La plupart des entreprises ; la recommandation par défaut sauf exigences spécifiques contraires |
 
-### Decision Framework
+### Cadre de décision
 
-**Choose ccTLD when:**
-- The brand has separate business entities per country
-- Strong local brand identity is essential (e.g., banking, government, legal services)
-- Budget supports maintaining separate domains and separate SEO strategies
-- Target countries have strong ccTLD preference (e.g., .de in Germany, .co.uk in UK)
+**Choisir le ccTLD lorsque :**
+- La marque a des entités commerciales distinctes par pays
+- Une forte identité de marque locale est essentielle (par ex. banque, gouvernement, services juridiques)
+- Le budget permet de maintenir des domaines séparés et des stratégies SEO séparées
+- Les pays cibles ont une forte préférence pour les ccTLD (par ex. .de en Allemagne, .co.uk au Royaume-Uni)
 
-**Choose subdomain when:**
-- Regional content is managed by separate teams or hosted on different infrastructure
-- The business needs separate GSC analytics per region but does not want multiple domains
-- Content and user experience differ significantly by region (not just language)
+**Choisir le sous-domaine lorsque :**
+- Le contenu régional est géré par des équipes séparées ou hébergé sur une infrastructure différente
+- L'entreprise a besoin d'analytics GSC séparés par région mais ne veut pas plusieurs domaines
+- Le contenu et l'expérience utilisateur diffèrent significativement par région (pas seulement la langue)
 
-**Choose subdirectory when (default recommendation):**
-- SEO authority consolidation is a priority (most cases)
-- A single team manages the website globally
-- Budget and resources are limited
-- The business is entering new markets and does not have established local authority
+**Choisir le sous-répertoire (recommandation par défaut) lorsque :**
+- La consolidation de l'autorité SEO est une priorité (la plupart des cas)
+- Une équipe unique gère le site web globalement
+- Le budget et les ressources sont limités
+- L'entreprise entre sur de nouveaux marchés et n'a pas d'autorité locale établie
 
-### Language vs Region in URL Structure
+### Langue vs région dans la structure d'URL
 
-| URL Pattern | Targets | Example |
+| Motif d'URL | Cible | Exemple |
 |---|---|---|
-| `/es/` | Spanish language (all regions) | A blog post for all Spanish speakers |
-| `/es-mx/` | Spanish language, Mexico specifically | A product page with Mexico-specific pricing, shipping, and legal requirements |
-| `/es-es/` | Spanish language, Spain specifically | A product page with Spain-specific pricing and regulations |
+| `/es/` | Langue espagnole (toutes régions) | Un article de blog pour tous les hispanophones |
+| `/es-mx/` | Langue espagnole, Mexique spécifiquement | Une page produit avec des prix, une livraison et des exigences légales spécifiques au Mexique |
+| `/es-es/` | Langue espagnole, Espagne spécifiquement | Une page produit avec des prix et réglementations spécifiques à l'Espagne |
 
-Use language-only paths (`/es/`) when content is identical for all speakers of that language. Use language-region paths (`/es-mx/`) when content differs by country (pricing, legal, shipping, cultural references, local phone numbers, currency).
+Utiliser des chemins langue seule (`/es/`) lorsque le contenu est identique pour tous les locuteurs de cette langue. Utiliser des chemins langue-région (`/es-mx/`) lorsque le contenu diffère par pays (prix, légal, livraison, références culturelles, numéros de téléphone locaux, devise).
 
 ---
 
-## Hreflang Implementation
+## Implémentation du hreflang
 
-### Purpose
+### Objectif
 
-Hreflang tags tell search engines which language and regional version of a page to show to users in different locations. Without hreflang, Google may show the French version of a page to English-speaking users, or the US version to UK users.
+Les balises hreflang indiquent aux moteurs de recherche quelle version linguistique et régionale d'une page afficher aux utilisateurs à différents emplacements. Sans hreflang, Google peut afficher la version française d'une page à des utilisateurs anglophones, ou la version US à des utilisateurs britanniques.
 
-### Syntax
+### Syntaxe
 
-The hreflang attribute uses ISO 639-1 language codes and optional ISO 3166-1 Alpha-2 country codes:
+L'attribut hreflang utilise les codes de langue ISO 639-1 et des codes de pays ISO 3166-1 Alpha-2 optionnels :
 
-| Format | Meaning | Example |
+| Format | Signification | Exemple |
 |---|---|---|
-| `hreflang="en"` | English (any region) | General English content |
-| `hreflang="en-us"` | English (United States) | US-specific pricing and content |
-| `hreflang="en-gb"` | English (United Kingdom) | UK-specific pricing and content |
-| `hreflang="es"` | Spanish (any region) | General Spanish content |
-| `hreflang="es-mx"` | Spanish (Mexico) | Mexico-specific content |
-| `hreflang="zh-hans"` | Chinese (Simplified) | Simplified Chinese content |
-| `hreflang="zh-hant"` | Chinese (Traditional) | Traditional Chinese content |
-| `hreflang="x-default"` | Default/fallback | Language selector page or default language version |
+| `hreflang="en"` | Anglais (toute région) | Contenu anglais général |
+| `hreflang="en-us"` | Anglais (États-Unis) | Prix et contenu spécifiques aux US |
+| `hreflang="en-gb"` | Anglais (Royaume-Uni) | Prix et contenu spécifiques au Royaume-Uni |
+| `hreflang="es"` | Espagnol (toute région) | Contenu espagnol général |
+| `hreflang="es-mx"` | Espagnol (Mexique) | Contenu spécifique au Mexique |
+| `hreflang="zh-hans"` | Chinois (simplifié) | Contenu en chinois simplifié |
+| `hreflang="zh-hant"` | Chinois (traditionnel) | Contenu en chinois traditionnel |
+| `hreflang="x-default"` | Par défaut/repli | Page de sélection de langue ou version linguistique par défaut |
 
-### Implementation Methods
+### Méthodes de mise en œuvre
 
-**Method 1: HTML Link Elements (in `<head>`)**
+**Méthode 1 : éléments lien HTML (dans le `<head>`)**
 
 ```html
 <link rel="alternate" hreflang="en-us" href="https://example.com/page">
@@ -78,9 +78,9 @@ The hreflang attribute uses ISO 639-1 language codes and optional ISO 3166-1 Alp
 <link rel="alternate" hreflang="x-default" href="https://example.com/page">
 ```
 
-**Best for**: Sites with fewer than 20 language/region versions per page. Above that, the HTML `<head>` becomes bloated.
+**Idéal pour** : les sites avec moins de 20 versions langue/région par page. Au-delà, le `<head>` HTML devient encombré.
 
-**Method 2: HTTP Headers**
+**Méthode 2 : en-têtes HTTP**
 
 ```
 Link: <https://example.com/page>; rel="alternate"; hreflang="en-us",
@@ -90,9 +90,9 @@ Link: <https://example.com/page>; rel="alternate"; hreflang="en-us",
       <https://example.com/page>; rel="alternate"; hreflang="x-default"
 ```
 
-**Best for**: Non-HTML resources (PDFs, documents) that need hreflang but cannot contain HTML tags.
+**Idéal pour** : les ressources non-HTML (PDF, documents) nécessitant hreflang mais ne pouvant pas contenir de balises HTML.
 
-**Method 3: XML Sitemap (Recommended for Large Sites)**
+**Méthode 3 : sitemap XML (recommandée pour les grands sites)**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -117,244 +117,245 @@ Link: <https://example.com/page>; rel="alternate"; hreflang="en-us",
 </urlset>
 ```
 
-**Best for**: Sites with 20+ language/region versions, or any site where maintaining hreflang in HTML `<head>` is impractical. The sitemap method keeps the HTML clean and is easier to generate programmatically.
+**Idéal pour** : les sites avec 20+ versions langue/région, ou tout site où maintenir hreflang dans le `<head>` HTML est impraticable. La méthode sitemap garde le HTML propre et est plus facile à générer programmatiquement.
 
-### Common Hreflang Mistakes
+### Erreurs courantes de hreflang
 
-| Mistake | Impact | Fix |
+| Erreur | Impact | Correctif |
 |---|---|---|
-| **Missing self-referencing hreflang** | Google may not process the hreflang set correctly | Every page must include a hreflang tag pointing to itself |
-| **Missing x-default** | No fallback for users in unlisted regions/languages | Add x-default pointing to the language selector page or the primary language version |
-| **Missing return links (bidirectional)** | If page A hreflang-links to page B, but page B does not link back to page A, Google ignores the annotation | Ensure every page in the hreflang set includes the complete set of all alternate versions |
-| **Hreflang pointing to non-canonical URL** | If canonical and hreflang reference different URLs, Google may ignore hreflang | Hreflang href values must match the canonical URL of each page |
-| **Hreflang pointing to noindex/blocked page** | Google cannot index a page it cannot access; hreflang signal is lost | All hreflang targets must be indexable, crawlable, and return 200 |
-| **Wrong language/region codes** | `hreflang="uk"` is not valid (UK is a country code; the language code for Ukrainian is `uk`, but English for the UK is `en-gb`) | Use ISO 639-1 for language and ISO 3166-1 Alpha-2 for country. Validate codes |
-| **Inconsistent URL formats** | Mixing `http` and `https`, or `www` and non-www, in hreflang URLs | Use the exact canonical URL format consistently across all hreflang annotations |
-| **Using hreflang for duplicate content** | Two pages with the same content in the same language, just different URLs | Hreflang is for different language/region versions. Use canonical for same-language duplicates |
+| **Absence de hreflang auto-référencé** | Google peut ne pas traiter correctement l'ensemble hreflang | Chaque page doit inclure une balise hreflang pointant vers elle-même |
+| **Absence de x-default** | Aucun repli pour les utilisateurs dans des régions/langues non listées | Ajouter x-default pointant vers la page de sélection de langue ou la version linguistique principale |
+| **Absence de liens retour (bidirectionnels)** | Si la page A lie en hreflang vers la page B, mais que la page B ne renvoie pas vers la page A, Google ignore l'annotation | S'assurer que chaque page de l'ensemble hreflang inclut l'ensemble complet de toutes les versions alternatives |
+| **Hreflang pointant vers une URL non canonique** | Si la canonique et le hreflang référencent des URL différentes, Google peut ignorer le hreflang | Les valeurs href du hreflang doivent correspondre à l'URL canonique de chaque page |
+| **Hreflang pointant vers une page noindex/bloquée** | Google ne peut pas indexer une page à laquelle il ne peut pas accéder ; le signal hreflang est perdu | Toutes les cibles hreflang doivent être indexables, crawlables, et renvoyer 200 |
+| **Codes de langue/région incorrects** | `hreflang="uk"` n'est pas valide (UK est un code de pays ; le code de langue pour l'ukrainien est `uk`, mais l'anglais du Royaume-Uni est `en-gb`) | Utiliser ISO 639-1 pour la langue et ISO 3166-1 Alpha-2 pour le pays. Valider les codes |
+| **Formats d'URL incohérents** | Mélanger `http` et `https`, ou `www` et non-www, dans les URL hreflang | Utiliser le format exact de l'URL canonique de façon cohérente sur toutes les annotations hreflang |
+| **Utiliser hreflang pour du contenu dupliqué** | Deux pages avec le même contenu dans la même langue, juste des URL différentes | Hreflang sert aux différentes versions langue/région. Utiliser canonical pour les doublons de même langue |
 
-### Hreflang Validation
+### Validation du hreflang
 
-- **Screaming Frog**: Crawls all hreflang annotations and flags missing return links, invalid codes, and conflicts with canonicals
-- **Aleyda Solis' Hreflang Tags Generator**: Generates correct hreflang markup from a URL matrix
-- **Merkle Hreflang Tag Testing Tool**: Validates hreflang implementation on live pages
-
----
-
-## Geotargeting
-
-### How Google Determines Geographic Targeting
-
-The Google Search Console International Targeting tool has been removed — there is no longer a manual country-targeting setting for subdirectories or subdomains. Google now infers geographic relevance from on-site and infrastructure signals:
-
-1. **ccTLD**: A country-code top-level domain (e.g., `example.de`) is the strongest signal and is automatically geo-targeted
-2. **Hreflang annotations**: `hreflang` region codes (e.g., `en-gb`, `de-de`) tell Google which country/language each version serves
-3. **Server location and CDN locale**: Hosting location and CDN edge configuration provide a weak supporting signal
-4. **Local content signals**: Local currency, addresses, phone numbers, language, and links from in-country sites
-
-**Note**: Hreflang region codes target a **country**, not just a language. For language targeting without country restriction, use language-only hreflang codes (e.g., `de` for German speakers worldwide).
-
-### IP-Based Redirection: Do Not Do This
-
-Redirecting users based on their IP address is a common mistake in international SEO:
-
-- **Problem**: Googlebot primarily crawls from US IP addresses. If you redirect US IPs to the English version, Google may never crawl or index your non-English versions
-- **Alternative**: Show a banner suggesting the appropriate language/region version (e.g., "It looks like you are in Germany. View our German site?") without redirecting. Let the user choose
-- **Exception**: Using IP detection to set a default language preference on the first visit is acceptable if the user can easily switch and if all versions are accessible to crawlers without IP-based blocking
+- **Screaming Frog** : crawle toutes les annotations hreflang et signale les liens retour manquants, les codes invalides, et les conflits avec les canoniques
+- **Générateur de balises Hreflang d'Aleyda Solis** : génère le balisage hreflang correct à partir d'une matrice d'URL
+- **Outil de test de balises Hreflang de Merkle** : valide l'implémentation du hreflang sur les pages en ligne
 
 ---
 
-## Content Localization vs Translation
+## Ciblage géographique
 
-### Translation
+### Comment Google détermine le ciblage géographique
 
-Direct linguistic conversion of content from one language to another. Necessary but insufficient for effective international SEO.
+L'outil de ciblage international de Google Search Console a été supprimé — il n'existe plus de paramètre manuel de ciblage par pays pour les sous-répertoires ou sous-domaines. Google déduit désormais la pertinence géographique à partir de signaux sur site et d'infrastructure :
 
-### Localization
+1. **ccTLD** : un domaine de premier niveau national (par ex. `example.de`) est le signal le plus fort et est automatiquement ciblé géographiquement
+2. **Annotations hreflang** : les codes de région `hreflang` (par ex. `en-gb`, `de-de`) indiquent à Google quel pays/langue chaque version sert
+3. **Emplacement du serveur et locale du CDN** : l'emplacement d'hébergement et la configuration edge du CDN fournissent un signal de support faible
+4. **Signaux de contenu local** : devise locale, adresses, numéros de téléphone, langue, et liens depuis des sites du pays
 
-Adapting content for the cultural, legal, and market context of the target region:
+**Remarque** : les codes de région hreflang ciblent un **pays**, pas seulement une langue. Pour un ciblage par langue sans restriction de pays, utiliser des codes hreflang langue seule (par ex. `de` pour les germanophones dans le monde entier).
 
-| Dimension | Translation Only | Full Localization |
+### Redirection basée sur l'IP : à ne pas faire
+
+Rediriger les utilisateurs en fonction de leur adresse IP est une erreur courante en SEO international :
+
+- **Problème** : Googlebot crawle principalement depuis des adresses IP US. Si vous redirigez les IP US vers la version anglaise, Google pourrait ne jamais crawler ou indexer vos versions non anglaises
+- **Alternative** : afficher une bannière suggérant la version langue/région appropriée (par ex. « Il semble que vous soyez en Allemagne. Voir notre site allemand ? ») sans rediriger. Laisser l'utilisateur choisir
+- **Exception** : utiliser la détection IP pour définir une préférence de langue par défaut lors de la première visite est acceptable si l'utilisateur peut facilement basculer et si toutes les versions sont accessibles aux crawlers sans blocage basé sur l'IP
+
+---
+
+## Localisation vs traduction du contenu
+
+### Traduction
+
+Conversion linguistique directe du contenu d'une langue à une autre. Nécessaire mais insuffisante pour un SEO international efficace.
+
+### Localisation
+
+Adapter le contenu au contexte culturel, légal, et de marché de la région cible :
+
+| Dimension | Traduction seule | Localisation complète |
 |---|---|---|
-| **Currency** | Dollar amounts left as-is | Converted to local currency |
-| **Units** | Imperial measurements | Metric (or local standard) |
-| **Date formats** | MM/DD/YYYY | DD/MM/YYYY or YYYY-MM-DD per locale |
-| **Phone numbers** | US format | Local format with country code |
-| **Legal references** | US regulations | Local regulations and compliance |
-| **Cultural references** | US holidays, sports, idioms | Locally relevant references |
-| **Images** | Global stock photos | Locally relevant people, settings, products |
-| **Payment methods** | Credit cards | iDEAL (Netherlands), Klarna (Nordics), PIX (Brazil), UPI (India) |
-| **Social proof** | Global testimonials | Local customer testimonials and case studies |
-| **Keyword targeting** | Translated keywords | Locally researched keywords (search behavior differs) |
+| **Devise** | Montants en dollars laissés tels quels | Convertis en devise locale |
+| **Unités** | Mesures impériales | Métrique (ou standard local) |
+| **Formats de date** | MM/JJ/AAAA | JJ/MM/AAAA ou AAAA-MM-JJ selon la locale |
+| **Numéros de téléphone** | Format US | Format local avec indicatif pays |
+| **Références légales** | Réglementations US | Réglementations et conformité locales |
+| **Références culturelles** | Fêtes, sports, expressions US | Références localement pertinentes |
+| **Images** | Photos stock globales | Personnes, contextes, produits localement pertinents |
+| **Moyens de paiement** | Cartes de crédit | iDEAL (Pays-Bas), Klarna (pays nordiques), PIX (Brésil), UPI (Inde) |
+| **Preuve sociale** | Témoignages globaux | Témoignages et études de cas de clients locaux |
+| **Ciblage de mots-clés** | Mots-clés traduits | Mots-clés recherchés localement (le comportement de recherche diffère) |
 
-### International Keyword Research
+### Recherche de mots-clés internationale
 
-Keywords do not translate 1:1 between languages. Differences include:
+Les mots-clés ne se traduisent pas 1:1 entre les langues. Les différences incluent :
 
-- **Search volume**: A keyword with 10K monthly searches in English may have a direct translation with only 500 searches in German because Germans use a different phrase
-- **Search intent**: The same translated phrase may have different intent in different markets
-- **Colloquialisms**: "Sneakers" (US) vs "trainers" (UK) vs "Turnschuhe" (DE) — all mean athletic shoes
-- **Brand vs generic**: Some markets search for brand names more than generic terms (or vice versa)
+- **Volume de recherche** : un mot-clé avec 10 000 recherches mensuelles en anglais peut avoir une traduction directe avec seulement 500 recherches en allemand car les Allemands utilisent une expression différente
+- **Intention de recherche** : la même expression traduite peut avoir une intention différente selon les marchés
+- **Expressions familières** : « sneakers » (US) vs « trainers » (UK) vs « Turnschuhe » (DE) — tous signifient chaussures de sport
+- **Marque vs générique** : certains marchés recherchent davantage les noms de marque que les termes génériques (ou l'inverse)
 
-Always conduct keyword research natively in each target language using local search data, not by translating an English keyword list.
-
----
-
-## International Site Architecture Patterns
-
-### Pattern 1: Single Domain, Subdirectories (Most Common)
-
-```
-example.com/           (English, US — default)
-example.com/uk/        (English, UK)
-example.com/de/        (German)
-example.com/fr/        (French)
-example.com/es-mx/     (Spanish, Mexico)
-```
-
-- Single domain authority
-- One hosting setup (use CDN for global performance)
-- Hreflang in XML sitemap
-- GSC: One property with directory-level filtering
-
-### Pattern 2: Subdomains Per Region
-
-```
-www.example.com        (English, US — default)
-uk.example.com         (English, UK)
-de.example.com         (German)
-fr.example.com         (French)
-mx.example.com         (Spanish, Mexico)
-```
-
-- Semi-separate authority (subdomains inherit some root domain authority)
-- Can host on different servers/CDNs per region for performance
-- Separate GSC properties per subdomain
-- More complex to manage
-
-### Pattern 3: ccTLDs Per Country
-
-```
-example.com            (English, US)
-example.co.uk          (English, UK)
-example.de             (German)
-example.fr             (French)
-example.com.mx         (Spanish, Mexico)
-```
-
-- Completely separate domain authority
-- Strongest geo-targeting signal
-- Most expensive and complex to maintain
-- Each domain needs its own link building and SEO strategy
-
-### Pattern 4: Hybrid (ccTLD + Subdirectories for Languages)
-
-```
-example.de/            (German, Germany)
-example.de/en/         (English version for Germany)
-example.co.uk/         (English, UK)
-example.com/           (English, US — default)
-example.com/es/        (Spanish, general)
-example.com/fr/        (French, general)
-```
-
-- Used when some markets justify ccTLDs (major markets) but others do not
-- Combines strong local signals for key markets with consolidated authority for secondary markets
+Toujours mener la recherche de mots-clés nativement dans chaque langue cible en utilisant des données de recherche locales, plutôt qu'en traduisant une liste de mots-clés anglais.
 
 ---
 
-## CDN and Server Location
+## Modèles d'architecture de site international
 
-### Impact on International Performance
+### Modèle 1 : domaine unique, sous-répertoires (le plus courant)
 
-- **Server location affects TTFB**: A server in the US serving pages to users in Australia adds 200-300ms of latency per request
-- **CDN is essential for international sites**: Cache static assets and HTML at edge locations near users in each target market
-- **Key CDN providers**: Cloudflare (broadest free tier), Fastly (best real-time purging), CloudFront (best for AWS infrastructure), Akamai (enterprise)
+```
+example.com/           (Anglais, US — par défaut)
+example.com/uk/        (Anglais, UK)
+example.com/de/        (Allemand)
+example.com/fr/        (Français)
+example.com/es-mx/     (Espagnol, Mexique)
+```
 
-### CDN Configuration for International Sites
+- Autorité de domaine unique
+- Une seule configuration d'hébergement (utiliser un CDN pour la performance mondiale)
+- Hreflang dans le sitemap XML
+- GSC : une propriété avec filtrage au niveau du répertoire
 
-1. **Cache HTML at the edge** — not just static assets. This eliminates TTFB latency for cached pages
-2. **Set cache keys to include language/region** — ensure `/de/` pages are cached separately from `/en/` pages
-3. **Use the Vary header** if serving different content from the same URL based on Accept-Language: `Vary: Accept-Language` (not recommended — subdirectory approach is cleaner)
-4. **Monitor CDN cache hit rates by region** — low hit rates in a region indicate either insufficient edge presence or aggressive cache expiry
+### Modèle 2 : sous-domaines par région
+
+```
+www.example.com        (Anglais, US — par défaut)
+uk.example.com         (Anglais, UK)
+de.example.com         (Allemand)
+fr.example.com         (Français)
+mx.example.com         (Espagnol, Mexique)
+```
+
+- Autorité semi-séparée (les sous-domaines héritent d'une partie de l'autorité du domaine racine)
+- Peut héberger sur différents serveurs/CDN par région pour la performance
+- Propriétés GSC séparées par sous-domaine
+- Plus complexe à gérer
+
+### Modèle 3 : ccTLD par pays
+
+```
+example.com            (Anglais, US)
+example.co.uk          (Anglais, UK)
+example.de             (Allemand)
+example.fr             (Français)
+example.com.mx         (Espagnol, Mexique)
+```
+
+- Autorité de domaine complètement séparée
+- Signal de ciblage géographique le plus fort
+- Le plus coûteux et complexe à maintenir
+- Chaque domaine nécessite sa propre stratégie de netlinking et de SEO
+
+### Modèle 4 : hybride (ccTLD + sous-répertoires pour les langues)
+
+```
+example.de/            (Allemand, Allemagne)
+example.de/en/         (Version anglaise pour l'Allemagne)
+example.co.uk/         (Anglais, UK)
+example.com/           (Anglais, US — par défaut)
+example.com/es/        (Espagnol, général)
+example.com/fr/        (Français, général)
+```
+
+- Utilisé lorsque certains marchés justifient des ccTLD (marchés majeurs) mais pas d'autres
+- Combine de forts signaux locaux pour les marchés clés avec une autorité consolidée pour les marchés secondaires
 
 ---
 
-## Search Engine Market Share by Country
+## CDN et emplacement du serveur
 
-| Country | Primary Search Engine | Market Share | Notes |
+### Impact sur la performance internationale
+
+- **L'emplacement du serveur affecte le TTFB** : un serveur aux US servant des pages à des utilisateurs en Australie ajoute 200-300 ms de latence par requête
+- **Le CDN est essentiel pour les sites internationaux** : mettre en cache les ressources statiques et le HTML aux emplacements edge proches des utilisateurs dans chaque marché cible
+- **Principaux fournisseurs de CDN** : Cloudflare (offre gratuite la plus large), Fastly (meilleure purge en temps réel), CloudFront (idéal pour l'infrastructure AWS), Akamai (entreprise)
+
+### Configuration CDN pour les sites internationaux
+
+1. **Mettre en cache le HTML à la périphérie** — pas seulement les ressources statiques. Cela élimine la latence TTFB pour les pages mises en cache
+2. **Définir des clés de cache incluant la langue/région** — s'assurer que les pages `/de/` sont mises en cache séparément des pages `/en/`
+3. **Utiliser l'en-tête Vary** si vous servez un contenu différent depuis la même URL selon Accept-Language : `Vary: Accept-Language` (non recommandé — l'approche par sous-répertoire est plus propre)
+4. **Surveiller les taux de succès du cache CDN par région** — des taux de succès faibles dans une région indiquent soit une présence edge insuffisante, soit une expiration de cache trop agressive
+
+---
+
+## Parts de marché des moteurs de recherche par pays
+
+| Pays | Moteur de recherche principal | Part de marché | Remarques |
 |---|---|---|---|
-| United States | Google | ~87% | Bing has ~7% (important for B2B due to workplace defaults) |
-| United Kingdom | Google | ~92% | |
-| Germany | Google | ~90% | |
-| France | Google | ~91% | |
-| Japan | Google | ~76% | Yahoo Japan (~15%) uses Google's index |
-| South Korea | Naver | ~55% | Google ~35%. Naver requires separate optimization |
-| China | Baidu | ~65% | Google is blocked. Baidu requires ICP license, Simplified Chinese, .cn domain |
-| Russia | Yandex | ~60% | Google ~38%. Yandex has different ranking factors |
-| Czech Republic | Seznam | ~25% | Google ~72%. Seznam still significant |
-| Brazil | Google | ~96% | |
-| India | Google | ~98% | |
+| États-Unis | Google | ~87 % | Bing a ~7 % (important pour le B2B en raison des paramètres par défaut en entreprise) |
+| Royaume-Uni | Google | ~92 % | |
+| Allemagne | Google | ~90 % | |
+| France | Google | ~91 % | |
+| Japon | Google | ~76 % | Yahoo Japan (~15 %) utilise l'index de Google |
+| Corée du Sud | Naver | ~55 % | Google ~35 %. Naver nécessite une optimisation séparée |
+| Chine | Baidu | ~65 % | Google est bloqué. Baidu nécessite une licence ICP, du chinois simplifié, un domaine .cn |
+| Russie | Yandex | ~60 % | Google ~38 %. Yandex a des facteurs de classement différents |
+| République tchèque | Seznam | ~25 % | Google ~72 %. Seznam reste significatif |
+| Brésil | Google | ~96 % | |
+| Inde | Google | ~98 % | |
 
-### SEO Implications by Search Engine
+### Implications SEO par moteur de recherche
 
-**Baidu (China):**
-- Requires an ICP license to host in China (mandatory)
-- Simplified Chinese content is essential
-- .cn ccTLD is strongly preferred
-- JavaScript rendering is limited — SSR or static HTML required
-- Meta keywords tag is still used as a ranking signal
-- Baidu Webmaster Tools for submission and monitoring
+**Baidu (Chine) :**
+- Nécessite une licence ICP pour héberger en Chine (obligatoire)
+- Le contenu en chinois simplifié est essentiel
+- Le ccTLD .cn est fortement préféré
+- Le rendu JavaScript est limité — SSR ou HTML statique requis
+- La balise meta keywords est encore utilisée comme signal de classement
+- Baidu Webmaster Tools pour la soumission et la surveillance
 
-**Yandex (Russia):**
-- Strong behavioral signals (user engagement metrics affect rankings)
-- Yandex Webmaster tools for submission and monitoring
-- Regional ranking algorithm differs from Google (strong local geo signals)
-- Supports its own structured data formats alongside schema.org
-- Slower to crawl than Google — sitemaps are critical
+**Yandex (Russie) :**
+- Signaux comportementaux forts (les métriques d'engagement utilisateur affectent les classements)
+- Yandex Webmaster Tools pour la soumission et la surveillance
+- L'algorithme de classement régional diffère de Google (forts signaux géographiques locaux)
+- Prend en charge ses propres formats de données structurées en plus de schema.org
+- Plus lent à crawler que Google — les sitemaps sont critiques
 
-**Naver (South Korea):**
-- Blog and knowledge content (Naver Blog, Naver Knowledge iN) ranks prominently
-- Naver Webmaster Tools for submission
-- Korean-language content on Naver's own platforms gets priority
-- Consider Naver Blog as a content channel alongside the website
+**Naver (Corée du Sud) :**
+- Le contenu de blog et de connaissances (Naver Blog, Naver Knowledge iN) se classe de façon prépondérante
+- Naver Webmaster Tools pour la soumission
+- Le contenu en coréen sur les propres plateformes de Naver est prioritaire
+- Envisager Naver Blog comme un canal de contenu en complément du site web
 
 ---
 
-## Legal and Compliance Considerations
+## Considérations légales et de conformité
 
-### GDPR (European Economic Area)
+### RGPD (Espace économique européen)
 
-- Cookie consent banner required before setting non-essential cookies
-- Privacy policy must be available in local language
-- Data processing agreements required with third-party tools
-- Right to erasure affects user-generated content
-- Analytics must comply (server-side analytics, anonymized IP, consent-based tracking)
+- Bannière de consentement aux cookies requise avant de définir des cookies non essentiels
+- La politique de confidentialité doit être disponible dans la langue locale
+- Accords de traitement des données requis avec les outils tiers
+- Le droit à l'effacement affecte le contenu généré par l'utilisateur
+- L'analytics doit être conforme (analytics côté serveur, IP anonymisée, suivi basé sur le consentement)
 
-### CCPA/CPRA (California, US)
+### CCPA/CPRA (Californie, US)
 
-- "Do Not Sell My Personal Information" link required for California users
-- Privacy policy must disclose data collection practices
+- Lien « Ne pas vendre mes informations personnelles » requis pour les utilisateurs californiens
+- La politique de confidentialité doit divulguer les pratiques de collecte de données
 
-### ePrivacy Directive (EU)
+### Directive ePrivacy (UE)
 
-- Applies to electronic communications, cookies, and tracking
-- Stricter than GDPR for certain marketing activities (email marketing requires explicit opt-in)
+- S'applique aux communications électroniques, cookies, et suivi
+- Plus stricte que le RGPD pour certaines activités marketing (l'email marketing nécessite un opt-in explicite)
 
-### Country-Specific Requirements
+### Exigences spécifiques par pays
 
-| Country | Requirement | Impact on Website |
+| Pays | Exigence | Impact sur le site web |
 |---|---|---|
-| Germany | Impressum (legal notice) page mandatory | Add `/impressum` page with company details |
-| France | Legal mentions (mentions legales) required | Add `/mentions-legales` page |
-| China | ICP license number displayed on homepage | Required for hosting in China |
-| Australia | Privacy Act compliance, spam act for email | Privacy policy and email consent mechanisms |
-| Brazil | LGPD (similar to GDPR) | Cookie consent and privacy compliance |
-| Canada | CASL for email marketing, PIPEDA for privacy | Explicit consent for marketing emails |
-| Japan | APPI (data protection law) | Privacy policy and consent mechanisms |
+| Allemagne | Page Impressum (mentions légales) obligatoire | Ajouter une page `/impressum` avec les détails de l'entreprise |
+| France | Mentions légales requises | Ajouter une page `/mentions-legales` |
+| Chine | Numéro de licence ICP affiché sur la page d'accueil | Requis pour l'hébergement en Chine |
+| Australie | Conformité au Privacy Act, loi anti-spam pour l'email | Politique de confidentialité et mécanismes de consentement e-mail |
+| Brésil | LGPD (similaire au RGPD) | Consentement aux cookies et conformité de confidentialité |
+| Canada | CASL pour l'email marketing, PIPEDA pour la confidentialité | Consentement explicite pour les e-mails marketing |
+| Japon | APPI (loi sur la protection des données) | Politique de confidentialité et mécanismes de consentement |
 
-### Structured Data for Legal Compliance
+### Données structurées pour la conformité légale
 
-- Implement Organization schema with `address` per country entity
-- Use LocalBusiness schema for physical locations in each country
-- Include `areaServed` in Service and Product schema to clarify geographic availability
-- Ensure `priceRange` and `priceCurrency` in Product schema match the local currency and pricing
+- Implémenter le schema Organization avec `address` par entité de pays
+- Utiliser le schema LocalBusiness pour les emplacements physiques dans chaque pays
+- Inclure `areaServed` dans les schemas Service et Product pour clarifier la disponibilité géographique
+- S'assurer que `priceRange` et `priceCurrency` dans le schema Product correspondent à la devise et aux prix locaux
+</content>

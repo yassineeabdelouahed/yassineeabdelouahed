@@ -1,248 +1,248 @@
-# Meta Ads — Facebook & Instagram Reference
+# Meta Ads — Référence Facebook & Instagram
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Campaign Structure Overview
+## Vue d'ensemble de la structure de campagne
 
-### Campaign Budget Optimization (CBO) vs Ad Set Budget Optimization (ABO)
+### Optimisation du budget de campagne (CBO) vs optimisation du budget d'ad set (ABO)
 
-| Factor | CBO | ABO |
+| Facteur | CBO | ABO |
 |---|---|---|
-| Budget control | Campaign level — Meta distributes | Ad set level — you control each |
-| Best for | Testing many audiences, scaling winners | Controlled tests, fixed audience budgets |
-| Algorithm advantage | Meta optimizes spend toward best performers | You maintain precise spend allocation |
-| When to use | 3+ ad sets, scaling phase | Launch testing, strict budget requirements |
-| Minimum budget | $30–50/day per campaign (recommended) | $10–20/day per ad set (recommended) |
+| Contrôle du budget | Niveau campagne — Meta distribue | Niveau ad set — vous contrôlez chacun |
+| Idéal pour | Tester de nombreuses audiences, mettre à l'échelle les gagnants | Tests contrôlés, budgets d'audience fixes |
+| Avantage algorithmique | Meta optimise la dépense vers les meilleurs performeurs | Vous maintenez une allocation de dépense précise |
+| Quand l'utiliser | 3+ ad sets, phase de mise à l'échelle | Test de lancement, exigences budgétaires strictes |
+| Budget minimum | 30-50 $/jour par campagne (recommandé) | 10-20 $/jour par ad set (recommandé) |
 
-### Advantage+ Campaigns
+### Campagnes Advantage+
 
-> ⚠️ **Marketing API v25 deprecation (in effect):** standalone **Advantage+ Shopping (ASC)** and **Advantage+ App (AAC)** campaigns can no longer be created or updated via the Marketing API — the block started with v25.0 (Feb 2026) and extended to **all API versions on 19 May 2026**. Meta will **pause remaining ASC/AAC campaigns with v26 (September 2026)**. Build new campaigns with the **unified Advantage+ setup** (Advantage+ features on standard campaign types) instead. Source: [Meta Marketing API changelog](https://developers.facebook.com/blog/post/2026/02/18/introducing-graph-api-v25-and-marketing-api-v25/).
+> ⚠️ **Dépréciation de la Marketing API v25 (en vigueur) :** les campagnes autonomes **Advantage+ Shopping (ASC)** et **Advantage+ App (AAC)** ne peuvent plus être créées ni mises à jour via la Marketing API — le blocage a commencé avec la v25.0 (février 2026) et s'est étendu à **toutes les versions d'API le 19 mai 2026**. Meta **mettra en pause les campagnes ASC/AAC restantes avec la v26 (septembre 2026)**. Construisez les nouvelles campagnes avec la **configuration Advantage+ unifiée** (fonctionnalités Advantage+ sur les types de campagne standard) à la place. Source : [changelog de la Marketing API Meta](https://developers.facebook.com/blog/post/2026/02/18/introducing-graph-api-v25-and-marketing-api-v25/).
 
-| Type | Use Case | Key Difference |
+| Type | Cas d'usage | Différence clé |
 |---|---|---|
-| Advantage+ Shopping *(legacy — see banner)* | E-commerce, product catalog | Fully automated targeting + creative; being retired in favor of unified Advantage+ |
-| Advantage+ App *(legacy — see banner)* | App installs | Automated audience, placement, creative; being retired in favor of unified Advantage+ |
-| Standard with Advantage+ features **(current path)** | All objectives incl. e-commerce | Selective automation on specific components — this is Meta's go-forward structure |
+| Advantage+ Shopping *(hérité — voir bandeau)* | E-commerce, catalogue produit | Ciblage + créatif entièrement automatisés ; en cours de retrait au profit d'Advantage+ unifié |
+| Advantage+ App *(hérité — voir bandeau)* | Installations d'app | Audience, emplacement, créatif automatisés ; en cours de retrait au profit d'Advantage+ unifié |
+| Standard avec fonctionnalités Advantage+ **(chemin actuel)** | Tous objectifs y compris e-commerce | Automatisation sélective sur des composants spécifiques — c'est la structure d'avenir de Meta |
 
-### Recommended Account Structure
+### Structure de compte recommandée
 ```
-Account
+Compte
 ├── Prospecting (CBO)
-│   ├── Advantage+ Audience — broad targeting
-│   ├── Lookalike stack — 1%, 3%, 5%
-│   └── Interest-based — layered interests
+│   ├── Audience Advantage+ — ciblage large
+│   ├── Pile lookalike — 1 %, 3 %, 5 %
+│   └── Basé sur les centres d'intérêt — intérêts superposés
 ├── Retargeting (ABO)
-│   ├── Website visitors 1–7 days
-│   ├── Website visitors 8–30 days
-│   ├── Engaged social audience
-│   └── Cart/checkout abandoners
-├── Retention / Upsell (ABO)
-│   ├── Existing customers — cross-sell
-│   └── Lapsed customers — win-back
-└── Unified Advantage+ sales campaign (if e-commerce; standalone ASC is legacy — see banner)
-    └── Existing customer budget cap set at 20–30%
+│   ├── Visiteurs du site 1–7 jours
+│   ├── Visiteurs du site 8–30 jours
+│   ├── Audience sociale engagée
+│   └── Abandons de panier/checkout
+├── Fidélisation / Upsell (ABO)
+│   ├── Clients existants — cross-sell
+│   └── Clients inactifs — reconquête
+└── Campagne de vente Advantage+ unifiée (si e-commerce ; l'ASC autonome est hérité — voir bandeau)
+    └── Plafond de budget client existant fixé à 20-30 %
 ```
 
-## Audience Strategy
+## Stratégie d'audience
 
-### Custom Audiences
+### Audiences personnalisées
 
-| Source | Retention Window | Quality Rating | Notes |
+| Source | Fenêtre de rétention | Notation de qualité | Notes |
 |---|---|---|---|
-| Customer list (email/phone) | Refreshed monthly | High | Min 1,000 records; hash before upload |
-| Website visitors (all) | 180 days max | Medium-High | Use Pixel + CAPI for completeness |
-| Website — specific pages | 30–90 days | High | Product pages, pricing, cart |
-| Video viewers (25%, 50%, 75%, 95%) | 365 days | Medium | Layer by engagement depth |
-| Lead form openers/submitters | 90 days | High | Great for retargeting non-converters |
-| Instagram/Facebook engagers | 365 days | Medium | Broad but relevant |
-| App activity | 180 days | High | In-app events drive precision |
+| Liste clients (email/téléphone) | Rafraîchie mensuellement | Élevée | Min 1 000 enregistrements ; hacher avant le chargement |
+| Visiteurs du site (tous) | 180 jours max | Moyenne-élevée | Utiliser Pixel + CAPI pour l'exhaustivité |
+| Site — pages spécifiques | 30–90 jours | Élevée | Pages produit, tarification, panier |
+| Spectateurs vidéo (25 %, 50 %, 75 %, 95 %) | 365 jours | Moyenne | Superposer par profondeur d'engagement |
+| Personnes ayant ouvert/soumis un formulaire de lead | 90 jours | Élevée | Excellent pour recibler les non-convertisseurs |
+| Personnes engagées avec Instagram/Facebook | 365 jours | Moyenne | Large mais pertinent |
+| Activité dans l'app | 180 jours | Élevée | Les événements in-app apportent la précision |
 
-### Lookalike Audiences
+### Audiences similaires (lookalike)
 
-| Seed Audience | Recommended % | Expected Quality |
+| Audience source | % recommandé | Qualité attendue |
 |---|---|---|
-| Purchasers / high-LTV customers | 1% | Highest |
-| All converters (leads + purchases) | 1–3% | High |
-| Add-to-cart visitors | 1–3% | Medium-High |
-| Website visitors (all) | 3–5% | Medium |
-| Engaged video viewers | 3–5% | Medium |
-| Page engagers | 5–10% | Lower |
+| Acheteurs / clients à forte LTV | 1 % | La plus élevée |
+| Tous les convertisseurs (leads + achats) | 1–3 % | Élevée |
+| Visiteurs ayant ajouté au panier | 1–3 % | Moyenne-élevée |
+| Visiteurs du site (tous) | 3–5 % | Moyenne |
+| Spectateurs vidéo engagés | 3–5 % | Moyenne |
+| Personnes engagées avec la page | 5–10 % | Plus faible |
 
-### Advantage+ Audience (Recommended Default)
-- Replaces manual targeting with Meta's ML-driven audience discovery
-- Provide **audience suggestions** (former interests/lookalikes) as signals, not restrictions
-- Outperforms manual targeting in 60–70% of A/B tests (Meta internal data)
-- Best practice: run Advantage+ Audience against your best manual audience in a split test
+### Audience Advantage+ (par défaut recommandé)
+- Remplace le ciblage manuel par la découverte d'audience pilotée par ML de Meta
+- Fournir les **suggestions d'audience** (anciens centres d'intérêt/lookalikes) comme signaux, pas comme restrictions
+- Surpasse le ciblage manuel dans 60 à 70 % des tests A/B (données internes Meta)
+- Bonne pratique : exécuter l'Audience Advantage+ contre votre meilleure audience manuelle dans un split test
 
-## Creative Specs by Placement
+## Spécifications créatives par emplacement
 
-| Placement | Format | Aspect Ratio | Resolution (min) | Max File Size |
+| Emplacement | Format | Ratio d'aspect | Résolution (min) | Taille de fichier max |
 |---|---|---|---|---|
-| Feed (FB + IG) | Image | 1:1 or 4:5 | 1080x1080 / 1080x1350 | 30 MB |
-| Feed (FB + IG) | Video | 1:1 or 4:5 | 1080x1080 / 1080x1350 | 4 GB |
-| Stories / Reels | Image | 9:16 | 1080x1920 | 30 MB |
-| Stories / Reels | Video | 9:16 | 1080x1920 | 4 GB |
-| Right column (FB) | Image | 1:1 | 1080x1080 | 30 MB |
-| In-stream video | Video | 16:9 | 1920x1080 | 4 GB |
-| Audience Network | Image/Video | Varies | 1080 min width | 30 MB / 4 GB |
-| Messenger | Image | 1:1 | 1080x1080 | 30 MB |
+| Fil d'actualité (FB + IG) | Image | 1:1 ou 4:5 | 1080x1080 / 1080x1350 | 30 Mo |
+| Fil d'actualité (FB + IG) | Vidéo | 1:1 ou 4:5 | 1080x1080 / 1080x1350 | 4 Go |
+| Stories / Reels | Image | 9:16 | 1080x1920 | 30 Mo |
+| Stories / Reels | Vidéo | 9:16 | 1080x1920 | 4 Go |
+| Colonne de droite (FB) | Image | 1:1 | 1080x1080 | 30 Mo |
+| Vidéo in-stream | Vidéo | 16:9 | 1920x1080 | 4 Go |
+| Audience Network | Image/Vidéo | Varie | 1080 largeur min | 30 Mo / 4 Go |
+| Messenger | Image | 1:1 | 1080x1080 | 30 Mo |
 
-### Video Best Practices
-- First 3 seconds must hook — assume sound off
-- Add captions/text overlays (85% watch without sound)
-- Optimal length: 15–30 seconds for conversion; 6–15 seconds for awareness
-- Vertical (9:16) outperforms horizontal in mobile-first placements
+### Bonnes pratiques vidéo
+- Les 3 premières secondes doivent accrocher — supposer le son coupé
+- Ajouter des sous-titres/superpositions de texte (85 % regardent sans le son)
+- Durée optimale : 15–30 secondes pour la conversion ; 6–15 secondes pour la notoriété
+- Le format vertical (9:16) surpasse l'horizontal dans les emplacements mobile-first
 
-## iOS ATT Mitigation Strategy
+## Stratégie d'atténuation de l'ATT iOS
 
-### Impact Summary
-iOS 14.5+ App Tracking Transparency reduced Meta's signal fidelity significantly. These are the current countermeasures.
+### Résumé de l'impact
+L'App Tracking Transparency d'iOS 14.5+ a réduit significativement la fidélité des signaux de Meta. Voici les contre-mesures actuelles.
 
-### Conversions API (CAPI) Implementation
-- [ ] Server-side event tracking configured (Purchase, Lead, AddToCart, ViewContent minimum)
-- [ ] Event match quality score above 6.0 (target 8.0+)
-- [ ] Deduplicate events — send both Pixel and CAPI with matching `event_id`
-- [ ] Include maximum user parameters: email, phone, IP, user agent, fbc, fbp
-- [ ] Hash PII before sending (SHA-256)
-- [ ] Verify events in Events Manager > Test Events
+### Mise en œuvre de l'API Conversions (CAPI)
+- [ ] Suivi d'événements côté serveur configuré (Purchase, Lead, AddToCart, ViewContent minimum)
+- [ ] Score de qualité de correspondance d'événements au-dessus de 6,0 (cible 8,0+)
+- [ ] Dédupliquer les événements — envoyer à la fois le Pixel et le CAPI avec un `event_id` correspondant
+- [ ] Inclure le maximum de paramètres utilisateur : email, téléphone, IP, user agent, fbc, fbp
+- [ ] Hacher les données personnelles avant l'envoi (SHA-256)
+- [ ] Vérifier les événements dans Events Manager > Test Events
 
-### Aggregated Event Measurement (AEM)
-- [ ] Domain verified in Business Manager
-- [ ] 8 conversion events configured and prioritized
-- [ ] Event priority ranked (Purchase > Lead > AddToCart > ViewContent)
-- [ ] Value optimization enabled for top-priority event
-- [ ] 72-hour delay expected after configuration changes
+### Mesure d'événements agrégés (AEM)
+- [ ] Domaine vérifié dans Business Manager
+- [ ] 8 événements de conversion configurés et priorisés
+- [ ] Priorité des événements classée (Purchase > Lead > AddToCart > ViewContent)
+- [ ] Optimisation de la valeur activée pour l'événement de plus haute priorité
+- [ ] Délai de 72 heures attendu après les changements de configuration
 
-### Additional Signal Recovery
-- [ ] Enhanced conversions enabled
-- [ ] Advanced matching turned on (automatic + manual)
-- [ ] Broad targeting to compensate for audience signal loss
-- [ ] Conversion lead optimization (offline conversion import) for lead gen
-- [ ] UTM parameters on all ad URLs for GA4 cross-reference
+### Récupération de signal supplémentaire
+- [ ] Conversions améliorées activées
+- [ ] Correspondance avancée activée (automatique + manuelle)
+- [ ] Ciblage large pour compenser la perte de signal d'audience
+- [ ] Optimisation des leads de conversion (import de conversions hors ligne) pour la génération de leads
+- [ ] Paramètres UTM sur toutes les URL publicitaires pour recoupement avec GA4
 
-## Creative Best Practices
+## Bonnes pratiques créatives
 
-### Ad Creative Framework: The 4C Method
+### Cadre de créatif publicitaire : la méthode des 4C
 
-| Element | Description | Example |
+| Élément | Description | Exemple |
 |---|---|---|
-| **Catch** | Pattern interrupt in first 1–3 seconds | Bold text overlay, unexpected visual, direct question |
-| **Connect** | Relate to audience pain point | "Tired of spending hours on reports?" |
-| **Convince** | Proof, features, social evidence | Testimonial, demo, stats, before/after |
-| **Close** | Clear CTA aligned with funnel stage | "Shop Now," "Get Free Trial," "Learn More" |
+| **Catch (Accrocher)** | Rupture de motif dans les 1 à 3 premières secondes | Superposition de texte en gras, visuel inattendu, question directe |
+| **Connect (Connecter)** | Se relier au point de douleur de l'audience | « Fatigué de passer des heures sur les rapports ? » |
+| **Convince (Convaincre)** | Preuve, fonctionnalités, preuve sociale | Témoignage, démo, statistiques, avant/après |
+| **Close (Conclure)** | CTA clair aligné avec l'étape du tunnel | « Achetez maintenant », « Obtenez un essai gratuit », « En savoir plus » |
 
-### Creative Volume & Testing
-- Launch with 3–6 creative variations per ad set minimum
-- Test across these dimensions (one variable at a time):
-  - Hook / opening (biggest impact)
-  - Format (static vs video vs carousel)
-  - Copy angle (benefit vs feature vs testimonial vs UGC)
-  - CTA (direct vs soft)
-- Kill underperformers after 2x target CPA spend with zero or poor conversions
-- Refresh creative every 2–4 weeks to combat fatigue
+### Volume créatif et test
+- Lancer avec 3 à 6 variations créatives minimum par ad set
+- Tester sur ces dimensions (une variable à la fois) :
+  - Accroche / ouverture (impact le plus fort)
+  - Format (statique vs vidéo vs carrousel)
+  - Angle de texte (bénéfice vs fonctionnalité vs témoignage vs UGC)
+  - CTA (direct vs doux)
+- Éliminer les sous-performeurs après 2x la dépense de CPA cible avec zéro conversion ou de mauvaises conversions
+- Rafraîchir le créatif toutes les 2 à 4 semaines pour combattre la fatigue
 
-### Creative Types That Perform
+### Types de créatif performants
 
-| Format | Best For | Tips |
+| Format | Idéal pour | Conseils |
 |---|---|---|
-| UGC-style video | Conversion, consideration | Authentic feel, real people, not polished |
-| Static with bold text | Retargeting, offers | Clear value prop, minimal design, high contrast |
-| Carousel | Multi-product, storytelling | First card must hook; use all 10 cards |
-| Collection / Instant Experience | E-commerce, catalog | Full-screen mobile experience |
-| Reels-native video | Prospecting, awareness | Trending audio, fast cuts, vertical only |
+| Vidéo style UGC | Conversion, considération | Sensation authentique, vraies personnes, pas trop poli |
+| Statique avec texte en gras | Retargeting, offres | Proposition de valeur claire, design minimal, contraste élevé |
+| Carrousel | Multi-produits, storytelling | La première carte doit accrocher ; utiliser les 10 cartes |
+| Collection / Expérience instantanée | E-commerce, catalogue | Expérience mobile plein écran |
+| Vidéo native Reels | Prospecting, notoriété | Audio tendance, coupes rapides, vertical uniquement |
 
-## Advantage+ Shopping Campaign Setup (legacy — existing campaigns only)
+## Configuration de campagne Advantage+ Shopping (héritée — campagnes existantes uniquement)
 
-> This section applies to **existing** ASC campaigns. New ASC campaigns can no longer be created via the Marketing API (all versions, since 19 May 2026), and Meta pauses remaining ASC/AAC campaigns with v26 (Sept 2026). For new builds, apply the same checklist principles to the **unified Advantage+ setup** on a standard sales campaign.
+> Cette section s'applique aux campagnes ASC **existantes**. Les nouvelles campagnes ASC ne peuvent plus être créées via la Marketing API (toutes versions, depuis le 19 mai 2026), et Meta met en pause les campagnes ASC/AAC restantes avec la v26 (sept. 2026). Pour les nouvelles constructions, appliquer les mêmes principes de checklist à la **configuration Advantage+ unifiée** sur une campagne de vente standard.
 
-### Pre-Launch Checklist
-- [ ] Product catalog connected and healthy (no disapprovals)
-- [ ] Pixel + CAPI firing correctly with purchase events and values
-- [ ] Customer list uploaded (for existing customer cap)
-- [ ] Creative assets ready: 5–10 images/videos minimum
-- [ ] Set existing customer budget cap (recommended: 20–30%)
+### Checklist avant lancement
+- [ ] Catalogue produit connecté et sain (aucune désapprobation)
+- [ ] Pixel + CAPI se déclenchant correctement avec les événements et valeurs d'achat
+- [ ] Liste clients chargée (pour le plafond client existant)
+- [ ] Actifs créatifs prêts : 5–10 images/vidéos minimum
+- [ ] Plafond de budget client existant défini (recommandé : 20–30 %)
 
 ### Configuration
-- [ ] Select Advantage+ Shopping campaign type
-- [ ] Set daily budget (minimum $50/day recommended, ideally 10x target CPA)
-- [ ] Attribution window: 7-day click, 1-day view (default and recommended)
-- [ ] Country targeting set
-- [ ] Existing customer definition configured
-- [ ] Upload 5–10+ creative assets across formats
-- [ ] Primary text: 3–5 variations
-- [ ] Headlines: 3–5 variations
+- [ ] Sélectionner le type de campagne Advantage+ Shopping
+- [ ] Fixer le budget journalier (minimum 50 $/jour recommandé, idéalement 10x le CPA cible)
+- [ ] Fenêtre d'attribution : clic 7 jours, vue 1 jour (par défaut et recommandé)
+- [ ] Ciblage pays défini
+- [ ] Définition du client existant configurée
+- [ ] Charger 5–10+ actifs créatifs à travers les formats
+- [ ] Texte principal : 3–5 variations
+- [ ] Titres : 3–5 variations
 
-### Optimization Timeline
-| Week | Action |
+### Calendrier d'optimisation
+| Semaine | Action |
 |---|---|
-| Week 1 | Launch — do not touch. Let learning phase complete. |
-| Week 2 | Review performance. Replace worst creative if CPA > 2x target. |
-| Week 3 | Add 2–3 new creative assets. Adjust budget if ROAS on track. |
-| Week 4+ | Scale budget by 20% increments every 3–5 days if profitable. |
+| Semaine 1 | Lancement — ne rien toucher. Laisser la phase d'apprentissage se compléter. |
+| Semaine 2 | Revoir la performance. Remplacer le pire créatif si le CPA > 2x la cible. |
+| Semaine 3 | Ajouter 2 à 3 nouveaux actifs créatifs. Ajuster le budget si le ROAS est sur les rails. |
+| Semaine 4+ | Mettre à l'échelle le budget par paliers de 20 % tous les 3 à 5 jours si rentable. |
 
-## CAPI Implementation Checklist
+## Checklist de mise en œuvre du CAPI
 
-### Direct Integration
-- [ ] Choose integration method: Partner (Shopify, WordPress), Gateway, or Direct
-- [ ] Configure server endpoint to receive and forward events
-- [ ] Map required parameters: event_name, event_time, event_source_url, action_source
-- [ ] Map user data parameters: em, ph, fn, ln, ct, st, zp, country, external_id
-- [ ] Include fbc and fbp cookie values
-- [ ] Set event_id for deduplication with browser Pixel
-- [ ] Test with Events Manager > Test Events tool
-- [ ] Verify Event Match Quality > 6.0
-- [ ] Monitor in Diagnostics for errors or dropped events
-- [ ] Document integration for maintenance and team knowledge
+### Intégration directe
+- [ ] Choisir la méthode d'intégration : Partenaire (Shopify, WordPress), Gateway, ou Direct
+- [ ] Configurer le point de terminaison serveur pour recevoir et transmettre les événements
+- [ ] Mapper les paramètres requis : event_name, event_time, event_source_url, action_source
+- [ ] Mapper les paramètres de données utilisateur : em, ph, fn, ln, ct, st, zp, country, external_id
+- [ ] Inclure les valeurs de cookie fbc et fbp
+- [ ] Définir event_id pour la déduplication avec le Pixel navigateur
+- [ ] Tester avec l'outil Events Manager > Test Events
+- [ ] Vérifier que l'Event Match Quality > 6,0
+- [ ] Surveiller dans Diagnostics les erreurs ou événements abandonnés
+- [ ] Documenter l'intégration pour la maintenance et la connaissance de l'équipe
 
-### Event Priority (Recommended Order)
-1. Purchase (with value and currency)
+### Priorité des événements (ordre recommandé)
+1. Purchase (avec valeur et devise)
 2. Lead / CompleteRegistration
 3. AddToCart
 4. InitiateCheckout
 5. ViewContent
 6. AddPaymentInfo
 7. Search
-8. PageView (lowest priority, usually Pixel-only)
+8. PageView (priorité la plus basse, généralement Pixel uniquement)
 
-## Budget Scaling Methodology
+## Méthodologie de montée en puissance du budget
 
-### The 20% Rule
-Never increase budget more than **20% every 3–5 days**. Larger jumps reset the learning phase and destabilize performance.
+### La règle des 20 %
+Ne jamais augmenter le budget de plus de **20 % tous les 3 à 5 jours**. Des sauts plus importants réinitialisent la phase d'apprentissage et déstabilisent la performance.
 
-### Scaling Decision Framework
+### Cadre de décision de montée en puissance
 
 | Signal | Action |
 |---|---|
-| CPA below target for 5+ days | Scale budget by 20% |
-| CPA at target, stable | Hold, test new creative |
-| CPA 10–30% above target | Refresh creative, check frequency |
-| CPA 30%+ above target | Reduce budget, diagnose audience or creative fatigue |
-| Frequency > 3.0 (prospecting) | Expand audience or pause/refresh creative |
-| Frequency > 6.0 (retargeting) | Reduce budget or expand window |
+| CPA sous la cible pendant 5+ jours | Augmenter le budget de 20 % |
+| CPA à la cible, stable | Maintenir, tester un nouveau créatif |
+| CPA 10–30 % au-dessus de la cible | Rafraîchir le créatif, vérifier la fréquence |
+| CPA 30 %+ au-dessus de la cible | Réduire le budget, diagnostiquer l'audience ou la fatigue créative |
+| Fréquence > 3,0 (prospecting) | Élargir l'audience ou mettre en pause/rafraîchir le créatif |
+| Fréquence > 6,0 (retargeting) | Réduire le budget ou élargir la fenêtre |
 
-### Horizontal vs Vertical Scaling
+### Montée en puissance horizontale vs verticale
 
-| Method | Description | When to Use |
+| Méthode | Description | Quand l'utiliser |
 |---|---|---|
-| **Vertical** | Increase budget on winning campaigns | Stable CPA, headroom in audience |
-| **Horizontal** | Duplicate winning ads into new audiences or campaigns | Audience saturation, testing expansion |
+| **Verticale** | Augmenter le budget sur les campagnes gagnantes | CPA stable, marge de manœuvre dans l'audience |
+| **Horizontale** | Dupliquer les publicités gagnantes vers de nouvelles audiences ou campagnes | Saturation de l'audience, test d'expansion |
 
-### Budget Allocation Framework (Starting Point)
+### Cadre d'allocation budgétaire (point de départ)
 
-| Funnel Stage | % of Total Budget | Objective |
+| Étape du tunnel | % du budget total | Objectif |
 |---|---|---|
-| Prospecting (TOF) | 60–70% | New audience acquisition |
-| Retargeting (MOF) | 15–25% | Warm audience conversion |
-| Retention (BOF) | 10–15% | Customer LTV and repeat purchase |
+| Prospecting (haut de tunnel) | 60–70 % | Acquisition de nouvelle audience |
+| Retargeting (milieu de tunnel) | 15–25 % | Conversion d'audience tiède |
+| Fidélisation (bas de tunnel) | 10–15 % | LTV client et rachat |
 
-## Key Benchmarks (Cross-Industry Averages)
+## Benchmarks clés (moyennes cross-secteurs)
 
-| Metric | Prospecting | Retargeting | Advantage+ Shopping |
+| Métrique | Prospecting | Retargeting | Advantage+ Shopping |
 |---|---|---|---|
-| CTR | 0.8–1.5% | 1.5–3.0% | 1.0–2.0% |
-| CPC | $0.60–$2.00 | $0.30–$1.00 | $0.40–$1.50 |
-| CPM | $8–$18 | $10–$25 | $8–$15 |
-| Conv Rate | 1–3% | 4–10% | 2–5% |
-| Frequency (healthy) | < 3.0 | < 6.0 | < 4.0 |
+| CTR | 0,8–1,5 % | 1,5–3,0 % | 1,0–2,0 % |
+| CPC | 0,60–2,00 $ | 0,30–1,00 $ | 0,40–1,50 $ |
+| CPM | 8–18 $ | 10–25 $ | 8–15 $ |
+| Taux de conv. | 1–3 % | 4–10 % | 2–5 % |
+| Fréquence (saine) | < 3,0 | < 6,0 | < 4,0 |
 
-> **Note:** These are directional. Benchmarks vary widely by vertical, geography, season, and creative quality. Calibrate to your own data within 30 days of launch.
+> **Remarque :** Ces chiffres sont directionnels. Les benchmarks varient largement selon la verticale, la géographie, la saison, et la qualité créative. Calibrez avec vos propres données dans les 30 jours suivant le lancement.

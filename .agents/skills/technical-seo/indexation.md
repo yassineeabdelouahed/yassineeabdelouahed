@@ -1,281 +1,282 @@
-# Indexation — Canonicals, Meta Robots, Duplicate Content & Index Management
+# Indexation — Canoniques, meta robots, contenu dupliqué et gestion de l'index
 
-A comprehensive reference for controlling which pages search engines index, resolving duplicate content, managing index coverage, and accelerating indexation of new content. Indexation management ensures that search engine indexes contain only the pages you want to rank, with no duplication, no bloat, and no wasted authority.
+Une référence complète pour contrôler quelles pages les moteurs de recherche indexent, résoudre le contenu dupliqué, gérer la couverture d'index, et accélérer l'indexation du nouveau contenu. La gestion de l'indexation garantit que les index des moteurs de recherche ne contiennent que les pages que vous souhaitez classer, sans duplication, sans gonflement, et sans autorité gaspillée.
 
 ---
 
-## Canonical Tags
+## Balises canoniques
 
-### Purpose
+### Objectif
 
-The `rel="canonical"` link element tells search engines which URL is the preferred (canonical) version of a page when multiple URLs serve the same or substantially similar content. It consolidates ranking signals (backlinks, PageRank) onto the canonical URL.
+L'élément de lien `rel="canonical"` indique aux moteurs de recherche quelle URL est la version préférée (canonique) d'une page lorsque plusieurs URL servent un contenu identique ou substantiellement similaire. Il consolide les signaux de classement (backlinks, PageRank) sur l'URL canonique.
 
-### Implementation
+### Mise en œuvre
 
-**HTML link element (most common):**
+**Élément lien HTML (le plus courant) :**
 ```html
 <link rel="canonical" href="https://example.com/preferred-page">
 ```
 
-**HTTP header (for non-HTML resources like PDFs):**
+**En-tête HTTP (pour les ressources non-HTML comme les PDF) :**
 ```
 Link: <https://example.com/preferred-page>; rel="canonical"
 ```
 
-### Canonical Tag Rules
+### Règles des balises canoniques
 
-1. **Self-referencing canonicals**: Every indexable page should have a canonical tag pointing to itself. This prevents issues from URL parameters, tracking codes, or session IDs creating duplicate URLs that Google discovers through external links
-2. **Canonical must be an absolute URL**: `href="https://example.com/page"` not `href="/page"`
-3. **Canonical must point to a 200-status page**: Do not canonical to a 301, 404, or 5xx page
-4. **Canonical must match the protocol**: HTTPS pages should canonical to HTTPS URLs
-5. **Canonical is a hint, not a directive**: Google may choose to ignore the canonical if other signals contradict it (e.g., internal links primarily point to a different URL)
-6. **One canonical per page**: Multiple canonical tags on the same page cause Google to ignore all of them
+1. **Canoniques auto-référencées** : chaque page indexable doit avoir une balise canonique pointant vers elle-même. Cela évite les problèmes liés aux paramètres d'URL, codes de suivi, ou ID de session créant des URL dupliquées que Google découvre via des liens externes
+2. **La canonique doit être une URL absolue** : `href="https://example.com/page"` et non `href="/page"`
+3. **La canonique doit pointer vers une page avec statut 200** : ne pas canonicaliser vers une page 301, 404, ou 5xx
+4. **La canonique doit correspondre au protocole** : les pages HTTPS doivent canonicaliser vers des URL HTTPS
+5. **La canonique est un indice, pas une directive** : Google peut choisir de l'ignorer si d'autres signaux la contredisent (par ex. les liens internes pointent principalement vers une URL différente)
+6. **Une seule canonique par page** : plusieurs balises canoniques sur la même page amènent Google à toutes les ignorer
 
-### Common Canonical Mistakes
+### Erreurs courantes de canonique
 
-| Mistake | Impact | Fix |
+| Erreur | Impact | Correctif |
 |---|---|---|
-| Canonical points to a noindex page | Conflicting signals — Google may ignore both | Remove noindex from the canonical target, or change the canonical to an indexable page |
-| Canonical points to a 404/410 page | Canonical signal is ignored; page may be indexed independently | Update canonical to a live, relevant page |
-| Canonical to a redirected URL | Google may follow the redirect and use the final destination, but this adds unnecessary ambiguity | Point canonical directly to the final destination URL |
-| Canonical chain (A canonicals to B, B canonicals to C) | Google may resolve correctly but processing delays occur; long chains may be abandoned | Point A directly to C |
-| Relative URLs in canonical | Parsed relative to current URL — may resolve incorrectly across templates | Always use absolute URLs |
-| Canonical between very different pages | Google ignores the canonical because content does not match | Only canonical between pages with substantially similar content |
-| Missing self-referencing canonical | Parameter variations and tracking URLs may be indexed as duplicates | Add self-referencing canonical to every indexable page template |
-| Canonical in the `<body>` instead of `<head>` | Google may not process it | Ensure canonical tag is within the `<head>` element |
+| La canonique pointe vers une page noindex | Signaux conflictuels — Google peut ignorer les deux | Retirer noindex de la cible canonique, ou changer la canonique vers une page indexable |
+| La canonique pointe vers une page 404/410 | Le signal canonique est ignoré ; la page peut être indexée indépendamment | Mettre à jour la canonique vers une page active et pertinente |
+| Canonique vers une URL redirigée | Google peut suivre la redirection et utiliser la destination finale, mais cela ajoute une ambiguïté inutile | Faire pointer la canonique directement vers l'URL de destination finale |
+| Chaîne de canoniques (A canonicalise vers B, B canonicalise vers C) | Google peut résoudre correctement mais des délais de traitement surviennent ; les longues chaînes peuvent être abandonnées | Faire pointer A directement vers C |
+| URL relatives dans la canonique | Interprétées relativement à l'URL actuelle — peuvent se résoudre incorrectement selon les modèles | Toujours utiliser des URL absolues |
+| Canonique entre des pages très différentes | Google ignore la canonique car le contenu ne correspond pas | Ne canonicaliser qu'entre des pages au contenu substantiellement similaire |
+| Absence de canonique auto-référencée | Les variations de paramètres et URL de suivi peuvent être indexées comme des doublons | Ajouter une canonique auto-référencée à chaque modèle de page indexable |
+| Canonique dans le `<body>` plutôt que dans le `<head>` | Google peut ne pas la traiter | S'assurer que la balise canonique est dans l'élément `<head>` |
 
-### Cross-Domain Canonicals
+### Canoniques cross-domain
 
-Used when the same content exists on multiple domains (syndication, multi-brand, regional sites):
+Utilisées lorsque le même contenu existe sur plusieurs domaines (syndication, multi-marque, sites régionaux) :
 
 ```html
-<!-- On syndication-partner.com -->
+<!-- Sur syndication-partner.com -->
 <link rel="canonical" href="https://original-publisher.com/article">
 ```
 
-Cross-domain canonicals are a stronger hint than same-domain, and Google generally respects them when the content is truly identical. The canonicalized domain passes ranking signals to the canonical domain.
+Les canoniques cross-domain sont un indice plus fort que celles au sein d'un même domaine, et Google les respecte généralement lorsque le contenu est réellement identique. Le domaine canonicalisé transmet les signaux de classement au domaine canonique.
 
 ---
 
-## Meta Robots Directives
+## Directives meta robots
 
-### Available Directives
+### Directives disponibles
 
-| Directive | Meaning |
+| Directive | Signification |
 |---|---|
-| `index` | Allow this page to be indexed (default behavior; rarely needs to be explicit) |
-| `noindex` | Do not show this page in search results. Strongest indexation control |
-| `follow` | Follow links on this page (default behavior) |
-| `nofollow` | Do not follow any links on this page for ranking purposes |
-| `noarchive` | Do not show a cached copy of this page in search results |
-| `nosnippet` | Do not show a text snippet or video preview in search results |
-| `max-snippet:[n]` | Limit text snippet to n characters |
-| `max-image-preview:[size]` | Limit image preview size: `none`, `standard`, `large` |
-| `max-video-preview:[n]` | Limit video preview to n seconds |
-| `notranslate` | Do not offer translation of this page in search results |
-| `noimageindex` | Do not index images on this page |
-| `unavailable_after:[date]` | Do not show this page after the specified date |
+| `index` | Autoriser l'indexation de cette page (comportement par défaut ; rarement nécessaire de l'expliciter) |
+| `noindex` | Ne pas afficher cette page dans les résultats de recherche. Contrôle d'indexation le plus fort |
+| `follow` | Suivre les liens sur cette page (comportement par défaut) |
+| `nofollow` | Ne suivre aucun lien sur cette page à des fins de classement |
+| `noarchive` | Ne pas afficher de copie en cache de cette page dans les résultats de recherche |
+| `nosnippet` | Ne pas afficher d'extrait de texte ni d'aperçu vidéo dans les résultats de recherche |
+| `max-snippet:[n]` | Limiter l'extrait de texte à n caractères |
+| `max-image-preview:[size]` | Limiter la taille de l'aperçu d'image : `none`, `standard`, `large` |
+| `max-video-preview:[n]` | Limiter l'aperçu vidéo à n secondes |
+| `notranslate` | Ne pas proposer de traduction de cette page dans les résultats de recherche |
+| `noimageindex` | Ne pas indexer les images sur cette page |
+| `unavailable_after:[date]` | Ne pas afficher cette page après la date spécifiée |
 
-### Implementation
+### Mise en œuvre
 
-**HTML meta tag:**
+**Balise meta HTML :**
 ```html
 <meta name="robots" content="noindex, follow">
 ```
 
-**Specific crawler:**
+**Crawler spécifique :**
 ```html
 <meta name="googlebot" content="noindex">
 <meta name="bingbot" content="noindex">
 ```
 
-**X-Robots-Tag HTTP header** (works for all file types, not just HTML):
+**En-tête HTTP X-Robots-Tag** (fonctionne pour tous les types de fichiers, pas seulement le HTML) :
 ```
 X-Robots-Tag: noindex, follow
 ```
 
-### When to Use noindex vs robots.txt vs canonical
+### Quand utiliser noindex vs robots.txt vs canonical
 
-| Goal | Use | Reason |
+| Objectif | Utiliser | Raison |
 |---|---|---|
-| Page should never appear in search results | `noindex` | Definitive removal from index once crawled |
-| Page should not be crawled at all (save crawl budget) | `robots.txt Disallow` | Prevents crawling, but page can still be indexed if linked externally |
-| Multiple URLs for same content — pick one winner | `canonical` | Consolidates signals to preferred URL |
-| Temporarily remove a page from search | GSC URL Removal Tool + noindex | Removal tool is fast (hours) but temporary (6 months); noindex is permanent |
-| Permanently removed content | `410 Gone` status code | Tells Google the page is permanently gone; faster than noindex for deindexation |
+| La page ne doit jamais apparaître dans les résultats de recherche | `noindex` | Retrait définitif de l'index une fois crawlée |
+| La page ne doit pas être crawlée du tout (économiser le budget de crawl) | `robots.txt Disallow` | Empêche le crawl, mais la page peut quand même être indexée si liée en externe |
+| Plusieurs URL pour le même contenu — en choisir une gagnante | `canonical` | Consolide les signaux vers l'URL préférée |
+| Retirer temporairement une page de la recherche | Outil de suppression d'URL de GSC + noindex | L'outil de suppression est rapide (heures) mais temporaire (6 mois) ; noindex est permanent |
+| Contenu définitivement supprimé | Code de statut `410 Gone` | Indique à Google que la page a disparu définitivement ; plus rapide que noindex pour la désindexation |
 
-**Critical distinction**: robots.txt blocks crawling but not indexing. If a page blocked by robots.txt has external backlinks, Google may index it based on anchor text alone (appearing as "No information is available for this page" in search results). To prevent indexation, use noindex — but the page must be crawlable for Google to see the noindex tag.
+**Distinction critique** : robots.txt bloque le crawl mais pas l'indexation. Si une page bloquée par robots.txt a des backlinks externes, Google peut l'indexer uniquement sur la base du texte d'ancre (apparaissant comme « Aucune information n'est disponible pour cette page » dans les résultats de recherche). Pour empêcher l'indexation, utiliser noindex — mais la page doit être crawlable pour que Google voie la balise noindex.
 
 ---
 
-## Index Coverage in Google Search Console
+## Couverture d'index dans Google Search Console
 
-### Status Categories
+### Catégories de statut
 
-| Status | Meaning | Action |
+| Statut | Signification | Action |
 |---|---|---|
-| **Valid** | Page is indexed and can appear in search results | Monitor for changes. Verify these are pages you want indexed |
-| **Valid with warnings** | Page is indexed but has issues that may affect visibility | Review warnings (e.g., indexed but blocked by robots.txt) |
-| **Excluded** | Page is not indexed — could be intentional or problematic | Review exclusion reasons below |
-| **Error** | Page has issues preventing proper indexing | Fix server errors, redirect errors, or crawl anomalies |
+| **Valide** | La page est indexée et peut apparaître dans les résultats de recherche | Surveiller les changements. Vérifier que ce sont bien des pages que vous voulez voir indexées |
+| **Valide avec avertissements** | La page est indexée mais présente des problèmes pouvant affecter la visibilité | Examiner les avertissements (par ex. indexée mais bloquée par robots.txt) |
+| **Exclue** | La page n'est pas indexée — peut être intentionnel ou problématique | Examiner les raisons d'exclusion ci-dessous |
+| **Erreur** | La page a des problèmes empêchant une indexation correcte | Corriger les erreurs serveur, les erreurs de redirection, ou les anomalies de crawl |
 
-### Common Exclusion Reasons and Fixes
+### Raisons d'exclusion courantes et correctifs
 
-| Exclusion Reason | What It Means | Action |
+| Raison d'exclusion | Signification | Action |
 |---|---|---|
-| **Excluded by noindex tag** | Page has meta noindex — intentional if you set it | Verify this is intentional. If not, remove the noindex tag |
-| **Blocked by robots.txt** | Robots.txt prevents crawling | If intentional, fine. If the page should be indexed, update robots.txt |
-| **Crawled — currently not indexed** | Google crawled but chose not to index (quality/relevance issue) | Improve content quality, add internal links, build backlinks. This is Google saying "I saw it but it is not good enough" |
-| **Discovered — currently not indexed** | Google knows the URL exists but has not crawled it yet | Common for new/low-authority pages. Improve internal linking, submit in sitemap, request indexing via URL Inspection |
-| **Alternate page with proper canonical** | Page canonicals to another URL — expected behavior | Verify the canonical target is correct and indexed |
-| **Duplicate without user-selected canonical** | Google found duplicate content and chose its own canonical | Check if Google's choice matches your intent. If not, strengthen canonical signals (internal links, sitemap, explicit canonical tag) |
-| **Duplicate, Google chose different canonical** | You set a canonical but Google disagreed | Review why — content may not be similar enough, or the canonical target may have issues. Strengthen signals on your preferred canonical |
-| **Page with redirect** | URL redirects to another page | Expected for redirected URLs. Verify redirect targets are correct |
-| **Soft 404** | Page returns 200 but Google thinks it is a 404 (empty or near-empty content) | Either return a proper 404/410 status code, or add substantial content to the page |
-| **Not found (404)** | Page returns 404 status | If intentional, the 404 will eventually drop out. If the page should exist, fix the URL or implement a redirect |
+| **Exclue par la balise noindex** | La page a une meta noindex — intentionnel si vous l'avez définie | Vérifier que c'est intentionnel. Sinon, retirer la balise noindex |
+| **Bloquée par robots.txt** | Robots.txt empêche le crawl | Si intentionnel, c'est correct. Si la page devrait être indexée, mettre à jour robots.txt |
+| **Explorée mais non indexée actuellement** | Google a crawlé mais a choisi de ne pas indexer (problème de qualité/pertinence) | Améliorer la qualité du contenu, ajouter des liens internes, construire des backlinks. Google dit ici « je l'ai vue mais ce n'est pas assez bon » |
+| **Découverte, actuellement non indexée** | Google sait que l'URL existe mais ne l'a pas encore crawlée | Fréquent pour les pages nouvelles/à faible autorité. Améliorer le maillage interne, soumettre dans le sitemap, demander l'indexation via l'inspection d'URL |
+| **Autre page avec balise canonique appropriée** | La page canonicalise vers une autre URL — comportement attendu | Vérifier que la cible canonique est correcte et indexée |
+| **Doublon sans URL canonique désignée par l'utilisateur** | Google a trouvé du contenu dupliqué et a choisi sa propre canonique | Vérifier si le choix de Google correspond à votre intention. Sinon, renforcer les signaux canoniques (liens internes, sitemap, balise canonique explicite) |
+| **Doublon, Google a choisi une autre URL canonique** | Vous avez défini une canonique mais Google n'était pas d'accord | Examiner pourquoi — le contenu peut ne pas être assez similaire, ou la cible canonique peut avoir des problèmes. Renforcer les signaux sur votre canonique préférée |
+| **Page avec redirection** | L'URL redirige vers une autre page | Attendu pour les URL redirigées. Vérifier que les cibles de redirection sont correctes |
+| **Soft 404** | La page renvoie 200 mais Google pense qu'il s'agit d'un 404 (contenu vide ou quasi vide) | Renvoyer un code de statut 404/410 approprié, ou ajouter du contenu substantiel à la page |
+| **Introuvable (404)** | La page renvoie un statut 404 | Si intentionnel, le 404 finira par sortir de l'index. Si la page devrait exister, corriger l'URL ou mettre en place une redirection |
 
 ---
 
-## Duplicate Content Management
+## Gestion du contenu dupliqué
 
-### Types of Duplicate Content
+### Types de contenu dupliqué
 
-**Exact duplicates**: Identical content accessible at multiple URLs
+**Doublons exacts** : contenu identique accessible via plusieurs URL
 - `http://` vs `https://`
 - `www.` vs non-www
-- Trailing slash vs no trailing slash
-- URL parameters (tracking, session, sorting)
+- Barre oblique finale vs pas de barre oblique finale
+- Paramètres d'URL (suivi, session, tri)
 - `index.html` vs `/`
-- Uppercase vs lowercase URLs
+- URL en majuscules vs minuscules
 
-**Near duplicates**: Substantially similar content with minor variations
-- Product pages differing only by color/size selection
-- Location pages with boilerplate content and only city name changed
-- Paginated content where intro text repeats across pages
-- Print-friendly versions of pages
-- Mobile-specific URLs (m.example.com)
+**Quasi-doublons** : contenu substantiellement similaire avec des variations mineures
+- Pages produit ne différant que par le choix de couleur/taille
+- Pages de localisation avec du contenu standard et seulement le nom de la ville changé
+- Contenu paginé où le texte d'introduction se répète sur les pages
+- Versions imprimables des pages
+- URL spécifiques au mobile (m.example.com)
 
-**Syndicated duplicates**: Same content on different domains
-- Content republished on partner sites
-- Press releases on wire services
-- Product descriptions provided by manufacturers
+**Doublons syndiqués** : même contenu sur différents domaines
+- Contenu republié sur des sites partenaires
+- Communiqués de presse sur des services de fil de presse
+- Descriptions de produits fournies par les fabricants
 
-### Resolution Strategies
+### Stratégies de résolution
 
-| Duplicate Type | Strategy | Implementation |
+| Type de doublon | Stratégie | Mise en œuvre |
 |---|---|---|
-| Protocol/www/slash variations | 301 redirect to canonical version | Server config (nginx/Apache redirect rules) |
-| Parameter variations | Self-referencing canonical on clean URL | Canonical tag on every page template |
-| Print-friendly versions | Canonical to main page or noindex | Canonical tag on print pages |
-| Near-duplicate location pages | Unique content per page (minimum 60-70% unique) | Invest in location-specific content |
-| Syndicated content | Cross-domain canonical to original publisher | Canonical tag on syndication partner pages |
-| Paginated content | Self-referencing canonical per page OR view-all canonical | Depends on page count (see site-architecture.md) |
-| Translated content (same language) | Choose one version; canonical to it | Canonical tag; do not use hreflang for same-language duplicates |
+| Variations de protocole/www/barre oblique | Redirection 301 vers la version canonique | Configuration serveur (règles de redirection nginx/Apache) |
+| Variations de paramètres | Canonique auto-référencée sur l'URL propre | Balise canonique sur chaque modèle de page |
+| Versions imprimables | Canonique vers la page principale ou noindex | Balise canonique sur les pages d'impression |
+| Pages de localisation quasi-dupliquées | Contenu unique par page (minimum 60-70 % unique) | Investir dans du contenu spécifique à la localisation |
+| Contenu syndiqué | Canonique cross-domain vers l'éditeur original | Balise canonique sur les pages du partenaire de syndication |
+| Contenu paginé | Canonique auto-référencée par page OU canonique « tout afficher » | Dépend du nombre de pages (voir site-architecture.md) |
+| Contenu traduit (même langue) | Choisir une version ; canonicaliser vers elle | Balise canonique ; ne pas utiliser hreflang pour des doublons de même langue |
 
 ---
 
-## Index Bloat
+## Gonflement de l'index
 
-### What It Is
+### Qu'est-ce que c'est
 
-Index bloat occurs when a search engine indexes significantly more pages than the site has valuable, unique content. Common symptoms:
-- Indexed page count in GSC is 2x+ the number of pages in the sitemap
-- Large numbers of thin or duplicate pages appearing in the index
-- Important pages competing with low-value pages for rankings
+Le gonflement de l'index survient lorsqu'un moteur de recherche indexe significativement plus de pages que le site n'a de contenu unique et de valeur. Symptômes courants :
+- Le nombre de pages indexées dans GSC est 2x+ supérieur au nombre de pages dans le sitemap
+- Un grand nombre de pages légères ou dupliquées apparaissent dans l'index
+- Des pages importantes sont en concurrence avec des pages à faible valeur pour les classements
 
-### Common Sources of Index Bloat
+### Sources courantes de gonflement de l'index
 
-| Source | Example | Scale Risk |
+| Source | Exemple | Risque d'échelle |
 |---|---|---|
-| Faceted navigation | Every filter combination generates an indexable URL | Extreme (hundreds of thousands to millions) |
-| Internal search results | `/search?q=*` pages indexed for every query | High |
-| Tag/archive pages | WordPress tag pages with 1-2 posts each | Medium |
-| Pagination | Deep paginated pages (page 50+) with no unique value | Medium |
-| Calendar/date archives | Empty or near-empty date archive pages | Medium |
-| User profile pages | Thin public profile pages on UGC platforms | High |
-| Parameter variations | Tracking, session, currency, language parameters | High |
-| Staging/development environments | Staging.example.com indexed by Google | Medium |
-| PDF and file duplicates | Same content as HTML pages but in PDF format | Low-Medium |
+| Navigation à facettes | Chaque combinaison de filtre génère une URL indexable | Extrême (des centaines de milliers à des millions) |
+| Résultats de recherche interne | Pages `/search?q=*` indexées pour chaque requête | Élevé |
+| Pages de tags/archives | Pages de tags WordPress avec 1-2 articles chacune | Moyen |
+| Pagination | Pages paginées profondes (page 50+) sans valeur unique | Moyen |
+| Archives de calendrier/date | Pages d'archives de date vides ou quasi vides | Moyen |
+| Pages de profil utilisateur | Pages de profil public légères sur les plateformes UGC | Élevé |
+| Variations de paramètres | Paramètres de suivi, session, devise, langue | Élevé |
+| Environnements de staging/développement | Staging.example.com indexé par Google | Moyen |
+| Doublons PDF et fichiers | Même contenu que les pages HTML mais au format PDF | Faible-moyen |
 
-### Index Bloat Cleanup Process
+### Processus de nettoyage du gonflement de l'index
 
-1. **Audit the index**: Compare GSC indexed page count to your sitemap URL count. A ratio above 1.5:1 suggests bloat
-2. **Identify bloat sources**: Use GSC index coverage report, site: search operator, and crawl data to categorize indexed URLs by template type
-3. **Prioritize by volume**: Address the largest bloat sources first (faceted navigation before tag pages)
-4. **Apply controls**:
-   - `noindex, follow` on pages that have link value but should not rank
-   - `robots.txt Disallow` on URL patterns that should never be crawled
-   - `canonical` to consolidate duplicate/near-duplicate pages
-   - `410 Gone` for pages that should be permanently removed
-   - `rel="canonical"` to view-all or primary page for paginated series
-5. **Clean up sitemaps**: Remove all non-indexable URLs from XML sitemaps
-6. **Monitor**: Track indexed page count weekly. Expect a gradual decrease over 4-8 weeks as Google recrawls and deindexes pages
+1. **Auditer l'index** : comparer le nombre de pages indexées dans GSC au nombre d'URL de votre sitemap. Un ratio supérieur à 1,5:1 suggère un gonflement
+2. **Identifier les sources de gonflement** : utiliser le rapport de couverture d'index de GSC, l'opérateur de recherche site:, et les données de crawl pour catégoriser les URL indexées par type de modèle
+3. **Prioriser par volume** : traiter en premier les plus grandes sources de gonflement (navigation à facettes avant les pages de tags)
+4. **Appliquer des contrôles** :
+   - `noindex, follow` sur les pages ayant une valeur de lien mais ne devant pas se classer
+   - `robots.txt Disallow` sur les motifs d'URL qui ne doivent jamais être crawlés
+   - `canonical` pour consolider les pages dupliquées/quasi-dupliquées
+   - `410 Gone` pour les pages devant être définitivement supprimées
+   - `rel="canonical"` vers la page « tout afficher » ou principale pour les séries paginées
+5. **Nettoyer les sitemaps** : retirer toutes les URL non indexables des sitemaps XML
+6. **Surveiller** : suivre le nombre de pages indexées chaque semaine. Attendre une diminution progressive sur 4 à 8 semaines à mesure que Google recrawle et désindexe les pages
 
 ---
 
-## New Content Indexation
+## Indexation du nouveau contenu
 
-### How to Speed Up Indexation of New Pages
+### Comment accélérer l'indexation des nouvelles pages
 
-**Tier 1: High-impact (do immediately)**
-- Add internal links from high-authority, frequently crawled pages (homepage, category pages, popular blog posts)
-- Include the new URL in the XML sitemap with an accurate `lastmod` date
-- Use Google Search Console URL Inspection tool > "Request Indexing" (limited to ~10-20 requests per day)
+**Niveau 1 : fort impact (à faire immédiatement)**
+- Ajouter des liens internes depuis des pages à forte autorité et fréquemment crawlées (page d'accueil, pages de catégorie, articles de blog populaires)
+- Inclure la nouvelle URL dans le sitemap XML avec une date `lastmod` précise
+- Utiliser l'outil d'inspection d'URL de Google Search Console > « Demander l'indexation » (limité à environ 10-20 demandes par jour)
 
-**Tier 2: Supplementary (do within 24 hours)**
-- Share the URL on social media (Google discovers URLs through social platforms)
-- Ensure the sitemap is submitted in GSC and referenced via a `Sitemap:` directive in robots.txt (the old `google.com/ping` sitemap-ping endpoint was shut down in 2023)
-- For Bing and Yandex, submit new URLs via IndexNow for near-instant discovery
-- If the site uses Google's Indexing API (eligible for job postings and live streaming content), submit through the API (much faster than standard crawling)
+**Niveau 2 : complémentaire (à faire dans les 24 heures)**
+- Partager l'URL sur les réseaux sociaux (Google découvre les URL via les plateformes sociales)
+- S'assurer que le sitemap est soumis dans GSC et référencé via une directive `Sitemap:` dans robots.txt (l'ancien point de terminaison de ping de sitemap `google.com/ping` a été fermé en 2023)
+- Pour Bing et Yandex, soumettre les nouvelles URL via IndexNow pour une découverte quasi instantanée
+- Si le site utilise l'API d'indexation de Google (éligible pour les offres d'emploi et le contenu de diffusion en direct), soumettre via l'API (bien plus rapide que le crawl standard)
 
-**Tier 3: Long-term (ongoing)**
-- Maintain a healthy crawl rate by keeping the site fast and error-free
-- Build external backlinks to new content
-- Publish content consistently (sites with regular publishing schedules get crawled more frequently)
-- Keep XML sitemaps accurate (no broken URLs, accurate lastmod dates)
+**Niveau 3 : long terme (continu)**
+- Maintenir un taux de crawl sain en gardant le site rapide et sans erreur
+- Construire des backlinks externes vers le nouveau contenu
+- Publier du contenu de façon régulière (les sites avec un calendrier de publication régulier sont crawlés plus fréquemment)
+- Garder les sitemaps XML précis (aucune URL cassée, dates lastmod précises)
 
-### Indexation Timeline Expectations
+### Attentes de délai d'indexation
 
-| Site Authority | New Page Indexation | Factors |
+| Autorité du site | Indexation de la nouvelle page | Facteurs |
 |---|---|---|
-| High (established domain, strong backlink profile) | Minutes to hours | Google crawls frequently; new content discovered quickly through internal links |
-| Medium (growing domain, moderate authority) | Hours to days | Regular crawling schedule; sitemap and internal links help |
-| Low (new domain, few backlinks) | Days to weeks | Infrequent crawling; URL Inspection and sitemap submission are critical |
-| Very low (brand new domain, no backlinks) | Weeks to months | Google may need multiple crawl cycles before indexing; focus on building authority |
+| Élevée (domaine établi, fort profil de backlinks) | Minutes à heures | Google crawle fréquemment ; le nouveau contenu est découvert rapidement via les liens internes |
+| Moyenne (domaine en croissance, autorité modérée) | Heures à jours | Calendrier de crawl régulier ; le sitemap et les liens internes aident |
+| Faible (nouveau domaine, peu de backlinks) | Jours à semaines | Crawl peu fréquent ; l'inspection d'URL et la soumission de sitemap sont critiques |
+| Très faible (domaine tout nouveau, aucun backlink) | Semaines à mois | Google peut avoir besoin de plusieurs cycles de crawl avant l'indexation ; se concentrer sur la construction d'autorité |
 
-### Google Indexing API
+### API d'indexation de Google
 
-The Indexing API provides near-instant indexation (minutes) but is officially supported only for:
-- `JobPosting` structured data pages
-- `BroadcastEvent` (live streaming) structured data pages
+L'API d'indexation fournit une indexation quasi instantanée (minutes) mais n'est officiellement prise en charge que pour :
+- les pages avec données structurées `JobPosting`
+- les pages avec données structurées `BroadcastEvent` (diffusion en direct)
 
-Some SEOs use it for broader content types with mixed results. Google has stated it is only intended for the supported types. For most sites, the URL Inspection tool's "Request Indexing" is the recommended manual indexation method.
+Certains SEO l'utilisent pour des types de contenu plus larges avec des résultats mitigés. Google a déclaré qu'elle n'est destinée qu'aux types pris en charge. Pour la plupart des sites, la fonction « Demander l'indexation » de l'outil d'inspection d'URL est la méthode d'indexation manuelle recommandée.
 
 ---
 
-## URL Removal Tools and Processes
+## Outils et processus de suppression d'URL
 
-### Temporary Removal (Google Search Console)
+### Suppression temporaire (Google Search Console)
 
-- **URL Removal Tool**: Temporarily hides a URL from Google Search results for approximately 6 months
-- Use for: Emergency removal of sensitive content, outdated pages that need time to fix
-- Does NOT permanently remove the page from the index — the page must also have noindex or return 404/410 for permanent removal
+- **Outil de suppression d'URL** : masque temporairement une URL des résultats de recherche Google pendant environ 6 mois
+- À utiliser pour : suppression d'urgence de contenu sensible, pages obsolètes nécessitant du temps pour être corrigées
+- NE supprime PAS définitivement la page de l'index — la page doit aussi avoir noindex ou renvoyer 404/410 pour une suppression permanente
 
-### Permanent Removal Methods
+### Méthodes de suppression permanente
 
-| Method | Speed | Permanence | Use Case |
+| Méthode | Vitesse | Permanence | Cas d'usage |
 |---|---|---|---|
-| `noindex` meta tag | Days to weeks (next crawl) | Permanent while tag is present | Pages that should exist but not rank |
-| `410 Gone` status code | Days to weeks | Permanent (Google drops from index) | Content permanently removed with no replacement |
-| `404 Not Found` | Weeks to months | Eventually drops from index | Content no longer exists |
-| `301 Redirect` | Days to weeks | Old URL replaced by new URL in index | Content moved to a new URL |
-| URL Removal Tool + noindex | Hours (removal) + permanent (noindex) | Permanent | Urgent removal of sensitive/harmful content |
+| Balise meta `noindex` | Jours à semaines (prochain crawl) | Permanent tant que la balise est présente | Pages devant exister mais ne pas se classer |
+| Code de statut `410 Gone` | Jours à semaines | Permanent (Google retire de l'index) | Contenu définitivement supprimé sans remplacement |
+| `404 Not Found` | Semaines à mois | Finit par sortir de l'index | Le contenu n'existe plus |
+| `301 Redirect` | Jours à semaines | L'ancienne URL est remplacée par la nouvelle dans l'index | Contenu déplacé vers une nouvelle URL |
+| Outil de suppression d'URL + noindex | Heures (suppression) + permanent (noindex) | Permanent | Suppression urgente de contenu sensible/nuisible |
 
-### Outdated Content Removal
+### Suppression de contenu obsolète
 
-Google provides a separate "Remove Outdated Content" tool for requesting removal of cached content that no longer reflects the live page. This is used when:
-- A page's snippet in search results shows outdated information
-- A page has been updated but Google's cache has not refreshed
-- A removed page still appears in search results for other users to request removal
+Google fournit un outil séparé « Supprimer le contenu obsolète » pour demander la suppression de contenu en cache qui ne reflète plus la page en ligne. Utilisé lorsque :
+- L'extrait d'une page dans les résultats de recherche affiche des informations obsolètes
+- Une page a été mise à jour mais le cache de Google ne s'est pas actualisé
+- Une page supprimée apparaît encore dans les résultats de recherche pour d'autres utilisateurs pouvant demander la suppression
 
-This tool is available to anyone, not just site owners: `https://search.google.com/search-console/remove-outdated-content`
+Cet outil est disponible pour tous, pas seulement les propriétaires de site : `https://search.google.com/search-console/remove-outdated-content`
+</content>

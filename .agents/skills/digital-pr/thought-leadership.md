@@ -1,63 +1,63 @@
-# Thought Leadership — Strategy & Execution
+# Leadership éclairé — Stratégie & Exécution
 
-## Content Strategy
+## Stratégie de contenu
 
-### Types of Thought Leadership Content
+### Types de contenu de leadership éclairé
 
-| Type | Description | Difficulty | Impact |
+| Type | Description | Difficulté | Impact |
 |------|-----------|-----------|--------|
-| **Original research** | Proprietary data, surveys, analysis | High | Very High |
-| **Contrarian takes** | Challenge conventional wisdom with evidence | Medium | High |
-| **Frameworks** | Create new mental models for industry problems | Medium | High |
-| **Predictions** | Data-backed industry forecasts | Medium | Medium-High |
-| **Expert commentary** | Timely analysis of industry events | Low | Medium |
-| **Case studies** | Deep analysis of what worked/failed | Medium | Medium |
+| **Recherche originale** | Données propriétaires, enquêtes, analyses | Élevée | Très élevé |
+| **Points de vue contre-intuitifs** | Remettre en question les idées reçues avec des preuves | Moyenne | Élevé |
+| **Cadres de réflexion** | Créer de nouveaux modèles mentaux pour les problèmes du secteur | Moyenne | Élevé |
+| **Prédictions** | Prévisions sectorielles étayées par des données | Moyenne | Moyen-élevé |
+| **Commentaire d'expert** | Analyse à chaud d'événements sectoriels | Faible | Moyen |
+| **Études de cas** | Analyse approfondie de ce qui a fonctionné/échoué | Moyenne | Moyen |
 
-### Content Creation Process
-1. Identify 3-5 topics where the brand/executive has unique expertise
-2. Audit existing thought leadership landscape (what's already been said)
-3. Find the unique angle (proprietary data, contrarian view, new framework)
-4. Create the content with credible evidence
-5. Distribute through owned, earned, and paid channels
-6. Repurpose across formats (article → presentation → video → social)
-
----
-
-## Byline Placement Guide
-
-### How to Get Published
-
-1. **Research the outlet**: Read their contributor guidelines (many publish them)
-2. **Study existing bylines**: What topics, length, format, tone do they publish?
-3. **Pitch the topic, not the article**: Send a 2-3 sentence pitch, not a complete draft
-4. **Offer exclusivity**: One outlet at a time for the same piece
-5. **Follow their editorial guidelines** exactly (word count, format, no promotional content)
-
-### Top Outlets for Bylines by Industry
-- **Tech**: TechCrunch, VentureBeat, The Next Web, Wired
-- **Marketing**: HBR, MarketingProfs, Content Marketing Institute, Adweek
-- **Business**: Forbes (contributor network), Entrepreneur, Inc., Fast Company
-- **Finance**: Financial Times, Bloomberg, American Banker
-- **Industry-specific**: Trade publications in every vertical
-
-### Rules
-- Never make the byline promotional (focus on industry insights)
-- Author must be a real expert with verifiable credentials
-- Include data and specific examples (not generic advice)
-- Respond to editor feedback quickly and graciously
+### Processus de création de contenu
+1. Identifier 3 à 5 sujets sur lesquels la marque/le dirigeant possède une expertise unique
+2. Auditer le paysage existant du leadership éclairé (ce qui a déjà été dit)
+3. Trouver l'angle unique (données propriétaires, point de vue contre-intuitif, nouveau cadre)
+4. Créer le contenu avec des preuves crédibles
+5. Diffuser via les canaux détenus, gagnés et payants
+6. Recycler le contenu selon différents formats (article → présentation → vidéo → social)
 
 ---
 
-## Speaking Opportunities
+## Guide de placement d'articles signés
 
-### Where to Find Them
-- Conference CFP (Call for Papers) announcements
-- Industry association events
-- Podcast guest opportunities (search "[industry] podcast" + "guest application")
-- Webinar partnerships with complementary brands
-- Local meetups and chapter events
+### Comment se faire publier
 
-### Pitch Template for Speaking
+1. **Étudier le média** : lire ses consignes pour les contributeurs (beaucoup les publient)
+2. **Étudier les articles signés existants** : quels sujets, longueur, format, ton publient-ils ?
+3. **Pitcher le sujet, pas l'article** : envoyer un pitch de 2-3 phrases, pas un brouillon complet
+4. **Proposer l'exclusivité** : un seul média à la fois pour le même article
+5. **Suivre exactement leurs consignes éditoriales** (nombre de mots, format, aucun contenu promotionnel)
+
+### Meilleurs médias pour les articles signés par secteur
+- **Tech** : TechCrunch, VentureBeat, The Next Web, Wired
+- **Marketing** : HBR, MarketingProfs, Content Marketing Institute, Adweek
+- **Business** : Forbes (réseau de contributeurs), Entrepreneur, Inc., Fast Company
+- **Finance** : Financial Times, Bloomberg, American Banker
+- **Spécifique au secteur** : publications professionnelles dans chaque secteur vertical
+
+### Règles
+- Ne jamais rendre l'article promotionnel (se concentrer sur des enseignements sectoriels)
+- L'auteur doit être un véritable expert avec des références vérifiables
+- Inclure des données et des exemples précis (pas de conseils génériques)
+- Répondre rapidement et avec courtoisie aux retours de l'éditeur
+
+---
+
+## Opportunités de prise de parole
+
+### Où les trouver
+- Annonces d'appels à communications (CFP) de conférences
+- Événements d'associations sectorielles
+- Opportunités d'invitation à des podcasts (rechercher « [secteur] podcast » + « candidature invité »)
+- Partenariats de webinaires avec des marques complémentaires
+- Meetups locaux et événements de sections locales
+
+### Modèle de pitch pour la prise de parole
 ```
 Subject: Speaker proposal: [Talk title] for [Event name]
 
@@ -81,23 +81,23 @@ Happy to share a full abstract and outline.
 
 ---
 
-## LinkedIn Thought Leadership Strategy
+## Stratégie de leadership éclairé sur LinkedIn
 
-1. **Post cadence**: 3-5 posts per week from executive account
-2. **Content mix**: 40% original insights, 30% industry commentary, 20% behind-the-scenes, 10% personal/professional stories
-3. **Engagement**: Reply to every comment within 2 hours
-4. **Newsletter**: Weekly or bi-weekly LinkedIn Newsletter for deeper content
-5. **Cross-promote**: Share article links, podcast appearances, research findings
+1. **Cadence de publication** : 3 à 5 posts par semaine depuis le compte du dirigeant
+2. **Répartition du contenu** : 40 % d'éclairages originaux, 30 % de commentaire sectoriel, 20 % de coulisses, 10 % d'histoires personnelles/professionnelles
+3. **Engagement** : répondre à chaque commentaire dans les 2 heures
+4. **Newsletter** : newsletter LinkedIn hebdomadaire ou bimensuelle pour du contenu plus approfondi
+5. **Promotion croisée** : partager les liens d'articles, apparitions en podcast, résultats de recherche
 
 ---
 
-## Measurement Framework
+## Cadre de mesure
 
-| Metric | How to Measure | Target |
+| Métrique | Comment mesurer | Objectif |
 |--------|---------------|--------|
-| Share of voice | Brand mentions vs competitors in industry media | Increasing trend |
-| Media placements | Count of earned media articles/bylines/mentions | 2-4 per month |
-| Speaking invitations | Inbound requests to speak | Increasing |
-| Social engagement | Likes, comments, shares on thought leadership content | Engagement rate >3% |
-| Website traffic from PR | Referral traffic from media coverage | Track per placement |
-| Lead attribution | Leads mentioning thought leadership as influence | Track in CRM |
+| Part de voix | Mentions de la marque vs concurrents dans les médias sectoriels | Tendance à la hausse |
+| Placements média | Nombre d'articles/articles signés/mentions en médias gagnés | 2-4 par mois |
+| Invitations à parler | Demandes entrantes pour intervenir | En hausse |
+| Engagement social | Likes, commentaires, partages sur le contenu de leadership éclairé | Taux d'engagement >3 % |
+| Trafic web issu des RP | Trafic de référence issu de la couverture média | Suivi par placement |
+| Attribution des leads | Leads mentionnant le leadership éclairé comme facteur d'influence | Suivi dans le CRM |

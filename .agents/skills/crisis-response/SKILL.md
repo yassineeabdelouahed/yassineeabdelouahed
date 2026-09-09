@@ -1,54 +1,55 @@
 ---
 name: crisis-response
-description: "Assess a PR crisis and deliver a structured response plan — severity classification (Level 1-3), a ready-to-publish holding statement, tailored messaging per stakeholder group, an hour-by-hour communication timeline, and a trust-rebuilding roadmap. Drafts and plans only; it publishes nothing. Triggers on \"/digital-marketing-pro:crisis-response\", \"we're getting slammed on social media\", \"draft a holding statement fast\", \"a negative story just broke about us\", \"how do we respond to this backlash\". Reads the brand profile, voice settings, guidelines, and market compliance rules before drafting any statement."
+description: "Évaluer une crise de relations publiques et livrer un plan de réponse structuré — classification de sévérité (niveau 1-3), une déclaration d'attente prête à publier, des messages adaptés par groupe de parties prenantes, un calendrier de communication heure par heure, et une feuille de route de reconstruction de la confiance. Rédige et planifie uniquement ; ne publie rien. Se déclenche sur « /digital-marketing-pro:crisis-response », « on se fait démolir sur les réseaux sociaux », « rédige rapidement une déclaration d'attente », « une histoire négative vient d'éclater sur nous », « comment répondre à ce contrecoup ». Lit le profil de marque, les paramètres de voix, les guidelines et les règles de conformité du marché avant de rédiger la moindre déclaration."
 argument-hint: "[situation-description]"
 ---
 
 # /digital-marketing-pro:crisis-response
 
-## Purpose
+## Objectif
 
-Provide rapid crisis assessment and a structured response plan. Classifies severity, identifies stakeholders, drafts messaging for each audience, and builds a communication timeline to contain damage and rebuild trust.
+Fournir une évaluation rapide de crise et un plan de réponse structuré. Classe la sévérité, identifie les parties prenantes, rédige des messages pour chaque public, et construit un calendrier de communication pour contenir les dégâts et reconstruire la confiance.
 
-## Input Required
+## Éléments à fournir
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **What happened**: Description of the crisis or incident
-- **When it started**: Timeline of events so far
-- **Current exposure**: How widely known is it (internal only, social media, press coverage)
-- **Stakeholders affected**: Customers, employees, investors, partners, public
-- **Actions taken so far**: Any statements, fixes, or responses already issued
-- **Spokesperson**: Who will speak for the brand
+- **Ce qui s'est passé** : Description de la crise ou de l'incident
+- **Quand cela a commencé** : Chronologie des événements jusqu'à présent
+- **Exposition actuelle** : Jusqu'où est-ce connu (interne uniquement, réseaux sociaux, couverture presse)
+- **Parties prenantes concernées** : Clients, employés, investisseurs, partenaires, grand public
+- **Actions déjà entreprises** : Toute déclaration, correctif, ou réponse déjà émise
+- **Porte-parole** : Qui s'exprimera au nom de la marque
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Severity classification**: Level 1 (monitor), Level 2 (respond), Level 3 (full mobilization) based on reach, impact, and trajectory
-3. Assess the narrative: What is being said? What is the public sentiment? What is the worst-case escalation?
-4. Identify all stakeholder groups and prioritize communication order
-5. Draft holding statement for immediate release (within first hour)
-6. Draft tailored messaging per stakeholder: customers, employees, media, partners, social media
-7. Build communication timeline: first hour, first 24 hours, first week, ongoing
-8. Define channel strategy: which messages go where (social, email, press, internal comms)
-9. Outline recovery plan: corrective actions, transparency updates, trust-rebuilding initiatives
-10. Set monitoring cadence and escalation triggers
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour connaître le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également les directives** à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier les modèles personnalisés à `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les procédures d'agence à `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Classification de sévérité** : Niveau 1 (surveillance), niveau 2 (réponse), niveau 3 (mobilisation totale) selon la portée, l'impact, et la trajectoire
+3. Évaluer le récit : Que dit-on ? Quel est le sentiment du public ? Quelle est la pire escalade possible ?
+4. Identifier tous les groupes de parties prenantes et prioriser l'ordre de communication
+5. Rédiger une déclaration d'attente pour publication immédiate (dans la première heure)
+6. Rédiger des messages adaptés par partie prenante : clients, employés, médias, partenaires, réseaux sociaux
+7. Construire un calendrier de communication : première heure, premières 24 heures, première semaine, en continu
+8. Définir la stratégie de canal : quels messages vont où (réseaux sociaux, e-mail, presse, communication interne)
+9. Esquisser un plan de rétablissement : actions correctives, mises à jour de transparence, initiatives de reconstruction de la confiance
+10. Fixer la cadence de surveillance et les déclencheurs d'escalade
 
-## Output
+## Résultat
 
-A structured crisis response plan containing:
+Un plan de réponse de crise structuré contenant :
 
-- Severity classification with rationale
-- Situation assessment and narrative analysis
-- Holding statement (ready to publish)
-- Stakeholder-specific messaging (customers, media, employees, partners)
-- Communication timeline with milestones and decision points
-- Channel deployment plan
-- Social media response guidelines (what to reply, what to ignore, when to escalate)
-- Recovery and trust-rebuilding roadmap
-- Monitoring plan with escalation triggers
+- Classification de sévérité avec justification
+- Évaluation de la situation et analyse du récit
+- Déclaration d'attente (prête à publier)
+- Messages spécifiques par partie prenante (clients, médias, employés, partenaires)
+- Calendrier de communication avec jalons et points de décision
+- Plan de déploiement par canal
+- Directives de réponse sur les réseaux sociaux (à quoi répondre, quoi ignorer, quand escalader)
+- Feuille de route de rétablissement et de reconstruction de la confiance
+- Plan de surveillance avec déclencheurs d'escalade
 
-## Agents Used
+## Agents utilisés
 
-- **brand-guardian** — Brand protection, messaging consistency, stakeholder communication, compliance
-- **pr-outreach** — Media relations, press statement, journalist engagement strategy
+- **brand-guardian** — Protection de la marque, cohérence des messages, communication avec les parties prenantes, conformité
+- **pr-outreach** — Relations médias, déclaration de presse, stratégie d'engagement des journalistes
+</content>

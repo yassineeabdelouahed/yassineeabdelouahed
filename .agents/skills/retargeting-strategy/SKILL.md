@@ -1,60 +1,61 @@
 ---
 name: retargeting-strategy
-description: "Design a cross-platform retargeting playbook — funnel-stage audience segments with recency windows, creative sequencing per segment, frequency caps, exclusion lists, budget allocation, dynamic product-feed setup, KPI-based optimization triggers, and a 30/60/90-day roadmap. Triggers on \"/digital-marketing-pro:retargeting-strategy\", \"plan our remarketing campaigns\", \"cart abandoners aren't converting\", \"how should we sequence retargeting ads\", \"set frequency caps across Meta and Google\". Reads the brand profile and past campaign performance via campaign-tracker.py; it produces the strategy document and tracking checklist — it does not launch or modify live campaigns."
+description: "Concevoir un playbook de retargeting cross-plateforme — segments d'audience par étape de tunnel avec fenêtres de récence, séquencement créatif par segment, plafonds de fréquence, listes d'exclusion, allocation budgétaire, configuration de flux produit dynamique, déclencheurs d'optimisation basés sur les KPI, et une feuille de route à 30/60/90 jours. Se déclenche sur \"/digital-marketing-pro:retargeting-strategy\", \"plan our remarketing campaigns\", \"cart abandoners aren't converting\", \"how should we sequence retargeting ads\", \"set frequency caps across Meta and Google\". Lit le profil de marque et les performances de campagnes passées via campaign-tracker.py ; produit le document de stratégie et la checklist de suivi — il ne lance ni ne modifie de campagnes en direct."
 ---
 
 # /digital-marketing-pro:retargeting-strategy
 
-## Purpose
+## Objectif
 
-Design a cross-platform retargeting strategy with audience segmentation by funnel stage and behavior, creative sequencing, frequency management, and budget allocation. Produces a complete retargeting playbook ready for implementation across advertising platforms.
+Concevoir une stratégie de retargeting cross-plateforme avec une segmentation d'audience par étape de tunnel et comportement, un séquencement créatif, une gestion de la fréquence, et une allocation budgétaire. Produit un playbook de retargeting complet, prêt à être mis en œuvre sur les plateformes publicitaires.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se voir demander) :
 
-- **Website traffic volume**: Monthly unique visitors and page views (approximate is fine)
-- **Conversion funnel stages**: The key stages in the user journey (visit, product view, add to cart, checkout, purchase -- or equivalent for lead gen funnels)
-- **Platforms in use**: Which advertising platforms are active or available (Google Ads, Meta, LinkedIn, TikTok, programmatic DSPs, etc.)
-- **Retargeting budget**: Monthly budget allocated or available for retargeting campaigns
-- **Product catalog**: For dynamic retargeting -- whether a product feed exists and on which platforms it is configured
-- **Average purchase cycle**: Typical time from first visit to conversion (days, weeks, months)
-- **Current retargeting setup**: Any existing retargeting campaigns, pixel/tag status, audience definitions already in place, and current performance
-- **Pixel and tracking status**: Which pixels/tags are installed and firing correctly (Meta Pixel, Google Tag, LinkedIn Insight Tag, TikTok Pixel, etc.)
+- **Volume de trafic du site web** : Visiteurs uniques mensuels et pages vues (une approximation suffit)
+- **Étapes du tunnel de conversion** : Les étapes clés du parcours utilisateur (visite, vue produit, ajout au panier, checkout, achat -- ou équivalent pour les tunnels de génération de leads)
+- **Plateformes utilisées** : Quelles plateformes publicitaires sont actives ou disponibles (Google Ads, Meta, LinkedIn, TikTok, DSP programmatiques, etc.)
+- **Budget de retargeting** : Budget mensuel alloué ou disponible pour les campagnes de retargeting
+- **Catalogue produit** : Pour le retargeting dynamique -- si un flux produit existe et sur quelles plateformes il est configuré
+- **Cycle d'achat moyen** : Temps typique entre la première visite et la conversion (jours, semaines, mois)
+- **Configuration de retargeting actuelle** : Toute campagne de retargeting existante, statut du pixel/tag, définitions d'audience déjà en place, et performance actuelle
+- **Statut du pixel et du suivi** : Quels pixels/tags sont installés et se déclenchent correctement (Meta Pixel, Google Tag, LinkedIn Insight Tag, TikTok Pixel, etc.)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply voice, compliance, industry context. Check `guidelines/_manifest.json` for restrictions, messaging, channel styles, voice-and-tone rules, and templates. If a template matching this command exists in `~/.claude-marketing/brands/{slug}/templates/`, apply its format. If no brand exists, prompt for `/digital-marketing-pro:brand-setup` or proceed with defaults.
-2. **Check campaign history**: Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` to review existing retargeting campaign performance and identify what has already been tested.
-3. **Audit tracking infrastructure**: Verify pixel and tag installation status across platforms. Identify gaps in tracking that would prevent audience building or conversion attribution before designing the strategy.
-4. **Define retargeting audience segments**: Create segments based on funnel stage (awareness visitors, product viewers, cart abandoners, past purchasers, lapsed customers), behavior signals (pages visited, time on site, visit frequency, content consumed), and recency windows (1-3 days, 4-7 days, 8-14 days, 15-30 days, 31-90 days). Size each segment based on traffic volume.
-5. **Design creative sequence per segment**: Map a messaging sequence for each audience segment that progresses the user toward conversion -- awareness segments get educational and value-prop messaging, consideration segments get social proof and differentiation, cart abandoners get urgency and incentive, past purchasers get upsell and cross-sell, and lapsed customers get re-engagement offers.
-6. **Set frequency caps per platform**: Define impression frequency limits per user per day and per week for each platform. Balance visibility against ad fatigue -- typically 3-5 impressions per day for display, 1-2 per day for social feed placements, and 15-20 per week maximum across all placements combined.
-7. **Plan cross-platform coordination**: Orchestrate retargeting across platforms so users see a coherent journey rather than redundant messages. Assign primary and secondary roles per platform (e.g., Meta for awareness retargeting, Google Display for mid-funnel, search remarketing for high-intent, LinkedIn for B2B decision-makers).
-8. **Design exclusion lists**: Define converter exclusion windows (exclude purchasers for 7-30 days post-conversion), cross-segment exclusions (prevent users from seeing both awareness and cart abandonment ads simultaneously), and negative audience rules to prevent waste and brand fatigue.
-9. **Set budget allocation per segment**: Distribute the retargeting budget across segments based on audience size, proximity to conversion, and expected ROAS. Bottom-funnel segments (cart abandoners) typically receive the highest per-user spend despite smaller audience sizes.
-10. **Configure dynamic retargeting**: If a product catalog is available, specify dynamic ad setup -- feed requirements, template design, product recommendation logic (viewed items, complementary products, best sellers), and fallback creatives for users without product-level data.
-11. **Define KPIs and optimization triggers**: Set success metrics per segment and platform (ROAS, CPA, view-through conversions, frequency, CTR). Define optimization triggers -- when to refresh creative, adjust bids, reallocate budget, or expand/contract audience windows.
-12. **Create UTM structure for tracking**: Build a UTM naming convention that enables granular tracking of retargeting performance by segment, platform, creative variant, and funnel stage in analytics.
+1. **Charger le contexte de la marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix, la conformité, le contexte sectoriel. Vérifier `guidelines/_manifest.json` pour les restrictions, les messages clés, les styles par canal, les règles de voix et de ton, et les modèles. Si un modèle correspondant à cette commande existe dans `~/.claude-marketing/brands/{slug}/templates/`, appliquer son format. Si aucune marque n'existe, inviter à `/digital-marketing-pro:brand-setup` ou continuer avec les valeurs par défaut.
+2. **Vérifier l'historique des campagnes** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` pour revoir la performance des campagnes de retargeting existantes et identifier ce qui a déjà été testé.
+3. **Auditer l'infrastructure de suivi** : Vérifier le statut d'installation du pixel et du tag sur les plateformes. Identifier les lacunes de suivi qui empêcheraient la construction d'audiences ou l'attribution de conversion avant de concevoir la stratégie.
+4. **Définir les segments d'audience de retargeting** : Créer des segments basés sur l'étape de tunnel (visiteurs de notoriété, consultateurs de produits, abandonneurs de panier, acheteurs passés, clients inactifs), les signaux comportementaux (pages visitées, temps sur le site, fréquence de visite, contenu consommé), et les fenêtres de récence (1-3 jours, 4-7 jours, 8-14 jours, 15-30 jours, 31-90 jours). Dimensionner chaque segment en fonction du volume de trafic.
+5. **Concevoir la séquence créative par segment** : Cartographier une séquence de messages pour chaque segment d'audience qui fait progresser l'utilisateur vers la conversion -- les segments de notoriété reçoivent des messages éducatifs et de proposition de valeur, les segments de considération reçoivent des preuves sociales et de différenciation, les abandonneurs de panier reçoivent de l'urgence et des incitations, les acheteurs passés reçoivent de l'upsell et du cross-sell, et les clients inactifs reçoivent des offres de réengagement.
+6. **Définir les plafonds de fréquence par plateforme** : Définir des limites d'impression par utilisateur et par jour et par semaine pour chaque plateforme. Équilibrer la visibilité contre la lassitude publicitaire -- typiquement 3-5 impressions par jour pour le display, 1-2 par jour pour les emplacements de fil d'actualité social, et 15-20 par semaine maximum sur l'ensemble des emplacements combinés.
+7. **Planifier la coordination cross-plateforme** : Orchestrer le retargeting sur les plateformes afin que les utilisateurs voient un parcours cohérent plutôt que des messages redondants. Attribuer des rôles primaires et secondaires par plateforme (par ex. Meta pour le retargeting de notoriété, Google Display pour le milieu de tunnel, le remarketing recherche pour l'intention élevée, LinkedIn pour les décideurs B2B).
+8. **Concevoir les listes d'exclusion** : Définir les fenêtres d'exclusion des convertisseurs (exclure les acheteurs pendant 7-30 jours après conversion), les exclusions inter-segments (empêcher les utilisateurs de voir à la fois des publicités de notoriété et d'abandon de panier simultanément), et des règles d'audience négative pour éviter le gaspillage et la lassitude de marque.
+9. **Définir l'allocation budgétaire par segment** : Répartir le budget de retargeting entre les segments en fonction de la taille d'audience, de la proximité de la conversion, et du ROAS attendu. Les segments bas de tunnel (abandonneurs de panier) reçoivent généralement la dépense par utilisateur la plus élevée malgré des tailles d'audience plus petites.
+10. **Configurer le retargeting dynamique** : Si un catalogue produit est disponible, spécifier la configuration de publicité dynamique -- exigences de flux, conception de template, logique de recommandation produit (articles consultés, produits complémentaires, meilleures ventes), et créations de repli pour les utilisateurs sans données au niveau produit.
+11. **Définir les KPI et déclencheurs d'optimisation** : Définir les indicateurs de succès par segment et par plateforme (ROAS, CPA, conversions vue-passée, fréquence, CTR). Définir des déclencheurs d'optimisation -- quand rafraîchir la création, ajuster les enchères, réallouer le budget, ou étendre/contracter les fenêtres d'audience.
+12. **Créer la structure UTM pour le suivi** : Construire une convention de nommage UTM permettant un suivi granulaire de la performance du retargeting par segment, plateforme, variante créative, et étape de tunnel dans l'analytics.
 
-## Output
+## Résultat
 
-A structured retargeting strategy document containing:
+Un document de stratégie de retargeting structuré contenant :
 
-- Audience segment definitions with sizing estimates, recency windows, and behavioral criteria
-- Creative brief per segment with messaging themes, ad formats, and sequencing logic
-- Frequency cap recommendations per platform with rationale for each limit
-- Cross-platform coordination plan showing which platform serves which funnel role
-- Exclusion list definitions with converter suppression windows and cross-segment rules
-- Budget allocation table by segment and platform with expected ROAS targets
-- Dynamic retargeting setup guide with feed requirements and product recommendation logic
-- KPI framework with targets per segment, optimization triggers, and review cadence
-- UTM structure and naming conventions for retargeting campaign tracking
-- 30/60/90-day optimization roadmap with milestone checkpoints and scaling criteria
-- Privacy and compliance considerations (cookie consent, GDPR/CCPA audience restrictions, platform-specific privacy limitations)
-- Tracking infrastructure checklist with pixel/tag verification requirements per platform
+- Définitions des segments d'audience avec estimations de taille, fenêtres de récence, et critères comportementaux
+- Brief créatif par segment avec thèmes de messages, formats publicitaires, et logique de séquencement
+- Recommandations de plafond de fréquence par plateforme avec justification pour chaque limite
+- Plan de coordination cross-plateforme montrant quelle plateforme sert quel rôle de tunnel
+- Définitions de listes d'exclusion avec fenêtres de suppression des convertisseurs et règles inter-segments
+- Tableau d'allocation budgétaire par segment et plateforme avec objectifs de ROAS attendus
+- Guide de configuration de retargeting dynamique avec exigences de flux et logique de recommandation produit
+- Cadre de KPI avec objectifs par segment, déclencheurs d'optimisation, et cadence de revue
+- Structure UTM et conventions de nommage pour le suivi des campagnes de retargeting
+- Feuille de route d'optimisation à 30/60/90 jours avec points de contrôle des jalons et critères de mise à l'échelle
+- Considérations de confidentialité et de conformité (consentement aux cookies, restrictions d'audience RGPD/CCPA, limitations de confidentialité spécifiques aux plateformes)
+- Checklist d'infrastructure de suivi avec exigences de vérification du pixel/tag par plateforme
 
-## Agents Used
+## Agents utilisés
 
-- **media-buyer** -- Audience segmentation, platform-specific retargeting setup, frequency management, budget allocation, bid strategy, dynamic retargeting configuration, and campaign structure design
-- **marketing-strategist** -- Creative sequencing strategy, cross-platform coordination, funnel-stage messaging architecture, and optimization roadmap planning
+- **media-buyer** -- Segmentation d'audience, configuration de retargeting spécifique à la plateforme, gestion de la fréquence, allocation budgétaire, stratégie d'enchères, configuration du retargeting dynamique, et conception de la structure de campagne
+- **marketing-strategist** -- Stratégie de séquencement créatif, coordination cross-plateforme, architecture de messages par étape de tunnel, et planification de la feuille de route d'optimisation
+</content>

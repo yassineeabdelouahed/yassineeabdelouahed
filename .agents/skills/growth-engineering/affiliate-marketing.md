@@ -1,249 +1,249 @@
-# Affiliate Marketing — Program Strategy
+# Marketing d'affiliation — Stratégie de programme
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des a priori de planification, pas des cotations — les taux de marché et d'enchère dérivent continuellement. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, l'actualiser en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et l'enregistrer avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citer depuis le livre ensuite (`--action quote`). Ne jamais présenter un chiffre non horodaté comme un fait de marché actuel.
 
-> Affiliate marketing is a performance-based channel where external partners (affiliates) promote your product in exchange for commissions on qualified actions. When structured well, it delivers predictable, profitable customer acquisition.
+> Le marketing d'affiliation est un canal basé sur la performance où des partenaires externes (affiliés) promeuvent votre produit en échange de commissions sur des actions qualifiées. Bien structuré, il génère une acquisition client prévisible et rentable.
 
 ---
 
-## Program Setup Guide
+## Guide de mise en place de programme
 
-### Platform Selection
+### Sélection de plateforme
 
-Choose between building in-house or using an affiliate network/platform.
+Choisir entre construire en interne ou utiliser un réseau/plateforme d'affiliation.
 
-| Approach | Pros | Cons | Best For |
+| Approche | Avantages | Inconvénients | Idéal pour |
 |---|---|---|---|
-| **In-house (custom build)** | Full control, no platform fees, custom attribution | Engineering investment, slower to launch, limited affiliate discovery | Companies with dev resources and existing partner relationships |
-| **Affiliate SaaS platform** | Fast launch, built-in tracking, affiliate management tools | Monthly fees, some customization limits | Most companies launching their first program |
-| **Affiliate network** | Access to large affiliate pool, built-in compliance, payment handling | Higher fees (network override), less control, commoditized | Companies wanting rapid scale through established affiliates |
-| **Hybrid** | Combine in-house tracking with network distribution | Complexity of managing multiple systems | Mature programs optimizing for both control and reach |
+| **Interne (construction personnalisée)** | Contrôle total, pas de frais de plateforme, attribution personnalisée | Investissement d'ingénierie, lancement plus lent, découverte d'affiliés limitée | Entreprises avec ressources de développement et relations partenaires existantes |
+| **Plateforme SaaS d'affiliation** | Lancement rapide, suivi intégré, outils de gestion d'affiliés | Frais mensuels, quelques limites de personnalisation | La plupart des entreprises lançant leur premier programme |
+| **Réseau d'affiliation** | Accès à un large pool d'affiliés, conformité intégrée, gestion des paiements | Frais plus élevés (override réseau), moins de contrôle, banalisé | Entreprises voulant une montée en échelle rapide via des affiliés établis |
+| **Hybride** | Combiner suivi interne avec distribution réseau | Complexité de gestion de plusieurs systèmes | Programmes matures optimisant à la fois contrôle et portée |
 
-### Program Setup Checklist
+### Checklist de mise en place du programme
 
-- [ ] Define program goals (revenue target, number of active affiliates, target CAC)
-- [ ] Set commission structure and terms (see Commission Optimization section)
-- [ ] Select tracking platform or network
-- [ ] Implement conversion tracking (pixel, postback, API integration)
-- [ ] Create affiliate landing page explaining the program, benefits, and application process
-- [ ] Write program terms and conditions (legal review required)
-- [ ] Build creative asset library (banners, text links, email templates, product images)
-- [ ] Set up affiliate dashboard (reporting, link generation, payout tracking)
-- [ ] Configure fraud detection rules and monitoring
-- [ ] Design affiliate onboarding sequence (welcome email, getting started guide, first commission tips)
-- [ ] Establish payment terms and method (PayPal, wire, check; net-30 or net-60)
-- [ ] Create internal processes for affiliate approval, support, and escalation
+- [ ] Définir les objectifs du programme (objectif de chiffre d'affaires, nombre d'affiliés actifs, CAC cible)
+- [ ] Fixer la structure de commission et les conditions (voir la section Optimisation de commission)
+- [ ] Sélectionner la plateforme ou le réseau de suivi
+- [ ] Mettre en œuvre le suivi de conversion (pixel, postback, intégration API)
+- [ ] Créer une landing page affiliés expliquant le programme, les avantages, et le processus de candidature
+- [ ] Rédiger les conditions générales du programme (revue juridique requise)
+- [ ] Construire une bibliothèque d'actifs créatifs (bannières, liens texte, modèles d'e-mail, images produit)
+- [ ] Mettre en place un tableau de bord affilié (reporting, génération de liens, suivi des paiements)
+- [ ] Configurer les règles de détection de fraude et la surveillance
+- [ ] Concevoir une séquence d'onboarding affilié (e-mail de bienvenue, guide de démarrage, conseils pour la première commission)
+- [ ] Établir les conditions et méthode de paiement (PayPal, virement, chèque ; net-30 ou net-60)
+- [ ] Créer des processus internes pour l'approbation, le support, et l'escalade des affiliés
 
 ---
 
-## Network Comparison
+## Comparaison de réseaux
 
-| Feature | ShareASale | Impact | CJ Affiliate | Awin | PartnerStack |
+| Fonctionnalité | ShareASale | Impact | CJ Affiliate | Awin | PartnerStack |
 |---|---|---|---|---|---|
-| **Best for** | SMB, e-commerce | Enterprise, SaaS | Large brands, retail | Global programs | B2B SaaS |
-| **Setup cost** | $625 one-time + $35/mo | Custom pricing | Custom pricing | $5,000+ setup | Custom pricing |
-| **Network fee** | 20% of commissions | Negotiable | Negotiable | Negotiable | Negotiable |
-| **Affiliate pool size** | 270,000+ | 100,000+ | 170,000+ | 240,000+ | 65,000+ |
-| **Tracking quality** | Good | Excellent | Good | Good | Excellent |
-| **SaaS features** | Basic | Advanced (partnerships) | Moderate | Moderate | Advanced (PRM) |
-| **Reporting** | Standard | Advanced | Standard | Standard | Advanced |
-| **Global support** | US-focused | Global | Global | Global (EU strong) | Global |
-| **Payment handling** | Included | Included | Included | Included | Included |
-| **Cookie duration** | Configurable | Configurable | Configurable | Configurable | Configurable |
-| **Integration ease** | Easy (Shopify, WP) | Moderate | Moderate | Moderate | Easy (SaaS stack) |
+| **Idéal pour** | PME, e-commerce | Entreprise, SaaS | Grandes marques, retail | Programmes mondiaux | SaaS B2B |
+| **Coût de mise en place** | 625 $ ponctuel + 35 $/mois | Tarification personnalisée | Tarification personnalisée | 5 000 $+ de mise en place | Tarification personnalisée |
+| **Frais de réseau** | 20% des commissions | Négociable | Négociable | Négociable | Négociable |
+| **Taille du pool d'affiliés** | 270 000+ | 100 000+ | 170 000+ | 240 000+ | 65 000+ |
+| **Qualité du suivi** | Bonne | Excellente | Bonne | Bonne | Excellente |
+| **Fonctionnalités SaaS** | Basiques | Avancées (partenariats) | Modérées | Modérées | Avancées (PRM) |
+| **Reporting** | Standard | Avancé | Standard | Standard | Avancé |
+| **Support mondial** | Focalisé US | Mondial | Mondial | Mondial (fort en UE) | Mondial |
+| **Gestion des paiements** | Incluse | Incluse | Incluse | Incluse | Incluse |
+| **Durée du cookie** | Configurable | Configurable | Configurable | Configurable | Configurable |
+| **Facilité d'intégration** | Facile (Shopify, WP) | Modérée | Modérée | Modérée | Facile (stack SaaS) |
 
-### Selection Criteria
+### Critères de sélection
 
-| Your Situation | Recommended Platform |
+| Votre situation | Plateforme recommandée |
 |---|---|
-| E-commerce, Shopify store, budget-conscious | ShareASale |
-| Enterprise SaaS, complex partnership models | Impact |
-| Large brand, want established affiliate relationships | CJ Affiliate |
-| European or global audience | Awin |
-| B2B SaaS, want partner relationship management | PartnerStack |
-| Need full control and have engineering resources | In-house + Rewardful, FirstPromoter, or Tapfiliate |
+| E-commerce, boutique Shopify, budget serré | ShareASale |
+| SaaS entreprise, modèles de partenariat complexes | Impact |
+| Grande marque, veut des relations d'affiliation établies | CJ Affiliate |
+| Audience européenne ou mondiale | Awin |
+| SaaS B2B, veut une gestion des relations partenaires | PartnerStack |
+| Besoin de contrôle total et ressources d'ingénierie disponibles | Interne + Rewardful, FirstPromoter, ou Tapfiliate |
 
 ---
 
-## Commission Optimization
+## Optimisation de commission
 
-### Commission Models
+### Modèles de commission
 
-| Model | How It Works | Typical Rate | Best For |
+| Modèle | Fonctionnement | Taux typique | Idéal pour |
 |---|---|---|---|
-| **CPA (Cost Per Acquisition)** | Flat fee per converted customer | $20-$200+ depending on ACV | SaaS with predictable LTV, defined conversion event |
-| **Revenue share (recurring)** | Percentage of customer revenue, ongoing | 15-30% recurring | SaaS with monthly subscriptions, long LTV |
-| **Revenue share (one-time)** | Percentage of first purchase only | 20-50% of first payment | E-commerce, one-time purchases |
-| **Tiered commission** | Rate increases with volume | Base rate + escalators at thresholds | Motivating top affiliates to increase volume |
-| **Hybrid (CPA + RevShare)** | Flat fee upfront + smaller ongoing percentage | $50 CPA + 10% recurring | Balancing affiliate motivation with program economics |
-| **Performance bonuses** | Additional payouts for hitting milestones | Varies | Driving behavior during specific campaigns or periods |
+| **CPA (coût par acquisition)** | Frais fixe par client converti | 20-200 $+ selon l'ACV | SaaS avec LTV prévisible, événement de conversion défini |
+| **Partage de revenu (récurrent)** | Pourcentage du revenu client, continu | 15-30% récurrent | SaaS avec abonnements mensuels, LTV longue |
+| **Partage de revenu (ponctuel)** | Pourcentage du premier achat uniquement | 20-50% du premier paiement | E-commerce, achats ponctuels |
+| **Commission à paliers** | Le taux augmente avec le volume | Taux de base + escaliers à des seuils | Motiver les meilleurs affiliés à augmenter le volume |
+| **Hybride (CPA + RevShare)** | Frais fixe initial + petit pourcentage continu | 50 $ CPA + 10% récurrent | Équilibrer la motivation de l'affilié avec l'économie du programme |
+| **Bonus de performance** | Paiements additionnels pour atteindre des jalons | Variable | Piloter le comportement pendant des campagnes ou périodes spécifiques |
 
-### Commission Rate Calibration
+### Calibrage du taux de commission
 
-| Factor | Lower Commission | Higher Commission |
+| Facteur | Commission plus basse | Commission plus élevée |
 |---|---|---|
-| Customer LTV | Low LTV (<$500) | High LTV (>$2,000) |
-| Conversion rate | High (affiliates convert easily) | Low (hard to convert, need incentive) |
-| Competition for affiliates | Few competitors recruiting | Many programs competing for same affiliates |
-| Product awareness | Well-known brand | Unknown brand needing introduction |
-| Sales cycle length | Short (same-session purchase) | Long (multi-touch, weeks/months) |
+| LTV client | LTV faible (<500 $) | LTV élevée (>2 000 $) |
+| Taux de conversion | Élevé (les affiliés convertissent facilement) | Faible (difficile à convertir, besoin d'incitation) |
+| Concurrence pour les affiliés | Peu de concurrents recrutant | Nombreux programmes en concurrence pour les mêmes affiliés |
+| Notoriété du produit | Marque bien connue | Marque inconnue nécessitant une introduction |
+| Durée du cycle de vente | Courte (achat même session) | Longue (multi-contact, semaines/mois) |
 
-### Tiered Commission Structure Example
+### Exemple de structure de commission à paliers
 
-| Tier | Monthly Conversions | Commission Rate | Bonus |
+| Palier | Conversions mensuelles | Taux de commission | Bonus |
 |---|---|---|---|
-| Bronze | 1-10 | 20% | None |
-| Silver | 11-25 | 25% | $100 monthly bonus |
-| Gold | 26-50 | 30% | $300 monthly bonus + dedicated account manager |
-| Platinum | 51+ | 35% | $500 monthly bonus + co-marketing budget + quarterly strategy call |
+| Bronze | 1-10 | 20% | Aucun |
+| Argent | 11-25 | 25% | Bonus mensuel de 100 $ |
+| Or | 26-50 | 30% | Bonus mensuel de 300 $ + chargé de compte dédié |
+| Platine | 51+ | 35% | Bonus mensuel de 500 $ + budget de co-marketing + appel stratégique trimestriel |
 
 ---
 
-## Affiliate Recruitment Strategies
+## Stratégies de recrutement d'affiliés
 
-### Affiliate Segments
+### Segments d'affiliés
 
-| Segment | Description | Volume | Quality | Recruitment Approach |
+| Segment | Description | Volume | Qualité | Approche de recrutement |
 |---|---|---|---|---|
-| Content creators / Bloggers | Write reviews, comparisons, tutorials | Medium | High | Outreach based on existing content in your niche |
-| YouTube / Video creators | Product reviews, tutorials, unboxings | Medium | High | Identify creators reviewing competitors |
-| Email list owners | Promote via newsletters | High | Medium | Look for niche newsletters with engaged audiences |
-| Coupon / Deal sites | List offers and discount codes | Very High | Low | Selectively recruit top-tier sites only |
-| Comparison / Review sites | Rank and compare products | Medium | Very High | Ensure accurate listing, offer exclusive data |
-| Social media influencers | Promote on Instagram, TikTok, Twitter | High | Variable | See Affiliate vs Influencer section |
-| Niche community leaders | Promote within forums, groups, communities | Low | Very High | Build relationship first, offer program second |
-| Existing customers | Happy users who refer through affiliate links | Low | Highest | Invite top NPS respondents into affiliate program |
-| Agencies / Consultants | Recommend to their clients | Low | Very High | Partner program with higher commissions |
+| Créateurs de contenu / Blogueurs | Rédigent des avis, comparaisons, tutoriels | Moyen | Élevée | Outreach basé sur le contenu existant dans votre niche |
+| Créateurs YouTube / Vidéo | Avis produit, tutoriels, unboxings | Moyen | Élevée | Identifier les créateurs qui avisent les concurrents |
+| Propriétaires de liste e-mail | Promeuvent via newsletters | Élevé | Moyenne | Chercher des newsletters de niche avec des audiences engagées |
+| Sites de coupons / bons plans | Listent des offres et codes de réduction | Très élevé | Faible | Recruter sélectivement uniquement les meilleurs sites |
+| Sites de comparaison / avis | Classent et comparent des produits | Moyen | Très élevée | Assurer une inscription précise, offrir des données exclusives |
+| Influenceurs réseaux sociaux | Promeuvent sur Instagram, TikTok, Twitter | Élevé | Variable | Voir la section Affiliation vs Influenceur |
+| Leaders de communauté de niche | Promeuvent au sein de forums, groupes, communautés | Faible | Très élevée | Construire la relation d'abord, offrir le programme ensuite |
+| Clients existants | Utilisateurs satisfaits qui parrainent via des liens d'affiliation | Faible | La plus élevée | Inviter les répondants NPS les plus élevés dans le programme d'affiliation |
+| Agences / Consultants | Recommandent à leurs clients | Faible | Très élevée | Programme partenaire avec commissions plus élevées |
 
-### Recruitment Outreach Process
+### Processus d'outreach de recrutement
 
-| Step | Action | Timeline |
+| Étape | Action | Calendrier |
 |---|---|---|
-| 1 | Identify target affiliates (search for niche content, competitor mentions) | Ongoing |
-| 2 | Research each affiliate (audience size, content quality, engagement rate) | Before outreach |
-| 3 | Personalize outreach (reference specific content, explain why your product fits) | Individual emails |
-| 4 | Follow up if no response (2 follow-ups, 5-7 days apart) | +5 and +12 days |
-| 5 | Onboard accepted affiliates (send welcome kit, schedule intro call for top-tier) | Within 48 hours |
-| 6 | Provide first 30-day support (check in at Day 7 and Day 21, offer content ideas) | First month |
-| 7 | Review performance and optimize (adjust commission, provide better assets) | Monthly |
+| 1 | Identifier les affiliés cibles (rechercher du contenu de niche, mentions de concurrents) | Continu |
+| 2 | Rechercher chaque affilié (taille d'audience, qualité de contenu, taux d'engagement) | Avant l'outreach |
+| 3 | Personnaliser l'outreach (référencer du contenu spécifique, expliquer pourquoi votre produit convient) | E-mails individuels |
+| 4 | Relancer en l'absence de réponse (2 relances, espacées de 5-7 jours) | +5 et +12 jours |
+| 5 | Intégrer les affiliés acceptés (envoyer un kit de bienvenue, planifier un appel d'introduction pour les meilleurs) | Sous 48 heures |
+| 6 | Fournir un support pour les 30 premiers jours (point à J7 et J21, proposer des idées de contenu) | Premier mois |
+| 7 | Revoir la performance et optimiser (ajuster la commission, fournir de meilleurs actifs) | Mensuel |
 
 ---
 
-## Fraud Detection
+## Détection de fraude
 
-### Common Affiliate Fraud Types
+### Types de fraude d'affiliation courants
 
-| Fraud Type | Description | Detection Method |
+| Type de fraude | Description | Méthode de détection |
 |---|---|---|
-| Cookie stuffing | Affiliate drops cookies without user knowledge to claim attribution | Monitor conversion paths — flag conversions with no click event |
-| Click fraud / Click spam | Generating fake clicks to inflate metrics or steal attribution | Abnormal click-to-conversion ratios, geographic anomalies |
-| Trademark bidding | Affiliates bid on your brand terms in paid search | Regular SEM monitoring, brand + affiliate keyword alerts |
-| Incentivized traffic | Offering users cash/points to sign up through affiliate link | Low retention rates from affiliate cohort, high refund rates |
-| Self-referral | Affiliate signs up using their own link | Cross-reference affiliate and customer data |
-| Fake leads / form fills | Submitting bogus information to trigger CPA payouts | Lead quality scoring, email verification, phone verification |
-| Return abuse | Purchase through affiliate link, then return after commission paid | Extend commission hold period past return window |
+| Cookie stuffing | L'affilié dépose des cookies à l'insu de l'utilisateur pour réclamer l'attribution | Surveiller les parcours de conversion — signaler les conversions sans événement de clic |
+| Fraude au clic / spam de clics | Générer de faux clics pour gonfler les métriques ou voler l'attribution | Ratios clic-vers-conversion anormaux, anomalies géographiques |
+| Enchère sur la marque | Les affiliés enchérissent sur vos termes de marque en recherche payante | Surveillance SEM régulière, alertes de mots-clés marque + affilié |
+| Trafic incentivé | Offrir de l'argent/des points aux utilisateurs pour s'inscrire via un lien d'affiliation | Taux de rétention faibles pour la cohorte affiliée, taux de remboursement élevés |
+| Auto-parrainage | L'affilié s'inscrit en utilisant son propre lien | Recouper les données d'affilié et de client |
+| Faux leads / remplissage de formulaire | Soumettre de fausses informations pour déclencher des paiements CPA | Notation de qualité des leads, vérification e-mail, vérification téléphonique |
+| Abus de retour | Achat via lien d'affiliation, puis retour après paiement de la commission | Étendre la période de blocage de commission au-delà de la fenêtre de retour |
 
-### Fraud Prevention Checklist
+### Checklist de prévention de fraude
 
-- [ ] Set commission hold period to 30-60 days (beyond refund window)
-- [ ] Monitor click-to-conversion ratios by affiliate (flag outliers)
-- [ ] Block trademark bidding in program terms, monitor with SEMrush or SpyFu
-- [ ] Require minimum customer retention period before commission is finalized
-- [ ] Review new affiliate applications manually (check website, traffic sources)
-- [ ] Implement IP analysis for click and conversion matching
-- [ ] Set maximum conversion rate threshold (flag if >20% without explanation)
-- [ ] Audit top 10 affiliates quarterly (traffic sources, content, compliance)
-- [ ] Use fraud detection tools built into your network/platform
-- [ ] Reserve contractual right to claw back commissions for fraudulent activity
+- [ ] Fixer la période de blocage de commission à 30-60 jours (au-delà de la fenêtre de remboursement)
+- [ ] Surveiller les ratios clic-vers-conversion par affilié (signaler les valeurs aberrantes)
+- [ ] Bloquer l'enchère sur la marque dans les conditions du programme, surveiller avec SEMrush ou SpyFu
+- [ ] Exiger une période de rétention client minimale avant que la commission ne soit finalisée
+- [ ] Revoir manuellement les nouvelles candidatures d'affiliés (vérifier le site web, les sources de trafic)
+- [ ] Mettre en œuvre l'analyse IP pour la correspondance clic et conversion
+- [ ] Fixer un seuil maximum de taux de conversion (signaler si >20% sans explication)
+- [ ] Auditer trimestriellement les 10 meilleurs affiliés (sources de trafic, contenu, conformité)
+- [ ] Utiliser les outils de détection de fraude intégrés à votre réseau/plateforme
+- [ ] Réserver le droit contractuel de récupérer les commissions pour activité frauduleuse
 
 ---
 
-## Content Guidelines & Brand Protection
+## Guidelines de contenu & protection de marque
 
-### Affiliate Content Policy
+### Politique de contenu affilié
 
-| Allowed | Restricted | Prohibited |
+| Autorisé | Restreint | Interdit |
 |---|---|---|
-| Honest product reviews | Income claims without disclosure | False or misleading claims |
-| Feature comparisons | Direct competitor disparagement | Trademark misuse in domain names |
-| Tutorial and how-to content | Pricing guarantees (price may change) | Spam (unsolicited email, comment spam) |
-| Use of approved brand assets | Modified logos or brand imagery | Coupon codes not officially issued |
-| FTC-compliant disclosure | Hidden affiliate relationships | Cookie stuffing or click fraud |
-| Social media promotion | Implied endorsement by company | Trademark PPC bidding (if restricted) |
+| Avis produit honnêtes | Revendications de revenu sans divulgation | Revendications fausses ou trompeuses |
+| Comparaisons de fonctionnalités | Dénigrement direct des concurrents | Usage abusif de marque dans les noms de domaine |
+| Contenu tutoriel et comment-faire | Garanties de prix (le prix peut changer) | Spam (e-mail non sollicité, spam de commentaire) |
+| Usage d'actifs de marque approuvés | Logos ou imagerie de marque modifiés | Codes de coupon non officiellement émis |
+| Divulgation conforme FTC | Relations d'affiliation cachées | Cookie stuffing ou fraude au clic |
+| Promotion sur les réseaux sociaux | Approbation implicite par l'entreprise | Enchère PPC sur la marque (si restreinte) |
 
-### Brand Protection Checklist
+### Checklist de protection de marque
 
-- [ ] Publish clear brand guidelines document for affiliates
-- [ ] Provide approved creative assets (logos, banners, product images)
-- [ ] Require FTC disclosure on all affiliate content ("This post contains affiliate links")
-- [ ] Monitor affiliate content quarterly for compliance
-- [ ] Set up Google Alerts for brand + affiliate-related queries
-- [ ] Include content compliance requirements in program T&Cs
-- [ ] Establish a violation escalation process (warning → commission hold → termination)
-- [ ] Maintain a list of approved and prohibited promotional methods
+- [ ] Publier un document de guidelines de marque clair pour les affiliés
+- [ ] Fournir des actifs créatifs approuvés (logos, bannières, images produit)
+- [ ] Exiger une divulgation FTC sur tout contenu affilié (« Cet article contient des liens d'affiliation »)
+- [ ] Surveiller trimestriellement le contenu affilié pour la conformité
+- [ ] Mettre en place des Google Alerts pour les requêtes marque + affiliation
+- [ ] Inclure les exigences de conformité de contenu dans les CGV du programme
+- [ ] Établir un processus d'escalade des violations (avertissement → blocage de commission → résiliation)
+- [ ] Maintenir une liste des méthodes promotionnelles approuvées et interdites
 
 ---
 
-## Program Management
+## Gestion de programme
 
-### Monthly Management Tasks
+### Tâches de gestion mensuelles
 
-| Task | Frequency | Time Investment |
+| Tâche | Fréquence | Investissement en temps |
 |---|---|---|
-| Review affiliate applications | Weekly | 1-2 hours |
-| Monitor top affiliate performance | Weekly | 1 hour |
-| Process commission payouts | Monthly (net-30) | 1-2 hours |
-| Audit for fraud and compliance | Monthly | 2-3 hours |
-| Refresh creative assets and offers | Monthly | 2-4 hours |
-| Affiliate newsletter / communication | Bi-weekly or monthly | 1-2 hours |
-| Recruit new affiliates | Ongoing | 3-5 hours/week |
-| Optimize commission structure | Quarterly | 2-3 hours |
-| Performance review and reporting | Monthly | 2-3 hours |
+| Revoir les candidatures d'affiliés | Hebdomadaire | 1-2 heures |
+| Surveiller la performance des meilleurs affiliés | Hebdomadaire | 1 heure |
+| Traiter les paiements de commission | Mensuel (net-30) | 1-2 heures |
+| Auditer la fraude et la conformité | Mensuel | 2-3 heures |
+| Rafraîchir les actifs créatifs et les offres | Mensuel | 2-4 heures |
+| Newsletter / communication affiliés | Bi-mensuel ou mensuel | 1-2 heures |
+| Recruter de nouveaux affiliés | Continu | 3-5 heures/semaine |
+| Optimiser la structure de commission | Trimestriel | 2-3 heures |
+| Revue de performance et reporting | Mensuel | 2-3 heures |
 
-### Key Program Metrics
+### Métriques clés du programme
 
-| Metric | Formula | Good | Great |
+| Métrique | Formule | Bien | Très bien |
 |---|---|---|---|
-| Active affiliate rate | Affiliates with 1+ conversion / Total affiliates | 10-20% | 20%+ |
-| Revenue per affiliate | Total affiliate revenue / Active affiliates | Varies | Top 20% drive 80% of revenue |
-| Affiliate CAC | Total affiliate costs / Affiliate-driven customers | <50% of paid CAC | <30% of paid CAC |
-| Affiliate contribution | Affiliate revenue / Total revenue | 10-15% | 15-25% |
-| Average commission rate | Total commissions / Total affiliate revenue | 15-25% | Optimized per tier |
-| Time to first conversion | Median days from affiliate activation to first sale | <30 days | <14 days |
-| Affiliate retention rate | Affiliates active this quarter / Active last quarter | 50-60% | 70%+ |
+| Taux d'affiliés actifs | Affiliés avec 1+ conversion / Total des affiliés | 10-20% | 20%+ |
+| Revenu par affilié | Revenu affilié total / Affiliés actifs | Variable | Le top 20% génère 80% du revenu |
+| CAC affilié | Coûts affiliation totaux / Clients générés par affiliation | <50% du CAC payant | <30% du CAC payant |
+| Contribution de l'affiliation | Revenu affilié / Revenu total | 10-15% | 15-25% |
+| Taux de commission moyen | Commissions totales / Revenu affilié total | 15-25% | Optimisé par palier |
+| Temps jusqu'à la première conversion | Jours médians de l'activation de l'affilié à la première vente | <30 jours | <14 jours |
+| Taux de rétention des affiliés | Affiliés actifs ce trimestre / Actifs le trimestre dernier | 50-60% | 70%+ |
 
 ---
 
-## Affiliate vs Influencer Distinction
+## Distinction affiliation vs influence
 
-| Dimension | Affiliate | Influencer |
+| Dimension | Affiliation | Influenceur |
 |---|---|---|
-| **Compensation** | Performance-based (commission on sales/leads) | Flat fee, product gifting, or hybrid (fee + commission) |
-| **Content style** | Review, comparison, tutorial, deal-focused | Lifestyle, narrative, brand integration |
-| **Measurement** | Tracked conversions, revenue, ROI | Impressions, engagement, brand lift, tracked conversions |
-| **Relationship** | Transactional, scalable, many affiliates | Relational, curated, fewer partnerships |
-| **Control over content** | Low — affiliate creates independently | Moderate — briefs and approval process |
-| **Timeline** | Ongoing, evergreen | Campaign-based, time-bound |
-| **Discovery** | Affiliate networks, competitor analysis | Social platforms, influencer databases |
-| **Best for** | Driving measurable conversions at scale | Building brand awareness and trust with specific audiences |
-| **Risk** | Brand compliance, fraud | Off-brand content, audience mismatch |
+| **Rémunération** | Basée sur la performance (commission sur ventes/leads) | Forfait fixe, don de produit, ou hybride (forfait + commission) |
+| **Style de contenu** | Avis, comparaison, tutoriel, orienté offre | Lifestyle, narratif, intégration de marque |
+| **Mesure** | Conversions suivies, revenu, ROI | Impressions, engagement, brand lift, conversions suivies |
+| **Relation** | Transactionnelle, évolutive, nombreux affiliés | Relationnelle, sélectionnée, moins de partenariats |
+| **Contrôle sur le contenu** | Faible — l'affilié crée indépendamment | Modéré — briefs et processus d'approbation |
+| **Calendrier** | Continu, permanent | Basé sur campagne, limité dans le temps |
+| **Découverte** | Réseaux d'affiliation, analyse concurrentielle | Plateformes sociales, bases de données d'influenceurs |
+| **Idéal pour** | Piloter des conversions mesurables à l'échelle | Construire la notoriété et la confiance avec des audiences spécifiques |
+| **Risque** | Conformité de marque, fraude | Contenu hors marque, inadéquation d'audience |
 
-### When to Use Each
+### Quand utiliser chacun
 
-| Scenario | Use Affiliate | Use Influencer | Use Both |
+| Scénario | Utiliser Affiliation | Utiliser Influenceur | Utiliser les deux |
 |---|---|---|---|
-| Driving direct sales, clear ROI needed | Yes | | |
-| Building brand awareness in new market | | Yes | |
-| Product launch with sustained promotion | | | Yes |
-| Scaling a proven acquisition channel | Yes | | |
-| Reaching a specific niche audience | | Yes | |
-| Long-term evergreen content strategy | Yes | | |
-| Seasonal campaign with urgency | | Yes | |
-| Mature program optimizing all channels | | | Yes |
+| Piloter des ventes directes, ROI clair nécessaire | Oui | | |
+| Construire la notoriété de marque sur un nouveau marché | | Oui | |
+| Lancement de produit avec promotion soutenue | | | Oui |
+| Faire monter en échelle un canal d'acquisition prouvé | Oui | | |
+| Atteindre une audience de niche spécifique | | Oui | |
+| Stratégie de contenu permanente à long terme | Oui | | |
+| Campagne saisonnière avec urgence | | Oui | |
+| Programme mature optimisant tous les canaux | | | Oui |
 
-### Hybrid Model
+### Modèle hybride
 
-Many programs blend affiliate and influencer approaches:
+De nombreux programmes mélangent les approches affiliation et influenceur :
 
 ```
 Influencer receives: Flat content creation fee ($500-$5,000) + affiliate commission (15-25%)
@@ -253,4 +253,7 @@ Result: Influencer is motivated to create AND promote; brand gets awareness AND 
 
 ---
 
-*A well-run affiliate program is a portfolio of performance partnerships. Recruit deliberately, compensate fairly, monitor consistently, and treat your best affiliates like the revenue-generating partners they are.*
+*Un programme d'affiliation bien géré est un portefeuille de partenariats de
+performance. Recrutez délibérément, rémunérez équitablement, surveillez de façon
+constante, et traitez vos meilleurs affiliés comme les partenaires générateurs de
+revenu qu'ils sont.*

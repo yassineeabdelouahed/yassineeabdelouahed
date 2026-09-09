@@ -1,50 +1,50 @@
 ---
 name: competitor-analysis
-description: "Run a multi-dimensional competitive teardown of 2-5 competitors — content strategy, SEO, paid ads, social, AI answer-engine visibility, and pricing/positioning — producing a competitor overview matrix, per-competitor SWOT, gap analysis, and strategic recommendations prioritized by opportunity size. Triggers on \"/digital-marketing-pro:competitor-analysis\", \"analyze our competitors\", \"how do we stack up against X\", \"competitive landscape report\", \"what are competitors doing that we aren't\". Point-in-time analysis, not ongoing tracking — pair with /digital-marketing-pro:competitor-monitor for that. Reads the brand profile, guidelines, and compliance rules."
+description: "Réaliser une analyse concurrentielle multidimensionnelle de 2 à 5 concurrents — stratégie de contenu, SEO, publicité payante, social, visibilité dans les moteurs de réponse IA, et tarification/positionnement — produisant une matrice de synthèse des concurrents, un SWOT par concurrent, une analyse des écarts, et des recommandations stratégiques priorisées par taille d'opportunité. Se déclenche sur \"/digital-marketing-pro:competitor-analysis\", \"analyze our competitors\", \"how do we stack up against X\", \"competitive landscape report\", \"what are competitors doing that we aren't\". Analyse ponctuelle, pas un suivi continu — combinez-la avec /digital-marketing-pro:competitor-monitor pour cela. Lit le profil de marque, les guidelines et les règles de conformité."
 argument-hint: "[competitor names]"
 ---
 
 # /digital-marketing-pro:competitor-analysis
 
-## Purpose
+## Objectif
 
-Deliver a comprehensive competitive intelligence report across all major marketing dimensions. Identify competitor strengths, weaknesses, strategies, and gaps the brand can exploit.
+Livrer un rapport d'intelligence concurrentielle complet couvrant toutes les dimensions marketing majeures. Identifier les forces, faiblesses, stratégies des concurrents, et les écarts que la marque peut exploiter.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Competitors**: 2-5 competitor names and/or URLs
-- **Analysis scope**: Full analysis or specific dimensions (SEO, content, ads, social, pricing)
-- **Key battleground keywords**: Terms where the brand competes head-to-head
-- **Industry/category**: For contextual benchmarking
+- **Concurrents** : 2 à 5 noms et/ou URL de concurrents
+- **Périmètre de l'analyse** : Analyse complète ou dimensions spécifiques (SEO, contenu, publicités, social, tarification)
+- **Mots-clés de champ de bataille clés** : Termes sur lesquels la marque est en concurrence directe
+- **Secteur/catégorie** : Pour le benchmarking contextuel
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Content analysis**: Content types, publishing frequency, top-performing content, content gaps, topic authority
-3. **SEO analysis**: Domain authority, keyword overlap, ranking gaps, backlink comparison, technical health
-4. **Paid advertising**: Ad copy themes, landing page strategies, estimated spend, platform focus
-5. **Social media**: Platform presence, follower growth, engagement rates, content mix, posting cadence
-6. **AI visibility**: How competitors appear in AI answer engines versus the brand
-7. **Pricing and positioning**: Pricing models, value proposition, messaging frameworks, market positioning
-8. Synthesize findings into strategic opportunities and threats
-9. Generate actionable recommendations for competitive advantage
+1. **Charger le contexte de la marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également l'existence de directives** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier les modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Analyse de contenu** : Types de contenu, fréquence de publication, contenu le plus performant, écarts de contenu, autorité thématique
+3. **Analyse SEO** : Autorité de domaine, chevauchement de mots-clés, écarts de classement, comparaison de backlinks, santé technique
+4. **Publicité payante** : Thèmes de texte publicitaire, stratégies de landing page, dépense estimée, focus plateforme
+5. **Réseaux sociaux** : Présence sur les plateformes, croissance des abonnés, taux d'engagement, mix de contenu, cadence de publication
+6. **Visibilité IA** : Comment les concurrents apparaissent dans les moteurs de réponse IA par rapport à la marque
+7. **Tarification et positionnement** : Modèles de tarification, proposition de valeur, cadres de messagerie, positionnement de marché
+8. Synthétiser les constats en opportunités et menaces stratégiques
+9. Générer des recommandations actionnables pour un avantage concurrentiel
 
-## Output
+## Résultat
 
-A structured competitive analysis containing:
+Une analyse concurrentielle structurée contenant :
 
-- Competitor overview matrix with key metrics per competitor
-- Content strategy comparison with gap analysis
-- SEO competitive landscape with keyword and link opportunities
-- Paid media intelligence with creative and targeting insights
-- Social media benchmarking with engagement analysis
-- AI visibility comparison across platforms
-- Pricing and positioning map
-- SWOT summary per competitor
-- Strategic recommendations prioritized by opportunity size
+- Matrice de synthèse des concurrents avec les indicateurs clés par concurrent
+- Comparaison de stratégie de contenu avec analyse des écarts
+- Paysage concurrentiel SEO avec opportunités de mots-clés et de liens
+- Intelligence média payant avec insights créatifs et de ciblage
+- Benchmarking des réseaux sociaux avec analyse d'engagement
+- Comparaison de visibilité IA entre plateformes
+- Carte de tarification et positionnement
+- Résumé SWOT par concurrent
+- Recommandations stratégiques priorisées par taille d'opportunité
 
-## Agents Used
+## Agents utilisés
 
-- **competitive-intel** — All competitive dimensions, benchmarking, gap analysis, and strategic recommendations
+- **competitive-intel** — Toutes les dimensions concurrentielles, le benchmarking, l'analyse des écarts, et les recommandations stratégiques

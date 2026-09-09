@@ -1,6 +1,6 @@
 ---
 name: check
-description: "Run the unified pre-publish quality gate on marketing content — wraps scripts/eval-runner.py to score hallucination risk, claim substantiation (with --evidence), brand-voice fit (with --brand), structure (with --schema), content quality, and readability, plus a C2PA provenance check for AI assets in EU-targeted campaigns; returns a composite score with a PASS / WARN / BLOCKED decision and per-issue fix suggestions. Reports only — it never edits the content. Triggers on \"/digital-marketing-pro:check\", \"is this safe to publish\", \"run a hallucination check on this draft\", \"validate this copy against the brand voice\", \"pre-publish quality gate\". Resolves the active brand profile automatically; pairs with /digital-marketing-pro:c2pa-metadata to fix missing manifests."
+description: "Exécuter la porte qualité unifiée de pré-publication sur le contenu marketing — encapsule scripts/eval-runner.py pour noter le risque d'hallucination, la justification des déclarations (avec --evidence), l'adéquation à la voix de marque (avec --brand), la structure (avec --schema), la qualité du contenu et la lisibilité, plus une vérification de provenance C2PA pour les actifs IA dans les campagnes ciblant l'UE ; renvoie un score composite avec une décision PASS / WARN / BLOCKED et des suggestions de correction par problème. Se contente de rendre compte — ne modifie jamais le contenu. Se déclenche sur \"/digital-marketing-pro:check\", \"is this safe to publish\", \"run a hallucination check on this draft\", \"validate this copy against the brand voice\", \"pre-publish quality gate\". Résout automatiquement le profil de marque actif ; se combine avec /digital-marketing-pro:c2pa-metadata pour corriger les manifestes manquants."
 user-invocable: true
 triggers:
   - check this content before publishing
@@ -14,69 +14,69 @@ triggers:
 allowed-tools: Read Bash Glob Grep
 ---
 
-# /digital-marketing-pro:check — Unified Pre-Publish Quality Gate
+# /digital-marketing-pro:check — Porte qualité unifiée de pré-publication
 
-This skill is the canonical pre-publish gate for marketing content. It wraps the evaluation suite (`scripts/eval-runner.py`) and produces a single pass/fail decision with actionable issues.
+Cette compétence est la porte de référence de pré-publication pour le contenu marketing. Elle encapsule la suite d'évaluation (`scripts/eval-runner.py`) et produit une décision unique de réussite/échec avec des problèmes actionnables.
 
-## Context efficiency
+## Efficacité du contexte
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List the brand's workspace at `~/.claude-marketing/brands/{slug}/` (or `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` when that env var is set) before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** sur tout fichier référencé, puis `Read` uniquement les plages trouvées avec `offset` + `limit`. Listez l'espace de travail de la marque dans `~/.claude-marketing/brands/{slug}/` (ou `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` quand cette variable d'environnement est définie) avant d'ouvrir les fichiers. En cas de ré-invocation en cours de session, ignorez les fichiers déjà en contexte.
 
-Use this skill **before publishing any marketing content** — blog posts, ad copy, emails, social posts, landing pages, press releases, or any branded copy.
+Utilisez cette compétence **avant de publier tout contenu marketing** — articles de blog, textes publicitaires, e-mails, posts sociaux, landing pages, communiqués de presse, ou tout texte de marque.
 
-## Why this skill exists
+## Pourquoi cette compétence existe
 
-An earlier version shipped a global PreToolUse hook that auto-ran a hallucination + brand-compliance check on every Write/Edit operation in every project. That hook was removed because it fired globally across all plugins and projects (Slack writes, GitHub PRs, code edits — all of it), causing friction in non-marketing work.
+Une version antérieure livrait un hook global PreToolUse qui exécutait automatiquement une vérification d'hallucination + de conformité de marque sur chaque opération Write/Edit dans chaque projet. Ce hook a été retiré car il se déclenchait globalement sur tous les plugins et projets (écritures Slack, PR GitHub, modifications de code — tout y passait), créant de la friction dans le travail non marketing.
 
-`/digital-marketing-pro:check` replaces that automatic gate with an **explicit user-invoked gate**. The work is the same; the trigger is intentional.
+`/digital-marketing-pro:check` remplace cette porte automatique par une **porte explicitement invoquée par l'utilisateur**. Le travail est le même ; le déclenchement est intentionnel.
 
-## What the check evaluates
+## Ce que la vérification évalue
 
-The check delegates to `scripts/eval-runner.py` (the master eval orchestrator) which calls four sibling scripts:
+La vérification délègue à `scripts/eval-runner.py` (l'orchestrateur d'évaluation maître) qui appelle quatre scripts satellites :
 
-| Dimension | Script | What it checks |
+| Dimension | Script | Ce qui est vérifié |
 |---|---|---|
-| **Hallucination** | `hallucination-detector.py` | Unattributed statistics, placeholder URLs (example.com / your-site.com), unsupported superlatives ("best", "#1", "leading"), fabricated citations |
-| **Claims** | `claim-verifier.py` (when `--evidence` provided) | Cross-checks specific claims against a user-provided evidence file |
-| **Brand voice** | `brand-voice-scorer.py` (when `--brand` provided) | Scores content against the active brand's voice profile (formality, energy, humor, authority, prefer/avoid words) |
-| **Structure** | `output-validator.py` (when `--schema` provided) | Validates content matches expected schema (blog_post, email, ad_copy, social_post, landing_page, press_release, content_brief, campaign_plan) |
-| **C2PA provenance** (compliance) | `embed-c2pa.py` (presence check) | When the brand's `target_markets` include an EU/EEA jurisdiction AND an accompanying asset is AI-generated: verifies a C2PA provenance manifest is present and valid. Missing or invalid manifest → **CRITICAL / BLOCKED** (EU AI Act Article 50, applies from 2 Aug 2026) |
+| **Hallucination** | `hallucination-detector.py` | Statistiques non attribuées, URL de substitution (example.com / your-site.com), superlatifs non étayés (« meilleur », « n°1 », « leader »), citations fabriquées |
+| **Déclarations** | `claim-verifier.py` (quand `--evidence` est fourni) | Recoupe des déclarations spécifiques avec un fichier de preuves fourni par l'utilisateur |
+| **Voix de marque** | `brand-voice-scorer.py` (quand `--brand` est fourni) | Note le contenu par rapport au profil de voix de la marque active (formalité, énergie, humour, autorité, listes de mots préférés/à éviter) |
+| **Structure** | `output-validator.py` (quand `--schema` est fourni) | Vérifie que le contenu correspond au schéma attendu (blog_post, email, ad_copy, social_post, landing_page, press_release, content_brief, campaign_plan) |
+| **Provenance C2PA** (conformité) | `embed-c2pa.py` (vérification de présence) | Quand les `target_markets` de la marque incluent une juridiction UE/EEE ET qu'un actif accompagnant est généré par IA : vérifie qu'un manifeste de provenance C2PA est présent et valide. Manifeste manquant ou invalide → **CRITIQUE / BLOCKED** (article 50 de l'AI Act européen, applicable à partir du 2 août 2026) |
 
-Plus content quality and readability scoring (always run).
+Plus la notation de qualité de contenu et de lisibilité (toujours exécutée).
 
-## Subcommands and modes
+## Sous-commandes et modes
 
-### Default (run-quick)
+### Par défaut (run-quick)
 
 ```
 /digital-marketing-pro:check <file-path-or-content>
 ```
 
-Runs the **quick eval**: hallucination detection + content quality + readability. Fast (~2 seconds), zero external dependencies. Use this for routine checks.
+Exécute l'**évaluation rapide** : détection d'hallucination + qualité de contenu + lisibilité. Rapide (~2 secondes), zéro dépendance externe. À utiliser pour les vérifications de routine.
 
-### Full eval (run-full)
+### Évaluation complète (run-full)
 
 ```
 /digital-marketing-pro:check <file-path-or-content> --full
 ```
 
-Runs all 6 dimensions: hallucination + claims (if evidence provided) + brand voice (if brand provided) + structure (if schema provided) + content quality + readability. Use before publishing anything client-facing or external.
+Exécute les 6 dimensions : hallucination + déclarations (si preuve fournie) + voix de marque (si marque fournie) + structure (si schéma fourni) + qualité de contenu + lisibilité. À utiliser avant de publier tout ce qui est destiné au client ou à l'externe.
 
-### Compliance-focused (run-compliance)
+### Axé conformité (run-compliance)
 
 ```
 /digital-marketing-pro:check <file-path-or-content> --compliance --brand <slug> [--evidence <path>] [--schema <name>]
 ```
 
-Runs hallucination + claims + brand voice + structure. Best for regulated industries (healthcare, financial services, alcohol, cannabis, gambling) where claim substantiation and brand-voice fidelity matter most.
+Exécute hallucination + déclarations + voix de marque + structure. Idéal pour les secteurs réglementés (santé, services financiers, alcool, cannabis, jeux d'argent) où la justification des déclarations et la fidélité à la voix de marque comptent le plus.
 
-### With evidence file
+### Avec fichier de preuves
 
 ```
 /digital-marketing-pro:check <file-path> --evidence <evidence-file.json>
 ```
 
-When the content makes specific claims you want to substantiate, provide a JSON evidence file:
+Quand le contenu fait des déclarations spécifiques que vous voulez justifier, fournissez un fichier de preuves JSON :
 
 ```json
 {
@@ -97,27 +97,27 @@ When the content makes specific claims you want to substantiate, provide a JSON 
 }
 ```
 
-The check will extract every claim from the content and flag any that don't match an evidence entry.
+La vérification extraira chaque déclaration du contenu et signalera celles qui ne correspondent à aucune entrée de preuve.
 
-### With schema validation
+### Avec validation de schéma
 
 ```
 /digital-marketing-pro:check <file-path> --schema blog_post
 ```
 
-Validates the content matches the structural requirements of the named schema. Available schemas: `blog_post`, `email`, `ad_copy`, `social_post`, `landing_page`, `press_release`, `content_brief`, `campaign_plan`. Use `--schema list` to see all schemas with their requirements.
+Vérifie que le contenu correspond aux exigences structurelles du schéma nommé. Schémas disponibles : `blog_post`, `email`, `ad_copy`, `social_post`, `landing_page`, `press_release`, `content_brief`, `campaign_plan`. Utilisez `--schema list` pour voir tous les schémas avec leurs exigences.
 
-### With brand voice check
+### Avec vérification de la voix de marque
 
 ```
 /digital-marketing-pro:check <file-path> --brand acme
 ```
 
-Scores the content against the brand voice profile at `~/.claude-marketing/brands/acme/profile.json`. Reports per-dimension breakdown (formality, energy, humor, authority) plus deviation from prefer/avoid word lists.
+Note le contenu par rapport au profil de voix de marque dans `~/.claude-marketing/brands/acme/profile.json`. Rapporte une répartition par dimension (formalité, énergie, humour, autorité) plus l'écart par rapport aux listes de mots préférés/à éviter.
 
-## Output format
+## Format de sortie
 
-The check returns a unified report:
+La vérification renvoie un rapport unifié :
 
 ```
 DM CHECK REPORT — <file or content snippet>
@@ -142,64 +142,64 @@ Issues Found:
 Decision: PASS — safe to publish but address WARNINGs first
 ```
 
-If any CRITICAL issue is found, decision = **BLOCKED** and the user is asked to fix before publishing.
+Si un problème CRITIQUE est trouvé, la décision = **BLOCKED** et l'utilisateur doit corriger avant de publier.
 
-## AI-tell scans (advisory section, never scored)
+## Détections de « tells » IA (section consultative, jamais notée)
 
-Alongside the eval-runner scorers, run both tell scans and report them as a single ADVISORY section of the check output:
+En parallèle des scoreurs d'eval-runner, exécutez les deux détections de tells et rapportez-les comme une unique section CONSULTATIVE dans la sortie de la vérification :
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/ai-tell-scan.py"          --file <input>   # Tier 1: surface
 python "${CLAUDE_PLUGIN_ROOT}/scripts/structural-tell-scan.py"  --file <input>   # Tier 2: structure
 ```
 
-- **Tier 1 (surface)** — LLM-favored vocabulary, significance markers, soft-adverb clusters, connective and participial openers, em-dash density, ungrounded one-liners. Report the overall LOW/MODERATE/HIGH rating and the flagged sentences with their suggested fix. Significance markers are reported with `"fix": "Delete this sentence; do not reword it."` — pass that through verbatim, because rewording is the wrong remedy.
-- **Tier 2 (structure)** — the overall OK/NOTE/ATTENTION band plus each NOTE/ATTENTION finding with its spans (moralizing, section symmetry, parallel headings, specificity, stance, paragraph evenness, entity development). For `entity_development`, always carry through that the fix is to develop an existing specific, never to delete specifics.
+- **Niveau 1 (surface)** — vocabulaire privilégié par les LLM, marqueurs de portée significative, grappes d'adverbes atténuants, ouvertures connectives et participiales, densité de tirets cadratins, phrases isolées non étayées. Rapportez la notation globale FAIBLE/MODÉRÉE/ÉLEVÉE et les phrases signalées avec leur correction suggérée. Les marqueurs de portée significative sont rapportés avec `"fix": "Delete this sentence; do not reword it."` — transmettez cela mot pour mot, car reformuler n'est pas le bon remède.
+- **Niveau 2 (structure)** — la bande globale OK/NOTE/ATTENTION plus chaque constat NOTE/ATTENTION avec ses portées (moralisation, symétrie des sections, titres parallèles, spécificité, positionnement, régularité des paragraphes, développement d'entités). Pour `entity_development`, transmettez toujours que la correction consiste à développer un élément spécifique existant, jamais à supprimer des éléments spécifiques.
 
-**This whole section NEVER affects the PASS/WARN/BLOCKED decision.** Both scripts keep their thresholds inside themselves, deliberately outside the eval config, because these are editorial judgment calls for a human editor, not publish gates — and because a detector proxy has a real false-positive rate on genuinely human writing. (The one place a tell scan does gate is the content-engine's `humanize_passed`, and only on the two tells precise enough to gate on: `significance_marker` and `soft_adverb_cluster`. `llm_favored_word` was dropped from that set on 2026-08-15 after it was measured firing **only** on prose published before ChatGPT existed and never on model prose. That gate is a density floor — measured, it fails no published human writing and catches no unedited model prose — so never report a pass as evidence that a piece reads human.) Both scans measure visible text only; neither can see, and neither has any relationship to, any statistical watermark.
+**Cette section entière n'affecte JAMAIS la décision PASS/WARN/BLOCKED.** Les deux scripts gardent leurs seuils en interne, délibérément en dehors de la configuration d'évaluation, car ce sont des jugements éditoriaux destinés à un relecteur humain, pas des portes de publication — et parce qu'un détecteur proxy a un vrai taux de faux positifs sur de l'écriture authentiquement humaine. (Le seul endroit où une détection de tell fait office de porte est le `humanize_passed` du content-engine, et uniquement sur les deux tells assez précis pour servir de porte : `significance_marker` et `soft_adverb_cluster`. `llm_favored_word` a été retiré de cet ensemble le 2026-08-15 après qu'on a mesuré qu'il ne se déclenchait **que** sur de la prose publiée avant l'existence de ChatGPT et jamais sur de la prose de modèle. Cette porte est un plancher de densité — mesuré, il n'échoue sur aucune écriture humaine publiée et n'attrape aucune prose de modèle non éditée — donc ne rapportez jamais une réussite comme preuve qu'un texte se lit comme humain.) Les deux détections ne mesurent que le texte visible ; aucune ne peut voir, et aucune n'a de rapport avec, un quelconque filigrane statistique.
 
-## EU AI Act Article 50 — C2PA provenance gate
+## Article 50 de l'AI Act européen — porte de provenance C2PA
 
-The check gains a compliance dimension for AI-generated assets in EU-targeted campaigns. It fires when **both** conditions hold:
+La vérification gagne une dimension de conformité pour les actifs générés par IA dans les campagnes ciblant l'UE. Elle se déclenche quand **les deux** conditions sont réunies :
 
-1. The active (or `--brand`) profile's `target_markets` include any EU/EEA jurisdiction, **and**
-2. An accompanying asset is declared AI-generated — either the file metadata says so, or the `--evidence` JSON declares `ai_generated: true` for it.
+1. Les `target_markets` du profil actif (ou de `--brand`) incluent une juridiction UE/EEE, **et**
+2. Un actif accompagnant est déclaré généré par IA — soit les métadonnées du fichier l'indiquent, soit le JSON `--evidence` déclare `ai_generated: true` pour cet actif.
 
-When both hold, the gate runs a C2PA manifest presence check on the asset via `embed-c2pa.py` (presence/verify mode — it does not modify the asset). A **missing or invalid C2PA provenance manifest is a CRITICAL issue → decision = BLOCKED.** Article 50 applies from **2 Aug 2026** (penalty up to EUR 15M or 3% of global turnover). To embed a compliant manifest, run `/digital-marketing-pro:c2pa-metadata`.
+Quand les deux sont réunies, la porte exécute une vérification de présence de manifeste C2PA sur l'actif via `embed-c2pa.py` (mode présence/vérification — il ne modifie pas l'actif). Un **manifeste de provenance C2PA manquant ou invalide est un problème CRITIQUE → décision = BLOCKED.** L'article 50 s'applique à partir du **2 août 2026** (sanction jusqu'à 15 M€ ou 3 % du chiffre d'affaires mondial). Pour intégrer un manifeste conforme, exécutez `/digital-marketing-pro:c2pa-metadata`.
 
-If `embed-c2pa.py` is not present in the script inventory or the asset cannot be resolved, surface the dimension as SKIPPED with a warning (never silently PASS an EU AI-asset check).
+Si `embed-c2pa.py` n'est pas présent dans l'inventaire de scripts ou si l'actif ne peut pas être résolu, affichez la dimension comme SKIPPED avec un avertissement (ne faites jamais silencieusement PASS une vérification d'actif IA pour l'UE).
 
-## How the skill operates
+## Fonctionnement de la compétence
 
-The skill follows this flow:
+La compétence suit ce déroulé :
 
-1. **Resolve the input.** If the user passed a file path, read it. If they passed inline content, use it.
-2. **Resolve options.** If `--brand` not specified, attempt to load from active brand at `~/.claude-marketing/brands/_active-brand.json`. If `--schema` not specified, infer from content type if obvious (blog markdown → `blog_post`, etc.) or skip structure check.
-3. **Build the eval-runner command.** Choose action: `run-quick` (default), `run-full` (with `--full`), `run-compliance` (with `--compliance`).
-4. **Execute via Bash.**
+1. **Résoudre l'entrée.** Si l'utilisateur a passé un chemin de fichier, lisez-le. S'il a passé du contenu en ligne, utilisez-le.
+2. **Résoudre les options.** Si `--brand` n'est pas spécifié, tentez de le charger depuis la marque active dans `~/.claude-marketing/brands/_active-brand.json`. Si `--schema` n'est pas spécifié, déduisez-le du type de contenu si évident (markdown de blog → `blog_post`, etc.) ou sautez la vérification de structure.
+3. **Construire la commande eval-runner.** Choisissez l'action : `run-quick` (par défaut), `run-full` (avec `--full`), `run-compliance` (avec `--compliance`).
+4. **Exécuter via Bash.**
    ```
    python "${CLAUDE_PLUGIN_ROOT}/scripts/eval-runner.py" --action run-quick --file <input> [--brand <slug>] [--evidence <path>] [--schema <name>]
    ```
-5. **Parse the JSON output.** Extract composite score, grade, dimension scores, alerts, auto-reject decision.
-6. **Format for the user.** Present the human-readable report shown above. Lead with the decision (PASS / WARN / BLOCKED).
-7. **If BLOCKED, refuse to recommend publishing.** Always require the user to address CRITICAL issues before they proceed.
+5. **Analyser la sortie JSON.** Extrayez le score composite, la note, les scores par dimension, les alertes, la décision de rejet automatique.
+6. **Mettre en forme pour l'utilisateur.** Présentez le rapport lisible par un humain montré ci-dessus. Commencez par la décision (PASS / WARN / BLOCKED).
+7. **Si BLOCKED, refusez de recommander la publication.** Exigez toujours que l'utilisateur traite les problèmes CRITIQUES avant de continuer.
 
-## Scripts called
+## Scripts appelés
 
-- `scripts/eval-runner.py` — master orchestrator
-- `scripts/hallucination-detector.py` — invoked by eval-runner
-- `scripts/claim-verifier.py` — invoked by eval-runner if `--evidence` provided
-- `scripts/brand-voice-scorer.py` — invoked by eval-runner if `--brand` provided
-- `scripts/output-validator.py` — invoked by eval-runner if `--schema` provided
-- `scripts/content-scorer.py` — invoked by eval-runner
-- `scripts/readability-analyzer.py` — invoked by eval-runner
-- `scripts/embed-c2pa.py` — presence/verify check for the EU AI Act Article 50 C2PA gate (only when an EU-targeted brand has an AI-generated asset)
+- `scripts/eval-runner.py` — orchestrateur maître
+- `scripts/hallucination-detector.py` — invoqué par eval-runner
+- `scripts/claim-verifier.py` — invoqué par eval-runner si `--evidence` fourni
+- `scripts/brand-voice-scorer.py` — invoqué par eval-runner si `--brand` fourni
+- `scripts/output-validator.py` — invoqué par eval-runner si `--schema` fourni
+- `scripts/content-scorer.py` — invoqué par eval-runner
+- `scripts/readability-analyzer.py` — invoqué par eval-runner
+- `scripts/embed-c2pa.py` — vérification de présence/validation pour la porte C2PA de l'article 50 de l'AI Act européen (uniquement quand une marque ciblant l'UE a un actif généré par IA)
 
-All scripts use stdlib only (except brand-voice-scorer which optionally uses nltk). No external API calls, no internet required.
+Tous les scripts utilisent uniquement la bibliothèque standard (sauf brand-voice-scorer qui utilise éventuellement nltk). Aucun appel API externe, aucun accès internet requis.
 
-## Examples
+## Exemples
 
-### Example 1: Quick check on a draft
+### Exemple 1 : vérification rapide sur un brouillon
 
 ```
 User: /digital-marketing-pro:check drafts/q2-launch-blog.md
@@ -231,7 +231,7 @@ Issues Found:
 Decision: PASS — safe to publish; recommend addressing the WARNING first.
 ```
 
-### Example 2: Full eval with brand + evidence + schema
+### Exemple 2 : évaluation complète avec marque + preuve + schéma
 
 ```
 User: /digital-marketing-pro:check drafts/healthcare-ad.md --full --brand healthfirst --evidence facts/q2-claims.json --schema ad_copy
@@ -244,7 +244,7 @@ Skill:
 5. Decision: BLOCKED. Two unattributed health claims need substantiation before this can publish.
 ```
 
-### Example 3: Compliance check on regulated content
+### Exemple 3 : vérification de conformité sur du contenu réglementé
 
 ```
 User: /digital-marketing-pro:check drafts/financial-services-landing.md --compliance --brand finadvisor --evidence facts/finra-disclosures.json
@@ -256,7 +256,7 @@ Skill:
 4. Returns decision with FINRA-relevant issues highlighted
 ```
 
-### Example 4: Quick check on inline content
+### Exemple 4 : vérification rapide sur du contenu en ligne
 
 ```
 User: /digital-marketing-pro:check "Our amazing product boosts conversion by 347% — visit example.com today!"
@@ -272,36 +272,36 @@ Skill:
    Decision: BLOCKED
 ```
 
-## When to use which mode
+## Quel mode utiliser selon le scénario
 
-| Scenario | Recommended mode |
+| Scénario | Mode recommandé |
 |---|---|
-| Routine content check during drafting | `/digital-marketing-pro:check <file>` (quick) |
-| Before publishing any external content | `/digital-marketing-pro:check <file> --full --brand <slug>` |
-| Regulated industry content (healthcare / financial / alcohol / cannabis / gambling) | `/digital-marketing-pro:check <file> --compliance --brand <slug> --evidence <facts>` |
-| Client-facing deliverable (Growth Plan, Yearly Planner, monthly report) | `/digital-marketing-pro:check <file> --full --brand <slug>` |
-| Ad copy specifically | `/digital-marketing-pro:check <file> --schema ad_copy --brand <slug>` |
-| Email specifically | `/digital-marketing-pro:check <file> --schema email --brand <slug>` |
-| Blog post specifically | `/digital-marketing-pro:check <file> --schema blog_post --brand <slug>` |
+| Vérification de contenu de routine pendant la rédaction | `/digital-marketing-pro:check <file>` (rapide) |
+| Avant de publier tout contenu externe | `/digital-marketing-pro:check <file> --full --brand <slug>` |
+| Contenu de secteur réglementé (santé / financier / alcool / cannabis / jeux d'argent) | `/digital-marketing-pro:check <file> --compliance --brand <slug> --evidence <facts>` |
+| Livrable orienté client (Growth Plan, Yearly Planner, rapport mensuel) | `/digital-marketing-pro:check <file> --full --brand <slug>` |
+| Texte publicitaire spécifiquement | `/digital-marketing-pro:check <file> --schema ad_copy --brand <slug>` |
+| E-mail spécifiquement | `/digital-marketing-pro:check <file> --schema email --brand <slug>` |
+| Article de blog spécifiquement | `/digital-marketing-pro:check <file> --schema blog_post --brand <slug>` |
 
-## Behaviour rules
+## Règles de comportement
 
-1. **Never report PASS if there are CRITICAL issues.** Always BLOCKED.
-2. **Always report the composite score and grade.** Even if PASS, surface room for improvement.
-3. **Always include actionable suggestions.** Each issue must be paired with a fix recommendation.
-4. **Resolve the active brand if not specified.** Check `~/.claude-marketing/brands/_active-brand.json`. If no active brand, run without `--brand` (skip brand voice dimension).
-5. **Never modify the content.** This skill only reports — the user (or the agent that produced the content) makes the fix.
-6. **Surface skipped dimensions explicitly.** If the user did not provide `--evidence` or `--schema`, note that the corresponding dimensions were skipped.
+1. **Ne jamais rapporter PASS s'il y a des problèmes CRITIQUES.** Toujours BLOCKED.
+2. **Toujours rapporter le score composite et la note.** Même en cas de PASS, mettez en avant les marges d'amélioration.
+3. **Toujours inclure des suggestions actionnables.** Chaque problème doit être associé à une recommandation de correction.
+4. **Résoudre la marque active si non spécifiée.** Vérifiez `~/.claude-marketing/brands/_active-brand.json`. Si aucune marque active, exécutez sans `--brand` (sautez la dimension voix de marque).
+5. **Ne jamais modifier le contenu.** Cette compétence ne fait que rapporter — l'utilisateur (ou l'agent qui a produit le contenu) effectue la correction.
+6. **Signaler explicitement les dimensions ignorées.** Si l'utilisateur n'a pas fourni `--evidence` ou `--schema`, notez que les dimensions correspondantes ont été ignorées.
 
-## Related skills + commands
+## Compétences et commandes associées
 
-- `/digital-marketing-pro:engagement growth-plan` — produces Part 8 deliverable; should be checked with `/digital-marketing-pro:check --full --schema content_brief` before client delivery
-- `/digital-marketing-pro:content-engine` — produces marketing content; recommended workflow is `/digital-marketing-pro:content-engine` → review → `/digital-marketing-pro:check` → publish
-- `/digital-marketing-pro:eval-content` — legacy alias that routes to this skill
+- `/digital-marketing-pro:engagement growth-plan` — produit le livrable de la Partie 8 ; devrait être vérifié avec `/digital-marketing-pro:check --full --schema content_brief` avant livraison client
+- `/digital-marketing-pro:content-engine` — produit du contenu marketing ; le flux de travail recommandé est `/digital-marketing-pro:content-engine` → relecture → `/digital-marketing-pro:check` → publication
+- `/digital-marketing-pro:eval-content` — alias hérité qui redirige vers cette compétence
 
-## Related references
+## Références associées
 
-- `scripts/eval-runner.py` — the master orchestrator this skill wraps
-- `skills/context-engine/eval-framework-guide.md` — full eval framework documentation
-- `skills/context-engine/eval-rubrics.md` — per-dimension scoring rubrics
-- `docs/architecture.md` Section 16 (Evaluation Layer) — eval framework architecture
+- `scripts/eval-runner.py` — l'orchestrateur maître que cette compétence encapsule
+- `skills/context-engine/eval-framework-guide.md` — documentation complète du cadre d'évaluation
+- `skills/context-engine/eval-rubrics.md` — grilles de notation par dimension
+- `docs/architecture.md` Section 16 (Couche d'évaluation) — architecture du cadre d'évaluation

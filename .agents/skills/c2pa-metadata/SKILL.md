@@ -1,42 +1,42 @@
 ---
 name: c2pa-metadata
-description: "Embed a C2PA provenance manifest into an AI-generated marketing asset (PNG, JPG, WebP, GIF, TIFF, MP4, MOV, WebM, MP3, WAV, PDF) via scripts/embed-c2pa.py — produces a signed copy of the file carrying IPTC digital-source-type AI claims, an optional c2pa.ai-disclosure assertion for EU AI Act Article 50 (applicable 2 Aug 2026), and a JSON status report. Triggers on \"/digital-marketing-pro:c2pa-metadata\", \"sign this AI image for EU compliance\", \"add content credentials to this asset\", \"embed provenance metadata\", \"mark this video as AI-generated\". Uses a self-signed dev certificate unless --signing-cert/--signing-key are supplied; pairs with /digital-marketing-pro:check, which verifies manifests pre-publish."
+description: "Intégrer un manifeste de provenance C2PA dans un actif marketing généré par IA (PNG, JPG, WebP, GIF, TIFF, MP4, MOV, WebM, MP3, WAV, PDF) via scripts/embed-c2pa.py — produit une copie signée du fichier portant les déclarations IPTC de type de source numérique liées à l'IA, une assertion optionnelle c2pa.ai-disclosure pour l'article 50 de l'AI Act européen (applicable au 2 août 2026), et un rapport de statut au format JSON. Se déclenche sur \"/digital-marketing-pro:c2pa-metadata\", \"sign this AI image for EU compliance\", \"add content credentials to this asset\", \"embed provenance metadata\", \"mark this video as AI-generated\". Utilise un certificat de signature auto-signé de développement sauf si --signing-cert/--signing-key sont fournis ; se combine avec /digital-marketing-pro:check, qui vérifie les manifestes avant publication."
 ---
 
-# /digital-marketing-pro:c2pa-metadata — Embed Content Authenticity Provenance
+# /digital-marketing-pro:c2pa-metadata — Intégrer la provenance d'authenticité du contenu
 
-## Purpose
+## Objectif
 
-Wraps `scripts/embed-c2pa.py` to add a **C2PA (Coalition for Content Provenance and Authenticity) manifest** to any AI-generated marketing asset. The manifest carries a machine-readable provenance trail (who generated it, what generator was used, what prompt produced it, when it was reviewed) plus a visible AI-generation claim in the IPTC digital-source-type vocabulary.
+Encapsule `scripts/embed-c2pa.py` pour ajouter un **manifeste C2PA (Coalition for Content Provenance and Authenticity)** à tout actif marketing généré par IA. Le manifeste porte une piste de provenance lisible par machine (qui l'a généré, quel générateur a été utilisé, quel prompt l'a produit, quand il a été relu) ainsi qu'une déclaration visible de génération par IA dans le vocabulaire IPTC de type de source numérique.
 
-This is the technical mechanism brands use to comply with:
+Il s'agit du mécanisme technique utilisé par les marques pour se conformer à :
 
-- **EU AI Act Article 50** (applicable 2 August 2026) — generative-AI marketing content must be marked in a machine-readable format using open, interoperable standards. C2PA is the emerging backbone. Penalty for non-compliance: up to **€15 million or 3% global annual turnover**.
-- **NY synthetic-performer disclosure law** (effective June 2026) — $1K–$5K per violation, $10K repeat; applies to synthetic influencers and AI-generated endorsements.
-- **FTC May 2026 endorsement guidance** — covers AI testimonials and synthetic creator content.
-- **Australia Online Safety Act / UK Online Safety Act** — emerging deepfake disclosure requirements.
+- **L'article 50 de l'AI Act européen** (applicable au 2 août 2026) — le contenu marketing généré par IA générative doit être marqué dans un format lisible par machine utilisant des normes ouvertes et interopérables. C2PA en est le socle émergent. Sanction en cas de non-conformité : jusqu'à **15 millions d'euros ou 3 % du chiffre d'affaires mondial annuel**.
+- **La loi de New York sur la divulgation des performeurs synthétiques** (effective en juin 2026) — de 1 000 $ à 5 000 $ par infraction, 10 000 $ en cas de récidive ; s'applique aux influenceurs synthétiques et aux témoignages générés par IA.
+- **Les directives FTC de mai 2026 sur les témoignages** — couvrent les témoignages générés par IA et le contenu de créateurs synthétiques.
+- **L'Online Safety Act australien / britannique** — exigences émergentes de divulgation des deepfakes.
 
-The resulting asset can be inspected by any C2PA-aware viewer (Adobe Photoshop, Lightroom, Truepic, [contentcredentials.org/verify](https://contentcredentials.org/verify)).
+L'actif résultant peut être inspecté par tout lecteur compatible C2PA (Adobe Photoshop, Lightroom, Truepic, [contentcredentials.org/verify](https://contentcredentials.org/verify)).
 
-### C2PA spec versions to be aware of (June 2026)
+### Versions de la spécification C2PA à connaître (juin 2026)
 
-- **Content Credentials 2.3** (released 9 February 2026 — [launch post](https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/)) added format support for: **live video** (broadcast/streaming), **plain text documents**, **OGG Vorbis audio**, **large AVI video files**, and **EXIF Original Preservation Images**. If a brand is signing live-stream video or text-based assets for the first time, 2.3 is the floor version to target.
-- **C2PA Spec 2.4** (April 2026 — [spec.c2pa.org/specifications/specifications/2.4](https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html)) introduces the **AI Disclosure Assertion (`c2pa.ai-disclosure`)** for machine-readable AI transparency info — this is the assertion the EU AI Act Article 50 deployer pathway will rely on. The final Code of Practice on Transparency of AI-Generated Content (published 10 June 2026) references C2PA-style assertions as the canonical machine-readable marking mechanism for both providers and deployers. See `skills/context-engine/eu-code-of-practice.md` for the full Article 50 context.
-- The **C2PA Trust List** is now handled via the public C2PA Conformance Program (any CA meeting the Certificate Policy can join). Production signing certificates should come from a Conformance-Program-listed CA, not an ad-hoc cert.
+- **Content Credentials 2.3** (publiée le 9 février 2026 — [article de lancement](https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/)) a ajouté la prise en charge des formats suivants : **vidéo en direct** (diffusion/streaming), **documents texte brut**, **audio OGG Vorbis**, **fichiers vidéo AVI volumineux**, et **images EXIF Original Preservation**. Si une marque signe pour la première fois de la vidéo en direct ou des actifs textuels, la version 2.3 constitue le socle minimal à viser.
+- **La spécification C2PA 2.4** (avril 2026 — [spec.c2pa.org/specifications/specifications/2.4](https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html)) introduit l'**assertion de divulgation IA (`c2pa.ai-disclosure`)** pour des informations de transparence IA lisibles par machine — c'est l'assertion sur laquelle s'appuiera le parcours déployeur de l'article 50 de l'AI Act européen. Le Code de bonnes pratiques final sur la transparence des contenus générés par IA (publié le 10 juin 2026) fait référence aux assertions de type C2PA comme mécanisme canonique de marquage lisible par machine, tant pour les fournisseurs que pour les déployeurs. Voir `skills/context-engine/eu-code-of-practice.md` pour le contexte complet de l'article 50.
+- La **liste de confiance C2PA (Trust List)** est désormais gérée via le programme public de conformité C2PA (toute autorité de certification répondant à la politique de certification peut y adhérer). Les certificats de signature en production doivent provenir d'une autorité de certification référencée par le programme de conformité, et non d'un certificat improvisé.
 
-**For DMP outputs**: `embed-c2pa.py` now supports `--ai-disclosure`. Pass it to embed the C2PA 2.4 `c2pa.ai-disclosure` assertion alongside the existing IPTC digital-source-type claim. The combination gives you both human-readable (IPTC) and machine-readable (`c2pa.ai-disclosure`) EU AI Act **Article 50** signaling — this is the deployer-side machine-readable pathway the final Code of Practice (10 June 2026) points to as the canonical marking mechanism. See `skills/context-engine/eu-code-of-practice.md` for the full Article 50 context.
+**Pour les sorties DMP** : `embed-c2pa.py` prend désormais en charge `--ai-disclosure`. Utilisez cette option pour intégrer l'assertion C2PA 2.4 `c2pa.ai-disclosure` en plus de la déclaration IPTC de type de source numérique existante. Cette combinaison offre à la fois une signalisation lisible par un humain (IPTC) et lisible par machine (`c2pa.ai-disclosure`) pour l'**article 50** de l'AI Act européen — c'est le parcours lisible par machine côté déployeur vers lequel pointe le Code de bonnes pratiques final (10 juin 2026) comme mécanisme de marquage canonique. Voir `skills/context-engine/eu-code-of-practice.md` pour le contexte complet de l'article 50.
 
-## When to invoke
+## Quand l'invoquer
 
-- Right after any AI image / video / audio generation step in the engagement workflow (Part 11 — AI Creative Instructions output)
-- Before handing a generated asset to the design team for review
-- As a pre-publish gate in `/digital-marketing-pro:check` for EU-targeted assets
-- Bulk-applying to a backlog of AI-generated assets before EU AI Act enforcement on 2 Aug 2026
+- Juste après toute étape de génération d'image / vidéo / audio par IA dans le flux d'engagement (Partie 11 — sortie des instructions créatives IA)
+- Avant de remettre un actif généré à l'équipe design pour relecture
+- En tant que porte de pré-publication dans `/digital-marketing-pro:check` pour les actifs ciblant l'UE
+- Pour appliquer en masse à un arriéré d'actifs générés par IA avant l'entrée en application de l'AI Act européen le 2 août 2026
 
-## Quick examples
+## Exemples rapides
 
 ```bash
-# Single asset — image generated by Vertex AI / Nano Banana Pro
+# Actif unique — image générée par Vertex AI / Nano Banana Pro
 /digital-marketing-pro:c2pa-metadata \
     --input assets/q3-launch-hero.png \
     --output assets/signed/q3-launch-hero.png \
@@ -45,7 +45,7 @@ The resulting asset can be inspected by any C2PA-aware viewer (Adobe Photoshop, 
     --ai-claim ai-generated-content \
     --prompt "minimalist product hero shot, soft natural lighting"
 
-# Video with human review tracked
+# Vidéo avec suivi de la relecture humaine
 /digital-marketing-pro:c2pa-metadata \
     --input campaigns/launch-video-v3.mp4 \
     --output campaigns/signed/launch-video-v3.mp4 \
@@ -54,7 +54,7 @@ The resulting asset can be inspected by any C2PA-aware viewer (Adobe Photoshop, 
     --ai-claim ai-generated-content \
     --reviewer "Jane Smith"
 
-# EU-targeted asset — add the machine-readable Article 50 AI-disclosure assertion (C2PA 2.4)
+# Actif ciblant l'UE — ajout de l'assertion de divulgation IA lisible par machine pour l'article 50 (C2PA 2.4)
 /digital-marketing-pro:c2pa-metadata \
     --input assets/q3-launch-hero.png \
     --output assets/signed/q3-launch-hero.png \
@@ -64,7 +64,7 @@ The resulting asset can be inspected by any C2PA-aware viewer (Adobe Photoshop, 
     --ai-disclosure \
     --prompt "minimalist product hero shot, soft natural lighting"
 
-# Human-created image with AI-assisted edits
+# Image créée par un humain avec des retouches assistées par IA
 /digital-marketing-pro:c2pa-metadata \
     --input assets/founder-headshot-edited.jpg \
     --output assets/signed/founder-headshot-edited.jpg \
@@ -72,7 +72,7 @@ The resulting asset can be inspected by any C2PA-aware viewer (Adobe Photoshop, 
     --generator "Adobe Generative Fill" \
     --ai-claim ai-assisted-edits
 
-# Production sign with a real C2PA signing certificate
+# Signature de production avec un véritable certificat de signature C2PA
 /digital-marketing-pro:c2pa-metadata \
     --input assets/q3-launch-hero.png \
     --output assets/signed/q3-launch-hero.png \
@@ -83,42 +83,42 @@ The resulting asset can be inspected by any C2PA-aware viewer (Adobe Photoshop, 
     --signing-key /secure/c2pa-prod-key.pem
 ```
 
-## AI claim values (IPTC digital source type)
+## Valeurs de déclaration IA (type de source numérique IPTC)
 
-| Value | When to use | Maps to IPTC URI |
+| Valeur | Quand l'utiliser | Correspond à l'URI IPTC |
 |---|---|---|
-| `ai-generated-content` | Asset fully generated by AI | `algorithmicMedia` |
-| `ai-assisted-edits` | Human-created + AI-edited (e.g. Generative Fill) | `compositeWithTrainedAlgorithmicMedia` |
-| `ai-no-substantive-changes` | AI used (e.g. upscaling) but no semantic change | `minorHumanEdits` |
+| `ai-generated-content` | Actif entièrement généré par IA | `algorithmicMedia` |
+| `ai-assisted-edits` | Créé par un humain + retouché par IA (ex. Generative Fill) | `compositeWithTrainedAlgorithmicMedia` |
+| `ai-no-substantive-changes` | IA utilisée (ex. mise à l'échelle) mais sans changement sémantique | `minorHumanEdits` |
 
-The IPTC vocabulary is what EU AI Act regulators reference — using these values rather than ad-hoc strings makes the asset interoperable with the Article 50 enforcement tooling.
+Le vocabulaire IPTC est celui auquel se réfèrent les régulateurs de l'AI Act européen — utiliser ces valeurs plutôt que des chaînes improvisées rend l'actif interopérable avec les outils d'application de l'article 50.
 
-## Supported asset formats
+## Formats d'actifs pris en charge
 
 `.png` · `.jpg/.jpeg` · `.webp` · `.gif` · `.tiff` · `.mp4` · `.mov` · `.webm` · `.mp3` · `.wav` · `.pdf`
 
-## Signing certificate
+## Certificat de signature
 
-Production C2PA signatures require a certificate from a CAI-recognized signing authority. The script will use one if you pass `--signing-cert` and `--signing-key`. If you omit them, the script generates a **self-signed 90-day dev certificate** for development testing only — a self-signed asset will verify as "signature present but signer not in trust list" at [contentcredentials.org/verify](https://contentcredentials.org/verify).
+Les signatures C2PA de production nécessitent un certificat d'une autorité de signature reconnue par la CAI. Le script en utilisera un si vous passez `--signing-cert` et `--signing-key`. Si vous les omettez, le script génère un **certificat de développement auto-signé valable 90 jours**, réservé aux tests de développement — un actif auto-signé sera vérifié comme « signature présente mais signataire absent de la liste de confiance » sur [contentcredentials.org/verify](https://contentcredentials.org/verify).
 
-For production deployment:
+Pour un déploiement en production :
 
-1. Obtain a C2PA-compatible signing certificate from a CAI-recognized authority (Adobe, Truepic, Numbers Protocol, Microsoft Azure Confidential Ledger).
-2. Store the cert + key securely (do NOT commit to git; use an environment-variable path or secret store).
-3. Pass `--signing-cert` and `--signing-key` on every production invocation.
+1. Obtenez un certificat de signature compatible C2PA auprès d'une autorité reconnue par la CAI (Adobe, Truepic, Numbers Protocol, Microsoft Azure Confidential Ledger).
+2. Stockez le certificat et la clé de manière sécurisée (ne les committez PAS dans git ; utilisez un chemin en variable d'environnement ou un coffre-fort de secrets).
+3. Passez `--signing-cert` et `--signing-key` à chaque invocation en production.
 
-Reference: [opensource.contentauthenticity.org/docs/manifest/signing-manifests/](https://opensource.contentauthenticity.org/docs/manifest/signing-manifests/)
+Référence : [opensource.contentauthenticity.org/docs/manifest/signing-manifests/](https://opensource.contentauthenticity.org/docs/manifest/signing-manifests/)
 
-## Python dependencies
+## Dépendances Python
 
-- `c2pa-python>=0.5.0` — auto-installed on first run via `pip install`
-- `cryptography` — only needed for the dev self-signed cert path; auto-installed if missing
+- `c2pa-python>=0.5.0` — installé automatiquement au premier lancement via `pip install`
+- `cryptography` — nécessaire uniquement pour le chemin du certificat de développement auto-signé ; installé automatiquement si absent
 
-Both are part of the plugin's **Full mode** (~50 MB) — see `pip install -r scripts/requirements.txt` in the README.
+Les deux font partie du **mode complet** du plugin (~50 Mo) — voir `pip install -r scripts/requirements.txt` dans le README.
 
-## Output
+## Résultat
 
-The script prints a JSON status report to stdout:
+Le script affiche un rapport de statut JSON sur la sortie standard :
 
 ```json
 {
@@ -136,16 +136,16 @@ The script prints a JSON status report to stdout:
 }
 ```
 
-## Integration with the engagement workflow
+## Intégration au flux d'engagement
 
-In a full 12-part engagement, this skill plugs in at **Part 11 — AI Creative Instructions output**. After a creative brief is rendered as an actual asset (by your creative tooling or a manual creative process), the resulting file passes through `c2pa-metadata` before being checked in to `engagements/<slug>/11-creative-briefs/signed/`.
+Dans un engagement complet en 12 parties, cette compétence s'intègre à la **Partie 11 — sortie des instructions créatives IA**. Une fois qu'un brief créatif est transformé en actif réel (par votre outillage créatif ou un processus créatif manuel), le fichier résultant passe par `c2pa-metadata` avant d'être archivé dans `engagements/<slug>/11-creative-briefs/signed/`.
 
-The `/digital-marketing-pro:check` pre-publish gate should also verify that all AI-generated assets in an EU-targeted campaign carry a C2PA manifest. v3.4 adds this verification to the EU jurisdiction rule pack in `skills/context-engine/compliance-rules.md`.
+La porte de pré-publication `/digital-marketing-pro:check` doit également vérifier que tous les actifs générés par IA d'une campagne ciblant l'UE portent un manifeste C2PA. La v3.4 ajoute cette vérification au jeu de règles de la juridiction UE dans `skills/context-engine/compliance-rules.md`.
 
-## Related
+## Liens connexes
 
-- `/digital-marketing-pro:check` — pre-publish quality gate (now verifies C2PA manifest on AI assets for EU campaigns)
-- `skills/context-engine/compliance-rules.md` — EU AI Act Article 50 rule pack
-- `skills/influencer-creator/ftc-compliance.md` — FTC endorsement disclosure requirements
-- [C2PA Specification 2.4 (April 2026)](https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html) — defines the `c2pa.ai-disclosure` assertion (Article 50 machine-readable pathway); [Content Credentials 2.3 launch (Feb 2026)](https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/)
+- `/digital-marketing-pro:check` — porte qualité de pré-publication (vérifie désormais le manifeste C2PA sur les actifs IA pour les campagnes UE)
+- `skills/context-engine/compliance-rules.md` — jeu de règles de l'article 50 de l'AI Act européen
+- `skills/influencer-creator/ftc-compliance.md` — exigences de divulgation des témoignages FTC
+- [Spécification C2PA 2.4 (avril 2026)](https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html) — définit l'assertion `c2pa.ai-disclosure` (parcours lisible par machine de l'article 50) ; [Lancement de Content Credentials 2.3 (février 2026)](https://c2pa.org/the-c2pa-launches-content-credentials-2-3-and-celebrates-5-years-of-impact-across-the-digital-ecosystem/)
 - [Content Authenticity Initiative](https://contentauthenticity.org/)

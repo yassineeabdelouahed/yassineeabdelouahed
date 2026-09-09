@@ -1,62 +1,62 @@
 ---
 name: email-sequence
-description: "Design a complete, ESP-ready email sequence — per-email subject line options, preview text, body copy with CTAs, send timing, segmentation and branching logic, plus a bulk-sender deliverability checklist (SPF/DKIM/DMARC, one-click unsubscribe, complaint-rate limits). Designs only; it sends nothing. Triggers on \"/digital-marketing-pro:email-sequence\", \"build a welcome sequence\", \"write a cart abandonment flow\", \"our emails keep landing in spam\", \"nurture sequence for trial users\". Reads the brand profile, voice, templates, and compliance rules; actual sending belongs to /digital-marketing-pro:send-email-campaign."
+description: "Concevez une séquence d'emails complète, prête pour votre ESP — options d'objets par email, texte d'aperçu, corps de texte avec CTA, timing d'envoi, logique de segmentation et de branchement, ainsi qu'une checklist de délivrabilité pour l'envoi en masse (SPF/DKIM/DMARC, désabonnement en un clic, limites de taux de plainte). Ne fait que concevoir ; n'envoie rien. Se déclenche sur « /digital-marketing-pro:email-sequence », « construis une séquence de bienvenue », « rédige un flux d'abandon de panier », « nos emails arrivent toujours en spam », « séquence de nurturing pour les utilisateurs en essai ». Lit le profil de marque, la voix, les modèles et les règles de conformité ; l'envoi effectif relève de /digital-marketing-pro:send-email-campaign."
 argument-hint: "[sequence-type]"
 ---
 
 # /digital-marketing-pro:email-sequence
 
-## Purpose
+## Objectif
 
-Design a full email sequence ready for implementation in any ESP. Includes subject lines, preview text, body copy, send timing, segmentation rules, and deliverability best practices.
+Concevoir une séquence d'emails complète, prête à être mise en œuvre dans n'importe quel ESP. Comprend les objets, les textes d'aperçu, le corps de texte, le timing d'envoi, les règles de segmentation, et les bonnes pratiques de délivrabilité.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Sequence type**: Welcome, nurture, onboarding, re-engagement, cart abandonment, post-purchase, event, promotional
-- **Goal**: What the sequence should achieve (activate, convert, retain, upsell, educate)
-- **Audience segment**: Who receives this sequence and entry trigger
-- **Number of emails**: Desired count or let the system recommend
-- **Key messages/offers**: Core value props, promotions, or content to include
-- **Existing ESP**: Platform in use (Klaviyo, Mailchimp, HubSpot, etc.) for format guidance
+- **Type de séquence** : bienvenue, nurturing, onboarding, réengagement, abandon de panier, post-achat, événement, promotionnelle
+- **Objectif** : ce que la séquence doit accomplir (activer, convertir, fidéliser, vendre en supplément, éduquer)
+- **Segment d'audience** : qui reçoit cette séquence et déclencheur d'entrée
+- **Nombre d'emails** : nombre souhaité, ou laisser le système le recommander
+- **Messages/offres clés** : propositions de valeur principales, promotions, ou contenu à inclure
+- **ESP existant** : plateforme utilisée (Klaviyo, Mailchimp, HubSpot, etc.) pour orienter le format
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Map the sequence to the customer journey stage and define the narrative arc
-3. Determine optimal email count and send cadence based on sequence type
-4. Write each email: subject line (2-3 options), preview text, body copy with clear CTA
-5. Define segmentation and branching logic (open/click triggers, conditional paths)
-6. Apply deliverability checks: spam trigger words, link density, image-to-text ratio, authentication reminders, and the **bulk-sender checklist** below
-7. Add personalization tokens and dynamic content recommendations
-8. Review full sequence for brand voice consistency and regulatory compliance (CAN-SPAM, GDPR)
+1. **Charger le contexte de la marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également la présence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier la présence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier la présence de SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou procéder avec les valeurs par défaut.
+2. Faire correspondre la séquence à l'étape du parcours client et définir l'arc narratif
+3. Déterminer le nombre optimal d'emails et la cadence d'envoi en fonction du type de séquence
+4. Rédiger chaque email : objet (2-3 options), texte d'aperçu, corps de texte avec CTA clair
+5. Définir la logique de segmentation et de branchement (déclencheurs d'ouverture/de clic, chemins conditionnels)
+6. Appliquer les contrôles de délivrabilité : mots déclencheurs de spam, densité de liens, ratio image/texte, rappels d'authentification, et la **checklist d'envoi en masse** ci-dessous
+7. Ajouter des jetons de personnalisation et des recommandations de contenu dynamique
+8. Revoir l'ensemble de la séquence pour la cohérence avec la voix de marque et la conformité réglementaire (CAN-SPAM, RGPD)
 
-### Bulk-sender deliverability checklist (Gmail / Yahoo / Outlook)
+### Checklist de délivrabilité pour l'envoi en masse (Gmail / Yahoo / Outlook)
 
-Any brand sending at bulk volume (~5,000+ messages/day to a mailbox provider) must meet the mailbox-provider sender requirements or mail is throttled or rejected. Bake these into the sequence's implementation notes (ported from `/digital-marketing-pro:send-email-campaign`, with Outlook 2025 added):
+Toute marque envoyant en volume important (~5 000+ messages/jour vers un fournisseur de messagerie) doit respecter les exigences de ce fournisseur pour l'expéditeur, sous peine de voir ses emails throttlés ou rejetés. Intégrer ces points aux notes de mise en œuvre de la séquence (repris de `/digital-marketing-pro:send-email-campaign`, avec Outlook 2025 ajouté) :
 
-- **Authenticate the sending domain**: SPF **and** DKIM **and** a published DMARC policy (at least `p=none`, aligned) — required by **Gmail & Yahoo (Feb 2024)** and **Microsoft Outlook / Outlook.com (rolling out through 2025 for senders ≥5,000/day)**.
-- **One-click unsubscribe**: include the `List-Unsubscribe` header with one-click support (RFC 8058), and honour opt-outs within 2 days. A visible unsubscribe link in the body is still required in addition.
-- **Keep the spam-complaint rate under 0.3%** (measured in Google Postmaster Tools / Yahoo / Microsoft SNDS) — ideally under 0.1%.
-- **Send from a consistent, PTR/reverse-DNS-valid IP over TLS**, with a warmed-up sending domain and consistent from-address.
-- **Physical mailing address + accurate From/Reply-To identity** in every message (CAN-SPAM), and documented opt-in consent per jurisdiction (GDPR / CASL).
-- **List hygiene**: suppress hard bounces and inactive addresses; never send to purchased lists.
+- **Authentifier le domaine d'envoi** : SPF **et** DKIM **et** une politique DMARC publiée (au moins `p=none`, alignée) — requis par **Gmail & Yahoo (février 2024)** et **Microsoft Outlook / Outlook.com (déploiement progressif jusqu'en 2025 pour les expéditeurs ≥5 000/jour)**.
+- **Désabonnement en un clic** : inclure l'en-tête `List-Unsubscribe` avec support du clic unique (RFC 8058), et honorer les désabonnements sous 2 jours. Un lien de désabonnement visible dans le corps du message reste également requis en complément.
+- **Maintenir le taux de plainte pour spam sous 0,3 %** (mesuré dans Google Postmaster Tools / Yahoo / Microsoft SNDS) — idéalement sous 0,1 %.
+- **Envoyer depuis une IP cohérente et valide en PTR/DNS inverse via TLS**, avec un domaine d'envoi préchauffé et une adresse d'expéditeur cohérente.
+- **Adresse postale physique + identité From/Reply-To exacte** dans chaque message (CAN-SPAM), et consentement d'opt-in documenté selon chaque juridiction (RGPD / CASL).
+- **Hygiène de liste** : supprimer les hard bounces et les adresses inactives ; ne jamais envoyer à des listes achetées.
 
-## Output
+## Sortie
 
-A complete email sequence containing:
+Une séquence d'emails complète contenant :
 
-- Sequence overview with goals, audience, and trigger conditions
-- Per-email breakdown: subject lines, preview text, body copy, CTA, send timing
-- Segmentation and branching logic diagram
-- Deliverability checklist per email
-- Personalization and dynamic content recommendations
-- Compliance checklist (unsubscribe, physical address, consent)
-- Performance benchmarks to measure against
+- Vue d'ensemble de la séquence avec objectifs, audience, et conditions de déclenchement
+- Détail par email : objets, texte d'aperçu, corps de texte, CTA, timing d'envoi
+- Diagramme de la logique de segmentation et de branchement
+- Checklist de délivrabilité par email
+- Recommandations de personnalisation et de contenu dynamique
+- Checklist de conformité (désabonnement, adresse physique, consentement)
+- Benchmarks de performance pour la mesure
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** — Email copy, subject lines, narrative arc, CTA strategy
-- **brand-guardian** — Voice consistency, compliance review, regulatory checks
-- **email-specialist** — Deliverability optimization, send timing strategy, subject line scoring, spam risk analysis, A/B test design
+- **content-creator** — texte des emails, objets, arc narratif, stratégie de CTA
+- **brand-guardian** — cohérence de la voix, revue de conformité, contrôles réglementaires
+- **email-specialist** — optimisation de la délivrabilité, stratégie de timing d'envoi, notation des objets, analyse du risque de spam, conception de tests A/B

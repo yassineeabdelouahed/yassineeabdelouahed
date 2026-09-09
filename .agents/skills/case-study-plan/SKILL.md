@@ -1,61 +1,61 @@
 ---
 name: case-study-plan
-description: "Build a complete case-study creation blueprint — a Challenge-Solution-Results narrative framework, 15-20 client interview questions plus 10 internal-team questions, a data-visualization plan, format specifications (PDF, web page, slide deck, video script outline, social snippets, sales one-pager), a distribution strategy, a permission/approval checklist, and a draft executive summary. Plans the case study; it does not produce the finished designed asset. Triggers on \"/digital-marketing-pro:case-study-plan\", \"turn this client win into a case study\", \"what should we ask the client in the interview\", \"plan a success story for sales enablement\", \"case study formats and distribution plan\". Reads the brand profile, guidelines, custom templates, and agency SOPs."
+description: "Construire un plan complet de création d'étude de cas — un cadre narratif Défi-Solution-Résultats, 15 à 20 questions d'entretien client plus 10 questions internes, un plan de visualisation des données, des spécifications de format (PDF, page web, diaporama, plan de script vidéo, extraits pour les réseaux sociaux, one-pager commercial), une stratégie de diffusion, une checklist de permission/approbation, et un brouillon de synthèse exécutive. Planifie l'étude de cas ; ne produit pas l'actif final mis en forme. Se déclenche sur \"/digital-marketing-pro:case-study-plan\", \"turn this client win into a case study\", \"what should we ask the client in the interview\", \"plan a success story for sales enablement\", \"case study formats and distribution plan\". Lit le profil de marque, les guidelines, les modèles personnalisés et les procédures d'agence."
 argument-hint: "[client-name]"
 ---
 
 # /digital-marketing-pro:case-study-plan
 
-## Purpose
+## Objectif
 
-Generate a structured case study creation plan with interview framework, data visualization approach, format variations, and distribution strategy. Produces a complete blueprint for building compelling proof-of-results content that drives sales enablement and builds credibility.
+Générer un plan structuré de création d'étude de cas avec cadre d'entretien, approche de visualisation des données, déclinaisons de format, et stratégie de diffusion. Produit un plan complet pour construire un contenu de preuve de résultats convaincant qui alimente l'aide à la vente et renforce la crédibilité.
 
-## Input Required
+## Données requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Client or project to feature**: The specific client engagement, campaign, or project that will be showcased
-- **Challenge or problem addressed**: The business problem, market pressure, or growth obstacle the client was facing before the engagement
-- **Solution implemented**: The services, campaigns, strategies, or tools deployed to address the challenge
-- **Results achieved**: Quantitative outcomes (revenue lift, traffic growth, conversion improvement, cost reduction) and qualitative outcomes (brand perception, team capability, process improvement)
-- **Timeline of engagement**: Duration of the project or campaign — start date, key milestones, and current status
-- **Permission status**: Whether the client has approved public use of their name, data, and story — or if anonymization is required
-- **Target audience for the case study**: Who will read or watch it — prospects in the same industry, C-suite decision-makers, marketing managers, procurement teams, or general audience
-- **Desired formats**: Which output formats are needed — PDF white paper, website page, presentation deck, video testimonial, social media snippets, or sales one-pager
-- **Industry vertical**: The client's industry for contextual benchmarking and relevance targeting
-- **Competitive context**: What alternatives the client considered and why they chose this approach
+- **Client ou projet à mettre en avant** : l'engagement client, la campagne ou le projet spécifique qui sera mis en valeur
+- **Défi ou problème traité** : le problème business, la pression du marché ou l'obstacle de croissance auquel le client faisait face avant l'engagement
+- **Solution mise en œuvre** : les services, campagnes, stratégies ou outils déployés pour traiter le défi
+- **Résultats obtenus** : résultats quantitatifs (hausse du chiffre d'affaires, croissance du trafic, amélioration de la conversion, réduction des coûts) et résultats qualitatifs (perception de marque, montée en compétence de l'équipe, amélioration des processus)
+- **Chronologie de l'engagement** : durée du projet ou de la campagne — date de début, jalons clés, statut actuel
+- **Statut de la permission** : le client a-t-il approuvé l'usage public de son nom, de ses données et de son histoire — ou une anonymisation est-elle requise
+- **Audience cible de l'étude de cas** : qui la lira ou la regardera — des prospects du même secteur, des décideurs du comité de direction, des responsables marketing, des équipes achats, ou un public général
+- **Formats souhaités** : quels formats de sortie sont nécessaires — livre blanc PDF, page de site web, diaporama de présentation, témoignage vidéo, extraits pour les réseaux sociaux, ou one-pager commercial
+- **Secteur d'activité** : le secteur du client pour la mise en contexte concurrentielle et le ciblage de pertinence
+- **Contexte concurrentiel** : quelles alternatives le client a envisagées et pourquoi il a choisi cette approche
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Structure the CSR narrative**: Build the Challenge-Solution-Results framework with sub-sections — situation overview, specific pain points, goals at project start, strategic approach, tactical execution, implementation timeline, quantitative results, qualitative impact, and future outlook. Identify the emotional arc that makes the story compelling, not just informative.
-3. **Develop client interview questions**: Create 15-20 interview questions organized by section — background and context (company size, industry pressures, previous attempts), challenge deep-dive (symptoms, root causes, business impact of inaction), solution experience (selection criteria, onboarding, collaboration quality), results and impact (measurable outcomes, unexpected benefits, team reaction), and forward-looking (ongoing plans, what they would tell peers).
-4. **Plan internal team interview questions**: Draft 10 questions for internal team members who worked on the engagement — strategic rationale, technical approach, challenges encountered during delivery, key turning points, and lessons learned that could inform future engagements.
-5. **Identify data points and visualizations needed**: Map every quantitative result to a visualization type — before/after bar charts, timeline growth curves, funnel improvement diagrams, ROI waterfall charts, and comparison tables. Specify which data needs to be collected, verified, and approved by the client before publication.
-6. **Design format variations**: Create specifications for each requested output format — PDF white paper (4-6 pages, designed layout with pull quotes and charts), web page (SEO-optimized with structured data markup), presentation deck (8-12 slides for sales meetings), video testimonial script (2-3 minute interview-based script outline), social media snippets (pull quotes, stat cards, carousel posts), and sales one-pager (front-and-back summary for leave-behinds).
-7. **Create distribution strategy**: Plan where and how the case study will be published and promoted — website case study library, sales enablement materials, email nurture sequences, social media campaigns, PR outreach, paid promotion, conference presentations, and partner co-marketing opportunities.
-8. **Build approval workflow and permission checklist**: Define the full approval process — internal review (legal, marketing, account team), client review (point of contact, legal, executive sign-off), data accuracy verification, quote approval, logo and brand usage permission, and timeline for each review stage.
-9. **Write draft executive summary**: Compose a 150-200 word executive summary that captures the full story arc — who the client is, what they faced, what was done, and what resulted. This summary serves as the foundation for all format variations and distribution copy.
-10. **Plan visual assets needed**: Specify all visual elements required — client logo (with usage permissions), data visualization charts, photography (team photos, office shots, product images), branded design templates, infographic elements, pull quote cards, and video b-roll if applicable.
+1. **Charger le contexte de marque** : lisez `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis chargez `~/.claude-marketing/brands/{slug}/profile.json`. Appliquez la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. **Vérifiez aussi la présence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, chargez les restrictions et les fichiers de catégorie pertinents. Vérifiez les modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifiez les procédures d'agence (SOP) dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demandez : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou poursuivez avec les valeurs par défaut.
+2. **Structurer le récit CSR** : construisez le cadre Défi-Solution-Résultats avec ses sous-sections — aperçu de la situation, points de douleur spécifiques, objectifs en début de projet, approche stratégique, exécution tactique, calendrier de mise en œuvre, résultats quantitatifs, impact qualitatif, et perspectives d'avenir. Identifiez l'arc émotionnel qui rend l'histoire captivante, pas seulement informative.
+3. **Élaborer les questions d'entretien client** : créez 15 à 20 questions d'entretien organisées par section — contexte et environnement (taille de l'entreprise, pressions sectorielles, tentatives précédentes), plongée dans le défi (symptômes, causes profondes, impact business de l'inaction), expérience de la solution (critères de sélection, intégration, qualité de la collaboration), résultats et impact (résultats mesurables, bénéfices inattendus, réaction de l'équipe), et perspectives (plans en cours, ce qu'ils diraient à leurs pairs).
+4. **Planifier les questions d'entretien interne** : rédigez 10 questions pour les membres de l'équipe interne ayant travaillé sur l'engagement — logique stratégique, approche technique, difficultés rencontrées pendant la livraison, moments clés, et enseignements pouvant nourrir les futurs engagements.
+5. **Identifier les données et visualisations nécessaires** : associez chaque résultat quantitatif à un type de visualisation — graphiques en barres avant/après, courbes de croissance chronologiques, diagrammes d'amélioration de tunnel, graphiques en cascade de ROI, et tableaux comparatifs. Précisez quelles données doivent être collectées, vérifiées et approuvées par le client avant publication.
+6. **Concevoir les déclinaisons de format** : créez des spécifications pour chaque format de sortie demandé — livre blanc PDF (4-6 pages, mise en page soignée avec citations phares et graphiques), page web (optimisée SEO avec balisage de données structurées), diaporama de présentation (8-12 diapositives pour les réunions commerciales), script de témoignage vidéo (plan de script d'entretien de 2-3 minutes), extraits pour les réseaux sociaux (citations phares, cartes de statistiques, posts carrousel), et one-pager commercial (résumé recto-verso pour les documents à laisser).
+7. **Créer la stratégie de diffusion** : planifiez où et comment l'étude de cas sera publiée et promue — bibliothèque d'études de cas du site web, supports d'aide à la vente, séquences de nurturing e-mail, campagnes sur les réseaux sociaux, actions de relations presse, promotion payante, présentations en conférence, et opportunités de co-marketing partenaire.
+8. **Construire le flux d'approbation et la checklist de permissions** : définissez le processus d'approbation complet — relecture interne (juridique, marketing, équipe de compte), relecture client (point de contact, juridique, validation exécutive), vérification de l'exactitude des données, approbation des citations, permission d'usage du logo et de la marque, et calendrier pour chaque étape de relecture.
+9. **Rédiger un brouillon de synthèse exécutive** : composez une synthèse exécutive de 150 à 200 mots qui capture l'ensemble de l'arc narratif — qui est le client, ce à quoi il faisait face, ce qui a été fait, et ce qui en a résulté. Cette synthèse sert de base à toutes les déclinaisons de format et aux textes de diffusion.
+10. **Planifier les actifs visuels nécessaires** : précisez tous les éléments visuels requis — logo du client (avec permissions d'usage), graphiques de visualisation de données, photographie (photos d'équipe, prises de vue de bureau, images produit), modèles de design de marque, éléments d'infographie, cartes de citations phares, et rushes vidéo le cas échéant.
 
-## Output
+## Résultat
 
-A structured case study creation plan containing:
+Un plan de création d'étude de cas structuré contenant :
 
-- **CSR narrative framework** — Challenge-Solution-Results structure with detailed sub-sections, emotional arc mapping, and story flow outline
-- **Client interview question set** — 15-20 questions organized by narrative section (background, challenge, solution, results, forward-looking) with follow-up prompts
-- **Internal team interview questions** — 10 questions covering strategic rationale, delivery experience, turning points, and retrospective insights
-- **Data visualization plan** — which metrics to highlight, chart types for each data point, before/after comparison designs, and data collection requirements
-- **Format variation specifications** — PDF (4-6 pages with layout notes), web page (SEO-optimized with schema markup), slides (8-12 with speaker notes), video (2-3 min script outline), social (pull quotes and stat cards), and one-pager (front-and-back layout)
-- **Distribution strategy** — publication channels (website, sales tools, social, email, PR), promotion plan, and audience targeting per channel
-- **Permission and approval checklist** — legal review, client sign-off stages, data verification steps, quote approval, logo usage, and review timeline
-- **Executive summary draft** — 150-200 word overview capturing the complete story arc for use across all formats
-- **Visual asset list** — photography needs, chart specifications, infographic elements, pull quote card designs, and video b-roll requirements
-- **SEO metadata** — optimized title tag, meta description, target keywords, and structured data recommendations for the web version
-- **Sales enablement notes** — where the case study fits in the sales funnel, which buyer objections it addresses, and how sales teams should use each format
-- **Content repurposing plan** — how to extract derivative content pieces (blog posts, social proof snippets, email testimonials, presentation slides) from the core case study
+- **Cadre narratif CSR** — structure Défi-Solution-Résultats avec sous-sections détaillées, cartographie de l'arc émotionnel, et plan de déroulement de l'histoire
+- **Jeu de questions d'entretien client** — 15 à 20 questions organisées par section narrative (contexte, défi, solution, résultats, perspectives) avec relances associées
+- **Questions d'entretien interne** — 10 questions couvrant la logique stratégique, l'expérience de livraison, les moments clés, et les enseignements rétrospectifs
+- **Plan de visualisation des données** — quels indicateurs mettre en avant, types de graphiques pour chaque donnée, designs de comparaison avant/après, et exigences de collecte de données
+- **Spécifications des déclinaisons de format** — PDF (4-6 pages avec notes de mise en page), page web (optimisée SEO avec balisage schema), diaporama (8-12 diapositives avec notes de présentateur), vidéo (plan de script de 2-3 min), réseaux sociaux (citations phares et cartes de statistiques), et one-pager (mise en page recto-verso)
+- **Stratégie de diffusion** — canaux de publication (site web, outils commerciaux, réseaux sociaux, e-mail, RP), plan de promotion, et ciblage d'audience par canal
+- **Checklist de permission et d'approbation** — relecture juridique, étapes de validation client, étapes de vérification des données, approbation des citations, usage du logo, et calendrier de relecture
+- **Brouillon de synthèse exécutive** — aperçu de 150 à 200 mots capturant l'arc narratif complet pour un usage dans tous les formats
+- **Liste des actifs visuels** — besoins photographiques, spécifications de graphiques, éléments d'infographie, designs de cartes de citations phares, et besoins en rushes vidéo
+- **Métadonnées SEO** — balise title optimisée, meta description, mots-clés cibles, et recommandations de données structurées pour la version web
+- **Notes d'aide à la vente** — où l'étude de cas s'inscrit dans le tunnel de vente, quelles objections d'acheteurs elle adresse, et comment les équipes commerciales doivent utiliser chaque format
+- **Plan de recyclage de contenu** — comment extraire des contenus dérivés (articles de blog, extraits de preuve sociale, témoignages e-mail, diapositives de présentation) de l'étude de cas principale
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** — Narrative structure, interview question development, executive summary drafting, format variation planning, visual asset specification, and content repurposing strategy
-- **pr-outreach** — Distribution strategy, PR angle identification, media pitch framework, partner co-marketing opportunities, and external publication targeting
+- **content-creator** — Structure narrative, développement des questions d'entretien, rédaction de la synthèse exécutive, planification des déclinaisons de format, spécification des actifs visuels, et stratégie de recyclage de contenu
+- **pr-outreach** — Stratégie de diffusion, identification d'angles RP, cadre de sollicitation média, opportunités de co-marketing partenaire, et ciblage de publication externe

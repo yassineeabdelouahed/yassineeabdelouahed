@@ -1,226 +1,227 @@
 ---
 name: technical-seo
-description: "Deep technical SEO knowledge module covering Core Web Vitals, crawlability, indexation, site architecture, JavaScript SEO, redirects, structured data, hreflang, and migrations — producing audit reports, redirect maps, robots.txt and JSON-LD specs, and migration checklists. Triggers on \"/digital-marketing-pro:technical-seo\", \"my LCP is failing\", \"plan a site migration\", \"fix redirect chains\", \"write schema markup for my pages\", \"crawl budget problems\". Reads the brand profile plus its own reference files (core-web-vitals, crawlability, site-architecture, indexation, international-seo) and backs the /digital-marketing-pro:tech-seo-audit command."
+description: "Module de connaissances SEO technique approfondi couvrant les Core Web Vitals, la crawlabilité, l'indexation, l'architecture de site, le SEO JavaScript, les redirections, les données structurées, le hreflang et les migrations — produisant des rapports d'audit, des cartes de redirection, des spécifications robots.txt et JSON-LD, et des checklists de migration. Se déclenche sur \"/digital-marketing-pro:technical-seo\", \"my LCP is failing\", \"plan a site migration\", \"fix redirect chains\", \"write schema markup for my pages\", \"crawl budget problems\". Lit le profil de marque ainsi que ses propres fichiers de référence (core-web-vitals, crawlability, site-architecture, indexation, international-seo) et alimente la commande /digital-marketing-pro:tech-seo-audit."
 ---
 
 # Technical SEO
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this module when the user's request involves any of the following:
+Activer ce module lorsque la demande de l'utilisateur concerne l'un des points suivants :
 
-- **Core Web Vitals**: Optimizing LCP, INP, or CLS scores; diagnosing page speed issues; interpreting CrUX data or PageSpeed Insights reports
-- **Crawlability**: Robots.txt configuration, XML sitemap creation or auditing, crawl budget management, or Googlebot access issues
-- **Site Architecture**: URL structure planning, information architecture, internal linking strategy, site depth optimization, or content siloing
-- **Indexation**: Canonical tag implementation, noindex/nofollow directives, index bloat, duplicate content resolution, or Google Search Console index coverage issues
-- **Redirects**: Redirect chain auditing, 301/302 strategy, redirect maps for site migrations, or HTTP-to-HTTPS migration
-- **JavaScript SEO**: Client-side rendering issues, SSR vs CSR vs SSG evaluation, dynamic rendering, or JavaScript crawlability problems
-- **Mobile-First Indexing**: Mobile rendering issues, mobile parity checks, responsive design auditing, or mobile usability errors
-- **Structured Data**: Schema markup implementation (JSON-LD), rich result eligibility, schema validation, or structured data strategy
-- **Log File Analysis**: Server log interpretation, crawl frequency analysis, crawl waste identification, or bot behavior auditing
-- **International SEO**: Hreflang implementation, ccTLD vs subdomain vs subdirectory decisions, geotargeting, or multilingual site architecture
-- **Security**: HTTPS migration, mixed content resolution, HSTS implementation, or security header configuration
-- **HTTP Status Codes**: Diagnosing 4xx/5xx errors, soft 404 detection, server error patterns, or status code strategy
-- **Page Speed**: Server response time (TTFB), render-blocking resources, image optimization, code splitting, or CDN configuration
-- **Site Migrations**: Domain changes, platform migrations, HTTPS transitions, URL restructuring, or merger/acquisition site consolidation
+- **Core Web Vitals** : optimiser les scores LCP, INP ou CLS ; diagnostiquer des problèmes de vitesse de page ; interpréter les données CrUX ou les rapports PageSpeed Insights
+- **Crawlabilité** : configuration de robots.txt, création ou audit de sitemap XML, gestion du budget de crawl, ou problèmes d'accès de Googlebot
+- **Architecture de site** : planification de la structure des URL, architecture de l'information, stratégie de maillage interne, optimisation de la profondeur du site, ou silotage de contenu
+- **Indexation** : implémentation des balises canoniques, directives noindex/nofollow, gonflement de l'index, résolution de contenu dupliqué, ou problèmes de couverture d'index dans Google Search Console
+- **Redirections** : audit des chaînes de redirection, stratégie 301/302, cartes de redirection pour les migrations de site, ou migration HTTP vers HTTPS
+- **SEO JavaScript** : problèmes de rendu côté client, évaluation SSR vs CSR vs SSG, rendu dynamique, ou problèmes de crawlabilité JavaScript
+- **Indexation mobile-first** : problèmes de rendu mobile, vérifications de parité mobile, audit du design responsive, ou erreurs d'utilisabilité mobile
+- **Données structurées** : implémentation du balisage schema (JSON-LD), éligibilité aux résultats enrichis, validation de schema, ou stratégie de données structurées
+- **Analyse de fichiers journaux** : interprétation des logs serveur, analyse de fréquence de crawl, identification du gaspillage de crawl, ou audit du comportement des bots
+- **SEO international** : implémentation du hreflang, décisions ccTLD vs sous-domaine vs sous-répertoire, ciblage géographique, ou architecture de site multilingue
+- **Sécurité** : migration HTTPS, résolution de contenu mixte, implémentation de HSTS, ou configuration des en-têtes de sécurité
+- **Codes de statut HTTP** : diagnostic des erreurs 4xx/5xx, détection des soft 404, schémas d'erreur serveur, ou stratégie de codes de statut
+- **Vitesse de page** : temps de réponse serveur (TTFB), ressources bloquant le rendu, optimisation d'images, découpage de code, ou configuration CDN
+- **Migrations de site** : changements de domaine, migrations de plateforme, transitions HTTPS, restructuration d'URL, ou consolidation de sites suite à une fusion/acquisition
 
-**Trigger phrases**: "technical seo," "core web vitals," "page speed," "crawl budget," "robots.txt," "sitemap," "redirect," "canonical," "indexation," "noindex," "hreflang," "javascript seo," "mobile-first indexing," "log file analysis," "site architecture," "internal linking," "crawl errors," "HTTP status," "schema markup," "structured data," "site migration," "TTFB," "LCP," "INP," "CLS," "render blocking," "crawlability," "index bloat," "redirect chain," "mixed content," "HTTPS"
+**Expressions déclenchantes** : « technical seo », « core web vitals », « page speed », « crawl budget », « robots.txt », « sitemap », « redirect », « canonical », « indexation », « noindex », « hreflang », « javascript seo », « mobile-first indexing », « log file analysis », « site architecture », « internal linking », « crawl errors », « HTTP status », « schema markup », « structured data », « site migration », « TTFB », « LCP », « INP », « CLS », « render blocking », « crawlability », « index bloat », « redirect chain », « mixed content », « HTTPS »
 
-## Context efficiency
+## Efficacité de contexte
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List `${CLAUDE_PLUGIN_DATA}/<brand>/` before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** pour tout fichier référencé, puis `Read` uniquement les plages trouvées avec `offset` + `limit`. Lister `${CLAUDE_PLUGIN_DATA}/<brand>/` avant d'ouvrir des fichiers. Lors d'une réinvocation en cours de session, ignorer les fichiers déjà en contexte.
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire toute sortie marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — le résumé de la marque active a été affiché au démarrage de la session. Utiliser le nom de la marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité et les concurrents indiqués à cet endroit.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — les niveaux de formalité, d'énergie, d'humour et d'autorité doivent façonner le ton et le choix des mots de tout le contenu
+4. **Vérifier la conformité** — appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Référencer les benchmarks sectoriels** — consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — référencer `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les bonnes pratiques générales. »
+9. **Vérifier les guidelines de marque** — si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les allégations restreintes et les mentions légales obligatoires ; `channel-styles.md` pour les adaptations de ton spécifiques à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les taglines et le langage de positionnement ; `voice-and-tone.md` pour des règles de voix détaillées au-delà des 4 scores numériques. Lors de la production de contenu pour un canal spécifique, les règles de style du canal priment sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations déjà présentes dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing technical SEO work, gather:
+Avant d'exécuter un travail SEO technique, rassembler :
 
-1. **Website URL**: The domain to audit or optimize
-2. **CMS / Platform**: WordPress, Shopify, Webflow, custom, headless, etc. — determines implementation paths
-3. **Hosting Environment**: Shared, VPS, dedicated, cloud (AWS/GCP/Azure), CDN provider — affects server-side recommendations
-4. **Current Performance Data**: Google Search Console access, PageSpeed Insights scores, CrUX data, or existing audit reports
-5. **Site Scale**: Approximate page count (hundreds, thousands, hundreds of thousands) — determines crawl budget relevance
-6. **Rendering Method**: Static HTML, server-side rendered, client-side rendered (React/Angular/Vue), hybrid (Next.js/Nuxt) — critical for JavaScript SEO
-7. **International Presence**: Target countries and languages, current URL structure for international versions
-8. **Known Issues**: Existing problems the user is aware of (crawl errors, indexation drops, speed complaints, ranking losses)
-9. **Migration Plans**: Any upcoming domain changes, platform migrations, or URL restructuring
-10. **Tech Stack Constraints**: Development team availability, deployment processes, CDN limitations, plugin/extension restrictions
+1. **URL du site** : le domaine à auditer ou optimiser
+2. **CMS / Plateforme** : WordPress, Shopify, Webflow, sur mesure, headless, etc. — détermine les voies de mise en œuvre
+3. **Environnement d'hébergement** : mutualisé, VPS, dédié, cloud (AWS/GCP/Azure), fournisseur CDN — affecte les recommandations côté serveur
+4. **Données de performance actuelles** : accès à Google Search Console, scores PageSpeed Insights, données CrUX, ou rapports d'audit existants
+5. **Échelle du site** : nombre approximatif de pages (centaines, milliers, centaines de milliers) — détermine la pertinence du budget de crawl
+6. **Méthode de rendu** : HTML statique, rendu côté serveur, rendu côté client (React/Angular/Vue), hybride (Next.js/Nuxt) — critique pour le SEO JavaScript
+7. **Présence internationale** : pays et langues cibles, structure d'URL actuelle pour les versions internationales
+8. **Problèmes connus** : problèmes existants dont l'utilisateur a connaissance (erreurs de crawl, baisses d'indexation, plaintes de lenteur, pertes de classement)
+9. **Plans de migration** : tout changement de domaine, migration de plateforme, ou restructuration d'URL à venir
+10. **Contraintes de stack technique** : disponibilité de l'équipe de développement, processus de déploiement, limitations CDN, restrictions de plugins/extensions
 
-For quick diagnostic requests (e.g., "why is my page slow"), infer reasonable defaults and deliver immediately. For comprehensive audits, gather full context.
+Pour les demandes de diagnostic rapide (par ex. « pourquoi ma page est lente »), déduire des valeurs par défaut raisonnables et livrer immédiatement. Pour les audits complets, rassembler le contexte complet.
 
-## Capabilities
+## Capacités
 
-- **Core Web Vitals Optimization**: Diagnose and fix LCP (target < 2.5s), INP (target < 200ms), and CLS (target < 0.1) issues with specific, implementation-ready recommendations; interpret field data (CrUX) vs lab data (Lighthouse) discrepancies; prioritize fixes by user impact
-- **Crawlability Audits**: Robots.txt analysis and optimization, XML sitemap structure and validation, crawl budget allocation for large sites, crawl waste identification, orphan page detection, and crawl path optimization
-- **Site Architecture Design**: URL structure planning (flat vs hierarchical), information architecture using topic clusters and content silos, internal linking strategy with PageRank flow modeling, click depth optimization (critical pages within 3 clicks), and breadcrumb implementation
-- **Internal Linking Optimization**: Link equity distribution analysis, contextual link placement strategy, anchor text optimization, navigation structure auditing, footer and sidebar link strategy, and orphan page rescue
-- **Indexation Management**: Canonical tag strategy (self-referencing, cross-domain, parametrized URLs), meta robots directive implementation, X-Robots-Tag HTTP headers, index coverage diagnosis using GSC, index bloat identification and cleanup, and new content indexation acceleration
-- **JavaScript SEO**: Client-side rendering assessment, server-side rendering implementation guidance, static site generation recommendations, dynamic rendering as a fallback, Googlebot rendering verification, JavaScript crawl budget impact analysis, and hydration issue diagnosis
-- **Mobile-First Indexing**: Mobile rendering parity checks, responsive design validation, mobile usability error resolution, touch target sizing, viewport configuration, and mobile page speed optimization
-- **Page Speed Optimization**: TTFB reduction (server tuning, CDN, caching), render-blocking resource elimination, image optimization (format selection, lazy loading, responsive images, preload), CSS/JS minification and code splitting, third-party script auditing, and font loading strategy (font-display, preload, subsetting)
-- **Redirect Management**: Redirect chain detection and resolution, 301 vs 302 decision framework, redirect map creation for migrations, redirect loop identification, and redirect performance impact analysis
-- **HTTP Status Code Auditing**: 4xx error diagnosis and resolution, 5xx server error pattern analysis, soft 404 detection, 410 Gone implementation for permanently removed content, and status code monitoring strategy
-- **Log File Analysis Guidance**: Googlebot crawl frequency and pattern analysis, crawl waste identification (non-indexable URL crawling), response code distribution, crawl budget utilization assessment, and bot vs human traffic ratios
-- **Structured Data Implementation**: JSON-LD schema markup for Organization, Product, Article, FAQ, HowTo, BreadcrumbList, LocalBusiness, Event, and Review types; rich result eligibility assessment; schema validation and testing; nested and advanced schema patterns
-- **International Technical SEO**: Hreflang implementation (HTML link, HTTP header, XML sitemap methods), ccTLD vs subdomain vs subdirectory decision framework, geotargeting configuration, language and region targeting, and international sitemap strategy
-- **Security & HTTPS**: HTTPS migration planning, mixed content detection and resolution, HSTS implementation, security header configuration (CSP, X-Frame-Options, X-Content-Type-Options), and certificate management
-- **XML Sitemap Strategy**: Sitemap structure for large sites (sitemap index), image and video sitemaps, news sitemaps, sitemap priority and changefreq guidance, dynamic sitemap generation, and sitemap submission and monitoring
-- **URL Structure Optimization**: URL readability and keyword inclusion, parameter handling, trailing slash consistency, URL case sensitivity, and URL length optimization
+- **Optimisation des Core Web Vitals** : diagnostiquer et corriger les problèmes de LCP (cible < 2,5 s), d'INP (cible < 200 ms) et de CLS (cible < 0,1) avec des recommandations précises et prêtes à mettre en œuvre ; interpréter les écarts entre données terrain (CrUX) et données labo (Lighthouse) ; prioriser les correctifs par impact utilisateur
+- **Audits de crawlabilité** : analyse et optimisation de robots.txt, structure et validation du sitemap XML, allocation du budget de crawl pour les grands sites, identification du gaspillage de crawl, détection de pages orphelines, et optimisation des chemins de crawl
+- **Conception de l'architecture de site** : planification de la structure d'URL (plate vs hiérarchique), architecture de l'information via clusters thématiques et silos de contenu, stratégie de maillage interne avec modélisation du flux de PageRank, optimisation de la profondeur de clic (pages critiques à moins de 3 clics), et implémentation du fil d'Ariane
+- **Optimisation du maillage interne** : analyse de la distribution du link equity, stratégie de placement de liens contextuels, optimisation du texte d'ancre, audit de la structure de navigation, stratégie de liens en pied de page et en barre latérale, et récupération des pages orphelines
+- **Gestion de l'indexation** : stratégie de balises canoniques (auto-référencées, cross-domain, URL paramétrées), implémentation des directives meta robots, en-têtes HTTP X-Robots-Tag, diagnostic de la couverture d'index via GSC, identification et nettoyage du gonflement de l'index, et accélération de l'indexation du nouveau contenu
+- **SEO JavaScript** : évaluation du rendu côté client, conseils de mise en œuvre du rendu côté serveur, recommandations de génération de site statique, rendu dynamique en solution de repli, vérification du rendu par Googlebot, analyse de l'impact JavaScript sur le budget de crawl, et diagnostic des problèmes d'hydratation
+- **Indexation mobile-first** : vérifications de parité de rendu mobile, validation du design responsive, résolution des erreurs d'utilisabilité mobile, dimensionnement des zones tactiles, configuration du viewport, et optimisation de la vitesse de page mobile
+- **Optimisation de la vitesse de page** : réduction du TTFB (réglage serveur, CDN, cache), élimination des ressources bloquant le rendu, optimisation d'images (choix de format, chargement différé, images responsives, préchargement), minification et découpage de code CSS/JS, audit des scripts tiers, et stratégie de chargement des polices (font-display, préchargement, sous-ensembles)
+- **Gestion des redirections** : détection et résolution des chaînes de redirection, cadre de décision 301 vs 302, création de cartes de redirection pour les migrations, identification des boucles de redirection, et analyse de l'impact des redirections sur la performance
+- **Audit des codes de statut HTTP** : diagnostic et résolution des erreurs 4xx, analyse des schémas d'erreurs serveur 5xx, détection des soft 404, implémentation du 410 Gone pour le contenu définitivement supprimé, et stratégie de surveillance des codes de statut
+- **Conseils d'analyse de fichiers journaux** : analyse de la fréquence et des schémas de crawl de Googlebot, identification du gaspillage de crawl (crawl d'URL non indexables), répartition des codes de réponse, évaluation de l'utilisation du budget de crawl, et ratios de trafic bot vs humain
+- **Implémentation des données structurées** : balisage schema JSON-LD pour les types Organization, Product, Article, FAQ, HowTo, BreadcrumbList, LocalBusiness, Event et Review ; évaluation de l'éligibilité aux résultats enrichis ; validation et test du schema ; modèles de schema imbriqués et avancés
+- **SEO technique international** : implémentation du hreflang (méthodes lien HTML, en-tête HTTP, sitemap XML), cadre de décision ccTLD vs sous-domaine vs sous-répertoire, configuration du ciblage géographique, ciblage de langue et de région, et stratégie de sitemap international
+- **Sécurité et HTTPS** : planification de la migration HTTPS, détection et résolution de contenu mixte, implémentation de HSTS, configuration des en-têtes de sécurité (CSP, X-Frame-Options, X-Content-Type-Options), et gestion des certificats
+- **Stratégie de sitemap XML** : structure de sitemap pour les grands sites (index de sitemaps), sitemaps d'images et de vidéos, sitemaps d'actualités, conseils sur priority et changefreq, génération dynamique de sitemap, et soumission/surveillance du sitemap
+- **Optimisation de la structure d'URL** : lisibilité des URL et inclusion de mots-clés, gestion des paramètres, cohérence des barres obliques finales, sensibilité à la casse des URL, et optimisation de la longueur des URL
 
-## Process
+## Processus
 
-**Primary Workflow: Technical SEO Audit & Optimization**
+**Flux principal : audit et optimisation SEO technique**
 
-1. **Site Health Snapshot**
-   - Pull current Core Web Vitals from CrUX or PageSpeed Insights (LCP, INP, CLS for mobile and desktop)
-   - Review Google Search Console index coverage report (valid, excluded, error, warning counts)
-   - Check for manual actions or security issues in GSC
-   - Note current crawl stats (pages crawled per day, average response time, crawl errors)
-   - Baseline: Document current organic traffic, indexed page count, and ranking positions for target keywords
+1. **Instantané de santé du site**
+   - Récupérer les Core Web Vitals actuels depuis CrUX ou PageSpeed Insights (LCP, INP, CLS pour mobile et desktop)
+   - Examiner le rapport de couverture d'index de Google Search Console (comptes valides, exclus, en erreur, en avertissement)
+   - Vérifier les actions manuelles ou problèmes de sécurité dans GSC
+   - Noter les statistiques de crawl actuelles (pages crawlées par jour, temps de réponse moyen, erreurs de crawl)
+   - Référence : documenter le trafic organique actuel, le nombre de pages indexées, et les positions de classement pour les mots-clés cibles
 
-2. **Crawlability Analysis**
-   - Review robots.txt for blocking issues (critical resources, CSS/JS, important directories)
-   - Validate XML sitemap (well-formed, all important pages included, no non-indexable URLs, within 50K URL / 50MB limit)
-   - Assess crawl budget allocation (are crawlers spending time on low-value pages?)
-   - Check for crawl traps (infinite calendar pagination, session IDs in URLs, faceted navigation generating millions of URLs)
-   - Verify Googlebot can access all critical resources (CSS, JS, images needed for rendering)
+2. **Analyse de crawlabilité**
+   - Examiner robots.txt pour les problèmes de blocage (ressources critiques, CSS/JS, répertoires importants)
+   - Valider le sitemap XML (bien formé, toutes les pages importantes incluses, aucune URL non indexable, dans la limite de 50 000 URL / 50 Mo)
+   - Évaluer l'allocation du budget de crawl (les crawlers passent-ils du temps sur des pages à faible valeur ?)
+   - Vérifier les pièges de crawl (pagination infinie de calendrier, ID de session dans les URL, navigation à facettes générant des millions d'URL)
+   - Vérifier que Googlebot peut accéder à toutes les ressources critiques (CSS, JS, images nécessaires au rendu)
 
-3. **Indexation Review**
-   - Audit canonical tags across page templates (self-referencing, cross-domain, parameterized URLs)
-   - Check for conflicting directives (canonical pointing to page A while noindex is set)
-   - Review meta robots directives across templates
-   - Identify index bloat (thin content, tag pages, internal search results, parameter variations)
-   - Verify pagination handling (paginated series, rel=canonical on component pages)
-   - Check for unintended noindex tags (common after staging-to-production migration)
+3. **Revue de l'indexation**
+   - Auditer les balises canoniques sur tous les modèles de page (auto-référencées, cross-domain, URL paramétrées)
+   - Vérifier les directives conflictuelles (canonique pointant vers la page A alors que noindex est défini)
+   - Examiner les directives meta robots sur tous les modèles
+   - Identifier le gonflement de l'index (contenu léger, pages de tags, résultats de recherche interne, variations de paramètres)
+   - Vérifier la gestion de la pagination (séries paginées, rel=canonical sur les pages composantes)
+   - Vérifier les balises noindex involontaires (fréquentes après une migration de staging vers production)
 
-4. **Site Architecture Assessment**
-   - Map URL structure and identify depth issues (critical pages beyond 3 clicks from homepage)
-   - Analyze internal linking patterns (pages with high/low internal link counts, orphan pages)
-   - Evaluate information architecture (logical grouping, topic clusters, content silos)
-   - Review navigation structure (header, footer, sidebar, breadcrumbs)
-   - Check URL format consistency (trailing slashes, case sensitivity, parameter handling)
+4. **Évaluation de l'architecture de site**
+   - Cartographier la structure d'URL et identifier les problèmes de profondeur (pages critiques au-delà de 3 clics depuis la page d'accueil)
+   - Analyser les schémas de maillage interne (pages avec un nombre élevé/faible de liens internes, pages orphelines)
+   - Évaluer l'architecture de l'information (regroupement logique, clusters thématiques, silos de contenu)
+   - Examiner la structure de navigation (en-tête, pied de page, barre latérale, fil d'Ariane)
+   - Vérifier la cohérence du format d'URL (barres obliques finales, sensibilité à la casse, gestion des paramètres)
 
-5. **Page Speed Deep Dive**
-   - **LCP optimization**: Identify the LCP element, check server response time (TTFB < 800ms), audit render-blocking resources, verify image optimization (format, size, lazy loading, preload for above-fold)
-   - **INP optimization**: Identify long tasks (> 50ms), audit event handlers, check for main thread blocking, review third-party script impact
-   - **CLS optimization**: Check for images/iframes without explicit dimensions, dynamic content injection above the fold, web font loading causing layout shift, ad slot reservations
-   - Audit third-party scripts for performance impact (tag managers, analytics, chat widgets, A/B testing tools)
-   - Review caching headers (Cache-Control, ETag, Expires) and CDN configuration
+5. **Analyse approfondie de la vitesse de page**
+   - **Optimisation LCP** : identifier l'élément LCP, vérifier le temps de réponse serveur (TTFB < 800 ms), auditer les ressources bloquant le rendu, vérifier l'optimisation des images (format, taille, chargement différé, préchargement pour le contenu au-dessus de la ligne de flottaison)
+   - **Optimisation INP** : identifier les tâches longues (> 50 ms), auditer les gestionnaires d'événements, vérifier le blocage du thread principal, examiner l'impact des scripts tiers
+   - **Optimisation CLS** : vérifier les images/iframes sans dimensions explicites, l'injection de contenu dynamique au-dessus de la ligne de flottaison, le chargement de polices web causant un décalage de mise en page, les réservations d'emplacements publicitaires
+   - Auditer les scripts tiers pour leur impact sur la performance (gestionnaires de balises, analytics, widgets de chat, outils de test A/B)
+   - Examiner les en-têtes de cache (Cache-Control, ETag, Expires) et la configuration CDN
 
-6. **Mobile-First Compliance Check**
-   - Verify content parity between mobile and desktop rendered versions
-   - Check for mobile-specific rendering issues (viewport configuration, touch targets, font sizes)
-   - Test mobile page speed separately (mobile networks have higher latency)
-   - Review structured data presence on mobile version (must match desktop)
-   - Check for lazy-loaded content that Googlebot might miss on mobile
+6. **Vérification de conformité mobile-first**
+   - Vérifier la parité de contenu entre les versions rendues mobile et desktop
+   - Vérifier les problèmes de rendu spécifiques au mobile (configuration du viewport, zones tactiles, tailles de police)
+   - Tester la vitesse de page mobile séparément (les réseaux mobiles ont une latence plus élevée)
+   - Examiner la présence de données structurées sur la version mobile (doit correspondre au desktop)
+   - Vérifier le contenu à chargement différé que Googlebot pourrait manquer sur mobile
 
-7. **JavaScript SEO Evaluation**
-   - Determine rendering strategy (CSR, SSR, SSG, ISR, hybrid)
-   - Test Googlebot rendering using URL Inspection tool (rendered HTML vs raw HTML)
-   - Check if critical content and links require JavaScript to render
-   - Assess JavaScript crawl budget impact (render queue delays)
-   - Review client-side routing and its impact on crawlability
-   - Verify meta tags and canonicals are in the server-rendered HTML (not injected by JS)
+7. **Évaluation du SEO JavaScript**
+   - Déterminer la stratégie de rendu (CSR, SSR, SSG, ISR, hybride)
+   - Tester le rendu par Googlebot à l'aide de l'outil d'inspection d'URL (HTML rendu vs HTML brut)
+   - Vérifier si le contenu et les liens critiques nécessitent du JavaScript pour se rendre
+   - Évaluer l'impact JavaScript sur le budget de crawl (délais de file d'attente de rendu)
+   - Examiner le routage côté client et son impact sur la crawlabilité
+   - Vérifier que les balises meta et canoniques sont présentes dans le HTML rendu côté serveur (et non injectées par JS)
 
-8. **Redirect Chain Audit**
-   - Identify redirect chains (more than 1 hop) and redirect loops
-   - Check for mixed 301/302 usage (302s that should be 301s)
-   - Audit HTTPS redirect implementation (HTTP to HTTPS, www to non-www or vice versa)
-   - Verify redirects from old URLs after any past migrations
-   - Assess redirect response time impact on crawl efficiency
+8. **Audit des chaînes de redirection**
+   - Identifier les chaînes de redirection (plus d'un saut) et les boucles de redirection
+   - Vérifier l'usage mixte de 301/302 (des 302 qui devraient être des 301)
+   - Auditer l'implémentation des redirections HTTPS (HTTP vers HTTPS, www vers non-www ou l'inverse)
+   - Vérifier les redirections depuis les anciennes URL après toute migration passée
+   - Évaluer l'impact du temps de réponse des redirections sur l'efficacité du crawl
 
-9. **Structured Data Validation**
-   - Audit existing schema markup for errors and warnings (Google Rich Results Test)
-   - Identify missing schema opportunities based on content types
-   - Validate JSON-LD syntax and nesting
-   - Check for rich result eligibility (FAQ, HowTo, Product, Review, Breadcrumb, etc.)
-   - Verify schema matches visible on-page content (no hidden/misleading markup)
+9. **Validation des données structurées**
+   - Auditer le balisage schema existant pour les erreurs et avertissements (Google Rich Results Test)
+   - Identifier les opportunités de schema manquantes selon les types de contenu
+   - Valider la syntaxe et l'imbrication du JSON-LD
+   - Vérifier l'éligibilité aux résultats enrichis (FAQ, HowTo, Product, Review, Breadcrumb, etc.)
+   - Vérifier que le schema correspond au contenu visible sur la page (aucun balisage caché ou trompeur)
 
-10. **International SEO Review** (if applicable)
-    - Validate hreflang implementation (self-referencing tags, x-default, return links)
-    - Check for hreflang conflicts with canonical tags
-    - Verify geotargeting settings in Google Search Console
-    - Assess URL structure for international versions
-    - Review content localization vs translation quality signals
+10. **Revue SEO international** (le cas échéant)
+    - Valider l'implémentation du hreflang (balises auto-référencées, x-default, liens retour)
+    - Vérifier les conflits entre hreflang et balises canoniques
+    - Vérifier les paramètres de ciblage géographique dans Google Search Console
+    - Évaluer la structure d'URL pour les versions internationales
+    - Examiner la localisation du contenu par rapport aux signaux de qualité de traduction
 
-11. **Security Assessment**
-    - Verify full HTTPS implementation (no mixed content)
-    - Check HSTS header presence and configuration
-    - Review security headers (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
-    - Verify SSL certificate validity and chain
-    - Check for exposed sensitive files (wp-config.php, .env, .git)
+11. **Évaluation de la sécurité**
+    - Vérifier l'implémentation complète de HTTPS (aucun contenu mixte)
+    - Vérifier la présence et la configuration de l'en-tête HSTS
+    - Examiner les en-têtes de sécurité (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+    - Vérifier la validité et la chaîne du certificat SSL
+    - Vérifier l'exposition de fichiers sensibles (wp-config.php, .env, .git)
 
-12. **Prioritized Recommendation Plan**
-    - Score each finding by impact (high/medium/low) and effort (quick win/medium/major project)
-    - Create an impact/effort matrix to visualize priority
-    - Group recommendations into: Immediate fixes (0-48 hours), Short-term wins (1-2 weeks), Medium-term projects (2-8 weeks), Long-term strategic initiatives (2-6 months)
-    - Estimate traffic recovery or growth potential for each fix category
-    - Provide implementation specs for the top 5 highest-priority items
+12. **Plan de recommandations priorisé**
+    - Noter chaque constat par impact (élevé/moyen/faible) et effort (gain rapide/moyen/projet majeur)
+    - Créer une matrice impact/effort pour visualiser la priorité
+    - Regrouper les recommandations en : correctifs immédiats (0-48 heures), gains à court terme (1-2 semaines), projets à moyen terme (2-8 semaines), initiatives stratégiques à long terme (2-6 mois)
+    - Estimer le potentiel de récupération ou de croissance du trafic pour chaque catégorie de correctif
+    - Fournir des spécifications de mise en œuvre pour les 5 éléments les plus prioritaires
 
-## Reference Files
+## Fichiers de référence
 
-- `core-web-vitals.md` — LCP, INP, and CLS optimization guides with specific thresholds, common causes, fix strategies, measurement methodology, and field vs lab data interpretation
-- `crawlability.md` — Robots.txt syntax and best practices, XML sitemap structure and limits, crawl budget management, JavaScript rendering, log file analysis, and orphan page detection
-- `site-architecture.md` — URL structure best practices, information architecture frameworks, internal linking strategy, pagination handling, faceted navigation, breadcrumbs, and site migration planning
-- `indexation.md` — Canonical tag implementation, meta robots directives, X-Robots-Tag, index coverage diagnosis, duplicate content management, index bloat cleanup, and new content indexation acceleration
-- `international-seo.md` — URL structure strategies for international sites, hreflang implementation methods with examples, common hreflang mistakes, geotargeting, content localization, and search engine market share by country
+- `core-web-vitals.md` — guides d'optimisation LCP, INP et CLS avec seuils précis, causes courantes, stratégies de correction, méthodologie de mesure, et interprétation données terrain vs données labo
+- `crawlability.md` — syntaxe et bonnes pratiques de robots.txt, structure et limites du sitemap XML, gestion du budget de crawl, rendu JavaScript, analyse de fichiers journaux, et détection de pages orphelines
+- `site-architecture.md` — bonnes pratiques de structure d'URL, cadres d'architecture de l'information, stratégie de maillage interne, gestion de la pagination, navigation à facettes, fil d'Ariane, et planification de migration de site
+- `indexation.md` — implémentation des balises canoniques, directives meta robots, X-Robots-Tag, diagnostic de couverture d'index, gestion du contenu dupliqué, nettoyage du gonflement de l'index, et accélération de l'indexation du nouveau contenu
+- `international-seo.md` — stratégies de structure d'URL pour les sites internationaux, méthodes d'implémentation du hreflang avec exemples, erreurs courantes de hreflang, ciblage géographique, localisation de contenu, et parts de marché des moteurs de recherche par pays
 
-## Output Formats
+## Formats de sortie
 
-| Deliverable | Format | Description |
+| Livrable | Format | Description |
 |---|---|---|
-| Technical SEO Audit Report | Document | Comprehensive audit across all 12 dimensions with scores, findings, and prioritized recommendations |
-| Core Web Vitals Report | Document | CWV-specific analysis with per-metric diagnosis, fix specifications, and expected improvement ranges |
-| Redirect Map | Spreadsheet | Source URL to destination URL mapping with status codes and redirect type for migrations |
-| XML Sitemap Strategy | Document + Code | Sitemap structure plan with implementation code (sitemap index, per-type sitemaps, generation approach) |
-| Site Architecture Plan | Document + Diagram description | URL hierarchy, internal linking strategy, content silo structure, and navigation recommendations |
-| Robots.txt Specification | Code | Optimized robots.txt file with directives, sitemap references, and crawl-delay settings |
-| Structured Data Spec | Code (JSON-LD) | Ready-to-implement schema markup for all applicable page templates |
-| International SEO Plan | Document | Hreflang implementation spec, URL structure recommendation, and geotargeting configuration |
-| Migration Checklist | Checklist document | Pre-migration, migration day, and post-migration monitoring checklist with rollback procedures |
-| Page Speed Optimization Plan | Document | Prioritized speed fixes with implementation details, expected LCP/INP/CLS improvements, and testing plan |
+| Rapport d'audit SEO technique | Document | Audit complet sur les 12 dimensions avec scores, constats et recommandations priorisées |
+| Rapport Core Web Vitals | Document | Analyse spécifique aux CWV avec diagnostic par métrique, spécifications de correctif, et fourchettes d'amélioration attendues |
+| Carte de redirection | Feuille de calcul | Correspondance URL source vers URL de destination avec codes de statut et type de redirection pour les migrations |
+| Stratégie de sitemap XML | Document + Code | Plan de structure de sitemap avec code de mise en œuvre (index de sitemaps, sitemaps par type, approche de génération) |
+| Plan d'architecture de site | Document + description de diagramme | Hiérarchie d'URL, stratégie de maillage interne, structure de silos de contenu, et recommandations de navigation |
+| Spécification robots.txt | Code | Fichier robots.txt optimisé avec directives, références de sitemap, et paramètres de crawl-delay |
+| Spécification de données structurées | Code (JSON-LD) | Balisage schema prêt à mettre en œuvre pour tous les modèles de page applicables |
+| Plan SEO international | Document | Spécification d'implémentation du hreflang, recommandation de structure d'URL, et configuration de ciblage géographique |
+| Checklist de migration | Document de checklist | Checklist de surveillance pré-migration, jour de migration, et post-migration avec procédures de retour arrière |
+| Plan d'optimisation de la vitesse de page | Document | Correctifs de vitesse priorisés avec détails de mise en œuvre, améliorations LCP/INP/CLS attendues, et plan de test |
 
-## Edge Cases
+## Cas particuliers
 
-### JavaScript-Heavy Single Page Applications (React, Angular, Vue)
-- **Situation**: Site renders all content client-side; Googlebot may see empty or incomplete pages
-- **Approach**: Test rendered HTML using Google's URL Inspection tool and compare to source HTML. If critical content or links are missing from server response, recommend SSR (Next.js, Nuxt, Angular Universal) or static site generation. If SSR is not feasible, evaluate dynamic rendering as a stopgap (Rendertron, Puppeteer-based prerendering). Ensure meta tags, canonicals, and hreflang are in the initial HTML response, not injected by JavaScript. Audit JavaScript bundle size and hydration time as they directly impact INP.
+### Applications monopage lourdes en JavaScript (React, Angular, Vue)
+- **Situation** : le site rend tout le contenu côté client ; Googlebot peut voir des pages vides ou incomplètes
+- **Approche** : tester le HTML rendu à l'aide de l'outil d'inspection d'URL de Google et le comparer au HTML source. Si du contenu ou des liens critiques manquent dans la réponse serveur, recommander le SSR (Next.js, Nuxt, Angular Universal) ou la génération de site statique. Si le SSR n'est pas réalisable, évaluer le rendu dynamique comme solution provisoire (Rendertron, prérendu basé sur Puppeteer). S'assurer que les balises meta, canoniques et hreflang sont présentes dans la réponse HTML initiale, et non injectées par JavaScript. Auditer la taille du bundle JavaScript et le temps d'hydratation car ils impactent directement l'INP.
 
-### Large Ecommerce Sites (100K+ Pages, Faceted Navigation)
-- **Situation**: Faceted navigation generates millions of URL combinations; crawl budget is consumed by low-value parameter pages
-- **Approach**: Implement a canonicalization strategy for faceted URLs (canonical to the base category page unless the facet creates genuinely unique, valuable content). Use robots.txt or meta robots to block crawling of low-value parameter combinations. Create a curated internal linking strategy that directs crawlers to high-value pages. Build separate XML sitemaps for product pages, category pages, and editorial content. Monitor crawl stats to verify crawl budget is allocated to revenue-generating pages. Consider AJAX-based filtering that does not generate crawlable URLs for non-valuable combinations.
+### Grands sites e-commerce (100 000+ pages, navigation à facettes)
+- **Situation** : la navigation à facettes génère des millions de combinaisons d'URL ; le budget de crawl est consommé par des pages de paramètres à faible valeur
+- **Approche** : implémenter une stratégie de canonicalisation pour les URL à facettes (canonique vers la page de catégorie de base sauf si la facette crée un contenu véritablement unique et de valeur). Utiliser robots.txt ou meta robots pour bloquer le crawl des combinaisons de paramètres à faible valeur. Créer une stratégie de maillage interne organisée qui dirige les crawlers vers les pages à forte valeur. Construire des sitemaps XML séparés pour les pages produit, les pages de catégorie et le contenu éditorial. Surveiller les statistiques de crawl pour vérifier que le budget de crawl est alloué aux pages génératrices de revenus. Envisager un filtrage basé sur AJAX qui ne génère pas d'URL crawlables pour les combinaisons sans valeur.
 
-### Website Migrations (Domain, Platform, HTTPS)
-- **Situation**: Business is changing domains, switching CMS platforms, or consolidating multiple sites
-- **Approach**: Create a comprehensive URL mapping (old URL to new URL) before migration. Implement 301 redirects for every URL with organic traffic or backlinks. Set up monitoring for crawl errors, index coverage, and organic traffic immediately after migration. Expect a temporary ranking dip (typically 2-8 weeks for well-executed migrations). Keep the old domain/hosting active for at least 12 months to serve redirects. Verify all internal links, canonical tags, sitemaps, and hreflang tags reference the new URL structure. Run a full technical audit 1 week, 1 month, and 3 months post-migration.
+### Migrations de site web (domaine, plateforme, HTTPS)
+- **Situation** : l'entreprise change de domaine, change de plateforme CMS, ou consolide plusieurs sites
+- **Approche** : créer une correspondance d'URL complète (ancienne URL vers nouvelle URL) avant la migration. Implémenter des redirections 301 pour chaque URL ayant du trafic organique ou des backlinks. Mettre en place une surveillance des erreurs de crawl, de la couverture d'index, et du trafic organique immédiatement après la migration. Anticiper une baisse temporaire de classement (généralement 2 à 8 semaines pour des migrations bien exécutées). Garder l'ancien domaine/hébergement actif pendant au moins 12 mois pour servir les redirections. Vérifier que tous les liens internes, balises canoniques, sitemaps et balises hreflang référencent la nouvelle structure d'URL. Effectuer un audit technique complet 1 semaine, 1 mois, et 3 mois après la migration.
 
-### Multilingual Sites with Complex Hreflang Requirements
-- **Situation**: Site serves content in 10+ languages with regional variations (e.g., en-US, en-GB, en-AU, es-ES, es-MX)
-- **Approach**: Use XML sitemap method for hreflang at scale (HTML link tags become unmanageable above 20+ versions). Ensure every page has self-referencing hreflang and an x-default fallback. Verify bidirectional return links (if page A points to page B with hreflang, page B must point back to page A). Watch for canonical conflicts (canonical and hreflang must reference the same URL). Automate hreflang generation through CMS or build system to prevent manual errors. Test with Google's hreflang testing tools and monitor international targeting in GSC.
+### Sites multilingues avec exigences hreflang complexes
+- **Situation** : le site diffuse du contenu dans plus de 10 langues avec des variantes régionales (par ex. en-US, en-GB, en-AU, es-ES, es-MX)
+- **Approche** : utiliser la méthode du sitemap XML pour le hreflang à grande échelle (les balises lien HTML deviennent ingérables au-delà de 20+ versions). S'assurer que chaque page dispose d'un hreflang auto-référencé et d'un repli x-default. Vérifier les liens retour bidirectionnels (si la page A pointe vers la page B avec hreflang, la page B doit pointer en retour vers la page A). Surveiller les conflits de canonique (canonique et hreflang doivent référencer la même URL). Automatiser la génération du hreflang via le CMS ou le système de build pour éviter les erreurs manuelles. Tester avec les outils de test hreflang de Google et surveiller le ciblage international dans GSC.
 
-### Sites with Legacy Technical Debt
-- **Situation**: Years of accumulated issues — mixed HTTP/HTTPS, orphan pages, redirect chains 5+ hops deep, duplicate content across subdomains, abandoned staging environments indexed by Google
-- **Approach**: Prioritize by damage — index bloat and crawl waste first (they affect the entire site), then redirect chains (they bleed PageRank), then mixed content (security and trust signals), then orphan pages (wasted content investment). Do not try to fix everything at once. Create a phased remediation plan: Phase 1 (crawl and index cleanup), Phase 2 (redirect consolidation), Phase 3 (architecture optimization). Monitor organic traffic after each phase to measure impact and catch regressions.
+### Sites avec une dette technique héritée
+- **Situation** : des années de problèmes accumulés — HTTP/HTTPS mixte, pages orphelines, chaînes de redirection de 5+ sauts, contenu dupliqué entre sous-domaines, environnements de staging abandonnés indexés par Google
+- **Approche** : prioriser par dommage — le gonflement de l'index et le gaspillage de crawl en premier (ils affectent tout le site), puis les chaînes de redirection (elles font perdre du PageRank), puis le contenu mixte (signaux de sécurité et de confiance), puis les pages orphelines (investissement de contenu gaspillé). Ne pas essayer de tout corriger d'un coup. Créer un plan de remédiation par phases : Phase 1 (nettoyage du crawl et de l'index), Phase 2 (consolidation des redirections), Phase 3 (optimisation de l'architecture). Surveiller le trafic organique après chaque phase pour mesurer l'impact et détecter les régressions.
 
-## Related Skills
+## Compétences liées
 
-- **Content Engine** — Page speed and crawlability directly affect content discoverability; structured data enhances content appearance in SERPs; site architecture determines how content authority flows through internal links
-- **Paid Advertising** — Core Web Vitals and landing page speed impact Google Ads Quality Score; technical health of landing pages affects conversion rates and ad spend efficiency
-- **AEO/GEO Intelligence** — Structured data implementation strengthens AI platform comprehension and citation likelihood; site architecture affects how AI crawlers discover and interpret content
-- **Analytics & Insights** — Technical SEO changes require measurement through organic traffic, crawl stats, index coverage, and Core Web Vitals dashboards; analytics data drives technical SEO prioritization
-- **CRO** — Page speed correlates with conversion rates (the "every 100ms of LCP improvement lifts conversions ~1%" claim is a widely-repeated illustrative figure, not a universal measurement — validate against your own funnel data); mobile usability affects conversion paths; site architecture determines user flow efficiency
+- **Content Engine** — la vitesse de page et la crawlabilité affectent directement la découvrabilité du contenu ; les données structurées améliorent l'apparence du contenu dans les SERP ; l'architecture de site détermine comment l'autorité du contenu circule à travers les liens internes
+- **Paid Advertising** — les Core Web Vitals et la vitesse de la landing page impactent le Quality Score de Google Ads ; la santé technique des landing pages affecte les taux de conversion et l'efficacité des dépenses publicitaires
+- **AEO/GEO Intelligence** — l'implémentation des données structurées renforce la compréhension par les plateformes IA et la probabilité de citation ; l'architecture de site affecte la manière dont les crawlers IA découvrent et interprètent le contenu
+- **Analytics & Insights** — les changements SEO techniques nécessitent une mesure via les tableaux de bord de trafic organique, de statistiques de crawl, de couverture d'index et de Core Web Vitals ; les données analytiques guident la priorisation SEO technique
+- **CRO** — la vitesse de page est corrélée aux taux de conversion (l'affirmation « chaque amélioration de 100 ms du LCP augmente les conversions d'environ 1 % » est un chiffre illustratif largement répété, pas une mesure universelle — validez-le avec vos propres données de tunnel) ; l'utilisabilité mobile affecte les parcours de conversion ; l'architecture de site détermine l'efficacité du flux utilisateur
+</content>

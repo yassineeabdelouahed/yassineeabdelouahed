@@ -1,99 +1,99 @@
-# Channel Strategy — Selection Matrix & Orchestration
+# Channel Strategy — Matrice de sélection et orchestration
 
-## Channel Selection Matrix
+## Matrice de sélection de canaux
 
-| Channel | Reach | Targeting | Measurability | Cost | Speed to Result | Brand Safety |
+| Canal | Portée | Ciblage | Mesurabilité | Coût | Rapidité de résultat | Sécurité de marque |
 |---------|-------|-----------|---------------|------|-----------------|-------------|
-| Google Search | High | High (intent) | High | Medium-High | Fast (days) | High |
-| Google Display | Very High | Medium | Medium | Low | Medium (weeks) | Medium |
-| YouTube | Very High | High | Medium | Medium | Medium | Medium |
-| Meta (FB/IG) | Very High | High | Medium | Medium | Fast | Medium |
-| LinkedIn | Medium | Very High (B2B) | High | High | Medium | High |
-| TikTok | High | Medium | Medium | Low-Medium | Fast | Medium |
-| Twitter/X | Medium | Low-Medium | Low | Low-Medium | Fast | Low-Medium |
-| Pinterest | Medium | Medium | Medium | Low | Slow (weeks) | High |
-| Email | Medium (owned) | Very High | Very High | Very Low | Fast | Very High |
-| SEO/Content | Very High | Medium | High | Medium | Slow (months) | Very High |
-| PR | Variable | Low | Low | Medium | Variable | High |
-| Influencer | Variable | Medium | Medium | Variable | Medium | Medium |
-| Programmatic | Very High | High | Medium | Low-Medium | Fast | Medium |
-| Podcast | Medium | Low | Low | Medium | Slow | High |
+| Google Search | Élevée | Élevé (intention) | Élevée | Moyen-élevé | Rapide (jours) | Élevée |
+| Google Display | Très élevée | Moyen | Moyenne | Faible | Moyen (semaines) | Moyenne |
+| YouTube | Très élevée | Élevé | Moyenne | Moyen | Moyen | Moyenne |
+| Meta (FB/IG) | Très élevée | Élevé | Moyenne | Moyen | Rapide | Moyenne |
+| LinkedIn | Moyenne | Très élevé (B2B) | Élevée | Élevé | Moyen | Élevée |
+| TikTok | Élevée | Moyen | Moyenne | Faible-moyen | Rapide | Moyenne |
+| Twitter/X | Moyenne | Faible-moyen | Faible | Faible-moyen | Rapide | Faible-moyenne |
+| Pinterest | Moyenne | Moyen | Moyenne | Faible | Lente (semaines) | Élevée |
+| E-mail | Moyenne (propriétaire) | Très élevé | Très élevée | Très faible | Rapide | Très élevée |
+| SEO/Contenu | Très élevée | Moyen | Élevée | Moyen | Lente (mois) | Très élevée |
+| RP | Variable | Faible | Faible | Moyen | Variable | Élevée |
+| Influence | Variable | Moyen | Moyenne | Variable | Moyen | Moyenne |
+| Programmatique | Très élevée | Élevé | Moyenne | Faible-moyen | Rapide | Moyenne |
+| Podcast | Moyenne | Faible | Faible | Moyen | Lente | Élevée |
 
 ---
 
-## Channel Fit by Business Model
+## Adéquation des canaux par modèle économique
 
-| Channel | B2B SaaS | eCommerce | Local | B2B Services | DTC | Creator | Marketplace |
+| Canal | B2B SaaS | eCommerce | Local | Services B2B | DTC | Créateur | Place de marché |
 |---------|----------|-----------|-------|-------------|-----|---------|------------|
 | Google Search | ★★★ | ★★★ | ★★★ | ★★★ | ★★ | ★ | ★★★ |
 | Meta Ads | ★★ | ★★★ | ★★★ | ★ | ★★★ | ★★★ | ★★★ |
 | LinkedIn | ★★★ | ★ | ★ | ★★★ | ★ | ★★ | ★ |
 | TikTok | ★ | ★★★ | ★★ | ★ | ★★★ | ★★★ | ★★ |
-| Email | ★★★ | ★★★ | ★★ | ★★★ | ★★★ | ★★★ | ★★★ |
-| SEO/Content | ★★★ | ★★★ | ★★★ | ★★★ | ★★ | ★★★ | ★★★ |
-| Influencer | ★ | ★★★ | ★★ | ★ | ★★★ | ★★★ | ★★ |
+| E-mail | ★★★ | ★★★ | ★★ | ★★★ | ★★★ | ★★★ | ★★★ |
+| SEO/Contenu | ★★★ | ★★★ | ★★★ | ★★★ | ★★ | ★★★ | ★★★ |
+| Influence | ★ | ★★★ | ★★ | ★ | ★★★ | ★★★ | ★★ |
 
-★★★ = Primary channel, ★★ = Secondary, ★ = Situational
+★★★ = canal principal, ★★ = secondaire, ★ = situationnel
 
 ---
 
-## Cross-Channel Orchestration Playbook
+## Playbook d'orchestration cross-canal
 
-### Sequencing Strategy
+### Stratégie de séquençage
 
-**Phase 1 — Awareness (Week 1-2)**:
-- YouTube/TikTok video ads for broad reach
-- Social organic content establishing topic presence
-- PR outreach for earned media
+**Phase 1 — Notoriété (semaine 1-2)** :
+- Publicités vidéo YouTube/TikTok pour une large portée
+- Contenu organique social établissant une présence sur le sujet
+- Sollicitation RP pour des médias gagnés
 
-**Phase 2 — Consideration (Week 2-4)**:
-- Retarget video viewers with detailed content (Meta, Display)
-- Search ads on category/problem keywords
-- Email nurture for captured leads
+**Phase 2 — Considération (semaine 2-4)** :
+- Retargeting des visionneurs vidéo avec du contenu détaillé (Meta, Display)
+- Annonces de recherche sur les mots-clés de catégorie/problème
+- Nurturing e-mail pour les leads captés
 
-**Phase 3 — Conversion (Week 3-6)**:
-- Retarget engaged users with direct-response ads
-- Search ads on branded + high-intent keywords
-- Email sequences with offer/CTA
+**Phase 3 — Conversion (semaine 3-6)** :
+- Retargeting des utilisateurs engagés avec des publicités de réponse directe
+- Annonces de recherche sur les mots-clés de marque + forte intention
+- Séquences e-mail avec offre/CTA
 
-**Phase 4 — Reinforcement (Ongoing)**:
-- Customer email sequences (onboarding, upsell)
-- Social proof amplification (reviews, testimonials)
-- Referral program activation
+**Phase 4 — Renforcement (continu)** :
+- Séquences e-mail client (onboarding, upsell)
+- Amplification de la preuve sociale (avis, témoignages)
+- Activation du programme de parrainage
 
-### Frequency Capping Across Channels
+### Plafonnement de fréquence entre canaux
 
-| Audience Stage | Max Impressions/Week | Channel Mix |
+| Étape d'audience | Impressions max/semaine | Mix de canaux |
 |---------------|---------------------|-------------|
-| Cold (awareness) | 3-5 | Video + Social |
-| Warm (consideration) | 5-8 | Social + Search + Display |
-| Hot (decision) | 8-12 | Search + Retargeting + Email |
-| Customer | 2-4 | Email + Social (organic) |
+| Froide (notoriété) | 3-5 | Vidéo + social |
+| Tiède (considération) | 5-8 | Social + recherche + display |
+| Chaude (décision) | 8-12 | Recherche + retargeting + e-mail |
+| Client | 2-4 | E-mail + social (organique) |
 
-### Channel Synergy Map
+### Carte de synergie des canaux
 
-Channels that amplify each other:
+Canaux qui s'amplifient mutuellement :
 
-- **SEO + Paid Search**: SEO covers long-tail, paid covers competitive terms. Together = full SERP coverage
-- **Social Organic + Paid Social**: Organic tests creative concepts cheaply, winners become paid ads
-- **PR + SEO**: Media coverage builds backlinks, boosting organic rankings
-- **Email + Social**: Email drives engagement that feeds social algorithms
-- **Content + Paid**: Content creates retargeting audiences, paid drives content distribution
-- **Influencer + Social Ads**: Influencer content becomes high-performing ad creative (Spark Ads, Partnership Ads)
+- **SEO + Recherche payante** : le SEO couvre la longue traîne, le payant couvre les termes compétitifs. Ensemble = couverture complète des SERP
+- **Social organique + social payant** : l'organique teste les concepts créatifs à moindre coût, les gagnants deviennent des publicités payantes
+- **RP + SEO** : la couverture médiatique construit des backlinks, boostant les classements organiques
+- **E-mail + Social** : l'e-mail génère de l'engagement qui alimente les algorithmes sociaux
+- **Contenu + Payant** : le contenu crée des audiences de retargeting, le payant diffuse le contenu
+- **Influence + Publicité sociale** : le contenu d'influence devient un créatif publicitaire performant (Spark Ads, Partnership Ads)
 
 ---
 
-## New Channel Evaluation Checklist
+## Checklist d'évaluation d'un nouveau canal
 
-Before investing in a new channel:
+Avant d'investir dans un nouveau canal :
 
-- [ ] Is our target audience actively using this channel? (Evidence?)
-- [ ] What's the minimum viable budget to test meaningfully?
-- [ ] What's our hypothesis for expected CPA/ROAS?
-- [ ] Can we track conversions from this channel?
-- [ ] Do we have the creative resources needed?
-- [ ] What's the time-to-learn (how long until we have actionable data)?
-- [ ] Are any competitors successfully using this channel?
-- [ ] What's the opportunity cost vs. scaling existing channels?
-- [ ] Is there a 30-day test plan we can run?
-- [ ] What success metric triggers scaling vs. stopping?
+- [ ] Notre audience cible utilise-t-elle activement ce canal ? (Preuves ?)
+- [ ] Quel est le budget minimum viable pour tester de façon significative ?
+- [ ] Quelle est notre hypothèse de CPA/ROAS attendu ?
+- [ ] Pouvons-nous suivre les conversions depuis ce canal ?
+- [ ] Avons-nous les ressources créatives nécessaires ?
+- [ ] Quel est le temps d'apprentissage (combien de temps avant d'avoir des données actionnables) ?
+- [ ] Des concurrents utilisent-ils ce canal avec succès ?
+- [ ] Quel est le coût d'opportunité par rapport à l'intensification des canaux existants ?
+- [ ] Existe-t-il un plan de test de 30 jours que nous pouvons exécuter ?
+- [ ] Quelle métrique de succès déclenche la montée en puissance vs l'arrêt ?

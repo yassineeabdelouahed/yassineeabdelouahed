@@ -1,27 +1,27 @@
-# Sales Enablement Content — Strategy & Frameworks Reference
+# Sales Enablement Content — Référence de stratégie et de cadres
 
-## Sales Enablement Content Taxonomy
+## Taxonomie du contenu d'aide à la vente
 
-| Content Type | Purpose | Sales Stage | Format | Update Frequency |
+| Type de contenu | Objectif | Étape de vente | Format | Fréquence de mise à jour |
 |-------------|---------|-------------|--------|-----------------|
-| Battle cards | Competitive positioning and talk tracks | Discovery, Proposal | 1-2 page internal doc | Quarterly |
-| One-pagers | Quick product/feature overview for prospects | Prospecting, Discovery | Designed PDF | Quarterly |
-| Case studies | Proof of results with similar customers | Proposal, Negotiation | Written + PDF + video | As created |
-| ROI calculators | Quantify financial value for the prospect | Proposal, Negotiation | Spreadsheet or web tool | Semi-annually |
-| Comparison sheets | Feature-by-feature vs competitors | Discovery, Proposal | Table/grid PDF | Quarterly |
-| Proposal templates | Structured deal documentation | Proposal | Document template | Semi-annually |
-| Email templates | Pre-written outreach sequences | Prospecting, Follow-up | Email copy + personalization notes | Monthly |
-| Objection handling guides | Responses to common pushback | All stages | Internal playbook | Quarterly |
-| Demo scripts | Structured product demonstration flow | Discovery, Proposal | Script with branching paths | Quarterly |
-| Pricing guides | Internal pricing strategy and flexibility | Negotiation | Internal-only document | Semi-annually |
-| Customer references | Curated list of referenceable customers | Close | Internal database | Monthly |
-| Industry briefs | Industry-specific value propositions | Prospecting, Discovery | 1-2 page brief | Quarterly |
+| Battle cards | Positionnement concurrentiel et argumentaires | Découverte, Proposition | Document interne 1-2 pages | Trimestrielle |
+| One-pagers | Aperçu rapide du produit/de la fonctionnalité pour les prospects | Prospection, Découverte | PDF designé | Trimestrielle |
+| Études de cas | Preuve de résultats avec des clients similaires | Proposition, Négociation | Écrit + PDF + vidéo | À la création |
+| Calculateurs de ROI | Quantifier la valeur financière pour le prospect | Proposition, Négociation | Tableur ou outil web | Semestrielle |
+| Fiches comparatives | Fonctionnalité par fonctionnalité vs concurrents | Découverte, Proposition | PDF tableau/grille | Trimestrielle |
+| Modèles de proposition | Documentation de deal structurée | Proposition | Modèle de document | Semestrielle |
+| Modèles d'e-mail | Séquences de prospection pré-rédigées | Prospection, Suivi | Texte e-mail + notes de personnalisation | Mensuelle |
+| Guides de traitement des objections | Réponses aux objections courantes | Toutes étapes | Playbook interne | Trimestrielle |
+| Scripts de démo | Déroulé structuré de démonstration produit | Découverte, Proposition | Script avec parcours ramifiés | Trimestrielle |
+| Guides tarifaires | Stratégie tarifaire interne et flexibilité | Négociation | Document interne uniquement | Semestrielle |
+| Références clients | Liste organisée de clients référençables | Conclusion | Base de données interne | Mensuelle |
+| Briefs sectoriels | Propositions de valeur spécifiques au secteur | Prospection, Découverte | Brief de 1-2 pages | Trimestrielle |
 
 ---
 
-## Battle Card Anatomy
+## Anatomie d'une battle card
 
-### Structure Template
+### Modèle de structure
 
 ```
 ┌────────────────────────────────────────────────────┐
@@ -77,77 +77,77 @@
 └────────────────────────────────────────────────────┘
 ```
 
-### Battle Card Best Practices
+### Bonnes pratiques pour les battle cards
 
-- [ ] Keep to 1-2 pages maximum — sales reps will not read a 10-page document
-- [ ] Be honest about competitor strengths — reps lose credibility if they dismiss real advantages
-- [ ] Update quarterly or when competitors release major features/pricing changes
-- [ ] Include trap questions that reps can ask naturally in discovery calls
-- [ ] Source weaknesses from customer feedback, G2 reviews, and competitive wins analysis
-- [ ] Include at least 2 customer proof points (quotes from wins against this competitor)
-- [ ] Mark confidential and do not share externally
-- [ ] Test with sales team — revise based on which sections they actually use
-
----
-
-## Content Mapping to Sales Stages
-
-### Prospecting Stage
-
-| Content | Purpose | Delivery Method |
-|---------|---------|----------------|
-| Cold outreach email templates | Open conversations with target accounts | Email + LinkedIn InMail |
-| Industry insights report | Establish credibility and provide value upfront | Email attachment or landing page |
-| Social selling content | Warm up prospects before outreach | LinkedIn posts, comments, shared articles |
-| Personalized video | Stand out in inbox, build rapport | Video platform (Vidyard, Loom) |
-| Company research template | Prep for first contact with account intelligence | Internal CRM notes |
-
-### Discovery Stage
-
-| Content | Purpose | Delivery Method |
-|---------|---------|----------------|
-| Industry one-pager | Show understanding of their specific vertical | Email or leave-behind after call |
-| Problem-focused content | Educate on the problem your solution solves | Blog post, whitepaper, webinar link |
-| ROI benchmarks | Show typical results for companies like theirs | During discovery call or follow-up email |
-| Case study (relevant industry) | Third-party proof that you solve this problem | Email follow-up after discovery |
-| Assessment / audit offer | Add value while qualifying the opportunity | Custom report or analysis |
-
-### Proposal Stage
-
-| Content | Purpose | Delivery Method |
-|---------|---------|----------------|
-| Detailed case studies | Prove capability and quantify expected results | Proposal appendix or follow-up |
-| ROI calculator (customized) | Build financial business case for champion | Interactive spreadsheet or web tool |
-| Comparison sheet | Demonstrate superiority over evaluated alternatives | Email or during competitive discussion |
-| Proposal template (customized) | Professional, structured deal presentation | Document/PDF with custom sections |
-| Technical documentation | Answer detailed implementation questions | Shared portal or email |
-| Demo recording | Allow champion to share internally | Video link |
-
-### Negotiation Stage
-
-| Content | Purpose | Delivery Method |
-|---------|---------|----------------|
-| Pricing justification | Explain value behind pricing structure | During negotiation calls |
-| Implementation timeline | Show realistic plan and milestones | Proposal addendum |
-| SLA / support documentation | Address post-purchase concerns | Email or shared doc |
-| Customer reference list | Offer referenceable customers | Warm introduction or reference call |
-| Risk mitigation content | Address concerns about switching costs, disruption | During negotiation or email |
-
-### Close Stage
-
-| Content | Purpose | Delivery Method |
-|---------|---------|----------------|
-| Contract / order form | Finalize the deal | DocuSign or equivalent |
-| Onboarding preview | Set expectations for what happens after signing | Email or during closing call |
-| Legal review checklist | Expedite legal review process | Shared with procurement/legal |
-| Executive alignment deck | Help champion sell internally to decision-makers | Slide deck for internal presentation |
-| Mutual action plan | Shared timeline for closing and onboarding | Collaborative document |
+- [ ] Limitez-vous à 1-2 pages maximum — les commerciaux ne liront pas un document de 10 pages
+- [ ] Soyez honnête sur les forces des concurrents — les commerciaux perdent en crédibilité s'ils balaient de vrais avantages
+- [ ] Mettez à jour trimestriellement ou quand les concurrents sortent des fonctionnalités ou changements de prix majeurs
+- [ ] Incluez des questions pièges que les commerciaux peuvent poser naturellement en appel de découverte
+- [ ] Sourcez les faiblesses depuis les retours clients, les avis G2, et les analyses de deals gagnés en situation concurrentielle
+- [ ] Incluez au moins 2 points de preuve client (citations de gains face à ce concurrent)
+- [ ] Marquez comme confidentiel et ne partagez pas en externe
+- [ ] Testez avec l'équipe commerciale — révisez selon les sections qu'ils utilisent réellement
 
 ---
 
-## Sales Email Templates
+## Mapping du contenu aux étapes de vente
 
-### Cold Outreach (Pattern Interrupt)
+### Étape de prospection
+
+| Contenu | Objectif | Méthode de diffusion |
+|---------|---------|----------------|
+| Modèles d'e-mail de prospection à froid | Ouvrir des conversations avec les comptes cibles | E-mail + InMail LinkedIn |
+| Rapport d'insights sectoriels | Établir la crédibilité et apporter de la valeur en amont | Pièce jointe e-mail ou landing page |
+| Contenu de social selling | Réchauffer les prospects avant la prospection | Posts LinkedIn, commentaires, articles partagés |
+| Vidéo personnalisée | Se démarquer dans la boîte de réception, créer du lien | Plateforme vidéo (Vidyard, Loom) |
+| Modèle de recherche d'entreprise | Préparer le premier contact avec l'intelligence du compte | Notes CRM internes |
+
+### Étape de découverte
+
+| Contenu | Objectif | Méthode de diffusion |
+|---------|---------|----------------|
+| One-pager sectoriel | Montrer la compréhension de leur secteur spécifique | E-mail ou document laissé après l'appel |
+| Contenu axé problème | Éduquer sur le problème que résout votre solution | Article de blog, livre blanc, lien de webinaire |
+| Référentiels de ROI | Montrer les résultats typiques pour des entreprises similaires | Pendant l'appel de découverte ou e-mail de suivi |
+| Étude de cas (secteur pertinent) | Preuve tierce que vous résolvez ce problème | Suivi e-mail après la découverte |
+| Offre d'évaluation/audit | Ajouter de la valeur tout en qualifiant l'opportunité | Rapport ou analyse sur mesure |
+
+### Étape de proposition
+
+| Contenu | Objectif | Méthode de diffusion |
+|---------|---------|----------------|
+| Études de cas détaillées | Prouver la capacité et quantifier les résultats attendus | Annexe de proposition ou suivi |
+| Calculateur de ROI (personnalisé) | Construire le dossier financier pour le champion | Tableur interactif ou outil web |
+| Fiche comparative | Démontrer la supériorité face aux alternatives évaluées | E-mail ou lors d'une discussion concurrentielle |
+| Modèle de proposition (personnalisé) | Présentation de deal professionnelle et structurée | Document/PDF avec sections personnalisées |
+| Documentation technique | Répondre aux questions détaillées d'implémentation | Portail partagé ou e-mail |
+| Enregistrement de démo | Permettre au champion de partager en interne | Lien vidéo |
+
+### Étape de négociation
+
+| Contenu | Objectif | Méthode de diffusion |
+|---------|---------|----------------|
+| Justification tarifaire | Expliquer la valeur derrière la structure de prix | Pendant les appels de négociation |
+| Chronologie d'implémentation | Montrer un plan réaliste et des jalons | Addendum de proposition |
+| Documentation SLA/support | Répondre aux préoccupations post-achat | E-mail ou document partagé |
+| Liste de références clients | Proposer des clients référençables | Introduction chaleureuse ou appel de référence |
+| Contenu d'atténuation des risques | Répondre aux préoccupations sur les coûts de changement, la disruption | Pendant la négociation ou par e-mail |
+
+### Étape de conclusion
+
+| Contenu | Objectif | Méthode de diffusion |
+|---------|---------|----------------|
+| Contrat / bon de commande | Finaliser le deal | DocuSign ou équivalent |
+| Aperçu de l'onboarding | Fixer les attentes pour l'après-signature | E-mail ou pendant l'appel de conclusion |
+| Checklist de revue juridique | Accélérer le processus de revue juridique | Partagé avec les achats/le juridique |
+| Deck d'alignement exécutif | Aider le champion à vendre en interne aux décideurs | Diaporama pour présentation interne |
+| Plan d'action mutuel | Chronologie partagée pour la conclusion et l'onboarding | Document collaboratif |
+
+---
+
+## Modèles d'e-mail commerciaux
+
+### Prospection à froid (rupture de motif)
 
 ```
 Subject: [Specific observation about their company]
@@ -167,7 +167,7 @@ for [their company]?
 [Your name]
 ```
 
-### Follow-Up (Value-Add)
+### Relance (apport de valeur)
 
 ```
 Subject: Re: [Original subject] — thought this was relevant
@@ -185,7 +185,7 @@ Happy to walk through how this applies to [their company] specifically.
 [Your name]
 ```
 
-### Breakup Email (Final Attempt)
+### E-mail de rupture (dernière tentative)
 
 ```
 Subject: Should I close your file?
@@ -203,7 +203,7 @@ All the best,
 [Your name]
 ```
 
-### Competitive Displacement
+### Déplacement concurrentiel
 
 ```
 Subject: Quick question about [Competitor product]
@@ -223,7 +223,7 @@ If it's working well for you, that's great. But if you're open to seeing what
 [Your name]
 ```
 
-### Referral Request
+### Demande de recommandation
 
 ```
 Subject: Quick favor, [First Name]?
@@ -246,9 +246,9 @@ Thanks,
 
 ---
 
-## Objection Handling Library
+## Bibliothèque de traitement des objections
 
-### Framework: Acknowledge, Reframe, Close (ARC)
+### Cadre : Reconnaître, Recadrer, Conclure (ARC)
 
 ```
 1. Acknowledge — Validate the concern (never dismiss it)
@@ -256,69 +256,69 @@ Thanks,
 3. Close — Move the conversation forward with a question or next step
 ```
 
-### Price Objections
+### Objections de prix
 
-| Objection | Response Framework |
+| Objection | Cadre de réponse |
 |-----------|-------------------|
-| "It's too expensive" | **Acknowledge:** "I understand — budget is always a factor." **Reframe:** "Let's look at the cost of *not* solving [problem]. [Customer] was spending $X/month on [current approach] and getting [poor result]. After switching, they saved $Y/month while getting [better result]." **Close:** "Would it help if we built a quick ROI projection specific to your numbers?" |
-| "Competitor X is cheaper" | **Acknowledge:** "They do have a lower price point." **Reframe:** "What we hear from teams that evaluated both is that [specific differentiator] ends up saving more in the long run. [Customer who switched] found that [Competitor]'s approach cost them [hidden cost]." **Close:** "Would it be useful to see a total cost of ownership comparison?" |
-| "We don't have budget this quarter" | **Acknowledge:** "That makes sense — timing matters." **Reframe:** "What if we map out what [problem] will cost over the next quarter while you wait? We can also structure a start date that aligns with your budget cycle." **Close:** "When does your next budget period start? Let's plan around that." |
+| « C'est trop cher » | **Reconnaître :** « Je comprends — le budget est toujours un facteur. » **Recadrer :** « Regardons le coût de *ne pas* résoudre [problème]. [Client] dépensait X $/mois en [approche actuelle] pour un [mauvais résultat]. Après le changement, ils ont économisé Y $/mois tout en obtenant [meilleur résultat]. » **Conclure :** « Serait-il utile qu'on construise une projection de ROI rapide sur vos chiffres spécifiques ? » |
+| « Le concurrent X est moins cher » | **Reconnaître :** « Ils ont effectivement un prix plus bas. » **Recadrer :** « Ce qu'on entend des équipes qui ont évalué les deux, c'est que [différenciateur spécifique] finit par faire économiser plus sur la durée. [Client qui a changé] a constaté que l'approche de [concurrent] leur coûtait [coût caché]. » **Conclure :** « Serait-il utile de voir une comparaison de coût total de possession ? » |
+| « On n'a pas de budget ce trimestre » | **Reconnaître :** « C'est compréhensible — le timing compte. » **Recadrer :** « Et si on cartographiait ce que [problème] va coûter sur le prochain trimestre pendant que vous attendez ? On peut aussi structurer une date de démarrage alignée sur votre cycle budgétaire. » **Conclure :** « Quand commence votre prochaine période budgétaire ? Planifions autour de ça. » |
 
-### Timing Objections
+### Objections de timing
 
-| Objection | Response Framework |
+| Objection | Cadre de réponse |
 |-----------|-------------------|
-| "Now is not a good time" | **Acknowledge:** "I get it — timing is everything." **Reframe:** "Most of our customers said the same thing before they started. [Customer] started during [busy period] and the implementation actually helped them manage the load." **Close:** "What would need to be true for the timing to feel right?" |
-| "We're locked into a contract" | **Acknowledge:** "That's common." **Reframe:** "Many of our customers started planning while their contract was still active so they could transition seamlessly." **Close:** "When does your current contract end? Let's set up a timeline that starts before then." |
+| « Ce n'est pas le bon moment » | **Reconnaître :** « Je comprends — le timing est tout. » **Recadrer :** « La plupart de nos clients disaient la même chose avant de commencer. [Client] a démarré pendant [période chargée] et la mise en œuvre les a en fait aidés à gérer la charge. » **Conclure :** « Qu'est-ce qui devrait être vrai pour que le timing vous semble bon ? » |
+| « On est engagés dans un contrat » | **Reconnaître :** « C'est courant. » **Recadrer :** « Beaucoup de nos clients ont commencé à planifier pendant que leur contrat était encore actif afin de faire une transition sans accroc. » **Conclure :** « Quand se termine votre contrat actuel ? Fixons une chronologie qui démarre avant cette date. » |
 
-### Status Quo Objections
+### Objections liées au statu quo
 
-| Objection | Response Framework |
+| Objection | Cadre de réponse |
 |-----------|-------------------|
-| "We're fine with what we have" | **Acknowledge:** "If it's working, I wouldn't suggest changing." **Reframe:** "What I'm hearing from others in [their industry] is that what worked last year isn't keeping up with [market change]. [Customer] felt the same way until they realized they were leaving [specific metric] on the table." **Close:** "Would it be worth 15 minutes to see if there's an opportunity you might be missing?" |
-| "We built something internally" | **Acknowledge:** "That shows your team is resourceful." **Reframe:** "Internal tools often work well initially. The challenge we hear about is maintenance, scaling, and opportunity cost of engineering time. [Customer] maintained their internal tool for 2 years before they realized [cost of internal maintenance]." **Close:** "What's the total cost of maintaining your internal solution — including engineering hours?" |
+| « On est satisfaits de ce qu'on a » | **Reconnaître :** « Si ça fonctionne, je ne suggérerais pas de changer. » **Recadrer :** « Ce que j'entends d'autres acteurs de [leur secteur], c'est que ce qui fonctionnait l'an dernier ne suit plus [évolution du marché]. [Client] pensait pareil jusqu'à ce qu'il réalise qu'il laissait [métrique spécifique] sur la table. » **Conclure :** « Cela vaudrait-il 15 minutes pour voir s'il y a une opportunité que vous manquez peut-être ? » |
+| « On a construit quelque chose en interne » | **Reconnaître :** « Ça montre que votre équipe est débrouillarde. » **Recadrer :** « Les outils internes fonctionnent souvent bien au départ. Le défi qu'on entend concerne la maintenance, la scalabilité, et le coût d'opportunité du temps d'ingénierie. [Client] a maintenu son outil interne pendant 2 ans avant de réaliser [coût de la maintenance interne]. » **Conclure :** « Quel est le coût total du maintien de votre solution interne — heures d'ingénierie incluses ? » |
 
-### Competitor Objections
+### Objections concurrentielles
 
-| Objection | Response Framework |
+| Objection | Cadre de réponse |
 |-----------|-------------------|
-| "We're evaluating [Competitor]" | **Acknowledge:** "Good — they're a solid company to evaluate." **Reframe:** "What I'd encourage you to ask them is [trap question from battle card]. We find the biggest differences show up in [specific area]. [Customer] evaluated both and chose us because [differentiator]." **Close:** "Would it help if I shared a side-by-side comparison on the areas that matter most to you?" |
+| « On évalue [concurrent] » | **Reconnaître :** « Bien — c'est une entreprise solide à évaluer. » **Recadrer :** « Ce que je vous encourage à leur demander, c'est [question piège issue de la battle card]. On constate que les plus grandes différences apparaissent sur [domaine spécifique]. [Client] a évalué les deux et nous a choisis parce que [différenciateur]. » **Conclure :** « Serait-il utile que je partage une comparaison côte à côte sur les domaines qui comptent le plus pour vous ? » |
 
 ---
 
-## Proposal Template Structure
+## Structure du modèle de proposition
 
-### Section-by-Section Guide
+### Guide section par section
 
-| Section | Length | Content | Purpose |
+| Section | Longueur | Contenu | Objectif |
 |---------|--------|---------|---------|
-| **Cover page** | 1 page | Prospect logo, your logo, date, prepared by | Professional first impression |
-| **Executive summary** | 1 page | Challenge, solution, expected outcomes, investment | For the decision-maker who reads nothing else |
-| **Understanding your challenges** | 1-2 pages | Restate their problems in their own words (from discovery) | Prove you listened and understand |
-| **Proposed solution** | 2-3 pages | What you're proposing, how it works, what's included | Clear scope of what they're buying |
-| **Implementation plan** | 1 page | Timeline, milestones, responsibilities, training | Address "how hard is this?" concern |
-| **Expected outcomes** | 1 page | Projected metrics based on similar customers, ROI estimate | Financial justification |
-| **Case study** | 1 page | Relevant customer success story (their industry) | Third-party proof |
-| **Investment** | 1 page | Pricing, payment terms, what's included vs optional | Transparent, no surprises |
-| **Next steps** | 0.5 page | Specific actions with dates (mutual action plan) | Create momentum |
-| **Appendix** | As needed | Technical specs, integrations, security documentation | For technical evaluation |
+| **Page de couverture** | 1 page | Logo du prospect, votre logo, date, préparé par | Première impression professionnelle |
+| **Synthèse exécutive** | 1 page | Défi, solution, résultats attendus, investissement | Pour le décideur qui ne lit rien d'autre |
+| **Comprendre vos défis** | 1-2 pages | Reformuler leurs problèmes avec leurs propres mots (issus de la découverte) | Prouver que vous avez écouté et compris |
+| **Solution proposée** | 2-3 pages | Ce que vous proposez, comment ça fonctionne, ce qui est inclus | Périmètre clair de ce qu'ils achètent |
+| **Plan de mise en œuvre** | 1 page | Chronologie, jalons, responsabilités, formation | Répondre à la préoccupation « à quel point est-ce difficile ? » |
+| **Résultats attendus** | 1 page | Métriques projetées basées sur des clients similaires, estimation de ROI | Justification financière |
+| **Étude de cas** | 1 page | Histoire de succès client pertinente (leur secteur) | Preuve tierce |
+| **Investissement** | 1 page | Tarification, conditions de paiement, ce qui est inclus vs optionnel | Transparent, sans surprises |
+| **Prochaines étapes** | 0,5 page | Actions spécifiques avec dates (plan d'action mutuel) | Créer une dynamique |
+| **Annexe** | Selon besoin | Spécifications techniques, intégrations, documentation de sécurité | Pour l'évaluation technique |
 
-### Proposal Writing Rules
+### Règles de rédaction de proposition
 
-- [ ] Use the prospect's language and terminology (from discovery notes)
-- [ ] Lead with their problems, not your features
-- [ ] Include their logo alongside yours (visual partnership signal)
-- [ ] Quantify everything possible (time, money, percentages)
-- [ ] Keep the main proposal under 10 pages — move details to appendix
-- [ ] Include a specific next step with a proposed date
-- [ ] Have the proposal reviewed by someone who was NOT on the sales calls (clarity check)
-- [ ] Send as PDF (preserves formatting) with a deadline for response
+- [ ] Utilisez le langage et la terminologie du prospect (issus des notes de découverte)
+- [ ] Menez avec leurs problèmes, pas vos fonctionnalités
+- [ ] Incluez leur logo aux côtés du vôtre (signal visuel de partenariat)
+- [ ] Quantifiez tout ce qui est possible (temps, argent, pourcentages)
+- [ ] Gardez la proposition principale sous 10 pages — déplacez les détails en annexe
+- [ ] Incluez une prochaine étape précise avec une date proposée
+- [ ] Faites relire la proposition par quelqu'un qui n'était PAS sur les appels commerciaux (vérification de clarté)
+- [ ] Envoyez en PDF (préserve la mise en forme) avec une échéance de réponse
 
 ---
 
-## Marketing-to-Sales Content Handoff
+## Transfert de contenu marketing-vers-ventes
 
-### Content Repository Structure
+### Structure du dépôt de contenu
 
 ```
 Sales Enablement Hub/
@@ -359,56 +359,56 @@ Sales Enablement Hub/
     └── Discounting Authority Matrix.pdf
 ```
 
-### Tagging System for Content Discovery
+### Système de tags pour la découverte de contenu
 
-| Tag Category | Example Tags |
+| Catégorie de tag | Exemples de tags |
 |-------------|-------------|
-| Sales stage | prospecting, discovery, proposal, negotiation, close |
-| Industry | healthcare, fintech, saas, ecommerce, manufacturing |
-| Company size | smb, mid-market, enterprise |
-| Competitor | [competitor-a], [competitor-b], general-competitive |
-| Use case | cost-reduction, revenue-growth, efficiency, compliance |
-| Content type | battle-card, case-study, email-template, one-pager, proposal |
+| Étape de vente | prospecting, discovery, proposal, negotiation, close |
+| Secteur | healthcare, fintech, saas, ecommerce, manufacturing |
+| Taille d'entreprise | smb, mid-market, enterprise |
+| Concurrent | [competitor-a], [competitor-b], general-competitive |
+| Cas d'usage | cost-reduction, revenue-growth, efficiency, compliance |
+| Type de contenu | battle-card, case-study, email-template, one-pager, proposal |
 | Persona | cto, cmo, vp-sales, procurement, end-user |
 
-### Content Usage Tracking
+### Suivi de l'utilisation du contenu
 
-| Metric | What It Tells You | Action If Low |
-|--------|-------------------|---------------|
-| Content access rate | % of reps accessing each asset in past 30 days | Content may be hard to find, poorly named, or irrelevant |
-| Content share rate | % of accessed content actually sent to prospects | Content may not meet prospect-facing quality standards |
-| Content-to-meeting rate | Meetings booked after content was shared | Content may not be compelling enough |
-| Content-to-close correlation | Win rate for deals where content was used | Identifies highest-performing content |
-| Rep adoption rate | % of reps using enablement content vs ad-hoc | Training gap — run enablement sessions |
-| Content freshness | Days since last update | Stale content erodes trust — enforce quarterly reviews |
+| Métrique | Ce que ça indique | Action si faible |
+|--------|--------------------|---------------|
+| Taux d'accès au contenu | % de commerciaux accédant à chaque actif sur les 30 derniers jours | Le contenu peut être difficile à trouver, mal nommé, ou non pertinent |
+| Taux de partage du contenu | % du contenu accédé réellement envoyé aux prospects | Le contenu peut ne pas répondre aux standards de qualité orientés prospect |
+| Taux contenu-vers-rendez-vous | Rendez-vous pris après le partage du contenu | Le contenu peut ne pas être assez convaincant |
+| Corrélation contenu-vers-conclusion | Taux de gain pour les deals où le contenu a été utilisé | Identifie le contenu le plus performant |
+| Taux d'adoption par les commerciaux | % de commerciaux utilisant le contenu d'aide à la vente vs ad hoc | Lacune de formation — organiser des sessions d'aide à la vente |
+| Fraîcheur du contenu | Jours depuis la dernière mise à jour | Le contenu obsolète érode la confiance — imposer des revues trimestrielles |
 
 ---
 
-## Sales Content Metrics Dashboard
+## Tableau de bord des métriques de contenu commercial
 
-### Key Metrics to Track
+### Métriques clés à suivre
 
-| Metric | Formula | Benchmark |
+| Métrique | Formule | Référentiel |
 |--------|---------|-----------|
-| Content utilization rate | Assets used / Total assets available | >60% = healthy library |
-| Content influence on pipeline | Pipeline $ where content was shared / Total pipeline | >40% influence rate |
-| Content-assisted win rate | Wins with content shared / Total opportunities with content shared | Higher than overall win rate |
-| Time-to-first-content-share | Avg days from opportunity creation to first content sent | <5 days |
-| Rep content adoption | # reps using content regularly / Total reps | >80% adoption |
-| Content creation cycle time | Days from request to published asset | <2 weeks for standard assets |
-| Content gap requests | # sales requests for content that doesn't exist | Decreasing trend |
+| Taux d'utilisation du contenu | Actifs utilisés / total des actifs disponibles | >60 % = bibliothèque saine |
+| Influence du contenu sur le pipeline | Pipeline $ où le contenu a été partagé / pipeline total | >40 % de taux d'influence |
+| Taux de gain assisté par le contenu | Gains avec contenu partagé / total des opportunités avec contenu partagé | Supérieur au taux de gain global |
+| Délai avant premier partage de contenu | Jours moyens entre la création de l'opportunité et le premier envoi de contenu | <5 jours |
+| Adoption du contenu par les commerciaux | Nombre de commerciaux utilisant le contenu régulièrement / total des commerciaux | >80 % d'adoption |
+| Temps de cycle de création de contenu | Jours entre la demande et l'actif publié | <2 semaines pour les actifs standard |
+| Demandes de contenu manquant | Nombre de demandes commerciales pour du contenu qui n'existe pas | Tendance décroissante |
 
-### Quarterly Review Checklist
+### Checklist de revue trimestrielle
 
-- [ ] Audit all battle cards for accuracy (competitor changes, new features, pricing)
-- [ ] Review content utilization data — retire or refresh assets below 10% usage
-- [ ] Collect feedback from top 5 performing reps on what content they wish existed
-- [ ] Update email templates based on reply rate data
-- [ ] Refresh case studies older than 18 months with updated metrics
-- [ ] Verify all links, attachments, and downloads are working
-- [ ] Align new content with any product launches, feature releases, or positioning changes
-- [ ] Review win/loss analysis for new objection patterns requiring content response
+- [ ] Auditer toutes les battle cards pour leur exactitude (changements concurrentiels, nouvelles fonctionnalités, prix)
+- [ ] Revoir les données d'utilisation du contenu — retirer ou rafraîchir les actifs sous 10 % d'usage
+- [ ] Recueillir les retours des 5 meilleurs commerciaux sur le contenu qu'ils souhaiteraient voir exister
+- [ ] Mettre à jour les modèles d'e-mail selon les données de taux de réponse
+- [ ] Rafraîchir les études de cas de plus de 18 mois avec des métriques actualisées
+- [ ] Vérifier que tous les liens, pièces jointes, et téléchargements fonctionnent
+- [ ] Aligner le nouveau contenu avec tout lancement produit, sortie de fonctionnalité, ou changement de positionnement
+- [ ] Revoir l'analyse gains/pertes pour de nouveaux schémas d'objection nécessitant une réponse en contenu
 
 ---
 
-*Sales enablement is not about creating more content. It is about creating the right content, making it findable, and ensuring it gets used at the right moment in the right deal. Every asset should earn its place by measurably helping reps close deals.*
+*L'aide à la vente ne consiste pas à créer plus de contenu. Il s'agit de créer le bon contenu, de le rendre trouvable, et de s'assurer qu'il est utilisé au bon moment dans le bon deal. Chaque actif doit mériter sa place en aidant, de façon mesurable, les commerciaux à conclure des deals.*

@@ -1,248 +1,254 @@
-# Launch Strategy — Product Launch Playbook
+# Stratégie de lancement — Playbook de lancement produit
 
-> A disciplined launch process turns product releases into measurable growth events. This playbook covers the full lifecycle from planning through post-launch optimization.
+> Un processus de lancement discipliné transforme les sorties de produit en
+> événements de croissance mesurables. Ce playbook couvre le cycle de vie complet,
+> de la planification à l'optimisation post-lancement.
 
 ---
 
-## Three-Tier Launch Framework
+## Cadre de lancement à trois paliers
 
-Not every release deserves the same investment. Categorize launches to allocate effort appropriately.
+Chaque sortie ne mérite pas le même investissement. Classer les lancements pour
+allouer l'effort de façon appropriée.
 
-| Dimension | Tier 1: Major Launch | Tier 2: Feature Launch | Tier 3: Minor Update |
+| Dimension | Palier 1 : lancement majeur | Palier 2 : lancement de fonctionnalité | Palier 3 : mise à jour mineure |
 |---|---|---|---|
-| **Scope** | New product, major rebrand, platform shift | Significant new capability or module | Bug fixes, UI tweaks, incremental improvements |
-| **Lead time** | 8-12 weeks | 4-6 weeks | 1-2 weeks |
-| **Cross-functional teams** | Product, Marketing, Sales, CS, PR, Leadership | Product, Marketing, Growth | Product, Marketing |
-| **External PR** | Press embargo, media outreach, analyst briefing | Blog post, select media pitches | Changelog entry, in-app notification |
-| **Customer communication** | Email to full list, webinar, demo event | Email to relevant segments, in-app announcement | In-app tooltip or banner |
-| **Sales enablement** | New pitch deck, battle cards, training sessions | Feature one-pager, FAQ document | Internal Slack update |
-| **Content assets** | Landing page, video, case study, blog series | Blog post, help docs, short video | Help doc update |
-| **Success metrics** | Sign-ups, revenue impact, press coverage, NPS | Feature adoption rate, engagement lift | Bug resolution rate, satisfaction score |
-| **Examples** | Figma launching FigJam, Notion launching AI | Slack launching Huddles | Dashboard loading speed improvement |
+| **Périmètre** | Nouveau produit, rebranding majeur, changement de plateforme | Capacité ou module nouveau significatif | Corrections de bugs, ajustements UI, améliorations incrémentales |
+| **Délai de préparation** | 8-12 semaines | 4-6 semaines | 1-2 semaines |
+| **Équipes transverses** | Produit, Marketing, Ventes, CS, RP, Direction | Produit, Marketing, Croissance | Produit, Marketing |
+| **RP externes** | Embargo presse, outreach média, briefing analystes | Article de blog, pitchs média sélectionnés | Entrée de changelog, notification dans l'app |
+| **Communication client** | E-mail à la liste complète, webinaire, événement démo | E-mail aux segments pertinents, annonce dans l'app | Info-bulle ou bannière dans l'app |
+| **Aide à la vente** | Nouvelle présentation, battle cards, sessions de formation | One-pager fonctionnalité, document FAQ | Mise à jour interne Slack |
+| **Actifs de contenu** | Landing page, vidéo, étude de cas, série de blogs | Article de blog, docs d'aide, courte vidéo | Mise à jour de la doc d'aide |
+| **Métriques de succès** | Inscriptions, impact revenu, couverture presse, NPS | Taux d'adoption de fonctionnalité, gain d'engagement | Taux de résolution de bugs, score de satisfaction |
+| **Exemples** | Figma lançant FigJam, Notion lançant l'IA | Slack lançant Huddles | Amélioration de la vitesse de chargement du tableau de bord |
 
 ---
 
-## Product Hunt Launch Guide
+## Guide de lancement Product Hunt
 
-### Pre-Launch Preparation (2-4 Weeks Before)
+### Préparation pré-lancement (2-4 semaines avant)
 
-| Task | Details | Timeline |
+| Tâche | Détails | Calendrier |
 |---|---|---|
-| Research top launches in your category | Study taglines, descriptions, and first comments of successful launches | -4 weeks |
-| Recruit a credible Hunter | Find someone with 1,000+ followers on Product Hunt; reach out personally | -3 weeks |
-| Build a supporter list | 200+ people who will upvote, comment, and share on launch day | -3 weeks |
-| Prepare assets | Thumbnail (240x240), gallery images (5-8 screenshots), video (optional but recommended) | -2 weeks |
-| Write tagline and description | Tagline: 60 chars max, clear and punchy. Description: problem → solution → proof | -2 weeks |
-| Draft first comment | Founder story, why you built this, what makes it different. Personal and authentic. | -1 week |
-| Prepare launch day team | Assign roles: comment responder, social media, supporter coordinator | -1 week |
+| Étudier les meilleurs lancements de votre catégorie | Étudier les slogans, descriptions, et premiers commentaires des lancements réussis | -4 semaines |
+| Recruter un Hunter crédible | Trouver quelqu'un avec 1 000+ abonnés sur Product Hunt ; contacter personnellement | -3 semaines |
+| Construire une liste de soutiens | 200+ personnes qui voteront, commenteront, et partageront le jour du lancement | -3 semaines |
+| Préparer les actifs | Miniature (240x240), images de galerie (5-8 captures d'écran), vidéo (optionnel mais recommandé) | -2 semaines |
+| Rédiger le slogan et la description | Slogan : 60 caractères max, clair et percutant. Description : problème → solution → preuve | -2 semaines |
+| Rédiger le premier commentaire | Histoire du fondateur, pourquoi vous avez construit ceci, ce qui le rend différent. Personnel et authentique. | -1 semaine |
+| Préparer l'équipe du jour du lancement | Assigner les rôles : répondant aux commentaires, réseaux sociaux, coordinateur des soutiens | -1 semaine |
 
-### Launch Day Execution
+### Exécution du jour du lancement
 
-- [ ] Launch at 12:01 AM PST (Product Hunt resets daily)
-- [ ] Post founder's first comment immediately after listing goes live
-- [ ] Send first wave of notifications to supporter list (personal messages, not mass blast)
-- [ ] Share on Twitter/X with compelling hook and Product Hunt link
-- [ ] Post in relevant communities (Slack groups, Discord, Reddit — check rules first)
-- [ ] Respond to every comment within 30 minutes
-- [ ] Send second wave of notifications at 9 AM PST (US waking up)
-- [ ] Share progress updates on social media throughout the day
-- [ ] Send third wave at 12 PM PST if momentum is building
-- [ ] Thank supporters publicly in comments and social posts
-- [ ] Monitor and respond to questions until midnight PST
+- [ ] Lancer à minuit 01 PST (Product Hunt réinitialise quotidiennement)
+- [ ] Publier le premier commentaire du fondateur immédiatement après la mise en ligne
+- [ ] Envoyer la première vague de notifications à la liste de soutiens (messages personnels, pas d'envoi de masse)
+- [ ] Partager sur Twitter/X avec une accroche convaincante et le lien Product Hunt
+- [ ] Publier dans les communautés pertinentes (groupes Slack, Discord, Reddit — vérifier les règles d'abord)
+- [ ] Répondre à chaque commentaire dans les 30 minutes
+- [ ] Envoyer la deuxième vague de notifications à 9h PST (réveil des US)
+- [ ] Partager les mises à jour de progression sur les réseaux sociaux tout au long de la journée
+- [ ] Envoyer la troisième vague à midi PST si l'élan se construit
+- [ ] Remercier publiquement les soutiens dans les commentaires et posts sociaux
+- [ ] Surveiller et répondre aux questions jusqu'à minuit PST
 
 ### Post-Product Hunt
 
-- [ ] Send thank-you email to all supporters within 24 hours
-- [ ] Add "Featured on Product Hunt" badge to website (if applicable)
-- [ ] Create blog post summarizing the launch and results
-- [ ] Follow up with every lead generated from Product Hunt
-- [ ] Analyze traffic and conversion data from launch day
+- [ ] Envoyer un e-mail de remerciement à tous les soutiens dans les 24 heures
+- [ ] Ajouter le badge « Featured on Product Hunt » au site web (si applicable)
+- [ ] Créer un article de blog résumant le lancement et les résultats
+- [ ] Suivre chaque lead généré depuis Product Hunt
+- [ ] Analyser les données de trafic et de conversion du jour du lancement
 
 ---
 
-## Waitlist Mechanics
+## Mécaniques de liste d'attente
 
-### Waitlist Strategy
+### Stratégie de liste d'attente
 
-| Component | Standard Waitlist | Viral Waitlist | VIP Waitlist |
+| Composant | Liste d'attente standard | Liste d'attente virale | Liste d'attente VIP |
 |---|---|---|---|
-| Sign-up | Email only | Email + share to move up | Application with qualification criteria |
-| Position visibility | Hidden or shown | Shown with "move up" mechanic | Acceptance/rejection notification |
-| Incentive to share | None | Higher position for referrals | Early access for qualified applicants |
-| Communication | Periodic updates | Real-time position updates | Personalized outreach |
-| Best for | Simple interest capture | Pre-launch buzz generation | High-end or limited-capacity products |
-| Tools | Mailchimp, ConvertKit | Viral Loops, Waitlist.me, ReferralHero | Typeform + custom CRM workflow |
+| Inscription | E-mail uniquement | E-mail + partage pour monter | Candidature avec critères de qualification |
+| Visibilité de la position | Cachée ou affichée | Affichée avec mécanique « monter » | Notification d'acceptation/refus |
+| Incitation à partager | Aucune | Position plus élevée pour les parrainages | Accès anticipé pour les candidats qualifiés |
+| Communication | Mises à jour périodiques | Mises à jour de position en temps réel | Outreach personnalisé |
+| Idéal pour | Capture d'intérêt simple | Génération de buzz pré-lancement | Produits haut de gamme ou à capacité limitée |
+| Outils | Mailchimp, ConvertKit | Viral Loops, Waitlist.me, ReferralHero | Typeform + workflow CRM personnalisé |
 
-### Waitlist Email Sequence
+### Séquence e-mail de liste d'attente
 
-| Email | Timing | Content |
+| E-mail | Timing | Contenu |
 |---|---|---|
-| Welcome | Immediate | Confirm position, explain what they're getting, set expectations |
-| Social proof | Day 3 | "X people joined after you" — create urgency |
-| Behind the scenes | Day 7 | Founder story, product preview, build connection |
-| Referral nudge | Day 10 | "Move up the list by inviting friends" (for viral waitlists) |
-| Sneak peek | Day 14+ | Exclusive preview content, screenshots, or demo |
-| Access granted | Launch day | Clear CTA, onboarding instructions, limited-time offer |
+| Bienvenue | Immédiat | Confirmer la position, expliquer ce qu'ils obtiennent, fixer les attentes |
+| Preuve sociale | Jour 3 | « X personnes ont rejoint après vous » — créer de l'urgence |
+| Coulisses | Jour 7 | Histoire du fondateur, aperçu du produit, construire la connexion |
+| Relance de parrainage | Jour 10 | « Montez dans la liste en invitant des amis » (pour les listes virales) |
+| Aperçu exclusif | Jour 14+ | Contenu d'aperçu exclusif, captures d'écran, ou démo |
+| Accès accordé | Jour du lancement | CTA clair, instructions d'onboarding, offre à durée limitée |
 
 ---
 
-## Beta Program Design
+## Conception de programme bêta
 
-### Beta Types
+### Types de bêta
 
-| Beta Type | Audience | Duration | Feedback Method |
+| Type de bêta | Audience | Durée | Méthode de feedback |
 |---|---|---|---|
-| Closed Alpha | Internal team + advisors | 2-4 weeks | Direct Slack/meetings |
-| Private Beta | Hand-picked power users (50-200) | 4-8 weeks | In-app feedback widget, weekly surveys |
-| Open Beta | Anyone who signs up | 2-4 weeks | Community forum, in-app feedback, analytics |
-| Dogfooding | Entire company uses product daily | Ongoing | Internal bug reports, feature requests |
+| Alpha fermée | Équipe interne + conseillers | 2-4 semaines | Slack/réunions directes |
+| Bêta privée | Utilisateurs power sélectionnés à la main (50-200) | 4-8 semaines | Widget de feedback dans l'app, enquêtes hebdomadaires |
+| Bêta ouverte | N'importe qui s'inscrivant | 2-4 semaines | Forum communautaire, feedback dans l'app, analytics |
+| Dogfooding | Toute l'entreprise utilise le produit quotidiennement | Continu | Rapports de bugs internes, demandes de fonctionnalité |
 
-### Beta Feedback Collection
+### Collecte de feedback bêta
 
-- [ ] In-app feedback button (always visible during beta)
-- [ ] Weekly NPS or CSAT micro-survey (1-2 questions)
-- [ ] Dedicated Slack or Discord channel for beta participants
-- [ ] Bi-weekly user interviews with 5-10 active beta users
-- [ ] Session recordings (with consent) via Hotjar, FullStory, or LogRocket
-- [ ] Automated bug reporting with screenshot capture
-- [ ] Feature request voting board (Canny, Productboard, or similar)
-- [ ] Exit survey for users who leave beta early
+- [ ] Bouton de feedback dans l'app (toujours visible pendant la bêta)
+- [ ] Micro-enquête NPS ou CSAT hebdomadaire (1-2 questions)
+- [ ] Canal Slack ou Discord dédié pour les participants bêta
+- [ ] Entretiens utilisateurs bi-hebdomadaires avec 5-10 utilisateurs bêta actifs
+- [ ] Enregistrements de session (avec consentement) via Hotjar, FullStory, ou LogRocket
+- [ ] Rapport de bugs automatisé avec capture d'écran
+- [ ] Tableau de vote de demandes de fonctionnalité (Canny, Productboard, ou similaire)
+- [ ] Enquête de sortie pour les utilisateurs qui quittent la bêta tôt
 
 ---
 
-## Pre-Launch Content Sequence
+## Séquence de contenu pré-lancement
 
-Build momentum in the weeks before launch with a structured content calendar.
+Construire l'élan dans les semaines précédant le lancement avec un calendrier de
+contenu structuré.
 
-| Week | Content Type | Channel | Goal |
+| Semaine | Type de contenu | Canal | Objectif |
 |---|---|---|---|
-| -6 | Problem-awareness blog post | Blog, LinkedIn, Twitter | Establish the problem you solve |
-| -5 | Industry data or original research | Blog, email list | Build authority and attract attention |
-| -4 | Founder story / origin narrative | Twitter thread, LinkedIn post | Build personal connection |
-| -3 | Teaser video or product preview | Social media, email list | Generate curiosity and anticipation |
-| -2 | Early testimonials from beta users | Social media, landing page | Social proof before launch |
-| -1 | "Launching next week" countdown | Email list, social media | Convert awareness into intent |
-| Launch | Full launch announcement | All channels simultaneously | Maximum coordinated impact |
+| -6 | Article de blog sur la prise de conscience du problème | Blog, LinkedIn, Twitter | Établir le problème que vous résolvez |
+| -5 | Données sectorielles ou recherche originale | Blog, liste e-mail | Construire l'autorité et attirer l'attention |
+| -4 | Histoire du fondateur / récit d'origine | Fil Twitter, post LinkedIn | Construire une connexion personnelle |
+| -3 | Vidéo teaser ou aperçu produit | Réseaux sociaux, liste e-mail | Générer curiosité et anticipation |
+| -2 | Premiers témoignages d'utilisateurs bêta | Réseaux sociaux, landing page | Preuve sociale avant le lancement |
+| -1 | Compte à rebours « lancement la semaine prochaine » | Liste e-mail, réseaux sociaux | Convertir la prise de conscience en intention |
+| Lancement | Annonce de lancement complète | Tous les canaux simultanément | Impact coordonné maximal |
 
 ---
 
-## Launch Day Checklist
+## Checklist du jour du lancement
 
-### Product Readiness (Complete Before Launch)
+### Préparation du produit (à compléter avant le lancement)
 
-- [ ] Core features tested and stable (zero P0/P1 bugs)
-- [ ] Onboarding flow tested with 5+ external users
-- [ ] Performance benchmarks met (page load <2s, API response <500ms)
-- [ ] Error monitoring configured (Sentry, Datadog, or equivalent)
-- [ ] Scalability tested for expected traffic (3-5x normal capacity)
-- [ ] Security review completed (auth, data handling, API keys)
-- [ ] Terms of service and privacy policy published
-- [ ] Payment processing tested end-to-end (if applicable)
-- [ ] Mobile/responsive experience verified
-- [ ] Accessibility basics covered (WCAG 2.2 AA minimum)
+- [ ] Fonctionnalités clés testées et stables (zéro bug P0/P1)
+- [ ] Flux d'onboarding testé avec 5+ utilisateurs externes
+- [ ] Benchmarks de performance atteints (chargement de page <2s, réponse API <500ms)
+- [ ] Surveillance des erreurs configurée (Sentry, Datadog, ou équivalent)
+- [ ] Scalabilité testée pour le trafic attendu (3-5x la capacité normale)
+- [ ] Revue de sécurité terminée (auth, gestion des données, clés API)
+- [ ] Conditions d'utilisation et politique de confidentialité publiées
+- [ ] Traitement des paiements testé de bout en bout (si applicable)
+- [ ] Expérience mobile/responsive vérifiée
+- [ ] Bases d'accessibilité couvertes (WCAG 2.2 AA minimum)
 
-### Marketing Assets Ready
+### Actifs marketing prêts
 
-- [ ] Landing page live and optimized (hero, features, social proof, CTA)
-- [ ] Product demo video produced and uploaded
-- [ ] Press kit prepared (logos, screenshots, founder photos, fact sheet)
-- [ ] Blog post drafted and scheduled
-- [ ] Email announcement drafted for full list
-- [ ] Social media posts drafted for all platforms (Twitter, LinkedIn, Facebook, Instagram)
-- [ ] Community posts drafted (Reddit, Hacker News, Indie Hackers, relevant Slacks)
-- [ ] Help documentation and FAQ published
-- [ ] Pricing page live and tested
+- [ ] Landing page en direct et optimisée (héros, fonctionnalités, preuve sociale, CTA)
+- [ ] Vidéo de démonstration produit produite et téléversée
+- [ ] Dossier de presse préparé (logos, captures d'écran, photos des fondateurs, fiche factuelle)
+- [ ] Article de blog rédigé et planifié
+- [ ] Annonce e-mail rédigée pour la liste complète
+- [ ] Posts sur les réseaux sociaux rédigés pour toutes les plateformes (Twitter, LinkedIn, Facebook, Instagram)
+- [ ] Posts communautaires rédigés (Reddit, Hacker News, Indie Hackers, Slacks pertinents)
+- [ ] Documentation d'aide et FAQ publiées
+- [ ] Page de tarification en direct et testée
 
-### Team Coordination
+### Coordination d'équipe
 
-- [ ] All team members briefed on launch timeline and their roles
-- [ ] Support team trained on new features and common questions
-- [ ] Sales team equipped with updated pitch deck and battle cards
-- [ ] War room or dedicated Slack channel created for launch day communication
-- [ ] Escalation paths defined (who handles what if something breaks)
-- [ ] On-call engineering rotation confirmed for launch window
+- [ ] Tous les membres de l'équipe briefés sur le calendrier de lancement et leurs rôles
+- [ ] Équipe de support formée sur les nouvelles fonctionnalités et les questions courantes
+- [ ] Équipe de vente équipée d'une présentation et de battle cards mises à jour
+- [ ] Salle de crise ou canal Slack dédié créé pour la communication du jour de lancement
+- [ ] Chemins d'escalade définis (qui gère quoi si quelque chose casse)
+- [ ] Rotation d'ingénierie de garde confirmée pour la fenêtre de lancement
 
-### Distribution Execution
+### Exécution de la diffusion
 
-- [ ] Email blast sent to subscriber list (timed for 10 AM recipient local time)
-- [ ] Social media posts published across all platforms
-- [ ] Product Hunt listing live (if applicable)
-- [ ] Press embargo lifted and pitches sent
-- [ ] Partner co-marketing posts coordinated
-- [ ] Paid ads activated (if budget allocated for launch amplification)
-- [ ] Influencer and advocate outreach completed
-- [ ] Community posts published (stagger across platforms to avoid spam flags)
-- [ ] Retargeting audiences updated with launch messaging
-- [ ] Internal all-hands or Slack announcement to celebrate and mobilize team
+- [ ] Envoi e-mail à la liste d'abonnés (calé pour 10h heure locale du destinataire)
+- [ ] Posts sur les réseaux sociaux publiés sur toutes les plateformes
+- [ ] Annonce Product Hunt en direct (si applicable)
+- [ ] Embargo presse levé et pitchs envoyés
+- [ ] Posts de co-marketing partenaires coordonnés
+- [ ] Publicités payantes activées (si budget alloué à l'amplification de lancement)
+- [ ] Outreach influenceurs et ambassadeurs terminé
+- [ ] Posts communautaires publiés (échelonnés entre plateformes pour éviter les signalements de spam)
+- [ ] Audiences de retargeting mises à jour avec le messaging de lancement
+- [ ] Annonce interne à toute l'entreprise ou Slack pour célébrer et mobiliser l'équipe
 
-### Monitoring and Response
+### Surveillance et réponse
 
-- [ ] Real-time analytics dashboard open (traffic, sign-ups, conversions)
-- [ ] Server health monitoring active
-- [ ] Social media monitoring active (brand mentions, hashtag tracking)
-- [ ] Support queue staffed at 2x normal capacity
-- [ ] Bug triage process active with fast-fix deployment capability
-- [ ] Hourly check-in cadence established for launch team
-
----
-
-## Post-Launch Optimization
-
-### First 7 Days
-
-| Day | Focus | Actions |
-|---|---|---|
-| 1 | Respond and stabilize | Fix critical bugs, answer every comment and email, monitor server load |
-| 2 | Analyze first cohort | Review Day 1 sign-up → activation funnel, identify drop-off points |
-| 3 | Iterate on onboarding | Fix top 3 friction points in sign-up/activation flow |
-| 4 | Amplify what works | Double down on highest-performing channels and messages |
-| 5 | Engage early users | Personal outreach to first 50-100 users, collect feedback |
-| 6 | Content follow-up | Publish "What we learned from launch" post, share early metrics |
-| 7 | Week 1 retrospective | Full team review of metrics, wins, failures, and priorities for Week 2-4 |
-
-### First 30 Days
-
-| Week | Focus Area | Key Actions |
-|---|---|---|
-| Week 1 | Stabilize and learn | Bug fixes, onboarding optimization, user interviews |
-| Week 2 | Optimize conversion | A/B test landing page, improve activation flow, refine messaging |
-| Week 3 | Expand reach | Launch on additional channels, activate referral program, begin SEO |
-| Week 4 | Retention focus | Analyze Day 7 and Day 14 retention, build engagement loops, plan next release |
+- [ ] Tableau de bord analytics en temps réel ouvert (trafic, inscriptions, conversions)
+- [ ] Surveillance de la santé serveur active
+- [ ] Surveillance des réseaux sociaux active (mentions de marque, suivi de hashtag)
+- [ ] File de support dotée à 2x la capacité normale
+- [ ] Processus de triage de bugs actif avec capacité de déploiement de correctif rapide
+- [ ] Cadence de point horaire établie pour l'équipe de lancement
 
 ---
 
-## Launch Metric Tracking
+## Optimisation post-lancement
 
-### Dashboard Metrics
+### Les 7 premiers jours
 
-| Metric | Source | Tracking Frequency |
+| Jour | Focus | Actions |
 |---|---|---|
-| Unique visitors | Google Analytics / Plausible | Hourly on launch day, daily after |
-| Sign-ups | Product database | Hourly on launch day, daily after |
-| Activation rate | Product analytics (Mixpanel, Amplitude) | Daily |
-| Sign-up → Activation time | Product analytics | Daily |
-| Channel attribution | UTM parameters, referral data | Daily |
-| Revenue (if applicable) | Stripe, payment processor | Daily |
-| Support tickets | Help desk (Zendesk, Intercom) | Hourly on launch day |
-| NPS / CSAT | Survey tool | Weekly starting Day 7 |
-| Social mentions | Brand monitoring (Mention, Brandwatch) | Hourly on launch day |
-| Press coverage | Media monitoring | Daily for first 2 weeks |
+| 1 | Répondre et stabiliser | Corriger les bugs critiques, répondre à chaque commentaire et e-mail, surveiller la charge serveur |
+| 2 | Analyser la première cohorte | Revoir le tunnel inscription → activation du Jour 1, identifier les points d'abandon |
+| 3 | Itérer sur l'onboarding | Corriger les 3 principaux points de friction dans le flux d'inscription/activation |
+| 4 | Amplifier ce qui fonctionne | Doubler la mise sur les canaux et messages les plus performants |
+| 5 | Engager les premiers utilisateurs | Outreach personnel vers les 50-100 premiers utilisateurs, collecter du feedback |
+| 6 | Suivi de contenu | Publier un post « ce que nous avons appris du lancement », partager les premières métriques |
+| 7 | Rétrospective semaine 1 | Revue d'équipe complète des métriques, réussites, échecs, et priorités pour les semaines 2-4 |
 
-### Launch Scorecard Template
+### Les 30 premiers jours
 
-| KPI | Target | Actual | Status |
+| Semaine | Zone de focus | Actions clés |
+|---|---|---|
+| Semaine 1 | Stabiliser et apprendre | Corrections de bugs, optimisation d'onboarding, entretiens utilisateurs |
+| Semaine 2 | Optimiser la conversion | Tester A/B la landing page, améliorer le flux d'activation, affiner le messaging |
+| Semaine 3 | Étendre la portée | Lancer sur des canaux additionnels, activer le programme de parrainage, démarrer le SEO |
+| Semaine 4 | Focus rétention | Analyser la rétention à J7 et J14, construire des boucles d'engagement, planifier la prochaine sortie |
+
+---
+
+## Suivi des métriques de lancement
+
+### Métriques du tableau de bord
+
+| Métrique | Source | Fréquence de suivi |
+|---|---|---|
+| Visiteurs uniques | Google Analytics / Plausible | Horaire le jour du lancement, quotidien ensuite |
+| Inscriptions | Base de données produit | Horaire le jour du lancement, quotidien ensuite |
+| Taux d'activation | Analytics produit (Mixpanel, Amplitude) | Quotidien |
+| Temps inscription → activation | Analytics produit | Quotidien |
+| Attribution de canal | Paramètres UTM, données de parrainage | Quotidien |
+| Revenu (si applicable) | Stripe, processeur de paiement | Quotidien |
+| Tickets de support | Help desk (Zendesk, Intercom) | Horaire le jour du lancement |
+| NPS / CSAT | Outil d'enquête | Hebdomadaire à partir du Jour 7 |
+| Mentions sociales | Surveillance de marque (Mention, Brandwatch) | Horaire le jour du lancement |
+| Couverture presse | Surveillance média | Quotidien pour les 2 premières semaines |
+
+### Modèle de tableau de bord de lancement
+
+| KPI | Cible | Réel | Statut |
 |---|---|---|---|
-| Day 1 sign-ups | ___ | ___ | On track / Behind / Exceeded |
-| Week 1 sign-ups | ___ | ___ | |
-| Week 1 activation rate | ___ | ___ | |
-| Month 1 sign-ups | ___ | ___ | |
-| Month 1 activation rate | ___ | ___ | |
-| Month 1 revenue | ___ | ___ | |
-| CAC (by channel) | ___ | ___ | |
-| Press articles | ___ | ___ | |
-| Product Hunt ranking | ___ | ___ | |
-| NPS at Day 30 | ___ | ___ | |
+| Inscriptions Jour 1 | ___ | ___ | Dans les temps / En retard / Dépassé |
+| Inscriptions Semaine 1 | ___ | ___ | |
+| Taux d'activation Semaine 1 | ___ | ___ | |
+| Inscriptions Mois 1 | ___ | ___ | |
+| Taux d'activation Mois 1 | ___ | ___ | |
+| Revenu Mois 1 | ___ | ___ | |
+| CAC (par canal) | ___ | ___ | |
+| Articles de presse | ___ | ___ | |
+| Classement Product Hunt | ___ | ___ | |
+| NPS au Jour 30 | ___ | ___ | |
 
 ---
 
-*A great launch is not a single day. It is a coordinated sequence that builds momentum before, executes with precision during, and compounds results after. Plan the full arc.*
+*Un excellent lancement n'est pas une seule journée. C'est une séquence coordonnée
+qui construit l'élan avant, exécute avec précision pendant, et compose les résultats
+après. Planifiez l'arc complet.*

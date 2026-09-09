@@ -1,198 +1,199 @@
-# Crisis Communication — 3-Tier Framework
+# Communication de crise — Cadre à 3 niveaux
 
-> A structured approach to brand crisis management. The difference between a crisis that destroys a brand and one that strengthens it comes down to speed, transparency, and preparedness. This framework gives you all three.
+> Une approche structurée de la gestion de crise de marque. La différence entre une crise qui détruit une marque et une qui la renforce tient à la rapidité, la transparence, et la préparation. Ce cadre vous donne les trois.
 
 ---
 
-## 3-Tier Severity Classification
+## Classification de sévérité à 3 niveaux
 
-| Attribute | Tier 1 — Minor | Tier 2 — Moderate | Tier 3 — Severe |
+| Attribut | Niveau 1 — Mineure | Niveau 2 — Modérée | Niveau 3 — Sévère |
 |-----------|----------------|-------------------|-----------------|
-| **Trigger** | Single complaint, minor error, isolated incident | Trending negative coverage, viral social post, product defect | Major press investigation, legal action, data breach, executive scandal |
-| **Visibility** | Low — limited audience | Medium — spreading across channels | High — mainstream media, regulatory bodies |
-| **Response Window** | 24 hours | 4 hours | 1 hour (acknowledge), full response within 4 hours |
-| **Team Activation** | Community manager + manager approval | Crisis team (marketing, PR, legal, CS) | CEO war room (C-suite, legal, board, external PR agency) |
-| **Escalation Path** | CM → Marketing Manager | Marketing Manager → VP Marketing + Legal | VP Marketing → CEO → Board (if public company) |
-| **Communication Channels** | Direct reply (platform where issue appeared) | All social + email to affected customers | Press release, all social, email, website banner, investor relations |
-| **Examples** | Rude employee review, minor shipping delay complaint | Trending #brand hashtag, product recall rumor, employee misconduct video | Data breach, CEO arrest, class-action lawsuit, death/injury linked to product |
+| **Déclencheur** | Plainte unique, erreur mineure, incident isolé | Couverture négative en tendance, publication sociale virale, défaut produit | Enquête presse majeure, action en justice, violation de données, scandale d'un dirigeant |
+| **Visibilité** | Faible — audience limitée | Moyenne — se propage sur les canaux | Élevée — médias grand public, organismes réglementaires |
+| **Fenêtre de réponse** | 24 heures | 4 heures | 1 heure (accusé de réception), réponse complète dans les 4 heures |
+| **Activation d'équipe** | Community manager + approbation du manager | Équipe de crise (marketing, RP, légal, service client) | Cellule de crise du PDG (direction générale, légal, conseil, agence RP externe) |
+| **Chemin d'escalade** | CM → Responsable marketing | Responsable marketing → VP Marketing + Légal | VP Marketing → PDG → Conseil (si société cotée) |
+| **Canaux de communication** | Réponse directe (plateforme où le problème est apparu) | Tous les réseaux sociaux + email aux clients concernés | Communiqué de presse, tous les réseaux sociaux, email, bandeau sur le site, relations investisseurs |
+| **Exemples** | Avis d'employé impoli, plainte mineure pour retard de livraison | Hashtag #marque en tendance, rumeur de rappel produit, vidéo d'inconduite d'un employé | Violation de données, arrestation d'un PDG, action collective, décès/blessure lié au produit |
 
 ---
 
-## 72-Hour Crisis Timeline Playbook
+## Playbook de chronologie de crise sur 72 heures
 
-### Hour 0-1: Detection & Acknowledgment
-- [ ] Identify the crisis source and classify severity tier
-- [ ] Alert the appropriate response team (see tier table above)
-- [ ] Pause all scheduled social media posts and ad campaigns
-- [ ] Issue a holding statement: "We are aware of [issue] and are investigating. We take this seriously and will share updates as we learn more."
-- [ ] Assign a single spokesperson (no freelancing)
-- [ ] Set up a dedicated internal communication channel (Slack war room, Teams channel)
+### Heure 0-1 : Détection et accusé de réception
+- [ ] Identifier la source de la crise et classifier le niveau de sévérité
+- [ ] Alerter l'équipe de réponse appropriée (voir le tableau des niveaux ci-dessus)
+- [ ] Mettre en pause toutes les publications sociales et campagnes publicitaires planifiées
+- [ ] Publier une déclaration d'attente : « Nous sommes conscients de [problème] et enquêtons. Nous prenons cela au sérieux et partagerons des mises à jour au fur et à mesure. »
+- [ ] Désigner un porte-parole unique (pas d'initiative individuelle)
+- [ ] Mettre en place un canal de communication interne dédié (cellule de crise Slack, canal Teams)
 
-### Hour 1-4: Assessment & Initial Response
-- [ ] Gather all facts — do NOT speculate publicly
-- [ ] Identify affected stakeholders (customers, employees, partners, investors, media)
-- [ ] Draft tailored messaging for each stakeholder group (see templates below)
-- [ ] Legal review of all public-facing messaging
-- [ ] Publish first substantive update (what happened, what you're doing, what comes next)
-- [ ] Brief customer-facing teams (support, sales, retail) with approved talking points
+### Heure 1-4 : Évaluation et réponse initiale
+- [ ] Rassembler tous les faits — NE PAS spéculer publiquement
+- [ ] Identifier les parties prenantes affectées (clients, employés, partenaires, investisseurs, médias)
+- [ ] Rédiger des messages adaptés pour chaque groupe de parties prenantes (voir les modèles ci-dessous)
+- [ ] Revue légale de tous les messages publics
+- [ ] Publier la première mise à jour substantielle (ce qui s'est passé, ce que vous faites, ce qui vient ensuite)
+- [ ] Informer les équipes en contact avec les clients (support, ventes, retail) avec les éléments de langage approuvés
 
-### Hour 4-24: Active Management
-- [ ] Monitor social media and news coverage every 30 minutes
-- [ ] Respond to direct inquiries using approved messaging
-- [ ] Publish second update with additional details or corrective actions
-- [ ] Activate customer outreach if individual harm occurred (email, phone)
-- [ ] Document every action taken with timestamps
+### Heure 4-24 : Gestion active
+- [ ] Surveiller les réseaux sociaux et la couverture presse toutes les 30 minutes
+- [ ] Répondre aux demandes directes en utilisant les messages approuvés
+- [ ] Publier une deuxième mise à jour avec des détails additionnels ou des actions correctives
+- [ ] Activer la prise de contact client si un préjudice individuel est survenu (email, téléphone)
+- [ ] Documenter chaque action entreprise avec des horodatages
 
-### Hour 24-48: Stabilization
-- [ ] Assess public sentiment shift — is the narrative improving?
-- [ ] Publish a detailed account if investigation is complete
-- [ ] Announce concrete corrective actions and timelines
-- [ ] Begin one-on-one outreach to key stakeholders (major clients, partners, top journalists)
-- [ ] Resume normal operations where appropriate (selectively un-pause ads/social)
+### Heure 24-48 : Stabilisation
+- [ ] Évaluer le changement de sentiment public — le narratif s'améliore-t-il ?
+- [ ] Publier un compte-rendu détaillé si l'enquête est terminée
+- [ ] Annoncer des actions correctives concrètes et des délais
+- [ ] Commencer une prise de contact individuelle avec les parties prenantes clés (grands comptes, partenaires, journalistes principaux)
+- [ ] Reprendre les opérations normales lorsque approprié (démettre en pause sélectivement les publicités/réseaux sociaux)
 
-### Hour 48-72: Recovery Transition
-- [ ] Final public update summarizing actions taken and preventive measures
-- [ ] Schedule post-crisis retrospective for Day 7
-- [ ] Begin monitoring for secondary or resurgent coverage
-- [ ] Transition from crisis mode to reputation recovery mode (see `recovery-playbooks.md`)
-
----
-
-## Stakeholder Messaging Templates
-
-### Customers
-> **Subject:** An important update from {{company_name}}
->
-> Dear {{customer_name}},
->
-> We want to address {{brief description of incident}} directly. Here is what we know: {{factual summary}}.
->
-> What we're doing about it: {{corrective actions with specific timelines}}.
->
-> If you've been affected, {{specific remediation — refund, credit, support contact}}.
->
-> We understand this impacts your trust in us, and we are committed to earning it back through our actions. We will continue to share updates at {{URL}}.
->
-> Sincerely,
-> {{senior leader name and title}}
-
-### Employees
-> **Subject:** Internal Update — {{incident name}}
->
-> Team,
->
-> You may have seen reports about {{incident}}. Here are the facts as we know them: {{summary}}.
->
-> Our response: {{actions being taken}}.
->
-> **What you should do:**
-> - Direct all media inquiries to {{PR contact}}
-> - Do not post about this on personal social media
-> - If customers ask, use the attached talking points
-> - If you have information relevant to the investigation, contact {{internal contact}}
->
-> We will share updates in {{channel}} as they become available.
->
-> {{CEO/leadership name}}
-
-### Media
-> **Official Statement — {{company_name}}**
->
-> {{City, Date}} — {{Company_name}} is aware of {{incident description}}. We are taking this matter seriously and have {{immediate actions taken}}.
->
-> {{Factual details — only confirmed information}}.
->
-> We are {{ongoing investigation/corrective steps}} and will provide additional updates as our review progresses. For media inquiries, contact {{PR contact name, email, phone}}.
-
-### Investors / Board (Tier 3 only)
-> **Subject:** Confidential — Incident Briefing
->
-> {{Factual summary of incident, business impact assessment, legal exposure estimate, remediation plan with costs, timeline for resolution, next board update date}}.
->
-> This communication is confidential and subject to attorney-client privilege where applicable.
+### Heure 48-72 : Transition vers la récupération
+- [ ] Mise à jour publique finale résumant les actions entreprises et les mesures préventives
+- [ ] Planifier une rétrospective post-crise pour le jour 7
+- [ ] Commencer à surveiller une couverture secondaire ou résurgente
+- [ ] Passer du mode crise au mode récupération de réputation (voir `recovery-playbooks.md`)
 
 ---
 
-## Internal Crisis Protocol
+## Modèles de messages par partie prenante
 
-### Crisis Team Roles
+### Clients
+> **Objet :** Une mise à jour importante de {{company_name}}
+>
+> Cher/Chère {{customer_name}},
+>
+> Nous souhaitons aborder directement {{brève description de l'incident}}. Voici ce que nous savons : {{résumé factuel}}.
+>
+> Ce que nous faisons à ce sujet : {{actions correctives avec des délais spécifiques}}.
+>
+> Si vous avez été affecté(e), {{remédiation spécifique — remboursement, crédit, contact support}}.
+>
+> Nous comprenons que cela affecte votre confiance envers nous, et nous nous engageons à la regagner par nos actions. Nous continuerons à partager des mises à jour sur {{URL}}.
+>
+> Sincèrement,
+> {{nom et titre du dirigeant senior}}
 
-| Role | Responsibility | Tier 1 | Tier 2 | Tier 3 |
+### Employés
+> **Objet :** Mise à jour interne — {{nom de l'incident}}
+>
+> Équipe,
+>
+> Vous avez peut-être vu des rapports sur {{incident}}. Voici les faits tels que nous les connaissons : {{résumé}}.
+>
+> Notre réponse : {{actions entreprises}}.
+>
+> **Ce que vous devriez faire :**
+> - Diriger toutes les demandes des médias vers {{contact RP}}
+> - Ne pas publier à ce sujet sur les réseaux sociaux personnels
+> - Si des clients posent des questions, utiliser les éléments de langage joints
+> - Si vous avez des informations pertinentes pour l'enquête, contacter {{contact interne}}
+>
+> Nous partagerons des mises à jour sur {{canal}} au fur et à mesure qu'elles seront disponibles.
+>
+> {{nom du PDG/de la direction}}
+
+### Médias
+> **Déclaration officielle — {{company_name}}**
+>
+> {{Ville, Date}} — {{Company_name}} a connaissance de {{description de l'incident}}. Nous prenons cette affaire au sérieux et avons {{actions immédiates entreprises}}.
+>
+> {{Détails factuels — uniquement les informations confirmées}}.
+>
+> Nous sommes {{en enquête en cours/mesures correctives}} et fournirons des mises à jour additionnelles à mesure que notre revue progresse. Pour les demandes médias, contacter {{nom du contact RP, email, téléphone}}.
+
+### Investisseurs / Conseil (niveau 3 uniquement)
+> **Objet :** Confidentiel — Briefing d'incident
+>
+> {{Résumé factuel de l'incident, évaluation d'impact sur l'activité, estimation de l'exposition légale, plan de remédiation avec coûts, délai de résolution, date de la prochaine mise à jour du conseil}}.
+>
+> Cette communication est confidentielle et soumise au secret professionnel avocat-client le cas échéant.
+
+---
+
+## Protocole de crise interne
+
+### Rôles de l'équipe de crise
+
+| Rôle | Responsabilité | Niveau 1 | Niveau 2 | Niveau 3 |
 |------|---------------|--------|--------|--------|
-| Incident Commander | Overall decision authority | Marketing Mgr | VP Marketing | CEO |
-| Spokesperson | All external communications | CM | PR Director | CEO / External PR |
-| Legal Advisor | Review all messaging, assess liability | On-call | Active | Dedicated |
-| Operations Lead | Fix the underlying problem | Support Mgr | VP Ops | COO |
-| Comms Coordinator | Draft, route, publish all messaging | CM | PR Team | PR Agency + Internal |
-| Monitor | Track coverage, sentiment, volume | Analyst | Analyst + Tool | War room analyst team |
-| Documenter | Log every action with timestamps | CM | Designated | Designated |
+| Commandant de l'incident | Autorité de décision globale | Responsable Marketing | VP Marketing | PDG |
+| Porte-parole | Toutes les communications externes | CM | Directeur RP | PDG / RP externe |
+| Conseiller juridique | Revoir tous les messages, évaluer la responsabilité | Sur appel | Actif | Dédié |
+| Responsable opérations | Résoudre le problème sous-jacent | Responsable support | VP Ops | COO |
+| Coordinateur communication | Rédiger, router, publier tous les messages | CM | Équipe RP | Agence RP + interne |
+| Superviseur | Suivre la couverture, le sentiment, le volume | Analyste | Analyste + outil | Équipe d'analystes de la cellule de crise |
+| Documentaliste | Journaliser chaque action avec des horodatages | CM | Désigné | Désigné |
 
-### Decision Authority Matrix
+### Matrice d'autorité de décision
 
-| Decision | Tier 1 | Tier 2 | Tier 3 |
+| Décision | Niveau 1 | Niveau 2 | Niveau 3 |
 |----------|--------|--------|--------|
-| Social media response | CM (pre-approved templates) | PR Director | Spokesperson only |
-| Press statement | N/A | VP Marketing + Legal | CEO + Legal + Board (if public) |
-| Product recall / service halt | N/A | VP Ops + Legal | CEO + Board |
-| Financial remediation (refunds, credits) | Manager (< $5K) | VP (< $50K) | CEO (unlimited) |
-| Paid media pause | CM | Automatic | Automatic |
+| Réponse sur les réseaux sociaux | CM (modèles pré-approuvés) | Directeur RP | Porte-parole uniquement |
+| Déclaration de presse | N/A | VP Marketing + Légal | PDG + Légal + Conseil (si société cotée) |
+| Rappel de produit / arrêt de service | N/A | VP Ops + Légal | PDG + Conseil |
+| Remédiation financière (remboursements, crédits) | Manager (< 5 000 $) | VP (< 50 000 $) | PDG (illimité) |
+| Pause des médias payants | CM | Automatique | Automatique |
 
 ---
 
-## Social Media Crisis Templates
+## Modèles de crise pour les réseaux sociaux
 
-### Initial Acknowledgment (all tiers)
-> We're aware of {{issue}} and are looking into it now. We take this seriously and will share an update as soon as we have more information. Thank you for your patience.
+### Accusé de réception initial (tous niveaux)
+> Nous sommes conscients de {{problème}} et nous nous en occupons dès maintenant. Nous prenons cela au sérieux et partagerons une mise à jour dès que nous en saurons plus. Merci de votre patience.
 
-### Follow-Up with Details
-> Update on {{issue}}: {{what you've learned}}. We are {{actions being taken}}. We'll continue to post updates here. If you've been affected, please reach out to {{support channel}}.
+### Suivi avec des détails
+> Mise à jour sur {{problème}} : {{ce que vous avez appris}}. Nous sommes en train de {{actions entreprises}}. Nous continuerons à publier des mises à jour ici. Si vous avez été affecté(e), veuillez contacter {{canal de support}}.
 
-### Apology (when fault is established)
-> We made a mistake and we own it. {{What happened}}. {{Why it happened, if appropriate}}. {{What we're doing to fix it and prevent recurrence}}. We're sorry and we're committed to doing better.
+### Excuse (lorsque la faute est établie)
+> Nous avons fait une erreur et nous l'assumons. {{Ce qui s'est passé}}. {{Pourquoi cela s'est passé, si approprié}}. {{Ce que nous faisons pour le corriger et prévenir la récidive}}. Nous sommes désolés et nous nous engageons à faire mieux.
 
-### Closing Statement
-> Final update on {{issue}}: {{resolution summary}}. {{Preventive measures implemented}}. Thank you for holding us accountable. If you have any remaining concerns, contact {{support}}.
+### Déclaration de clôture
+> Dernière mise à jour sur {{problème}} : {{résumé de la résolution}}. {{Mesures préventives mises en œuvre}}. Merci de nous tenir responsables. Si vous avez des préoccupations restantes, contactez {{support}}.
 
 ---
 
-## Post-Crisis Retrospective (Day 7-14)
+## Rétrospective post-crise (jour 7-14)
 
-### Retrospective Agenda
-1. **Timeline reconstruction** — What happened, minute by minute?
-2. **Detection speed** — How quickly did we identify the crisis?
-3. **Response effectiveness** — Did our messaging land? What was the sentiment shift?
-4. **Process gaps** — Where did the protocol fail or slow us down?
-5. **Tool gaps** — Do we need better monitoring, faster approval workflows?
-6. **Stakeholder feedback** — How did customers, employees, and partners perceive our response?
-7. **Action items** — What changes to prevent recurrence and improve response?
+### Ordre du jour de la rétrospective
+1. **Reconstitution de la chronologie** — Que s'est-il passé, minute par minute ?
+2. **Vitesse de détection** — Avec quelle rapidité avons-nous identifié la crise ?
+3. **Efficacité de la réponse** — Nos messages ont-ils porté ? Quel a été le changement de sentiment ?
+4. **Lacunes de processus** — Où le protocole a-t-il échoué ou ralenti notre réponse ?
+5. **Lacunes d'outils** — Avons-nous besoin d'un meilleur suivi, de workflows d'approbation plus rapides ?
+6. **Retour des parties prenantes** — Comment les clients, employés, et partenaires ont-ils perçu notre réponse ?
+7. **Éléments d'action** — Quels changements pour prévenir la récidive et améliorer la réponse ?
 
-### Metrics to Evaluate
+### Métriques à évaluer
 
-| Metric | Target | Actual |
+| Métrique | Cible | Réel |
 |--------|--------|--------|
-| Time to detection | < 30 min | |
-| Time to first public acknowledgment | < 1 hr (Tier 3), < 4 hr (Tier 2) | |
-| Sentiment recovery (days to baseline) | < 14 days | |
-| Media coverage tone shift | Negative → neutral within 72 hrs | |
-| Customer churn attributable to crisis | < 2% | |
-| Employee sentiment impact | Minimal | |
+| Temps de détection | < 30 min | |
+| Temps jusqu'au premier accusé de réception public | < 1 h (niveau 3), < 4 h (niveau 2) | |
+| Récupération du sentiment (jours jusqu'à la référence) | < 14 jours | |
+| Changement de ton de la couverture médiatique | Négatif → neutre en 72 h | |
+| Churn client attribuable à la crise | < 2 % | |
+| Impact sur le sentiment des employés | Minimal | |
 
 ---
 
-## Pre-Crisis Preparation Checklist
+## Checklist de préparation avant crise
 
-- [ ] Crisis communication plan documented and distributed to all team leads
-- [ ] Crisis team roles assigned with backup contacts for every role
-- [ ] Holding statement templates pre-drafted and pre-approved by legal
-- [ ] Media contact list maintained and updated quarterly
-- [ ] Social media monitoring configured with crisis keyword alerts
-- [ ] Dark site or crisis landing page template ready to deploy
-- [ ] Tabletop crisis simulation conducted at least annually
-- [ ] All spokespeople media-trained within the past 12 months
-- [ ] Customer communication tools tested (mass email, SMS, in-app)
-- [ ] Insurance coverage reviewed (cyber liability, D&O, general liability)
-- [ ] Relationship with external crisis PR firm established (retainer or pre-negotiated terms)
+- [ ] Plan de communication de crise documenté et distribué à tous les responsables d'équipe
+- [ ] Rôles de l'équipe de crise assignés avec des contacts de secours pour chaque rôle
+- [ ] Modèles de déclaration d'attente pré-rédigés et pré-approuvés par le légal
+- [ ] Liste de contacts médias maintenue et mise à jour trimestriellement
+- [ ] Suivi des réseaux sociaux configuré avec des alertes de mots-clés de crise
+- [ ] Modèle de dark site ou de page de crise prêt à déployer
+- [ ] Simulation de crise sur table réalisée au moins annuellement
+- [ ] Tous les porte-parole formés aux médias au cours des 12 derniers mois
+- [ ] Outils de communication client testés (email de masse, SMS, in-app)
+- [ ] Couverture d'assurance revue (responsabilité cyber, D&O, responsabilité générale)
+- [ ] Relation avec une agence RP de crise externe établie (rétention ou conditions pré-négociées)
 
 ---
 
-> **The cardinal rule of crisis communication:** Speed without accuracy is reckless. Accuracy without speed is irrelevant. You need both. Acknowledge fast, investigate thoroughly, communicate transparently.
+> **La règle cardinale de la communication de crise :** La rapidité sans exactitude est imprudente. L'exactitude sans rapidité est inutile. Vous avez besoin des deux. Reconnaître rapidement, enquêter minutieusement, communiquer avec transparence.
+</content>

@@ -1,63 +1,64 @@
 ---
 name: validate-output
-description: "Validate marketing content against a structural schema — required sections, word counts, markdown formatting, placeholder text (TBD, lorem ipsum, unfilled variables), CTA-topic consistency, and SEO structure — returning a pass/fail checklist with fix instructions. Eight built-in schemas plus custom JSON schemas; auto-detects the schema when none is named. Triggers on \"/digital-marketing-pro:validate-output\", \"check this post against the blog schema\", \"is this email structurally ready to ship\", \"scan for leftover placeholders\", \"why does this draft feel incomplete\". Runs output-validator.py and reads brand templates and custom schemas; complements /digital-marketing-pro:eval-content, which judges quality rather than structure."
+description: "Valider le contenu marketing par rapport à un schéma structurel — sections requises, nombre de mots, mise en forme markdown, texte de remplissage (TBD, lorem ipsum, variables non renseignées), cohérence CTA-sujet, et structure SEO — en renvoyant une checklist réussite/échec avec des instructions de correction. Huit schémas intégrés plus des schémas JSON personnalisés ; détecte automatiquement le schéma lorsqu'aucun n'est nommé. Se déclenche sur \"/digital-marketing-pro:validate-output\", \"check this post against the blog schema\", \"is this email structurally ready to ship\", \"scan for leftover placeholders\", \"why does this draft feel incomplete\". Exécute output-validator.py et lit les modèles de marque et schémas personnalisés ; complète /digital-marketing-pro:eval-content, qui juge la qualité plutôt que la structure."
 ---
 
 # /digital-marketing-pro:validate-output
 
-## Purpose
+## Objectif
 
-Validate marketing content against expected structural schemas to ensure completeness, formatting consistency, and production-readiness. Checks required sections, word count ranges, markdown formatting compliance, placeholder text detection (unfilled template variables, lorem ipsum, TBD markers), and content-CTA consistency. Supports eight built-in schemas for common marketing content types plus custom schemas for brand-specific templates.
+Valider le contenu marketing par rapport aux schémas structurels attendus pour garantir l'exhaustivité, la cohérence de mise en forme, et la préparation à la production. Vérifie les sections requises, les plages de nombre de mots, la conformité de mise en forme markdown, la détection de texte de remplissage (variables de modèle non renseignées, lorem ipsum, marqueurs TBD), et la cohérence contenu-CTA. Prend en charge huit schémas intégrés pour les types de contenu marketing courants, ainsi que des schémas personnalisés pour les modèles propres à la marque.
 
-This command catches the structural and formatting issues that quality evaluation misses — the missing H2 that breaks SEO, the placeholder "[INSERT COMPANY NAME]" that slipped through, the blog post that is 300 words short of the brief requirement, or the email that has a CTA promising a demo but the body talks about a whitepaper. It is designed to be run as a final pre-publication check after content quality has been evaluated via /digital-marketing-pro:eval-content.
+Cette commande détecte les problèmes structurels et de mise en forme que l'évaluation de qualité ne voit pas — le H2 manquant qui casse le SEO, le placeholder « [INSÉRER LE NOM DE L'ENTREPRISE] » qui est passé inaperçu, l'article de blog qui manque 300 mots par rapport à l'exigence du brief, ou l'e-mail dont le CTA promet une démo alors que le corps parle d'un livre blanc. Elle est conçue pour être exécutée comme un contrôle final avant publication, après que la qualité du contenu a été évaluée via /digital-marketing-pro:eval-content.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Content to validate**: The text to check — provided inline, as a pasted block, or as a file path. Supports any marketing content format
-- **Schema name or file** (optional): One of the eight built-in schemas — `blog_post`, `email`, `ad_copy`, `social_post`, `landing_page`, `press_release`, `content_brief`, `campaign_plan` — or a file path to a custom JSON schema. If omitted, the validator auto-detects the most likely schema based on content structure, length, and formatting patterns. Custom schemas follow the format defined in `skills/context-engine/eval-framework-guide.md`
+- **Contenu à valider** : le texte à vérifier — fourni en ligne, en tant que bloc collé, ou en tant que chemin de fichier. Prend en charge tout format de contenu marketing
+- **Nom ou fichier de schéma** (optionnel) : l'un des huit schémas intégrés — `blog_post`, `email`, `ad_copy`, `social_post`, `landing_page`, `press_release`, `content_brief`, `campaign_plan` — ou un chemin de fichier vers un schéma JSON personnalisé. Si omis, le validateur détecte automatiquement le schéma le plus probable en fonction de la structure du contenu, de la longueur, et des schémas de mise en forme. Les schémas personnalisés suivent le format défini dans `skills/context-engine/eval-framework-guide.md`
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand formatting standards and content requirements. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load template definitions from `templates/` that may define brand-specific required sections, word count ranges, and formatting rules. Check for custom schemas at `~/.claude-marketing/brands/{slug}/schemas/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Determine schema**: If a schema name or file was provided, use it directly. If not, execute `scripts/output-validator.py --action list-schemas` to get all available schemas, then select the most appropriate one based on content characteristics (length, structure, formatting patterns). Report which schema was selected and why, so the user can override if the selection was wrong.
-3. **Run structural validation**: Execute `scripts/output-validator.py --action validate --text "{content}" --schema {builtin_schema_name}` for one of the eight built-in schemas, or `--custom-schema {path/to/schema.json}` for a custom schema file (the two flags are distinct — `--schema` takes a built-in name only, `--custom-schema` takes a file path). The validator checks:
-   - **Required sections**: All sections defined in the schema are present with appropriate headings. For each missing section, identify what is expected and where it should appear in the content structure
-   - **Word count**: Total word count and per-section word counts fall within the schema-defined ranges. Flag both under-count (too thin, lacking depth) and over-count (too long, needs trimming)
-   - **Formatting compliance**: Markdown heading hierarchy is correct (no skipped levels), lists are properly formatted, links are valid syntax, images have alt text, code blocks are closed, and tables render correctly
-   - **Placeholder detection**: Scan for unfilled template variables (`{placeholder}`, `[PLACEHOLDER]`, `[INSERT X]`, `TODO`, `TBD`, `FIXME`, `Lorem ipsum`, `xxx`, `ACME Corp` used as placeholder), partial completions, and obviously templated content that was not customized
-   - **CTA consistency**: The call-to-action matches the content's topic and promise — a blog post about email marketing should not CTA to a social media guide, an email promoting a webinar should link to the webinar registration, not a generic contact page
-   - **SEO structure** (for blog_post and landing_page schemas): H1 present and singular, meta description length within 150-160 characters, title tag within 50-60 characters, internal link present, keyword appears in H1 and first 100 words
-   - **Compliance markers** (for regulated industries): Required disclaimers present, mandatory disclosures included, terms and conditions referenced where needed
-4. **Generate fix guidance**: For each failed check, provide specific guidance:
-   - What is missing or incorrect, with the exact location in the content
-   - What the schema requires (the rule being enforced)
-   - How to fix it, with an example of what the corrected section should look like
-   - Whether the fix is required (schema mandates it) or recommended (best practice)
-5. **Handle custom schema requests**: If the user needs a schema that does not match any built-in option, guide them on the JSON schema format:
-   - Required fields: `name`, `sections` (array of section definitions with name, required flag, min/max word count), `total_word_count` (min/max), `formatting_rules`, `placeholder_patterns`
-   - Offer to generate a starter schema based on the content's current structure that the user can refine
-6. **Present checklist-style results**: Format all validation results as a pass/fail checklist that the user can work through sequentially, with the most critical failures first.
+1. **Charger le contexte de marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer les standards de mise en forme et les exigences de contenu de la marque. Vérifier aussi la présence de guidelines dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les définitions de modèles depuis `templates/` qui peuvent définir des sections requises, des plages de nombre de mots, et des règles de mise en forme propres à la marque. Vérifier la présence de schémas personnalisés dans `~/.claude-marketing/brands/{slug}/schemas/`. Vérifier la présence de SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Déterminer le schéma** : si un nom ou fichier de schéma a été fourni, l'utiliser directement. Sinon, exécuter `scripts/output-validator.py --action list-schemas` pour obtenir tous les schémas disponibles, puis sélectionner le plus approprié en fonction des caractéristiques du contenu (longueur, structure, schémas de mise en forme). Indiquer quel schéma a été sélectionné et pourquoi, afin que l'utilisateur puisse corriger si la sélection était erronée.
+3. **Exécuter la validation structurelle** : exécuter `scripts/output-validator.py --action validate --text "{content}" --schema {builtin_schema_name}` pour l'un des huit schémas intégrés, ou `--custom-schema {path/to/schema.json}` pour un fichier de schéma personnalisé (les deux indicateurs sont distincts — `--schema` ne prend qu'un nom intégré, `--custom-schema` prend un chemin de fichier). Le validateur vérifie :
+   - **Sections requises** : toutes les sections définies dans le schéma sont présentes avec des titres appropriés. Pour chaque section manquante, identifier ce qui est attendu et où elle devrait apparaître dans la structure du contenu
+   - **Nombre de mots** : le nombre de mots total et par section se situe dans les plages définies par le schéma. Signaler à la fois le nombre insuffisant (trop léger, manque de profondeur) et le nombre excessif (trop long, nécessite un raccourcissement)
+   - **Conformité de mise en forme** : la hiérarchie des titres markdown est correcte (aucun niveau sauté), les listes sont correctement formatées, les liens ont une syntaxe valide, les images ont un texte alt, les blocs de code sont fermés, et les tableaux se rendent correctement
+   - **Détection de placeholders** : scanner à la recherche de variables de modèle non renseignées (`{placeholder}`, `[PLACEHOLDER]`, `[INSÉRER X]`, `TODO`, `TBD`, `FIXME`, `Lorem ipsum`, `xxx`, « ACME Corp » utilisé comme placeholder), de complétions partielles, et de contenu manifestement issu d'un modèle qui n'a pas été personnalisé
+   - **Cohérence du CTA** : l'appel à l'action correspond au sujet et à la promesse du contenu — un article de blog sur l'email marketing ne devrait pas avoir un CTA vers un guide de réseaux sociaux, un e-mail promouvant un webinaire devrait renvoyer vers l'inscription au webinaire, pas vers une page de contact générique
+   - **Structure SEO** (pour les schémas blog_post et landing_page) : H1 présent et unique, longueur de meta description entre 150 et 160 caractères, balise title entre 50 et 60 caractères, lien interne présent, le mot-clé apparaît dans le H1 et les 100 premiers mots
+   - **Marqueurs de conformité** (pour les secteurs réglementés) : mentions légales requises présentes, divulgations obligatoires incluses, conditions générales référencées où nécessaire
+4. **Générer des conseils de correction** : pour chaque contrôle en échec, fournir des conseils précis :
+   - Ce qui manque ou est incorrect, avec l'emplacement exact dans le contenu
+   - Ce que le schéma exige (la règle appliquée)
+   - Comment le corriger, avec un exemple de ce à quoi devrait ressembler la section corrigée
+   - Si le correctif est requis (le schéma l'impose) ou recommandé (bonne pratique)
+5. **Gérer les demandes de schéma personnalisé** : si l'utilisateur a besoin d'un schéma qui ne correspond à aucune option intégrée, le guider sur le format de schéma JSON :
+   - Champs requis : `name`, `sections` (tableau de définitions de section avec nom, indicateur requis, nombre de mots min/max), `total_word_count` (min/max), `formatting_rules`, `placeholder_patterns`
+   - Proposer de générer un schéma de départ basé sur la structure actuelle du contenu que l'utilisateur pourra affiner
+6. **Présenter les résultats sous forme de checklist** : formater tous les résultats de validation comme une checklist réussite/échec que l'utilisateur peut parcourir séquentiellement, avec les échecs les plus critiques en premier.
 
-## Output
+## Sortie
 
-A structured validation report containing:
+Un rapport de validation structuré contenant :
 
-- **Validation score**: Percentage of checks passed out of total checks run — the headline metric for structural completeness
-- **Schema used**: Which schema was applied (built-in name or custom file path), whether it was user-specified or auto-detected, and the detection confidence if auto-detected
-- **Pass/fail checklist**: Each check as a line item with pass or fail status:
-  - **Sections check**: List of required sections with present/missing status. For each missing section, the expected heading, where it should appear, and an example of what it should contain
-  - **Word count check**: Total word count versus schema range, plus per-section counts for any sections outside their expected range. Shows the delta (e.g., "247 words short of the 1,500 minimum")
-  - **Formatting check**: Heading hierarchy validation, list formatting, link syntax, image alt text, code block closure, table rendering. Each issue with its location and the specific formatting rule violated
-  - **Placeholder check**: Every detected placeholder instance with the exact text, line location, and suggested action (replace with real content, remove, or confirm if intentional). Grouped by type: template variables, lorem ipsum, TBD/TODO markers, obvious placeholder names
-  - **CTA consistency check**: Whether the CTA aligns with the content topic and promise. If misaligned, the specific inconsistency and a suggested correction
-  - **SEO structure check** (if applicable): H1 presence and uniqueness, meta description length, title tag length, keyword placement, internal linking
-  - **Compliance check** (if applicable): Required disclaimers, disclosures, and legal references
-- **Fix checklist**: Priority-ordered list of all failures with specific fix instructions — required fixes first, then recommended improvements, each with example corrected text
-- **Placeholder inventory**: Complete list of all detected placeholders across the content, deduplicated, so the user has a single reference for everything that needs to be filled in
-- **Schema reference**: If the user may need it, a summary of the schema rules that were applied — useful for writers to understand the structural requirements before starting their next piece
+- **Score de validation** : pourcentage de contrôles réussis sur le total de contrôles exécutés — la métrique phare de l'exhaustivité structurelle
+- **Schéma utilisé** : quel schéma a été appliqué (nom intégré ou chemin de fichier personnalisé), s'il a été spécifié par l'utilisateur ou détecté automatiquement, et la confiance de détection si détecté automatiquement
+- **Checklist réussite/échec** : chaque contrôle comme une ligne avec un statut réussite ou échec :
+  - **Contrôle des sections** : liste des sections requises avec statut présent/manquant. Pour chaque section manquante, le titre attendu, où elle devrait apparaître, et un exemple de ce qu'elle devrait contenir
+  - **Contrôle du nombre de mots** : nombre de mots total par rapport à la plage du schéma, plus les décomptes par section pour toute section hors de sa plage attendue. Montre l'écart (par ex. « 247 mots en dessous du minimum de 1 500 »)
+  - **Contrôle de mise en forme** : validation de la hiérarchie des titres, mise en forme des listes, syntaxe des liens, texte alt des images, fermeture des blocs de code, rendu des tableaux. Chaque problème avec son emplacement et la règle de mise en forme spécifique enfreinte
+  - **Contrôle des placeholders** : chaque instance de placeholder détectée avec le texte exact, l'emplacement de ligne, et l'action suggérée (remplacer par du contenu réel, supprimer, ou confirmer si intentionnel). Regroupé par type : variables de modèle, lorem ipsum, marqueurs TBD/TODO, noms de placeholder évidents
+  - **Contrôle de cohérence du CTA** : si le CTA s'aligne avec le sujet et la promesse du contenu. En cas de désalignement, l'incohérence spécifique et une correction suggérée
+  - **Contrôle de structure SEO** (le cas échéant) : présence et unicité du H1, longueur de la meta description, longueur de la balise title, placement des mots-clés, maillage interne
+  - **Contrôle de conformité** (le cas échéant) : mentions légales requises, divulgations, et références légales
+- **Checklist de correction** : liste ordonnée par priorité de tous les échecs avec des instructions de correction précises — correctifs requis en premier, puis améliorations recommandées, chacun avec un exemple de texte corrigé
+- **Inventaire des placeholders** : liste complète de tous les placeholders détectés dans le contenu, dédupliquée, afin que l'utilisateur dispose d'une référence unique pour tout ce qui doit être renseigné
+- **Référence de schéma** : si l'utilisateur peut en avoir besoin, un résumé des règles de schéma appliquées — utile pour que les rédacteurs comprennent les exigences structurelles avant de commencer leur prochaine pièce
 
-## Agents Used
+## Agents utilisés
 
-- **quality-assurance** — Schema selection and auto-detection, structural validation execution across all check dimensions (sections, word count, formatting, placeholders, CTA consistency, SEO structure, compliance markers), fix guidance generation with specific examples, checklist formatting, and custom schema creation guidance
+- **quality-assurance** — sélection et détection automatique du schéma, exécution de la validation structurelle sur toutes les dimensions de contrôle (sections, nombre de mots, mise en forme, placeholders, cohérence du CTA, structure SEO, marqueurs de conformité), génération de conseils de correction avec des exemples précis, mise en forme de checklist, et conseils de création de schéma personnalisé
+</content>

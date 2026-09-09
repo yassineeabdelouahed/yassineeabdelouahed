@@ -1,86 +1,87 @@
 ---
 name: rank-monitor
-description: "Set up and run keyword ranking monitoring — baseline capture, scheduled position checks against GSC and connected rank-tracker MCPs, and severity-tiered alerts (minor/major/critical) on drops; --features adds a query-by-SERP-feature ownership matrix including AI Overview citation presence. Triggers on \"/digital-marketing-pro:rank-monitor\", \"track our keyword rankings\", \"why did our rankings drop\", \"alert me when positions change\", \"are we in the AI Overview for this query\". Reads the brand profile and saved keyword lists; for scored AI visibility pair with /digital-marketing-pro:geo-monitor, and for snapshot comparison /digital-marketing-pro:seo-drift."
+description: "Mettre en place et exécuter le suivi du positionnement des mots-clés — capture de référence, contrôles de position planifiés via GSC et les MCP de suivi de classement connectés, et alertes à sévérité graduée (mineure/majeure/critique) en cas de baisse ; --features ajoute une matrice de propriété des requêtes par fonctionnalité SERP incluant la présence de citation dans l'AI Overview. Se déclenche sur \"/digital-marketing-pro:rank-monitor\", \"track our keyword rankings\", \"why did our rankings drop\", \"alert me when positions change\", \"are we in the AI Overview for this query\". Lit le profil de marque et les listes de mots-clés enregistrées ; pour une visibilité IA notée, associez /digital-marketing-pro:geo-monitor, et pour une comparaison d'instantanés /digital-marketing-pro:seo-drift."
 argument-hint: "[brand-name] [--features]"
 ---
 
 # /digital-marketing-pro:rank-monitor
 
-## Purpose
+## Objectif
 
-Set up and manage keyword ranking monitoring — and, with `--features`, SERP-feature tracking in the same run. Track target keyword positions across Google, establish baselines, detect drops greater than 5 positions, and generate alerts when rankings change significantly. In `--features` mode, also track which SERP features appear for each query (AI Overviews, Featured Snippets, People Also Ask, Knowledge Panels, Local Pack, Image Pack, Video Carousel, Shopping) and whether the brand owns them. This gives ongoing visibility into organic performance — catching ranking declines early, spotting upward trends, and tracking the increasingly feature-rich results page.
+Mettre en place et gérer le suivi du positionnement des mots-clés — et, avec `--features`, le suivi des fonctionnalités SERP dans la même exécution. Suivre les positions des mots-clés cibles sur Google, établir des références, détecter les baisses de plus de 5 positions et générer des alertes lorsque les classements changent de manière significative. En mode `--features`, suivre également quelles fonctionnalités SERP apparaissent pour chaque requête (AI Overviews, Featured Snippets, People Also Ask, Knowledge Panels, Local Pack, Image Pack, Video Carousel, Shopping) et si la marque les possède. Cela donne une visibilité continue sur la performance organique — en repérant tôt les baisses de classement, en identifiant les tendances à la hausse et en suivant une page de résultats de plus en plus riche en fonctionnalités.
 
-> **Merged skill (was `rank-monitor` + `serp-tracker`).** SERP-feature tracking is now the `--features` mode of this one skill. The old `/digital-marketing-pro:serp-tracker` is a deprecation pointer to here.
+> **Compétence fusionnée (anciennement `rank-monitor` + `serp-tracker`).** Le suivi des fonctionnalités SERP est désormais le mode `--features` de cette compétence unique. L'ancien `/digital-marketing-pro:serp-tracker` est un pointeur de dépréciation vers celle-ci.
 
-### Data sources (read this before configuring)
+### Sources de données (à lire avant la configuration)
 
-- **Google Search Console MCP** is the authoritative position + impressions source for verified properties. GSC returns per-query/per-page positions, impressions, clicks, and CTR — it does **not** return the full per-query SERP-feature layout or AI Overview citation lists. Do not claim otherwise.
-- **Rank-tracker MCPs** (Ahrefs / Semrush / SE Ranking, if connected) fill in positions for keywords/competitors GSC can't see and provide their own SERP-feature flags.
-- **Moz MCP** (`mcp-moz`) is **optional** — verify the package exists on npm before use (`npm view mcp-moz`); `npx` executes remote code, so don't wire an unverified package. If Moz isn't connected, use GSC + whichever rank-tracker MCP the brand already has.
-- **AI Overview presence** in `--features` mode records only *whether* an AI Overview appeared and *whether the brand was cited in it* (a binary SERP-feature signal). For scored AI-visibility measurement across the 6 canonical AI surfaces, use `/digital-marketing-pro:geo-monitor` / `/digital-marketing-pro:aeo-audit` (the canonical AI-visibility scoring standard) and, for actual impressions, `/digital-marketing-pro:gsc-ai-performance`. Do not re-implement AI-visibility scoring here.
+- **Le MCP Google Search Console** est la source de position + impressions faisant autorité pour les propriétés vérifiées. GSC renvoie les positions, impressions, clics et CTR par requête/page — il ne renvoie **pas** la disposition complète des fonctionnalités SERP par requête ni les listes de citations AI Overview. Ne pas affirmer le contraire.
+- **Les MCP de suivi de classement** (Ahrefs / Semrush / SE Ranking, si connectés) complètent les positions pour les mots-clés/concurrents que GSC ne peut pas voir et fournissent leurs propres indicateurs de fonctionnalités SERP.
+- **Le MCP Moz** (`mcp-moz`) est **optionnel** — vérifiez que le package existe sur npm avant utilisation (`npm view mcp-moz`) ; `npx` exécute du code distant, donc ne branchez pas un package non vérifié. Si Moz n'est pas connecté, utilisez GSC + le MCP de suivi de classement déjà disponible pour la marque.
+- **La présence d'AI Overview** en mode `--features` n'enregistre que *si* un AI Overview est apparu et *si la marque y a été citée* (un signal binaire de fonctionnalité SERP). Pour une mesure notée de la visibilité IA sur les 6 surfaces IA canoniques, utilisez `/digital-marketing-pro:geo-monitor` / `/digital-marketing-pro:aeo-audit` (le standard de notation de visibilité IA de référence) et, pour les impressions réelles, `/digital-marketing-pro:gsc-ai-performance`. Ne réimplémentez pas la notation de visibilité IA ici.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se voir demander) :
 
-- **Target keywords**: A list of keywords to monitor — provided directly, imported from a CSV or Google Sheet, or pulled from the brand's existing keyword tracking list at `${CLAUDE_PLUGIN_DATA}/{brand}/seo/keywords.json`. Keywords should include search intent classification (informational, navigational, transactional, commercial) if available
-- **Mode**: default is rankings-only. Pass `--features` to also build the SERP-feature presence matrix per query in the same run
-- **Monitoring frequency**: `daily` or `weekly` — daily for high-priority head terms and active-campaign keywords (and volatile feature sets), weekly for long-tail and lower-priority terms
-- **Alert thresholds**: Position change that triggers an alert — default is >5 position drop. Customizable per keyword group (e.g., >3 for brand terms, >5 for head terms, >10 for long-tail). Both drop and gain thresholds are supported
-- **Competitor domains (optional)**: Domains to track alongside the brand for the same keywords / features — up to 10
-- **Device type**: `mobile`, `desktop`, or `both`
-- **Target country**: The Google locale to check rankings in — e.g., US, UK, AU, CA, IN
+- **Mots-clés cibles** : Une liste de mots-clés à suivre — fournie directement, importée depuis un CSV ou une Google Sheet, ou récupérée depuis la liste de suivi de mots-clés existante de la marque à `${CLAUDE_PLUGIN_DATA}/{brand}/seo/keywords.json`. Les mots-clés doivent inclure une classification de l'intention de recherche (informationnelle, navigationnelle, transactionnelle, commerciale) si disponible
+- **Mode** : le mode par défaut est classements uniquement. Passez `--features` pour construire également la matrice de présence des fonctionnalités SERP par requête dans la même exécution
+- **Fréquence de suivi** : `daily` (quotidien) ou `weekly` (hebdomadaire) — quotidien pour les termes de tête prioritaires et les mots-clés de campagnes actives (ainsi que les ensembles de fonctionnalités volatils), hebdomadaire pour la longue traîne et les termes de priorité moindre
+- **Seuils d'alerte** : le changement de position qui déclenche une alerte — la valeur par défaut est une baisse de plus de 5 positions. Personnalisable par groupe de mots-clés (par ex. >3 pour les termes de marque, >5 pour les termes de tête, >10 pour la longue traîne). Les seuils de baisse et de gain sont tous deux pris en charge
+- **Domaines concurrents (optionnel)** : Domaines à suivre en parallèle de la marque pour les mêmes mots-clés / fonctionnalités — jusqu'à 10
+- **Type d'appareil** : `mobile`, `desktop`, ou `both`
+- **Pays cible** : la locale Google dans laquelle vérifier les classements — par ex. US, UK, AU, CA, IN
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Capture current rankings baseline**: Query the connected rank sources (GSC MCP, plus any rank-tracker / Moz MCP available) for the current ranking position of each target keyword. Record position, ranking URL, click-through rate and impressions from GSC where available. In `--features` mode, also record which SERP features are present for the query (from the rank-tracker's feature flags or manual observation) and the owning domain per feature. For competitor domains, capture their positions (and feature ownership) for the same keywords.
-3. **Configure monitoring schedule**: Save the keyword list, mode (`rankings` or `rankings+features`), monitoring frequency, alert thresholds, competitor domains, device type, and target country to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/rank-monitor/config.json`. Create or update the baseline snapshot at `${CLAUDE_PLUGIN_DATA}/{brand}/seo/rank-monitor/baseline.json` with the current positions (and, in `--features` mode, the feature matrix) as the reference point.
-4. **On each monitoring check: query and compare**: Pull current positions for all tracked keywords. Compare each keyword's current position to both the baseline (original position when monitoring started) and the previous check (last recorded position). Calculate absolute change from baseline, change since last check, rolling 7-day and 30-day trend direction, and average position across all tracked keywords. In `--features` mode, diff the feature matrix against the previous snapshot (features gained/lost, ownership changes, AI Overview appearance/citation changes).
-5. **Detect significant changes**: Identify keywords that crossed alert thresholds — drops exceeding the configured position threshold, keywords that fell from page 1 (positions 1-10) to page 2 or beyond, keywords that gained >5 positions (potential quick wins), and (in `--features` mode) new SERP-feature appearances or losses for the brand's ranking URLs, plus competitor rank/feature changes that moved them above or below the brand.
-6. **Generate alert if thresholds are breached**: Categorize alerts by severity — `minor` for 3-5 position drops (monitor), `major` for 5-10 position drops (investigate content freshness, technical issues, or competitor activity), `critical` for >10 position drops or page 1 → page 2 transitions (immediate investigation — check for algorithm updates, manual actions, technical errors, or content cannibalization). In `--features` mode, treat a lost owned Featured Snippet or a lost AI Overview citation as at least `major`. Include recommended next steps for each severity level.
+1. **Charger le contexte de la marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. Vérifier également les guidelines à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions. Vérifier les SOP d'agence à `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Capturer la référence de classement actuelle** : Interroger les sources de classement connectées (MCP GSC, plus tout MCP de suivi de classement / Moz disponible) pour la position de classement actuelle de chaque mot-clé cible. Enregistrer la position, l'URL classée, le taux de clics et les impressions depuis GSC lorsque disponible. En mode `--features`, enregistrer également quelles fonctionnalités SERP sont présentes pour la requête (à partir des indicateurs de fonctionnalités du suivi de classement ou d'une observation manuelle) et le domaine propriétaire par fonctionnalité. Pour les domaines concurrents, capturer leurs positions (et la propriété des fonctionnalités) pour les mêmes mots-clés.
+3. **Configurer le planning de suivi** : Enregistrer la liste de mots-clés, le mode (`rankings` ou `rankings+features`), la fréquence de suivi, les seuils d'alerte, les domaines concurrents, le type d'appareil et le pays cible dans `${CLAUDE_PLUGIN_DATA}/{brand}/seo/rank-monitor/config.json`. Créer ou mettre à jour l'instantané de référence à `${CLAUDE_PLUGIN_DATA}/{brand}/seo/rank-monitor/baseline.json` avec les positions actuelles (et, en mode `--features`, la matrice de fonctionnalités) comme point de référence.
+4. **À chaque contrôle de suivi : interroger et comparer** : Récupérer les positions actuelles de tous les mots-clés suivis. Comparer la position actuelle de chaque mot-clé à la fois à la référence (position d'origine au démarrage du suivi) et au contrôle précédent (dernière position enregistrée). Calculer le changement absolu par rapport à la référence, le changement depuis le dernier contrôle, la tendance glissante sur 7 et 30 jours, et la position moyenne sur tous les mots-clés suivis. En mode `--features`, comparer la matrice de fonctionnalités à l'instantané précédent (fonctionnalités gagnées/perdues, changements de propriété, apparition/changement de citation de l'AI Overview).
+5. **Détecter les changements significatifs** : Identifier les mots-clés ayant franchi les seuils d'alerte — baisses dépassant le seuil de position configuré, mots-clés passés de la page 1 (positions 1-10) à la page 2 ou au-delà, mots-clés ayant gagné plus de 5 positions (gains rapides potentiels), et (en mode `--features`) nouvelles apparitions ou pertes de fonctionnalités SERP pour les URL de classement de la marque, ainsi que les changements de classement/fonctionnalités des concurrents qui les ont fait passer devant ou derrière la marque.
+6. **Générer une alerte si les seuils sont franchis** : Catégoriser les alertes par sévérité — `minor` (mineure) pour des baisses de 3 à 5 positions (à surveiller), `major` (majeure) pour des baisses de 5 à 10 positions (enquêter sur la fraîcheur du contenu, des problèmes techniques ou l'activité concurrentielle), `critical` (critique) pour des baisses de plus de 10 positions ou des transitions page 1 → page 2 (enquête immédiate — vérifier les mises à jour d'algorithme, les actions manuelles, les erreurs techniques ou la cannibalisation de contenu). En mode `--features`, traiter la perte d'un Featured Snippet détenu ou d'une citation AI Overview comme au moins `major`. Inclure les prochaines étapes recommandées pour chaque niveau de sévérité.
 
-## SERP-feature tracking (`--features` mode)
+## Suivi des fonctionnalités SERP (mode `--features`)
 
-When `--features` is set, the run also builds a query-by-feature matrix. Tracked features and how to read them:
+Lorsque `--features` est activé, l'exécution construit également une matrice requête par fonctionnalité. Fonctionnalités suivies et comment les interpréter :
 
-| Feature | What "owned" means | Optimization signal |
+| Fonctionnalité | Ce que « possédée » signifie | Signal d'optimisation |
 |---|---|---|
-| **AI Overview** | An AI Overview appeared AND the brand's URL is one of its cited sources | Binary citation-presence signal only. For scored AI visibility use `/digital-marketing-pro:geo-monitor` |
-| **Featured Snippet** | Brand holds position 0 for the query | Format for extraction: paragraph (40-60 words), list (5-8 items), or table |
-| **People Also Ask** | A brand URL answers a PAA question for the query | Target PAA questions with FAQ-style H2/H3 content |
-| **Knowledge Panel** | Panel shows for the brand entity | Strengthen entity signals (Wikidata, GBP, structured data) — see `/digital-marketing-pro:entity-audit` |
-| **Local Pack** | Brand appears in the map 3-pack | GBP optimization + local schema — see `/digital-marketing-pro:local-seo` |
-| **Image / Video Carousel** | Brand asset appears in the carousel | Optimize alt text / filenames (images) or titles, descriptions, transcripts (video) |
-| **Shopping / Sitelinks** | Brand listing present | Product schema / site structure |
+| **AI Overview** | Un AI Overview est apparu ET l'URL de la marque figure parmi ses sources citées | Signal binaire de présence de citation uniquement. Pour une visibilité IA notée, utiliser `/digital-marketing-pro:geo-monitor` |
+| **Featured Snippet** | La marque occupe la position 0 pour la requête | Format d'extraction : paragraphe (40-60 mots), liste (5-8 éléments), ou tableau |
+| **People Also Ask** | Une URL de la marque répond à une question PAA pour la requête | Cibler les questions PAA avec un contenu H2/H3 de type FAQ |
+| **Knowledge Panel** | Le panneau s'affiche pour l'entité de la marque | Renforcer les signaux d'entité (Wikidata, GBP, données structurées) — voir `/digital-marketing-pro:entity-audit` |
+| **Local Pack** | La marque apparaît dans le pack de cartes à 3 résultats | Optimisation GBP + schéma local — voir `/digital-marketing-pro:local-seo` |
+| **Image / Video Carousel** | Un actif de la marque apparaît dans le carrousel | Optimiser le texte alternatif / les noms de fichiers (images) ou les titres, descriptions, transcriptions (vidéo) |
+| **Shopping / Sitelinks** | Une fiche de la marque est présente | Schéma produit / structure du site |
 
-Feature opportunities are scored by achievability (how close the brand is to winning the feature given current position and content format) × traffic impact (estimated CTR impact given query volume and feature prominence).
+Les opportunités de fonctionnalités sont notées par atteignabilité (à quel point la marque est proche de remporter la fonctionnalité compte tenu de la position actuelle et du format de contenu) × impact sur le trafic (impact estimé sur le CTR compte tenu du volume de recherche et de la visibilité de la fonctionnalité).
 
-## Output
+## Résultat
 
-A structured ranking (and, in `--features` mode, SERP-feature) report containing:
+Un rapport de classement structuré (et, en mode `--features`, de fonctionnalités SERP) contenant :
 
-- **Ranking snapshot**: Current positions for all tracked keywords — position, ranking URL, device, country, date, comparison to baseline and previous check with directional indicators (up, down, stable)
-- **Change report**: Position changes since baseline and since last check — sorted by largest drops first, with 7-day and 30-day trend sparklines
-- **Alert summary**: Keywords needing attention — grouped by severity (critical, major, minor) with specific position changes, affected URLs, and recommended investigation steps
-- **SERP-feature matrix** *(--features)*: Query-by-feature grid showing which features appear, who owns them (brand, competitor, or other), and change since last snapshot — including AI Overview appearance + brand-citation status
-- **Feature opportunity list** *(--features)*: Ranked unowned features the brand could realistically target, with specific content/schema recommendations
-- **Competitor comparison**: Relative position (and feature-ownership) changes for tracked competitor domains — who gained, who lost, head-to-head per keyword, and competitive gap trends over time
+- **Instantané de classement** : Positions actuelles de tous les mots-clés suivis — position, URL classée, appareil, pays, date, comparaison à la référence et au contrôle précédent avec des indicateurs directionnels (hausse, baisse, stable)
+- **Rapport de changement** : Changements de position depuis la référence et depuis le dernier contrôle — triés par les plus grandes baisses en premier, avec des mini-graphiques de tendance sur 7 et 30 jours
+- **Résumé des alertes** : Mots-clés nécessitant une attention — regroupés par sévérité (critique, majeure, mineure) avec les changements de position spécifiques, les URL concernées et les étapes d'investigation recommandées
+- **Matrice de fonctionnalités SERP** *(--features)* : Grille requête par fonctionnalité montrant quelles fonctionnalités apparaissent, qui les possède (marque, concurrent, ou autre), et le changement depuis le dernier instantané — y compris l'apparition d'AI Overview + le statut de citation de la marque
+- **Liste d'opportunités de fonctionnalités** *(--features)* : Fonctionnalités non détenues classées par ordre de priorité que la marque pourrait raisonnablement cibler, avec des recommandations spécifiques de contenu/schéma
+- **Comparaison concurrentielle** : Changements de position relative (et de propriété des fonctionnalités) pour les domaines concurrents suivis — qui a gagné, qui a perdu, face-à-face par mot-clé, et tendances de l'écart concurrentiel dans le temps
 
-## Tips & caveats
+## Conseils et mises en garde
 
-- **GSC has no AI Overview citation export.** The `--features` AI Overview signal is observational (did an AIO appear, is the brand cited). Reconcile true AI impressions via `/digital-marketing-pro:gsc-ai-performance` and scored AI visibility via `/digital-marketing-pro:geo-monitor`.
-- **Position deltas are noisier than click/impression deltas** — a keyword bouncing between positions 8 and 12 produces big percentage swings that mean little. Trust impression/click moves more for diagnosis.
-- **GSC data lags ~3 days.** When pulling "current" data, end the window 3 days ago.
-- **Don't over-track.** 50-150 high-value keywords tracked well beats 2,000 tracked as noise.
+- **GSC n'a pas d'export de citation AI Overview.** Le signal AI Overview du mode `--features` est observationnel (un AIO est-il apparu, la marque y est-elle citée). Réconciliez les véritables impressions IA via `/digital-marketing-pro:gsc-ai-performance` et la visibilité IA notée via `/digital-marketing-pro:geo-monitor`.
+- **Les variations de position sont plus bruyantes que les variations de clics/impressions** — un mot-clé oscillant entre les positions 8 et 12 produit de fortes variations en pourcentage qui ne signifient pas grand-chose. Faites davantage confiance aux mouvements d'impressions/clics pour le diagnostic.
+- **Les données GSC ont environ 3 jours de retard.** Lors de la récupération des données « actuelles », terminez la fenêtre 3 jours avant aujourd'hui.
+- **Ne suivez pas trop.** 50 à 150 mots-clés à forte valeur bien suivis valent mieux que 2 000 suivis comme du bruit.
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — Keyword ranking and SERP-feature analysis, feature-ownership attribution, ranking-change diagnosis (algorithm update vs. technical issue vs. competitive displacement vs. content decay), baseline establishment and trend calculation, and recommended actions per severity level
-- **performance-monitor-agent** — Alert generation with severity classification, monitoring-schedule management, threshold-breach detection with rolling-window comparison, trend tracking with 7-day and 30-day directional analysis, and notification formatting
+- **seo-specialist** — Analyse du classement des mots-clés et des fonctionnalités SERP, attribution de la propriété des fonctionnalités, diagnostic des changements de classement (mise à jour d'algorithme vs problème technique vs déplacement concurrentiel vs déclin du contenu), établissement de la référence et calcul des tendances, et actions recommandées par niveau de sévérité
+- **performance-monitor-agent** — Génération d'alertes avec classification de sévérité, gestion du planning de suivi, détection de franchissement de seuil avec comparaison sur fenêtre glissante, suivi des tendances avec analyse directionnelle sur 7 et 30 jours, et mise en forme des notifications
 
-## See also
+## Voir aussi
 
-- `/digital-marketing-pro:geo-monitor` — scored AI visibility across the 6 canonical AI surfaces (the AI-visibility scoring standard)
-- `/digital-marketing-pro:gsc-ai-performance` — actual AI Overview / AI Mode impressions from GSC
-- `/digital-marketing-pro:seo-drift` — compare two ranking snapshots and surface top movers
+- `/digital-marketing-pro:geo-monitor` — visibilité IA notée sur les 6 surfaces IA canoniques (le standard de notation de visibilité IA)
+- `/digital-marketing-pro:gsc-ai-performance` — impressions réelles d'AI Overview / AI Mode depuis GSC
+- `/digital-marketing-pro:seo-drift` — comparer deux instantanés de classement et faire ressortir les plus gros mouvements
+</content>

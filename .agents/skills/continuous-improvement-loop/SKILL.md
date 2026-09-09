@@ -1,6 +1,6 @@
 ---
 name: continuous-improvement-loop
-description: "Run Part 12 of the engagement methodology — the continuous improvement loop that aggregates quarterly-review, customer-feedback, competitive, and operating signals into a Quarterly Product & Offering Improvement Brief for business leadership, plus fast 1-3 page ad-hoc briefs when a significant signal lands mid-quarter. Triggers on \"/digital-marketing-pro:continuous-improvement-loop\", \"run part 12\", \"produce the quarterly improvement brief\", \"aggregate this quarter's signals\", \"we need a fast read on this competitor move\". Flags v2.x update-back triggers but never auto-executes them. Reads monthly reports, signals.jsonl, /digital-marketing-pro:competitor-monitor outputs, and the Living Project Instruction File."
+description: "Exécute la partie 12 de la méthodologie d'engagement — la boucle d'amélioration continue qui agrège les signaux de revue trimestrielle, de retours clients, de veille concurrentielle et d'exploitation en un Brief trimestriel d'amélioration produit et offre destiné à la direction de l'entreprise, ainsi que des briefs ponctuels rapides de 1 à 3 pages lorsqu'un signal significatif survient en cours de trimestre. Se déclenche sur « /digital-marketing-pro:continuous-improvement-loop », « run part 12 », « produce the quarterly improvement brief », « aggregate this quarter's signals », « we need a fast read on this competitor move ». Signale les déclencheurs de mise à jour v2.x mais ne les exécute jamais automatiquement. Lit les rapports mensuels, signals.jsonl, les sorties de /digital-marketing-pro:competitor-monitor et le fichier d'instructions vivant du projet."
 user-invocable: true
 triggers:
   - run the continuous improvement loop
@@ -14,82 +14,82 @@ engagement-part: "12"
 view-preference: both
 ---
 
-# /digital-marketing-pro:continuous-improvement-loop — Part 12 Continuous Loop
+# /digital-marketing-pro:continuous-improvement-loop — Partie 12 : Boucle continue
 
-Part 12 is the continuous improvement loop that runs alongside live operations from go-live onwards. It aggregates market signals and operating signals into recommendations that feed back into the brand's product, offering, and service decisions.
+La partie 12 est la boucle d'amélioration continue qui s'exécute en parallèle des opérations en cours à partir de la mise en production. Elle agrège les signaux de marché et les signaux d'exploitation en recommandations qui nourrissent en retour les décisions de produit, d'offre et de service de la marque.
 
-## Context efficiency
+## Efficacité contextuelle
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List the brand's workspace at `~/.claude-marketing/brands/{slug}/` (or `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` when that env var is set) before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** pour tout fichier référencé, puis `Read` uniquement les plages correspondantes avec `offset` + `limit`. Lister l'espace de travail de la marque à `~/.claude-marketing/brands/{slug}/` (ou `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` lorsque cette variable d'environnement est définie) avant d'ouvrir des fichiers. En cas de réinvocation en cours de session, ignorer les fichiers déjà en contexte.
 
-This is **not a one-time activity**. It runs perpetually once Part 11 is complete, with formal output at each Quarterly Business Review (QBR) and ad-hoc output when significant signals warrant.
+Ce n'est **pas une activité ponctuelle**. Elle s'exécute en permanence une fois la partie 11 terminée, avec un livrable formel à chaque revue trimestrielle d'activité (QBR) et un livrable ponctuel lorsque des signaux significatifs le justifient.
 
-## Why this exists
+## Pourquoi cela existe
 
-Without an explicit feedback loop, marketing operates on assumptions made months ago. Markets shift, customers evolve, competitors move, products are refined — but if these shifts do not flow back into the strategy, the engagement silently grows stale.
+Sans boucle de rétroaction explicite, le marketing fonctionne sur des hypothèses établies des mois auparavant. Les marchés évoluent, les clients changent, les concurrents bougent, les produits sont affinés — mais si ces évolutions ne remontent pas dans la stratégie, l'engagement s'enlise silencieusement.
 
-Part 12 closes the loop:
+La partie 12 referme la boucle :
 
-- Market signals → strategy refresh
-- Operating signals → tactical optimisation
-- Product / offering signals → recommendations to product / business teams
+- Signaux de marché → actualisation de la stratégie
+- Signaux d'exploitation → optimisation tactique
+- Signaux produit / offre → recommandations aux équipes produit / business
 
-## The 4 Signal Sources
+## Les 4 sources de signaux
 
-### Source 1: Quarterly Business Reviews
+### Source 1 : Revues trimestrielles d'activité
 
-Every quarterly review (per [reporting-cadence.md](../context-engine/reporting-cadence.md)) generates structured signals:
+Chaque revue trimestrielle (selon [reporting-cadence.md](../context-engine/reporting-cadence.md)) génère des signaux structurés :
 
-- KPIs vs targets (which targets were missed; which were beaten; pattern across quarters?)
-- Channel-mix performance (any channel consistently outperforming or underperforming the v2 plan?)
-- Audience segment performance (any segment showing different behaviour than the personas predicted?)
-- Competitive shifts (any competitor moves that materially change the landscape?)
-- Strategy alignment audit (is what we are executing still what the v2 strategy says we should be executing?)
+- KPI vs objectifs (quels objectifs ont été manqués ; lesquels ont été dépassés ; y a-t-il un schéma sur plusieurs trimestres ?)
+- Performance du mix de canaux (un canal surperforme-t-il ou sous-performe-t-il systématiquement par rapport au plan v2 ?)
+- Performance des segments d'audience (un segment se comporte-t-il différemment de ce que prédisaient les personas ?)
+- Évolutions concurrentielles (des mouvements de concurrents modifient-ils significativement le paysage ?)
+- Audit d'alignement stratégique (ce que nous exécutons correspond-il toujours à ce que la stratégie v2 préconise ?)
 
-### Source 2: Customer Feedback Themes
+### Source 2 : Thèmes des retours clients
 
-Feedback from across customer touchpoints:
+Retours provenant de l'ensemble des points de contact clients :
 
-- Customer service tickets (volume by topic, sentiment trend)
-- ORM (Online Reputation Management) — review sites, social mentions
-- Sales team conversations (objections heard repeatedly, requests not yet met)
-- Customer journey friction observations (where customers drop off, where they ask for help)
-- Survey / NPS responses
-- Customer interviews
+- Tickets du service client (volume par sujet, tendance de sentiment)
+- ORM (gestion de la réputation en ligne) — sites d'avis, mentions sociales
+- Conversations de l'équipe commerciale (objections entendues à répétition, demandes non encore satisfaites)
+- Observations de friction dans le parcours client (où les clients décrochent, où ils demandent de l'aide)
+- Réponses aux enquêtes / au NPS
+- Entretiens clients
 
-### Source 3: Competitive Intelligence
+### Source 3 : Veille concurrentielle
 
-From the ongoing competitor monitoring (existing `/digital-marketing-pro:competitor-monitor` skill):
+Issue de la surveillance concurrentielle continue (compétence existante `/digital-marketing-pro:competitor-monitor`) :
 
-- Product / offering shifts at competitors
-- Pricing changes
-- Positioning shifts (messaging, target audience)
-- New entrant emergence
-- Acquisitions / partnerships changing the competitive landscape
+- Évolutions de produit / d'offre chez les concurrents
+- Changements de prix
+- Repositionnements (message, audience cible)
+- Apparition de nouveaux entrants
+- Acquisitions / partenariats modifiant le paysage concurrentiel
 
-### Source 4: Team-Discovered Patterns
+### Source 4 : Schémas découverts par l'équipe
 
-Insights from execution that the team surfaces:
+Éclairages issus de l'exécution que l'équipe fait remonter :
 
-- Campaigns that consistently underperform — may indicate product-market mismatches
-- Audiences requesting features the product does not yet offer
-- Conversion friction points that recur across many campaigns
-- Channel performance patterns that suggest the buyer journey has shifted
+- Campagnes qui sous-performent systématiquement — peut indiquer une inadéquation produit-marché
+- Audiences demandant des fonctionnalités que le produit n'offre pas encore
+- Points de friction de conversion qui reviennent dans de nombreuses campagnes
+- Schémas de performance par canal suggérant une évolution du parcours acheteur
 
 ## Cadence
 
-Part 12 is active continuously, with structured outputs:
+La partie 12 est active en continu, avec des livrables structurés :
 
-| Cadence | Trigger | Output |
+| Cadence | Déclencheur | Résultat |
 |---------|---------|--------|
-| **Daily / weekly** | Automated signal capture as part of normal operations | Signals logged to `part-12-continuous-improvement/signals.jsonl` |
-| **Monthly** | Monthly performance report | "Signals This Month" section in the report; logged to signals.jsonl |
-| **Quarterly** | QBR | Structured Part 12 deliverable — see below |
-| **Ad-hoc** | Significant signal (e.g., competitor product shift, sales team flagging recurring objection, KPI suddenly cratering) | Ad-hoc Part 12 brief produced within 1 week |
+| **Quotidienne / hebdomadaire** | Capture automatisée des signaux dans le cadre des opérations normales | Signaux consignés dans `part-12-continuous-improvement/signals.jsonl` |
+| **Mensuelle** | Rapport de performance mensuel | Section « Signaux du mois » dans le rapport ; consignée dans signals.jsonl |
+| **Trimestrielle** | QBR | Livrable structuré de la partie 12 — voir ci-dessous |
+| **Ponctuelle** | Signal significatif (par exemple, évolution produit d'un concurrent, objection récurrente signalée par l'équipe commerciale, chute soudaine d'un KPI) | Brief ponctuel de la partie 12 produit sous 1 semaine |
 
-## The Quarterly Part 12 Deliverable
+## Le livrable trimestriel de la partie 12
 
-Each quarter, the continuous loop produces a structured deliverable for the brand business owners — not just marketing leadership.
+Chaque trimestre, la boucle continue produit un livrable structuré destiné aux dirigeants de l'entreprise de la marque — pas uniquement à la direction marketing.
 
 ### Structure
 
@@ -102,120 +102,120 @@ produced: {iso-timestamp}
 audience: brand business leadership
 ---
 
-# Quarterly Product & Offering Improvement Brief — {Quarter}
+# Brief trimestriel d'amélioration produit et offre — {Trimestre}
 
-## Executive Summary
+## Résumé exécutif
 
-(3-5 sentences. The signals that matter most. The recommendations that follow.)
+(3-5 phrases. Les signaux les plus importants. Les recommandations qui en découlent.)
 
-## Signal Aggregation
+## Agrégation des signaux
 
-### Market signals
-{Macro market shifts observed in the quarter}
+### Signaux de marché
+{Évolutions macro du marché observées au cours du trimestre}
 
-### Customer signals
-{Aggregated themes from customer feedback, ORM, sales conversations}
+### Signaux clients
+{Thèmes agrégés issus des retours clients, de l'ORM, des conversations commerciales}
 
-### Competitive signals
-{Competitor moves that warrant response or reflection}
+### Signaux concurrentiels
+{Mouvements de concurrents justifiant une réponse ou une réflexion}
 
-### Operating signals
-{Patterns from execution — campaigns that under/outperformed; audience surprises; channel shifts}
+### Signaux d'exploitation
+{Schémas issus de l'exécution — campagnes sur/sous-performantes ; surprises d'audience ; évolutions de canaux}
 
 ## Implications
 
-### For the brand strategy
-{What in the v2 strategy looks confirmed by the quarter? What looks weakened? Anything that warrants v2.x update-back?}
+### Pour la stratégie de marque
+{Qu'est-ce qui, dans la stratégie v2, semble confirmé par le trimestre ? Qu'est-ce qui semble affaibli ? Y a-t-il matière à une mise à jour v2.x ?}
 
-### For the channel mix
-{Any channel reweighting recommended?}
+### Pour le mix de canaux
+{Une rééquilibration de canaux est-elle recommandée ?}
 
-### For the product / offering
-{This is the unique Part 12 contribution. What signals suggest the product or offering itself should change?}
+### Pour le produit / l'offre
+{C'est la contribution propre à la partie 12. Quels signaux suggèrent que le produit ou l'offre lui-même devrait changer ?}
 
-## Recommendations
+## Recommandations
 
-### To the marketing team
-{Tactical adjustments — typically already in flight from monthly optimisation, but formalised here}
+### À l'équipe marketing
+{Ajustements tactiques — généralement déjà en cours depuis l'optimisation mensuelle, mais formalisés ici}
 
-### To the product / business team
-{The substantive Part 12 output — recommendations about product, offering, pricing, distribution that flow from marketing's vantage point}
+### À l'équipe produit / business
+{Le livrable substantiel de la partie 12 — recommandations sur le produit, l'offre, le prix, la distribution, issues du point de vue du marketing}
 
-### To leadership
-{Strategic considerations that span functions}
+### À la direction
+{Considérations stratégiques transversales}
 
-## Triggers for v2.x Update-Back
+## Déclencheurs de mise à jour v2.x
 
-(If any of the signals warrant a source-document version bump per the [update-back-rule.md](../context-engine/update-back-rule.md), list them here. The actual update-back happens via /digital-marketing-pro:engagement update-back.)
+(Si l'un des signaux justifie une montée de version du document source selon [update-back-rule.md](../context-engine/update-back-rule.md), le lister ici. La mise à jour effective se fait via /digital-marketing-pro:engagement update-back.)
 
-## Open Questions Raised This Quarter
+## Questions ouvertes soulevées ce trimestre
 
-(Things the data raises but cannot answer without further investigation.)
+(Éléments que les données soulèvent mais auxquels on ne peut répondre sans investigation complémentaire.)
 ```
 
-### Output location
+### Emplacement du résultat
 
 ```
 engagements/{id}/part-12-continuous-improvement/quarterly-briefs/{YYYY-Qn}-quarterly-improvement-brief.md
 ```
 
-Plus PDF export for distribution to leadership.
+Plus un export PDF pour diffusion à la direction.
 
-## The Ad-hoc Part 12 Brief
+## Le brief ponctuel de la partie 12
 
-When a significant signal lands between QBRs, the loop produces an ad-hoc brief:
+Lorsqu'un signal significatif survient entre deux QBR, la boucle produit un brief ponctuel :
 
-- A competitor launches a product that materially threatens the brand's positioning
-- A regulatory change affects the addressable market
-- A KPI suddenly drops outside the conservative scenario floor
-- The sales team flags an objection that has appeared in 5+ deals in 2 weeks
-- A piece of content unexpectedly goes viral, creating a unique moment
+- Un concurrent lance un produit qui menace significativement le positionnement de la marque
+- Un changement réglementaire affecte le marché adressable
+- Un KPI chute soudainement en dessous du plancher du scénario conservateur
+- L'équipe commerciale signale une objection apparue dans 5 deals ou plus en 2 semaines
+- Un contenu devient viral de manière inattendue, créant un moment unique
 
-Ad-hoc briefs are short (1–3 pages), fast (within a week of the signal), and action-oriented (recommend a specific response).
+Les briefs ponctuels sont courts (1 à 3 pages), rapides (dans la semaine suivant le signal) et orientés action (recommandent une réponse précise).
 
-Output location:
+Emplacement du résultat :
 ```
 engagements/{id}/part-12-continuous-improvement/ad-hoc-briefs/{YYYY-MM-DD}-{slug}.md
 ```
 
-## Production Process
+## Processus de production
 
-### For Quarterly Part 12 deliverable
+### Pour le livrable trimestriel de la partie 12
 
-1. **Trigger:** the quarter ends; QBR is being prepared
-2. **Read inputs:**
-   - All monthly performance reports for the quarter
-   - Signals logged in `signals.jsonl` for the quarter
-   - Competitor monitoring outputs for the quarter
-   - Customer feedback aggregations
-   - Living Project Instruction File (current truth)
-3. **Aggregate signals** into the four categories
-4. **Synthesise implications** for strategy, channels, and product/offering
-5. **Draft recommendations** for marketing, product/business, leadership
-6. **Identify v2.x update-back triggers** if any
-7. **Save** to `quarterly-briefs/`
-8. **Update LIF** with quarter's verdict + recommendations
-9. **Brief:** "Quarterly Improvement Brief produced. {N} signals aggregated. {N} recommendations. {N} update-back triggers identified — review and run /digital-marketing-pro:engagement update-back if approved."
+1. **Déclencheur :** le trimestre se termine ; la QBR est en préparation
+2. **Lire les entrées :**
+   - Tous les rapports de performance mensuels du trimestre
+   - Signaux consignés dans `signals.jsonl` pour le trimestre
+   - Résultats de la veille concurrentielle du trimestre
+   - Agrégations de retours clients
+   - Fichier d'instructions vivant du projet (vérité actuelle)
+3. **Agréger les signaux** dans les quatre catégories
+4. **Synthétiser les implications** pour la stratégie, les canaux et le produit/l'offre
+5. **Rédiger les recommandations** pour le marketing, le produit/business, la direction
+6. **Identifier les déclencheurs de mise à jour v2.x**, le cas échéant
+7. **Enregistrer** dans `quarterly-briefs/`
+8. **Mettre à jour le LIF** avec le verdict et les recommandations du trimestre
+9. **Résumer :** « Brief trimestriel d'amélioration produit. {N} signaux agrégés. {N} recommandations. {N} déclencheurs de mise à jour identifiés — vérifier et exécuter /digital-marketing-pro:engagement update-back si approuvé. »
 
-### For ad-hoc Part 12 brief
+### Pour le brief ponctuel de la partie 12
 
-1. **Trigger:** significant signal observed (logged with timestamp + source)
-2. **Confirm significance** with engagement owner before producing the brief (avoid noise-driven ad-hoc briefs)
-3. **Read targeted inputs** relevant to the specific signal
-4. **Draft 1–3 page brief** with: signal, evidence, implications, recommended response, decision deadline
-5. **Save** to `ad-hoc-briefs/`
-6. **Distribute** per engagement's approval chain — typically marketing leadership + relevant product / business stakeholder
+1. **Déclencheur :** signal significatif observé (consigné avec horodatage + source)
+2. **Confirmer l'importance** auprès du responsable de l'engagement avant de produire le brief (éviter les briefs ponctuels déclenchés par du bruit)
+3. **Lire les entrées ciblées** pertinentes pour le signal spécifique
+4. **Rédiger un brief de 1 à 3 pages** avec : signal, preuves, implications, réponse recommandée, échéance de décision
+5. **Enregistrer** dans `ad-hoc-briefs/`
+6. **Diffuser** selon la chaîne d'approbation de l'engagement — généralement la direction marketing et la ou les parties prenantes produit/business concernées
 
-## Signal Capture Mechanism
+## Mécanisme de capture des signaux
 
-The plugin captures signals continuously via:
+Le plugin capture les signaux en continu via :
 
-- **Daily performance pulls** (when configured) flag anomalies
-- **Monthly report production** captures "Insights & Learnings" entries
-- **Competitor monitor** flags significant changes
-- **Manual capture** — append the signal to `signals.jsonl` and record it in the Living Project Instruction File via `engagement-state.py lif-log-change` (there is no `engagement signal` subcommand; log the observation through `lif-log-change` so it enters the engagement's current-truth record)
+- **Extractions de performance quotidiennes** (si configurées) signalant les anomalies
+- **Production des rapports mensuels** capturant les entrées « Éclairages et enseignements »
+- **Le suivi concurrentiel** signalant les changements significatifs
+- **La capture manuelle** — ajouter le signal à `signals.jsonl` et l'enregistrer dans le fichier d'instructions vivant du projet via `engagement-state.py lif-log-change` (il n'existe pas de sous-commande `engagement signal` ; consigner l'observation via `lif-log-change` afin qu'elle entre dans le registre de vérité actuelle de l'engagement)
 
-All signals append to `signals.jsonl`:
+Tous les signaux sont ajoutés à `signals.jsonl` :
 
 ```json
 {"timestamp":"...","source":"customer_feedback","signal":"3 sales reps reported customers asking for X integration","severity":"medium"}
@@ -223,66 +223,67 @@ All signals append to `signals.jsonl`:
 {"timestamp":"...","source":"performance_anomaly","signal":"LinkedIn CPL dropped 35% week over week","severity":"high","investigate":true}
 ```
 
-## Quality Discipline
+## Discipline qualité
 
-1. **Signals are evidenced.** No vague "the team feels" — cite the source (which sales rep, which review platform, which monitoring run, which performance metric).
-2. **Recommendations are specific.** "Marketing should optimise" is useless. "Reduce LinkedIn brand-awareness budget by 20%, redeploy to retargeting + email lifecycle" is actionable.
-3. **Product / offering recommendations are framed as suggestions, not demands.** Marketing's vantage point is one of several inputs to product decisions.
-4. **Update-back triggers are flagged but not auto-executed.** The `/digital-marketing-pro:engagement update-back` command is invoked separately after explicit approval.
-5. **The audience for quarterly briefs is leadership, not marketing alone.** Write for that audience.
+1. **Les signaux sont étayés.** Pas de vague « l'équipe ressent que » — citer la source (quel commercial, quelle plateforme d'avis, quelle exécution de suivi, quel indicateur de performance).
+2. **Les recommandations sont précises.** « Le marketing devrait optimiser » ne sert à rien. « Réduire de 20 % le budget de notoriété de marque sur LinkedIn, réaffecter au retargeting + cycle de vie e-mail » est exploitable.
+3. **Les recommandations produit / offre sont formulées comme des suggestions, pas des exigences.** Le point de vue du marketing n'est qu'une des entrées des décisions produit.
+4. **Les déclencheurs de mise à jour sont signalés mais jamais exécutés automatiquement.** La commande `/digital-marketing-pro:engagement update-back` est invoquée séparément après approbation explicite.
+5. **Le public des briefs trimestriels est la direction, pas seulement le marketing.** Écrire pour ce public.
 
-## Examples
+## Exemples
 
-### Example 1: Quarterly Part 12 brief
-
-```
-User: Q2 ended last week. Produce the quarterly improvement brief.
-
-Skill response:
-1. Grep first across the Q2 monthly reports (April, May, June) for the metrics you need; targeted Read with offset+limit on the matching lines — do not bulk-Read all three reports
-2. Stream signals.jsonl line-by-line for Q2 (87 signals) — use head/tail/grep, not full Read
-3. Grep the competitor monitor outputs (3 significant changes); targeted Read on the matching findings
-4. Grep customer feedback aggregation (47 reviews + 12 sales-rep notes) for the themes you need; targeted Read on the matches
-5. Aggregate into 4 signal categories
-6. Identify implications:
-   - Strategy: v2 positioning held up — confirmed by 12 customer testimonials echoing the positioning language
-   - Channels: LinkedIn over-performed (CPL 30% below moderate scenario); Meta under-performed (CPL 40% above)
-   - Product: 8 customer signals + 4 sales-rep notes suggest Feature X is consistently asked for
-7. Recommendations:
-   - Marketing: shift 25% of Meta budget to LinkedIn next quarter
-   - Product: prioritise Feature X for Q3 roadmap (8 named customer asks)
-   - Leadership: consider a freemium tier (competitor moved here; 5 sales-rep notes about price-sensitive prospects)
-8. Identify update-back triggers: Core Doc 3.4 (channel mix) needs v2.1 to reflect LinkedIn's higher allocation
-9. Save quarterly-briefs/2026-Q2-quarterly-improvement-brief.md (~8 pages)
-10. Brief: "Q2 Improvement Brief produced. 1 update-back trigger flagged. Run /digital-marketing-pro:engagement update-back --doc 3.4 --reason 'Q2 evidence: LinkedIn outperformed; Meta underperformed; recommend channel reweight' after leadership approval."
-```
-
-### Example 2: Ad-hoc brief
+### Exemple 1 : Brief trimestriel de la partie 12
 
 ```
-User: Three customers in the past two weeks have switched to a competitor that just launched a freemium tier. We need a fast read on this.
+Utilisateur : Le T2 s'est terminé la semaine dernière. Produis le brief trimestriel d'amélioration.
 
-Skill response:
-1. Confirm significance with engagement owner ✓
-2. Read inputs: the 3 churn cases, competitor monitor on the competitor's freemium launch, last 90 days of churn data for pattern check
-3. Draft brief:
-   - Signal: 3 churns to Competitor Y in 14 days; pattern check shows churn rate to Y up 4x vs prior 90 days
-   - Evidence: churn interview notes (2 of 3 cited price); Competitor Y launched freemium 2026-04-15
-   - Implications: short-term — defensive offer for at-risk segment; long-term — pricing strategy review warranted
-   - Recommended response: (1) marketing — defensive offer to current at-risk customers within 7 days; (2) product/leadership — assess freemium response within 30 days
-   - Decision deadline: response plan by 2026-05-12
-4. Save ad-hoc-briefs/2026-05-05-competitor-y-freemium-response.md (2 pages)
-5. Distribute per approval chain
+Réponse de la compétence :
+1. Grep d'abord sur les rapports mensuels du T2 (avril, mai, juin) pour les métriques nécessaires ; Read ciblé avec offset+limit sur les lignes correspondantes — ne pas faire de Read en bloc des trois rapports
+2. Parcourir signals.jsonl ligne par ligne pour le T2 (87 signaux) — utiliser head/tail/grep, pas un Read complet
+3. Grep sur les résultats du suivi concurrentiel (3 changements significatifs) ; Read ciblé sur les constats correspondants
+4. Grep sur l'agrégation des retours clients (47 avis + 12 notes de commerciaux) pour les thèmes nécessaires ; Read ciblé sur les correspondances
+5. Agréger dans les 4 catégories de signaux
+6. Identifier les implications :
+   - Stratégie : le positionnement v2 a tenu — confirmé par 12 témoignages clients reprenant le langage de positionnement
+   - Canaux : LinkedIn a surperformé (CPL 30 % en dessous du scénario modéré) ; Meta a sous-performé (CPL 40 % au-dessus)
+   - Produit : 8 signaux clients + 4 notes de commerciaux suggèrent une demande constante pour la fonctionnalité X
+7. Recommandations :
+   - Marketing : transférer 25 % du budget Meta vers LinkedIn le trimestre prochain
+   - Produit : prioriser la fonctionnalité X pour la feuille de route du T3 (8 demandes clients nommées)
+   - Direction : envisager une offre freemium (un concurrent s'est positionné ainsi ; 5 notes de commerciaux sur des prospects sensibles au prix)
+8. Identifier les déclencheurs de mise à jour : le document central 3.4 (mix de canaux) nécessite une v2.1 pour refléter l'allocation plus élevée de LinkedIn
+9. Enregistrer quarterly-briefs/2026-Q2-quarterly-improvement-brief.md (~8 pages)
+10. Résumer : « Brief d'amélioration T2 produit. 1 déclencheur de mise à jour signalé. Exécuter /digital-marketing-pro:engagement update-back --doc 3.4 --reason 'Preuves T2 : LinkedIn a surperformé ; Meta a sous-performé ; rééquilibrage de canal recommandé' après approbation de la direction. »
 ```
 
-## Related skills & agents
+### Exemple 2 : Brief ponctuel
 
-- `engagement-workflow` — engagement orchestration
-- Existing skills & agents: `competitor-monitor`, `performance-monitor-agent`, `intelligence-curator`, `quality-assurance`
+```
+Utilisateur : Trois clients ont basculé au cours des deux dernières semaines vers un concurrent qui vient de lancer une offre freemium. Nous avons besoin d'une lecture rapide de la situation.
 
-## Related references
+Réponse de la compétence :
+1. Confirmer l'importance auprès du responsable de l'engagement ✓
+2. Lire les entrées : les 3 cas de churn, le suivi concurrentiel sur le lancement freemium du concurrent, les 90 derniers jours de données de churn pour vérifier un schéma
+3. Rédiger le brief :
+   - Signal : 3 pertes de clients vers le concurrent Y en 14 jours ; la vérification du schéma montre un taux de churn vers Y multiplié par 4 par rapport aux 90 jours précédents
+   - Preuves : notes des entretiens de départ (2 cas sur 3 citent le prix) ; le concurrent Y a lancé son offre freemium le 15/04/2026
+   - Implications : à court terme — offre défensive pour le segment à risque ; à long terme — une revue de la stratégie tarifaire est justifiée
+   - Réponse recommandée : (1) marketing — offre défensive aux clients actuellement à risque sous 7 jours ; (2) produit/direction — évaluer une réponse freemium sous 30 jours
+   - Échéance de décision : plan de réponse d'ici le 12/05/2026
+4. Enregistrer ad-hoc-briefs/2026-05-05-competitor-y-freemium-response.md (2 pages)
+5. Diffuser selon la chaîne d'approbation
+```
 
-- [reporting-cadence.md](../context-engine/reporting-cadence.md) — quarterly cadence context
-- [update-back-rule.md](../context-engine/update-back-rule.md) — when Part 12 signals warrant source doc updates
-- [engagement-flow-methodology.md](../context-engine/engagement-flow-methodology.md) — Part 12 in 12-Part flow
-- [living-instruction-file-spec.md](../context-engine/living-instruction-file-spec.md) — where current-truth lives
+## Compétences et agents liés
+
+- `engagement-workflow` — orchestration de l'engagement
+- Compétences et agents existants : `competitor-monitor`, `performance-monitor-agent`, `intelligence-curator`, `quality-assurance`
+
+## Références liées
+
+- [reporting-cadence.md](../context-engine/reporting-cadence.md) — contexte de cadence trimestrielle
+- [update-back-rule.md](../context-engine/update-back-rule.md) — quand les signaux de la partie 12 justifient une mise à jour des documents source
+- [engagement-flow-methodology.md](../context-engine/engagement-flow-methodology.md) — la partie 12 dans le flux en 12 parties
+- [living-instruction-file-spec.md](../context-engine/living-instruction-file-spec.md) — où se trouve la vérité actuelle
+</content>

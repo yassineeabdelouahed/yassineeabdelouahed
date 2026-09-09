@@ -1,189 +1,189 @@
 ---
 name: digital-pr
-description: "Plan and draft digital PR campaigns — tiered media lists, customized journalist pitches, press releases, journalist-request responses (Qwoted, Featured, Source of Sources), thought-leadership calendars, and E-E-A-T authority audits. Produces strategy documents, pitch templates, and press kits; sending the outreach stays with you. Triggers on \"/digital-marketing-pro:digital-pr\", \"pitch this story to journalists\", \"write a press release for our launch\", \"how do we build E-E-A-T authority\", \"respond to this journalist request\". Reads the brand profile, guidelines, and campaign history, and pairs with /digital-marketing-pro:content-engine for byline content."
+description: "Planifiez et rédigez des campagnes de relations presse digitales — listes média par niveau, pitchs personnalisés pour journalistes, communiqués de presse, réponses aux demandes de journalistes (Qwoted, Featured, Source of Sources), calendriers de leadership éclairé et audits d'autorité E-E-A-T. Produit des documents de stratégie, des modèles de pitch et des dossiers de presse ; l'envoi des sollicitations reste de votre ressort. Se déclenche sur « /digital-marketing-pro:digital-pr », « pitcher cette histoire à des journalistes », « rédiger un communiqué de presse pour notre lancement », « comment construire notre autorité E-E-A-T », « répondre à cette demande de journaliste ». Lit le profil de marque, les guidelines et l'historique des campagnes, et se combine avec /digital-marketing-pro:content-engine pour le contenu signé."
 ---
 
-# Digital PR & Authority
+# Relations presse digitales & Autorité
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this module when the user's request involves any of the following:
+Activez ce module lorsque la demande de l'utilisateur concerne l'un des éléments suivants :
 
-- **Earned Media Strategy**: Planning how to get press coverage, media mentions, or editorial features
-- **Press Releases**: Writing or optimizing press releases for distribution and pickup
-- **Journalist Outreach**: Crafting pitch emails, building media lists, or developing journalist relationships
-- **Journalist-request pitching**: Responding to journalist source requests on platforms like Qwoted, Featured, and Source of Sources (older legacy source-request services have wound down — verify which platforms are active before recommending one)
-- **Thought Leadership**: Positioning an executive or brand as an industry authority through content and speaking
-- **Newsjacking**: Rapid-response commentary on breaking news to earn media coverage
-- **Executive Personal Branding**: Building an executive's public profile and industry presence
-- **E-E-A-T Authority Building**: Strengthening Experience, Expertise, Authoritativeness, and Trustworthiness signals for SEO and credibility
-- **Press Kit Creation**: Assembling brand media kits with approved assets, boilerplate, and key facts
+- **Stratégie de médias gagnés (earned media)** : planifier l'obtention de couverture presse, de mentions médiatiques ou de reportages éditoriaux
+- **Communiqués de presse** : rédiger ou optimiser des communiqués de presse pour la diffusion et la reprise média
+- **Sollicitation de journalistes (outreach)** : rédiger des emails de pitch, constituer des listes média, ou développer des relations avec des journalistes
+- **Réponse aux demandes de journalistes** : répondre aux demandes de sources de journalistes sur des plateformes comme Qwoted, Featured et Source of Sources (d'anciens services de demande de sources ont cessé leur activité — vérifiez quelles plateformes sont actives avant d'en recommander une)
+- **Leadership éclairé (thought leadership)** : positionner un dirigeant ou une marque comme une autorité du secteur via le contenu et les prises de parole
+- **Newsjacking** : commentaires en réaction rapide à l'actualité pour obtenir une couverture médiatique
+- **Marque personnelle du dirigeant** : construire le profil public et la présence sectorielle d'un dirigeant
+- **Renforcement de l'autorité E-E-A-T** : renforcer les signaux d'Expérience, d'Expertise, d'Autorité et de Fiabilité pour le SEO et la crédibilité
+- **Création de dossier de presse** : assembler des kits média de marque avec des ressources approuvées, un boilerplate et des faits clés
 
-**Trigger phrases**: "press release," "media coverage," "journalist outreach," "journalist request," "source request," "Qwoted," "Featured," "thought leadership," "newsjacking," "executive branding," "personal brand," "E-E-A-T," "authority building," "earned media," "PR strategy," "media pitch," "press kit," "media relations," "byline," "guest post," "speaking opportunity," "expert source"
+**Expressions déclencheuses** : « communiqué de presse », « couverture médiatique », « sollicitation de journaliste », « demande de journaliste », « demande de source », « Qwoted », « Featured », « leadership éclairé », « newsjacking », « marque du dirigeant », « marque personnelle », « E-E-A-T », « renforcement de l'autorité », « médias gagnés », « stratégie RP », « pitch média », « dossier de presse », « relations presse », « article signé », « article invité », « opportunité de prise de parole », « source experte »
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout contenu marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — le résumé de la marque active a été affiché au démarrage de la session. Utiliser le nom de la marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité et les concurrents indiqués.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — les niveaux de formalité, d'énergie, d'humour et d'autorité doivent façonner le ton et les choix de mots de tout le contenu
+4. **Vérifier la conformité** — appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Se référer aux benchmarks sectoriels** — consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications des plateformes** — se référer à `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, indiquer : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux procéder avec les bonnes pratiques générales. »
+9. **Vérifier les guidelines de marque** — si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les allégations restreintes et les avertissements obligatoires ; `channel-styles.md` pour les adaptations de ton propres à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les slogans et le langage de positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des 4 scores numériques. Lors de la production de contenu pour un canal spécifique, les règles de style du canal priment sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing Digital PR work, gather:
+Avant d'exécuter un travail de relations presse digitales, rassembler :
 
-1. **Brand/Executive Profile**: Who or what are we building authority for? Company, product, executive, or expert?
-2. **Industry/Niche**: What sector do they operate in? What topics are they credible on?
-3. **Current Authority Level**: Do they have existing press coverage, bylines, speaking engagements, awards, or credentials?
-4. **Target Publications**: Which media outlets, industry publications, or podcasts would be most valuable?
-5. **Newsworthy Assets**: What data, research, products, milestones, or perspectives does the brand have that media would find interesting?
-6. **Spokesperson**: Who is available and authorized to speak to media? What is their comfort level?
-7. **Goals**: Brand awareness, SEO backlinks, thought leadership positioning, product launch coverage, or crisis management?
-8. **Timeline**: Is there a news hook, product launch, or event driving urgency?
-9. **Budget**: For press release distribution, media database tools, or PR agency support
-10. **Sensitive Topics**: Any areas that are off-limits for media discussion?
+1. **Profil de la marque/du dirigeant** : pour qui ou pour quoi construit-on l'autorité ? Entreprise, produit, dirigeant, ou expert ?
+2. **Secteur/Niche** : dans quel secteur opèrent-ils ? Sur quels sujets sont-ils crédibles ?
+3. **Niveau d'autorité actuel** : disposent-ils déjà de couverture presse, d'articles signés, de prises de parole, de récompenses, ou de références ?
+4. **Publications cibles** : quels médias, publications sectorielles, ou podcasts seraient les plus précieux ?
+5. **Actifs à forte valeur d'actualité** : quelles données, recherches, produits, jalons ou points de vue la marque possède-t-elle et qui intéresseraient les médias ?
+6. **Porte-parole** : qui est disponible et autorisé à s'exprimer auprès des médias ? Quel est son niveau d'aisance ?
+7. **Objectifs** : notoriété de marque, backlinks SEO, positionnement en leadership éclairé, couverture de lancement de produit, ou gestion de crise ?
+8. **Calendrier** : y a-t-il une actualité, un lancement de produit, ou un événement créant une urgence ?
+9. **Budget** : pour la diffusion de communiqués de presse, les outils de base de données média, ou le support d'une agence RP
+10. **Sujets sensibles** : y a-t-il des domaines interdits de discussion avec les médias ?
 
-For quick requests (e.g., "write a press release for our product launch"), proceed with available information. For strategic PR planning, gather the full context.
+Pour les demandes rapides (par ex. « rédiger un communiqué de presse pour notre lancement de produit »), procéder avec les informations disponibles. Pour une planification RP stratégique, rassembler le contexte complet.
 
-## Capabilities
+## Capacités
 
-- **Media Outreach Strategy**: Target publication mapping, journalist identification, relationship-building approach, pitch calendar, and outreach cadence planning
-- **Press Release Optimization**: Newsworthy angle identification, inverted pyramid structure, quote crafting, multimedia integration, distribution channel selection, and SEO optimization for press releases
-- **Pitch Template Creation**: Customizable pitch email templates for different scenarios (product launch, data/research, expert commentary, trend story, company milestone, partnership announcement)
-- **Journalist-request response optimization**: Query monitoring strategy across active source-request platforms (Qwoted, Featured, Source of Sources), response templates, credibility formatting, rapid-response workflow, and success-rate optimization
-- **Thought Leadership Content Strategy**: Byline article planning, speaking opportunity identification, podcast guesting strategy, original research planning, and industry report creation
-- **Newsjacking Rapid-Response Framework**: News monitoring setup, relevance assessment criteria, speed-to-response protocols, pre-approved messaging templates, and brand safety guardrails
-- **E-E-A-T Optimization**: Author bio optimization, credentials display, expert review processes, trust signal implementation, experience demonstration, and authority signal building
-- **Executive Personal Branding**: LinkedIn optimization, speaking profile development, media training prep, signature content themes, and public positioning strategy
-- **Press Kit Creation**: Brand boilerplate, executive bios, high-resolution assets, fact sheets, media contact information, and previous coverage highlights
+- **Stratégie de sollicitation média** : cartographie des publications cibles, identification des journalistes, approche de construction de relations, calendrier de pitchs, et planification de la cadence de sollicitation
+- **Optimisation des communiqués de presse** : identification de l'angle à forte valeur d'actualité, structure en pyramide inversée, rédaction de citations, intégration multimédia, sélection du canal de diffusion, et optimisation SEO des communiqués
+- **Création de modèles de pitch** : modèles d'emails de pitch personnalisables pour différents scénarios (lancement de produit, données/recherche, commentaire d'expert, sujet tendance, jalon de l'entreprise, annonce de partenariat)
+- **Optimisation de la réponse aux demandes de journalistes** : stratégie de veille des requêtes sur les plateformes de demande de sources actives (Qwoted, Featured, Source of Sources), modèles de réponse, formatage de la crédibilité, workflow de réponse rapide, et optimisation du taux de succès
+- **Stratégie de contenu de leadership éclairé** : planification d'articles signés, identification d'opportunités de prise de parole, stratégie d'invitation à des podcasts, planification de recherches originales, et création de rapports sectoriels
+- **Cadre de réponse rapide au newsjacking** : mise en place de la veille d'actualité, critères d'évaluation de la pertinence, protocoles de rapidité de réponse, modèles de messages pré-approuvés, et garde-fous de sécurité de marque
+- **Optimisation E-E-A-T** : optimisation des bios d'auteur, affichage des références, processus de revue par des experts, mise en œuvre de signaux de confiance, démonstration d'expérience, et renforcement des signaux d'autorité
+- **Marque personnelle du dirigeant** : optimisation LinkedIn, développement du profil de conférencier, préparation aux médias, thèmes de contenu signature, et stratégie de positionnement public
+- **Création de dossier de presse** : boilerplate de marque, bios des dirigeants, ressources en haute résolution, fiches factuelles, coordonnées des contacts média, et points forts de la couverture précédente
 
-## Process
+## Processus
 
-**Primary Workflow: Digital PR Campaign**
+**Workflow principal : Campagne de relations presse digitales**
 
-1. **Authority Assessment & Goal Setting**
-   - Audit current authority signals: existing press coverage, backlink profile, social proof, credentials, industry recognition
-   - Identify the authority gap between current state and where the brand/executive needs to be
-   - Set specific goals: number of placements, target publications, backlink targets, or awareness metrics
-   - Determine the primary angle: Is this product-driven, data-driven, personality-driven, or trend-driven PR?
+1. **Évaluation de l'autorité & fixation des objectifs**
+   - Auditer les signaux d'autorité actuels : couverture presse existante, profil de backlinks, preuve sociale, références, reconnaissance sectorielle
+   - Identifier l'écart d'autorité entre l'état actuel et l'objectif visé pour la marque/le dirigeant
+   - Fixer des objectifs précis : nombre de placements, publications cibles, objectifs de backlinks, ou métriques de notoriété
+   - Déterminer l'angle principal : cette RP est-elle axée produit, données, personnalité, ou tendance ?
 
-2. **Media Landscape Mapping**
-   - Identify tier 1, tier 2, and tier 3 target publications for this brand/industry
-     - **Tier 1**: Major national/international outlets (NYT, Forbes, BBC, TechCrunch, etc.)
-     - **Tier 2**: Respected industry publications and large digital outlets
-     - **Tier 3**: Niche blogs, local media, podcasts, and newsletters
-   - Research journalists who cover this beat at target publications
-   - Map journalist interests, recent articles, and preferred pitch formats
-   - Identify relevant podcasts, conferences, and speaking platforms
-   - Note editorial calendars and upcoming themed issues at target publications
+2. **Cartographie du paysage média**
+   - Identifier les publications cibles de niveau 1, 2 et 3 pour cette marque/ce secteur
+     - **Niveau 1** : grands médias nationaux/internationaux (NYT, Forbes, BBC, TechCrunch, etc.)
+     - **Niveau 2** : publications sectorielles respectées et grands médias digitaux
+     - **Niveau 3** : blogs de niche, médias locaux, podcasts, et newsletters
+   - Rechercher les journalistes qui couvrent ce domaine dans les publications cibles
+   - Cartographier les centres d'intérêt des journalistes, leurs articles récents, et les formats de pitch préférés
+   - Identifier les podcasts, conférences, et plateformes de prise de parole pertinents
+   - Noter les calendriers éditoriaux et les prochains numéros thématiques des publications cibles
 
-3. **Angle Development & Story Crafting**
-   - Identify what makes this brand/person genuinely newsworthy (not just promotional)
-   - Develop story angles that serve journalist needs:
-     - **Data angle**: Original research, survey results, or industry data the brand can share
-     - **Trend angle**: How the brand connects to a larger industry or cultural trend
-     - **Counterintuitive angle**: A perspective that challenges conventional wisdom
-     - **Human interest angle**: Founder story, customer transformation, or mission-driven narrative
-     - **Timely angle**: Connection to current events, seasons, or upcoming dates
-   - Create a story bank of 5-10 pitchable angles ranked by newsworthiness
-   - Prepare supporting materials for each angle (data, quotes, visuals)
+3. **Développement de l'angle & construction de l'histoire**
+   - Identifier ce qui rend cette marque/personne réellement digne d'intérêt médiatique (et pas simplement promotionnelle)
+   - Développer des angles d'histoire qui répondent aux besoins des journalistes :
+     - **Angle données** : recherche originale, résultats d'enquête, ou données sectorielles que la marque peut partager
+     - **Angle tendance** : comment la marque se rattache à une tendance sectorielle ou culturelle plus large
+     - **Angle contre-intuitif** : un point de vue qui remet en question les idées reçues
+     - **Angle intérêt humain** : histoire du fondateur, transformation d'un client, ou récit porté par une mission
+     - **Angle d'actualité** : lien avec l'actualité, les saisons, ou des dates à venir
+   - Créer une banque d'histoires de 5 à 10 angles exploitables, classés par valeur d'actualité
+   - Préparer des supports pour chaque angle (données, citations, visuels)
 
-4. **Pitch Development**
-   - Write customized pitch emails for each target journalist (NOT mass emails)
-   - Pitch structure:
-     - **Subject line**: Specific, newsy, concise (under 60 characters)
-     - **Opening line**: Why this matters to their audience (not why it matters to you)
-     - **The hook**: The newsworthy element in 2-3 sentences
-     - **The offer**: What you can provide (data, interview, exclusive, visuals)
-     - **Credibility**: Brief proof of why this source is credible
-     - **CTA**: Clear, easy next step
-   - Keep pitches under 200 words — journalists scan, they don't read
-   - Prepare a follow-up sequence (one follow-up after 3-5 business days, maximum two total)
+4. **Développement des pitchs**
+   - Rédiger des emails de pitch personnalisés pour chaque journaliste cible (PAS d'emails de masse)
+   - Structure du pitch :
+     - **Objet** : spécifique, informatif, concis (moins de 60 caractères)
+     - **Ligne d'ouverture** : pourquoi cela compte pour leur audience (pas pourquoi cela compte pour vous)
+     - **L'accroche** : l'élément à forte valeur d'actualité en 2-3 phrases
+     - **L'offre** : ce que vous pouvez fournir (données, interview, exclusivité, visuels)
+     - **Crédibilité** : brève preuve de la crédibilité de cette source
+     - **CTA** : prochaine étape claire et facile
+   - Garder les pitchs sous 200 mots — les journalistes survolent, ils ne lisent pas
+   - Préparer une séquence de relance (une relance après 3 à 5 jours ouvrés, deux au maximum au total)
 
-5. **Journalist-request response protocol** (Qwoted / Featured / Source of Sources)
-   - Set up query monitoring for relevant categories and keywords
-   - Response framework:
-     - Answer the journalist's exact question first (in 2-3 sentences)
-     - Add one unique insight or data point they won't get from other respondents
-     - Include credentials and relevant experience in 1-2 sentences
-     - Offer availability for follow-up questions
-     - Keep total response under 300 words
-   - Respond within 2-3 hours of query posting (speed is critical)
-   - Track response rate and placement rate to optimize over time
+5. **Protocole de réponse aux demandes de journalistes** (Qwoted / Featured / Source of Sources)
+   - Mettre en place une veille des requêtes pour les catégories et mots-clés pertinents
+   - Cadre de réponse :
+     - Répondre d'abord précisément à la question du journaliste (en 2-3 phrases)
+     - Ajouter un point de vue ou une donnée unique qu'il n'obtiendra pas d'autres répondants
+     - Inclure les références et l'expérience pertinente en 1-2 phrases
+     - Proposer sa disponibilité pour des questions de suivi
+     - Garder la réponse totale sous 300 mots
+   - Répondre dans les 2-3 heures suivant la publication de la requête (la rapidité est essentielle)
+   - Suivre le taux de réponse et le taux de placement pour optimiser au fil du temps
 
-6. **Thought Leadership Execution**
-   - Define 3-5 signature topics the executive/brand owns
-   - Create a content calendar mixing:
-     - Byline articles for industry publications (1-2 per month)
-     - LinkedIn long-form posts (2-4 per month)
-     - Podcast guesting (1-2 per month)
-     - Speaking engagements (quarterly minimum)
-     - Original research or data projects (1-2 per year)
-   - Build a "quotable insights" bank — pre-prepared expert commentary on likely trending topics
-   - Develop a rapid-response protocol for newsjacking opportunities
+6. **Exécution du leadership éclairé**
+   - Définir 3 à 5 sujets signature que le dirigeant/la marque possède
+   - Créer un calendrier de contenu combinant :
+     - Articles signés pour des publications sectorielles (1-2 par mois)
+     - Posts LinkedIn au format long (2-4 par mois)
+     - Invitations à des podcasts (1-2 par mois)
+     - Prises de parole (au minimum trimestrielles)
+     - Projets de recherche ou de données originales (1-2 par an)
+   - Constituer une banque d'« insights citables » — des commentaires d'expert préparés à l'avance sur des sujets susceptibles de devenir tendance
+   - Développer un protocole de réponse rapide pour les opportunités de newsjacking
 
-7. **E-E-A-T Signal Building**
-   - **Experience**: Document real-world experience through case studies, behind-the-scenes content, and practitioner insights
-   - **Expertise**: Display credentials, certifications, and specialized knowledge prominently; create expert-level content
-   - **Authoritativeness**: Earn mentions and links from authoritative sources, contribute to industry conversations, build a citation profile
-   - **Trustworthiness**: Ensure accurate information, transparent sourcing, clear authorship, secure website, and consistent NAP (Name, Address, Phone) data
-   - Implement author schema markup and detailed author bio pages
-   - Build topical authority through depth and breadth of expert content
+7. **Renforcement des signaux E-E-A-T**
+   - **Expérience** : documenter l'expérience concrète via des études de cas, du contenu en coulisses, et des points de vue de praticiens
+   - **Expertise** : mettre en avant les références, certifications, et connaissances spécialisées ; créer du contenu de niveau expert
+   - **Autorité** : obtenir des mentions et des liens de sources faisant autorité, contribuer aux discussions sectorielles, construire un profil de citations
+   - **Fiabilité** : garantir des informations exactes, un sourçage transparent, une paternité claire, un site web sécurisé, et des données NAP (Nom, Adresse, Téléphone) cohérentes
+   - Mettre en œuvre le balisage schema pour les auteurs et des pages de bio d'auteur détaillées
+   - Construire l'autorité thématique par la profondeur et l'étendue du contenu expert
 
-## Reference Files
+## Fichiers de référence
 
-- `media-outreach.md` — Journalist research methodology, media list building, pitch templates by scenario, outreach cadence rules, and relationship management
-- `press-releases.md` — Press release structure, writing guidelines, distribution channel comparison, SEO optimization for releases, and multimedia best practices
-- `thought-leadership.md` — Thought leadership content strategy, byline placement guide, speaking opportunity sourcing, podcast guesting playbook, and original research planning
-- `newsjacking.md` — News monitoring setup, relevance scoring framework, rapid-response templates, brand safety assessment, and timing guidelines
-- `eeat-authority.md` — E-E-A-T audit checklist, authority signal implementation guide, author optimization, trust signal taxonomy, and measurement framework
-- `link-building-tactics.md` — Link building methods ranked by effectiveness, outreach templates, link quality assessment, anchor text distribution, and practices to avoid
+- `media-outreach.md` — méthodologie de recherche de journalistes, constitution de listes média, modèles de pitch par scénario, règles de cadence de sollicitation, et gestion des relations
+- `press-releases.md` — structure du communiqué de presse, règles de rédaction, comparaison des canaux de diffusion, optimisation SEO des communiqués, et bonnes pratiques multimédia
+- `thought-leadership.md` — stratégie de contenu de leadership éclairé, guide de placement d'articles signés, sourcing d'opportunités de prise de parole, playbook d'invitation à des podcasts, et planification de recherche originale
+- `newsjacking.md` — mise en place de la veille d'actualité, cadre de notation de la pertinence, modèles de réponse rapide, évaluation de la sécurité de marque, et consignes de timing
+- `eeat-authority.md` — checklist d'audit E-E-A-T, guide de mise en œuvre des signaux d'autorité, optimisation des auteurs, taxonomie des signaux de confiance, et cadre de mesure
+- `link-building-tactics.md` — méthodes de netlinking classées par efficacité, modèles de sollicitation, évaluation de la qualité des liens, distribution des ancres, et pratiques à éviter
 
-## Output Formats
+## Formats de sortie
 
-| Deliverable | Format | Description |
+| Livrable | Format | Description |
 |---|---|---|
-| PR Strategy Document | Document | Comprehensive plan with goals, target media, angles, timeline, and KPIs |
-| Media List | Spreadsheet | Tiered list of publications and journalists with contact info and beat details |
-| Press Release | Document | Publication-ready release with headline, subhead, body, quotes, boilerplate, and contact |
-| Pitch Email Templates | Document | Customized pitch templates for each angle and journalist tier |
-| Journalist-Request Response Templates | Document | Pre-structured response frameworks for common query types (Qwoted / Featured / Source of Sources) |
-| Thought Leadership Calendar | Spreadsheet/Calendar | 90-day plan with content types, topics, platforms, and deadlines |
-| E-E-A-T Audit Report | Document | Current authority assessment with specific improvement actions |
-| Press Kit | Document + asset folder | Brand boilerplate, bios, fact sheet, approved images, and media contact info |
-| Executive Brand Strategy | Document | Personal branding plan with positioning, content themes, and platform strategy |
+| Document de stratégie RP | Document | Plan complet avec objectifs, médias cibles, angles, calendrier, et KPI |
+| Liste média | Tableur | Liste par niveau des publications et journalistes avec coordonnées et domaine de couverture |
+| Communiqué de presse | Document | Communiqué prêt à publier avec titre, sous-titre, corps de texte, citations, boilerplate, et contact |
+| Modèles d'emails de pitch | Document | Modèles de pitch personnalisés pour chaque angle et niveau de journaliste |
+| Modèles de réponse aux demandes de journalistes | Document | Cadres de réponse pré-structurés pour les types de requêtes courants (Qwoted / Featured / Source of Sources) |
+| Calendrier de leadership éclairé | Tableur/Calendrier | Plan sur 90 jours avec types de contenu, sujets, plateformes, et échéances |
+| Rapport d'audit E-E-A-T | Document | Évaluation de l'autorité actuelle avec des actions d'amélioration précises |
+| Dossier de presse | Document + dossier de ressources | Boilerplate de marque, bios, fiche factuelle, images approuvées, et coordonnées média |
+| Stratégie de marque du dirigeant | Document | Plan de marque personnelle avec positionnement, thèmes de contenu, et stratégie de plateforme |
 
-## Edge Cases
+## Cas particuliers
 
-### Newsjacking Controversial Topics (Brand Safety Risk)
-- **Situation**: A trending news story is relevant to the brand's expertise, but the topic is politically charged, divisive, or sensitive
-- **Approach**: Apply a strict brand safety assessment before any newsjacking response. Score the opportunity on three dimensions: Relevance (is the brand genuinely expert here?), Risk (could the response backfire?), and Reward (is the potential coverage worth the risk?). If the topic is politically divisive, recommend staying silent unless the brand has a clear, mission-aligned reason to speak. For sensitive topics (tragedy, crisis, discrimination), only respond if the brand can add genuine value, not promotional commentary. When in doubt, do not newsjack. Prepare a "kill switch" protocol for pulling published responses if sentiment shifts.
+### Newsjacking de sujets controversés (risque pour la sécurité de la marque)
+- **Situation** : une actualité tendance est pertinente pour l'expertise de la marque, mais le sujet est politiquement chargé, clivant, ou sensible
+- **Approche** : appliquer une évaluation stricte de la sécurité de marque avant toute réaction de newsjacking. Noter l'opportunité sur trois dimensions : Pertinence (la marque est-elle réellement experte sur ce sujet ?), Risque (la réponse pourrait-elle se retourner contre la marque ?), et Bénéfice (la couverture potentielle vaut-elle le risque ?). Si le sujet est politiquement clivant, recommander de rester silencieux, sauf si la marque a une raison claire et alignée avec sa mission de s'exprimer. Pour les sujets sensibles (tragédie, crise, discrimination), ne répondre que si la marque peut apporter une réelle valeur ajoutée, et non un commentaire promotionnel. En cas de doute, ne pas faire de newsjacking. Préparer un protocole de « coupe-circuit » pour retirer les réponses publiées si le sentiment évolue.
 
-### Regulated Industries (Legal Review Required)
-- **Situation**: Healthcare, financial services, legal, or other regulated industries need legal review before any public statement
-- **Approach**: Build legal review into the workflow timeline — add 3-5 business days minimum for legal approval. Pre-approve a library of statements and claims that can be used without per-instance legal review to enable faster response. For journalist-request responses (where speed matters), create pre-cleared credential statements and limit expert commentary to well-established facts rather than claims that could be construed as advice. Always include appropriate disclaimers. Flag that press releases in regulated industries require compliance review before distribution.
+### Secteurs réglementés (revue juridique requise)
+- **Situation** : les secteurs de la santé, des services financiers, du droit, ou d'autres secteurs réglementés nécessitent une revue juridique avant toute déclaration publique
+- **Approche** : intégrer la revue juridique dans le calendrier du workflow — ajouter au minimum 3 à 5 jours ouvrés pour l'approbation juridique. Pré-approuver une bibliothèque de déclarations et d'allégations utilisables sans revue juridique au cas par cas pour permettre une réponse plus rapide. Pour les réponses aux demandes de journalistes (où la rapidité compte), créer des déclarations de référence pré-validées et limiter les commentaires d'expert à des faits bien établis plutôt qu'à des allégations pouvant être interprétées comme des conseils. Toujours inclure les avertissements appropriés. Signaler que les communiqués de presse dans les secteurs réglementés nécessitent une revue de conformité avant diffusion.
 
-### Small Brand with No Media Relationships
-- **Situation**: Brand or executive has no existing press coverage, no media contacts, and no public profile
-- **Approach**: Start with foundation-building, not pitching tier 1 outlets. Phase the approach: (1) Build a credible online presence first (LinkedIn, website bio, author pages). (2) Start with journalist-request responses (Qwoted, Featured, Source of Sources) to build a portfolio of quotes and mentions. (3) Target tier 3 outlets (niche blogs, local media, industry newsletters) for initial coverage. (4) Create original data or research that gives media a reason to cite the brand. (5) After building a portfolio of 5-10 placements, begin pitching tier 2 publications. Set realistic expectations: building media authority from zero takes 6-12 months of consistent effort.
+### Petite marque sans relations médias
+- **Situation** : la marque ou le dirigeant n'a aucune couverture presse existante, aucun contact média, et aucun profil public
+- **Approche** : commencer par construire les fondations, pas par pitcher des médias de niveau 1. Phaser l'approche : (1) construire d'abord une présence en ligne crédible (LinkedIn, bio du site web, pages d'auteur). (2) Commencer par répondre aux demandes de journalistes (Qwoted, Featured, Source of Sources) pour constituer un portfolio de citations et de mentions. (3) Cibler les médias de niveau 3 (blogs de niche, médias locaux, newsletters sectorielles) pour une couverture initiale. (4) Créer des données ou des recherches originales donnant aux médias une raison de citer la marque. (5) Après avoir constitué un portfolio de 5 à 10 placements, commencer à pitcher les publications de niveau 2. Fixer des attentes réalistes : construire une autorité média à partir de zéro prend 6 à 12 mois d'efforts constants.
 
-### Crisis-Related PR
-- **Situation**: The brand is facing negative press, a product recall, customer complaint viral moment, or other reputation threat
-- **Approach**: This module handles proactive PR, not crisis communications. For active crisis situations, recommend the user consult a crisis communications specialist or agency. However, provide immediate guidance: (1) Acknowledge the situation promptly and transparently. (2) Do not hide, deflect, or attack. (3) Communicate what happened, what you are doing about it, and what changes will prevent recurrence. (4) Centralize communications through a single spokesperson. (5) Monitor media and social sentiment in real time. After the crisis stabilizes, use the standard PR workflow to rebuild trust through positive coverage, thought leadership, and earned media.
+### RP liées à une crise
+- **Situation** : la marque fait face à une presse négative, un rappel de produit, un moment viral de plainte client, ou une autre menace pour sa réputation
+- **Approche** : ce module gère les RP proactives, pas la communication de crise. Pour les situations de crise active, recommander à l'utilisateur de consulter un spécialiste ou une agence de communication de crise. Cependant, fournir des conseils immédiats : (1) reconnaître la situation rapidement et avec transparence. (2) Ne pas se cacher, éluder, ou attaquer. (3) Communiquer sur ce qui s'est passé, ce qui est fait à ce sujet, et les changements qui empêcheront la récidive. (4) Centraliser les communications via un seul porte-parole. (5) Surveiller les médias et le sentiment social en temps réel. Une fois la crise stabilisée, utiliser le workflow RP standard pour reconstruire la confiance via une couverture positive, le leadership éclairé, et les médias gagnés.
 
-## Related Skills
+## Compétences associées
 
-- **Content Engine** — For creating thought leadership content, byline articles, blog posts, and social content that builds authority
-- **AEO/GEO Intelligence** — For ensuring AI platforms accurately represent the brand, which is heavily influenced by media citations and authority signals
-- **Analytics & Insights** — For measuring PR impact through backlink tracking, brand mention monitoring, referral traffic, and share of voice analysis
-- **Campaign Orchestrator** — For integrating earned media into broader campaign plans and amplifying PR wins through paid and owned channels
-- **Audience Intelligence** — For understanding which journalists and publications the target audience reads and trusts
+- **Content Engine** — pour créer du contenu de leadership éclairé, des articles signés, des articles de blog, et du contenu social qui construit l'autorité
+- **AEO/GEO Intelligence** — pour s'assurer que les plateformes IA représentent fidèlement la marque, ce qui est fortement influencé par les citations médiatiques et les signaux d'autorité
+- **Analytics & Insights** — pour mesurer l'impact des RP via le suivi des backlinks, la surveillance des mentions de marque, le trafic de référence, et l'analyse de la part de voix
+- **Campaign Orchestrator** — pour intégrer les médias gagnés dans des plans de campagne plus larges et amplifier les succès RP via les canaux payants et détenus
+- **Audience Intelligence** — pour comprendre quels journalistes et publications l'audience cible lit et en qui elle a confiance

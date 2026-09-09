@@ -1,114 +1,114 @@
 ---
 name: aeo-audit
-description: "Audit how a brand appears across the 6 canonical AI answer surfaces — ChatGPT, Perplexity, Google AI Mode, AI Overviews, Gemini, Copilot — probing 10-25 queries into a numbered output bundle with per-platform visibility scorecards, citation-accuracy checks, a competitor matrix, content gaps, and an optimization playbook behind a four-gate quality scorecard. Triggers on \"/digital-marketing-pro:aeo-audit\", \"does ChatGPT know about our brand\", \"check our AI search visibility\", \"how does Perplexity describe us\", \"are we showing up in AI Overviews\". Reads the brand profile; reconciles probes against GSC actuals via /digital-marketing-pro:gsc-ai-performance and defines the AI-visibility scoring standard reused by geo-monitor and share-of-voice."
+description: "Auditer la manière dont une marque apparaît sur les 6 surfaces de réponse IA canoniques — ChatGPT, Perplexity, Google AI Mode, AI Overviews, Gemini, Copilot — en interrogeant 10 à 25 requêtes pour produire un ensemble de livrables numérotés avec des tableaux de bord de visibilité par plateforme, des vérifications de précision des citations, une matrice concurrentielle, des lacunes de contenu et un plan d'optimisation validé par un tableau de bord qualité à quatre portes. Se déclenche sur \"/digital-marketing-pro:aeo-audit\", \"does ChatGPT know about our brand\", \"check our AI search visibility\", \"how does Perplexity describe us\", \"are we showing up in AI Overviews\". Lit le profil de marque ; réconcilie les sondages avec les données réelles de GSC via /digital-marketing-pro:gsc-ai-performance et définit le standard de notation de visibilité IA réutilisé par geo-monitor et share-of-voice."
 argument-hint: "[brand-name or URL]"
 ---
 
 # /digital-marketing-pro:aeo-audit
 
-## Purpose
+## Objectif
 
-Evaluate the brand's visibility and accuracy across AI answer engines. Analyze how the brand is cited, described, and recommended by ChatGPT, Perplexity, **Google AI Mode** (the conversational search surface that became Google's default at I/O 2026 — ~1B MAUs as of May 2026), Google AI Overviews, Gemini, and Microsoft Copilot. Produce optimization recommendations to improve AI visibility.
+Évaluer la visibilité et la précision de la marque sur les moteurs de réponse IA. Analyser comment la marque est citée, décrite et recommandée par ChatGPT, Perplexity, **Google AI Mode** (la surface de recherche conversationnelle devenue l'expérience par défaut de Google lors de l'I/O 2026 — environ 1 milliard d'utilisateurs actifs mensuels en mai 2026), Google AI Overviews, Gemini et Microsoft Copilot. Produire des recommandations d'optimisation pour améliorer la visibilité IA.
 
-**AI Mode vs AI Overviews — why both matter:** AI Overviews are the summary block at the top of a classic Google SERP and trigger on a subset of queries. AI Mode is a conversational tab (and now the default search experience for opted-in users) backed by Gemini 3.5 Flash with deeper reasoning, follow-ups, and a different citation pattern. The two surfaces select different sources for the same query in a large share of cases (internal observation, 05/2026 — "40–60%" is a rough estimate; re-verify against your own probe set). Audit both.
+**AI Mode vs AI Overviews — pourquoi les deux comptent :** les AI Overviews sont le bloc de synthèse en haut d'une page de résultats Google classique et se déclenchent sur un sous-ensemble de requêtes. AI Mode est un onglet conversationnel (devenu désormais l'expérience de recherche par défaut pour les utilisateurs y ayant adhéré) reposant sur Gemini 3.5 Flash, avec un raisonnement plus poussé, des questions de suivi et un schéma de citation différent. Les deux surfaces sélectionnent des sources différentes pour une même requête dans une large part des cas (observation interne, 05/2026 — le chiffre « 40-60 % » est une estimation approximative ; à revérifier avec votre propre ensemble de sondages). Auditez les deux.
 
-**Cross-reference with GSC AI Performance Report (rolled out 3 June 2026):** The Google Search Console AI Performance Report (UK rollout first, global to follow) gives you actual *impressions* in AI Overviews + AI Mode for verified properties. Synthetic probe results from this skill should be reconciled against GSC actuals — see `/digital-marketing-pro:gsc-ai-performance` for the workflow. Important caveat: the GSC report intentionally excludes click data; click-through attribution must come from GA4 (the new `AI Assistant` channel group, added 13 May 2026, captures `Medium=ai-assistant` referrals from ChatGPT/Gemini/Claude; see `/digital-marketing-pro:analytics-insights`).
+**Recoupement avec le rapport GSC AI Performance (déployé le 3 juin 2026) :** le rapport GSC AI Performance de Google Search Console (déploiement initial au Royaume-Uni, puis mondial) fournit les *impressions* réelles dans AI Overviews + AI Mode pour les propriétés vérifiées. Les résultats de sondage synthétiques de cette compétence doivent être réconciliés avec les données réelles de GSC — voir `/digital-marketing-pro:gsc-ai-performance` pour le workflow. Avertissement important : le rapport GSC exclut volontairement les données de clic ; l'attribution du clic doit venir de GA4 (le nouveau groupe de canaux `AI Assistant`, ajouté le 13 mai 2026, capture les référents `Medium=ai-assistant` en provenance de ChatGPT/Gemini/Claude ; voir `/digital-marketing-pro:analytics-insights`).
 
-**Google's official position on AI optimization** (Google AI Optimization Guide, updated 15 May 2026): no `llms.txt`, no AI-specific schema, no separate AI eligibility gate. Pages eligible for snippets in classic Search are eligible for AI Features. Don't manufacture work around fictional ranking factors — `/digital-marketing-pro:aeo-geo` documents what *does* work (entity consistency, citation-worthy snippets, knowledge graph alignment).
+**Position officielle de Google sur l'optimisation IA** (guide d'optimisation IA de Google, mis à jour le 15 mai 2026) : pas de `llms.txt`, pas de schéma spécifique à l'IA, pas de porte d'éligibilité IA séparée. Les pages éligibles aux extraits dans la recherche classique sont éligibles aux fonctionnalités IA. Ne fabriquez pas de travail autour de facteurs de classement fictifs — `/digital-marketing-pro:aeo-geo` documente ce qui *fonctionne réellement* (cohérence des entités, extraits dignes de citation, alignement avec le knowledge graph).
 
-**Information Agents (Google AI Pro / Ultra, summer 2026 launch):** Google announced at I/O 2026 a new class of persistent agents that continuously monitor web / news / real-time data for subscribers and deliver synthesized updates with actionable capabilities. Once these go live, they become a **7th probe target** for this skill (alongside ChatGPT / Perplexity / AI Mode / AI Overviews / Gemini / Copilot). Until then, treat AI Mode as the proxy — agents are powered by the same Gemini 3.5 Flash backbone. Source: [blog.google/search-io-2026](https://blog.google/products-and-platforms/products/search/search-io-2026/).
+**Information Agents (Google AI Pro / Ultra, lancement prévu à l'été 2026) :** Google a annoncé lors de l'I/O 2026 une nouvelle classe d'agents persistants qui surveillent en continu le web, les actualités et les données en temps réel pour les abonnés, et livrent des synthèses avec des capacités actionnables. Une fois ces agents en service, ils deviendront une **7e cible de sondage** pour cette compétence (aux côtés de ChatGPT / Perplexity / AI Mode / AI Overviews / Gemini / Copilot). D'ici là, traitez AI Mode comme le proxy — les agents reposent sur la même architecture Gemini 3.5 Flash. Source : [blog.google/search-io-2026](https://blog.google/products-and-platforms/products/search/search-io-2026/).
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Brand name**: The brand to audit
-- **Website URL**: Primary domain
-- **Key queries**: 5-10 queries a potential customer might ask that should surface the brand
-- **Competitors**: 2-3 competitors for comparison
-- **Product/service categories**: What the brand should be known for
+- **Nom de la marque** : la marque à auditer
+- **URL du site web** : domaine principal
+- **Requêtes clés** : 5 à 10 requêtes qu'un client potentiel pourrait poser et qui devraient faire apparaître la marque
+- **Concurrents** : 2 à 3 concurrents pour comparaison
+- **Catégories de produits/services** : ce pour quoi la marque devrait être connue
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Define a test query set: branded queries, category queries, comparison queries, "best of" queries, problem-solution queries
-3. Analyze how the brand appears in AI responses for each query type
-4. Check citation accuracy: Are facts correct? Are URLs valid? Is the description current?
-5. Compare brand mention frequency and sentiment against competitors
-6. Assess source authority: Which sources are AI engines pulling brand info from?
-7. Evaluate structured data and knowledge panel presence
-8. Identify content gaps where the brand should appear but does not
-9. Generate optimization recommendations for improved AI visibility
+1. **Charger le contexte de marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de la marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. **Vérifier également l'existence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier l'existence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. Définir un ensemble de requêtes de test : requêtes de marque, requêtes de catégorie, requêtes de comparaison, requêtes « meilleur… », requêtes problème-solution
+3. Analyser comment la marque apparaît dans les réponses IA pour chaque type de requête
+4. Vérifier la précision des citations : les faits sont-ils exacts ? Les URL sont-elles valides ? La description est-elle à jour ?
+5. Comparer la fréquence de mention de la marque et le sentiment associé face aux concurrents
+6. Évaluer l'autorité des sources : de quelles sources les moteurs IA tirent-ils les informations sur la marque ?
+7. Évaluer la présence des données structurées et du panneau de connaissances (knowledge panel)
+8. Identifier les lacunes de contenu là où la marque devrait apparaître mais ne le fait pas
+9. Générer des recommandations d'optimisation pour améliorer la visibilité IA
 
-## Output
+## Résultat
 
-A structured AEO audit report containing:
+Un rapport d'audit AEO structuré contenant :
 
-- AI visibility scorecard across platforms (ChatGPT, Perplexity, Google AI Mode, Google AI Overviews, Gemini, Microsoft Copilot)
-- Query-by-query results showing where the brand appears, how it is described, and citation sources
-- Competitor comparison matrix for AI visibility
-- Citation accuracy assessment with corrections needed
-- Source authority analysis — which pages/sites drive AI mentions
-- Content gap list — queries where the brand is absent but should appear
-- Optimization playbook: structured data, content strategy, authority building, and entity optimization
+- Un tableau de bord de visibilité IA multiplateforme (ChatGPT, Perplexity, Google AI Mode, Google AI Overviews, Gemini, Microsoft Copilot)
+- Les résultats requête par requête, montrant où la marque apparaît, comment elle est décrite et les sources de citation
+- Une matrice de comparaison concurrentielle pour la visibilité IA
+- Une évaluation de la précision des citations, avec les corrections nécessaires
+- Une analyse de l'autorité des sources — quelles pages/quels sites génèrent les mentions IA
+- Une liste des lacunes de contenu — requêtes où la marque est absente mais devrait apparaître
+- Un plan d'optimisation : données structurées, stratégie de contenu, construction d'autorité et optimisation des entités
 
-## Numbered output convention
+## Convention de numérotation des livrables
 
-All AEO audit outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/aeo-audit/{YYYY-MM-DD}/`:
+Tous les livrables de l'audit AEO vont dans `${CLAUDE_PLUGIN_DATA}/{brand}/seo/aeo-audit/{YYYY-MM-DD}/` :
 
 ```
-00-input.md                 brand identity, target query set, competitor list, AI platforms probed
-01-query-set.md             the 10-25 queries probed, with intent classification
-02-probe-results.json       raw probe responses per platform per query (the data layer)
-03-platform-scorecard.md    visibility scorecard per AI platform (1-10) with diff vs prior run
-04-citation-accuracy.md     fact-by-fact accuracy check of AI descriptions; what to correct
-05-source-authority.md      which pages/sites are driving AI mentions; topical entity map
-06-content-gaps.md          queries where brand is absent but should appear
-07-competitor-matrix.md     side-by-side AI presence vs competitors
-08-quality-scorecard.md     the gates below
-09-optimization-playbook.md  structured data, content, authority, entity work — sequenced
-PLAN.md                     single-page deliverable
+00-input.md                 identité de marque, ensemble de requêtes cibles, liste de concurrents, plateformes IA sondées
+01-query-set.md             les 10 à 25 requêtes sondées, avec classification d'intention
+02-probe-results.json       réponses brutes des sondages par plateforme et par requête (la couche de données)
+03-platform-scorecard.md    tableau de bord de visibilité par plateforme IA (1-10) avec écart vs exécution précédente
+04-citation-accuracy.md     vérification fait par fait de la précision des descriptions IA ; ce qu'il faut corriger
+05-source-authority.md      quelles pages/sites génèrent les mentions IA ; carte des entités thématiques
+06-content-gaps.md          requêtes où la marque est absente mais devrait apparaître
+07-competitor-matrix.md     présence IA côte à côte face aux concurrents
+08-quality-scorecard.md     les portes ci-dessous
+09-optimization-playbook.md  données structurées, contenu, autorité, travail sur les entités — séquencés
+PLAN.md                     livrable synthétique sur une page
 ```
 
-Reconcile `03-platform-scorecard.md` against `/digital-marketing-pro:gsc-ai-performance` actuals — probe results show what AI *could* surface; GSC shows what it *actually* surfaced.
+Réconciliez `03-platform-scorecard.md` avec les données réelles de `/digital-marketing-pro:gsc-ai-performance` — les résultats de sondage montrent ce que l'IA *pourrait* faire remonter ; GSC montre ce qu'elle a *réellement* fait remonter.
 
-## Quality scorecard
+## Tableau de bord qualité
 
-| Gate | What it checks |
+| Porte | Ce qu'elle vérifie |
 |---|---|
-| **query_set_size** | ≥ 10 queries probed (below this, results are anecdotal) |
-| **platform_coverage** | ≥ 4 of the 6 supported platforms probed (ChatGPT, Perplexity, AI Mode, AI Overviews, Gemini, Copilot) |
-| **competitor_coverage** | ≥ 2 competitors probed alongside the brand on same query set |
-| **citation_accuracy_done** | Every "brand appears" result has been fact-checked (no silent ship of "AI said X — sounds right") |
+| **query_set_size** | ≥ 10 requêtes sondées (en dessous, les résultats sont anecdotiques) |
+| **platform_coverage** | ≥ 4 des 6 plateformes prises en charge sondées (ChatGPT, Perplexity, AI Mode, AI Overviews, Gemini, Copilot) |
+| **competitor_coverage** | ≥ 2 concurrents sondés avec le même ensemble de requêtes que la marque |
+| **citation_accuracy_done** | Chaque résultat « la marque apparaît » a été vérifié factuellement (pas de livraison silencieuse d'un « l'IA a dit X — ça a l'air correct ») |
 
-`status: ready` requires all four gates pass.
+`status: ready` requiert que les quatre portes soient validées.
 
-## AI-visibility scoring standard (canonical — reused across the plugin)
+## Standard de notation de visibilité IA (canonique — réutilisé dans tout le plugin)
 
-This skill defines the plugin's **single AI-visibility scoring standard.** Every AI-visibility surface reuses it — do not invent a parallel model.
+Cette compétence définit le **standard unique de notation de visibilité IA** du plugin. Chaque surface de visibilité IA le réutilise — n'inventez pas un modèle parallèle.
 
-- **Canonical surfaces (6):** Google AI Mode, Google AI Overviews, ChatGPT, Perplexity, Gemini, Microsoft Copilot. This exact set is the `PLATFORMS` constant in `scripts/geo-tracker.py` — reference that constant, don't re-list a different set.
-- **Canonical rubric:** the per-platform 1-10 visibility score plus the four gates above. Score each platform separately; never average across platforms (a brand can be 9/10 on Perplexity and 2/10 on ChatGPT — the average misleads).
-- **Recurring mode:** `/digital-marketing-pro:geo-monitor` applies this same rubric on a schedule (weekly / monthly) and tracks it over time. The 0-100 GEO health score + A-F letter grade that `geo-tracker.py` emits is the **trend view** of the same underlying data — a longitudinal roll-up, not a second scoring model.
-- **Consumers:** `geo-monitor` (recurring), `share-of-voice` (its AI dimension), `rank-monitor` (AI Overview citation presence in `--features` mode). All reconcile synthetic probe scores against GSC actuals via `/digital-marketing-pro:gsc-ai-performance`.
+- **Surfaces canoniques (6)** : Google AI Mode, Google AI Overviews, ChatGPT, Perplexity, Gemini, Microsoft Copilot. Cet ensemble exact correspond à la constante `PLATFORMS` dans `scripts/geo-tracker.py` — référencez cette constante, ne relistez pas un ensemble différent.
+- **Grille canonique** : le score de visibilité par plateforme sur 1-10, plus les quatre portes ci-dessus. Notez chaque plateforme séparément ; ne faites jamais de moyenne entre plateformes (une marque peut obtenir 9/10 sur Perplexity et 2/10 sur ChatGPT — la moyenne induit en erreur).
+- **Mode récurrent** : `/digital-marketing-pro:geo-monitor` applique cette même grille selon un calendrier (hebdomadaire / mensuel) et en suit l'évolution dans le temps. Le score de santé GEO sur 0-100 et la note de A à F que produit `geo-tracker.py` sont la **vue de tendance** de ces mêmes données sous-jacentes — un cumul longitudinal, pas un second modèle de notation.
+- **Consommateurs** : `geo-monitor` (récurrent), `share-of-voice` (sa dimension IA), `rank-monitor` (présence de citation dans AI Overview en mode `--features`). Tous réconcilient les scores de sondage synthétiques avec les données réelles de GSC via `/digital-marketing-pro:gsc-ai-performance`.
 
-## Chain handoffs
+## Enchaînements
 
-- **Upstream:** `/digital-marketing-pro:aeo-geo` for the strategy framing this audit measures against
-- **Downstream:**
-  - `/digital-marketing-pro:gsc-ai-performance` — reconcile synthetic probe results against GSC actuals
-  - `/digital-marketing-pro:keyword-cluster` — `06-content-gaps.md` becomes seed input for clustering
-  - `/digital-marketing-pro:entity-audit` — drives `05-source-authority.md` corrections in Knowledge Graph
-  - `/digital-marketing-pro:seo-drift` — next quarter, compare two AEO snapshots
+- **En amont :** `/digital-marketing-pro:aeo-geo` pour le cadrage stratégique par rapport auquel cet audit mesure
+- **En aval :**
+  - `/digital-marketing-pro:gsc-ai-performance` — réconcilier les résultats de sondage synthétiques avec les données réelles de GSC
+  - `/digital-marketing-pro:keyword-cluster` — `06-content-gaps.md` devient une donnée d'entrée pour le clustering
+  - `/digital-marketing-pro:entity-audit` — pilote les corrections de `05-source-authority.md` dans le Knowledge Graph
+  - `/digital-marketing-pro:seo-drift` — au trimestre suivant, comparer deux instantanés AEO
 
-## Tips & caveats
+## Conseils et mises en garde
 
-- **AI Mode and AI Overviews frequently disagree on the same queries** (internal observation, 05/2026 — the "40-60%" figure is a rough estimate, re-verify against your own probe set) — always probe both separately, never roll them into "Google AI".
-- **Don't probe more than 25 queries per session.** Beyond that, model rate limits + token cost dominate. Pick the 10-25 highest-value queries.
-- **Citation accuracy is the audit's most-skipped step.** AI engines confidently hallucinate brand facts; if you don't fact-check, you're certifying wrong info. Always check at least the top-cited fact per platform.
-- **Synthetic probes overstate presence.** Real users phrase queries differently than the test set. The cross-reference with the GSC AI Performance Report (3 Jun 2026, UK first) is what tells you actual impressions.
-- **Score the probe results, don't average platforms.** A brand can score 9/10 on Perplexity (cites everyone) and 2/10 on ChatGPT (selective citing) — the average misleads. Report per-platform scores side by side.
+- **AI Mode et AI Overviews sont fréquemment en désaccord sur les mêmes requêtes** (observation interne, 05/2026 — le chiffre « 40-60 % » est une estimation approximative, à revérifier avec votre propre ensemble de sondages) — sondez toujours les deux séparément, ne les regroupez jamais sous « Google AI ».
+- **Ne sondez pas plus de 25 requêtes par session.** Au-delà, les limites de débit des modèles et le coût en tokens deviennent dominants. Choisissez les 10 à 25 requêtes à plus forte valeur.
+- **La précision des citations est l'étape la plus souvent négligée de l'audit.** Les moteurs IA hallucinent des faits sur les marques avec assurance ; si vous ne vérifiez pas les faits, vous certifiez des informations erronées. Vérifiez toujours au moins le fait le plus cité par plateforme.
+- **Les sondages synthétiques surestiment la présence.** Les vrais utilisateurs formulent leurs requêtes différemment de l'ensemble de test. Le recoupement avec le rapport GSC AI Performance (3 juin 2026, Royaume-Uni en premier) est ce qui indique les impressions réelles.
+- **Notez les résultats de sondage, ne faites pas de moyenne entre plateformes.** Une marque peut obtenir 9/10 sur Perplexity (qui cite tout le monde) et 2/10 sur ChatGPT (citation sélective) — la moyenne induit en erreur. Reportez les scores par plateforme côte à côte.
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — AI search analysis, entity optimization, structured data, citation strategy
+- **seo-specialist** — Analyse de la recherche IA, optimisation des entités, données structurées, stratégie de citation

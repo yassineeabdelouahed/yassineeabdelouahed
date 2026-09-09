@@ -1,68 +1,68 @@
 ---
 name: client-report
-description: "Generate a white-labeled client report in agency voice — weekly pulse, monthly review, or QBR — with a KPI scorecard vs targets and comparison period, channel breakdowns, top wins with attribution, root-cause analysis of misses, 3-5 strategic recommendations, and budget efficiency. Requires explicit approval before any external send; only then can it deliver via connected Slack, email, or Google Sheets MCPs and log the delivery. Triggers on \"/digital-marketing-pro:client-report\", \"prepare the monthly report for the client\", \"build the QBR for this account\", \"send the weekly performance pulse\", \"white-labeled performance report\". Reads the brand profile and pulls data via campaign-tracker.py, execution-tracker.py, and connected platform MCPs; formats via report-generator.py."
+description: "Générer un rapport client à marque blanche dans la voix de l'agence — pulse hebdomadaire, revue mensuelle ou QBR — avec un tableau de bord KPI vs objectifs et période de comparaison, des répartitions par canal, les principales réussites avec attribution, une analyse des causes profondes des objectifs manqués, 3 à 5 recommandations stratégiques et l'efficacité budgétaire. Nécessite une approbation explicite avant tout envoi externe ; ce n'est qu'ensuite qu'il peut être livré via les MCP Slack, e-mail ou Google Sheets connectés, avec journalisation de l'envoi. Se déclenche sur \"/digital-marketing-pro:client-report\", \"prépare le rapport mensuel pour le client\", \"construis le QBR pour ce compte\", \"envoie le pulse de performance hebdomadaire\", \"rapport de performance en marque blanche\". Lit le profil de marque et récupère les données via campaign-tracker.py, execution-tracker.py et les MCP de plateformes connectées ; formate via report-generator.py."
 ---
 
 # /digital-marketing-pro:client-report
 
-## Purpose
+## Objectif
 
-Generate a professional, white-labeled client report for a specific brand. Uses agency voice (not brand voice), includes KPI performance, channel breakdowns, strategic recommendations, and next steps. Designed for external client delivery via Slack, email, Google Sheets, or markdown — with approval gating before any external send to prevent accidental disclosure or premature delivery of draft findings.
+Générer un rapport client professionnel, en marque blanche, pour une marque spécifique. Utilise la voix de l'agence (et non la voix de la marque), inclut la performance des KPI, les répartitions par canal, des recommandations stratégiques et les prochaines étapes. Conçu pour une livraison client externe via Slack, e-mail, Google Sheets ou markdown — avec un verrou d'approbation avant tout envoi externe afin d'éviter toute divulgation accidentelle ou livraison prématurée de résultats provisoires.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Brand slug**: The brand this report covers — must match a configured brand in `~/.claude-marketing/brands/`
-- **Report type**: One of:
-  - Weekly pulse: Quick KPI snapshot with 3-5 key metrics and brief commentary
-  - Monthly review: Full performance analysis with channel breakdowns and recommendations
-  - QBR: Quarterly deep-dive with strategic roadmap and forward plan
-- **Date range**: Specific start and end dates for the reporting period — defines what data is pulled and analyzed
-- **Delivery channel**: Where the report should be sent — slack, email, google-sheets, or markdown-only (no external delivery, just generate the artifact)
-- **Custom sections (optional)**: Any additional sections the client has requested — competitive update, creative performance breakdown, audience insights, attribution deep-dive, or ad-hoc investigation topic
-- **Comparison period**: What to compare against — prior period, same period last year, plan/target, or all three simultaneously
-- **Recipient list (optional)**: Specific client contacts who should receive the report if delivering via email or Slack — names and handles/addresses
-- **Narrative emphasis (optional)**: What the client cares most about this period — growth, efficiency, brand awareness, pipeline generation, or revenue — influences which metrics are highlighted first and how insights are framed
-- **Include appendix**: Whether to attach raw data tables and campaign-level detail as an appendix — defaults to yes for monthly and QBR, no for weekly pulse
-- **White-label settings (optional)**: Agency logo placement, color scheme, and disclaimer text — pulled from agency profile if configured, otherwise uses clean defaults
+- **Slug de la marque** : La marque couverte par ce rapport — doit correspondre à une marque configurée dans `~/.claude-marketing/brands/`
+- **Type de rapport** : L'un des suivants :
+  - Pulse hebdomadaire : Instantané rapide des KPI avec 3 à 5 indicateurs clés et un bref commentaire
+  - Revue mensuelle : Analyse complète de la performance avec répartitions par canal et recommandations
+  - QBR : Analyse trimestrielle approfondie avec feuille de route stratégique et plan à venir
+- **Plage de dates** : Dates de début et de fin spécifiques pour la période de reporting — définit les données récupérées et analysées
+- **Canal de livraison** : Où le rapport doit être envoyé — slack, email, google-sheets, ou markdown-only (aucune livraison externe, uniquement génération de l'artefact)
+- **Sections personnalisées (optionnel)** : Toute section supplémentaire demandée par le client — mise à jour concurrentielle, répartition de la performance créative, insights sur l'audience, analyse approfondie de l'attribution, ou sujet d'investigation ad hoc
+- **Période de comparaison** : Contre quoi comparer — période précédente, même période l'année dernière, plan/objectif, ou les trois simultanément
+- **Liste des destinataires (optionnel)** : Contacts client spécifiques qui doivent recevoir le rapport en cas de livraison par e-mail ou Slack — noms et identifiants/adresses
+- **Emphase narrative (optionnel)** : Ce à quoi le client tient le plus pendant cette période — croissance, efficacité, notoriété de marque, génération de pipeline, ou revenu — influence les métriques mises en avant en premier et la manière dont les insights sont formulés
+- **Inclure une annexe** : Indique si des tableaux de données brutes et le détail au niveau campagne doivent être joints en annexe — par défaut oui pour les revues mensuelles et QBR, non pour le pulse hebdomadaire
+- **Paramètres de marque blanche (optionnel)** : Placement du logo de l'agence, palette de couleurs et texte de mentions légales — récupérés depuis le profil de l'agence s'il est configuré, sinon des valeurs par défaut sobres sont utilisées
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Pull all metrics for the brand**: Query connected MCP servers and run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` (then `--action get-campaign --id {id}` per campaign) to gather performance data across all active channels; filter to the specified date range during analysis
-3. **Gather campaign history and execution log**: Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/execution-tracker.py" --brand {slug} --action get-history` to compile all deliverables completed, campaigns launched, optimizations made, and tests concluded, then filter to the reporting period during analysis
-4. **Calculate KPIs vs targets and vs comparison period**: Compute actuals against the brand's stated KPI targets from `profile.json` and against the selected comparison period — calculate deltas, percentage changes, trend direction, and statistical significance where sample sizes allow
-5. **Break down performance by channel**: Segment metrics by channel (paid search, paid social, organic search, email, display, video, affiliate, etc.) with per-channel KPIs, spend, efficiency metrics (CPC, CPA, ROAS, CTR), and contribution percentage to overall goals
-6. **Identify top wins and attribution**: Select the 3-5 best-performing campaigns or initiatives from the period — document what was done, what drove the result, audience and creative insights, and how it connects to business outcomes
-7. **Analyze underperformance with root causes**: For any KPI that missed target, identify root causes:
-   - External factors: market shifts, seasonality, competitive moves, platform algorithm changes
-   - Internal factors: budget constraints, creative fatigue, audience saturation, timing misalignment
-   - Corrective actions: what was already done and what is recommended for next period
-8. **Generate strategic recommendations**: Based on performance data, formulate 3-5 actionable recommendations — what to scale, what to pause, what to test next, where budget should shift, and what new opportunities to explore
-9. **Write report in agency voice**: Draft the full report using professional, third-person agency voice — NOT the brand's personality. Focus on clarity, data-backed insights, actionable next steps, and a confident but honest tone that builds client trust
-10. **Format for delivery channel**: Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/report-generator.py" --brand {slug} --action format-slack` (or `format-email` / `format-sheets`), passing the report JSON via `--data '{report_json}'`; for a clean markdown artifact use `--action generate-report --data '{report_json}'`
-11. **Create approval checkpoint**: Present the full report preview for review. Risk level: low. Require explicit approval before any external delivery — highlight any sensitive data, unexpected results, or negative findings that may need pre-briefing with the client
-12. **Deliver via MCP if approved**: On approval, send via the appropriate MCP integration (Slack MCP, email MCP, Google Sheets MCP) if a delivery channel was specified. Handle delivery errors gracefully with retry guidance
-13. **Log delivery and archive**: Record the report delivery in the execution log with timestamp, recipients, delivery confirmation status, report version, and a reference to the archived report for future comparison
+1. **Charger le contexte de la marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. Vérifier également l'existence de directives dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions. Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Récupérer toutes les métriques de la marque** : Interroger les serveurs MCP connectés et exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` (puis `--action get-campaign --id {id}` par campagne) pour rassembler les données de performance sur tous les canaux actifs ; filtrer sur la plage de dates spécifiée pendant l'analyse
+3. **Rassembler l'historique des campagnes et le journal d'exécution** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/execution-tracker.py" --brand {slug} --action get-history` pour compiler tous les livrables réalisés, les campagnes lancées, les optimisations effectuées et les tests conclus, puis filtrer sur la période de reporting pendant l'analyse
+4. **Calculer les KPI par rapport aux objectifs et à la période de comparaison** : Calculer les résultats réels par rapport aux objectifs de KPI déclarés de la marque dans `profile.json` et par rapport à la période de comparaison sélectionnée — calculer les écarts, les variations en pourcentage, la direction de la tendance et la significativité statistique lorsque la taille des échantillons le permet
+5. **Décomposer la performance par canal** : Segmenter les métriques par canal (recherche payante, social payant, recherche organique, e-mail, display, vidéo, affiliation, etc.) avec les KPI par canal, les dépenses, les métriques d'efficacité (CPC, CPA, ROAS, CTR) et le pourcentage de contribution aux objectifs globaux
+6. **Identifier les principales réussites et leur attribution** : Sélectionner les 3 à 5 campagnes ou initiatives les plus performantes de la période — documenter ce qui a été fait, ce qui a généré le résultat, les insights sur l'audience et la créa, et le lien avec les résultats business
+7. **Analyser les sous-performances avec causes profondes** : Pour tout KPI n'ayant pas atteint son objectif, identifier les causes profondes :
+   - Facteurs externes : évolutions du marché, saisonnalité, mouvements concurrentiels, changements d'algorithme des plateformes
+   - Facteurs internes : contraintes budgétaires, lassitude créative, saturation d'audience, désalignement de timing
+   - Actions correctives : ce qui a déjà été fait et ce qui est recommandé pour la prochaine période
+8. **Générer des recommandations stratégiques** : Sur la base des données de performance, formuler 3 à 5 recommandations actionnables — quoi accentuer, quoi mettre en pause, quoi tester ensuite, où le budget doit être réalloué, et quelles nouvelles opportunités explorer
+9. **Rédiger le rapport dans la voix de l'agence** : Rédiger le rapport complet en utilisant une voix d'agence professionnelle, à la troisième personne — PAS la personnalité de la marque. Se concentrer sur la clarté, des insights étayés par les données, des prochaines étapes actionnables, et un ton confiant mais honnête qui renforce la confiance du client
+10. **Formater pour le canal de livraison** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/report-generator.py" --brand {slug} --action format-slack` (ou `format-email` / `format-sheets`), en passant le rapport JSON via `--data '{report_json}'` ; pour un artefact markdown propre, utiliser `--action generate-report --data '{report_json}'`
+11. **Créer un point de contrôle d'approbation** : Présenter l'aperçu complet du rapport pour révision. Niveau de risque : faible. Exiger une approbation explicite avant toute livraison externe — mettre en évidence toute donnée sensible, tout résultat inattendu ou toute conclusion négative qui pourrait nécessiter un pré-briefing avec le client
+12. **Livrer via MCP si approuvé** : Après approbation, envoyer via l'intégration MCP appropriée (MCP Slack, MCP e-mail, MCP Google Sheets) si un canal de livraison a été spécifié. Gérer les erreurs de livraison avec élégance et fournir des conseils de reprise
+13. **Journaliser la livraison et archiver** : Enregistrer la livraison du rapport dans le journal d'exécution avec horodatage, destinataires, statut de confirmation de livraison, version du rapport et une référence vers le rapport archivé pour comparaison future
 
-## Output
+## Résultat
 
-A structured client report containing:
+Un rapport client structuré contenant :
 
-- **Executive summary**: 3-5 sentence overview of the period — headline result, key wins, areas of focus, outlook for next period, and one recommended action for the client
-- **KPI scorecard**: Actuals vs targets vs comparison period in a scannable table with color-coded status indicators (exceeded, on track, at risk, missed) and trend arrows showing directional momentum
-- **Channel performance breakdown**: Per-channel metrics with spend, results, efficiency metrics (CPC, CPA, ROAS, CTR), contribution percentage to overall goals, and channel health assessment
-- **Campaign highlights with attribution**: Top-performing campaigns with what drove success, creative and audience insights, measured impact, and replication recommendations for future campaigns
-- **Underperformance analysis**: Honest assessment of any misses with root cause categorization (external vs internal), impact quantification, corrective actions taken, and preventive measures for next period
-- **Strategic recommendations (3-5)**: Data-backed next steps with expected impact, investment required, implementation timeline, priority ranking, and connection to the client's stated business objectives
-- **Budget efficiency analysis**: Spend vs return summary by channel, cost trend lines over the period, budget utilization rate, and efficiency comparison to prior periods with improvement/decline indicators
-- **Upcoming deliverables and timeline**: What the agency will deliver next period with dates, milestones, dependencies, and any client actions required to keep the plan on track
-- **Appendix (if requested)**: Raw data tables, campaign-level breakdowns, full metric exports, creative performance data, and supporting calculations for detailed review
-- **Delivery confirmation**: Channel, timestamp, recipients, delivery status, and report version — or markdown artifact if no external delivery was requested
+- **Résumé exécutif** : Aperçu de 3 à 5 phrases de la période — résultat principal, réussites clés, points d'attention, perspectives pour la prochaine période et une action recommandée pour le client
+- **Tableau de bord KPI** : Résultats réels vs objectifs vs période de comparaison dans un tableau lisible en un coup d'œil avec des indicateurs de statut codés par couleur (dépassé, en bonne voie, à risque, manqué) et des flèches de tendance montrant l'élan directionnel
+- **Répartition de la performance par canal** : Métriques par canal avec dépenses, résultats, métriques d'efficacité (CPC, CPA, ROAS, CTR), pourcentage de contribution aux objectifs globaux et évaluation de la santé du canal
+- **Faits marquants des campagnes avec attribution** : Campagnes les plus performantes avec ce qui a conduit au succès, insights créatifs et sur l'audience, impact mesuré, et recommandations de reproduction pour les futures campagnes
+- **Analyse des sous-performances** : Évaluation honnête de tout écart avec catégorisation des causes profondes (externes vs internes), quantification de l'impact, actions correctives prises, et mesures préventives pour la prochaine période
+- **Recommandations stratégiques (3-5)** : Prochaines étapes étayées par les données avec impact attendu, investissement requis, calendrier de mise en œuvre, classement par priorité et lien avec les objectifs business déclarés du client
+- **Analyse de l'efficacité budgétaire** : Résumé dépenses vs retour par canal, courbes de tendance des coûts sur la période, taux d'utilisation du budget et comparaison d'efficacité aux périodes précédentes avec indicateurs d'amélioration/déclin
+- **Livrables et calendrier à venir** : Ce que l'agence livrera la prochaine période avec dates, jalons, dépendances et toute action requise du client pour maintenir le plan sur la bonne voie
+- **Annexe (si demandée)** : Tableaux de données brutes, répartitions au niveau campagne, exports complets de métriques, données de performance créative et calculs justificatifs pour une revue détaillée
+- **Confirmation de livraison** : Canal, horodatage, destinataires, statut de livraison et version du rapport — ou artefact markdown si aucune livraison externe n'a été demandée
 
-## Agents Used
+## Agents utilisés
 
-- **agency-operations** — Report voice and tone (agency professional, not brand personality), client context awareness, approval workflow management, white-label formatting, and delivery coordination
-- **analytics-analyst** — Metrics analysis, KPI calculations, channel breakdowns, trend analysis, comparison computations, attribution modeling, statistical significance checks, and recommendation data support
-- **execution-coordinator** — Report formatting for delivery channels, MCP integration delivery, execution logging, delivery error handling, and archival
+- **agency-operations** — Voix et ton du rapport (professionnel d'agence, pas la personnalité de la marque), conscience du contexte client, gestion du workflow d'approbation, formatage en marque blanche, et coordination de la livraison
+- **analytics-analyst** — Analyse des métriques, calculs de KPI, répartitions par canal, analyse de tendances, calculs de comparaison, modélisation d'attribution, vérifications de significativité statistique, et support de données pour les recommandations
+- **execution-coordinator** — Formatage du rapport pour les canaux de livraison, livraison via intégration MCP, journalisation d'exécution, gestion des erreurs de livraison, et archivage

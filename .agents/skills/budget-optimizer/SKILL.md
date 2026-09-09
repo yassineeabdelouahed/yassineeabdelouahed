@@ -1,60 +1,60 @@
 ---
 name: budget-optimizer
-description: "Reallocate marketing spend across channels using performance data and diminishing-returns modeling — produces a current-vs-optimized allocation table, projected ROI ranges with confidence intervals, a phased 4-8 week reallocation timeline, and a 10-15% testing reserve. Recommends shifts only; it never changes spend on any platform. Triggers on \"/digital-marketing-pro:budget-optimizer\", \"optimize my marketing budget\", \"which channels should get more spend\", \"reallocate budget based on ROAS\", \"is our channel split right\". Reads the brand profile and guidelines, runs scripts/budget-optimizer.py, and pairs with /digital-marketing-pro:budget-tracker for in-flight pacing."
+description: "Réallouer les dépenses marketing entre canaux à l'aide de données de performance et d'une modélisation des rendements décroissants — produit un tableau d'allocation actuelle vs optimisée, des fourchettes de ROI projeté avec intervalles de confiance, un calendrier de réallocation progressif sur 4 à 8 semaines et une réserve de test de 10 à 15 %. Ne fait que recommander des ajustements ; ne modifie jamais les dépenses sur aucune plateforme. Se déclenche sur \"/digital-marketing-pro:budget-optimizer\", \"optimize my marketing budget\", \"which channels should get more spend\", \"reallocate budget based on ROAS\", \"is our channel split right\". Lit le profil de marque et les guidelines, exécute scripts/budget-optimizer.py, et se combine avec /digital-marketing-pro:budget-tracker pour le suivi en temps réel."
 argument-hint: "[total-budget]"
 ---
 
 # /digital-marketing-pro:budget-optimizer
 
-## Purpose
+## Objectif
 
-Data-driven marketing budget optimization across channels using performance data and industry benchmarks. Analyzes current spend efficiency, models diminishing returns per channel, and produces an optimized allocation with projected ROI improvement and a phased reallocation timeline.
+Optimisation du budget marketing multi-canaux pilotée par les données, en s'appuyant sur les données de performance et les référentiels sectoriels. Analyse l'efficacité des dépenses actuelles, modélise les rendements décroissants par canal, et produit une allocation optimisée avec une amélioration de ROI projetée et un calendrier de réallocation progressif.
 
-## Input Required
+## Données requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Current budget by channel**: How spend is distributed today (e.g., paid search, paid social, SEO, email, content, display, affiliate, events, etc.)
-- **Performance data by channel**: Key metrics per channel — spend, revenue or conversions, CPA, ROAS, and conversion volume over the measurement period
-- **Total budget available**: Overall marketing budget for the optimization period (monthly, quarterly, or annual)
-- **Business goals**: Primary objective — maximize revenue, minimize CPA, hit a specific lead or revenue target, balance growth with efficiency
-- **Constraints**: Minimum spend requirements, channel mandates from leadership, seasonal considerations, contractual commitments, or platform minimums
-- **Measurement period**: Timeframe the performance data covers (last 30, 60, 90 days, or custom range)
-- **Attribution model**: How conversions are currently attributed (last-click, first-click, linear, data-driven, or unknown)
-- **Seasonality factors**: Upcoming seasonal peaks, promotional periods, or industry events that affect channel performance
-- **Historical context**: Whether performance data reflects a typical period or was influenced by one-time events (product launch, viral moment, outage)
+- **Budget actuel par canal** : comment les dépenses sont réparties aujourd'hui (ex. : recherche payante, réseaux sociaux payants, SEO, e-mail, contenu, display, affiliation, événements, etc.)
+- **Données de performance par canal** : indicateurs clés par canal — dépenses, chiffre d'affaires ou conversions, CPA, ROAS et volume de conversions sur la période de mesure
+- **Budget total disponible** : budget marketing global pour la période d'optimisation (mensuel, trimestriel ou annuel)
+- **Objectifs business** : objectif principal — maximiser le chiffre d'affaires, minimiser le CPA, atteindre un objectif précis de leads ou de revenus, équilibrer croissance et efficacité
+- **Contraintes** : exigences de dépense minimale, canaux imposés par la direction, considérations saisonnières, engagements contractuels ou minimums de plateforme
+- **Période de mesure** : plage temporelle couverte par les données de performance (30, 60, 90 derniers jours, ou plage personnalisée)
+- **Modèle d'attribution** : comment les conversions sont actuellement attribuées (dernier clic, premier clic, linéaire, data-driven, ou inconnu)
+- **Facteurs de saisonnalité** : pics saisonniers à venir, périodes promotionnelles ou événements sectoriels affectant la performance des canaux
+- **Contexte historique** : les données de performance reflètent-elles une période typique ou ont-elles été influencées par un événement ponctuel (lancement produit, moment viral, panne)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Run budget-optimizer.py script**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/budget-optimizer.py" --channels '[{"name":"google_ads","spend":10000,"roas":4.2}]' --total-budget {amount}` (`--total-budget` is required; pass channel data via `--channels` JSON or `--file`) to compute baseline efficiency metrics and generate optimization scenarios
-3. **Calculate efficiency metrics per channel**: Compute ROAS, CPA, cost per lead, revenue per dollar, contribution margin, and marginal cost of acquisition for each channel
-4. **Rank channels by marginal efficiency**: Order channels by incremental return per additional dollar spent, accounting for current saturation levels and historical performance trends
-5. **Apply diminishing returns model**: Model how each channel's efficiency degrades as spend increases — identify the inflection point and saturation ceiling for each channel
-6. **Generate optimized allocation**: Redistribute budget to maximize the stated objective while respecting all constraints and minimum viable spend thresholds
-7. **Compare current vs optimized**: Build a side-by-side comparison showing spend shifts, projected metric changes, and net improvement across all KPIs
-8. **Project ROI improvement**: Estimate total revenue, conversion volume, ROAS, and CPA gains from the reallocation with confidence intervals
-9. **Account for minimum viable spend thresholds**: Ensure no channel drops below the minimum spend needed to generate meaningful data, maintain auction competitiveness, or fulfill contractual obligations
-10. **Include testing budget**: Reserve 10-15% of total budget for experimentation — new channels, creative testing, audience expansion, or emerging platforms
-11. **Flag attribution caveats**: Note where attribution model limitations may skew efficiency calculations and recommend adjustments
-12. **Create reallocation timeline**: Phase budget shifts over 4-8 weeks to avoid performance disruption — gradual ramp-up and ramp-down with weekly checkpoints and rollback triggers
+1. **Charger le contexte de marque** : lisez `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis chargez `~/.claude-marketing/brands/{slug}/profile.json`. Appliquez la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. **Vérifiez aussi la présence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, chargez les restrictions et les fichiers de catégorie pertinents. Vérifiez les modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifiez les procédures d'agence (SOP) dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demandez : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou poursuivez avec les valeurs par défaut.
+2. **Exécuter le script budget-optimizer.py** : lancez `python "${CLAUDE_PLUGIN_ROOT}/scripts/budget-optimizer.py" --channels '[{"name":"google_ads","spend":10000,"roas":4.2}]' --total-budget {amount}` (`--total-budget` est requis ; transmettez les données par canal via `--channels` en JSON ou via `--file`) pour calculer les indicateurs d'efficacité de référence et générer des scénarios d'optimisation
+3. **Calculer les indicateurs d'efficacité par canal** : calculez le ROAS, le CPA, le coût par lead, le chiffre d'affaires par dollar dépensé, la marge de contribution et le coût marginal d'acquisition pour chaque canal
+4. **Classer les canaux par efficacité marginale** : ordonnez les canaux selon le rendement incrémental par dollar supplémentaire dépensé, en tenant compte des niveaux de saturation actuels et des tendances de performance historiques
+5. **Appliquer un modèle de rendements décroissants** : modélisez la façon dont l'efficacité de chaque canal se dégrade quand les dépenses augmentent — identifiez le point d'inflexion et le plafond de saturation de chaque canal
+6. **Générer l'allocation optimisée** : redistribuez le budget pour maximiser l'objectif fixé, tout en respectant toutes les contraintes et les seuils de dépense minimale viable
+7. **Comparer allocation actuelle vs optimisée** : construisez une comparaison côte à côte montrant les transferts de dépenses, les évolutions projetées des indicateurs et l'amélioration nette sur tous les KPI
+8. **Projeter l'amélioration du ROI** : estimez les gains totaux en chiffre d'affaires, volume de conversions, ROAS et CPA issus de la réallocation, avec intervalles de confiance
+9. **Tenir compte des seuils de dépense minimale viable** : veillez à ce qu'aucun canal ne descende sous le minimum nécessaire pour générer des données significatives, maintenir une compétitivité en enchères ou remplir des obligations contractuelles
+10. **Inclure un budget de test** : réservez 10 à 15 % du budget total pour l'expérimentation — nouveaux canaux, tests créatifs, extension d'audience ou plateformes émergentes
+11. **Signaler les réserves liées à l'attribution** : notez où les limites du modèle d'attribution peuvent fausser les calculs d'efficacité et recommandez des ajustements
+12. **Créer un calendrier de réallocation** : échelonnez les transferts de budget sur 4 à 8 semaines pour éviter toute perturbation de la performance — montée et descente en puissance progressives, avec points de contrôle hebdomadaires et déclencheurs de retour en arrière
 
-## Output
+## Résultat
 
-A structured budget optimization plan containing:
+Un plan d'optimisation budgétaire structuré contenant :
 
-- **Current vs optimized allocation table**: Side-by-side channel budgets with dollar amounts, percentage of total, and change from current
-- **Projected ROI improvement**: Expected gains in revenue, conversions, ROAS, and CPA with confidence ranges
-- **Channel efficiency ranking**: Channels ordered by marginal return with diminishing returns curves and saturation indicators
-- **Reallocation recommendations**: Specific dollar shifts with clear rationale for each increase, decrease, or hold
-- **Scenario comparison**: Best-case, expected, and conservative projections for the optimized allocation
-- **Implementation timeline**: Phased reallocation schedule with weekly checkpoints, performance triggers, and rollback criteria
-- **Risk assessment**: Potential downsides of each shift, minimum viable spend warnings, attribution blind spots, and mitigation strategies
-- **Testing budget plan**: Recommended experiments with allocated budget, hypotheses, success criteria, and measurement approach
-- **Attribution notes**: Caveats on how the current attribution model may over- or under-credit specific channels
-- **Executive summary**: 1-page overview of key findings and recommended actions for stakeholder presentation
+- **Tableau d'allocation actuelle vs optimisée** : budgets par canal côte à côte, avec montants en dollars, pourcentage du total et évolution par rapport à l'existant
+- **Amélioration de ROI projetée** : gains attendus en chiffre d'affaires, conversions, ROAS et CPA, avec fourchettes de confiance
+- **Classement de l'efficacité par canal** : canaux classés par rendement marginal, avec courbes de rendements décroissants et indicateurs de saturation
+- **Recommandations de réallocation** : transferts précis en dollars, avec une justification claire pour chaque hausse, baisse ou maintien
+- **Comparaison de scénarios** : projections optimiste, attendue et conservatrice pour l'allocation optimisée
+- **Calendrier de mise en œuvre** : planning de réallocation échelonné, avec points de contrôle hebdomadaires, déclencheurs de performance et critères de retour en arrière
+- **Évaluation des risques** : inconvénients potentiels de chaque transfert, alertes sur les dépenses minimales viables, angles morts d'attribution et stratégies d'atténuation
+- **Plan de budget de test** : expérimentations recommandées avec budget alloué, hypothèses, critères de succès et méthode de mesure
+- **Notes sur l'attribution** : réserves sur la façon dont le modèle d'attribution actuel peut sur- ou sous-créditer certains canaux
+- **Synthèse exécutive** : aperçu d'une page des principaux constats et actions recommandées pour la présentation aux parties prenantes
 
-## Agents Used
+## Agents utilisés
 
-- **analytics-analyst** — Performance data analysis, efficiency calculations, diminishing returns modeling, ROI projections, attribution assessment
-- **media-buyer** — Channel-level budget strategy, spend threshold expertise, reallocation sequencing, platform-specific benchmarks, auction dynamics
+- **analytics-analyst** — Analyse des données de performance, calculs d'efficacité, modélisation des rendements décroissants, projections de ROI, évaluation de l'attribution
+- **media-buyer** — Stratégie budgétaire au niveau des canaux, expertise des seuils de dépense, séquençage de la réallocation, référentiels spécifiques aux plateformes, dynamique des enchères

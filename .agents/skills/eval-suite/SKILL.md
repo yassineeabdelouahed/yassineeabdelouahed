@@ -1,60 +1,60 @@
 ---
 name: eval-suite
-description: "Batch-evaluate a whole set of content pieces — files, a directory, or pasted blocks — in one run, producing a ranked portfolio quality report: grade distribution, per-dimension averages, systemic issues, a prioritized revision list, and auto-rejects below threshold. Triggers on \"/digital-marketing-pro:eval-suite\", \"score our whole content library\", \"quality-check all campaign assets before launch\", \"evaluate these 5 drafts together\", \"which deliverables are weakest\". Runs eval-runner.py per item, logs every score to the quality tracker for trend analysis, and reads the brand profile and guidelines for scoring context."
+description: "Évaluez en lot tout un ensemble de contenus — fichiers, un répertoire, ou des blocs collés — en une seule exécution, produisant un rapport de qualité de portfolio classé : distribution des notes, moyennes par dimension, problèmes systémiques, une liste de révision priorisée, et les rejets automatiques en dessous du seuil. Se déclenche sur « /digital-marketing-pro:eval-suite », « note toute notre bibliothèque de contenu », « vérifie la qualité de tous les actifs de campagne avant le lancement », « évalue ces 5 brouillons ensemble », « quels livrables sont les plus faibles ». Exécute eval-runner.py par élément, journalise chaque score dans le tracker de qualité pour l'analyse de tendance, et lit le profil de marque et les guidelines pour le contexte de notation."
 ---
 
 # /digital-marketing-pro:eval-suite
 
-## Purpose
+## Objectif
 
-Batch evaluation across multiple content pieces to produce a portfolio-level quality assessment. Evaluate an entire content library, all assets in a campaign, or a set of deliverables in one run. Instead of evaluating content one piece at a time, this command processes everything together and delivers a holistic view of content quality.
+Évaluation en lot sur plusieurs contenus pour produire une évaluation de qualité au niveau du portfolio. Évaluer une bibliothèque de contenu entière, tous les actifs d'une campagne, ou un ensemble de livrables en une seule exécution. Plutôt que d'évaluer le contenu pièce par pièce, cette commande traite tout ensemble et livre une vue holistique de la qualité du contenu.
 
-The output includes content rankings, per-dimension analysis, overall quality distribution, common issues across the set, and a prioritized revision list. This is the command to use before a campaign launch (to catch weak assets before they go live), during a content audit (to assess library health), or after a production sprint (to quality-check all deliverables at once). Every evaluation is logged to the quality tracker for longitudinal trend analysis.
+Le résultat inclut le classement du contenu, une analyse par dimension, la distribution globale de la qualité, les problèmes communs sur l'ensemble, et une liste de révision priorisée. C'est la commande à utiliser avant un lancement de campagne (pour repérer les actifs faibles avant leur mise en ligne), lors d'un audit de contenu (pour évaluer la santé de la bibliothèque), ou après un sprint de production (pour vérifier la qualité de tous les livrables en une fois). Chaque évaluation est journalisée dans le tracker de qualité pour une analyse de tendance longitudinale.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Content sources**: One or more of the following:
-  - A list of file paths (e.g., "evaluate these 5 files: email-v1.txt, email-v2.txt, landing-page.html, ad-copy-fb.txt, ad-copy-google.txt")
-  - A directory path (e.g., "evaluate everything in /campaign-q1-assets/") — all text-based files in the directory will be included
-  - Multiple inline content blocks with labels (e.g., "Evaluate these: [Label: Homepage Hero] content... [Label: Email Subject] content...")
-- **Content type**: Optional — applied globally (e.g., "these are all email subject lines") or specified per item. If omitted, the evaluator will infer type from content characteristics
-- **Evidence file**: Optional — shared context document (brief, strategy doc, audience research) applied across all evaluations for more relevant scoring
-- **Evaluation depth**: Optional — `quick` (default, faster per-item evaluation) or `full` (comprehensive evaluation with detailed per-dimension commentary per item). Quick is recommended for sets larger than 10 items; full for critical campaign assets
-- **Auto-reject threshold**: Optional — composite score below which content is flagged as needing mandatory revision (default: 60)
-- **Comparison baseline**: Optional — a previous eval-suite run ID to compare against, showing improvement or regression per piece
+- **Sources de contenu** : une ou plusieurs des options suivantes :
+  - Une liste de chemins de fichiers (par ex. « évalue ces 5 fichiers : email-v1.txt, email-v2.txt, landing-page.html, ad-copy-fb.txt, ad-copy-google.txt »)
+  - Un chemin de répertoire (par ex. « évalue tout dans /campaign-q1-assets/ ») — tous les fichiers texte du répertoire seront inclus
+  - Plusieurs blocs de contenu en ligne avec des étiquettes (par ex. « Évalue ceci : [Étiquette : Hero de la page d'accueil] contenu... [Étiquette : Objet email] contenu... »)
+- **Type de contenu** : optionnel — appliqué globalement (par ex. « ce sont tous des objets d'email ») ou spécifié par élément. Si omis, l'évaluateur déduira le type à partir des caractéristiques du contenu
+- **Fichier de preuves** : optionnel — document de contexte partagé (brief, document de stratégie, recherche d'audience) appliqué à toutes les évaluations pour une notation plus pertinente
+- **Profondeur d'évaluation** : optionnel — `quick` (par défaut, évaluation par élément plus rapide) ou `full` (évaluation complète avec commentaire détaillé par dimension et par élément). Quick est recommandé pour les ensembles de plus de 10 éléments ; full pour les actifs de campagne critiques
+- **Seuil de rejet automatique** : optionnel — score composite en dessous duquel le contenu est signalé comme nécessitant une révision obligatoire (par défaut : 60)
+- **Référence de comparaison** : optionnel — un ID d'exécution eval-suite précédent auquel se comparer, montrant l'amélioration ou la régression par pièce
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. Check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files (voice-and-tone, messaging, channel styles). Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Enumerate all content items**: Resolve the provided sources into a flat list of content items. For directory paths, scan for text-based files (.txt, .md, .html, .csv rows). For inline content, parse labels and content blocks. Assign a label to each item (filename, provided label, or auto-generated index). Report the total item count to the user before proceeding and confirm if the set is larger than 25 items (to set expectations on processing time).
-3. **Evaluate each content item**: For each item in the set, run `python "${CLAUDE_PLUGIN_ROOT}/scripts/eval-runner.py" --brand {slug} --action run-quick --file "{path}" --content-type "{type}"` for file items (use `--text "{content}"` instead of `--file` for inline content blocks; use `--action run-full` if the user requested comprehensive depth). Pass `--evidence "{evidence_path}"` if an evidence file was provided. Collect the per-dimension scores (content_quality, brand_voice, hallucination_risk, claim_verification, output_structure, readability) and composite score for each item.
-4. **Log each evaluation**: For every evaluated item, run `python "${CLAUDE_PLUGIN_ROOT}/scripts/quality-tracker.py" --brand {slug} --action log-eval --content-type "{type}" --data '{"label": "{label}", "scores": {scores_json}, "suite_id": "{suite_run_id}"}'` to persist results for longitudinal tracking. The suite-id groups all items from this batch together.
-5. **Aggregate results**: Compute portfolio-level statistics:
-   - Average composite score across all items
-   - Score distribution — count of items in each grade band (90+: Excellent, 80-89: Strong, 70-79: Good, 60-69: Needs Work, <60: Auto-reject)
-   - Per-dimension portfolio averages — identify which quality dimensions are consistently strong or weak across the entire set
-   - Standard deviation to assess consistency (high deviation means uneven quality)
-6. **Rank all content pieces**: Sort items from highest to lowest composite score. Present the full ranked list with scores, grades, and content type labels.
-7. **Identify common issues**: Analyze the per-dimension scores across all items to find patterns — e.g., "7 of 12 items score below 70 on claim_verification" or "hallucination_risk scores are consistently 15+ points below content_quality scores." These systemic patterns indicate process or template issues rather than individual content problems.
-8. **Generate prioritized revision list**: Sort items that need revision by potential impact. Prioritize items that are (a) below the auto-reject threshold, (b) high-visibility content types (landing pages, ads) with below-average scores, or (c) items where a single dimension drags down an otherwise strong composite. For each item on the revision list, specify which dimension(s) to focus on and what kind of improvement is needed.
-9. **Compare against baseline** (if provided): If the user provided a previous suite run ID, retrieve both the current and baseline suite scores from the quality tracker using `python "${CLAUDE_PLUGIN_ROOT}/scripts/quality-tracker.py" --brand {slug} --action get-summary` for each suite period. Then compute per-item and portfolio-level deltas yourself by matching items across the two runs by label/content-type and calculating score differences. Present results as improved, regressed, or unchanged per item and overall.
+1. **Charger le contexte de la marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. Vérifier la présence de guidelines dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents (voice-and-tone, messaging, styles par canal). Vérifier la présence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier la présence de SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou procéder avec les valeurs par défaut.
+2. **Recenser tous les éléments de contenu** : résoudre les sources fournies en une liste plate d'éléments de contenu. Pour les chemins de répertoire, scanner les fichiers texte (.txt, .md, .html, lignes .csv). Pour le contenu en ligne, analyser les étiquettes et les blocs de contenu. Assigner une étiquette à chaque élément (nom de fichier, étiquette fournie, ou index auto-généré). Rapporter le nombre total d'éléments à l'utilisateur avant de continuer et confirmer si l'ensemble dépasse 25 éléments (pour fixer les attentes sur le temps de traitement).
+3. **Évaluer chaque élément de contenu** : pour chaque élément de l'ensemble, exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/eval-runner.py" --brand {slug} --action run-quick --file "{path}" --content-type "{type}"` pour les éléments fichier (utiliser `--text "{content}"` plutôt que `--file` pour les blocs de contenu en ligne ; utiliser `--action run-full` si l'utilisateur a demandé une profondeur complète). Passer `--evidence "{evidence_path}"` si un fichier de preuves a été fourni. Collecter les scores par dimension (content_quality, brand_voice, hallucination_risk, claim_verification, output_structure, readability) et le score composite pour chaque élément.
+4. **Journaliser chaque évaluation** : pour chaque élément évalué, exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/quality-tracker.py" --brand {slug} --action log-eval --content-type "{type}" --data '{"label": "{label}", "scores": {scores_json}, "suite_id": "{suite_run_id}"}'` pour persister les résultats pour le suivi longitudinal. Le suite-id regroupe tous les éléments de ce lot ensemble.
+5. **Agréger les résultats** : calculer les statistiques au niveau du portfolio :
+   - score composite moyen sur tous les éléments
+   - distribution des scores — nombre d'éléments dans chaque tranche de note (90+ : Excellent, 80-89 : Solide, 70-79 : Bon, 60-69 : À travailler, <60 : Rejet automatique)
+   - moyennes de portfolio par dimension — identifier quelles dimensions de qualité sont constamment fortes ou faibles sur l'ensemble
+   - écart type pour évaluer la cohérence (un écart élevé signifie une qualité inégale)
+6. **Classer tous les contenus** : trier les éléments du score composite le plus élevé au plus faible. Présenter la liste classée complète avec scores, notes, et étiquettes de type de contenu.
+7. **Identifier les problèmes communs** : analyser les scores par dimension sur tous les éléments pour trouver des schémas — par ex. « 7 des 12 éléments notent en dessous de 70 sur claim_verification » ou « les scores hallucination_risk sont systématiquement 15+ points en dessous des scores content_quality ». Ces schémas systémiques indiquent des problèmes de processus ou de modèle plutôt que des problèmes de contenu individuels.
+8. **Générer une liste de révision priorisée** : trier les éléments nécessitant une révision par impact potentiel. Prioriser les éléments qui sont (a) en dessous du seuil de rejet automatique, (b) des types de contenu à forte visibilité (landing pages, publicités) avec des scores en dessous de la moyenne, ou (c) des éléments où une seule dimension tire vers le bas un composite par ailleurs solide. Pour chaque élément de la liste de révision, préciser sur quelle(s) dimension(s) se concentrer et quel type d'amélioration est nécessaire.
+9. **Comparer à la référence** (si fournie) : si l'utilisateur a fourni un ID d'exécution suite précédent, récupérer les scores de suite actuels et de référence depuis le tracker de qualité en utilisant `python "${CLAUDE_PLUGIN_ROOT}/scripts/quality-tracker.py" --brand {slug} --action get-summary` pour chaque période de suite. Puis calculer vous-même les écarts par élément et au niveau du portfolio en faisant correspondre les éléments entre les deux exécutions par étiquette/type de contenu et en calculant les différences de score. Présenter les résultats comme amélioré, régressé, ou inchangé par élément et globalement.
 
-## Output
+## Sortie
 
-A structured portfolio quality assessment containing:
+Une évaluation de qualité de portfolio structurée contenant :
 
-- **Portfolio summary**: Total piece count, average composite score, grade distribution (Excellent/Strong/Good/Needs Work/Auto-reject counts), overall portfolio grade, consistency score (based on standard deviation)
-- **Ranked content list**: All items sorted best to worst — each with label, content type, composite score, grade, and a one-line quality summary
-- **Top performers**: The 3 highest-scoring items with specific notes on what makes them strong — useful as internal benchmarks or templates
-- **Per-dimension portfolio analysis**: Average score per dimension across the full set (content_quality, brand_voice, hallucination_risk, claim_verification, output_structure, readability), identifying the strongest and weakest dimensions with specific observations (e.g., "brand_voice averages 88 across the set — voice guidelines are being followed well. claim_verification averages 62 — sources and supporting evidence are frequently missing.")
-- **Common issues report**: Systemic patterns found across multiple items — these indicate process-level problems worth fixing at the template or brief stage rather than per-item revision
-- **Prioritized revision list**: Items most in need of revision, sorted by impact, with specific guidance on which dimensions to improve and what kind of changes are needed
-- **Auto-reject list**: Items scoring below the threshold with specific reasons and mandatory revision flags
-- **Baseline comparison** (if applicable): Per-item deltas and portfolio-level improvement/regression metrics
-- **Recommendations**: Actionable next steps — which items to revise first, which process improvements would lift the entire portfolio, and whether any content types consistently underperform (suggesting brief or template issues)
+- **Résumé du portfolio** : nombre total de pièces, score composite moyen, distribution des notes (nombre Excellent/Solide/Bon/À travailler/Rejet automatique), note globale du portfolio, score de cohérence (basé sur l'écart type)
+- **Liste de contenu classée** : tous les éléments triés du meilleur au pire — chacun avec étiquette, type de contenu, score composite, note, et un résumé de qualité d'une ligne
+- **Meilleures performances** : les 3 éléments les mieux notés avec des notes précises sur ce qui les rend forts — utile comme référence interne ou modèles
+- **Analyse de portfolio par dimension** : score moyen par dimension sur l'ensemble complet (content_quality, brand_voice, hallucination_risk, claim_verification, output_structure, readability), identifiant les dimensions les plus fortes et les plus faibles avec des observations précises (par ex. « brand_voice moyenne 88 sur l'ensemble — les guidelines de voix sont bien suivies. claim_verification moyenne 62 — les sources et preuves à l'appui manquent fréquemment. »)
+- **Rapport des problèmes communs** : schémas systémiques trouvés sur plusieurs éléments — ceux-ci indiquent des problèmes au niveau du processus valant la peine d'être corrigés au stade du modèle ou du brief plutôt que par révision élément par élément
+- **Liste de révision priorisée** : éléments les plus nécessitant une révision, triés par impact, avec des consignes précises sur quelles dimensions améliorer et quel type de changements est nécessaire
+- **Liste de rejet automatique** : éléments notant en dessous du seuil avec des raisons précises et des signaux de révision obligatoire
+- **Comparaison à la référence** (le cas échéant) : écarts par élément et métriques d'amélioration/régression au niveau du portfolio
+- **Recommandations** : prochaines étapes actionnables — quels éléments réviser en premier, quelles améliorations de processus élèveraient l'ensemble du portfolio, et si certains types de contenu sous-performent systématiquement (suggérant des problèmes de brief ou de modèle)
 
-## Agents Used
+## Agents utilisés
 
-- **quality-assurance** -- Evaluates each content piece across all quality dimensions, maintains scoring consistency across the batch, identifies systemic quality patterns, generates portfolio-level insights, and produces the prioritized revision recommendations
+- **quality-assurance** — évalue chaque pièce de contenu sur toutes les dimensions de qualité, maintient la cohérence de notation sur l'ensemble du lot, identifie les schémas de qualité systémiques, génère des insights au niveau du portfolio, et produit les recommandations de révision priorisées

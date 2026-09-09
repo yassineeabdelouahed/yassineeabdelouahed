@@ -1,135 +1,135 @@
 ---
 name: programmatic-seo
-description: "Plan or audit SEO pages generated at scale from structured data — data-source quality, template uniqueness, URL patterns, internal linking, canonicals, sitemaps, and index-bloat prevention — enforcing hard quality gates against thin content and Google's Scaled Content Abuse policy (uniqueness thresholds, batch rollout limits, standalone value test). Produces a /100 scorecard with prioritized fixes and a progressive rollout plan. Triggers on \"/digital-marketing-pro:programmatic-seo\", \"plan programmatic landing pages\", \"audit our location pages\", \"will 5000 generated pages get us penalized\", \"design a template engine for pSEO\". Reads the brand profile and guidelines; plans and audits only — it does not generate or publish the pages."
+description: "Planifier ou auditer des pages SEO générées à l'échelle à partir de données structurées — qualité de la source de données, unicité des modèles, motifs d'URL, maillage interne, canoniques, sitemaps, et prévention du gonflement de l'index — en appliquant des garde-fous qualité stricts contre le contenu léger et la politique de Google sur l'abus de contenu à l'échelle (seuils d'unicité, limites de déploiement par lot, test de valeur autonome). Produit une scorecard sur /100 avec des correctifs priorisés et un plan de déploiement progressif. Se déclenche sur \"/digital-marketing-pro:programmatic-seo\", \"plan programmatic landing pages\", \"audit our location pages\", \"will 5000 generated pages get us penalized\", \"design a template engine for pSEO\". Lit le profil de marque et les guidelines ; planifie et audite uniquement — il ne génère ni ne publie les pages."
 argument-hint: "[URL or plan]"
 user-invocable: true
 ---
 
 # /digital-marketing-pro:programmatic-seo
 
-## Purpose
+## Objectif
 
-Plan and audit SEO pages generated at scale from structured data sources (databases, APIs, CSV/JSON files). Enforces quality gates to prevent thin content penalties, index bloat, and Google's Scaled Content Abuse policy.
+Planifier et auditer des pages SEO générées à l'échelle à partir de sources de données structurées (bases de données, API, fichiers CSV/JSON). Applique des garde-fous qualité pour prévenir les pénalités de contenu léger, le gonflement de l'index, et la politique de Google sur l'abus de contenu à l'échelle.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **URL or data source**: Existing programmatic pages to audit, or data source details for planning
-- **Page type**: What kind of pages are being generated (location, product, integration, glossary, template, tool)
-- **Data source**: CSV/JSON files, API endpoints, database queries — or existing pages to analyze
-- **Target scale**: How many pages will be generated
-- **Current status**: New build or auditing existing programmatic pages
+- **URL ou source de données** : Pages programmatiques existantes à auditer, ou détails de source de données pour la planification
+- **Type de page** : Quel type de pages est généré (localisation, produit, intégration, glossaire, modèle, outil)
+- **Source de données** : Fichiers CSV/JSON, points de terminaison API, requêtes de base de données — ou pages existantes à analyser
+- **Échelle cible** : Combien de pages seront générées
+- **Statut actuel** : Nouvelle construction ou audit de pages programmatiques existantes
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply industry context and compliance rules. Check for brand guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json`.
-2. **Data source assessment**: Evaluate the data powering programmatic pages — row count, column uniqueness, missing values, duplicate detection (>80% field overlap), data freshness
-3. **Template engine planning**: Design templates that produce genuinely unique pages — variable injection points, content blocks (static vs dynamic), conditional logic, supplementary content. Validate each page passes the "standalone value test"
-4. **URL pattern strategy**: Design URL hierarchy — lowercase hyphenated slugs, logical structure, uniqueness enforcement, under 100 characters, consistent trailing slash
-5. **Internal linking automation**: Hub/spoke model, related items (3-5 per page), breadcrumbs with BreadcrumbList schema, cross-linking by shared attributes, varied anchor text
-6. **Thin content safeguard check**: Apply quality gates (see below)
-7. **Canonical strategy**: Self-referencing canonicals, parameter handling, pagination strategy, manual page priority
-8. **Sitemap integration**: Auto-generate entries, split at 50K URLs, `<lastmod>` from actual data timestamps, exclude noindexed pages
-9. **Index bloat prevention**: Noindex low-value pages, pagination handling, faceted navigation canonicalization, crawl budget monitoring for 10K+ pages
-10. **Score and report**: Score each dimension, produce prioritized action plan
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer le contexte sectoriel et les règles de conformité. Vérifier les guidelines de marque à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json`.
+2. **Évaluation de la source de données** : Évaluer les données alimentant les pages programmatiques — nombre de lignes, unicité des colonnes, valeurs manquantes, détection de doublons (>80 % de chevauchement de champs), fraîcheur des données
+3. **Planification du moteur de modèles** : Concevoir des modèles produisant des pages véritablement uniques — points d'injection de variables, blocs de contenu (statique vs dynamique), logique conditionnelle, contenu supplémentaire. Valider que chaque page passe le « test de valeur autonome »
+4. **Stratégie de motifs d'URL** : Concevoir la hiérarchie d'URL — slugs en minuscules avec traits d'union, structure logique, application de l'unicité, moins de 100 caractères, usage cohérent du slash final
+5. **Automatisation du maillage interne** : Modèle hub/rayon, éléments associés (3-5 par page), fils d'Ariane avec schema BreadcrumbList, maillage croisé par attributs partagés, texte d'ancre varié
+6. **Contrôle de garde-fou de contenu léger** : Appliquer les garde-fous qualité (voir ci-dessous)
+7. **Stratégie canonique** : Canoniques auto-référencés, gestion des paramètres, stratégie de pagination, priorité des pages manuelles
+8. **Intégration du sitemap** : Générer automatiquement les entrées, découper à 50K URL, `<lastmod>` depuis les horodatages réels des données, exclure les pages en noindex
+9. **Prévention du gonflement de l'index** : Noindex des pages à faible valeur, gestion de la pagination, canonicalisation de la navigation à facettes, surveillance du budget de crawl pour 10K+ pages
+10. **Noter et rapporter** : Noter chaque dimension, produire un plan d'action priorisé
 
-## Quality Gates
+## Garde-fous qualité
 
-### Scale Thresholds
+### Seuils d'échelle
 
-| Metric | Threshold | Action |
+| Métrique | Seuil | Action |
 |--------|-----------|--------|
-| Pages without content review | 100+ | WARNING: require content audit before publishing |
-| Pages without justification | 500+ | HARD STOP: require explicit user approval and thin content audit |
-| Unique content per page | <40% | Flag as thin content (penalty risk) |
-| Unique content per page | <30% | HARD STOP: scaled content abuse risk |
-| Word count per page | <300 | Flag for review (may lack sufficient value) |
+| Pages sans revue de contenu | 100+ | AVERTISSEMENT : exiger un audit de contenu avant publication |
+| Pages sans justification | 500+ | ARRÊT STRICT : exiger l'approbation explicite de l'utilisateur et un audit de contenu léger |
+| Contenu unique par page | <40 % | Signaler comme contenu léger (risque de pénalité) |
+| Contenu unique par page | <30 % | ARRÊT STRICT : risque d'abus de contenu à l'échelle |
+| Nombre de mots par page | <300 | Signaler pour revue (peut manquer de valeur suffisante) |
 
-### Scaled Content Abuse Context (2025-2026)
+### Contexte de l'abus de contenu à l'échelle (2025-2026)
 
-Google's Scaled Content Abuse policy (introduced March 2024) saw major enforcement escalation:
+La politique de Google sur l'abus de contenu à l'échelle (introduite en mars 2024) a connu une escalade majeure d'application :
 
-- **June 2025**: Wave of manual actions targeting AI-generated content at scale
-- **August 2025**: SpamBrain update enhanced pattern detection for AI-generated link schemes and content farms
-- **Result**: 45% reduction in low-quality, unoriginal content in search results
+- **Juin 2025** : Vague d'actions manuelles ciblant le contenu généré par IA à l'échelle
+- **Août 2025** : La mise à jour SpamBrain a amélioré la détection de motifs pour les schémas de liens et les fermes de contenu générés par IA
+- **Résultat** : Réduction de 45 % du contenu de faible qualité et non original dans les résultats de recherche
 
-**Enhanced quality gates for programmatic pages:**
+**Garde-fous qualité renforcés pour les pages programmatiques :**
 
-- **Content differentiation**: 30-40%+ of content must be genuinely unique between any two programmatic pages (not just city/keyword string replacement)
-- **Human review**: Minimum 5-10% sample review of generated pages before publishing
-- **Progressive rollout**: Publish in batches of 50-100 pages. Monitor indexing and rankings for 2-4 weeks before expanding. Never publish 500+ simultaneously without quality review.
-- **Standalone value test**: Each page should pass: "Would this page be worth publishing even if no other similar pages existed?"
-- **Site reputation abuse**: Publishing programmatic content under a high-authority domain (not your own) may trigger site reputation abuse penalties (enforced aggressively since November 2024)
+- **Différenciation du contenu** : 30-40 %+ du contenu doit être véritablement unique entre deux pages programmatiques (pas seulement le remplacement d'une chaîne ville/mot-clé)
+- **Revue humaine** : Échantillon minimum de 5-10 % de pages générées revues avant publication
+- **Déploiement progressif** : Publier par lots de 50-100 pages. Surveiller l'indexation et le classement pendant 2-4 semaines avant d'étendre. Ne jamais publier 500+ pages simultanément sans revue qualité.
+- **Test de valeur autonome** : Chaque page devrait passer ce test : « Cette page vaudrait-elle la peine d'être publiée même si aucune autre page similaire n'existait ? »
+- **Abus de réputation de site** : Publier du contenu programmatique sous un domaine à forte autorité (qui n'est pas le vôtre) peut déclencher des pénalités d'abus de réputation de site (appliquées de manière agressive depuis novembre 2024)
 
-### Safe vs Risky Programmatic Pages
+### Pages programmatiques sûres vs risquées
 
-**Safe at scale:**
-- Integration pages (with real setup docs, API details, screenshots)
-- Template/tool pages (with downloadable content, usage instructions)
-- Glossary pages (200+ word definitions with examples, related terms)
-- Product pages (unique specs, reviews, comparison data)
-- Data-driven pages (unique statistics, charts, analysis per record)
+**Sûres à l'échelle :**
+- Pages d'intégration (avec de vrais documents de configuration, détails API, captures d'écran)
+- Pages de modèle/outil (avec du contenu téléchargeable, instructions d'utilisation)
+- Pages de glossaire (définitions de 200+ mots avec exemples, termes associés)
+- Pages produit (spécifications uniques, avis, données comparatives)
+- Pages pilotées par les données (statistiques uniques, graphiques, analyse par enregistrement)
 
-**Penalty risk at scale:**
-- Location pages with only city name swapped in identical text
-- "Best [tool] for [industry]" without industry-specific value
-- "[Competitor] alternative" without real comparison data
-- AI-generated pages without human review and unique value-add
-- Pages where >60% of content is shared template boilerplate
+**Risque de pénalité à l'échelle :**
+- Pages de localisation avec seulement le nom de la ville remplacé dans un texte identique
+- « Meilleur [outil] pour [secteur] » sans valeur spécifique au secteur
+- « Alternative à [concurrent] » sans véritables données comparatives
+- Pages générées par IA sans revue humaine ni valeur ajoutée unique
+- Pages où >60 % du contenu est du boilerplate de modèle partagé
 
-### Uniqueness Calculation
+### Calcul de l'unicité
 
-Unique content % = (words unique to this page) / (total words on page) x 100
+% de contenu unique = (mots uniques à cette page) / (total des mots sur la page) x 100
 
-Measured against all other pages in the programmatic set. Shared headers, footers, and navigation excluded. Template boilerplate IS included.
+Mesuré par rapport à toutes les autres pages de l'ensemble programmatique. Les en-têtes, pieds de page, et navigation partagés sont exclus. Le boilerplate de modèle EST inclus.
 
-## URL Pattern Library
+## Bibliothèque de motifs d'URL
 
-### Common Patterns
-- `/tools/[tool-name]`: Tool/product directory pages
-- `/[city]/[service]`: Location + service pages
-- `/integrations/[platform]`: Integration landing pages
-- `/glossary/[term]`: Definition/reference pages
-- `/templates/[template-name]`: Downloadable template pages
-- `/compare/[product-a]-vs-[product-b]`: Comparison pages
+### Motifs courants
+- `/tools/[tool-name]` : Pages de répertoire d'outil/produit
+- `/[city]/[service]` : Pages localisation + service
+- `/integrations/[platform]` : Pages de landing d'intégration
+- `/glossary/[term]` : Pages de définition/référence
+- `/templates/[template-name]` : Pages de modèle téléchargeable
+- `/compare/[product-a]-vs-[product-b]` : Pages de comparaison
 
-### URL Rules
-- Lowercase, hyphenated slugs derived from data
-- Logical hierarchy reflecting site architecture
-- No duplicate slugs — enforce uniqueness at generation time
-- Keep URLs under 100 characters
-- No query parameters for primary content URLs
-- Consistent trailing slash usage (match existing site pattern)
+### Règles d'URL
+- Slugs en minuscules avec traits d'union dérivés des données
+- Hiérarchie logique reflétant l'architecture du site
+- Pas de slugs dupliqués — appliquer l'unicité au moment de la génération
+- Garder les URL sous 100 caractères
+- Pas de paramètres de requête pour les URL de contenu principal
+- Usage cohérent du slash final (correspondre au motif existant du site)
 
-## Output
+## Résultat
 
-A structured programmatic SEO assessment containing:
+Une évaluation SEO programmatique structurée contenant :
 
-### Programmatic SEO Score: XX/100
+### Score SEO programmatique : XX/100
 
-| Category | Status | Score |
+| Catégorie | Statut | Score |
 |----------|--------|-------|
-| Data Quality | score | /100 |
-| Template Uniqueness | score | /100 |
-| URL Structure | score | /100 |
-| Internal Linking | score | /100 |
-| Thin Content Risk | score | /100 |
-| Index Management | score | /100 |
+| Qualité des données | score | /100 |
+| Unicité des modèles | score | /100 |
+| Structure d'URL | score | /100 |
+| Maillage interne | score | /100 |
+| Risque de contenu léger | score | /100 |
+| Gestion de l'index | score | /100 |
 
-- Critical issues (fix immediately)
-- High priority (fix within 1 week)
-- Medium priority (fix within 1 month)
-- Recommendations: data source improvements, template modifications, URL pattern adjustments, quality gate compliance actions
-- Progressive rollout plan with batch sizes and monitoring checkpoints
+- Problèmes critiques (à corriger immédiatement)
+- Priorité élevée (à corriger sous 1 semaine)
+- Priorité moyenne (à corriger sous 1 mois)
+- Recommandations : améliorations de la source de données, modifications de modèle, ajustements de motifs d'URL, actions de conformité aux garde-fous qualité
+- Plan de déploiement progressif avec tailles de lot et points de contrôle de surveillance
 
-## Agents Used
+## Agents utilisés
 
-- **seo-specialist** — Programmatic page analysis, quality gate enforcement, URL strategy, template evaluation
-- **content-creator** — Template content design, uniqueness optimization
+- **seo-specialist** — Analyse de page programmatique, application des garde-fous qualité, stratégie d'URL, évaluation de modèle
+- **content-creator** — Conception de contenu de modèle, optimisation de l'unicité
 
-## Scripts Used
+## Scripts utilisés
 
-- **tech-seo-auditor.py** — Check technical SEO issues across programmatic page samples
-- **content-scorer.py** — Score content quality and uniqueness per template
-- **competitor-scraper.py** — Analyze competitor programmatic page patterns
+- **tech-seo-auditor.py** — Vérifier les problèmes SEO techniques sur des échantillons de pages programmatiques
+- **content-scorer.py** — Noter la qualité et l'unicité du contenu par modèle
+- **competitor-scraper.py** — Analyser les motifs de pages programmatiques des concurrents

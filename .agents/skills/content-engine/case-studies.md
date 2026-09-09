@@ -1,8 +1,8 @@
-# Case Study Creation — Framework & Best Practices Reference
+# Création d'études de cas — Cadre et meilleures pratiques de référence
 
-## Core Framework: Challenge-Solution-Results (CSR)
+## Cadre central : Défi-Solution-Résultats (CSR)
 
-Every case study follows the same fundamental arc. The customer is the hero. Your product or service is the guide that helped them overcome a challenge and achieve measurable results.
+Chaque étude de cas suit le même arc fondamental. Le client est le héros. Votre produit ou service est le guide qui l'a aidé à surmonter un défi et à atteindre des résultats mesurables.
 
 ```
 Challenge → Solution → Results
@@ -10,102 +10,102 @@ Challenge → Solution → Results
 "We had this problem" → "Here's how we solved it" → "Here's what happened"
 ```
 
-This structure works because it mirrors the buyer's internal narrative: "I have a similar problem. Could this solution work for me too?"
+Cette structure fonctionne parce qu'elle reflète le récit interne de l'acheteur : « J'ai un problème similaire. Cette solution pourrait-elle aussi fonctionner pour moi ? »
 
 ---
 
-## Case Study Structures
+## Structures d'étude de cas
 
-### Standard Structure (~1,500-2,000 words)
+### Structure standard (~1 500-2 000 mots)
 
-| Section | Length | Purpose | Content |
+| Section | Longueur | Objectif | Contenu |
 |---------|--------|---------|---------|
-| Title | 1 line | Hook + outcome | "[Company] Achieves [Result] with [Your Product]" |
-| Summary | 2-3 sentences | Quick overview for skimmers | Challenge, solution, and key result in brief |
-| Company overview | 50-100 words | Context about the customer | Industry, size, location, what they do |
-| Challenge | 200-400 words | The problem that drove them to seek a solution | Pain points, failed attempts, urgency, business impact |
-| Objectives | 50-100 words | What they wanted to achieve | Specific, measurable goals they set |
-| Solution | 300-500 words | How your product/service was implemented | Features used, implementation process, timeline |
-| Results | 200-400 words | Measurable outcomes | Hard metrics with before/after data, qualitative wins |
-| Customer quote | 2-3 sentences | Authentic voice from the customer | Endorsement of the experience and outcome |
-| Next steps | 50-100 words | Forward-looking statement | Plans for expansion, additional use cases |
+| Titre | 1 ligne | Accroche + résultat | « [Entreprise] atteint [Résultat] avec [Votre Produit] » |
+| Résumé | 2-3 phrases | Aperçu rapide pour lecteurs pressés | Défi, solution, et résultat clé en bref |
+| Présentation de l'entreprise | 50-100 mots | Contexte sur le client | Secteur, taille, localisation, activité |
+| Défi | 200-400 mots | Le problème qui les a poussés à chercher une solution | Points de douleur, tentatives échouées, urgence, impact business |
+| Objectifs | 50-100 mots | Ce qu'ils voulaient atteindre | Objectifs spécifiques et mesurables fixés |
+| Solution | 300-500 mots | Comment votre produit/service a été mis en œuvre | Fonctionnalités utilisées, processus de mise en œuvre, calendrier |
+| Résultats | 200-400 mots | Résultats mesurables | Métriques concrètes avec données avant/après, gains qualitatifs |
+| Citation client | 2-3 phrases | Voix authentique du client | Approbation de l'expérience et du résultat |
+| Prochaines étapes | 50-100 mots | Déclaration prospective | Plans d'expansion, cas d'usage supplémentaires |
 
-### Extended Structure (~2,000-2,500 words)
+### Structure étendue (~2 000-2 500 mots)
 
-Adds depth for complex B2B solutions with longer sales cycles:
+Ajoute de la profondeur pour les solutions B2B complexes avec des cycles de vente plus longs :
 
-| Additional Section | Purpose |
+| Section supplémentaire | Objectif |
 |-------------------|---------|
-| Industry context | Market conditions, regulatory environment, competitive pressures |
-| Evaluation process | How and why they chose your solution over alternatives |
-| Implementation details | Timeline, team involvement, integration steps, obstacles overcome |
-| Multiple result categories | Split results into efficiency, revenue, satisfaction, and strategic outcomes |
-| Lessons learned | What they would do differently, advice for similar companies |
+| Contexte sectoriel | Conditions de marché, environnement réglementaire, pressions concurrentielles |
+| Processus d'évaluation | Comment et pourquoi ils ont choisi votre solution parmi les alternatives |
+| Détails de mise en œuvre | Calendrier, implication de l'équipe, étapes d'intégration, obstacles surmontés |
+| Catégories de résultats multiples | Diviser les résultats en efficacité, revenu, satisfaction, et résultats stratégiques |
+| Leçons apprises | Ce qu'ils feraient différemment, conseils pour des entreprises similaires |
 
-### One-Page Executive Summary
+### Résumé exécutif d'une page
 
-| Element | Content |
+| Élément | Contenu |
 |---------|---------|
-| Header | Company logo + your logo + headline result |
-| Challenge (2-3 bullets) | Core problems in brief |
-| Solution (2-3 bullets) | What you provided |
-| Key results (3-5 metrics) | Before → After with percentage improvements |
-| Pull quote | One compelling sentence from the customer |
-| CTA | "Read the full case study" or "Contact us" |
+| En-tête | Logo de l'entreprise + votre logo + résultat principal |
+| Défi (2-3 puces) | Problèmes centraux en bref |
+| Solution (2-3 puces) | Ce que vous avez fourni |
+| Résultats clés (3-5 métriques) | Avant → Après avec pourcentages d'amélioration |
+| Citation forte | Une phrase percutante du client |
+| CTA | « Lire l'étude de cas complète » ou « Nous contacter » |
 
 ---
 
-## Customer Interview Framework
+## Cadre d'entretien client
 
-### 10 Essential Questions
+### 10 questions essentielles
 
-| # | Question | What It Reveals |
+| # | Question | Ce qu'elle révèle |
 |---|----------|----------------|
-| 1 | "Walk me through the situation before you started using [product]. What was the biggest challenge?" | The pain narrative in their own words |
-| 2 | "What was the business impact of that challenge? What was it costing you in time, money, or missed opportunities?" | Quantifiable pain for ROI calculation |
-| 3 | "What other solutions did you try or evaluate before choosing us?" | Competitive context, positions your solution |
-| 4 | "What made you ultimately choose [product] over the alternatives?" | Unique differentiators in customer language |
-| 5 | "Walk me through the implementation. How did the rollout go?" | Implementation narrative, proof of feasibility |
-| 6 | "What surprised you during the process, either positively or negatively?" | Authentic moments, objection handling material |
-| 7 | "What specific results have you seen since implementing [product]? Can you share numbers?" | Hard metrics for the results section |
-| 8 | "How has [product] changed your team's day-to-day work?" | Qualitative, relatable benefits |
-| 9 | "If you were advising someone in a similar situation, what would you tell them?" | Third-party endorsement narrative |
-| 10 | "What are your plans for expanding your use of [product] going forward?" | Forward-looking momentum, growth signal |
+| 1 | « Décrivez-moi la situation avant que vous n'utilisiez [produit]. Quel était le plus gros défi ? » | Le récit de la douleur dans leurs propres mots |
+| 2 | « Quel était l'impact business de ce défi ? Que cela vous coûtait-il en temps, en argent, ou en opportunités manquées ? » | Douleur quantifiable pour le calcul du ROI |
+| 3 | « Quelles autres solutions avez-vous essayées ou évaluées avant de nous choisir ? » | Contexte concurrentiel, positionne votre solution |
+| 4 | « Qu'est-ce qui vous a finalement fait choisir [produit] plutôt que les alternatives ? » | Différenciateurs uniques dans le langage du client |
+| 5 | « Décrivez-moi la mise en œuvre. Comment le déploiement s'est-il passé ? » | Récit de mise en œuvre, preuve de faisabilité |
+| 6 | « Qu'est-ce qui vous a surpris pendant le processus, positivement ou négativement ? » | Moments authentiques, matériel pour traiter les objections |
+| 7 | « Quels résultats spécifiques avez-vous constatés depuis la mise en œuvre de [produit] ? Pouvez-vous partager des chiffres ? » | Métriques concrètes pour la section résultats |
+| 8 | « Comment [produit] a-t-il changé le travail quotidien de votre équipe ? » | Bénéfices qualitatifs, relatables |
+| 9 | « Si vous conseilliez quelqu'un dans une situation similaire, que lui diriez-vous ? » | Récit d'approbation tiers |
+| 10 | « Quels sont vos projets pour étendre votre utilisation de [produit] à l'avenir ? » | Élan prospectif, signal de croissance |
 
-### Interview Tips
+### Conseils pour l'entretien
 
-- [ ] Send questions in advance so the customer can gather data
-- [ ] Record the call (with permission) for accurate quoting
-- [ ] Let them talk — the best insights come from unscripted tangents
-- [ ] Listen for specific numbers, even if they seem informal ("it probably saved us 20 hours a week")
-- [ ] Ask follow-up questions when they mention metrics ("Can you be more specific about that 20 hours?")
-- [ ] Get approval for direct quotes during the interview, not after
-- [ ] Schedule 30-45 minutes (most interviews run 20-30 minutes in practice)
+- [ ] Envoyer les questions à l'avance afin que le client puisse rassembler des données
+- [ ] Enregistrer l'appel (avec permission) pour une citation exacte
+- [ ] Les laisser parler — les meilleurs insights viennent de digressions non scriptées
+- [ ] Être attentif aux chiffres spécifiques, même s'ils semblent informels (« ça nous a probablement fait gagner 20 heures par semaine »)
+- [ ] Poser des questions de suivi quand ils mentionnent des métriques (« Pouvez-vous préciser ces 20 heures ? »)
+- [ ] Obtenir l'approbation des citations directes pendant l'entretien, pas après
+- [ ] Prévoir 30-45 minutes (la plupart des entretiens durent 20-30 minutes en pratique)
 
 ---
 
-## Data Presentation
+## Présentation des données
 
-### Before/After Metrics Format
+### Format des métriques avant/après
 
-| Metric | Before | After | Improvement |
+| Métrique | Avant | Après | Amélioration |
 |--------|--------|-------|-------------|
-| Monthly lead volume | 150 | 420 | +180% |
-| Cost per lead | $85 | $32 | -62% |
-| Time to close (days) | 45 | 28 | -38% |
-| Revenue per quarter | $340K | $890K | +162% |
+| Volume mensuel de leads | 150 | 420 | +180 % |
+| Coût par lead | 85 $ | 32 $ | -62 % |
+| Délai de conclusion (jours) | 45 | 28 | -38 % |
+| Chiffre d'affaires trimestriel | 340 K$ | 890 K$ | +162 % |
 
-### Effective Data Presentation Rules
+### Règles de présentation de données efficaces
 
-- [ ] Always show the starting point (before), not just the end result
-- [ ] Use percentages AND absolute numbers ("62% reduction, from $85 to $32")
-- [ ] Include the time period ("within 6 months of implementation")
-- [ ] Round numbers appropriately (don't write "183.7% increase" — write "nearly 3x")
-- [ ] Contextualize results against industry benchmarks when possible
-- [ ] Use visualizations for the most impressive metrics (bar chart, arrow diagram)
-- [ ] If exact numbers are confidential, use ranges or ratios ("more than doubled," "reduced by over half")
+- [ ] Toujours montrer le point de départ (avant), pas seulement le résultat final
+- [ ] Utiliser des pourcentages ET des chiffres absolus (« réduction de 62 %, de 85 $ à 32 $ »)
+- [ ] Inclure la période (« en 6 mois suivant la mise en œuvre »)
+- [ ] Arrondir les chiffres de façon appropriée (n'écrivez pas « augmentation de 183,7 % » — écrivez « près de 3x »)
+- [ ] Contextualiser les résultats par rapport aux benchmarks sectoriels lorsque possible
+- [ ] Utiliser des visualisations pour les métriques les plus impressionnantes (graphique à barres, diagramme fléché)
+- [ ] Si les chiffres exacts sont confidentiels, utiliser des fourchettes ou ratios (« plus que doublé », « réduit de plus de moitié »)
 
-### ROI Calculation Template
+### Modèle de calcul de ROI
 
 ```
 Investment:
@@ -125,177 +125,177 @@ Payback period: Total Investment / Monthly Return = ___ months
 
 ---
 
-## Storytelling Techniques
+## Techniques de narration
 
-### The Hero's Journey Adaptation
+### Adaptation du voyage du héros
 
-| Story Beat | Case Study Application |
+| Étape narrative | Application à l'étude de cas |
 |-----------|----------------------|
-| Ordinary World | The customer's situation before the problem became urgent |
-| Call to Adventure | The trigger event that forced them to seek a solution |
-| Refusal of the Call | Hesitation, skepticism, or failed previous attempts |
-| Meeting the Mentor | Discovery of your product/service |
-| Crossing the Threshold | Decision to implement and commit |
-| Tests and Challenges | Implementation hurdles, learning curve, team adoption |
-| The Ordeal | The critical moment where the solution was truly tested |
-| The Reward | Measurable results and business transformation |
-| The Return | New normal, expansion plans, advice for others |
+| Monde ordinaire | La situation du client avant que le problème ne devienne urgent |
+| Appel à l'aventure | L'événement déclencheur qui les a forcés à chercher une solution |
+| Refus de l'appel | Hésitation, scepticisme, ou tentatives précédentes échouées |
+| Rencontre avec le mentor | Découverte de votre produit/service |
+| Franchissement du seuil | Décision de mettre en œuvre et de s'engager |
+| Épreuves et défis | Obstacles de mise en œuvre, courbe d'apprentissage, adoption par l'équipe |
+| L'épreuve suprême | Le moment critique où la solution a été véritablement mise à l'épreuve |
+| La récompense | Résultats mesurables et transformation business |
+| Le retour | Nouvelle normalité, plans d'expansion, conseils pour les autres |
 
-### Writing Techniques
+### Techniques d'écriture
 
-| Technique | How to Apply | Example |
+| Technique | Comment l'appliquer | Exemple |
 |-----------|-------------|---------|
-| Specificity over generality | Use exact numbers, names, dates | "In March 2024, Sarah's team of 12 was processing 300 tickets per week manually" |
-| Tension and stakes | Show what was at risk if the problem wasn't solved | "Without a fix, they would miss their Q3 revenue target by $200K" |
-| Sensory language | Describe the emotional experience | "The team dreaded Monday mornings — their inbox was a minefield" |
-| Contrast | Sharply distinguish before and after | "What used to take 4 hours now takes 15 minutes" |
-| Quote integration | Weave customer quotes into narrative flow | Sarah remembers the turning point: "I knew it was working when..." |
-| Show, don't tell | Demonstrate impact through anecdote | Don't say "the team was happier" — show that attrition dropped from 25% to 8% |
+| Spécificité plutôt que généralité | Utiliser des chiffres exacts, des noms, des dates | « En mars 2024, l'équipe de 12 personnes de Sarah traitait 300 tickets par semaine manuellement » |
+| Tension et enjeux | Montrer ce qui était en jeu si le problème n'était pas résolu | « Sans correctif, ils manqueraient leur objectif de revenu du T3 de 200 K$ » |
+| Langage sensoriel | Décrire l'expérience émotionnelle | « L'équipe redoutait les lundis matins — leur boîte de réception était un champ de mines » |
+| Contraste | Distinguer nettement l'avant et l'après | « Ce qui prenait 4 heures ne prend plus que 15 minutes » |
+| Intégration de citations | Tisser les citations client dans le flux narratif | Sarah se souvient du tournant : « J'ai su que ça fonctionnait quand... » |
+| Montrer, ne pas dire | Démontrer l'impact par l'anecdote | Ne dites pas « l'équipe était plus heureuse » — montrez que le turnover est passé de 25 % à 8 % |
 
 ---
 
-## Format Variations
+## Variations de format
 
-### Written Case Study (1,500-2,500 words)
+### Étude de cas écrite (1 500-2 500 mots)
 
-- **Distribution:** Website, email, sales team, SEO
-- **Production time:** 2-4 weeks (interview + writing + approval)
-- **Cost:** $500-2,000 (external) or 8-15 hours (internal)
-- **Shelf life:** 12-24 months before data feels stale
+- **Diffusion :** Site web, e-mail, équipe commerciale, SEO
+- **Temps de production :** 2-4 semaines (entretien + rédaction + approbation)
+- **Coût :** 500-2 000 $ (externe) ou 8-15 heures (interne)
+- **Durée de vie :** 12-24 mois avant que les données ne paraissent datées
 
-### Video Case Study (2-5 minutes)
+### Étude de cas vidéo (2-5 minutes)
 
-- **Distribution:** Website, YouTube, social media, sales presentations, trade shows
-- **Production time:** 4-8 weeks (planning + filming + editing + approval)
-- **Cost:** $3,000-15,000 (professional production)
-- **Best practices:** Customer on camera (not scripted), B-roll of product in use, text overlay for key metrics, subtitles always
+- **Diffusion :** Site web, YouTube, réseaux sociaux, présentations commerciales, salons professionnels
+- **Temps de production :** 4-8 semaines (planification + tournage + montage + approbation)
+- **Coût :** 3 000-15 000 $ (production professionnelle)
+- **Meilleures pratiques :** Client filmé à la caméra (pas scripté), B-roll du produit en usage, surimpression de texte pour les métriques clés, sous-titres toujours
 
-### One-Page Summary / PDF
+### Résumé/PDF d'une page
 
-- **Distribution:** Sales handoff, trade shows, email attachment, LinkedIn DM
-- **Production time:** 1-2 days (after full case study exists)
-- **Cost:** $200-500 (design)
-- **Best practices:** Branded template, scannable layout, 3-5 key metrics, QR code to full version
+- **Diffusion :** Transfert commercial, salons professionnels, pièce jointe e-mail, message LinkedIn
+- **Temps de production :** 1-2 jours (une fois l'étude de cas complète existante)
+- **Coût :** 200-500 $ (design)
+- **Meilleures pratiques :** Modèle de marque, mise en page scannable, 3-5 métriques clés, QR code vers la version complète
 
-### Slide Deck (5-10 slides)
+### Diaporama (5-10 diapositives)
 
-- **Distribution:** Sales presentations, webinars, internal training
-- **Production time:** 1-2 days
-- **Slide structure:** Title slide, company overview, challenge, solution (with screenshots/diagrams), results (metrics), testimonial quote, CTA
+- **Diffusion :** Présentations commerciales, webinaires, formation interne
+- **Temps de production :** 1-2 jours
+- **Structure de diapositives :** Diapositive de titre, présentation de l'entreprise, défi, solution (avec captures d'écran/diagrammes), résultats (métriques), citation de témoignage, CTA
 
-### Social Media Snippets
+### Extraits réseaux sociaux
 
-| Platform | Format | Length | Content Focus |
+| Plateforme | Format | Longueur | Focus du contenu |
 |----------|--------|--------|---------------|
-| LinkedIn | Carousel (5-8 slides) | 150-200 words per slide | Challenge → Solution → 3 key results → CTA |
-| LinkedIn | Text post | 300-600 words | Storytelling narrative with metrics and quote |
-| Twitter/X | Thread (5-8 posts) | 280 chars per post | One metric per tweet, link to full study |
-| Instagram | Carousel or Reels | 15-60 seconds | Visual metrics, customer quote overlay, branded |
-| TikTok | Short video | 30-60 seconds | Quick before/after transformation story |
+| LinkedIn | Carrousel (5-8 diapositives) | 150-200 mots par diapositive | Défi → Solution → 3 résultats clés → CTA |
+| LinkedIn | Post texte | 300-600 mots | Récit narratif avec métriques et citation |
+| Twitter/X | Fil (5-8 posts) | 280 caractères par post | Une métrique par tweet, lien vers l'étude complète |
+| Instagram | Carrousel ou Reels | 15-60 secondes | Métriques visuelles, surimpression de citation client, marqué |
+| TikTok | Vidéo courte | 30-60 secondes | Histoire rapide de transformation avant/après |
 
 ---
 
-## Distribution Strategy
+## Stratégie de diffusion
 
-### Website Placement
+### Placement sur le site web
 
-| Location | Purpose | Format |
+| Emplacement | Objectif | Format |
 |----------|---------|--------|
-| Dedicated case studies page | Central hub for all studies | Filterable by industry, company size, use case |
-| Product/feature pages | Proof of specific capability | Embedded snippet or sidebar with relevant study |
-| Pricing page | Justify investment | ROI-focused study with payback period data |
-| Homepage | Social proof for new visitors | Rotating customer logos + quote + result |
-| Blog | SEO and content marketing | Full narrative version with long-tail keywords |
+| Page dédiée aux études de cas | Hub central pour toutes les études | Filtrable par secteur, taille d'entreprise, cas d'usage |
+| Pages produit/fonctionnalité | Preuve d'une capacité spécifique | Extrait intégré ou barre latérale avec étude pertinente |
+| Page de tarification | Justifier l'investissement | Étude axée ROI avec données de période de retour sur investissement |
+| Page d'accueil | Preuve sociale pour les nouveaux visiteurs | Logos clients tournants + citation + résultat |
+| Blog | SEO et marketing de contenu | Version narrative complète avec mots-clés longue traîne |
 
-### Sales Enablement
+### Aide à la vente
 
-| Sales Stage | How to Use Case Study |
+| Étape commerciale | Comment utiliser l'étude de cas |
 |-------------|---------------------|
-| Prospecting | Reference in cold outreach: "We helped [similar company] achieve [result]" |
-| Discovery | Share to build credibility after identifying similar pain points |
-| Proposal | Include as supporting evidence for ROI projections |
-| Negotiation | Counter objections with proof points from similar customers |
-| Close | Offer reference call with case study customer |
+| Prospection | Référence dans la prospection à froid : « Nous avons aidé [entreprise similaire] à atteindre [résultat] » |
+| Découverte | Partager pour construire la crédibilité après avoir identifié des points de douleur similaires |
+| Proposition | Inclure comme preuve à l'appui des projections de ROI |
+| Négociation | Contrer les objections avec des preuves de clients similaires |
+| Conclusion | Proposer un appel de référence avec le client de l'étude de cas |
 
-### Distribution Channels
+### Canaux de diffusion
 
-- [ ] Email to prospects matching the case study's industry and company size
-- [ ] LinkedIn organic post (text narrative + PDF attachment)
-- [ ] LinkedIn paid promotion to target industry audiences
-- [ ] Sales team Slack/Teams channel for awareness
-- [ ] CRM attachment to relevant deal records
-- [ ] Newsletter feature (monthly "customer spotlight")
-- [ ] Webinar featuring the customer telling their story
-- [ ] PR outreach with industry-specific publications
-- [ ] Trade show collateral (printed one-pagers)
-- [ ] Partner co-marketing (if applicable)
+- [ ] E-mail aux prospects correspondant au secteur et à la taille d'entreprise de l'étude de cas
+- [ ] Post organique LinkedIn (récit texte + pièce jointe PDF)
+- [ ] Promotion payante LinkedIn ciblant les audiences sectorielles
+- [ ] Canal Slack/Teams de l'équipe commerciale pour sensibilisation
+- [ ] Pièce jointe CRM aux fiches de deal pertinentes
+- [ ] Mise en avant dans la newsletter (« spotlight client » mensuel)
+- [ ] Webinaire où le client raconte son histoire
+- [ ] Diffusion RP avec des publications sectorielles spécifiques
+- [ ] Supports de salon professionnel (one-pagers imprimés)
+- [ ] Co-marketing partenaire (le cas échéant)
 
 ---
 
-## SEO Optimization
+## Optimisation SEO
 
-### Keyword Strategy for Case Studies
+### Stratégie de mots-clés pour les études de cas
 
-| Keyword Type | Example | Where to Use |
+| Type de mot-clé | Exemple | Où l'utiliser |
 |-------------|---------|-------------|
-| Industry + solution | "CRM for healthcare case study" | Title, H1, URL slug |
-| Problem + solution | "reduce customer churn SaaS case study" | Meta description, body text |
-| Competitor alternative | "[competitor] alternative results" | Body text (tasteful, not aggressive) |
-| Product + use case | "[product name] email marketing results" | H2 subheadings |
-| Geographic | "[product] UK eCommerce success" | Body text, title if relevant |
+| Secteur + solution | « étude de cas CRM pour la santé » | Titre, H1, slug d'URL |
+| Problème + solution | « étude de cas SaaS réduction du churn client » | Meta description, corps de texte |
+| Alternative concurrente | « résultats alternative à [concurrent] » | Corps de texte (avec tact, pas agressif) |
+| Produit + cas d'usage | « résultats marketing e-mail [nom du produit] » | Sous-titres H2 |
+| Géographique | « succès e-commerce UK [produit] » | Corps de texte, titre si pertinent |
 
-### On-Page SEO Checklist
+### Checklist SEO on-page
 
-- [ ] URL slug: `/case-studies/[company-name]-[industry]-[key-result]`
-- [ ] Title tag: "[Company] Achieves [Result] with [Product] | Case Study"
-- [ ] Meta description: 155 chars summarizing challenge, solution, and headline result
-- [ ] H1: Matches title with customer name and key result
-- [ ] H2s: Structured as Challenge, Solution, Results (clear for featured snippets)
-- [ ] Schema markup: Case study or Article structured data
-- [ ] Internal links: Link to relevant product pages, related case studies
-- [ ] Image alt text: Descriptive alt for charts, screenshots, customer photos
-- [ ] Key metrics in text (not just images): Crawlable by search engines
-- [ ] 1,500+ words for SEO length signal
+- [ ] Slug d'URL : `/case-studies/[nom-entreprise]-[secteur]-[résultat-clé]`
+- [ ] Balise title : « [Entreprise] atteint [Résultat] avec [Produit] | Étude de cas »
+- [ ] Meta description : 155 caractères résumant le défi, la solution, et le résultat principal
+- [ ] H1 : Correspond au titre avec le nom du client et le résultat clé
+- [ ] H2 : Structurés comme Défi, Solution, Résultats (clair pour les featured snippets)
+- [ ] Balisage de schéma : Données structurées Case study ou Article
+- [ ] Liens internes : Lier vers les pages produit pertinentes, les études de cas connexes
+- [ ] Texte alt d'image : Alt descriptif pour les graphiques, captures d'écran, photos client
+- [ ] Métriques clés dans le texte (pas seulement dans les images) : Explorable par les moteurs de recherche
+- [ ] 1 500+ mots pour le signal de longueur SEO
 
 ---
 
-## B2B vs B2C Case Studies
+## Études de cas B2B vs B2C
 
-| Dimension | B2B Case Study | B2C Case Study |
+| Dimension | Étude de cas B2B | Étude de cas B2C |
 |-----------|---------------|---------------|
-| Decision-maker | Committee (5-10 people) | Individual or household |
-| Key metrics | ROI, efficiency, revenue growth, cost reduction | Satisfaction, experience quality, time saved |
-| Tone | Professional, data-driven, authoritative | Personal, emotional, relatable |
-| Length | 1,500-2,500 words (longer consideration cycle) | 500-1,000 words (quicker read) |
-| Social proof emphasis | Company name, logo, title of interviewee | Customer name (or anonymous), photo, story |
-| Distribution | Sales team, LinkedIn, industry events | Website, social media, email, influencer |
-| Storytelling focus | Business transformation | Personal transformation |
-| Approval complexity | Legal review, PR team, executive sign-off | Simple customer consent |
-| Typical timeline | 4-8 weeks | 1-3 weeks |
+| Décideur | Comité (5-10 personnes) | Individu ou foyer |
+| Métriques clés | ROI, efficacité, croissance du revenu, réduction des coûts | Satisfaction, qualité d'expérience, temps gagné |
+| Ton | Professionnel, axé données, autoritaire | Personnel, émotionnel, relatable |
+| Longueur | 1 500-2 500 mots (cycle de décision plus long) | 500-1 000 mots (lecture plus rapide) |
+| Emphase de preuve sociale | Nom d'entreprise, logo, titre de l'interviewé | Nom du client (ou anonyme), photo, histoire |
+| Diffusion | Équipe commerciale, LinkedIn, événements sectoriels | Site web, réseaux sociaux, e-mail, influenceur |
+| Focus narratif | Transformation business | Transformation personnelle |
+| Complexité d'approbation | Revue juridique, équipe RP, validation exécutive | Consentement client simple |
+| Calendrier typique | 4-8 semaines | 1-3 semaines |
 
 ---
 
-## Legal & Approval Process
+## Processus juridique et d'approbation
 
-### Pre-Interview
+### Avant l'entretien
 
-- [ ] Get verbal agreement from customer success/account manager that the customer is in good standing
-- [ ] Send formal case study participation request (email template below)
-- [ ] Outline the process: interview, draft, review, publish
-- [ ] Clarify what will be shared publicly (company name, metrics, quotes)
-- [ ] Confirm if legal/PR review is required on customer side
-- [ ] Offer incentives if appropriate (co-marketing, conference speaking, product credits)
+- [ ] Obtenir l'accord verbal du responsable de la réussite client/gestionnaire de compte que le client est en bons termes
+- [ ] Envoyer une demande formelle de participation à l'étude de cas (modèle d'e-mail ci-dessous)
+- [ ] Décrire le processus : entretien, brouillon, revue, publication
+- [ ] Clarifier ce qui sera partagé publiquement (nom d'entreprise, métriques, citations)
+- [ ] Confirmer si une revue juridique/RP est requise côté client
+- [ ] Proposer des incitations si approprié (co-marketing, intervention en conférence, crédits produit)
 
-### Post-Writing
+### Après la rédaction
 
-- [ ] Send draft to customer for review with 2-week response window
-- [ ] Allow customer to redact specific numbers or sensitive details
-- [ ] Get written approval (email confirmation is sufficient for most companies)
-- [ ] Confirm where the study will be published (website, social, sales materials)
-- [ ] For public companies: check if the customer's legal team needs to review for SEC/disclosure concerns
-- [ ] Store signed approval in customer record
+- [ ] Envoyer le brouillon au client pour revue avec une fenêtre de réponse de 2 semaines
+- [ ] Permettre au client de caviarder des chiffres spécifiques ou des détails sensibles
+- [ ] Obtenir une approbation écrite (une confirmation par e-mail suffit pour la plupart des entreprises)
+- [ ] Confirmer où l'étude sera publiée (site web, social, matériel commercial)
+- [ ] Pour les entreprises cotées : vérifier si l'équipe juridique du client doit revoir pour des considérations de divulgation SEC
+- [ ] Stocker l'approbation signée dans la fiche client
 
-### Case Study Request Email Template
+### Modèle d'e-mail de demande d'étude de cas
 
 ```
 Subject: Would you be open to sharing your [Company] story?
@@ -322,44 +322,44 @@ Best,
 
 ---
 
-## Industry-Specific Templates
+## Modèles spécifiques au secteur
 
-### SaaS Case Study Metrics Focus
+### Focus métriques étude de cas SaaS
 
-| Metric Category | Metrics to Highlight |
+| Catégorie de métrique | Métriques à mettre en avant |
 |----------------|---------------------|
-| Efficiency | Time saved per week, tasks automated, manual steps eliminated |
-| Adoption | Team adoption rate, daily active users, feature utilization |
-| Revenue impact | Pipeline generated, deals closed faster, expansion revenue |
-| Cost reduction | Tool consolidation savings, headcount efficiency, error reduction |
+| Efficacité | Temps gagné par semaine, tâches automatisées, étapes manuelles éliminées |
+| Adoption | Taux d'adoption par l'équipe, utilisateurs actifs quotidiens, utilisation des fonctionnalités |
+| Impact revenu | Pipeline généré, deals conclus plus rapidement, revenu d'expansion |
+| Réduction des coûts | Économies de consolidation d'outils, efficacité des effectifs, réduction d'erreurs |
 
-### eCommerce Case Study Metrics Focus
+### Focus métriques étude de cas e-commerce
 
-| Metric Category | Metrics to Highlight |
+| Catégorie de métrique | Métriques à mettre en avant |
 |----------------|---------------------|
-| Revenue | Revenue growth, AOV increase, repeat purchase rate |
-| Conversion | Conversion rate lift, cart abandonment reduction, checkout completion |
-| Efficiency | ROAS improvement, CPA reduction, automation time savings |
-| Customer experience | Customer satisfaction score, return rate reduction, review volume |
+| Revenu | Croissance du revenu, augmentation du panier moyen, taux de rachat |
+| Conversion | Hausse du taux de conversion, réduction de l'abandon de panier, achèvement du checkout |
+| Efficacité | Amélioration du ROAS, réduction du CPA, gains de temps par automatisation |
+| Expérience client | Score de satisfaction client, réduction du taux de retour, volume d'avis |
 
-### Agency Case Study Metrics Focus
+### Focus métriques étude de cas agence
 
-| Metric Category | Metrics to Highlight |
+| Catégorie de métrique | Métriques à mettre en avant |
 |----------------|---------------------|
-| Client results | Client revenue growth, lead generation, traffic increase |
-| Efficiency | Faster turnaround, more capacity, fewer revisions |
-| Scale | Number of clients managed, campaigns launched, content produced |
-| Retention | Client retention rate, contract expansions, referrals generated |
+| Résultats clients | Croissance du revenu client, génération de leads, augmentation du trafic |
+| Efficacité | Délai de livraison plus rapide, plus de capacité, moins de révisions |
+| Échelle | Nombre de clients gérés, campagnes lancées, contenu produit |
+| Rétention | Taux de rétention client, extensions de contrat, parrainages générés |
 
-### Local Business Case Study Metrics Focus
+### Focus métriques étude de cas commerce local
 
-| Metric Category | Metrics to Highlight |
+| Catégorie de métrique | Métriques à mettre en avant |
 |----------------|---------------------|
-| Foot traffic | Increase in store visits, appointment bookings |
-| Online presence | Google Business Profile views, review rating/volume, local search rankings |
-| Revenue | Monthly revenue growth, new customer acquisition, average ticket size |
-| Community | Social media following, event attendance, referral rate |
+| Fréquentation | Augmentation des visites en magasin, réservations de rendez-vous |
+| Présence en ligne | Vues de la fiche Google Business Profile, note/volume d'avis, classements de recherche locale |
+| Revenu | Croissance du revenu mensuel, acquisition de nouveaux clients, panier moyen |
+| Communauté | Abonnés réseaux sociaux, fréquentation d'événements, taux de parrainage |
 
 ---
 
-*The best case studies do not read like marketing materials. They read like credible, specific, third-party-validated success stories. Let the customer be the star, let the data speak for itself, and make the reader think: "If they did it, maybe I can too."*
+*Les meilleures études de cas ne se lisent pas comme du matériel marketing. Elles se lisent comme des success stories crédibles, spécifiques, validées par des tiers. Laissez le client être la star, laissez les données parler d'elles-mêmes, et faites en sorte que le lecteur pense : « S'ils l'ont fait, peut-être que je peux aussi le faire. »*

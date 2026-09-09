@@ -1,203 +1,203 @@
-# Landing Page Audit — Checklist & Methodology
+# Audit de landing page — Checklist et méthodologie
 
-A systematic framework for evaluating landing page effectiveness across every dimension that influences conversion. This methodology combines heuristic evaluation with data-driven benchmarks to produce actionable, prioritized recommendations.
+Un cadre systématique pour évaluer l'efficacité d'une landing page sur toutes les dimensions qui influencent la conversion. Cette méthodologie combine une évaluation heuristique avec des repères basés sur les données pour produire des recommandations exploitables et priorisées.
 
 ---
 
-## Scoring Rubric — Landing Page Score
+## Grille de notation — Score de landing page
 
-Each section is scored 1–5. The weighted total produces the Landing Page Score (0–100).
+Chaque section est notée de 1 à 5. Le total pondéré produit le Score de landing page (0-100).
 
-| Section | Weight | 1 (Poor) | 3 (Adequate) | 5 (Excellent) |
+| Section | Pondération | 1 (Faible) | 3 (Adéquat) | 5 (Excellent) |
 |---|---|---|---|---|
-| Above-Fold Clarity | 20% | No clear value prop; visitor confused within 5s | Value prop present but generic or buried | Specific, compelling value prop immediately visible |
-| Trust & Credibility | 15% | No social proof or trust signals | Some testimonials or logos present | Layered trust signals matched to buyer stage |
-| Copy & Messaging | 15% | Feature-focused, jargon-heavy, no hierarchy | Benefit-oriented but lacks specificity | Customer-voice copy, objection handling, clear hierarchy |
-| CTA & Form Design | 20% | Vague CTA, excessive fields, poor contrast | Clear CTA with reasonable form length | High-contrast CTA, minimal friction, value-framed label |
-| Visual Design | 10% | Cluttered, inconsistent, stock-heavy imagery | Clean layout with adequate visual hierarchy | Purposeful design directing eye flow to CTA |
-| Mobile Experience | 10% | Broken or unusable on mobile | Functional but not optimized | Thumb-friendly, fast, native-feeling experience |
-| Page Speed | 10% | >5s load time | 2–4s load time | <2s load time with optimized LCP/CLS |
+| Clarté au-dessus de la ligne de flottaison | 20 % | Aucune proposition de valeur claire ; visiteur confus en 5s | Proposition de valeur présente mais générique ou noyée | Proposition de valeur précise et convaincante, immédiatement visible |
+| Confiance et crédibilité | 15 % | Aucune preuve sociale ni signal de confiance | Quelques témoignages ou logos présents | Signaux de confiance superposés et adaptés à l'étape de l'acheteur |
+| Texte et message | 15 % | Centré sur les fonctionnalités, chargé de jargon, aucune hiérarchie | Orienté bénéfices mais manque de précision | Texte en voix du client, gestion des objections, hiérarchie claire |
+| Conception de l'appel à l'action et du formulaire | 20 % | Appel à l'action vague, champs excessifs, mauvais contraste | Appel à l'action clair avec une longueur de formulaire raisonnable | Appel à l'action à fort contraste, friction minimale, libellé orienté valeur |
+| Conception visuelle | 10 % | Encombré, incohérent, imagerie de stock envahissante | Mise en page propre avec une hiérarchie visuelle adéquate | Conception intentionnelle dirigeant le regard vers l'appel à l'action |
+| Expérience mobile | 10 % | Cassée ou inutilisable sur mobile | Fonctionnelle mais non optimisée | Expérience adaptée au pouce, rapide, à l'allure native |
+| Vitesse de page | 10 % | Temps de chargement >5s | Temps de chargement 2-4s | Temps de chargement <2s avec LCP/CLS optimisés |
 
-**Score Interpretation:**
-- 85–100: High-performing page — test incremental improvements
-- 65–84: Solid foundation — address weak sections for meaningful lift
-- 40–64: Underperforming — structural changes needed before traffic scaling
-- Below 40: Fundamental rebuild recommended
-
----
-
-## Full Audit Checklist (55 Items)
-
-### Above-Fold Clarity (Items 1–10)
-
-- [ ] 1. Headline communicates specific outcome or transformation
-- [ ] 2. Subheadline adds context without repeating headline
-- [ ] 3. Visitor can identify what you do, who it's for, and why it matters within 5 seconds
-- [ ] 4. Hero image or visual reinforces the value proposition (not decoration)
-- [ ] 5. Primary CTA is visible without scrolling on all viewports
-- [ ] 6. Navigation is removed or minimized to reduce exit paths
-- [ ] 7. Message matches the ad/email/referral source that sent the visitor
-- [ ] 8. No competing offers or distractions above the fold
-- [ ] 9. Page title and meta description align with on-page messaging
-- [ ] 10. Unique value differentiator is explicit — not just "better" or "leading"
-
-### Trust & Credibility (Items 11–18)
-
-- [ ] 11. Customer logos relevant to target segment are displayed
-- [ ] 12. Testimonials include full names, titles, company, and headshots
-- [ ] 13. Quantified results appear in testimonials or case study snippets
-- [ ] 14. Third-party validation present (awards, certifications, press mentions)
-- [ ] 15. Security badges displayed near form or payment fields
-- [ ] 16. Privacy language is concise and positioned near data-collection points
-- [ ] 17. Social proof is specific to the use case (not generic company praise)
-- [ ] 18. Guarantee or risk-reversal statement is present and prominent
-
-### Copy & Messaging (Items 19–28)
-
-- [ ] 19. Copy leads with customer problems or desired outcomes, not product features
-- [ ] 20. Benefits are specific and quantified where possible
-- [ ] 21. Objections are addressed on-page (pricing, complexity, switching cost)
-- [ ] 22. Copy uses the audience's own language (pulled from reviews, interviews, support tickets)
-- [ ] 23. Scannable formatting — short paragraphs, bullet points, bold key phrases
-- [ ] 24. No jargon, acronyms, or insider terminology without explanation
-- [ ] 25. Urgency or scarcity is genuine and contextual, not manufactured
-- [ ] 26. Microcopy on buttons and forms reduces anxiety ("Free," "No credit card," "2 min setup")
-- [ ] 27. Content hierarchy follows awareness level of the traffic source
-- [ ] 28. FAQ section addresses top 3–5 buying objections
-
-### CTA & Form Design (Items 29–38)
-
-- [ ] 29. CTA button text describes the value received, not the action ("Get My Free Audit" vs "Submit")
-- [ ] 30. CTA button has sufficient color contrast (minimum 4.5:1 ratio)
-- [ ] 31. Only one primary CTA per viewport (secondary CTA clearly de-emphasized)
-- [ ] 32. Form requests only information needed for the immediate next step
-- [ ] 33. Form field count matches offer value (high-value = more fields acceptable)
-- [ ] 34. Required vs optional fields are clearly distinguished
-- [ ] 35. Inline validation provides real-time feedback
-- [ ] 36. Error messages are specific and helpful, not generic ("Please enter a valid email" vs "Error")
-- [ ] 37. Thank-you page continues the conversion journey (next step, expectation setting)
-- [ ] 38. CTA is repeated at logical scroll points for long pages
-
-### Visual Design (Items 39–44)
-
-- [ ] 39. Visual hierarchy guides eye from headline to supporting content to CTA
-- [ ] 40. Whitespace is used intentionally to group related elements
-- [ ] 41. Imagery shows the product in use or the outcome achieved (not generic stock)
-- [ ] 42. Color palette is limited — accent color reserved for CTAs
-- [ ] 43. Typography is readable (16px+ body, 1.5+ line height, sufficient contrast)
-- [ ] 44. Directional cues (arrows, eye gaze, layout flow) point toward the CTA
-
-### Mobile Experience (Items 45–49)
-
-- [ ] 45. Tap targets are minimum 44x44px with adequate spacing
-- [ ] 46. Forms use appropriate input types (tel, email, number) for mobile keyboards
-- [ ] 47. Sticky CTA or persistent button is present on long mobile pages
-- [ ] 48. Content is not hidden behind "click to expand" toggles that reduce engagement
-- [ ] 49. Images are responsive and do not cause horizontal scrolling
-
-### Page Speed & Technical (Items 50–55)
-
-- [ ] 50. Largest Contentful Paint (LCP) under 2.5 seconds
-- [ ] 51. Cumulative Layout Shift (CLS) under 0.1
-- [ ] 52. Interaction to Next Paint (INP) under 200ms
-- [ ] 53. Images are compressed and served in modern formats (WebP/AVIF)
-- [ ] 54. Third-party scripts are deferred or loaded asynchronously
-- [ ] 55. Tracking is functional — analytics, heatmaps, and conversion pixels fire correctly
+**Interprétation du score :**
+- 85-100 : Page très performante — tester des améliorations incrémentales
+- 65-84 : Fondation solide — traiter les sections faibles pour une hausse significative
+- 40-64 : Sous-performante — des changements structurels sont nécessaires avant d'augmenter le trafic
+- En dessous de 40 : Une refonte fondamentale est recommandée
 
 ---
 
-## Benchmark Conversion Rates by Industry & Page Type
+## Checklist d'audit complète (55 éléments)
 
-| Industry | Lead Gen Landing Page | Free Trial Signup | E-commerce Product | Webinar Registration | SaaS Demo Request |
+### Clarté au-dessus de la ligne de flottaison (éléments 1-10)
+
+- [ ] 1. Le titre communique un résultat ou une transformation précise
+- [ ] 2. Le sous-titre ajoute du contexte sans répéter le titre
+- [ ] 3. Le visiteur peut identifier ce que vous faites, pour qui, et pourquoi c'est important en 5 secondes
+- [ ] 4. L'image héro ou le visuel renforce la proposition de valeur (pas de la décoration)
+- [ ] 5. L'appel à l'action principal est visible sans défilement sur tous les formats d'écran
+- [ ] 6. La navigation est retirée ou minimisée pour réduire les chemins de sortie
+- [ ] 7. Le message correspond à la publicité/l'e-mail/la source de référence qui a envoyé le visiteur
+- [ ] 8. Aucune offre concurrente ni distraction au-dessus de la ligne de flottaison
+- [ ] 9. Le titre de page et la meta description s'alignent avec le message sur la page
+- [ ] 10. Le différenciateur de valeur unique est explicite — pas seulement « meilleur » ou « leader »
+
+### Confiance et crédibilité (éléments 11-18)
+
+- [ ] 11. Les logos clients pertinents pour le segment cible sont affichés
+- [ ] 12. Les témoignages incluent noms complets, titres, entreprise, et photos
+- [ ] 13. Des résultats chiffrés apparaissent dans les témoignages ou extraits d'études de cas
+- [ ] 14. Une validation tierce est présente (récompenses, certifications, mentions presse)
+- [ ] 15. Des badges de sécurité sont affichés près du formulaire ou des champs de paiement
+- [ ] 16. Le texte de confidentialité est concis et positionné près des points de collecte de données
+- [ ] 17. La preuve sociale est spécifique au cas d'usage (pas des éloges génériques de l'entreprise)
+- [ ] 18. Une déclaration de garantie ou de réduction de risque est présente et proéminente
+
+### Texte et message (éléments 19-28)
+
+- [ ] 19. Le texte commence par les problèmes ou résultats souhaités du client, pas les fonctionnalités du produit
+- [ ] 20. Les bénéfices sont précis et chiffrés dans la mesure du possible
+- [ ] 21. Les objections sont traitées sur la page (prix, complexité, coût de changement)
+- [ ] 22. Le texte utilise le langage propre de l'audience (tiré des avis, entretiens, tickets de support)
+- [ ] 23. Mise en forme balayable — paragraphes courts, puces, phrases clés en gras
+- [ ] 24. Aucun jargon, acronyme, ou terminologie d'initié sans explication
+- [ ] 25. L'urgence ou la rareté est authentique et contextuelle, pas fabriquée
+- [ ] 26. Le micro-texte sur les boutons et formulaires réduit l'anxiété (« Gratuit », « Sans carte bancaire », « Configuration en 2 min »)
+- [ ] 27. La hiérarchie du contenu suit le niveau de notoriété de la source de trafic
+- [ ] 28. La section FAQ traite les 3 à 5 principales objections d'achat
+
+### Conception de l'appel à l'action et du formulaire (éléments 29-38)
+
+- [ ] 29. Le texte du bouton d'appel à l'action décrit la valeur reçue, pas l'action (« Obtenir mon audit gratuit » vs « Envoyer »)
+- [ ] 30. Le bouton d'appel à l'action a un contraste de couleur suffisant (ratio minimum 4,5:1)
+- [ ] 31. Un seul appel à l'action principal par écran (l'appel à l'action secondaire clairement atténué)
+- [ ] 32. Le formulaire ne demande que les informations nécessaires pour l'étape immédiate suivante
+- [ ] 33. Le nombre de champs du formulaire correspond à la valeur de l'offre (valeur élevée = plus de champs acceptables)
+- [ ] 34. Les champs obligatoires vs optionnels sont clairement distingués
+- [ ] 35. La validation en ligne fournit un retour en temps réel
+- [ ] 36. Les messages d'erreur sont précis et utiles, pas génériques (« Veuillez saisir un e-mail valide » vs « Erreur »)
+- [ ] 37. La page de remerciement poursuit le parcours de conversion (prochaine étape, gestion des attentes)
+- [ ] 38. L'appel à l'action est répété à des points de défilement logiques pour les pages longues
+
+### Conception visuelle (éléments 39-44)
+
+- [ ] 39. La hiérarchie visuelle guide le regard du titre vers le contenu de soutien puis vers l'appel à l'action
+- [ ] 40. L'espace blanc est utilisé intentionnellement pour regrouper les éléments liés
+- [ ] 41. L'imagerie montre le produit en cours d'utilisation ou le résultat obtenu (pas du stock générique)
+- [ ] 42. La palette de couleurs est limitée — la couleur d'accent réservée aux appels à l'action
+- [ ] 43. La typographie est lisible (16px+ pour le corps, interligne 1,5+, contraste suffisant)
+- [ ] 44. Des indices directionnels (flèches, regard, flux de mise en page) pointent vers l'appel à l'action
+
+### Expérience mobile (éléments 45-49)
+
+- [ ] 45. Les zones tactiles font au minimum 44x44px avec un espacement adéquat
+- [ ] 46. Les formulaires utilisent les types de saisie appropriés (tel, email, number) pour les claviers mobiles
+- [ ] 47. Un appel à l'action collant ou un bouton persistant est présent sur les longues pages mobiles
+- [ ] 48. Le contenu n'est pas caché derrière des bascules « cliquer pour développer » qui réduisent l'engagement
+- [ ] 49. Les images sont responsives et ne causent pas de défilement horizontal
+
+### Vitesse de page et technique (éléments 50-55)
+
+- [ ] 50. Le Largest Contentful Paint (LCP) est inférieur à 2,5 secondes
+- [ ] 51. Le Cumulative Layout Shift (CLS) est inférieur à 0,1
+- [ ] 52. L'Interaction to Next Paint (INP) est inférieur à 200ms
+- [ ] 53. Les images sont compressées et servies dans des formats modernes (WebP/AVIF)
+- [ ] 54. Les scripts tiers sont différés ou chargés de manière asynchrone
+- [ ] 55. Le suivi est fonctionnel — l'analytique, les cartes de chaleur, et les pixels de conversion se déclenchent correctement
+
+---
+
+## Taux de conversion de référence par secteur et type de page
+
+| Secteur | Landing page de génération de leads | Inscription à l'essai gratuit | Produit e-commerce | Inscription à un webinaire | Demande de démo SaaS |
 |---|---|---|---|---|---|
-| B2B SaaS | 2.5–5.0% | 3.0–7.0% | — | 20–35% | 1.5–4.0% |
-| E-commerce (General) | — | — | 1.5–3.5% | — | — |
-| E-commerce (Luxury) | — | — | 0.5–1.5% | — | — |
-| Financial Services | 2.0–5.5% | 1.0–3.0% | — | 15–25% | 2.0–5.0% |
-| Healthcare / Wellness | 2.5–6.0% | — | 1.0–3.0% | 15–30% | — |
-| Education / EdTech | 3.0–8.0% | 5.0–12.0% | — | 25–40% | — |
-| Real Estate | 1.5–4.0% | — | — | 10–20% | 2.0–5.0% |
-| Professional Services | 3.0–7.0% | — | — | 20–35% | 2.5–6.0% |
-| Agency / Marketing | 3.5–8.0% | 4.0–10.0% | — | 25–40% | 3.0–7.0% |
-| Legal | 2.0–6.5% | — | — | 15–25% | — |
+| SaaS B2B | 2,5-5,0 % | 3,0-7,0 % | — | 20-35 % | 1,5-4,0 % |
+| E-commerce (général) | — | — | 1,5-3,5 % | — | — |
+| E-commerce (luxe) | — | — | 0,5-1,5 % | — | — |
+| Services financiers | 2,0-5,5 % | 1,0-3,0 % | — | 15-25 % | 2,0-5,0 % |
+| Santé / bien-être | 2,5-6,0 % | — | 1,0-3,0 % | 15-30 % | — |
+| Éducation / EdTech | 3,0-8,0 % | 5,0-12,0 % | — | 25-40 % | — |
+| Immobilier | 1,5-4,0 % | — | — | 10-20 % | 2,0-5,0 % |
+| Services professionnels | 3,0-7,0 % | — | — | 20-35 % | 2,5-6,0 % |
+| Agence / marketing | 3,5-8,0 % | 4,0-10,0 % | — | 25-40 % | 3,0-7,0 % |
+| Juridique | 2,0-6,5 % | — | — | 15-25 % | — |
 
-*Top quartile performers typically achieve 2–3x median rates. Pages below 50% of median should be flagged for immediate audit.*
+*Les performeurs du quartile supérieur atteignent généralement 2 à 3 fois les taux médians. Les pages en dessous de 50 % de la médiane devraient être signalées pour un audit immédiat.*
 
 ---
 
-## Common Conversion Killers — Ranked by Impact
+## Principaux tueurs de conversion — classés par impact
 
-| Rank | Conversion Killer | Avg. Impact on CVR | Frequency |
+| Rang | Tueur de conversion | Impact moyen sur le CVR | Fréquence |
 |---|---|---|---|
-| 1 | Message mismatch between ad and landing page | -30 to -60% | Very common |
-| 2 | Slow page load (>4s) | -20 to -40% | Common |
-| 3 | Unclear or missing value proposition | -25 to -50% | Very common |
-| 4 | Too many form fields for the offer value | -15 to -30% | Common |
-| 5 | No trust signals near conversion point | -10 to -25% | Common |
-| 6 | Competing navigation or exit paths | -10 to -20% | Very common |
-| 7 | Generic CTA text ("Submit", "Click Here") | -5 to -15% | Extremely common |
-| 8 | Broken mobile experience | -20 to -50% | Common |
-| 9 | No objection handling on page | -10 to -20% | Common |
-| 10 | Poor visual hierarchy — CTA not prominent | -5 to -15% | Common |
+| 1 | Désalignement du message entre la publicité et la landing page | -30 à -60 % | Très courant |
+| 2 | Chargement de page lent (>4s) | -20 à -40 % | Courant |
+| 3 | Proposition de valeur peu claire ou absente | -25 à -50 % | Très courant |
+| 4 | Trop de champs de formulaire pour la valeur de l'offre | -15 à -30 % | Courant |
+| 5 | Aucun signal de confiance près du point de conversion | -10 à -25 % | Courant |
+| 6 | Navigation concurrente ou chemins de sortie | -10 à -20 % | Très courant |
+| 7 | Texte d'appel à l'action générique (« Envoyer », « Cliquer ici ») | -5 à -15 % | Extrêmement courant |
+| 8 | Expérience mobile cassée | -20 à -50 % | Courant |
+| 9 | Aucune gestion des objections sur la page | -10 à -20 % | Courant |
+| 10 | Mauvaise hiérarchie visuelle — appel à l'action non proéminent | -5 à -15 % | Courant |
 
 ---
 
-## Heuristic Evaluation Frameworks
+## Cadres d'évaluation heuristique
 
-### Cialdini's Principles Applied to Landing Pages
+### Les principes de Cialdini appliqués aux landing pages
 
-| Principle | Landing Page Application | Audit Question |
+| Principe | Application à la landing page | Question d'audit |
 |---|---|---|
-| Reciprocity | Offer genuine value before asking (free tool, guide, audit) | Does the page give something valuable before requesting information? |
-| Social Proof | Customer count, testimonials, case studies, logos | Is social proof specific, relevant, and layered throughout the page? |
-| Authority | Expert credentials, media mentions, certifications | Does the page establish expertise without being self-congratulatory? |
-| Scarcity | Limited availability, time-bound offers, enrollment caps | Is any scarcity claim genuine and verifiable? |
-| Consistency | Micro-commitments before the main ask | Does the page use progressive engagement (quiz, calculator, assessment)? |
-| Liking | Relatable language, founder story, behind-the-scenes | Does the page feel human, approachable, and aligned with the audience's identity? |
+| Réciprocité | Offrir une valeur authentique avant de demander (outil gratuit, guide, audit) | La page donne-t-elle quelque chose de précieux avant de demander des informations ? |
+| Preuve sociale | Nombre de clients, témoignages, études de cas, logos | La preuve sociale est-elle précise, pertinente, et répartie sur toute la page ? |
+| Autorité | Références d'expert, mentions média, certifications | La page établit-elle l'expertise sans être autosatisfaite ? |
+| Rareté | Disponibilité limitée, offres limitées dans le temps, plafonds d'inscription | Toute affirmation de rareté est-elle authentique et vérifiable ? |
+| Cohérence | Micro-engagements avant la demande principale | La page utilise-t-elle un engagement progressif (quiz, calculateur, évaluation) ? |
+| Sympathie | Langage relatable, histoire du fondateur, coulisses | La page paraît-elle humaine, accessible, et alignée avec l'identité de l'audience ? |
 
-### Fogg Behavior Model (B = MAP)
+### Modèle de comportement de Fogg (B = MAP)
 
-For conversion to occur, **Motivation**, **Ability**, and a **Prompt** must converge at the same moment.
+Pour que la conversion se produise, la **motivation**, la **capacité**, et un **déclencheur** doivent converger au même moment.
 
-| Element | Audit Focus | Red Flags |
+| Élément | Focus d'audit | Signaux d'alerte |
 |---|---|---|
-| **Motivation** | Does the page amplify desire and reduce fear? | Copy focuses on features instead of outcomes; no emotional hooks; no risk reversal |
-| **Ability** | Is the requested action as simple as possible? | Too many fields; unclear next step; cognitive overload from too many choices |
-| **Prompt** | Is the CTA visible, clear, and timed correctly? | CTA below the fold; vague button text; no CTA repetition on long pages |
+| **Motivation** | La page amplifie-t-elle le désir et réduit-elle la peur ? | Le texte se concentre sur les fonctionnalités plutôt que les résultats ; aucun accroche émotionnel ; aucune réduction de risque |
+| **Capacité** | L'action demandée est-elle aussi simple que possible ? | Trop de champs ; prochaine étape peu claire ; surcharge cognitive due à trop de choix |
+| **Déclencheur** | L'appel à l'action est-il visible, clair, et bien positionné dans le temps ? | Appel à l'action sous la ligne de flottaison ; texte de bouton vague ; aucune répétition de l'appel à l'action sur les longues pages |
 
 ---
 
-## Priority Recommendations Template
+## Modèle de recommandations priorisées
 
-After completing the audit, use this template to structure recommendations.
+Une fois l'audit terminé, utilisez ce modèle pour structurer les recommandations.
 
-### Immediate Fixes (0–48 hours, no dev work)
+### Correctifs immédiats (0-48 heures, sans travail de développement)
 
-| # | Finding | Current State | Recommendation | Expected Impact |
+| # | Constat | État actuel | Recommandation | Impact attendu |
 |---|---|---|---|---|
 | 1 | | | | |
 | 2 | | | | |
 | 3 | | | | |
 
-### Quick Wins (1–2 weeks, minor dev work)
+### Gains rapides (1-2 semaines, travail de développement mineur)
 
-| # | Finding | Current State | Recommendation | Expected Impact |
+| # | Constat | État actuel | Recommandation | Impact attendu |
 |---|---|---|---|---|
 | 1 | | | | |
 | 2 | | | | |
 | 3 | | | | |
 
-### Strategic Improvements (2–6 weeks, significant effort)
+### Améliorations stratégiques (2-6 semaines, effort significatif)
 
-| # | Finding | Current State | Recommendation | Expected Impact |
+| # | Constat | État actuel | Recommandation | Impact attendu |
 |---|---|---|---|---|
 | 1 | | | | |
 | 2 | | | | |
 | 3 | | | | |
 
-### Test Hypotheses Generated from This Audit
+### Hypothèses de test générées à partir de cet audit
 
-| Priority | Hypothesis | Variable to Test | Primary Metric | Estimated Lift |
+| Priorité | Hypothèse | Variable à tester | Indicateur principal | Hausse estimée |
 |---|---|---|---|---|
 | P1 | | | | |
 | P2 | | | | |
@@ -205,12 +205,13 @@ After completing the audit, use this template to structure recommendations.
 
 ---
 
-## How to Use This Audit
+## Comment utiliser cet audit
 
-1. **Score each section** using the rubric at the top. Calculate the weighted Landing Page Score.
-2. **Walk through all 55 checklist items.** Note each failure with a screenshot and current state.
-3. **Compare conversion rate** against industry benchmarks. Identify the gap.
-4. **Cross-reference** failures against the Conversion Killers ranking to identify highest-impact issues.
-5. **Apply heuristic frameworks** (Cialdini, Fogg) to diagnose root causes behind surface-level problems.
-6. **Populate the recommendations template** with prioritized fixes grouped by effort and timeline.
-7. **Generate test hypotheses** from the top findings — every recommendation should be framed as a testable hypothesis.
+1. **Notez chaque section** à l'aide de la grille en haut. Calculez le Score de landing page pondéré.
+2. **Parcourez les 55 éléments de la checklist.** Notez chaque échec avec une capture d'écran et l'état actuel.
+3. **Comparez le taux de conversion** aux repères sectoriels. Identifiez l'écart.
+4. **Croisez** les échecs avec le classement des tueurs de conversion pour identifier les problèmes à plus fort impact.
+5. **Appliquez les cadres heuristiques** (Cialdini, Fogg) pour diagnostiquer les causes profondes derrière les problèmes de surface.
+6. **Remplissez le modèle de recommandations** avec des correctifs priorisés, regroupés par effort et calendrier.
+7. **Générez des hypothèses de test** à partir des principaux constats — chaque recommandation devrait être formulée comme une hypothèse testable.
+</content>

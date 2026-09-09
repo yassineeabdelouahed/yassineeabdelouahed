@@ -1,67 +1,67 @@
 ---
 name: ad-creative
-description: "Generate 3-5 ad copy variations per platform — headlines, descriptions, and CTAs formatted to Google, Meta, LinkedIn, TikTok, X, and Pinterest specs — each scored 1-10 with policy-compliance flags, A/B testing groupings, and a message-match check against the landing page. Triggers on \"/digital-marketing-pro:ad-creative\", \"write ad copy for Meta\", \"give me RSA headline variations\", \"we need LinkedIn ad copy\", \"draft TikTok ad creative\". Reads the brand profile, guidelines, and compliance rules; routes video ad scripts to /digital-marketing-pro:video-script and gates AI-generated visuals for EU campaigns through /digital-marketing-pro:c2pa-metadata and /digital-marketing-pro:check."
+description: "Générer 3 à 5 variantes de texte publicitaire par plateforme — titres, descriptions et CTA formatés selon les spécifications Google, Meta, LinkedIn, TikTok, X et Pinterest — chacune notée de 1 à 10 avec des signaux de conformité aux politiques, des regroupements pour tests A/B et une vérification de la cohérence du message avec la landing page. Se déclenche sur \"/digital-marketing-pro:ad-creative\", \"write ad copy for Meta\", \"give me RSA headline variations\", \"we need LinkedIn ad copy\", \"draft TikTok ad creative\". Lit le profil de marque, les guidelines et les règles de conformité ; renvoie les scripts de vidéo publicitaire vers /digital-marketing-pro:video-script et soumet les visuels générés par IA pour les campagnes UE à /digital-marketing-pro:c2pa-metadata et /digital-marketing-pro:check."
 argument-hint: "[platform]"
 ---
 
 # /digital-marketing-pro:ad-creative
 
-## Purpose
+## Objectif
 
-Generate high-performing ad copy variations tailored to specific platforms and formats. Each variation is scored for quality and compliance, with recommendations for testing strategy.
+Générer des variantes de texte publicitaire performantes, adaptées à des plateformes et formats spécifiques. Chaque variante est notée pour sa qualité et sa conformité, avec des recommandations de stratégie de test.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Product/service**: What is being advertised
-- **Platform(s)**: Google Ads, Meta (Facebook/Instagram), LinkedIn, TikTok, X, Pinterest
-- **Ad format**: RSA, single image, carousel, video script, story, etc. For video ad scripts (6s bumper, 15s skippable, 30s spot, UGC-style), route to /digital-marketing-pro:video-script — its step 2.4 carries the per-format structural rules (the 5-second skip deadline, one-message bumpers, native-style disclosure) and its output passes the /check gate. This skill owns the copy layer around the video: headlines, descriptions, and CTAs.
-- **Campaign objective**: Awareness, traffic, leads, conversions, app installs
-- **Target audience**: Who the ads are for
-- **Key offer/CTA**: Promotion, value prop, or desired action
-- **Landing page URL**: Where the ad will drive traffic (optional)
+- **Produit/service** : ce qui est promu
+- **Plateforme(s)** : Google Ads, Meta (Facebook/Instagram), LinkedIn, TikTok, X, Pinterest
+- **Format publicitaire** : RSA, image simple, carrousel, script vidéo, story, etc. Pour les scripts de vidéo publicitaire (bumper 6 s, format skippable 15 s, spot 30 s, style UGC), rediriger vers /digital-marketing-pro:video-script — son étape 2.4 porte les règles structurelles propres à chaque format (le délai de 5 secondes avant le skip, les bumpers à message unique, la divulgation en style natif) et son résultat passe par le filtre /check. Cette compétence gère la couche texte autour de la vidéo : titres, descriptions et CTA.
+- **Objectif de la campagne** : notoriété, trafic, leads, conversions, installations d'application
+- **Audience cible** : à qui s'adressent les publicités
+- **Offre/CTA clé** : promotion, proposition de valeur ou action souhaitée
+- **URL de la landing page** : vers où la publicité dirige le trafic (facultatif)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Identify platform-specific constraints: character limits, format requirements, policy restrictions
-3. Generate 3-5 ad copy variations per platform, each with a distinct angle (benefit, urgency, social proof, curiosity, direct)
-4. Score each variation on: brand alignment, clarity, emotional impact, CTA strength, policy compliance
-5. Flag any potential policy violations (restricted claims, prohibited language)
-6. Recommend A/B testing groupings and priority order
-7. If landing page URL is provided, check message match between ad and page
+1. **Charger le contexte de marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de la marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`) et le contexte sectoriel. **Vérifier également l'existence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier l'existence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. Identifier les contraintes propres à chaque plateforme : limites de caractères, exigences de format, restrictions de politique
+3. Générer 3 à 5 variantes de texte publicitaire par plateforme, chacune avec un angle distinct (bénéfice, urgence, preuve sociale, curiosité, direct)
+4. Noter chaque variante sur : l'alignement de marque, la clarté, l'impact émotionnel, la force du CTA, la conformité aux politiques
+5. Signaler toute violation potentielle des politiques (allégations restreintes, langage interdit)
+6. Recommander des regroupements de tests A/B et un ordre de priorité
+7. Si une URL de landing page est fournie, vérifier la cohérence du message entre la publicité et la page
 
-## Output
+## Résultat
 
-Per platform, a set of ad copy variations including:
+Pour chaque plateforme, un ensemble de variantes de texte publicitaire comprenant :
 
-- Headlines, descriptions, and CTAs formatted to platform specifications
-- Quality score (1-10) with reasoning per variation
-- Policy compliance check with flagged issues
-- A/B testing recommendation with hypothesis for each test
-- Message match assessment (if landing page provided)
-- Creative direction notes for visual/video assets (see AI image/video generation guidance below)
+- Titres, descriptions et CTA formatés selon les spécifications de la plateforme
+- Un score de qualité (1-10) avec justification par variante
+- Une vérification de conformité aux politiques avec les problèmes signalés
+- Une recommandation de test A/B avec une hypothèse pour chaque test
+- Une évaluation de la cohérence du message (si la landing page est fournie)
+- Des notes de direction créative pour les assets visuels/vidéo (voir les recommandations de génération d'images/vidéos par IA ci-dessous)
 
-### AI image & video generation guidance (May 2026)
+### Recommandations de génération d'images et de vidéos par IA (mai 2026)
 
-When the brief includes static visuals or short-form video, recommend the model that fits the use case and call out the compliance overhead:
+Lorsque le brief inclut des visuels statiques ou de la vidéo courte, recommander le modèle adapté au cas d'usage et signaler la charge de conformité associée :
 
-| Asset type | Recommended model (May 2026) | When to use | Compliance note |
+| Type d'asset | Modèle recommandé (mai 2026) | Quand l'utiliser | Note de conformité |
 |---|---|---|---|
-| Product hero stills, lifestyle photography, e-commerce tiles | **Google Nano Banana Pro** (Gemini 3 Pro Image, multi-image composition, character/object consistency) | Strong text rendering inside images (logos, on-pack copy), brand-character consistency across a campaign, high-fidelity product realism. | Outputs ship with SynthID watermarking by default; ALSO sign with C2PA via `/digital-marketing-pro:c2pa-metadata` before any EU distribution. |
-| Short-form social video (≤8s reels, organic vertical) | **Gemini Veo 3.1** (synchronized native audio, longer/more coherent clips than Veo 3.0) | Reels, TikTok, Shorts cut-downs, ad-creative experimentation. | Synthetic-voice / synthetic-human content must carry a visible deepfake disclosure under EU Article 50 — see `skills/context-engine/compliance-rules.md` §1.1b. |
-| Long-form video with native audio / multi-modal storytelling | **Gemini Omni** (multimodal generation, May 2026 I/O launch — text + image + audio + video unified) | Connected-content campaigns where a single brief produces a hero film, social cut-downs, audio version, and stills consistently. Best for brands with disciplined creative governance — Omni's range outpaces most brand-safety review processes. | Default Omni outputs carry SynthID + Gemini provenance markers. Add C2PA before EU publish. Run synthetic-person outputs past Legal — Omni's photoreal humans frequently hit "substantial AI manipulation" thresholds under Article 50. |
-| Static image — fast iteration / mood-boarding | OpenAI gpt-image-2, Midjourney v7, Adobe Firefly | Internal mood boards, concept exploration. Not for shipped EU creative without C2PA. | None of these auto-embed C2PA — manually sign with `/digital-marketing-pro:c2pa-metadata` before EU publish. |
+| Photos produit hero, photographie lifestyle, vignettes e-commerce | **Google Nano Banana Pro** (Gemini 3 Pro Image, composition multi-image, cohérence des personnages/objets) | Rendu de texte solide à l'intérieur des images (logos, texte sur emballage), cohérence du personnage de marque sur l'ensemble d'une campagne, réalisme produit haute fidélité. | Les sorties sont filigranées par défaut avec SynthID ; signer AUSSI avec C2PA via `/digital-marketing-pro:c2pa-metadata` avant toute diffusion dans l'UE. |
+| Vidéo sociale courte (reels ≤8 s, format vertical organique) | **Gemini Veo 3.1** (audio natif synchronisé, clips plus longs et plus cohérents que Veo 3.0) | Reels, TikTok, formats courts pour Shorts, expérimentation de créations publicitaires. | Le contenu à voix synthétique / humain synthétique doit porter une divulgation deepfake visible en vertu de l'article 50 de l'UE — voir `skills/context-engine/compliance-rules.md` §1.1b. |
+| Vidéo longue avec audio natif / narration multimodale | **Gemini Omni** (génération multimodale, lancement I/O de mai 2026 — texte + image + audio + vidéo unifiés) | Campagnes de contenu connecté où un seul brief produit un film hero, des déclinaisons sociales, une version audio et des visuels fixes de manière cohérente. Idéal pour les marques ayant une gouvernance créative rigoureuse — l'étendue d'Omni dépasse la plupart des processus de revue de sécurité de marque. | Les sorties Omni par défaut portent des marqueurs de provenance SynthID + Gemini. Ajouter C2PA avant publication dans l'UE. Faire valider par le service juridique les sorties représentant des personnes synthétiques — les humains photoréalistes d'Omni franchissent fréquemment le seuil de « manipulation substantielle par IA » de l'article 50. |
+| Image statique — itération rapide / mood-boarding | OpenAI gpt-image-2, Midjourney v7, Adobe Firefly | Mood boards internes, exploration de concepts. À ne pas utiliser pour une création finale diffusée dans l'UE sans C2PA. | Aucun de ces outils n'intègre automatiquement C2PA — signer manuellement avec `/digital-marketing-pro:c2pa-metadata` avant publication dans l'UE. |
 
-**Workflow recommendation:**
+**Recommandation de workflow :**
 
-1. Brief the visual concept in this skill's output (subject, composition, brand-character constraints, on-pack text if any).
-2. Hand the visual spec to whichever production track owns image/video — your design team, any AI image/video tool (the model table above maps use-case → generator), or a connected design platform (e.g. the Canva / Figma MCP connectors listed in `/digital-marketing-pro:integrations`). The spec is deliberately tool-agnostic: any production track can consume it unchanged.
-3. Treat all AI-generated visuals as **Article 50 in-scope** until proven otherwise. The pre-publish gate (`/digital-marketing-pro:check`) blocks unsigned AI assets for EU-targeted campaigns.
+1. Décrire le concept visuel dans le résultat de cette compétence (sujet, composition, contraintes liées au personnage de marque, texte sur emballage le cas échéant).
+2. Transmettre la spécification visuelle à la filière de production concernée — votre équipe design, un outil d'IA image/vidéo (le tableau de modèles ci-dessus fait correspondre cas d'usage → générateur), ou une plateforme de design connectée (par ex. les connecteurs MCP Canva / Figma listés dans `/digital-marketing-pro:integrations`). La spécification est volontairement indépendante de l'outil : n'importe quelle filière de production peut l'exploiter telle quelle.
+3. Traiter tous les visuels générés par IA comme **relevant a priori de l'article 50** jusqu'à preuve du contraire. Le filtre de pré-publication (`/digital-marketing-pro:check`) bloque les assets IA non signés pour les campagnes ciblant l'UE.
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** — Ad copy generation, angle development, CTA crafting
-- **media-buyer** — Platform specs, policy compliance, testing strategy
-- **brand-guardian** — Voice alignment, compliance review, claim verification
+- **content-creator** — Génération de texte publicitaire, développement d'angles, rédaction de CTA
+- **media-buyer** — Spécifications de plateforme, conformité aux politiques, stratégie de test
+- **brand-guardian** — Alignement de la voix, revue de conformité, vérification des allégations

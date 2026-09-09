@@ -1,60 +1,61 @@
 ---
 name: content-repurpose
-description: "Turn one piece of content into a multi-channel repurposing plan — a derivative matrix targeting 10+ formats, full platform-adapted drafts, a publishing calendar, UTM-tagged links, and per-piece brand-voice scores; every derivative must pass the standalone test (own hook, own payoff) and the cut list records what failed it. Triggers on \"/digital-marketing-pro:content-repurpose\", \"repurpose this blog post\", \"turn this webinar into social posts\", \"get more mileage out of this article\", \"atomize this whitepaper\". Produces drafts and a schedule, not published posts. Reads the brand profile, channel style overrides, and platform specs."
+description: "Transformez un contenu unique en un plan de recyclage multicanal — une matrice de déclinaisons ciblant plus de 10 formats, des brouillons complets adaptés à chaque plateforme, un calendrier de publication, des liens taggés UTM et des scores d'alignement à la voix de marque par déclinaison ; chaque déclinaison doit réussir le test d'autonomie (accroche propre, chute propre) et la liste des éléments écartés consigne ce qui n'a pas passé le test. Se déclenche sur « /digital-marketing-pro:content-repurpose », « recycle cet article de blog », « transforme ce webinaire en posts sociaux », « tire plus de valeur de cet article », « décompose ce livre blanc ». Produit des brouillons et un calendrier, pas des publications déjà en ligne. Lit le profil de marque, les déclinaisons de style par canal et les spécifications de plateforme."
 ---
 
 # /digital-marketing-pro:content-repurpose
 
-## Purpose
+## Objectif
 
-Take one piece of existing content and generate a comprehensive repurposing plan across multiple channels and formats. Produces derivative content pieces, a posting schedule, and platform-specific adaptations to maximize the ROI of every content investment.
+Prendre un contenu existant et générer un plan de recyclage complet sur plusieurs canaux et formats. Produit des déclinaisons de contenu, un calendrier de publication et des adaptations spécifiques à chaque plateforme afin de maximiser le retour sur investissement de chaque contenu produit.
 
-## Input Required
+## Éléments à fournir
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Original content**: The source material -- a URL, pasted text, uploaded document, or description of the content (blog post, webinar recording, podcast episode, whitepaper, case study, presentation, video, etc.)
-- **Target channels**: Which platforms and formats to repurpose into (LinkedIn, Twitter/X, Instagram, email newsletter, blog, YouTube, TikTok, podcast, infographic, etc.) or ask for recommendations
-- **Brand voice context**: Tone and style preferences (auto-loaded from brand profile if available)
-- **Priority goals**: What the repurposed content should achieve (traffic, engagement, lead gen, thought leadership, SEO backlinks)
-- **Timeline**: How quickly the repurposed content needs to go live (same day, one week, two weeks, ongoing drip)
-- **Constraints**: Any platforms to exclude, content restrictions, compliance requirements, or approval workflows
-- **Content performance data**: Optional -- engagement metrics from the original piece to identify strongest elements
+- **Contenu source** : Le matériel d'origine — une URL, un texte collé, un document téléversé, ou une description du contenu (article de blog, enregistrement de webinaire, épisode de podcast, livre blanc, étude de cas, présentation, vidéo, etc.)
+- **Canaux cibles** : Les plateformes et formats vers lesquels recycler le contenu (LinkedIn, Twitter/X, Instagram, newsletter e-mail, blog, YouTube, TikTok, podcast, infographie, etc.) ou demander des recommandations
+- **Contexte de voix de marque** : Préférences de ton et de style (chargées automatiquement depuis le profil de marque si disponible)
+- **Objectifs prioritaires** : Ce que le contenu recyclé doit accomplir (trafic, engagement, génération de leads, leadership éclairé, backlinks SEO)
+- **Délai** : La rapidité à laquelle le contenu recyclé doit être mis en ligne (le jour même, une semaine, deux semaines, diffusion continue)
+- **Contraintes** : Plateformes à exclure, restrictions de contenu, exigences de conformité ou circuits de validation
+- **Données de performance du contenu** : Optionnel — les indicateurs d'engagement du contenu d'origine pour identifier les éléments les plus forts
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply voice, compliance, industry context. Check `guidelines/_manifest.json` for restrictions, messaging, channel styles, voice-and-tone rules, and templates. If a template matching this command exists in `~/.claude-marketing/brands/{slug}/templates/`, apply its format. If no brand exists, prompt for `/digital-marketing-pro:brand-setup` or proceed with defaults.
-2. **Check campaign history**: Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` to identify related campaigns and previously published content that derivative pieces can reference or link to.
-3. **Analyze original content**: Extract the core elements -- key messages, data points, compelling quotes, statistics, step-by-step processes, visual concepts, storytelling hooks, counterintuitive insights, and main takeaways. Identify which elements are strongest for each target format.
-4. **Map to channel-specific formats**: Build a repurposing matrix mapping the original content to derivative formats: blog to social threads, webinar to blog series, podcast to audiograms, whitepaper to infographic, case study to testimonial posts, presentation to carousel posts, long-form to short-form snippets, and vice versa. Target 10+ derivative pieces per source — **but the target never overrides the standalone test below; eight strong pieces beat twelve where four are filler.**
-4.5. **Apply the standalone test — and cut what fails it**: Every derivative piece must work for someone who will never see the source: its own hook, its own payoff, no context debt ("as we discussed in the full article" is a failure). Not every section of a source is repurposable — a passage that only works inside the original's argument is not a weak derivative waiting for better editing, it is not a derivative at all. List what was cut and why alongside the matrix; the cut list is evidence the filter ran. Rank survivors by how well they stand alone, and lead the calendar with the strongest.
-5. **Apply platform specifications**: Reference `skills/context-engine/platform-specs.md` for character limits, image dimensions, video lengths, hashtag best practices, and format requirements per platform. Adapt each piece to fit native platform conventions.
-6. **Adapt messaging for each format**: Rewrite and restructure content for each derivative piece -- not simple truncation but genuine adaptation. A LinkedIn post needs a different hook and structure than a Twitter/X thread, which differs from an email newsletter excerpt or an Instagram carousel. Match the native content style of each platform.
-7. **Apply channel-specific voice overrides**: If brand guidelines include `channel-styles.md`, apply platform-specific tone adjustments (e.g., more casual on social, more authoritative in email, more concise on Twitter/X).
-8. **Generate content calendar for repurposed pieces**: Sequence the derivative content across a publishing timeline. Space out related pieces to avoid audience fatigue. Front-load high-impact formats and follow with supporting pieces. Align with optimal posting times per platform.
-9. **Score each variant for brand voice alignment**: Check every derivative piece against brand voice settings (formality, energy, humor, authority) and channel-specific style overrides from guidelines. Flag any pieces that drift from established voice.
-10. **Add tracking and attribution**: Attach UTM parameters to all links in derivative content so traffic driven back to the original or landing pages can be attributed to the specific repurposed piece and platform.
-11. **Define performance metrics per format**: Set engagement benchmarks for each derivative piece (impressions, clicks, shares, saves, comments) based on platform averages and brand historical performance.
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour connaître le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix, la conformité, le contexte sectoriel. Vérifier `guidelines/_manifest.json` pour les restrictions, les éléments de discours, les styles par canal, les règles de ton et voix, et les modèles. Si un modèle correspondant à cette commande existe dans `~/.claude-marketing/brands/{slug}/templates/`, appliquer son format. Si aucune marque n'existe, proposer `/digital-marketing-pro:brand-setup` ou continuer avec les valeurs par défaut.
+2. **Vérifier l'historique des campagnes** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` afin d'identifier les campagnes liées et les contenus déjà publiés vers lesquels les déclinaisons peuvent renvoyer ou faire référence.
+3. **Analyser le contenu d'origine** : Extraire les éléments essentiels — messages clés, données chiffrées, citations marquantes, statistiques, processus étape par étape, concepts visuels, accroches narratives, éclairages contre-intuitifs et principaux enseignements. Identifier quels éléments sont les plus forts pour chaque format cible.
+4. **Établir la correspondance avec les formats par canal** : Construire une matrice de recyclage faisant correspondre le contenu d'origine à des formats dérivés : blog vers fils sociaux, webinaire vers série de blog, podcast vers audiogrammes, livre blanc vers infographie, étude de cas vers posts de témoignages, présentation vers posts carrousel, contenu long vers extraits courts, et inversement. Viser plus de 10 déclinaisons par source — **mais cet objectif ne prime jamais sur le test d'autonomie ci-dessous ; huit déclinaisons solides valent mieux que douze dont quatre ne sont que du remplissage.**
+4.5. **Appliquer le test d'autonomie — et écarter ce qui échoue** : Chaque déclinaison doit fonctionner pour quelqu'un qui ne verra jamais la source : sa propre accroche, sa propre chute, aucune dette de contexte (« comme évoqué dans l'article complet » est un échec). Toutes les sections d'une source ne sont pas recyclables — un passage qui ne fonctionne que dans l'argumentaire de l'original n'est pas une déclinaison faible en attente d'un meilleur montage, ce n'est simplement pas une déclinaison. Lister ce qui a été écarté et pourquoi, à côté de la matrice ; cette liste est la preuve que le filtre a fonctionné. Classer les survivants selon leur capacité à tenir seuls, et mettre en tête de calendrier les plus solides.
+5. **Appliquer les spécifications de plateforme** : Se référer à `skills/context-engine/platform-specs.md` pour les limites de caractères, dimensions d'image, durées vidéo, bonnes pratiques de hashtags et exigences de format par plateforme. Adapter chaque déclinaison aux conventions natives de la plateforme.
+6. **Adapter le message pour chaque format** : Réécrire et restructurer le contenu pour chaque déclinaison — pas une simple troncature mais une véritable adaptation. Un post LinkedIn a besoin d'une accroche et d'une structure différentes d'un fil Twitter/X, qui diffère lui-même d'un extrait de newsletter e-mail ou d'un carrousel Instagram. Correspondre au style de contenu natif de chaque plateforme.
+7. **Appliquer les déclinaisons de voix par canal** : Si les directives de marque incluent `channel-styles.md`, appliquer les ajustements de ton propres à chaque plateforme (par exemple, plus décontracté sur les réseaux sociaux, plus autoritaire par e-mail, plus concis sur Twitter/X).
+8. **Générer un calendrier de contenu pour les déclinaisons** : Séquencer le contenu dérivé sur un calendrier de publication. Espacer les déclinaisons liées pour éviter la lassitude de l'audience. Mettre en avant les formats à fort impact suivis des pièces de soutien. Aligner avec les meilleurs horaires de publication par plateforme.
+9. **Évaluer chaque variante pour l'alignement avec la voix de marque** : Vérifier chaque déclinaison par rapport aux paramètres de voix de marque (formalité, énergie, humour, autorité) et aux déclinaisons de style par canal issues des directives. Signaler toute déclinaison qui s'écarte de la voix établie.
+10. **Ajouter le suivi et l'attribution** : Attacher des paramètres UTM à tous les liens du contenu dérivé afin que le trafic renvoyé vers l'original ou les pages d'atterrissage puisse être attribué à la déclinaison et à la plateforme spécifiques.
+11. **Définir des indicateurs de performance par format** : Fixer des repères d'engagement pour chaque déclinaison (impressions, clics, partages, enregistrements, commentaires) sur la base des moyennes de la plateforme et des performances historiques de la marque.
 
-## Output
+## Résultat
 
-A structured content repurposing plan containing:
+Un plan de recyclage de contenu structuré contenant :
 
-- Original content summary with extracted key elements (messages, data, quotes, hooks, takeaways)
-- Repurposing matrix mapping original content to 10+ derivative formats across channels
-- Full draft content for each derivative piece, adapted to platform conventions and native style
-- Platform-specific formatting notes (character counts, image specs, hashtag sets, posting format)
-- Publishing calendar with recommended dates, times, and sequencing logic
-- Brand voice alignment score for each piece with adjustment notes where needed
-- Cross-linking strategy connecting derivative pieces back to the original and to each other
-- Estimated reach and engagement projections per format based on channel benchmarks
-- UTM-tagged links for each derivative piece enabling attribution tracking
-- Performance benchmarks per format with success criteria for each piece
-- Visual asset requirements per derivative piece (image dimensions, video specs, design notes)
-- Hashtag and keyword recommendations per platform for discoverability
-- Suggested engagement hooks and CTAs tailored to each platform's audience behavior
+- Résumé du contenu d'origine avec les éléments clés extraits (messages, données, citations, accroches, enseignements)
+- Matrice de recyclage faisant correspondre le contenu d'origine à plus de 10 formats dérivés sur différents canaux
+- Brouillon complet de chaque déclinaison, adapté aux conventions et au style natif de la plateforme
+- Notes de formatage spécifiques à la plateforme (nombre de caractères, spécifications d'image, jeux de hashtags, format de publication)
+- Calendrier de publication avec dates, horaires et logique de séquencement recommandés
+- Score d'alignement à la voix de marque pour chaque déclinaison, avec notes d'ajustement le cas échéant
+- Stratégie de maillage reliant les déclinaisons entre elles et à l'original
+- Projections de portée et d'engagement estimées par format, basées sur les repères du canal
+- Liens taggés UTM pour chaque déclinaison permettant le suivi de l'attribution
+- Repères de performance par format avec critères de réussite pour chaque déclinaison
+- Exigences en matière d'éléments visuels par déclinaison (dimensions d'image, spécifications vidéo, notes de conception)
+- Recommandations de hashtags et de mots-clés par plateforme pour la découvrabilité
+- Suggestions d'accroches d'engagement et d'appels à l'action adaptés au comportement de l'audience de chaque plateforme
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** -- Content analysis, derivative content writing, format adaptation, voice alignment, editorial calendar planning, and cross-linking strategy
-- **social-media-manager** -- Platform-specific formatting, social post drafting, hashtag strategy, posting schedule optimization, engagement hook design, and cross-platform coordination
+- **content-creator** — Analyse de contenu, rédaction des déclinaisons, adaptation de format, alignement de voix, planification du calendrier éditorial et stratégie de maillage
+- **social-media-manager** — Mise en forme spécifique à la plateforme, rédaction de posts sociaux, stratégie de hashtags, optimisation du calendrier de publication, conception d'accroches d'engagement et coordination cross-plateforme
+</content>

@@ -1,41 +1,42 @@
 ---
 name: switch-brand
-description: "Switch the active brand profile for multi-client and agency work by running setup.py --switch-brand, after listing configured brands with the active one starred; confirms the new brand's industry, business model, and primary channel so subsequent outputs use its voice and compliance rules. Triggers on \"/digital-marketing-pro:switch-brand\", \"switch to the other client\", \"change brand to Acme\", \"list available brands\", \"what brands do I have set up\". Can present a side-by-side comparison of two brand profiles on request; offers /digital-marketing-pro:brand-setup when the brand isn't found; pairs with /digital-marketing-pro:status to verify the active context."
+description: "Changer de profil de marque actif pour le travail multi-client et agence en exécutant setup.py --switch-brand, après avoir listé les marques configurées avec celle active marquée d'une étoile ; confirme le secteur, le modèle économique et le canal principal de la nouvelle marque afin que les sorties suivantes utilisent sa voix et ses règles de conformité. Se déclenche sur \"/digital-marketing-pro:switch-brand\", \"switch to the other client\", \"change brand to Acme\", \"list available brands\", \"what brands do I have set up\". Peut présenter une comparaison côte à côte de deux profils de marque sur demande ; propose /digital-marketing-pro:brand-setup si la marque est introuvable ; s'utilise avec /digital-marketing-pro:status pour vérifier le contexte actif."
 argument-hint: "[brand-slug]"
 ---
 
 # Switch Brand
 
-## When to Use
-- User says "switch to [brand name]" or "change brand to..."
-- User wants to work on a different client/brand
-- User asks to list available brands
+## Quand l'utiliser
+- L'utilisateur dit « passe à [nom de marque] » ou « change la marque pour... »
+- L'utilisateur veut travailler sur un client/une marque différent(e)
+- L'utilisateur demande à lister les marques disponibles
 
-## Process
+## Processus
 
-### 1. List Available Brands
-Run the setup script to show all configured brands:
+### 1. Lister les marques disponibles
+Exécuter le script de configuration pour afficher toutes les marques configurées :
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/setup.py" --list-brands
 ```
 
-The currently active brand is marked with `*`.
+La marque actuellement active est marquée d'un `*`.
 
-### 2. Switch Active Brand
-When the user selects a brand, run:
+### 2. Changer la marque active
+Lorsque l'utilisateur sélectionne une marque, exécuter :
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/setup.py" --switch-brand BRAND_SLUG
 ```
 
-### 3. Confirm Switch
-After switching, confirm:
-- Brand name and slug
-- Key profile details (industry, business model, primary channel)
-- Remind: "All marketing outputs will now use [brand_name]'s voice, compliance rules, and context."
+### 3. Confirmer le changement
+Après le changement, confirmer :
+- Le nom et le slug de la marque
+- Les détails clés du profil (secteur, modèle économique, canal principal)
+- Rappeler : « Toutes les sorties marketing utiliseront désormais la voix, les règles de conformité et le contexte de [brand_name]. »
 
-## If Brand Not Found
-- Show the list of available brands
-- Offer to create a new brand: "Brand not found. Would you like to create a new profile? Use /digital-marketing-pro:brand-setup"
+## Si la marque est introuvable
+- Afficher la liste des marques disponibles
+- Proposer de créer un nouveau profil : « Marque introuvable. Souhaitez-vous créer un nouveau profil ? Utilisez /digital-marketing-pro:brand-setup »
 
-## Multi-Brand Comparison
-If the user asks to compare brands, load both profiles and present a side-by-side comparison of key attributes (voice settings, channels, goals).
+## Comparaison multi-marques
+Si l'utilisateur demande à comparer des marques, charger les deux profils et présenter une comparaison côte à côte des attributs clés (paramètres de voix, canaux, objectifs).
+</content>

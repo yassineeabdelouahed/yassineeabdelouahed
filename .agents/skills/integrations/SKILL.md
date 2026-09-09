@@ -1,51 +1,51 @@
 ---
 name: integrations
-description: "Show the MCP integration status dashboard — which connectors are connected, which are available but not yet configured, the skills each one unlocks, per-category coverage, and the top three quick-win connectors to add next. Read-only status check via connector-status.py; it changes nothing. Triggers on \"/digital-marketing-pro:integrations\", \"what integrations are connected\", \"which connectors do I have\", \"what would connecting a CRM unlock\", \"show my integration coverage\". Pairs with /digital-marketing-pro:connect for connector setup instructions and /digital-marketing-pro:add-integration for custom MCP servers."
+description: "Afficher le tableau de bord de statut des intégrations MCP — quels connecteurs sont connectés, lesquels sont disponibles mais pas encore configurés, les skills que chacun débloque, la couverture par catégorie, et les trois connecteurs à ajouter en priorité pour un gain rapide. Simple vérification de statut en lecture seule via connector-status.py ; cela ne modifie rien. Se déclenche sur \"/digital-marketing-pro:integrations\", \"quelles intégrations sont connectées\", \"quels connecteurs ai-je\", \"que débloquerait la connexion d'un CRM\", \"montre-moi la couverture de mes intégrations\". Complémentaire à /digital-marketing-pro:connect pour les instructions de configuration des connecteurs et à /digital-marketing-pro:add-integration pour les serveurs MCP personnalisés."
 ---
 
 # /digital-marketing-pro:integrations
 
-## Purpose
+## Objectif
 
-Show a complete integration status dashboard — which MCP connectors are currently connected, which are available but not yet configured, and which skills each connector unlocks. This is the first thing users should check after installing the plugin to understand what capabilities are active and what additional connections they can set up.
+Afficher un tableau de bord complet du statut des intégrations — quels connecteurs MCP sont actuellement connectés, lesquels sont disponibles mais pas encore configurés, et quels skills chaque connecteur débloque. C'est la première chose que les utilisateurs devraient vérifier après avoir installé le plugin pour comprendre quelles capacités sont actives et quelles connexions supplémentaires ils peuvent mettre en place.
 
-## Input Required
+## Entrée requise
 
-The user may optionally provide:
+L'utilisateur peut éventuellement fournir :
 
-- **Filter** (optional): A specific category to focus on — e.g., "crm", "seo", "advertising", "email-marketing", "social-media". If omitted, shows all categories
-- **Show** (optional): `connected` (only active connectors), `available` (only not-yet-connected), or `all` (default)
+- **Filtre** (facultatif) : une catégorie spécifique sur laquelle se concentrer — par exemple « crm », « seo », « advertising », « email-marketing », « social-media ». Si omis, affiche toutes les catégories
+- **Affichage** (facultatif) : `connected` (uniquement les connecteurs actifs), `available` (uniquement ceux non encore connectés), ou `all` (par défaut)
 
-## Process
+## Processus
 
-1. **Run connector status check**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/connector-status.py" --action status` to get the full status dashboard. This reads the active `.mcp.json` configuration and checks environment variables for npx connectors to determine which are connected.
+1. **Exécuter la vérification de statut des connecteurs** : lancer `python "${CLAUDE_PLUGIN_ROOT}/scripts/connector-status.py" --action status` pour obtenir le tableau de bord complet. Ce script lit la configuration `.mcp.json` active et vérifie les variables d'environnement pour les connecteurs npx afin de déterminer lesquels sont connectés.
 
-2. **Format the dashboard**: Present the results organized by category, with clear visual distinction between connected and available connectors:
+2. **Mettre en forme le tableau de bord** : présenter les résultats organisés par catégorie, avec une distinction visuelle claire entre connecteurs connectés et disponibles :
 
-   For each category (Chat, Design, CRM, SEO, Email Marketing, Advertising, Analytics, Social Media, etc.):
-   - Show connected connectors with a checkmark indicator and the skills they power
-   - Show available-but-not-connected connectors with what they would unlock
-   - For available connectors, indicate whether they are HTTP (works everywhere, easy OAuth setup) or npx (Claude Code only, requires API keys)
+   Pour chaque catégorie (Chat, Design, CRM, SEO, Email Marketing, Advertising, Analytics, Social Media, etc.) :
+   - Afficher les connecteurs connectés avec un indicateur de coche et les skills qu'ils alimentent
+   - Afficher les connecteurs disponibles mais non connectés avec ce qu'ils débloqueraient
+   - Pour les connecteurs disponibles, indiquer s'ils sont HTTP (fonctionne partout, configuration OAuth facile) ou npx (Claude Code uniquement, nécessite des clés API)
 
-3. **Highlight quick wins**: Identify the top 3 connectors the user should consider connecting based on which would unlock the most additional skill capabilities. Prioritize HTTP connectors (easier to set up) over npx connectors.
+3. **Mettre en avant les gains rapides** : identifier les 3 principaux connecteurs que l'utilisateur devrait envisager de connecter en fonction de ceux qui débloqueraient le plus de capacités de skills supplémentaires. Prioriser les connecteurs HTTP (plus faciles à configurer) par rapport aux connecteurs npx.
 
-4. **Show coverage summary**: Display the overall integration coverage — X of Y connectors active, with a breakdown by category showing which areas have full coverage vs gaps.
+4. **Afficher un résumé de couverture** : présenter la couverture globale des intégrations — X connecteurs actifs sur Y, avec une ventilation par catégorie montrant quelles zones ont une couverture complète et lesquelles présentent des lacunes.
 
-5. **Provide next steps**: For each available connector, briefly explain how to connect it:
-   - HTTP connectors: "Just use any skill that needs it — you'll be prompted to authorize via OAuth"
-   - npx connectors: "Run `/digital-marketing-pro:connect <name>` for setup instructions, or `/digital-marketing-pro:add-integration <name>` for guided configuration"
+5. **Fournir les prochaines étapes** : pour chaque connecteur disponible, expliquer brièvement comment le connecter :
+   - Connecteurs HTTP : « Utilisez simplement n'importe quel skill qui en a besoin — vous serez invité à autoriser via OAuth »
+   - Connecteurs npx : « Lancez `/digital-marketing-pro:connect <nom>` pour les instructions de configuration, ou `/digital-marketing-pro:add-integration <nom>` pour une configuration guidée »
 
-## Output
+## Sortie
 
-A structured integration dashboard containing:
+Un tableau de bord d'intégration structuré contenant :
 
-- **Coverage summary**: Total connected vs total available, percentage coverage, and per-category breakdown
-- **Connected integrations**: List of all active connectors grouped by category, with the skills each one powers and its transport type (HTTP/npx)
-- **Available integrations**: List of all not-yet-connected connectors grouped by category, with what skills they would unlock, transport type, and setup complexity (HTTP = easy/OAuth, npx = requires API keys)
-- **Quick wins**: Top 3 recommended connectors to add next, based on skill coverage impact and setup ease
-- **Category gaps**: Categories with zero connected connectors highlighted, with the most impactful connector to add in each gap category
-- **Next steps**: Clear guidance — "Run `/digital-marketing-pro:connect <name>` to set up any connector" and "Run `/digital-marketing-pro:add-integration` for custom MCP servers not in the registry"
+- **Résumé de couverture** : total connecté vs total disponible, pourcentage de couverture, et ventilation par catégorie
+- **Intégrations connectées** : liste de tous les connecteurs actifs regroupés par catégorie, avec les skills que chacun alimente et son type de transport (HTTP/npx)
+- **Intégrations disponibles** : liste de tous les connecteurs non encore connectés regroupés par catégorie, avec les skills qu'ils débloqueraient, le type de transport, et la complexité de configuration (HTTP = facile/OAuth, npx = nécessite des clés API)
+- **Gains rapides** : les 3 connecteurs recommandés à ajouter en priorité, en fonction de l'impact sur la couverture des skills et de la facilité de mise en place
+- **Lacunes par catégorie** : catégories sans aucun connecteur connecté mises en évidence, avec le connecteur le plus impactant à ajouter dans chaque catégorie manquante
+- **Prochaines étapes** : indications claires — « Lancez `/digital-marketing-pro:connect <nom>` pour configurer n'importe quel connecteur » et « Lancez `/digital-marketing-pro:add-integration` pour les serveurs MCP personnalisés absents du registre »
 
-## Agents Used
+## Agents utilisés
 
-- No specialized agent needed — this skill uses the `connector-status.py` script directly and formats the output
+- Aucun agent spécialisé requis — ce skill utilise directement le script `connector-status.py` et met en forme la sortie

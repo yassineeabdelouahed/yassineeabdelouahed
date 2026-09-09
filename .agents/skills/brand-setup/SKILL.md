@@ -1,127 +1,127 @@
 ---
 name: brand-setup
-description: "Create or update the brand profile every other skill reads — a quick 5-question or full 17-question interactive setup capturing identity, business model, industry and compliance markets, 4-dimension voice scales, channels, goals, and competitors, saved to ~/.claude-marketing/brands/{slug}/profile.json via scripts/setup.py. Triggers on \"/digital-marketing-pro:brand-setup\", \"set up a new brand\", \"onboard a new client\", \"switch to another brand\", \"update our brand voice\". Also handles brand switching (updates _active-brand.json) and field-level profile edits; run this first — all marketing skills auto-apply the resulting profile, voice samples, and compliance rules."
+description: "Créer ou mettre à jour le profil de marque que toutes les autres compétences consultent — une configuration interactive rapide en 5 questions ou complète en 17 questions, capturant l'identité, le modèle économique, le secteur d'activité et les marchés de conformité, les échelles de voix à 4 dimensions, les canaux, les objectifs et les concurrents, enregistrés dans ~/.claude-marketing/brands/{slug}/profile.json via scripts/setup.py. Se déclenche sur \"/digital-marketing-pro:brand-setup\", \"configurer une nouvelle marque\", \"intégrer un nouveau client\", \"passer à une autre marque\", \"mettre à jour la voix de notre marque\". Gère aussi le changement de marque (met à jour _active-brand.json) et les modifications ponctuelles de champs du profil ; à exécuter en premier — toutes les compétences marketing appliquent automatiquement le profil, les échantillons de voix et les règles de conformité qui en résultent."
 argument-hint: "[brand-name or --full]"
 ---
 
-# Brand Setup — Interactive Brand Profiling
+# Brand Setup — Profilage de marque interactif
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-- User says "set up a new brand" or "create a brand profile"
-- User mentions a new client or project for marketing
-- User wants to switch between brands (agency use case)
-- User wants to update brand voice, audiences, or goals
-- First time using any marketing skill without an active brand
+- L'utilisateur dit « configurer une nouvelle marque » ou « créer un profil de marque »
+- L'utilisateur mentionne un nouveau client ou projet marketing
+- L'utilisateur veut basculer entre plusieurs marques (cas d'usage agence)
+- L'utilisateur veut mettre à jour la voix de marque, les audiences ou les objectifs
+- Première utilisation d'une compétence marketing sans marque active
 
-## Setup Modes
+## Modes de configuration
 
-### Quick Setup (5 questions — recommended for getting started fast)
-If the user wants to get started quickly, or says "quick setup", ask only these 5 essential questions:
-1. **Brand name** — "What's your brand or business name?"
-2. **What you do** — "In one sentence, what does [brand] do?" (extract industry, business model, USP)
-3. **Target audience** — "Who is your primary customer?" (extract B2B/B2C, demographics)
-4. **Brand voice** — "Pick 3 words that describe how your brand communicates" (map to formality/energy/humor/authority scales)
-5. **Primary channel** — "Where do you primarily market? (social media, email, SEO, paid ads, etc.)"
+### Configuration rapide (5 questions — recommandée pour démarrer vite)
+Si l'utilisateur veut démarrer rapidement, ou dit « configuration rapide », ne posez que ces 5 questions essentielles :
+1. **Nom de la marque** — « Quel est le nom de votre marque ou entreprise ? »
+2. **Ce que vous faites** — « En une phrase, que fait [marque] ? » (pour en extraire le secteur, le modèle économique, l'USP)
+3. **Audience cible** — « Qui est votre client principal ? » (pour en extraire le type B2B/B2C, la démographie)
+4. **Voix de marque** — « Choisissez 3 mots qui décrivent la façon dont votre marque communique » (à mapper sur les échelles de formalité/énergie/humour/autorité)
+5. **Canal principal** — « Où faites-vous principalement votre marketing ? (réseaux sociaux, e-mail, SEO, publicité payante, etc.) »
 
-From these 5 answers, intelligently populate the full profile:
-- Infer industry, business model type, and compliance requirements
-- Map voice descriptors to the 1-10 scales (e.g., "professional" → formality: 8, "fun" → humor: 7)
-- Set sensible defaults for everything else
-- Tell the user: "Quick profile created! You can refine it anytime with /digital-marketing-pro:brand-setup --full"
+À partir de ces 5 réponses, remplissez intelligemment le profil complet :
+- Déduisez le secteur, le type de modèle économique et les exigences de conformité
+- Faites correspondre les descripteurs de voix aux échelles de 1 à 10 (ex. : « professionnel » → formalité : 8, « fun » → humour : 7)
+- Définissez des valeurs par défaut raisonnables pour tout le reste
+- Dites à l'utilisateur : « Profil rapide créé ! Vous pouvez l'affiner à tout moment avec /digital-marketing-pro:brand-setup --full »
 
-### Full Setup (17 questions — comprehensive profiling)
-Use the full setup when:
-- User explicitly asks for detailed/full/comprehensive setup
-- User says "/digital-marketing-pro:brand-setup --full"
-- User wants to update specific sections of an existing profile
+### Configuration complète (17 questions — profilage exhaustif)
+Utilisez la configuration complète lorsque :
+- L'utilisateur demande explicitement une configuration détaillée/complète/exhaustive
+- L'utilisateur dit « /digital-marketing-pro:brand-setup --full »
+- L'utilisateur veut mettre à jour des sections spécifiques d'un profil existant
 
-## Process (Full Setup)
+## Processus (configuration complète)
 
-### Step 1: Brand Identity
+### Étape 1 : Identité de marque
 
-Ask the user one question at a time (don't overwhelm):
+Posez une question à la fois à l'utilisateur (ne le submergez pas) :
 
-1. **Brand name**: "What's the brand/company name?"
-2. **Elevator pitch**: "In one sentence, what does [brand] do?"
-3. **USP**: "What makes [brand] different from competitors?"
-4. **Mission/Values**: "What's the brand's mission? What values drive it?"
+1. **Nom de la marque** : « Quel est le nom de la marque/l'entreprise ? »
+2. **Pitch en une phrase** : « En une phrase, que fait [marque] ? »
+3. **USP** : « Qu'est-ce qui différencie [marque] de ses concurrents ? »
+4. **Mission/Valeurs** : « Quelle est la mission de la marque ? Quelles valeurs la portent ? »
 
-### Step 2: Business Model
+### Étape 2 : Modèle économique
 
-5. **Business type**: Present options:
-   - B2B SaaS / Software
+5. **Type d'entreprise** : Présentez les options :
+   - B2B SaaS / Logiciel
    - B2C eCommerce / DTC
-   - B2B Services / Consulting
-   - Local Business
-   - Agency (managing multiple clients)
-   - Creator / Personal Brand
-   - Enterprise
-   - Non-Profit
-   - Marketplace
+   - Services B2B / Conseil
+   - Commerce local
+   - Agence (gestion de plusieurs clients)
+   - Créateur / Marque personnelle
+   - Grand compte
+   - Association à but non lucratif
+   - Place de marché
 
-6. **Revenue model**: subscription, transactional, freemium, marketplace commission, donation, retainer, advertising
-7. **Price range and sales cycle**: "What's your typical deal size and how long does it take to close?"
+6. **Modèle de revenus** : abonnement, transactionnel, freemium, commission de place de marché, don, forfait de gestion (retainer), publicité
+7. **Fourchette de prix et cycle de vente** : « Quelle est la taille type de vos transactions et combien de temps faut-il pour les conclure ? »
 
-### Step 3: Industry & Compliance
+### Étape 3 : Secteur et conformité
 
-8. **Industry**: "What industry are you in?" (match to industry-profiles.md)
-9. **Regulated?**: "Are you in a regulated industry? (healthcare, finance, legal, alcohol, cannabis, etc.)"
-10. **Target markets**: "What countries/regions do you sell to?" (triggers compliance rules)
+8. **Secteur** : « Dans quel secteur êtes-vous ? » (à faire correspondre avec industry-profiles.md)
+9. **Réglementé ?** : « Êtes-vous dans un secteur réglementé ? (santé, finance, juridique, alcool, cannabis, etc.) »
+10. **Marchés cibles** : « Dans quels pays/régions vendez-vous ? » (déclenche les règles de conformité)
 
-### Step 4: Brand Voice
+### Étape 4 : Voix de marque
 
-11. **Voice dimensions** — Ask user to rate 1-10 or describe:
-    - Formality (1=very casual like a friend, 10=very formal like a law firm)
-    - Energy (1=calm and measured, 10=enthusiastic and bold)
-    - Humor (1=never use humor, 10=humor is core to the brand)
-    - Authority (1=peer-level, friendly guide, 10=expert thought leader)
+11. **Dimensions de la voix** — Demandez à l'utilisateur de noter de 1 à 10 ou de décrire :
+    - Formalité (1 = très décontracté comme un ami, 10 = très formel comme un cabinet d'avocats)
+    - Énergie (1 = calme et posé, 10 = enthousiaste et audacieux)
+    - Humour (1 = jamais d'humour, 10 = l'humour est au cœur de la marque)
+    - Autorité (1 = niveau pair, guide amical, 10 = leader d'opinion expert)
 
-12. **Personality traits**: "Pick 3-5 words that describe the brand's personality" (e.g., witty, empathetic, direct, bold, thoughtful, playful, authoritative, warm)
+12. **Traits de personnalité** : « Choisissez 3 à 5 mots qui décrivent la personnalité de la marque » (ex. : spirituel, empathique, direct, audacieux, réfléchi, joueur, autoritaire, chaleureux)
 
-13. **This-Not-That**: "Give me examples of how you'd say something vs. how you wouldn't" (e.g., "We say 'Let's figure this out together' not 'Contact our support team'")
+13. **Ceci-Pas-Cela** : « Donnez-moi des exemples de comment vous diriez quelque chose vs. comment vous ne le diriez pas » (ex. : « On dit "Réglons ça ensemble" et non "Contactez notre service client" »)
 
-14. **Sample content**: "Share 2-3 URLs or text snippets of content you think nails your brand voice"
+14. **Exemple de contenu** : « Partagez 2-3 URL ou extraits de texte de contenus qui reflètent parfaitement la voix de votre marque »
 
-### Step 5: Channels & Goals
+### Étape 5 : Canaux et objectifs
 
-15. **Active channels**: "Which marketing channels are you currently using?" (website, Instagram, LinkedIn, Twitter, TikTok, YouTube, Facebook, Pinterest, Email, Google Ads, Meta Ads, etc.)
+15. **Canaux actifs** : « Quels canaux marketing utilisez-vous actuellement ? » (site web, Instagram, LinkedIn, Twitter, TikTok, YouTube, Facebook, Pinterest, e-mail, Google Ads, Meta Ads, etc.)
 
-16. **Goals**: "What's your #1 marketing goal right now?" + target KPIs + budget range + team size
+16. **Objectifs** : « Quel est votre objectif marketing numéro 1 en ce moment ? » + KPI cibles + fourchette de budget + taille de l'équipe
 
-### Step 6: Competitors
+### Étape 6 : Concurrents
 
-17. **Competitors**: "Name 3-5 competitors (direct or aspirational)"
-    - For each: name, URL, relationship (direct/indirect/aspirational), known strengths/weaknesses
+17. **Concurrents** : « Nommez 3 à 5 concurrents (directs ou aspirationnels) »
+    - Pour chacun : nom, URL, relation (direct/indirect/aspirationnel), forces/faiblesses connues
 
-### Step 7: Save & Confirm
+### Étape 7 : Enregistrer et confirmer
 
-After collecting all information:
+Après avoir recueilli toutes les informations :
 
-1. Run: `python "${CLAUDE_PLUGIN_ROOT}/scripts/setup.py" --create-brand "[brand name]"`
-2. Update the created profile.json with all collected data
-3. Add the AI-assistance disclosure block (defaults unless the user chooses otherwise): `"ai_disclosure": {"mode": "claude-surfaces", "text": null, "author": null}`. Modes: `claude-surfaces` (default — the disclosure attaches when content runs on a Claude surface or the surface is uncertain; skipped only on an affirmatively-detected non-Claude harness), `always` (every surface — safest for brands with their own AI-transparency obligations), `off` (never; the brand owns that choice). `author` is OPTIONAL and may stay null — the default wording ("reviewed by our editorial team") needs no name. Custom `text` replaces the default verbatim; note the default is vendor-neutral and claims only the review the pipeline performs
-4. Confirm to user: "Brand profile created for [brand_name]. All marketing modules will now use this context. You can update it anytime by saying 'update my brand profile.'"
+1. Exécutez : `python "${CLAUDE_PLUGIN_ROOT}/scripts/setup.py" --create-brand "[brand name]"`
+2. Mettez à jour le profile.json créé avec toutes les données recueillies
+3. Ajoutez le bloc de divulgation de l'assistance par IA (valeurs par défaut, sauf choix contraire de l'utilisateur) : `"ai_disclosure": {"mode": "claude-surfaces", "text": null, "author": null}`. Modes : `claude-surfaces` (par défaut — la divulgation s'affiche quand le contenu est exécuté sur une surface Claude ou en cas d'incertitude sur la surface, elle est omise seulement en cas de détection avérée d'un environnement non-Claude), `always` (toutes les surfaces — le plus sûr pour les marques ayant leurs propres obligations de transparence sur l'IA), `off` (jamais ; la marque garde la main sur ce choix). `author` est FACULTATIF et peut rester null — le texte par défaut (« relu par notre équipe éditoriale ») ne nécessite aucun nom. Un `text` personnalisé remplace le texte par défaut mot pour mot ; notez que le texte par défaut est neutre vis-à-vis du fournisseur et ne revendique que la relecture effectivement réalisée par le pipeline
+4. Confirmez à l'utilisateur : « Profil de marque créé pour [brand_name]. Tous les modules marketing utiliseront désormais ce contexte. Vous pouvez le mettre à jour à tout moment en disant "mettre à jour mon profil de marque." »
 
-## Switching Brands
+## Changer de marque
 
-When user says "switch to [brand name]":
-1. Run: `python "${CLAUDE_PLUGIN_ROOT}/scripts/setup.py" --list-brands`
-2. Find matching brand
-3. Update `~/.claude-marketing/brands/_active-brand.json`
-4. Confirm: "Switched to [brand_name]."
+Quand l'utilisateur dit « passer à [nom de marque] » :
+1. Exécutez : `python "${CLAUDE_PLUGIN_ROOT}/scripts/setup.py" --list-brands`
+2. Trouvez la marque correspondante
+3. Mettez à jour `~/.claude-marketing/brands/_active-brand.json`
+4. Confirmez : « Passé à [brand_name]. »
 
-## Updating a Brand
+## Mettre à jour une marque
 
-When user wants to update specific fields:
-1. Load current profile from `~/.claude-marketing/brands/{slug}/profile.json`
-2. Ask about the specific field(s) to update
-3. Write updated profile back
-4. Confirm changes
+Quand l'utilisateur veut mettre à jour des champs spécifiques :
+1. Chargez le profil actuel depuis `~/.claude-marketing/brands/{slug}/profile.json`
+2. Interrogez sur le(s) champ(s) spécifique(s) à mettre à jour
+3. Réécrivez le profil mis à jour
+4. Confirmez les modifications
 
-## Important Notes
+## Remarques importantes
 
-- NEVER skip the brand voice section — it's what makes all content outputs on-brand
-- For agencies: each client should be a separate brand profile
-- Store voice samples as markdown files in the brand's voice-samples/ directory
-- Auto-detect industry compliance rules based on the industry and market selections
+- Ne sautez JAMAIS la section voix de marque — c'est elle qui rend tous les contenus produits fidèles à la marque
+- Pour les agences : chaque client doit avoir un profil de marque distinct
+- Stockez les échantillons de voix sous forme de fichiers markdown dans le répertoire voice-samples/ de la marque
+- Détectez automatiquement les règles de conformité sectorielles selon le secteur et les marchés sélectionnés

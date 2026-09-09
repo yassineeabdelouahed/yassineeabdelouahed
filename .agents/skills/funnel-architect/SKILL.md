@@ -1,201 +1,201 @@
 ---
 name: funnel-architect
-description: "Design or restructure a marketing funnel matched to the business model — stage architecture with entry/exit criteria and KPIs, a customer journey map with emotions and friction points, gap analysis, an attribution model recommendation, and a 30/60/90 optimization roadmap. Plans and diagnoses; does not execute campaigns. Triggers on \"/digital-marketing-pro:funnel-architect\", \"map our customer journey\", \"which attribution model should we use\", \"where are we losing customers\", \"design a funnel for our SaaS\". Reads the brand profile, industry benchmarks, and campaign history; pairs with /digital-marketing-pro:funnel-audit for data-driven diagnosis."
+description: "Concevez ou restructurez un tunnel marketing adapté au modèle économique — architecture d'étapes avec critères d'entrée/sortie et KPI, une carte du parcours client avec émotions et points de friction, une analyse d'écarts, une recommandation de modèle d'attribution, et une feuille de route d'optimisation sur 30/60/90 jours. Planifie et diagnostique ; n'exécute pas de campagnes. Se déclenche sur « /digital-marketing-pro:funnel-architect », « cartographie notre parcours client », « quel modèle d'attribution devrions-nous utiliser », « où perdons-nous des clients », « conçois un tunnel pour notre SaaS ». Lit le profil de marque, les benchmarks sectoriels, et l'historique des campagnes ; se combine avec /digital-marketing-pro:funnel-audit pour un diagnostic basé sur les données."
 ---
 
 # Funnel Architect
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this module when the user's request involves any of the following:
+Activez ce module lorsque la demande de l'utilisateur concerne l'un des éléments suivants :
 
-- **Funnel Design**: Building or restructuring a marketing/sales funnel for a specific business model
-- **Customer Journey Mapping**: Visualizing the end-to-end path from first awareness to post-purchase advocacy
-- **Attribution Modeling**: Determining how credit for conversions should be assigned across touchpoints
-- **Funnel Analysis**: Diagnosing where prospects drop off and why
-- **Conversion Path Optimization**: Improving the sequence of interactions that lead to conversion
-- **Gap Analysis**: Identifying missing stages, touchpoints, or content in an existing funnel
-- **Micro-Conversion Strategy**: Defining and optimizing the small commitments that lead to macro conversions
+- **Conception de tunnel** : construire ou restructurer un tunnel marketing/vente pour un modèle économique spécifique
+- **Cartographie du parcours client** : visualiser le chemin de bout en bout depuis la première prise de conscience jusqu'à la défense de marque post-achat
+- **Modélisation d'attribution** : déterminer comment le crédit des conversions doit être réparti entre les points de contact
+- **Analyse de tunnel** : diagnostiquer où les prospects abandonnent et pourquoi
+- **Optimisation du chemin de conversion** : améliorer la séquence d'interactions menant à la conversion
+- **Analyse d'écarts** : identifier les étapes, points de contact, ou contenus manquants dans un tunnel existant
+- **Stratégie de micro-conversion** : définir et optimiser les petits engagements menant aux macro-conversions
 
-**Trigger phrases**: "funnel," "customer journey," "attribution," "conversion path," "where are we losing customers," "buyer journey," "TOFU/MOFU/BOFU," "lead nurture flow," "drop-off analysis," "touchpoint mapping," "pipeline," "conversion rate by stage"
+**Expressions déclencheuses** : « tunnel », « parcours client », « attribution », « chemin de conversion », « où perdons-nous des clients », « parcours acheteur », « TOFU/MOFU/BOFU », « flux de nurturing de leads », « analyse d'abandon », « cartographie des points de contact », « pipeline », « taux de conversion par étape »
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout contenu marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — le résumé de la marque active a été affiché au démarrage de la session. Utiliser le nom de la marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité et les concurrents indiqués.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — les niveaux de formalité, d'énergie, d'humour et d'autorité doivent façonner le ton et les choix de mots de tout le contenu
+4. **Vérifier la conformité** — appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Se référer aux benchmarks sectoriels** — consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications des plateformes** — se référer à `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, indiquer : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux procéder avec les bonnes pratiques générales. »
+9. **Vérifier les guidelines de marque** — si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les allégations restreintes et les avertissements obligatoires ; `channel-styles.md` pour les adaptations de ton propres à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les slogans et le langage de positionnement ; `voice-and-tone.md` pour les règles de voix détaillées au-delà des 4 scores numériques. Lors de la production de contenu pour un canal spécifique, les règles de style du canal priment sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing funnel work, gather:
+Avant d'exécuter un travail sur le tunnel, rassembler :
 
-1. **Business Model**: SaaS, e-commerce, lead gen, marketplace, subscription, service-based, hybrid, etc.
-2. **Current Funnel State**: Does a documented funnel exist? What stages are defined? What tools track it?
-3. **Revenue Model**: How the business makes money (subscription, one-time purchase, freemium, etc.)
-4. **Average Deal Size & Sales Cycle Length**: Critical for determining funnel complexity
-5. **Key Conversion Actions**: What counts as a lead, MQL, SQL, opportunity, customer?
-6. **Current Metrics**: Conversion rates between stages if available
-7. **Tech Stack**: CRM, marketing automation, analytics platforms in use
-8. **Team Structure**: Is there a separate sales team? Is it product-led growth? Who owns each funnel stage?
+1. **Modèle économique** : SaaS, e-commerce, génération de leads, marketplace, abonnement, basé sur le service, hybride, etc.
+2. **État actuel du tunnel** : un tunnel documenté existe-t-il ? Quelles étapes sont définies ? Quels outils le suivent ?
+3. **Modèle de revenu** : comment l'entreprise gagne de l'argent (abonnement, achat unique, freemium, etc.)
+4. **Taille moyenne des deals & durée du cycle de vente** : critique pour déterminer la complexité du tunnel
+5. **Actions de conversion clés** : qu'est-ce qui compte comme un lead, un MQL, un SQL, une opportunité, un client ?
+6. **Métriques actuelles** : taux de conversion entre les étapes si disponibles
+7. **Stack technique** : CRM, automatisation marketing, plateformes analytics utilisées
+8. **Structure d'équipe** : y a-t-il une équipe de vente séparée ? Est-ce du product-led growth ? Qui possède chaque étape du tunnel ?
 
-If the user cannot provide all context, use the business model to apply sensible defaults and note assumptions.
+Si l'utilisateur ne peut pas fournir tout le contexte, utiliser le modèle économique pour appliquer des valeurs par défaut raisonnables et noter les hypothèses.
 
-**Minimum viable context**: Business model and what the company sells. Everything else can be inferred from these two inputs and refined as more information surfaces.
+**Contexte minimum viable** : le modèle économique et ce que l'entreprise vend. Tout le reste peut être déduit de ces deux entrées et affiné à mesure que plus d'informations émergent.
 
-## Capabilities
+## Capacités
 
-- **Business-Model-Adaptive Funnel Design**: Custom funnel architectures for 7 distinct business models (B2B SaaS, eCommerce/DTC, B2B services/consulting, local business, marketplace, creator/personal brand, non-profit)
-- **Journey Mapping with Emotion & Friction Points**: Visual journey maps that capture not just touchpoints but emotional states, friction moments, and decision triggers at each stage
-- **Attribution Model Selection & Design**: Guidance on choosing the right attribution model (last-click, first-click, linear, time-decay, position-based, data-driven, custom) based on business context
-- **Funnel Templates**: Pre-built, customizable funnel frameworks for 7 business models with default stages, KPIs, and conversion benchmarks
-- **Gap Analysis**: Systematic identification of missing stages, content, touchpoints, or automation in an existing funnel
-- **Micro-Conversion Definition**: Identifying and sequencing the small commitment actions that build toward macro conversion
-- **Stage-by-Stage KPI Framework**: Defining the right metrics for every funnel stage so performance is measurable
-- **Funnel Velocity Analysis**: Measuring how quickly prospects move through stages and identifying bottlenecks
-- **Multi-Touch Journey Orchestration**: Designing coordinated touchpoint sequences across channels
-- **Post-Purchase Funnel Extension**: Retention, expansion, and advocacy stage design
+- **Conception de tunnel adaptative au modèle économique** : architectures de tunnel personnalisées pour 7 modèles économiques distincts (SaaS B2B, e-commerce/DTC, services/conseil B2B, entreprise locale, marketplace, créateur/marque personnelle, association à but non lucratif)
+- **Cartographie du parcours avec émotions & points de friction** : cartes de parcours visuelles capturant non seulement les points de contact mais aussi les états émotionnels, les moments de friction, et les déclencheurs de décision à chaque étape
+- **Sélection & conception du modèle d'attribution** : consignes pour choisir le bon modèle d'attribution (dernier clic, premier clic, linéaire, dégressif dans le temps, basé sur la position, data-driven, personnalisé) selon le contexte business
+- **Modèles de tunnel** : cadres de tunnel prêts à l'emploi et personnalisables pour 7 modèles économiques avec étapes, KPI, et benchmarks de conversion par défaut
+- **Analyse d'écarts** : identification systématique des étapes, contenus, points de contact, ou automatisations manquants dans un tunnel existant
+- **Définition de micro-conversion** : identifier et séquencer les petites actions d'engagement qui construisent la macro-conversion
+- **Cadre de KPI par étape** : définir les bonnes métriques pour chaque étape du tunnel afin que la performance soit mesurable
+- **Analyse de vélocité du tunnel** : mesurer à quelle vitesse les prospects progressent à travers les étapes et identifier les goulots d'étranglement
+- **Orchestration de parcours multi-touch** : concevoir des séquences de points de contact coordonnées sur les canaux
+- **Extension du tunnel post-achat** : conception des étapes de rétention, d'expansion, et de défense de marque
 
-## Process
+## Processus
 
-**Primary Workflow: Funnel Design & Optimization**
+**Workflow principal : Conception & optimisation du tunnel**
 
-1. **Business Model Classification**
-   - Identify the business model (or hybrid combination)
-   - Determine the revenue model and typical sales cycle
-   - Classify as product-led, sales-led, or hybrid growth motion
-   - Select the appropriate funnel template as a starting framework
+1. **Classification du modèle économique**
+   - Identifier le modèle économique (ou la combinaison hybride)
+   - Déterminer le modèle de revenu et le cycle de vente typique
+   - Classer comme mouvement de croissance product-led, sales-led, ou hybride
+   - Sélectionner le modèle de tunnel approprié comme cadre de départ
 
-2. **Current State Assessment**
-   - If an existing funnel is documented, map it stage by stage
-   - Identify what metrics are currently tracked at each stage
-   - Note where tracking breaks down or data goes dark
-   - Document all current touchpoints (ads, content, emails, sales calls, product interactions)
+2. **Évaluation de l'état actuel**
+   - Si un tunnel existant est documenté, le cartographier étape par étape
+   - Identifier quelles métriques sont actuellement suivies à chaque étape
+   - Noter où le suivi se rompt ou où les données deviennent aveugles
+   - Documenter tous les points de contact actuels (publicités, contenu, emails, appels commerciaux, interactions produit)
 
-3. **Journey Mapping**
-   - Map the full customer journey from unaware to advocate
-   - For each stage, document:
-     - **Touchpoints**: What the prospect interacts with
-     - **Actions**: What they do (micro-conversions)
-     - **Emotions**: What they feel (excitement, confusion, hesitation, trust)
-     - **Friction Points**: What slows them down or causes drop-off
-     - **Decision Triggers**: What moves them to the next stage
-     - **Content Needs**: What information they need at this moment
-   - Include parallel paths (not all journeys are linear)
+3. **Cartographie du parcours**
+   - Cartographier le parcours client complet, de l'inconscience à la défense de marque
+   - Pour chaque étape, documenter :
+     - **Points de contact** : avec quoi le prospect interagit
+     - **Actions** : ce qu'il fait (micro-conversions)
+     - **Émotions** : ce qu'il ressent (enthousiasme, confusion, hésitation, confiance)
+     - **Points de friction** : ce qui le ralentit ou cause l'abandon
+     - **Déclencheurs de décision** : ce qui le fait passer à l'étape suivante
+     - **Besoins de contenu** : quelle information il lui faut à ce moment
+   - Inclure les chemins parallèles (tous les parcours ne sont pas linéaires)
 
-4. **Gap Analysis**
-   - Compare current state against the ideal funnel for this business model
-   - Identify missing stages or undefined transitions
-   - Flag content gaps (stages with no supporting content)
-   - Highlight automation gaps (manual handoffs that should be automated)
-   - Detect measurement gaps (stages with no KPIs)
-   - Spot channel gaps (stages served by only one channel)
+4. **Analyse d'écarts**
+   - Comparer l'état actuel au tunnel idéal pour ce modèle économique
+   - Identifier les étapes manquantes ou les transitions non définies
+   - Signaler les écarts de contenu (étapes sans contenu de support)
+   - Mettre en évidence les écarts d'automatisation (transferts manuels qui devraient être automatisés)
+   - Détecter les écarts de mesure (étapes sans KPI)
+   - Repérer les écarts de canal (étapes servies par un seul canal)
 
-5. **Funnel Architecture Design**
-   - Define each stage with clear entry/exit criteria
-   - Assign KPIs and conversion benchmarks to every stage
-   - Design the micro-conversion sequence
-   - Map content to each stage (existing and needed)
-   - Specify automation triggers and rules
-   - Define handoff protocols between marketing and sales (if applicable)
+5. **Conception de l'architecture du tunnel**
+   - Définir chaque étape avec des critères d'entrée/sortie clairs
+   - Assigner des KPI et des benchmarks de conversion à chaque étape
+   - Concevoir la séquence de micro-conversion
+   - Cartographier le contenu à chaque étape (existant et nécessaire)
+   - Préciser les déclencheurs et règles d'automatisation
+   - Définir les protocoles de transfert entre marketing et ventes (le cas échéant)
 
-6. **Attribution Model Recommendation**
-   - Based on funnel complexity, sales cycle length, and available data, recommend an attribution model
-   - Explain trade-offs of the recommendation vs. alternatives
-   - Provide implementation guidance for their tech stack
+6. **Recommandation de modèle d'attribution**
+   - Selon la complexité du tunnel, la durée du cycle de vente, et les données disponibles, recommander un modèle d'attribution
+   - Expliquer les arbitrages de la recommandation vs les alternatives
+   - Fournir des consignes de mise en œuvre pour leur stack technique
 
-7. **Optimization Roadmap**
-   - Prioritize improvements by impact and effort
-   - Define A/B testing plan for high-impact stage transitions
-   - Set up monitoring cadence for funnel health metrics
-   - Create a 30/60/90-day optimization plan
+7. **Feuille de route d'optimisation**
+   - Prioriser les améliorations par impact et effort
+   - Définir un plan de test A/B pour les transitions d'étape à fort impact
+   - Mettre en place une cadence de surveillance pour les métriques de santé du tunnel
+   - Créer un plan d'optimisation sur 30/60/90 jours
 
-**Secondary Workflow: Funnel Diagnosis (When a Funnel Exists but Underperforms)**
+**Workflow secondaire : Diagnostic de tunnel (quand un tunnel existe mais sous-performe)**
 
-1. **Data Collection**
-   - Gather conversion rates between every stage for the last 3-6 months
-   - Pull time-to-conversion data (how long prospects spend at each stage)
-   - Identify volume at each stage to build the full funnel waterfall
+1. **Collecte de données**
+   - Rassembler les taux de conversion entre chaque étape sur les 3-6 derniers mois
+   - Récupérer les données de temps jusqu'à conversion (combien de temps les prospects passent à chaque étape)
+   - Identifier le volume à chaque étape pour construire la cascade complète du tunnel
 
-2. **Drop-Off Analysis**
-   - Calculate the absolute and relative drop-off at each stage transition
-   - Identify the single largest drop-off point (the "leaky bucket")
-   - Segment drop-off by traffic source, device, geography, and audience segment
-   - Determine if drop-off is a volume problem (not enough enter the stage) or a conversion problem (they enter but don't advance)
+2. **Analyse d'abandon**
+   - Calculer l'abandon absolu et relatif à chaque transition d'étape
+   - Identifier le point d'abandon le plus important (le « seau percé »)
+   - Segmenter l'abandon par source de trafic, appareil, géographie, et segment d'audience
+   - Déterminer si l'abandon est un problème de volume (pas assez d'entrées dans l'étape) ou un problème de conversion (ils entrent mais n'avancent pas)
 
-3. **Root Cause Identification**
-   - For each high-drop-off transition, investigate:
-     - Is the content at this stage compelling enough?
-     - Is the CTA clear and the next step obvious?
-     - Is there a friction point (long forms, confusing UX, required info the prospect does not have)?
-     - Is the timing wrong (asking for too much too early)?
-     - Is there a trust gap (insufficient social proof or credibility at this stage)?
-   - Cross-reference with qualitative data (customer feedback, sales team input, session recordings) if available
+3. **Identification de la cause racine**
+   - Pour chaque transition à fort abandon, investiguer :
+     - Le contenu à cette étape est-il suffisamment convaincant ?
+     - Le CTA est-il clair et la prochaine étape évidente ?
+     - Y a-t-il un point de friction (formulaires longs, UX confuse, informations requises que le prospect n'a pas) ?
+     - Le timing est-il mauvais (demander trop tôt trop de choses) ?
+     - Y a-t-il un écart de confiance (preuve sociale ou crédibilité insuffisante à cette étape) ?
+   - Recouper avec des données qualitatives (retours clients, contribution de l'équipe commerciale, enregistrements de session) si disponibles
 
-4. **Fix Prioritization**
-   - Score each identified issue on impact (how much conversion improvement is possible) and effort (how hard is the fix)
-   - Focus on the highest-impact, lowest-effort fixes first
-   - Design specific experiments to test each fix before full rollout
+4. **Priorisation des corrections**
+   - Noter chaque problème identifié sur l'impact (combien d'amélioration de conversion est possible) et l'effort (à quel point la correction est difficile)
+   - Se concentrer d'abord sur les corrections à fort impact et faible effort
+   - Concevoir des expériences précises pour tester chaque correction avant un déploiement complet
 
-## Reference Files
+## Fichiers de référence
 
-- `journey-mapping.md` — Customer journey mapping methodology, emotion mapping framework, touchpoint cataloging, and journey visualization templates
-- `attribution-models.md` — Detailed comparison of attribution models, selection criteria decision tree, implementation guides per platform, and custom model design
-- `funnel-templates.md` — Pre-built funnel architectures for 7 business models with default stages, benchmarks, and customization guides
-- `gap-analysis.md` — Gap analysis framework, diagnostic questions, common gap patterns by business model, and prioritization scoring
-- `sales-marketing-alignment.md` — Sales-marketing alignment frameworks, lead handoff definitions (MQL/SQL), SLA design, and funnel-stage ownership mapping
+- `journey-mapping.md` — méthodologie de cartographie du parcours client, cadre de cartographie des émotions, catalogage des points de contact, et modèles de visualisation de parcours
+- `attribution-models.md` — comparaison détaillée des modèles d'attribution, arbre de décision des critères de sélection, guides de mise en œuvre par plateforme, et conception de modèle personnalisé
+- `funnel-templates.md` — architectures de tunnel prêtes à l'emploi pour 7 modèles économiques avec étapes, benchmarks, et guides de personnalisation par défaut
+- `gap-analysis.md` — cadre d'analyse d'écarts, questions diagnostiques, schémas d'écarts communs par modèle économique, et notation de priorisation
+- `sales-marketing-alignment.md` — cadres d'alignement ventes-marketing, définitions de transfert de lead (MQL/SQL), conception de SLA, et cartographie de la propriété des étapes du tunnel
 
-## Output Formats
+## Formats de sortie
 
-| Deliverable | Format | Description |
+| Livrable | Format | Description |
 |---|---|---|
-| Funnel Architecture | Visual diagram + document | Stage-by-stage funnel with entry/exit criteria, KPIs, and content mapping |
-| Customer Journey Map | Visual map + narrative | Full journey from awareness to advocacy with emotions, friction, and triggers |
-| Gap Analysis Report | Document with priorities | All identified gaps with severity, impact score, and fix recommendations |
-| Attribution Model Spec | Document | Recommended model with rationale, alternatives, and implementation steps |
-| Stage KPI Dashboard | Table/spreadsheet spec | Metrics, benchmarks, and tracking methodology for every funnel stage |
-| Micro-Conversion Map | Diagram + document | Sequenced small-commitment actions that build toward macro conversions |
-| Funnel Optimization Roadmap | Prioritized plan | 30/60/90-day plan with specific actions, owners, and expected impact |
+| Architecture de tunnel | Diagramme visuel + document | Tunnel étape par étape avec critères d'entrée/sortie, KPI, et cartographie du contenu |
+| Carte du parcours client | Carte visuelle + récit | Parcours complet de la prise de conscience à la défense de marque avec émotions, friction, et déclencheurs |
+| Rapport d'analyse d'écarts | Document avec priorités | Tous les écarts identifiés avec sévérité, score d'impact, et recommandations de correction |
+| Spécification de modèle d'attribution | Document | Modèle recommandé avec justification, alternatives, et étapes de mise en œuvre |
+| Tableau de bord KPI par étape | Spécification de tableau/tableur | Métriques, benchmarks, et méthodologie de suivi pour chaque étape du tunnel |
+| Carte de micro-conversion | Diagramme + document | Actions d'engagement séquencées construisant vers les macro-conversions |
+| Feuille de route d'optimisation du tunnel | Plan priorisé | Plan sur 30/60/90 jours avec actions précises, responsables, et impact attendu |
 
-## Edge Cases
+## Cas particuliers
 
-### Hybrid Business Models
-- **Situation**: Business combines multiple models (e.g., SaaS with a marketplace component, or e-commerce with subscription)
-- **Approach**: Build a primary funnel based on the dominant revenue model, then layer in secondary paths. Identify where the funnels diverge and converge. Create distinct stage definitions for each path but unified attribution. Do not force-fit a single template — hybrid models need hybrid funnels.
+### Modèles économiques hybrides
+- **Situation** : l'entreprise combine plusieurs modèles (par ex. SaaS avec une composante marketplace, ou e-commerce avec abonnement)
+- **Approche** : construire un tunnel principal basé sur le modèle de revenu dominant, puis superposer des chemins secondaires. Identifier où les tunnels divergent et convergent. Créer des définitions d'étape distinctes pour chaque chemin mais une attribution unifiée. Ne pas forcer un modèle unique — les modèles hybrides ont besoin de tunnels hybrides.
 
-### Two-Sided Marketplaces
-- **Situation**: Business serves both supply side (sellers, providers) and demand side (buyers, consumers)
-- **Approach**: Design parallel funnels for each side. Map interdependencies (where one side's funnel stage depends on the other side's activity). Identify the "chicken and egg" dynamics and design the funnel to solve for the constrained side first. Track marketplace liquidity metrics alongside conversion metrics.
+### Marketplaces à deux versants
+- **Situation** : l'entreprise sert à la fois le côté offre (vendeurs, prestataires) et le côté demande (acheteurs, consommateurs)
+- **Approche** : concevoir des tunnels parallèles pour chaque côté. Cartographier les interdépendances (où l'étape du tunnel d'un côté dépend de l'activité de l'autre côté). Identifier les dynamiques de « l'œuf et la poule » et concevoir le tunnel pour résoudre d'abord le côté contraint. Suivre les métriques de liquidité de marketplace aux côtés des métriques de conversion.
 
-### Offline-to-Online Journeys
-- **Situation**: Significant portion of the journey happens offline (events, retail, phone calls, field sales)
-- **Approach**: Create explicit "dark funnel" stages where tracking is limited. Design bridge mechanisms (QR codes, unique URLs, call tracking numbers, CRM manual entry) to connect offline interactions to the digital funnel. Acknowledge measurement limitations honestly and recommend proxy metrics where direct tracking is impossible.
+### Parcours de l'hors-ligne vers le en-ligne
+- **Situation** : une part importante du parcours se déroule hors ligne (événements, vente au détail, appels téléphoniques, vente sur le terrain)
+- **Approche** : créer des étapes explicites de « tunnel obscur » où le suivi est limité. Concevoir des mécanismes de pont (codes QR, URL uniques, numéros de suivi d'appel, saisie manuelle CRM) pour connecter les interactions hors ligne au tunnel numérique. Reconnaître honnêtement les limites de mesure et recommander des métriques de substitution là où le suivi direct est impossible.
 
-### Very Long B2B Cycles (12+ Months)
-- **Situation**: Enterprise sales with buying committees, RFPs, legal review, and 12-24 month cycles
-- **Approach**: Build a milestone-based funnel rather than a time-based one. Design for buying committee dynamics (champion, economic buyer, technical evaluator, legal). Include "re-engagement" loops for stalled deals. Use account-level scoring rather than individual lead scoring. Attribution must be multi-touch with heavy time-decay weighting. Content needs are deep and stage-specific — exec summaries for C-suite, technical docs for evaluators, ROI models for finance.
+### Cycles B2B très longs (12+ mois)
+- **Situation** : vente entreprise avec comités d'achat, appels d'offres, revue juridique, et cycles de 12-24 mois
+- **Approche** : construire un tunnel basé sur des jalons plutôt que sur le temps. Concevoir pour les dynamiques du comité d'achat (champion, acheteur économique, évaluateur technique, juridique). Inclure des boucles de « réengagement » pour les deals bloqués. Utiliser une notation au niveau du compte plutôt qu'une notation de lead individuel. L'attribution doit être multi-touch avec une pondération dégressive dans le temps forte. Les besoins de contenu sont profonds et spécifiques à chaque étape — synthèses exécutives pour le comité de direction, documents techniques pour les évaluateurs, modèles de ROI pour la finance.
 
-### Product-Led Growth (PLG) Funnels
-- **Situation**: Product usage IS the primary funnel mechanism — users self-serve through a free tier or trial before converting
-- **Approach**: The funnel is driven by product engagement, not traditional marketing touches. Design around activation milestones (the "aha moments" in the product). Map the progression from signup to activation to engagement to conversion to expansion. Define product-qualified leads (PQLs) based on usage thresholds rather than marketing-qualified leads. Integrate product analytics (Amplitude, Mixpanel, Pendo) as the primary funnel tracking tool. Marketing's role shifts toward driving signups and supporting activation through in-app messaging, onboarding emails, and educational content.
+### Tunnels de croissance product-led (PLG)
+- **Situation** : l'usage du produit EST le mécanisme principal du tunnel — les utilisateurs s'auto-servent via un niveau gratuit ou un essai avant de convertir
+- **Approche** : le tunnel est porté par l'engagement produit, pas par les touches marketing traditionnelles. Concevoir autour des jalons d'activation (les « moments aha » dans le produit). Cartographier la progression de l'inscription à l'activation à l'engagement à la conversion à l'expansion. Définir les leads qualifiés par le produit (PQL) selon des seuils d'usage plutôt que des leads qualifiés par le marketing. Intégrer les analytics produit (Amplitude, Mixpanel, Pendo) comme outil de suivi principal du tunnel. Le rôle du marketing se déplace vers la génération d'inscriptions et le soutien à l'activation via la messagerie in-app, les emails d'onboarding, et le contenu éducatif.
 
-### Funnel with No Existing Data
-- **Situation**: New business or new market with no historical funnel data to analyze
-- **Approach**: Build a hypothesis funnel using industry benchmarks and business model templates. Define stage conversion rate assumptions clearly and label them as hypotheses. Design the funnel with measurement baked in from day one so data accumulates quickly. Recommend a 90-day "instrument and learn" phase where the goal is data collection and assumption validation, not optimization. Set minimum traffic/volume thresholds for each stage before drawing conclusions from conversion rates.
+### Tunnel sans données existantes
+- **Situation** : nouvelle entreprise ou nouveau marché sans données historiques de tunnel à analyser
+- **Approche** : construire un tunnel hypothétique en utilisant des benchmarks sectoriels et des modèles de modèle économique. Définir clairement les hypothèses de taux de conversion par étape et les étiqueter comme des hypothèses. Concevoir le tunnel avec la mesure intégrée dès le premier jour pour que les données s'accumulent rapidement. Recommander une phase « instrumenter et apprendre » de 90 jours où l'objectif est la collecte de données et la validation d'hypothèses, pas l'optimisation. Fixer des seuils minimums de trafic/volume pour chaque étape avant de tirer des conclusions des taux de conversion.
 
-## Related Skills
+## Compétences associées
 
-- **Campaign Orchestrator** — For executing the campaigns that drive traffic into the funnel and move prospects through stages
-- **Audience Intelligence** — For understanding who enters the funnel, building personas for each stage, and segmenting by funnel behavior
-- **Analytics & Insights** — For measuring funnel performance, attribution analysis, and anomaly detection in conversion rates
-- **Content Engine** — For creating the stage-specific content mapped to each funnel touchpoint
-- **AEO/GEO Intelligence** — For optimizing the top-of-funnel awareness stage where AI-generated answers drive discovery
+- **Campaign Orchestrator** — pour exécuter les campagnes qui génèrent du trafic dans le tunnel et font avancer les prospects à travers les étapes
+- **Audience Intelligence** — pour comprendre qui entre dans le tunnel, construire des personas pour chaque étape, et segmenter par comportement de tunnel
+- **Analytics & Insights** — pour mesurer la performance du tunnel, l'analyse d'attribution, et la détection d'anomalies dans les taux de conversion
+- **Content Engine** — pour créer le contenu spécifique à chaque étape cartographié à chaque point de contact du tunnel
+- **AEO/GEO Intelligence** — pour optimiser l'étape de notoriété en haut de tunnel où les réponses générées par IA pilotent la découverte

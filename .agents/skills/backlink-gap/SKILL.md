@@ -7,51 +7,51 @@ user-invocable: true
 
 # /digital-marketing-pro:backlink-gap
 
-## Purpose
+## Objectif
 
-Identify the highest-leverage backlink prospects — domains that link to multiple competitors but not to you — and rank them by an opinionated priority score that combines authority, link-overlap signal, downstream traffic, and topical relevance. Produces a numbered output bundle ready for outreach handoff.
+Identifier les prospects de backlinks à plus fort effet de levier — les domaines qui font des liens vers plusieurs concurrents mais pas vers vous — et les classer selon un score de priorité argumenté combinant l'autorité, le signal de chevauchement de liens, le trafic en aval, et la pertinence thématique. Produit un ensemble de livrables numérotés prêts pour transmission à l'outreach.
 
-## Context efficiency
+## Efficacité contextuelle
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List `${CLAUDE_PLUGIN_DATA}/<brand>/` before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** tout fichier référencé, puis `Read` uniquement les plages correspondantes avec `offset` + `limit`. Lister `${CLAUDE_PLUGIN_DATA}/<brand>/` avant d'ouvrir des fichiers. Lors d'une réinvocation en cours de session, ignorer les fichiers déjà dans le contexte.
 
-## When to Use
+## Quand l'utiliser
 
-- Quarterly backlink audit — "where did our competitors grow links this quarter and we didn't?"
-- Pre-launch link-building plan for a new product or content hub
-- Digital PR qualification — separating "would-link-to-anyone" prospects from "high-confidence-will-link-to-our-space"
-- Competitive recovery — a competitor displaced you and you want to know which links moved
-- Onboarding a new client and need a "first 50 link targets" backlog
+- Audit de backlinks trimestriel — « où nos concurrents ont-ils gagné des liens ce trimestre que nous n'avons pas gagnés ? »
+- Plan de netlinking avant lancement pour un nouveau produit ou hub de contenu
+- Qualification de RP digitales — séparer les prospects « lierait vers n'importe qui » des prospects « forte confiance qu'ils lieront vers notre espace »
+- Récupération concurrentielle — un concurrent vous a déplacé et vous voulez savoir quels liens ont bougé
+- Onboarding d'un nouveau client nécessitant un backlog de « 50 premières cibles de liens »
 
-**Don't use** when you just need backlink *quantity* numbers (use the brand's connected backlink MCP directly) or when you need *anchor-text* analysis of your own profile (that's a separate audit — covered in `seo-audit`).
+**Ne pas utiliser** lorsque vous avez seulement besoin de chiffres de *quantité* de backlinks (utiliser directement le MCP de backlinks connecté de la marque) ou lorsque vous avez besoin d'une analyse de *texte d'ancre* de votre propre profil (c'est un audit distinct — couvert dans `seo-audit`).
 
-## Brand context (auto-applied)
+## Contexte de marque (appliqué automatiquement)
 
-1. Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`
-2. If no brand exists: ask "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults
-3. Apply `skills/context-engine/industry-profiles.md` for industry-specific link-quality thresholds (YMYL industries should set higher `--min-dr`)
-4. Apply `skills/context-engine/compliance-rules.md` to filter out blocked publishers (e.g., PBN-style or paid-link networks the brand has explicitly banned)
+1. Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`
+2. Si aucune marque n'existe : demander « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut
+3. Appliquer `skills/context-engine/industry-profiles.md` pour les seuils de qualité de lien spécifiques au secteur (les secteurs YMYL devraient fixer un `--min-dr` plus élevé)
+4. Appliquer `skills/context-engine/compliance-rules.md` pour filtrer les éditeurs bloqués (par ex. les réseaux de type PBN ou de liens payants explicitement interdits par la marque)
 
-## Inputs
+## Entrées
 
-| Input | Source | Required? |
+| Entrée | Source | Requis ? |
 |---|---|---|
-| Our backlinks CSV | Export from connected backlink MCP (Ahrefs / Semrush / SE Ranking / Moz) for the brand's primary domain | yes |
-| Competitor backlinks CSVs (2+) | Same exporter, one per competitor (2 minimum for the link-overlap signal; 3-5 is the sweet spot) | yes |
-| Min DR / DA filter | CLI flag, brand-profile default, or industry standard | optional |
-| Top-N count | How many prospects to surface | optional |
+| CSV de nos backlinks | Export depuis le MCP de backlinks connecté (Ahrefs / Semrush / SE Ranking / Moz) pour le domaine principal de la marque | oui |
+| CSV de backlinks des concurrents (2+) | Même exporteur, un par concurrent (2 minimum pour le signal de chevauchement de liens ; 3-5 est le point idéal) | oui |
+| Filtre DR/DA minimal | Flag CLI, valeur par défaut du profil de marque, ou standard sectoriel | facultatif |
+| Nombre Top-N | Combien de prospects faire ressortir | facultatif |
 
-**One competitor is allowed** (the script warns rather than errors) but the resulting "shared signal" is noise — single-competitor gap analysis is really just "who links to them" rather than "who consistently links in our space."
+**Un seul concurrent est autorisé** (le script avertit plutôt que de générer une erreur) mais le « signal partagé » résultant est du bruit — une analyse d'écart à un seul concurrent revient en réalité à « qui les lie » plutôt qu'à « qui lie systématiquement dans notre espace ».
 
-## Process (10 steps, numbered-file output)
+## Processus (10 étapes, livrables numérotés)
 
-All outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/backlink-gap/{YYYY-MM-DD}/`.
+Tous les résultats vont dans `${CLAUDE_PLUGIN_DATA}/{brand}/seo/backlink-gap/{YYYY-MM-DD}/`.
 
-1. **`00-input.md`** — capture our domain, competitor list (with rationale: why these N?), filter parameters, run timestamp
-2. **`01-data-pull.md`** — pull backlinks for `{brand}.tld` and each competitor via brand's connected backlink MCP. **Budget guard**: if the MCP exposes credit cost, sum estimated cost and ask "Continue? (y/N — default N)" before fetching when total > 200 credits.
-3. **`02-ours.csv`** — our backlink export (raw)
-4. **`03-comp-{competitor}.csv`** — one CSV per competitor (raw)
-5. **`04-gap-run.json`** — run the script:
+1. **`00-input.md`** — capturer notre domaine, la liste des concurrents (avec justification : pourquoi ces N ?), les paramètres de filtre, l'horodatage d'exécution
+2. **`01-data-pull.md`** — extraire les backlinks pour `{brand}.tld` et chaque concurrent via le MCP de backlinks connecté de la marque. **Garde-fou budgétaire** : si le MCP expose un coût en crédits, sommer le coût estimé et demander « Continuer ? (o/N — N par défaut) » avant la récupération lorsque le total dépasse 200 crédits.
+3. **`02-ours.csv`** — notre export de backlinks (brut)
+4. **`03-comp-{competitor}.csv`** — un CSV par concurrent (brut)
+5. **`04-gap-run.json`** — exécuter le script :
    ```bash
    python "${CLAUDE_PLUGIN_ROOT}/scripts/backlink_gap.py" \
        --ours "${CLAUDE_PLUGIN_DATA}/{brand}/seo/backlink-gap/{date}/02-ours.csv" \
@@ -62,18 +62,18 @@ All outputs go to `${CLAUDE_PLUGIN_DATA}/{brand}/seo/backlink-gap/{YYYY-MM-DD}/`
        --top 100 \
        --out "${CLAUDE_PLUGIN_DATA}/{brand}/seo/backlink-gap/{date}/04-gap-run.json"
    ```
-   `--competitors` takes an explicit space-separated list of CSV paths (`nargs="+"`) — **enumerate each `03-comp-*.csv` file; the script does not expand a `*` glob**, so a quoted `03-comp-*.csv` would fail with FileNotFoundError. List one path per competitor.
-6. **`05-quality-scorecard.md`** — read `quality_scorecard` from `04-gap-run.json`. If `status: needs_review`, diagnose:
-   - `data_freshness: fail` → input CSV(s) older than 90 days. Re-pull data; backlink graphs decay fast.
-   - `sample_size: fail` → any input < 50 unique referring domains. Either the domain is too new or the export was truncated. Re-export with no row limit.
-   - `competitor_coverage: warn` → only 1 competitor. Add at least 1 more for genuine overlap signal.
-   - `link_overlap_signal: fail` → fewer than 5 referring domains link to ≥2 competitors. Either competitors are poorly chosen (they don't share a content space with each other) or the data is incomplete. Re-choose competitors.
-7. **`06-prospect-shortlist.md`** — top 30 prospects, formatted for outreach handoff: domain, DR, link count across competitors, suggested outreach angle (guest post, broken-link, resource-page mention)
-8. **`07-broken-link-candidates.md`** — subset where one or more competitor links return 4xx (run a quick HTTP HEAD pass on competitor backlink URLs — use the brand's connected web-fetch MCP). These are "easy wins" — pitch your URL as the replacement.
-9. **`08-outreach-templates.md`** — three template variants: (a) cold-pitch resource-page, (b) broken-link replacement, (c) competitor mention. Each pre-filled with brand voice from the brand profile's voice fields + `skills/context-engine/guidelines-framework.md`.
-10. **`PLAN.md`** — single-page summary: stats + scorecard + top 10 prospects with outreach angle + recommended cadence (3-5 pitches/week for sustainable outreach quality).
+   `--competitors` prend une liste explicite de chemins CSV séparés par des espaces (`nargs="+"`) — **énumérez chaque fichier `03-comp-*.csv` ; le script n'étend pas un glob `*`**, donc un `03-comp-*.csv` entre guillemets échouerait avec FileNotFoundError. Listez un chemin par concurrent.
+6. **`05-quality-scorecard.md`** — lire `quality_scorecard` depuis `04-gap-run.json`. Si `status: needs_review`, diagnostiquer :
+   - `data_freshness: fail` → CSV d'entrée de plus de 90 jours. Re-extraire les données ; les graphes de backlinks se dégradent vite.
+   - `sample_size: fail` → une entrée a moins de 50 domaines référents uniques. Soit le domaine est trop récent, soit l'export a été tronqué. Re-exporter sans limite de lignes.
+   - `competitor_coverage: warn` → un seul concurrent. Ajouter au moins 1 de plus pour un véritable signal de chevauchement.
+   - `link_overlap_signal: fail` → moins de 5 domaines référents lient vers ≥2 concurrents. Soit les concurrents sont mal choisis (ils ne partagent pas un espace de contenu entre eux), soit les données sont incomplètes. Rechoisir les concurrents.
+7. **`06-prospect-shortlist.md`** — top 30 prospects, formatés pour transmission à l'outreach : domaine, DR, nombre de liens à travers les concurrents, angle d'outreach suggéré (article invité, lien cassé, mention de page ressource)
+8. **`07-broken-link-candidates.md`** — sous-ensemble où un ou plusieurs liens concurrents renvoient une erreur 4xx (exécuter un passage HTTP HEAD rapide sur les URL de backlinks concurrents — utiliser le MCP de récupération web connecté de la marque). Ce sont des « gains faciles » — proposez votre URL comme remplacement.
+9. **`08-outreach-templates.md`** — trois variantes de modèle : (a) pitch à froid page ressource, (b) remplacement de lien cassé, (c) mention concurrent. Chacune pré-remplie avec la voix de marque issue des champs de voix du profil de marque + `skills/context-engine/guidelines-framework.md`.
+10. **`PLAN.md`** — résumé d'une page : statistiques + tableau de bord qualité + top 10 des prospects avec angle d'outreach + cadence recommandée (3-5 pitchs/semaine pour une qualité d'outreach durable).
 
-## Output format
+## Format de sortie
 
 ```
 ${CLAUDE_PLUGIN_DATA}/{brand}/seo/backlink-gap/2026-06-04/
@@ -91,18 +91,18 @@ ${CLAUDE_PLUGIN_DATA}/{brand}/seo/backlink-gap/2026-06-04/
 └── PLAN.md
 ```
 
-## Quality scorecard (the four gates)
+## Tableau de bord qualité (les quatre portes)
 
-| Gate | What it checks | Why it matters |
+| Porte | Ce qu'elle vérifie | Pourquoi cela compte |
 |---|---|---|
-| **data_freshness** | All input CSVs have mtime within 90 days | Backlink graphs decay fast — stale data sends you chasing dead links |
-| **sample_size** | Each input has ≥ 50 unique referring domains | Below this, the gap math has too little signal to rank |
-| **competitor_coverage** | ≥ 2 competitor CSVs supplied | The "shared signal" is what separates real prospects from noise |
-| **link_overlap_signal** | ≥ 5 referring domains link to ≥ 2 of the competitors | If no domains shared, your competitors aren't actually competing in the same content space |
+| **data_freshness** | Tous les CSV d'entrée ont une date de modification dans les 90 jours | Les graphes de backlinks se dégradent vite — des données périmées vous font poursuivre des liens morts |
+| **sample_size** | Chaque entrée a ≥ 50 domaines référents uniques | En dessous, le calcul d'écart a trop peu de signal pour classer |
+| **competitor_coverage** | ≥ 2 CSV de concurrents fournis | Le « signal partagé » est ce qui sépare les vrais prospects du bruit |
+| **link_overlap_signal** | ≥ 5 domaines référents lient vers ≥ 2 des concurrents | Si aucun domaine n'est partagé, vos concurrents ne sont pas réellement en concurrence dans le même espace de contenu |
 
-`status: ready` requires all four gates pass (`competitor_coverage: warn` does not block — it's a soft signal).
+`status: ready` requiert que les quatre portes soient validées (`competitor_coverage: warn` ne bloque pas — c'est un signal doux).
 
-## Priority score (0–1, displayed in 04-gap-run.json)
+## Score de priorité (0-1, affiché dans 04-gap-run.json)
 
 ```
 priority = 0.40 × DR_normalised
@@ -111,39 +111,39 @@ priority = 0.40 × DR_normalised
          + 0.15 × topical_relevance
 ```
 
-**Why link_count is weighted higher than traffic:** a domain that links to 3/3 competitors is unambiguously in your space and willing to link. A high-traffic domain that only links to 1 might just be a tier-1 publisher who happens to have covered one of you in passing.
+**Pourquoi link_count est pondéré plus que le trafic :** un domaine qui lie vers 3/3 concurrents est sans ambiguïté dans votre espace et disposé à faire un lien. Un domaine à fort trafic qui ne lie qu'à 1 seul pourrait n'être qu'un éditeur de niveau 1 qui a par hasard couvert l'un de vous en passant.
 
-## Chain handoffs
+## Enchaînements
 
-This skill is a producer in a longer chain:
+Cette compétence est un producteur dans une chaîne plus longue :
 
-1. `/digital-marketing-pro:competitor-analysis` — picks the right competitors
-2. **`/digital-marketing-pro:backlink-gap`** — *this skill*
-3. `/digital-marketing-pro:digital-pr` — consumes `06-prospect-shortlist.md` + `08-outreach-templates.md`
-4. `/digital-marketing-pro:pr-pitch` — drafts individual pitches per prospect
-5. `/digital-marketing-pro:performance-report` — quarterly re-runs of this skill feed the "links gained" KPI
+1. `/digital-marketing-pro:competitor-analysis` — choisit les bons concurrents
+2. **`/digital-marketing-pro:backlink-gap`** — *cette compétence*
+3. `/digital-marketing-pro:digital-pr` — consomme `06-prospect-shortlist.md` + `08-outreach-templates.md`
+4. `/digital-marketing-pro:pr-pitch` — rédige des pitchs individuels par prospect
+5. `/digital-marketing-pro:performance-report` — les ré-exécutions trimestrielles de cette compétence alimentent le KPI « liens gagnés »
 
-## Tips & caveats
+## Conseils et mises en garde
 
-- **More competitors ≠ better.** Three to five focused competitors beats ten random ones. The "shared signal" gate works best when all competitors are in the same content space.
-- **DR/DA from different exporters aren't comparable.** Don't mix an Ahrefs export with a Moz export — the script doesn't know to normalise across exporters. Pick one provider per audit.
-- **Topical relevance is the weakest signal in most exports** because few exporters provide it well. The script defaults to 0.5 if absent, which is the right neutral. Override only if you have a curated topical-relevance score.
-- **Don't outreach 100 prospects in one week.** The output is a backlog, not a queue. Sustainable cadence: 3-5 highly personalised pitches per week per outreach lead.
-- **Broken-link candidates tend to have the highest hit rate** (broken-link replacement pitches typically out-reply cold pitches by a wide margin — the "30-60% vs 5-15%" figures are an illustrative rule of thumb, not measured; validate against your own outreach data) — always work the `07-broken-link-candidates.md` list first.
-- **Re-run quarterly,** not monthly. Backlink data moves slowly enough that monthly runs mostly produce noise.
-- **YMYL industries** (health, finance, legal) should set `--min-dr 40` to filter out low-authority publishers that could damage E-E-A-T.
+- **Plus de concurrents ne veut pas dire mieux.** Trois à cinq concurrents ciblés valent mieux que dix choisis au hasard. La porte du « signal partagé » fonctionne mieux lorsque tous les concurrents sont dans le même espace de contenu.
+- **Le DR/DA de différents exporteurs ne sont pas comparables.** Ne mélangez pas un export Ahrefs avec un export Moz — le script ne sait pas normaliser entre exporteurs. Choisissez un seul fournisseur par audit.
+- **La pertinence thématique est le signal le plus faible dans la plupart des exports** car peu d'exporteurs la fournissent bien. Le script utilise 0,5 par défaut si absente, ce qui est le juste neutre. Ne le remplacer que si vous disposez d'un score de pertinence thématique organisé.
+- **Ne contactez pas 100 prospects en une semaine.** Le résultat est un backlog, pas une file d'attente. Cadence durable : 3-5 pitchs hautement personnalisés par semaine et par responsable d'outreach.
+- **Les candidats à liens cassés ont tendance à avoir le meilleur taux de réponse** (les pitchs de remplacement de lien cassé surpassent généralement les pitchs à froid par une large marge — les chiffres « 30-60 % vs 5-15 % » sont une règle empirique illustrative, non mesurée ; validez avec vos propres données d'outreach) — travaillez toujours d'abord la liste `07-broken-link-candidates.md`.
+- **Ré-exécutez trimestriellement**, pas mensuellement. Les données de backlinks évoluent assez lentement pour que des exécutions mensuelles produisent surtout du bruit.
+- **Les secteurs YMYL** (santé, finance, juridique) devraient fixer `--min-dr 40` pour filtrer les éditeurs à faible autorité pouvant nuire à l'E-E-A-T.
 
-## Agents used
+## Agents utilisés
 
-- `seo-specialist` (primary) — interpretation of prospect quality
-- `competitive-intel` — competitor-set selection rationale (Step 1)
-- `pr-outreach` — outreach template drafting (Step 8)
-- `brand-guardian` — banned-publisher filter at Step 6
+- `seo-specialist` (principal) — interprétation de la qualité des prospects
+- `competitive-intel` — justification de la sélection de l'ensemble de concurrents (étape 1)
+- `pr-outreach` — rédaction des modèles d'outreach (étape 8)
+- `brand-guardian` — filtre des éditeurs interdits à l'étape 6
 
-## See also
+## Voir aussi
 
-- `/digital-marketing-pro:competitor-analysis` — pick the competitors for this audit
-- `/digital-marketing-pro:digital-pr` — runs the actual outreach
-- `/digital-marketing-pro:seo-drift` — re-run quarterly to track delta
-- `/digital-marketing-pro:seo-audit` — broader site-level audit including own-profile health
-- `scripts/backlink_gap.py` — the underlying gap engine
+- `/digital-marketing-pro:competitor-analysis` — choisir les concurrents pour cet audit
+- `/digital-marketing-pro:digital-pr` — exécute l'outreach réel
+- `/digital-marketing-pro:seo-drift` — ré-exécuter trimestriellement pour suivre l'écart
+- `/digital-marketing-pro:seo-audit` — audit plus large au niveau du site, incluant la santé du profil propre
+- `scripts/backlink_gap.py` — le moteur d'écart sous-jacent

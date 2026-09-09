@@ -1,129 +1,129 @@
-# Persona Builder — Six-Dimension Framework
+# Constructeur de persona — Cadre à six dimensions
 
-## Six-Dimension Persona Template
+## Modèle de persona à six dimensions
 
-### Dimension 1: Demographics & Firmographics
-- **Name**: [Fictional, memorable name]
-- **Age range**: [e.g., 35-45]
-- **Gender**: [If relevant to targeting]
-- **Location**: [Region/metro]
-- **Income/Budget**: [Range]
-- **Education**: [Level]
-- **Job title**: [Specific title(s)]
-- **Company size**: [Employee range]
-- **Industry**: [Primary industry]
-- **Reporting to**: [Their boss's role]
-- **Team size**: [People they manage]
+### Dimension 1 : données démographiques et firmographiques
+- **Nom** : [nom fictif, mémorable]
+- **Tranche d'âge** : [par ex. 35-45]
+- **Genre** : [si pertinent pour le ciblage]
+- **Localisation** : [région/métropole]
+- **Revenu/Budget** : [fourchette]
+- **Éducation** : [niveau]
+- **Poste** : [titre(s) spécifique(s)]
+- **Taille d'entreprise** : [fourchette d'effectifs]
+- **Secteur** : [secteur principal]
+- **Reporte à** : [rôle de son supérieur]
+- **Taille d'équipe** : [personnes qu'il/elle gère]
 
-### Dimension 2: Psychographics & Motivations
-- **Core values**: [What drives their decisions — efficiency, innovation, security, growth]
-- **Risk tolerance**: [Risk-averse, moderate, risk-seeking]
-- **Decision style**: [Analytical, intuitive, collaborative, delegative]
-- **Professional aspirations**: [Where they want to be in 2-3 years]
-- **Personal motivations**: [Status, mastery, security, autonomy, purpose]
-- **Frustrations**: [What makes their job harder]
-- **Fears**: [What keeps them up at night professionally]
+### Dimension 2 : psychographie et motivations
+- **Valeurs fondamentales** : [ce qui pilote ses décisions — efficacité, innovation, sécurité, croissance]
+- **Tolérance au risque** : [averse au risque, modérée, en quête de risque]
+- **Style de décision** : [analytique, intuitif, collaboratif, délégatif]
+- **Aspirations professionnelles** : [où il/elle veut être dans 2-3 ans]
+- **Motivations personnelles** : [statut, maîtrise, sécurité, autonomie, sens]
+- **Frustrations** : [ce qui rend son travail plus difficile]
+- **Peurs** : [ce qui l'empêche de dormir professionnellement]
 
-### Dimension 3: Pain Points & Goals
-- **Primary pain point**: [#1 challenge your product solves]
-- **Secondary pain points**: [2-3 additional challenges]
-- **Goals (short-term)**: [This quarter/year]
-- **Goals (long-term)**: [1-3 year horizon]
-- **Success metrics**: [How they're evaluated at work]
-- **Jobs to Be Done**: [Functional, emotional, and social jobs — see jtbd-framework.md]
+### Dimension 3 : points de douleur et objectifs
+- **Point de douleur principal** : [défi n°1 que votre produit résout]
+- **Points de douleur secondaires** : [2-3 défis additionnels]
+- **Objectifs (court terme)** : [ce trimestre/cette année]
+- **Objectifs (long terme)** : [horizon 1-3 ans]
+- **Métriques de succès** : [comment il/elle est évalué au travail]
+- **Jobs to Be Done** : [tâches fonctionnelles, émotionnelles, et sociales — voir jtbd-framework.md]
 
-### Dimension 4: Information Diet
-- **Content formats preferred**: [Video, articles, podcasts, reports, social posts]
-- **Trusted sources**: [Publications, influencers, communities, peers]
-- **Social platforms**: [Where they spend time — LinkedIn, Twitter, Reddit, etc.]
-- **Search behavior**: [What they Google when researching your category]
-- **Email behavior**: [How many emails/day, what they open, when they check]
-- **Events**: [Conferences, webinars, meetups they attend]
-- **Communities**: [Slack groups, forums, associations]
+### Dimension 4 : régime d'information
+- **Formats de contenu préférés** : [vidéo, articles, podcasts, rapports, posts sociaux]
+- **Sources de confiance** : [publications, influenceurs, communautés, pairs]
+- **Plateformes sociales** : [où il/elle passe du temps — LinkedIn, Twitter, Reddit, etc.]
+- **Comportement de recherche** : [ce qu'il/elle recherche sur Google lorsqu'il/elle explore votre catégorie]
+- **Comportement e-mail** : [combien d'e-mails/jour, ce qu'il/elle ouvre, quand il/elle vérifie]
+- **Événements** : [conférences, webinaires, meetups auxquels il/elle assiste]
+- **Communautés** : [groupes Slack, forums, associations]
 
-### Dimension 5: Buying Behavior
-- **Buying role**: [Decision-maker, influencer, champion, end-user, blocker]
-- **Research process**: [How they evaluate solutions — demos, reviews, peer input]
-- **Buying triggers**: [What events cause them to start searching for a solution]
-- **Buying objections**: [Top 3-5 reasons they might NOT buy]
-- **Decision criteria**: [How they compare options — price, features, support, brand]
-- **Buying timeline**: [How long from problem recognition to purchase]
-- **Budget authority**: [Can they approve spend? What's the threshold?]
-- **Influencers**: [Who else is involved in the decision?]
+### Dimension 5 : comportement d'achat
+- **Rôle d'achat** : [décideur, influenceur, champion, utilisateur final, bloqueur]
+- **Processus de recherche** : [comment il/elle évalue les solutions — démos, avis, apport des pairs]
+- **Déclencheurs d'achat** : [quels événements le/la poussent à commencer à chercher une solution]
+- **Objections d'achat** : [top 3-5 raisons pour lesquelles il/elle pourrait NE PAS acheter]
+- **Critères de décision** : [comment il/elle compare les options — prix, fonctionnalités, support, marque]
+- **Calendrier d'achat** : [combien de temps entre la reconnaissance du problème et l'achat]
+- **Autorité budgétaire** : [peut-il/elle approuver la dépense ? quel est le seuil ?]
+- **Influenceurs** : [qui d'autre est impliqué dans la décision ?]
 
-### Dimension 6: Relationship with Your Brand
-- **Current awareness**: [Unaware, aware, considering, customer, advocate]
-- **Past interactions**: [Previous touchpoints with your brand]
-- **Sentiment**: [Positive, neutral, negative, unknown]
-- **Competitor relationships**: [Currently using a competitor? Which one?]
-- **Preferred engagement**: [How they want to interact — self-serve, sales, community]
-
----
-
-## Persona Interview Guide (15 Questions)
-
-1. Walk me through a typical workday — what takes most of your time?
-2. What's the biggest challenge you're facing in [relevant area] right now?
-3. When you last solved [problem type], how did you go about it?
-4. Where do you go when you need to learn about new tools/solutions?
-5. What publications, podcasts, or communities do you follow?
-6. When evaluating [product category], what matters most to you?
-7. Who else is involved in purchasing decisions at your organization?
-8. What's your typical budget for [category]? Who approves it?
-9. Tell me about a tool/service purchase that went really well — what made it great?
-10. Tell me about one that went badly — what went wrong?
-11. How do you measure success in your role?
-12. What would need to change for you to switch from your current solution?
-13. What concerns would you have about adopting [product type]?
-14. How important is [specific feature] vs [other feature] to you?
-15. If you could wave a magic wand and fix one thing about [problem area], what would it be?
+### Dimension 6 : relation avec votre marque
+- **Notoriété actuelle** : [inconscient, conscient, en considération, client, ambassadeur]
+- **Interactions passées** : [points de contact précédents avec votre marque]
+- **Sentiment** : [positif, neutre, négatif, inconnu]
+- **Relations concurrentielles** : [utilise-t-il/elle actuellement un concurrent ? lequel ?]
+- **Engagement préféré** : [comment il/elle veut interagir — libre-service, ventes, communauté]
 
 ---
 
-## Data-to-Persona Methodology
+## Guide d'entretien de persona (15 questions)
 
-| Data Source | What It Reveals | How to Use |
+1. Décrivez-moi une journée de travail typique — qu'est-ce qui prend la majeure partie de votre temps ?
+2. Quel est le plus grand défi auquel vous faites face actuellement dans [domaine pertinent] ?
+3. La dernière fois que vous avez résolu [type de problème], comment vous y êtes-vous pris ?
+4. Où allez-vous lorsque vous avez besoin d'en apprendre sur de nouveaux outils/solutions ?
+5. Quelles publications, podcasts, ou communautés suivez-vous ?
+6. Lors de l'évaluation de [catégorie de produit], qu'est-ce qui compte le plus pour vous ?
+7. Qui d'autre est impliqué dans les décisions d'achat au sein de votre organisation ?
+8. Quel est votre budget typique pour [catégorie] ? Qui l'approuve ?
+9. Parlez-moi d'un achat d'outil/service qui s'est très bien passé — qu'est-ce qui l'a rendu excellent ?
+10. Parlez-moi d'un achat qui s'est mal passé — qu'est-ce qui n'a pas fonctionné ?
+11. Comment mesurez-vous le succès dans votre rôle ?
+12. Que faudrait-il changer pour que vous passiez de votre solution actuelle à une autre ?
+13. Quelles préoccupations auriez-vous à propos de l'adoption de [type de produit] ?
+14. Quelle importance a [fonctionnalité spécifique] par rapport à [autre fonctionnalité] pour vous ?
+15. Si vous pouviez agiter une baguette magique et corriger une chose à propos de [domaine de problème], laquelle serait-ce ?
+
+---
+
+## Méthodologie données-vers-persona
+
+| Source de données | Ce qu'elle révèle | Comment l'utiliser |
 |-------------|----------------|-----------|
-| **CRM data** | Demographics, deal size, sales cycle, win/loss | Segment by deal characteristics |
-| **Analytics** | Content consumed, pages visited, session patterns | Map information diet |
-| **Survey** | Motivations, pain points, preferences | Direct psychographic data |
-| **Sales call notes** | Objections, questions, decision criteria | Buying behavior patterns |
-| **Customer interviews** | Deep qualitative insights | Validate and enrich |
-| **Support tickets** | Pain points, feature gaps, frustrations | Real-world challenges |
-| **Social listening** | Language used, topics discussed, influencers followed | Information diet + voice |
+| **Données CRM** | Démographie, taille de transaction, cycle de vente, win/loss | Segmenter par caractéristiques de transaction |
+| **Analytics** | Contenu consommé, pages visitées, motifs de session | Cartographier le régime d'information |
+| **Enquête** | Motivations, points de douleur, préférences | Données psychographiques directes |
+| **Notes d'appels commerciaux** | Objections, questions, critères de décision | Motifs de comportement d'achat |
+| **Entretiens clients** | Insights qualitatifs approfondis | Valider et enrichir |
+| **Tickets de support** | Points de douleur, lacunes de fonctionnalités, frustrations | Défis du monde réel |
+| **Social listening** | Langage utilisé, sujets discutés, influenceurs suivis | Régime d'information + voix |
 
-### Process
-1. **Aggregate quantitative data** from CRM, analytics, surveys → identify clusters
-2. **Conduct 5-8 qualitative interviews** per persona cluster
-3. **Triangulate**: Do quantitative patterns match qualitative themes?
-4. **Draft persona** using the six-dimension template
-5. **Validate** with sales team and customer-facing staff
-6. **Publish and distribute** with usage guidelines
+### Processus
+1. **Agréger les données quantitatives** issues du CRM, des analytics, des enquêtes → identifier des groupes
+2. **Mener 5 à 8 entretiens qualitatifs** par groupe de persona
+3. **Trianguler** : les motifs quantitatifs correspondent-ils aux thèmes qualitatifs ?
+4. **Rédiger le persona** à l'aide du modèle à six dimensions
+5. **Valider** avec l'équipe commerciale et le personnel en contact avec les clients
+6. **Publier et diffuser** avec des directives d'utilisation
 
 ---
 
-## Anti-Persona Profiles
+## Profils d'anti-persona
 
-Define who you should NOT target:
+Définir qui vous ne devriez PAS cibler :
 
-| Anti-Persona | Why Exclude | Identification Signals |
+| Anti-persona | Pourquoi exclure | Signaux d'identification |
 |-------------|-------------|----------------------|
-| Wrong company size | Product doesn't fit, high churn | <$X revenue, <Y employees |
-| Wrong industry | Compliance/regulatory mismatch | Specific SIC/NAICS codes |
-| Price-sensitive buyer | Will churn after discount expires | Discount-seeking behavior |
-| Feature-mismatched | Needs capabilities you don't offer | Support tickets asking for missing features |
-| Tire-kickers | Research without buying intent | Long sessions, no conversion actions |
+| Mauvaise taille d'entreprise | Le produit ne correspond pas, fort taux de désabonnement | <X $ de revenu, <Y employés |
+| Mauvais secteur | Inadéquation de conformité/réglementation | Codes SIC/NAICS spécifiques |
+| Acheteur sensible au prix | Se désabonnera après l'expiration de la remise | Comportement de recherche de remises |
+| Fonctionnalités inadaptées | A besoin de capacités que vous n'offrez pas | Tickets de support demandant des fonctionnalités manquantes |
+| Curieux (tire-kickers) | Recherche sans intention d'achat | Sessions longues, aucune action de conversion |
 
 ---
 
-## B2B Buying Committee Mapping
+## Cartographie du comité d'achat B2B
 
-For B2B personas, map the entire committee:
+Pour les personas B2B, cartographier l'ensemble du comité :
 
-| Role | Typical Title | Key Concern | Content Needed |
+| Rôle | Titre typique | Préoccupation clé | Contenu nécessaire |
 |------|-------------|-------------|---------------|
-| **Champion** | Manager/Director | "Will this make me look good?" | Use cases, quick wins |
-| **Decision Maker** | VP/C-Suite | "What's the ROI?" | Business case, ROI calculator |
-| **Influencer** | IT/Security/Legal | "Is this safe and compliant?" | Security docs, compliance |
-| **End User** | Individual contributor | "Is this easy to use?" | Demos, tutorials, UX evidence |
-| **Blocker** | Finance/Procurement | "Is this worth the cost?" | Competitive comparison, pricing |
+| **Champion** | Manager/Directeur | « Est-ce que cela me fera bien paraître ? » | Cas d'usage, gains rapides |
+| **Décideur** | VP/Direction générale | « Quel est le ROI ? » | Business case, calculateur de ROI |
+| **Influenceur** | IT/Sécurité/Juridique | « Est-ce sûr et conforme ? » | Documents de sécurité, conformité |
+| **Utilisateur final** | Contributeur individuel | « Est-ce facile à utiliser ? » | Démos, tutoriels, preuves d'UX |
+| **Bloqueur** | Finance/Achats | « Cela vaut-il le coût ? » | Comparaison concurrentielle, tarification |

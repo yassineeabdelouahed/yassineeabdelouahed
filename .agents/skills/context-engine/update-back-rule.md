@@ -1,56 +1,56 @@
-# The Update-Back Rule
+# La règle de mise à jour rétroactive (Update-Back)
 
-After Part 7 onwards, the engagement operates on v2. But corrections continue to surface during execution — a Target Group definition turns out to be wrong in field, a competitor is mis-classified, a positioning claim does not hold up under scrutiny, a budget assumption proves unrealistic.
+Après le début de la partie 7, l'engagement opère sur la v2. Mais des corrections continuent de surgir pendant l'exécution — une définition de groupe cible s'avère erronée sur le terrain, un concurrent est mal classifié, une revendication de positionnement ne résiste pas à l'examen, une hypothèse budgétaire s'avère irréaliste.
 
-When this happens, the correction is made in the **source document**, not just in the deliverable that caught the error.
+Lorsque cela arrive, la correction est apportée dans le **document source**, pas seulement dans le livrable qui a détecté l'erreur.
 
-## Why this matters
+## Pourquoi cela compte
 
-Without the Update-Back Rule, corrections accumulate in scattered places:
+Sans la règle de mise à jour rétroactive, les corrections s'accumulent en des endroits dispersés :
 
-- A note in a campaign report says "actually our CAC for Segment X is 40% higher than v2 estimated"
-- A creative brief is amended to remove a positioning claim that didn't land
-- A media buyer adjusts the channel mix because LinkedIn is not delivering
+- Une note dans un rapport de campagne dit « en réalité notre CAC pour le segment X est 40 % plus élevé que ce que la v2 estimait »
+- Un brief créatif est amendé pour retirer une revendication de positionnement qui n'a pas fonctionné
+- Un acheteur média ajuste le mix de canaux parce que LinkedIn ne livre pas
 
-If these corrections never make it back to the source documents (Core Doc 3.1, 3.3, 3.4), the next campaign, the next creative brief, the next media plan all start from outdated assumptions. The strategy silently drifts.
+Si ces corrections ne remontent jamais aux documents source (documents centraux 3.1, 3.3, 3.4), la prochaine campagne, le prochain brief créatif, le prochain plan média partent tous d'hypothèses obsolètes. La stratégie dérive silencieusement.
 
-The Update-Back Rule keeps the source documents as living truth instead of frozen-at-Part-5 artifacts.
+La règle de mise à jour rétroactive maintient les documents source comme une vérité vivante plutôt que des artefacts figés à la partie 5.
 
-## The Process
+## Le processus
 
-When a correction is identified during execution (Part 9 onwards):
+Lorsqu'une correction est identifiée pendant l'exécution (à partir de la partie 9) :
 
-### Step 1: Capture the correction
+### Étape 1 : Capturer la correction
 
-Record what was discovered, where it was discovered, and what evidence supports it:
+Enregistrer ce qui a été découvert, où cela a été découvert, et quelle preuve le soutient :
 
 ```
-Discovery: Segment X actual CAC is INR 4,800, not v2-estimated INR 3,000
-Source: Q2 Google Ads + Meta Ads blended performance, 60-day window
-Evidence: dashboard snapshot attached, performance data in part-09-channel-strategy/9.3-google-ads/performance-q2.json
-Material? Yes — changes the LTV:CAC ratio for Segment X from 4.0 to 2.5 (below health threshold)
+Découverte : le CAC réel du segment X est de 4 800 INR, pas les 3 000 INR estimés en v2
+Source : performance mixte Google Ads + Meta Ads du T2, fenêtre de 60 jours
+Preuve : instantané de tableau de bord joint, données de performance dans part-09-channel-strategy/9.3-google-ads/performance-q2.json
+Matériel ? Oui — change le ratio LTV:CAC du segment X de 4,0 à 2,5 (sous le seuil de santé)
 ```
 
-### Step 2: Validate the correction
+### Étape 2 : Valider la correction
 
-A correction is not yet a fact — it must be validated:
+Une correction n'est pas encore un fait — elle doit être validée :
 
-- Is the underlying data clean? (Tracking working correctly? Attribution model appropriate?)
-- Is the time window sufficient? (60+ days for paid, 90+ for SEO/content)
-- Is the sample size statistically meaningful?
-- Is there an alternate explanation? (Seasonality, ad fatigue, competitive pressure, landing page issue)
-- Has the senior project owner / strategy lead reviewed?
+- Les données sous-jacentes sont-elles propres ? (Le suivi fonctionne-t-il correctement ? Le modèle d'attribution est-il approprié ?)
+- La fenêtre temporelle est-elle suffisante ? (60+ jours pour le payant, 90+ pour le SEO/contenu)
+- La taille d'échantillon est-elle statistiquement significative ?
+- Existe-t-il une explication alternative ? (Saisonnalité, fatigue publicitaire, pression concurrentielle, problème de landing page)
+- Le responsable senior de projet / responsable stratégie a-t-il examiné ?
 
-If validated → proceed to Step 3. If not validated → record as "candidate correction" pending more data.
+Si validé → passer à l'étape 3. Si non validé → enregistrer comme « correction candidate » en attente de plus de données.
 
-### Step 3: Update the source document as a new version
+### Étape 3 : Mettre à jour le document source comme une nouvelle version
 
-Bump the document version. Examples:
+Faire monter la version du document. Exemples :
 
 - `3.1-business-and-sbu-analysis.v2.md` → `3.1-business-and-sbu-analysis.v2.1.md`
-- The previous version (`v2.md`) is preserved (renamed `v2.0.md` for clarity if it wasn't already)
+- La version précédente (`v2.md`) est préservée (renommée `v2.0.md` par clarté si ce n'était pas déjà le cas)
 
-The new version's frontmatter includes:
+Le frontmatter de la nouvelle version inclut :
 
 ```yaml
 ---
@@ -63,92 +63,93 @@ update-source: Q2 channel performance data
 ---
 ```
 
-The change is made in the relevant section of the document (in this example, Step 4: Unit Economics). The change is **explicit** — old value retained in a strikethrough or change-note format, new value added with citation:
+Le changement est apporté dans la section pertinente du document (dans cet exemple, étape 4 : unité économique). Le changement est **explicite** — ancienne valeur conservée dans un format barré ou une note de changement, nouvelle valeur ajoutée avec citation :
 
-> Segment X CAC: ~~INR 3,000 (estimated, v2.0)~~ → INR 4,800 (validated from Q2 paid performance, 60-day window). LTV:CAC ratio drops from 4.0 to 2.5 — below 3.0 health threshold. Strategic implication: revisit Segment X channel mix or revisit pricing.
+> CAC du segment X : ~~3 000 INR (estimé, v2.0)~~ → 4 800 INR (validé à partir de la performance payante du T2, fenêtre de 60 jours). Le ratio LTV:CAC chute de 4,0 à 2,5 — sous le seuil de santé de 3,0. Implication stratégique : revoir le mix de canaux du segment X ou revoir la tarification.
 
-### Step 4: Record in the document's change log
+### Étape 4 : Enregistrer dans le journal des modifications du document
 
-Every document carries a change log section at the bottom:
+Chaque document porte une section de journal des modifications en bas :
 
 ```markdown
-## Change Log
+## Journal des modifications
 
 ### v2.1 — 2026-05-03
-- **Section 4 (Unit Economics):** Segment X CAC corrected from INR 3,000 (estimated) to INR 4,800 (validated from Q2 channel data). Triggered downstream review of channel mix for Segment X.
-- **Validated by:** [project owner name or role]
+- **Section 4 (unité économique) :** CAC du segment X corrigé de 3 000 INR (estimé) à 4 800 INR (validé à partir des données de canal du T2). A déclenché une revue en aval du mix de canaux pour le segment X.
+- **Validé par :** [nom ou rôle du responsable de projet]
 
 ### v2.0 — 2026-04-15
-- Initial v2 produced from v1 + client validation responses.
-- v1 → v2 changes: positioning rejected, re-written; competitor list expanded.
+- v2 initiale produite à partir de la v1 + réponses de validation client.
+- Changements v1 → v2 : positionnement rejeté, réécrit ; liste de concurrents élargie.
 
 ### v1.1 — 2026-04-08
-- Minor: corrected source citation for market size estimate (sub-step 1.4).
+- Mineur : citation de source corrigée pour l'estimation de taille de marché (sous-étape 1.4).
 
 ### v1.0 — 2026-04-01
-- Initial unbiased research version.
+- Version initiale de recherche non biaisée.
 ```
 
-### Step 5: Log the update in the Living Project Instruction File
+### Étape 5 : Journaliser la mise à jour dans le fichier d'instructions vivant du projet
 
-The Living Project Instruction File (`living-instruction-file.md`) is the single "what is currently true" record for the engagement. When any source document gets updated, the LIF gets a corresponding entry:
+Le fichier d'instructions vivant du projet (`living-instruction-file.md`) est le registre unique de « ce qui est actuellement vrai » pour l'engagement. Lorsqu'un document source est mis à jour, le LIF reçoit une entrée correspondante :
 
 ```markdown
-## Currently True (as of 2026-05-03)
+## Actuellement vrai (au 2026-05-03)
 
 ### Segment X
-- **CAC:** INR 4,800 (corrected 2026-05-03 — was INR 3,000 in v2.0; see [3.1 v2.1](../part-03-four-core-documents/v2/3.1-business-and-sbu-analysis.v2.1.md))
-- **LTV:CAC ratio:** 2.5 (below 3.0 health threshold — under review)
-- **Strategic implication:** channel mix or pricing under review (see channel review queue)
+- **CAC :** 4 800 INR (corrigé le 2026-05-03 — était de 3 000 INR en v2.0 ; voir [3.1 v2.1](../part-03-four-core-documents/v2/3.1-business-and-sbu-analysis.v2.1.md))
+- **Ratio LTV:CAC :** 2,5 (sous le seuil de santé de 3,0 — en cours de revue)
+- **Implication stratégique :** mix de canaux ou tarification en cours de revue (voir la file d'attente de revue de canal)
 ```
 
-All downstream skills read the LIF before producing output. So a campaign-plan skill running after the update will see the corrected CAC and adjust its budget recommendations accordingly.
+Toutes les compétences en aval lisent le LIF avant de produire un résultat. Ainsi, une compétence campaign-plan exécutée après la mise à jour verra le CAC corrigé et ajustera ses recommandations budgétaires en conséquence.
 
-### Step 6: Trigger downstream review
+### Étape 6 : Déclencher une revue en aval
 
-Some corrections have downstream implications that need explicit review:
+Certaines corrections ont des implications en aval qui nécessitent une revue explicite :
 
-- A CAC correction may invalidate the budget plan in 3.4 → trigger DMFlow review
-- A positioning correction may invalidate creative briefs already in production → trigger creative review
-- A persona attribute correction may invalidate audience targeting → trigger Part 9 audience review
+- Une correction de CAC peut invalider le plan budgétaire du document 3.4 → déclenche une revue DMFlow
+- Une correction de positionnement peut invalider des briefs créatifs déjà en production → déclenche une revue créative
+- Une correction d'attribut de persona peut invalider le ciblage d'audience → déclenche une revue d'audience de la partie 9
 
-The `/digital-marketing-pro:engagement update-back` command handles this:
+La commande `/digital-marketing-pro:engagement update-back` gère cela :
 
-1. Captures the correction
-2. Validates with the user
-3. Updates the source document
-4. Updates the Living Instruction File
-5. Identifies downstream documents that may need review
-6. Adds review tasks to the engagement state
+1. Capture la correction
+2. Valide avec l'utilisateur
+3. Met à jour le document source
+4. Met à jour le fichier d'instructions vivant
+5. Identifie les documents en aval qui pourraient nécessiter une revue
+6. Ajoute des tâches de revue à l'état de l'engagement
 
-## What does NOT trigger an update-back
+## Ce qui ne déclenche PAS une mise à jour rétroactive
 
-Not every observation deserves a source-document update:
+Toutes les observations ne méritent pas une mise à jour de document source :
 
-- **Speculation** — "I think CAC is rising" without data is not a correction.
-- **Single data point anomalies** — one bad week of performance is not a CAC change. Wait for 60+ days.
-- **Stylistic preferences** — an ad copy that the team thinks could be punchier is not an Update-Back trigger.
-- **Tactical optimisations** — a bid adjustment, a budget pacing tweak, a creative refresh — these belong in execution logs, not strategy docs.
+- **La spéculation** — « je pense que le CAC augmente » sans données n'est pas une correction.
+- **Les anomalies de point de données unique** — une mauvaise semaine de performance n'est pas un changement de CAC. Attendre 60+ jours.
+- **Les préférences stylistiques** — un texte publicitaire que l'équipe pense pouvoir rendre plus percutant n'est pas un déclencheur de mise à jour rétroactive.
+- **Les optimisations tactiques** — un ajustement d'enchère, un ajustement de rythme budgétaire, un rafraîchissement créatif — cela appartient aux journaux d'exécution, pas aux documents de stratégie.
 
-The Update-Back Rule is reserved for **validated changes to strategic assumptions** in the source documents.
+La règle de mise à jour rétroactive est réservée aux **changements validés des hypothèses stratégiques** dans les documents source.
 
-## Versioning Conventions
+## Conventions de versionnage
 
-| Pattern | Meaning |
+| Schéma | Signification |
 |---|---|
-| `v1.0` | Initial unbiased research version (Parts 2–4) |
-| `v1.1`, `v1.2` | Minor corrections to v1 before client validation |
-| `v2.0` | Initial client-validated version (after Part 6 re-run) |
-| `v2.1`, `v2.2` | Update-back corrections after Part 7 onwards |
-| No version suffix | Document was never re-run — v1 is the canonical version |
+| `v1.0` | Version initiale de recherche non biaisée (parties 2-4) |
+| `v1.1`, `v1.2` | Corrections mineures de la v1 avant validation client |
+| `v2.0` | Version initiale validée par le client (après relance de la partie 6) |
+| `v2.1`, `v2.2` | Corrections de mise à jour rétroactive à partir de la partie 7 |
+| Pas de suffixe de version | Le document n'a jamais été relancé — la v1 est la version canonique |
 
-## Audit trail
+## Piste d'audit
 
-The full versioning history (every v1.1, v2.1, v2.2, etc.) is preserved as separate files in the document directory. Nothing is overwritten. Auditors can always reconstruct what was true at any point in time.
+L'historique complet de versionnage (chaque v1.1, v2.1, v2.2, etc.) est préservé sous forme de fichiers séparés dans le répertoire du document. Rien n'est écrasé. Les auditeurs peuvent toujours reconstruire ce qui était vrai à tout moment.
 
-## Related references
+## Références liées
 
-- [two-views-model.md](two-views-model.md) — v1/v2 architecture
-- [decision-matrix-rerun.md](decision-matrix-rerun.md) — when v2 re-runs happen
-- [living-instruction-file-spec.md](living-instruction-file-spec.md) — LIF schema
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — the 12-Part flow
+- [two-views-model.md](two-views-model.md) — architecture v1/v2
+- [decision-matrix-rerun.md](decision-matrix-rerun.md) — quand les relances v2 se produisent
+- [living-instruction-file-spec.md](living-instruction-file-spec.md) — schéma du LIF
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — le flux en 12 parties
+</content>

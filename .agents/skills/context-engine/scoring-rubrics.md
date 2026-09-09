@@ -1,156 +1,157 @@
-# Scoring Rubrics — Standardized Evaluation Criteria
+# Grilles de notation — Critères d'évaluation standardisés
 
-All content-producing modules use these rubrics to score marketing outputs consistently.
+Tous les modules producteurs de contenu utilisent ces grilles pour noter les résultats marketing de manière cohérente.
 
 ---
 
-## 1. Content Quality Score (0-100)
+## 1. Score de qualité de contenu (0-100)
 
-Use for: blog posts, articles, guides, whitepapers, case studies, web pages.
+À utiliser pour : articles de blog, articles, guides, livres blancs, études de cas, pages web.
 
-| Dimension | Weight | 0 (Fail) | 5 (Weak) | 10 (Good) | 15/20 (Excellent) |
+| Dimension | Pondération | 0 (Échec) | 5 (Faible) | 10 (Bon) | 15/20 (Excellent) |
 |-----------|--------|----------|----------|-----------|-------------------|
-| **Audience Relevance** | 20% | Wrong audience entirely | Generic, could be for anyone | Addresses target persona | Deeply resonates with specific persona's pain points, JTBD |
-| **Readability** | 15% | Grade level wildly inappropriate | 3+ grades off target | Within 1 grade of target | Perfect grade level for audience (B2C: 6-8th, B2B: 10-12th) |
-| **SEO Optimization** | 15% | No keyword targeting | Keyword present but poorly placed | Primary keyword in title, H1, first 100 words, meta | Full optimization: keyword clusters, internal links, schema, intent match |
-| **Originality** | 15% | Rehashed generic content | Some unique angles | Original insights or data points | First-hand experience, proprietary data, unique frameworks |
-| **Brand Voice Match** | 15% | Completely off-brand | Partially aligned | Consistent with brand voice profile | Unmistakably on-brand across all 4 voice dimensions |
-| **CTA Effectiveness** | 10% | No CTA or irrelevant CTA | CTA present but weak/generic | Clear CTA aligned with funnel stage | Compelling, specific, urgency-appropriate CTA with value prop |
-| **Compliance** | 10% | Violations present (legal risk) | Missing optional best practices | All required disclaimers present | Full compliance + proactive best practices (accessibility, disclosure) |
+| **Pertinence pour l'audience** | 20 % | Mauvaise audience totalement | Générique, pourrait être pour n'importe qui | Traite le persona cible | Résonne profondément avec les points de douleur, JTBD du persona précis |
+| **Lisibilité** | 15 % | Niveau scolaire totalement inapproprié | Écart de 3 niveaux ou plus par rapport à la cible | À 1 niveau de la cible | Niveau scolaire parfait pour l'audience (B2C : 6e-8e, B2B : 10e-12e) |
+| **Optimisation SEO** | 15 % | Aucun ciblage de mot-clé | Mot-clé présent mais mal placé | Mot-clé principal dans le titre, H1, 100 premiers mots, meta | Optimisation complète : clusters de mots-clés, liens internes, schema, adéquation d'intention |
+| **Originalité** | 15 % | Contenu générique remâché | Quelques angles uniques | Insights ou données originales | Expérience de première main, données propriétaires, cadres uniques |
+| **Correspondance à la voix de marque** | 15 % | Complètement hors marque | Partiellement aligné | Cohérent avec le profil de voix de marque | Indéniablement conforme à la marque sur les 4 dimensions de voix |
+| **Efficacité de l'appel à l'action** | 10 % | Aucun appel à l'action ou non pertinent | Appel à l'action présent mais faible/générique | Appel à l'action clair aligné avec l'étape du tunnel | Appel à l'action convaincant, précis, urgence appropriée avec proposition de valeur |
+| **Conformité** | 10 % | Violations présentes (risque juridique) | Bonnes pratiques optionnelles manquantes | Toutes les mentions légales requises présentes | Conformité complète + bonnes pratiques proactives (accessibilité, divulgation) |
 
-**Scoring**: Sum weighted scores. 85-100 = Publish-ready. 70-84 = Minor revisions. 50-69 = Major revisions. Below 50 = Rewrite.
+**Notation** : Somme des scores pondérés. 85-100 = prêt à publier. 70-84 = révisions mineures. 50-69 = révisions majeures. Moins de 50 = à réécrire.
 
 ---
 
-## 2. Ad Creative Score (0-100)
+## 2. Score de création publicitaire (0-100)
 
-Use for: search ads, social ads, display ads, video ad scripts.
+À utiliser pour : annonces de recherche, annonces sociales, annonces display, scripts de publicité vidéo.
 
-| Dimension | Weight | 0 (Fail) | 10 (Weak) | 18 (Good) | 25 (Excellent) |
+| Dimension | Pondération | 0 (Échec) | 10 (Faible) | 18 (Bon) | 25 (Excellent) |
 |-----------|--------|----------|-----------|-----------|----------------|
-| **Hook Strength** | 25% | No hook, starts with brand name | Generic hook, doesn't stop scroll | Good pattern interrupt or curiosity gap | Irresistible hook — specific, emotional, or contrarian first line/3 seconds |
-| **Value Proposition** | 20% | Features only, no benefit | Benefit mentioned but unclear | Clear benefit tied to audience need | Specific, quantified benefit that differentiates from competitors |
-| **Social Proof** | 15% | None | Generic ("trusted by thousands") | Specific proof (numbers, names, logos) | Compelling proof (exact metrics, recognizable names, visual testimonials) |
-| **CTA Clarity** | 15% | Missing or confusing CTA | Generic "Learn More" | Specific action aligned with funnel stage | Action-oriented, urgency-appropriate, value-restating CTA |
-| **Platform Fit** | 15% | Clearly repurposed from another platform | Correct specs but wrong tone/format | Native to platform's culture and format | Could pass as organic content on the platform |
-| **Urgency/Scarcity** | 10% | Manipulative or false urgency | No urgency at all | Appropriate urgency (time, quantity, or exclusivity) | Natural urgency that enhances without manipulating |
+| **Force de l'accroche** | 25 % | Aucune accroche, commence par le nom de la marque | Accroche générique, n'arrête pas le défilement | Bonne rupture de motif ou écart de curiosité | Accroche irrésistible — première ligne/3 secondes précise, émotionnelle, ou à contre-courant |
+| **Proposition de valeur** | 20 % | Fonctionnalités uniquement, aucun bénéfice | Bénéfice mentionné mais peu clair | Bénéfice clair lié au besoin de l'audience | Bénéfice précis et chiffré qui différencie des concurrents |
+| **Preuve sociale** | 15 % | Aucune | Générique (« la confiance de milliers de personnes ») | Preuve précise (chiffres, noms, logos) | Preuve convaincante (indicateurs exacts, noms reconnaissables, témoignages visuels) |
+| **Clarté de l'appel à l'action** | 15 % | Appel à l'action manquant ou confus | « En savoir plus » générique | Action précise alignée avec l'étape du tunnel | Appel à l'action orienté action, urgence appropriée, réaffirmant la valeur |
+| **Adéquation à la plateforme** | 15 % | Clairement recyclé d'une autre plateforme | Spécifications correctes mais mauvais ton/format | Natif à la culture et au format de la plateforme | Pourrait passer pour du contenu organique sur la plateforme |
+| **Urgence/rareté** | 10 % | Urgence manipulatrice ou fausse | Aucune urgence du tout | Urgence appropriée (temps, quantité, ou exclusivité) | Urgence naturelle qui renforce sans manipuler |
 
-**Scoring**: Sum weighted scores. 85+ = Launch-ready. 70-84 = Test with monitoring. Below 70 = Revise before spending.
+**Notation** : Somme des scores pondérés. 85+ = prêt au lancement. 70-84 = tester avec surveillance. Moins de 70 = réviser avant de dépenser.
 
 ---
 
-## 3. Email Score (0-100)
+## 3. Score d'e-mail (0-100)
 
-Use for: marketing emails, newsletters, drip sequences, transactional emails with marketing elements.
+À utiliser pour : e-mails marketing, newsletters, séquences de drip, e-mails transactionnels avec éléments marketing.
 
-| Dimension | Weight | 0 (Fail) | 10 (Weak) | 18 (Good) | 25 (Excellent) |
+| Dimension | Pondération | 0 (Échec) | 10 (Faible) | 18 (Bon) | 25 (Excellent) |
 |-----------|--------|----------|-----------|-----------|----------------|
-| **Subject Line** | 25% | Spam trigger words, misleading, too long | Generic, no curiosity or value | Clear value or curiosity, appropriate length (30-50 chars) | Irresistible: specific benefit/curiosity + personalized + mobile-optimized |
-| **Body Structure** | 20% | Wall of text, no hierarchy | Some structure but not scannable | Clear hierarchy: headline → body → CTA, scannable | Inverted pyramid, single-column, mobile-first, perfect visual flow |
-| **Personalization** | 15% | No personalization at all | Only {first_name} merge tag | Behavioral or segment-based personalization | Dynamic content blocks based on user behavior, preferences, lifecycle stage |
-| **CTA** | 15% | No CTA or multiple competing CTAs | Text link CTA only | Single button CTA, above fold, clear action | High-contrast button, value-restating text, below supporting copy, repeated at bottom |
-| **Deliverability** | 15% | Spam words, image-only, no text version | Minor spam risk signals | Clean text-to-image ratio, no spam triggers | SPF/DKIM/DMARC aligned, BIMI, low complaint history, proper list hygiene |
-| **Preview Text** | 10% | Not set (shows "View in browser") | Set but doesn't add value | Complements subject line, adds context | Creates curiosity gap or reinforces subject line value prop |
+| **Objet** | 25 % | Mots déclencheurs de spam, trompeur, trop long | Générique, aucune curiosité ni valeur | Valeur ou curiosité claire, longueur appropriée (30-50 caractères) | Irrésistible : bénéfice/curiosité précis + personnalisé + optimisé mobile |
+| **Structure du corps** | 20 % | Mur de texte, aucune hiérarchie | Une certaine structure mais pas balayable | Hiérarchie claire : titre → corps → appel à l'action, balayable | Pyramide inversée, colonne unique, mobile-first, flux visuel parfait |
+| **Personnalisation** | 15 % | Aucune personnalisation | Uniquement la balise de fusion {prénom} | Personnalisation comportementale ou basée sur le segment | Blocs de contenu dynamique basés sur le comportement, les préférences, l'étape de cycle de vie de l'utilisateur |
+| **Appel à l'action** | 15 % | Aucun appel à l'action ou plusieurs appels à l'action concurrents | Appel à l'action en lien texte uniquement | Appel à l'action bouton unique, au-dessus de la ligne de flottaison, action claire | Bouton à fort contraste, texte réaffirmant la valeur, sous le texte de soutien, répété en bas |
+| **Délivrabilité** | 15 % | Mots de spam, image seule, pas de version texte | Signaux mineurs de risque de spam | Ratio texte/image propre, aucun déclencheur de spam | SPF/DKIM/DMARC alignés, BIMI, faible historique de plaintes, hygiène de liste appropriée |
+| **Texte d'aperçu** | 10 % | Non défini (affiche « Voir dans le navigateur ») | Défini mais n'ajoute pas de valeur | Complète l'objet, ajoute du contexte | Crée un écart de curiosité ou renforce la proposition de valeur de l'objet |
 
-**Scoring**: Sum weighted scores. 85+ = Send. 70-84 = A/B test the weak areas. Below 70 = Revise.
+**Notation** : Somme des scores pondérés. 85+ = envoyer. 70-84 = tester A/B les zones faibles. Moins de 70 = réviser.
 
 ---
 
-## 4. Landing Page Score (0-100)
+## 4. Score de landing page (0-100)
 
-Use for: landing pages, product pages, signup pages, event registration pages.
+À utiliser pour : landing pages, pages produit, pages d'inscription, pages d'inscription à un événement.
 
-| Dimension | Weight | 0 (Fail) | 10 (Weak) | 18 (Good) | 25 (Excellent) |
+| Dimension | Pondération | 0 (Échec) | 10 (Faible) | 18 (Bon) | 25 (Excellent) |
 |-----------|--------|----------|-----------|-----------|----------------|
-| **Above-Fold Clarity** | 25% | Cannot understand offer in 10 seconds | Value prop present but unclear or buried | Clear headline + supporting copy + visual in 5 seconds | Instantly clear: what it is, who it's for, why it matters, what to do next |
-| **Trust Signals** | 20% | No social proof or trust elements | Generic trust badges only | Specific testimonials, customer logos, review scores | Multiple trust layers: testimonials + logos + metrics + security + guarantees |
-| **Form Friction** | 15% | 10+ required fields, no context | 5-8 fields, no progressive profiling | 3-4 fields, clear value exchange | Minimal fields + smart defaults + inline validation + privacy reassurance |
-| **Message Match** | 15% | No connection to referral source | Partially matches ad/email | Headline echoes ad/email messaging | Perfect continuity: same language, same offer, same visual style as referral source |
-| **Page Speed** | 10% | Over 5s load time | 3-5s load time | Under 3s, passes Core Web Vitals | Under 2s, all Core Web Vitals green, optimized images |
-| **Mobile Experience** | 15% | Broken on mobile | Functional but awkward (horizontal scroll, tiny buttons) | Responsive, readable, functional | Thumb-friendly, 44px+ tap targets, single-column, fast mobile load |
+| **Clarté au-dessus de la ligne de flottaison** | 25 % | Impossible de comprendre l'offre en 10 secondes | Proposition de valeur présente mais peu claire ou noyée | Titre clair + texte de soutien + visuel en 5 secondes | Instantanément clair : ce que c'est, pour qui, pourquoi c'est important, quoi faire ensuite |
+| **Signaux de confiance** | 20 % | Aucune preuve sociale ni élément de confiance | Badges de confiance génériques uniquement | Témoignages précis, logos clients, scores d'avis | Multiples couches de confiance : témoignages + logos + indicateurs + sécurité + garanties |
+| **Friction du formulaire** | 15 % | 10+ champs requis, sans contexte | 5-8 champs, aucun profilage progressif | 3-4 champs, échange de valeur clair | Champs minimaux + valeurs par défaut intelligentes + validation en ligne + réassurance de confidentialité |
+| **Cohérence du message** | 15 % | Aucune connexion avec la source de référence | Correspond partiellement à la publicité/l'e-mail | Le titre reprend le message de la publicité/l'e-mail | Continuité parfaite : même langage, même offre, même style visuel que la source de référence |
+| **Vitesse de page** | 10 % | Plus de 5s de temps de chargement | 3-5s de temps de chargement | Moins de 3s, réussit les Core Web Vitals | Moins de 2s, tous les Core Web Vitals au vert, images optimisées |
+| **Expérience mobile** | 15 % | Cassée sur mobile | Fonctionnelle mais maladroite (défilement horizontal, petits boutons) | Responsive, lisible, fonctionnelle | Adaptée au pouce, zones tactiles 44px+, colonne unique, chargement mobile rapide |
 
-**Scoring**: Sum weighted scores. 85+ = Drive traffic. 70-84 = Optimize before scaling spend. Below 70 = Rebuild.
+**Notation** : Somme des scores pondérés. 85+ = envoyer du trafic. 70-84 = optimiser avant de monter en échelle. Moins de 70 = reconstruire.
 
 ---
 
-## 5. Social Media Post Score (0-100)
+## 5. Score de post sur les réseaux sociaux (0-100)
 
-Use for: organic social media posts across all platforms.
+À utiliser pour : posts organiques sur les réseaux sociaux, toutes plateformes.
 
-| Dimension | Weight | Criteria |
+| Dimension | Pondération | Critères |
 |-----------|--------|----------|
-| **Platform Nativity** | 25% | Content feels native to the specific platform's culture, format, and tone |
-| **Hook/Opening** | 20% | First line (text) or first 2 seconds (video) stops the scroll |
-| **Value Delivery** | 20% | Post provides clear value: entertains, educates, inspires, or informs |
-| **Engagement Prompt** | 15% | Includes a reason to engage (question, poll, challenge, opinion prompt) |
-| **Brand Voice** | 10% | Matches brand voice profile adapted for this specific platform |
-| **Visual Quality** | 10% | Image/video quality appropriate for platform (polished vs. raw as needed) |
+| **Nativité de plateforme** | 25 % | Le contenu paraît natif à la culture, au format, et au ton propres à la plateforme |
+| **Accroche/ouverture** | 20 % | La première ligne (texte) ou les 2 premières secondes (vidéo) arrêtent le défilement |
+| **Livraison de valeur** | 20 % | Le post apporte une valeur claire : divertit, éduque, inspire, ou informe |
+| **Incitation à l'engagement** | 15 % | Inclut une raison de s'engager (question, sondage, défi, invite d'opinion) |
+| **Voix de marque** | 10 % | Correspond au profil de voix de marque adapté à cette plateforme précise |
+| **Qualité visuelle** | 10 % | Qualité d'image/vidéo appropriée à la plateforme (soignée vs brute selon les besoins) |
 
 ---
 
-## 6. Press Release / PR Pitch Score (0-100)
+## 6. Score de communiqué de presse / pitch RP (0-100)
 
-Use for: press releases, media pitches, HARO responses, journalist outreach.
+À utiliser pour : communiqués de presse, pitchs média, réponses HARO, sollicitation de journalistes.
 
-| Dimension | Weight | Criteria |
+| Dimension | Pondération | Critères |
 |-----------|--------|----------|
-| **Newsworthiness** | 30% | Genuine news value — not a thinly veiled ad. Would a journalist care? |
-| **Lead Paragraph** | 20% | Who, what, when, where, why answered in first paragraph |
-| **Quote Quality** | 15% | Executive quotes add insight, not generic praise. Quotable by media. |
-| **Data/Evidence** | 15% | Statistics, research, or specific outcomes that substantiate the story |
-| **Personalization** | 10% | Pitch tailored to specific journalist/outlet's beat and recent coverage |
-| **Formatting** | 10% | Proper press release format: headline, dateline, boilerplate, contact info |
+| **Valeur d'actualité** | 30 % | Valeur d'actualité authentique — pas une publicité à peine déguisée. Un journaliste s'en soucierait-il ? |
+| **Paragraphe d'attaque** | 20 % | Qui, quoi, quand, où, pourquoi répondus dans le premier paragraphe |
+| **Qualité des citations** | 15 % | Les citations de dirigeants apportent un éclairage, pas des éloges génériques. Citables par les médias. |
+| **Données/preuves** | 15 % | Statistiques, recherche, ou résultats précis qui étayent l'histoire |
+| **Personnalisation** | 10 % | Pitch adapté au domaine et à la couverture récente du journaliste/média précis |
+| **Mise en forme** | 10 % | Format de communiqué de presse approprié : titre, ligne de dateline, texte standard, coordonnées |
 
 ---
 
-## 7. Brand Voice Consistency Score (0-100)
+## 7. Score de cohérence de la voix de marque (0-100)
 
-Use for: checking any content against the brand voice profile.
+À utiliser pour : vérifier tout contenu par rapport au profil de voix de marque.
 
-| Dimension | Weight | Criteria |
+| Dimension | Pondération | Critères |
 |-----------|--------|----------|
-| **Formality Match** | 25% | Content formality level matches brand profile (1-10 scale) within ±1 |
-| **Energy Match** | 20% | Energy/enthusiasm level matches brand profile within ±1 |
-| **Vocabulary** | 20% | Uses preferred words, avoids restricted words per brand profile |
-| **Personality** | 20% | Reflects stated personality traits (e.g., witty, empathetic, direct) |
-| **Channel Adaptation** | 15% | Appropriately adjusts voice for the specific channel while staying on-brand |
+| **Correspondance de formalité** | 25 % | Le niveau de formalité du contenu correspond au profil de marque (échelle de 1 à 10) à ±1 près |
+| **Correspondance d'énergie** | 20 % | Le niveau d'énergie/enthousiasme correspond au profil de marque à ±1 près |
+| **Vocabulaire** | 20 % | Utilise les mots préférés, évite les mots restreints selon le profil de marque |
+| **Personnalité** | 20 % | Reflète les traits de personnalité énoncés (par exemple, spirituel, empathique, direct) |
+| **Adaptation au canal** | 15 % | Ajuste correctement la voix pour le canal précis tout en restant conforme à la marque |
 
 ---
 
-## How to Apply Scoring
+## Comment appliquer la notation
 
-1. **Before creating content**: Reference the relevant rubric to guide creation
-2. **After creating content**: Score the output against each dimension
-3. **Report scores**: Include the total score and per-dimension breakdown
-4. **Flag low dimensions**: Any dimension scoring below 50% of its max should be flagged for revision
-5. **Track over time**: Scores saved to brand memory show content quality trends
+1. **Avant de créer le contenu** : référencer la grille pertinente pour guider la création
+2. **Après avoir créé le contenu** : noter le résultat sur chaque dimension
+3. **Rendre compte des scores** : inclure le score total et la répartition par dimension
+4. **Signaler les dimensions faibles** : toute dimension notée en dessous de 50 % de son maximum devrait être signalée pour révision
+5. **Suivre dans le temps** : les scores enregistrés dans la mémoire de marque montrent les tendances de qualité de contenu
 
-## 8. Multilingual Content Score (0-100)
+## 8. Score de contenu multilingue (0-100)
 
-Evaluates translated and localized content quality across 5 dimensions:
+Évalue la qualité du contenu traduit et localisé sur 5 dimensions :
 
 ### Dimensions
 
-| Dimension | Weight | Description |
+| Dimension | Pondération | Description |
 |-----------|--------|-------------|
-| Translation Accuracy | 25% | Length ratio within expected range, meaning preservation, no omissions or additions |
-| Cultural Adaptation | 25% | Cultural references appropriate for target market, social proof style adapted, urgency/trust signals localized |
-| Brand Voice Preservation | 20% | Brand personality maintained in target language, tone consistent with market expectations, vocabulary aligned |
-| Formatting Integrity | 15% | Markdown/HTML preserved, placeholders intact, merge tags unchanged, RTL handled correctly |
-| Compliance Alignment | 15% | Market-specific disclaimers present, consent language correct, regulatory requirements met |
+| Précision de traduction | 25 % | Ratio de longueur dans la fourchette attendue, préservation du sens, aucune omission ni ajout |
+| Adaptation culturelle | 25 % | Références culturelles appropriées pour le marché cible, style de preuve sociale adapté, signaux d'urgence/confiance localisés |
+| Préservation de la voix de marque | 20 % | Personnalité de marque maintenue dans la langue cible, ton cohérent avec les attentes du marché, vocabulaire aligné |
+| Intégrité de la mise en forme | 15 % | Markdown/HTML préservés, placeholders intacts, balises de fusion inchangées, RTL correctement géré |
+| Alignement de conformité | 15 % | Mentions légales spécifiques au marché présentes, langage de consentement correct, exigences réglementaires respectées |
 
-### Score Interpretation
+### Interprétation du score
 
-| Score | Level | Action |
+| Score | Niveau | Action |
 |-------|-------|--------|
-| 85-100 | Publish Ready | Content can be published directly |
-| 70-84 | Review Needed | Native speaker review recommended before publishing |
-| 50-69 | Revision Required | Significant quality issues — re-translate or heavily edit |
-| 0-49 | Re-translate | Fundamental quality problems — start translation fresh |
+| 85-100 | Prêt à publier | Le contenu peut être publié directement |
+| 70-84 | Revue nécessaire | Revue par un locuteur natif recommandée avant publication |
+| 50-69 | Révision requise | Problèmes de qualité significatifs — retraduire ou éditer fortement |
+| 0-49 | À retraduire | Problèmes de qualité fondamentaux — recommencer la traduction à zéro |
 
-### Language-Specific Considerations
+### Considérations spécifiques par langue
 
-- **Indic languages**: Check script rendering, transliteration consistency, code-switching patterns (e.g., Hinglish)
-- **CJK languages**: Verify character-based length ratios (0.5-0.8x English), honorific levels, character set consistency (Simplified vs Traditional Chinese)
-- **RTL languages**: Confirm direction attributes, number formatting, layout mirroring
-- **European languages**: Check formality level consistency, gender agreement, false friend detection
+- **Langues indiques** : vérifier le rendu du script, la cohérence de translittération, les schémas de code-switching (par exemple, le Hinglish)
+- **Langues CJK** : vérifier les ratios de longueur basés sur les caractères (0,5-0,8x l'anglais), les niveaux d'honorifiques, la cohérence du jeu de caractères (chinois simplifié vs traditionnel)
+- **Langues RTL** : confirmer les attributs de direction, le formatage des nombres, le miroir de mise en page
+- **Langues européennes** : vérifier la cohérence du niveau de formalité, l'accord de genre, la détection des faux amis
+</content>

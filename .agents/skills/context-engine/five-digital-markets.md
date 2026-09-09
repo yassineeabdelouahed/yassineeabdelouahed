@@ -1,37 +1,37 @@
-# The Five Digital Markets
+# Les cinq marchés numériques
 
-All digital channels organise into five fundamental market types. Understanding this taxonomy prevents the most common mistake in digital marketing: treating every channel as independent and choosing channels by what is trendy rather than by where the audience actually is.
+Tous les canaux numériques s'organisent en cinq types de marché fondamentaux. Comprendre cette taxonomie évite l'erreur la plus courante en marketing digital : traiter chaque canal comme indépendant et choisir les canaux selon ce qui est tendance plutôt que selon l'endroit où se trouve réellement l'audience.
 
-The market type determines the channel — never the other way around.
+Le type de marché détermine le canal — jamais l'inverse.
 
-## The Five Markets
+## Les cinq marchés
 
-### 1. Search
+### 1. Recherche (Search)
 
-**Customer mode:** Actively looking for solutions. They have intent. This is **demand capture** — the closest to purchase.
+**Mode client :** cherche activement des solutions. A une intention. C'est la **captation de la demande** — le plus proche de l'achat.
 
-**Mental state:** "I have a problem. I need to find a solution. Let me search."
+**État d'esprit :** « J'ai un problème. J'ai besoin de trouver une solution. Laissez-moi chercher. »
 
-**Channels:**
-- Google Search (paid + organic)
-- AEO (Answer Engine Optimization — visibility in ChatGPT, Perplexity, Gemini, Claude, Copilot answers)
-- YouTube Search
+**Canaux :**
+- Google Search (payant + organique)
+- AEO (optimisation pour les moteurs de réponse — visibilité dans les réponses de ChatGPT, Perplexity, Gemini, Claude, Copilot)
+- Recherche YouTube
 - Bing Search
-- Marketplace search (Amazon search, Flipkart search)
-- App Store search
-- Voice search (Alexa, Google Assistant, Siri queries)
+- Recherche marketplace (recherche Amazon, recherche Flipkart)
+- Recherche App Store
+- Recherche vocale (requêtes Alexa, Google Assistant, Siri)
 
-**When to invest heavily:** When the problem is well-formed and the customer knows to search for it. B2B SaaS, professional services, considered consumer purchases.
+**Quand investir fortement :** Lorsque le problème est bien formé et que le client sait qu'il faut le rechercher. SaaS B2B, services professionnels, achats consommateurs réfléchis.
 
-**When to deprioritise:** When the customer does not yet know the category exists, or when the search volume is too low to scale.
+**Quand déprioriser :** Lorsque le client ne sait pas encore que la catégorie existe, ou lorsque le volume de recherche est trop faible pour monter en échelle.
 
-### 2. Profile / Social
+### 2. Profil / Social
 
-**Customer mode:** Interacting in their personal/professional social contexts. **Demand generation and nurturing**. They are not searching — you are interrupting.
+**Mode client :** interagit dans ses contextes sociaux personnels/professionnels. **Génération et nurturing de la demande**. Il ne cherche pas — vous l'interrompez.
 
-**Mental state:** "I am scrolling for entertainment / professional updates / community."
+**État d'esprit :** « Je fais défiler pour me divertir / pour des mises à jour professionnelles / pour la communauté. »
 
-**Channels:**
+**Canaux :**
 - Meta (Facebook + Instagram)
 - LinkedIn
 - X (Twitter)
@@ -41,112 +41,113 @@ The market type determines the channel — never the other way around.
 - Threads
 - Bluesky
 
-**When to invest heavily:** When the audience is well-defined demographically/psychographically/firmographically AND the brand has visual or narrative appeal.
+**Quand investir fortement :** Lorsque l'audience est bien définie démographiquement/psychographiquement/firmographiquement ET que la marque a un attrait visuel ou narratif.
 
-**When to deprioritise:** When the brand has no visual story OR when the audience does not spend meaningful time on these platforms.
+**Quand déprioriser :** Lorsque la marque n'a pas d'histoire visuelle OU lorsque l'audience ne passe pas de temps significatif sur ces plateformes.
 
-### 3. Contextual
+### 3. Contextuel
 
-**Customer mode:** Consuming content elsewhere. You appear alongside relevant content. **Awareness and consideration**.
+**Mode client :** consomme du contenu ailleurs. Vous apparaissez aux côtés de contenu pertinent. **Notoriété et considération**.
 
-**Mental state:** "I am reading / watching / listening to something." (You appear in their context, not because they sought you out.)
+**État d'esprit :** « Je lis / regarde / écoute quelque chose. » (Vous apparaissez dans son contexte, pas parce qu'il vous a recherché.)
 
-**Channels:**
+**Canaux :**
 - Google Display Network
-- Programmatic display (DV360, The Trade Desk)
-- YouTube Pre-roll / Mid-roll
-- Native advertising (Outbrain, Taboola)
-- Podcast advertising
-- Connected TV (CTV)
-- Newsletter sponsorships
+- Display programmatique (DV360, The Trade Desk)
+- YouTube pré-roll / mi-roll
+- Publicité native (Outbrain, Taboola)
+- Publicité podcast
+- Télévision connectée (CTV)
+- Parrainages de newsletter
 
-**When to invest heavily:** When the brand has established positioning that benefits from broad awareness, or when retargeting cookies/CDP audiences need re-engagement.
+**Quand investir fortement :** Lorsque la marque a un positionnement établi qui bénéficie d'une notoriété large, ou lorsque des cookies de retargeting/audiences CDP nécessitent une réengagement.
 
-**When to deprioritise:** Early-stage when there is no audience to retarget AND no clear brand story to tell at scale.
+**Quand déprioriser :** En phase précoce lorsqu'il n'y a pas d'audience à retargeter ET pas d'histoire de marque claire à raconter à l'échelle.
 
 ### 4. Marketplace
 
-**Customer mode:** Browsing or buying on e-commerce platforms. **High purchase intent but price-competitive environment**.
+**Mode client :** navigue ou achète sur des plateformes e-commerce. **Forte intention d'achat mais environnement concurrentiel sur les prix**.
 
-**Mental state:** "I am buying something. Show me options."
+**État d'esprit :** « J'achète quelque chose. Montrez-moi des options. »
 
-**Channels:**
+**Canaux :**
 - Amazon Ads (Sponsored Products, Sponsored Brands, Sponsored Display)
 - Flipkart Ads
-- Marketplace SEO (listing optimisation)
-- Quick-commerce platforms (Blinkit, Zepto, Instamart)
-- B2B marketplaces (IndiaMART, TradeIndia for B2B)
+- SEO marketplace (optimisation de fiche produit)
+- Plateformes de quick-commerce (Blinkit, Zepto, Instamart)
+- Marketplaces B2B (IndiaMART, TradeIndia pour le B2B)
 - Etsy, Shopify Marketplace, Walmart Marketplace
 - App Store Search Ads
 
-**When to invest heavily:** D2C brands with marketplace listings where buyer intent is high and competitive density is manageable.
+**Quand investir fortement :** Marques D2C avec des fiches marketplace où l'intention d'achat est élevée et la densité concurrentielle gérable.
 
-**When to deprioritise:** Service businesses, considered B2B sales (marketplace dynamics do not apply), brand-building goals (margins too thin, attribution to brand limited).
+**Quand déprioriser :** Entreprises de services, ventes B2B réfléchies (les dynamiques de marketplace ne s'appliquent pas), objectifs de construction de marque (marges trop faibles, attribution à la marque limitée).
 
-### 5. Utility
+### 5. Utilitaire
 
-**Customer mode:** Using tools, communities, or resources you have created. **Relationship-building through value**.
+**Mode client :** utilise des outils, des communautés, ou des ressources que vous avez créés. **Construction de relation par la valeur**.
 
-**Mental state:** "I use this brand's [tool / community / content] regularly."
+**État d'esprit :** « J'utilise régulièrement [l'outil / la communauté / le contenu] de cette marque. »
 
-**Channels:**
-- Email
+**Canaux :**
+- E-mail
 - WhatsApp
 - SMS
-- Chatbots (on website, on Messenger, on WhatsApp)
-- Mobile apps (your own app)
-- Calculators / interactive tools (mortgage calculator, ROI calculator, fit-finder)
-- Communities (Slack groups, Discord servers, branded forums, Circle communities)
-- Webinars / virtual events
-- Free tools / templates / playbooks (gated or ungated)
-- Newsletter subscriptions (the brand's own newsletter)
+- Chatbots (sur le site web, sur Messenger, sur WhatsApp)
+- Applications mobiles (votre propre application)
+- Calculateurs / outils interactifs (calculateur de prêt immobilier, calculateur de ROI, outil de recherche d'adéquation)
+- Communautés (groupes Slack, serveurs Discord, forums de marque, communautés Circle)
+- Webinaires / événements virtuels
+- Outils gratuits / modèles / playbooks (protégés ou non par un formulaire)
+- Abonnements à la newsletter (la newsletter propre de la marque)
 
-**When to invest heavily:** Always. This is the highest-LTV channel category because you own the relationship. Build here from day one.
+**Quand investir fortement :** Toujours. C'est la catégorie de canal à la LTV la plus élevée car vous possédez la relation. Construisez ici dès le premier jour.
 
-**When to deprioritise:** Never deprioritise utility — but pace investment based on team capacity. Better to have one well-run email programme than six neglected utility channels.
+**Quand déprioriser :** Ne jamais déprioriser l'utilitaire — mais rythmer l'investissement selon la capacité de l'équipe. Mieux vaut avoir un programme e-mail bien géré que six canaux utilitaires négligés.
 
-## How to apply this taxonomy
+## Comment appliquer cette taxonomie
 
-When a client says **"we want to do Google Ads"** or **"we should be on TikTok"** or **"let us start a podcast"**, the strategist's first job is to ask:
+Lorsqu'un client dit **« nous voulons faire du Google Ads »** ou **« nous devrions être sur TikTok »** ou **« lançons un podcast »**, le premier travail du stratège est de demander :
 
-> Is the target audience in Search mode (actively looking) — or Profile mode (browsing socially) — or Contextual mode (consuming content elsewhere) — or Marketplace mode (buying) — or Utility mode (using tools/communities)?
+> L'audience cible est-elle en mode recherche (cherchant activement) — ou en mode profil (naviguant socialement) — ou en mode contextuel (consommant du contenu ailleurs) — ou en mode marketplace (achetant) — ou en mode utilitaire (utilisant des outils/communautés) ?
 
-**The mode determines the market. The market determines the channel set. The channel set narrows to specific platforms.**
+**Le mode détermine le marché. Le marché détermine l'ensemble de canaux. L'ensemble de canaux se restreint à des plateformes précises.**
 
-If the client says "Google Ads" but the audience is in Profile mode (no active searching), Google Ads will under-perform. The right answer is Meta or LinkedIn, not Google.
+Si le client dit « Google Ads » mais que l'audience est en mode profil (pas de recherche active), Google Ads sous-performera. La bonne réponse est Meta ou LinkedIn, pas Google.
 
-If the client says "TikTok" but the audience is in Search mode (high purchase intent, comparing solutions), TikTok will struggle to convert. The right answer is Google Search + retargeting, not TikTok.
+Si le client dit « TikTok » mais que l'audience est en mode recherche (forte intention d'achat, comparant des solutions), TikTok aura du mal à convertir. La bonne réponse est Google Search + retargeting, pas TikTok.
 
-## Common multi-market customer journeys
+## Parcours clients courants multi-marchés
 
-Most customers move through multiple markets during a buying journey. A typical B2B SaaS journey:
+La plupart des clients traversent plusieurs marchés au cours d'un parcours d'achat. Un parcours SaaS B2B typique :
 
-1. **Profile/Social** — sees a LinkedIn post about a problem they didn't know they had (awareness)
-2. **Search** — Googles the problem the next week (consideration)
-3. **Profile/Social** — sees a retargeted LinkedIn ad with a case study
-4. **Search** — Googles the brand name + "vs [competitor]" comparison
-5. **Utility** — downloads a comparison guide (gated, captures email)
-6. **Utility** — gets an email nurture sequence over 2 weeks
-7. **Search** — Googles "[brand] pricing"
-8. **Utility** — books a demo via the website chatbot
+1. **Profil/Social** — voit un post LinkedIn sur un problème qu'il ne savait pas avoir (notoriété)
+2. **Recherche** — recherche le problème sur Google la semaine suivante (considération)
+3. **Profil/Social** — voit une publicité LinkedIn retargetée avec une étude de cas
+4. **Recherche** — recherche le nom de la marque + comparaison « vs [concurrent] »
+5. **Utilitaire** — télécharge un guide comparatif (protégé par formulaire, capture l'e-mail)
+6. **Utilitaire** — reçoit une séquence de nurturing e-mail sur 2 semaines
+7. **Recherche** — recherche « tarification [marque] »
+8. **Utilitaire** — réserve une démo via le chatbot du site web
 
-The strategy for this brand is not "do LinkedIn" or "do Google" — it is **all five markets in sequence**, each playing the role appropriate to the stage. The DMFlow document (Core Doc 3.4) maps this end-to-end.
+La stratégie pour cette marque n'est pas « faire du LinkedIn » ou « faire du Google » — c'est **les cinq marchés en séquence**, chacun jouant le rôle approprié à son étape. Le document DMFlow (document central 3.4) cartographie cela de bout en bout.
 
-## How channels in different markets reinforce each other
+## Comment les canaux de différents marchés se renforcent mutuellement
 
-Markets are not independent. Investments in one market lift performance in others:
+Les marchés ne sont pas indépendants. Les investissements dans un marché améliorent la performance dans d'autres :
 
-- **Brand-building in Profile/Social** lifts CTR on Search ads (people recognise the brand, click more)
-- **Content marketing in Search/SEO** feeds Utility (newsletter signups, downloads, community joins)
-- **Utility (email)** feeds Profile/Social (engaged email subscribers become engaged social followers)
-- **Marketplace presence** lifts Search (people search the brand name after seeing it on Amazon)
+- **La construction de marque en profil/social** améliore le CTR des publicités de recherche (les gens reconnaissent la marque, cliquent davantage)
+- **Le marketing de contenu en recherche/SEO** alimente l'utilitaire (inscriptions à la newsletter, téléchargements, adhésions à la communauté)
+- **L'utilitaire (e-mail)** alimente le profil/social (les abonnés e-mail engagés deviennent des followers sociaux engagés)
+- **La présence marketplace** améliore la recherche (les gens recherchent le nom de la marque après l'avoir vue sur Amazon)
 
-Cutting investment in one market often weakens performance in another. This interdependency is why DMFlow (Core Doc 3.4) requires explicit channel sequencing logic.
+Réduire l'investissement dans un marché affaiblit souvent la performance dans un autre. Cette interdépendance explique pourquoi le DMFlow (document central 3.4) exige une logique explicite de séquencement des canaux.
 
-## Five Digital Markets vs Channel Families
+## Les cinq marchés numériques vs les familles de canaux
 
-The Five Digital Markets is the **strategic taxonomy** — it answers "what kind of attention is the customer giving?"
+Les cinq marchés numériques sont la **taxonomie stratégique** — ils répondent à « quel type d'attention le client accorde-t-il ? »
 
-The [Channel Families](channel-families.md) taxonomy is the **operational grouping for Part 9** — it groups channels by how they are produced and managed (Search & Campaign, Paid platforms, Organic & Influencer, Marketplace & CRM, Content/ATL/BTL/PR, Web + Measurement).
+La taxonomie des [familles de canaux](channel-families.md) est le **regroupement opérationnel de la partie 9** — elle regroupe les canaux selon la façon dont ils sont produits et gérés (recherche et campagne, plateformes payantes, organique et influence, marketplace et CRM, contenu/ATL/BTL/RP, web + mesure).
 
-The two taxonomies map to each other but serve different purposes. Use Five Digital Markets when deciding *which markets to play in*. Use Channel Families when *executing across the chosen channels*.
+Les deux taxonomies se correspondent mutuellement mais servent des objectifs différents. Utilisez les cinq marchés numériques pour décider *sur quels marchés jouer*. Utilisez les familles de canaux pour *exécuter sur les canaux choisis*.
+</content>

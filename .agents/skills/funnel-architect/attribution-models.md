@@ -1,108 +1,108 @@
-# Attribution Models — Comparison & Implementation Guide
+# Modèles d'attribution — Guide de comparaison & de mise en œuvre
 
-## Model Comparison
+## Comparaison des modèles
 
-| Model | How It Works | Best For | Limitation |
+| Modèle | Fonctionnement | Idéal pour | Limite |
 |-------|-------------|----------|-----------|
-| **Last-Click** | 100% credit to last touchpoint | Short sales cycles, direct response | Ignores awareness/consideration |
-| **First-Click** | 100% credit to first touchpoint | Brand awareness campaigns | Ignores nurture/conversion steps |
-| **Linear** | Equal credit to all touchpoints | Balanced overview | Over-credits low-impact touches |
-| **Time-Decay** | More credit to touches closer to conversion | Long sales cycles, B2B | Under-credits awareness |
-| **Position-Based (U-shape)** | 40% first, 40% last, 20% split among middle | Balanced with emphasis on intro/close | Somewhat arbitrary splits |
-| **Data-Driven** | ML model allocates based on actual impact | Large datasets (300+ conversions/month) | Requires significant data volume |
-| **Marketing Mix Modeling** | Econometric model using aggregate data | Budget allocation across channels | Slow, requires historical data |
+| **Dernier clic** | 100 % du crédit au dernier point de contact | Cycles de vente courts, réponse directe | Ignore la notoriété/considération |
+| **Premier clic** | 100 % du crédit au premier point de contact | Campagnes de notoriété de marque | Ignore les étapes de nurturing/conversion |
+| **Linéaire** | Crédit égal à tous les points de contact | Vue d'ensemble équilibrée | Sur-crédite les touches à faible impact |
+| **Dégressif dans le temps** | Plus de crédit aux touches proches de la conversion | Cycles de vente longs, B2B | Sous-crédite la notoriété |
+| **Basé sur la position (forme U)** | 40 % premier, 40 % dernier, 20 % réparti au milieu | Équilibré avec emphase sur intro/clôture | Répartitions quelque peu arbitraires |
+| **Data-driven** | Un modèle ML alloue selon l'impact réel | Grands jeux de données (300+ conversions/mois) | Nécessite un volume de données important |
+| **Marketing Mix Modeling** | Modèle économétrique utilisant des données agrégées | Allocation budgétaire entre canaux | Lent, nécessite des données historiques |
 
 ---
 
-## Model Selection Decision Tree
+## Arbre de décision pour la sélection du modèle
 
 ```
-START: How many conversions per month?
-├── < 300 → Use Position-Based or Time-Decay
-│   ├── Short sales cycle (< 7 days)? → Last-Click or Linear
-│   └── Long sales cycle (> 30 days)? → Time-Decay
-├── 300-1000 → Consider Data-Driven
-│   └── Is your analytics platform capable? → Use Data-Driven
-└── > 1000 → Use Data-Driven + MMM for budget planning
+DÉBUT : combien de conversions par mois ?
+├── < 300 → utiliser Basé sur la position ou Dégressif dans le temps
+│   ├── Cycle de vente court (< 7 jours) ? → Dernier clic ou Linéaire
+│   └── Cycle de vente long (> 30 jours) ? → Dégressif dans le temps
+├── 300-1000 → envisager Data-driven
+│   └── Votre plateforme analytics en est-elle capable ? → utiliser Data-driven
+└── > 1000 → utiliser Data-driven + MMM pour la planification budgétaire
 
-BUSINESS MODEL OVERRIDES:
-- eCommerce / DTC → Last-Click baseline, upgrade to Data-Driven when possible
-- B2B SaaS → Position-Based or Time-Decay (long cycles, many touches)
-- Local Business → Last-Click (simple journeys)
-- Marketplace → Separate attribution for supply and demand sides
+DÉROGATIONS PAR MODÈLE ÉCONOMIQUE :
+- E-commerce / DTC → référence Dernier clic, passer à Data-driven quand possible
+- SaaS B2B → Basé sur la position ou Dégressif dans le temps (cycles longs, nombreuses touches)
+- Entreprise locale → Dernier clic (parcours simples)
+- Marketplace → attribution séparée pour les côtés offre et demande
 ```
 
 ---
 
-## Platform Implementation Guides
+## Guides de mise en œuvre par plateforme
 
 ### Google Analytics 4 (GA4)
 
-- **Default**: Data-driven attribution (cross-channel)
-- **Configurable models**: Since 2023, GA4's Admin → Attribution Settings exposes **only `data-driven` and `last-click` (paid & organic channels)** — the old menu of linear / time-decay / position-based / first-click was removed. To apply linear, time-decay, position-based, or any custom credit rule, model it in your **warehouse / BI layer** (BigQuery export + SQL, or a BI tool) — not in GA4's UI.
-- **Lookback windows**: 30 days for acquisition, 90 days for other conversions
-- **Reports**: Advertising → Attribution → Model comparison (compares the two available models)
-- **AI Assistant channel**: GA4's default channel grouping now includes an **"AI Assistant"** channel that isolates referral traffic from AI assistants (ChatGPT, Gemini, Copilot, Perplexity, etc.). Include it in channel breakdowns so AI-sourced conversions are not misfiled under "Referral" or "Direct".
-- **Limitation**: Only tracks Google-visible touchpoints, cannot see all walled garden data
+- **Par défaut** : attribution data-driven (cross-canal)
+- **Modèles configurables** : depuis 2023, les Paramètres Admin → Attribution de GA4 n'exposent que **`data-driven` et `dernier clic` (canaux payants & organiques)** — l'ancien menu linéaire / dégressif dans le temps / basé sur la position / premier clic a été supprimé. Pour appliquer un modèle linéaire, dégressif dans le temps, basé sur la position, ou toute règle de crédit personnalisée, la modéliser dans votre **couche d'entrepôt de données / BI** (export BigQuery + SQL, ou un outil BI) — pas dans l'interface GA4.
+- **Fenêtres de lookback** : 30 jours pour l'acquisition, 90 jours pour les autres conversions
+- **Rapports** : Publicité → Attribution → Comparaison de modèles (compare les deux modèles disponibles)
+- **Canal Assistant IA** : le regroupement de canaux par défaut de GA4 inclut désormais un canal **« Assistant IA »** qui isole le trafic de référence provenant des assistants IA (ChatGPT, Gemini, Copilot, Perplexity, etc.). L'inclure dans les répartitions par canal afin que les conversions issues de l'IA ne soient pas mal classées sous « Référence » ou « Direct ».
+- **Limite** : ne suit que les points de contact visibles par Google, ne peut pas voir toutes les données des jardins clos
 
-### Meta (Facebook) Attribution
+### Attribution Meta (Facebook)
 
-- **Default**: 7-day click, 1-day view attribution
-- **Conversions API (CAPI)**: Server-side event tracking for better match rates
-- **Aggregated Event Measurement**: For iOS 14+ tracking limitations
-- **Recommended**: Configure CAPI + browser pixel for maximum data coverage
-- **Compare**: Meta's self-reported conversions vs GA4's cross-channel view
+- **Par défaut** : attribution 7 jours clic, 1 jour vue
+- **Conversions API (CAPI)** : suivi d'événements côté serveur pour de meilleurs taux de correspondance
+- **Aggregated Event Measurement** : pour les limitations de suivi iOS 14+
+- **Recommandé** : configurer CAPI + pixel navigateur pour une couverture de données maximale
+- **Comparer** : les conversions auto-déclarées de Meta vs la vue cross-canal de GA4
 
 ### Google Ads
 
-- **Default**: Last-click within Google Ads
-- **Data-driven**: Available in conversion settings when sufficient data
-- **Cross-campaign**: Attribution applies across Search, Display, YouTube, Shopping
-- **Recommendation**: Enable data-driven attribution, set appropriate conversion windows
+- **Par défaut** : dernier clic au sein de Google Ads
+- **Data-driven** : disponible dans les paramètres de conversion quand les données sont suffisantes
+- **Cross-campagne** : l'attribution s'applique sur Search, Display, YouTube, Shopping
+- **Recommandation** : activer l'attribution data-driven, définir des fenêtres de conversion appropriées
 
 ---
 
-## Cross-Device Attribution
+## Attribution cross-device
 
-### Challenges
-- Same user, different devices appears as multiple users
-- Cookie-based tracking breaks across devices
-- Privacy regulations limit cross-device linking
+### Défis
+- Le même utilisateur sur différents appareils apparaît comme plusieurs utilisateurs
+- Le suivi par cookie se rompt entre les appareils
+- Les réglementations de confidentialité limitent le lien cross-device
 
 ### Solutions
-1. **Deterministic matching**: Logged-in user IDs across devices (most accurate, requires auth)
-2. **Probabilistic matching**: Statistical models linking device patterns (less accurate)
-3. **Google Signals**: Cross-device data from logged-in Google users in GA4
-4. **CRM integration**: Match conversions to known contacts across touchpoints
+1. **Correspondance déterministe** : identifiants d'utilisateur connecté sur les appareils (la plus précise, nécessite une authentification)
+2. **Correspondance probabiliste** : modèles statistiques reliant les schémas d'appareil (moins précise)
+3. **Google Signals** : données cross-device des utilisateurs Google connectés dans GA4
+4. **Intégration CRM** : faire correspondre les conversions aux contacts connus sur les points de contact
 
 ---
 
-## Custom Model Design Framework
+## Cadre de conception de modèle personnalisé
 
-When standard models don't fit:
+Quand les modèles standard ne conviennent pas :
 
-1. **Define touchpoint categories**: Awareness, Engagement, Conversion Assist, Conversion
-2. **Assign category weights** based on business model:
-   - B2B SaaS: Awareness 20%, Engagement 30%, Assist 20%, Conversion 30%
-   - eCommerce: Awareness 15%, Engagement 15%, Assist 20%, Conversion 50%
-3. **Test against actual outcomes**: Compare model predictions to observed patterns
-4. **Iterate quarterly**: Adjust weights based on incrementality test results
+1. **Définir les catégories de points de contact** : Notoriété, Engagement, Assistance à la conversion, Conversion
+2. **Assigner des poids par catégorie** selon le modèle économique :
+   - SaaS B2B : Notoriété 20 %, Engagement 30 %, Assistance 20 %, Conversion 30 %
+   - E-commerce : Notoriété 15 %, Engagement 15 %, Assistance 20 %, Conversion 50 %
+3. **Tester par rapport aux résultats réels** : comparer les prédictions du modèle aux schémas observés
+4. **Itérer trimestriellement** : ajuster les poids selon les résultats des tests d'incrémentalité
 
 ---
 
-## Attribution Validation
+## Validation de l'attribution
 
-### How to Verify Your Model Is Accurate
+### Comment vérifier que votre modèle est précis
 
-1. **Holdout tests**: Pause a channel, measure true impact vs model-predicted impact
-2. **Incrementality tests**: Geo-split or user-split experiments per channel
-3. **Cross-model comparison**: Run 2-3 models in parallel, compare conclusions
-4. **Sanity checks**: Does the attribution match what you intuitively know about channel performance?
-5. **Revenue reconciliation**: Do attributed conversions sum to actual revenue?
+1. **Tests par retenue (holdout)** : mettre en pause un canal, mesurer l'impact réel vs l'impact prédit par le modèle
+2. **Tests d'incrémentalité** : expériences géo-split ou user-split par canal
+3. **Comparaison cross-modèle** : exécuter 2-3 modèles en parallèle, comparer les conclusions
+4. **Vérifications de bon sens** : l'attribution correspond-elle à ce que vous savez intuitivement de la performance des canaux ?
+5. **Réconciliation du chiffre d'affaires** : les conversions attribuées totalisent-elles le chiffre d'affaires réel ?
 
-### Red Flags
+### Signaux d'alerte
 
-- A single channel claims >80% of conversions (likely measurement bias)
-- Model suddenly changes attribution dramatically (check for tracking issues)
-- Branded search gets majority credit (it's capturing demand, not creating it)
-- Model ignores channels you know drive awareness (review touchpoint capture)
+- Un seul canal revendique >80 % des conversions (probable biais de mesure)
+- Le modèle change soudainement et radicalement l'attribution (vérifier les problèmes de suivi)
+- La recherche de marque obtient la majorité du crédit (elle capte la demande, elle ne la crée pas)
+- Le modèle ignore des canaux dont vous savez qu'ils génèrent de la notoriété (revoir la capture des points de contact)

@@ -1,119 +1,119 @@
-# Funnel Gap Analysis — Framework & Prioritization
+# Analyse d'écarts du tunnel — Cadre & priorisation
 
-## Gap Identification Methodology
+## Méthodologie d'identification des écarts
 
-### Data-Driven Analysis
+### Analyse basée sur les données
 
-1. **Pull funnel metrics** for each stage (volume, conversion rate, time-in-stage)
-2. **Compare to benchmarks** from funnel-templates.md for your business model
-3. **Calculate drop-off** between each stage: Drop-off % = 1 - (Stage N+1 / Stage N)
-4. **Identify outliers**: Any stage with conversion rate >20% below benchmark is a gap
-5. **Trend analysis**: Is any stage getting worse over time? (even if currently above benchmark)
+1. **Récupérer les métriques du tunnel** pour chaque étape (volume, taux de conversion, temps passé à l'étape)
+2. **Comparer aux benchmarks** de funnel-templates.md pour votre modèle économique
+3. **Calculer l'abandon** entre chaque étape : % d'abandon = 1 - (Étape N+1 / Étape N)
+4. **Identifier les valeurs aberrantes** : toute étape avec un taux de conversion >20 % en dessous du benchmark est un écart
+5. **Analyse de tendance** : une étape se dégrade-t-elle dans le temps ? (même si actuellement au-dessus du benchmark)
 
-### Qualitative Signals
+### Signaux qualitatifs
 
-- Customer feedback mentioning friction at specific stages
-- Sales team reporting common objections or drop-off points
-- Support tickets clustering around specific journey moments
-- Session recordings showing user confusion or abandonment
-- NPS/CSAT scores that drop at specific touchpoints
-
----
-
-## Common Gap Patterns by Business Model
-
-### B2B SaaS
-| Gap Pattern | Symptom | Likely Cause |
-|-------------|---------|-------------|
-| Awareness gap | Low organic traffic, poor brand search volume | Weak content strategy, poor SEO |
-| Activation gap | High signup rate, low product usage | Poor onboarding, unclear time-to-value |
-| MQL→SQL gap | Marketing generates leads, sales rejects them | Misaligned lead scoring, wrong audience |
-| Trial→Paid gap | Users try but don't convert | Pricing friction, insufficient value demonstration |
-| Expansion gap | Customers stay but don't grow | No upsell triggers, feature awareness gap |
-
-### eCommerce
-| Gap Pattern | Symptom | Likely Cause |
-|-------------|---------|-------------|
-| Discovery gap | Low traffic despite good products | Distribution problem, poor channel mix |
-| Browse→Cart gap | High traffic, low cart adds | Product-market fit, pricing, UX issues |
-| Cart abandonment | 70%+ abandonment | Surprise costs, complex checkout, trust deficit |
-| Repeat purchase gap | One-time buyers don't return | No retention program, poor post-purchase experience |
-
-### B2B Services
-| Gap Pattern | Symptom | Likely Cause |
-|-------------|---------|-------------|
-| Trust gap | Traffic but no inquiries | Insufficient social proof, thought leadership |
-| Consultation gap | Leads inquire but don't book | Slow response, friction in booking process |
-| Proposal gap | Many proposals, low win rate | Pricing, positioning, or proposal quality |
+- Retours clients mentionnant de la friction à des étapes précises
+- L'équipe commerciale rapportant des objections communes ou des points d'abandon
+- Tickets de support se concentrant autour de moments précis du parcours
+- Enregistrements de session montrant la confusion ou l'abandon de l'utilisateur
+- Scores NPS/CSAT qui chutent à des points de contact précis
 
 ---
 
-## Gap Severity Scoring
+## Schémas d'écarts communs par modèle économique
 
-### ICE Framework (Impact × Confidence × Ease)
+### SaaS B2B
+| Schéma d'écart | Symptôme | Cause probable |
+|-------------|---------|-------------|
+| Écart de notoriété | Faible trafic organique, mauvais volume de recherche de marque | Stratégie de contenu faible, mauvais SEO |
+| Écart d'activation | Taux d'inscription élevé, faible usage du produit | Mauvais onboarding, temps jusqu'à la valeur peu clair |
+| Écart MQL→SQL | Le marketing génère des leads, les ventes les rejettent | Notation de lead mal alignée, mauvaise audience |
+| Écart essai→payant | Les utilisateurs essaient mais ne convertissent pas | Friction tarifaire, démonstration de valeur insuffisante |
+| Écart d'expansion | Les clients restent mais ne se développent pas | Aucun déclencheur d'upsell, manque de connaissance des fonctionnalités |
 
-Score each identified gap on three dimensions (1-10):
+### E-commerce
+| Schéma d'écart | Symptôme | Cause probable |
+|-------------|---------|-------------|
+| Écart de découverte | Faible trafic malgré de bons produits | Problème de distribution, mauvais mix de canaux |
+| Écart navigation→panier | Trafic élevé, peu d'ajouts au panier | Adéquation produit-marché, tarification, problèmes d'UX |
+| Abandon de panier | Taux d'abandon de 70 %+ | Coûts surprises, paiement complexe, déficit de confiance |
+| Écart d'achat répété | Les acheteurs uniques ne reviennent pas | Aucun programme de rétention, mauvaise expérience post-achat |
 
-| Dimension | What It Measures | Scoring Guide |
+### Services B2B
+| Schéma d'écart | Symptôme | Cause probable |
+|-------------|---------|-------------|
+| Écart de confiance | Trafic mais pas de demandes | Preuve sociale insuffisante, leadership éclairé insuffisant |
+| Écart de consultation | Les leads demandent mais ne réservent pas | Réponse lente, friction dans le processus de réservation |
+| Écart de proposition | Beaucoup de propositions, faible taux de succès | Tarification, positionnement, ou qualité de la proposition |
+
+---
+
+## Notation de sévérité des écarts
+
+### Cadre ICE (Impact × Confiance × Facilité)
+
+Noter chaque écart identifié sur trois dimensions (1-10) :
+
+| Dimension | Ce qu'elle mesure | Guide de notation |
 |-----------|-----------------|---------------|
-| **Impact** | How much revenue/growth fixing this gap would unlock | 10 = >50% improvement, 5 = 10-25%, 1 = <5% |
-| **Confidence** | How sure are we this is the real problem and our fix will work | 10 = data-backed, tested before, 5 = educated guess, 1 = speculation |
-| **Ease** | How easy is it to implement the fix | 10 = same day, no dev, 5 = 1-2 weeks, 1 = months + engineering |
+| **Impact** | Combien de chiffre d'affaires/croissance corriger cet écart débloquerait | 10 = >50 % d'amélioration, 5 = 10-25 %, 1 = <5 % |
+| **Confiance** | À quel point sommes-nous sûrs qu'il s'agit du vrai problème et que notre correction fonctionnera | 10 = étayé par des données, testé auparavant, 5 = estimation éclairée, 1 = spéculation |
+| **Facilité** | À quel point est-il facile de mettre en œuvre la correction | 10 = le jour même, sans développement, 5 = 1-2 semaines, 1 = des mois + ingénierie |
 
-**ICE Score** = (Impact + Confidence + Ease) / 3
+**Score ICE** = (Impact + Confiance + Facilité) / 3
 
-### Priority Tiers
+### Niveaux de priorité
 
-| ICE Score | Priority | Action |
+| Score ICE | Priorité | Action |
 |-----------|----------|--------|
-| 8-10 | P1 — Immediate | Fix this week |
-| 6-7.9 | P2 — Near-term | Plan for next sprint/month |
-| 4-5.9 | P3 — Backlog | Schedule when resources allow |
-| <4 | P4 — Monitor | Track but don't invest yet |
+| 8-10 | P1 — Immédiat | Corriger cette semaine |
+| 6-7,9 | P2 — Court terme | Planifier pour le prochain sprint/mois |
+| 4-5,9 | P3 — Backlog | Programmer quand les ressources le permettent |
+| <4 | P4 — À surveiller | Suivre mais ne pas investir pour l'instant |
 
 ---
 
-## Gap-to-Action Mapping
+## Cartographie écart-vers-action
 
-| Gap Type | Recommended Tactics |
+| Type d'écart | Tactiques recommandées |
 |----------|-------------------|
-| **Awareness gap** | Content marketing, SEO, paid social, PR, influencer partnerships |
-| **Consideration gap** | Comparison content, case studies, webinars, retargeting |
-| **Trust gap** | Social proof, reviews, media coverage, security certifications |
-| **Activation gap** | Onboarding optimization, in-app guidance, success milestones |
-| **Conversion gap** | CRO, pricing optimization, urgency/scarcity, checkout simplification |
-| **Retention gap** | Email nurture, loyalty programs, feature adoption campaigns |
-| **Expansion gap** | Upsell triggers, usage-based alerts, customer success outreach |
-| **Referral gap** | Referral programs, NPS follow-up, advocacy campaigns |
+| **Écart de notoriété** | Marketing de contenu, SEO, social payant, RP, partenariats d'influenceurs |
+| **Écart de considération** | Contenu comparatif, études de cas, webinaires, retargeting |
+| **Écart de confiance** | Preuve sociale, avis, couverture média, certifications de sécurité |
+| **Écart d'activation** | Optimisation de l'onboarding, guidage in-app, jalons de réussite |
+| **Écart de conversion** | CRO, optimisation tarifaire, urgence/rareté, simplification du paiement |
+| **Écart de rétention** | Nurturing par email, programmes de fidélité, campagnes d'adoption de fonctionnalités |
+| **Écart d'expansion** | Déclencheurs d'upsell, alertes basées sur l'usage, prospection par la réussite client |
+| **Écart de parrainage** | Programmes de parrainage, suivi NPS, campagnes de défense de marque |
 
 ---
 
-## Measurement Framework
+## Cadre de mesure
 
-### Before/After Tracking
+### Suivi avant/après
 
-For each gap fix, document:
+Pour chaque correction d'écart, documenter :
 
-1. **Baseline metric**: Stage conversion rate before the fix (2-4 weeks of data)
-2. **Fix description**: Exactly what was changed
-3. **Implementation date**: When the fix went live
-4. **Post-fix metric**: Stage conversion rate after the fix (2-4 weeks of data)
-5. **Statistical significance**: Was the change significant or within normal variance?
-6. **Revenue impact**: Estimated revenue change from the conversion rate improvement
+1. **Métrique de référence** : taux de conversion de l'étape avant la correction (2-4 semaines de données)
+2. **Description de la correction** : exactement ce qui a été changé
+3. **Date de mise en œuvre** : quand la correction est entrée en vigueur
+4. **Métrique post-correction** : taux de conversion de l'étape après la correction (2-4 semaines de données)
+5. **Signification statistique** : le changement était-il significatif ou dans la variance normale ?
+6. **Impact sur le chiffre d'affaires** : changement de chiffre d'affaires estimé issu de l'amélioration du taux de conversion
 
-### Calculating Revenue Impact of a Gap Fix
+### Calculer l'impact sur le chiffre d'affaires d'une correction d'écart
 
 ```
-Current monthly revenue: $X
-Stage conversion rate (before): A%
-Stage conversion rate (after): B%
-Improvement multiplier: B/A
+Chiffre d'affaires mensuel actuel : X $
+Taux de conversion de l'étape (avant) : A%
+Taux de conversion de l'étape (après) : B%
+Multiplicateur d'amélioration : B/A
 
-Estimated revenue uplift = $X × (B/A - 1) × [weight of that stage in overall funnel]
+Hausse de chiffre d'affaires estimée = X $ × (B/A - 1) × [poids de cette étape dans le tunnel global]
 ```
 
-### Ongoing Funnel Health Monitoring
+### Surveillance continue de la santé du tunnel
 
-- **Weekly**: Check conversion rates at each stage, flag anomalies
-- **Monthly**: Full funnel analysis, compare to benchmarks, update gap priorities
-- **Quarterly**: Strategic funnel review, reassess architecture, plan next optimization cycle
+- **Hebdomadaire** : vérifier les taux de conversion à chaque étape, signaler les anomalies
+- **Mensuel** : analyse complète du tunnel, comparaison aux benchmarks, mise à jour des priorités d'écarts
+- **Trimestriel** : revue stratégique du tunnel, réévaluation de l'architecture, planification du prochain cycle d'optimisation

@@ -1,161 +1,162 @@
-# Multi-Dimensional Decision Framework
+# Cadre de décision multidimensionnel
 
-Every meaningful marketing decision involves multiple dimensions. Most decisions are made by considering only one or two dimensions and ignoring the rest. This produces gut-feel decisions that occasionally land well but often miss obvious tradeoffs.
+Chaque décision marketing significative implique plusieurs dimensions. La plupart des décisions sont prises en ne considérant qu'une ou deux dimensions et en ignorant le reste. Cela produit des décisions à l'instinct qui parfois fonctionnent bien mais manquent souvent des compromis évidents.
 
-The Multi-Dimensional Decision Framework forces every dimension to be named, weighted, and scored.
+Le cadre de décision multidimensionnel force chaque dimension à être nommée, pondérée, et notée.
 
-## When to use this framework
+## Quand utiliser ce cadre
 
-Use it for any decision where the wrong choice would cost meaningful budget, time, or strategic position:
+Utilisez-le pour toute décision où un mauvais choix coûterait un budget, un temps, ou une position stratégique significatifs :
 
-- Channel selection (which channels to invest in)
-- Platform selection (Google Ads vs Meta vs LinkedIn for a given campaign)
-- Audience targeting (which segment to prioritise)
-- Budget allocation (how to split across channels)
-- Creative direction (which concept to develop)
-- Tool / vendor selection (which platform / agency / partner to use)
-- Pricing decisions
-- Go-to-market sequence (which market to enter first)
+- Sélection de canal (dans quels canaux investir)
+- Sélection de plateforme (Google Ads vs Meta vs LinkedIn pour une campagne donnée)
+- Ciblage d'audience (quel segment prioriser)
+- Allocation budgétaire (comment répartir sur les canaux)
+- Direction créative (quel concept développer)
+- Sélection d'outil / de fournisseur (quelle plateforme / agence / partenaire utiliser)
+- Décisions de tarification
+- Séquence de mise sur le marché (quel marché aborder en premier)
 
-Do **not** use it for:
-- Trivial decisions (which colour for the button)
-- Decisions where data is fully sufficient (a/b test winner is clear)
-- Decisions where a constraint forces the answer (only one channel is allowed by compliance)
+Ne **pas** l'utiliser pour :
+- Les décisions triviales (quelle couleur pour le bouton)
+- Les décisions où les données suffisent entièrement (le gagnant d'un test A/B est clair)
+- Les décisions où une contrainte impose la réponse (un seul canal est autorisé par la conformité)
 
-## The four steps
+## Les quatre étapes
 
-### Step 1: Identify ALL dimensions that matter
+### Étape 1 : Identifier TOUTES les dimensions pertinentes
 
-Force yourself to list every dimension, even ones that seem obvious. Common dimensions for marketing decisions:
+Forcez-vous à lister chaque dimension, même celles qui semblent évidentes. Dimensions courantes pour les décisions marketing :
 
-- Audience presence (does the target audience use this channel/option?)
-- Intent match (does the user mode match the option?)
-- Conversion potential (likelihood of producing the desired outcome)
-- Cost per outcome (CAC, CPC, CPL, CPA)
-- Volume potential (can this scale to meet the goal?)
-- Competitive density (how crowded is the option?)
-- Brand safety (risk of unsafe placements / negative associations)
-- Resource requirement (team time, creative production load)
-- Time-to-results (immediate vs long-term)
-- Measurability (can we attribute outcomes?)
-- Strategic fit (does this align with the brand's positioning?)
-- Reversibility (can we change course if it does not work?)
+- Présence d'audience (l'audience cible utilise-t-elle ce canal/cette option ?)
+- Adéquation d'intention (le mode utilisateur correspond-il à l'option ?)
+- Potentiel de conversion (probabilité de produire le résultat souhaité)
+- Coût par résultat (CAC, CPC, CPL, CPA)
+- Potentiel de volume (cela peut-il monter en échelle pour atteindre l'objectif ?)
+- Densité concurrentielle (à quel point l'option est-elle encombrée ?)
+- Sécurité de marque (risque de placements dangereux / d'associations négatives)
+- Besoin en ressources (temps d'équipe, charge de production créative)
+- Délai de résultats (immédiat vs long terme)
+- Mesurabilité (pouvons-nous attribuer les résultats ?)
+- Adéquation stratégique (cela s'aligne-t-il avec le positionnement de la marque ?)
+- Réversibilité (pouvons-nous changer de cap si cela ne fonctionne pas ?)
 
-For a TikTok decision, the dimensions might be: audience presence (30%), content creation cost (20%), conversion potential (25%), brand safety risk (15%), resource requirement (10%).
+Pour une décision TikTok, les dimensions pourraient être : présence d'audience (30 %), coût de création de contenu (20 %), potentiel de conversion (25 %), risque de sécurité de marque (15 %), besoin en ressources (10 %).
 
-### Step 2: Assign weightages
+### Étape 2 : Attribuer des pondérations
 
-Weights must sum to 100%. Higher weight = more important to this specific decision.
+Les pondérations doivent totaliser 100 %. Une pondération plus élevée = plus important pour cette décision précise.
 
-Weights are not universal — they vary by business context. A startup might weight conversion potential highest. An established brand defending share might weight brand safety highest. A budget-constrained team might weight cost highest.
+Les pondérations ne sont pas universelles — elles varient selon le contexte de l'entreprise. Une startup pourrait pondérer le plus fortement le potentiel de conversion. Une marque établie défendant sa part de marché pourrait pondérer le plus fortement la sécurité de marque. Une équipe contrainte en budget pourrait pondérer le plus fortement le coût.
 
-The weights themselves are a strategic decision. Document the rationale.
+Les pondérations elles-mêmes sont une décision stratégique. Documentez le raisonnement.
 
-### Step 3: Score each option
+### Étape 3 : Noter chaque option
 
-For each option being considered, score 1–10 across every dimension.
+Pour chaque option envisagée, noter de 1 à 10 sur chaque dimension.
 
-Be ruthless about scoring. Avoid the temptation to score everything 7 or 8 (the "everything is fine" trap). Use the full 1–10 range.
+Soyez impitoyable dans la notation. Évitez la tentation de tout noter 7 ou 8 (le piège « tout va bien »). Utilisez toute la plage de 1 à 10.
 
-If you cannot confidently score a dimension, that is a research gap — note it and decide whether to research before scoring or proceed with a confidence range.
+Si vous ne pouvez pas noter une dimension avec confiance, c'est une lacune de recherche — notez-la et décidez s'il faut faire des recherches avant de noter ou continuer avec une fourchette de confiance.
 
-### Step 4: Compute weighted total
+### Étape 4 : Calculer le total pondéré
 
-For each option:
+Pour chaque option :
 
 ```
-weighted_score = Σ (dimension_score × dimension_weight)
+score_pondéré = Σ (score_dimension × pondération_dimension)
 ```
 
-The option with the highest weighted score is the recommended choice. Document the math and the rationale.
+L'option avec le score pondéré le plus élevé est le choix recommandé. Documentez le calcul et le raisonnement.
 
-## Worked example — "Should we add TikTok to our channel mix?"
+## Exemple travaillé — « Devrions-nous ajouter TikTok à notre mix de canaux ? »
 
-**Context:** B2B SaaS company, mid-market target, considering TikTok addition.
+**Contexte :** Entreprise SaaS B2B, cible marché intermédiaire, envisageant l'ajout de TikTok.
 
-**Dimensions and weights:**
+**Dimensions et pondérations :**
 
-| Dimension | Weight | Why |
+| Dimension | Pondération | Pourquoi |
 |---|---|---|
-| Audience presence | 30% | If the audience is not on TikTok, nothing else matters |
-| Conversion potential | 25% | Need to show measurable pipeline impact |
-| Content creation cost | 20% | Resource-constrained team |
-| Brand safety risk | 15% | B2B audience is less tolerant of brand risk |
-| Resource requirement | 10% | Ongoing maintenance load |
+| Présence d'audience | 30 % | Si l'audience n'est pas sur TikTok, rien d'autre n'a d'importance |
+| Potentiel de conversion | 25 % | Besoin de montrer un impact mesurable sur le pipeline |
+| Coût de création de contenu | 20 % | Équipe contrainte en ressources |
+| Risque de sécurité de marque | 15 % | L'audience B2B est moins tolérante au risque de marque |
+| Besoin en ressources | 10 % | Charge de maintenance continue |
 
-**Scores for TikTok:**
+**Scores pour TikTok :**
 
-| Dimension | Score | Reasoning |
+| Dimension | Score | Raisonnement |
 |---|---|---|
-| Audience presence | 3 | Mid-market B2B decision-makers (CTOs, VPs of Engineering) are minimally present on TikTok |
-| Conversion potential | 2 | Even if reached, the platform is poor for B2B consideration content |
-| Content creation cost | 4 | Vertical short-form video requires dedicated production |
-| Brand safety risk | 5 | Algorithmic feed adjacency risk |
-| Resource requirement | 3 | Daily posting commitment for algorithmic favour |
+| Présence d'audience | 3 | Les décideurs B2B de marché intermédiaire (CTO, VP Ingénierie) sont peu présents sur TikTok |
+| Potentiel de conversion | 2 | Même si atteinte, la plateforme se prête mal au contenu de considération B2B |
+| Coût de création de contenu | 4 | La vidéo courte verticale nécessite une production dédiée |
+| Risque de sécurité de marque | 5 | Risque d'adjacence dans le flux algorithmique |
+| Besoin en ressources | 3 | Engagement de publication quotidienne pour la faveur algorithmique |
 
-**Weighted total for TikTok:**
+**Total pondéré pour TikTok :**
 ```
-(3 × 0.30) + (2 × 0.25) + (4 × 0.20) + (5 × 0.15) + (3 × 0.10)
-= 0.9 + 0.5 + 0.8 + 0.75 + 0.3
-= 3.25 / 10
+(3 × 0,30) + (2 × 0,25) + (4 × 0,20) + (5 × 0,15) + (3 × 0,10)
+= 0,9 + 0,5 + 0,8 + 0,75 + 0,3
+= 3,25 / 10
 ```
 
-**Scores for an alternative — "Add LinkedIn Document Ads to existing LinkedIn presence":**
+**Scores pour une alternative — « Ajouter des LinkedIn Document Ads à la présence LinkedIn existante » :**
 
 | Dimension | Score |
 |---|---|
-| Audience presence | 9 |
-| Conversion potential | 7 |
-| Content creation cost | 7 |
-| Brand safety risk | 8 |
-| Resource requirement | 7 |
+| Présence d'audience | 9 |
+| Potentiel de conversion | 7 |
+| Coût de création de contenu | 7 |
+| Risque de sécurité de marque | 8 |
+| Besoin en ressources | 7 |
 
-**Weighted total:**
+**Total pondéré :**
 ```
-(9 × 0.30) + (7 × 0.25) + (7 × 0.20) + (8 × 0.15) + (7 × 0.10)
-= 2.7 + 1.75 + 1.4 + 1.2 + 0.7
-= 7.75 / 10
+(9 × 0,30) + (7 × 0,25) + (7 × 0,20) + (8 × 0,15) + (7 × 0,10)
+= 2,7 + 1,75 + 1,4 + 1,2 + 0,7
+= 7,75 / 10
 ```
 
-**Conclusion:** LinkedIn Document Ads (7.75) significantly outscores TikTok (3.25) for this brand. The decision is to deprioritise TikTok and double down on LinkedIn Document Ads.
+**Conclusion :** Les LinkedIn Document Ads (7,75) surpassent significativement TikTok (3,25) pour cette marque. La décision est de déprioriser TikTok et de miser davantage sur les LinkedIn Document Ads.
 
-The conversation with the client is no longer "should we do TikTok?" — it is "we evaluated TikTok across five dimensions weighted by relevance to the business; TikTok scores 3.25 vs LinkedIn at 7.75; here is the math." Defensible.
+La conversation avec le client n'est plus « devrions-nous faire du TikTok ? » — c'est « nous avons évalué TikTok sur cinq dimensions pondérées selon leur pertinence pour l'entreprise ; TikTok obtient 3,25 contre LinkedIn à 7,75 ; voici le calcul. » Défendable.
 
-## How skills use this framework
+## Comment les compétences utilisent ce cadre
 
-Skills that produce strategic recommendations (channel selection, platform choice, budget allocation, creative direction) follow this framework explicitly:
+Les compétences qui produisent des recommandations stratégiques (sélection de canal, choix de plateforme, allocation budgétaire, direction créative) suivent explicitement ce cadre :
 
-1. The skill output names the dimensions considered
-2. Names the weights and the rationale
-3. Names each option scored
-4. Shows the math
-5. Recommends the highest-scoring option
+1. Le résultat de la compétence nomme les dimensions considérées
+2. Nomme les pondérations et le raisonnement
+3. Nomme chaque option notée
+4. Montre le calcul
+5. Recommande l'option au score le plus élevé
 
-Skills that fail to apply this framework produce gut-feel recommendations that are harder to defend and easier to challenge.
+Les compétences qui n'appliquent pas ce cadre produisent des recommandations à l'instinct plus difficiles à défendre et plus faciles à contester.
 
-## When the framework points to a non-obvious answer
+## Quand le cadre pointe vers une réponse non évidente
 
-The framework's most valuable use is when the weighted analysis points to an option the team would not have chosen by gut feel.
+L'usage le plus précieux du cadre survient lorsque l'analyse pondérée pointe vers une option que l'équipe n'aurait pas choisie à l'instinct.
 
-Example: the team intuitively favours Option A. The weighted analysis ranks Option B higher. This is the moment to:
+Exemple : l'équipe favorise intuitivement l'option A. L'analyse pondérée classe l'option B plus haut. C'est le moment de :
 
-- Re-examine the dimension weights (are we weighting correctly?)
-- Re-examine the scores (are we biased in our scoring?)
-- Re-examine the dimensions (is there a missing dimension that would tip back to A?)
+- Réexaminer les pondérations de dimension (pondérons-nous correctement ?)
+- Réexaminer les scores (sommes-nous biaisés dans notre notation ?)
+- Réexaminer les dimensions (existe-t-il une dimension manquante qui ferait basculer vers A ?)
 
-If after this re-examination the framework still favours B, choose B and document why the gut-feel A was the wrong call. If after re-examination the team still believes A is right, document the override and the reasoning — this is institutional learning about when the framework misses something.
+Si après cet examen le cadre favorise toujours B, choisissez B et documentez pourquoi l'instinct A était le mauvais choix. Si après examen l'équipe croit toujours que A est correct, documentez le passage outre et le raisonnement — c'est un apprentissage institutionnel sur ce que le cadre manque parfois.
 
-## What this framework does NOT do
+## Ce que ce cadre ne fait PAS
 
-The framework does not:
+Le cadre ne fait pas :
 
-- **Make decisions for you.** It structures decisions; humans still decide.
-- **Eliminate uncertainty.** Scores are best-effort estimates. Confidence intervals matter.
-- **Replace judgment.** Some dimensions defy precise scoring. Note them, score honestly, and let weighted totals guide rather than dictate.
-- **Work without good data.** If scores are guesses without basis, the framework just structures bad guesses into a polished output. Garbage in, garbage out.
+- **Prendre les décisions à votre place.** Il structure les décisions ; les humains décident toujours.
+- **Éliminer l'incertitude.** Les scores sont des estimations au mieux. Les intervalles de confiance comptent.
+- **Remplacer le jugement.** Certaines dimensions échappent à une notation précise. Notez-les, notez honnêtement, et laissez les totaux pondérés guider plutôt que dicter.
+- **Fonctionner sans bonnes données.** Si les scores sont des suppositions sans fondement, le cadre ne fait que structurer de mauvaises suppositions en un résultat soigné. Données mauvaises, résultat mauvais.
 
-## Related references
+## Références liées
 
-- [unit-economics-framework.md](unit-economics-framework.md) — adds CAC/LTV constraints to decision-making
-- [in-market-out-market.md](in-market-out-market.md) — adds budget split constraints
-- [four-core-documents-spec.md](four-core-documents-spec.md) — Core Doc 3.4 DMFlow uses this framework for channel selection
+- [unit-economics-framework.md](unit-economics-framework.md) — ajoute des contraintes CAC/LTV à la prise de décision
+- [in-market-out-market.md](in-market-out-market.md) — ajoute des contraintes de répartition budgétaire
+- [four-core-documents-spec.md](four-core-documents-spec.md) — le document central 3.4 DMFlow utilise ce cadre pour la sélection de canal
+</content>

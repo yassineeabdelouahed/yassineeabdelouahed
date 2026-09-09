@@ -1,145 +1,146 @@
-# Fixed vs Variable Budget
+# Budget fixe vs variable
 
-Every monthly budget conversation should distinguish between Fixed and Variable budget. This separation turns budget management from a "can we spend more?" negotiation into a data-backed "here is where additional spend pays off" recommendation.
+Chaque conversation budgétaire mensuelle devrait distinguer le budget fixe du budget variable. Cette séparation transforme la gestion du budget d'une négociation « pouvons-nous dépenser plus ? » en une recommandation étayée par des données « voici où une dépense supplémentaire est rentable ».
 
-## The Two Buckets
+## Les deux enveloppes
 
-### Fixed Budget
+### Budget fixe
 
-**Definition:** The committed monthly spend the client has agreed to. Covers always-on activity.
+**Définition :** La dépense mensuelle engagée que le client a acceptée. Couvre l'activité permanente.
 
-**What it covers:**
+**Ce qu'il couvre :**
 
-- Always-on paid campaigns (brand search, retargeting, baseline social ads)
-- Always-on creative production (the steady cadence of new ads / content)
-- Always-on infrastructure (martech subscriptions, agency retainer, content management)
-- Baseline organic activity (SEO content production, organic social posting)
+- Campagnes payantes permanentes (recherche de marque, retargeting, publicités sociales de base)
+- Production créative permanente (la cadence régulière de nouvelles publicités / contenu)
+- Infrastructure permanente (abonnements martech, honoraires d'agence, gestion de contenu)
+- Activité organique de base (production de contenu SEO, publication sociale organique)
 
-**Characteristics:**
+**Caractéristiques :**
 
-- Predictable month to month
-- Locked at the start of the period (typically annual)
-- Adjusted only at quarterly or annual reviews
-- Funds the engagement's core operating tempo
+- Prévisible d'un mois à l'autre
+- Verrouillé au début de la période (généralement annuel)
+- Ajusté uniquement lors des revues trimestrielles ou annuelles
+- Finance le rythme opérationnel de base de l'engagement
 
-### Variable Budget
+### Budget variable
 
-**Definition:** Additional budget that can be deployed when performance warrants. Held in reserve, deployed selectively.
+**Définition :** Budget supplémentaire pouvant être déployé lorsque la performance le justifie. Conservé en réserve, déployé sélectivement.
 
-**What it covers:**
+**Ce qu'il couvre :**
 
-- Scaling spend on campaigns delivering below target CPA
-- Capturing spike opportunities (a piece of content goes viral, a competitor goes dark, a category trend hits)
-- Funding A/B tests on new channels or creative concepts
-- Responding to seasonal opportunities (festive surge, industry event, product launch)
+- Mise à l'échelle de la dépense sur les campagnes livrant en dessous du CPA cible
+- Captation d'opportunités ponctuelles (un contenu devient viral, un concurrent disparaît, une tendance de catégorie survient)
+- Financement de tests A/B sur de nouveaux canaux ou concepts créatifs
+- Réponse aux opportunités saisonnières (pic festif, événement sectoriel, lancement de produit)
 
-**Characteristics:**
+**Caractéristiques :**
 
-- Held at agency / marketing-team level
-- Deployed via monthly recommendation conversation with client
-- Authorised on case-by-case basis with data-backed justification
-- Typically 15–30% of fixed budget held as Variable reserve
+- Conservé au niveau de l'agence / de l'équipe marketing
+- Déployé via une conversation de recommandation mensuelle avec le client
+- Autorisé au cas par cas avec une justification étayée par des données
+- Généralement 15 à 30 % du budget fixe conservés en réserve variable
 
-## The Monthly Variable Budget Conversation
+## La conversation mensuelle sur le budget variable
 
-This is the most consequential recurring conversation in the engagement. Every monthly report includes a Variable Budget Recommendation section that frames the conversation:
+C'est la conversation récurrente la plus déterminante de l'engagement. Chaque rapport mensuel inclut une section de recommandation de budget variable qui cadre la conversation :
 
 ### Format
 
 ```markdown
-## Variable Budget Recommendation — {Month}
+## Recommandation de budget variable — {Mois}
 
-### Available reserve: INR {X}
+### Réserve disponible : {X} INR
 
-### Recommended deployment:
+### Déploiement recommandé :
 
-#### Opportunity 1: {Channel} — Scale below-target CPA campaigns
-- Current performance: CPA INR {actual} vs target INR {target} ({% below target})
-- Opportunity: increase budget by INR {amount} across [list of campaigns]
-- Estimated additional outcome: {leads / customers / revenue}
-- Estimated CPA at scale: INR {projected CPA} (still below target)
-- Risk: scaling may push CPA up; suggested approach is graduated 15–20% increases per week
+#### Opportunité 1 : {Canal} — Mise à l'échelle des campagnes sous le CPA cible
+- Performance actuelle : CPA {réel} INR vs cible {cible} INR ({% en dessous de la cible})
+- Opportunité : augmenter le budget de {montant} INR sur [liste de campagnes]
+- Résultat additionnel estimé : {leads / clients / revenu}
+- CPA estimé à l'échelle : {CPA projeté} INR (toujours en dessous de la cible)
+- Risque : la mise à l'échelle peut faire monter le CPA ; approche suggérée : augmentations progressives de 15 à 20 % par semaine
 
-#### Opportunity 2: {Channel} — Test new audience / creative
-- Current observation: [what we have learned that suggests the test would pay off]
-- Test budget: INR {amount}
-- Hypothesis: {what we expect to learn}
-- Decision rule: [what would make us scale this further vs kill it]
+#### Opportunité 2 : {Canal} — Tester une nouvelle audience / création
+- Observation actuelle : [ce que nous avons appris qui suggère que le test serait rentable]
+- Budget de test : {montant} INR
+- Hypothèse : {ce que nous attendons d'apprendre}
+- Règle de décision : [ce qui nous ferait développer davantage ceci vs l'arrêter]
 
-#### Total recommended Variable deployment: INR {sum}
-#### Variable reserve remaining: INR {residual}
+#### Total du déploiement variable recommandé : {somme} INR
+#### Réserve variable restante : {résidu} INR
 ```
 
-### Approval flow
+### Flux d'approbation
 
-- The client reviews the recommendation
-- Client approves all, some, or none of the recommendations
-- Approved Variable spend is added to the month's deployment
-- Performance of Variable-funded activity is reported separately the following month
+- Le client examine la recommandation
+- Le client approuve tout, une partie, ou aucune des recommandations
+- La dépense variable approuvée est ajoutée au déploiement du mois
+- La performance de l'activité financée en variable est rapportée séparément le mois suivant
 
-## Why this discipline matters
+## Pourquoi cette discipline compte
 
-Without the Fixed / Variable separation, marketing budget conversations devolve into one of two patterns:
+Sans la séparation fixe / variable, les conversations budgétaires marketing dégénèrent en l'un de deux schémas :
 
-**Pattern A — "Stay within budget":**
+**Schéma A — « Rester dans le budget » :**
 
-The agency hits a Fixed budget target every month and never asks for more, even when below-target CPA campaigns could scale profitably. Money sits in the client's account that should be working in the market.
+L'agence atteint un objectif de budget fixe chaque mois et ne demande jamais plus, même lorsque des campagnes sous le CPA cible pourraient être mises à l'échelle de manière rentable. De l'argent reste sur le compte du client alors qu'il devrait travailler sur le marché.
 
-**Pattern B — "Always ask for more":**
+**Schéma B — « Toujours demander plus » :**
 
-The agency asks for budget increases without specific data backing. The client reflexively says no. Trust degrades. Even legitimate scaling opportunities get rejected.
+L'agence demande des augmentations de budget sans données précises à l'appui. Le client dit réflexivement non. La confiance se dégrade. Même des opportunités légitimes de mise à l'échelle sont rejetées.
 
-The Fixed / Variable framework solves both problems:
+Le cadre fixe / variable résout les deux problèmes :
 
-- Fixed budget is locked and predictable — the client knows what they are committing
-- Variable budget creates a pre-authorised mechanism for scaling — the conversation is "should we deploy reserve toward this specific opportunity?" with data, not "give us more money"
-- Both sides have skin in the game — the agency must justify Variable deployment with data; the client retains decision authority
+- Le budget fixe est verrouillé et prévisible — le client sait ce à quoi il s'engage
+- Le budget variable crée un mécanisme préautorisé de mise à l'échelle — la conversation devient « devrions-nous déployer la réserve vers cette opportunité précise ? » avec des données, pas « donnez-nous plus d'argent »
+- Les deux parties ont un enjeu — l'agence doit justifier le déploiement variable avec des données ; le client conserve l'autorité de décision
 
-## Sizing the Variable reserve
+## Dimensionner la réserve variable
 
-Recommended Variable reserve as % of Fixed budget by business stage:
+Réserve variable recommandée en % du budget fixe selon l'étape de l'entreprise :
 
-| Stage | Variable reserve |
+| Étape | Réserve variable |
 |---|---|
-| Early-stage / proving channel | 10–15% (conservative — limited proven scaling opportunities yet) |
-| Growth-stage with proven channels | 20–30% (substantial reserve to capture scaling opportunities) |
-| Mature business optimising | 15–20% (smaller reserve; most opportunities already captured) |
+| Précoce / canal en cours de validation | 10-15 % (conservateur — peu d'opportunités de mise à l'échelle encore prouvées) |
+| Croissance avec canaux éprouvés | 20-30 % (réserve substantielle pour capter les opportunités de mise à l'échelle) |
+| Entreprise mature en optimisation | 15-20 % (réserve plus petite ; la plupart des opportunités déjà captées) |
 
-The reserve sits in the marketing budget but is not committed. If unused at month-end, it rolls into the following month's reserve (does not become part of the next month's Fixed).
+La réserve se trouve dans le budget marketing mais n'est pas engagée. Si non utilisée en fin de mois, elle se reporte dans la réserve du mois suivant (ne devient pas partie du fixe du mois suivant).
 
-## What does NOT belong in Variable
+## Ce qui n'appartient PAS au variable
 
-- **Adding new channels** that were not in the strategic plan — that is a strategy change, not a Variable budget decision. Belongs in quarterly review.
-- **Routine creative refreshes** — that is part of Fixed always-on production.
-- **Emergency firefighting** that should have been planned for — re-examine the Fixed budget if this is recurring.
-- **Vague "more spend would help"** without specific opportunity and outcome estimate.
+- **Ajouter de nouveaux canaux** qui n'étaient pas dans le plan stratégique — c'est un changement de stratégie, pas une décision de budget variable. Cela relève de la revue trimestrielle.
+- **Les rafraîchissements créatifs de routine** — cela fait partie de la production permanente fixe.
+- **La gestion de crise d'urgence** qui aurait dû être planifiée — réexaminer le budget fixe si cela est récurrent.
+- **Un vague « plus de dépense aiderait »** sans opportunité précise et estimation de résultat.
 
-## Variable spend reporting
+## Reporting de la dépense variable
 
-The next month's report includes a Variable spend reckoning:
+Le rapport du mois suivant inclut un bilan de la dépense variable :
 
 ```markdown
-## Prior Month Variable Spend Reckoning
+## Bilan de la dépense variable du mois précédent
 
-| Variable spend | Approved | Outcome | Status |
+| Dépense variable | Approuvée | Résultat | Statut |
 |----------------|----------|---------|--------|
-| Scale Google Search Brand campaign | INR 1.5L | +47 customers at INR 3,200 CPA (target was INR 3,500) | Approved as ongoing in Fixed for next month |
-| Test LinkedIn Document Ads | INR 75K | 12 leads at CPL INR 6,250 (above INR 4,000 target) | Killed; learnings recorded |
-| Capture Diwali surge | INR 2L | +ROAS 4.2 vs typical 2.8 | Surge ended; back to baseline |
+| Mise à l'échelle de la campagne Google Search Marque | 1,5 lakh INR | +47 clients à un CPA de 3 200 INR (cible était 3 500 INR) | Approuvée en continu dans le fixe pour le mois suivant |
+| Test d'annonces documents LinkedIn | 75 000 INR | 12 leads à un CPL de 6 250 INR (au-dessus de la cible de 4 000 INR) | Arrêté ; enseignements consignés |
+| Captation du pic de Diwali | 2 lakh INR | ROAS +4,2 vs 2,8 habituel | Pic terminé ; retour à la référence |
 ```
 
-The reckoning closes the loop and builds institutional knowledge about what kinds of Variable deployment work best for this brand.
+Le bilan referme la boucle et construit une connaissance institutionnelle sur les types de déploiement variable qui fonctionnent le mieux pour cette marque.
 
-## Where Fixed / Variable lives in the engagement
+## Où le fixe / variable se situe dans l'engagement
 
-- **Growth Plan (Section 6 — Budget & Media Plan):** sets the year's Fixed budget by channel + the Variable reserve sizing
-- **Yearly Planner:** distributes Fixed budget by month + flags expected Variable deployment windows (festive, product launches)
-- **Monthly performance report (Section 7):** the Variable Budget Recommendation
-- **Living Project Instruction File:** current month's Fixed spend, current Variable reserve remaining
+- **Growth Plan (section 6 — Budget et plan média) :** fixe le budget fixe de l'année par canal + le dimensionnement de la réserve variable
+- **Planificateur annuel :** répartit le budget fixe par mois + signale les fenêtres de déploiement variable attendues (festif, lancements de produit)
+- **Rapport de performance mensuel (section 7) :** la recommandation de budget variable
+- **Fichier d'instructions vivant du projet :** dépense fixe du mois en cours, réserve variable restante actuelle
 
-## Related references
+## Références liées
 
-- [growth-plan-template.md](growth-plan-template.md) — Section 6
-- [monthly-report-template.md](monthly-report-template.md) — Section 7 Variable Budget Recommendation
-- [unit-economics-framework.md](unit-economics-framework.md) — LTV:CAC math that gates scaling decisions
-- [in-market-out-market.md](in-market-out-market.md) — split logic that influences Fixed allocation
+- [growth-plan-template.md](growth-plan-template.md) — section 6
+- [monthly-report-template.md](monthly-report-template.md) — section 7, recommandation de budget variable
+- [unit-economics-framework.md](unit-economics-framework.md) — calcul LTV:CAC qui conditionne les décisions de mise à l'échelle
+- [in-market-out-market.md](in-market-out-market.md) — logique de répartition qui influence l'allocation fixe
+</content>

@@ -1,237 +1,237 @@
-# Native Advertising — Content Discovery & In-Feed Campaigns
+# Publicité native — Découverte de contenu et campagnes in-feed
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Platform Landscape
+## Paysage des plateformes
 
-### Major Native Ad Networks
+### Grands réseaux publicitaires natifs
 
-| Platform | Reach | Strength | Publisher Quality | Self-Serve | Min Spend |
+| Plateforme | Portée | Force | Qualité des éditeurs | Self-Serve | Dépense min. |
 |---|---|---|---|---|---|
-| **Taboola** | 500M+ daily users, 9,000+ publishers | Largest content discovery network, strongest algorithm | Mixed (premium + long tail) | Yes | $10/day |
-| **Outbrain** | 340M+ daily users, premium publishers | Premium publisher network (Condé Nast, BBC, CNN, Washington Post) | High (curated) | Yes | $20/day |
-| **Nativo** | 600+ premium publishers | True native rendering — ad inherits publisher CSS/layout | Very high (brand-safe by default) | Managed + self-serve | $5K/month typical |
-| **TripleLift** | Programmatic scale via DSPs | In-feed and in-article programmatic native | Varies (exchange-based) | Via DSP | DSP minimums apply |
-| **Sharethrough** | Programmatic scale via DSPs | Enhanced native with headline optimization engine | Varies (exchange-based) | Via DSP | DSP minimums apply |
-| **MGID** | 850M+ monthly users | Strong in EMEA and LATAM, lower CPCs | Mixed | Yes | $5/day |
-| **Yahoo Native** | 900M+ monthly users | Yahoo/AOL properties, closed ecosystem | High (owned properties) | Yes (via Yahoo DSP) | Varies |
+| **Taboola** | 500 M+ utilisateurs quotidiens, 9 000+ éditeurs | Plus grand réseau de découverte de contenu, algorithme le plus fort | Mixte (premium + longue traîne) | Oui | 10 $/jour |
+| **Outbrain** | 340 M+ utilisateurs quotidiens, éditeurs premium | Réseau d'éditeurs premium (Condé Nast, BBC, CNN, Washington Post) | Élevée (sélectionné) | Oui | 20 $/jour |
+| **Nativo** | 600+ éditeurs premium | Rendu véritablement natif — la publicité hérite du CSS/de la mise en page de l'éditeur | Très élevée (brand-safe par défaut) | Géré + self-serve | 5K $/mois typique |
+| **TripleLift** | Échelle programmatique via les DSP | Native in-feed et in-article programmatique | Varie (basé sur l'exchange) | Via DSP | Minimums du DSP applicables |
+| **Sharethrough** | Échelle programmatique via les DSP | Native amélioré avec moteur d'optimisation de titre | Varie (basé sur l'exchange) | Via DSP | Minimums du DSP applicables |
+| **MGID** | 850 M+ utilisateurs mensuels | Fort en EMEA et LATAM, CPC plus bas | Mixte | Oui | 5 $/jour |
+| **Yahoo Native** | 900 M+ utilisateurs mensuels | Propriétés Yahoo/AOL, écosystème fermé | Élevée (propriétés propres) | Oui (via Yahoo DSP) | Varie |
 
-### Platform Selection Decision Tree
+### Arbre de décision de sélection de plateforme
 
 ```
-START: What is your primary goal?
+DÉBUT : Quel est votre objectif principal ?
 │
-├── Content amplification (blog posts, guides) → Taboola or Outbrain
-├── Premium brand safety required → Nativo or Outbrain
-├── Programmatic buying via DSP → TripleLift or Sharethrough
-├── Lowest CPC / testing budgets → Taboola or MGID
-├── Publisher-native look and feel → Nativo (true native rendering)
-└── Headline optimization priority → Sharethrough (auto-enhanced headlines)
+├── Amplification de contenu (articles de blog, guides) → Taboola ou Outbrain
+├── Sécurité de marque premium requise → Nativo ou Outbrain
+├── Achat programmatique via DSP → TripleLift ou Sharethrough
+├── CPC le plus bas / budgets de test → Taboola ou MGID
+├── Look and feel natif éditeur → Nativo (rendu véritablement natif)
+└── Priorité à l'optimisation de titre → Sharethrough (titres auto-améliorés)
 ```
 
 ---
 
-## Campaign Types
+## Types de campagne
 
-### Native Ad Formats Explained
+### Explication des formats publicitaires natifs
 
-| Format | Placement | User Experience | Best For |
+| Format | Emplacement | Expérience utilisateur | Idéal pour |
 |---|---|---|---|
-| **Content Discovery** | Widget at bottom/side of articles ("Recommended For You") | User sees thumbnails + headlines among organic recommendations | Blog amplification, lead magnets, awareness |
-| **In-Feed** | Appears within publisher content feed (between articles) | Seamless — matches surrounding editorial content | Product pages, landing pages, eCommerce |
-| **Recommendation Widget** | Sidebar or bottom-of-article widget | Thumbnail grid or list alongside organic links | Content marketing, affiliate, lead gen |
-| **In-Article** | Placed between paragraphs of editorial content | Integrated mid-read — high viewability | Brand awareness, video distribution |
-| **Branded Content** | Full sponsored article on publisher site | Long-form storytelling, bylined or "Sponsored by" | Thought leadership, complex products, B2B |
-| **Native Video** | Auto-play video in feed or in-article | Sound-off by default, captions essential | Product demos, brand stories, explainers |
+| **Découverte de contenu** | Widget en bas/sur le côté des articles (« Recommandé pour vous ») | L'utilisateur voit des vignettes + titres parmi les recommandations organiques | Amplification de blog, aimants à leads, notoriété |
+| **In-Feed** | Apparaît dans le fil de contenu de l'éditeur (entre les articles) | Fluide — correspond au contenu éditorial environnant | Pages produit, landing pages, eCommerce |
+| **Widget de recommandation** | Widget dans la barre latérale ou en bas d'article | Grille de vignettes ou liste aux côtés de liens organiques | Content marketing, affiliation, génération de leads |
+| **In-Article** | Placé entre les paragraphes de contenu éditorial | Intégré en cours de lecture — forte visibilité | Notoriété de marque, distribution vidéo |
+| **Contenu de marque** | Article sponsorisé complet sur le site de l'éditeur | Storytelling long format, signé ou « Sponsorisé par » | Leadership éclairé, produits complexes, B2B |
+| **Vidéo native** | Vidéo en lecture automatique dans le fil ou in-article | Son coupé par défaut, sous-titres essentiels | Démos produit, histoires de marque, explicatifs |
 
 ---
 
-## Creative Specifications
+## Spécifications créatives
 
-### Platform-by-Platform Specs
+### Spécifications plateforme par plateforme
 
 | Spec | Taboola | Outbrain | Nativo | TripleLift | Sharethrough |
 |---|---|---|---|---|---|
-| **Title length** | 60 chars (max 100) | 80 chars (max 150) | Publisher-dependent | 90 chars max | 90 chars max |
-| **Description** | 150 chars | Not used | Publisher-dependent | 300 chars max | 200 chars max |
-| **Image size** | 1000x600 min | 1200x800 min | Publisher template | Adaptive to supply | 1200x627 recommended |
-| **Thumbnail** | 400x350 | 400x350 | N/A | N/A | N/A |
-| **Text on image** | Allowed (max 20%) | Not allowed | Publisher rules | Not recommended | Not recommended |
-| **Brand logo** | Optional | Not required | Publisher template | Recommended | Required |
-| **Video** | MP4, 15-60s | MP4, 6-30s | Varies | VAST tag | VAST tag |
-| **File size** | 5 MB max | 1 MB max | Varies | Via DSP specs | Via DSP specs |
-| **Landing page** | Required | Required | Article or LP | Required | Required |
+| **Longueur du titre** | 60 caractères (max 100) | 80 caractères (max 150) | Dépend de l'éditeur | 90 caractères max | 90 caractères max |
+| **Description** | 150 caractères | Non utilisée | Dépend de l'éditeur | 300 caractères max | 200 caractères max |
+| **Taille de l'image** | 1000x600 min | 1200x800 min | Modèle de l'éditeur | Adaptatif à l'offre | 1200x627 recommandé |
+| **Vignette** | 400x350 | 400x350 | N/A | N/A | N/A |
+| **Texte sur l'image** | Autorisé (max 20 %) | Non autorisé | Règles de l'éditeur | Non recommandé | Non recommandé |
+| **Logo de marque** | Optionnel | Non requis | Modèle de l'éditeur | Recommandé | Requis |
+| **Vidéo** | MP4, 15-60s | MP4, 6-30s | Varie | Tag VAST | Tag VAST |
+| **Taille de fichier** | 5 Mo max | 1 Mo max | Varie | Via specs du DSP | Via specs du DSP |
+| **Landing page** | Requise | Requise | Article ou LP | Requise | Requise |
 
-### Creative Best Practices
+### Bonnes pratiques créatives
 
-- **Headlines:** Questions outperform statements by 15-20%. Numbers outperform both ("7 Ways..." format). Avoid clickbait — platforms penalize misleading headlines with lower distribution.
-- **Images:** Photos of people generate 30%+ higher CTR than objects or abstract images. Avoid stock photo aesthetics — editorial-style imagery blends better. Close-up shots outperform wide shots. High contrast and warm colors improve thumbnail performance.
-- **Descriptions:** Lead with value proposition, not brand name. Include a soft CTA ("Learn how..." vs "Buy now").
-- **Landing pages:** Article-style landing pages (advertorial format) convert better than product pages for cold traffic. Match landing page headline to ad headline for continuity. Include social proof early.
+- **Titres :** Les questions surpassent les affirmations de 15-20 %. Les chiffres surpassent les deux (format « 7 façons de... »). Éviter le putaclic — les plateformes pénalisent les titres trompeurs avec une distribution plus faible.
+- **Images :** Les photos de personnes génèrent un CTR 30 %+ plus élevé que les objets ou images abstraites. Éviter l'esthétique banque d'images — l'imagerie de style éditorial se fond mieux. Les gros plans surpassent les plans larges. Le contraste élevé et les couleurs chaudes améliorent la performance des vignettes.
+- **Descriptions :** Ouvrir avec la proposition de valeur, pas le nom de la marque. Inclure un CTA doux (« Découvrez comment... » vs « Achetez maintenant »).
+- **Landing pages :** Les landing pages de style article (format publireportage) convertissent mieux que les pages produit pour le trafic froid. Faire correspondre le titre de la landing page au titre de la publicité pour la continuité. Inclure la preuve sociale tôt.
 
 ---
 
-## Bidding & Budget Strategy
+## Stratégie d'enchères et de budget
 
-### Bidding Models
+### Modèles d'enchères
 
-| Model | How It Works | Best For | Typical Range |
+| Modèle | Fonctionnement | Idéal pour | Fourchette typique |
 |---|---|---|---|
-| **CPC** (Cost Per Click) | Pay only when user clicks | Content amplification, lead gen, testing | $0.20–$4.00 |
-| **vCPM** (Viewable CPM) | Pay per 1,000 viewable impressions | Brand awareness, reach campaigns | $2.00–$12.00 |
-| **Target CPA** | Platform optimizes to target cost per action | Conversion campaigns (requires pixel + data) | Varies by vertical |
-| **Smart Bidding** | Platform auto-optimizes bids using ML | Mature campaigns with sufficient conversion data (50+/week) | Platform-managed |
-| **oCPC** (Optimized CPC) | CPC with conversion optimization overlay | Transition from CPC to CPA optimization | Starts at CPC, adjusts to CPA |
+| **CPC** (Coût par clic) | Payer uniquement quand l'utilisateur clique | Amplification de contenu, génération de leads, test | 0,20–4,00 $ |
+| **vCPM** (CPM visible) | Payer pour 1 000 impressions visibles | Notoriété de marque, campagnes de portée | 2,00–12,00 $ |
+| **CPA cible** | La plateforme optimise vers un coût par action cible | Campagnes de conversion (nécessite pixel + données) | Varie selon la verticale |
+| **Enchère intelligente** | La plateforme auto-optimise les enchères via ML | Campagnes matures avec des données de conversion suffisantes (50+/semaine) | Géré par la plateforme |
+| **oCPC** (CPC optimisé) | CPC avec une surcouche d'optimisation de conversion | Transition du CPC vers l'optimisation CPA | Démarre au CPC, s'ajuste vers le CPA |
 
-### Budget Allocation Guidelines
+### Directives d'allocation budgétaire
 
-| Campaign Phase | Budget Split | Duration | Goal |
+| Phase de campagne | Répartition du budget | Durée | Objectif |
 |---|---|---|---|
-| **Testing** | 20% of native budget | 1–2 weeks | Test 5+ headlines, 3+ images per campaign |
-| **Optimization** | 30% of native budget | 2–4 weeks | Scale winners, kill losers, refine targeting |
-| **Scaling** | 50% of native budget | Ongoing | Maximize volume at target CPA/ROAS |
+| **Test** | 20 % du budget natif | 1–2 semaines | Tester 5+ titres, 3+ images par campagne |
+| **Optimisation** | 30 % du budget natif | 2–4 semaines | Mettre à l'échelle les gagnants, éliminer les perdants, affiner le ciblage |
+| **Montée en puissance** | 50 % du budget natif | Continu | Maximiser le volume à un CPA/ROAS cible |
 
-**Budget minimums for statistical significance:**
-- Per creative variant: $50–$100 minimum spend before judging performance
-- Per campaign: $500+ over 2 weeks for reliable data
-- Per publisher: 1,000+ impressions before evaluating publisher performance
-
----
-
-## Audience Targeting
-
-### Targeting Methods by Platform
-
-| Method | Taboola | Outbrain | Nativo | Programmatic (TTL/Sharethrough) |
-|---|---|---|---|---|
-| **Interest-based** | Yes (reading behavior) | Yes (reading behavior) | Yes | Via DMP/DSP |
-| **Contextual** | Yes (article topics) | Yes (article topics) | Yes (strong) | Yes |
-| **Retargeting** | Pixel-based | Pixel-based | Pixel-based | DSP pixel + CRM |
-| **Lookalike** | Seed audience expansion | Seed audience expansion | CRM-based | DSP modeling |
-| **DMP segments** | Limited | Limited | Yes | Full DMP access |
-| **Geo targeting** | Country/state/city | Country/state/city | Country/state/DMA | Full geo stack |
-| **Device** | Desktop/mobile/tablet | Desktop/mobile/tablet | Yes | Full device graph |
-| **Dayparting** | Yes | Yes | Yes | Yes |
-
-### Targeting Strategy by Funnel Stage
-
-| Stage | Targeting | Content Type | Bidding | Success Metric |
-|---|---|---|---|---|
-| **Awareness** | Broad interest + contextual | Educational articles, guides | vCPM or low CPC | CTR, time on page |
-| **Consideration** | Retargeting + lookalike | Comparison guides, case studies | CPC | Scroll depth, pages/session |
-| **Conversion** | Retargeting (site visitors) | Product pages, free trials, demos | CPA or oCPC | Conversions, CPA |
+**Budgets minimums pour la significativité statistique :**
+- Par variante créative : 50–100 $ de dépense minimum avant de juger la performance
+- Par campagne : 500 $+ sur 2 semaines pour des données fiables
+- Par éditeur : 1 000+ impressions avant d'évaluer la performance de l'éditeur
 
 ---
 
-## Performance Benchmarks by Vertical
+## Ciblage d'audience
 
-| Vertical | CTR | CPC | CVR (Click→Lead) | CPL | Time on Page |
+### Méthodes de ciblage par plateforme
+
+| Méthode | Taboola | Outbrain | Nativo | Programmatique (TTL/Sharethrough) |
+|---|---|---|---|---|
+| **Basé sur les centres d'intérêt** | Oui (comportement de lecture) | Oui (comportement de lecture) | Oui | Via DMP/DSP |
+| **Contextuel** | Oui (sujets d'article) | Oui (sujets d'article) | Oui (fort) | Oui |
+| **Retargeting** | Basé sur pixel | Basé sur pixel | Basé sur pixel | Pixel DSP + CRM |
+| **Lookalike** | Expansion d'audience seed | Expansion d'audience seed | Basé sur le CRM | Modélisation DSP |
+| **Segments DMP** | Limité | Limité | Oui | Accès DMP complet |
+| **Ciblage géo** | Pays/état/ville | Pays/état/ville | Pays/état/DMA | Pile géo complète |
+| **Appareil** | Desktop/mobile/tablette | Desktop/mobile/tablette | Oui | Graphe d'appareils complet |
+| **Dayparting** | Oui | Oui | Oui | Oui |
+
+### Stratégie de ciblage par étape du tunnel
+
+| Étape | Ciblage | Type de contenu | Enchère | Métrique de succès |
+|---|---|---|---|---|
+| **Notoriété** | Centre d'intérêt large + contextuel | Articles éducatifs, guides | vCPM ou CPC bas | CTR, temps sur la page |
+| **Considération** | Retargeting + lookalike | Guides comparatifs, études de cas | CPC | Profondeur de défilement, pages/session |
+| **Conversion** | Retargeting (visiteurs du site) | Pages produit, essais gratuits, démos | CPA ou oCPC | Conversions, CPA |
+
+---
+
+## Benchmarks de performance par verticale
+
+| Verticale | CTR | CPC | TdC (Clic→Lead) | CPL | Temps sur la page |
 |---|---|---|---|---|---|
-| **Tech / SaaS** | 0.15–0.30% | $0.50–$1.50 | 3–8% | $15–$50 | 1:30–3:00 |
-| **Finance / Insurance** | 0.10–0.20% | $1.00–$3.00 | 2–5% | $30–$100 | 2:00–4:00 |
-| **Health / Wellness** | 0.20–0.40% | $0.30–$0.80 | 4–10% | $8–$25 | 1:00–2:30 |
-| **eCommerce / Retail** | 0.15–0.35% | $0.40–$1.20 | 2–6% | $10–$40 | 0:45–2:00 |
-| **B2B / Enterprise** | 0.08–0.18% | $1.50–$4.00 | 1–4% | $50–$150 | 2:00–5:00 |
-| **Education** | 0.15–0.30% | $0.30–$1.00 | 5–12% | $5–$30 | 2:00–4:00 |
-| **Real Estate** | 0.10–0.25% | $0.60–$2.00 | 2–5% | $20–$60 | 1:30–3:00 |
+| **Tech / SaaS** | 0,15–0,30 % | 0,50–1,50 $ | 3–8 % | 15–50 $ | 1:30–3:00 |
+| **Finance / Assurance** | 0,10–0,20 % | 1,00–3,00 $ | 2–5 % | 30–100 $ | 2:00–4:00 |
+| **Santé / Bien-être** | 0,20–0,40 % | 0,30–0,80 $ | 4–10 % | 8–25 $ | 1:00–2:30 |
+| **eCommerce / Retail** | 0,15–0,35 % | 0,40–1,20 $ | 2–6 % | 10–40 $ | 0:45–2:00 |
+| **B2B / Entreprise** | 0,08–0,18 % | 1,50–4,00 $ | 1–4 % | 50–150 $ | 2:00–5:00 |
+| **Éducation** | 0,15–0,30 % | 0,30–1,00 $ | 5–12 % | 5–30 $ | 2:00–4:00 |
+| **Immobilier** | 0,10–0,25 % | 0,60–2,00 $ | 2–5 % | 20–60 $ | 1:30–3:00 |
 
 ---
 
-## Brand Safety & Quality
+## Sécurité de marque et qualité
 
-### Brand Safety Framework for Native
+### Cadre de sécurité de marque pour le native
 
-| Layer | Control | What It Does |
+| Couche | Contrôle | Ce qu'elle fait |
 |---|---|---|
-| **Publisher whitelists** | Manually curated approved publisher list | Only run on vetted, brand-safe sites |
-| **Publisher blocklists** | Exclude specific domains | Block tabloids, low-quality sites, competitors |
-| **Category exclusions** | Block content categories (news, politics, adult) | Prevent adjacency to sensitive topics |
-| **Third-party verification** | IAS, DoubleVerify integration | Pre-bid and post-bid brand safety scoring |
-| **Viewability standards** | MRC: 50% pixels in view for 1+ second | Ensure ads are actually seen |
-| **Fraud detection** | Platform-native + third-party | Filter bot traffic, click fraud, domain spoofing |
+| **Listes blanches d'éditeurs** | Liste d'éditeurs approuvés curée manuellement | Diffuser uniquement sur des sites vérifiés, sûrs pour la marque |
+| **Listes noires d'éditeurs** | Exclure des domaines spécifiques | Bloquer les tabloïds, les sites de faible qualité, les concurrents |
+| **Exclusions de catégorie** | Bloquer des catégories de contenu (actualités, politique, adulte) | Éviter l'adjacence à des sujets sensibles |
+| **Vérification tierce** | Intégration IAS, DoubleVerify | Notation de sécurité de marque avant et après l'enchère |
+| **Standards de visibilité** | MRC : 50 % des pixels visibles pendant 1+ seconde | S'assurer que les publicités sont réellement vues |
+| **Détection de fraude** | Native à la plateforme + tiers | Filtrer le trafic bot, la fraude au clic, l'usurpation de domaine |
 
-### Quality Score Factors (Platform-Specific)
+### Facteurs de Quality Score (spécifiques à la plateforme)
 
-Taboola and Outbrain use internal quality scores that affect distribution and cost:
-- **CTR performance** — Higher CTR relative to competition lowers effective CPC
-- **Landing page quality** — Load speed, mobile optimization, content depth
-- **Creative freshness** — New creatives get initial distribution boost; refresh every 2–3 weeks
-- **Policy compliance** — Misleading claims, excessive capitalization, or clickbait reduce score
-- **Post-click engagement** — Bounce rate, time on page, pages per session affect quality score over time
+Taboola et Outbrain utilisent des scores de qualité internes qui affectent la distribution et le coût :
+- **Performance du CTR** — Un CTR plus élevé par rapport à la concurrence abaisse le CPC effectif
+- **Qualité de la landing page** — Vitesse de chargement, optimisation mobile, profondeur de contenu
+- **Fraîcheur créative** — Les nouveaux créatifs reçoivent un coup de pouce de distribution initial ; rafraîchir toutes les 2 à 3 semaines
+- **Conformité aux politiques** — Les affirmations trompeuses, la capitalisation excessive, ou le putaclic réduisent le score
+- **Engagement post-clic** — Le taux de rebond, le temps sur la page, les pages par session affectent le score de qualité dans le temps
 
 ---
 
-## Measurement & Attribution
+## Mesure et attribution
 
-### Native-Specific Metrics
+### Métriques spécifiques au native
 
-| Metric | What It Measures | Benchmark | Why It Matters |
+| Métrique | Ce qu'elle mesure | Benchmark | Pourquoi c'est important |
 |---|---|---|---|
-| **CTR** | Click rate on native ad | 0.15–0.35% | Primary efficiency metric |
-| **Time on page** | Post-click engagement depth | 1:30+ minutes | Indicates content quality and audience fit |
-| **Scroll depth** | % of landing page consumed | 50%+ | Measures content consumption |
-| **Pages per session** | Navigation depth after click | 1.5+ | Shows deeper site engagement |
-| **Bounce rate** | % who leave after one page | < 70% for articles | Lower is better — high bounce = targeting mismatch |
-| **View-through conversions** | Conversions after seeing but not clicking ad | Varies | Captures awareness impact |
-| **Assisted conversions** | Conversions where native was in the path | Varies | Shows native's role in the full funnel |
-| **Content consumption rate** | % of article read (if article-as-LP) | 40%+ | Core metric for branded content campaigns |
+| **CTR** | Taux de clic sur la publicité native | 0,15–0,35 % | Métrique d'efficacité principale |
+| **Temps sur la page** | Profondeur d'engagement post-clic | 1:30+ minutes | Indique la qualité du contenu et l'adéquation à l'audience |
+| **Profondeur de défilement** | % de la landing page consommée | 50 %+ | Mesure la consommation de contenu |
+| **Pages par session** | Profondeur de navigation après le clic | 1,5+ | Montre un engagement plus profond sur le site |
+| **Taux de rebond** | % qui partent après une page | < 70 % pour les articles | Plus bas c'est mieux — rebond élevé = décalage de ciblage |
+| **Conversions vue-jusqu'au-clic** | Conversions après avoir vu mais sans cliquer sur la publicité | Varie | Capture l'impact de notoriété |
+| **Conversions assistées** | Conversions où le native était dans le parcours | Varie | Montre le rôle du native dans le tunnel complet |
+| **Taux de consommation de contenu** | % de l'article lu (si l'article est la LP) | 40 %+ | Métrique centrale pour les campagnes de contenu de marque |
 
-### Attribution Approaches
+### Approches d'attribution
 
-- **Last-click:** Standard but undervalues native (native is usually top-of-funnel)
-- **View-through:** Include impressions that led to conversions within 1–7 days (recommended: 1-day view, 7-day click window)
-- **Multi-touch:** Assign partial credit to native in the conversion path (position-based or data-driven)
-- **Brand lift studies:** Measure awareness, consideration, and intent lift from native exposure (available on Taboola and Outbrain for larger budgets)
-- **Incrementality testing:** Holdout groups to measure true lift from native campaigns (gold standard but requires scale)
+- **Dernier clic :** Standard mais sous-évalue le native (le native est généralement en haut de tunnel)
+- **Vue-jusqu'au-clic :** Inclure les impressions ayant mené à des conversions dans les 1 à 7 jours (recommandé : fenêtre de vue de 1 jour, de clic de 7 jours)
+- **Multi-touch :** Attribuer un crédit partiel au native dans le parcours de conversion (basé sur la position ou piloté par les données)
+- **Études de Brand Lift :** Mesurer le lift de notoriété, considération, et intention issu de l'exposition native (disponible sur Taboola et Outbrain pour les budgets plus importants)
+- **Test d'incrémentalité :** Groupes témoins pour mesurer le véritable lift des campagnes natives (référence absolue mais nécessite de l'échelle)
 
 ---
 
-## Optimization Playbook
+## Playbook d'optimisation
 
-### Week-by-Week Optimization Timeline
+### Calendrier d'optimisation semaine par semaine
 
-| Week | Action | Decision Criteria |
+| Semaine | Action | Critères de décision |
 |---|---|---|
-| **Week 1** | Launch with 5+ headline variants, 3+ image variants per campaign. Broad targeting. CPC bidding. | Ensure all creatives get 1,000+ impressions |
-| **Week 2** | Pause bottom 50% of creatives by CTR. Review publisher-level performance. Tighten targeting. | Kill creatives with CTR < 50% of top performer |
-| **Week 3** | Add new creative variants inspired by winners. Begin publisher-level bid adjustments. Switch to oCPC if 50+ conversions. | New variants should iterate on winning headline/image patterns |
-| **Week 4+** | Ongoing: refresh creatives every 2–3 weeks, expand to new platforms, scale winning publisher segments. | Creative fatigue = CTR decline > 20% from peak |
+| **Semaine 1** | Lancer avec 5+ variantes de titre, 3+ variantes d'image par campagne. Ciblage large. Enchère CPC. | S'assurer que tous les créatifs atteignent 1 000+ impressions |
+| **Semaine 2** | Mettre en pause les 50 % du bas par CTR. Revoir la performance au niveau éditeur. Resserrer le ciblage. | Éliminer les créatifs avec un CTR < 50 % du meilleur performeur |
+| **Semaine 3** | Ajouter de nouvelles variantes créatives inspirées des gagnants. Commencer les ajustements d'enchère au niveau éditeur. Passer à l'oCPC si 50+ conversions. | Les nouvelles variantes doivent itérer sur les motifs de titre/image gagnants |
+| **Semaine 4+** | Continu : rafraîchir les créatifs toutes les 2-3 semaines, s'étendre à de nouvelles plateformes, mettre à l'échelle les segments d'éditeurs gagnants. | Fatigue créative = baisse du CTR > 20 % par rapport au pic |
 
-### Publisher-Level Optimization
+### Optimisation au niveau éditeur
 
-- Export publisher performance report weekly
-- Identify top 20% of publishers by conversion rate — increase bids 10–20% on these
-- Identify bottom 20% by bounce rate or zero conversions — block them
-- Build a "proven publishers" whitelist over time from consistent performers
-- Test new publishers in a separate campaign at lower bids before adding to main campaigns
+- Exporter le rapport de performance par éditeur chaque semaine
+- Identifier les 20 % d'éditeurs les plus performants par taux de conversion — augmenter les enchères de 10-20 % sur ceux-ci
+- Identifier les 20 % du bas par taux de rebond ou zéro conversion — les bloquer
+- Construire dans le temps une liste blanche d'« éditeurs éprouvés » à partir des performeurs constants
+- Tester les nouveaux éditeurs dans une campagne séparée à des enchères plus basses avant de les ajouter aux campagnes principales
 
-### Creative Refresh Strategy
+### Stratégie de rafraîchissement créatif
 
-- **Refresh cycle:** Every 2–3 weeks for high-volume campaigns, monthly for lower volume
-- **Iteration method:** Take winning headline structure and swap the angle/benefit. Take winning image style and swap the subject.
-- **Testing structure:** Always have 2–3 "proven" creatives running alongside 2–3 "test" creatives
-- **Fatigue signals:** CTR drops 20%+ from peak, CPC rises 15%+, frequency exceeds 3x per user
+- **Cycle de rafraîchissement :** Toutes les 2-3 semaines pour les campagnes à fort volume, mensuel pour un volume plus faible
+- **Méthode d'itération :** Prendre la structure de titre gagnante et changer l'angle/le bénéfice. Prendre le style d'image gagnant et changer le sujet.
+- **Structure de test :** Toujours avoir 2-3 créatifs « éprouvés » en cours d'exécution aux côtés de 2-3 créatifs « de test »
+- **Signaux de fatigue :** Le CTR chute de 20 %+ par rapport au pic, le CPC augmente de 15 %+, la fréquence dépasse 3x par utilisateur
 
 ---
 
-## Integration with Content Marketing
+## Intégration avec le content marketing
 
-### Content Amplification Strategy
+### Stratégie d'amplification de contenu
 
 ```
-Content Funnel for Native Advertising:
+Tunnel de contenu pour la publicité native :
 
-1. DISCOVERY (Native Ad) → 2. ENGAGEMENT (Article/Guide) → 3. CAPTURE (CTA/Form) → 4. NURTURE (Email/Retarget)
+1. DÉCOUVERTE (publicité native) → 2. ENGAGEMENT (article/guide) → 3. CAPTURE (CTA/formulaire) → 4. NURTURING (email/retargeting)
 ```
 
-**Which content to amplify via native:**
-- Blog posts with proven organic engagement (high time on page, low bounce rate)
-- Evergreen guides and how-to content (long shelf life reduces creative refresh burden)
-- Data-driven or original research content (high share potential, authority building)
-- Comparison or "vs" content (captures consideration-stage intent)
+**Quel contenu amplifier via le native :**
+- Articles de blog avec un engagement organique éprouvé (fort temps sur la page, faible taux de rebond)
+- Guides evergreen et contenu comment faire (la longue durée de vie réduit la charge de rafraîchissement créatif)
+- Contenu piloté par les données ou de recherche originale (fort potentiel de partage, construction d'autorité)
+- Contenu comparatif ou « vs » (capture l'intention au stade de considération)
 
-**Content scoring for distribution:** Rate each piece on: organic engagement score (1-5), relevance to target audience (1-5), conversion potential (1-5), headline appeal for native (1-5). Amplify content scoring 16+ out of 20.
+**Notation du contenu pour la distribution :** Noter chaque pièce sur : score d'engagement organique (1-5), pertinence pour l'audience cible (1-5), potentiel de conversion (1-5), attractivité du titre pour le native (1-5). Amplifier le contenu notant 16+ sur 20.
 
-**Article-as-landing-page strategy:** Instead of driving native traffic to a product page, send users to an informative article (on your site or on the publisher via branded content). Include soft CTAs within the article. Retarget article readers with conversion-focused ads. This approach typically produces 2-3x higher engagement metrics and lower CPAs for complex or high-consideration products.
+**Stratégie article-comme-landing-page :** Plutôt que d'envoyer le trafic natif vers une page produit, envoyer les utilisateurs vers un article informatif (sur votre site ou chez l'éditeur via du contenu de marque). Inclure des CTA doux dans l'article. Recibler les lecteurs de l'article avec des publicités orientées conversion. Cette approche produit typiquement des métriques d'engagement 2 à 3 fois supérieures et des CPA plus bas pour les produits complexes ou à forte considération.
 
-> **Key principle:** Native advertising works best when it delivers genuine value before asking for anything. The best-performing native campaigns feel like content recommendations, not advertisements. Optimize for engagement first, then conversion.
+> **Principe clé :** La publicité native fonctionne mieux lorsqu'elle délivre une valeur authentique avant de demander quoi que ce soit. Les campagnes natives les plus performantes donnent l'impression d'être des recommandations de contenu, pas des publicités. Optimiser d'abord pour l'engagement, puis pour la conversion.

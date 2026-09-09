@@ -1,48 +1,48 @@
-# Brand Safety — 4-Layer Protection Framework
+# Sécurité de marque — Cadre de protection à 4 couches
 
-> Protecting your brand from appearing alongside harmful, inappropriate, or off-brand content. One misplacement can undo years of brand building. This framework provides four layers of defense so that never happens.
-
----
-
-## The 4-Layer Protection Model
-
-```
-Layer 4: Owned Content Safety        ← What you publish
-Layer 3: Partner Safety               ← Who you associate with
-Layer 2: Platform Safety              ← Where your ads appear
-Layer 1: Content Adjacency            ← What appears next to your ads
-```
-
-Each layer addresses a different attack surface. Robust brand safety requires all four.
+> Protéger votre marque contre une apparition aux côtés de contenu nuisible, inapproprié, ou hors de la ligne de marque. Un seul mauvais placement peut détruire des années de construction de marque. Ce cadre fournit quatre couches de défense pour que cela n'arrive jamais.
 
 ---
 
-## Layer 1 — Content Adjacency
+## Le modèle de protection à 4 couches
 
-Content adjacency is the most common brand safety risk: your ad appearing next to objectionable content on publisher sites, YouTube videos, or social feeds.
+```
+Couche 4 : Sécurité du contenu détenu       ← Ce que vous publiez
+Couche 3 : Sécurité des partenaires          ← Avec qui vous vous associez
+Couche 2 : Sécurité de plateforme            ← Où vos publicités apparaissent
+Couche 1 : Adjacence de contenu              ← Ce qui apparaît à côté de vos publicités
+```
 
-### GARM-derived Brand Safety Categories (legacy industry framework)
+Chaque couche traite une surface d'attaque différente. Une sécurité de marque robuste nécessite les quatre.
 
-*Note: GARM (Global Alliance for Responsible Media) wound down in August 2024, but its brand safety/suitability taxonomy remains the de facto reference used by platforms and verification vendors.*
+---
 
-| Category | Risk Level | Examples | Default Action |
+## Couche 1 — Adjacence de contenu
+
+L'adjacence de contenu est le risque de sécurité de marque le plus courant : votre publicité apparaissant à côté de contenu répréhensible sur des sites d'éditeurs, des vidéos YouTube, ou des fils sociaux.
+
+### Catégories de sécurité de marque dérivées de GARM (cadre sectoriel historique)
+
+*Remarque : GARM (Global Alliance for Responsible Media) a cessé ses activités en août 2024, mais sa taxonomie de sécurité/adéquation de marque reste la référence de facto utilisée par les plateformes et les fournisseurs de vérification.*
+
+| Catégorie | Niveau de risque | Exemples | Action par défaut |
 |----------|-----------|----------|----------------|
-| Adult & Explicit Sexual Content | High | Pornography, graphic sexual content | Block |
-| Arms & Ammunition | High | Weapons sales, tactical gear | Block (most brands) |
-| Crime & Harmful Acts | High | Violence promotion, illegal activity tutorials | Block |
-| Death, Injury & Military Conflict | High | Graphic war footage, accident videos | Block |
-| Online Piracy | High | Torrent sites, illegal streaming | Block |
-| Hate Speech & Discrimination | High | Extremist content, slurs | Block |
-| Obscenity & Profanity | Medium | Casual profanity in entertainment | Case-by-case |
-| Illegal Drugs / Tobacco / Alcohol | Medium | Drug culture content, vaping promotion | Industry-dependent |
-| Spam / Malware | High | Click farms, malicious sites | Block |
-| Terrorism | High | Extremist propaganda | Block |
-| Sensitive Social Issues | Medium | Political debates, social justice | Case-by-case |
-| Misinformation | High | Fake news, conspiracy theories | Block |
+| Contenu sexuel adulte et explicite | Élevé | Pornographie, contenu sexuel graphique | Bloquer |
+| Armes et munitions | Élevé | Vente d'armes, équipement tactique | Bloquer (la plupart des marques) |
+| Crime et actes nuisibles | Élevé | Promotion de violence, tutoriels d'activité illégale | Bloquer |
+| Décès, blessures et conflit militaire | Élevé | Images de guerre graphiques, vidéos d'accident | Bloquer |
+| Piratage en ligne | Élevé | Sites torrent, streaming illégal | Bloquer |
+| Discours de haine et discrimination | Élevé | Contenu extrémiste, insultes | Bloquer |
+| Obscénité et vulgarité | Moyen | Vulgarité occasionnelle dans le divertissement | Au cas par cas |
+| Drogues illégales / tabac / alcool | Moyen | Contenu de culture de la drogue, promotion du vapotage | Selon le secteur |
+| Spam / malware | Élevé | Fermes de clics, sites malveillants | Bloquer |
+| Terrorisme | Élevé | Propagande extrémiste | Bloquer |
+| Sujets sociaux sensibles | Moyen | Débats politiques, justice sociale | Au cas par cas |
+| Désinformation | Élevé | Fausses nouvelles, théories du complot | Bloquer |
 
-### Keyword Exclusion Lists
+### Listes d'exclusion de mots-clés
 
-**Universal Block List (apply to all campaigns):**
+**Liste de blocage universelle (à appliquer à toutes les campagnes) :**
 ```
 tragedy, shooting, terrorist, bomb, assault, murder, scandal,
 arrest, abuse, trafficking, extremist, conspiracy, hoax,
@@ -50,166 +50,167 @@ pornography, explicit, hate crime, mass shooting, genocide,
 drug overdose, suicide, self-harm
 ```
 
-**News-Sensitive Block List (activate during breaking events):**
+**Liste de blocage sensible à l'actualité (à activer pendant les événements d'actualité) :**
 ```
 breaking news, developing story, crisis, emergency, disaster,
 casualties, victims, manhunt, evacuation
 ```
 
-**Political Block List (for brands avoiding political adjacency):**
+**Liste de blocage politique (pour les marques évitant l'adjacence politique) :**
 ```
 election, candidate name, party name, impeach, ballot,
 partisan, left-wing, right-wing, propaganda
 ```
 
-> **Important:** Overly aggressive keyword blocking can tank reach. Review block lists quarterly and monitor impression loss vs. safety trade-off.
+> **Important :** Un blocage de mots-clés trop agressif peut faire chuter la portée. Revoir les listes de blocage trimestriellement et surveiller le compromis entre perte d'impressions et sécurité.
 
 ---
 
-## Layer 2 — Platform Safety
+## Couche 2 — Sécurité de plateforme
 
-### Google Ads — Brand Safety Settings
+### Google Ads — Paramètres de sécurité de marque
 
-| Setting | Location | Recommendation |
+| Paramètre | Emplacement | Recommandation |
 |---------|----------|----------------|
-| Content exclusions | Campaign → Settings → Content exclusions | Exclude: DL-MA, Live streaming (unless relevant), Parked domains |
-| Topic exclusions | Campaign → Content → Topics (Exclusions) | Exclude sensitive topics per GARM categories |
-| Placement exclusions | Campaign → Content → Placements (Exclusions) | Maintain exclusion list of 500+ sites (update monthly) |
-| Inventory type | Campaign → Settings → Inventory type | Use "Limited inventory" for maximum safety |
-| Brand suitability | Google Ads → Tools → Brand suitability | Enable and configure content labels |
+| Exclusions de contenu | Campagne → Paramètres → Exclusions de contenu | Exclure : DL-MA, diffusion en direct (sauf pertinence), domaines parqués |
+| Exclusions de thèmes | Campagne → Contenu → Thèmes (Exclusions) | Exclure les thèmes sensibles selon les catégories GARM |
+| Exclusions d'emplacements | Campagne → Contenu → Emplacements (Exclusions) | Maintenir une liste d'exclusion de 500+ sites (mise à jour mensuelle) |
+| Type d'inventaire | Campagne → Paramètres → Type d'inventaire | Utiliser « Inventaire limité » pour une sécurité maximale |
+| Adéquation de marque | Google Ads → Outils → Adéquation de marque | Activer et configurer les labels de contenu |
 
-### Meta (Facebook / Instagram) — Brand Safety Settings
+### Meta (Facebook / Instagram) — Paramètres de sécurité de marque
 
-| Setting | Location | Recommendation |
+| Paramètre | Emplacement | Recommandation |
 |---------|----------|----------------|
-| Inventory filter | Business Settings → Brand Safety → Inventory Filter | Full inventory (broadest), Standard (recommended), Limited (strictest) |
-| Block lists | Business Settings → Brand Safety → Block Lists | Upload publisher block list (CSV) |
-| Content type exclusions | Ad Set → Placements → Brand Safety | Exclude in-stream for sensitive brands |
-| Publisher allow lists | Business Settings → Brand Safety → Publisher Lists | Use for premium-only placement strategies |
+| Filtre d'inventaire | Paramètres Business → Sécurité de marque → Filtre d'inventaire | Inventaire complet (le plus large), Standard (recommandé), Limité (le plus strict) |
+| Listes de blocage | Paramètres Business → Sécurité de marque → Listes de blocage | Téléverser une liste de blocage d'éditeurs (CSV) |
+| Exclusions de type de contenu | Ensemble de publicités → Emplacements → Sécurité de marque | Exclure le in-stream pour les marques sensibles |
+| Listes d'autorisation d'éditeurs | Paramètres Business → Sécurité de marque → Listes d'éditeurs | Utiliser pour les stratégies de placement premium uniquement |
 
-### YouTube — Brand Safety Settings
+### YouTube — Paramètres de sécurité de marque
 
-| Setting | Location | Recommendation |
+| Paramètre | Emplacement | Recommandation |
 |---------|----------|----------------|
-| Content suitability | Google Ads → Inventory type | "Limited inventory" excludes most risk |
-| Channel exclusions | Placements → Exclusions | Exclude specific channels flagged by monitoring |
-| Topic exclusions | Content → Topics → Exclusions | Mirror GARM exclusions |
-| Lineups | Google Ads → YouTube lineups | Use curated lineups for premium inventory |
+| Adéquation du contenu | Google Ads → Type d'inventaire | « Inventaire limité » exclut la plupart des risques |
+| Exclusions de chaînes | Emplacements → Exclusions | Exclure les chaînes spécifiques signalées par le suivi |
+| Exclusions de thèmes | Contenu → Thèmes → Exclusions | Refléter les exclusions GARM |
+| Lineups | Google Ads → Lineups YouTube | Utiliser des lineups sélectionnées pour l'inventaire premium |
 
-### Programmatic (DV360, TTD, Xandr)
+### Programmatique (DV360, TTD, Xandr)
 
-| Setting | Recommendation |
+| Paramètre | Recommandation |
 |---------|----------------|
-| Pre-bid filtering | Enable IAS or DV pre-bid segments |
-| Domain allow/block lists | Maintain curated allow list (preferred) or comprehensive block list |
-| App allow/block lists | Block app categories: casual games, utility, VPN |
-| Supply path optimization | Prefer direct-sold inventory, authorized resellers only (ads.txt verified) |
-| Deal-based buying | Use PMPs and PG deals for highest safety |
+| Filtrage pré-enchère | Activer les segments pré-enchère IAS ou DV |
+| Listes d'autorisation/blocage de domaines | Maintenir une liste d'autorisation sélectionnée (préféré) ou une liste de blocage exhaustive |
+| Listes d'autorisation/blocage d'applications | Bloquer les catégories d'applications : jeux occasionnels, utilitaires, VPN |
+| Optimisation du chemin d'approvisionnement | Privilégier l'inventaire vendu directement, les revendeurs autorisés uniquement (vérifiés ads.txt) |
+| Achat basé sur des accords | Utiliser les PMP et accords PG pour la sécurité maximale |
 
 ---
 
-## Layer 3 — Partner Safety
+## Couche 3 — Sécurité des partenaires
 
-### Influencer Brand Safety Checklist
+### Checklist de sécurité de marque pour les influenceurs
 
-Before engaging any influencer or creator:
+Avant d'engager tout influenceur ou créateur :
 
-- [ ] Audit last 12 months of content for controversial statements
-- [ ] Check for past brand safety incidents (search: "[name] controversy")
-- [ ] Review follower demographics (bot checks, audience quality)
-- [ ] Search for association with extremist groups or figures
-- [ ] Verify they haven't promoted competing or conflicting brands recently
-- [ ] Include morality/brand safety clause in contract
-- [ ] Require content approval before publishing
-- [ ] Set up real-time monitoring during campaign window
+- [ ] Auditer les 12 derniers mois de contenu pour des déclarations controversées
+- [ ] Vérifier les incidents passés de sécurité de marque (rechercher : « [nom] controverse »)
+- [ ] Revoir la démographie des abonnés (vérifications de bots, qualité de l'audience)
+- [ ] Rechercher une association avec des groupes ou personnalités extrémistes
+- [ ] Vérifier qu'ils n'ont pas récemment promu des marques concurrentes ou conflictuelles
+- [ ] Inclure une clause de moralité/sécurité de marque dans le contrat
+- [ ] Exiger une approbation du contenu avant publication
+- [ ] Mettre en place un suivi en temps réel pendant la fenêtre de campagne
 
-### Partner / Sponsorship Safety
+### Sécurité des partenariats / sponsorships
 
-| Evaluation Criteria | Risk Question | Action if Flagged |
+| Critère d'évaluation | Question de risque | Action si signalé |
 |---------------------|--------------|-------------------|
-| Event sponsorship | Has this event had safety incidents before? | Enhanced due diligence, exit clause in contract |
-| Co-branding | Does partner brand align with our values? | Brand values alignment assessment |
-| Affiliate programs | Are affiliates placing ads on safe inventory? | Require affiliates to use your approved placement lists |
-| Reseller / distributor | Are they selling in authorized channels? | MAP enforcement, channel monitoring |
+| Sponsoring d'événement | Cet événement a-t-il déjà eu des incidents de sécurité ? | Diligence raisonnable renforcée, clause de sortie dans le contrat |
+| Co-branding | La marque partenaire s'aligne-t-elle avec nos valeurs ? | Évaluation de l'alignement des valeurs de marque |
+| Programmes d'affiliation | Les affiliés placent-ils des publicités sur un inventaire sûr ? | Exiger que les affiliés utilisent vos listes de placement approuvées |
+| Revendeur / distributeur | Vendent-ils sur des canaux autorisés ? | Application MAP, suivi des canaux |
 
 ---
 
-## Layer 4 — Owned Content Safety
+## Couche 4 — Sécurité du contenu détenu
 
-### Pre-Publication Content Review
+### Revue de contenu avant publication
 
-| Content Type | Review Process | Reviewers |
+| Type de contenu | Processus de revue | Réviseurs |
 |-------------|---------------|-----------|
-| Blog posts | Sensitivity read + legal review (if claims made) | Editor + Legal |
-| Social posts | Brand voice check + cultural sensitivity review | Social Lead + Diversity advocate |
-| Email campaigns | Compliance check (CAN-SPAM, GDPR) + tone review | Email Lead + Legal |
-| Video content | Full script review + final cut review | Creative Director + Legal |
-| User-generated content | Moderation before amplification | Community Manager |
-| AI-generated content | Fact-check + hallucination review + bias check | Subject matter expert |
+| Articles de blog | Lecture de sensibilité + revue légale (si des revendications sont faites) | Éditeur + Légal |
+| Publications sociales | Vérification de voix de marque + revue de sensibilité culturelle | Responsable social + défenseur de la diversité |
+| Campagnes email | Vérification de conformité (CAN-SPAM, RGPD) + revue de ton | Responsable email + Légal |
+| Contenu vidéo | Revue complète du script + revue du montage final | Directeur créatif + Légal |
+| Contenu généré par les utilisateurs | Modération avant amplification | Community Manager |
+| Contenu généré par IA | Vérification des faits + revue d'hallucination + vérification de biais | Expert du domaine |
 
-### Cultural Sensitivity Calendar
+### Calendrier de sensibilité culturelle
 
-Maintain awareness of dates/events where brand messaging must be adjusted:
+Maintenir une conscience des dates/événements où le message de marque doit être ajusté :
 
-| Period | Consideration |
+| Période | Considération |
 |--------|--------------|
-| Religious holidays (all faiths) | Avoid tone-deaf promotions |
-| National tragedies / anniversaries | Pause promotional messaging |
-| Political election seasons | Avoid anything interpretable as partisan |
-| Cultural awareness months | Participate authentically or not at all |
-| International campaigns | Local cultural review for every market |
+| Fêtes religieuses (toutes confessions) | Éviter les promotions déconnectées de la réalité |
+| Tragédies nationales / anniversaires | Mettre en pause le message promotionnel |
+| Saisons électorales politiques | Éviter tout ce qui pourrait être interprété comme partisan |
+| Mois de sensibilisation culturelle | Participer authentiquement ou pas du tout |
+| Campagnes internationales | Revue culturelle locale pour chaque marché |
 
 ---
 
-## Brand Safety Vendor Evaluation
+## Évaluation des fournisseurs de sécurité de marque
 
-| Vendor | Strengths | Best For | Integration |
-|--------|-----------|----------|-------------|
-| **IAS (Integral Ad Science)** | Strong pre-bid, contextual targeting, industry benchmarks | Programmatic-heavy advertisers | DV360, TTD, Xandr, Meta, YouTube |
-| **DoubleVerify (DV)** | Comprehensive coverage, attention metrics, custom categories | Enterprise brands needing granular control | All major DSPs, social platforms |
-| **Zefr** | YouTube-specific brand suitability, video-level targeting | YouTube-heavy advertisers | YouTube, connected TV |
-| **Channel Factory** | YouTube optimization, performance + safety balance | Performance marketers on YouTube | YouTube |
+| Fournisseur | Points forts | Idéal pour | Intégration |
+|--------|-----------|----------|--------------|
+| **IAS (Integral Ad Science)** | Fort en pré-enchère, ciblage contextuel, benchmarks sectoriels | Annonceurs à forte composante programmatique | DV360, TTD, Xandr, Meta, YouTube |
+| **DoubleVerify (DV)** | Couverture exhaustive, métriques d'attention, catégories personnalisées | Marques entreprise nécessitant un contrôle granulaire | Tous les principaux DSP, plateformes sociales |
+| **Zefr** | Adéquation de marque spécifique à YouTube, ciblage au niveau vidéo | Annonceurs à forte composante YouTube | YouTube, TV connectée |
+| **Channel Factory** | Optimisation YouTube, équilibre performance + sécurité | Marketeurs de performance sur YouTube | YouTube |
 
-### Vendor Selection Criteria
+### Critères de sélection du fournisseur
 
-| Criteria | Weight | Questions to Ask |
+| Critère | Poids | Questions à poser |
 |----------|--------|-----------------|
-| Coverage | 25% | Which platforms/exchanges are covered? |
-| Accuracy | 25% | What is the false positive/negative rate? |
-| Granularity | 20% | Can I create custom brand safety categories? |
-| Reporting | 15% | Real-time dashboards? Post-campaign analysis? |
-| Cost | 15% | CPM surcharge? Flat fee? Tiered pricing? |
+| Couverture | 25 % | Quelles plateformes/places de marché sont couvertes ? |
+| Précision | 25 % | Quel est le taux de faux positifs/négatifs ? |
+| Granularité | 20 % | Puis-je créer des catégories de sécurité de marque personnalisées ? |
+| Reporting | 15 % | Tableaux de bord en temps réel ? Analyse post-campagne ? |
+| Coût | 15 % | Surcharge CPM ? Frais fixe ? Tarification échelonnée ? |
 
 ---
 
-## Brand Safety Audit Checklist (Quarterly)
+## Checklist d'audit de sécurité de marque (trimestrielle)
 
-- [ ] Review and update keyword exclusion lists
-- [ ] Audit placement reports for all active campaigns (flag any misplacements)
-- [ ] Update publisher block/allow lists based on last quarter's data
-- [ ] Review influencer roster for any new controversies
-- [ ] Test brand safety vendor accuracy (sample audit of 100 placements)
-- [ ] Update GARM category settings if brand positioning has shifted
-- [ ] Review programmatic supply paths (ads.txt/sellers.json compliance)
-- [ ] Conduct cultural sensitivity calendar review for next quarter
-- [ ] Check AI-generated content outputs for bias or hallucination patterns
-- [ ] Brief creative and media teams on any new brand safety policies
+- [ ] Revoir et mettre à jour les listes d'exclusion de mots-clés
+- [ ] Auditer les rapports de placement pour toutes les campagnes actives (signaler tout mauvais placement)
+- [ ] Mettre à jour les listes de blocage/autorisation d'éditeurs en fonction des données du dernier trimestre
+- [ ] Revoir le portefeuille d'influenceurs pour toute nouvelle controverse
+- [ ] Tester la précision du fournisseur de sécurité de marque (audit d'échantillon de 100 placements)
+- [ ] Mettre à jour les paramètres de catégorie GARM si le positionnement de marque a évolué
+- [ ] Revoir les chemins d'approvisionnement programmatiques (conformité ads.txt/sellers.json)
+- [ ] Réaliser une revue du calendrier de sensibilité culturelle pour le prochain trimestre
+- [ ] Vérifier les résultats de contenu généré par IA pour les motifs de biais ou d'hallucination
+- [ ] Informer les équipes créatives et médias de toute nouvelle politique de sécurité de marque
 
 ---
 
-## Crisis-Triggered Brand Safety Protocols
+## Protocoles de sécurité de marque déclenchés par une crise
 
-When a crisis occurs (see `crisis-communication.md`), immediately activate:
+Lorsqu'une crise survient (voir `crisis-communication.md`), activer immédiatement :
 
-| Action | Timeline | Owner |
+| Action | Chronologie | Responsable |
 |--------|----------|-------|
-| Pause all programmatic campaigns | Within 15 minutes | Media team |
-| Pause social ad campaigns | Within 15 minutes | Social team |
-| Review scheduled organic posts for tone-appropriateness | Within 30 minutes | Content team |
-| Add crisis-specific keywords to block lists | Within 1 hour | Media team |
-| Notify brand safety vendor of elevated risk | Within 1 hour | Media team |
-| Resume campaigns only after explicit approval from crisis commander | When cleared | Incident Commander |
+| Mettre en pause toutes les campagnes programmatiques | Dans les 15 minutes | Équipe média |
+| Mettre en pause les campagnes publicitaires sociales | Dans les 15 minutes | Équipe sociale |
+| Revoir les publications organiques planifiées pour l'adéquation du ton | Dans les 30 minutes | Équipe contenu |
+| Ajouter des mots-clés spécifiques à la crise aux listes de blocage | Dans l'heure | Équipe média |
+| Notifier le fournisseur de sécurité de marque d'un risque élevé | Dans l'heure | Équipe média |
+| Reprendre les campagnes uniquement après approbation explicite du commandant de crise | Une fois autorisé | Commandant de l'incident |
 
 ---
 
-> **Brand safety is not a set-and-forget configuration.** It requires continuous monitoring, quarterly audits, and rapid adaptation when the environment shifts. The cost of one brand safety failure always exceeds the cost of prevention.
+> **La sécurité de marque n'est pas une configuration à faire une fois pour toutes.** Elle nécessite une surveillance continue, des audits trimestriels, et une adaptation rapide lorsque l'environnement change. Le coût d'un échec de sécurité de marque dépasse toujours le coût de la prévention.
+</content>

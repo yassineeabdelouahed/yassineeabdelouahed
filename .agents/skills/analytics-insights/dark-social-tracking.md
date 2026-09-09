@@ -1,263 +1,263 @@
-# Dark Social Tracking — Measurement Methods
+# Suivi du dark social — Méthodes de mesure
 
-## What is Dark Social?
+## Qu'est-ce que le dark social ?
 
-Dark social refers to content sharing and referral traffic that occurs through private, untraceable channels — direct messages, private group chats, SMS, email forwards, Slack, WhatsApp, Discord, and native mobile app sharing. When a user copies a link and pastes it into a group chat, the referrer header is stripped. The resulting visit appears as "direct traffic" in analytics, making it invisible to standard attribution.
+Le dark social désigne le partage de contenu et le trafic de référence qui se produit via des canaux privés et non traçables — messages directs, discussions de groupe privées, SMS, transferts d'e-mail, Slack, WhatsApp, Discord, et partage natif d'applications mobiles. Lorsqu'un utilisateur copie un lien et le colle dans une discussion de groupe, l'en-tête de référent est supprimé. La visite qui en résulte apparaît comme du « trafic direct » dans les outils d'analytics, la rendant invisible pour l'attribution standard.
 
-### Why It Matters
+### Pourquoi cela compte
 
 | Dimension | Impact |
 |-----------|--------|
-| **Scale** | Dark social accounts for an estimated 70-80% of all social sharing activity online |
-| **Attribution distortion** | Inflates "Direct" traffic in GA4, masking the true source of discovery |
-| **Undervalued channels** | Content marketing, community, podcasts, and organic social appear less effective than they are |
-| **Decision quality** | Budget allocation based on last-click attribution systematically underfunds awareness and word-of-mouth channels |
-| **B2B impact** | Particularly significant in B2B where buyers share content internally via Slack, Teams, and email before converting |
+| **Échelle** | Le dark social représente une estimation de 70 à 80 % de l'ensemble de l'activité de partage social en ligne |
+| **Distorsion de l'attribution** | Gonfle le trafic « Direct » dans GA4, masquant la véritable source de découverte |
+| **Canaux sous-valorisés** | Le marketing de contenu, la communauté, les podcasts, et le social organique paraissent moins efficaces qu'ils ne le sont réellement |
+| **Qualité de décision** | L'allocation budgétaire basée sur l'attribution au dernier clic sous-finance systématiquement les canaux de notoriété et de bouche-à-oreille |
+| **Impact B2B** | Particulièrement significatif en B2B où les acheteurs partagent du contenu en interne via Slack, Teams, et e-mail avant de convertir |
 
-### What Channels Generate Dark Social Traffic?
+### Quels canaux génèrent du trafic de dark social ?
 
-| Channel | Mechanism | Trackability |
+| Canal | Mécanisme | Traçabilité |
 |---------|-----------|-------------|
-| WhatsApp / iMessage / SMS | Link shared in private message | Not trackable without UTMs |
-| Slack / Microsoft Teams | Link shared in workspace channels | Not trackable without UTMs |
-| Discord | Link shared in servers or DMs | Not trackable without UTMs |
-| Email (forwarded links) | Recipient clicks a forwarded link | Partially trackable (original UTMs may persist) |
-| Native app share menus | "Share" button in mobile apps copies URL | Strips referrer; appears as Direct |
-| Podcast mentions | Host mentions URL verbally | Not trackable without vanity URL or UTM |
-| Word of mouth (offline) | Someone types URL directly | Appears as Direct |
-| Private Facebook Groups | Links shared within closed groups | Limited referrer data |
-| LinkedIn DMs | Links shared in private messages | Not trackable without UTMs |
-| Reddit DMs | Links shared in private messages | Not trackable without UTMs |
+| WhatsApp / iMessage / SMS | Lien partagé dans un message privé | Non traçable sans UTM |
+| Slack / Microsoft Teams | Lien partagé dans les canaux d'espace de travail | Non traçable sans UTM |
+| Discord | Lien partagé sur des serveurs ou en DM | Non traçable sans UTM |
+| E-mail (liens transférés) | Le destinataire clique sur un lien transféré | Partiellement traçable (les UTM d'origine peuvent persister) |
+| Menus de partage natifs d'application | Le bouton « Partager » des applications mobiles copie l'URL | Supprime le référent ; apparaît comme Direct |
+| Mentions dans des podcasts | L'animateur mentionne l'URL verbalement | Non traçable sans URL personnalisée ou UTM |
+| Bouche-à-oreille (hors ligne) | Quelqu'un tape l'URL directement | Apparaît comme Direct |
+| Groupes Facebook privés | Liens partagés au sein de groupes fermés | Données de référent limitées |
+| DM LinkedIn | Liens partagés en messages privés | Non traçable sans UTM |
+| DM Reddit | Liens partagés en messages privés | Non traçable sans UTM |
 
 ---
 
-## Measurement Methods
+## Méthodes de mesure
 
-### Method 1: UTM Tracking for Shareable Content
+### Méthode 1 : suivi UTM pour le contenu partageable
 
-The most direct approach is to embed tracking parameters into every shareable link so that even when the referrer is stripped, the UTM parameters persist.
+L'approche la plus directe consiste à intégrer des paramètres de suivi dans chaque lien partageable afin que, même lorsque le référent est supprimé, les paramètres UTM persistent.
 
-**UTM Structure for Dark Social:**
+**Structure UTM pour le dark social :**
 
-| Parameter | Value | Purpose |
+| Paramètre | Valeur | Objectif |
 |-----------|-------|---------|
-| `utm_source` | `dark_social` or specific platform (`whatsapp`, `slack`, `sms`) | Identify the sharing platform |
-| `utm_medium` | `share` or `social_share` | Distinguish from other social traffic |
-| `utm_campaign` | Content piece name or ID | Track which content is being shared |
-| `utm_content` | Share button location (`inline`, `floating`, `bottom`) | Optimize share button placement |
+| `utm_source` | `dark_social` ou plateforme spécifique (`whatsapp`, `slack`, `sms`) | Identifier la plateforme de partage |
+| `utm_medium` | `share` ou `social_share` | Distinguer des autres trafics sociaux |
+| `utm_campaign` | Nom ou identifiant du contenu | Suivre quel contenu est partagé |
+| `utm_content` | Emplacement du bouton de partage (`inline`, `floating`, `bottom`) | Optimiser le placement du bouton de partage |
 
-**Example:**
+**Exemple :**
 ```
 https://example.com/blog/post-title?utm_source=whatsapp&utm_medium=share&utm_campaign=blog-post-title
 ```
 
-### Method 2: Platform-Specific Share Buttons
+### Méthode 2 : boutons de partage spécifiques à la plateforme
 
-Replace generic "copy link" buttons with platform-specific share buttons that pre-populate UTMs.
+Remplacer les boutons génériques de « copie de lien » par des boutons de partage spécifiques à la plateforme qui pré-remplissent les UTM.
 
-**Implementation checklist:**
+**Liste de contrôle de mise en œuvre :**
 
-- [ ] WhatsApp share button with `utm_source=whatsapp`
-- [ ] Telegram share button with `utm_source=telegram`
-- [ ] SMS share button (using `sms:` protocol) with `utm_source=sms`
-- [ ] Email share button with `utm_source=email_share`
-- [ ] LinkedIn share button with `utm_source=linkedin_share`
-- [ ] Twitter/X share button with `utm_source=twitter_share`
-- [ ] "Copy Link" button that automatically appends `utm_source=copy_link&utm_medium=share`
-- [ ] Each button fires a GA4 custom event (e.g., `share_click`) with the platform as a parameter
+- [ ] Bouton de partage WhatsApp avec `utm_source=whatsapp`
+- [ ] Bouton de partage Telegram avec `utm_source=telegram`
+- [ ] Bouton de partage SMS (via le protocole `sms:`) avec `utm_source=sms`
+- [ ] Bouton de partage e-mail avec `utm_source=email_share`
+- [ ] Bouton de partage LinkedIn avec `utm_source=linkedin_share`
+- [ ] Bouton de partage Twitter/X avec `utm_source=twitter_share`
+- [ ] Bouton « Copier le lien » qui ajoute automatiquement `utm_source=copy_link&utm_medium=share`
+- [ ] Chaque bouton déclenche un événement personnalisé GA4 (par ex. `share_click`) avec la plateforme comme paramètre
 
-**Technical implementation notes:**
-- Use JavaScript to dynamically append UTMs when the share button is clicked
-- For "Copy Link," intercept the clipboard write to append parameters to the URL
-- Store the page URL + UTMs in the clipboard, not just the clean URL
-- On mobile, use the Web Share API (`navigator.share()`) with UTM-tagged URL
+**Notes de mise en œuvre technique :**
+- Utiliser JavaScript pour ajouter dynamiquement les UTM lorsque le bouton de partage est cliqué
+- Pour « Copier le lien », intercepter l'écriture dans le presse-papiers pour ajouter les paramètres à l'URL
+- Stocker l'URL de la page + les UTM dans le presse-papiers, pas seulement l'URL propre
+- Sur mobile, utiliser la Web Share API (`navigator.share()`) avec une URL taguée UTM
 
-### Method 3: Shortened URLs with Tracking
+### Méthode 3 : URL raccourcies avec suivi
 
-Use branded short URLs that redirect through a tracking layer.
+Utiliser des liens courts de marque qui redirigent à travers une couche de suivi.
 
-| Approach | Tool | Benefit | Limitation |
+| Approche | Outil | Bénéfice | Limite |
 |----------|------|---------|------------|
-| Branded short links | Bitly, Rebrandly, Short.io | Tracks clicks, geography, device; looks clean | Requires short link creation per content piece |
-| Vanity URLs | Custom redirect (e.g., `brand.com/guide`) | Memorable for podcasts, events, print | Requires redirect setup; limited metadata |
-| QR codes | Any QR generator with UTMs embedded | Bridges offline to online tracking | Only relevant for physical/visual media |
+| Liens courts de marque | Bitly, Rebrandly, Short.io | Suit les clics, la géographie, l'appareil ; paraît propre | Nécessite la création d'un lien court par contenu |
+| URL personnalisées (vanity URLs) | Redirection personnalisée (par ex. `brand.com/guide`) | Mémorisable pour les podcasts, événements, print | Nécessite une configuration de redirection ; métadonnées limitées |
+| Codes QR | Tout générateur QR avec UTM intégrés | Fait le pont entre offline et online tracking | Pertinent uniquement pour les médias physiques/visuels |
 
-**Best practice:** Use shortened URLs for content distributed through dark social-heavy channels (newsletters, podcasts, communities). Embed full UTMs in the redirect destination.
+**Bonne pratique :** utiliser des URL raccourcies pour le contenu diffusé via des canaux à forte présence de dark social (newsletters, podcasts, communautés). Intégrer des UTM complets dans la destination de redirection.
 
-### Method 4: Direct Traffic Segmentation
+### Méthode 4 : segmentation du trafic direct
 
-Since dark social inflates Direct traffic, analyze Direct traffic patterns to estimate the dark social component.
+Le dark social gonflant le trafic Direct, analyser les motifs de trafic Direct pour estimer la composante dark social.
 
-**Segmentation logic:**
+**Logique de segmentation :**
 
-| Direct Traffic Segment | Likely Source | Rationale |
+| Segment de trafic direct | Source probable | Justification |
 |-----------------------|-------------|-----------|
-| Homepage visits (direct) | True direct (typed URL, bookmarks) | Users who know the brand navigate to homepage |
-| Deep page visits (direct) — blog posts, product pages, long URLs | Dark social | Nobody types `example.com/blog/2024/12/long-post-title` manually |
-| Landing page visits with path length > 3 segments (direct) | Dark social | Complex URLs indicate a shared link, not a typed URL |
-| Direct traffic from new users on content pages | Dark social | New users do not bookmark or type deep URLs |
-| Direct traffic with mobile device + content page | Dark social (very high probability) | Mobile users share links via messaging apps |
+| Visites de la page d'accueil (direct) | Vrai direct (URL tapée, favoris) | Les utilisateurs qui connaissent la marque naviguent vers la page d'accueil |
+| Visites de pages profondes (direct) — articles de blog, pages produit, URL longues | Dark social | Personne ne tape manuellement `example.com/blog/2024/12/long-post-title` |
+| Visites de landing page avec une longueur de chemin > 3 segments (direct) | Dark social | Des URL complexes indiquent un lien partagé, pas une URL tapée |
+| Trafic direct de nouveaux utilisateurs sur des pages de contenu | Dark social | Les nouveaux utilisateurs ne mettent pas en favoris ni ne tapent d'URL profondes |
+| Trafic direct depuis un appareil mobile + page de contenu | Dark social (probabilité très élevée) | Les utilisateurs mobiles partagent des liens via des applications de messagerie |
 
-**GA4 implementation:**
-1. Create a segment: Source = (direct), Landing Page does NOT match homepage, Device = Mobile
-2. This segment approximates mobile dark social traffic
-3. Track this segment's volume and trends over time
-4. Compare to content pages receiving high known social traffic for calibration
+**Mise en œuvre GA4 :**
+1. Créer un segment : Source = (direct), Landing Page ne correspond PAS à la page d'accueil, Appareil = Mobile
+2. Ce segment approxime le trafic mobile de dark social
+3. Suivre le volume et les tendances de ce segment dans le temps
+4. Comparer aux pages de contenu recevant un trafic social connu élevé, pour calibration
 
-### Method 5: Self-Reported Attribution ("How Did You Hear About Us?")
+### Méthode 5 : attribution auto-déclarée (« Comment avez-vous entendu parler de nous ? »)
 
-Add a "How did you hear about us?" question to key conversion points.
+Ajouter une question « Comment avez-vous entendu parler de nous ? » aux points de conversion clés.
 
-**Implementation options:**
+**Options de mise en œuvre :**
 
-| Placement | Format | Response Rate |
+| Emplacement | Format | Taux de réponse |
 |-----------|--------|--------------|
-| Post-purchase survey | Open text + dropdown | 60-80% |
-| Lead form (additional field) | Dropdown with "Other" option | 40-60% |
-| In-app onboarding | Multiple choice | 50-70% |
-| Email survey (post-conversion) | Open text | 15-30% |
+| Enquête post-achat | Texte libre + menu déroulant | 60-80 % |
+| Formulaire de lead (champ additionnel) | Menu déroulant avec option « Autre » | 40-60 % |
+| Onboarding in-app | Choix multiple | 50-70 % |
+| Enquête e-mail (post-conversion) | Texte libre | 15-30 % |
 
-**Recommended answer options:**
-- Search engine (Google, Bing)
-- Social media (Instagram, TikTok, LinkedIn, etc.)
-- Friend or colleague recommended
+**Options de réponse recommandées :**
+- Moteur de recherche (Google, Bing)
+- Réseau social (Instagram, TikTok, LinkedIn, etc.)
+- Recommandé par un ami ou un collègue
 - Podcast
-- Newsletter or email
-- Online community (Reddit, Discord, Slack)
-- Blog post or article
-- YouTube video
-- Saw an ad
-- Other (please specify): ___
+- Newsletter ou e-mail
+- Communauté en ligne (Reddit, Discord, Slack)
+- Article de blog
+- Vidéo YouTube
+- J'ai vu une publicité
+- Autre (précisez) : ___
 
-**Analysis guidance:**
-- "Friend or colleague recommended" and "Online community" are strong dark social indicators
-- Cross-reference self-reported source with analytics-attributed source to quantify attribution gaps
-- Track self-reported attribution trends monthly; shifts indicate changing discovery patterns
+**Guidance d'analyse :**
+- « Recommandé par un ami ou un collègue » et « Communauté en ligne » sont de forts indicateurs de dark social
+- Recouper la source auto-déclarée avec la source attribuée par les analytics pour quantifier les écarts d'attribution
+- Suivre les tendances d'attribution auto-déclarée mensuellement ; les changements indiquent des motifs de découverte en évolution
 
 ---
 
-## Estimation Models
+## Modèles d'estimation
 
-### Dark Social Traffic Estimation Formula
+### Formule d'estimation du trafic de dark social
 
 ```
 Estimated Dark Social = Direct Traffic to Non-Homepage Pages (New Users, Mobile)
 ```
 
-**More refined estimation:**
+**Estimation plus affinée :**
 
-| Step | Calculation |
+| Étape | Calcul |
 |------|------------|
-| 1. Total Direct sessions | From GA4 |
-| 2. Subtract homepage Direct sessions | These are likely true Direct (bookmarks, typed) |
-| 3. Subtract known app traffic misclassified as Direct | Some apps strip referrer but are not "social" |
-| 4. Remaining = Estimated Dark Social | Deep-page Direct from new users, especially mobile |
+| 1. Sessions Direct totales | Depuis GA4 |
+| 2. Soustraire les sessions Direct de la page d'accueil | Probablement du vrai Direct (favoris, URL tapée) |
+| 3. Soustraire le trafic d'applications connu classé à tort comme Direct | Certaines applications suppriment le référent mais ne sont pas « sociales » |
+| 4. Restant = Dark social estimé | Direct sur page profonde de nouveaux utilisateurs, en particulier mobile |
 
-**Calibration:** Compare estimated dark social volume against known sharing activity (share button clicks, shortened URL clicks) to validate the estimate. Typical finding: estimated dark social is 3-5x the tracked sharing activity.
+**Calibration :** comparer le volume de dark social estimé à l'activité de partage connue (clics sur boutons de partage, clics sur URL raccourcies) pour valider l'estimation. Constat typique : le dark social estimé représente 3 à 5 fois l'activité de partage suivie.
 
-### Dark Social Impact Assessment
+### Évaluation de l'impact du dark social
 
-| Metric | Calculation | Purpose |
+| Métrique | Calcul | Objectif |
 |--------|------------|---------|
-| Dark Social Share (%) | Est. Dark Social Sessions / Total Sessions | Understand scale of unmeasured sharing |
-| Dark Social Conversion Rate | Conversions from Est. Dark Social / Est. Dark Social Sessions | Assess quality of dark social traffic |
-| Dark Social Revenue | Dark Social Conversions x AOV | Quantify revenue impact |
-| Share-to-Visit Ratio | Share Button Clicks / Resulting Visits (tracked) | Estimate virality coefficient |
-| Dark Social Growth Trend | MoM change in estimated dark social volume | Assess whether word-of-mouth is growing |
+| Part de dark social (%) | Sessions de dark social est. / Sessions totales | Comprendre l'échelle du partage non mesuré |
+| Taux de conversion du dark social | Conversions du dark social est. / Sessions de dark social est. | Évaluer la qualité du trafic de dark social |
+| Revenu du dark social | Conversions du dark social x AOV | Quantifier l'impact sur le revenu |
+| Ratio partage-vers-visite | Clics sur boutons de partage / Visites résultantes (suivies) | Estimer le coefficient de viralité |
+| Tendance de croissance du dark social | Variation MoM du volume de dark social estimé | Évaluer si le bouche-à-oreille croît |
 
 ---
 
-## Platform-Specific Patterns
+## Motifs spécifiques par plateforme
 
-### Where Dark Social Traffic Originates by Platform
+### D'où provient le trafic de dark social par plateforme
 
-| Platform | Primary Dark Social Behavior | Tracking Approach |
+| Plateforme | Comportement principal de dark social | Approche de suivi |
 |----------|----------------------------|-------------------|
-| **WhatsApp** | Link sharing in 1:1 and group chats; most common dark social channel globally | WhatsApp share button with UTMs; Click-to-WhatsApp ads as a proxy |
-| **iMessage / SMS** | Link sharing, especially among US/UK iPhone users | SMS share button; vanity URLs for offline-to-online |
-| **Slack** | B2B content sharing in team channels and DMs | Slack share button; monitor Slack communities for brand mentions |
-| **Discord** | Community-driven sharing, especially among younger demographics | Discord-specific UTMs; community management tools |
-| **LinkedIn DMs** | B2B decision-makers sharing content with colleagues | LinkedIn share button; self-reported attribution captures this well |
-| **Telegram** | High in international markets, crypto/tech communities | Telegram share button with UTMs |
-| **Email forwards** | Original email UTMs may persist if recipient clicks original link | Encourage "forward to a friend" links with unique UTMs |
-| **Podcasts** | Verbal URL mention drives direct traffic | Vanity URLs (`brand.com/podcast`), unique promo codes |
+| **WhatsApp** | Partage de liens en 1:1 et en discussions de groupe ; canal de dark social le plus courant au monde | Bouton de partage WhatsApp avec UTM ; publicités Click-to-WhatsApp comme proxy |
+| **iMessage / SMS** | Partage de liens, en particulier chez les utilisateurs iPhone US/UK | Bouton de partage SMS ; URL personnalisées pour l'offline-vers-online |
+| **Slack** | Partage de contenu B2B dans les canaux d'équipe et en DM | Bouton de partage Slack ; surveiller les communautés Slack pour les mentions de marque |
+| **Discord** | Partage piloté par la communauté, en particulier chez les jeunes démographies | UTM spécifiques à Discord ; outils de gestion de communauté |
+| **DM LinkedIn** | Décideurs B2B partageant du contenu avec des collègues | Bouton de partage LinkedIn ; l'attribution auto-déclarée capture bien cela |
+| **Telegram** | Élevé sur les marchés internationaux, communautés crypto/tech | Bouton de partage Telegram avec UTM |
+| **Transferts d'e-mail** | Les UTM d'e-mail d'origine peuvent persister si le destinataire clique sur le lien original | Encourager les liens « transférer à un ami » avec des UTM uniques |
+| **Podcasts** | La mention verbale de l'URL génère du trafic direct | URL personnalisées (`brand.com/podcast`), codes promo uniques |
 
 ---
 
-## Reporting Framework
+## Cadre de reporting
 
-### Dark Social Dashboard Components
+### Composants du tableau de bord dark social
 
-| Component | Metric | Visualization | Update Cadence |
+| Composant | Métrique | Visualisation | Cadence de mise à jour |
 |-----------|--------|---------------|----------------|
-| Dark Social Volume | Estimated sessions from dark social | Line chart (weekly trend) | Weekly |
-| Dark Social % of Total | Dark social sessions / Total sessions | Single metric with trend | Weekly |
-| Share Button Usage | Clicks per platform per content piece | Bar chart by platform | Weekly |
-| Top Shared Content | Content pages ranked by dark social traffic | Table | Weekly |
-| Dark Social Conversion Rate | Conversions / Estimated dark social sessions | Line chart with comparison to overall CVR | Monthly |
-| Self-Reported Source Distribution | Breakdown of "How did you hear about us?" responses | Pie or bar chart | Monthly |
-| Attribution Gap | Difference between analytics-attributed and self-reported source | Gap chart by channel | Monthly |
+| Volume de dark social | Sessions estimées provenant du dark social | Graphique linéaire (tendance hebdomadaire) | Hebdomadaire |
+| % de dark social sur le total | Sessions de dark social / Sessions totales | Métrique unique avec tendance | Hebdomadaire |
+| Usage des boutons de partage | Clics par plateforme et par contenu | Graphique à barres par plateforme | Hebdomadaire |
+| Contenu le plus partagé | Pages de contenu classées par trafic de dark social | Tableau | Hebdomadaire |
+| Taux de conversion du dark social | Conversions / Sessions de dark social estimées | Graphique linéaire avec comparaison au CVR global | Mensuelle |
+| Répartition des sources auto-déclarées | Répartition des réponses « Comment avez-vous entendu parler de nous ? » | Camembert ou graphique à barres | Mensuelle |
+| Écart d'attribution | Différence entre source attribuée par les analytics et source auto-déclarée | Graphique d'écart par canal | Mensuelle |
 
-### Monthly Dark Social Report Template
+### Modèle de rapport mensuel sur le dark social
 
-**Section 1: Volume & Trends**
-- Estimated dark social sessions this month vs last month
-- Dark social as % of total traffic (trend over 6 months)
-- Share button click volume by platform
+**Section 1 : volume et tendances**
+- Sessions de dark social estimées ce mois vs le mois dernier
+- Dark social en % du trafic total (tendance sur 6 mois)
+- Volume de clics sur boutons de partage par plateforme
 
-**Section 2: Content Performance**
-- Top 10 most-shared content pieces (by share button clicks + estimated dark social traffic)
-- Content themes that drive the most sharing
-- New vs evergreen content sharing patterns
+**Section 2 : performance du contenu**
+- Top 10 des contenus les plus partagés (par clics sur boutons de partage + trafic de dark social estimé)
+- Thèmes de contenu qui génèrent le plus de partage
+- Motifs de partage du contenu nouveau vs evergreen
 
-**Section 3: Conversion Impact**
-- Estimated revenue from dark social traffic
-- Dark social conversion rate vs overall site conversion rate
-- Self-reported attribution data (% saying "friend," "community," "podcast")
+**Section 3 : impact sur la conversion**
+- Revenu estimé du trafic de dark social
+- Taux de conversion du dark social vs taux de conversion global du site
+- Données d'attribution auto-déclarée (% disant « ami », « communauté », « podcast »)
 
-**Section 4: Attribution Gap Analysis**
-- Comparison of GA4 channel attribution vs self-reported attribution
-- Channels most undercounted by analytics (typically organic social, podcasts, word-of-mouth)
-- Implications for budget allocation
+**Section 4 : analyse de l'écart d'attribution**
+- Comparaison de l'attribution de canal GA4 vs l'attribution auto-déclarée
+- Canaux les plus sous-comptabilisés par les analytics (généralement le social organique, les podcasts, le bouche-à-oreille)
+- Implications pour l'allocation budgétaire
 
-**Section 5: Recommendations**
-- Content to invest in based on sharing patterns
-- Share UX improvements to implement
-- Channels where dark social indicates underinvestment
+**Section 5 : recommandations**
+- Contenu dans lequel investir en fonction des motifs de partage
+- Améliorations d'expérience de partage à mettre en œuvre
+- Canaux où le dark social indique un sous-investissement
 
 ---
 
-## Implementation Roadmap
+## Feuille de route de mise en œuvre
 
-### Phase 1: Foundation (Week 1-2)
+### Phase 1 : fondations (semaines 1-2)
 
-- [ ] Implement platform-specific share buttons on all key content pages
-- [ ] Configure "Copy Link" button to append UTMs automatically
-- [ ] Set up GA4 custom events for share button clicks
-- [ ] Create Direct traffic segmentation for dark social estimation
-- [ ] Add "How did you hear about us?" to primary conversion form
+- [ ] Mettre en œuvre des boutons de partage spécifiques à la plateforme sur toutes les pages de contenu clés
+- [ ] Configurer le bouton « Copier le lien » pour ajouter automatiquement les UTM
+- [ ] Configurer des événements personnalisés GA4 pour les clics sur boutons de partage
+- [ ] Créer une segmentation du trafic Direct pour l'estimation du dark social
+- [ ] Ajouter « Comment avez-vous entendu parler de nous ? » au formulaire de conversion principal
 
-### Phase 2: Measurement (Week 3-4)
+### Phase 2 : mesure (semaines 3-4)
 
-- [ ] Build dark social estimation model using the segmentation logic
-- [ ] Create initial dark social dashboard
-- [ ] Set up branded short links for podcast and community distribution
-- [ ] Configure vanity URLs for offline channels
-- [ ] Establish baseline metrics for dark social volume and conversion
+- [ ] Construire un modèle d'estimation du dark social à l'aide de la logique de segmentation
+- [ ] Créer un tableau de bord initial de dark social
+- [ ] Configurer des liens courts de marque pour la diffusion en podcast et communauté
+- [ ] Configurer des URL personnalisées pour les canaux offline
+- [ ] Établir des métriques de référence pour le volume et la conversion du dark social
 
-### Phase 3: Optimization (Month 2+)
+### Phase 3 : optimisation (mois 2+)
 
-- [ ] Analyze share button usage to optimize placement and design
-- [ ] Identify top-shared content and invest in similar formats
-- [ ] Cross-reference self-reported attribution with analytics attribution monthly
-- [ ] Adjust budget allocation based on attribution gap analysis
-- [ ] Test new share prompts (e.g., "Share this with a colleague who..." copy)
-- [ ] Report dark social trends quarterly to leadership as part of attribution review
+- [ ] Analyser l'usage des boutons de partage pour optimiser le placement et le design
+- [ ] Identifier le contenu le plus partagé et investir dans des formats similaires
+- [ ] Recouper mensuellement l'attribution auto-déclarée avec l'attribution des analytics
+- [ ] Ajuster l'allocation budgétaire en fonction de l'analyse de l'écart d'attribution
+- [ ] Tester de nouvelles incitations au partage (par ex. texte « Partagez ceci avec un collègue qui... »)
+- [ ] Rapporter les tendances de dark social trimestriellement à la direction dans le cadre de la revue d'attribution
 
-### Phase 4: Advanced (Quarter 2+)
+### Phase 4 : avancé (trimestre 2+)
 
-- [ ] Integrate self-reported attribution data into MMM as an additional signal
-- [ ] Build a "shareability score" for content planning (predicting which content will be shared)
-- [ ] Implement Web Share API for mobile-first sharing experience
-- [ ] Test incentivized sharing (referral rewards) and measure incremental impact
-- [ ] Incorporate dark social insights into content strategy planning process
+- [ ] Intégrer les données d'attribution auto-déclarée dans le MMM comme signal additionnel
+- [ ] Construire un « score de partageabilité » pour la planification de contenu (prédire quel contenu sera partagé)
+- [ ] Mettre en œuvre la Web Share API pour une expérience de partage mobile-first
+- [ ] Tester le partage incitatif (récompenses de recommandation) et mesurer l'impact incrémental
+- [ ] Intégrer les insights de dark social au processus de planification de la stratégie de contenu

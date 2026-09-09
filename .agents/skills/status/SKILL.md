@@ -1,6 +1,6 @@
 ---
 name: status
-description: "Print a read-only status snapshot of the active brand via scripts/dm-status.py: profile summary, engagements with current part and update age, last five insights, recent compliance violations, and Python dependency mode — with --quiet, --json, --section, and --brand variants. Triggers on \"/digital-marketing-pro:status\", \"what's my DMP status\", \"what brand am I on\", \"show engagement status\", \"status snapshot\". Never modifies state: switching brands is /digital-marketing-pro:switch-brand, advancing engagements is /digital-marketing-pro:engagement, connector status is /digital-marketing-pro:integrations, and content checks are /digital-marketing-pro:check."
+description: "Affiche un instantané de statut en lecture seule de la marque active via scripts/dm-status.py : résumé de profil, engagements avec la partie actuelle et l'ancienneté de mise à jour, les cinq derniers insights, les violations de conformité récentes, et le mode de dépendance Python — avec les variantes --quiet, --json, --section, et --brand. Se déclenche sur \"/digital-marketing-pro:status\", \"what's my DMP status\", \"what brand am I on\", \"show engagement status\", \"status snapshot\". Ne modifie jamais l'état : changer de marque se fait via /digital-marketing-pro:switch-brand, faire avancer les engagements via /digital-marketing-pro:engagement, le statut des connecteurs via /digital-marketing-pro:integrations, et les vérifications de contenu via /digital-marketing-pro:check."
 user-invocable: true
 triggers:
   - what's my dmp status
@@ -14,67 +14,67 @@ triggers:
 allowed-tools: Read Bash Glob Grep
 ---
 
-# /digital-marketing-pro:status — Unified Status Snapshot
+# /digital-marketing-pro:status — Instantané de statut unifié
 
-This skill prints a complete status snapshot for the active Digital Marketing Pro brand: profile summary, all engagements with their current part and update age, recent insights, recent compliance violations, and Python dependency mode.
+Cette compétence affiche un instantané de statut complet pour la marque Digital Marketing Pro active : résumé de profil, tous les engagements avec leur partie actuelle et leur ancienneté de mise à jour, les insights récents, les violations de conformité récentes, et le mode de dépendance Python.
 
-## Context efficiency
+## Efficacité de contexte
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List the brand's workspace at `~/.claude-marketing/brands/{slug}/` (or `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` when that env var is set) before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Faites un grep avant tout Read** sur un fichier référencé, puis ne lisez (`Read`) que les plages correspondantes avec `offset` + `limit`. Listez l'espace de travail de la marque dans `~/.claude-marketing/brands/{slug}/` (ou `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` lorsque cette variable d'environnement est définie) avant d'ouvrir des fichiers. Lors d'une réinvocation en cours de session, ignorez les fichiers déjà en contexte.
 
-An earlier version ran a SessionStart hook that executed `setup.py` at every Claude Code session start to print a 15-line brand summary banner. That hook was removed because it fired globally across every project regardless of whether the user was doing marketing work. `/digital-marketing-pro:status` is the explicit on-demand replacement — a richer view, when you ask for it.
+Une version antérieure exécutait un hook SessionStart qui lançait `setup.py` à chaque démarrage de session Claude Code pour afficher une bannière récapitulative de marque de 15 lignes. Ce hook a été supprimé car il se déclenchait globalement sur chaque projet, que l'utilisateur fasse ou non du travail marketing. `/digital-marketing-pro:status` en est le remplacement explicite à la demande — une vue plus riche, lorsque vous la demandez.
 
-## What it shows
+## Ce qu'elle affiche
 
-The status snapshot has 5 sections:
+L'instantané de statut comporte 5 sections :
 
-| Section | Contents |
+| Section | Contenu |
 |---|---|
-| **Brand** | Name, slug, industry (with regulated flag), business model, voice dimensions, traits, channels, languages, markets, competitors, primary goal, auto-save-insights flag |
-| **Engagements** | All engagements for the brand with: current part, completed/in-progress/blocked counts, days since last update, pending re-run decisions, versioned doc count |
-| **Recent Insights** | Last 5 captured insights with type, summary, days since last save |
-| **Recent Compliance Violations** | Last 5 violations with rule, category, severity; total count in last 30 days |
-| **Python Dependencies** | Python version, mode (knowledge-only / lite / full), available + missing packages |
+| **Marque** | Nom, slug, secteur (avec drapeau réglementé), modèle économique, dimensions de voix, traits, canaux, langues, marchés, concurrents, objectif principal, drapeau d'enregistrement automatique des insights |
+| **Engagements** | Tous les engagements de la marque avec : partie actuelle, comptages terminé/en cours/bloqué, jours depuis la dernière mise à jour, décisions de relance en attente, nombre de documents versionnés |
+| **Insights récents** | Les 5 derniers insights capturés avec type, résumé, jours depuis le dernier enregistrement |
+| **Violations de conformité récentes** | Les 5 dernières violations avec règle, catégorie, sévérité ; total sur les 30 derniers jours |
+| **Dépendances Python** | Version de Python, mode (knowledge-only / lite / full), packages disponibles + manquants |
 
-## Subcommands and modes
+## Sous-commandes et modes
 
-### Default
+### Par défaut
 
 ```
 /digital-marketing-pro:status
 ```
 
-Full snapshot for the active brand. Reads from `~/.claude-marketing/brands/_active-brand.json` to find the active slug.
+Instantané complet pour la marque active. Lit `~/.claude-marketing/brands/_active-brand.json` pour trouver le slug actif.
 
-### Specific brand
+### Marque spécifique
 
 ```
 /digital-marketing-pro:status --brand acme-corp
 ```
 
-Snapshot for a named brand (does not change the active brand pointer).
+Instantané pour une marque nommée (ne change pas le pointeur de marque active).
 
-### Compact one-liner
+### Résumé compact sur une ligne
 
 ```
 /digital-marketing-pro:status --quiet
 ```
 
-Output:
+Sortie :
 
 ```
 DMP STATUS | Acme Corp | engagements: 2 active / 3 total | deps: lite
 ```
 
-### JSON output
+### Sortie JSON
 
 ```
 /digital-marketing-pro:status --json
 ```
 
-Machine-readable JSON for downstream skill consumption or scripting.
+JSON lisible par machine pour consommation par des compétences en aval ou du scripting.
 
-### Single section
+### Section unique
 
 ```
 /digital-marketing-pro:status --section brand
@@ -84,24 +84,24 @@ Machine-readable JSON for downstream skill consumption or scripting.
 /digital-marketing-pro:status --section deps
 ```
 
-Print only the requested section. Useful when you only need one piece of state.
+N'affiche que la section demandée. Utile lorsque vous n'avez besoin que d'un seul élément d'état.
 
-## How the skill operates
+## Comment la compétence opère
 
-1. **Resolve target brand.** If `--brand` provided, use it. Otherwise read `~/.claude-marketing/brands/_active-brand.json` for the active slug. If no active brand, instruct the user to run `/digital-marketing-pro:brand-setup` first.
+1. **Résoudre la marque cible.** Si `--brand` est fourni, l'utiliser. Sinon lire `~/.claude-marketing/brands/_active-brand.json` pour le slug actif. Si aucune marque active, demander à l'utilisateur d'exécuter d'abord `/digital-marketing-pro:brand-setup`.
 
-2. **Execute the script.**
+2. **Exécuter le script.**
    ```
    python ${CLAUDE_PLUGIN_ROOT}/scripts/dm-status.py [--brand <slug>] [--json] [--quiet] [--section <name>]
    ```
 
-3. **Pass through the formatted output to the user.** The script does the heavy lifting; the skill is a thin orchestration layer.
+3. **Transmettre la sortie formatée à l'utilisateur.** Le script fait le gros du travail ; la compétence est une simple couche d'orchestration.
 
-4. **For JSON output**, parse and surface key health indicators in the response (e.g., highlight engagements that have not been updated in 14+ days, or that have pending re-run decisions awaiting action).
+4. **Pour la sortie JSON**, analyser et faire ressortir les indicateurs de santé clés dans la réponse (par ex. mettre en évidence les engagements qui n'ont pas été mis à jour depuis 14 jours ou plus, ou qui ont des décisions de relance en attente d'action).
 
-## Examples
+## Exemples
 
-### Example 1: Default snapshot
+### Exemple 1 : Instantané par défaut
 
 ```
 User: /digital-marketing-pro:status
@@ -175,7 +175,7 @@ Skill highlights:
 - 2026-rebrand has not been updated in 14d — recommend a status check
 ```
 
-### Example 2: Quick check during a session
+### Exemple 2 : Vérification rapide en cours de session
 
 ```
 User: /digital-marketing-pro:status --quiet
@@ -183,7 +183,7 @@ User: /digital-marketing-pro:status --quiet
 Output: DMP STATUS | Acme Corp | engagements: 2 active / 2 total | deps: full
 ```
 
-### Example 3: JSON for scripting
+### Exemple 3 : JSON pour du scripting
 
 ```
 User: /digital-marketing-pro:status --json
@@ -191,7 +191,7 @@ User: /digital-marketing-pro:status --json
 Output: {valid JSON snapshot — pipeable to jq, parseable by other skills}
 ```
 
-### Example 4: When no brand is set up
+### Exemple 4 : Quand aucune marque n'est configurée
 
 ```
 User: /digital-marketing-pro:status
@@ -202,31 +202,31 @@ Pass --brand <slug> explicitly, or run /digital-marketing-pro:brand-setup to cre
 Workspace: ~/.claude-marketing      # or $CLAUDE_PLUGIN_DATA/digital-marketing-pro if set
 ```
 
-## Behaviour rules
+## Règles de comportement
 
-1. **Never modify state.** Read-only operation. Never write to brand profile, engagement state, or any persistent file.
-2. **Never error silently.** If a brand profile is missing or corrupt, the script reports the specific error in the output.
-3. **Surface health indicators after the snapshot.** If JSON output is requested or if the skill is parsing for downstream use, highlight: engagements with no update in 14+ days, pending re-run decisions, recent compliance violations, missing Python deps.
-4. **Respect CLAUDE_PLUGIN_DATA.** When the env var is set, the script reads from `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/...` instead of `~/.claude-marketing/...`.
-5. **Fast.** The script reads only state files; never invokes other scripts; never makes network calls.
+1. **Ne jamais modifier l'état.** Opération en lecture seule. N'écrit jamais dans le profil de marque, l'état d'engagement, ou tout fichier persistant.
+2. **Ne jamais échouer silencieusement.** Si un profil de marque est manquant ou corrompu, le script rapporte l'erreur spécifique dans la sortie.
+3. **Faire ressortir les indicateurs de santé après l'instantané.** Si la sortie JSON est demandée ou si la compétence est analysée pour un usage en aval, mettre en évidence : les engagements sans mise à jour depuis 14 jours ou plus, les décisions de relance en attente, les violations de conformité récentes, les dépendances Python manquantes.
+4. **Respecter CLAUDE_PLUGIN_DATA.** Lorsque la variable d'environnement est définie, le script lit depuis `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/...` plutôt que `~/.claude-marketing/...`.
+5. **Rapide.** Le script ne lit que des fichiers d'état ; n'invoque jamais d'autres scripts ; ne fait jamais d'appels réseau.
 
-## What this skill does NOT do
+## Ce que cette compétence ne fait PAS
 
-- Does not modify brand profile, engagement state, or any persistent file
-- Does not save insights, compliance violations, or any data
-- Does not trigger eval scripts (use `/digital-marketing-pro:check` for that)
-- Does not advance engagement parts (use `/digital-marketing-pro:engagement next` for that)
-- Does not switch active brand (use `/digital-marketing-pro:switch-brand` for that)
+- Ne modifie pas le profil de marque, l'état d'engagement, ou tout fichier persistant
+- N'enregistre pas d'insights, de violations de conformité, ou toute donnée
+- Ne déclenche pas de scripts d'évaluation (utilisez `/digital-marketing-pro:check` pour cela)
+- Ne fait pas avancer les parties d'engagement (utilisez `/digital-marketing-pro:engagement next` pour cela)
+- Ne change pas la marque active (utilisez `/digital-marketing-pro:switch-brand` pour cela)
 
-## Related skills + commands
+## Compétences et commandes associées
 
-- `/digital-marketing-pro:brand-setup` — create or update a brand profile
-- `/digital-marketing-pro:switch-brand` — change the active brand
-- `/digital-marketing-pro:engagement status` — engagement-specific deep status
-- `/digital-marketing-pro:check` — pre-publish quality gate on content
-- `/digital-marketing-pro:integrations` — connector status (separate from /digital-marketing-pro:status)
+- `/digital-marketing-pro:brand-setup` — créer ou mettre à jour un profil de marque
+- `/digital-marketing-pro:switch-brand` — changer la marque active
+- `/digital-marketing-pro:engagement status` — statut détaillé spécifique à l'engagement
+- `/digital-marketing-pro:check` — porte qualité de pré-publication sur le contenu
+- `/digital-marketing-pro:integrations` — statut des connecteurs (distinct de /digital-marketing-pro:status)
 
-## Related references
+## Références associées
 
-- `scripts/dm-status.py` — the underlying script
-- `docs/getting-started.md` — context on what was lost when the SessionStart hook was removed and why /digital-marketing-pro:status replaced it
+- `scripts/dm-status.py` — le script sous-jacent
+- `docs/getting-started.md` — contexte sur ce qui a été perdu lorsque le hook SessionStart a été supprimé et pourquoi /digital-marketing-pro:status l'a remplacé

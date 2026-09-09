@@ -1,93 +1,97 @@
-# Growth Experimentation — Frameworks & Methodology Reference
+# Expérimentation de croissance — Référence des cadres et méthodologie
 
-## Experiment Prioritization Frameworks
+## Cadres de priorisation d'expériences
 
-### ICE Score (Impact, Confidence, Ease)
+### Score ICE (Impact, Confiance, Facilité)
 
-| Dimension | Scale | Definition |
+| Dimension | Échelle | Définition |
 |-----------|-------|-----------|
-| Impact | 1-10 | How much will this move the target metric? |
-| Confidence | 1-10 | How confident are you in the predicted impact? (based on data, research, or precedent) |
-| Ease | 1-10 | How easy is this to implement? (time, resources, dependencies) |
+| Impact | 1-10 | À quel point cela va-t-il faire bouger la métrique cible ? |
+| Confiance | 1-10 | Quelle confiance avez-vous dans l'impact prédit ? (basé sur les données, la recherche, ou un précédent) |
+| Facilité | 1-10 | À quel point est-ce facile à mettre en œuvre ? (temps, ressources, dépendances) |
 
 ```
-ICE Score = (Impact + Confidence + Ease) / 3
+ICE Score = (Impact + Confiance + Facilité) / 3
 
-Example:
-Experiment: Change CTA button color from gray to green
-- Impact: 3 (minor UX change)
-- Confidence: 4 (no strong data suggesting impact)
-- Ease: 10 (5-minute code change)
-- ICE Score: (3 + 4 + 10) / 3 = 5.7
+Exemple :
+Expérience : Changer la couleur du bouton CTA de gris à vert
+- Impact : 3 (changement UX mineur)
+- Confiance : 4 (pas de données solides suggérant un impact)
+- Facilité : 10 (changement de code en 5 minutes)
+- Score ICE : (3 + 4 + 10) / 3 = 5.7
 
-Experiment: Redesign pricing page with social proof and FAQ
-- Impact: 9 (pricing page is highest-intent page)
-- Confidence: 7 (competitor analysis + user research supports it)
-- Ease: 4 (requires design, copy, dev work)
-- ICE Score: (9 + 7 + 4) / 3 = 6.7  ← Prioritize this one
+Expérience : Refonte de la page de tarification avec preuve sociale et FAQ
+- Impact : 9 (la page de tarification est la page à plus forte intention)
+- Confiance : 7 (analyse concurrentielle + recherche utilisateur le soutiennent)
+- Facilité : 4 (nécessite du design, du copywriting, du dev)
+- Score ICE : (9 + 7 + 4) / 3 = 6.7  ← Prioriser celle-ci
 ```
 
-**Best for:** Small teams, fast-moving startups, early-stage experimentation programs. Quick to score, easy to debate.
+**Idéal pour :** Petites équipes, startups agiles, programmes d'expérimentation en
+début de vie. Rapide à noter, facile à débattre.
 
-### RICE Score (Reach, Impact, Confidence, Effort)
+### Score RICE (Reach, Impact, Confidence, Effort)
 
-| Dimension | Scale | Definition |
+| Dimension | Échelle | Définition |
 |-----------|-------|-----------|
-| Reach | # of users/month | How many people will this affect in a given time period? |
-| Impact | 0.25 / 0.5 / 1 / 2 / 3 | Minimal / Low / Medium / High / Massive impact per person |
-| Confidence | 50% / 80% / 100% | How certain are you? Low / Medium / High |
-| Effort | Person-months | Total work required (design + dev + QA) |
+| Reach (portée) | # d'utilisateurs/mois | Combien de personnes cela affectera-t-il sur une période donnée ? |
+| Impact | 0,25 / 0,5 / 1 / 2 / 3 | Impact minimal / faible / moyen / élevé / massif par personne |
+| Confidence (confiance) | 50% / 80% / 100% | Quelle certitude avez-vous ? Faible / Moyenne / Élevée |
+| Effort | Personnes-mois | Travail total requis (design + dev + QA) |
 
 ```
 RICE Score = (Reach x Impact x Confidence) / Effort
 
-Example:
-Experiment: Add exit-intent popup with email capture on blog
-- Reach: 50,000 visitors/month
-- Impact: 1 (medium — captures some emails)
-- Confidence: 80%
-- Effort: 0.5 person-months
-- RICE Score: (50,000 x 1 x 0.8) / 0.5 = 80,000
+Exemple :
+Expérience : Ajouter une popup d'intention de sortie avec capture d'e-mail sur le blog
+- Reach : 50 000 visiteurs/mois
+- Impact : 1 (moyen — capture quelques e-mails)
+- Confidence : 80%
+- Effort : 0,5 personne-mois
+- RICE Score : (50 000 x 1 x 0,8) / 0,5 = 80 000
 
-Experiment: Rebuild checkout flow to reduce steps from 5 to 3
-- Reach: 8,000 checkout initiators/month
-- Impact: 3 (massive — directly affects revenue)
-- Confidence: 80%
-- Effort: 3 person-months
-- RICE Score: (8,000 x 3 x 0.8) / 3 = 6,400
+Expérience : Reconstruire le tunnel de paiement pour réduire les étapes de 5 à 3
+- Reach : 8 000 initiateurs de paiement/mois
+- Impact : 3 (massif — affecte directement le revenu)
+- Confidence : 80%
+- Effort : 3 personnes-mois
+- RICE Score : (8 000 x 3 x 0,8) / 3 = 6 400
 ```
 
-**Best for:** Product teams with clear user data, growth teams needing to justify investment to stakeholders.
+**Idéal pour :** Équipes produit avec des données utilisateur claires, équipes de
+croissance devant justifier un investissement auprès des parties prenantes.
 
-### PIE Score (Potential, Importance, Ease)
+### Score PIE (Potential, Importance, Ease)
 
-| Dimension | Scale | Definition |
+| Dimension | Échelle | Définition |
 |-----------|-------|-----------|
-| Potential | 1-10 | How much room for improvement exists? (based on current performance vs benchmarks) |
-| Importance | 1-10 | How valuable is the traffic/audience affected? (high-value pages score higher) |
-| Ease | 1-10 | How easy is the test to implement? |
+| Potential (potentiel) | 1-10 | Combien de marge d'amélioration existe-t-il ? (basé sur la performance actuelle vs benchmarks) |
+| Importance | 1-10 | Quelle est la valeur du trafic/de l'audience concerné ? (les pages à forte valeur notent plus haut) |
+| Ease (facilité) | 1-10 | À quel point le test est-il facile à mettre en œuvre ? |
 
 ```
 PIE Score = (Potential + Importance + Ease) / 3
 ```
 
-**Best for:** CRO teams focused on website optimization, where you're comparing pages/funnels against each other.
+**Idéal pour :** Équipes CRO focalisées sur l'optimisation de site web, où vous
+comparez des pages/tunnels entre eux.
 
-### When to Use Each Framework
+### Quand utiliser chaque cadre
 
-| Framework | Best Scenario | Weakness |
+| Cadre | Meilleur scénario | Faiblesse |
 |-----------|-------------|----------|
-| ICE | Quick prioritization, small teams, many ideas | Subjective, no quantified reach |
-| RICE | Data-rich environments, product teams | Requires user reach data, slower to calculate |
-| PIE | CRO and website optimization | Limited to conversion optimization context |
+| ICE | Priorisation rapide, petites équipes, beaucoup d'idées | Subjectif, pas de portée quantifiée |
+| RICE | Environnements riches en données, équipes produit | Nécessite des données de portée utilisateur, plus lent à calculer |
+| PIE | CRO et optimisation de site web | Limité au contexte d'optimisation de conversion |
 
 ---
 
-## Hypothesis Format
+## Format d'hypothèse
 
-Every experiment must start with a falsifiable hypothesis. A vague "let's try this" is not an experiment.
+Chaque expérience doit commencer par une hypothèse falsifiable. Un vague « essayons
+ça » n'est pas une expérience.
 
-### Standard Hypothesis Template
+### Modèle d'hypothèse standard
 
 ```
 If we [specific change],
@@ -96,40 +100,40 @@ by [estimated magnitude: %, absolute number, or range]
 because [reasoning based on data, research, or user insight].
 ```
 
-### Examples of Strong Hypotheses
+### Exemples d'hypothèses solides
 
-| Hypothesis | Strength |
+| Hypothèse | Force |
 |-----------|----------|
-| "If we add customer testimonials to the pricing page, then the pricing-page-to-signup conversion rate will increase by 10-15% because user research shows that 68% of prospects cite 'lack of social proof' as their top hesitation." | Specific metric, grounded in research, realistic magnitude |
-| "If we reduce the signup form from 7 fields to 3 (email, name, password), then the form completion rate will increase by 25-40% because our analytics show a 60% drop-off between fields 3 and 7." | Data-backed reasoning, clear change, measurable outcome |
-| "If we send cart abandonment emails within 1 hour instead of 24 hours, then the cart recovery rate will increase by 15-20% because industry data shows email engagement drops 50% after the first hour." | Industry benchmark as reasoning, testable timing change |
+| « Si nous ajoutons des témoignages clients à la page de tarification, alors le taux de conversion page de tarification-vers-inscription augmentera de 10-15% car la recherche utilisateur montre que 68% des prospects citent le "manque de preuve sociale" comme leur principale hésitation. » | Métrique spécifique, ancrée dans la recherche, magnitude réaliste |
+| « Si nous réduisons le formulaire d'inscription de 7 champs à 3 (e-mail, nom, mot de passe), alors le taux de complétion du formulaire augmentera de 25-40% car nos analytics montrent une chute de 60% entre les champs 3 et 7. » | Raisonnement étayé par des données, changement clair, résultat mesurable |
+| « Si nous envoyons les e-mails d'abandon de panier dans l'heure au lieu de 24 heures, alors le taux de récupération de panier augmentera de 15-20% car les données du secteur montrent que l'engagement e-mail chute de 50% après la première heure. » | Benchmark sectoriel comme raisonnement, changement de timing testable |
 
-### Common Hypothesis Mistakes
+### Erreurs d'hypothèse courantes
 
-| Mistake | Example | Fix |
+| Erreur | Exemple | Correction |
 |---------|---------|-----|
-| No specific metric | "Making the page better will improve performance" | Define which metric and by how much |
-| No reasoning | "If we change the button to green, conversions will increase" | Add the "because" — what evidence supports this? |
-| Untestable | "If we rebuild the entire product, users will be happier" | Scope to a testable, isolated change |
-| No magnitude | "Conversion rate will increase" | Estimate a range: "by 5-10%" |
-| Multiple changes | "If we change the headline, image, CTA, and layout..." | Test one variable at a time, or use multivariate design |
+| Pas de métrique spécifique | « Améliorer la page va améliorer la performance » | Définir quelle métrique et de combien |
+| Pas de raisonnement | « Si on change le bouton en vert, les conversions augmenteront » | Ajouter le « parce que » — quelle preuve soutient cela ? |
+| Non testable | « Si on refait tout le produit, les utilisateurs seront plus heureux » | Cadrer sur un changement testable et isolé |
+| Pas de magnitude | « Le taux de conversion augmentera » | Estimer une fourchette : « de 5-10% » |
+| Changements multiples | « Si on change le titre, l'image, le CTA, et la mise en page... » | Tester une variable à la fois, ou utiliser une conception multivariée |
 
 ---
 
-## Experiment Types
+## Types d'expérience
 
-| Type | What It Is | When to Use | Complexity |
+| Type | Ce que c'est | Quand l'utiliser | Complexité |
 |------|-----------|-------------|-----------|
-| A/B test | Two variants (control vs challenger) on the same page/element | Testing a single change with sufficient traffic | Low |
-| A/B/n test | Multiple variants (3+) against a control | Testing several ideas for the same element | Medium |
-| Multivariate (MVT) | Multiple elements changed simultaneously, all combinations tested | Understanding interaction effects between elements | High |
-| Split URL test | Traffic split between entirely different page URLs | Testing fundamentally different page designs | Medium |
-| Feature flag | New feature exposed to a percentage of users | Product changes, gradual rollouts | Medium |
-| Holdout test | Suppress a feature/campaign from a control group | Measuring incremental impact of an existing feature | Low-Medium |
-| Sequential test | Run variant A for a period, then variant B | When traffic is too low for simultaneous split | Low (but less reliable) |
-| Bandit (explore/exploit) | Algorithm allocates traffic toward better-performing variant dynamically | When you want to minimize opportunity cost during the test | High |
+| Test A/B | Deux variantes (contrôle vs challenger) sur la même page/élément | Tester un changement unique avec un trafic suffisant | Faible |
+| Test A/B/n | Plusieurs variantes (3+) contre un contrôle | Tester plusieurs idées pour le même élément | Moyenne |
+| Multivarié (MVT) | Plusieurs éléments changés simultanément, toutes les combinaisons testées | Comprendre les effets d'interaction entre éléments | Élevée |
+| Test d'URL scindée | Trafic scindé entre des URL de page entièrement différentes | Tester des designs de page fondamentalement différents | Moyenne |
+| Feature flag | Nouvelle fonctionnalité exposée à un pourcentage d'utilisateurs | Changements produit, déploiements progressifs | Moyenne |
+| Test de retenue (holdout) | Supprimer une fonctionnalité/campagne d'un groupe contrôle | Mesurer l'impact incrémental d'une fonctionnalité existante | Faible-Moyenne |
+| Test séquentiel | Exécuter la variante A pendant une période, puis la variante B | Quand le trafic est trop faible pour une scission simultanée | Faible (mais moins fiable) |
+| Bandit (explore/exploit) | L'algorithme alloue dynamiquement le trafic vers la variante la plus performante | Quand vous voulez minimiser le coût d'opportunité pendant le test | Élevée |
 
-### A/B Test Decision Criteria
+### Critères de décision pour le test A/B
 
 ```
 Is your change a single, isolated variable?
@@ -142,194 +146,198 @@ Is your change a single, isolated variable?
 
 ---
 
-## Statistical Foundations
+## Fondements statistiques
 
-### Sample Size Calculation
+### Calcul de la taille d'échantillon
 
-Before running any test, calculate the required sample size to avoid inconclusive results.
+Avant d'exécuter un test, calculer la taille d'échantillon requise pour éviter des
+résultats non concluants.
 
-| Input | Definition | How to Estimate |
+| Entrée | Définition | Comment l'estimer |
 |-------|-----------|----------------|
-| Baseline conversion rate | Current conversion rate of the control | Use last 30-60 days of data |
-| Minimum Detectable Effect (MDE) | Smallest improvement worth detecting | Typically 5-20% relative change |
-| Statistical significance | Probability of avoiding false positives | Standard: 95% (alpha = 0.05) |
-| Statistical power | Probability of detecting a true effect | Standard: 80% (beta = 0.20) |
+| Taux de conversion de référence | Taux de conversion actuel du contrôle | Utiliser les 30-60 derniers jours de données |
+| Effet minimum détectable (MDE) | Plus petite amélioration valant la peine d'être détectée | Typiquement un changement relatif de 5-20% |
+| Significativité statistique | Probabilité d'éviter les faux positifs | Standard : 95% (alpha = 0,05) |
+| Puissance statistique | Probabilité de détecter un effet réel | Standard : 80% (beta = 0,20) |
 
-### Sample Size Reference Table (95% significance, 80% power)
+### Tableau de référence de taille d'échantillon (95% de significativité, 80% de puissance)
 
-| Baseline CVR | 5% Relative MDE | 10% Relative MDE | 20% Relative MDE |
+| Taux de conversion de référence | MDE relatif de 5% | MDE relatif de 10% | MDE relatif de 20% |
 |-------------|-----------------|------------------|-------------------|
-| 1% | 3,070,000 per variant | 770,000 per variant | 193,000 per variant |
-| 2% | 1,500,000 | 376,000 | 94,500 |
-| 5% | 580,000 | 146,000 | 36,700 |
-| 10% | 275,000 | 69,400 | 17,500 |
-| 20% | 125,000 | 31,500 | 8,000 |
-| 50% | 38,000 | 9,600 | 2,500 |
+| 1% | 3 070 000 par variante | 770 000 par variante | 193 000 par variante |
+| 2% | 1 500 000 | 376 000 | 94 500 |
+| 5% | 580 000 | 146 000 | 36 700 |
+| 10% | 275 000 | 69 400 | 17 500 |
+| 20% | 125 000 | 31 500 | 8 000 |
+| 50% | 38 000 | 9 600 | 2 500 |
 
-> **Rule of thumb:** If your baseline CVR is low or your desired MDE is small, you need very large sample sizes. If you can't reach the required sample size within 4-6 weeks, either increase your MDE threshold or find a higher-traffic test location.
+> **Règle empirique :** Si votre taux de conversion de référence est faible ou si le
+> MDE souhaité est petit, vous avez besoin de très grandes tailles d'échantillon. Si
+> vous ne pouvez pas atteindre la taille d'échantillon requise en 4-6 semaines,
+> augmentez le seuil de MDE ou trouvez un emplacement de test à plus fort trafic.
 
-### Duration Estimation
+### Estimation de la durée
 
 ```
 Test Duration (days) = Required Sample Size per Variant x 2 / Daily Traffic to Page
 
-Example:
-- Baseline CVR: 5%
-- MDE: 10% relative (5% → 5.5%)
-- Required: 146,000 per variant = 292,000 total
-- Daily traffic: 8,000 visitors/day
-- Duration: 292,000 / 8,000 = 36.5 days → run for 5 weeks (include full weekday cycles)
+Exemple :
+- Taux de conversion de référence : 5%
+- MDE : 10% relatif (5% → 5,5%)
+- Requis : 146 000 par variante = 292 000 au total
+- Trafic quotidien : 8 000 visiteurs/jour
+- Durée : 292 000 / 8 000 = 36,5 jours → exécuter pendant 5 semaines (inclure des cycles de semaine complets)
 ```
 
-### Avoiding Statistical Pitfalls
+### Éviter les pièges statistiques
 
-| Pitfall | What Happens | How to Avoid |
+| Piège | Ce qui se passe | Comment l'éviter |
 |---------|-------------|-------------|
-| Peeking at results | Checking daily and stopping early when results look good inflates false positive rate to 20-30% | Pre-commit to sample size and duration; only evaluate at the end |
-| Underpowered tests | Test ends with "no significant result" but sample was too small to detect real effect | Calculate sample size before starting; do not run tests you cannot power |
-| Multiple comparisons | Testing 10 variants without adjustment means ~40% chance of false positive | Apply Bonferroni correction or use sequential testing methods |
-| Novelty effect | New variant performs well initially because it is unfamiliar, then regresses | Run tests for at least 2 full weeks; monitor for regression in week 2-3 |
-| Selection bias | Non-random traffic split (e.g., different time periods or geographies) | Use proper randomization; verify that control/treatment demographics match |
-| Simpson's Paradox | Overall result is flat, but segments show opposite effects that cancel out | Always segment results by device, traffic source, new vs returning |
+| Regarder les résultats prématurément | Vérifier quotidiennement et arrêter tôt quand les résultats semblent bons gonfle le taux de faux positifs à 20-30% | S'engager d'avance sur la taille d'échantillon et la durée ; n'évaluer qu'à la fin |
+| Tests sous-dimensionnés | Le test se termine avec « pas de résultat significatif » mais l'échantillon était trop petit pour détecter un effet réel | Calculer la taille d'échantillon avant de commencer ; ne pas exécuter de tests que vous ne pouvez pas suffisamment alimenter |
+| Comparaisons multiples | Tester 10 variantes sans ajustement signifie environ 40% de chance de faux positif | Appliquer une correction de Bonferroni ou utiliser des méthodes de test séquentiel |
+| Effet de nouveauté | La nouvelle variante performe bien initialement car elle est inhabituelle, puis régresse | Exécuter les tests pendant au moins 2 semaines complètes ; surveiller la régression en semaine 2-3 |
+| Biais de sélection | Scission de trafic non aléatoire (par exemple, périodes de temps ou géographies différentes) | Utiliser une randomisation correcte ; vérifier que la démographie contrôle/traitement correspond |
+| Paradoxe de Simpson | Le résultat global est plat, mais les segments montrent des effets opposés qui s'annulent | Toujours segmenter les résultats par appareil, source de trafic, nouveau vs revenant |
 
 ---
 
-## Growth Experiment Categories (AARRR Framework)
+## Catégories d'expérience de croissance (cadre AARRR)
 
-### Acquisition Experiments
+### Expériences d'acquisition
 
-| Experiment | Metric | Example |
+| Expérience | Métrique | Exemple |
 |-----------|--------|---------|
-| Channel testing | CAC by new channel | Test Reddit ads for B2B audience vs LinkedIn |
-| Landing page variants | Landing page CVR | Test long-form vs short-form landing page |
-| Ad creative testing | CTR, CPA | Test benefit-focused vs pain-focused ad copy |
-| Referral mechanics | Referral conversion rate | Test "Give $20, Get $20" vs "Give 1 month free, Get 1 month free" |
-| SEO content format | Organic traffic, time on page | Test comprehensive guide vs comparison post for same keyword |
-| Partnership channels | Qualified leads from partners | Test co-webinar vs guest blog vs integration marketplace listing |
-| Outbound messaging | Reply rate | Test personalized video vs text-only cold email |
+| Test de canal | CAC par nouveau canal | Tester les publicités Reddit pour une audience B2B vs LinkedIn |
+| Variantes de landing page | Taux de conversion de la landing page | Tester une landing page longue vs courte |
+| Test de création publicitaire | CTR, CPA | Tester un texte publicitaire orienté bénéfice vs orienté douleur |
+| Mécaniques de parrainage | Taux de conversion de parrainage | Tester « Donnez 20 $, Recevez 20 $ » vs « Donnez 1 mois gratuit, Recevez 1 mois gratuit » |
+| Format de contenu SEO | Trafic organique, temps sur la page | Tester un guide complet vs un article de comparaison pour le même mot-clé |
+| Canaux de partenariat | Leads qualifiés issus des partenaires | Tester un co-webinaire vs un article invité vs une inscription sur une marketplace d'intégrations |
+| Messagerie sortante | Taux de réponse | Tester une vidéo personnalisée vs un e-mail à froid en texte seul |
 
-### Activation Experiments
+### Expériences d'activation
 
-| Experiment | Metric | Example |
+| Expérience | Métrique | Exemple |
 |-----------|--------|---------|
-| Onboarding flow | Activation rate (Day 7) | Test guided setup wizard vs self-serve with tooltips |
-| First-value acceleration | Time-to-value | Test pre-populated templates vs empty state |
-| Signup friction | Signup completion rate | Test social login vs email-only signup |
-| Welcome email sequence | Day 7 engagement | Test 5-email sequence vs 3-email sequence |
-| Personalized onboarding | Feature adoption rate | Test role-based onboarding paths vs generic |
-| Empty state design | First-action completion | Test sample data vs "create your first [item]" prompt |
+| Flux d'onboarding | Taux d'activation (Jour 7) | Tester un assistant de configuration guidé vs libre-service avec info-bulles |
+| Accélération de la première valeur | Temps de mise en valeur | Tester des modèles pré-remplis vs un état vide |
+| Friction d'inscription | Taux de complétion d'inscription | Tester la connexion sociale vs inscription par e-mail seul |
+| Séquence e-mail de bienvenue | Engagement Jour 7 | Tester une séquence de 5 e-mails vs 3 e-mails |
+| Onboarding personnalisé | Taux d'adoption de fonctionnalité | Tester des parcours d'onboarding basés sur le rôle vs générique |
+| Design d'état vide | Complétion de la première action | Tester des données d'exemple vs une invite « créez votre premier [élément] » |
 
-### Retention Experiments
+### Expériences de rétention
 
-| Experiment | Metric | Example |
+| Expérience | Métrique | Exemple |
 |-----------|--------|---------|
-| Engagement triggers | Weekly active user rate | Test push notification with insight vs generic reminder |
-| Re-engagement campaigns | Reactivation rate | Test incentive email vs product update email for dormant users |
-| Feature stickiness | Feature retention at Day 30 | Test in-app tip sequence vs video tutorial |
-| Communication cadence | 30-day retention | Test weekly digest vs real-time notifications |
-| Habit loop design | Session frequency | Test streak mechanics vs progress bar |
-| Community features | 90-day retention | Test forum access vs peer group matching |
+| Déclencheurs d'engagement | Taux d'utilisateurs actifs hebdomadaires | Tester une notification push avec un insight vs un rappel générique |
+| Campagnes de réengagement | Taux de réactivation | Tester un e-mail incitatif vs un e-mail de mise à jour produit pour les utilisateurs dormants |
+| Adhérence des fonctionnalités | Rétention de fonctionnalité au Jour 30 | Tester une séquence de conseils dans l'app vs un tutoriel vidéo |
+| Cadence de communication | Rétention à 30 jours | Tester un digest hebdomadaire vs des notifications en temps réel |
+| Conception de boucle d'habitude | Fréquence de session | Tester des mécaniques de série (streak) vs une barre de progression |
+| Fonctionnalités communautaires | Rétention à 90 jours | Tester l'accès au forum vs le matching de groupe de pairs |
 
-### Revenue Experiments
+### Expériences de revenu
 
-| Experiment | Metric | Example |
+| Expérience | Métrique | Exemple |
 |-----------|--------|---------|
-| Pricing page design | Pricing-page-to-purchase CVR | Test 3-tier vs 2-tier pricing layout |
-| Upgrade triggers | Free-to-paid conversion | Test in-app usage limit popup vs email upgrade prompt |
-| Upsell timing | Expansion revenue per account | Test upgrade prompt at feature limit vs after 30 days |
-| Annual vs monthly framing | Annual plan selection rate | Test "Save 20%" vs "2 months free" messaging |
-| Cross-sell placement | Add-on attach rate | Test post-purchase page vs in-cart recommendation |
-| Price anchoring | AOV | Test showing enterprise tier first vs starter tier first |
+| Design de la page de tarification | Taux de conversion page de tarification-vers-achat | Tester une mise en page à 3 paliers vs 2 paliers |
+| Déclencheurs de mise à niveau | Conversion gratuit-vers-payant | Tester une popup de limite d'usage dans l'app vs une invite de mise à niveau par e-mail |
+| Timing d'upsell | Revenu d'expansion par compte | Tester une invite de mise à niveau à la limite de fonctionnalité vs après 30 jours |
+| Cadrage annuel vs mensuel | Taux de sélection du plan annuel | Tester « Économisez 20% » vs « 2 mois gratuits » |
+| Emplacement de cross-sell | Taux d'attachement d'add-on | Tester la page post-achat vs la recommandation dans le panier |
+| Ancrage de prix | Panier moyen | Tester l'affichage du palier entreprise en premier vs le palier de départ en premier |
 
-### Referral Experiments
+### Expériences de parrainage
 
-| Experiment | Metric | Example |
+| Expérience | Métrique | Exemple |
 |-----------|--------|---------|
-| Incentive structure | Referral send rate | Test double-sided vs single-sided reward |
-| Referral placement | Referrals per user | Test post-purchase prompt vs account settings page |
-| Social sharing | Share rate | Test pre-written social post vs custom message |
-| Referral messaging | Referral conversion rate | Test "Share and save" vs "Give your friend a gift" |
-| Timing of referral ask | Referrals per activated user | Test ask at activation vs ask after first value milestone |
+| Structure d'incitation | Taux d'envoi de parrainage | Tester une récompense à double face vs à face unique |
+| Emplacement du parrainage | Parrainages par utilisateur | Tester une invite post-achat vs page des paramètres du compte |
+| Partage social | Taux de partage | Tester un post social pré-rédigé vs un message personnalisé |
+| Messagerie de parrainage | Taux de conversion de parrainage | Tester « Partagez et économisez » vs « Offrez un cadeau à votre ami » |
+| Timing de la demande de parrainage | Parrainages par utilisateur activé | Tester la demande à l'activation vs après le premier jalon de valeur |
 
 ---
 
-## Experiment Tracking
+## Suivi des expériences
 
-### Experiment Log Template
+### Modèle de journal d'expérience
 
-| Field | Description | Example |
+| Champ | Description | Exemple |
 |-------|-----------|---------|
-| Experiment ID | Unique identifier | EXP-2025-042 |
-| Name | Descriptive experiment name | "Pricing page social proof test" |
-| Owner | Person responsible | Sarah Chen |
-| Hypothesis | Full hypothesis statement | "If we add 3 customer logos and review scores to the pricing page..." |
-| Primary metric | The one metric this experiment targets | Pricing page → signup conversion rate |
-| Secondary metrics | Additional metrics to monitor for side effects | Time on pricing page, support ticket volume |
-| Guardrail metrics | Metrics that must NOT degrade | Overall site conversion rate, revenue per visitor |
-| Variant description | What the challenger variant changes | Add logo bar + 3 review scores above pricing table |
-| Traffic allocation | % of traffic to each variant | 50/50 control/variant |
-| Required sample size | Pre-calculated sample per variant | 35,000 per variant |
-| Start date | When the experiment goes live | 2025-03-01 |
-| Planned end date | When sample size will be reached | 2025-03-28 |
-| Actual end date | When the experiment was actually stopped | 2025-03-30 |
-| Result | Won / Lost / Inconclusive | Won |
-| Lift | Measured change in primary metric | +12.4% (95% CI: +6.1% to +18.7%) |
-| Statistical significance | P-value or confidence level | p = 0.003 (99.7% confidence) |
-| Decision | Ship / Iterate / Kill | Ship to 100% |
-| Key learning | What was learned regardless of outcome | Social proof near pricing decisions significantly reduces hesitation |
+| ID de l'expérience | Identifiant unique | EXP-2025-042 |
+| Nom | Nom d'expérience descriptif | « Test de preuve sociale sur la page de tarification » |
+| Responsable | Personne responsable | Sarah Chen |
+| Hypothèse | Énoncé d'hypothèse complet | « Si nous ajoutons 3 logos clients et des scores d'avis à la page de tarification... » |
+| Métrique principale | La seule métrique que cette expérience cible | Taux de conversion page de tarification → inscription |
+| Métriques secondaires | Métriques additionnelles à surveiller pour les effets de bord | Temps sur la page de tarification, volume de tickets de support |
+| Métriques garde-fou | Métriques qui ne doivent PAS se dégrader | Taux de conversion global du site, revenu par visiteur |
+| Description de la variante | Ce que change la variante challenger | Ajouter une barre de logos + 3 scores d'avis au-dessus du tableau de tarification |
+| Allocation de trafic | % de trafic à chaque variante | 50/50 contrôle/variante |
+| Taille d'échantillon requise | Échantillon pré-calculé par variante | 35 000 par variante |
+| Date de début | Quand l'expérience passe en direct | 2025-03-01 |
+| Date de fin planifiée | Quand la taille d'échantillon sera atteinte | 2025-03-28 |
+| Date de fin réelle | Quand l'expérience a réellement été arrêtée | 2025-03-30 |
+| Résultat | Gagné / Perdu / Non concluant | Gagné |
+| Gain | Changement mesuré de la métrique principale | +12,4% (IC à 95% : +6,1% à +18,7%) |
+| Significativité statistique | Valeur p ou niveau de confiance | p = 0,003 (99,7% de confiance) |
+| Décision | Déployer / Itérer / Tuer | Déployer à 100% |
+| Apprentissage clé | Ce qui a été appris quel que soit le résultat | La preuve sociale près des décisions de tarification réduit significativement l'hésitation |
 
-### Experiment Status Board
+### Tableau de statut des expériences
 
-| Status | Definition | Color |
+| Statut | Définition | Couleur |
 |--------|-----------|-------|
-| Backlog | Hypothesis written, not yet prioritized | Gray |
-| Prioritized | Scored and scheduled for upcoming sprint | Blue |
-| In Development | Being built/designed/configured | Yellow |
-| Running | Live and collecting data | Green |
-| Analysis | Data collection complete, being analyzed | Orange |
-| Decided | Decision made (ship/kill/iterate) | Purple |
-| Shipped | Winning variant rolled out to 100% | Dark Green |
+| Backlog | Hypothèse rédigée, pas encore priorisée | Gris |
+| Priorisé | Noté et planifié pour un sprint à venir | Bleu |
+| En développement | En cours de construction/conception/configuration | Jaune |
+| En cours | En direct et collectant des données | Vert |
+| Analyse | Collecte de données terminée, en cours d'analyse | Orange |
+| Décidé | Décision prise (déployer/tuer/itérer) | Violet |
+| Déployé | Variante gagnante déployée à 100% | Vert foncé |
 
 ---
 
-## Experimentation Velocity
+## Vélocité d'expérimentation
 
-### Benchmark Velocity Targets
+### Cibles de vélocité de référence
 
-| Team Size | Target Experiments/Month | Notes |
+| Taille d'équipe | Cible d'expériences/mois | Notes |
 |-----------|------------------------|-------|
-| Solo growth marketer | 2-4 | Focus on high-impact, easy-to-implement tests |
-| Growth team (2-3) | 4-8 | Mix of quick wins and deeper experiments |
-| Growth team (4-6) | 8-15 | Run parallel experiments across funnel stages |
-| Dedicated experimentation team | 15-30 | Full experimentation infrastructure and culture |
+| Marketeur de croissance solo | 2-4 | Se concentrer sur les tests à fort impact et faciles à mettre en œuvre |
+| Équipe de croissance (2-3) | 4-8 | Mélange de gains rapides et d'expériences plus profondes |
+| Équipe de croissance (4-6) | 8-15 | Exécuter des expériences parallèles à travers les étapes du tunnel |
+| Équipe d'expérimentation dédiée | 15-30 | Infrastructure et culture d'expérimentation complètes |
 
-### How to Increase Velocity
+### Comment augmenter la vélocité
 
-| Lever | Implementation |
+| Levier | Mise en œuvre |
 |-------|---------------|
-| Reduce experiment scope | Test one variable, not redesigns; smaller scope = faster cycles |
-| Pre-built test templates | Standardize experiment setup in your testing tool |
-| Hypothesis backlog | Maintain a scored backlog so tests are ready when a slot opens |
-| Parallel testing | Run experiments on different pages/funnels simultaneously (no overlap) |
-| Automated analysis | Set up auto-reporting when experiments reach significance |
-| Learning documentation | Avoid re-running failed experiments by documenting learnings |
-| Reduce approval bottlenecks | Empower growth team to launch tests without executive approval |
+| Réduire le périmètre de l'expérience | Tester une variable, pas des refontes ; un périmètre plus petit = des cycles plus rapides |
+| Modèles de test pré-construits | Standardiser la configuration d'expérience dans votre outil de test |
+| Backlog d'hypothèses | Maintenir un backlog noté pour que les tests soient prêts quand un créneau s'ouvre |
+| Test parallèle | Exécuter des expériences sur différentes pages/tunnels simultanément (sans chevauchement) |
+| Analyse automatisée | Mettre en place un reporting automatique quand les expériences atteignent la significativité |
+| Documentation des apprentissages | Éviter de relancer des expériences échouées en documentant les apprentissages |
+| Réduire les goulots d'approbation | Donner à l'équipe de croissance le pouvoir de lancer des tests sans approbation exécutive |
 
 ---
 
-## Learning from Failures
+## Apprendre des échecs
 
-### Why Experiments Fail (and What to Learn)
+### Pourquoi les expériences échouent (et que faut-il en apprendre)
 
-| Failure Type | What Happened | What to Learn |
+| Type d'échec | Ce qui s'est passé | Ce qu'il faut apprendre |
 |-------------|-------------|--------------|
-| Inconclusive (no winner) | Neither variant significantly outperformed | Your change was too small to matter, MDE was too tight, or the sample was too small |
-| Negative result (variant lost) | Challenger performed worse than control | The hypothesis was wrong — but now you know. Document why and test a different approach |
-| Execution failure | Test was misconfigured, traffic not split properly | Improve QA process for experiment setup |
-| External contamination | Seasonal effect, site outage, or marketing campaign skewed results | Run tests for full weekly cycles; exclude known anomaly periods |
-| Metric moved but business didn't | Primary metric improved but revenue/retention didn't follow | You optimized for the wrong metric — revisit metric selection |
+| Non concluant (pas de gagnant) | Aucune variante n'a significativement surperformé | Votre changement était trop petit pour compter, le MDE était trop serré, ou l'échantillon était trop petit |
+| Résultat négatif (la variante a perdu) | Le challenger a performé moins bien que le contrôle | L'hypothèse était fausse — mais maintenant vous le savez. Documenter pourquoi et tester une approche différente |
+| Échec d'exécution | Le test était mal configuré, le trafic n'était pas scindé correctement | Améliorer le processus de contrôle qualité pour la configuration d'expérience |
+| Contamination externe | Effet saisonnier, panne de site, ou campagne marketing a faussé les résultats | Exécuter les tests sur des cycles hebdomadaires complets ; exclure les périodes d'anomalie connues |
+| La métrique a bougé mais pas le business | La métrique principale s'est améliorée mais pas le revenu/la rétention | Vous avez optimisé la mauvaise métrique — revoir la sélection de métrique |
 
-### Post-Experiment Analysis Template
+### Modèle d'analyse post-expérience
 
 ```
 Experiment: [Name]
@@ -356,9 +364,9 @@ Result: [Won / Lost / Inconclusive]
 
 ---
 
-## Growth Model: Inputs to Compound Growth
+## Modèle de croissance : intrants de la croissance composée
 
-### The Growth Equation
+### L'équation de croissance
 
 ```
 Growth = Acquisition x Activation x Retention x Revenue x Referral
@@ -369,51 +377,55 @@ Each factor is a multiplier. A 10% improvement in each:
 This is why experimentation compounds.
 ```
 
-### Growth Model Template
+### Modèle de croissance — exemple
 
-| Stage | Input Metric | Current | Target | Lever | Experiment Ideas |
+| Étape | Métrique d'entrée | Actuel | Cible | Levier | Idées d'expérience |
 |-------|-------------|---------|--------|-------|-----------------|
-| Acquisition | Monthly new signups | 2,000 | 2,500 | New channels, referrals | Reddit ads test, referral program launch |
-| Activation | 7-day activation rate | 35% | 45% | Onboarding, first-value | Guided wizard, pre-built templates |
-| Retention | 30-day retention | 60% | 70% | Engagement, habit loops | Weekly insight email, streak feature |
-| Revenue | Free-to-paid conversion | 5% | 7% | Pricing, upgrade prompts | Pricing page redesign, in-app limits |
-| Referral | Referrals per activated user | 0.3 | 0.5 | Incentives, sharing mechanics | Double-sided rewards, social sharing |
+| Acquisition | Nouvelles inscriptions mensuelles | 2 000 | 2 500 | Nouveaux canaux, parrainages | Test publicités Reddit, lancement de programme de parrainage |
+| Activation | Taux d'activation à 7 jours | 35% | 45% | Onboarding, première valeur | Assistant guidé, modèles pré-construits |
+| Rétention | Rétention à 30 jours | 60% | 70% | Engagement, boucles d'habitude | E-mail d'insight hebdomadaire, fonctionnalité de série |
+| Revenu | Conversion gratuit-vers-payant | 5% | 7% | Tarification, invites de mise à niveau | Refonte de la page de tarification, limites dans l'app |
+| Parrainage | Parrainages par utilisateur activé | 0,3 | 0,5 | Incitations, mécaniques de partage | Récompenses à double face, partage social |
 
 ---
 
-## Common Growth Experiments by Business Model
+## Expériences de croissance courantes par modèle économique
 
 ### SaaS
 
-| Stage | High-Impact Experiment |
+| Étape | Expérience à fort impact |
 |-------|----------------------|
-| Acquisition | Free tool or calculator that captures emails and demonstrates product value |
-| Activation | Role-based onboarding flow that shows relevant features first |
-| Retention | Weekly email with personalized usage insights and "try this feature" prompts |
-| Revenue | In-app modal at usage limit showing upgrade value with social proof |
-| Referral | "Invite your team" prompt after activation milestone with free seat for referrer |
+| Acquisition | Outil ou calculateur gratuit qui capture des e-mails et démontre la valeur produit |
+| Activation | Flux d'onboarding basé sur le rôle qui montre d'abord les fonctionnalités pertinentes |
+| Rétention | E-mail hebdomadaire avec des insights d'usage personnalisés et des invites « essayez cette fonctionnalité » |
+| Revenu | Modale dans l'app à la limite d'usage montrant la valeur de mise à niveau avec preuve sociale |
+| Parrainage | Invite « invitez votre équipe » après un jalon d'activation avec un siège gratuit pour le parrain |
 
-### eCommerce
+### E-commerce
 
-| Stage | High-Impact Experiment |
+| Étape | Expérience à fort impact |
 |-------|----------------------|
-| Acquisition | Quiz/recommendation engine as top-of-funnel content play |
-| Activation | First-purchase discount tied to email signup (10% off first order) |
-| Retention | Post-purchase replenishment email timed to product consumption cycle |
-| Revenue | Dynamic bundle recommendations on product pages ("Complete the look") |
-| Referral | Post-purchase "give $15, get $15" referral card in shipping box |
+| Acquisition | Quiz/moteur de recommandation comme jeu de contenu haut de tunnel |
+| Activation | Réduction sur le premier achat liée à l'inscription e-mail (10% de réduction sur la première commande) |
+| Rétention | E-mail de réapprovisionnement post-achat calé sur le cycle de consommation du produit |
+| Revenu | Recommandations de bundle dynamiques sur les pages produit (« Complétez le look ») |
+| Parrainage | Carte de parrainage post-achat « donnez 15 $, recevez 15 $ » dans la boîte d'expédition |
 
 ### Marketplace
 
-| Stage | High-Impact Experiment |
+| Étape | Expérience à fort impact |
 |-------|----------------------|
-| Acquisition (supply) | Automated seller onboarding that imports listings from competitor platform |
-| Acquisition (demand) | SEO-optimized category pages targeting "[product] near me" queries |
-| Activation | First transaction incentive for both buyer and seller (subsidized) |
-| Retention | Personalized weekly digest of new listings matching buyer's search history |
-| Revenue | Tiered seller plans with premium placement and analytics |
-| Referral | Seller referral program with reduced commission for referred sellers |
+| Acquisition (offre) | Onboarding vendeur automatisé qui importe les annonces depuis une plateforme concurrente |
+| Acquisition (demande) | Pages de catégorie optimisées SEO ciblant les requêtes « [produit] près de moi » |
+| Activation | Incitation à la première transaction pour l'acheteur et le vendeur (subventionnée) |
+| Rétention | Digest hebdomadaire personnalisé des nouvelles annonces correspondant à l'historique de recherche de l'acheteur |
+| Revenu | Plans vendeur à paliers avec placement premium et analytics |
+| Parrainage | Programme de parrainage vendeur avec commission réduite pour les vendeurs parrainés |
 
 ---
 
-*Growth is not about one brilliant idea. It is about the velocity of learning. Every experiment, whether it wins or loses, makes the system smarter. The teams that grow fastest are not the ones with the best ideas. They are the ones that test the most ideas, learn the fastest, and compound those learnings over time.*
+*La croissance n'est pas une question d'une seule idée brillante. C'est une question
+de vélocité d'apprentissage. Chaque expérience, qu'elle gagne ou perde, rend le
+système plus intelligent. Les équipes qui grandissent le plus vite ne sont pas
+celles qui ont les meilleures idées. Ce sont celles qui testent le plus d'idées,
+apprennent le plus vite, et composent ces apprentissages dans le temps.*

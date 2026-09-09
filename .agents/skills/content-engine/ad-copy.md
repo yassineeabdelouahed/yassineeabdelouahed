@@ -1,120 +1,120 @@
-# Ad Copy — Platform-Specific Frameworks & Specs
+# Texte publicitaire — Cadres et spécifications spécifiques à la plateforme
 
-## Google Ads (RSA — Responsive Search Ads)
+## Google Ads (RSA — Annonces textuelles responsives)
 
-### Specs
-- **Headlines**: Up to 15 (max 30 characters each)
-- **Descriptions**: Up to 4 (max 90 characters each)
-- Google auto-combines headlines and descriptions for optimal performance
+### Spécifications
+- **Titres** : Jusqu'à 15 (max 30 caractères chacun)
+- **Descriptions** : Jusqu'à 4 (max 90 caractères chacune)
+- Google combine automatiquement les titres et descriptions pour une performance optimale
 
-### 15-Headline Framework
+### Cadre des 15 titres
 
-| Slot | Type | Example |
+| Emplacement | Type | Exemple |
 |------|------|---------|
-| 1-3 | **Keyword-focused** (include exact match keyword) | "Best Project Management Software" |
-| 4-5 | **Benefit-driven** | "Save 10 Hours Per Week" |
-| 6-7 | **Social proof** | "Trusted by 50,000+ Teams" |
-| 8-9 | **Feature-specific** | "Built-in Time Tracking & Reports" |
-| 10-11 | **CTA-focused** | "Start Your Free Trial Today" |
-| 12-13 | **Urgency/offer** | "30-Day Free Trial — No Card Needed" |
-| 14-15 | **Brand + differentiator** | "[Brand] — The #1 Rated PM Tool" |
+| 1-3 | **Axé mot-clé** (inclure le mot-clé en correspondance exacte) | « Meilleur logiciel de gestion de projet » |
+| 4-5 | **Axé bénéfice** | « Économisez 10 heures par semaine » |
+| 6-7 | **Preuve sociale** | « Fait confiance par plus de 50 000 équipes » |
+| 8-9 | **Spécifique à une fonctionnalité** | « Suivi du temps et rapports intégrés » |
+| 10-11 | **Axé CTA** | « Commencez votre essai gratuit aujourd'hui » |
+| 12-13 | **Urgence/offre** | « Essai gratuit de 30 jours — sans carte bancaire » |
+| 14-15 | **Marque + différenciateur** | « [Marque] — l'outil de gestion de projet n°1 » |
 
-### Pinning Strategy
-- Pin keyword headline to Position 1 (ensures relevance)
-- Pin brand name to Position 1 or 2 for branded campaigns
-- Leave most headlines unpinned for algorithm optimization
-- Pin only when you MUST control what appears
+### Stratégie d'épinglage
+- Épingler le titre mot-clé en Position 1 (assure la pertinence)
+- Épingler le nom de marque en Position 1 ou 2 pour les campagnes de marque
+- Laisser la plupart des titres non épinglés pour l'optimisation par l'algorithme
+- N'épingler que lorsque vous DEVEZ contrôler ce qui apparaît
 
 ---
 
 ## Meta Ads (Facebook / Instagram)
 
-### Specs by Format
-| Element | Character Limit | Best Practice |
+### Spécifications par format
+| Élément | Limite de caractères | Meilleure pratique |
 |---------|----------------|---------------|
-| Primary text | 125 visible (can be longer) | Hook in first line, expand below |
-| Headline | 40 characters | Clear value prop or offer |
-| Description | 30 characters | Supporting detail or CTA |
-| Link description | 25 characters | Reinforce action |
+| Texte principal | 125 visibles (peut être plus long) | Accroche dans la première ligne, développer en dessous |
+| Titre | 40 caractères | Proposition de valeur ou offre claire |
+| Description | 30 caractères | Détail justificatif ou CTA |
+| Description de lien | 25 caractères | Renforcer l'action |
 
-### Hook Formulas for Primary Text
-1. **Question hook**: "Still spending hours on [pain point]?"
-2. **Stat hook**: "[Stat] of [audience] struggle with [problem]."
-3. **Story hook**: "Last month, [customer] was dealing with [problem]..."
-4. **Contrarian hook**: "Forget everything you know about [topic]."
-5. **Result hook**: "[Customer] achieved [result] in just [timeframe]."
-6. **This vs That**: "Most [audience] do [common approach]. Top performers do [better approach]."
+### Formules d'accroche pour le texte principal
+1. **Accroche question** : « Vous passez encore des heures sur [point de douleur] ? »
+2. **Accroche statistique** : « [Statistique] des [audience] luttent avec [problème]. »
+3. **Accroche histoire** : « Le mois dernier, [client] faisait face à [problème]... »
+4. **Accroche contrarian** : « Oubliez tout ce que vous savez sur [sujet]. »
+5. **Accroche résultat** : « [Client] a atteint [résultat] en seulement [délai]. »
+6. **Ceci vs cela** : « La plupart des [audience] font [approche courante]. Les plus performants font [meilleure approche]. »
 
 ---
 
 ## LinkedIn Ads
 
-### Specs
-| Element | Character Limit |
+### Spécifications
+| Élément | Limite de caractères |
 |---------|----------------|
-| Intro text (Sponsored Content) | 150 visible, 600 max |
-| Headline | 70 characters |
-| Description | 100 characters |
-| Message Ads (subject) | 60 characters |
-| Message Ads (body) | 1,500 characters |
+| Texte d'intro (Contenu sponsorisé) | 150 visibles, 600 max |
+| Titre | 70 caractères |
+| Description | 100 caractères |
+| Message Ads (objet) | 60 caractères |
+| Message Ads (corps) | 1 500 caractères |
 
-### B2B Ad Copy Principles
-- Lead with the business outcome, not the product feature
-- Reference the prospect's role or industry when possible
-- Use specific numbers (dollar amounts, percentages, time saved)
-- Professional tone but not corporate-speak
-- Include clear next step (not just "Learn More" — try "Get the Report" or "See the ROI Calculator")
+### Principes de texte publicitaire B2B
+- Mener avec le résultat business, pas la fonctionnalité produit
+- Référencer le rôle ou le secteur du prospect quand possible
+- Utiliser des chiffres spécifiques (montants en euros, pourcentages, temps gagné)
+- Ton professionnel mais pas de jargon corporate
+- Inclure une prochaine étape claire (pas juste « En savoir plus » — essayer « Obtenir le rapport » ou « Voir le calculateur de ROI »)
 
 ---
 
 ## TikTok Ads
 
-### Specs
-| Element | Limit |
+### Spécifications
+| Élément | Limite |
 |---------|-------|
-| Ad text | 100 characters |
-| Video length | 5-60 seconds (9-15s optimal) |
-| Aspect ratio | 9:16 (vertical) |
-| Sound | Required (sound-on platform) |
+| Texte publicitaire | 100 caractères |
+| Durée vidéo | 5-60 secondes (9-15s optimal) |
+| Format d'image | 9:16 (vertical) |
+| Son | Requis (plateforme sound-on) |
 
-### TikTok-Native Copy Rules
-- **Hook in first 1 second** (text overlay or spoken)
-- Use native TikTok language (not corporate marketing speak)
-- Pattern interrupt: Start with something unexpected
-- Text overlays > voiceover for first impression
-- Feature a real person (creator-style > polished production)
-- End with clear CTA on screen
+### Règles de texte natif TikTok
+- **Accroche dans la première seconde** (surimpression de texte ou voix)
+- Utiliser le langage natif TikTok (pas de jargon marketing corporate)
+- Pattern interrupt : commencer par quelque chose d'inattendu
+- Surimpressions de texte > voix off pour la première impression
+- Mettre en scène une vraie personne (style créateur > production léchée)
+- Terminer par un CTA clair à l'écran
 
 ---
 
-## Ad Copy Testing Methodology
+## Méthodologie de test du texte publicitaire
 
-### Structured Variation Testing
+### Tests de variation structurés
 
-Test one variable at a time:
+Tester une variable à la fois :
 
-| Test Priority | Variable | What to Test |
+| Priorité de test | Variable | Ce qu'il faut tester |
 |--------------|----------|-------------|
-| 1 | **Hook / Opening** | Different first lines or first 3 seconds |
-| 2 | **Value proposition** | Different benefits (save time vs save money vs reduce risk) |
-| 3 | **Social proof type** | Numbers vs names vs testimonials vs awards |
-| 4 | **CTA** | Different action verbs and urgency levels |
-| 5 | **Offer** | Free trial vs demo vs discount vs content download |
-| 6 | **Format** | Video vs static vs carousel |
+| 1 | **Accroche / Ouverture** | Différentes premières lignes ou premières 3 secondes |
+| 2 | **Proposition de valeur** | Différents bénéfices (gain de temps vs gain d'argent vs réduction du risque) |
+| 3 | **Type de preuve sociale** | Chiffres vs noms vs témoignages vs récompenses |
+| 4 | **CTA** | Différents verbes d'action et niveaux d'urgence |
+| 5 | **Offre** | Essai gratuit vs démo vs remise vs téléchargement de contenu |
+| 6 | **Format** | Vidéo vs statique vs carrousel |
 
-### Minimum Test Duration
-- Run each variation for at least 3-5 days
-- Need minimum 100 clicks per variation for reliable CTR data
-- Need minimum 30 conversions per variation for reliable CPA data
+### Durée minimale de test
+- Faire tourner chaque variante au moins 3 à 5 jours
+- Minimum 100 clics par variante requis pour des données de CTR fiables
+- Minimum 30 conversions par variante requis pour des données de CPA fiables
 
 ---
 
-## Platform Policy Quick Reference
+## Référence rapide des politiques de plateforme
 
-| Platform | Key Restrictions |
+| Plateforme | Restrictions clés |
 |----------|-----------------|
-| **Google** | No superlatives without proof ("best" needs third-party ranking), no misleading claims, no excessive caps |
-| **Meta** | No personal attributes ("Are you overweight?"), no before/after for health, no discriminatory targeting copy |
-| **LinkedIn** | No misleading job claims, professional standards, no profanity |
-| **TikTok** | No misleading claims, no excessive sexual content, age-gating for alcohol/gambling |
-| **All platforms** | Substantiate all claims, honest testimonials, clear disclosure of sponsorship |
+| **Google** | Pas de superlatifs sans preuve (« meilleur » nécessite un classement tiers), pas d'affirmations trompeuses, pas de majuscules excessives |
+| **Meta** | Pas d'attributs personnels (« Êtes-vous en surpoids ? »), pas d'avant/après pour la santé, pas de texte de ciblage discriminatoire |
+| **LinkedIn** | Pas d'affirmations trompeuses sur les emplois, normes professionnelles, pas de vulgarité |
+| **TikTok** | Pas d'affirmations trompeuses, pas de contenu sexuel excessif, vérification d'âge pour l'alcool/les jeux d'argent |
+| **Toutes plateformes** | Justifier toutes les affirmations, témoignages honnêtes, divulgation claire du parrainage |

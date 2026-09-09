@@ -1,195 +1,195 @@
-# Marketing Science Guide
+# Guide de la science marketing
 
-Reference knowledge for marketing science, causal inference, predictive modeling, and experimentation rigor. Use this to ground recommendations in statistical methods rather than gut feel.
-
----
-
-## 1. Bayesian Marketing Mix Modeling (MMM)
-
-### What It Is
-A statistical model that decomposes revenue (or conversions) into contributions from each marketing channel plus external factors. Unlike attribution models that assign credit to touchpoints, MMM works with aggregate data and captures offline + online effects together.
-
-### Why Bayesian Over Frequentist
-- **Uncertainty quantification**: Produces credible intervals, not point estimates — "TV drives $120K-$180K/month" is more useful than "TV drives $150K"
-- **Works with limited data**: Bayesian priors compensate when you have fewer than 3 years of data
-- **Incorporates domain knowledge**: Set priors from industry benchmarks (e.g., "TV adstock half-life is typically 3-6 weeks") to regularize estimates
-- **Handles collinearity better**: Channels that always spend together (common in marketing) cause instability in frequentist models; priors stabilize Bayesian estimates
-- **Iterative updating**: As new data arrives, update the posterior without rebuilding from scratch
-
-### Key Components
-- **Adstock transformation**: Models the carryover effect of advertising — a TV ad seen today still influences purchases next week. Parameterized by decay rate (how fast the effect fades) and optionally lag (delay before peak effect). Geometric adstock: `adstock_t = spend_t + decay * adstock_{t-1}`. Typical decay rates: TV 0.7-0.9, digital display 0.3-0.5, search 0.1-0.2, social 0.3-0.6
-- **Saturation curves**: Model diminishing returns — the first $10K on Facebook drives more incrementals than the tenth $10K. Hill function: `response = max_response * (spend^slope) / (half_saturation^slope + spend^slope)`. The half-saturation parameter (K) represents the spend level at which you get 50% of maximum response
-- **Time-varying coefficients**: Seasonality, trend, and regime changes. December TV effectiveness differs from March. Use Fourier terms or hierarchical time effects
-- **Control variables**: Price changes, promotions, competitor activity, weather, holidays, macroeconomic shifts, COVID impacts, product launches
-
-### Data Requirements
-- **Minimum**: 2 years of weekly data (104 observations). 3+ years preferred
-- **Channel data**: Weekly spend per channel (not impressions — spend is the decision variable)
-- **Response variable**: Weekly revenue, conversions, or leads
-- **External factors**: Weather indices, holiday flags, competitor spend (if available), economic indicators
-- **Granularity**: Weekly is standard. Daily adds noise without improving signal for most channels. Monthly loses too much information
-
-### Interpreting Results
-- **Channel contribution %**: What fraction of total revenue each channel drives (including baseline/organic)
-- **ROI per channel**: Revenue generated per dollar spent, with credible intervals
-- **Marginal ROI**: The return on the NEXT dollar spent (more useful than average ROI for budget decisions)
-- **Optimal budget allocation**: Shift budget from channels with low marginal ROI to channels with high marginal ROI until marginal ROIs equalize
-- **Saturation points**: Where each channel hits diminishing returns — the spend level beyond which marginal ROI drops below your threshold (typically 1.0x or your cost of capital)
+Connaissances de référence pour la science marketing, l'inférence causale, la modélisation prédictive et la rigueur expérimentale. Utilisez ce guide pour ancrer les recommandations dans des méthodes statistiques plutôt que dans l'intuition.
 
 ---
 
-## 2. Incrementality Testing
+## 1. Modélisation bayésienne du mix marketing (MMM)
 
-### Geo-Lift Tests
-Split geographic markets into test and control groups. Run the campaign only in test markets. Measure the lift in test vs control after accounting for pre-existing differences.
-- **Design**: Minimum 10 geographic units (DMA, state, city). Randomize or match on pre-period performance. Run for minimum 4 weeks (8+ preferred for brand campaigns)
-- **Power**: Need sufficient volume per geo. Rule of thumb — each geo needs 100+ conversions/week for conversion-based measurement
-- **Analysis**: Difference-in-differences with geo fixed effects. Report lift %, confidence interval, and cost-per-incremental-conversion
-- **Pitfalls**: Spillover between adjacent geos (use buffer zones), seasonal effects (ensure test period is representative), small sample sizes (geos are the unit, not users)
+### Ce que c'est
+Un modèle statistique qui décompose le chiffre d'affaires (ou les conversions) en contributions de chaque canal marketing plus des facteurs externes. Contrairement aux modèles d'attribution qui attribuent du crédit aux points de contact, le MMM fonctionne avec des données agrégées et capture les effets offline + online ensemble.
 
-### Holdout Analysis
-Withhold the campaign from a random 10-20% of the eligible audience. Compare conversion rates between exposed and holdout groups.
-- **Advantage**: User-level randomization is cleaner than geo-level
-- **Disadvantage**: Opportunity cost of not serving 10-20% of audience; contamination if holdout users see ads through other paths
-- **Best for**: Retargeting campaigns, email campaigns, CRM audiences where you control the user list
+### Pourquoi bayésien plutôt que fréquentiste
+- **Quantification de l'incertitude** : Produit des intervalles de crédibilité, pas des estimations ponctuelles — « la TV génère 120 000 $-180 000 $/mois » est plus utile que « la TV génère 150 000 $ »
+- **Fonctionne avec des données limitées** : Les priors bayésiens compensent quand vous avez moins de 3 ans de données
+- **Intègre les connaissances du domaine** : Définir des priors à partir de références sectorielles (par ex. « la demi-vie de l'adstock TV est typiquement de 3 à 6 semaines ») pour régulariser les estimations
+- **Gère mieux la colinéarité** : Les canaux qui dépensent toujours ensemble (courant en marketing) causent une instabilité dans les modèles fréquentistes ; les priors stabilisent les estimations bayésiennes
+- **Mise à jour itérative** : À mesure que de nouvelles données arrivent, mettre à jour la postérieure sans reconstruire depuis zéro
 
-### Synthetic Control Method
-When you cannot randomize, construct a statistical counterfactual from a weighted combination of control units that matches the pre-period behavior of the treated unit.
-- **Use case**: "We launched in a new market — what would have happened without marketing?"
-- **Method**: Find weights for control markets such that the weighted combination closely matches the treated market's pre-period outcome trajectory
-- **Advantage**: Works with as few as 1 treated unit (single market launch)
-- **Limitation**: Requires a sufficient pool of untreated control units with similar characteristics
+### Composants clés
+- **Transformation adstock** : Modélise l'effet de report de la publicité — une publicité TV vue aujourd'hui influence encore les achats la semaine prochaine. Paramétré par le taux de décroissance (à quelle vitesse l'effet s'estompe) et optionnellement le décalage (délai avant l'effet de pic). Adstock géométrique : `adstock_t = spend_t + decay * adstock_{t-1}`. Taux de décroissance typiques : TV 0,7-0,9, display digital 0,3-0,5, recherche 0,1-0,2, social 0,3-0,6
+- **Courbes de saturation** : Modélisent les rendements décroissants — les premiers 10 000 $ sur Facebook génèrent plus d'incrémental que les dixièmes 10 000 $. Fonction de Hill : `response = max_response * (spend^slope) / (half_saturation^slope + spend^slope)`. Le paramètre de demi-saturation (K) représente le niveau de dépense auquel vous obtenez 50 % de la réponse maximale
+- **Coefficients variables dans le temps** : Saisonnalité, tendance et changements de régime. L'efficacité de la TV en décembre diffère de celle de mars. Utiliser des termes de Fourier ou des effets temporels hiérarchiques
+- **Variables de contrôle** : Changements de prix, promotions, activité concurrentielle, météo, jours fériés, évolutions macroéconomiques, impacts du COVID, lancements de produits
 
-### Ghost Ads / PSA Methodology
-In programmatic environments, show a PSA (public service announcement) to the control group in the same auction. Both groups win the same auctions, but control sees a non-commercial ad.
-- **Cleanest digital incrementality method**: Controls for selection bias in ad targeting
-- **Measures**: True incremental lift of the creative/message, not just the targeting
+### Exigences de données
+- **Minimum** : 2 ans de données hebdomadaires (104 observations). 3 ans ou plus préférés
+- **Données de canal** : Dépense hebdomadaire par canal (pas les impressions — la dépense est la variable de décision)
+- **Variable de réponse** : Chiffre d'affaires, conversions ou leads hebdomadaires
+- **Facteurs externes** : Indices météorologiques, indicateurs de jours fériés, dépenses concurrentes (si disponibles), indicateurs économiques
+- **Granularité** : L'hebdomadaire est la norme. Le quotidien ajoute du bruit sans améliorer le signal pour la plupart des canaux. Le mensuel perd trop d'information
 
-### Matched Market Testing
-Pair similar markets based on historical performance, demographics, and market characteristics. Assign one market in each pair to treatment, the other to control. Alternating treatment across pairs improves balance.
-
----
-
-## 3. Causal Inference for Marketers
-
-### Why Correlation Does Not Equal Causation
-Spending more on branded search correlates with higher revenue — but branded search captures existing demand rather than creating it. Cutting branded search might lose very little incremental revenue. Without causal methods, you over-credit channels that harvest demand and under-credit channels that create it.
-
-### Difference-in-Differences (DiD)
-Compare the change in outcomes (pre vs post) between a treated group and a control group. The "difference in differences" removes time-invariant confounders.
-- **Requirements**: Parallel trends assumption — treated and control groups must have similar outcome trajectories before the intervention
-- **Application**: "We launched a new campaign in Region A on March 1. Compare Region A's pre/post change to Region B's pre/post change"
-
-### Regression Discontinuity Design (RDD)
-Exploit a threshold or cutoff to identify causal effects. Units just above and just below the threshold are nearly identical, creating a quasi-experiment.
-- **Application**: "Users who scored 81+ on lead score got a sales call. Compare conversion rates of users scoring 79-80 vs 81-82"
-- **Requirement**: The running variable (lead score) must not be manipulable near the cutoff
-
-### Instrumental Variables (IV)
-Find an external factor (instrument) that affects the treatment (marketing spend) but does not directly affect the outcome (sales) except through the treatment.
-- **Example**: Weather as an instrument for in-store foot traffic campaigns — bad weather reduces campaign exposure but does not directly affect online purchase intent
-- **Hard to find**: Valid instruments are rare in marketing; use with caution
-
-### Propensity Score Matching (PSM)
-When you cannot randomize, estimate the probability of treatment assignment (propensity score) based on observable characteristics. Match treated and untreated units with similar propensity scores.
-- **Application**: Compare customers who received a promotional email vs those who did not, matching on purchase history, engagement, and demographics
-- **Limitation**: Only controls for observed confounders — unobserved differences remain
+### Interpréter les résultats
+- **% de contribution par canal** : Quelle fraction du chiffre d'affaires total chaque canal génère (y compris la base/organique)
+- **ROI par canal** : Chiffre d'affaires généré par dollar dépensé, avec intervalles de crédibilité
+- **ROI marginal** : Le rendement du PROCHAIN dollar dépensé (plus utile que le ROI moyen pour les décisions budgétaires)
+- **Allocation budgétaire optimale** : Déplacer le budget des canaux à faible ROI marginal vers les canaux à ROI marginal élevé jusqu'à ce que les ROI marginaux s'égalisent
+- **Points de saturation** : Où chaque canal atteint des rendements décroissants — le niveau de dépense au-delà duquel le ROI marginal tombe sous votre seuil (typiquement 1,0x ou votre coût du capital)
 
 ---
 
-## 4. Saturation Curves and Budget Optimization
+## 2. Tests d'incrémentalité
 
-### What Saturation Means in Practice
-At some spend level, each additional dollar produces less incremental return. The first $1K on TikTok Ads might generate $5K in revenue. The 100th $1K might generate only $200. Knowing where you sit on the curve is critical for budget allocation.
+### Tests de geo-lift
+Diviser les marchés géographiques en groupes test et contrôle. Exécuter la campagne uniquement sur les marchés test. Mesurer le lift du test vs contrôle après prise en compte des différences préexistantes.
+- **Conception** : Minimum 10 unités géographiques (DMA, état, ville). Randomiser ou apparier sur la performance pré-période. Exécuter pendant minimum 4 semaines (8+ préférées pour les campagnes de marque)
+- **Puissance** : Nécessite un volume suffisant par géo. Règle empirique — chaque géo a besoin de 100+ conversions/semaine pour une mesure basée sur les conversions
+- **Analyse** : Différence-en-différences avec effets fixes géo. Rapporter le % de lift, l'intervalle de confiance et le coût par conversion incrémentale
+- **Pièges** : Débordement entre géos adjacentes (utiliser des zones tampons), effets saisonniers (s'assurer que la période de test est représentative), petites tailles d'échantillon (les géos sont l'unité, pas les utilisateurs)
 
-### Hill Function (Standard Model)
+### Analyse de rétention (holdout)
+Retenir la campagne pour un échantillon aléatoire de 10 à 20 % de l'audience éligible. Comparer les taux de conversion entre les groupes exposés et retenus.
+- **Avantage** : La randomisation au niveau utilisateur est plus propre qu'au niveau géo
+- **Inconvénient** : Coût d'opportunité de ne pas servir 10 à 20 % de l'audience ; contamination si les utilisateurs retenus voient des publicités par d'autres canaux
+- **Idéal pour** : Campagnes de retargeting, campagnes e-mail, audiences CRM où vous contrôlez la liste d'utilisateurs
+
+### Méthode du contrôle synthétique
+Lorsque vous ne pouvez pas randomiser, construire un contrefactuel statistique à partir d'une combinaison pondérée d'unités de contrôle qui correspond au comportement pré-période de l'unité traitée.
+- **Cas d'usage** : « Nous avons lancé sur un nouveau marché — que se serait-il passé sans marketing ? »
+- **Méthode** : Trouver des pondérations pour les marchés de contrôle telles que la combinaison pondérée corresponde étroitement à la trajectoire de résultats pré-période du marché traité
+- **Avantage** : Fonctionne avec aussi peu qu'une seule unité traitée (lancement sur un seul marché)
+- **Limitation** : Nécessite un pool suffisant d'unités de contrôle non traitées avec des caractéristiques similaires
+
+### Méthodologie des publicités fantômes / PSA
+Dans les environnements programmatiques, montrer un PSA (message d'intérêt public) au groupe de contrôle dans la même enchère. Les deux groupes remportent les mêmes enchères, mais le contrôle voit une publicité non commerciale.
+- **Méthode d'incrémentalité digitale la plus propre** : Contrôle le biais de sélection dans le ciblage publicitaire
+- **Mesure** : Le véritable lift incrémental de la création/du message, pas seulement du ciblage
+
+### Test de marchés appariés
+Apparier des marchés similaires selon la performance historique, la démographie et les caractéristiques de marché. Assigner un marché de chaque paire au traitement, l'autre au contrôle. Alterner le traitement entre les paires améliore l'équilibre.
+
+---
+
+## 3. Inférence causale pour les marketeurs
+
+### Pourquoi la corrélation n'égale pas la causalité
+Dépenser plus en recherche de marque est corrélé à un chiffre d'affaires plus élevé — mais la recherche de marque capture la demande existante plutôt que de la créer. Réduire la recherche de marque pourrait ne perdre que très peu de chiffre d'affaires incrémental. Sans méthodes causales, vous sur-créditez les canaux qui récoltent la demande et sous-créditez ceux qui la créent.
+
+### Différence-en-différences (DiD)
+Comparer le changement de résultats (avant vs après) entre un groupe traité et un groupe de contrôle. La « différence des différences » élimine les facteurs de confusion invariants dans le temps.
+- **Exigences** : Hypothèse de tendances parallèles — les groupes traité et de contrôle doivent avoir des trajectoires de résultats similaires avant l'intervention
+- **Application** : « Nous avons lancé une nouvelle campagne dans la Région A le 1er mars. Comparer le changement avant/après de la Région A à celui de la Région B »
+
+### Conception à discontinuité de régression (RDD)
+Exploiter un seuil ou un point de coupure pour identifier des effets causaux. Les unités juste au-dessus et juste en dessous du seuil sont presque identiques, créant une quasi-expérience.
+- **Application** : « Les utilisateurs ayant obtenu un score de lead de 81+ ont reçu un appel commercial. Comparer les taux de conversion des utilisateurs ayant un score de 79-80 vs 81-82 »
+- **Exigence** : La variable de classement (score de lead) ne doit pas être manipulable près du point de coupure
+
+### Variables instrumentales (IV)
+Trouver un facteur externe (instrument) qui affecte le traitement (dépense marketing) mais n'affecte pas directement le résultat (ventes) sauf via le traitement.
+- **Exemple** : La météo comme instrument pour les campagnes de trafic en magasin — un mauvais temps réduit l'exposition à la campagne mais n'affecte pas directement l'intention d'achat en ligne
+- **Difficile à trouver** : Les instruments valides sont rares en marketing ; à utiliser avec prudence
+
+### Appariement par score de propension (PSM)
+Lorsque vous ne pouvez pas randomiser, estimer la probabilité d'assignation au traitement (score de propension) selon des caractéristiques observables. Apparier les unités traitées et non traitées avec des scores de propension similaires.
+- **Application** : Comparer les clients ayant reçu un e-mail promotionnel à ceux qui ne l'ont pas reçu, en appariant sur l'historique d'achat, l'engagement et la démographie
+- **Limitation** : Ne contrôle que les facteurs de confusion observés — les différences non observées demeurent
+
+---
+
+## 4. Courbes de saturation et optimisation budgétaire
+
+### Ce que signifie la saturation en pratique
+À un certain niveau de dépense, chaque dollar supplémentaire produit un rendement incrémental moindre. Les premiers 1 000 $ sur TikTok Ads pourraient générer 5 000 $ de chiffre d'affaires. Le 100e lot de 1 000 $ pourrait ne générer que 200 $. Savoir où vous vous situez sur la courbe est essentiel pour l'allocation budgétaire.
+
+### Fonction de Hill (modèle standard)
 `response = max_response * (spend^slope) / (K^slope + spend^slope)`
-- **max_response**: Theoretical maximum revenue if spend were infinite
-- **K (half-saturation)**: Spend level at which response reaches 50% of max. Lower K = faster saturation
-- **slope**: Steepness of the curve. slope > 1 = S-curve (slow start, fast middle, slow end). slope < 1 = concave (fast start, diminishing returns immediately)
+- **max_response** : Chiffre d'affaires maximum théorique si la dépense était infinie
+- **K (demi-saturation)** : Niveau de dépense auquel la réponse atteint 50 % du maximum. K plus bas = saturation plus rapide
+- **slope** : Pente de la courbe. slope > 1 = courbe en S (démarrage lent, milieu rapide, fin lente). slope < 1 = concave (démarrage rapide, rendements décroissants immédiatement)
 
-### Practical Optimization
-1. Estimate the saturation curve per channel from MMM or historical data
-2. Calculate marginal ROI at current spend level: derivative of the response function
-3. Rank channels by marginal ROI
-4. Shift budget from lowest marginal ROI channels to highest until marginal ROIs equalize across channels (or hit minimum spend constraints)
-5. Set an ROI floor — do not spend beyond the point where marginal ROI drops below 1.0x (or your target ROAS)
-
----
-
-## 5. Channel Interaction Models
-
-### Complementarity (Synergy)
-Channels that amplify each other when active simultaneously. TV + paid search: TV creates awareness, search captures the demand spike. Social + email: social warms the audience, email converts. Quantify synergy by adding interaction terms to MMM: `revenue ~ TV + search + TV*search`. A positive interaction coefficient means the combined effect exceeds the sum of individual effects.
-
-### Cannibalization
-Channels that steal conversions from each other. Branded search vs organic: both capture the same intent. Retargeting vs email: both target existing customers with similar offers. Negative interaction coefficient in MMM signals cannibalization.
-
-### Synergy Quantification
-Report the percentage of revenue attributable to channel interactions versus individual channel effects. Typical range: 5-20% of total marketing-driven revenue comes from synergies. High-synergy brands (those with strong cross-channel strategies) can reach 25-30%.
+### Optimisation pratique
+1. Estimer la courbe de saturation par canal à partir du MMM ou de données historiques
+2. Calculer le ROI marginal au niveau de dépense actuel : dérivée de la fonction de réponse
+3. Classer les canaux par ROI marginal
+4. Déplacer le budget des canaux à ROI marginal le plus bas vers ceux à ROI marginal le plus élevé jusqu'à ce que les ROI marginaux s'égalisent entre les canaux (ou atteignent des contraintes de dépense minimale)
+5. Définir un plancher de ROI — ne pas dépenser au-delà du point où le ROI marginal tombe sous 1,0x (ou votre ROAS cible)
 
 ---
 
-## 6. Revenue Simulation (Monte Carlo)
+## 5. Modèles d'interaction entre canaux
 
-### Methodology
-1. Define probability distributions for each input: channel ROI (normal distribution with mean and standard deviation from MMM posteriors), budget scenarios (fixed or range), seasonal multipliers (historical), competitive factors (scenario-based)
-2. Draw random samples from each distribution
-3. Calculate revenue for each draw: `revenue = sum(channel_spend_i * channel_ROI_i * seasonal_multiplier * competitive_factor) + baseline`
-4. Repeat 10,000+ times
-5. Analyze the distribution of simulated revenues
+### Complémentarité (synergie)
+Canaux qui s'amplifient mutuellement lorsqu'ils sont actifs simultanément. TV + recherche payante : la TV crée la notoriété, la recherche capture le pic de demande. Social + e-mail : le social réchauffe l'audience, l'e-mail convertit. Quantifier la synergie en ajoutant des termes d'interaction au MMM : `revenue ~ TV + search + TV*search`. Un coefficient d'interaction positif signifie que l'effet combiné dépasse la somme des effets individuels.
 
-### Output Interpretation
-- **Expected revenue**: Mean of all simulations
-- **Confidence range**: 10th percentile (downside), 50th (median), 90th (upside)
-- **Probability of hitting target**: Percentage of simulations that exceed the revenue goal
-- **Sensitivity analysis**: Which input parameters have the largest impact on revenue variance (run simulations with each parameter fixed to see which one, when fixed, reduces variance the most)
+### Cannibalisation
+Canaux qui se volent des conversions mutuellement. Recherche de marque vs organique : les deux capturent la même intention. Retargeting vs e-mail : les deux ciblent les clients existants avec des offres similaires. Un coefficient d'interaction négatif dans le MMM signale une cannibalisation.
+
+### Quantification de la synergie
+Rapporter le pourcentage de chiffre d'affaires attribuable aux interactions entre canaux par rapport aux effets de canal individuels. Fourchette typique : 5 à 20 % du chiffre d'affaires total généré par le marketing provient des synergies. Les marques à forte synergie (celles avec des stratégies multicanales solides) peuvent atteindre 25 à 30 %.
 
 ---
 
-## 7. Churn Prediction and Intervention
+## 6. Simulation de chiffre d'affaires (Monte Carlo)
 
-### Behavioral Signals
-- Login frequency decline (>30% drop over 4 weeks)
-- Feature usage narrowing (using fewer product features)
-- Support ticket volume increase (frustration signal)
-- Payment failures or downgrades
-- Session duration shortening
+### Méthodologie
+1. Définir des distributions de probabilité pour chaque intrant : ROI par canal (distribution normale avec moyenne et écart-type issus des postérieures du MMM), scénarios budgétaires (fixes ou en fourchette), multiplicateurs saisonniers (historiques), facteurs concurrentiels (basés sur des scénarios)
+2. Tirer des échantillons aléatoires de chaque distribution
+3. Calculer le chiffre d'affaires pour chaque tirage : `revenue = sum(channel_spend_i * channel_ROI_i * seasonal_multiplier * competitive_factor) + baseline`
+4. Répéter 10 000 fois ou plus
+5. Analyser la distribution des chiffres d'affaires simulés
 
-### Engagement Signals
-- Email open rate declining over 3+ consecutive sends
-- Click-through rate dropping below 50% of cohort average
-- Unsubscribing from content categories
-- Reduced app/site visit frequency
-- No engagement with new features or announcements
+### Interprétation des résultats
+- **Chiffre d'affaires attendu** : Moyenne de toutes les simulations
+- **Fourchette de confiance** : 10e percentile (baisse), 50e (médiane), 90e (hausse)
+- **Probabilité d'atteindre l'objectif** : Pourcentage de simulations qui dépassent l'objectif de chiffre d'affaires
+- **Analyse de sensibilité** : Quels paramètres d'entrée ont le plus grand impact sur la variance du chiffre d'affaires (exécuter des simulations avec chaque paramètre fixé pour voir lequel, une fois fixé, réduit le plus la variance)
 
-### Transactional Signals
-- Purchase frequency decline (>40% drop vs prior period)
-- Average order value decrease
-- Category narrowing (buying from fewer categories)
-- Coupon/discount dependency increasing
-- Cart abandonment rate rising
+---
 
-### Risk Score Tiers and Intervention Playbook
-| Score | Tier | Intervention |
+## 7. Prédiction et intervention sur le churn
+
+### Signaux comportementaux
+- Déclin de la fréquence de connexion (>30 % de baisse sur 4 semaines)
+- Rétrécissement de l'usage des fonctionnalités (utilisation de moins de fonctionnalités produit)
+- Augmentation du volume de tickets de support (signal de frustration)
+- Échecs de paiement ou rétrogradations
+- Raccourcissement de la durée des sessions
+
+### Signaux d'engagement
+- Taux d'ouverture d'e-mail en déclin sur 3 envois consécutifs ou plus
+- Taux de clics tombant sous 50 % de la moyenne de la cohorte
+- Désabonnement de catégories de contenu
+- Fréquence de visite d'application/site réduite
+- Aucun engagement avec les nouvelles fonctionnalités ou annonces
+
+### Signaux transactionnels
+- Déclin de la fréquence d'achat (>40 % de baisse vs période précédente)
+- Diminution du panier moyen
+- Rétrécissement des catégories (achat sur moins de catégories)
+- Dépendance croissante aux coupons/remises
+- Taux d'abandon de panier en hausse
+
+### Niveaux de score de risque et playbook d'intervention
+| Score | Niveau | Intervention |
 |-------|------|-------------|
-| 0-30 | Low risk | Nurture sequences, value reinforcement content, product education |
-| 30-60 | Medium risk | Personalized offer, success manager outreach, feature adoption campaign |
-| 60-80 | High risk | Retention offer (discount/upgrade), executive outreach, win-back sequence |
-| 80-100 | Critical | Urgent save offer, proactive cancellation intercept, 1:1 outreach |
+| 0-30 | Risque faible | Séquences de nurturing, contenu de renforcement de la valeur, éducation produit |
+| 30-60 | Risque moyen | Offre personnalisée, prise de contact par le success manager, campagne d'adoption de fonctionnalités |
+| 60-80 | Risque élevé | Offre de rétention (remise/mise à niveau), prise de contact par la direction, séquence de reconquête |
+| 80-100 | Critique | Offre de sauvetage urgente, interception proactive de l'annulation, prise de contact 1:1 |
 
 ---
 
-## 8. Experimentation Rigor
+## 8. Rigueur expérimentale
 
-### Sample Size and Runtime
-Use power analysis before launching any test. Inputs: minimum detectable effect (MDE), significance level (typically 0.05), statistical power (typically 0.80), baseline conversion rate. Tools: `sample-size-calculator.py` and `significance-tester.py`. Runtime = required sample size / daily traffic. Never stop a test early based on "peeking" at results unless using sequential testing methods.
+### Taille d'échantillon et durée d'exécution
+Utiliser une analyse de puissance avant de lancer tout test. Intrants : effet minimum détectable (MDE), niveau de signification (typiquement 0,05), puissance statistique (typiquement 0,80), taux de conversion de référence. Outils : `sample-size-calculator.py` et `significance-tester.py`. Durée = taille d'échantillon requise / trafic quotidien. Ne jamais arrêter un test prématurément en se basant sur un « coup d'œil » aux résultats, sauf en utilisant des méthodes de test séquentiel.
 
-### Multiple Testing Correction
-Running 5 variants? The probability of at least one false positive at alpha=0.05 rises to 23%. Apply Bonferroni correction (alpha / number of tests) for simplicity, or Holm-Bonferroni for more power. For related metrics, consider False Discovery Rate (FDR) control instead.
+### Correction pour tests multiples
+Vous exécutez 5 variantes ? La probabilité d'au moins un faux positif à alpha=0,05 monte à 23 %. Appliquer la correction de Bonferroni (alpha / nombre de tests) pour la simplicité, ou Holm-Bonferroni pour plus de puissance. Pour les métriques liées, envisager plutôt le contrôle du taux de fausses découvertes (FDR).
 
-### Sequential Testing
-Group sequential methods allow for planned interim analyses with early stopping boundaries. Spending functions (O'Brien-Fleming, Pocock) control overall Type I error while allowing early stopping for very large effects. Define stopping boundaries before the test starts — not during.
+### Test séquentiel
+Les méthodes séquentielles de groupe permettent des analyses intermédiaires planifiées avec des limites d'arrêt anticipé. Les fonctions de dépense (O'Brien-Fleming, Pocock) contrôlent l'erreur globale de Type I tout en permettant un arrêt anticipé pour des effets très importants. Définir les limites d'arrêt avant le début du test — pas pendant.
 
-### Guardrail Metrics
-Metrics that must NOT degrade while you optimize the primary metric. Examples: revenue per user (guardrail) while testing for higher signup rate (primary); page load speed (guardrail) while testing new page layout (primary); customer satisfaction (guardrail) while testing for higher upsell rate (primary). If a guardrail degrades beyond a pre-set threshold, stop the test regardless of primary metric improvement.
+### Métriques garde-fou
+Métriques qui ne doivent PAS se dégrader pendant que vous optimisez la métrique principale. Exemples : chiffre d'affaires par utilisateur (garde-fou) pendant le test d'un taux d'inscription plus élevé (principale) ; vitesse de chargement de page (garde-fou) pendant le test d'une nouvelle mise en page (principale) ; satisfaction client (garde-fou) pendant le test d'un taux d'upsell plus élevé (principale). Si un garde-fou se dégrade au-delà d'un seuil prédéfini, arrêter le test indépendamment de l'amélioration de la métrique principale.

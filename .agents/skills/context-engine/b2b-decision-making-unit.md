@@ -1,189 +1,189 @@
-# B2B Decision-Making Unit (DMU)
+# Unité de décision B2B (DMU)
 
-In B2B, you are not selling to a single buyer. You are selling to a buying committee — typically 3–7 people across functions — who collectively decide whether to purchase. Treating B2B prospects as individuals (the way B2C personas often work) misses the dynamics of how decisions actually get made.
+En B2B, vous ne vendez pas à un acheteur unique. Vous vendez à un comité d'achat — typiquement 3 à 7 personnes réparties sur différentes fonctions — qui décident collectivement d'acheter ou non. Traiter les prospects B2B comme des individus (comme le font souvent les personas B2C) manque les dynamiques de la façon dont les décisions sont réellement prises.
 
-The Decision-Making Unit overlay applies to every B2B persona in Core Doc 3.2.
+La surcouche d'Unité de Décision (Decision-Making Unit) s'applique à chaque persona B2B du Document Central 3.2.
 
-## The Four Roles
+## Les quatre rôles
 
-Every B2B buying decision involves these roles. Sometimes one person plays multiple roles; sometimes a single role is split across multiple people. The roles are functional, not titular.
+Chaque décision d'achat B2B implique ces rôles. Parfois une personne joue plusieurs rôles ; parfois un seul rôle est réparti entre plusieurs personnes. Les rôles sont fonctionnels, pas nominatifs.
 
-### User
+### Utilisateur
 
-**Definition:** The person who will use the product daily once purchased.
+**Définition :** La personne qui utilisera le produit quotidiennement une fois acheté.
 
-**What they care about:**
+**Ce qui l'intéresse :**
 
-- Does this make my daily work easier?
-- Is the learning curve manageable?
-- Will it actually do what it claims?
-- Does it integrate with the tools I already use?
+- Est-ce que cela facilite mon travail quotidien ?
+- La courbe d'apprentissage est-elle gérable ?
+- Est-ce que cela fait vraiment ce qui est annoncé ?
+- Est-ce que cela s'intègre avec les outils que j'utilise déjà ?
 
-**What they fear:**
+**Ce qu'il craint :**
 
-- Being forced to use a tool that breaks their workflow
-- Losing time to a long implementation
-- Being blamed if the tool does not deliver
+- Être forcé d'utiliser un outil qui casse son flux de travail
+- Perdre du temps dans une implémentation longue
+- Être blâmé si l'outil ne tient pas ses promesses
 
-**What gets them to say yes:**
+**Ce qui le fait dire oui :**
 
-- Tutorials they can self-serve through
-- Free trial that lets them prove value to themselves
-- Peer testimonials from people in similar roles
-- Demonstrations of specific workflow improvements
+- Des tutoriels en libre-service
+- Un essai gratuit qui lui permet de se prouver la valeur à lui-même
+- Des témoignages de pairs occupant des rôles similaires
+- Des démonstrations d'améliorations spécifiques de flux de travail
 
-**Where to reach them:**
+**Où le toucher :**
 
-- Product-focused YouTube tutorials
-- Reddit, Stack Overflow, role-specific communities
-- LinkedIn (especially community/group posts)
-- Trial signup with self-serve onboarding
+- Tutoriels YouTube axés produit
+- Reddit, Stack Overflow, communautés spécifiques au rôle
+- LinkedIn (en particulier les publications de communautés/groupes)
+- Inscription à l'essai avec intégration en libre-service
 
-**Marketing implications:**
+**Implications marketing :**
 
-- Content: how-to guides, video tutorials, integration documentation
-- Channels: organic search (long-tail product queries), Reddit, role-specific newsletters
-- Conversion: free trial > demo for User-led journeys
+- Contenu : guides pratiques, tutoriels vidéo, documentation d'intégration
+- Canaux : recherche organique (requêtes produit de longue traîne), Reddit, newsletters spécifiques au rôle
+- Conversion : essai gratuit > démo pour les parcours menés par l'Utilisateur
 
-### Influencer
+### Influenceur
 
-**Definition:** The person who evaluates options and makes recommendations to the decision-maker. Often technical (CTO, VP of Engineering, Head of Operations), often a senior practitioner.
+**Définition :** La personne qui évalue les options et fait des recommandations au décideur. Souvent technique (CTO, VP Ingénierie, Directeur des Opérations), souvent un praticien senior.
 
-**What they care about:**
+**Ce qui l'intéresse :**
 
-- Capabilities and feature depth
-- Integration ecosystem
-- Vendor reliability and roadmap
-- Comparison to alternatives
-- Total cost of ownership beyond just license
+- Les capacités et la profondeur des fonctionnalités
+- L'écosystème d'intégration
+- La fiabilité et la feuille de route du fournisseur
+- La comparaison avec les alternatives
+- Le coût total de possession au-delà de la simple licence
 
-**What they fear:**
+**Ce qu'il craint :**
 
-- Recommending a tool that fails the team
-- Missing a better alternative
-- Being blamed for lock-in or migration cost
-- Being the person who pushed a tool the team hates
+- Recommander un outil qui échoue avec l'équipe
+- Manquer une meilleure alternative
+- Être blâmé pour un enfermement fournisseur ou un coût de migration
+- Être la personne qui a poussé un outil que l'équipe déteste
 
-**What gets them to say yes:**
+**Ce qui le fait dire oui :**
 
-- Detailed comparison guides (you vs alternatives)
-- Webinars with technical depth
-- Case studies from similar companies
-- Whitepaper-grade content with substantive analysis
-- Vendor responsiveness during evaluation
+- Des guides de comparaison détaillés (vous vs alternatives)
+- Des webinaires avec une profondeur technique
+- Des études de cas d'entreprises similaires
+- Un contenu de niveau livre blanc avec une analyse substantielle
+- La réactivité du fournisseur durant l'évaluation
 
-**Where to reach them:**
+**Où le toucher :**
 
-- LinkedIn (especially long-form posts, articles, document carousels)
-- Industry-specific publications
-- Webinars and analyst events
-- Comparison content (G2, Capterra, your own comparison pages)
-- Sales-led demonstrations
+- LinkedIn (en particulier les publications longues, articles, carrousels de documents)
+- Publications spécifiques au secteur
+- Webinaires et événements d'analystes
+- Contenu de comparaison (G2, Capterra, vos propres pages de comparaison)
+- Démonstrations menées par la vente
 
-**Marketing implications:**
+**Implications marketing :**
 
-- Content: comparison pages, technical whitepapers, ROI calculators, customer case studies
-- Channels: LinkedIn Sponsored Content, industry publications, webinars
-- Conversion: demo > trial for Influencer-led journeys (they want to see capabilities under expert demonstration)
+- Contenu : pages de comparaison, livres blancs techniques, calculateurs de ROI, études de cas clients
+- Canaux : Contenu sponsorisé LinkedIn, publications sectorielles, webinaires
+- Conversion : démo > essai pour les parcours menés par l'Influenceur (ils veulent voir les capacités sous démonstration experte)
 
-### Decision-maker
+### Décideur
 
-**Definition:** The person who approves the budget. Typically a senior business leader (VP, Director, C-suite). Often does not use the product personally.
+**Définition :** La personne qui approuve le budget. Typiquement un dirigeant senior (VP, Directeur, direction générale). N'utilise souvent pas le produit personnellement.
 
-**What they care about:**
+**Ce qui l'intéresse :**
 
-- Strategic alignment (does this advance our priorities?)
-- ROI and payback period
-- Risk (vendor stability, deployment risk, change management)
-- Total cost over 3–5 years
-- Reference customers at similar stage / size
+- L'alignement stratégique (cela fait-il avancer nos priorités ?)
+- Le ROI et la période de retour sur investissement
+- Le risque (stabilité du fournisseur, risque de déploiement, gestion du changement)
+- Le coût total sur 3 à 5 ans
+- Les clients de référence à un stade/une taille similaire
 
-**What they fear:**
+**Ce qu'il craint :**
 
-- Approving a project that fails
-- Overspending vs alternatives
-- Vendor lock-in
-- Negative impact on team / operations
+- Approuver un projet qui échoue
+- Sur-dépenser par rapport aux alternatives
+- L'enfermement fournisseur (vendor lock-in)
+- L'impact négatif sur l'équipe/les opérations
 
-**What gets them to say yes:**
+**Ce qui le fait dire oui :**
 
-- Quantified business impact from similar customers
-- Reference customers willing to take a call
-- Clear implementation plan with milestones
-- Predictable pricing with no nasty surprises
-- Vendor maturity signals (size, longevity, stability)
+- Un impact business quantifié provenant de clients similaires
+- Des clients de référence prêts à prendre un appel
+- Un plan d'implémentation clair avec des jalons
+- Une tarification prévisible sans mauvaises surprises
+- Des signaux de maturité fournisseur (taille, longévité, stabilité)
 
-**Where to reach them:**
+**Où le toucher :**
 
-- LinkedIn (executive content, thought leadership)
-- Industry events and conferences
-- Peer networks and analyst recommendations
-- Email (only if highly relevant — executives ignore generic email)
-- Direct sales outreach (with executive-grade context)
+- LinkedIn (contenu exécutif, leadership éclairé)
+- Événements et conférences sectorielles
+- Réseaux de pairs et recommandations d'analystes
+- E-mail (uniquement si hautement pertinent — les dirigeants ignorent les e-mails génériques)
+- Prospection commerciale directe (avec un contexte de niveau exécutif)
 
-**Marketing implications:**
+**Implications marketing :**
 
-- Content: executive briefings, business-impact case studies, analyst-style market overviews, ROI calculators with executive-friendly outputs
-- Channels: LinkedIn (executive-targeting), industry conferences, ABM, executive briefings
-- Conversion: executive briefing > demo for Decision-maker-led journeys
+- Contenu : briefings exécutifs, études de cas d'impact business, aperçus de marché de style analyste, calculateurs de ROI avec des résultats adaptés aux dirigeants
+- Canaux : LinkedIn (ciblage exécutif), conférences sectorielles, ABM, briefings exécutifs
+- Conversion : briefing exécutif > démo pour les parcours menés par le Décideur
 
-### Gatekeeper
+### Gardien (Gatekeeper)
 
-**Definition:** The person who controls access to the buying organisation. Often Procurement, IT Security, Legal, Compliance.
+**Définition :** La personne qui contrôle l'accès à l'organisation acheteuse. Souvent les Achats, la Sécurité IT, le Juridique, la Conformité.
 
-**What they care about:**
+**Ce qui l'intéresse :**
 
-- Compliance with company policies (security, data, vendor management)
-- Vendor risk (financial stability, certifications, insurance)
-- Contract terms and pricing benchmarks
-- Negotiating better deals
+- La conformité aux politiques de l'entreprise (sécurité, données, gestion fournisseur)
+- Le risque fournisseur (stabilité financière, certifications, assurance)
+- Les termes contractuels et les références tarifaires
+- La négociation de meilleures conditions
 
-**What they fear:**
+**Ce qu'il craint :**
 
-- Approving a vendor that creates compliance issues
-- Approving a contract with hidden risks
-- Being seen as a rubber-stamp (so they will push back to demonstrate value)
+- Approuver un fournisseur qui crée des problèmes de conformité
+- Approuver un contrat avec des risques cachés
+- Être perçu comme un simple tampon (donc il poussera en retour pour démontrer sa valeur)
 
-**What gets them to say yes:**
+**Ce qui le fait dire oui :**
 
-- Complete documentation (security docs, SOC 2, GDPR / DPDP / HIPAA / PCI as applicable, insurance certificates, financial reports)
-- Standard contract templates that minimise legal review time
-- Reasonable pricing benchmarks
-- Vendor responsiveness during procurement
+- Une documentation complète (documents de sécurité, SOC 2, RGPD/DPDP/HIPAA/PCI selon le cas, certificats d'assurance, rapports financiers)
+- Des modèles de contrat standard qui minimisent le temps de revue juridique
+- Des références tarifaires raisonnables
+- La réactivité du fournisseur durant les achats
 
-**Where to reach them:**
+**Où le toucher :**
 
-- Trust pages on the website (security, compliance, certifications)
-- Procurement portals (Coupa, SAP Ariba)
-- Vendor onboarding materials
-- Direct procurement-team outreach
+- Pages de confiance sur le site web (sécurité, conformité, certifications)
+- Portails d'achat (Coupa, SAP Ariba)
+- Documents d'intégration fournisseur
+- Prospection directe de l'équipe achats
 
-**Marketing implications:**
+**Implications marketing :**
 
-- Content: trust pages, security documentation, compliance certifications, standard contract templates, public-disclosure pricing where possible
-- Channels: trust page, security email programme, procurement-portal listings
-- Conversion: not a primary conversion target — but absence of gatekeeper-friendly content blocks all other conversions
+- Contenu : pages de confiance, documentation de sécurité, certifications de conformité, modèles de contrat standard, tarification en divulgation publique lorsque possible
+- Canaux : page de confiance, programme e-mail sécurité, listings de portail d'achat
+- Conversion : pas une cible de conversion principale — mais l'absence de contenu adapté au gardien bloque toutes les autres conversions
 
-## How the DMU plays out across the funnel
+## Comment la DMU se déroule à travers le tunnel
 
-A B2B journey rarely happens in one role. Typically:
+Un parcours B2B se déroule rarement dans un seul rôle. Typiquement :
 
-1. **User discovers the brand first** through organic search or a colleague's recommendation
-2. **User raises the topic with the Influencer** ("we should look at this tool")
-3. **Influencer evaluates** — researches alternatives, attends a webinar, downloads a comparison guide
-4. **Influencer recommends to the Decision-maker** with a brief
-5. **Decision-maker requests a business case** — ROI, references, strategic alignment
-6. **Marketing provides Decision-maker-grade content** — executive briefings, case studies
-7. **Decision-maker approves the spend pending procurement**
-8. **Gatekeeper reviews** — security, compliance, contract
-9. **Gatekeeper clears the path or blocks**
-10. **Purchase completes**
+1. **L'Utilisateur découvre la marque en premier** via la recherche organique ou la recommandation d'un collègue
+2. **L'Utilisateur soulève le sujet auprès de l'Influenceur** (« nous devrions regarder cet outil »)
+3. **L'Influenceur évalue** — recherche des alternatives, assiste à un webinaire, télécharge un guide de comparaison
+4. **L'Influenceur recommande au Décideur** avec un brief
+5. **Le Décideur demande un dossier business** — ROI, références, alignement stratégique
+6. **Le marketing fournit un contenu de niveau Décideur** — briefings exécutifs, études de cas
+7. **Le Décideur approuve la dépense sous réserve des achats**
+8. **Le Gardien examine** — sécurité, conformité, contrat
+9. **Le Gardien libère le passage ou bloque**
+10. **L'achat se finalise**
 
-Marketing must be present at every stage with content appropriate to the role active at that stage.
+Le marketing doit être présent à chaque étape avec un contenu adapté au rôle actif à cette étape.
 
-## How skills produce DMU-aware output
+## Comment les compétences produisent un livrable conscient de la DMU
 
-For B2B engagements, the four-core-documents skill produces personas with DMU overlays. Each persona (e.g., "Mid-market CTO") has the four roles mapped:
+Pour les engagements B2B, la compétence des quatre documents centraux produit des personas avec des surcouches DMU. Chaque persona (par ex., « CTO du marché intermédiaire ») a les quatre rôles cartographiés :
 
 ```markdown
 ### Persona: Mid-market CTO
@@ -211,16 +211,16 @@ For B2B engagements, the four-core-documents skill produces personas with DMU ov
 - Reach via: trust page, procurement portal listing, sales-team responsiveness during procurement
 ```
 
-Channel skills (Part 9) and creative skills (Part 10) then produce content variants for each DMU role active at the relevant funnel stage.
+Les compétences de canal (Partie 9) et les compétences créatives (Partie 10) produisent ensuite des variantes de contenu pour chaque rôle DMU actif à l'étape de tunnel pertinente.
 
-## When the DMU does not apply
+## Quand la DMU ne s'applique pas
 
-- **Single-decision-maker B2C** — DMU collapses to "the buyer." Use the standard Actionable Persona Format only.
-- **Founder-led small B2B** — Sometimes the User, Influencer, and Decision-maker are the same person. The DMU still applies, but multiple roles map to one person — they just experience different concerns at different stages.
-- **Self-service / PLG sales motion** — The User is also the Decision-maker (until the team scales beyond the User's authority). DMU evolves over time; document this and revisit at quarterly strategy refresh.
+- **B2C à décideur unique** — La DMU se réduit à « l'acheteur ». Utiliser uniquement le Format de Persona Exploitable standard.
+- **B2B mené par le fondateur, petite structure** — Parfois l'Utilisateur, l'Influenceur, et le Décideur sont la même personne. La DMU s'applique toujours, mais plusieurs rôles se cartographient sur une seule personne — elle rencontre simplement des préoccupations différentes à des étapes différentes.
+- **Mouvement de vente self-service / PLG** — L'Utilisateur est aussi le Décideur (jusqu'à ce que l'équipe dépasse l'autorité de l'Utilisateur). La DMU évolue dans le temps ; documentez cela et révisez lors de l'actualisation stratégique trimestrielle.
 
-## Related references
+## Références associées
 
-- [actionable-persona-format.md](actionable-persona-format.md) — the 6-question persona format
-- [four-core-documents-spec.md](four-core-documents-spec.md) — Core Doc 3.2 Steps 10–13
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — the 12-Part flow
+- [actionable-persona-format.md](actionable-persona-format.md) — le format de persona à 6 questions
+- [four-core-documents-spec.md](four-core-documents-spec.md) — Document Central 3.2 Étapes 10–13
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — le flux en 12 parties

@@ -1,20 +1,20 @@
-# Custom MCP Integration Guide — Adding & Building MCP Servers
+# Guide d'intégration MCP personnalisée — Ajouter et construire des serveurs MCP
 
-## What MCPs Are
+## Ce que sont les MCP
 
-Model Context Protocol (MCP) servers connect Claude to external services. Each MCP provides **tools** (functions Claude can call), **resources** (data Claude can read), and **prompts** (pre-defined interaction templates). MCP servers run as separate processes that communicate with Claude via JSON-RPC over stdin/stdout.
+Les serveurs Model Context Protocol (MCP) connectent Claude à des services externes. Chaque MCP fournit des **outils** (fonctions que Claude peut appeler), des **ressources** (données que Claude peut lire), et des **prompts** (modèles d'interaction prédéfinis). Les serveurs MCP s'exécutent comme des processus séparés qui communiquent avec Claude via JSON-RPC sur stdin/stdout.
 
-In this plugin, MCPs are the execution bridge between the agent layer (Claude reasoning about marketing strategy) and external platforms (publishing a blog post, sending an email campaign, querying a CRM). **`.mcp.json` ships empty by design** (`{"mcpServers":{}}` — nothing auto-connects, which keeps Cowork and team installs safe). The opt-in catalog of 60+ connector configurations covering social publishing, email, CRM, analytics, memory, knowledge, CMS, communication, project management, testing, and databases lives in `.mcp.json.connectors-reference` and `.mcp.json.example` — copy the entries you need into your own `.mcp.json`, and this guide shows how to add or build servers beyond the catalog.
+Dans ce plugin, les MCP sont le pont d'exécution entre la couche agent (Claude raisonnant sur la stratégie marketing) et les plateformes externes (publier un article de blog, envoyer une campagne e-mail, interroger un CRM). **`.mcp.json` est distribué vide par conception** (`{"mcpServers":{}}` — rien ne se connecte automatiquement, ce qui garde les installations Cowork et d'équipe sûres). Le catalogue opt-in de plus de 60 configurations de connecteurs couvrant la publication sociale, l'e-mail, le CRM, les analytics, la mémoire, la connaissance, le CMS, la communication, la gestion de projet, les tests, et les bases de données vit dans `.mcp.json.connectors-reference` et `.mcp.json.example` — copiez les entrées dont vous avez besoin dans votre propre `.mcp.json`, et ce guide montre comment ajouter ou construire des serveurs au-delà du catalogue.
 
 ---
 
-## How MCPs Work in This Plugin
+## Comment les MCP fonctionnent dans ce plugin
 
 ### Configuration
 
-Your `.mcp.json` (project or user scope) defines the MCP server configurations you have opted into. Claude discovers available MCPs at session start and can call their tools during a session. (The plugin's own `.mcp.json` ships empty — start from `.mcp.json.example`.)
+Votre `.mcp.json` (portée projet ou utilisateur) définit les configurations de serveur MCP auxquelles vous avez souscrit (opt-in). Claude découvre les MCP disponibles au démarrage de session et peut appeler leurs outils pendant une session. (Le propre `.mcp.json` du plugin est distribué vide — partez de `.mcp.json.example`.)
 
-**`.mcp.json` schema:**
+**Schéma `.mcp.json` :**
 ```json
 {
   "mcpServers": {
@@ -30,37 +30,37 @@ Your `.mcp.json` (project or user scope) defines the MCP server configurations y
 }
 ```
 
-### Key Mechanics
+### Mécaniques clés
 
-- **`command`**: The executable to run — typically `npx` (for npm packages), `node` (for local scripts), or `python` (for Python-based MCPs)
-- **`args`**: Arguments passed to the command — package name for npx, file path for node/python
-- **`env`**: Environment variables injected into the MCP process — use `${VAR_NAME}` syntax to reference variables from `.env` or the shell environment
-- **`description`**: Human-readable explanation that helps Claude understand when to use this MCP
+- **`command`** : L'exécutable à lancer — typiquement `npx` (pour les packages npm), `node` (pour les scripts locaux), ou `python` (pour les MCP basés sur Python)
+- **`args`** : Arguments passés à la commande — nom de package pour npx, chemin de fichier pour node/python
+- **`env`** : Variables d'environnement injectées dans le processus MCP — utiliser la syntaxe `${VAR_NAME}` pour référencer les variables depuis `.env` ou l'environnement shell
+- **`description`** : Explication lisible par un humain qui aide Claude à comprendre quand utiliser ce MCP
 
-### How Claude Uses MCPs at Runtime
+### Comment Claude utilise les MCP à l'exécution
 
-1. **Session start:** Claude reads `.mcp.json` and starts configured MCP servers
-2. **Tool discovery:** Claude calls `tools/list` on each server to learn available tools
-3. **Tool invocation:** During conversation, Claude calls MCP tools by name with JSON parameters
-4. **Safety gate:** Claude Code's own permission system prompts before tool calls per your settings. This plugin ships **zero hooks** (`hooks/hooks.json` is `{"hooks":{}}` by design — plugin hooks fire globally); follow the read/write tool-naming convention below so write operations are recognizable, and rely on the built-in permission prompts for approval
-5. **Response:** MCP server executes the operation and returns results to Claude
+1. **Démarrage de session :** Claude lit `.mcp.json` et démarre les serveurs MCP configurés
+2. **Découverte d'outils :** Claude appelle `tools/list` sur chaque serveur pour connaître les outils disponibles
+3. **Invocation d'outil :** Pendant la conversation, Claude appelle les outils MCP par nom avec des paramètres JSON
+4. **Porte de sécurité :** Le propre système de permission de Claude Code invite avant les appels d'outil selon vos réglages. Ce plugin ne fournit **aucun hook** (`hooks/hooks.json` est `{"hooks":{}}` par conception — les hooks de plugin se déclenchent globalement) ; suivez la convention de nommage lecture/écriture ci-dessous afin que les opérations d'écriture soient reconnaissables, et comptez sur les invites de permission intégrées pour l'approbation
+5. **Réponse :** Le serveur MCP exécute l'opération et renvoie les résultats à Claude
 
 ---
 
-## Adding an Existing MCP Package
+## Ajouter un package MCP existant
 
-### Step-by-Step
+### Étape par étape
 
-1. **Identify the service** you want to connect (e.g., Mailchimp, HubSpot, Airtable)
+1. **Identifier le service** que vous voulez connecter (par ex., Mailchimp, HubSpot, Airtable)
 
-2. **Search for existing MCP packages:** check https://github.com/modelcontextprotocol/servers (the official server directory), search npm for `mcp-server-*` or `@*/mcp` packages, and check whether the vendor offers a hosted HTTP MCP endpoint (see `.mcp.json.connectors-reference` for verified ones)
+2. **Rechercher des packages MCP existants :** vérifier https://github.com/modelcontextprotocol/servers (le répertoire officiel de serveurs), rechercher sur npm les packages `mcp-server-*` ou `@*/mcp`, et vérifier si le fournisseur propose un point de terminaison MCP HTTP hébergé (voir `.mcp.json.connectors-reference` pour ceux qui sont vérifiés)
 
-3. **Test the package locally:**
+3. **Tester le package localement :**
    ```bash
    npx -y <package-name> --help
    ```
 
-4. **Add to `.mcp.json`:**
+4. **Ajouter à `.mcp.json` :**
    ```json
    {
      "mcpServers": {
@@ -77,58 +77,58 @@ Your `.mcp.json` (project or user scope) defines the MCP server configurations y
    }
    ```
 
-5. **Add credentials to `.env`:**
+5. **Ajouter les identifiants à `.env` :**
    ```
    MAILCHIMP_API_KEY=your-api-key-here
    MAILCHIMP_SERVER_PREFIX=us14
    ```
 
-6. **Verify connectivity:** Start a new Claude session and ask Claude to list available tools from the new MCP
+6. **Vérifier la connectivité :** Démarrer une nouvelle session Claude et demander à Claude de lister les outils disponibles depuis le nouveau MCP
 
-7. **Document:** Update `docs/integrations-guide.md` with the new integration
+7. **Documenter :** Mettre à jour `docs/integrations-guide.md` avec la nouvelle intégration
 
-### Pre-Flight Checklist
+### Checklist pré-vol
 
-- [ ] MCP package exists and is actively maintained (check npm downloads + last publish date)
-- [ ] Package version is stable (avoid 0.x.x for production use unless no alternative)
-- [ ] Required credentials are available (API key, OAuth tokens, etc.)
-- [ ] Credentials added to `.env` with correct variable names
-- [ ] `.mcp.json` entry uses `${VAR}` syntax for all secrets (never hardcode credentials)
-- [ ] Server starts without error in a new session
-- [ ] `tools/list` returns expected tools
-- [ ] Read operations return valid data
-- [ ] Write operations trigger the approval hook correctly
+- [ ] Le package MCP existe et est activement maintenu (vérifier les téléchargements npm + la date de dernière publication)
+- [ ] La version du package est stable (éviter les 0.x.x en production sauf absence d'alternative)
+- [ ] Les identifiants requis sont disponibles (clé API, jetons OAuth, etc.)
+- [ ] Les identifiants sont ajoutés à `.env` avec les noms de variable corrects
+- [ ] L'entrée `.mcp.json` utilise la syntaxe `${VAR}` pour tous les secrets (ne jamais coder en dur les identifiants)
+- [ ] Le serveur démarre sans erreur dans une nouvelle session
+- [ ] `tools/list` renvoie les outils attendus
+- [ ] Les opérations de lecture renvoient des données valides
+- [ ] Les opérations d'écriture déclenchent correctement le hook d'approbation
 
 ---
 
-## Environment Variable Conventions
+## Conventions de variables d'environnement
 
-### Naming Standards
+### Normes de nommage
 
-| Type | Pattern | Example |
+| Type | Schéma | Exemple |
 |---|---|---|
-| **API Key** | `{SERVICE}_API_KEY` | `MAILCHIMP_API_KEY`, `HUBSPOT_API_KEY` |
-| **Base URL** | `{SERVICE}_URL` | `ODOO_URL`, `CUSTOM_API_URL` |
-| **OAuth Client ID** | `{SERVICE}_CLIENT_ID` | `GOOGLE_CLIENT_ID`, `META_CLIENT_ID` |
-| **OAuth Client Secret** | `{SERVICE}_CLIENT_SECRET` | `GOOGLE_CLIENT_SECRET` |
-| **Access Token** | `{SERVICE}_ACCESS_TOKEN` | `SLACK_ACCESS_TOKEN`, `NOTION_ACCESS_TOKEN` |
-| **Server/Region** | `{SERVICE}_SERVER_PREFIX` | `MAILCHIMP_SERVER_PREFIX`, `AWS_REGION` |
-| **Database** | `{SERVICE}_DB_NAME` | `POSTGRES_DB_NAME`, `MONGO_DB_NAME` |
+| **Clé API** | `{SERVICE}_API_KEY` | `MAILCHIMP_API_KEY`, `HUBSPOT_API_KEY` |
+| **URL de base** | `{SERVICE}_URL` | `ODOO_URL`, `CUSTOM_API_URL` |
+| **ID client OAuth** | `{SERVICE}_CLIENT_ID` | `GOOGLE_CLIENT_ID`, `META_CLIENT_ID` |
+| **Secret client OAuth** | `{SERVICE}_CLIENT_SECRET` | `GOOGLE_CLIENT_SECRET` |
+| **Jeton d'accès** | `{SERVICE}_ACCESS_TOKEN` | `SLACK_ACCESS_TOKEN`, `NOTION_ACCESS_TOKEN` |
+| **Serveur/Région** | `{SERVICE}_SERVER_PREFIX` | `MAILCHIMP_SERVER_PREFIX`, `AWS_REGION` |
+| **Base de données** | `{SERVICE}_DB_NAME` | `POSTGRES_DB_NAME`, `MONGO_DB_NAME` |
 
-### Storage Rules
+### Règles de stockage
 
-- **All credentials** go in `.env` at the project root — never in `.mcp.json`, never in scripts, never committed to git
-- **`.env` is gitignored** — verify this before any commit
-- **Agency mode:** Per-client credentials stored at `~/.claude-marketing/credentials/{profile-name}.json` (see Credential Profiles section below)
-- **Rotation:** Rotate API keys quarterly. Use short-lived tokens (OAuth) where possible.
+- **Tous les identifiants** vont dans `.env` à la racine du projet — jamais dans `.mcp.json`, jamais dans les scripts, jamais commités dans git
+- **`.env` est dans le gitignore** — vérifier ceci avant tout commit
+- **Mode agence :** Les identifiants par client sont stockés à `~/.claude-marketing/credentials/{profile-name}.json` (voir la section Profils d'identifiants ci-dessous)
+- **Rotation :** Faire tourner les clés API trimestriellement. Utiliser des jetons de courte durée (OAuth) lorsque possible.
 
 ---
 
-## Building a Custom MCP Server
+## Construire un serveur MCP personnalisé
 
-When no existing package covers your service, build a custom MCP server.
+Lorsqu'aucun package existant ne couvre votre service, construisez un serveur MCP personnalisé.
 
-### Project Setup
+### Configuration du projet
 
 ```bash
 mkdir mcp-server-yourservice
@@ -137,7 +137,7 @@ npm init -y
 npm install @modelcontextprotocol/sdk zod
 ```
 
-### Minimal Server Template
+### Modèle de serveur minimal
 
 ```javascript
 #!/usr/bin/env node
@@ -190,7 +190,7 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
 
-### Adding to `.mcp.json` (Local Server)
+### Ajout à `.mcp.json` (serveur local)
 
 ```json
 {
@@ -210,77 +210,77 @@ await server.connect(transport);
 
 ---
 
-## Naming Conventions
+## Conventions de nommage
 
-### Server Naming
+### Nommage des serveurs
 
-| Item | Convention | Example |
+| Élément | Convention | Exemple |
 |---|---|---|
-| **`.mcp.json` key** | lowercase-kebab-case, matching service | `"mailchimp"`, `"google-sheets"`, `"hubspot-crm"` |
-| **npm package** | `mcp-server-{service}` or `@scope/mcp-server-{service}` | `mcp-server-mailchimp`, `@company/mcp-server-crm` |
-| **Tool names** | `{action}_{noun}` — verb_object pattern | `list_campaigns`, `create_contact`, `send_email`, `get_report` |
-| **Resource URIs** | `{service}://{resource-type}/{id}` | `mailchimp://lists/abc123`, `hubspot://contacts/456` |
+| **Clé `.mcp.json`** | kebab-case minuscule, correspondant au service | `"mailchimp"`, `"google-sheets"`, `"hubspot-crm"` |
+| **Package npm** | `mcp-server-{service}` ou `@scope/mcp-server-{service}` | `mcp-server-mailchimp`, `@company/mcp-server-crm` |
+| **Noms d'outils** | `{action}_{noun}` — schéma verbe_objet | `list_campaigns`, `create_contact`, `send_email`, `get_report` |
+| **URI de ressource** | `{service}://{resource-type}/{id}` | `mailchimp://lists/abc123`, `hubspot://contacts/456` |
 
-### Tool Naming for Read vs Write Classification
+### Nommage des outils pour la classification lecture vs écriture
 
-Name tools so their side effects are obvious from the prefix — Claude Code's permission prompts (and any user-scope hooks you add yourself) can then treat reads and writes differently:
+Nommez les outils de sorte que leurs effets de bord soient évidents à partir du préfixe — les invites de permission de Claude Code (et tout hook de portée utilisateur que vous ajoutez vous-même) peuvent alors traiter les lectures et les écritures différemment :
 
-| Prefix | Classification | Recommended handling |
+| Préfixe | Classification | Traitement recommandé |
 |---|---|---|
-| `list_`, `get_`, `query_`, `search_`, `fetch_`, `count_` | **Read** | Safe to allow |
-| `create_`, `update_`, `delete_`, `send_`, `publish_`, `schedule_`, `import_`, `sync_` | **Write** | Require explicit approval |
+| `list_`, `get_`, `query_`, `search_`, `fetch_`, `count_` | **Lecture** | Sûr à autoriser |
+| `create_`, `update_`, `delete_`, `send_`, `publish_`, `schedule_`, `import_`, `sync_` | **Écriture** | Nécessite une approbation explicite |
 
-**Always name your tools using these prefixes** so read/write intent is machine-recognizable. If a tool has side effects, use a write prefix even if it also reads data. (This plugin ships zero hooks by design — approval gating comes from Claude Code's own permission system.)
+**Nommez toujours vos outils en utilisant ces préfixes** afin que l'intention de lecture/écriture soit reconnaissable par une machine. Si un outil a des effets de bord, utilisez un préfixe d'écriture même s'il lit aussi des données. (Ce plugin ne fournit aucun hook par conception — le contrôle d'approbation vient du propre système de permission de Claude Code.)
 
 ---
 
-## Common Integration Patterns
+## Schémas d'intégration courants
 
-### Pattern 1: REST API Wrapper (Most Common)
+### Schéma 1 : Enveloppe d'API REST (le plus courant)
 
-Map REST endpoints directly to MCP tools:
+Cartographier les points de terminaison REST directement vers des outils MCP :
 
-| REST Endpoint | MCP Tool | Type |
+| Point de terminaison REST | Outil MCP | Type |
 |---|---|---|
-| `GET /api/contacts` | `list_contacts` | Read |
-| `GET /api/contacts/:id` | `get_contact` | Read |
-| `POST /api/contacts` | `create_contact` | Write |
-| `PUT /api/contacts/:id` | `update_contact` | Write |
-| `DELETE /api/contacts/:id` | `delete_contact` | Write |
-| `GET /api/contacts/search?q=` | `search_contacts` | Read |
+| `GET /api/contacts` | `list_contacts` | Lecture |
+| `GET /api/contacts/:id` | `get_contact` | Lecture |
+| `POST /api/contacts` | `create_contact` | Écriture |
+| `PUT /api/contacts/:id` | `update_contact` | Écriture |
+| `DELETE /api/contacts/:id` | `delete_contact` | Écriture |
+| `GET /api/contacts/search?q=` | `search_contacts` | Lecture |
 
-**Pagination:** Implement cursor-based pagination within the tool. Accept `page` or `cursor` parameter, return results + next cursor.
+**Pagination :** Implémenter la pagination basée sur curseur au sein de l'outil. Accepter un paramètre `page` ou `cursor`, renvoyer les résultats + le curseur suivant.
 
-### Pattern 2: GraphQL Wrapper
+### Schéma 2 : Enveloppe GraphQL
 
-For GraphQL APIs, create a single flexible query tool plus specific mutation tools:
+Pour les API GraphQL, créer un seul outil de requête flexible plus des outils de mutation spécifiques :
 
-- `query_data` — accepts GraphQL query string, returns results (read)
-- `create_record` — specific mutation with typed inputs (write)
-- `update_record` — specific mutation with typed inputs (write)
+- `query_data` — accepte une chaîne de requête GraphQL, renvoie les résultats (lecture)
+- `create_record` — mutation spécifique avec des entrées typées (écriture)
+- `update_record` — mutation spécifique avec des entrées typées (écriture)
 
-### Pattern 3: Webhook Receiver
+### Schéma 3 : Récepteur de webhook
 
-For event-driven integrations:
-- Register webhooks via a `register_webhook` tool (write, one-time setup)
-- MCP server listens for incoming events and surfaces them as resources
-- Claude reads events via `get_recent_events` tool (read)
+Pour les intégrations pilotées par événement :
+- Enregistrer les webhooks via un outil `register_webhook` (écriture, configuration unique)
+- Le serveur MCP écoute les événements entrants et les fait remonter comme ressources
+- Claude lit les événements via l'outil `get_recent_events` (lecture)
 
-### Pattern 4: Database Connector
+### Schéma 4 : Connecteur de base de données
 
-- `query_database` — parameterized SQL/NoSQL query (read)
-- `insert_record` / `update_record` — typed data mutations (write)
-- **Always default to read-only.** Write access should require explicit configuration.
+- `query_database` — requête SQL/NoSQL paramétrée (lecture)
+- `insert_record` / `update_record` — mutations de données typées (écriture)
+- **Toujours par défaut en lecture seule.** L'accès en écriture devrait nécessiter une configuration explicite.
 
 ---
 
-## Credential Profiles for Agency Mode
+## Profils d'identifiants pour le mode agence
 
-In agency mode, different clients use different credentials for the same services (e.g., each client has their own Mailchimp account).
+En mode agence, différents clients utilisent différents identifiants pour les mêmes services (par ex., chaque client a son propre compte Mailchimp).
 
-### Profile Structure
+### Structure du profil
 
-Stored at `~/.claude-marketing/credentials/{profile-name}.json`:
+Stocké à `~/.claude-marketing/credentials/{profile-name}.json` :
 
 ```json
 {
@@ -301,77 +301,77 @@ Stored at `~/.claude-marketing/credentials/{profile-name}.json`:
 }
 ```
 
-### How Profile Switching Works
+### Comment fonctionne le changement de profil
 
-1. User runs `/digital-marketing-pro:credential-switch --profile acme-corp`
-2. `credential-manager.py` loads the profile JSON
-3. Environment variables are injected for the session
-4. MCP servers restart with the new credentials
-5. All subsequent MCP calls use the client's accounts
+1. L'utilisateur exécute `/digital-marketing-pro:credential-switch --profile acme-corp`
+2. `credential-manager.py` charge le JSON du profil
+3. Les variables d'environnement sont injectées pour la session
+4. Les serveurs MCP redémarrent avec les nouveaux identifiants
+5. Tous les appels MCP suivants utilisent les comptes du client
 
-### Security Rules for Profiles
+### Règles de sécurité pour les profils
 
-- [ ] Profile files are stored outside the plugin directory (in `~/.claude-marketing/`)
-- [ ] Profile files are never committed to git
-- [ ] Each profile only contains credentials for services that client uses
-- [ ] API keys in profiles are encrypted at rest (if using `credential-manager.py` encryption feature)
-- [ ] Profile access is logged — `credential-manager.py` records which profile was loaded and when
+- [ ] Les fichiers de profil sont stockés en dehors du répertoire du plugin (dans `~/.claude-marketing/`)
+- [ ] Les fichiers de profil ne sont jamais commités dans git
+- [ ] Chaque profil ne contient que les identifiants des services que ce client utilise
+- [ ] Les clés API dans les profils sont chiffrées au repos (si la fonctionnalité de chiffrement de `credential-manager.py` est utilisée)
+- [ ] L'accès aux profils est journalisé — `credential-manager.py` enregistre quel profil a été chargé et quand
 
 ---
 
-## Testing a New MCP Integration
+## Tester une nouvelle intégration MCP
 
-### Testing Checklist
+### Checklist de test
 
-| Test | How to Verify | Pass Criteria |
+| Test | Comment vérifier | Critère de réussite |
 |---|---|---|
-| **Server starts** | Start new Claude session, check for errors | No startup errors in console |
-| **Tool discovery** | Ask Claude "What tools are available from [server]?" | Expected tools appear in list |
-| **Read operations** | Call a list/get tool with known data | Returns valid, formatted data |
-| **Write operations** | Attempt a create/update tool | Approval hook fires, then operation succeeds |
-| **Missing credentials** | Remove API key from `.env`, restart | Clear error message, not a crash |
-| **Invalid credentials** | Use wrong API key | Structured error response, not a crash |
-| **Rate limiting** | Rapid successive calls (if safe to test) | Graceful error with retry guidance |
-| **Large responses** | Query that returns 100+ items | Paginated or truncated cleanly |
-| **Error handling** | Invalid input parameters | Structured error with field-level detail |
+| **Le serveur démarre** | Démarrer une nouvelle session Claude, vérifier les erreurs | Aucune erreur de démarrage dans la console |
+| **Découverte d'outils** | Demander à Claude « Quels outils sont disponibles depuis [serveur] ? » | Les outils attendus apparaissent dans la liste |
+| **Opérations de lecture** | Appeler un outil list/get avec des données connues | Renvoie des données valides et formatées |
+| **Opérations d'écriture** | Tenter un outil create/update | Le hook d'approbation se déclenche, puis l'opération réussit |
+| **Identifiants manquants** | Retirer la clé API de `.env`, redémarrer | Message d'erreur clair, pas un crash |
+| **Identifiants invalides** | Utiliser une mauvaise clé API | Réponse d'erreur structurée, pas un crash |
+| **Limitation de débit** | Appels successifs rapides (si sûr à tester) | Erreur gracieuse avec conseil de nouvelle tentative |
+| **Réponses volumineuses** | Requête qui renvoie 100+ éléments | Paginé ou tronqué proprement |
+| **Gestion d'erreur** | Paramètres d'entrée invalides | Erreur structurée avec détail au niveau du champ |
 
-### Debugging
+### Débogage
 
-- **MCP server logs:** Check stderr output from the MCP process for error traces
-- **Network issues:** Verify the API base URL and that outbound requests are not blocked
-- **Auth failures:** Confirm the env var name in `.mcp.json` exactly matches the var name in `.env`
-- **Tool not appearing:** Verify the server key in `.mcp.json` is valid JSON and the tool is registered before `server.connect()`
-
----
-
-## Security Considerations
-
-### Credential Safety
-
-- **Never** store credentials directly in `.mcp.json` — always use `${VAR}` references
-- **Never** log API keys or tokens in MCP server output
-- **Rotate** API keys quarterly at minimum, immediately if compromised
-- **Scope** API keys to minimum required permissions (read-only where possible)
-- **Audit** MCP tool calls via execution logs (`execution-tracker.py` logs all tool invocations)
-
-### Access Control
-
-- Claude Code's permission system is the primary safety gate — configure allow/deny rules for MCP tools in your settings (this plugin ships zero hooks by design; add user-scope hooks yourself if you want automated gating)
-- Treat read tools (list, get, query, search, fetch) as safe to allow
-- Require explicit user approval for write tools (create, update, delete, send, publish, schedule)
-- Custom MCPs **must** follow the naming convention so read/write intent is recognizable
-- If a tool performs both read and write operations, classify it as write (use a write prefix)
-
-### Supply Chain
-
-- Prefer well-maintained MCP packages with 1,000+ npm weekly downloads
-- Pin package versions in production (avoid `latest` tag)
-- Review package source code before deploying, especially for packages with `< 100` downloads
-- For sensitive integrations (CRM, payment, auth), build custom MCPs rather than using third-party packages
+- **Journaux du serveur MCP :** Vérifier la sortie stderr du processus MCP pour les traces d'erreur
+- **Problèmes réseau :** Vérifier l'URL de base de l'API et que les requêtes sortantes ne sont pas bloquées
+- **Échecs d'authentification :** Confirmer que le nom de la variable d'environnement dans `.mcp.json` correspond exactement au nom de la variable dans `.env`
+- **Outil qui n'apparaît pas :** Vérifier que la clé du serveur dans `.mcp.json` est un JSON valide et que l'outil est enregistré avant `server.connect()`
 
 ---
 
-## Example Configurations
+## Considérations de sécurité
+
+### Sécurité des identifiants
+
+- **Ne jamais** stocker les identifiants directement dans `.mcp.json` — toujours utiliser des références `${VAR}`
+- **Ne jamais** journaliser les clés API ou jetons dans la sortie du serveur MCP
+- **Faire tourner** les clés API trimestriellement au minimum, immédiatement en cas de compromission
+- **Limiter la portée** des clés API aux permissions minimales requises (lecture seule lorsque possible)
+- **Auditer** les appels d'outil MCP via les journaux d'exécution (`execution-tracker.py` journalise toutes les invocations d'outil)
+
+### Contrôle d'accès
+
+- Le système de permission de Claude Code est la porte de sécurité principale — configurer les règles d'autorisation/refus pour les outils MCP dans vos réglages (ce plugin ne fournit aucun hook par conception ; ajoutez vous-même des hooks de portée utilisateur si vous voulez un contrôle automatisé)
+- Traiter les outils de lecture (list, get, query, search, fetch) comme sûrs à autoriser
+- Exiger une approbation utilisateur explicite pour les outils d'écriture (create, update, delete, send, publish, schedule)
+- Les MCP personnalisés **doivent** suivre la convention de nommage afin que l'intention de lecture/écriture soit reconnaissable
+- Si un outil effectue à la fois des opérations de lecture et d'écriture, le classer comme écriture (utiliser un préfixe d'écriture)
+
+### Chaîne d'approvisionnement
+
+- Préférer les packages MCP bien maintenus avec 1 000+ téléchargements hebdomadaires npm
+- Épingler les versions de package en production (éviter le tag `latest`)
+- Revoir le code source du package avant déploiement, particulièrement pour les packages avec moins de 100 téléchargements
+- Pour les intégrations sensibles (CRM, paiement, authentification), construire des MCP personnalisés plutôt que d'utiliser des packages tiers
+
+---
+
+## Exemples de configurations
 
 ### Odoo ERP (REST/JSON-RPC)
 
@@ -391,7 +391,7 @@ Stored at `~/.claude-marketing/credentials/{profile-name}.json`:
 }
 ```
 
-### Generic REST API
+### API REST générique
 
 ```json
 {
@@ -408,9 +408,9 @@ Stored at `~/.claude-marketing/credentials/{profile-name}.json`:
 }
 ```
 
-### Zapier MCP (hosted)
+### Zapier MCP (hébergé)
 
-Zapier's current agent integration is **Zapier MCP** (the successor to the retired Natural Language Actions product). Generate your personal MCP endpoint URL at https://mcp.zapier.com and add it as an HTTP server:
+L'intégration d'agent actuelle de Zapier est **Zapier MCP** (le successeur du produit Natural Language Actions retiré). Générez votre URL de point de terminaison MCP personnelle sur https://mcp.zapier.com et ajoutez-la comme serveur HTTP :
 
 ```json
 {
@@ -425,4 +425,4 @@ Zapier's current agent integration is **Zapier MCP** (the successor to the retir
 }
 ```
 
-> **Key principle:** Every MCP integration should be tested with both valid and invalid credentials, should handle errors gracefully with structured responses, and should follow the read/write naming convention so permission gating stays reliable. When in doubt, classify a tool as write — it is always safer to require approval than to allow unintended side effects.
+> **Principe clé :** Chaque intégration MCP devrait être testée avec des identifiants valides et invalides, devrait gérer les erreurs de manière élégante avec des réponses structurées, et devrait suivre la convention de nommage lecture/écriture pour que le contrôle de permission reste fiable. En cas de doute, classez un outil comme écriture — il est toujours plus sûr d'exiger une approbation que de permettre des effets de bord non intentionnels.

@@ -1,22 +1,22 @@
-# Guidelines Framework — Structuring and Applying Brand Knowledge
+# Cadre des guidelines — Structurer et appliquer les connaissances de marque
 
-This reference defines how brand guidelines, restrictions, channel styles, templates, and agency SOPs are structured, stored, and enforced across all modules and commands.
+Cette référence définit comment les guidelines de marque, les restrictions, les styles de canal, les modèles, et les SOP d'agence sont structurés, stockés, et appliqués à travers tous les modules et commandes.
 
-## Why Guidelines Matter
+## Pourquoi les guidelines sont importantes
 
-A brand profile captures **what** the brand is (identity, voice scores, channels, goals). Guidelines capture **how** the brand communicates — the detailed rules, restrictions, and style choices that make content authentically on-brand.
+Un profil de marque capture **ce qu'**est la marque (identité, scores de voix, canaux, objectifs). Les guidelines capturent **comment** la marque communique — les règles détaillées, restrictions, et choix de style qui rendent le contenu authentiquement à l'image de la marque.
 
-| Brand Profile | Brand Guidelines |
+| Profil de marque | Guidelines de marque |
 |--------------|-----------------|
-| Formality: 7/10 | "Never use exclamation marks in headlines" |
-| Tone: professional, trustworthy | "Always lead with data, then story" |
-| Avoid words: cheap, discount | Full banned word list with 40+ terms and context |
-| Industry: healthcare | "All health claims require citation. Never use 'cure' or 'guarantee'" |
-| Channel: LinkedIn | "LinkedIn posts: max 1300 chars, no emoji in first line, end with question" |
+| Formalité : 7/10 | « Ne jamais utiliser de points d'exclamation dans les titres » |
+| Ton : professionnel, digne de confiance | « Toujours commencer par les données, puis l'histoire » |
+| Mots à éviter : bon marché, remise | Liste complète de mots interdits avec plus de 40 termes et contexte |
+| Secteur : santé | « Toutes les allégations de santé nécessitent une citation. Ne jamais utiliser « guérit » ou « garantit » » |
+| Canal : LinkedIn | « Publications LinkedIn : max 1300 caractères, aucun emoji dans la première ligne, terminer par une question » |
 
-## Storage Structure
+## Structure de stockage
 
-Per-brand guidelines at `~/.claude-marketing/brands/{slug}/`:
+Guidelines par marque à `~/.claude-marketing/brands/{slug}/` :
 
 ```
 guidelines/
@@ -29,7 +29,7 @@ guidelines/
 └── custom/               # Additional guideline files
 ```
 
-Per-brand templates at `~/.claude-marketing/brands/{slug}/`:
+Modèles par marque à `~/.claude-marketing/brands/{slug}/` :
 
 ```
 templates/
@@ -37,7 +37,7 @@ templates/
 └── *.md                  # Proposal, report, brief templates
 ```
 
-Agency-level SOPs at `~/.claude-marketing/`:
+SOP au niveau agence à `~/.claude-marketing/` :
 
 ```
 sops/
@@ -45,21 +45,21 @@ sops/
 └── *.md                  # Workflow definitions
 ```
 
-## Guideline Categories
+## Catégories de guidelines
 
-### 1. Voice and Tone (`voice-and-tone.md`)
+### 1. Voix et ton (`voice-and-tone.md`)
 
-Detailed voice guide that goes beyond the 4 numeric scores (formality, energy, humor, authority) in the brand profile.
+Guide de voix détaillé qui va au-delà des 4 scores numériques (formalité, énergie, humour, autorité) du profil de marque.
 
-**What belongs here:**
-- Detailed writing style rules (sentence length, paragraph structure, readability level)
-- Tone modifiers by content type (blog=conversational, whitepaper=authoritative, social=casual)
-- Pronoun preferences (we vs. the company, you vs. customers)
-- Specific dos and don'ts with examples
-- Before/after examples showing correct vs. incorrect voice
-- Emotional register (empathetic, direct, aspirational, pragmatic)
+**Ce qui appartient ici :**
+- Règles détaillées de style rédactionnel (longueur de phrase, structure de paragraphe, niveau de lisibilité)
+- Modificateurs de ton par type de contenu (blog=conversationnel, livre blanc=faisant autorité, social=décontracté)
+- Préférences de pronoms (nous vs l'entreprise, vous vs les clients)
+- Recommandations et interdictions spécifiques avec exemples
+- Exemples avant/après montrant la voix correcte vs incorrecte
+- Registre émotionnel (empathique, direct, aspirationnel, pragmatique)
 
-**Example structure:**
+**Exemple de structure :**
 ```markdown
 # Brand Voice & Tone Guide
 
@@ -88,21 +88,21 @@ Detailed voice guide that goes beyond the 4 numeric scores (formality, energy, h
 - DON'T: "It should be noted that" → filler
 ```
 
-### 2. Messaging Framework (`messaging.md`)
+### 2. Cadre de message (`messaging.md`)
 
-Approved messages, positioning, and language that the brand uses consistently.
+Messages approuvés, positionnement, et langage que la marque utilise de manière cohérente.
 
-**What belongs here:**
-- Brand positioning statement
-- Value propositions (primary + supporting)
-- Key messages by audience segment
-- Approved taglines and slogans
-- Elevator pitches (30-second, 60-second)
-- Proof points and statistics the brand uses
-- Competitive differentiators (how to describe vs. competitors)
-- Message hierarchy (which messages to lead with)
+**Ce qui appartient ici :**
+- Déclaration de positionnement de marque
+- Propositions de valeur (principale + à l'appui)
+- Messages clés par segment d'audience
+- Slogans et accroches approuvés
+- Argumentaires éclair (30 secondes, 60 secondes)
+- Points de preuve et statistiques que la marque utilise
+- Différenciateurs concurrentiels (comment se décrire face aux concurrents)
+- Hiérarchie de message (quels messages mettre en avant en premier)
 
-**Example structure:**
+**Exemple de structure :**
 ```markdown
 # Messaging Framework
 
@@ -136,25 +136,25 @@ For [target audience] who [need], [Brand] is the [category] that [key benefit] b
 
 ### 3. Restrictions (`restrictions.md`)
 
-Hard rules about what the brand must never say, claim, or do.
+Règles strictes sur ce que la marque ne doit jamais dire, revendiquer, ou faire.
 
-**What belongs here:**
-- Banned words and phrases (with context for why)
-- Restricted claims (claims that need qualification or evidence)
-- Mandatory disclaimers (by content type or channel)
-- Prohibited topics or comparisons
-- Legal/compliance language requirements
-- Trademark usage rules
-- Competitor mention rules
+**Ce qui appartient ici :**
+- Mots et expressions interdits (avec le contexte expliquant pourquoi)
+- Allégations restreintes (allégations nécessitant une qualification ou une preuve)
+- Mentions légales obligatoires (par type de contenu ou canal)
+- Sujets ou comparaisons interdits
+- Exigences de langage juridique/conformité
+- Règles d'usage des marques déposées
+- Règles de mention des concurrents
 
-**How restrictions are enforced:**
-- Before generating any content, check the restrictions file
-- Scan output for banned words — flag and suggest alternatives
-- Verify claims against the restricted claims list
-- Append mandatory disclaimers when content matches trigger conditions
-- Log violations to campaign-tracker for pattern analysis
+**Comment les restrictions sont appliquées :**
+- Avant de générer tout contenu, vérifier le fichier de restrictions
+- Analyser le résultat pour détecter les mots interdits — signaler et suggérer des alternatives
+- Vérifier les allégations par rapport à la liste des allégations restreintes
+- Ajouter les mentions légales obligatoires quand le contenu correspond aux conditions de déclenchement
+- Journaliser les violations dans le suivi de campagne pour l'analyse de schéma
 
-**Example structure:**
+**Exemple de structure :**
 ```markdown
 # Brand Restrictions & Guardrails
 
@@ -186,21 +186,21 @@ Hard rules about what the brand must never say, claim, or do.
 - Unverified statistics or made-up data
 ```
 
-### 4. Channel Styles (`channel-styles.md`)
+### 4. Styles de canal (`channel-styles.md`)
 
-Per-channel tone and format rules that may differ from the base brand voice.
+Règles de ton et de format par canal qui peuvent différer de la voix de marque de base.
 
-**Key principle:** Channel styles **override** the base voice settings for that specific channel. If the brand profile says formality=7 but channel-styles says "Instagram: casual, emoji-friendly, formality 4" — Instagram content follows the channel style.
+**Principe clé :** Les styles de canal **remplacent** les réglages de voix de base pour ce canal spécifique. Si le profil de marque indique une formalité=7 mais que channel-styles indique « Instagram : décontracté, adapté aux emojis, formalité 4 » — le contenu Instagram suit le style de canal.
 
-**What belongs here:**
-- Per-channel tone adjustments
-- Character limits and format rules
-- Hashtag and emoji policies
-- Posting time preferences
-- Content type preferences per channel
-- CTA style per channel
+**Ce qui appartient ici :**
+- Ajustements de ton par canal
+- Limites de caractères et règles de format
+- Politiques de hashtags et d'emojis
+- Préférences d'heure de publication
+- Préférences de type de contenu par canal
+- Style de CTA par canal
 
-**Example structure:**
+**Exemple de structure :**
 ```markdown
 # Channel-Specific Styles
 
@@ -235,114 +235,114 @@ Per-channel tone and format rules that may differ from the base brand voice.
 - **Content types**: Hot takes, quick tips, engagement questions
 ```
 
-### 5. Visual Identity (`visual-identity.md`)
+### 5. Identité visuelle (`visual-identity.md`)
 
-Text descriptions of visual brand elements. Since the plugin creates text content (not images), this serves as reference for briefs, creative directions, and ensuring visual consistency in descriptions.
+Descriptions textuelles des éléments visuels de marque. Puisque le plugin crée du contenu textuel (pas des images), ceci sert de référence pour les briefs, les directions créatives, et pour assurer la cohérence visuelle dans les descriptions.
 
-**What belongs here:**
-- Brand colors (hex codes, names, usage rules)
-- Typography (font families, usage hierarchy)
-- Logo usage rules (minimum size, clear space, backgrounds)
-- Photography/imagery style (subjects, mood, treatment)
-- Iconography style
-- Layout preferences
+**Ce qui appartient ici :**
+- Couleurs de marque (codes hexadécimaux, noms, règles d'usage)
+- Typographie (familles de polices, hiérarchie d'usage)
+- Règles d'usage du logo (taille minimale, espace de dégagement, arrière-plans)
+- Style de photographie/imagerie (sujets, ambiance, traitement)
+- Style d'iconographie
+- Préférences de mise en page
 
-### 6. Custom Guidelines (`custom/`)
+### 6. Guidelines personnalisées (`custom/`)
 
-Additional guideline files that don't fit the standard categories. Examples:
-- `accessibility.md` — Accessibility standards and inclusive language rules
-- `legal-review.md` — When legal review is required
-- `seasonal.md` — Holiday and seasonal content rules
-- `partner-co-branding.md` — Rules for partner content
+Fichiers de guidelines additionnels qui ne rentrent pas dans les catégories standard. Exemples :
+- `accessibility.md` — Normes d'accessibilité et règles de langage inclusif
+- `legal-review.md` — Quand une revue juridique est requise
+- `seasonal.md` — Règles de contenu pour les fêtes et périodes saisonnières
+- `partner-co-branding.md` — Règles pour le contenu partenaire
 
-## How Guidelines Are Applied
+## Comment les guidelines sont appliquées
 
-### At Session Start (skill-driven — the plugin ships zero hooks by design)
-1. Skills that load brand context run `guidelines-manager.py --brand {slug} --action summary` alongside `setup.py --summary`
-2. If guidelines exist, summary output includes: category count, total rules, restriction count, template count
-3. This primes the session with awareness that guidelines exist
+### Au démarrage de session (piloté par compétence — le plugin ne fournit aucun hook par conception)
+1. Les compétences qui chargent le contexte de marque exécutent `guidelines-manager.py --brand {slug} --action summary` en parallèle de `setup.py --summary`
+2. Si des guidelines existent, le résumé inclut : le nombre de catégories, le total de règles, le nombre de restrictions, le nombre de modèles
+3. Cela amorce la session avec la conscience que des guidelines existent
 
-### In Module Skills (Brand Context point 9)
-Every module checks for guidelines before generating output:
-1. Check if `guidelines/_manifest.json` exists
-2. Load `restrictions.md` — enforce banned words, restricted claims, mandatory disclaimers
-3. Load `channel-styles.md` — apply channel-specific tone overrides
-4. Load `messaging.md` — use approved key messages and positioning language
-5. Load `voice-and-tone.md` — follow detailed voice rules beyond numeric scores
+### Dans les compétences de module (point 9 du contexte de marque)
+Chaque module vérifie les guidelines avant de générer un livrable :
+1. Vérifier si `guidelines/_manifest.json` existe
+2. Charger `restrictions.md` — appliquer les mots interdits, allégations restreintes, mentions légales obligatoires
+3. Charger `channel-styles.md` — appliquer les remplacements de ton spécifiques au canal
+4. Charger `messaging.md` — utiliser les messages clés approuvés et le langage de positionnement
+5. Charger `voice-and-tone.md` — suivre les règles de voix détaillées au-delà des scores numériques
 
-### In Command Skills (Step 1 extension)
-Every command loads guidelines alongside the brand profile:
-1. Load `_active-brand.json` → `profile.json` (existing)
-2. Check `guidelines/_manifest.json` — if present, load restrictions and relevant categories
-3. Check `templates/_manifest.json` — if a custom template exists for this command, use it
-4. Check `sops/_manifest.json` — if an SOP applies to this workflow, follow it
+### Dans les compétences de commande (extension de l'Étape 1)
+Chaque commande charge les guidelines en parallèle du profil de marque :
+1. Charger `_active-brand.json` → `profile.json` (existant)
+2. Vérifier `guidelines/_manifest.json` — si présent, charger les restrictions et catégories pertinentes
+3. Vérifier `templates/_manifest.json` — si un modèle personnalisé existe pour cette commande, l'utiliser
+4. Vérifier `sops/_manifest.json` — si une SOP s'applique à ce workflow, la suivre
 
-### Before Writing Content (agent-enforced check)
-When writing marketing content, the drafting skill must:
-1. Check restrictions — scan for banned words and restricted claims
-2. Verify mandatory disclaimers are included when required
-3. Log violations to campaign-tracker
+### Avant de rédiger du contenu (vérification appliquée par l'agent)
+Lors de la rédaction de contenu marketing, la compétence de rédaction doit :
+1. Vérifier les restrictions — analyser pour détecter les mots interdits et les allégations restreintes
+2. Vérifier que les mentions légales obligatoires sont incluses quand requises
+3. Journaliser les violations dans le suivi de campagne
 
-### Priority Order
-When guidelines conflict with the brand profile:
-1. **Restrictions** — always enforced (highest priority)
-2. **Channel styles** — override base voice for specific channels
-3. **Guidelines voice-and-tone** — override numeric voice scores with detailed rules
-4. **Brand profile voice scores** — default when no guidelines exist
-5. **SOPs** — add workflow steps, don't override content rules
+### Ordre de priorité
+Quand les guidelines entrent en conflit avec le profil de marque :
+1. **Restrictions** — toujours appliquées (priorité la plus élevée)
+2. **Styles de canal** — remplacent la voix de base pour des canaux spécifiques
+3. **Voix et ton des guidelines** — remplacent les scores de voix numériques par des règles détaillées
+4. **Scores de voix du profil de marque** — par défaut quand aucune guideline n'existe
+5. **SOP** — ajoutent des étapes de workflow, ne remplacent pas les règles de contenu
 
-## Converting Unstructured Guidelines
+## Conversion de guidelines non structurées
 
-When users paste or describe their guidelines (via `/digital-marketing-pro:import-guidelines`), convert to structured markdown:
+Quand les utilisateurs collent ou décrivent leurs guidelines (via `/digital-marketing-pro:import-guidelines`), convertir en markdown structuré :
 
-1. **Identify the category** — which file does this content belong in?
-2. **Extract rules** — convert prose into bullet points with clear dos/don'ts
-3. **Add examples** — include before/after examples where possible
-4. **Note conflicts** — if guidelines conflict with existing profile settings, flag for user resolution
-5. **Update manifest** — rebuild `_manifest.json` with accurate counts
+1. **Identifier la catégorie** — à quel fichier ce contenu appartient-il ?
+2. **Extraire les règles** — convertir le texte en puces avec des recommandations/interdictions claires
+3. **Ajouter des exemples** — inclure des exemples avant/après lorsque possible
+4. **Noter les conflits** — si les guidelines entrent en conflit avec les réglages de profil existants, signaler pour résolution utilisateur
+5. **Mettre à jour le manifeste** — reconstruire `_manifest.json` avec des comptages exacts
 
-**Conversion example:**
-- User says: "We never use exclamation marks in professional content and always spell out numbers under ten"
-- Goes to: `voice-and-tone.md` under "Writing Style" rules:
+**Exemple de conversion :**
+- L'utilisateur dit : « Nous n'utilisons jamais de points d'exclamation dans le contenu professionnel et écrivons toujours les nombres en toutes lettres en dessous de dix »
+- Va dans : `voice-and-tone.md` sous les règles « Style rédactionnel » :
   ```
   - Never use exclamation marks in professional content (blog, whitepaper, email)
   - Spell out numbers under ten ("seven" not "7")
   ```
 
-## Template Integration
+## Intégration des modèles
 
-Templates modify the output format of commands. When a command like `/digital-marketing-pro:performance-report` runs:
+Les modèles modifient le format de sortie des commandes. Quand une commande comme `/digital-marketing-pro:performance-report` s'exécute :
 
-1. Check `templates/_manifest.json` for a matching template (e.g., "performance-report")
-2. If found, load the template and structure output to match its format
-3. If not found, use the command's default format
+1. Vérifier `templates/_manifest.json` pour un modèle correspondant (par ex., « performance-report »)
+2. Si trouvé, charger le modèle et structurer le livrable pour correspondre à son format
+3. Si non trouvé, utiliser le format par défaut de la commande
 
-Templates should include:
-- Section headers (what sections to include)
-- Content guidance (what goes in each section)
-- Format requirements (length, style, visual layout)
-- Placeholder markers for dynamic content
+Les modèles devraient inclure :
+- Les en-têtes de section (quelles sections inclure)
+- Le guidage de contenu (ce qui va dans chaque section)
+- Les exigences de format (longueur, style, mise en page visuelle)
+- Les marqueurs d'espace réservé pour le contenu dynamique
 
-## SOP Integration
+## Intégration des SOP
 
-SOPs add workflow steps to commands. When an SOP like "content-approval-workflow" exists:
+Les SOP ajoutent des étapes de workflow aux commandes. Quand une SOP comme « content-approval-workflow » existe :
 
-1. The relevant command or module checks for applicable SOPs
-2. Adds SOP steps to the output (e.g., "Submit to legal review before publishing")
-3. Can flag when a workflow step requires human approval
+1. La commande ou le module pertinent vérifie les SOP applicables
+2. Ajoute les étapes de la SOP au livrable (par ex., « Soumettre à la revue juridique avant publication »)
+3. Peut signaler quand une étape de workflow nécessite une approbation humaine
 
-SOPs are agency-level (not per-brand) so they apply consistently across all clients.
+Les SOP sont au niveau agence (pas par marque) afin qu'elles s'appliquent de manière cohérente à travers tous les clients.
 
-## Violation Tracking
+## Suivi des violations
 
-When a guideline is violated (banned word used, restriction breached):
+Quand une guideline est violée (mot interdit utilisé, restriction enfreinte) :
 
-1. Flag immediately in the output with the specific rule reference
-2. Suggest a compliant alternative
-3. Log to campaign-tracker: `save-violation` action with:
-   - `rule`: which guideline was violated
-   - `category`: which guideline category
-   - `severity`: low/medium/high
-   - `content`: the violating text
-   - `suggestion`: compliant alternative
-4. Violations can be reviewed via: `get-violations` action for pattern analysis
+1. Signaler immédiatement dans le livrable avec la référence de règle spécifique
+2. Suggérer une alternative conforme
+3. Journaliser dans le suivi de campagne : action `save-violation` avec :
+   - `rule` : quelle guideline a été violée
+   - `category` : quelle catégorie de guideline
+   - `severity` : faible/moyen/élevé
+   - `content` : le texte en violation
+   - `suggestion` : alternative conforme
+4. Les violations peuvent être revues via : l'action `get-violations` pour l'analyse de schéma

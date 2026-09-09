@@ -1,668 +1,668 @@
-# Platform Specifications Reference
+# Référence des spécifications de plateforme
 
-> Last updated: 2026-02-11
-> This file is consumed by an AI agent to validate marketing content against platform requirements. All specs reflect current 2026 platform standards.
+> Dernière mise à jour : 2026-02-11
+> Ce fichier est consommé par un agent IA pour valider le contenu marketing par rapport aux exigences de plateforme. Toutes les spécifications reflètent les normes de plateforme actuelles de 2026.
 
 ---
 
-## Section 1: Social Media Platform Specs
+## Section 1 : Spécifications des plateformes de réseaux sociaux
 
 ### Instagram
 
-#### Feed Posts
+#### Publications dans le fil
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Character limit | 2,200 |
-| Optimal caption length | 125-150 characters (before "more" truncation) |
-| Image formats | JPEG, PNG |
-| Square image | 1080 x 1080 px (1:1) |
-| Portrait image | 1080 x 1350 px (4:5) |
-| Landscape image | 1080 x 566 px (1.91:1) |
-| Max file size (image) | 30 MB |
-| Hashtag limit | 30 max, 3-5 recommended |
-| Algorithm priority signals | Saves, shares, comments, watch time, relationship closeness |
-| Best posting times | Tue-Thu 9-11 AM, Wed 11 AM, Fri 10-11 AM (local) |
+| Limite de caractères | 2 200 |
+| Longueur de légende optimale | 125-150 caractères (avant la troncature « more ») |
+| Formats d'image | JPEG, PNG |
+| Image carrée | 1080 x 1080 px (1:1) |
+| Image portrait | 1080 x 1350 px (4:5) |
+| Image paysage | 1080 x 566 px (1,91:1) |
+| Taille de fichier max (image) | 30 Mo |
+| Limite de hashtags | 30 max, 3-5 recommandés |
+| Signaux de priorité algorithmique | Enregistrements, partages, commentaires, temps de visionnage, proximité de relation |
+| Meilleurs moments de publication | Mar-Jeu 9-11h, Mer 11h, Ven 10-11h (heure locale) |
 
 #### Instagram Reels
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration | 15s, 30s, 60s, 90s (up to 3 min with some accounts) |
-| Aspect ratio | 9:16 (vertical) |
-| Resolution | 1080 x 1920 px |
-| Video format | MP4, MOV |
-| Max file size | 4 GB |
-| Cover photo | 1080 x 1920 px |
-| Caption limit | 2,200 characters |
-| Hashtag limit | 30 max, 3-8 recommended |
-| Algorithm priority signals | Watch-through rate, replays, shares, audio usage, originality |
-| Best posting times | Mon-Thu 9 AM, 12 PM, 7-8 PM (local) |
+| Durée | 15s, 30s, 60s, 90s (jusqu'à 3 min pour certains comptes) |
+| Ratio d'aspect | 9:16 (vertical) |
+| Résolution | 1080 x 1920 px |
+| Format vidéo | MP4, MOV |
+| Taille de fichier max | 4 Go |
+| Photo de couverture | 1080 x 1920 px |
+| Limite de légende | 2 200 caractères |
+| Limite de hashtags | 30 max, 3-8 recommandés |
+| Signaux de priorité algorithmique | Taux de visionnage complet, relectures, partages, usage audio, originalité |
+| Meilleurs moments de publication | Lun-Jeu 9h, 12h, 19-20h (heure locale) |
 
 #### Instagram Stories
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration per slide | Up to 60 seconds |
-| Aspect ratio | 9:16 |
-| Resolution | 1080 x 1920 px |
-| Image format | JPEG, PNG |
-| Video format | MP4, MOV |
-| Max file size (video) | 4 GB |
-| Text-safe zone | Keep critical content within center 1080 x 1420 px (avoid top 250 px and bottom 250 px for UI overlays) |
-| Sticker/link limit | 1 link sticker per story |
-| Lifespan | 24 hours (unless added to Highlights) |
+| Durée par diapositive | Jusqu'à 60 secondes |
+| Ratio d'aspect | 9:16 |
+| Résolution | 1080 x 1920 px |
+| Format d'image | JPEG, PNG |
+| Format vidéo | MP4, MOV |
+| Taille de fichier max (vidéo) | 4 Go |
+| Zone sûre pour le texte | Garder le contenu critique dans la zone centrale de 1080 x 1420 px (éviter les 250 px du haut et les 250 px du bas pour les superpositions d'interface) |
+| Limite de sticker/lien | 1 sticker de lien par story |
+| Durée de vie | 24 heures (sauf ajout aux À la une) |
 
-#### Instagram Carousel
+#### Carrousel Instagram
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Slides | 2-20 per carousel |
-| Aspect ratio | All slides must match; 1:1 or 4:5 recommended |
-| Resolution (square) | 1080 x 1080 px |
-| Resolution (portrait) | 1080 x 1350 px |
-| Image format | JPEG, PNG |
-| Video per slide | Up to 60 seconds |
-| Caption limit | 2,200 characters |
-| Algorithm priority signals | Swipe-through rate, saves, shares, dwell time per slide |
+| Diapositives | 2-20 par carrousel |
+| Ratio d'aspect | Toutes les diapositives doivent correspondre ; 1:1 ou 4:5 recommandé |
+| Résolution (carrée) | 1080 x 1080 px |
+| Résolution (portrait) | 1080 x 1350 px |
+| Format d'image | JPEG, PNG |
+| Vidéo par diapositive | Jusqu'à 60 secondes |
+| Limite de légende | 2 200 caractères |
+| Signaux de priorité algorithmique | Taux de balayage, enregistrements, partages, temps de séjour par diapositive |
 
 ---
 
 ### TikTok
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Video duration | 15s, 60s, 3 min, 10 min, 30 min, 60 min |
-| Aspect ratio | 9:16 (vertical) |
-| Resolution | 1080 x 1920 px minimum |
-| Video format | MP4, MOV, WebM |
-| Max file size | 10 GB (desktop), 287 MB (mobile) |
-| Caption limit | 4,000 characters |
-| Hashtag limit | No hard limit; 3-5 relevant hashtags recommended |
-| Photo mode | Up to 35 images per carousel post |
-| Algorithm priority signals | Completion rate, rewatch rate, shares, comments, profile visits after viewing, content diversity score |
-| Best posting times | Tue 2-4 PM, Thu 12-3 PM, Fri 1-3 PM (local) |
-| Text-safe zone | Keep text within center 720 x 1280 px area to avoid UI overlaps |
+| Durée vidéo | 15s, 60s, 3 min, 10 min, 30 min, 60 min |
+| Ratio d'aspect | 9:16 (vertical) |
+| Résolution | 1080 x 1920 px minimum |
+| Format vidéo | MP4, MOV, WebM |
+| Taille de fichier max | 10 Go (bureau), 287 Mo (mobile) |
+| Limite de légende | 4 000 caractères |
+| Limite de hashtags | Aucune limite stricte ; 3-5 hashtags pertinents recommandés |
+| Mode photo | Jusqu'à 35 images par publication carrousel |
+| Signaux de priorité algorithmique | Taux de complétion, taux de revisionnage, partages, commentaires, visites de profil après visionnage, score de diversité de contenu |
+| Meilleurs moments de publication | Mar 14-16h, Jeu 12-15h, Ven 13-15h (heure locale) |
+| Zone sûre pour le texte | Garder le texte dans la zone centrale de 720 x 1280 px pour éviter les chevauchements d'interface |
 
 ---
 
 ### LinkedIn
 
-#### LinkedIn Post
+#### Publication LinkedIn
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Character limit | 3,000 |
-| Optimal length | 800-1,200 characters for engagement |
-| Image dimensions | 1200 x 627 px (landscape), 1080 x 1080 px (square), 1080 x 1350 px (portrait) |
-| Image format | JPEG, PNG, GIF |
-| Max image file size | 8 MB |
-| Video duration | 3 seconds to 10 minutes |
-| Video format | MP4 |
-| Max video file size | 5 GB |
-| Video aspect ratio | 1:1, 16:9, or 9:16 |
-| Document/carousel | PDF upload, up to 300 pages, max 100 MB |
-| Hashtag limit | No hard limit; 3-5 recommended |
-| Algorithm priority signals | Dwell time, comments (especially early), shares, relevance to network, content type diversity |
-| Best posting times | Tue-Thu 8-10 AM, Tue 10-11 AM peak (local business timezone) |
+| Limite de caractères | 3 000 |
+| Longueur optimale | 800-1 200 caractères pour l'engagement |
+| Dimensions d'image | 1200 x 627 px (paysage), 1080 x 1080 px (carré), 1080 x 1350 px (portrait) |
+| Format d'image | JPEG, PNG, GIF |
+| Taille de fichier image max | 8 Mo |
+| Durée vidéo | 3 secondes à 10 minutes |
+| Format vidéo | MP4 |
+| Taille de fichier vidéo max | 5 Go |
+| Ratio d'aspect vidéo | 1:1, 16:9, ou 9:16 |
+| Document/carrousel | Téléversement PDF, jusqu'à 300 pages, max 100 Mo |
+| Limite de hashtags | Aucune limite stricte ; 3-5 recommandés |
+| Signaux de priorité algorithmique | Temps de séjour, commentaires (surtout précoces), partages, pertinence pour le réseau, diversité des types de contenu |
+| Meilleurs moments de publication | Mar-Jeu 8-10h, pic Mar 10-11h (fuseau horaire d'affaires local) |
 
-#### LinkedIn Article
+#### Article LinkedIn
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Headline limit | 100 characters |
-| Body limit | 125,000 characters |
-| Cover image | 1920 x 1080 px recommended |
-| Supports | Rich text, images, embeds, links |
-| Algorithm priority signals | Read-through rate, comments, external shares |
+| Limite de titre | 100 caractères |
+| Limite de corps | 125 000 caractères |
+| Image de couverture | 1920 x 1080 px recommandé |
+| Prend en charge | Texte enrichi, images, intégrations, liens |
+| Signaux de priorité algorithmique | Taux de lecture complète, commentaires, partages externes |
 
-#### LinkedIn Newsletter
+#### Newsletter LinkedIn
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Title limit | 64 characters |
-| Description limit | 250 characters |
-| Logo image | 300 x 300 px |
-| Cover image | 1920 x 1080 px |
-| Body limit | Same as Article (125,000 characters) |
-| Frequency options | Daily, weekly, biweekly, monthly |
-| Algorithm priority signals | Subscriber growth rate, open rate, engagement rate |
+| Limite de titre | 64 caractères |
+| Limite de description | 250 caractères |
+| Image de logo | 300 x 300 px |
+| Image de couverture | 1920 x 1080 px |
+| Limite de corps | Identique à l'Article (125 000 caractères) |
+| Options de fréquence | Quotidien, hebdomadaire, bihebdomadaire, mensuel |
+| Signaux de priorité algorithmique | Taux de croissance des abonnés, taux d'ouverture, taux d'engagement |
 
 ---
 
 ### Twitter/X
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Character limit (free) | 280 |
-| Character limit (Premium) | 25,000 |
-| Optimal tweet length | 71-100 characters for engagement |
-| Image dimensions | 1600 x 900 px (16:9) recommended |
-| Image formats | JPEG, PNG, GIF, WebP |
-| Max images per tweet | 4 |
-| Max image file size | 5 MB (static), 15 MB (GIF) |
-| Video duration | 0.5s to 140 seconds (up to 240 min for Premium) |
-| Video resolution | 1920 x 1200 px max |
-| Video format | MP4 (H.264 video, AAC audio) |
-| Max video file size | 512 MB |
-| Video aspect ratio | 16:9 or 1:1 recommended |
-| Hashtag limit | No hard limit; 1-2 recommended |
-| Algorithm priority signals | Replies, retweets, bookmark rate, link clicks, profile visits, verified status, dwell time |
-| Best posting times | Mon-Fri 8-10 AM, Wed 9-11 AM (local) |
+| Limite de caractères (gratuit) | 280 |
+| Limite de caractères (Premium) | 25 000 |
+| Longueur de tweet optimale | 71-100 caractères pour l'engagement |
+| Dimensions d'image | 1600 x 900 px (16:9) recommandé |
+| Formats d'image | JPEG, PNG, GIF, WebP |
+| Images max par tweet | 4 |
+| Taille de fichier image max | 5 Mo (statique), 15 Mo (GIF) |
+| Durée vidéo | 0,5s à 140 secondes (jusqu'à 240 min pour Premium) |
+| Résolution vidéo | 1920 x 1200 px max |
+| Format vidéo | MP4 (vidéo H.264, audio AAC) |
+| Taille de fichier vidéo max | 512 Mo |
+| Ratio d'aspect vidéo | 16:9 ou 1:1 recommandé |
+| Limite de hashtags | Aucune limite stricte ; 1-2 recommandés |
+| Signaux de priorité algorithmique | Réponses, retweets, taux d'enregistrement, clics sur lien, visites de profil, statut vérifié, temps de séjour |
+| Meilleurs moments de publication | Lun-Ven 8-10h, Mer 9-11h (heure locale) |
 
 ---
 
 ### Facebook
 
-#### Facebook Post
+#### Publication Facebook
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Character limit | 63,206 |
-| Optimal length | 40-80 characters for engagement |
-| Image dimensions | 1200 x 630 px (landscape), 1080 x 1080 px (square) |
-| Image format | JPEG, PNG, GIF, WebP |
-| Max image file size | 30 MB |
-| Link preview image | 1200 x 630 px minimum |
-| Video duration | 1 second to 240 minutes |
-| Video format | MP4, MOV |
-| Video resolution | 1080p recommended |
-| Max video file size | 10 GB |
-| Algorithm priority signals | Meaningful interactions (comments, shares), watch time, content type matching user preference, Group engagement |
-| Best posting times | Mon-Fri 9 AM-12 PM, Wed 11 AM peak (local) |
+| Limite de caractères | 63 206 |
+| Longueur optimale | 40-80 caractères pour l'engagement |
+| Dimensions d'image | 1200 x 630 px (paysage), 1080 x 1080 px (carré) |
+| Format d'image | JPEG, PNG, GIF, WebP |
+| Taille de fichier image max | 30 Mo |
+| Image d'aperçu de lien | 1200 x 630 px minimum |
+| Durée vidéo | 1 seconde à 240 minutes |
+| Format vidéo | MP4, MOV |
+| Résolution vidéo | 1080p recommandé |
+| Taille de fichier vidéo max | 10 Go |
+| Signaux de priorité algorithmique | Interactions significatives (commentaires, partages), temps de visionnage, correspondance du type de contenu avec les préférences de l'utilisateur, engagement de groupe |
+| Meilleurs moments de publication | Lun-Ven 9h-12h, pic Mer 11h (heure locale) |
 
 #### Facebook Reels
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration | Up to 90 seconds |
-| Aspect ratio | 9:16 |
-| Resolution | 1080 x 1920 px |
-| Video format | MP4, MOV |
-| Max file size | 4 GB |
-| Caption limit | 2,200 characters |
-| Algorithm priority signals | Originality, completion rate, shares, audio trends |
+| Durée | Jusqu'à 90 secondes |
+| Ratio d'aspect | 9:16 |
+| Résolution | 1080 x 1920 px |
+| Format vidéo | MP4, MOV |
+| Taille de fichier max | 4 Go |
+| Limite de légende | 2 200 caractères |
+| Signaux de priorité algorithmique | Originalité, taux de complétion, partages, tendances audio |
 
 #### Facebook Stories
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration per slide | Up to 20 seconds (video) |
-| Aspect ratio | 9:16 |
-| Resolution | 1080 x 1920 px |
-| Image format | JPEG, PNG |
-| Video format | MP4, MOV |
-| Max file size | 4 GB |
-| Text-safe zone | Center 1080 x 1420 px |
-| Lifespan | 24 hours |
+| Durée par diapositive | Jusqu'à 20 secondes (vidéo) |
+| Ratio d'aspect | 9:16 |
+| Résolution | 1080 x 1920 px |
+| Format d'image | JPEG, PNG |
+| Format vidéo | MP4, MOV |
+| Taille de fichier max | 4 Go |
+| Zone sûre pour le texte | Centre 1080 x 1420 px |
+| Durée de vie | 24 heures |
 
 ---
 
 ### Pinterest
 
-#### Standard Pin
+#### Épingle standard
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Title limit | 100 characters |
-| Description limit | 500 characters |
-| Image aspect ratio | 2:3 recommended (1000 x 1500 px) |
-| Minimum image width | 600 px |
-| Image format | JPEG, PNG, WebP |
-| Max file size | 20 MB |
-| Algorithm priority signals | Save rate, click-through rate, pin quality score, domain quality, keyword relevance, freshness |
-| Best posting times | Sat 8-11 PM, Fri-Sun for lifestyle; Tue-Thu for B2B (local) |
+| Limite de titre | 100 caractères |
+| Limite de description | 500 caractères |
+| Ratio d'aspect d'image | 2:3 recommandé (1000 x 1500 px) |
+| Largeur d'image minimale | 600 px |
+| Format d'image | JPEG, PNG, WebP |
+| Taille de fichier max | 20 Mo |
+| Signaux de priorité algorithmique | Taux d'enregistrement, taux de clics, score de qualité d'épingle, qualité de domaine, pertinence de mot-clé, fraîcheur |
+| Meilleurs moments de publication | Sam 20-23h, Ven-Dim pour le style de vie ; Mar-Jeu pour le B2B (heure locale) |
 
 #### Idea Pin
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Pages | Up to 20 |
-| Image resolution | 1080 x 1920 px (9:16) |
-| Video duration per page | Up to 60 seconds |
-| Video format | MP4, MOV |
-| Title limit | 100 characters |
-| Algorithm priority signals | View-through rate, saves, follows from pin, topic tag relevance |
+| Pages | Jusqu'à 20 |
+| Résolution d'image | 1080 x 1920 px (9:16) |
+| Durée vidéo par page | Jusqu'à 60 secondes |
+| Format vidéo | MP4, MOV |
+| Limite de titre | 100 caractères |
+| Signaux de priorité algorithmique | Taux de visionnage complet, enregistrements, abonnements depuis l'épingle, pertinence des étiquettes de sujet |
 
-#### Video Pin
+#### Épingle vidéo
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration | 4 seconds to 15 minutes |
-| Aspect ratio | 1:1, 2:3, or 9:16 |
-| Resolution | 1080 px minimum width |
-| Video format | MP4, MOV |
-| Max file size | 2 GB |
-| Title limit | 100 characters |
-| Description limit | 500 characters |
+| Durée | 4 secondes à 15 minutes |
+| Ratio d'aspect | 1:1, 2:3, ou 9:16 |
+| Résolution | 1080 px de largeur minimum |
+| Format vidéo | MP4, MOV |
+| Taille de fichier max | 2 Go |
+| Limite de titre | 100 caractères |
+| Limite de description | 500 caractères |
 
 ---
 
 ### YouTube
 
-#### YouTube Video
+#### Vidéo YouTube
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Title limit | 100 characters |
-| Description limit | 5,000 characters |
-| Tag limit | 500 characters total |
-| Aspect ratio | 16:9 standard |
-| Resolution | 1920 x 1080 px (1080p) minimum recommended; 3840 x 2160 (4K) supported |
-| Video format | MP4 (H.264 + AAC) recommended; also MOV, AVI, WMV, FLV, WebM |
-| Max file size | 256 GB |
-| Max duration | 12 hours |
-| Thumbnail | 1280 x 720 px (16:9), max 2 MB, JPEG/PNG/GIF |
-| Chapters | Minimum 3 chapters, each 10+ seconds, first must start at 0:00 |
-| Algorithm priority signals | Click-through rate, watch time, average view duration, session time, engagement (likes, comments, shares), subscriber conversion |
-| Best posting times | Fri-Sat 9-11 AM, Thu 3-4 PM, weekday evenings 5-9 PM (viewer timezone) |
+| Limite de titre | 100 caractères |
+| Limite de description | 5 000 caractères |
+| Limite de tags | 500 caractères au total |
+| Ratio d'aspect | 16:9 standard |
+| Résolution | 1920 x 1080 px (1080p) minimum recommandé ; 3840 x 2160 (4K) pris en charge |
+| Format vidéo | MP4 (H.264 + AAC) recommandé ; aussi MOV, AVI, WMV, FLV, WebM |
+| Taille de fichier max | 256 Go |
+| Durée max | 12 heures |
+| Miniature | 1280 x 720 px (16:9), max 2 Mo, JPEG/PNG/GIF |
+| Chapitres | Minimum 3 chapitres, chacun de 10+ secondes, le premier doit commencer à 0:00 |
+| Signaux de priorité algorithmique | Taux de clics, temps de visionnage, durée de vue moyenne, temps de session, engagement (mentions J'aime, commentaires, partages), conversion d'abonnés |
+| Meilleurs moments de publication | Ven-Sam 9-11h, Jeu 15-16h, soirées en semaine 17-21h (fuseau horaire du spectateur) |
 
 #### YouTube Shorts
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration | Up to 3 minutes |
-| Aspect ratio | 9:16 (vertical) |
-| Resolution | 1080 x 1920 px |
-| Title limit | 100 characters |
-| Algorithm priority signals | Swipe-away rate (lower is better), replays, likes, subscriber conversion from Shorts |
+| Durée | Jusqu'à 3 minutes |
+| Ratio d'aspect | 9:16 (vertical) |
+| Résolution | 1080 x 1920 px |
+| Limite de titre | 100 caractères |
+| Signaux de priorité algorithmique | Taux d'abandon par balayage (plus bas est mieux), relectures, mentions J'aime, conversion d'abonnés depuis les Shorts |
 
 #### YouTube Live
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Resolution | Up to 4K (2160p) at 60fps |
-| Recommended bitrate (1080p) | 4,500-9,000 Kbps |
-| Stream format | RTMP or HLS |
-| Latency options | Ultra low, low, normal |
-| Thumbnail | 1280 x 720 px |
-| Schedule in advance | Yes, up to weeks ahead |
+| Résolution | Jusqu'à 4K (2160p) à 60fps |
+| Débit binaire recommandé (1080p) | 4 500-9 000 Kbps |
+| Format de flux | RTMP ou HLS |
+| Options de latence | Ultra faible, faible, normale |
+| Miniature | 1280 x 720 px |
+| Programmation à l'avance | Oui, jusqu'à plusieurs semaines à l'avance |
 
 ---
 
 ### Reddit
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Title limit | 300 characters |
-| Text post limit | 40,000 characters |
-| Image dimensions | No strict requirement; 1200 x 628 px recommended for link posts |
-| Image format | JPEG, PNG, GIF |
-| Max images per post | 20 (gallery post) |
-| Video duration | Up to 15 minutes |
-| Video format | MP4, MOV |
-| Max video file size | 1 GB |
-| Hashtag strategy | Not used on Reddit; flair and subreddit selection matter instead |
-| Algorithm priority signals | Upvote/downvote velocity, comment count, subreddit relevance, account karma and age |
-| Best posting times | Mon 6-8 AM, Wed-Fri 7-9 AM EST (US-centric subreddits) |
+| Limite de titre | 300 caractères |
+| Limite de publication texte | 40 000 caractères |
+| Dimensions d'image | Aucune exigence stricte ; 1200 x 628 px recommandé pour les publications de lien |
+| Format d'image | JPEG, PNG, GIF |
+| Images max par publication | 20 (publication galerie) |
+| Durée vidéo | Jusqu'à 15 minutes |
+| Format vidéo | MP4, MOV |
+| Taille de fichier vidéo max | 1 Go |
+| Stratégie de hashtags | Non utilisés sur Reddit ; le flair et le choix du subreddit comptent à la place |
+| Signaux de priorité algorithmique | Vélocité des votes positifs/négatifs, nombre de commentaires, pertinence du subreddit, karma et ancienneté du compte |
+| Meilleurs moments de publication | Lun 6-8h, Mer-Ven 7-9h EST (subreddits centrés US) |
 
 ---
 
 ### Threads
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Character limit | 500 |
-| Image dimensions | 1080 x 1350 px (4:5) recommended |
-| Image format | JPEG, PNG |
-| Max images per post | 10 |
-| Video duration | Up to 5 minutes |
-| Video format | MP4, MOV |
-| Video aspect ratio | 9:16 or 1:1 |
-| Link preview | Supported |
-| Hashtag strategy | Topic tags (1 per post) |
-| Algorithm priority signals | Replies, reposts, engagement velocity, follower relationship |
-| Best posting times | Mon-Fri 8-10 AM, 12-1 PM (local) |
+| Limite de caractères | 500 |
+| Dimensions d'image | 1080 x 1350 px (4:5) recommandé |
+| Format d'image | JPEG, PNG |
+| Images max par publication | 10 |
+| Durée vidéo | Jusqu'à 5 minutes |
+| Format vidéo | MP4, MOV |
+| Ratio d'aspect vidéo | 9:16 ou 1:1 |
+| Aperçu de lien | Pris en charge |
+| Stratégie de hashtags | Étiquettes de sujet (1 par publication) |
+| Signaux de priorité algorithmique | Réponses, republications, vélocité d'engagement, relation avec les abonnés |
+| Meilleurs moments de publication | Lun-Ven 8-10h, 12-13h (heure locale) |
 
 ---
 
 ### Snapchat
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Snap duration | Up to 60 seconds (video), 10 seconds (image) |
-| Aspect ratio | 9:16 |
-| Resolution | 1080 x 1920 px |
-| Video format | MP4, MOV |
-| Max file size | 5 MB (image), 32 MB (video for ads) |
-| Spotlight video | Up to 3 minutes |
-| Text limit (caption) | 80 characters on-screen |
-| Text-safe zone | Center 1080 x 1420 px |
-| Algorithm priority signals (Spotlight) | Completion rate, shares, favorites, screenshot rate |
-| Best posting times | Thu-Sat 10 PM-1 AM (local; younger demographic engagement peaks) |
+| Durée de snap | Jusqu'à 60 secondes (vidéo), 10 secondes (image) |
+| Ratio d'aspect | 9:16 |
+| Résolution | 1080 x 1920 px |
+| Format vidéo | MP4, MOV |
+| Taille de fichier max | 5 Mo (image), 32 Mo (vidéo pour publicités) |
+| Vidéo Spotlight | Jusqu'à 3 minutes |
+| Limite de texte (légende) | 80 caractères à l'écran |
+| Zone sûre pour le texte | Centre 1080 x 1420 px |
+| Signaux de priorité algorithmique (Spotlight) | Taux de complétion, partages, favoris, taux de capture d'écran |
+| Meilleurs moments de publication | Jeu-Sam 22h-1h (heure locale ; pics d'engagement de la démographie plus jeune) |
 
 ---
 
-## Section 2: Email Specifications
+## Section 2 : Spécifications e-mail
 
-### Subject Line Limits by Client
+### Limites d'objet par client
 
-| Email Client | Visible Characters (Desktop) | Visible Characters (Mobile) |
+| Client e-mail | Caractères visibles (bureau) | Caractères visibles (mobile) |
 |---|---|---|
 | Gmail | 70 | 40 |
-| Outlook (desktop app) | 73 | 38 |
+| Outlook (application bureau) | 73 | 38 |
 | Outlook.com | 60 | 38 |
 | Apple Mail | 78 | 35 |
 | Yahoo Mail | 46 | 35 |
 | Samsung Mail | N/A | 33 |
 
-**Recommendation:** Keep subject lines under 40 characters for reliable cross-client mobile rendering. Front-load the most important words.
+**Recommandation :** Garder les objets sous 40 caractères pour un rendu mobile fiable inter-clients. Placer les mots les plus importants en premier.
 
-### Preview Text (Preheader)
+### Texte d'aperçu (pré-en-tête)
 
-| Email Client | Preview Text Visible Length |
+| Client e-mail | Longueur visible du texte d'aperçu |
 |---|---|
-| Gmail | 90-110 characters (varies by subject line length) |
-| Outlook | 35-90 characters |
-| Apple Mail | 75-100 characters |
-| Yahoo Mail | 55-70 characters |
+| Gmail | 90-110 caractères (varie selon la longueur de l'objet) |
+| Outlook | 35-90 caractères |
+| Apple Mail | 75-100 caractères |
+| Yahoo Mail | 55-70 caractères |
 
-**Recommendation:** Write 40-90 characters of preview text. If not explicitly set, clients pull the first visible body text. Use hidden preheader text in HTML to control this.
+**Recommandation :** Rédiger 40-90 caractères de texte d'aperçu. S'il n'est pas explicitement défini, les clients extraient le premier texte de corps visible. Utiliser un texte de pré-en-tête caché en HTML pour contrôler cela.
 
-### Email Body Specs
+### Spécifications du corps de l'e-mail
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Recommended body width | 600 px (max 640 px) |
-| Gmail clipping threshold | 102 KB (total HTML size including inline CSS). Messages exceeding this are truncated with a "[Message clipped] View entire message" link. |
-| Max email size (practical) | Keep under 100 KB HTML. Total with images should stay under 1 MB for fast loading. |
-| Font stacks | System fonts for reliability: Arial, Helvetica, Georgia, Times New Roman. Web fonts supported in Apple Mail, iOS Mail, Android (default), Outlook.com, Thunderbird. NOT supported in Gmail, Outlook desktop. |
-| Minimum font size (mobile) | 14 px body, 22 px headlines (iOS auto-sizes text below 13 px) |
-| Line height | 1.4-1.6 for body text |
-| Background images | Supported in most clients; NOT supported in Outlook desktop (use VML fallback) |
+| Largeur de corps recommandée | 600 px (max 640 px) |
+| Seuil de troncature Gmail | 102 Ko (taille HTML totale incluant le CSS en ligne). Les messages dépassant ce seuil sont tronqués avec un lien « [Message tronqué] Voir le message entier ». |
+| Taille max d'e-mail (pratique) | Rester sous 100 Ko de HTML. Le total avec images devrait rester sous 1 Mo pour un chargement rapide. |
+| Piles de polices | Polices système pour la fiabilité : Arial, Helvetica, Georgia, Times New Roman. Les polices web sont prises en charge dans Apple Mail, iOS Mail, Android (par défaut), Outlook.com, Thunderbird. NON prises en charge dans Gmail, Outlook bureau. |
+| Taille de police minimale (mobile) | 14 px corps, 22 px titres (iOS redimensionne automatiquement le texte en dessous de 13 px) |
+| Hauteur de ligne | 1,4-1,6 pour le texte de corps |
+| Images de fond | Prises en charge dans la plupart des clients ; NON prises en charge dans Outlook bureau (utiliser un repli VML) |
 
-### Image Handling
+### Gestion des images
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Image formats | JPEG, PNG, GIF. WebP supported in Gmail, Apple Mail; NOT in Outlook. |
-| Retina support | Use 2x resolution images displayed at 1x size (e.g., 1200 px image displayed at 600 px width) |
-| Image blocking | Outlook, some corporate clients block images by default. Always include alt text. |
-| Animated GIF | Supported everywhere except Outlook desktop (shows first frame only) |
-| Max single image width | 600 px display width (1200 px actual for retina) |
-| Image-to-text ratio | Aim for 60% text / 40% images to avoid spam filters |
+| Formats d'image | JPEG, PNG, GIF. WebP pris en charge dans Gmail, Apple Mail ; PAS dans Outlook. |
+| Support Retina | Utiliser des images en résolution 2x affichées à la taille 1x (par ex., une image de 1200 px affichée à une largeur de 600 px) |
+| Blocage d'image | Outlook, certains clients d'entreprise bloquent les images par défaut. Toujours inclure le texte alt. |
+| GIF animé | Pris en charge partout sauf Outlook bureau (montre seulement la première image) |
+| Largeur d'image unique max | 600 px de largeur d'affichage (1200 px réelle pour retina) |
+| Ratio image-texte | Viser 60 % texte / 40 % images pour éviter les filtres anti-spam |
 
-### CTA Button Specs
+### Spécifications des boutons CTA
 
-| Spec | Recommendation |
+| Spécification | Recommandation |
 |---|---|
-| Minimum button size | 44 x 44 px (Apple HIG tap target) |
-| Recommended button size | 48-60 px height, full-width on mobile |
-| Button method | Bulletproof buttons using HTML/CSS (padding-based). VML fallback for Outlook. Avoid image-only buttons. |
-| Button text | 2-5 words, action-oriented. Max 30 characters. |
-| Button contrast | WCAG AA minimum (4.5:1 contrast ratio for text on button color) |
+| Taille de bouton minimale | 44 x 44 px (cible tactile Apple HIG) |
+| Taille de bouton recommandée | 48-60 px de hauteur, pleine largeur sur mobile |
+| Méthode de bouton | Boutons « à toute épreuve » utilisant HTML/CSS (basés sur le padding). Repli VML pour Outlook. Éviter les boutons uniquement en image. |
+| Texte de bouton | 2-5 mots, orienté action. Max 30 caractères. |
+| Contraste de bouton | WCAG AA minimum (ratio de contraste 4,5:1 pour le texte sur la couleur du bouton) |
 
-### Dark Mode Considerations
+### Considérations sur le mode sombre
 
-| Client | Dark Mode Behavior |
+| Client | Comportement en mode sombre |
 |---|---|
-| Apple Mail / iOS Mail | Full color inversion with `@media (prefers-color-scheme: dark)` support |
-| Gmail (Android) | Partial: inverts light backgrounds to dark, adjusts text to white. Does NOT respect `prefers-color-scheme`. |
-| Gmail (iOS) | Partial: similar to Android. Does NOT respect `prefers-color-scheme`. |
-| Outlook (desktop) | Full inversion. Some transparent PNGs get white backgrounds. |
-| Outlook.com | Partial inversion. Supports `[data-ogsc]` and `[data-ogsb]` selectors. |
-| Yahoo Mail | Applies its own dark theme. Limited CSS override support. |
+| Apple Mail / iOS Mail | Inversion complète des couleurs avec prise en charge de `@media (prefers-color-scheme: dark)` |
+| Gmail (Android) | Partiel : inverse les fonds clairs en foncés, ajuste le texte en blanc. Ne respecte PAS `prefers-color-scheme`. |
+| Gmail (iOS) | Partiel : similaire à Android. Ne respecte PAS `prefers-color-scheme`. |
+| Outlook (bureau) | Inversion complète. Certains PNG transparents obtiennent des fonds blancs. |
+| Outlook.com | Inversion partielle. Prend en charge les sélecteurs `[data-ogsc]` et `[data-ogsb]`. |
+| Yahoo Mail | Applique son propre thème sombre. Support limité de remplacement CSS. |
 
-**Dark mode design rules:**
-- Add transparent padding around logos (prevents awkward color clashes)
-- Use semi-transparent PNGs with contrasting edges
-- Test with both dark and light backgrounds
-- Define both light and dark color schemes in CSS where supported
-- Avoid pure white (#FFFFFF) backgrounds; use #FAFAFA so dark mode detection triggers consistently
+**Règles de conception pour le mode sombre :**
+- Ajouter un padding transparent autour des logos (évite les conflits de couleur gênants)
+- Utiliser des PNG semi-transparents avec des bords contrastants
+- Tester avec des fonds sombres et clairs
+- Définir à la fois des schémas de couleur clair et sombre en CSS lorsque pris en charge
+- Éviter les fonds blanc pur (#FFFFFF) ; utiliser #FAFAFA pour que la détection du mode sombre se déclenche de manière cohérente
 
-### Mobile Rendering Rules
+### Règles de rendu mobile
 
-| Rule | Detail |
+| Règle | Détail |
 |---|---|
-| Responsive approach | Use fluid tables with `max-width: 600px` and `width: 100%` |
-| Media queries | Supported in Apple Mail, iOS Mail, Android (default), Thunderbird. NOT supported in Gmail (any), Yahoo Mail, Outlook. |
-| Stacking columns | Use `display: block` on table cells for mobile stacking via media queries, or use a hybrid/fluid approach for clients without media query support |
-| Touch targets | Minimum 44 x 44 px for all tappable elements |
-| Single-column layout | Recommended for mobile-first design |
+| Approche responsive | Utiliser des tableaux fluides avec `max-width: 600px` et `width: 100%` |
+| Media queries | Prises en charge dans Apple Mail, iOS Mail, Android (par défaut), Thunderbird. NON prises en charge dans Gmail (tous), Yahoo Mail, Outlook. |
+| Empilement des colonnes | Utiliser `display: block` sur les cellules de tableau pour l'empilement mobile via les media queries, ou utiliser une approche hybride/fluide pour les clients sans support de media query |
+| Cibles tactiles | Minimum 44 x 44 px pour tous les éléments cliquables |
+| Mise en page à une colonne | Recommandée pour la conception mobile-first |
 
-### Apple Mail Privacy Protection (MPP)
+### Protection de la confidentialité Apple Mail (MPP)
 
-| Impact | Detail |
+| Impact | Détail |
 |---|---|
-| Open tracking | Unreliable. Apple pre-fetches all images (including tracking pixels) via proxy, inflating open rates. Approximately 50-60% of Apple Mail users have MPP enabled. |
-| IP-based geolocation | No longer accurate for Apple Mail users. Apple proxies mask true IP. |
-| Device detection | Unreliable. User-agent data is obscured. |
-| Recommended response | Shift KPIs to click-through rate, conversion rate, and revenue attribution. Use UTM parameters for tracking. Build engagement segments based on clicks, not opens. |
+| Suivi des ouvertures | Non fiable. Apple précharge toutes les images (y compris les pixels de suivi) via un proxy, gonflant les taux d'ouverture. Environ 50-60 % des utilisateurs Apple Mail ont MPP activé. |
+| Géolocalisation par IP | N'est plus exacte pour les utilisateurs Apple Mail. Les proxies Apple masquent l'IP réelle. |
+| Détection d'appareil | Non fiable. Les données d'agent utilisateur sont masquées. |
+| Réponse recommandée | Déplacer les KPI vers le taux de clics, le taux de conversion, et l'attribution de chiffre d'affaires. Utiliser des paramètres UTM pour le suivi. Construire des segments d'engagement basés sur les clics, pas les ouvertures. |
 
 ---
 
-## Section 3: Ad Platform Creative Specs
+## Section 3 : Spécifications créatives des plateformes publicitaires
 
 ### Google Ads
 
-#### Responsive Search Ads (RSA)
+#### Annonces de recherche réactives (RSA)
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Headlines | Up to 15; each max 30 characters |
-| Descriptions | Up to 4; each max 90 characters |
-| Display URL path | 2 fields, each max 15 characters |
-| Final URL | Required |
-| Pinning | Available for headlines (positions 1, 2, 3) and descriptions (positions 1, 2) |
-| Minimum required | 3 headlines, 2 descriptions |
-| Recommendation | Provide all 15 headlines and 4 descriptions for maximum combinations |
+| Titres | Jusqu'à 15 ; chacun max 30 caractères |
+| Descriptions | Jusqu'à 4 ; chacune max 90 caractères |
+| Chemin d'URL d'affichage | 2 champs, chacun max 15 caractères |
+| URL finale | Requise |
+| Épinglage | Disponible pour les titres (positions 1, 2, 3) et les descriptions (positions 1, 2) |
+| Minimum requis | 3 titres, 2 descriptions |
+| Recommandation | Fournir les 15 titres et 4 descriptions pour un maximum de combinaisons |
 
 #### Google Display Ads
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Landscape image | 1200 x 628 px (1.91:1) — required |
-| Square image | 1200 x 1200 px (1:1) — required |
-| Portrait image | 960 x 1200 px (4:5) — optional |
-| Logo (landscape) | 1200 x 300 px (4:1) — optional |
-| Logo (square) | 1200 x 1200 px (1:1) — required |
-| Image file size | Max 5.12 MB each |
-| Image format | JPEG, PNG |
-| Short headline | Max 30 characters (up to 5) |
-| Long headline | Max 90 characters (1) |
-| Description | Max 90 characters (up to 5) |
-| Business name | Max 25 characters |
-| CTA options | Automated, Learn More, Get Quote, Apply Now, Sign Up, Contact Us, Download, Book Now, Shop Now, Visit Site |
+| Image paysage | 1200 x 628 px (1,91:1) — requise |
+| Image carrée | 1200 x 1200 px (1:1) — requise |
+| Image portrait | 960 x 1200 px (4:5) — optionnelle |
+| Logo (paysage) | 1200 x 300 px (4:1) — optionnel |
+| Logo (carré) | 1200 x 1200 px (1:1) — requis |
+| Taille de fichier image | Max 5,12 Mo chacune |
+| Format d'image | JPEG, PNG |
+| Titre court | Max 30 caractères (jusqu'à 5) |
+| Titre long | Max 90 caractères (1) |
+| Description | Max 90 caractères (jusqu'à 5) |
+| Nom de l'entreprise | Max 25 caractères |
+| Options de CTA | Automated, Learn More, Get Quote, Apply Now, Sign Up, Contact Us, Download, Book Now, Shop Now, Visit Site |
 
 #### Performance Max (PMax)
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Images | Up to 20. Landscape (1200x628), square (1200x1200), portrait (960x1200). Min 1 landscape and 1 square required. |
-| Logos | Up to 5. Square (1200x1200) required. Landscape (1200x300) recommended. |
-| Videos | Up to 5. Landscape (16:9), square (1:1), vertical (9:16). Min 10 seconds. If none provided, Google auto-generates from assets. |
-| Headlines | Up to 5, max 30 characters each |
-| Long headlines | Up to 5, max 90 characters each |
-| Descriptions | Up to 5, max 90 characters each. Plus 1 short description max 60 characters. |
-| Business name | Max 25 characters |
-| CTA | Automated or manual selection from standard options |
-| Audience signals | Required: custom segments, interests, demographics, remarketing lists |
+| Images | Jusqu'à 20. Paysage (1200x628), carré (1200x1200), portrait (960x1200). Min 1 paysage et 1 carré requis. |
+| Logos | Jusqu'à 5. Carré (1200x1200) requis. Paysage (1200x300) recommandé. |
+| Vidéos | Jusqu'à 5. Paysage (16:9), carré (1:1), vertical (9:16). Min 10 secondes. Si aucune n'est fournie, Google en génère automatiquement à partir des actifs. |
+| Titres | Jusqu'à 5, max 30 caractères chacun |
+| Titres longs | Jusqu'à 5, max 90 caractères chacun |
+| Descriptions | Jusqu'à 5, max 90 caractères chacune. Plus 1 description courte max 60 caractères. |
+| Nom de l'entreprise | Max 25 caractères |
+| CTA | Sélection automatisée ou manuelle parmi les options standard |
+| Signaux d'audience | Requis : segments personnalisés, intérêts, démographie, listes de remarketing |
 
 #### YouTube Ads
 
-| Format | Spec |
+| Format | Spécification |
 |---|---|
-| Skippable in-stream | Min 12 seconds, no max. Skippable after 5s. Recommended 15-30s for performance. |
-| Non-skippable in-stream | 15 seconds exactly (20s in some regions) |
-| Bumper ad | Max 6 seconds, non-skippable |
-| In-feed (Discovery) | Thumbnail 1280x720 (auto-selected or custom). Title max 100 chars. Description max 2 lines. |
-| Video resolution | 1920x1080 (16:9) or 1080x1920 (9:16) for Shorts ads |
-| File format | MP4 recommended |
-| Max file size | 256 GB (same as standard YouTube upload) |
-| Companion banner | 300 x 60 px (desktop, auto-generated or custom) |
+| In-stream ignorable | Min 12 secondes, pas de max. Ignorable après 5s. 15-30s recommandées pour la performance. |
+| In-stream non ignorable | 15 secondes exactement (20s dans certaines régions) |
+| Bumper ad | Max 6 secondes, non ignorable |
+| In-feed (Discovery) | Miniature 1280x720 (auto-sélectionnée ou personnalisée). Titre max 100 car. Description max 2 lignes. |
+| Résolution vidéo | 1920x1080 (16:9) ou 1080x1920 (9:16) pour les publicités Shorts |
+| Format de fichier | MP4 recommandé |
+| Taille de fichier max | 256 Go (identique au téléversement YouTube standard) |
+| Bannière compagnon | 300 x 60 px (bureau, auto-générée ou personnalisée) |
 
 #### Google Shopping
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Product title | Max 150 characters (first 70 most visible) |
-| Product description | Max 5,000 characters |
-| Product image | Min 100 x 100 px (non-apparel), 250 x 250 px (apparel). Recommended 800 x 800+. Max 64 MP. |
-| Image format | JPEG, PNG, GIF (non-animated), BMP, TIFF |
-| Image background | White or transparent recommended |
-| Image content | No watermarks, logos, promotional text, borders |
+| Titre de produit | Max 150 caractères (les 70 premiers les plus visibles) |
+| Description de produit | Max 5 000 caractères |
+| Image de produit | Min 100 x 100 px (hors habillement), 250 x 250 px (habillement). 800 x 800+ recommandé. Max 64 MP. |
+| Format d'image | JPEG, PNG, GIF (non animé), BMP, TIFF |
+| Fond d'image | Blanc ou transparent recommandé |
+| Contenu d'image | Aucun filigrane, logo, texte promotionnel, bordure |
 
 ---
 
-### Meta Ads (Facebook & Instagram)
+### Meta Ads (Facebook et Instagram)
 
-#### Feed Ads
+#### Publicités dans le fil
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Primary text | 125 characters recommended (max 2,200 before truncation) |
-| Headline | 27 characters recommended (max 255) |
-| Description | 27 characters recommended (max 2,200) |
-| Image (single) | 1080 x 1080 px (1:1) or 1200 x 628 px (1.91:1) |
-| Image format | JPEG, PNG |
-| Max image file size | 30 MB |
-| Video aspect ratio | 1:1 or 4:5 (feed), 9:16 (Stories/Reels) |
-| Video duration | 1 second to 241 minutes |
-| Video format | MP4, MOV |
-| Max video file size | 4 GB |
-| Video resolution | 1080 x 1080 px minimum |
-| CTA options | Shop Now, Learn More, Sign Up, Download, Get Offer, Book Now, Contact Us, Apply Now, Subscribe, Get Quote, Watch More, Send Message, Get Directions |
+| Texte principal | 125 caractères recommandés (max 2 200 avant troncature) |
+| Titre | 27 caractères recommandés (max 255) |
+| Description | 27 caractères recommandés (max 2 200) |
+| Image (unique) | 1080 x 1080 px (1:1) ou 1200 x 628 px (1,91:1) |
+| Format d'image | JPEG, PNG |
+| Taille de fichier image max | 30 Mo |
+| Ratio d'aspect vidéo | 1:1 ou 4:5 (fil), 9:16 (Stories/Reels) |
+| Durée vidéo | 1 seconde à 241 minutes |
+| Format vidéo | MP4, MOV |
+| Taille de fichier vidéo max | 4 Go |
+| Résolution vidéo | 1080 x 1080 px minimum |
+| Options de CTA | Shop Now, Learn More, Sign Up, Download, Get Offer, Book Now, Contact Us, Apply Now, Subscribe, Get Quote, Watch More, Send Message, Get Directions |
 
-#### Stories & Reels Ads
+#### Publicités Stories et Reels
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Aspect ratio | 9:16 |
-| Resolution | 1080 x 1920 px |
-| Stories video duration | 1-120 seconds |
-| Reels video duration | 1-90 seconds |
-| Text-safe zone | Keep text/logos within center 1080 x 1420 px |
-| Primary text | 125 characters |
-| Headline | 40 characters |
+| Ratio d'aspect | 9:16 |
+| Résolution | 1080 x 1920 px |
+| Durée vidéo Stories | 1-120 secondes |
+| Durée vidéo Reels | 1-90 secondes |
+| Zone sûre pour le texte | Garder le texte/les logos dans la zone centrale de 1080 x 1420 px |
+| Texte principal | 125 caractères |
+| Titre | 40 caractères |
 
-#### Carousel Ads
+#### Publicités carrousel
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Cards | 2-10 |
-| Image per card | 1080 x 1080 px (1:1) |
-| Video per card | Up to 240 minutes; 1:1 aspect ratio |
-| Headline per card | 32 characters recommended |
-| Description per card | 18 characters recommended |
-| Primary text | 125 characters recommended |
-| Landing URL | Unique per card or single destination |
+| Cartes | 2-10 |
+| Image par carte | 1080 x 1080 px (1:1) |
+| Vidéo par carte | Jusqu'à 240 minutes ; ratio d'aspect 1:1 |
+| Titre par carte | 32 caractères recommandés |
+| Description par carte | 18 caractères recommandés |
+| Texte principal | 125 caractères recommandés |
+| URL de destination | Unique par carte ou destination unique |
 
-#### Collection Ads
+#### Publicités collection
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Cover image/video | 1200 x 628 px or 1080 x 1080 px |
-| Product images | Pulled from catalog (min 4 products) |
-| Headline | 40 characters |
-| Opens into | Instant Experience (full-screen mobile) |
+| Image/vidéo de couverture | 1200 x 628 px ou 1080 x 1080 px |
+| Images de produit | Extraites du catalogue (min 4 produits) |
+| Titre | 40 caractères |
+| S'ouvre dans | Expérience instantanée (plein écran mobile) |
 
 ---
 
 ### LinkedIn Ads
 
-#### Sponsored Content (Single Image)
+#### Contenu sponsorisé (image unique)
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Introductory text | 600 characters max (150 recommended) |
-| Headline | 200 characters max (70 recommended) |
-| Description | 300 characters max (100 recommended) |
-| Image | 1200 x 627 px (1.91:1) recommended. Also supports 1080 x 1080 (1:1) and 1080 x 1350 (4:5). |
-| Image file size | Max 5 MB |
-| Image format | JPEG, PNG, GIF |
-| CTA options | Apply, Download, View Quote, Learn More, Sign Up, Subscribe, Register, Join, Attend, Request Demo |
+| Texte introductif | 600 caractères max (150 recommandés) |
+| Titre | 200 caractères max (70 recommandés) |
+| Description | 300 caractères max (100 recommandés) |
+| Image | 1200 x 627 px (1,91:1) recommandé. Prend aussi en charge 1080 x 1080 (1:1) et 1080 x 1350 (4:5). |
+| Taille de fichier image | Max 5 Mo |
+| Format d'image | JPEG, PNG, GIF |
+| Options de CTA | Apply, Download, View Quote, Learn More, Sign Up, Subscribe, Register, Join, Attend, Request Demo |
 
-#### Sponsored Content (Video)
+#### Contenu sponsorisé (vidéo)
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration | 3 seconds to 30 minutes |
-| Aspect ratio | 16:9 (landscape), 1:1 (square), 9:16 (vertical) |
-| Resolution | 360p to 1080p |
-| File format | MP4 |
-| Max file size | 200 MB |
-| Captions | SRT file upload supported and recommended |
+| Durée | 3 secondes à 30 minutes |
+| Ratio d'aspect | 16:9 (paysage), 1:1 (carré), 9:16 (vertical) |
+| Résolution | 360p à 1080p |
+| Format de fichier | MP4 |
+| Taille de fichier max | 200 Mo |
+| Sous-titres | Téléversement de fichier SRT pris en charge et recommandé |
 
-#### Sponsored Messaging (Message Ads)
+#### Messagerie sponsorisée (Message Ads)
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Subject line | Max 60 characters |
-| Message body | Max 1,500 characters |
-| CTA button text | Max 20 characters |
-| Banner image | 300 x 250 px |
-| Clickable links in body | Up to 3 |
+| Objet | Max 60 caractères |
+| Corps du message | Max 1 500 caractères |
+| Texte du bouton CTA | Max 20 caractères |
+| Image bannière | 300 x 250 px |
+| Liens cliquables dans le corps | Jusqu'à 3 |
 
-#### Document Ads
+#### Publicités document
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| File format | PDF, DOC, DOCX, PPT, PPTX |
-| Max file size | 100 MB |
-| Max pages | 300 (first 5 shown as preview in feed) |
-| Introductory text | 600 characters max |
-| Headline | 200 characters max |
-| Lead gen form | Optional gating after preview pages |
+| Format de fichier | PDF, DOC, DOCX, PPT, PPTX |
+| Taille de fichier max | 100 Mo |
+| Pages max | 300 (les 5 premières montrées en aperçu dans le fil) |
+| Texte introductif | 600 caractères max |
+| Titre | 200 caractères max |
+| Formulaire de génération de lead | Verrouillage optionnel après les pages d'aperçu |
 
 ---
 
 ### TikTok Ads
 
-#### In-Feed Ads
+#### Publicités in-feed
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Aspect ratio | 9:16, 1:1, or 16:9 |
-| Resolution | 720 x 1280 px minimum (9:16 recommended) |
-| Video duration | 5-60 seconds (9-15 seconds recommended) |
-| Video format | MP4, MOV, MPEG, AVI |
-| Max file size | 500 MB |
-| Ad description | 1-100 characters (emoji allowed) |
-| Display name | Max 40 characters |
-| CTA options | Download, Learn More, Shop Now, Sign Up, Contact Us, Apply Now, Book Now, Get Quote, Subscribe, Order Now, View Now |
+| Ratio d'aspect | 9:16, 1:1, ou 16:9 |
+| Résolution | 720 x 1280 px minimum (9:16 recommandé) |
+| Durée vidéo | 5-60 secondes (9-15 secondes recommandées) |
+| Format vidéo | MP4, MOV, MPEG, AVI |
+| Taille de fichier max | 500 Mo |
+| Description publicitaire | 1-100 caractères (emoji autorisé) |
+| Nom d'affichage | Max 40 caractères |
+| Options de CTA | Download, Learn More, Shop Now, Sign Up, Contact Us, Apply Now, Book Now, Get Quote, Subscribe, Order Now, View Now |
 
-#### TopView Ads
+#### Publicités TopView
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Duration | 5-60 seconds |
-| Resolution | 1080 x 1920 px |
-| Aspect ratio | 9:16 |
-| Placement | First in-feed ad seen when opening the app |
-| File format | MP4, MOV |
-| Max file size | 500 MB |
-| Sound | Required (auto-play with sound on) |
+| Durée | 5-60 secondes |
+| Résolution | 1080 x 1920 px |
+| Ratio d'aspect | 9:16 |
+| Placement | Première publicité in-feed vue à l'ouverture de l'application |
+| Format de fichier | MP4, MOV |
+| Taille de fichier max | 500 Mo |
+| Son | Requis (lecture automatique avec son activé) |
 
 #### Spark Ads
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Source | Boost existing organic TikTok posts (own or authorized third-party) |
-| Specs | Same as original post (no modification to video) |
-| Added features | CTA button, landing page URL, tracking pixel |
-| Authorization | Requires video authorization code from creator |
-| Duration | Campaign-controlled |
+| Source | Booste des publications TikTok organiques existantes (propres ou tierces autorisées) |
+| Spécifications | Identiques à la publication originale (aucune modification de la vidéo) |
+| Fonctionnalités ajoutées | Bouton CTA, URL de page d'atterrissage, pixel de suivi |
+| Autorisation | Nécessite un code d'autorisation vidéo du créateur |
+| Durée | Contrôlée par la campagne |
 
 ---
 
 ### Pinterest Ads
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Standard Pin ad image | 1000 x 1500 px (2:3) |
-| Square Pin ad image | 1000 x 1000 px (1:1) |
-| Max aspect ratio | 1:2.6 |
-| Image format | JPEG, PNG |
-| Image file size | Max 20 MB |
-| Title | Max 100 characters |
-| Description | Max 500 characters |
-| Video Pin ad duration | 4 seconds to 15 minutes |
-| Video resolution | 1080 px width minimum |
-| Video format | MP4, MOV |
-| Video max file size | 2 GB |
-| Idea Pin ad | Up to 20 pages, 1080 x 1920 px per page |
-| Shopping ad | Linked to product catalog; standard Pin specs |
-| CTA options | Automated based on campaign objective |
+| Image de publicité Épingle standard | 1000 x 1500 px (2:3) |
+| Image de publicité Épingle carrée | 1000 x 1000 px (1:1) |
+| Ratio d'aspect max | 1:2,6 |
+| Format d'image | JPEG, PNG |
+| Taille de fichier image | Max 20 Mo |
+| Titre | Max 100 caractères |
+| Description | Max 500 caractères |
+| Durée de publicité Épingle vidéo | 4 secondes à 15 minutes |
+| Résolution vidéo | 1080 px de largeur minimum |
+| Format vidéo | MP4, MOV |
+| Taille de fichier vidéo max | 2 Go |
+| Publicité Idea Pin | Jusqu'à 20 pages, 1080 x 1920 px par page |
+| Publicité Shopping | Liée au catalogue produit ; spécifications d'Épingle standard |
+| Options de CTA | Automatisées selon l'objectif de campagne |
 
 ---
 
@@ -670,105 +670,105 @@
 
 #### Sponsored Products
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Type | Keyword- or product-targeted; uses existing product listing |
-| Image | Product listing main image (auto-pulled from catalog) |
-| Headline | Not customizable (uses product title) |
-| No custom creative | Ad uses existing product detail page content |
+| Type | Ciblé par mot-clé ou produit ; utilise l'annonce produit existante |
+| Image | Image principale de l'annonce produit (extraite automatiquement du catalogue) |
+| Titre | Non personnalisable (utilise le titre du produit) |
+| Aucune création personnalisée | La publicité utilise le contenu existant de la page de détail produit |
 
 #### Sponsored Brands
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Headline | Max 50 characters |
-| Logo | 400 x 400 px minimum, PNG/JPEG, max 1 MB |
-| Custom image | 1200 x 628 px recommended |
-| Products featured | 3+ ASINs |
-| Video (Sponsored Brands Video) | 6-45 seconds; 1920 x 1080 (16:9) or 1080 x 1920 (9:16) or 1080 x 1080 (1:1); MP4/MOV; max 500 MB |
-| Store Spotlight | Links to brand Store pages |
+| Titre | Max 50 caractères |
+| Logo | 400 x 400 px minimum, PNG/JPEG, max 1 Mo |
+| Image personnalisée | 1200 x 628 px recommandé |
+| Produits mis en avant | 3+ ASIN |
+| Vidéo (Sponsored Brands Video) | 6-45 secondes ; 1920 x 1080 (16:9) ou 1080 x 1920 (9:16) ou 1080 x 1080 (1:1) ; MP4/MOV ; max 500 Mo |
+| Store Spotlight | Renvoie vers les pages Store de la marque |
 
 #### Sponsored Display
 
-| Spec | Value |
+| Spécification | Valeur |
 |---|---|
-| Custom image | 1200 x 628 px (landscape), 1200 x 1200 px (square) |
+| Image personnalisée | 1200 x 628 px (paysage), 1200 x 1200 px (carré) |
 | Logo | 600 x 600 px minimum |
-| Headline | Max 50 characters |
-| Image format | JPEG, PNG |
-| Max file size | 5 MB |
-| Video | 6-30 seconds, MP4, 1280 x 720 min, max 500 MB |
-| Targeting | Product, audience (views, purchases), contextual |
+| Titre | Max 50 caractères |
+| Format d'image | JPEG, PNG |
+| Taille de fichier max | 5 Mo |
+| Vidéo | 6-30 secondes, MP4, 1280 x 720 min, max 500 Mo |
+| Ciblage | Produit, audience (vues, achats), contextuel |
 
 ---
 
-## Section 4: Schema Markup Reference
+## Section 4 : Référence de balisage de schéma
 
-Use schema.org structured data (JSON-LD format recommended) to enhance search appearance and enable rich results.
+Utiliser les données structurées schema.org (format JSON-LD recommandé) pour améliorer l'apparence dans les recherches et permettre les résultats enrichis.
 
-| Schema Type | When to Use | Rich Result |
+| Type de schéma | Quand l'utiliser | Résultat enrichi |
 |---|---|---|
-| `Article` | Blog posts, news articles, editorial content. Use `NewsArticle` for timely news, `BlogPosting` for blogs. | Article carousel, headline in Top Stories |
-| `FAQPage` | Pages with a list of questions and answers. Must show Q&A on the visible page (not just in markup). **Deprecation note:** FAQ rich results restricted (Aug 2023) to authoritative government and health sites only — markup remains valid for structure, but no rich result for most sites. | Expandable FAQ dropdowns in SERP (gov/health authority sites only) |
-| `HowTo` | Step-by-step instructional content (recipes, DIY, tutorials). Each step must be a distinct action. **Deprecation note:** HowTo rich results deprecated (Sept 2023) — markup remains valid for structure; use Article format with step-by-step structure instead. | None (rich results removed Sept 2023) |
-| `Product` | Product pages. Include `name`, `image`, `description`, `offers` (price, availability, currency). | Product snippet with price, availability, rating |
-| `LocalBusiness` | Businesses with a physical location. Include address, phone, hours, geo coordinates. Subtype to specific business type (e.g., `Restaurant`, `Dentist`). | Knowledge panel, Maps integration |
-| `Organization` | Company/brand homepage. Include name, logo, URL, social profiles, contact info. | Knowledge panel, logo in search |
-| `Person` | Author pages, speaker bios, team pages. Link to social profiles and authored content. | Knowledge panel for notable people |
-| `Review` / `AggregateRating` | Product reviews, service reviews. `AggregateRating` for summary of multiple reviews. Must represent genuine user reviews. | Star ratings in SERP |
-| `Event` | Upcoming events with date, location, ticket info. Include `startDate`, `location`, `offers` for tickets. | Event listing with date, venue, ticket link |
-| `VideoObject` | Video content on pages. Include `name`, `description`, `thumbnailUrl`, `uploadDate`, `duration`, `contentUrl` or `embedUrl`. | Video carousel, key moments |
-| `Speakable` | Content optimized for text-to-speech / voice assistants. Identify which sections are most suitable for audio playback. | Voice assistant eligibility (Google Assistant) |
-| `BreadcrumbList` | All pages with breadcrumb navigation. Reflects the page hierarchy. | Breadcrumb trail in SERP instead of raw URL |
-| `SiteNavigationElement` | Main site navigation menus. Helps search engines understand site structure. | Sitelinks refinement (indirect) |
+| `Article` | Articles de blog, articles d'actualité, contenu éditorial. Utiliser `NewsArticle` pour l'actualité, `BlogPosting` pour les blogs. | Carrousel d'articles, titre dans À la une |
+| `FAQPage` | Pages avec une liste de questions et réponses. Doit afficher les Q&R sur la page visible (pas seulement dans le balisage). **Remarque de dépréciation :** les résultats enrichis FAQ sont restreints (août 2023) aux sites gouvernementaux et de santé faisant autorité uniquement — le balisage reste valide pour la structure, mais aucun résultat enrichi pour la plupart des sites. | Menus déroulants FAQ extensibles dans la SERP (sites d'autorité gouv/santé uniquement) |
+| `HowTo` | Contenu instructif étape par étape (recettes, bricolage, tutoriels). Chaque étape doit être une action distincte. **Remarque de dépréciation :** les résultats enrichis HowTo sont dépréciés (sept. 2023) — le balisage reste valide pour la structure ; utiliser plutôt un format Article avec une structure étape par étape. | Aucun (résultats enrichis retirés sept. 2023) |
+| `Product` | Pages produit. Inclure `name`, `image`, `description`, `offers` (prix, disponibilité, devise). | Extrait produit avec prix, disponibilité, note |
+| `LocalBusiness` | Entreprises avec un emplacement physique. Inclure l'adresse, le téléphone, les horaires, les coordonnées géo. Sous-type vers le type d'entreprise spécifique (par ex., `Restaurant`, `Dentist`). | Bloc de connaissances, intégration Maps |
+| `Organization` | Page d'accueil entreprise/marque. Inclure le nom, le logo, l'URL, les profils sociaux, les coordonnées. | Bloc de connaissances, logo dans la recherche |
+| `Person` | Pages d'auteur, bios d'intervenant, pages d'équipe. Lier aux profils sociaux et au contenu écrit. | Bloc de connaissances pour les personnes notables |
+| `Review` / `AggregateRating` | Avis produit, avis de service. `AggregateRating` pour le résumé de plusieurs avis. Doit représenter de véritables avis utilisateurs. | Notes en étoiles dans la SERP |
+| `Event` | Événements à venir avec date, lieu, informations de billetterie. Inclure `startDate`, `location`, `offers` pour les billets. | Listing d'événement avec date, lieu, lien de billetterie |
+| `VideoObject` | Contenu vidéo sur les pages. Inclure `name`, `description`, `thumbnailUrl`, `uploadDate`, `duration`, `contentUrl` ou `embedUrl`. | Carrousel vidéo, moments clés |
+| `Speakable` | Contenu optimisé pour la synthèse vocale / assistants vocaux. Identifier quelles sections sont les plus adaptées à la lecture audio. | Éligibilité assistant vocal (Google Assistant) |
+| `BreadcrumbList` | Toutes les pages avec navigation en fil d'Ariane. Reflète la hiérarchie de la page. | Fil d'Ariane dans la SERP au lieu de l'URL brute |
+| `SiteNavigationElement` | Menus de navigation principale du site. Aide les moteurs de recherche à comprendre la structure du site. | Affinement des liens de site (indirect) |
 
-### Schema Implementation Notes
+### Notes d'implémentation de schéma
 
-- **Format:** Always use JSON-LD (recommended by Google) over Microdata or RDFa.
-- **Placement:** Insert `<script type="application/ld+json">` in the `<head>` or `<body>` of the page.
-- **Validation:** Test with Google Rich Results Test (https://search.google.com/test/rich-results) and Schema Markup Validator (https://validator.schema.org).
-- **Nesting:** Nest related schemas (e.g., `Product` containing `AggregateRating` and `Offers`).
-- **Avoid:** Do not mark up content that is not visible on the page. Do not use schema for deceptive purposes. Google may issue manual actions for misleading structured data.
+- **Format :** Toujours utiliser JSON-LD (recommandé par Google) plutôt que Microdata ou RDFa.
+- **Placement :** Insérer `<script type="application/ld+json">` dans le `<head>` ou le `<body>` de la page.
+- **Validation :** Tester avec le Google Rich Results Test (https://search.google.com/test/rich-results) et le Schema Markup Validator (https://validator.schema.org).
+- **Imbrication :** Imbriquer les schémas liés (par ex., `Product` contenant `AggregateRating` et `Offers`).
+- **À éviter :** Ne pas baliser du contenu qui n'est pas visible sur la page. Ne pas utiliser de schéma à des fins trompeuses. Google peut émettre des actions manuelles pour des données structurées trompeuses.
 
 ---
 
-## Section 5: Image Format Guide
+## Section 5 : Guide des formats d'image
 
-### Format Comparison
+### Comparaison des formats
 
-| Property | WebP | AVIF | PNG | JPEG |
+| Propriété | WebP | AVIF | PNG | JPEG |
 |---|---|---|---|---|
-| Compression type | Lossy + Lossless | Lossy + Lossless | Lossless | Lossy |
-| Transparency | Yes | Yes | Yes | No |
-| Animation | Yes | Yes (limited tooling) | Yes (APNG) | No |
-| Typical file size vs JPEG | 25-35% smaller | 40-50% smaller | 5-10x larger | Baseline |
-| Encoding speed | Fast | Slow (CPU-intensive) | Fast | Fast |
-| Decoding speed | Fast | Moderate | Fast | Fast |
-| Color depth | 8-bit | 8, 10, 12-bit (HDR support) | 8, 16-bit | 8-bit |
-| Max dimensions | 16,383 x 16,383 px | No practical limit | No practical limit | 65,535 x 65,535 px |
-| Progressive loading | No | Yes | No (interlaced PNG exists) | Yes |
+| Type de compression | Avec et sans perte | Avec et sans perte | Sans perte | Avec perte |
+| Transparence | Oui | Oui | Oui | Non |
+| Animation | Oui | Oui (outillage limité) | Oui (APNG) | Non |
+| Taille de fichier typique vs JPEG | 25-35 % plus petite | 40-50 % plus petite | 5-10x plus grande | Référence |
+| Vitesse d'encodage | Rapide | Lente (intensive en CPU) | Rapide | Rapide |
+| Vitesse de décodage | Rapide | Modérée | Rapide | Rapide |
+| Profondeur de couleur | 8 bits | 8, 10, 12 bits (support HDR) | 8, 16 bits | 8 bits |
+| Dimensions max | 16 383 x 16 383 px | Aucune limite pratique | Aucune limite pratique | 65 535 x 65 535 px |
+| Chargement progressif | Non | Oui | Non (le PNG entrelacé existe) | Oui |
 
-### Browser Support (as of 2026)
+### Support navigateur (en date de 2026)
 
 | Format | Chrome | Firefox | Safari | Edge | iOS Safari | Android |
 |---|---|---|---|---|---|---|
 | WebP | 32+ | 65+ | 16+ | 18+ | 16+ | 4.2+ |
 | AVIF | 85+ | 93+ | 16.4+ | 85+ | 16.4+ | 85+ |
-| PNG | All | All | All | All | All | All |
-| JPEG | All | All | All | All | All | All |
+| PNG | Tous | Tous | Tous | Tous | Tous | Tous |
+| JPEG | Tous | Tous | Tous | Tous | Tous | Tous |
 
-### When to Use Each Format
+### Quand utiliser chaque format
 
-| Format | Best For | Avoid When |
+| Format | Idéal pour | À éviter quand |
 |---|---|---|
-| **WebP** | General web images. Default choice for photos, illustrations, thumbnails. Best balance of compression, quality, and compatibility. | Email campaigns (limited client support), environments requiring lossless at maximum quality. |
-| **AVIF** | Hero images, high-quality photography where file size is critical. Best compression ratio available. Use when encoding time is not a constraint. | Bulk image processing pipelines (slow encoding), older browser support required without fallback, email. |
-| **PNG** | Logos, icons, screenshots, images with text, transparency over complex backgrounds, any image requiring pixel-perfect lossless quality. | Photographs (file size too large), any large image where lossy compression is acceptable. |
-| **JPEG** | Universal fallback. Email images. Social media uploads (platforms re-encode anyway). Legacy system compatibility. | Images with text (compression artifacts), transparency needed, logos or sharp-edged graphics. |
+| **WebP** | Images web générales. Choix par défaut pour les photos, illustrations, miniatures. Meilleur équilibre entre compression, qualité, et compatibilité. | Campagnes e-mail (support client limité), environnements nécessitant du sans perte à qualité maximale. |
+| **AVIF** | Images héros, photographie haute qualité où la taille de fichier est critique. Meilleur ratio de compression disponible. À utiliser quand le temps d'encodage n'est pas une contrainte. | Pipelines de traitement d'image en masse (encodage lent), support de navigateur ancien requis sans repli, e-mail. |
+| **PNG** | Logos, icônes, captures d'écran, images avec texte, transparence sur des fonds complexes, toute image nécessitant une qualité sans perte pixel-perfect. | Photographies (taille de fichier trop grande), toute grande image où la compression avec perte est acceptable. |
+| **JPEG** | Repli universel. Images d'e-mail. Téléversements sur réseaux sociaux (les plateformes ré-encodent de toute façon). Compatibilité avec les systèmes hérités. | Images avec texte (artefacts de compression), transparence nécessaire, logos ou graphiques à bords nets. |
 
-### Implementation Best Practice
+### Bonne pratique d'implémentation
 
-Use the `<picture>` element with format fallback:
+Utiliser l'élément `<picture>` avec repli de format :
 
 ```html
 <picture>
@@ -778,10 +778,10 @@ Use the `<picture>` element with format fallback:
 </picture>
 ```
 
-**Key rules:**
-- Always include `width` and `height` attributes to prevent Cumulative Layout Shift (CLS)
-- Use `loading="lazy"` for below-the-fold images
-- Use `loading="eager"` or `fetchpriority="high"` for LCP (Largest Contentful Paint) images
-- Serve responsive sizes with `srcset` and `sizes` attributes for resolution switching
-- Compress JPEG at quality 75-85 for web, WebP at quality 75-80, AVIF at quality 60-70
-- Always strip EXIF metadata for web delivery (privacy and file size)
+**Règles clés :**
+- Toujours inclure les attributs `width` et `height` pour éviter le Cumulative Layout Shift (CLS)
+- Utiliser `loading="lazy"` pour les images sous la ligne de flottaison
+- Utiliser `loading="eager"` ou `fetchpriority="high"` pour les images LCP (Largest Contentful Paint)
+- Servir des tailles responsives avec les attributs `srcset` et `sizes` pour le changement de résolution
+- Compresser le JPEG à une qualité de 75-85 pour le web, le WebP à une qualité de 75-80, l'AVIF à une qualité de 60-70
+- Toujours retirer les métadonnées EXIF pour la livraison web (confidentialité et taille de fichier)

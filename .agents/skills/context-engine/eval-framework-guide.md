@@ -1,29 +1,29 @@
-# Evaluation Framework Guide -- Content QA System
+# Guide du cadre d'évaluation -- Système d'assurance qualité de contenu
 
-The Digital Marketing Pro eval system is an automated quality assurance pipeline that scores marketing content across six dimensions before it reaches publication. It catches hallucinations, unverified claims, structural problems, brand voice drift, readability issues, and general content quality gaps -- then persists results over time so you can detect regression and improve continuously.
+Le système d'évaluation de Digital Marketing Pro est un pipeline d'assurance qualité automatisé qui note le contenu marketing selon six dimensions avant qu'il n'atteigne la publication. Il détecte les hallucinations, les affirmations non vérifiées, les problèmes structurels, la dérive de voix de marque, les problèmes de lisibilité, et les lacunes générales de qualité de contenu -- puis persiste les résultats dans le temps afin que vous puissiez détecter les régressions et vous améliorer en continu.
 
-This guide covers the full architecture, when to use each eval type, how to interpret results, and how to configure the system for different industries and content types.
+Ce guide couvre l'architecture complète, quand utiliser chaque type d'évaluation, comment interpréter les résultats, et comment configurer le système pour différents secteurs et types de contenu.
 
 ---
 
-## 1. Eval System Architecture
+## 1. Architecture du système d'évaluation
 
-Eight scripts work together to form the evaluation pipeline. Each script is a standalone Python tool (stdlib only, zero external dependencies) that can run independently or be orchestrated by the master runner.
+Huit scripts fonctionnent ensemble pour former le pipeline d'évaluation. Chaque script est un outil Python autonome (bibliothèque standard uniquement, zéro dépendance externe) qui peut s'exécuter indépendamment ou être orchestré par l'exécuteur principal.
 
-### Script Inventory
+### Inventaire des scripts
 
-| Script | Role | Input | Output |
+| Script | Rôle | Entrée | Sortie |
 |--------|------|-------|--------|
-| `eval-runner.py` | Master orchestrator | Content text/file + options | Composite report with weighted scores, grade, pass/fail |
-| `hallucination-detector.py` | Fabrication detection | Content text/file | Hallucination risk score + flagged items |
-| `claim-verifier.py` | Evidence cross-check | Content + evidence JSON | Claim verification score + per-claim status |
-| `output-validator.py` | Structure validation | Content + schema name | Structure score + missing sections/format issues |
-| `quality-tracker.py` | Persistence and trends | Eval results | Logged eval + trend data + regression alerts |
-| `eval-config-manager.py` | Threshold management | Brand slug + config changes | Per-brand eval configuration |
-| `prompt-ab-tester.py` | Variant comparison | Test name + variant scores | Statistical comparison + winner determination |
-| `language-router.py` | Language detection/routing | Content text | Detected language + routing recommendation |
+| `eval-runner.py` | Orchestrateur principal | Texte/fichier de contenu + options | Rapport composite avec scores pondérés, note, réussite/échec |
+| `hallucination-detector.py` | Détection de fabrication | Texte/fichier de contenu | Score de risque d'hallucination + éléments signalés |
+| `claim-verifier.py` | Recoupement de preuves | Contenu + JSON de preuves | Score de vérification des affirmations + statut par affirmation |
+| `output-validator.py` | Validation de structure | Contenu + nom de schéma | Score de structure + sections manquantes/problèmes de format |
+| `quality-tracker.py` | Persistance et tendances | Résultats d'évaluation | Évaluation journalisée + données de tendance + alertes de régression |
+| `eval-config-manager.py` | Gestion des seuils | Slug de marque + changements de configuration | Configuration d'évaluation par marque |
+| `prompt-ab-tester.py` | Comparaison de variantes | Nom de test + scores de variantes | Comparaison statistique + détermination du gagnant |
+| `language-router.py` | Détection/routage de langue | Texte de contenu | Langue détectée + recommandation de routage |
 
-### How They Connect
+### Comment ils se connectent
 
 ```
 Content (text or file)
@@ -56,63 +56,63 @@ Content (text or file)
         +---> Trend analysis
 ```
 
-The eval-runner calls each script via subprocess, collects JSON output from each, applies dimension weights, computes a composite score, assigns a letter grade, and optionally logs the result to quality-tracker.
+L'eval-runner appelle chaque script via un sous-processus, collecte la sortie JSON de chacun, applique les pondérations de dimension, calcule un score composite, assigne une note en lettre, et journalise optionnellement le résultat dans quality-tracker.
 
-### Key Design Decisions
+### Décisions de conception clés
 
-- **Subprocess isolation**: Each evaluator runs in its own process. A failure in one dimension does not block the others. The eval-runner captures errors and reports partial results.
-- **JSON-in, JSON-out**: Every script reads arguments from CLI flags and writes structured JSON to stdout. This makes them composable and testable.
-- **Brand-aware**: All scripts resolve the active brand from `~/.claude-marketing/brands/_active-brand.json` when no `--brand` flag is provided. This means eval config, quality history, and A/B tests are all scoped per brand.
+- **Isolation par sous-processus** : Chaque évaluateur s'exécute dans son propre processus. Un échec dans une dimension ne bloque pas les autres. L'eval-runner capture les erreurs et rapporte des résultats partiels.
+- **JSON en entrée, JSON en sortie** : Chaque script lit les arguments depuis les drapeaux CLI et écrit du JSON structuré vers stdout. Cela les rend composables et testables.
+- **Conscience de la marque** : Tous les scripts résolvent la marque active depuis `~/.claude-marketing/brands/_active-brand.json` quand aucun drapeau `--brand` n'est fourni. Cela signifie que la configuration d'évaluation, l'historique de qualité, et les tests A/B sont tous délimités par marque.
 
 ---
 
-## 2. When to Use Each Eval Type
+## 2. Quand utiliser chaque type d'évaluation
 
-### run-full -- Before Publishing Any Content
+### run-full -- Avant de publier tout contenu
 
-Full 6-dimension evaluation. Use this for any content that will be seen by an external audience.
+Évaluation complète à 6 dimensions. Utilisez ceci pour tout contenu qui sera vu par une audience externe.
 
 ```
 python eval-runner.py --action run-full --file draft.md --evidence claims.json --schema blog_post --log
 ```
 
-**Use for**: Blog posts, emails, landing pages, press releases, ad copy, campaign plans, content briefs, whitepapers, case studies, web pages.
+**À utiliser pour** : Articles de blog, e-mails, pages d'atterrissage, communiqués de presse, texte publicitaire, plans de campagne, briefs de contenu, livres blancs, études de cas, pages web.
 
-**Dimensions evaluated**: content_quality (0.25), brand_voice (0.20), hallucination (0.20), claim_verification (0.15), output_structure (0.10), readability (0.10).
+**Dimensions évaluées** : content_quality (0,25), brand_voice (0,20), hallucination (0,20), claim_verification (0,15), output_structure (0,10), readability (0,10).
 
-**When to skip evidence/schema**: If no evidence file exists, claim_verification is omitted and its weight is redistributed. If no schema is specified, output_structure is omitted. The composite recalculates with remaining dimensions.
+**Quand sauter la preuve/le schéma** : Si aucun fichier de preuves n'existe, claim_verification est omis et sa pondération est redistribuée. Si aucun schéma n'est spécifié, output_structure est omis. Le composite se recalcule avec les dimensions restantes.
 
-### run-quick -- During Drafting Iterations
+### run-quick -- Pendant les itérations de rédaction
 
-Fast feedback loop with 3 dimensions. Use this while iterating on drafts to catch major issues early without the overhead of full evaluation.
+Boucle de retour rapide avec 3 dimensions. Utilisez ceci pendant l'itération sur les brouillons pour détecter les problèmes majeurs tôt sans la surcharge de l'évaluation complète.
 
 ```
 python eval-runner.py --action run-quick --text "Your draft content here..."
 ```
 
-**Use for**: First drafts, outline-to-draft transitions, rapid iteration cycles, internal review rounds.
+**À utiliser pour** : Premiers brouillons, transitions plan-vers-brouillon, cycles d'itération rapide, rondes de revue interne.
 
-**Dimensions evaluated**: hallucination (0.40), content_quality (0.35), readability (0.25).
+**Dimensions évaluées** : hallucination (0,40), content_quality (0,35), readability (0,25).
 
-**Why these three**: Hallucination risk is weighted highest because catching fabricated claims early prevents downstream problems. Content quality and readability provide fast signal on whether the draft is heading in the right direction.
+**Pourquoi ces trois** : Le risque d'hallucination est le plus fortement pondéré car détecter les affirmations fabriquées tôt évite des problèmes en aval. La qualité de contenu et la lisibilité fournissent un signal rapide sur si le brouillon va dans la bonne direction.
 
-### run-compliance -- Before Regulated/Sensitive Content
+### run-compliance -- Avant tout contenu réglementé/sensible
 
-Compliance-focused evaluation with 4 dimensions weighted toward truthfulness and verifiability.
+Évaluation axée sur la conformité avec 4 dimensions pondérées vers la véracité et la vérifiabilité.
 
 ```
 python eval-runner.py --action run-compliance --file page.md --evidence facts.json --schema landing_page
 ```
 
-**Use for**: Healthcare marketing, financial services content, legal marketing, pharmaceutical claims, insurance offers, educational institution marketing, real estate listings.
+**À utiliser pour** : Marketing de la santé, contenu des services financiers, marketing juridique, allégations pharmaceutiques, offres d'assurance, marketing d'institutions éducatives, annonces immobilières.
 
-**Dimensions evaluated**: hallucination (0.35), claim_verification (0.30), brand_voice (0.20), output_structure (0.15).
+**Dimensions évaluées** : hallucination (0,35), claim_verification (0,30), brand_voice (0,20), output_structure (0,15).
 
-**Why this combination**: Regulated industries face legal consequences for unverified claims. The heavy weighting on hallucination and claim verification ensures content is truthful before it goes through brand and structural checks.
+**Pourquoi cette combinaison** : Les secteurs réglementés font face à des conséquences juridiques pour les affirmations non vérifiées. La forte pondération sur l'hallucination et la vérification des affirmations garantit que le contenu est véridique avant de passer par les contrôles de marque et de structure.
 
-### Individual Scripts -- Investigating Specific Issues
+### Scripts individuels -- Investiguer des problèmes spécifiques
 
-Run any evaluator standalone when you need to diagnose a specific problem.
+Exécutez tout évaluateur de manière autonome quand vous devez diagnostiquer un problème spécifique.
 
 ```
 python hallucination-detector.py --action detect --file draft.md
@@ -120,74 +120,74 @@ python claim-verifier.py --action extract-claims --text "We grew revenue 3x..."
 python output-validator.py --action validate --file page.md --schema landing_page
 ```
 
-**Use for**: Investigating why a composite score dropped, deep-diving into a specific dimension, validating a single aspect of content during revision.
+**À utiliser pour** : Investiguer pourquoi un score composite a chuté, approfondir une dimension spécifique, valider un seul aspect du contenu durant la révision.
 
 ---
 
-## 3. Interpreting Composite Scores and Grades
+## 3. Interpréter les scores composites et les notes
 
-| Grade | Score Range | Meaning | Action |
+| Note | Plage de score | Signification | Action |
 |-------|-------------|---------|--------|
-| **A+** | 95--100 | Publication-ready, exemplary quality | Publish with confidence. Use as a reference example for future content. |
-| **A** | 90--94 | Excellent, minimal revision needed | Publish. Optional minor polish for perfection. |
-| **A-** | 85--89 | Very good, minor polish recommended | Publish after addressing any flagged items. Low-priority revisions. |
-| **B+** | 80--84 | Good quality, some improvements worthwhile | Review flagged items. Publish if timeline is tight; revise if possible. |
-| **B** | 75--79 | Acceptable, review flagged items | Revise flagged items before publishing. Most content lands here on first draft. |
-| **B-** | 70--74 | Below average, revision recommended | Revise before publishing. Check which dimensions are pulling the score down. |
-| **C+** | 65--69 | Mediocre, significant revision needed | Do not publish without revision. Identify the weakest 2-3 dimensions and address them. |
-| **C** | 60--64 | Poor, major issues present | Substantial revision required. Consider re-approaching from a different angle. |
-| **C-** | 55--59 | Very poor, substantial rewrite needed | Near-rewrite territory. Check if the content brief was clear enough. |
-| **D** | 40--54 | Failing, do not publish without major revision | Rewrite from scratch using a clearer brief and stronger source material. |
-| **F** | Below 40 | Auto-reject, fundamental quality issues | Blocked by auto-reject gate. Content is not salvageable through revision. Start over. |
+| **A+** | 95--100 | Prêt à publier, qualité exemplaire | Publier avec confiance. Utiliser comme exemple de référence pour le contenu futur. |
+| **A** | 90--94 | Excellent, révision minime nécessaire | Publier. Peaufinage mineur optionnel pour la perfection. |
+| **A-** | 85--89 | Très bon, peaufinage mineur recommandé | Publier après avoir traité les éléments signalés. Révisions de faible priorité. |
+| **B+** | 80--84 | Bonne qualité, certaines améliorations valent la peine | Revoir les éléments signalés. Publier si le calendrier est serré ; réviser si possible. |
+| **B** | 75--79 | Acceptable, revoir les éléments signalés | Réviser les éléments signalés avant publication. La plupart du contenu atterrit ici au premier brouillon. |
+| **B-** | 70--74 | Sous la moyenne, révision recommandée | Réviser avant publication. Vérifier quelles dimensions tirent le score vers le bas. |
+| **C+** | 65--69 | Médiocre, révision significative nécessaire | Ne pas publier sans révision. Identifier les 2-3 dimensions les plus faibles et les traiter. |
+| **C** | 60--64 | Faible, problèmes majeurs présents | Révision substantielle requise. Envisager de ré-aborder sous un angle différent. |
+| **C-** | 55--59 | Très faible, réécriture substantielle nécessaire | Territoire proche de la réécriture. Vérifier si le brief de contenu était suffisamment clair. |
+| **D** | 40--54 | Échec, ne pas publier sans révision majeure | Réécrire depuis zéro avec un brief plus clair et un matériau source plus solide. |
+| **F** | En dessous de 40 | Rejet automatique, problèmes de qualité fondamentaux | Bloqué par la porte de rejet automatique. Le contenu n'est pas récupérable par révision. Recommencer. |
 
-**Practical guidance**: Most first drafts from agents score in the B to B+ range (75-84). Two rounds of targeted revision typically bring content into the A- to A range. If a first draft scores below C+ (65), the issue is usually an unclear brief or missing context, not just polish.
-
----
-
-## 4. Hallucination Detection Methodology
-
-The hallucination-detector uses heuristic pattern matching to identify content that may contain fabricated facts. It is deliberately conservative -- it flags potential issues for human review rather than silently passing questionable claims.
-
-### What It Catches
-
-- **Fabricated statistics without citations**: Percentages, dollar amounts, multipliers, and ratios that appear without attribution within 2 sentences
-- **Placeholder URLs**: `example.com`, `your-site.com`, `brand.com`, and similar patterns
-- **Unsubstantiated superlatives**: "best", "leading", "top", "#1" without qualifying evidence
-- **Made-up entity citations**: "A Harvard study found...", "According to Forrester..." when no actual source is provided
-- **Missing hedging on forward-looking claims**: Predictions and projections stated as facts without "expected", "projected", "estimated"
-
-### What It Cannot Catch
-
-This is critical to understand. The detector identifies *patterns* that correlate with hallucination. It cannot verify factual accuracy.
-
-- **Factually incorrect but plausible statistics**: "23% of marketers use AI" is plausible but might be 27% or 19%. The detector sees a cited percentage and passes it.
-- **Outdated data presented as current**: A 2021 stat with a 2021 citation looks valid to the detector even if the data is stale.
-- **Subtle misrepresentations**: Cherry-picked data, misleading comparisons, or out-of-context quotes.
-- **Domain-specific inaccuracies**: Industry jargon used incorrectly, technical claims that sound right but are wrong.
-
-### False Positive Scenarios
-
-- **Legitimate statistics with citation in a different paragraph**: The detector checks within a 2-sentence window. If the citation is 3+ sentences away, it may flag the stat.
-- **Intentional superlatives in opinion/editorial content**: "Our best quarter ever" in a CEO letter is legitimate but may trigger the superlative detector.
-- **Brand names that look like placeholders**: A brand literally named "YourBrand" or "CompanySite" will trigger placeholder patterns.
-
-### Reducing False Positives
-
-1. Always cite sources within 2 sentences of any statistic
-2. Use explicit attribution phrases: "according to", "per", "based on", "as reported by"
-3. Add dates to time-sensitive claims: "In Q4 2025, conversions increased by 47%"
-4. Use hedging language for projections: "projected to reach", "expected to grow", "estimated at"
-5. Qualify superlatives: "the leading platform in our category" rather than just "the leading platform"
+**Conseil pratique** : La plupart des premiers brouillons des agents obtiennent un score dans la plage B à B+ (75-84). Deux rondes de révision ciblée amènent typiquement le contenu dans la plage A- à A. Si un premier brouillon obtient moins de C+ (65), le problème est généralement un brief peu clair ou un contexte manquant, pas seulement du peaufinage.
 
 ---
 
-## 5. Claim Verification
+## 4. Méthodologie de détection d'hallucination
 
-The claim-verifier extracts verifiable claims from content and fuzzy-matches them against a user-provided evidence file. This is the only eval dimension that requires external input (the evidence JSON).
+Le hallucination-detector utilise une correspondance de motifs heuristique pour identifier le contenu qui pourrait contenir des faits fabriqués. Il est délibérément prudent -- il signale les problèmes potentiels pour revue humaine plutôt que de laisser passer silencieusement des affirmations douteuses.
 
-### Preparing Evidence Files
+### Ce qu'il détecte
 
-Evidence files are JSON with this structure:
+- **Statistiques fabriquées sans citations** : Pourcentages, montants en dollars, multiplicateurs, et ratios qui apparaissent sans attribution dans les 2 phrases
+- **URL de substitution** : `example.com`, `your-site.com`, `brand.com`, et motifs similaires
+- **Superlatifs non étayés** : « meilleur », « leader », « top », « n°1 » sans preuve qualifiante
+- **Citations d'entités inventées** : « Une étude de Harvard a trouvé... », « Selon Forrester... » quand aucune source réelle n'est fournie
+- **Nuance manquante sur les affirmations prospectives** : Prédictions et projections énoncées comme des faits sans « attendu », « projeté », « estimé »
+
+### Ce qu'il ne peut pas détecter
+
+Ceci est essentiel à comprendre. Le détecteur identifie des *motifs* qui corrèlent avec l'hallucination. Il ne peut pas vérifier l'exactitude factuelle.
+
+- **Statistiques factuellement incorrectes mais plausibles** : « 23 % des marketeurs utilisent l'IA » est plausible mais pourrait être 27 % ou 19 %. Le détecteur voit un pourcentage cité et le laisse passer.
+- **Données obsolètes présentées comme actuelles** : Une statistique de 2021 avec une citation de 2021 paraît valide pour le détecteur même si les données sont périmées.
+- **Représentations erronées subtiles** : Données sélectionnées avec parti pris, comparaisons trompeuses, ou citations hors contexte.
+- **Inexactitudes spécifiques au domaine** : Jargon sectoriel utilisé incorrectement, affirmations techniques qui sonnent juste mais sont fausses.
+
+### Scénarios de faux positifs
+
+- **Statistiques légitimes avec citation dans un paragraphe différent** : Le détecteur vérifie dans une fenêtre de 2 phrases. Si la citation est à 3 phrases ou plus, il pourrait signaler la statistique.
+- **Superlatifs intentionnels dans du contenu d'opinion/éditorial** : « Notre meilleur trimestre jamais » dans une lettre du PDG est légitime mais peut déclencher le détecteur de superlatif.
+- **Noms de marque qui ressemblent à des substituts** : Une marque littéralement nommée « YourBrand » ou « CompanySite » déclenchera les motifs de substitution.
+
+### Réduire les faux positifs
+
+1. Toujours citer les sources dans les 2 phrases de toute statistique
+2. Utiliser des formules d'attribution explicites : « selon », « d'après », « sur la base de », « comme rapporté par »
+3. Ajouter des dates aux affirmations sensibles au temps : « Au T4 2025, les conversions ont augmenté de 47 % »
+4. Utiliser un langage nuancé pour les projections : « projeté à atteindre », « attendu à croître », « estimé à »
+5. Qualifier les superlatifs : « la plateforme leader de notre catégorie » plutôt que simplement « la plateforme leader »
+
+---
+
+## 5. Vérification des affirmations
+
+Le claim-verifier extrait les affirmations vérifiables du contenu et les fait correspondre de manière floue à un fichier de preuves fourni par l'utilisateur. C'est la seule dimension d'évaluation qui nécessite une entrée externe (le JSON de preuves).
+
+### Préparer les fichiers de preuves
+
+Les fichiers de preuves sont en JSON avec cette structure :
 
 ```json
 {
@@ -208,45 +208,45 @@ Evidence files are JSON with this structure:
 }
 ```
 
-Each item needs: `claim` (the text of the claim as you would write it), `source` (where the data comes from), `date` (when it was verified), and `verified` (boolean -- is this confirmed?).
+Chaque élément a besoin de : `claim` (le texte de l'affirmation tel que vous l'écririez), `source` (d'où viennent les données), `date` (quand cela a été vérifié), et `verified` (booléen -- est-ce confirmé ?).
 
-### Building an Evidence Library
+### Construire une bibliothèque de preuves
 
-Build your evidence file incrementally from real data sources:
+Construisez votre fichier de preuves progressivement à partir de sources de données réelles :
 
-- **Analytics**: Export key metrics from GA4, Search Console, ad platforms. Record exact numbers with dates.
-- **Awards/Certifications**: Document award name, granting body, date received, and any expiration.
-- **Customer counts**: Pull from CRM. Update quarterly.
-- **Financial claims**: Use official financial reports. Mark clearly if estimates vs. actuals.
-- **Testimonials**: Record customer name, quote, date, and consent status.
-- **Performance claims**: Screenshot or export the specific report that backs each claim.
+- **Analytics** : Exporter les métriques clés depuis GA4, Search Console, plateformes publicitaires. Enregistrer les chiffres exacts avec les dates.
+- **Prix/Certifications** : Documenter le nom du prix, l'organisme décernant, la date de réception, et toute expiration.
+- **Nombre de clients** : Extraire du CRM. Mettre à jour trimestriellement.
+- **Affirmations financières** : Utiliser les rapports financiers officiels. Marquer clairement s'il s'agit d'estimations vs de chiffres réels.
+- **Témoignages** : Enregistrer le nom du client, la citation, la date, et le statut de consentement.
+- **Affirmations de performance** : Capturer en écran ou exporter le rapport spécifique qui étaye chaque affirmation.
 
-### Match Confidence Levels
+### Niveaux de confiance de correspondance
 
-| Level | Fuzzy Match Score | Evidence Status | Meaning |
+| Niveau | Score de correspondance floue | Statut de preuve | Signification |
 |-------|-------------------|-----------------|---------|
-| **Verified** | 0.80 or higher | `verified: true` | Claim matches evidence and evidence is confirmed |
-| **Partially verified** | 0.60--0.79 | Any | Claim is similar to evidence but not an exact match. Numbers may differ slightly. |
-| **Unverified** | Below 0.60 or no match | N/A | No evidence found for this claim. It might be true but is not documented. |
-| **Contradicted** | 0.60 or higher | Numbers conflict | Claim matches evidence text but the numbers are different (e.g., "50% increase" vs. evidence showing "32% increase"). |
+| **Vérifié** | 0,80 ou plus | `verified: true` | L'affirmation correspond à la preuve et la preuve est confirmée |
+| **Partiellement vérifié** | 0,60--0,79 | Tout | L'affirmation est similaire à la preuve mais pas une correspondance exacte. Les chiffres peuvent différer légèrement. |
+| **Non vérifié** | En dessous de 0,60 ou aucune correspondance | N/A | Aucune preuve trouvée pour cette affirmation. Elle pourrait être vraie mais n'est pas documentée. |
+| **Contredit** | 0,60 ou plus | Les chiffres entrent en conflit | L'affirmation correspond au texte de preuve mais les chiffres sont différents (par ex., « augmentation de 50 % » vs la preuve montrant « augmentation de 32 % »). |
 
-### Best Practices
+### Bonnes pratiques
 
-- Update evidence files quarterly -- stale evidence leads to false "unverified" results
-- Include the date for every evidence item so time-sensitive claims can be flagged when they expire
-- Mark expired claims explicitly (set `verified: false` with a note) rather than deleting them
-- Store evidence files at `~/.claude-marketing/brands/{slug}/evidence/` for persistence across sessions
-- Separate evidence by domain: `evidence-metrics.json`, `evidence-awards.json`, `evidence-customers.json`
+- Mettre à jour les fichiers de preuves trimestriellement -- des preuves obsolètes mènent à de faux résultats « non vérifiés »
+- Inclure la date pour chaque élément de preuve afin que les affirmations sensibles au temps puissent être signalées à leur expiration
+- Marquer explicitement les affirmations expirées (définir `verified: false` avec une note) plutôt que de les supprimer
+- Stocker les fichiers de preuves à `~/.claude-marketing/brands/{slug}/evidence/` pour la persistance à travers les sessions
+- Séparer les preuves par domaine : `evidence-metrics.json`, `evidence-awards.json`, `evidence-customers.json`
 
 ---
 
-## 6. Output Validation
+## 6. Validation de la sortie
 
-The output-validator checks content against structural schemas. It verifies that required sections are present, word counts are within bounds, formatting rules are followed, and no placeholder text remains.
+Le output-validator vérifie le contenu par rapport à des schémas structurels. Il vérifie que les sections requises sont présentes, que le nombre de mots est dans les limites, que les règles de formatage sont suivies, et qu'aucun texte de substitution ne demeure.
 
-### Built-in Schemas
+### Schémas intégrés
 
-| Schema | Required Sections | Min Words | Max Words | Format Rules |
+| Schéma | Sections requises | Mots min | Mots max | Règles de format |
 |--------|-------------------|-----------|-----------|--------------|
 | `blog_post` | title, introduction, body, conclusion | 300 | -- | has_headings, has_paragraphs |
 | `email` | subject_line, body, cta | 50 | -- | has_cta, has_subject |
@@ -257,9 +257,9 @@ The output-validator checks content against structural schemas. It verifies that
 | `content_brief` | objective, target_audience, key_messages, outline | 100 | -- | has_headings |
 | `campaign_plan` | objective, strategy, channels, timeline, budget, kpis | 300 | -- | has_headings, has_paragraphs |
 
-### Creating Custom Schemas
+### Créer des schémas personnalisés
 
-Save a JSON file with your custom schema and pass it via `--custom-schema`:
+Sauvegardez un fichier JSON avec votre schéma personnalisé et passez-le via `--custom-schema` :
 
 ```json
 {
@@ -271,166 +271,166 @@ Save a JSON file with your custom schema and pass it via `--custom-schema`:
 }
 ```
 
-### Section Detection
+### Détection de section
 
-The validator uses fuzzy matching on markdown headings (`##`, `###`) and bold labels (`**Section Name**`) to identify sections. The `SECTION_ALIASES` mapping handles common variations (e.g., "intro" matches "introduction", "next steps" matches "cta").
+Le validateur utilise une correspondance floue sur les titres markdown (`##`, `###`) et les labels en gras (`**Nom de la section**`) pour identifier les sections. Le mappage `SECTION_ALIASES` gère les variations courantes (par ex., « intro » correspond à « introduction », « prochaines étapes » correspond à « cta »).
 
-### Common Validation Failures
+### Échecs de validation courants
 
-- **Missing CTAs**: The most frequent failure. Always include an explicit call-to-action section even in informational content.
-- **Placeholder text left in**: `[Insert company name]`, `{brand}`, `Lorem ipsum`, `TBD` all trigger deductions.
-- **Word count violations**: Ad copy exceeding 150 words, blog posts under 300 words. Check the schema limits before writing.
-- **Missing required sections**: Press releases commonly miss the boilerplate or contact section. Campaign plans often skip the KPIs section.
-
----
-
-## 7. Quality Tracking and Regression
-
-The quality-tracker persists every eval result and computes rolling statistics. This is how you detect quality drift over time.
-
-### How Baselines Work
-
-- Baselines are computed as the **30-day rolling average** per content type per scoring dimension
-- A minimum of 5 evals is required before a baseline is established
-- Baselines update automatically every time a new eval is logged
-- Storage: `~/.claude-marketing/brands/{slug}/quality/evals/eval-{timestamp}.json`
-
-### Regression Alerts
-
-Regression is flagged when either condition is met:
-
-1. **Rolling average drop**: The last-5-eval average for any dimension drops more than **10 points** below the 30-day baseline
-2. **Single dimension spike**: Any single eval scores more than **15 points** below the baseline for a dimension
-
-### Interpreting Trends
-
-Use `quality-tracker.py --action get-trends --days 30` to see weekly buckets:
-
-- **Improving**: Weekly average rising by 3+ points per week for 2+ consecutive weeks
-- **Stable**: Weekly average within +/- 3 points of the baseline
-- **Declining**: Weekly average dropping by 3+ points per week for 2+ consecutive weeks
-
-### Acting on Regression
-
-When a regression alert fires, investigate in this order:
-
-1. **Recent prompt changes**: Did an agent's instructions change? Did a workflow update alter how content is generated?
-2. **Brand profile updates**: Was the brand voice profile modified? Did industry or audience targeting change?
-3. **Agent instruction changes**: Were any agent markdown files edited recently?
-4. **Evidence file staleness**: Are claim verification scores dropping because evidence is outdated?
-5. **Content type shift**: Are you generating more of a content type that naturally scores lower (e.g., short social posts vs. long blog posts)?
+- **CTA manquants** : L'échec le plus fréquent. Toujours inclure une section d'appel à l'action explicite même dans le contenu informationnel.
+- **Texte de substitution laissé en place** : `[Insérer le nom de l'entreprise]`, `{marque}`, `Lorem ipsum`, `TBD` déclenchent tous des déductions.
+- **Violations de nombre de mots** : Texte publicitaire dépassant 150 mots, articles de blog sous 300 mots. Vérifier les limites du schéma avant de rédiger.
+- **Sections requises manquantes** : Les communiqués de presse manquent couramment la section boilerplate ou contact. Les plans de campagne sautent souvent la section des KPI.
 
 ---
 
-## 8. Integration with the Approval Workflow
+## 7. Suivi de qualité et régression
 
-The eval system is wired into the approval framework documented in `approval-framework.md`.
+Le quality-tracker persiste chaque résultat d'évaluation et calcule des statistiques mobiles. C'est ainsi que vous détectez la dérive de qualité dans le temps.
 
-### Automatic Eval During Execution
+### Comment fonctionnent les références
 
-- The `execution-coordinator` agent calls `eval-runner.py --action run-quick` before creating an approval record for any content
-- The eval grade is included in the approval record so human reviewers have quality context
-- If the composite score falls below the **auto-reject threshold** (default 40, configurable via eval-config-manager), execution is blocked automatically
+- Les références sont calculées comme la **moyenne mobile sur 30 jours** par type de contenu par dimension de notation
+- Un minimum de 5 évaluations est requis avant qu'une référence ne soit établie
+- Les références se mettent à jour automatiquement à chaque fois qu'une nouvelle évaluation est journalisée
+- Stockage : `~/.claude-marketing/brands/{slug}/quality/evals/eval-{timestamp}.json`
 
-### Content Scoring During Drafting
+### Alertes de régression
 
-Run `hallucination-detector.py` on drafts as you write, not just at final eval time — a lightweight pass catches obvious fabrication indicators (placeholder URLs, invented statistics, unattributed superlatives) early. (This plugin ships zero hooks by design; skills instruct the agent to run this check before content moves forward, and you can wire a user-scope PreToolUse hook yourself if you want it automated.)
+Une régression est signalée quand l'une ou l'autre condition est remplie :
 
-### Approval Record Integration
+1. **Chute de moyenne mobile** : La moyenne des 5 dernières évaluations pour toute dimension chute de plus de **10 points** en dessous de la référence sur 30 jours
+2. **Pic sur une seule dimension** : Toute évaluation unique obtient un score de plus de **15 points** en dessous de la référence pour une dimension
 
-Every approval record includes:
-- `eval_grade`: The letter grade from the most recent eval
-- `eval_composite`: The numeric composite score
-- `eval_flags`: Array of specific issues flagged by any evaluator
-- `eval_timestamp`: When the eval was run
+### Interpréter les tendances
 
-Human reviewers should pay special attention to items where `eval_flags` is non-empty, even if the composite score is acceptable.
+Utilisez `quality-tracker.py --action get-trends --days 30` pour voir les compartiments hebdomadaires :
+
+- **En amélioration** : La moyenne hebdomadaire augmente de 3 points ou plus par semaine pendant 2 semaines consécutives ou plus
+- **Stable** : La moyenne hebdomadaire est à +/- 3 points de la référence
+- **En déclin** : La moyenne hebdomadaire chute de 3 points ou plus par semaine pendant 2 semaines consécutives ou plus
+
+### Agir sur la régression
+
+Quand une alerte de régression se déclenche, investiguer dans cet ordre :
+
+1. **Changements récents de prompt** : Les instructions d'un agent ont-elles changé ? Une mise à jour de workflow a-t-elle modifié la manière dont le contenu est généré ?
+2. **Mises à jour du profil de marque** : Le profil de voix de marque a-t-il été modifié ? Le secteur ou le ciblage d'audience a-t-il changé ?
+3. **Changements d'instruction d'agent** : Des fichiers markdown d'agent ont-ils été édités récemment ?
+4. **Obsolescence du fichier de preuves** : Les scores de vérification des affirmations chutent-ils parce que les preuves sont obsolètes ?
+5. **Changement de type de contenu** : Générez-vous davantage d'un type de contenu qui obtient naturellement un score plus bas (par ex., publications sociales courtes vs longs articles de blog) ?
 
 ---
 
-## 9. Eval Configuration Recommendations
+## 8. Intégration avec le flux d'approbation
 
-Use `eval-config-manager.py` to tune weights and thresholds per brand.
+Le système d'évaluation est câblé dans le cadre d'approbation documenté dans `approval-framework.md`.
 
-### By Industry
+### Évaluation automatique durant l'exécution
 
-| Industry | Hallucination | Claim Verification | Content Quality | Brand Voice | Structure | Readability |
+- L'agent `execution-coordinator` appelle `eval-runner.py --action run-quick` avant de créer un enregistrement d'approbation pour tout contenu
+- La note d'évaluation est incluse dans l'enregistrement d'approbation afin que les relecteurs humains aient un contexte de qualité
+- Si le score composite tombe en dessous du **seuil de rejet automatique** (40 par défaut, configurable via eval-config-manager), l'exécution est bloquée automatiquement
+
+### Notation de contenu durant la rédaction
+
+Exécutez `hallucination-detector.py` sur les brouillons au fur et à mesure que vous écrivez, pas seulement au moment de l'évaluation finale — une passe légère détecte tôt les indicateurs évidents de fabrication (URL de substitution, statistiques inventées, superlatifs non attribués). (Ce plugin ne fournit aucun hook par conception ; les compétences demandent à l'agent d'exécuter cette vérification avant que le contenu n'avance, et vous pouvez câbler vous-même un hook PreToolUse de portée utilisateur si vous voulez l'automatiser.)
+
+### Intégration de l'enregistrement d'approbation
+
+Chaque enregistrement d'approbation inclut :
+- `eval_grade` : La note en lettre de l'évaluation la plus récente
+- `eval_composite` : Le score composite numérique
+- `eval_flags` : Tableau des problèmes spécifiques signalés par tout évaluateur
+- `eval_timestamp` : Quand l'évaluation a été exécutée
+
+Les relecteurs humains devraient porter une attention particulière aux éléments où `eval_flags` n'est pas vide, même si le score composite est acceptable.
+
+---
+
+## 9. Recommandations de configuration d'évaluation
+
+Utilisez `eval-config-manager.py` pour ajuster les pondérations et seuils par marque.
+
+### Par secteur
+
+| Secteur | Hallucination | Vérification des affirmations | Qualité de contenu | Voix de marque | Structure | Lisibilité |
 |----------|--------------|-------------------|----------------|-------------|-----------|-------------|
-| Healthcare | 0.30 | 0.25 | 0.15 | 0.15 | 0.10 | 0.05 |
-| Financial Services | 0.25 | 0.25 | 0.15 | 0.15 | 0.10 | 0.10 |
-| Legal Services | 0.25 | 0.25 | 0.15 | 0.15 | 0.15 | 0.05 |
-| B2B Technology | 0.15 | 0.15 | 0.30 | 0.15 | 0.10 | 0.15 |
-| Consumer/Lifestyle | 0.15 | 0.10 | 0.20 | 0.25 | 0.10 | 0.20 |
-| E-commerce | 0.20 | 0.15 | 0.20 | 0.20 | 0.15 | 0.10 |
-| Education | 0.25 | 0.20 | 0.20 | 0.10 | 0.15 | 0.10 |
+| Santé | 0,30 | 0,25 | 0,15 | 0,15 | 0,10 | 0,05 |
+| Services financiers | 0,25 | 0,25 | 0,15 | 0,15 | 0,10 | 0,10 |
+| Services juridiques | 0,25 | 0,25 | 0,15 | 0,15 | 0,15 | 0,05 |
+| Technologie B2B | 0,15 | 0,15 | 0,30 | 0,15 | 0,10 | 0,15 |
+| Consommation/Style de vie | 0,15 | 0,10 | 0,20 | 0,25 | 0,10 | 0,20 |
+| E-commerce | 0,20 | 0,15 | 0,20 | 0,20 | 0,15 | 0,10 |
+| Éducation | 0,25 | 0,20 | 0,20 | 0,10 | 0,15 | 0,10 |
 
-### By Content Type
+### Par type de contenu
 
-| Content Type | Hallucination | Claim Verification | Content Quality | Brand Voice | Structure | Readability |
+| Type de contenu | Hallucination | Vérification des affirmations | Qualité de contenu | Voix de marque | Structure | Lisibilité |
 |-------------|--------------|-------------------|----------------|-------------|-----------|-------------|
-| Ad copy | 0.30 | 0.15 | 0.20 | 0.20 | 0.05 | 0.10 |
-| Blog posts | 0.20 | 0.15 | 0.25 | 0.20 | 0.10 | 0.10 |
-| Press releases | 0.20 | 0.25 | 0.15 | 0.15 | 0.15 | 0.10 |
-| Social posts | 0.25 | 0.10 | 0.20 | 0.25 | 0.05 | 0.15 |
-| Landing pages | 0.20 | 0.20 | 0.20 | 0.15 | 0.15 | 0.10 |
-| Emails | 0.20 | 0.15 | 0.20 | 0.20 | 0.15 | 0.10 |
-| Campaign plans | 0.10 | 0.10 | 0.30 | 0.10 | 0.25 | 0.15 |
+| Texte publicitaire | 0,30 | 0,15 | 0,20 | 0,20 | 0,05 | 0,10 |
+| Articles de blog | 0,20 | 0,15 | 0,25 | 0,20 | 0,10 | 0,10 |
+| Communiqués de presse | 0,20 | 0,25 | 0,15 | 0,15 | 0,15 | 0,10 |
+| Publications sociales | 0,25 | 0,10 | 0,20 | 0,25 | 0,05 | 0,15 |
+| Pages d'atterrissage | 0,20 | 0,20 | 0,20 | 0,15 | 0,15 | 0,10 |
+| E-mails | 0,20 | 0,15 | 0,20 | 0,20 | 0,15 | 0,10 |
+| Plans de campagne | 0,10 | 0,10 | 0,30 | 0,10 | 0,25 | 0,15 |
 
-### By Brand Maturity
+### Par maturité de marque
 
-- **New brands** (first 30 days): Use lower minimum thresholds (50-60) while building baselines. Focus on establishing consistent content production before tightening quality gates. Set auto-reject at 35.
-- **Growing brands** (30-90 days): Gradually increase minimum thresholds (60-70) as baselines stabilize. Start enforcing brand voice scores. Set auto-reject at 40.
-- **Established brands** (90+ days): Use higher thresholds (70-80) with strict enforcement. Regression alerts should trigger immediate investigation. Set auto-reject at 45-50.
-
----
-
-## 10. LLM-as-Judge Limitations
-
-The eval system uses deterministic heuristics (pattern matching, fuzzy matching, word counting) rather than LLM-based judgment for scoring. This is intentional -- deterministic checks are consistent, fast, and free. However, it means the eval system has inherent blind spots.
-
-### What Still Requires Human Judgment
-
-- **Domain-specific factual accuracy**: Is that medical claim actually correct? Is that legal interpretation sound? The eval system checks if claims are *cited*, not if they are *true*.
-- **Cultural appropriateness**: Tone, humor, and references that may be inappropriate for specific cultural contexts. No heuristic can reliably detect this.
-- **Strategic alignment**: Does this content support the campaign goal? Is it positioned correctly against competitors? These are strategic questions beyond pattern matching.
-- **Creative quality and originality**: Is this content genuinely insightful, or is it a competent rehash of existing ideas? Creativity is not scorable by heuristic.
-- **Emotional resonance**: Does this content connect with the reader emotionally? Engagement is felt, not measured by word patterns.
-
-### The Quality-Assurance Agent
-
-The `quality-assurance` agent adds LLM-based reasoning on top of script scores. It reads the eval results, examines the flagged items, and provides qualitative commentary. This adds nuance that scripts cannot provide -- but the agent's judgments should be verified for high-stakes content because LLM reasoning can itself be inconsistent.
-
-### Recommended Workflow
-
-1. **Automated eval first**: Run `eval-runner.py` to get quantitative scores and flagged items
-2. **Agent review for flagged items**: Let the quality-assurance agent analyze any flags or low-scoring dimensions
-3. **Human review for high-stakes content**: Any content that is regulated, high-spend, or high-visibility should get human eyes regardless of score
-4. **Final approval**: Use the approval workflow to confirm publication readiness
+- **Nouvelles marques** (30 premiers jours) : Utiliser des seuils minimums plus bas (50-60) pendant la construction des références. Se concentrer sur l'établissement d'une production de contenu cohérente avant de resserrer les portes de qualité. Définir le rejet automatique à 35.
+- **Marques en croissance** (30-90 jours) : Augmenter progressivement les seuils minimums (60-70) à mesure que les références se stabilisent. Commencer à appliquer les scores de voix de marque. Définir le rejet automatique à 40.
+- **Marques établies** (90+ jours) : Utiliser des seuils plus élevés (70-80) avec une application stricte. Les alertes de régression devraient déclencher une investigation immédiate. Définir le rejet automatique à 45-50.
 
 ---
 
-## 11. Prompt A/B Testing
+## 10. Limitations du LLM comme juge
 
-The prompt-ab-tester tracks variant performance over time. Use it when you want to compare different approaches to the same content task.
+Le système d'évaluation utilise des heuristiques déterministes (correspondance de motifs, correspondance floue, comptage de mots) plutôt qu'un jugement basé sur LLM pour la notation. C'est intentionnel -- les vérifications déterministes sont cohérentes, rapides, et gratuites. Cependant, cela signifie que le système d'évaluation a des angles morts inhérents.
 
-### When to Test
+### Ce qui nécessite encore un jugement humain
 
-- **Subject lines**: "Direct benefit" vs. "Curiosity gap" vs. "Question-based"
-- **Headlines**: Different angles on the same topic
-- **CTAs**: "Start free trial" vs. "See pricing" vs. "Book a demo"
-- **Email body approaches**: Long-form storytelling vs. short-form bullet points
-- **Ad copy styles**: Feature-led vs. benefit-led vs. social-proof-led
+- **Exactitude factuelle spécifique au domaine** : Cette allégation médicale est-elle réellement correcte ? Cette interprétation juridique est-elle solide ? Le système d'évaluation vérifie si les affirmations sont *citées*, pas si elles sont *vraies*.
+- **Adéquation culturelle** : Ton, humour, et références qui peuvent être inappropriés pour des contextes culturels spécifiques. Aucune heuristique ne peut détecter cela de manière fiable.
+- **Alignement stratégique** : Ce contenu soutient-il l'objectif de campagne ? Est-il positionné correctement face aux concurrents ? Ce sont des questions stratégiques au-delà de la correspondance de motifs.
+- **Qualité et originalité créative** : Ce contenu est-il véritablement perspicace, ou est-ce un remaniement compétent d'idées existantes ? La créativité n'est pas notable par heuristique.
+- **Résonance émotionnelle** : Ce contenu connecte-t-il avec le lecteur émotionnellement ? L'engagement se ressent, il ne se mesure pas par des motifs de mots.
 
-### Setting Up a Test
+### L'agent d'assurance qualité
+
+L'agent `quality-assurance` ajoute un raisonnement basé sur LLM par-dessus les scores des scripts. Il lit les résultats d'évaluation, examine les éléments signalés, et fournit un commentaire qualitatif. Cela ajoute une nuance que les scripts ne peuvent pas fournir -- mais les jugements de l'agent devraient être vérifiés pour le contenu à fort enjeu car le raisonnement LLM peut lui-même être incohérent.
+
+### Flux de travail recommandé
+
+1. **Évaluation automatisée d'abord** : Exécuter `eval-runner.py` pour obtenir des scores quantitatifs et des éléments signalés
+2. **Revue par l'agent pour les éléments signalés** : Laisser l'agent d'assurance qualité analyser tout signalement ou dimension à faible score
+3. **Revue humaine pour le contenu à fort enjeu** : Tout contenu réglementé, à forte dépense, ou à forte visibilité devrait recevoir des yeux humains indépendamment du score
+4. **Approbation finale** : Utiliser le flux d'approbation pour confirmer la préparation à la publication
+
+---
+
+## 11. Test A/B de prompt
+
+Le prompt-ab-tester suit la performance des variantes dans le temps. Utilisez-le quand vous voulez comparer différentes approches à la même tâche de contenu.
+
+### Quand tester
+
+- **Objets d'e-mail** : « Bénéfice direct » vs « écart de curiosité » vs « basé sur une question »
+- **Titres** : Angles différents sur le même sujet
+- **CTA** : « Démarrer l'essai gratuit » vs « Voir la tarification » vs « Réserver une démo »
+- **Approches de corps d'e-mail** : Narration longue vs puces courtes
+- **Styles de texte publicitaire** : Axé fonctionnalité vs axé bénéfice vs axé preuve sociale
+
+### Configurer un test
 
 ```
 python prompt-ab-tester.py --action create-test --test-name email-subject-q1 \
     --data '{"description":"Testing email subject line styles for Q1 campaign"}'
 ```
 
-### Logging Variants
+### Journaliser les variantes
 
-Run each variant through `eval-runner.py`, then log the scores:
+Exécutez chaque variante à travers `eval-runner.py`, puis journalisez les scores :
 
 ```
 python prompt-ab-tester.py --action log-variant --test-name email-subject-q1 \
@@ -440,31 +440,31 @@ python prompt-ab-tester.py --action log-variant --test-name email-subject-q1 \
     --variant B --data '{"description":"Question-based","scores":{"content_quality":78,"brand_voice":82,"composite":80}}'
 ```
 
-### Minimum Sample Sizes
+### Tailles d'échantillon minimales
 
-| Sample Size | Reliability |
+| Taille d'échantillon | Fiabilité |
 |-------------|-------------|
-| 1--4 evals per variant | Insufficient. Results are anecdotal. |
-| 5--9 evals per variant | Directional signal. Useful for eliminating clearly worse variants. |
-| 10+ evals per variant | Reliable comparison. Differences of 5+ points are meaningful. |
+| 1--4 évaluations par variante | Insuffisant. Les résultats sont anecdotiques. |
+| 5--9 évaluations par variante | Signal directionnel. Utile pour éliminer les variantes clairement inférieures. |
+| 10+ évaluations par variante | Comparaison fiable. Les différences de 5 points ou plus sont significatives. |
 
-### Interpreting Results
+### Interpréter les résultats
 
-- **Greater than 10-point difference**: Significant. The higher-scoring variant is meaningfully better.
-- **5--10 point difference**: Likely significant. Use the higher-scoring variant but consider retesting with more samples.
-- **Less than 5-point difference**: Inconclusive. The variants are effectively equivalent. Choose based on strategic preference.
+- **Différence de plus de 10 points** : Significative. La variante à score plus élevé est meaningfully meilleure.
+- **Différence de 5 à 10 points** : Probablement significative. Utiliser la variante à score plus élevé mais envisager de retester avec plus d'échantillons.
+- **Différence de moins de 5 points** : Non concluant. Les variantes sont effectivement équivalentes. Choisir selon la préférence stratégique.
 
-### Best Practices
+### Bonnes pratiques
 
-1. **Test one variable at a time**: If you change both the headline and the CTA, you cannot attribute score differences to either change.
-2. **Use consistent evaluation criteria**: All variants in a test should use the same eval type (run-full, run-quick) with the same weights.
-3. **Log all variants**: Even the losing variants have value. They show what does not work and inform future content strategy.
-4. **Name tests descriptively**: `email-subject-q1-curiosity-vs-benefit` is better than `test-1`.
-5. **Archive completed tests**: Use the results to update content guidelines and inform future A/B tests.
+1. **Tester une variable à la fois** : Si vous changez à la fois le titre et le CTA, vous ne pouvez pas attribuer les différences de score à l'un ou l'autre changement.
+2. **Utiliser des critères d'évaluation cohérents** : Toutes les variantes d'un test devraient utiliser le même type d'évaluation (run-full, run-quick) avec les mêmes pondérations.
+3. **Journaliser toutes les variantes** : Même les variantes perdantes ont de la valeur. Elles montrent ce qui ne fonctionne pas et informent la stratégie de contenu future.
+4. **Nommer les tests de manière descriptive** : `email-subject-q1-curiosity-vs-benefit` est meilleur que `test-1`.
+5. **Archiver les tests terminés** : Utiliser les résultats pour mettre à jour les guidelines de contenu et informer les futurs tests A/B.
 
 ---
 
-## Quick Reference: Script Commands
+## Référence rapide : commandes de script
 
 ```bash
 # Full eval with all options

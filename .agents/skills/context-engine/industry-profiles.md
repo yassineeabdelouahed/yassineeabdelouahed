@@ -1,1559 +1,1557 @@
-# Industry Profiles Reference
+# Référence des profils sectoriels
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des références (en date du 2026-08) :** Les chiffres en dollars de ce document sont des estimations de planification, pas des cotations — les tarifs de marché et d'enchère évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez ensuite depuis ce registre (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-> **Purpose:** Machine-readable reference for marketing modules. Each profile provides benchmarks, channel priorities, compliance notes, and strategic context so the agent can tailor recommendations to the client's industry without hallucinating numbers.
+> **Objectif :** Référence lisible par machine pour les modules marketing. Chaque profil fournit des références, des priorités de canal, des notes de conformité, et un contexte stratégique afin que l'agent puisse adapter les recommandations au secteur du client sans halluciner de chiffres.
 >
-> **Last updated:** 2026-02-11
+> **Dernière mise à jour :** 2026-02-11
 >
-> **Usage:** When a workflow or module needs industry-specific data, look up the relevant profile below. All KPI ranges represent typical mid-market performance (not top-decile or bottom-decile). Adjust recommendations based on company maturity and budget.
+> **Usage :** Lorsqu'un flux de travail ou un module a besoin de données spécifiques à un secteur, consulter le profil pertinent ci-dessous. Toutes les fourchettes de KPI représentent une performance typique de marché intermédiaire (pas le décile supérieur ou inférieur). Ajuster les recommandations selon la maturité de l'entreprise et le budget.
 
 ---
 
-## Table of Contents
+## Table des matières
 
-1. [SaaS / Software](#1-saas--software)
-2. [eCommerce / Retail](#2-ecommerce--retail)
-3. [Healthcare / Medical](#3-healthcare--medical)
-4. [Finance / Banking](#4-finance--banking)
-5. [Legal Services](#5-legal-services)
-6. [Real Estate](#6-real-estate)
-7. [Education / EdTech](#7-education--edtech)
-8. [Restaurant / Food Service](#8-restaurant--food-service)
-9. [Travel / Hospitality](#9-travel--hospitality)
-10. [Automotive](#10-automotive)
-11. [Non-Profit](#11-non-profit)
-12. [Manufacturing / Industrial B2B](#12-manufacturing--industrial-b2b)
-13. [Insurance](#13-insurance)
-14. [Home Services](#14-home-services)
-15. [Fitness / Wellness](#15-fitness--wellness)
-16. [Fashion / Beauty](#16-fashion--beauty)
-17. [Telecom](#17-telecom)
-18. [Professional Services](#18-professional-services)
-19. [Gaming / Entertainment](#19-gaming--entertainment)
+1. [SaaS / Logiciel](#1-saas--logiciel)
+2. [E-commerce / Commerce de détail](#2-e-commerce--commerce-de-détail)
+3. [Santé / Médical](#3-santé--médical)
+4. [Finance / Banque](#4-finance--banque)
+5. [Services juridiques](#5-services-juridiques)
+6. [Immobilier](#6-immobilier)
+7. [Éducation / EdTech](#7-éducation--edtech)
+8. [Restauration / Service alimentaire](#8-restauration--service-alimentaire)
+9. [Voyage / Hôtellerie](#9-voyage--hôtellerie)
+10. [Automobile](#10-automobile)
+11. [Association à but non lucratif](#11-association-à-but-non-lucratif)
+12. [Industrie manufacturière / B2B industriel](#12-industrie-manufacturière--b2b-industriel)
+13. [Assurance](#13-assurance)
+14. [Services à domicile](#14-services-à-domicile)
+15. [Fitness / Bien-être](#15-fitness--bien-être)
+16. [Mode / Beauté](#16-mode--beauté)
+17. [Télécommunications](#17-télécommunications)
+18. [Services professionnels](#18-services-professionnels)
+19. [Jeux vidéo / Divertissement](#19-jeux-vidéo--divertissement)
 20. [Crypto / Web3](#20-crypto--web3)
 21. [Construction / Architecture](#21-construction--architecture)
 22. [Agriculture / AgTech](#22-agriculture--agtech)
 
 ---
 
-## 1. SaaS / Software
+## 1. SaaS / Logiciel
 
-**Funnel Model:** Freemium / free-trial pipeline. Typical length 14-90 days from first touch to closed deal (SMB: 14-30 days; Enterprise: 60-180 days).
+**Modèle de tunnel :** Pipeline freemium / essai gratuit. Longueur typique de 14 à 90 jours du premier contact à l'affaire conclue (PME : 14-30 jours ; Entreprise : 60-180 jours).
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Content Marketing / SEO | Long-form guides, comparison pages, documentation |
-| 2 | Paid Search (Google Ads) | High-intent bottom-funnel keywords |
-| 3 | LinkedIn Ads | B2B targeting by job title, company size |
-| 4 | Email Nurture Sequences | Trial onboarding drips, product-led growth loops |
-| 5 | Review Sites (G2, Capterra) | Social proof and category rankings |
-| 6 | Webinars / Product Demos | Mid-funnel conversion events |
+| 1 | Marketing de contenu / SEO | Guides longs, pages de comparaison, documentation |
+| 2 | Recherche payante (Google Ads) | Mots-clés bas de tunnel à forte intention |
+| 3 | LinkedIn Ads | Ciblage B2B par titre de poste, taille d'entreprise |
+| 4 | Séquences de nurturing e-mail | Goutte-à-goutte d'intégration d'essai, boucles de croissance pilotées par le produit |
+| 5 | Sites d'avis (G2, Capterra) | Preuve sociale et classements de catégorie |
+| 6 | Webinaires / Démos produit | Événements de conversion de milieu de tunnel |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.5% - 5.0% |
-| Social CTR (LinkedIn) | 0.4% - 0.8% |
-| CPC (Search) | $2.50 - $8.00 |
-| CPC (LinkedIn) | $5.00 - $12.00 |
-| Free-trial to Paid Conversion | 3% - 8% |
-| Landing Page Conversion Rate | 2.5% - 5.0% |
-| Email Open Rate | 20% - 28% |
-| Email Click Rate | 2.5% - 4.5% |
-| Monthly Churn | 3% - 7% |
+| CTR de recherche | 2,5 % - 5,0 % |
+| CTR social (LinkedIn) | 0,4 % - 0,8 % |
+| CPC (Recherche) | 2,50 $ - 8,00 $ |
+| CPC (LinkedIn) | 5,00 $ - 12,00 $ |
+| Conversion essai gratuit vers payant | 3 % - 8 % |
+| Taux de conversion de page d'atterrissage | 2,5 % - 5,0 % |
+| Taux d'ouverture e-mail | 20 % - 28 % |
+| Taux de clic e-mail | 2,5 % - 4,5 % |
+| Churn mensuel | 3 % - 7 % |
 
-**Compliance Requirements:**
-- GDPR and CCPA for user data collection and email consent
-- SOC 2 / ISO 27001 claims must be verifiable if used in marketing copy
-- CAN-SPAM for all email outreach
-- Avoid unsubstantiated "best" or "#1" claims unless backed by third-party data
+**Exigences de conformité :**
+- RGPD et CCPA pour la collecte de données utilisateur et le consentement e-mail
+- Les allégations SOC 2 / ISO 27001 doivent être vérifiables si utilisées dans le texte marketing
+- CAN-SPAM pour toute prospection e-mail
+- Éviter les allégations « meilleur » ou « n°1 » non étayées sauf soutenues par des données tierces
 
-**Preferred Content Formats:**
-- Long-form comparison articles ("X vs Y")
-- Product-led interactive demos
-- Case studies with quantified ROI
-- Technical documentation and API guides
-- Short-form video tutorials (60-120s)
+**Formats de contenu privilégiés :**
+- Articles de comparaison longs (« X vs Y »)
+- Démos interactives pilotées par le produit
+- Études de cas avec ROI quantifié
+- Documentation technique et guides d'API
+- Tutoriels vidéo courts (60-120s)
 
-**Seasonal Peaks:**
-- Q1 (January-March): Budget allocation season for enterprise buyers
-- Q4 (October-November): Year-end deals and contract renewals
-- September: Back-to-business after summer slowdown
+**Pics saisonniers :**
+- T1 (janvier-mars) : saison d'allocation budgétaire pour les acheteurs entreprise
+- T4 (octobre-novembre) : affaires de fin d'année et renouvellements de contrat
+- Septembre : reprise d'activité après le ralentissement estival
 
-**AEO/GEO Considerations:**
-- Optimize for AI answer engines by structuring FAQs with concise, direct answers
-- Target "what is [category]" and "best [category] for [use case]" query patterns
-- Schema markup: SoftwareApplication, FAQPage, HowTo
-- Ensure product comparison data is structured so LLMs can cite it accurately
+**Considérations AEO/GEO :**
+- Optimiser pour les moteurs de réponse IA en structurant les FAQ avec des réponses concises et directes
+- Cibler les schémas de requête « qu'est-ce que [catégorie] » et « meilleur [catégorie] pour [cas d'usage] »
+- Balisage de schéma : SoftwareApplication, FAQPage, HowTo
+- S'assurer que les données de comparaison produit sont structurées pour que les LLM puissent les citer avec précision
 
-**Common Pitfalls:**
-- Over-investing in top-of-funnel content without proper lead scoring
-- Neglecting in-app onboarding as a marketing channel
-- Running paid ads to generic homepages instead of tailored landing pages
-- Ignoring G2/Capterra review management — competitors actively solicit reviews
-- Treating enterprise and SMB funnels identically
+**Pièges courants :**
+- Surinvestir dans le contenu de haut de tunnel sans notation de lead appropriée
+- Négliger l'intégration in-app comme canal marketing
+- Diriger les publicités payantes vers des pages d'accueil génériques plutôt que des pages d'atterrissage sur mesure
+- Ignorer la gestion des avis G2/Capterra — les concurrents sollicitent activement les avis
+- Traiter les tunnels entreprise et PME de manière identique
 
 ---
 
-## 2. eCommerce / Retail
+## 2. E-commerce / Commerce de détail
 
-**Funnel Model:** Short-cycle transactional funnel. Typical length 1-14 days for most products; 30-60 days for high-ticket items. Impulse purchases under 24 hours are common.
+**Modèle de tunnel :** Tunnel transactionnel à cycle court. Longueur typique de 1 à 14 jours pour la plupart des produits ; 30-60 jours pour les articles à ticket élevé. Les achats impulsifs sous 24 heures sont courants.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Paid Social (Meta, TikTok) | Visual product ads, dynamic retargeting |
-| 2 | Google Shopping / PMax | Product feed ads with purchase intent |
-| 3 | Email / SMS Marketing | Cart abandonment, loyalty programs |
-| 4 | SEO | Category pages, product descriptions, buying guides |
-| 5 | Influencer Marketing | UGC and creator partnerships |
-| 6 | Affiliate Marketing | Performance-based partnerships |
+| 1 | Social payant (Meta, TikTok) | Publicités produit visuelles, retargeting dynamique |
+| 2 | Google Shopping / PMax | Publicités de flux produit avec intention d'achat |
+| 3 | E-mail / SMS Marketing | Abandon de panier, programmes de fidélité |
+| 4 | SEO | Pages de catégorie, descriptions produit, guides d'achat |
+| 5 | Marketing d'influence | UGC et partenariats de créateurs |
+| 6 | Marketing d'affiliation | Partenariats à la performance |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.5% - 5.5% |
-| Social CTR (Meta) | 0.8% - 1.5% |
-| CPC (Google Shopping) | $0.30 - $1.50 |
-| CPC (Meta) | $0.50 - $2.00 |
-| Conversion Rate (site-wide) | 1.5% - 3.5% |
-| Cart Abandonment Rate | 65% - 80% |
-| Email Open Rate | 15% - 22% |
-| ROAS (Paid Social) | 3x - 6x |
+| CTR de recherche | 2,5 % - 5,5 % |
+| CTR social (Meta) | 0,8 % - 1,5 % |
+| CPC (Google Shopping) | 0,30 $ - 1,50 $ |
+| CPC (Meta) | 0,50 $ - 2,00 $ |
+| Taux de conversion (site entier) | 1,5 % - 3,5 % |
+| Taux d'abandon de panier | 65 % - 80 % |
+| Taux d'ouverture e-mail | 15 % - 22 % |
+| ROAS (Social payant) | 3x - 6x |
 
-**Compliance Requirements:**
-- FTC disclosure rules for influencer and affiliate marketing
-- GDPR/CCPA for customer data and tracking pixels
-- Accurate pricing and availability in ads (Google Merchant Center policies)
-- Accessibility standards (ADA/WCAG) for online stores
-- PCI-DSS for payment processing pages
+**Exigences de conformité :**
+- Règles de divulgation FTC pour le marketing d'influence et d'affiliation
+- RGPD/CCPA pour les données client et les pixels de suivi
+- Tarification et disponibilité exactes dans les publicités (politiques Google Merchant Center)
+- Normes d'accessibilité (ADA/WCAG) pour les boutiques en ligne
+- PCI-DSS pour les pages de traitement des paiements
 
-**Preferred Content Formats:**
-- Short-form video (TikTok, Reels) with product demos
-- High-quality product photography and lifestyle imagery
-- User-generated content and reviews
-- Buying guides and "best of" roundups
-- Shoppable posts and live shopping streams
+**Formats de contenu privilégiés :**
+- Vidéo courte (TikTok, Reels) avec démos produit
+- Photographie produit et imagerie de style de vie de haute qualité
+- Contenu généré par les utilisateurs et avis
+- Guides d'achat et récapitulatifs « meilleur de »
+- Publications achetables et diffusions de shopping en direct
 
-**Seasonal Peaks:**
-- Black Friday / Cyber Monday (November)
-- Holiday season (November-December)
-- Back-to-school (July-August)
-- Valentine's Day, Mother's Day, Father's Day
-- Amazon Prime Day (July) — affects broader eCommerce market
+**Pics saisonniers :**
+- Black Friday / Cyber Monday (novembre)
+- Saison des fêtes (novembre-décembre)
+- Rentrée scolaire (juillet-août)
+- Saint-Valentin, Fête des mères, Fête des pères
+- Amazon Prime Day (juillet) — affecte le marché e-commerce plus large
 
-**AEO/GEO Considerations:**
-- Product schema markup is critical (Product, Offer, AggregateRating)
-- Optimize for "best [product] for [use case]" queries
-- Maintain accurate, structured product data for AI shopping assistants
-- Google Merchant Center feed quality directly impacts AI-generated shopping recommendations
+**Considérations AEO/GEO :**
+- Le balisage de schéma produit est critique (Product, Offer, AggregateRating)
+- Optimiser pour les requêtes « meilleur [produit] pour [cas d'usage] »
+- Maintenir des données produit exactes et structurées pour les assistants d'achat IA
+- La qualité du flux Google Merchant Center impacte directement les recommandations d'achat générées par IA
 
-**Common Pitfalls:**
-- Scaling ad spend without fixing on-site conversion rate first
-- Ignoring post-purchase email flows (repeat customers are 5-7x cheaper to convert)
-- Poor mobile experience — 70%+ of traffic is mobile
-- Not segmenting audiences for retargeting (showing same ad to everyone)
-- Relying solely on paid channels without building owned audience (email list)
+**Pièges courants :**
+- Augmenter la dépense publicitaire sans d'abord corriger le taux de conversion sur site
+- Ignorer les flux e-mail post-achat (les clients récurrents coûtent 5 à 7 fois moins cher à convertir)
+- Mauvaise expérience mobile — 70 %+ du trafic est mobile
+- Ne pas segmenter les audiences pour le retargeting (montrer la même publicité à tout le monde)
+- S'appuyer uniquement sur les canaux payants sans construire une audience propriétaire (liste e-mail)
 
 ---
 
-## 3. Healthcare / Medical
+## 3. Santé / Médical
 
-**Funnel Model:** Trust-based consideration funnel. Typical length 7-90 days depending on procedure complexity. Patients research heavily before booking.
+**Modèle de tunnel :** Tunnel de considération basé sur la confiance. Longueur typique de 7 à 90 jours selon la complexité de la procédure. Les patients recherchent intensément avant de réserver.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Local SEO / Google Business Profile | "Near me" searches dominate |
-| 2 | Paid Search (Google Ads) | High-intent symptom and procedure queries |
-| 3 | Content Marketing | Educational health content builds trust |
-| 4 | Email Marketing | Patient newsletters, appointment reminders |
-| 5 | Reputation Management | Google reviews, Healthgrades, Zocdoc |
-| 6 | Social Media (Facebook, YouTube) | Patient education and community building |
+| 1 | SEO local / Google Business Profile | Les recherches « près de moi » dominent |
+| 2 | Recherche payante (Google Ads) | Requêtes de symptômes et procédures à forte intention |
+| 3 | Marketing de contenu | Le contenu de santé éducatif construit la confiance |
+| 4 | E-mail Marketing | Newsletters patients, rappels de rendez-vous |
+| 5 | Gestion de réputation | Avis Google, Healthgrades, Zocdoc |
+| 6 | Réseaux sociaux (Facebook, YouTube) | Éducation des patients et construction communautaire |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.0% |
-| Social CTR | 0.5% - 1.0% |
-| CPC (Search) | $2.00 - $7.00 |
-| CPC (Specialized procedures) | $5.00 - $30.00+ |
-| Conversion Rate (appointment booking) | 3% - 8% |
-| Email Open Rate | 20% - 28% |
-| Patient Acquisition Cost | $150 - $500 |
+| CTR de recherche | 3,0 % - 6,0 % |
+| CTR social | 0,5 % - 1,0 % |
+| CPC (Recherche) | 2,00 $ - 7,00 $ |
+| CPC (Procédures spécialisées) | 5,00 $ - 30,00 $+ |
+| Taux de conversion (prise de rendez-vous) | 3 % - 8 % |
+| Taux d'ouverture e-mail | 20 % - 28 % |
+| Coût d'acquisition patient | 150 $ - 500 $ |
 
-**Compliance Requirements:**
-- **HIPAA** — All marketing that touches patient data must be compliant. No patient testimonials without signed consent. No retargeting based on health conditions.
-- FTC rules on health claims — cannot make unsubstantiated medical claims
-- FDA regulations for pharmaceutical and medical device marketing
-- State-specific telehealth advertising rules
-- ADA/WCAG accessibility for patient-facing websites
-- Google Ads healthcare and medicines policy (restricted category)
+**Exigences de conformité :**
+- **HIPAA** — Tout marketing touchant les données patient doit être conforme. Aucun témoignage patient sans consentement signé. Aucun retargeting basé sur des conditions de santé.
+- Règles FTC sur les allégations de santé — ne peut pas faire d'allégations médicales non étayées
+- Réglementations FDA pour le marketing pharmaceutique et de dispositifs médicaux
+- Règles publicitaires de télésanté spécifiques à l'état
+- Accessibilité ADA/WCAG pour les sites destinés aux patients
+- Politique Google Ads sur la santé et les médicaments (catégorie restreinte)
 
-**Preferred Content Formats:**
-- Educational blog posts and condition explainers
-- Doctor/provider profile videos (builds trust)
-- Patient testimonials (with HIPAA-compliant consent)
-- Infographics on health topics
-- FAQ pages addressing common patient questions
+**Formats de contenu privilégiés :**
+- Articles de blog éducatifs et explicatifs de condition
+- Vidéos de profil de médecin/praticien (construit la confiance)
+- Témoignages patients (avec consentement conforme HIPAA)
+- Infographies sur des sujets de santé
+- Pages FAQ répondant aux questions patients courantes
 
-**Seasonal Peaks:**
-- January: New Year health resolutions, new insurance plans active
-- Spring: Allergy season, elective procedures before summer
-- Fall: Flu season, back-to-school physicals
-- Open enrollment periods (October-December)
+**Pics saisonniers :**
+- Janvier : résolutions de santé du Nouvel An, nouveaux plans d'assurance actifs
+- Printemps : saison des allergies, procédures électives avant l'été
+- Automne : saison de la grippe, visites médicales de rentrée
+- Périodes d'inscription ouverte (octobre-décembre)
 
-**AEO/GEO Considerations:**
-- Health content is YMYL (Your Money Your Life) — Google holds it to the highest E-E-A-T standards
-- Author bylines with medical credentials are essential
-- Schema markup: MedicalCondition, Physician, MedicalClinic, FAQPage
-- AI answer engines heavily weight authoritative medical sources — cite studies and guidelines
-- LocalBusiness schema with geo-coordinates for practice locations
+**Considérations AEO/GEO :**
+- Le contenu de santé est YMYL (Your Money Your Life) — Google le soumet aux normes E-E-A-T les plus élevées
+- Les bylines d'auteur avec identifiants médicaux sont essentielles
+- Balisage de schéma : MedicalCondition, Physician, MedicalClinic, FAQPage
+- Les moteurs de réponse IA pondèrent fortement les sources médicales faisant autorité — citer les études et directives
+- Schéma LocalBusiness avec coordonnées géo pour les emplacements de cabinet
 
-**Common Pitfalls:**
-- Publishing health content without physician review or author attribution
-- HIPAA violations in email marketing (sending PHI in unsecured channels)
-- Using stock photography instead of real staff/facility images
-- Ignoring online reputation management — one bad review can dominate results
-- Running Google Ads for restricted health topics without proper certification
+**Pièges courants :**
+- Publier du contenu de santé sans revue médicale ou attribution d'auteur
+- Violations HIPAA dans le marketing e-mail (envoi de PHI dans des canaux non sécurisés)
+- Utiliser des photos d'archives plutôt que de vraies images de personnel/installation
+- Ignorer la gestion de la réputation en ligne — un mauvais avis peut dominer les résultats
+- Exécuter des Google Ads pour des sujets de santé restreints sans certification appropriée
 
 ---
 
-## 4. Finance / Banking
+## 4. Finance / Banque
 
-**Funnel Model:** High-consideration trust funnel. Typical length 30-180 days for major financial products (loans, investments). Shorter for credit cards (7-30 days).
+**Modèle de tunnel :** Tunnel de confiance à forte considération. Longueur typique de 30 à 180 jours pour les produits financiers majeurs (prêts, investissements). Plus court pour les cartes de crédit (7-30 jours).
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Paid Search (Google Ads) | Extremely competitive, high CPC |
-| 2 | SEO / Content Marketing | Financial education, calculators, guides |
-| 3 | Email Marketing | Nurture sequences, product cross-sells |
-| 4 | Display / Programmatic | Brand awareness and retargeting |
-| 5 | LinkedIn | B2B financial products, wealth management |
-| 6 | TV / Connected TV | Brand building for major institutions |
+| 1 | Recherche payante (Google Ads) | Extrêmement compétitif, CPC élevé |
+| 2 | SEO / Marketing de contenu | Éducation financière, calculateurs, guides |
+| 3 | E-mail Marketing | Séquences de nurturing, ventes croisées de produits |
+| 4 | Display / Programmatique | Notoriété de marque et retargeting |
+| 5 | LinkedIn | Produits financiers B2B, gestion de patrimoine |
+| 6 | TV / TV connectée | Construction de marque pour les grandes institutions |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.5% - 5.0% |
-| Social CTR | 0.4% - 0.8% |
-| CPC (Search) | $3.00 - $15.00 |
-| CPC (Competitive terms like "mortgage") | $10.00 - $50.00+ |
-| Conversion Rate (application start) | 2% - 5% |
-| Email Open Rate | 22% - 30% |
-| Cost Per Acquisition | $200 - $1,000+ |
+| CTR de recherche | 2,5 % - 5,0 % |
+| CTR social | 0,4 % - 0,8 % |
+| CPC (Recherche) | 3,00 $ - 15,00 $ |
+| CPC (Termes compétitifs comme « hypothèque ») | 10,00 $ - 50,00 $+ |
+| Taux de conversion (début de demande) | 2 % - 5 % |
+| Taux d'ouverture e-mail | 22 % - 30 % |
+| Coût par acquisition | 200 $ - 1 000 $+ |
 
-**Compliance Requirements:**
-- **SEC / FINRA** regulations for investment product marketing
-- **TILA (Truth in Lending Act)** — APR disclosures required in all loan advertising
-- **FDIC / NCUA** membership disclosures
-- **UDAAP** — Unfair, Deceptive, or Abusive Acts or Practices
-- GDPR/CCPA for customer financial data
-- **TCPA** for any SMS or phone outreach
-- All claims about returns, rates, or savings must include proper disclaimers
-- State-specific licensing disclosures
+**Exigences de conformité :**
+- Réglementations **SEC / FINRA** pour le marketing de produits d'investissement
+- **TILA (Truth in Lending Act)** — divulgations du TAEG requises dans toute publicité de prêt
+- Divulgations d'adhésion **FDIC / NCUA**
+- **UDAAP** — actes ou pratiques déloyaux, trompeurs, ou abusifs
+- RGPD/CCPA pour les données financières client
+- **TCPA** pour toute prospection SMS ou téléphonique
+- Toutes les allégations sur les rendements, taux, ou économies doivent inclure les mentions légales appropriées
+- Divulgations de licence spécifiques à l'état
 
-**Preferred Content Formats:**
-- Financial calculators and interactive tools
-- Long-form educational guides
-- Comparison tables (rates, features, fees)
-- Webinars on financial planning topics
-- Explainer videos (complex products simplified)
-- Whitepapers and market reports
+**Formats de contenu privilégiés :**
+- Calculateurs financiers et outils interactifs
+- Guides éducatifs longs
+- Tableaux de comparaison (taux, fonctionnalités, frais)
+- Webinaires sur des sujets de planification financière
+- Vidéos explicatives (produits complexes simplifiés)
+- Livres blancs et rapports de marché
 
-**Seasonal Peaks:**
-- Tax season (January-April)
-- Year-end financial planning (October-December)
-- Mortgage: Spring home-buying season (March-June)
-- Back-to-school: Student loans (July-August)
-- Open enrollment for benefits (October-December)
+**Pics saisonniers :**
+- Saison fiscale (janvier-avril)
+- Planification financière de fin d'année (octobre-décembre)
+- Hypothèque : saison d'achat immobilier de printemps (mars-juin)
+- Rentrée : prêts étudiants (juillet-août)
+- Inscription ouverte pour les avantages sociaux (octobre-décembre)
 
-**AEO/GEO Considerations:**
-- YMYL category — E-E-A-T signals are critical for rankings
-- Author credentials (CFA, CFP, CPA) must be visible
-- Schema markup: FinancialProduct, BankAccount, LoanOrCredit
-- Rate tables and comparison data should be structured for AI extraction
-- Ensure disclaimer text is machine-readable, not just image-based
+**Considérations AEO/GEO :**
+- Catégorie YMYL — les signaux E-E-A-T sont critiques pour le classement
+- Les identifiants d'auteur (CFA, CFP, CPA) doivent être visibles
+- Balisage de schéma : FinancialProduct, BankAccount, LoanOrCredit
+- Les tableaux de taux et données de comparaison devraient être structurés pour l'extraction IA
+- S'assurer que le texte de mention légale est lisible par machine, pas seulement en image
 
-**Common Pitfalls:**
-- Missing required legal disclaimers in ad copy
-- Using superlatives ("best rates") without substantiation
-- Slow landing pages killing conversion on high-CPC traffic
-- Not A/B testing application forms — even small friction reduces completions
-- Underinvesting in content marketing due to compliance friction
+**Pièges courants :**
+- Mentions légales requises manquantes dans le texte publicitaire
+- Utiliser des superlatifs (« meilleurs taux ») sans étayage
+- Pages d'atterrissage lentes tuant la conversion sur du trafic à CPC élevé
+- Ne pas tester A/B les formulaires de demande — même une petite friction réduit les complétions
+- Sous-investir dans le marketing de contenu à cause de la friction de conformité
 
 ---
 
-## 5. Legal Services
+## 5. Services juridiques
 
-**Funnel Model:** Urgency-driven trust funnel. Length varies: personal injury/criminal (1-7 days, urgent), family law (7-30 days), corporate law (30-90 days, relationship-based).
+**Modèle de tunnel :** Tunnel de confiance piloté par l'urgence. La longueur varie : dommages corporels/pénal (1-7 jours, urgent), droit de la famille (7-30 jours), droit des affaires (30-90 jours, basé sur la relation).
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Paid Search (Google Ads) | Highest CPC industry — "lawyer" keywords are premium |
-| 2 | Local SEO / Google Business Profile | Critical for practice-area + city searches |
-| 3 | SEO / Content Marketing | Practice area pages, legal guides |
-| 4 | LSAs (Google Local Service Ads) | Pay-per-lead model, Google Screened badge |
-| 5 | Directories (Avvo, FindLaw, Justia) | Referral and backlink value |
-| 6 | Referral Programs | Client and professional referrals |
+| 1 | Recherche payante (Google Ads) | Secteur au CPC le plus élevé — les mots-clés « avocat » sont premium |
+| 2 | SEO local / Google Business Profile | Critique pour les recherches domaine d'exercice + ville |
+| 3 | SEO / Marketing de contenu | Pages de domaine d'exercice, guides juridiques |
+| 4 | LSA (Google Local Service Ads) | Modèle paiement par lead, badge Google Screened |
+| 5 | Annuaires (Avvo, FindLaw, Justia) | Valeur de référencement et de backlink |
+| 6 | Programmes de parrainage | Parrainages clients et professionnels |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.0% - 4.5% |
-| Social CTR | 0.3% - 0.6% |
-| CPC (Search, general) | $5.00 - $15.00 |
-| CPC (High-value: personal injury, mesothelioma) | $50.00 - $200.00+ |
-| Conversion Rate (form fill / call) | 3% - 8% |
-| Email Open Rate | 18% - 25% |
-| Cost Per Lead | $50 - $500+ |
-| Cost Per Retained Client | $500 - $5,000+ |
+| CTR de recherche | 2,0 % - 4,5 % |
+| CTR social | 0,3 % - 0,6 % |
+| CPC (Recherche, général) | 5,00 $ - 15,00 $ |
+| CPC (Haute valeur : dommages corporels, mésothéliome) | 50,00 $ - 200,00 $+ |
+| Taux de conversion (remplissage de formulaire / appel) | 3 % - 8 % |
+| Taux d'ouverture e-mail | 18 % - 25 % |
+| Coût par lead | 50 $ - 500 $+ |
+| Coût par client retenu | 500 $ - 5 000 $+ |
 
-**Compliance Requirements:**
-- **State Bar advertising rules** — vary by state, many require disclaimers
-- Cannot guarantee outcomes ("We'll win your case")
-- Must include "attorney advertising" disclosures where required
-- Client testimonials may need disclaimers depending on jurisdiction
-- **ABA Model Rules of Professional Conduct** — restrictions on solicitation
-- IOLTA and fee-related disclosures
+**Exigences de conformité :**
+- **Règles publicitaires du Barreau d'état** — varient selon l'état, beaucoup exigent des mentions légales
+- Ne peut pas garantir de résultats (« nous gagnerons votre affaire »)
+- Doit inclure des divulgations « publicité d'avocat » lorsque requis
+- Les témoignages clients peuvent nécessiter des mentions légales selon la juridiction
+- **ABA Model Rules of Professional Conduct** — restrictions sur la sollicitation
+- Divulgations liées à l'IOLTA et aux honoraires
 
-**Preferred Content Formats:**
-- Practice area landing pages (one per legal service)
-- FAQ-style content addressing common legal questions
-- Case result summaries (with appropriate disclaimers)
-- Video introductions of attorneys
-- Blog posts on legal developments and explainers
-- Downloadable checklists and guides
+**Formats de contenu privilégiés :**
+- Pages d'atterrissage de domaine d'exercice (une par service juridique)
+- Contenu de style FAQ répondant aux questions juridiques courantes
+- Résumés de résultats d'affaires (avec mentions légales appropriées)
+- Vidéos d'introduction d'avocats
+- Articles de blog sur les évolutions juridiques et explicatifs
+- Checklists et guides téléchargeables
 
-**Seasonal Peaks:**
-- January: Divorce filings spike after holidays
-- Tax season: Tax law and IRS issues (February-April)
-- Summer: DUI/criminal defense (holidays and vacation periods)
-- Year-round urgency for personal injury and criminal defense
+**Pics saisonniers :**
+- Janvier : pic des dépôts de divorce après les fêtes
+- Saison fiscale : droit fiscal et problèmes IRS (février-avril)
+- Été : défense DUI/pénale (fêtes et périodes de vacances)
+- Urgence constante pour les dommages corporels et la défense pénale
 
-**AEO/GEO Considerations:**
-- YMYL category — Google requires highest trust signals
-- Attorney credentials and bar memberships must be structured
-- Schema markup: Attorney, LegalService, LocalBusiness, FAQPage
-- Optimize for question-based queries ("Do I need a lawyer for...")
-- AI answer engines may cite legal explainer content directly — accuracy is critical
+**Considérations AEO/GEO :**
+- Catégorie YMYL — Google exige les signaux de confiance les plus élevés
+- Les identifiants d'avocat et l'appartenance au barreau doivent être structurés
+- Balisage de schéma : Attorney, LegalService, LocalBusiness, FAQPage
+- Optimiser pour les requêtes basées sur des questions (« ai-je besoin d'un avocat pour... »)
+- Les moteurs de réponse IA peuvent citer directement le contenu explicatif juridique — l'exactitude est critique
 
-**Common Pitfalls:**
-- Bidding on broad-match "lawyer" keywords without negative keyword lists
-- Neglecting call tracking — most legal leads come by phone
-- Practice area pages that are too thin or duplicative across locations
-- Not following up on leads fast enough (5-minute response time ideal)
-- Violating state bar advertising rules with aggressive claims
+**Pièges courants :**
+- Enchérir sur des mots-clés « avocat » en requête large sans listes de mots-clés négatifs
+- Négliger le suivi d'appel — la plupart des leads juridiques arrivent par téléphone
+- Pages de domaine d'exercice trop légères ou dupliquées entre les emplacements
+- Ne pas relancer les leads assez rapidement (temps de réponse de 5 minutes idéal)
+- Violer les règles publicitaires du barreau d'état avec des allégations agressives
 
 ---
 
-## 6. Real Estate
+## 6. Immobilier
 
-**Funnel Model:** Relationship-based long funnel. Typical length 60-180 days for buyers, 30-90 days for sellers. Agents must nurture over months or years.
+**Modèle de tunnel :** Long tunnel basé sur la relation. Longueur typique de 60 à 180 jours pour les acheteurs, 30-90 jours pour les vendeurs. Les agents doivent nourrir la relation sur des mois ou des années.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Zillow / Realtor.com / Portals | Where buyers start searching |
-| 2 | Local SEO / Google Business Profile | Neighborhood and city-level queries |
-| 3 | Paid Social (Meta, Instagram) | Listing promotion, lead generation |
-| 4 | Email / CRM Nurture | Long-term drip campaigns for leads |
-| 5 | Google Ads (Search) | "Homes for sale in [city]" queries |
-| 6 | Video (YouTube, Social) | Virtual tours, neighborhood guides |
+| 1 | Zillow / Realtor.com / Portails | Où les acheteurs commencent à chercher |
+| 2 | SEO local / Google Business Profile | Requêtes au niveau quartier et ville |
+| 3 | Social payant (Meta, Instagram) | Promotion d'annonces, génération de leads |
+| 4 | E-mail / Nurturing CRM | Campagnes goutte-à-goutte à long terme pour les leads |
+| 5 | Google Ads (Recherche) | Requêtes « maisons à vendre à [ville] » |
+| 6 | Vidéo (YouTube, Social) | Visites virtuelles, guides de quartier |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.5% |
-| Social CTR (Meta) | 0.8% - 1.5% |
-| CPC (Search) | $1.00 - $5.00 |
-| CPC (Meta) | $1.00 - $4.00 |
-| Lead-to-Client Conversion | 1% - 3% |
-| Landing Page Conversion Rate | 2% - 5% |
-| Email Open Rate | 18% - 26% |
-| Cost Per Lead | $15 - $80 |
+| CTR de recherche | 3,0 % - 6,5 % |
+| CTR social (Meta) | 0,8 % - 1,5 % |
+| CPC (Recherche) | 1,00 $ - 5,00 $ |
+| CPC (Meta) | 1,00 $ - 4,00 $ |
+| Conversion lead-vers-client | 1 % - 3 % |
+| Taux de conversion de page d'atterrissage | 2 % - 5 % |
+| Taux d'ouverture e-mail | 18 % - 26 % |
+| Coût par lead | 15 $ - 80 $ |
 
-**Compliance Requirements:**
-- **Fair Housing Act** — cannot discriminate or target by protected classes in advertising
-- **RESPA** — restrictions on referral fees and kickbacks
-- State-specific real estate advertising rules and license disclosures
-- MLS rules on listing data usage and attribution
-- **TCPA** for cold calling and text messaging
-- NAR Clear Cooperation policy requirements
+**Exigences de conformité :**
+- **Fair Housing Act** — ne peut pas discriminer ou cibler par classe protégée dans la publicité
+- **RESPA** — restrictions sur les frais de parrainage et pots-de-vin
+- Règles publicitaires immobilières spécifiques à l'état et divulgations de licence
+- Règles MLS sur l'usage et l'attribution des données d'annonce
+- **TCPA** pour la prospection téléphonique et par SMS
+- Exigences de la politique de coopération claire NAR
 
-**Preferred Content Formats:**
-- Property listing pages with virtual tours
-- Neighborhood and market report content
-- Video walkthroughs (90-180s)
-- Home buyer/seller guides
-- Market data visualizations and infographics
-- Agent bio and testimonial pages
+**Formats de contenu privilégiés :**
+- Pages d'annonce de propriété avec visites virtuelles
+- Contenu de rapport de marché et de quartier
+- Visites vidéo guidées (90-180s)
+- Guides pour acheteurs/vendeurs
+- Visualisations de données de marché et infographies
+- Pages de bio et témoignages d'agent
 
-**Seasonal Peaks:**
-- Spring (March-June): Peak buying and selling season
-- Late summer (August-September): Second wave before school year
-- Winter (December-January): Lowest activity, but motivated buyers
-- Seasonal variation is less pronounced in warm-weather markets
+**Pics saisonniers :**
+- Printemps (mars-juin) : saison de pointe d'achat et de vente
+- Fin d'été (août-septembre) : seconde vague avant la rentrée scolaire
+- Hiver (décembre-janvier) : activité la plus basse, mais acheteurs motivés
+- La variation saisonnière est moins prononcée dans les marchés à climat chaud
 
-**AEO/GEO Considerations:**
-- Hyperlocal optimization is essential — neighborhood-level content
-- Schema markup: RealEstateAgent, Place, Offer, FAQPage
-- IDX integration for property data structured markup
-- AI answer engines favor market data and statistics — publish regular reports
-- Optimize for "homes for sale in [neighborhood]" and "best neighborhoods in [city]" patterns
+**Considérations AEO/GEO :**
+- L'optimisation hyperlocale est essentielle — contenu au niveau quartier
+- Balisage de schéma : RealEstateAgent, Place, Offer, FAQPage
+- Intégration IDX pour le balisage structuré des données de propriété
+- Les moteurs de réponse IA favorisent les données de marché et statistiques — publier des rapports réguliers
+- Optimiser pour les schémas « maisons à vendre à [quartier] » et « meilleurs quartiers de [ville] »
 
-**Common Pitfalls:**
-- Over-relying on portal leads without building a personal brand
-- Not nurturing leads long enough — many convert 6-12 months later
-- Fair Housing violations in ad targeting (Meta audience selection)
-- Generic content that doesn't differentiate from competitors
-- Neglecting video — buyers expect virtual tours post-pandemic
+**Pièges courants :**
+- Trop s'appuyer sur les leads de portail sans construire une marque personnelle
+- Ne pas nourrir les leads assez longtemps — beaucoup convertissent 6-12 mois plus tard
+- Violations du Fair Housing dans le ciblage publicitaire (sélection d'audience Meta)
+- Contenu générique qui ne se différencie pas des concurrents
+- Négliger la vidéo — les acheteurs attendent des visites virtuelles post-pandémie
 
 ---
 
-## 7. Education / EdTech
+## 7. Éducation / EdTech
 
-**Funnel Model:** Research-heavy consideration funnel. Traditional education: 60-180 days. EdTech products: 7-30 days for individual users, 60-180 days for institutional sales.
+**Modèle de tunnel :** Tunnel de considération à forte recherche. Éducation traditionnelle : 60-180 jours. Produits EdTech : 7-30 jours pour les utilisateurs individuels, 60-180 jours pour les ventes institutionnelles.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | SEO / Content Marketing | Course-related, career-outcome content |
-| 2 | Paid Search (Google Ads) | Program and degree queries |
-| 3 | Paid Social (Meta, Instagram, TikTok) | Awareness and lead gen for younger demographics |
-| 4 | Email Marketing | Application nurture, student lifecycle |
-| 5 | YouTube | Course previews, educational content |
-| 6 | Webinars / Virtual Open Houses | Enrollment conversion events |
+| 1 | SEO / Marketing de contenu | Contenu lié aux cours, résultats de carrière |
+| 2 | Recherche payante (Google Ads) | Requêtes de programme et de diplôme |
+| 3 | Social payant (Meta, Instagram, TikTok) | Notoriété et génération de leads pour les démographies plus jeunes |
+| 4 | E-mail Marketing | Nurturing de candidature, cycle de vie étudiant |
+| 5 | YouTube | Aperçus de cours, contenu éducatif |
+| 6 | Webinaires / Journées portes ouvertes virtuelles | Événements de conversion d'inscription |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.0% |
-| Social CTR | 0.5% - 1.2% |
-| CPC (Search) | $2.00 - $12.00 |
-| CPC (Competitive programs: MBA, law) | $10.00 - $50.00+ |
-| Conversion Rate (inquiry/application) | 3% - 8% |
-| Email Open Rate | 22% - 32% |
-| Inquiry-to-Enrollment Rate | 5% - 15% |
+| CTR de recherche | 3,0 % - 6,0 % |
+| CTR social | 0,5 % - 1,2 % |
+| CPC (Recherche) | 2,00 $ - 12,00 $ |
+| CPC (Programmes compétitifs : MBA, droit) | 10,00 $ - 50,00 $+ |
+| Taux de conversion (demande/candidature) | 3 % - 8 % |
+| Taux d'ouverture e-mail | 22 % - 32 % |
+| Taux demande-vers-inscription | 5 % - 15 % |
 
-**Compliance Requirements:**
-- **FERPA** — student data privacy
-- **Title IV** compliance for financial aid advertising
-- FTC Endorsement Guidelines for outcome claims
-- State authorization requirements for online programs
-- **COPPA** for K-12 products targeting children under 13
-- Accessibility requirements (Section 508, WCAG)
-- Gainful employment disclosures for career-oriented programs
+**Exigences de conformité :**
+- **FERPA** — confidentialité des données étudiantes
+- Conformité **Title IV** pour la publicité d'aide financière
+- Directives d'endossement FTC pour les allégations de résultats
+- Exigences d'autorisation d'état pour les programmes en ligne
+- **COPPA** pour les produits K-12 ciblant les moins de 13 ans
+- Exigences d'accessibilité (Section 508, WCAG)
+- Divulgations d'emploi productif pour les programmes orientés carrière
 
-**Preferred Content Formats:**
-- Program landing pages with outcomes data
-- Student success stories and alumni testimonials
-- Free educational content (blog posts, mini-courses)
-- Virtual campus tours and event recordings
-- ROI calculators and salary outcome data
-- Interactive course catalogs
+**Formats de contenu privilégiés :**
+- Pages d'atterrissage de programme avec données de résultats
+- Histoires de réussite étudiante et témoignages d'anciens élèves
+- Contenu éducatif gratuit (articles de blog, mini-cours)
+- Visites de campus virtuelles et enregistrements d'événements
+- Calculateurs de ROI et données de résultats salariaux
+- Catalogues de cours interactifs
 
-**Seasonal Peaks:**
-- Application deadlines (varies by institution, typically November-March)
-- Back-to-school (July-September)
-- January: New Year resolution learners (EdTech)
-- Summer programs marketing (March-May)
+**Pics saisonniers :**
+- Échéances de candidature (varie selon l'institution, typiquement novembre-mars)
+- Rentrée scolaire (juillet-septembre)
+- Janvier : apprenants de résolution du Nouvel An (EdTech)
+- Marketing des programmes d'été (mars-mai)
 
-**AEO/GEO Considerations:**
-- Optimize for "best [program] for [career goal]" queries
-- Schema markup: Course, EducationalOrganization, FAQPage
-- Structured program data (duration, cost, outcomes) for AI extraction
-- Career outcome statistics should be prominently structured
-- AI tutoring integrations are reshaping EdTech — position content accordingly
+**Considérations AEO/GEO :**
+- Optimiser pour les requêtes « meilleur [programme] pour [objectif de carrière] »
+- Balisage de schéma : Course, EducationalOrganization, FAQPage
+- Données de programme structurées (durée, coût, résultats) pour l'extraction IA
+- Les statistiques de résultats de carrière devraient être structurées de manière proéminente
+- Les intégrations de tutorat IA remodèlent l'EdTech — positionner le contenu en conséquence
 
-**Common Pitfalls:**
-- Making unsubstantiated job placement or salary claims
-- Ignoring mobile experience for younger demographics
-- Not personalizing email nurture by program interest
-- Treating all prospective students the same regardless of funnel stage
-- Underinvesting in remarketing to application abandoners
+**Pièges courants :**
+- Faire des allégations de placement d'emploi ou de salaire non étayées
+- Ignorer l'expérience mobile pour les démographies plus jeunes
+- Ne pas personnaliser le nurturing e-mail par intérêt de programme
+- Traiter tous les prospects étudiants de la même manière indépendamment de l'étape de tunnel
+- Sous-investir dans le remarketing vers les abandons de candidature
 
 ---
 
-## 8. Restaurant / Food Service
+## 8. Restauration / Service alimentaire
 
-**Funnel Model:** Impulse/habit-driven micro-funnel. Decision cycle: minutes to hours. Repeat patronage is the primary revenue driver.
+**Modèle de tunnel :** Micro-tunnel piloté par l'impulsion/l'habitude. Cycle de décision : minutes à heures. La fidélisation répétée est le principal moteur de chiffre d'affaires.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Google Business Profile / Local SEO | "Restaurants near me" is the top query |
-| 2 | Social Media (Instagram, TikTok, Facebook) | Food photography and video content |
-| 3 | Delivery Platforms (DoorDash, Uber Eats) | Both channel and marketing platform |
-| 4 | Reputation Management (Yelp, Google Reviews) | Reviews drive decisions directly |
-| 5 | Email / SMS Marketing | Loyalty programs and promotions |
-| 6 | Local Paid Ads (Google, Meta) | Geotargeted within delivery radius |
+| 1 | Google Business Profile / SEO local | « Restaurants près de moi » est la requête principale |
+| 2 | Réseaux sociaux (Instagram, TikTok, Facebook) | Photographie et contenu vidéo culinaire |
+| 3 | Plateformes de livraison (DoorDash, Uber Eats) | À la fois canal et plateforme marketing |
+| 4 | Gestion de réputation (Yelp, avis Google) | Les avis pilotent directement les décisions |
+| 5 | E-mail / SMS Marketing | Programmes de fidélité et promotions |
+| 6 | Publicités payantes locales (Google, Meta) | Géociblées dans le rayon de livraison |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 4.0% - 8.0% |
-| Social CTR | 0.8% - 2.0% |
-| CPC (Local search) | $0.50 - $2.50 |
-| CPC (Meta, local) | $0.40 - $1.50 |
-| Conversion Rate (online orders) | 3% - 8% |
-| Email Open Rate | 18% - 25% |
-| SMS Open Rate | 90%+ |
-| Customer Retention Rate (monthly) | 20% - 40% |
+| CTR de recherche | 4,0 % - 8,0 % |
+| CTR social | 0,8 % - 2,0 % |
+| CPC (Recherche locale) | 0,50 $ - 2,50 $ |
+| CPC (Meta, local) | 0,40 $ - 1,50 $ |
+| Taux de conversion (commandes en ligne) | 3 % - 8 % |
+| Taux d'ouverture e-mail | 18 % - 25 % |
+| Taux d'ouverture SMS | 90 %+ |
+| Taux de rétention client (mensuel) | 20 % - 40 % |
 
-**Compliance Requirements:**
-- Local health department regulations on promotional claims
-- Allergen and nutritional disclosure requirements (varies by jurisdiction)
-- Alcohol advertising regulations (state and local)
-- ADA compliance for websites and online ordering
-- FTC rules on pricing and promotional offers
+**Exigences de conformité :**
+- Réglementations du département de santé local sur les allégations promotionnelles
+- Exigences de divulgation des allergènes et nutritionnelle (varie selon la juridiction)
+- Réglementations publicitaires sur l'alcool (état et local)
+- Conformité ADA pour les sites web et la commande en ligne
+- Règles FTC sur la tarification et les offres promotionnelles
 
-**Preferred Content Formats:**
-- High-quality food photography (the single most important asset)
-- Short-form video (behind the scenes, plating, chef stories)
-- User-generated content and customer photos
-- Menu pages with structured data
-- Local event and seasonal promotion posts
+**Formats de contenu privilégiés :**
+- Photographie culinaire de haute qualité (l'actif le plus important)
+- Vidéo courte (coulisses, dressage, histoires de chef)
+- Contenu généré par les utilisateurs et photos client
+- Pages de menu avec données structurées
+- Publications d'événements locaux et de promotions saisonnières
 
-**Seasonal Peaks:**
-- Valentine's Day, Mother's Day, Father's Day (major dining occasions)
-- Holiday season (November-December: catering and events)
-- Summer (outdoor dining, tourism areas)
-- Super Bowl, major sports events (delivery spikes)
-- Varies heavily by concept and location
+**Pics saisonniers :**
+- Saint-Valentin, Fête des mères, Fête des pères (occasions de restauration majeures)
+- Saison des fêtes (novembre-décembre : traiteur et événements)
+- Été (restauration en extérieur, zones touristiques)
+- Super Bowl, événements sportifs majeurs (pics de livraison)
+- Varie fortement selon le concept et l'emplacement
 
-**AEO/GEO Considerations:**
-- LocalBusiness and Restaurant schema markup is essential
-- Menu schema with structured pricing for AI assistants
-- Optimize for "best [cuisine] in [city/neighborhood]" queries
-- Google Business Profile completeness directly impacts local pack rankings
-- AI assistants increasingly make restaurant recommendations — ensure data accuracy across platforms
+**Considérations AEO/GEO :**
+- Le balisage de schéma LocalBusiness et Restaurant est essentiel
+- Schéma de menu avec tarification structurée pour les assistants IA
+- Optimiser pour les requêtes « meilleur [cuisine] à [ville/quartier] »
+- L'exhaustivité du Google Business Profile impacte directement les classements du pack local
+- Les assistants IA font de plus en plus de recommandations de restaurant — assurer l'exactitude des données à travers les plateformes
 
-**Common Pitfalls:**
-- Neglecting Google Business Profile optimization and posting
-- Poor food photography (dim, low-quality phone photos)
-- Not responding to negative reviews (or responding aggressively)
-- Ignoring delivery platform optimization and rankings
-- No system for capturing customer data (email/SMS) for retention
+**Pièges courants :**
+- Négliger l'optimisation et la publication du Google Business Profile
+- Mauvaise photographie culinaire (photos de téléphone sombres, de faible qualité)
+- Ne pas répondre aux avis négatifs (ou répondre de manière agressive)
+- Ignorer l'optimisation et le classement des plateformes de livraison
+- Aucun système de capture des données client (e-mail/SMS) pour la rétention
 
 ---
 
-## 9. Travel / Hospitality
+## 9. Voyage / Hôtellerie
 
-**Funnel Model:** Inspiration-to-booking funnel. Typical length 30-90 days for planned trips, 1-7 days for spontaneous bookings. Multiple touchpoints across research phase.
+**Modèle de tunnel :** Tunnel d'inspiration vers réservation. Longueur typique de 30 à 90 jours pour les voyages planifiés, 1-7 jours pour les réservations spontanées. Multiples points de contact à travers la phase de recherche.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | SEO / Content Marketing | Destination and experience content |
-| 2 | Paid Search (Google Ads) | High-intent booking queries |
-| 3 | OTAs (Booking.com, Expedia, Airbnb) | Distribution and visibility |
-| 4 | Social Media (Instagram, TikTok, Pinterest) | Inspiration-phase marketing |
-| 5 | Email Marketing | Loyalty programs, abandoned booking recovery |
-| 6 | Display / Programmatic | Retargeting and dream-phase branding |
+| 1 | SEO / Marketing de contenu | Contenu de destination et d'expérience |
+| 2 | Recherche payante (Google Ads) | Requêtes de réservation à forte intention |
+| 3 | OTA (Booking.com, Expedia, Airbnb) | Distribution et visibilité |
+| 4 | Réseaux sociaux (Instagram, TikTok, Pinterest) | Marketing en phase d'inspiration |
+| 5 | E-mail Marketing | Programmes de fidélité, récupération de réservations abandonnées |
+| 6 | Display / Programmatique | Retargeting et branding en phase de rêve |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.0% |
-| Social CTR | 0.5% - 1.2% |
-| CPC (Search) | $0.80 - $4.00 |
-| CPC (Competitive destinations) | $3.00 - $12.00 |
-| Booking Conversion Rate | 1% - 4% |
-| Email Open Rate | 18% - 25% |
-| Abandonment Rate (booking) | 75% - 85% |
-| Revenue Per Available Room (RevPAR) | Varies by market |
+| CTR de recherche | 3,0 % - 6,0 % |
+| CTR social | 0,5 % - 1,2 % |
+| CPC (Recherche) | 0,80 $ - 4,00 $ |
+| CPC (Destinations compétitives) | 3,00 $ - 12,00 $ |
+| Taux de conversion de réservation | 1 % - 4 % |
+| Taux d'ouverture e-mail | 18 % - 25 % |
+| Taux d'abandon (réservation) | 75 % - 85 % |
+| Chiffre d'affaires par chambre disponible (RevPAR) | Varie selon le marché |
 
-**Compliance Requirements:**
-- Truth in advertising for pricing (must include all mandatory fees)
-- DOT regulations for airfare advertising (full fare disclosure)
-- GDPR (international travelers' data)
-- ADA compliance for booking platforms
-- Local tourism tax and licensing disclosures
-- COVID/health-related travel policy accuracy
+**Exigences de conformité :**
+- Véracité publicitaire pour la tarification (doit inclure tous les frais obligatoires)
+- Réglementations DOT pour la publicité de tarifs aériens (divulgation complète du tarif)
+- RGPD (données des voyageurs internationaux)
+- Conformité ADA pour les plateformes de réservation
+- Divulgations de taxe touristique locale et de licence
+- Exactitude de la politique de voyage liée au COVID/santé
 
-**Preferred Content Formats:**
-- Destination guides and itineraries
-- High-quality photography and video (drone footage, 360 tours)
-- User-generated content from travelers
-- Influencer partnership content
-- Interactive maps and planning tools
-- Email newsletters with deals and inspiration
+**Formats de contenu privilégiés :**
+- Guides de destination et itinéraires
+- Photographie et vidéo de haute qualité (images de drone, visites à 360°)
+- Contenu généré par les utilisateurs des voyageurs
+- Contenu de partenariat d'influenceur
+- Cartes interactives et outils de planification
+- Newsletters e-mail avec offres et inspiration
 
-**Seasonal Peaks:**
-- January-February: "New Year, new trips" — major booking window
-- Spring break (March-April)
-- Summer vacation (June-August)
-- Holiday travel (November-December)
-- Shoulder seasons offer value positioning opportunities
+**Pics saisonniers :**
+- Janvier-février : « Nouvelle année, nouveaux voyages » — fenêtre de réservation majeure
+- Vacances de printemps (mars-avril)
+- Vacances d'été (juin-août)
+- Voyages de fêtes (novembre-décembre)
+- Les saisons intermédiaires offrent des opportunités de positionnement valeur
 
-**AEO/GEO Considerations:**
-- Schema markup: Hotel, TouristAttraction, Event, LodgingBusiness
-- Optimize for "best time to visit [destination]" and "things to do in [location]"
-- AI travel planners are emerging — structured itinerary data is valuable
-- Multilingual content for international audiences
-- Google Travel integration and structured pricing data
+**Considérations AEO/GEO :**
+- Balisage de schéma : Hotel, TouristAttraction, Event, LodgingBusiness
+- Optimiser pour « meilleur moment pour visiter [destination] » et « choses à faire à [lieu] »
+- Les planificateurs de voyage IA émergent — les données d'itinéraire structurées sont précieuses
+- Contenu multilingue pour les audiences internationales
+- Intégration Google Travel et données de tarification structurées
 
-**Common Pitfalls:**
-- Over-dependence on OTAs without building direct booking channels
-- Ignoring mobile booking experience (majority of travel research is mobile)
-- Not leveraging user-generated content from past guests
-- Generic destination content that doesn't differentiate from competitors
-- Failing to implement abandoned booking recovery sequences
+**Pièges courants :**
+- Dépendance excessive aux OTA sans construire de canaux de réservation directe
+- Ignorer l'expérience de réservation mobile (la majorité de la recherche de voyage est mobile)
+- Ne pas exploiter le contenu généré par les utilisateurs des invités passés
+- Contenu de destination générique qui ne se différencie pas des concurrents
+- Échec à implémenter des séquences de récupération de réservation abandonnée
 
 ---
 
-## 10. Automotive
+## 10. Automobile
 
-**Funnel Model:** High-consideration research funnel. Typical length 30-90 days for new vehicles, 14-30 days for used. Buyers visit 2-3 dealerships after extensive online research.
+**Modèle de tunnel :** Tunnel de recherche à forte considération. Longueur typique de 30 à 90 jours pour les véhicules neufs, 14-30 jours pour l'occasion. Les acheteurs visitent 2-3 concessions après une recherche en ligne approfondie.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Paid Search (Google Ads) | Model-specific and "near me" queries |
-| 2 | SEO / Content Marketing | Vehicle comparisons, buying guides |
-| 3 | Social Media (Facebook, YouTube, Instagram) | Inventory ads, video content |
-| 4 | Third-Party Listings (AutoTrader, Cars.com) | Inventory distribution |
-| 5 | Display / Video (YouTube Pre-roll) | Brand and model awareness |
-| 6 | Email / CRM | Service reminders, trade-in offers |
+| 1 | Recherche payante (Google Ads) | Requêtes spécifiques au modèle et « près de moi » |
+| 2 | SEO / Marketing de contenu | Comparaisons de véhicules, guides d'achat |
+| 3 | Réseaux sociaux (Facebook, YouTube, Instagram) | Publicités d'inventaire, contenu vidéo |
+| 4 | Annonces tierces (AutoTrader, Cars.com) | Distribution d'inventaire |
+| 5 | Display / Vidéo (YouTube Pre-roll) | Notoriété de marque et de modèle |
+| 6 | E-mail / CRM | Rappels de service, offres de reprise |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.0% |
-| Social CTR | 0.5% - 1.0% |
-| CPC (Search) | $1.50 - $6.00 |
-| CPC (Brand terms) | $0.50 - $3.00 |
-| Lead Conversion Rate | 2% - 5% |
-| Email Open Rate | 18% - 24% |
-| Lead-to-Sale Rate | 5% - 12% |
-| Cost Per Lead | $20 - $80 |
+| CTR de recherche | 3,0 % - 6,0 % |
+| CTR social | 0,5 % - 1,0 % |
+| CPC (Recherche) | 1,50 $ - 6,00 $ |
+| CPC (Termes de marque) | 0,50 $ - 3,00 $ |
+| Taux de conversion de lead | 2 % - 5 % |
+| Taux d'ouverture e-mail | 18 % - 24 % |
+| Taux lead-vers-vente | 5 % - 12 % |
+| Coût par lead | 20 $ - 80 $ |
 
-**Compliance Requirements:**
-- **FTC Used Car Rule** — Buyers Guide disclosure requirements
-- State dealer advertising regulations (pricing, availability claims)
-- EPA fuel economy claims must be accurate
-- Lemon law disclosures (varies by state)
-- **TCPA** for phone and text follow-up
-- OEM co-op advertising guidelines and compliance
+**Exigences de conformité :**
+- **Règle FTC sur les voitures d'occasion** — exigences de divulgation du Buyers Guide
+- Réglementations publicitaires de concession d'état (prix, allégations de disponibilité)
+- Les allégations de consommation de carburant EPA doivent être exactes
+- Divulgations de loi citron (varie selon l'état)
+- **TCPA** pour le suivi téléphonique et par SMS
+- Directives et conformité de publicité coopérative du constructeur (OEM)
 
-**Preferred Content Formats:**
-- Vehicle inventory pages with detailed specs and photos
-- Video walkarounds and test drive content
-- Comparison articles (make vs. make, model vs. model)
-- Financing calculators and payment estimators
-- Customer testimonial videos
-- Service and maintenance content
+**Formats de contenu privilégiés :**
+- Pages d'inventaire de véhicules avec spécifications détaillées et photos
+- Tours de véhicule vidéo et contenu d'essai routier
+- Articles de comparaison (marque vs marque, modèle vs modèle)
+- Calculateurs de financement et estimateurs de paiement
+- Vidéos de témoignage client
+- Contenu de service et d'entretien
 
-**Seasonal Peaks:**
-- Year-end clearance (November-December)
-- New model year launches (August-October)
-- Tax refund season (February-April)
-- Memorial Day, Labor Day, Fourth of July sales events
-- Three-day holiday weekends generally
+**Pics saisonniers :**
+- Liquidation de fin d'année (novembre-décembre)
+- Lancements de nouveaux modèles (août-octobre)
+- Saison des remboursements d'impôts (février-avril)
+- Événements de soldes du Memorial Day, Labor Day, 4 juillet
+- Week-ends prolongés de fête en général
 
-**AEO/GEO Considerations:**
-- Schema markup: Vehicle, AutoDealer, Offer, Product
-- Optimize for "[make model] vs [make model]" comparison queries
-- Structured vehicle data (price, mileage, features) for AI extraction
-- Local inventory schema helps AI assistants recommend nearby options
-- Reviews and ratings structured data for dealer trust signals
+**Considérations AEO/GEO :**
+- Balisage de schéma : Vehicle, AutoDealer, Offer, Product
+- Optimiser pour les requêtes de comparaison « [marque modèle] vs [marque modèle] »
+- Données de véhicule structurées (prix, kilométrage, fonctionnalités) pour l'extraction IA
+- Le schéma d'inventaire local aide les assistants IA à recommander des options à proximité
+- Données structurées d'avis et de notes pour les signaux de confiance de concession
 
-**Common Pitfalls:**
-- Not updating inventory feeds in real-time (advertising sold vehicles)
-- Poor lead response time — first dealer to call often wins
-- Ignoring service department marketing (higher margin, retention driver)
-- Generic ad copy that doesn't highlight specific inventory or offers
-- Underinvesting in reputation management
+**Pièges courants :**
+- Ne pas mettre à jour les flux d'inventaire en temps réel (publicité de véhicules vendus)
+- Mauvais temps de réponse aux leads — le premier concessionnaire à appeler gagne souvent
+- Ignorer le marketing du département de service (marge plus élevée, moteur de rétention)
+- Texte publicitaire générique qui ne met pas en avant l'inventaire ou les offres spécifiques
+- Sous-investir dans la gestion de réputation
 
 ---
 
-## 11. Non-Profit
+## 11. Association à but non lucratif
 
-**Funnel Model:** Engagement-to-donation funnel. Initial engagement can convert in minutes (disaster relief) or months (planned giving). Recurring donor development is the primary growth strategy.
+**Modèle de tunnel :** Tunnel d'engagement vers don. L'engagement initial peut convertir en minutes (secours d'urgence) ou en mois (dons planifiés). Le développement de donateurs récurrents est la principale stratégie de croissance.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Email Marketing | Primary fundraising and engagement channel |
-| 2 | Organic Social Media | Community building, storytelling |
-| 3 | Google Ad Grants ($10K/mo free) | Must-use channel for eligible orgs |
-| 4 | SEO / Content Marketing | Cause-related content, impact stories |
-| 5 | Direct Mail | Still effective for older donor demographics |
-| 6 | Paid Social (Meta) | Donor acquisition and event promotion |
+| 1 | E-mail Marketing | Canal principal de collecte de fonds et d'engagement |
+| 2 | Réseaux sociaux organiques | Construction communautaire, narration |
+| 3 | Google Ad Grants (10 000 $/mois gratuits) | Canal incontournable pour les organisations éligibles |
+| 4 | SEO / Marketing de contenu | Contenu lié à la cause, histoires d'impact |
+| 5 | Courrier direct | Toujours efficace pour les démographies de donateurs plus âgées |
+| 6 | Social payant (Meta) | Acquisition de donateurs et promotion d'événements |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR (Ad Grants) | 3.0% - 8.0% |
-| Social CTR | 0.5% - 1.5% |
-| CPC (Ad Grants) | $0.00 (free, $2.00 max bid cap) |
-| CPC (Paid social) | $0.50 - $3.00 |
-| Donation Page Conversion Rate | 8% - 20% |
-| Email Open Rate | 25% - 35% |
-| Donor Retention Rate (annual) | 40% - 50% |
-| Online Fundraising Growth YoY | 5% - 15% |
+| CTR de recherche (Ad Grants) | 3,0 % - 8,0 % |
+| CTR social | 0,5 % - 1,5 % |
+| CPC (Ad Grants) | 0,00 $ (gratuit, plafond d'enchère max de 2,00 $) |
+| CPC (Social payant) | 0,50 $ - 3,00 $ |
+| Taux de conversion de page de don | 8 % - 20 % |
+| Taux d'ouverture e-mail | 25 % - 35 % |
+| Taux de rétention des donateurs (annuel) | 40 % - 50 % |
+| Croissance de la collecte de fonds en ligne d'une année sur l'autre | 5 % - 15 % |
 
-**Compliance Requirements:**
-- **IRS 501(c)(3)** rules on political activity and lobbying limits
-- State charitable solicitation registration (most states require it)
-- **CAN-SPAM** and donor communication consent
-- Accurate use of funds disclosure
-- Donor privacy and data protection
-- Gift acknowledgment and tax receipt requirements
-- Google Ad Grants compliance rules (CTR minimums, keyword restrictions)
+**Exigences de conformité :**
+- Règles **IRS 501(c)(3)** sur l'activité politique et les limites de lobbying
+- Enregistrement de sollicitation caritative d'état (la plupart des états l'exigent)
+- Consentement de communication du donateur et **CAN-SPAM**
+- Divulgation exacte de l'usage des fonds
+- Confidentialité et protection des données du donateur
+- Exigences de reconnaissance de don et de reçu fiscal
+- Règles de conformité de Google Ad Grants (minimums de CTR, restrictions de mots-clés)
 
-**Preferred Content Formats:**
-- Impact stories with real beneficiaries (with consent)
-- Annual reports and transparency documents
-- Video storytelling (emotional narratives)
-- Infographics with impact data
-- Donor spotlight and gratitude content
-- Event promotion and live-stream fundraising
+**Formats de contenu privilégiés :**
+- Histoires d'impact avec de vrais bénéficiaires (avec consentement)
+- Rapports annuels et documents de transparence
+- Narration vidéo (récits émotionnels)
+- Infographies avec données d'impact
+- Mise en avant des donateurs et contenu de gratitude
+- Promotion d'événements et collecte de fonds en direct
 
-**Seasonal Peaks:**
-- Year-end giving (November-December, especially Giving Tuesday)
-- Tax season (reminding donors of deductions, January-March)
-- Disaster response (unpredictable but massive spikes)
-- Spring galas and fundraising events
-- Back-to-school (education-focused non-profits)
+**Pics saisonniers :**
+- Don de fin d'année (novembre-décembre, en particulier Giving Tuesday)
+- Saison fiscale (rappel des déductions aux donateurs, janvier-mars)
+- Réponse aux catastrophes (imprévisible mais des pics massifs)
+- Galas de printemps et événements de collecte de fonds
+- Rentrée scolaire (associations axées éducation)
 
-**AEO/GEO Considerations:**
-- Schema markup: NGO, Organization, Event, DonateAction
-- Optimize for "how to help [cause]" and "donate to [cause]" queries
-- Impact data should be structured for AI answer citations
-- Google Ad Grants has specific compliance requirements for AI-era search
-- Ensure mission statement and impact metrics are machine-readable
+**Considérations AEO/GEO :**
+- Balisage de schéma : NGO, Organization, Event, DonateAction
+- Optimiser pour les requêtes « comment aider [cause] » et « faire un don à [cause] »
+- Les données d'impact devraient être structurées pour les citations de réponse IA
+- Google Ad Grants a des exigences de conformité spécifiques pour l'ère de la recherche IA
+- S'assurer que la déclaration de mission et les métriques d'impact sont lisibles par machine
 
-**Common Pitfalls:**
-- Not utilizing the full Google Ad Grants budget ($10K/month)
-- Treating all donors identically instead of segmenting by giving level
-- Focusing too much on acquisition over donor retention
-- Weak donation page UX (too many steps, slow load times)
-- Not telling impact stories — donors give to outcomes, not organizations
+**Pièges courants :**
+- Ne pas utiliser le budget complet de Google Ad Grants (10 000 $/mois)
+- Traiter tous les donateurs de manière identique au lieu de segmenter par niveau de don
+- Se concentrer trop sur l'acquisition au détriment de la rétention des donateurs
+- UX de page de don faible (trop d'étapes, temps de chargement lents)
+- Ne pas raconter les histoires d'impact — les donateurs donnent pour des résultats, pas des organisations
 
 ---
 
-## 12. Manufacturing / Industrial B2B
+## 12. Industrie manufacturière / B2B industriel
 
-**Funnel Model:** Long-cycle relationship funnel. Typical length 90-365 days. Multiple stakeholders involved. RFQ/RFP processes are common.
+**Modèle de tunnel :** Long tunnel de relation. Longueur typique de 90 à 365 jours. Plusieurs parties prenantes impliquées. Les processus RFQ/RFP sont courants.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Trade Shows / Industry Events | Still dominant for relationship building |
-| 2 | SEO / Content Marketing | Technical content, specifications, use cases |
-| 3 | LinkedIn (organic + paid) | B2B decision-maker targeting |
-| 4 | Email Marketing | Nurture sequences, product updates |
-| 5 | Google Ads (Search) | Technical and product-specific queries |
-| 6 | Industry Publications / Thomas Net | Niche directories and publications |
+| 1 | Salons professionnels / Événements sectoriels | Toujours dominants pour la construction de relations |
+| 2 | SEO / Marketing de contenu | Contenu technique, spécifications, cas d'usage |
+| 3 | LinkedIn (organique + payant) | Ciblage de décideurs B2B |
+| 4 | E-mail Marketing | Séquences de nurturing, mises à jour produit |
+| 5 | Google Ads (Recherche) | Requêtes techniques et spécifiques au produit |
+| 6 | Publications sectorielles / Thomas Net | Annuaires et publications de niche |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.0% - 4.0% |
-| Social CTR (LinkedIn) | 0.3% - 0.6% |
-| CPC (Search) | $2.00 - $8.00 |
-| CPC (LinkedIn) | $5.00 - $12.00 |
-| Conversion Rate (RFQ/contact form) | 1% - 3% |
-| Email Open Rate | 20% - 28% |
-| Lead-to-Opportunity Rate | 5% - 15% |
-| Sales Cycle Length | 3 - 12 months |
+| CTR de recherche | 2,0 % - 4,0 % |
+| CTR social (LinkedIn) | 0,3 % - 0,6 % |
+| CPC (Recherche) | 2,00 $ - 8,00 $ |
+| CPC (LinkedIn) | 5,00 $ - 12,00 $ |
+| Taux de conversion (formulaire RFQ/contact) | 1 % - 3 % |
+| Taux d'ouverture e-mail | 20 % - 28 % |
+| Taux lead-vers-opportunité | 5 % - 15 % |
+| Durée du cycle de vente | 3 - 12 mois |
 
-**Compliance Requirements:**
-- Industry-specific certifications (ISO 9001, AS9100, etc.) — claims must be current
-- ITAR/EAR export control regulations for defense-related products
-- Environmental and safety compliance claims (EPA, OSHA)
-- UL/CE marking requirements in marketing materials
-- Material safety data sheets (MSDS) accessibility
-- Country-of-origin labeling and claims
+**Exigences de conformité :**
+- Certifications spécifiques au secteur (ISO 9001, AS9100, etc.) — les allégations doivent être actuelles
+- Réglementations de contrôle d'exportation ITAR/EAR pour les produits liés à la défense
+- Allégations de conformité environnementale et de sécurité (EPA, OSHA)
+- Exigences de marquage UL/CE dans les supports marketing
+- Accessibilité des fiches de données de sécurité (MSDS)
+- Étiquetage et allégations d'origine du pays
 
-**Preferred Content Formats:**
-- Technical whitepapers and specification sheets
-- Case studies with engineering detail
-- Product catalogs (digital and PDF)
-- CAD files and 3D model downloads
-- Application notes and engineering guides
-- Webinars with technical demonstrations
-- Trade show booth content and presentations
+**Formats de contenu privilégiés :**
+- Livres blancs techniques et fiches de spécification
+- Études de cas avec détail d'ingénierie
+- Catalogues produit (numérique et PDF)
+- Fichiers CAD et téléchargements de modèles 3D
+- Notes d'application et guides d'ingénierie
+- Webinaires avec démonstrations techniques
+- Contenu et présentations de stand de salon
 
-**Seasonal Peaks:**
-- Trade show calendar drives activity (varies by industry)
-- Q1 and Q4: Budget planning and allocation cycles
-- Project bidding seasons (construction-adjacent: spring)
-- Year-end capital equipment purchases
+**Pics saisonniers :**
+- Le calendrier des salons pilote l'activité (varie selon le secteur)
+- T1 et T4 : cycles de planification et d'allocation budgétaire
+- Saisons d'appel d'offres de projet (adjacent à la construction : printemps)
+- Achats d'équipement de fin d'année
 
-**AEO/GEO Considerations:**
-- Schema markup: Product, Manufacturer, TechArticle
-- Optimize for highly specific technical queries
-- Structured product specification data for AI procurement tools
-- B2B buying is shifting to digital research — AI tools will recommend vendors
-- Ensure certifications and capabilities are structured and current
+**Considérations AEO/GEO :**
+- Balisage de schéma : Product, Manufacturer, TechArticle
+- Optimiser pour des requêtes techniques hautement spécifiques
+- Données de spécification produit structurées pour les outils d'achat IA
+- L'achat B2B se déplace vers la recherche numérique — les outils IA recommanderont des fournisseurs
+- S'assurer que les certifications et capacités sont structurées et à jour
 
-**Common Pitfalls:**
-- Website looks like it was built in 2005 — industrial buyers now expect modern UX
-- Not having technical content accessible without gating everything
-- Ignoring digital channels because "our buyers don't search online" (they do)
-- No CRM integration between marketing and sales
-- Failing to update certifications and capabilities on the website
+**Pièges courants :**
+- Le site web semble avoir été construit en 2005 — les acheteurs industriels attendent désormais une UX moderne
+- Ne pas rendre le contenu technique accessible sans tout verrouiller
+- Ignorer les canaux numériques parce que « nos acheteurs ne cherchent pas en ligne » (ils le font)
+- Aucune intégration CRM entre marketing et ventes
+- Échec à mettre à jour les certifications et capacités sur le site web
 
 ---
 
-## 13. Insurance
+## 13. Assurance
 
-**Funnel Model:** Quote-driven comparison funnel. Typical length 7-30 days for personal lines, 30-90 days for commercial. Heavy comparison shopping behavior.
+**Modèle de tunnel :** Tunnel de comparaison piloté par devis. Longueur typique de 7 à 30 jours pour les lignes personnelles, 30-90 jours pour le commercial. Comportement de magasinage comparatif intense.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Paid Search (Google Ads) | Extremely competitive, high CPC |
-| 2 | SEO / Content Marketing | Explainer content, comparison articles |
-| 3 | Comparison/Aggregator Sites | Policygenius, The Zebra, etc. |
-| 4 | Email Marketing | Renewal reminders, cross-sell |
-| 5 | Local SEO (independent agents) | "Insurance agent near me" |
-| 6 | Social Media (Facebook, LinkedIn) | Brand awareness, agent promotion |
+| 1 | Recherche payante (Google Ads) | Extrêmement compétitif, CPC élevé |
+| 2 | SEO / Marketing de contenu | Contenu explicatif, articles de comparaison |
+| 3 | Sites de comparaison/agrégateur | Policygenius, The Zebra, etc. |
+| 4 | E-mail Marketing | Rappels de renouvellement, vente croisée |
+| 5 | SEO local (agents indépendants) | « Agent d'assurance près de moi » |
+| 6 | Réseaux sociaux (Facebook, LinkedIn) | Notoriété de marque, promotion d'agent |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.5% - 5.0% |
-| Social CTR | 0.3% - 0.7% |
-| CPC (Search) | $5.00 - $20.00 |
-| CPC (Auto/home insurance terms) | $15.00 - $60.00+ |
-| Quote-Start Conversion Rate | 10% - 20% |
-| Quote-to-Bind Rate | 15% - 30% |
-| Email Open Rate | 20% - 28% |
-| Customer Retention Rate (annual) | 80% - 90% |
+| CTR de recherche | 2,5 % - 5,0 % |
+| CTR social | 0,3 % - 0,7 % |
+| CPC (Recherche) | 5,00 $ - 20,00 $ |
+| CPC (Termes assurance auto/habitation) | 15,00 $ - 60,00 $+ |
+| Taux de conversion de démarrage de devis | 10 % - 20 % |
+| Taux devis-vers-souscription | 15 % - 30 % |
+| Taux d'ouverture e-mail | 20 % - 28 % |
+| Taux de rétention client (annuel) | 80 % - 90 % |
 
-**Compliance Requirements:**
-- **State Department of Insurance** regulations (vary significantly by state)
-- Licensed agent requirements for solicitation
-- Required disclosures on policy limitations and exclusions
-- **NAIC** model regulations on advertising
-- Cannot misrepresent coverage, benefits, or pricing
-- TCPA for telemarketing and text outreach
-- Privacy regulations for sensitive personal and health data
+**Exigences de conformité :**
+- Réglementations du **Département d'assurance d'état** (varient significativement selon l'état)
+- Exigences d'agent licencié pour la sollicitation
+- Divulgations requises sur les limitations et exclusions de police
+- Réglementations modèles **NAIC** sur la publicité
+- Ne peut pas déformer la couverture, les avantages, ou la tarification
+- TCPA pour le télémarketing et la prospection par SMS
+- Réglementations de confidentialité pour les données personnelles et de santé sensibles
 
-**Preferred Content Formats:**
-- Quote calculators and instant-quote tools
-- Coverage explainer articles
-- Comparison guides (coverage types, carriers)
-- Video explainers for complex products
-- FAQ pages addressing common questions
-- Customer testimonial and claims-experience stories
+**Formats de contenu privilégiés :**
+- Calculateurs de devis et outils de devis instantané
+- Articles explicatifs de couverture
+- Guides de comparaison (types de couverture, assureurs)
+- Explicatifs vidéo pour les produits complexes
+- Pages FAQ répondant aux questions courantes
+- Témoignages clients et histoires d'expérience de sinistre
 
-**Seasonal Peaks:**
-- Auto insurance: Year-round but spikes around policy renewals
-- Home insurance: Spring (home-buying season)
-- Health insurance: Open enrollment (October-December)
-- Life insurance: January (New Year planning), after major life events
-- Commercial: Annual renewal cycles
+**Pics saisonniers :**
+- Assurance auto : toute l'année mais des pics autour des renouvellements de police
+- Assurance habitation : printemps (saison d'achat immobilier)
+- Assurance santé : inscription ouverte (octobre-décembre)
+- Assurance vie : janvier (planification du Nouvel An), après des événements de vie majeurs
+- Commercial : cycles de renouvellement annuels
 
-**AEO/GEO Considerations:**
-- YMYL content — high E-E-A-T requirements
-- Schema markup: InsuranceAgency, Product, FAQPage, LocalBusiness
-- Structured comparison data for AI extraction
-- Optimize for "how much does [insurance type] cost" queries
-- AI assistants are beginning to recommend insurance — structured data matters
+**Considérations AEO/GEO :**
+- Contenu YMYL — exigences E-E-A-T élevées
+- Balisage de schéma : InsuranceAgency, Product, FAQPage, LocalBusiness
+- Données de comparaison structurées pour l'extraction IA
+- Optimiser pour les requêtes « combien coûte [type d'assurance] »
+- Les assistants IA commencent à recommander de l'assurance — les données structurées comptent
 
-**Common Pitfalls:**
-- Competing on CPC alone against carriers with massive budgets
-- Not optimizing quote forms for mobile completion
-- Generic content that doesn't address specific coverage scenarios
-- Ignoring retention marketing — acquiring a new customer costs 5-7x more
-- Not leveraging client reviews and referral programs
+**Pièges courants :**
+- Rivaliser uniquement sur le CPC contre des assureurs avec des budgets massifs
+- Ne pas optimiser les formulaires de devis pour la complétion mobile
+- Contenu générique qui ne traite pas de scénarios de couverture spécifiques
+- Ignorer le marketing de rétention — acquérir un nouveau client coûte 5-7 fois plus cher
+- Ne pas exploiter les avis clients et les programmes de parrainage
 
 ---
 
-## 14. Home Services
+## 14. Services à domicile
 
-**Funnel Model:** Urgency-driven local funnel. Emergency services (plumbing leak, HVAC failure): minutes to hours. Planned projects (renovation, installation): 7-30 days.
+**Modèle de tunnel :** Tunnel local piloté par l'urgence. Services d'urgence (fuite de plomberie, panne HVAC) : minutes à heures. Projets planifiés (rénovation, installation) : 7-30 jours.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Google Local Service Ads (LSAs) | Pay-per-lead, Google Guaranteed badge |
-| 2 | Google Business Profile / Local SEO | "Plumber near me" type queries |
-| 3 | Paid Search (Google Ads) | Service + location keywords |
-| 4 | NextDoor / Neighborhood Apps | Hyper-local recommendations |
-| 5 | Reputation Management | Reviews are the #1 decision factor |
-| 6 | Direct Mail / Door Hangers | Still effective for local awareness |
+| 1 | Google Local Service Ads (LSA) | Paiement par lead, badge Google Guaranteed |
+| 2 | Google Business Profile / SEO local | Requêtes de type « plombier près de moi » |
+| 3 | Recherche payante (Google Ads) | Mots-clés service + emplacement |
+| 4 | NextDoor / Applications de quartier | Recommandations hyperlocales |
+| 5 | Gestion de réputation | Les avis sont le facteur de décision n°1 |
+| 6 | Courrier direct / Accroche-portes | Toujours efficace pour la notoriété locale |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 7.0% |
-| Social CTR | 0.4% - 1.0% |
-| CPC (Search) | $5.00 - $30.00 |
-| Cost Per Lead (LSA) | $20 - $80 |
-| Phone Call Conversion Rate | 30% - 50% |
-| Booking Rate (from lead) | 20% - 40% |
-| Email Open Rate | 18% - 24% |
-| Average Job Value | $200 - $5,000+ (varies by trade) |
+| CTR de recherche | 3,0 % - 7,0 % |
+| CTR social | 0,4 % - 1,0 % |
+| CPC (Recherche) | 5,00 $ - 30,00 $ |
+| Coût par lead (LSA) | 20 $ - 80 $ |
+| Taux de conversion d'appel téléphonique | 30 % - 50 % |
+| Taux de réservation (depuis lead) | 20 % - 40 % |
+| Taux d'ouverture e-mail | 18 % - 24 % |
+| Valeur moyenne du travail | 200 $ - 5 000 $+ (varie selon le métier) |
 
-**Compliance Requirements:**
-- State and local contractor licensing (must be displayed)
-- Home improvement contractor registration (varies by state)
-- EPA Lead-Safe certification for pre-1978 homes
-- Bonding and insurance requirements
-- **TCPA** for any phone or text marketing
-- BBB and state attorney general complaint compliance
-- Written estimate requirements (many states require them)
+**Exigences de conformité :**
+- Licence de contractant d'état et locale (doit être affichée)
+- Enregistrement de contractant en amélioration de l'habitat (varie selon l'état)
+- Certification EPA Lead-Safe pour les maisons antérieures à 1978
+- Exigences de cautionnement et d'assurance
+- **TCPA** pour tout marketing téléphonique ou par SMS
+- Conformité aux plaintes du BBB et du procureur général d'état
+- Exigences de devis écrit (de nombreux états les exigent)
 
-**Preferred Content Formats:**
-- Service area pages (one per city/neighborhood served)
-- Before/after project galleries
-- Customer review showcases
-- Emergency tips and how-to content
-- Video testimonials and project walkthroughs
-- Seasonal maintenance checklists
+**Formats de contenu privilégiés :**
+- Pages de zone de service (une par ville/quartier desservi)
+- Galeries de projet avant/après
+- Vitrines d'avis clients
+- Conseils d'urgence et contenu pratique
+- Témoignages vidéo et visites de projet
+- Checklists d'entretien saisonnier
 
-**Seasonal Peaks:**
-- HVAC: Summer (AC) and Winter (heating) — highest demand
-- Plumbing: Winter (frozen pipes), Spring (outdoor plumbing)
-- Roofing: Spring and Fall
-- Landscaping: Spring through Fall
-- General home improvement: Spring and Fall
+**Pics saisonniers :**
+- HVAC : été (climatisation) et hiver (chauffage) — demande la plus élevée
+- Plomberie : hiver (tuyaux gelés), printemps (plomberie extérieure)
+- Toiture : printemps et automne
+- Aménagement paysager : du printemps à l'automne
+- Amélioration générale de l'habitat : printemps et automne
 
-**AEO/GEO Considerations:**
-- LocalBusiness, HomeAndConstructionBusiness schema markup
-- Service area pages must be geographically specific
-- AI assistants increasingly handle "find a plumber" type queries — structured business data is critical
-- Google Business Profile attributes (service areas, hours, services) feed AI results
-- Optimize for "[service] in [city]" and "emergency [service] near me"
+**Considérations AEO/GEO :**
+- Balisage de schéma LocalBusiness, HomeAndConstructionBusiness
+- Les pages de zone de service doivent être géographiquement spécifiques
+- Les assistants IA gèrent de plus en plus les requêtes du type « trouver un plombier » — les données d'entreprise structurées sont critiques
+- Les attributs Google Business Profile (zones de service, horaires, services) alimentent les résultats IA
+- Optimiser pour « [service] à [ville] » et « [service] d'urgence près de moi »
 
-**Common Pitfalls:**
-- Not answering the phone — missed calls are lost revenue
-- Ignoring Google Business Profile optimization and regular posting
-- No system for requesting reviews after completed jobs
-- Service area pages that are duplicative with only city names swapped
-- Not tracking which marketing channels generate actual booked jobs (not just leads)
+**Pièges courants :**
+- Ne pas répondre au téléphone — les appels manqués sont du chiffre d'affaires perdu
+- Ignorer l'optimisation et la publication régulière du Google Business Profile
+- Aucun système de demande d'avis après les travaux terminés
+- Pages de zone de service dupliquées avec seulement le nom de ville changé
+- Ne pas suivre quels canaux marketing génèrent réellement des travaux réservés (pas juste des leads)
 
 ---
 
-## 15. Fitness / Wellness
+## 15. Fitness / Bien-être
 
-**Funnel Model:** Aspiration-to-commitment funnel. Gym memberships: 7-30 days. Online fitness programs: 1-14 days. Personal training: 7-30 days. High churn requires constant reactivation.
+**Modèle de tunnel :** Tunnel d'aspiration vers engagement. Abonnements de salle de sport : 7-30 jours. Programmes fitness en ligne : 1-14 jours. Coaching personnel : 7-30 jours. Le churn élevé nécessite une réactivation constante.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Social Media (Instagram, TikTok, YouTube) | Transformation content, workout demos |
-| 2 | Local SEO / Google Business Profile | "Gym near me," "yoga studio near me" |
-| 3 | Paid Social (Meta, TikTok) | Lead gen for trials and memberships |
-| 4 | Influencer / Creator Partnerships | Fitness influencer collaborations |
-| 5 | Email / SMS Marketing | Member engagement, class reminders, reactivation |
-| 6 | Referral Programs | Member-get-member incentives |
+| 1 | Réseaux sociaux (Instagram, TikTok, YouTube) | Contenu de transformation, démos d'entraînement |
+| 2 | SEO local / Google Business Profile | « Salle de sport près de moi », « studio de yoga près de moi » |
+| 3 | Social payant (Meta, TikTok) | Génération de leads pour essais et abonnements |
+| 4 | Partenariats influenceur / créateur | Collaborations avec des influenceurs fitness |
+| 5 | E-mail / SMS Marketing | Engagement des membres, rappels de cours, réactivation |
+| 6 | Programmes de parrainage | Incitations membre-recrute-membre |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.0% |
-| Social CTR | 0.8% - 2.0% |
-| CPC (Search) | $1.50 - $5.00 |
-| CPC (Meta) | $0.80 - $3.00 |
-| Trial-to-Member Conversion | 20% - 40% |
-| Monthly Member Churn | 4% - 8% |
-| Email Open Rate | 20% - 30% |
-| Referral Rate | 10% - 25% of new members |
+| CTR de recherche | 3,0 % - 6,0 % |
+| CTR social | 0,8 % - 2,0 % |
+| CPC (Recherche) | 1,50 $ - 5,00 $ |
+| CPC (Meta) | 0,80 $ - 3,00 $ |
+| Conversion essai-vers-membre | 20 % - 40 % |
+| Churn mensuel des membres | 4 % - 8 % |
+| Taux d'ouverture e-mail | 20 % - 30 % |
+| Taux de parrainage | 10 % - 25 % des nouveaux membres |
 
-**Compliance Requirements:**
-- **FTC** rules on health and fitness claims — no guaranteed results
-- Before/after photo guidelines (must be real, not misleading)
-- Supplement claims must comply with FDA regulations
-- Membership contract regulations (vary by state — auto-renewal rules)
-- HIPAA (if integrating with health data or medical professionals)
-- Liability waivers and disclosure requirements
+**Exigences de conformité :**
+- Règles **FTC** sur les allégations de santé et de fitness — aucun résultat garanti
+- Directives sur les photos avant/après (doivent être réelles, non trompeuses)
+- Les allégations de complément doivent se conformer aux réglementations FDA
+- Réglementations de contrat d'adhésion (varient selon l'état — règles de renouvellement automatique)
+- HIPAA (en cas d'intégration avec des données de santé ou professionnels médicaux)
+- Exigences de renonciation de responsabilité et de divulgation
 
-**Preferred Content Formats:**
-- Workout demonstration videos (short-form dominant)
-- Transformation stories (with appropriate disclaimers)
-- Nutrition tips and meal plans
-- Trainer/instructor spotlight content
-- Live-stream classes and recorded sessions
-- Challenge and program launch campaigns
+**Formats de contenu privilégiés :**
+- Vidéos de démonstration d'entraînement (le format court domine)
+- Histoires de transformation (avec mentions légales appropriées)
+- Conseils nutritionnels et plans de repas
+- Contenu de mise en avant d'entraîneur/instructeur
+- Cours en direct et sessions enregistrées
+- Campagnes de lancement de défi et de programme
 
-**Seasonal Peaks:**
-- January: New Year resolution rush (biggest month)
-- Spring: Pre-summer body motivation (March-May)
-- September: Back-to-routine after summer
-- Dips: June-August (summer) and November-December (holidays)
+**Pics saisonniers :**
+- Janvier : ruée des résolutions du Nouvel An (le plus grand mois)
+- Printemps : motivation pré-été (mars-mai)
+- Septembre : retour à la routine après l'été
+- Baisses : juin-août (été) et novembre-décembre (fêtes)
 
-**AEO/GEO Considerations:**
-- Schema markup: SportsActivityLocation, ExerciseAction, LocalBusiness
-- Optimize for "best gym in [area]" and "[fitness type] classes near me"
-- AI fitness assistants are growing — structured class and program data helps
-- YouTube content optimized for exercise tutorials gets AI search visibility
-- Google Business Profile: class schedules, amenities, photos
+**Considérations AEO/GEO :**
+- Balisage de schéma : SportsActivityLocation, ExerciseAction, LocalBusiness
+- Optimiser pour « meilleure salle de sport à [zone] » et « cours de [type de fitness] près de moi »
+- Les assistants fitness IA se développent — les données structurées de cours et programme aident
+- Le contenu YouTube optimisé pour les tutoriels d'exercice obtient une visibilité de recherche IA
+- Google Business Profile : horaires de cours, équipements, photos
 
-**Common Pitfalls:**
-- Focusing only on new member acquisition, neglecting retention
-- Making unrealistic body transformation promises
-- Not leveraging social proof (member testimonials, community)
-- Generic "join now" messaging without addressing specific pain points
-- Ignoring the reactivation opportunity with lapsed members
+**Pièges courants :**
+- Se concentrer uniquement sur l'acquisition de nouveaux membres, en négligeant la rétention
+- Faire des promesses de transformation corporelle irréalistes
+- Ne pas exploiter la preuve sociale (témoignages de membres, communauté)
+- Message générique « rejoignez maintenant » sans traiter les points de douleur spécifiques
+- Ignorer l'opportunité de réactivation avec les membres en fin d'abonnement
 
 ---
 
-## 16. Fashion / Beauty
+## 16. Mode / Beauté
 
-**Funnel Model:** Inspiration-to-purchase funnel. Typical length 1-14 days for affordable fashion, 14-30 days for luxury. Strong impulse purchase behavior driven by social content.
+**Modèle de tunnel :** Tunnel d'inspiration vers achat. Longueur typique de 1 à 14 jours pour la mode abordable, 14-30 jours pour le luxe. Comportement d'achat impulsif fort piloté par le contenu social.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Social Media (Instagram, TikTok, Pinterest) | Visual discovery and shoppable content |
-| 2 | Influencer / Creator Marketing | Dominant acquisition channel |
-| 3 | Paid Social (Meta, TikTok) | Dynamic product ads, lookalike audiences |
-| 4 | Email / SMS Marketing | Product launches, flash sales, loyalty |
-| 5 | SEO / Content Marketing | Trend content, styling guides |
-| 6 | Google Shopping / PMax | Product-level search visibility |
+| 1 | Réseaux sociaux (Instagram, TikTok, Pinterest) | Découverte visuelle et contenu achetable |
+| 2 | Marketing d'influence / créateur | Canal d'acquisition dominant |
+| 3 | Social payant (Meta, TikTok) | Publicités produit dynamiques, audiences similaires |
+| 4 | E-mail / SMS Marketing | Lancements produit, ventes flash, fidélité |
+| 5 | SEO / Marketing de contenu | Contenu de tendance, guides de style |
+| 6 | Google Shopping / PMax | Visibilité de recherche au niveau produit |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.5% - 5.0% |
-| Social CTR (Meta) | 0.8% - 1.8% |
-| CPC (Search) | $0.50 - $3.00 |
-| CPC (Meta) | $0.40 - $2.00 |
-| Conversion Rate (site-wide) | 1.5% - 3.5% |
-| Email Open Rate | 15% - 22% |
-| Average Order Value | $50 - $200 (mass); $200+ (luxury) |
-| Return Rate | 20% - 40% |
+| CTR de recherche | 2,5 % - 5,0 % |
+| CTR social (Meta) | 0,8 % - 1,8 % |
+| CPC (Recherche) | 0,50 $ - 3,00 $ |
+| CPC (Meta) | 0,40 $ - 2,00 $ |
+| Taux de conversion (site entier) | 1,5 % - 3,5 % |
+| Taux d'ouverture e-mail | 15 % - 22 % |
+| Panier moyen | 50 $ - 200 $ (masse) ; 200 $+ (luxe) |
+| Taux de retour | 20 % - 40 % |
 
-**Compliance Requirements:**
-- FTC influencer disclosure requirements (#ad, #sponsored)
-- Accurate product representation (photos, sizing, materials)
-- EU Textile Regulation (fiber composition labeling)
-- Sustainability claims must be substantiated (no greenwashing)
-- GDPR/CCPA for customer data and personalization
-- Cosmetics: FDA labeling requirements, ingredient disclosures
+**Exigences de conformité :**
+- Exigences de divulgation d'influenceur FTC (#ad, #sponsored)
+- Représentation produit exacte (photos, tailles, matériaux)
+- Réglementation textile de l'UE (étiquetage de composition des fibres)
+- Les allégations de durabilité doivent être étayées (aucun greenwashing)
+- RGPD/CCPA pour les données client et la personnalisation
+- Cosmétiques : exigences d'étiquetage FDA, divulgations d'ingrédients
 
-**Preferred Content Formats:**
-- Short-form video (try-on hauls, tutorials, GRWM)
-- High-quality lifestyle and editorial photography
-- User-generated content and customer reviews with photos
-- Styling guides and trend reports
-- Behind-the-scenes brand storytelling
-- Live shopping events
+**Formats de contenu privilégiés :**
+- Vidéo courte (essayages, tutoriels, GRWM)
+- Photographie de style de vie et éditoriale de haute qualité
+- Contenu généré par les utilisateurs et avis clients avec photos
+- Guides de style et rapports de tendance
+- Narration de marque en coulisses
+- Événements de shopping en direct
 
-**Seasonal Peaks:**
-- Fashion Weeks (February, September)
-- Holiday gifting season (November-December)
-- Spring/Summer and Fall/Winter collection launches
-- Back-to-school (July-August)
-- Valentine's Day (beauty gifting)
+**Pics saisonniers :**
+- Fashion Weeks (février, septembre)
+- Saison des cadeaux de fêtes (novembre-décembre)
+- Lancements de collections printemps/été et automne/hiver
+- Rentrée scolaire (juillet-août)
+- Saint-Valentin (cadeaux beauté)
 
-**AEO/GEO Considerations:**
-- Product schema with detailed attributes (size, color, material, price)
-- Optimize for "[product type] for [body type/occasion]" queries
-- Visual search optimization (Google Lens, Pinterest Lens)
-- AI styling assistants are emerging — structured product attribute data is essential
-- Trend content that AI can cite for "what's trending in [season]" queries
+**Considérations AEO/GEO :**
+- Schéma produit avec attributs détaillés (taille, couleur, matériau, prix)
+- Optimiser pour les requêtes « [type de produit] pour [type de corps/occasion] »
+- Optimisation de recherche visuelle (Google Lens, Pinterest Lens)
+- Les assistants de style IA émergent — les données d'attribut produit structurées sont essentielles
+- Contenu de tendance que l'IA peut citer pour les requêtes « qu'est-ce qui est tendance en [saison] »
 
-**Common Pitfalls:**
-- Relying solely on influencers without building brand-owned channels
-- Poor size guides leading to high return rates
-- Not leveraging user-generated content for social proof
-- Ignoring email list building in favor of social followers (algorithm dependency)
-- Sustainability claims without evidence (consumers and regulators are scrutinizing)
+**Pièges courants :**
+- S'appuyer uniquement sur les influenceurs sans construire de canaux propriétaires à la marque
+- Mauvais guides de taille conduisant à des taux de retour élevés
+- Ne pas exploiter le contenu généré par les utilisateurs pour la preuve sociale
+- Ignorer la construction de liste e-mail en faveur des abonnés sociaux (dépendance à l'algorithme)
+- Allégations de durabilité sans preuve (consommateurs et régulateurs examinent de près)
 
 ---
 
-## 17. Telecom
+## 17. Télécommunications
 
-**Funnel Model:** Comparison-driven switching funnel. Typical length 7-30 days for consumer, 30-90 days for enterprise. Driven by contract expirations and competitive offers.
+**Modèle de tunnel :** Tunnel de commutation piloté par la comparaison. Longueur typique de 7 à 30 jours pour le grand public, 30-90 jours pour l'entreprise. Piloté par les expirations de contrat et les offres concurrentes.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Paid Search (Google Ads) | Plan comparison and switching queries |
-| 2 | TV / Connected TV | Mass-market brand awareness |
-| 3 | Retail / In-Store | Physical stores and kiosks |
-| 4 | SEO / Content Marketing | Coverage maps, plan comparisons |
-| 5 | Social Media (Facebook, YouTube, TikTok) | Promotional campaigns |
-| 6 | Direct Mail / Door-to-Door | Local market penetration |
+| 1 | Recherche payante (Google Ads) | Requêtes de comparaison de plan et de changement |
+| 2 | TV / TV connectée | Notoriété de marque de masse |
+| 3 | Vente au détail / En magasin | Magasins physiques et kiosques |
+| 4 | SEO / Marketing de contenu | Cartes de couverture, comparaisons de plan |
+| 5 | Réseaux sociaux (Facebook, YouTube, TikTok) | Campagnes promotionnelles |
+| 6 | Courrier direct / Porte-à-porte | Pénétration de marché local |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.0% |
-| Social CTR | 0.4% - 0.9% |
-| CPC (Search) | $2.00 - $10.00 |
-| CPC (Branded terms) | $0.50 - $3.00 |
-| Online Sign-Up Conversion Rate | 2% - 5% |
-| Email Open Rate | 18% - 24% |
-| Customer Churn Rate (monthly) | 1.5% - 3.0% |
-| Customer Lifetime Value | $2,000 - $8,000 |
+| CTR de recherche | 3,0 % - 6,0 % |
+| CTR social | 0,4 % - 0,9 % |
+| CPC (Recherche) | 2,00 $ - 10,00 $ |
+| CPC (Termes de marque) | 0,50 $ - 3,00 $ |
+| Taux de conversion d'inscription en ligne | 2 % - 5 % |
+| Taux d'ouverture e-mail | 18 % - 24 % |
+| Taux de churn client (mensuel) | 1,5 % - 3,0 % |
+| Valeur vie client | 2 000 $ - 8 000 $ |
 
-**Compliance Requirements:**
-- **FCC** regulations on advertising claims
-- Truth-in-advertising for speed, coverage, and pricing claims
-- Contract terms and early termination fee disclosures
-- **TCPA** for all outbound marketing communications
-- Accessibility requirements (FCC Section 255)
-- State PUC/PSC regulations
-- Net neutrality considerations in messaging
+**Exigences de conformité :**
+- Réglementations **FCC** sur les allégations publicitaires
+- Véracité publicitaire pour les allégations de vitesse, couverture, et tarification
+- Divulgations des termes de contrat et des frais de résiliation anticipée
+- **TCPA** pour toute communication marketing sortante
+- Exigences d'accessibilité (FCC Section 255)
+- Réglementations des commissions de service public d'état
+- Considérations de neutralité du net dans le message
 
-**Preferred Content Formats:**
-- Plan comparison tools and calculators
-- Coverage map visualizations
-- Customer testimonial videos
-- Speed test and performance data
-- Explainer content for technology (5G, fiber, etc.)
-- Promotional landing pages with clear CTAs
+**Formats de contenu privilégiés :**
+- Outils et calculateurs de comparaison de plan
+- Visualisations de carte de couverture
+- Vidéos de témoignage client
+- Données de test de vitesse et de performance
+- Contenu explicatif pour la technologie (5G, fibre, etc.)
+- Pages d'atterrissage promotionnelles avec CTA clairs
 
-**Seasonal Peaks:**
-- Back-to-school (July-September): Family plans, student deals
-- Holiday season (November-December): Device bundles and gifts
-- New device launches (aligned with Apple, Samsung cycles)
-- Super Bowl and major events (advertising moments)
-- Contract renewal cycles (ongoing)
+**Pics saisonniers :**
+- Rentrée scolaire (juillet-septembre) : plans familiaux, offres étudiantes
+- Saison des fêtes (novembre-décembre) : forfaits d'appareils et cadeaux
+- Lancements de nouveaux appareils (alignés avec les cycles Apple, Samsung)
+- Super Bowl et événements majeurs (moments publicitaires)
+- Cycles de renouvellement de contrat (continu)
 
-**AEO/GEO Considerations:**
-- Schema markup: Product, Offer, Service
-- Coverage data must be accurate and structured
-- Optimize for "[carrier] vs [carrier]" and "best cell phone plan for [need]"
-- AI assistants will increasingly recommend plans — structured plan data matters
-- Local coverage claims must be verifiable
+**Considérations AEO/GEO :**
+- Balisage de schéma : Product, Offer, Service
+- Les données de couverture doivent être exactes et structurées
+- Optimiser pour « [opérateur] vs [opérateur] » et « meilleur forfait mobile pour [besoin] »
+- Les assistants IA recommanderont de plus en plus des plans — les données de plan structurées comptent
+- Les allégations de couverture locale doivent être vérifiables
 
-**Common Pitfalls:**
-- Overpromising on speed or coverage in marketing materials
-- Hiding fees and surcharges that frustrate customers post-purchase
-- Not differentiating beyond price (network quality, service, perks)
-- Ignoring existing customer marketing (retention is cheaper than acquisition)
-- Poor online/offline experience consistency
+**Pièges courants :**
+- Sur-promettre en vitesse ou couverture dans les supports marketing
+- Cacher les frais et surtaxes qui frustrent les clients post-achat
+- Ne pas se différencier au-delà du prix (qualité du réseau, service, avantages)
+- Ignorer le marketing des clients existants (la rétention coûte moins cher que l'acquisition)
+- Mauvaise cohérence de l'expérience en ligne/hors ligne
 
 ---
 
-## 18. Professional Services (Consulting, Accounting, Advisory)
+## 18. Services professionnels (Conseil, Comptabilité, Advisory)
 
-**Funnel Model:** Relationship and expertise-driven funnel. Typical length 30-180 days. Trust is built through demonstrated expertise. Referrals are the dominant source.
+**Modèle de tunnel :** Tunnel piloté par la relation et l'expertise. Longueur typique de 30 à 180 jours. La confiance se construit via l'expertise démontrée. Les recommandations sont la source dominante.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Referral / Word-of-Mouth | Still #1 source of new business |
-| 2 | LinkedIn (organic + paid) | Thought leadership and networking |
-| 3 | SEO / Content Marketing | Expertise-demonstrating content |
-| 4 | Email Marketing | Newsletter, client updates, nurture |
-| 5 | Speaking / Events / Webinars | Authority building |
-| 6 | Google Ads (Search) | Service-specific queries |
+| 1 | Parrainage / Bouche-à-oreille | Toujours la source n°1 de nouvelles affaires |
+| 2 | LinkedIn (organique + payant) | Leadership éclairé et réseautage |
+| 3 | SEO / Marketing de contenu | Contenu démontrant l'expertise |
+| 4 | E-mail Marketing | Newsletter, mises à jour client, nurturing |
+| 5 | Prises de parole / Événements / Webinaires | Construction d'autorité |
+| 6 | Google Ads (Recherche) | Requêtes spécifiques au service |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.5% - 5.0% |
-| Social CTR (LinkedIn) | 0.3% - 0.7% |
-| CPC (Search) | $3.00 - $12.00 |
-| CPC (LinkedIn) | $5.00 - $15.00 |
-| Website Conversion Rate | 1% - 3% |
-| Email Open Rate | 22% - 32% |
-| Proposal Win Rate | 20% - 40% |
-| Client Retention Rate (annual) | 80% - 95% |
+| CTR de recherche | 2,5 % - 5,0 % |
+| CTR social (LinkedIn) | 0,3 % - 0,7 % |
+| CPC (Recherche) | 3,00 $ - 12,00 $ |
+| CPC (LinkedIn) | 5,00 $ - 15,00 $ |
+| Taux de conversion du site web | 1 % - 3 % |
+| Taux d'ouverture e-mail | 22 % - 32 % |
+| Taux de gain de proposition | 20 % - 40 % |
+| Taux de rétention client (annuel) | 80 % - 95 % |
 
-**Compliance Requirements:**
-- Professional licensing and certification display requirements
-- **AICPA** / state board rules for CPA advertising
-- Confidentiality obligations (cannot reveal client work without permission)
-- SOX compliance considerations for financial advisory marketing
-- Industry-specific regulations (SEC for investment advisory, etc.)
-- Professional liability disclaimers
+**Exigences de conformité :**
+- Exigences d'affichage de licence et certification professionnelle
+- Règles **AICPA** / conseil d'état pour la publicité CPA
+- Obligations de confidentialité (ne peut pas révéler le travail client sans permission)
+- Considérations de conformité SOX pour le marketing de conseil financier
+- Réglementations spécifiques au secteur (SEC pour le conseil en investissement, etc.)
+- Mentions légales de responsabilité professionnelle
 
-**Preferred Content Formats:**
-- Thought leadership articles and LinkedIn posts
-- Industry insight reports and whitepapers
-- Case studies (anonymized where required)
-- Webinars and speaking engagement recordings
-- Podcast appearances and interviews
-- Email newsletters with actionable insights
-- Team credential and experience profiles
+**Formats de contenu privilégiés :**
+- Articles de leadership éclairé et publications LinkedIn
+- Rapports d'aperçu sectoriel et livres blancs
+- Études de cas (anonymisées lorsque requis)
+- Webinaires et enregistrements de prise de parole
+- Apparitions et interviews de podcast
+- Newsletters e-mail avec des enseignements exploitables
+- Profils de qualification et d'expérience d'équipe
 
-**Seasonal Peaks:**
-- Q1: Annual planning and tax season (accounting)
-- Q4: Year-end advisory and compliance
-- Budget seasons (varies by client industry)
-- Regulatory change events (drive advisory demand)
-- Generally more stable than consumer industries
+**Pics saisonniers :**
+- T1 : planification annuelle et saison fiscale (comptabilité)
+- T4 : conseil et conformité de fin d'année
+- Saisons budgétaires (varie selon le secteur du client)
+- Événements de changement réglementaire (pilotent la demande de conseil)
+- Généralement plus stable que les secteurs grand public
 
-**AEO/GEO Considerations:**
-- Schema markup: ProfessionalService, LocalBusiness, Person (for individual practitioners)
-- E-E-A-T is paramount — credentials, publications, speaking engagements
-- Optimize for "[service] for [industry/company size]" queries
-- AI assistants recommending service providers will weight reviews and credentials
-- LinkedIn profile optimization feeds into AI search results
+**Considérations AEO/GEO :**
+- Balisage de schéma : ProfessionalService, LocalBusiness, Person (pour les praticiens individuels)
+- L'E-E-A-T est primordial — identifiants, publications, prises de parole
+- Optimiser pour les requêtes « [service] pour [secteur/taille d'entreprise] »
+- Les assistants IA recommandant des fournisseurs de service pondèreront les avis et identifiants
+- L'optimisation du profil LinkedIn alimente les résultats de recherche IA
 
-**Common Pitfalls:**
-- "We serve everyone" positioning — lack of specialization or niche focus
-- Not systematizing the referral process (waiting for referrals passively)
-- Content that is too generic and doesn't demonstrate real expertise
-- Underinvesting in digital presence because "we get all our business from referrals"
-- Team bios that focus on credentials but not client outcomes
+**Pièges courants :**
+- Positionnement « nous servons tout le monde » — manque de spécialisation ou de focus de niche
+- Ne pas systématiser le processus de recommandation (attendre passivement les recommandations)
+- Contenu trop générique qui ne démontre pas une véritable expertise
+- Sous-investir dans la présence numérique parce que « nous obtenons toutes nos affaires par recommandation »
+- Bios d'équipe qui se concentrent sur les qualifications mais pas les résultats client
 
 ---
 
-## 19. Gaming / Entertainment
+## 19. Jeux vidéo / Divertissement
 
-**Funnel Model:** Awareness-to-engagement funnel. Mobile/casual games: 1-3 days. Console/PC titles: 7-30 days (pre-launch hype cycle). Subscription services: 7-14 days.
+**Modèle de tunnel :** Tunnel de notoriété vers engagement. Jeux mobiles/casuels : 1-3 jours. Titres console/PC : 7-30 jours (cycle d'engouement pré-lancement). Services d'abonnement : 7-14 jours.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Social Media (YouTube, TikTok, Twitter/X, Discord) | Community and hype building |
-| 2 | Influencer / Streamer Partnerships | Twitch, YouTube Gaming collaborations |
-| 3 | App Store Optimization (ASO) | Critical for mobile games |
-| 4 | Paid Social (Meta, TikTok) | User acquisition for mobile games |
-| 5 | Community Building (Discord, Reddit) | Retention and advocacy |
-| 6 | PR / Media (IGN, Polygon, Kotaku) | Review coverage and previews |
+| 1 | Réseaux sociaux (YouTube, TikTok, Twitter/X, Discord) | Construction de communauté et d'engouement |
+| 2 | Partenariats influenceur / streamer | Collaborations Twitch, YouTube Gaming |
+| 3 | Optimisation de l'app store (ASO) | Critique pour les jeux mobiles |
+| 4 | Social payant (Meta, TikTok) | Acquisition d'utilisateurs pour les jeux mobiles |
+| 5 | Construction de communauté (Discord, Reddit) | Rétention et plaidoyer |
+| 6 | RP / Médias (IGN, Polygon, Kotaku) | Couverture d'avis et aperçus |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Social CTR | 0.5% - 1.5% |
-| CPI (Cost Per Install, mobile) | $1.00 - $5.00 |
-| CPA (Paying user acquisition) | $10.00 - $50.00 |
-| Day 1 Retention | 25% - 40% |
-| Day 7 Retention | 10% - 20% |
-| Day 30 Retention | 3% - 8% |
-| ARPDAU (Avg Revenue Per Daily Active User) | $0.05 - $0.50 |
-| LTV (Lifetime Value per user) | $2.00 - $20.00 (mobile) |
+| CTR social | 0,5 % - 1,5 % |
+| CPI (Coût par installation, mobile) | 1,00 $ - 5,00 $ |
+| CPA (Acquisition d'utilisateur payant) | 10,00 $ - 50,00 $ |
+| Rétention Jour 1 | 25 % - 40 % |
+| Rétention Jour 7 | 10 % - 20 % |
+| Rétention Jour 30 | 3 % - 8 % |
+| ARPDAU (Chiffre d'affaires moyen par utilisateur actif quotidien) | 0,05 $ - 0,50 $ |
+| LTV (Valeur vie par utilisateur) | 2,00 $ - 20,00 $ (mobile) |
 
-**Compliance Requirements:**
-- **ESRB / PEGI** rating requirements in advertising
-- **COPPA** for games targeting or attracting children under 13
-- Loot box and in-app purchase disclosure regulations (varies by country)
-- FTC guidelines on paid influencer promotions
-- Apple App Store and Google Play advertising policies
-- Gambling-adjacent feature regulations (varies by jurisdiction)
-- Data privacy (GDPR, CCPA) for player data
+**Exigences de conformité :**
+- Exigences de classification **ESRB / PEGI** dans la publicité
+- **COPPA** pour les jeux ciblant ou attirant les moins de 13 ans
+- Réglementations de divulgation des loot box et d'achat in-app (varie selon le pays)
+- Directives FTC sur les promotions d'influenceur payées
+- Politiques publicitaires Apple App Store et Google Play
+- Réglementations sur les fonctionnalités adjacentes au jeu d'argent (varie selon la juridiction)
+- Confidentialité des données (RGPD, CCPA) pour les données joueur
 
-**Preferred Content Formats:**
-- Gameplay trailers and cinematics
-- Streamer and influencer gameplay content
-- Behind-the-scenes development updates
-- Community events and tournaments
-- Short-form social clips (TikTok, Reels)
-- Dev diaries and update announcements
+**Formats de contenu privilégiés :**
+- Bandes-annonces de gameplay et cinématiques
+- Contenu de gameplay de streamer et influenceur
+- Mises à jour de développement en coulisses
+- Événements communautaires et tournois
+- Clips sociaux courts (TikTok, Reels)
+- Journaux de développeur et annonces de mise à jour
 
-**Seasonal Peaks:**
-- Holiday season (November-December): Major title releases and gifting
-- Summer: Summer Game Fest / Gamescom announcement season
-- Back-to-school (August-September)
-- Spring break
-- Aligned with major release calendars and platform sale events
+**Pics saisonniers :**
+- Saison des fêtes (novembre-décembre) : sorties de titres majeurs et cadeaux
+- Été : saison d'annonces Summer Game Fest / Gamescom
+- Rentrée scolaire (août-septembre)
+- Vacances de printemps
+- Aligné avec les calendriers de sortie majeurs et les événements de solde de plateforme
 
-**AEO/GEO Considerations:**
-- Schema markup: VideoGame, SoftwareApplication, Review
-- App Store Optimization is the equivalent of SEO for mobile
-- Optimize for "[game name] review" and "best [genre] games [year]"
-- AI recommendation engines are emerging for game discovery
-- Structured metadata (genre, platform, rating, price) aids AI cataloging
+**Considérations AEO/GEO :**
+- Balisage de schéma : VideoGame, SoftwareApplication, Review
+- L'optimisation de l'App Store est l'équivalent du SEO pour le mobile
+- Optimiser pour « avis [nom du jeu] » et « meilleurs jeux [genre] [année] »
+- Les moteurs de recommandation IA émergent pour la découverte de jeux
+- Les métadonnées structurées (genre, plateforme, classification, prix) aident le catalogage IA
 
-**Common Pitfalls:**
-- Launching without building pre-release community and wishlists
-- Over-spending on user acquisition without fixing retention first
-- Ignoring community feedback and sentiment
-- Misleading trailers that don't represent actual gameplay
-- Not planning for post-launch content and live ops marketing
+**Pièges courants :**
+- Lancer sans construire de communauté pré-sortie et de listes de souhaits
+- Sur-dépenser en acquisition d'utilisateurs sans d'abord corriger la rétention
+- Ignorer le retour et le sentiment de la communauté
+- Bandes-annonces trompeuses qui ne représentent pas le gameplay réel
+- Ne pas planifier le contenu post-lancement et le marketing d'opérations en direct
 
 ---
 
 ## 20. Crypto / Web3
 
-**Funnel Model:** Education-to-participation funnel. Varies widely: exchange sign-ups 1-7 days, DeFi/NFT projects 1-30 days, enterprise blockchain 60-180 days. Community-driven growth is essential.
+**Modèle de tunnel :** Tunnel d'éducation vers participation. Varie largement : inscriptions d'échange 1-7 jours, projets DeFi/NFT 1-30 jours, blockchain d'entreprise 60-180 jours. La croissance pilotée par la communauté est essentielle.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Twitter/X (Crypto Twitter) | Primary discovery and discourse platform |
-| 2 | Community (Discord, Telegram) | Core community building and engagement |
-| 3 | Content Marketing / SEO | Educational content, guides |
-| 4 | Influencer / KOL Partnerships | Crypto-native thought leaders |
-| 5 | YouTube | Educational and analysis content |
-| 6 | Podcast Sponsorships | Crypto-focused shows |
+| 1 | Twitter/X (Crypto Twitter) | Plateforme principale de découverte et de discours |
+| 2 | Communauté (Discord, Telegram) | Construction et engagement communautaire central |
+| 3 | Marketing de contenu / SEO | Contenu éducatif, guides |
+| 4 | Partenariats influenceur / KOL | Leaders d'opinion natifs crypto |
+| 5 | YouTube | Contenu éducatif et d'analyse |
+| 6 | Sponsorisations de podcast | Émissions axées crypto |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Social CTR (Twitter/X) | 0.5% - 1.5% |
-| CPC (Search, where available) | $1.00 - $8.00 |
-| Exchange Sign-Up Conversion | 5% - 15% |
-| Community Growth Rate (monthly) | 10% - 50%+ |
-| Email Open Rate | 20% - 30% |
-| Active Community Members (% of total) | 5% - 15% |
-| Token Holder Retention (30-day) | Highly variable |
+| CTR social (Twitter/X) | 0,5 % - 1,5 % |
+| CPC (Recherche, si disponible) | 1,00 $ - 8,00 $ |
+| Conversion d'inscription d'échange | 5 % - 15 % |
+| Taux de croissance communautaire (mensuel) | 10 % - 50 %+ |
+| Taux d'ouverture e-mail | 20 % - 30 % |
+| Membres de communauté actifs (% du total) | 5 % - 15 % |
+| Rétention des détenteurs de token (30 jours) | Hautement variable |
 
-**Compliance Requirements:**
-- **SEC** regulations — tokens may be classified as securities (Howey Test)
-- **FinCEN** / AML / KYC requirements for exchanges
-- **FTC** disclosure rules for paid promotions
-- Advertising restrictions on major platforms (Google, Meta, Twitter have crypto ad policies)
-- State money transmitter laws
-- GDPR/CCPA for user data
-- MiCA regulation (EU markets)
-- No guaranteed return claims — "not financial advice" disclaimers
+**Exigences de conformité :**
+- Réglementations **SEC** — les tokens peuvent être classés comme valeurs mobilières (test de Howey)
+- Exigences **FinCEN** / AML / KYC pour les échanges
+- Règles de divulgation **FTC** pour les promotions payées
+- Restrictions publicitaires sur les plateformes majeures (Google, Meta, Twitter ont des politiques publicitaires crypto)
+- Lois d'état sur les transmetteurs de fonds
+- RGPD/CCPA pour les données utilisateur
+- Réglementation MiCA (marchés UE)
+- Aucune allégation de rendement garanti — mentions légales « pas un conseil financier »
 
-**Preferred Content Formats:**
-- Twitter/X threads with educational content
-- Long-form explainer articles and whitepapers
-- YouTube analysis and tutorial videos
-- Discord AMAs and community events
-- Infographics explaining complex concepts
-- Podcast interviews and appearances
-- Memes and community-driven content (authenticity matters)
+**Formats de contenu privilégiés :**
+- Fils Twitter/X avec contenu éducatif
+- Articles explicatifs longs et livres blancs
+- Vidéos d'analyse et de tutoriel YouTube
+- AMA Discord et événements communautaires
+- Infographies expliquant des concepts complexes
+- Interviews et apparitions de podcast
+- Mèmes et contenu piloté par la communauté (l'authenticité compte)
 
-**Seasonal Peaks:**
-- Bull market cycles (macro-driven, not calendar-based)
-- Major conference seasons (Consensus, ETHDenver, Token2049)
-- Bitcoin halving events (4-year cycle)
-- Regulatory announcement periods (often reactive)
-- Tax season (portfolio review and planning)
+**Pics saisonniers :**
+- Cycles de marché haussier (piloté par la macro, pas par le calendrier)
+- Saisons de conférences majeures (Consensus, ETHDenver, Token2049)
+- Événements de halving Bitcoin (cycle de 4 ans)
+- Périodes d'annonce réglementaire (souvent réactives)
+- Saison fiscale (revue et planification de portefeuille)
 
-**AEO/GEO Considerations:**
-- Rapidly evolving terminology — keep content updated
-- Schema markup: limited standard schemas; use Article, FAQPage, Organization
-- Optimize for "what is [crypto concept]" and "how to [crypto action]" queries
-- AI answer engines struggle with accuracy in crypto — well-sourced content can dominate
-- Educational content ranks well because the space is information-dense
+**Considérations AEO/GEO :**
+- Terminologie en évolution rapide — garder le contenu à jour
+- Balisage de schéma : schémas standard limités ; utiliser Article, FAQPage, Organization
+- Optimiser pour « qu'est-ce que [concept crypto] » et « comment [action crypto] »
+- Les moteurs de réponse IA peinent avec l'exactitude en crypto — un contenu bien sourcé peut dominer
+- Le contenu éducatif se classe bien car l'espace est dense en information
 
-**Common Pitfalls:**
-- Paid promotions without proper disclosure (legal liability)
-- Overpromising returns or guaranteed gains
-- Building on only one platform (Twitter algorithm changes can devastate reach)
-- Neglecting security messaging (hacks and scams damage trust)
-- Community building without clear utility or value proposition
-- Ignoring regulatory compliance — enforcement is accelerating
+**Pièges courants :**
+- Promotions payées sans divulgation appropriée (responsabilité juridique)
+- Sur-promettre des rendements ou des gains garantis
+- Construire sur une seule plateforme (les changements d'algorithme Twitter peuvent dévaster la portée)
+- Négliger le message de sécurité (les hacks et arnaques nuisent à la confiance)
+- Construction communautaire sans utilité claire ou proposition de valeur
+- Ignorer la conformité réglementaire — l'application s'accélère
 
 ---
 
 ## 21. Construction / Architecture
 
-**Funnel Model:** Project-based long funnel. Residential: 30-90 days. Commercial: 90-365 days. RFP/bid processes are standard for commercial. Relationships and reputation dominate.
+**Modèle de tunnel :** Long tunnel basé sur le projet. Résidentiel : 30-90 jours. Commercial : 90-365 jours. Les processus RFP/appel d'offres sont standard pour le commercial. Les relations et la réputation dominent.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Referrals / Word-of-Mouth | Dominant source for both residential and commercial |
-| 2 | Google Business Profile / Local SEO | "Contractor near me," "architect in [city]" |
-| 3 | Portfolio Website | Visual showcase of completed projects |
-| 4 | Google Ads (Search) | Service + location queries |
-| 5 | Houzz / Industry Platforms | Architecture and design discovery |
-| 6 | Social Media (Instagram, LinkedIn) | Project showcases, B2B networking |
+| 1 | Parrainages / Bouche-à-oreille | Source dominante pour le résidentiel et le commercial |
+| 2 | Google Business Profile / SEO local | « Entrepreneur près de moi », « architecte à [ville] » |
+| 3 | Site web portfolio | Vitrine visuelle de projets réalisés |
+| 4 | Google Ads (Recherche) | Requêtes service + emplacement |
+| 5 | Houzz / Plateformes sectorielles | Découverte architecture et design |
+| 6 | Réseaux sociaux (Instagram, LinkedIn) | Vitrines de projet, réseautage B2B |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 3.0% - 6.0% |
-| Social CTR | 0.4% - 1.0% |
-| CPC (Search) | $2.00 - $10.00 |
-| CPC (Meta, local) | $1.00 - $4.00 |
-| Lead Conversion Rate | 2% - 6% |
-| Email Open Rate | 18% - 26% |
-| Bid Win Rate | 15% - 30% |
-| Average Project Value | $10,000 - $10,000,000+ |
+| CTR de recherche | 3,0 % - 6,0 % |
+| CTR social | 0,4 % - 1,0 % |
+| CPC (Recherche) | 2,00 $ - 10,00 $ |
+| CPC (Meta, local) | 1,00 $ - 4,00 $ |
+| Taux de conversion de lead | 2 % - 6 % |
+| Taux d'ouverture e-mail | 18 % - 26 % |
+| Taux de gain d'appel d'offres | 15 % - 30 % |
+| Valeur moyenne de projet | 10 000 $ - 10 000 000 $+ |
 
-**Compliance Requirements:**
-- State contractor licensing (must be current and displayed)
-- OSHA safety compliance references in marketing
-- Building code and permit compliance
-- Bonding and insurance requirements (display in marketing)
-- Lien law disclosures (varies by state)
-- Environmental compliance (EPA, local regulations)
-- AIA and professional licensing for architects
+**Exigences de conformité :**
+- Licence de contractant d'état (doit être actuelle et affichée)
+- Références de conformité de sécurité OSHA dans le marketing
+- Conformité du code du bâtiment et des permis
+- Exigences de cautionnement et d'assurance (afficher dans le marketing)
+- Divulgations de loi de privilège (varie selon l'état)
+- Conformité environnementale (EPA, réglementations locales)
+- AIA et licence professionnelle pour les architectes
 
-**Preferred Content Formats:**
-- Project portfolio with professional photography
-- Before/after transformation galleries
-- Case studies with scope, challenges, and outcomes
-- Time-lapse project videos
-- Client testimonial videos
-- Process explainers (what to expect, timeline, costs)
-- Awards and recognition showcases
+**Formats de contenu privilégiés :**
+- Portfolio de projet avec photographie professionnelle
+- Galeries de transformation avant/après
+- Études de cas avec portée, défis, et résultats
+- Vidéos de projet en accéléré
+- Vidéos de témoignage client
+- Explicatifs de processus (à quoi s'attendre, calendrier, coûts)
+- Vitrines de prix et reconnaissances
 
-**Seasonal Peaks:**
-- Spring (March-June): Peak construction season starts
-- Fall (September-October): Push to complete before winter
-- January-February: Planning and bidding season
-- Weather-dependent variation by region
-- Commercial: Often aligned with fiscal year budgets
+**Pics saisonniers :**
+- Printemps (mars-juin) : début de la saison de construction de pointe
+- Automne (septembre-octobre) : effort pour terminer avant l'hiver
+- Janvier-février : saison de planification et d'appel d'offres
+- Variation dépendante de la météo selon la région
+- Commercial : souvent aligné avec les budgets d'année fiscale
 
-**AEO/GEO Considerations:**
-- Schema markup: HomeAndConstructionBusiness, LocalBusiness, ImageObject
-- Optimize for "[service type] in [city]" and "how much does [project type] cost"
-- Portfolio images need alt text and structured data for visual search
-- AI assistants recommending contractors will weight reviews and portfolio quality
-- Cost estimation content is highly searched and AI-extractable
+**Considérations AEO/GEO :**
+- Balisage de schéma : HomeAndConstructionBusiness, LocalBusiness, ImageObject
+- Optimiser pour « [type de service] à [ville] » et « combien coûte [type de projet] »
+- Les images de portfolio nécessitent du texte alt et des données structurées pour la recherche visuelle
+- Les assistants IA recommandant des entrepreneurs pondèreront les avis et la qualité du portfolio
+- Le contenu d'estimation de coût est fortement recherché et extractible par IA
 
-**Common Pitfalls:**
-- No website or an outdated website with no recent projects
-- Not showcasing completed work with professional photography
-- Ignoring online reputation management
-- Failing to capture and follow up on leads systematically
-- Not differentiating (specialization vs. "we do everything")
-- Missing the planning/research phase — clients research months before hiring
+**Pièges courants :**
+- Aucun site web ou un site web obsolète sans projets récents
+- Ne pas présenter le travail réalisé avec une photographie professionnelle
+- Ignorer la gestion de réputation en ligne
+- Échec à capturer et relancer systématiquement les leads
+- Ne pas se différencier (spécialisation vs « nous faisons tout »)
+- Manquer la phase de planification/recherche — les clients recherchent des mois avant d'embaucher
 
 ---
 
 ## 22. Agriculture / AgTech
 
-**Funnel Model:** Seasonal decision-cycle funnel. Input purchases (seed, chemicals, equipment): 30-90 days before planting season. AgTech adoption: 60-180 days. Dealer relationships are critical.
+**Modèle de tunnel :** Tunnel de cycle de décision saisonnier. Achats d'intrants (semences, produits chimiques, équipement) : 30-90 jours avant la saison de plantation. Adoption AgTech : 60-180 jours. Les relations avec les concessionnaires sont critiques.
 
-**Top Marketing Channels (ranked):**
+**Principaux canaux marketing (classés) :**
 
-| Rank | Channel | Notes |
+| Rang | Canal | Remarques |
 |------|---------|-------|
-| 1 | Trade Shows / Field Days | In-person demos and relationship building |
-| 2 | Industry Publications (Farm Journal, AgWeb) | Trusted editorial channels |
-| 3 | Dealer / Distributor Networks | Channel partner marketing |
-| 4 | SEO / Content Marketing | Technical and agronomic content |
-| 5 | Email Marketing | Seasonal campaigns, product updates |
-| 6 | Social Media (Facebook, YouTube) | Farm community engagement, demo videos |
+| 1 | Salons professionnels / Journées de champ | Démos en personne et construction de relations |
+| 2 | Publications sectorielles (Farm Journal, AgWeb) | Canaux éditoriaux de confiance |
+| 3 | Réseaux de concessionnaires / distributeurs | Marketing de partenaires de canal |
+| 4 | SEO / Marketing de contenu | Contenu technique et agronomique |
+| 5 | E-mail Marketing | Campagnes saisonnières, mises à jour produit |
+| 6 | Réseaux sociaux (Facebook, YouTube) | Engagement de la communauté agricole, vidéos de démo |
 
-**Benchmark KPIs:**
+**KPI de référence :**
 
-| Metric | Range |
+| Métrique | Fourchette |
 |--------|-------|
-| Search CTR | 2.5% - 5.0% |
-| Social CTR (Facebook) | 0.5% - 1.2% |
-| CPC (Search) | $1.00 - $5.00 |
-| CPC (Meta) | $0.50 - $2.50 |
-| Lead Conversion Rate | 2% - 5% |
-| Email Open Rate | 22% - 32% |
-| Trade Show Lead Conversion | 10% - 20% |
-| Sales Cycle (AgTech) | 3 - 12 months |
+| CTR de recherche | 2,5 % - 5,0 % |
+| CTR social (Facebook) | 0,5 % - 1,2 % |
+| CPC (Recherche) | 1,00 $ - 5,00 $ |
+| CPC (Meta) | 0,50 $ - 2,50 $ |
+| Taux de conversion de lead | 2 % - 5 % |
+| Taux d'ouverture e-mail | 22 % - 32 % |
+| Conversion de lead de salon professionnel | 10 % - 20 % |
+| Cycle de vente (AgTech) | 3 - 12 mois |
 
-**Compliance Requirements:**
-- **EPA** regulations for crop protection product advertising
-- FIFRA (Federal Insecticide, Fungicide, and Rodenticide Act) label compliance
-- USDA organic certification claims must be verified
-- State Department of Agriculture advertising rules
-- Seed labeling and performance claim regulations
-- Environmental and sustainability claim substantiation
-- Equipment safety and performance disclaimers
+**Exigences de conformité :**
+- Réglementations **EPA** pour la publicité de produits de protection des cultures
+- Conformité d'étiquetage FIFRA (Federal Insecticide, Fungicide, and Rodenticide Act)
+- Les allégations de certification biologique USDA doivent être vérifiées
+- Règles publicitaires du Département de l'agriculture d'état
+- Réglementations d'étiquetage de semence et d'allégation de performance
+- Étayage des allégations environnementales et de durabilité
+- Mentions légales de sécurité et de performance d'équipement
 
-**Preferred Content Formats:**
-- Field trial results and agronomic data
-- Product demonstration videos (equipment in action)
-- Farmer testimonial stories
-- Technical bulletins and spec sheets
-- ROI calculators (yield improvement, cost savings)
-- Seasonal planting and management guides
-- Podcast content (growing channel in ag)
+**Formats de contenu privilégiés :**
+- Résultats d'essais au champ et données agronomiques
+- Vidéos de démonstration produit (équipement en action)
+- Histoires de témoignage agriculteur
+- Bulletins techniques et fiches de spécification
+- Calculateurs de ROI (amélioration de rendement, économies de coûts)
+- Guides saisonniers de plantation et de gestion
+- Contenu podcast (canal en croissance en agriculture)
 
-**Seasonal Peaks:**
-- Pre-planting (January-March): Input purchasing decisions
-- Planting season (April-May): Last-minute purchases
-- Growing season (June-August): Crop protection, scouting
-- Harvest (September-November): Equipment, storage
-- Winter (December-February): Planning, trade shows, education events
+**Pics saisonniers :**
+- Pré-plantation (janvier-mars) : décisions d'achat d'intrants
+- Saison de plantation (avril-mai) : achats de dernière minute
+- Saison de croissance (juin-août) : protection des cultures, surveillance
+- Récolte (septembre-novembre) : équipement, stockage
+- Hiver (décembre-février) : planification, salons professionnels, événements éducatifs
 
-**AEO/GEO Considerations:**
-- Niche audience but growing digital sophistication
-- Schema markup: Product, Organization, Article
-- Optimize for "[crop] [problem] solution" and "best [input] for [crop]"
-- Precision agriculture and AgTech content is increasingly searched
-- AI-powered agronomic advisory tools are emerging — structured trial data feeds these systems
-- Regional and climate-specific content matters significantly
+**Considérations AEO/GEO :**
+- Audience de niche mais sophistication numérique croissante
+- Balisage de schéma : Product, Organization, Article
+- Optimiser pour « solution [culture] [problème] » et « meilleur [intrant] pour [culture] »
+- Le contenu d'agriculture de précision et AgTech est de plus en plus recherché
+- Les outils de conseil agronomique alimentés par IA émergent — les données d'essai structurées alimentent ces systèmes
+- Le contenu régional et spécifique au climat compte significativement
 
-**Common Pitfalls:**
-- Assuming farmers aren't digital — they research extensively online
-- Marketing only through dealers without building brand awareness
-- Technical jargon without explaining benefits in practical terms
-- Ignoring the seasonal buying cycle (marketing when decisions are already made)
-- Not providing ROI justification — farmers are data-driven buyers
-- Underinvesting in video content showing products in real field conditions
+**Pièges courants :**
+- Supposer que les agriculteurs ne sont pas numériques — ils font des recherches approfondies en ligne
+- Marketing uniquement via les concessionnaires sans construire de notoriété de marque
+- Jargon technique sans expliquer les bénéfices en termes pratiques
+- Ignorer le cycle d'achat saisonnier (marketing quand les décisions sont déjà prises)
+- Ne pas fournir de justification de ROI — les agriculteurs sont des acheteurs pilotés par les données
+- Sous-investir dans le contenu vidéo montrant les produits dans des conditions de champ réelles
 
 ---
 
-## Quick-Reference: Cross-Industry Benchmark Summary
+## Référence rapide : résumé de référence inter-sectoriel
 
-| Industry | Avg Search CTR | CPC Range (Search) | Conversion Rate | Email Open Rate |
+| Secteur | CTR de recherche moyen | Fourchette de CPC (Recherche) | Taux de conversion | Taux d'ouverture e-mail |
 |----------|---------------|-------------------|-----------------|-----------------|
-| SaaS/Software | 2.5% - 5.0% | $2.50 - $8.00 | 2.5% - 5.0% | 20% - 28% |
-| eCommerce/Retail | 2.5% - 5.5% | $0.30 - $1.50 | 1.5% - 3.5% | 15% - 22% |
-| Healthcare/Medical | 3.0% - 6.0% | $2.00 - $7.00 | 3% - 8% | 20% - 28% |
-| Finance/Banking | 2.5% - 5.0% | $3.00 - $15.00 | 2% - 5% | 22% - 30% |
-| Legal Services | 2.0% - 4.5% | $5.00 - $15.00 | 3% - 8% | 18% - 25% |
-| Real Estate | 3.0% - 6.5% | $1.00 - $5.00 | 2% - 5% | 18% - 26% |
-| Education/EdTech | 3.0% - 6.0% | $2.00 - $12.00 | 3% - 8% | 22% - 32% |
-| Restaurant/Food | 4.0% - 8.0% | $0.50 - $2.50 | 3% - 8% | 18% - 25% |
-| Travel/Hospitality | 3.0% - 6.0% | $0.80 - $4.00 | 1% - 4% | 18% - 25% |
-| Automotive | 3.0% - 6.0% | $1.50 - $6.00 | 2% - 5% | 18% - 24% |
-| Non-Profit | 3.0% - 8.0% | $0.00 (Ad Grants) | 8% - 20% | 25% - 35% |
-| Manufacturing/B2B | 2.0% - 4.0% | $2.00 - $8.00 | 1% - 3% | 20% - 28% |
-| Insurance | 2.5% - 5.0% | $5.00 - $20.00 | 10% - 20% | 20% - 28% |
-| Home Services | 3.0% - 7.0% | $5.00 - $30.00 | 20% - 40% | 18% - 24% |
-| Fitness/Wellness | 3.0% - 6.0% | $1.50 - $5.00 | 20% - 40% | 20% - 30% |
-| Fashion/Beauty | 2.5% - 5.0% | $0.50 - $3.00 | 1.5% - 3.5% | 15% - 22% |
-| Telecom | 3.0% - 6.0% | $2.00 - $10.00 | 2% - 5% | 18% - 24% |
-| Professional Services | 2.5% - 5.0% | $3.00 - $12.00 | 1% - 3% | 22% - 32% |
-| Gaming/Entertainment | N/A (social-driven) | $1.00 - $5.00 CPI | 25% - 40% D1 | N/A |
-| Crypto/Web3 | N/A (limited ads) | $1.00 - $8.00 | 5% - 15% | 20% - 30% |
-| Construction/Architecture | 3.0% - 6.0% | $2.00 - $10.00 | 2% - 6% | 18% - 26% |
-| Agriculture/AgTech | 2.5% - 5.0% | $1.00 - $5.00 | 2% - 5% | 22% - 32% |
+| SaaS/Logiciel | 2,5 % - 5,0 % | 2,50 $ - 8,00 $ | 2,5 % - 5,0 % | 20 % - 28 % |
+| E-commerce/Commerce de détail | 2,5 % - 5,5 % | 0,30 $ - 1,50 $ | 1,5 % - 3,5 % | 15 % - 22 % |
+| Santé/Médical | 3,0 % - 6,0 % | 2,00 $ - 7,00 $ | 3 % - 8 % | 20 % - 28 % |
+| Finance/Banque | 2,5 % - 5,0 % | 3,00 $ - 15,00 $ | 2 % - 5 % | 22 % - 30 % |
+| Services juridiques | 2,0 % - 4,5 % | 5,00 $ - 15,00 $ | 3 % - 8 % | 18 % - 25 % |
+| Immobilier | 3,0 % - 6,5 % | 1,00 $ - 5,00 $ | 2 % - 5 % | 18 % - 26 % |
+| Éducation/EdTech | 3,0 % - 6,0 % | 2,00 $ - 12,00 $ | 3 % - 8 % | 22 % - 32 % |
+| Restauration/Alimentation | 4,0 % - 8,0 % | 0,50 $ - 2,50 $ | 3 % - 8 % | 18 % - 25 % |
+| Voyage/Hôtellerie | 3,0 % - 6,0 % | 0,80 $ - 4,00 $ | 1 % - 4 % | 18 % - 25 % |
+| Automobile | 3,0 % - 6,0 % | 1,50 $ - 6,00 $ | 2 % - 5 % | 18 % - 24 % |
+| Association à but non lucratif | 3,0 % - 8,0 % | 0,00 $ (Ad Grants) | 8 % - 20 % | 25 % - 35 % |
+| Manufacturier/B2B | 2,0 % - 4,0 % | 2,00 $ - 8,00 $ | 1 % - 3 % | 20 % - 28 % |
+| Assurance | 2,5 % - 5,0 % | 5,00 $ - 20,00 $ | 10 % - 20 % | 20 % - 28 % |
+| Services à domicile | 3,0 % - 7,0 % | 5,00 $ - 30,00 $ | 20 % - 40 % | 18 % - 24 % |
+| Fitness/Bien-être | 3,0 % - 6,0 % | 1,50 $ - 5,00 $ | 20 % - 40 % | 20 % - 30 % |
+| Mode/Beauté | 2,5 % - 5,0 % | 0,50 $ - 3,00 $ | 1,5 % - 3,5 % | 15 % - 22 % |
+| Télécommunications | 3,0 % - 6,0 % | 2,00 $ - 10,00 $ | 2 % - 5 % | 18 % - 24 % |
+| Services professionnels | 2,5 % - 5,0 % | 3,00 $ - 12,00 $ | 1 % - 3 % | 22 % - 32 % |
+| Jeux vidéo/Divertissement | N/A (piloté par le social) | 1,00 $ - 5,00 $ CPI | 25 % - 40 % J1 | N/A |
+| Crypto/Web3 | N/A (publicité limitée) | 1,00 $ - 8,00 $ | 5 % - 15 % | 20 % - 30 % |
+| Construction/Architecture | 3,0 % - 6,0 % | 2,00 $ - 10,00 $ | 2 % - 6 % | 18 % - 26 % |
+| Agriculture/AgTech | 2,5 % - 5,0 % | 1,00 $ - 5,00 $ | 2 % - 5 % | 22 % - 32 % |
 
-> **Note on conversion rate context:** Home Services and Fitness show high "conversion rates" because their conversion events are phone calls/trial sign-ups (lower commitment). Industries like eCommerce and SaaS measure direct purchases/sign-ups. Do not compare conversion rates across industries without understanding what the conversion event is.
+> **Remarque sur le contexte du taux de conversion :** Les services à domicile et le fitness montrent des « taux de conversion » élevés parce que leurs événements de conversion sont des appels téléphoniques/inscriptions d'essai (engagement plus faible). Des secteurs comme l'e-commerce et le SaaS mesurent les achats/inscriptions directs. Ne comparez pas les taux de conversion entre secteurs sans comprendre quel est l'événement de conversion.
 
 ---
 
-## How to Use This File
+## Comment utiliser ce fichier
 
-**For the agent:** When a user specifies their industry, look up the corresponding profile and use it to:
+**Pour l'agent :** Lorsqu'un utilisateur spécifie son secteur, consulter le profil correspondant et l'utiliser pour :
 
-1. **Set realistic expectations** — Use benchmark KPIs to calibrate goals and projections
-2. **Prioritize channels** — Recommend channels in the ranked order unless the client has data showing otherwise
-3. **Flag compliance risks** — Always check the compliance section before recommending copy, targeting, or tactics
-4. **Time campaigns correctly** — Align campaign launches with seasonal peaks
-5. **Avoid known mistakes** — Review the common pitfalls section and proactively warn clients
-6. **Optimize for AI search** — Apply the AEO/GEO recommendations to all content and SEO work
-7. **Adjust funnel strategy** — Match content and tactics to the industry's typical funnel length and model
+1. **Fixer des attentes réalistes** — Utiliser les KPI de référence pour calibrer les objectifs et projections
+2. **Prioriser les canaux** — Recommander les canaux dans l'ordre classé sauf si le client dispose de données montrant le contraire
+3. **Signaler les risques de conformité** — Toujours vérifier la section de conformité avant de recommander un texte, un ciblage, ou des tactiques
+4. **Programmer les campagnes correctement** — Aligner les lancements de campagne avec les pics saisonniers
+5. **Éviter les erreurs connues** — Revoir la section des pièges courants et avertir proactivement les clients
+6. **Optimiser pour la recherche IA** — Appliquer les recommandations AEO/GEO à tout le contenu et le travail SEO
+7. **Ajuster la stratégie de tunnel** — Faire correspondre le contenu et les tactiques à la longueur et au modèle de tunnel typiques du secteur
 
-**When an industry is not listed:** Use the closest analogous industry profile. For hybrid businesses, blend recommendations from multiple profiles. Always disclose when using proxy data.
-
-**Data freshness:** These benchmarks represent typical ranges as of early 2026. Platform-specific benchmarks shift quarterly. Always cross-reference with the client's own historical data when available — their actual numbers are more reliable than industry averages.
+**Lorsqu'un secteur n'est pas listé :** Utiliser le profil sectoriel analogue le plus proche. Pour les entreprises hybrides, mélanger les recommandations de plusieurs profils. Toujours divulguer lors de l'utilisation de données proxy.

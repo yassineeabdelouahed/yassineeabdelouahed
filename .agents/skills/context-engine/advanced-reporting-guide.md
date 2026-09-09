@@ -1,291 +1,291 @@
-# Advanced Reporting Guide
+# Guide de reporting avancé
 
-Reference knowledge for PDF report generation, dashboard templates, multi-touch attribution, cohort analysis, budget variance reporting, incrementality measurement, and scheduled report automation. Use this when building, delivering, or automating marketing performance reports.
-
----
-
-## 1. PDF Generation with Brand Theming
-
-### WeasyPrint (HTML/CSS to PDF)
-
-- **Method**: Write report as HTML with inline or linked CSS. Convert to PDF via `weasyprint.HTML(string=html_content).write_pdf(output_path)`
-- **Brand CSS integration**:
-  - Set `--brand-primary`, `--brand-secondary`, `--brand-accent` as CSS custom properties from brand profile hex values
-  - `@font-face` declarations for brand fonts (embed WOFF/WOFF2 or reference system fonts)
-  - Page margins: `@page { margin: 2cm; @top-center { content: "Campaign Report — Q1 2026"; font-size: 9pt; } @bottom-right { content: "Page " counter(page) " of " counter(pages); } }`
-  - Logo placement: Fixed-position `<img>` in header area. Recommended: 120x40 px for header, 200x60 px for cover page
-- **Limitations**: No JavaScript execution (charts must be pre-rendered as images or inline SVGs). Limited CSS Grid support — use Flexbox or table layout for complex structures
-
-### ReportLab (Programmatic PDF)
-
-- **Method**: Build PDF programmatically with `canvas.Canvas` or `SimpleDocTemplate` with Platypus flowables
-- **Brand integration**:
-  - Register brand colors: `colors.HexColor('#1a73e8')` for primary, secondary, accent
-  - Register brand fonts: `pdfmetrics.registerFont(TTFont('BrandFont', 'path/to/font.ttf'))`
-  - Page template with logo: `canvas.drawImage('logo.png', x, y, width, height)` in `onPage` callback
-  - Headers/footers: Campaign period, confidentiality notice, page numbers via `onPage`/`onPageEnd` hooks
-- **Chart embedding**: Generate charts with matplotlib, save as PNG/SVG, embed via `canvas.drawImage` or `Image` flowable
-
-### Brand Asset Integration Checklist
-
-| Asset | Source | Placement |
-|---|---|---|
-| Logo (primary) | Brand profile `logo_url` | Cover page (centered, 200x60 px), header (left-aligned, 120x40 px) |
-| Brand colors | Brand profile `brand_colors` | Headings, chart colors, table headers, accent lines, CTA buttons |
-| Fonts | Brand profile or system fallback | Body: 10-11pt, Headings: 14-18pt, Captions: 8-9pt |
-| Header text | Dynamic per report | "Monthly Performance Report — [Brand Name] — [Date Range]" |
-| Footer text | Static template | "Confidential — Prepared by [Agency/Team Name] — Page X of Y" |
-| Cover page | Template | Brand logo, report title, date range, prepared for/by, version |
+Connaissances de référence pour la génération de rapports PDF, les modèles de tableau de bord, l'attribution multi-touch, l'analyse de cohorte, le reporting d'écart budgétaire, la mesure d'incrémentalité, et l'automatisation de rapports programmés. Utilisez ce guide lors de la construction, de la livraison, ou de l'automatisation de rapports de performance marketing.
 
 ---
 
-## 2. Report Structure Templates by Audience
+## 1. Génération de PDF avec habillage de marque
 
-### C-Suite Executive Summary (1-2 pages)
+### WeasyPrint (HTML/CSS vers PDF)
 
-1. **Performance headline**: One sentence summarizing the period. "Revenue from marketing grew 23% QoQ, driven by paid search and email."
-2. **KPI dashboard**: 3-5 KPIs in large-number format with trend arrows:
-   - Revenue attributed to marketing: $X (+Y% vs. prior period)
-   - Customer acquisition cost: $X (-Y% vs. prior period)
-   - Marketing-sourced pipeline: $X
-   - ROAS: X.Xx
-   - Net new leads/customers: X
-3. **Trend sparklines**: 12-week or 6-month trend line for each KPI. No axis labels — just direction
-4. **Strategic highlights**: 2-3 bullet points on what worked, what did not, and what is changing next period
-5. **Budget summary**: Planned vs. actual spend. Single row per channel. Total at bottom
+- **Méthode** : Écrire le rapport en HTML avec du CSS en ligne ou lié. Convertir en PDF via `weasyprint.HTML(string=html_content).write_pdf(output_path)`
+- **Intégration du CSS de marque** :
+  - Définir `--brand-primary`, `--brand-secondary`, `--brand-accent` comme propriétés CSS personnalisées à partir des valeurs hexadécimales du profil de marque
+  - Déclarations `@font-face` pour les polices de marque (intégrer WOFF/WOFF2 ou référencer les polices système)
+  - Marges de page : `@page { margin: 2cm; @top-center { content: "Campaign Report — Q1 2026"; font-size: 9pt; } @bottom-right { content: "Page " counter(page) " of " counter(pages); } }`
+  - Placement du logo : `<img>` à position fixe dans la zone d'en-tête. Recommandé : 120x40 px pour l'en-tête, 200x60 px pour la page de couverture
+- **Limitations** : Aucune exécution JavaScript (les graphiques doivent être pré-rendus en images ou en SVG en ligne). Prise en charge limitée de CSS Grid — utiliser Flexbox ou une mise en page en tableau pour les structures complexes
 
-### Marketing Team Report (5-10 pages)
+### ReportLab (PDF programmatique)
 
-1. **Executive summary** (1 page): Same as C-suite format above
-2. **Channel performance** (2-3 pages): One section per active channel. Metrics table, trend chart, top performers, underperformers, optimizations made
-3. **Campaign deep-dives** (1-2 pages): Major campaigns launched or completed. Performance vs. objectives. Key learnings
-4. **A/B test results** (1 page): Tests run, winners, confidence levels, impact estimates. Tests planned for next period
-5. **Content performance** (1 page): Top content by traffic, engagement, conversions. Content decay alerts. Publishing cadence vs. plan
-6. **Next period plan** (1 page): Priorities, planned campaigns, budget allocation, experiments to run
+- **Méthode** : Construire le PDF de manière programmatique avec `canvas.Canvas` ou `SimpleDocTemplate` avec des flowables Platypus
+- **Intégration de marque** :
+  - Enregistrer les couleurs de marque : `colors.HexColor('#1a73e8')` pour le primaire, secondaire, accent
+  - Enregistrer les polices de marque : `pdfmetrics.registerFont(TTFont('BrandFont', 'path/to/font.ttf'))`
+  - Modèle de page avec logo : `canvas.drawImage('logo.png', x, y, width, height)` dans le callback `onPage`
+  - En-têtes/pieds de page : Période de campagne, avis de confidentialité, numéros de page via les hooks `onPage`/`onPageEnd`
+- **Intégration de graphiques** : Générer des graphiques avec matplotlib, sauvegarder en PNG/SVG, intégrer via `canvas.drawImage` ou le flowable `Image`
 
-### Client Report (5-8 pages)
+### Checklist d'intégration des actifs de marque
 
-1. **Branded cover page**: Client logo, report title, date range, prepared by
-2. **Executive summary** (1 page): Performance vs. agreed objectives. Traffic-light status (green/yellow/red) per objective
-3. **Performance by objective** (2-3 pages): Each objective from the SOW gets a dedicated section with KPIs, charts, and commentary
-4. **Competitive context** (0.5-1 page): How performance compares to industry benchmarks and competitor movements
-5. **Optimizations and learnings** (1 page): What was tested, what was learned, how it informs strategy
-6. **Next period plan** (1 page): Planned activities, timeline, expected outcomes
-7. **Appendix**: Raw data tables, methodology notes, glossary of terms
+| Actif | Source | Placement |
+|---|---|---|
+| Logo (principal) | `logo_url` du profil de marque | Page de couverture (centré, 200x60 px), en-tête (aligné à gauche, 120x40 px) |
+| Couleurs de marque | `brand_colors` du profil de marque | Titres, couleurs de graphiques, en-têtes de tableau, lignes d'accentuation, boutons CTA |
+| Polices | Profil de marque ou repli système | Corps : 10-11pt, Titres : 14-18pt, Légendes : 8-9pt |
+| Texte d'en-tête | Dynamique par rapport | « Rapport de performance mensuel — [Nom de marque] — [Plage de dates] » |
+| Texte de pied de page | Modèle statique | « Confidentiel — Préparé par [Nom de l'agence/équipe] — Page X sur Y » |
+| Page de couverture | Modèle | Logo de marque, titre du rapport, plage de dates, préparé pour/par, version |
 
 ---
 
-## 3. Looker Studio Dashboard Templates by Business Model
+## 2. Modèles de structure de rapport par audience
 
-### SaaS Dashboard
+### Résumé exécutif direction générale (1-2 pages)
 
-| Section | Metrics | Visualization |
-|---|---|---|
-| **Revenue** | MRR, ARR, MRR growth rate, expansion MRR, churned MRR, net new MRR | Time series line chart (12 months). Stacked bar for MRR components |
-| **Acquisition** | New trials, trial-to-paid conversion rate, CAC, CAC by channel, CAC payback period | Funnel chart (visit→trial→paid). Bar chart for CAC by channel |
-| **Retention** | Logo churn rate, revenue churn rate, net revenue retention (NRR), DAU/MAU ratio | Cohort heatmap (monthly cohorts, 12-month retention). Line chart for NRR trend |
-| **Engagement** | Activation rate (% completing key action in first 7 days), feature adoption rates, support ticket volume | Bar chart for feature adoption. Funnel for onboarding steps |
-| **Unit economics** | LTV, LTV:CAC ratio, gross margin per customer | Scorecard tiles with trend arrows. Scatter plot of LTV vs. CAC by segment |
+1. **Titre de performance** : Une phrase résumant la période. « Le chiffre d'affaires issu du marketing a crû de 23 % trimestre sur trimestre, porté par la recherche payante et l'e-mail. »
+2. **Tableau de bord de KPI** : 3-5 KPI au format grand chiffre avec flèches de tendance :
+   - Chiffre d'affaires attribué au marketing : X $ (+Y % vs période précédente)
+   - Coût d'acquisition client : X $ (-Y % vs période précédente)
+   - Pipeline issu du marketing : X $
+   - ROAS : X,Xx
+   - Nouveaux leads/clients nets : X
+3. **Sparklines de tendance** : Ligne de tendance sur 12 semaines ou 6 mois pour chaque KPI. Aucun libellé d'axe — juste la direction
+4. **Points saillants stratégiques** : 2-3 puces sur ce qui a fonctionné, ce qui n'a pas fonctionné, et ce qui change la période suivante
+5. **Résumé budgétaire** : Dépense prévue vs réelle. Une ligne par canal. Total en bas
 
-### eCommerce Dashboard
+### Rapport pour l'équipe marketing (5-10 pages)
 
-| Section | Metrics | Visualization |
-|---|---|---|
-| **Revenue** | Gross revenue, net revenue, AOV, revenue per visitor, revenue by product category | Time series (daily/weekly). Treemap for category revenue share |
-| **Traffic** | Sessions, users, new vs. returning, traffic by channel, traffic by device | Stacked area chart by channel. Pie chart for device split |
-| **Conversion** | Overall conversion rate, add-to-cart rate, cart abandonment rate, checkout completion rate | Funnel chart (PDP view→add to cart→checkout→purchase). Line chart for CR trend |
-| **Product** | Top products by revenue, top by units, top by margin, inventory turnover | Table with sparklines. Bar chart for top 10 products |
-| **Paid media** | ROAS by channel, CPA, ad spend, attributed revenue, impression share | Bar chart for ROAS by channel. Waterfall for spend vs. revenue |
+1. **Résumé exécutif** (1 page) : Identique au format direction générale ci-dessus
+2. **Performance par canal** (2-3 pages) : Une section par canal actif. Tableau de métriques, graphique de tendance, meilleurs et moins performants, optimisations effectuées
+3. **Approfondissements de campagne** (1-2 pages) : Campagnes majeures lancées ou terminées. Performance vs objectifs. Enseignements clés
+4. **Résultats de test A/B** (1 page) : Tests exécutés, gagnants, niveaux de confiance, estimations d'impact. Tests planifiés pour la période suivante
+5. **Performance de contenu** (1 page) : Meilleur contenu par trafic, engagement, conversions. Alertes de décroissance de contenu. Rythme de publication vs plan
+6. **Plan de la période suivante** (1 page) : Priorités, campagnes planifiées, allocation budgétaire, expériences à mener
 
-### B2B Lead Gen Dashboard
+### Rapport client (5-8 pages)
 
-| Section | Metrics | Visualization |
-|---|---|---|
-| **Pipeline** | MQLs, SQLs, opportunities, pipeline value, closed-won value, velocity (days to close) | Funnel chart (lead→MQL→SQL→opp→closed). Time series for pipeline value |
-| **Conversion rates** | Lead→MQL, MQL→SQL, SQL→Opp, Opp→Closed. By channel and by campaign | Horizontal bar chart by stage. Heatmap by channel x stage |
-| **Cost efficiency** | CPL, cost per MQL, cost per SQL, cost per opportunity, CAC | Bar chart by channel. Trend line for blended CPL |
-| **Content** | Downloads, form fills, webinar registrations, content-attributed pipeline | Table with attribution. Bar chart for top content by pipeline generated |
-| **Channel mix** | Lead volume and quality score by channel, budget allocation vs. results | Scatter plot (volume vs. quality). Stacked bar for budget vs. pipeline |
-
-### Agency Multi-Client Dashboard
-
-| Section | Metrics | Visualization |
-|---|---|---|
-| **Client overview** | Client count, total MRR under management, average retainer size, client health scores | Scorecard tiles. Table with health score color coding (green/yellow/red) |
-| **Performance rollup** | Aggregate KPIs across all clients: total leads generated, total revenue attributed, average ROAS | Stacked bar by client. Trend line for aggregate performance |
-| **Retainer utilization** | Hours allocated vs. used per client, utilization %, at-risk clients (>90% utilized) | Bar chart per client. Threshold line at 100% |
-| **Deliverable tracking** | Deliverables due, completed, overdue. By client and by team member | Gantt-style timeline. Status table with RAG indicators |
-| **Client health** | NPS, response time, deliverable on-time rate, performance vs. targets | Radar chart per client. Trend line for portfolio NPS |
+1. **Page de couverture à l'image de marque** : Logo client, titre du rapport, plage de dates, préparé par
+2. **Résumé exécutif** (1 page) : Performance vs objectifs convenus. Statut feu tricolore (vert/jaune/rouge) par objectif
+3. **Performance par objectif** (2-3 pages) : Chaque objectif du SOW obtient une section dédiée avec KPI, graphiques, et commentaire
+4. **Contexte concurrentiel** (0,5-1 page) : Comment la performance se compare aux références sectorielles et aux mouvements des concurrents
+5. **Optimisations et enseignements** (1 page) : Ce qui a été testé, ce qui a été appris, comment cela informe la stratégie
+6. **Plan de la période suivante** (1 page) : Activités planifiées, calendrier, résultats attendus
+7. **Annexe** : Tableaux de données brutes, notes méthodologiques, glossaire des termes
 
 ---
 
-## 4. Multi-Touch Attribution Methodology
+## 3. Modèles de tableau de bord Looker Studio par modèle économique
 
-### Model Definitions
+### Tableau de bord SaaS
 
-| Model | Credit Distribution | Best For | Limitations |
+| Section | Métriques | Visualisation |
+|---|---|---|
+| **Chiffre d'affaires** | MRR, ARR, taux de croissance MRR, MRR d'expansion, MRR perdu (churned), MRR net nouveau | Graphique linéaire chronologique (12 mois). Barre empilée pour les composants MRR |
+| **Acquisition** | Nouveaux essais, taux de conversion essai-vers-payant, CAC, CAC par canal, période de retour du CAC | Graphique en entonnoir (visite→essai→payant). Graphique en barres pour le CAC par canal |
+| **Rétention** | Taux de churn de logos, taux de churn de chiffre d'affaires, rétention nette de chiffre d'affaires (NRR), ratio DAU/MAU | Carte de chaleur de cohorte (cohortes mensuelles, rétention sur 12 mois). Graphique linéaire pour la tendance NRR |
+| **Engagement** | Taux d'activation (% complétant l'action clé dans les 7 premiers jours), taux d'adoption de fonctionnalités, volume de tickets de support | Graphique en barres pour l'adoption de fonctionnalités. Entonnoir pour les étapes d'intégration |
+| **Économie unitaire** | LTV, ratio LTV:CAC, marge brute par client | Tuiles de score avec flèches de tendance. Nuage de points LTV vs CAC par segment |
+
+### Tableau de bord e-commerce
+
+| Section | Métriques | Visualisation |
+|---|---|---|
+| **Chiffre d'affaires** | Chiffre d'affaires brut, chiffre d'affaires net, panier moyen, chiffre d'affaires par visiteur, chiffre d'affaires par catégorie de produit | Chronologique (quotidien/hebdomadaire). Treemap pour la part de chiffre d'affaires par catégorie |
+| **Trafic** | Sessions, utilisateurs, nouveaux vs récurrents, trafic par canal, trafic par appareil | Graphique en aires empilées par canal. Camembert pour la répartition par appareil |
+| **Conversion** | Taux de conversion global, taux d'ajout au panier, taux d'abandon de panier, taux de complétion du checkout | Graphique en entonnoir (vue PDP→ajout au panier→checkout→achat). Graphique linéaire pour la tendance du taux de conversion |
+| **Produit** | Meilleurs produits par chiffre d'affaires, par unités, par marge, rotation des stocks | Tableau avec sparklines. Graphique en barres pour le top 10 des produits |
+| **Médias payants** | ROAS par canal, CPA, dépense publicitaire, chiffre d'affaires attribué, part d'impressions | Graphique en barres pour le ROAS par canal. Cascade (waterfall) pour dépense vs chiffre d'affaires |
+
+### Tableau de bord de génération de leads B2B
+
+| Section | Métriques | Visualisation |
+|---|---|---|
+| **Pipeline** | MQL, SQL, opportunités, valeur du pipeline, valeur des affaires gagnées, vélocité (jours jusqu'à la clôture) | Graphique en entonnoir (lead→MQL→SQL→opp→clôturé). Chronologique pour la valeur du pipeline |
+| **Taux de conversion** | Lead→MQL, MQL→SQL, SQL→Opp, Opp→Clôturé. Par canal et par campagne | Graphique en barres horizontales par étape. Carte de chaleur par canal x étape |
+| **Efficacité des coûts** | CPL, coût par MQL, coût par SQL, coût par opportunité, CAC | Graphique en barres par canal. Ligne de tendance pour le CPL mixte |
+| **Contenu** | Téléchargements, remplissages de formulaire, inscriptions à des webinaires, pipeline attribué au contenu | Tableau avec attribution. Graphique en barres pour le meilleur contenu par pipeline généré |
+| **Mix canal** | Volume de leads et score de qualité par canal, allocation budgétaire vs résultats | Nuage de points (volume vs qualité). Barre empilée pour budget vs pipeline |
+
+### Tableau de bord multi-client d'agence
+
+| Section | Métriques | Visualisation |
+|---|---|---|
+| **Vue d'ensemble client** | Nombre de clients, MRR total sous gestion, taille moyenne des rétentions, scores de santé client | Tuiles de score. Tableau avec codage couleur de santé (vert/jaune/rouge) |
+| **Cumul de performance** | KPI agrégés à travers tous les clients : total des leads générés, chiffre d'affaires total attribué, ROAS moyen | Barre empilée par client. Ligne de tendance pour la performance agrégée |
+| **Utilisation de la rétention** | Heures allouées vs utilisées par client, % d'utilisation, clients à risque (>90 % utilisés) | Graphique en barres par client. Ligne de seuil à 100 % |
+| **Suivi des livrables** | Livrables à échéance, terminés, en retard. Par client et par membre d'équipe | Chronologie de style Gantt. Tableau de statut avec indicateurs RAG |
+| **Santé client** | NPS, temps de réponse, taux de livraison dans les délais, performance vs objectifs | Graphique radar par client. Ligne de tendance pour le NPS du portefeuille |
+
+---
+
+## 4. Méthodologie d'attribution multi-touch
+
+### Définitions des modèles
+
+| Modèle | Distribution du crédit | Idéal pour | Limitations |
 |---|---|---|---|
-| **First-touch** | 100% to first interaction | Understanding top-of-funnel channel effectiveness | Ignores all nurturing and closing interactions |
-| **Last-touch** | 100% to last interaction before conversion | Understanding bottom-of-funnel closure | Ignores all awareness and nurturing |
-| **Linear** | Equal credit to every touchpoint | Simple fairness when no touchpoint is clearly more important | Treats a casual blog visit the same as a product demo |
-| **Time-decay** | More credit to recent touchpoints. Typical half-life: 7 days | Sales cycles where later touches matter more | Undervalues early awareness touchpoints |
-| **Position-based (U-shaped)** | 40% first touch, 40% last touch, 20% distributed across middle | Balanced view valuing both discovery and conversion | Fixed percentages may not reflect actual influence |
-| **W-shaped** | 30% first touch, 30% lead creation, 30% opportunity creation, 10% middle | B2B with defined funnel stages | Requires CRM stage tracking, complex implementation |
-| **Data-driven (algorithmic)** | ML model assigns credit based on statistical analysis of all conversion paths | Organizations with sufficient data volume (1,000+ conversions/month) | Black box, requires significant data volume, platform-specific |
+| **Premier contact** | 100 % à la première interaction | Comprendre l'efficacité de canal en haut de tunnel | Ignore toutes les interactions de nurturing et de closing |
+| **Dernier contact** | 100 % à la dernière interaction avant conversion | Comprendre la clôture en bas de tunnel | Ignore toute la notoriété et le nurturing |
+| **Linéaire** | Crédit égal à chaque point de contact | Équité simple quand aucun point de contact n'est clairement plus important | Traite une visite de blog occasionnelle de la même manière qu'une démo produit |
+| **Décroissance temporelle** | Plus de crédit aux points de contact récents. Demi-vie typique : 7 jours | Cycles de vente où les contacts plus tardifs comptent davantage | Sous-évalue les points de contact de notoriété précoces |
+| **Basé sur la position (en U)** | 40 % premier contact, 40 % dernier contact, 20 % réparti au milieu | Vue équilibrée valorisant à la fois la découverte et la conversion | Les pourcentages fixes peuvent ne pas refléter l'influence réelle |
+| **En W** | 30 % premier contact, 30 % création de lead, 30 % création d'opportunité, 10 % milieu | B2B avec des étapes de tunnel définies | Nécessite un suivi des étapes CRM, implémentation complexe |
+| **Piloté par les données (algorithmique)** | Un modèle ML attribue le crédit sur la base d'une analyse statistique de tous les chemins de conversion | Organisations avec un volume de données suffisant (1 000+ conversions/mois) | Boîte noire, nécessite un volume de données significatif, spécifique à la plateforme |
 
-### Attribution Data Requirements
+### Exigences de données d'attribution
 
-- **Cross-channel tracking**: UTM parameters on all links (utm_source, utm_medium, utm_campaign, utm_content, utm_term). Platform pixels on all conversion pages (Meta Pixel, Google tag, LinkedIn Insight Tag). Offline conversion imports for phone calls, in-store visits, events
-- **Identity resolution**: First-party cookies for cross-session tracking. Logged-in user IDs where available. CRM email matching for cross-device. Probabilistic matching as fallback (less reliable post-cookie deprecation)
-- **Conversion window**: Define the maximum lookback window. Common: 30 days for eCommerce, 90 days for B2B, 7 days for impulse purchases. All touches outside the window are excluded from attribution
-- **Assisted conversions**: GA4 provides assisted conversion data natively. For custom attribution, query all touchpoints within the conversion window, not just the converting session
+- **Suivi inter-canaux** : Paramètres UTM sur tous les liens (utm_source, utm_medium, utm_campaign, utm_content, utm_term). Pixels de plateforme sur toutes les pages de conversion (Meta Pixel, tag Google, LinkedIn Insight Tag). Imports de conversion offline pour les appels téléphoniques, visites en magasin, événements
+- **Résolution d'identité** : Cookies de première partie pour le suivi inter-session. ID d'utilisateur connecté lorsque disponible. Correspondance e-mail CRM pour l'inter-appareil. Correspondance probabiliste comme repli (moins fiable après la dépréciation des cookies)
+- **Fenêtre de conversion** : Définir la fenêtre de rétrospection maximale. Courant : 30 jours pour l'e-commerce, 90 jours pour le B2B, 7 jours pour les achats impulsifs. Tous les contacts hors de la fenêtre sont exclus de l'attribution
+- **Conversions assistées** : GA4 fournit nativement des données de conversion assistée. Pour l'attribution personnalisée, interroger tous les points de contact dans la fenêtre de conversion, pas seulement la session de conversion
 
-### Attribution Report Output Format
+### Format de sortie du rapport d'attribution
 
-For each channel/campaign:
+Pour chaque canal/campagne :
 
-| Column | Description |
+| Colonne | Description |
 |---|---|
-| Channel/Campaign | Name of the marketing channel or campaign |
-| First-touch conversions | Conversions attributed under first-touch model |
-| Last-touch conversions | Conversions attributed under last-touch model |
-| Linear conversions | Conversions attributed under linear model |
-| Data-driven conversions | Conversions attributed under algorithmic model (if available) |
-| Assisted conversions | Total conversions where this channel appeared in the path but was not the converting touch |
-| Assist ratio | Assisted conversions / last-touch conversions. >1.0 = more of an assister; <1.0 = more of a closer |
-| Revenue attributed | Revenue credited to this channel under selected model |
-| ROAS | Revenue attributed / spend for this channel |
+| Canal/Campagne | Nom du canal marketing ou de la campagne |
+| Conversions premier contact | Conversions attribuées selon le modèle premier contact |
+| Conversions dernier contact | Conversions attribuées selon le modèle dernier contact |
+| Conversions linéaires | Conversions attribuées selon le modèle linéaire |
+| Conversions pilotées par les données | Conversions attribuées selon le modèle algorithmique (si disponible) |
+| Conversions assistées | Total des conversions où ce canal est apparu dans le chemin mais n'était pas le contact de conversion |
+| Ratio d'assistance | Conversions assistées / conversions dernier contact. >1,0 = davantage un assistant ; <1,0 = davantage un closer |
+| Chiffre d'affaires attribué | Chiffre d'affaires crédité à ce canal selon le modèle sélectionné |
+| ROAS | Chiffre d'affaires attribué / dépense pour ce canal |
 
 ---
 
-## 5. Cohort Analysis Frameworks
+## 5. Cadres d'analyse de cohorte
 
-### Time-Based Cohorts
+### Cohortes temporelles
 
-- **Acquisition cohort**: Group users by the week or month they first converted (signed up, purchased, subscribed). Track behavior over subsequent periods
-- **Standard retention table**: Rows = cohort (acquisition period), Columns = period since acquisition (Week 0, Week 1, ..., Week 12). Cells = % of cohort still active/retained
-- **Metric options**: Active users (logged in), retained revenue (still paying), repeat purchase rate, feature usage
+- **Cohorte d'acquisition** : Regrouper les utilisateurs par la semaine ou le mois où ils ont converti pour la première fois (inscrit, acheté, abonné). Suivre le comportement sur les périodes suivantes
+- **Tableau de rétention standard** : Lignes = cohorte (période d'acquisition), Colonnes = période depuis l'acquisition (Semaine 0, Semaine 1, ..., Semaine 12). Cellules = % de la cohorte encore active/retenue
+- **Options de métrique** : Utilisateurs actifs (connectés), chiffre d'affaires retenu (toujours payant), taux de rachat, usage de fonctionnalités
 
-### Behavioral Cohorts
+### Cohortes comportementales
 
-| Cohort Basis | Segments | Analysis Purpose |
+| Base de cohorte | Segments | Objectif d'analyse |
 |---|---|---|
-| **First purchase category** | By product category of first order | Does first purchase predict LTV and repeat purchase behavior? |
-| **Acquisition channel** | Organic, paid search, social, email, referral | Which channels produce highest-retaining customers? |
-| **First feature used** | By first meaningful feature interaction | Does onboarding path predict retention? |
-| **Initial order value** | $0-25, $25-50, $50-100, $100+ | Does initial spend predict lifetime value? |
-| **Engagement level at signup** | High (5+ actions in first session), Medium (2-4), Low (1) | Does early engagement predict retention? |
+| **Catégorie du premier achat** | Par catégorie de produit de la première commande | Le premier achat prédit-il la LTV et le comportement de rachat ? |
+| **Canal d'acquisition** | Organique, recherche payante, social, e-mail, parrainage | Quels canaux produisent les clients avec la meilleure rétention ? |
+| **Première fonctionnalité utilisée** | Par première interaction significative avec une fonctionnalité | Le chemin d'intégration prédit-il la rétention ? |
+| **Valeur de commande initiale** | 0-25 $, 25-50 $, 50-100 $, 100+ $ | La dépense initiale prédit-elle la valeur vie client ? |
+| **Niveau d'engagement à l'inscription** | Élevé (5+ actions à la première session), Moyen (2-4), Faible (1) | L'engagement précoce prédit-il la rétention ? |
 
-### Retention Curve Analysis
+### Analyse de la courbe de rétention
 
-- **Week-over-week retention**: Plot % retained at each period. Normal pattern: steep initial drop (Week 0→1), gradual decline, then flattening (stabilization)
-- **Stabilization point**: The period at which retention flattens (typically Week 8-12 for SaaS, Week 4-6 for eCommerce). Users retained beyond this point are likely long-term
-- **Cohort comparison**: Overlay retention curves from different cohorts. Are newer cohorts retaining better than older ones? If yes, product/onboarding improvements are working
-- **Intervention impact**: Compare retention curves before and after a specific change (lifecycle email introduced, onboarding flow redesigned). Measure delta at each period
+- **Rétention semaine sur semaine** : Tracer le % retenu à chaque période. Schéma normal : forte chute initiale (Semaine 0→1), déclin progressif, puis stabilisation
+- **Point de stabilisation** : La période à laquelle la rétention se stabilise (typiquement Semaine 8-12 pour le SaaS, Semaine 4-6 pour l'e-commerce). Les utilisateurs retenus au-delà de ce point sont probablement à long terme
+- **Comparaison de cohorte** : Superposer les courbes de rétention de différentes cohortes. Les cohortes plus récentes retiennent-elles mieux que les plus anciennes ? Si oui, les améliorations produit/intégration fonctionnent
+- **Impact d'intervention** : Comparer les courbes de rétention avant et après un changement spécifique (e-mail de cycle de vie introduit, flux d'intégration repensé). Mesurer le delta à chaque période
 
 ---
 
-## 6. Budget Variance and Incrementality Reporting
+## 6. Reporting d'écart budgétaire et d'incrémentalité
 
-### Budget Variance Report Structure
+### Structure du rapport d'écart budgétaire
 
-| Column | Description |
+| Colonne | Description |
 |---|---|
-| Channel | Marketing channel (Google Ads, Meta Ads, Email, Content, SEO, etc.) |
-| Planned spend | Budget allocated for the period |
-| Actual spend | Amount spent to date |
-| Variance ($) | Actual - Planned |
-| Variance (%) | (Actual - Planned) / Planned x 100 |
-| Pacing | On-track, Underspent (>10% below pace), Overspent (>10% above pace) |
-| Planned results | Target KPI (leads, revenue, conversions) for the budget |
-| Actual results | Actual KPI delivered |
-| Efficiency variance | Actual CPA/ROAS vs. planned CPA/ROAS |
+| Canal | Canal marketing (Google Ads, Meta Ads, E-mail, Contenu, SEO, etc.) |
+| Dépense prévue | Budget alloué pour la période |
+| Dépense réelle | Montant dépensé à ce jour |
+| Écart ($) | Réel - Prévu |
+| Écart (%) | (Réel - Prévu) / Prévu x 100 |
+| Rythme | Sur la bonne voie, Sous-dépensé (>10 % en dessous du rythme), Surdépensé (>10 % au-dessus du rythme) |
+| Résultats prévus | KPI cible (leads, chiffre d'affaires, conversions) pour le budget |
+| Résultats réels | KPI réel livré |
+| Écart d'efficacité | CPA/ROAS réel vs CPA/ROAS prévu |
 
-### Pacing Analysis
+### Analyse du rythme
 
-- **Daily run rate**: Actual spend / days elapsed. Compare to required run rate (remaining budget / remaining days)
-- **Projection**: If current pace continues, what will total spend be? Flag if projected total exceeds budget by >5%
-- **Underspend alert**: If a channel is pacing >15% under budget by mid-period, flag for investigation. Common causes: ad approval delays, low search volume, audience saturation, paused campaigns
-- **Overspend alert**: If a channel is pacing >10% over budget, flag immediately. Common causes: bid strategy aggressiveness, unexpected auction competition, campaign duplication
+- **Taux d'exécution quotidien** : Dépense réelle / jours écoulés. Comparer au taux d'exécution requis (budget restant / jours restants)
+- **Projection** : Si le rythme actuel se poursuit, quelle sera la dépense totale ? Signaler si le total projeté dépasse le budget de plus de 5 %
+- **Alerte de sous-dépense** : Si un canal a un rythme >15 % sous le budget à mi-période, signaler pour investigation. Causes courantes : retards d'approbation publicitaire, faible volume de recherche, saturation d'audience, campagnes en pause
+- **Alerte de surdépense** : Si un canal a un rythme >10 % au-dessus du budget, signaler immédiatement. Causes courantes : agressivité de la stratégie d'enchère, concurrence d'enchère inattendue, duplication de campagne
 
-### Incrementality Reporting
+### Reporting d'incrémentalité
 
-**Geo-Lift Test Design**:
-1. Select treatment and control geographic regions with similar baseline metrics (population, revenue, demographics)
-2. Run marketing activity in treatment regions only for 4-8 weeks
-3. Measure conversion lift in treatment vs. control regions
-4. Calculate incremental conversions = treatment conversions - (control conversions x scale factor)
-5. Incremental ROAS = incremental revenue / marketing spend in treatment regions
+**Conception de test de geo-lift** :
+1. Sélectionner des régions géographiques de traitement et de contrôle avec des métriques de référence similaires (population, chiffre d'affaires, démographie)
+2. Exécuter l'activité marketing dans les régions de traitement uniquement pendant 4-8 semaines
+3. Mesurer le lift de conversion dans les régions de traitement vs contrôle
+4. Calculer les conversions incrémentales = conversions de traitement - (conversions de contrôle x facteur d'échelle)
+5. ROAS incrémental = chiffre d'affaires incrémental / dépense marketing dans les régions de traitement
 
-**Holdout Analysis**:
-1. Randomly hold out 10-20% of audience from a campaign or channel
-2. Measure conversion rate in exposed group vs. holdout group
-3. Incrementality = (exposed CR - holdout CR) / exposed CR
-4. Example: Exposed CR = 5%, Holdout CR = 3%, Incrementality = 40% (40% of conversions were truly incremental)
+**Analyse de rétention (holdout)** :
+1. Retenir aléatoirement 10-20 % de l'audience d'une campagne ou d'un canal
+2. Mesurer le taux de conversion dans le groupe exposé vs le groupe retenu
+3. Incrémentalité = (taux de conversion exposé - taux de conversion retenu) / taux de conversion exposé
+4. Exemple : Taux de conversion exposé = 5 %, Taux de conversion retenu = 3 %, Incrémentalité = 40 % (40 % des conversions étaient véritablement incrémentales)
 
-**Incrementality-Adjusted ROAS**:
-- Standard ROAS = total attributed revenue / spend
-- Incremental ROAS = (attributed revenue x incrementality %) / spend
-- Example: Standard ROAS = 5.0x, incrementality = 40%, Incremental ROAS = 2.0x. This reflects the true return on ad spend
-
----
-
-## 7. Scheduled Report Automation
-
-### Cron-Style Scheduling Configuration
-
-| Report Type | Schedule | Delivery Time | Data Freshness |
-|---|---|---|---|
-| Daily pulse | Every weekday | 8:00 AM recipient timezone | Previous day (midnight cutoff) |
-| Weekly summary | Every Monday | 9:00 AM recipient timezone | Previous 7 days (Mon-Sun) |
-| Monthly review | 3rd business day of month | 10:00 AM recipient timezone | Previous calendar month |
-| Quarterly business review | 5th business day of quarter | 10:00 AM recipient timezone | Previous quarter |
-| Ad-hoc / triggered | On event (campaign end, budget threshold, anomaly detection) | Within 1 hour of trigger | Real-time or near-real-time |
-
-### Delivery Channel Configuration
-
-| Channel | Format | Payload | Notes |
-|---|---|---|---|
-| **Email** | PDF attachment + HTML summary in body | Subject: "[Brand] [Report Type] — [Date Range]". Body: 3-5 key metrics inline. Attachment: full PDF report | Track email open to confirm receipt |
-| **Slack** | Message blocks with inline metrics + PDF link | Channel or DM. Use Block Kit for formatted metrics. Upload PDF to thread. Pin important reports | Use Slack webhooks or API for programmatic delivery |
-| **Google Drive** | PDF uploaded to shared folder | Folder structure: `Reports/{Brand}/{Year}/{Report Type}/`. Filename: `{Brand}_{Report}_{DateRange}.pdf` | Share notification via Drive or separate email |
-| **Google Slides** | Slide deck in shared Drive | Template deck updated with fresh data. New deck per period. Old decks archived | Best for QBRs and client presentations |
-
-### Error Handling for Report Automation
-
-| Error | Detection | Response |
-|---|---|---|
-| **Data source unavailable** | API timeout or error response during data pull | Retry 3x with exponential backoff (1min, 5min, 15min). If all fail, send partial report with "[Data unavailable]" placeholder and alert owner |
-| **Data freshness issue** | Timestamp check — data is older than expected | Include warning banner: "Data as of [timestamp]. [Source] data may be delayed." Proceed with stale data rather than blocking report |
-| **Rendering failure** | PDF generation throws exception | Fall back to plain-text email with key metrics. Log error for debugging. Alert owner |
-| **Delivery failure** | Email bounce, Slack API error, Drive permission error | Retry delivery 2x. If persistent, alert owner via alternate channel. Log failure in execution tracker |
-| **Anomaly in data** | Metric values outside expected range (>3 standard deviations) | Include anomaly callout in report. Do not suppress anomalous data. Flag for human review |
+**ROAS ajusté à l'incrémentalité** :
+- ROAS standard = chiffre d'affaires total attribué / dépense
+- ROAS incrémental = (chiffre d'affaires attribué x % d'incrémentalité) / dépense
+- Exemple : ROAS standard = 5,0x, incrémentalité = 40 %, ROAS incrémental = 2,0x. Cela reflète le véritable retour sur dépense publicitaire
 
 ---
 
-## 8. Data Visualization Best Practices
+## 7. Automatisation de rapports programmés
 
-### Chart Type Selection Guide
+### Configuration de programmation de type cron
 
-| Data Relationship | Chart Type | When to Use |
+| Type de rapport | Calendrier | Heure de livraison | Fraîcheur des données |
+|---|---|---|---|
+| Pulse quotidien | Chaque jour ouvré | 8h00 fuseau horaire du destinataire | Jour précédent (coupure à minuit) |
+| Résumé hebdomadaire | Chaque lundi | 9h00 fuseau horaire du destinataire | 7 derniers jours (lun-dim) |
+| Revue mensuelle | 3e jour ouvré du mois | 10h00 fuseau horaire du destinataire | Mois calendaire précédent |
+| Revue d'activité trimestrielle | 5e jour ouvré du trimestre | 10h00 fuseau horaire du destinataire | Trimestre précédent |
+| Ad hoc / déclenché | Sur événement (fin de campagne, seuil budgétaire, détection d'anomalie) | Dans l'heure suivant le déclencheur | Temps réel ou quasi temps réel |
+
+### Configuration des canaux de livraison
+
+| Canal | Format | Charge utile | Remarques |
+|---|---|---|---|
+| **E-mail** | Pièce jointe PDF + résumé HTML dans le corps | Objet : « [Marque] [Type de rapport] — [Plage de dates] ». Corps : 3-5 métriques clés en ligne. Pièce jointe : rapport PDF complet | Suivre l'ouverture de l'e-mail pour confirmer la réception |
+| **Slack** | Blocs de message avec métriques en ligne + lien PDF | Canal ou DM. Utiliser le Block Kit pour les métriques formatées. Téléverser le PDF dans le fil. Épingler les rapports importants | Utiliser les webhooks Slack ou l'API pour la livraison programmatique |
+| **Google Drive** | PDF téléversé dans un dossier partagé | Structure de dossier : `Reports/{Brand}/{Year}/{Report Type}/`. Nom de fichier : `{Brand}_{Report}_{DateRange}.pdf` | Notification de partage via Drive ou e-mail séparé |
+| **Google Slides** | Diaporama dans Drive partagé | Diaporama modèle mis à jour avec des données fraîches. Nouveau diaporama par période. Anciens diaporamas archivés | Idéal pour les QBR et les présentations client |
+
+### Gestion des erreurs pour l'automatisation de rapports
+
+| Erreur | Détection | Réponse |
 |---|---|---|
-| **Comparison** (items) | Horizontal bar chart | Comparing 5+ categories by a single metric (e.g., revenue by channel) |
-| **Comparison** (time) | Vertical bar chart or grouped bar | Comparing values across discrete time periods (monthly revenue by channel) |
-| **Trend** | Line chart | Showing change over continuous time (daily traffic, weekly revenue) |
-| **Composition** | Stacked bar or 100% stacked bar | Showing parts of a whole over time (channel mix as % of total) |
-| **Composition** (static) | Pie/donut chart | Parts of a whole at a single point in time. Use only with 2-5 categories |
-| **Correlation** | Scatter plot | Relationship between two variables (spend vs. revenue per campaign) |
-| **Distribution** | Histogram or box plot | Spread of values (deal size distribution, time-to-convert distribution) |
-| **Flow/Conversion** | Funnel chart | Sequential stages with drop-off (lead→MQL→SQL→closed) |
-| **Ranking** | Horizontal bar (sorted) | Top/bottom performers (top 10 keywords by traffic) |
-| **Geospatial** | Choropleth map | Performance by region (revenue by state, traffic by country) |
+| **Source de données indisponible** | Timeout d'API ou réponse d'erreur pendant l'extraction de données | Réessayer 3x avec un backoff exponentiel (1min, 5min, 15min). Si tout échoue, envoyer un rapport partiel avec un espace réservé « [Données indisponibles] » et alerter le propriétaire |
+| **Problème de fraîcheur des données** | Vérification d'horodatage — les données sont plus anciennes que prévu | Inclure une bannière d'avertissement : « Données au [horodatage]. Les données de [Source] peuvent être retardées. » Poursuivre avec des données obsolètes plutôt que de bloquer le rapport |
+| **Échec de rendu** | La génération PDF lève une exception | Se replier sur un e-mail en texte brut avec les métriques clés. Journaliser l'erreur pour le débogage. Alerter le propriétaire |
+| **Échec de livraison** | Rebond e-mail, erreur d'API Slack, erreur de permission Drive | Réessayer la livraison 2x. Si persistant, alerter le propriétaire via un canal alternatif. Journaliser l'échec dans le suivi d'exécution |
+| **Anomalie dans les données** | Valeurs de métrique hors de la plage attendue (>3 écarts-types) | Inclure un encart d'anomalie dans le rapport. Ne pas supprimer les données anormales. Signaler pour revue humaine |
 
-### Accessibility and Design Standards
+---
 
-- **Colorblind-safe palettes**: Use palettes distinguishable by colorblind users. Avoid red-green combinations. Recommended: blue-orange, blue-yellow, or use patterns/shapes alongside color
-- **Contrast ratios**: Text on colored backgrounds must meet WCAG AA (4.5:1 for normal text, 3:1 for large text)
-- **Progressive disclosure**: Start with summary metrics (scorecards, KPI tiles). Then trend charts. Then detailed tables. Allow drill-down from summary to detail
-- **Annotation conventions**: Mark important events on time series charts (campaign launch, algorithm update, seasonal event). Use vertical lines with labels. Keep annotations to 3-5 per chart maximum
-- **Data labels**: Include direct data labels on bar charts when there are fewer than 10 bars. Avoid labels on line charts (use tooltips or legend). Always label axes with units
-- **Consistent scales**: When comparing charts side by side, use the same Y-axis scale. When scales must differ, clearly indicate the difference
-- **White space**: Do not overcrowd dashboards. One key insight per visual. Maximum 6-8 visualizations per dashboard page
+## 8. Bonnes pratiques de visualisation de données
+
+### Guide de sélection du type de graphique
+
+| Relation de données | Type de graphique | Quand l'utiliser |
+|---|---|---|
+| **Comparaison** (éléments) | Graphique en barres horizontales | Comparer 5 catégories ou plus par une seule métrique (par ex., chiffre d'affaires par canal) |
+| **Comparaison** (temps) | Graphique en barres verticales ou barres groupées | Comparer des valeurs à travers des périodes de temps discrètes (chiffre d'affaires mensuel par canal) |
+| **Tendance** | Graphique linéaire | Montrer un changement dans le temps continu (trafic quotidien, chiffre d'affaires hebdomadaire) |
+| **Composition** | Barre empilée ou barre empilée à 100 % | Montrer des parties d'un tout dans le temps (mix canal en % du total) |
+| **Composition** (statique) | Camembert/donut | Parties d'un tout à un instant unique. Utiliser uniquement avec 2-5 catégories |
+| **Corrélation** | Nuage de points | Relation entre deux variables (dépense vs chiffre d'affaires par campagne) |
+| **Distribution** | Histogramme ou boîte à moustaches | Étalement des valeurs (distribution de la taille des affaires, distribution du temps de conversion) |
+| **Flux/Conversion** | Graphique en entonnoir | Étapes séquentielles avec abandon (lead→MQL→SQL→clôturé) |
+| **Classement** | Barre horizontale (triée) | Meilleurs/moins performants (top 10 des mots-clés par trafic) |
+| **Géospatial** | Carte choroplèthe | Performance par région (chiffre d'affaires par état, trafic par pays) |
+
+### Normes d'accessibilité et de design
+
+- **Palettes sûres pour les daltoniens** : Utiliser des palettes distinguables par les utilisateurs daltoniens. Éviter les combinaisons rouge-vert. Recommandé : bleu-orange, bleu-jaune, ou utiliser des motifs/formes en plus de la couleur
+- **Ratios de contraste** : Le texte sur des arrière-plans colorés doit respecter le WCAG AA (4,5:1 pour le texte normal, 3:1 pour le grand texte)
+- **Divulgation progressive** : Commencer par les métriques résumées (tuiles de score, tuiles de KPI). Puis les graphiques de tendance. Puis les tableaux détaillés. Permettre l'exploration du résumé au détail
+- **Conventions d'annotation** : Marquer les événements importants sur les graphiques chronologiques (lancement de campagne, mise à jour d'algorithme, événement saisonnier). Utiliser des lignes verticales avec libellés. Limiter les annotations à 3-5 par graphique maximum
+- **Libellés de données** : Inclure des libellés de données directs sur les graphiques en barres quand il y a moins de 10 barres. Éviter les libellés sur les graphiques linéaires (utiliser les infobulles ou la légende). Toujours libeller les axes avec les unités
+- **Échelles cohérentes** : Lors de la comparaison de graphiques côte à côte, utiliser la même échelle d'axe Y. Quand les échelles doivent différer, indiquer clairement la différence
+- **Espace blanc** : Ne pas surcharger les tableaux de bord. Un enseignement clé par visuel. Maximum 6-8 visualisations par page de tableau de bord

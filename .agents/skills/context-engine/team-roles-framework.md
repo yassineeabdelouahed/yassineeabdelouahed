@@ -1,218 +1,218 @@
-# Team Roles Framework — Permissions, Workflows & Capacity
+# Cadre des rôles d'équipe — Permissions, flux de travail et capacité
 
-How the Digital Marketing Pro plugin manages team roles, approval chains, cross-team workflows, regional operations, and capacity planning for agency and in-house marketing teams.
+Comment le plugin Digital Marketing Pro gère les rôles d'équipe, les chaînes d'approbation, les flux de travail inter-équipes, les opérations régionales et la planification de capacité pour les équipes marketing d'agence et internes.
 
 ---
 
-## Section 1: Role Definitions
+## Section 1 : Définitions des rôles
 
-| Role | Default Permissions | Channels | Approval Level | Typical Capacity |
+| Rôle | Permissions par défaut | Canaux | Niveau d'approbation | Capacité typique |
 |---|---|---|---|---|
-| **agency-admin** | All permissions | All channels | Critical | 10 tasks/week (management overhead) |
-| **brand-manager** | All except credential management | All channels | High | 15 tasks/week |
-| **content-lead** | publish-blog, schedule-social, content-repurpose, video-script | Content channels (blog, social, video) | Medium | 20 tasks/week |
-| **media-buyer** | launch-ad-campaign, budget-tracker, retargeting-strategy | Paid channels (Google, Meta, LinkedIn, TikTok, Amazon) | Medium | 15 tasks/week |
-| **email-manager** | send-email-campaign, segment-audience, ab-test-plan | Email channel | Medium | 20 tasks/week |
-| **social-manager** | schedule-social, review-response | Social channels (all platforms) | Medium | 25 tasks/week |
-| **analytics-lead** | performance-check, anomaly-scan, data-export, exec-summary | All channels (read-only) | Medium | 15 tasks/week |
-| **seo-specialist** | tech-seo-audit, local-seo-audit, keyword-research, publish-blog (SEO review) | Organic channel (search, blog) | Low | 18 tasks/week |
-| **cro-specialist** | ab-test-plan, form analysis, landing page review | Website channel | Low | 15 tasks/week |
-| **growth-engineer** | martech-audit, lead-import, pipeline-update | Cross-channel | Low | 12 tasks/week |
+| **agency-admin** | Toutes les permissions | Tous les canaux | Critique | 10 tâches/semaine (charge de gestion) |
+| **brand-manager** | Toutes sauf la gestion des identifiants | Tous les canaux | Élevé | 15 tâches/semaine |
+| **content-lead** | publish-blog, schedule-social, content-repurpose, video-script | Canaux de contenu (blog, social, vidéo) | Moyen | 20 tâches/semaine |
+| **media-buyer** | launch-ad-campaign, budget-tracker, retargeting-strategy | Canaux payants (Google, Meta, LinkedIn, TikTok, Amazon) | Moyen | 15 tâches/semaine |
+| **email-manager** | send-email-campaign, segment-audience, ab-test-plan | Canal e-mail | Moyen | 20 tâches/semaine |
+| **social-manager** | schedule-social, review-response | Canaux sociaux (toutes plateformes) | Moyen | 25 tâches/semaine |
+| **analytics-lead** | performance-check, anomaly-scan, data-export, exec-summary | Tous les canaux (lecture seule) | Moyen | 15 tâches/semaine |
+| **seo-specialist** | tech-seo-audit, local-seo-audit, keyword-research, publish-blog (revue SEO) | Canal organique (recherche, blog) | Faible | 18 tâches/semaine |
+| **cro-specialist** | ab-test-plan, analyse de formulaire, revue de page d'atterrissage | Canal site web | Faible | 15 tâches/semaine |
+| **growth-engineer** | martech-audit, lead-import, pipeline-update | Inter-canaux | Faible | 12 tâches/semaine |
 
 ---
 
-## Section 2: Permission Matrix
+## Section 2 : Matrice de permissions
 
-Full permissions grid. "Yes" = permitted, "---" = not permitted.
+Grille complète des permissions. « Oui » = autorisé, « --- » = non autorisé.
 
-| Role | publish-blog | send-email | launch-ad | schedule-social | crm-write | approve-low | approve-medium | approve-high | approve-critical | manage-credentials | manage-team | view-portfolio | export-data |
+| Rôle | publish-blog | send-email | launch-ad | schedule-social | crm-write | approve-low | approve-medium | approve-high | approve-critical | manage-credentials | manage-team | view-portfolio | export-data |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **agency-admin** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| **brand-manager** | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | --- | --- | Yes | Yes | Yes |
-| **content-lead** | Yes | --- | --- | Yes | --- | Yes | Yes | --- | --- | --- | --- | --- | Yes |
-| **media-buyer** | --- | --- | Yes | --- | --- | Yes | Yes | --- | --- | --- | --- | --- | Yes |
-| **email-manager** | --- | Yes | --- | --- | --- | Yes | Yes | --- | --- | --- | --- | --- | Yes |
-| **social-manager** | --- | --- | --- | Yes | --- | Yes | Yes | --- | --- | --- | --- | --- | Yes |
-| **analytics-lead** | --- | --- | --- | --- | --- | Yes | --- | --- | --- | --- | --- | Yes | Yes |
-| **seo-specialist** | Yes | --- | --- | --- | --- | Yes | --- | --- | --- | --- | --- | --- | Yes |
-| **cro-specialist** | --- | --- | --- | --- | --- | Yes | --- | --- | --- | --- | --- | --- | Yes |
-| **growth-engineer** | --- | --- | --- | --- | Yes | Yes | --- | --- | --- | --- | --- | --- | Yes |
+| **agency-admin** | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Oui |
+| **brand-manager** | Oui | Oui | Oui | Oui | Oui | Oui | Oui | Oui | --- | --- | Oui | Oui | Oui |
+| **content-lead** | Oui | --- | --- | Oui | --- | Oui | Oui | --- | --- | --- | --- | --- | Oui |
+| **media-buyer** | --- | --- | Oui | --- | --- | Oui | Oui | --- | --- | --- | --- | --- | Oui |
+| **email-manager** | --- | Oui | --- | --- | --- | Oui | Oui | --- | --- | --- | --- | --- | Oui |
+| **social-manager** | --- | --- | --- | Oui | --- | Oui | Oui | --- | --- | --- | --- | --- | Oui |
+| **analytics-lead** | --- | --- | --- | --- | --- | Oui | --- | --- | --- | --- | --- | Oui | Oui |
+| **seo-specialist** | Oui | --- | --- | --- | --- | Oui | --- | --- | --- | --- | --- | --- | Oui |
+| **cro-specialist** | --- | --- | --- | --- | --- | Oui | --- | --- | --- | --- | --- | --- | Oui |
+| **growth-engineer** | --- | --- | --- | --- | Oui | Oui | --- | --- | --- | --- | --- | --- | Oui |
 
 ---
 
-## Section 3: Approval Chains by Risk Level
+## Section 3 : Chaînes d'approbation par niveau de risque
 
-| Risk Level | Examples | Approver | Escalation |
+| Niveau de risque | Exemples | Approbateur | Escalade |
 |---|---|---|---|
-| **Low** | Social post, blog comment reply, internal report | Any team member with relevant channel permission | Single approval sufficient |
-| **Medium** | Blog publish, email campaign send, ad launch, social campaign | Channel lead (content-lead for blog, email-manager for email, media-buyer for ads, social-manager for social) | If no channel lead assigned, brand-manager approves |
-| **High** | Budget change > 20%, new channel launch, competitor response, crisis communication draft | Brand-manager must approve | In agency context, account director (brand-manager role) approves |
-| **Critical** | Budget change > 50%, legal/compliance sensitive content, public apology, brand pivot | Agency-admin must approve | For regulated industries, compliance review required before admin approval (two-step) |
+| **Faible** | Publication sociale, réponse à un commentaire de blog, rapport interne | Tout membre de l'équipe ayant la permission du canal concerné | Une seule approbation suffit |
+| **Moyen** | Publication de blog, envoi de campagne e-mail, lancement de publicité, campagne sociale | Responsable de canal (content-lead pour le blog, email-manager pour l'e-mail, media-buyer pour les publicités, social-manager pour le social) | Si aucun responsable de canal n'est assigné, brand-manager approuve |
+| **Élevé** | Changement de budget > 20 %, lancement d'un nouveau canal, réponse à un concurrent, brouillon de communication de crise | brand-manager doit approuver | Dans un contexte d'agence, le directeur de compte (rôle brand-manager) approuve |
+| **Critique** | Changement de budget > 50 %, contenu sensible sur le plan juridique/conformité, excuse publique, pivot de marque | agency-admin doit approuver | Pour les secteurs réglementés, une revue de conformité est requise avant l'approbation admin (processus en deux étapes) |
 
-**Emergency override:** Agency-admin can override any approval chain with a documented reason. All overrides are logged to the audit trail with: override reason, original approver, timestamp, and content reference.
+**Dérogation d'urgence :** agency-admin peut déroger à toute chaîne d'approbation avec une raison documentée. Toutes les dérogations sont journalisées dans la piste d'audit avec : raison de la dérogation, approbateur d'origine, horodatage, et référence du contenu.
 
-**Approval timeout:** If no action is taken within 24 hours (configurable per brand), the request escalates to the next level. Critical approvals do not auto-escalate — they block until explicitly approved.
+**Délai d'approbation :** Si aucune action n'est prise dans les 24 heures (configurable par marque), la demande s'escalade au niveau suivant. Les approbations critiques ne s'auto-escaladent pas — elles bloquent jusqu'à approbation explicite.
 
 ---
 
-## Section 4: Cross-Team Workflows
+## Section 4 : Flux de travail inter-équipes
 
-Documented handoff patterns that define how work flows between roles.
+Schémas de transmission documentés qui définissent comment le travail circule entre les rôles.
 
-### Content Pipeline
+### Pipeline de contenu
 
 ```
 Brief (strategist) → Draft (content-lead) → SEO Review (seo-specialist) → Brand Review (brand-manager) → Publish (execution-coordinator) → Monitor (analytics-lead)
 ```
 
-| Step | Owner | Input | Output | SLA |
+| Étape | Responsable | Intrant | Livrable | SLA |
 |---|---|---|---|---|
-| Brief | Strategist / brand-manager | Campaign goals, audience, key messages | Content brief with keywords, tone, CTA | 1 business day |
-| Draft | content-lead | Content brief | Draft content (blog, social, email) | 2-3 business days |
-| SEO Review | seo-specialist | Draft content | SEO-optimized draft with keyword placement, internal links, meta data | 1 business day |
-| Brand Review | brand-manager | SEO-reviewed draft | Approved or revision notes | 1 business day |
-| Publish | Execution coordinator | Approved content | Published content with tracking | Same day |
-| Monitor | analytics-lead | Published content | Performance report at 7d, 30d, 90d | Ongoing |
+| Brief | Stratège / brand-manager | Objectifs de campagne, audience, messages clés | Brief de contenu avec mots-clés, ton, CTA | 1 jour ouvré |
+| Rédaction | content-lead | Brief de contenu | Contenu au brouillon (blog, social, e-mail) | 2-3 jours ouvrés |
+| Revue SEO | seo-specialist | Contenu au brouillon | Brouillon optimisé SEO avec placement de mots-clés, liens internes, métadonnées | 1 jour ouvré |
+| Revue de marque | brand-manager | Brouillon revu SEO | Approuvé ou notes de révision | 1 jour ouvré |
+| Publication | Coordinateur d'exécution | Contenu approuvé | Contenu publié avec suivi | Le jour même |
+| Surveillance | analytics-lead | Contenu publié | Rapport de performance à 7j, 30j, 90j | Continu |
 
-### Campaign Launch
+### Lancement de campagne
 
 ```
 Strategy (strategist) → Creative (content-lead) → Audience (media-buyer) → Budget Approval (brand-manager) → Launch (execution-coordinator) → Optimize (media-buyer) → Report (analytics-lead)
 ```
 
-### Lead Nurture
+### Nurturing de leads
 
 ```
 Capture (growth-engineer) → Score (automation) → Segment (email-manager) → Nurture Sequence (email-manager) → Sales Handoff (crm-manager) → Close (sales/CRM) → Report (analytics-lead)
 ```
 
-### Crisis Response
+### Réponse à une crise
 
 ```
 Detect (performance-monitor) → Alert (slack notification) → Assess (brand-manager) → Pause Campaigns (media-buyer) → Draft Response (content-lead) → Approve (agency-admin) → Execute (execution-coordinator)
 ```
 
-**Crisis SLA:** Detection to assessment within 1 hour. Assessment to response execution within 4 hours. All active paid campaigns paused within 30 minutes of assessment.
+**SLA de crise :** Détection à évaluation sous 1 heure. Évaluation à exécution de la réponse sous 4 heures. Toutes les campagnes payantes actives mises en pause dans les 30 minutes suivant l'évaluation.
 
 ---
 
-## Section 5: Regional Management
+## Section 5 : Gestion régionale
 
-### Hierarchy
+### Hiérarchie
 
-Regions are organized in a three-tier hierarchy: **Region** → **Market** → **Locale** (e.g., APAC → Japan → ja-JP).
+Les régions sont organisées en une hiérarchie à trois niveaux : **Région** → **Marché** → **Locale** (par ex., APAC → Japon → ja-JP).
 
-### Per-Region Settings
+### Paramètres par région
 
-| Setting | Description | Example |
+| Paramètre | Description | Exemple |
 |---|---|---|
-| Timezone | Primary timezone for scheduling | `America/New_York`, `Asia/Tokyo` |
-| Primary language | Default content language | `en-US`, `ja-JP`, `pt-BR` |
-| Compliance ruleset | Applicable privacy/ad regulations | GDPR, CCPA, CASL, PDPA |
-| Preferred platforms | Prioritized channels for the region | Google, Meta, LINE, WeChat |
-| Currency | Reporting and budget currency | USD, EUR, JPY, BRL |
-| Business hours | Standard working hours | 9:00-18:00 local |
+| Fuseau horaire | Fuseau horaire principal pour la programmation | `America/New_York`, `Asia/Tokyo` |
+| Langue principale | Langue de contenu par défaut | `en-US`, `ja-JP`, `pt-BR` |
+| Jeu de règles de conformité | Réglementations applicables en matière de confidentialité/publicité | RGPD, CCPA, CASL, PDPA |
+| Plateformes préférées | Canaux prioritaires pour la région | Google, Meta, LINE, WeChat |
+| Devise | Devise de reporting et de budget | USD, EUR, JPY, BRL |
+| Heures d'ouverture | Heures de travail standard | 9h00-18h00 heure locale |
 
-### Platform Preferences by Region
+### Préférences de plateforme par région
 
-| Region | Primary Platforms | Notes |
+| Région | Plateformes principales | Remarques |
 |---|---|---|
-| **North America** | Google, Meta, LinkedIn, Twitter/X, TikTok | English primary, Spanish secondary. CAN-SPAM + CCPA/state laws. |
-| **Europe** | Google, Meta, LinkedIn, Instagram | GDPR compliance mandatory. Multi-language required (minimum: English + local). |
-| **APAC** | Google, LINE (Japan), WeChat/Weibo (China), KakaoTalk (Korea), Meta | Localization critical. Platform preferences vary dramatically by market. |
-| **LATAM** | Google, Meta, WhatsApp, Instagram, TikTok | Portuguese (Brazil), Spanish (rest). WhatsApp is a primary marketing channel. |
-| **MEA** | Google, Meta, Instagram, TikTok, Snapchat | Arabic RTL support required. Local holiday calendar critical (Ramadan, Eid). |
+| **Amérique du Nord** | Google, Meta, LinkedIn, Twitter/X, TikTok | Anglais principal, espagnol secondaire. CAN-SPAM + CCPA/lois d'état. |
+| **Europe** | Google, Meta, LinkedIn, Instagram | Conformité RGPD obligatoire. Multilingue requis (minimum : anglais + local). |
+| **APAC** | Google, LINE (Japon), WeChat/Weibo (Chine), KakaoTalk (Corée), Meta | Localisation critique. Les préférences de plateforme varient considérablement selon le marché. |
+| **LATAM** | Google, Meta, WhatsApp, Instagram, TikTok | Portugais (Brésil), espagnol (reste). WhatsApp est un canal marketing principal. |
+| **MEA** | Google, Meta, Instagram, TikTok, Snapchat | Support RTL arabe requis. Calendrier des fêtes locales critique (Ramadan, Aïd). |
 
-### Timezone-Aware Scheduling
+### Programmation tenant compte du fuseau horaire
 
-- All scheduled content uses the brand's region timezone, not UTC
-- Quiet hours for SMS/push: 9 PM - 8 AM local time (never send during quiet hours)
-- South Korea nighttime marketing restriction: 9 PM - 8 AM local (legal requirement under PIPA)
-- Cross-region campaigns: schedule per-region deliveries at each region's optimal time
-- Use `send-time-optimizer.py --industry {industry} --audience-type {type} --timezone {offset}` for timezone-adjusted recommendations (add `--history {file}` when the region's send log exists — first-party beats baseline)
+- Tout le contenu programmé utilise le fuseau horaire de la région de la marque, pas l'UTC
+- Heures calmes pour SMS/push : 21h-8h heure locale (ne jamais envoyer pendant les heures calmes)
+- Restriction de marketing nocturne en Corée du Sud : 21h-8h heure locale (exigence légale selon la PIPA)
+- Campagnes multi-régions : programmer des envois par région à l'heure optimale de chaque région
+- Utiliser `send-time-optimizer.py --industry {industry} --audience-type {type} --timezone {offset}` pour des recommandations ajustées au fuseau horaire (ajouter `--history {file}` lorsque le journal d'envoi de la région existe — les données de première partie battent la référence)
 
 ---
 
-## Section 6: Capacity Planning
+## Section 6 : Planification de capacité
 
-### Task Weights
+### Pondération des tâches
 
-| Task Type | Weight (units) | Typical Duration | Frequency |
+| Type de tâche | Poids (unités) | Durée typique | Fréquence |
 |---|---|---|---|
-| Blog post | 3 | 2-4 hours | 2-4x/month |
-| Social post (per platform) | 1 | 30 min | 3-7x/week |
-| Email campaign | 4 | 3-5 hours | 2-4x/month |
-| Ad campaign setup | 8 | 4-8 hours | 1-2x/month |
-| Ad optimization cycle | 2 | 1-2 hours | 2-3x/week |
-| Report (weekly pulse) | 1 | 30 min (auto-generated) | Weekly |
-| Report (monthly review) | 4 | 3-4 hours | Monthly |
-| QBR preparation | 10 | 8-12 hours | Quarterly |
-| SEO audit | 6 | 4-6 hours | Monthly |
-| CRM data import | 3 | 1-3 hours | As needed |
-| Landing page review | 2 | 1-2 hours | Per campaign |
-| A/B test analysis | 2 | 1-2 hours | Per test |
+| Article de blog | 3 | 2-4 heures | 2-4x/mois |
+| Publication sociale (par plateforme) | 1 | 30 min | 3-7x/semaine |
+| Campagne e-mail | 4 | 3-5 heures | 2-4x/mois |
+| Configuration de campagne publicitaire | 8 | 4-8 heures | 1-2x/mois |
+| Cycle d'optimisation publicitaire | 2 | 1-2 heures | 2-3x/semaine |
+| Rapport (pulse hebdomadaire) | 1 | 30 min (généré automatiquement) | Hebdomadaire |
+| Rapport (revue mensuelle) | 4 | 3-4 heures | Mensuel |
+| Préparation QBR | 10 | 8-12 heures | Trimestriel |
+| Audit SEO | 6 | 4-6 heures | Mensuel |
+| Import de données CRM | 3 | 1-3 heures | Au besoin |
+| Revue de page d'atterrissage | 2 | 1-2 heures | Par campagne |
+| Analyse de test A/B | 2 | 1-2 heures | Par test |
 
-### Utilization Thresholds
+### Seuils d'utilisation
 
-| Utilization | Status | Action |
+| Utilisation | Statut | Action |
 |---|---|---|
-| < 70% | Available | Available for new work, can take on additional brands |
-| 70-85% | Optimal | Sustainable pace, quality output expected |
-| 85-95% | Near Capacity | Flag to brand-manager — defer non-urgent work, no new brands |
-| > 95% | Overloaded | Reassign tasks immediately, escalate to agency-admin |
+| < 70 % | Disponible | Disponible pour du nouveau travail, peut prendre en charge des marques supplémentaires |
+| 70-85 % | Optimal | Rythme durable, livrable de qualité attendu |
+| 85-95 % | Proche de la capacité | Signaler au brand-manager — reporter le travail non urgent, aucune nouvelle marque |
+| > 95 % | Surchargé | Réaffecter les tâches immédiatement, escalader vers agency-admin |
 
-### Auto-Assignment
+### Auto-assignation
 
-When assigning tasks, `team-manager.py --action check-capacity` recommends the best team member based on:
+Lors de l'assignation de tâches, `team-manager.py --action check-capacity` recommande le meilleur membre de l'équipe en fonction de :
 
-1. **Role match** — Does the team member's role cover the required permissions?
-2. **Channel expertise** — Is this their primary or secondary channel?
-3. **Current utilization** — Are they below the 85% threshold?
-4. **Region alignment** — Do they cover the target market's timezone and language?
-5. **Historical performance** — Have they completed similar tasks successfully before?
+1. **Correspondance de rôle** — Le rôle du membre de l'équipe couvre-t-il les permissions requises ?
+2. **Expertise de canal** — Est-ce son canal principal ou secondaire ?
+3. **Utilisation actuelle** — Est-il sous le seuil de 85 % ?
+4. **Alignement régional** — Couvre-t-il le fuseau horaire et la langue du marché cible ?
+5. **Performance historique** — A-t-il déjà mené à bien des tâches similaires avec succès ?
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/team-manager.py" --brand {slug} --action check-capacity --data '{"task_type":"email-campaign","region":"europe","weight":4}'
 ```
 
-Output: Ranked list of available team members with utilization percentages and fit scores.
+Résultat : liste classée des membres d'équipe disponibles avec les pourcentages d'utilisation et les scores d'adéquation.
 
 ---
 
-## Section 7: Executive Reporting
+## Section 7 : Reporting exécutif
 
-### KPI Rollup Hierarchy
+### Hiérarchie de remontée des KPI
 
 ```
 Channel Metrics → Brand Aggregate → Portfolio Summary
 ```
 
-| Level | Metrics | Audience | Frequency |
+| Niveau | Métriques | Audience | Fréquence |
 |---|---|---|---|
-| **Channel** | Platform-specific KPIs (CTR, CPC, open rate, impressions) | Channel leads | Weekly |
-| **Brand** | Blended CAC, ROAS, pipeline contribution, engagement rate | Brand-manager | Monthly |
-| **Portfolio** | Total Marketing ROI, weighted CAC, LTV:CAC ratio, market share | Agency-admin / C-suite | Quarterly |
+| **Canal** | KPI spécifiques à la plateforme (CTR, CPC, taux d'ouverture, impressions) | Responsables de canal | Hebdomadaire |
+| **Marque** | CAC mixte, ROAS, contribution au pipeline, taux d'engagement | brand-manager | Mensuel |
+| **Portefeuille** | ROI marketing total, CAC pondéré, ratio LTV:CAC, part de marché | agency-admin / direction générale | Trimestriel |
 
-### C-Suite Metrics
+### Métriques pour la direction générale
 
-| Metric | Definition | Target Benchmark |
+| Métrique | Définition | Référence cible |
 |---|---|---|
-| Total Marketing ROI | (Revenue attributed to marketing - Marketing spend) / Marketing spend | > 3:1 for B2B SaaS, > 4:1 for eCommerce |
-| Customer Acquisition Cost (CAC) | Total marketing + sales spend / New customers acquired | Industry-dependent (see industry-profiles.md) |
-| Customer Lifetime Value (LTV) | Average revenue per customer x Average lifespan | LTV:CAC ratio > 3:1 |
-| Market Share (estimated) | Share of voice + share of search + share of social | Trending upward quarter-over-quarter |
-| Brand Health Score | Composite: NPS + brand awareness + sentiment + share of voice | > 70/100 |
+| ROI marketing total | (Chiffre d'affaires attribué au marketing - Dépense marketing) / Dépense marketing | > 3:1 pour le SaaS B2B, > 4:1 pour l'e-commerce |
+| Coût d'acquisition client (CAC) | Dépense marketing + vente totale / Nouveaux clients acquis | Dépend du secteur (voir industry-profiles.md) |
+| Valeur vie client (LTV) | Chiffre d'affaires moyen par client x durée de vie moyenne | Ratio LTV:CAC > 3:1 |
+| Part de marché (estimée) | Part de voix + part de recherche + part sociale | Tendance à la hausse trimestre sur trimestre |
+| Score de santé de marque | Composite : NPS + notoriété de marque + sentiment + part de voix | > 70/100 |
 
-### Executive Summary Format
+### Format du résumé exécutif
 
-One-page summary generated by `/digital-marketing-pro:exec-summary`:
+Résumé d'une page généré par `/digital-marketing-pro:exec-summary` :
 
-| Section | Content | Length |
+| Section | Contenu | Longueur |
 |---|---|---|
-| Headline KPIs | 5 metrics with trend arrows (up/down/flat vs. prior period) | 5 lines |
-| Top 3 Wins | Highest-impact positive results with specific numbers | 3 bullet points |
-| Top 3 Risks | Issues requiring attention with recommended actions | 3 bullet points |
-| Channel Performance | Mini-table: channel, spend, revenue, ROI, trend | 5-8 rows |
-| Detailed Appendix | Full data tables, campaign-level breakdowns, methodology notes | Attached |
+| KPI phares | 5 métriques avec flèches de tendance (hausse/baisse/stable vs période précédente) | 5 lignes |
+| Top 3 des succès | Résultats positifs à plus fort impact avec chiffres précis | 3 puces |
+| Top 3 des risques | Problèmes nécessitant une attention avec actions recommandées | 3 puces |
+| Performance par canal | Mini-tableau : canal, dépense, chiffre d'affaires, ROI, tendance | 5-8 lignes |
+| Annexe détaillée | Tableaux de données complets, ventilations au niveau campagne, notes méthodologiques | En pièce jointe |
 
-**Delivery:** The `/digital-marketing-pro:exec-summary` command orchestrates three agents: `agency-operations` (portfolio context), `analytics-analyst` (data and metrics), and `marketing-strategist` (insights and recommendations). Output is formatted for Google Slides or Google Sheets export via MCP.
+**Livraison :** La commande `/digital-marketing-pro:exec-summary` orchestre trois agents : `agency-operations` (contexte de portefeuille), `analytics-analyst` (données et métriques), et `marketing-strategist` (enseignements et recommandations). Le livrable est formaté pour un export Google Slides ou Google Sheets via MCP.

@@ -1,52 +1,52 @@
-# Stone vs Opinion — Confidence Tagging
+# Stone vs Opinion — Marquage de la fiabilité
 
-Every fact captured during engagement intake (Part 1) is tagged with one of two confidence levels. This separation is foundational to the engagement methodology.
+Chaque fait recueilli lors de la prise de connaissance client (Partie 1) est étiqueté avec l'un des deux niveaux de fiabilité. Cette séparation est fondamentale pour la méthodologie d'engagement.
 
-## The Two Tags
+## Les deux étiquettes
 
-### Stone
+### Stone (fait avéré)
 
-**Definition:** What the client knows for certain. A fact independently verifiable or directly observed.
+**Définition :** Ce que le client sait avec certitude. Un fait vérifiable de manière indépendante ou directement observé.
 
-Examples of Stone:
-- "Our company was founded in 2018" (verifiable from registration)
-- "We have 47 employees as of April 2026" (verifiable from HR records)
-- "Our annual revenue last year was INR 12 crore" (verifiable from financials)
-- "We sell only in India and Singapore" (verifiable from operations)
-- "Our pricing tiers are INR 999, INR 4,999, INR 19,999 per month" (verifiable from product)
-- "We use HubSpot CRM and Klaviyo for email" (verifiable from systems)
-- "Our biggest customer is [named brand]" (verifiable from contracts)
-- "Our average order value is INR 2,400" (verifiable from order data)
+Exemples de Stone :
+- « Notre entreprise a été fondée en 2018 » (vérifiable par l'immatriculation)
+- « Nous comptons 47 employés en avril 2026 » (vérifiable via les registres RH)
+- « Notre chiffre d'affaires annuel l'an dernier était de 12 crores INR » (vérifiable via les comptes financiers)
+- « Nous vendons uniquement en Inde et à Singapour » (vérifiable via les opérations)
+- « Nos paliers tarifaires sont 999 INR, 4 999 INR, 19 999 INR par mois » (vérifiable via le produit)
+- « Nous utilisons HubSpot CRM et Klaviyo pour l'e-mail » (vérifiable via les systèmes)
+- « Notre plus gros client est [marque nommée] » (vérifiable via les contrats)
+- « Notre panier moyen est de 2 400 INR » (vérifiable via les données de commande)
 
-Stone facts are treated as ground truth in unbiased research (Parts 2–4) and in all downstream skills.
+Les faits Stone sont traités comme une vérité de référence (ground truth) dans la recherche non biaisée (Parties 2 à 4) et dans toutes les compétences en aval.
 
-### Opinion
+### Opinion (opinion)
 
-**Definition:** What the client believes. A claim that may be true but has not been independently validated.
+**Définition :** Ce que le client croit. Une affirmation qui peut être vraie mais qui n'a pas été validée de manière indépendante.
 
-Examples of Opinion:
-- "Our customers love us for our quality"
-- "We are known as the most affordable option in our category"
-- "Our biggest growth opportunity is the South India market"
-- "Our main competitor is [named brand]"
-- "Our customers research for 2 weeks before buying"
-- "Our brand is positioned as premium"
-- "Most of our customers come through word of mouth"
-- "Our content marketing has been very effective"
+Exemples d'Opinion :
+- « Nos clients nous adorent pour notre qualité »
+- « Nous sommes connus comme l'option la plus abordable de notre catégorie »
+- « Notre plus grande opportunité de croissance est le marché du Sud de l'Inde »
+- « Notre principal concurrent est [marque nommée] »
+- « Nos clients font des recherches pendant 2 semaines avant d'acheter »
+- « Notre marque est positionnée comme premium »
+- « La plupart de nos clients viennent du bouche-à-oreille »
+- « Notre marketing de contenu a été très efficace »
 
-Opinion facts are captured but **explicitly tagged as hypotheses**. They are NOT used as ground truth in the unbiased research phase. Instead, they become **research questions** that Parts 2–4 actively try to validate or contradict.
+Les faits Opinion sont recueillis mais **explicitement étiquetés comme des hypothèses**. Ils ne sont PAS utilisés comme vérité de référence pendant la phase de recherche non biaisée. Ils deviennent au contraire des **questions de recherche** que les Parties 2 à 4 cherchent activement à valider ou à contredire.
 
-## Why this separation matters
+## Pourquoi cette séparation est importante
 
-Without Stone vs Opinion separation, client intake contaminates unbiased research. The client tells the agency "we are positioned as premium" — and the unbiased research, instead of independently assessing the brand's actual market position, produces a confirmatory analysis that just restates the client's belief.
+Sans la séparation Stone vs Opinion, la prise de connaissance client contamine la recherche non biaisée. Le client dit à l'agence « nous sommes positionnés comme premium » — et la recherche non biaisée, au lieu d'évaluer indépendamment la position réelle de la marque sur le marché, produit une analyse confirmatoire qui ne fait que reformuler la croyance du client.
 
-By tagging the same intake item as Opinion, the unbiased research phase is forced to answer: *Is the brand actually positioned as premium in the market? What evidence supports or contradicts this?*
+En étiquetant ce même élément de prise de connaissance comme Opinion, la phase de recherche non biaisée est contrainte de répondre : *La marque est-elle réellement positionnée comme premium sur le marché ? Quelles preuves soutiennent ou contredisent cela ?*
 
-The result is genuine market intelligence rather than dressed-up client narrative.
+Le résultat est une véritable intelligence de marché plutôt qu'un récit client habillé différemment.
 
-## Capturing Stone vs Opinion in Part 1
+## Recueillir Stone vs Opinion dans la Partie 1
 
-The Part 1 intake produces two files:
+La prise de connaissance de la Partie 1 produit deux fichiers :
 
 ### `stone-facts.json`
 
@@ -107,55 +107,55 @@ The Part 1 intake produces two files:
 }
 ```
 
-## How research consumes Stone vs Opinion
+## Comment la recherche exploite Stone vs Opinion
 
-### Parts 2–4 (Unbiased Research)
+### Parties 2–4 (Recherche non biaisée)
 
-- Read `stone-facts.json` — these are accepted as ground truth
-- Read `opinion-hypotheses.json` — these become **research questions to validate**
-- Do NOT consult client documents (deck, internal reports, etc.) during this phase
-- Use only public sources, third-party data, market reports, competitive intelligence
-- Produce findings that either confirm, contradict, or refine each opinion hypothesis
+- Lire `stone-facts.json` — ces éléments sont acceptés comme vérité de référence
+- Lire `opinion-hypotheses.json` — ces éléments deviennent des **questions de recherche à valider**
+- NE PAS consulter les documents du client (deck, rapports internes, etc.) pendant cette phase
+- Utiliser uniquement des sources publiques, des données tierces, des rapports de marché, de l'intelligence concurrentielle
+- Produire des constats qui confirment, contredisent ou affinent chaque hypothèse d'opinion
 
-### Part 5 (Client Validation)
+### Partie 5 (Validation client)
 
-Each opinion hypothesis is brought back to the client as a finding:
+Chaque hypothèse d'opinion est présentée au client comme un constat :
 
-> "You mentioned during intake that South India is your biggest growth opportunity. The unbiased market analysis suggests West India and Tier-2 Maharashtra cities have larger TAM and lower competitive density. This finding requires your validation before proceeding."
+> « Vous avez mentionné lors de la prise de connaissance que le Sud de l'Inde est votre plus grande opportunité de croissance. L'analyse de marché non biaisée suggère que l'Ouest de l'Inde et les villes de Tier 2 du Maharashtra offrent un TAM plus important et une densité concurrentielle plus faible. Ce constat nécessite votre validation avant de poursuivre. »
 
-The client then ACCEPTS / REJECTS / EDITS the finding (with rationale).
+Le client ACCEPTE / REJETTE / MODIFIE alors le constat (avec justification).
 
-### Parts 6+ (Operating)
+### Parties 6 et suivantes (Exploitation)
 
-- Stone facts continue to be ground truth across the engagement
-- Opinion hypotheses are now either:
-  - **Validated** (both client and unbiased research agree) → treated as fact
-  - **Corrected** (unbiased research showed something different and client accepted the correction) → treated as fact, flagged as "originally stated as opinion, validated as different"
-  - **Maintained against research** (unbiased research disagreed but client insisted) → flagged as "client-asserted, market evidence to the contrary"
-  - **Open** (still unresolved) → continues to be a research question
+- Les faits Stone continuent d'être la vérité de référence tout au long de l'engagement
+- Les hypothèses d'opinion sont désormais soit :
+  - **Validées** (le client et la recherche non biaisée sont d'accord) → traitées comme un fait
+  - **Corrigées** (la recherche non biaisée a montré quelque chose de différent et le client a accepté la correction) → traitées comme un fait, signalées comme « initialement énoncé comme opinion, validé comme différent »
+  - **Maintenues contre la recherche** (la recherche non biaisée était en désaccord mais le client a insisté) → signalées comme « affirmé par le client, preuves de marché contraires »
+  - **Ouvertes** (encore non résolues) → restent une question de recherche
 
-## Stone vs Opinion in skill outputs
+## Stone vs Opinion dans les livrables des compétences
 
-When a skill cites a fact, it can include the confidence trail:
+Lorsqu'une compétence cite un fait, elle peut inclure la piste de fiabilité :
 
-> Per Stone (verified from MCA records), the company was founded in 2018.
+> Selon Stone (vérifié via les registres MCA), l'entreprise a été fondée en 2018.
 
-> Per validated Opinion (originally client belief, confirmed by Part 4.2 Competitor Positioning analysis), the brand is positioned as a value-tier alternative to enterprise incumbents.
+> Selon une Opinion validée (initialement une croyance client, confirmée par l'analyse de positionnement concurrentiel de la Partie 4.2), la marque est positionnée comme une alternative d'entrée de gamme face aux acteurs historiques du segment entreprise.
 
-> Per client-asserted Opinion (market evidence to the contrary), the South India market is treated as the priority growth geography. The team should monitor whether actual performance validates this assertion within Q1.
+> Selon une Opinion affirmée par le client (preuves de marché contraires), le marché du Sud de l'Inde est traité comme la géographie de croissance prioritaire. L'équipe doit surveiller si la performance réelle valide cette affirmation d'ici le T1.
 
-This makes the entire engagement intellectually traceable. Anyone reviewing months later can see what was assumed, what was validated, and where assumptions still rest on client belief alone.
+Cela rend l'ensemble de l'engagement intellectuellement traçable. Toute personne qui l'examine des mois plus tard peut voir ce qui a été supposé, ce qui a été validé, et où les hypothèses reposent encore uniquement sur la croyance du client.
 
-## Common pitfalls to avoid
+## Pièges courants à éviter
 
-1. **Treating client opinion as fact during research.** This contaminates the unbiased view and produces confirmatory rather than independent analysis.
-2. **Refusing to capture client opinions at all.** Opinions are valuable — they reveal what the client believes and what they want to be true. Just tag them clearly.
-3. **Re-classifying opinions as Stone after a single confirming data point.** Validation requires meaningful evidence, not a single anecdote.
-4. **Letting Stone facts go un-cited.** Even Stone facts need their source documented. "Founded in 2018" without a source is just another opinion.
-5. **Forgetting to revisit unresolved opinions.** Opinions that stay "open" after Part 5 should be revisited in Part 12 (continuous improvement) when more data accumulates.
+1. **Traiter l'opinion du client comme un fait pendant la recherche.** Cela contamine le regard non biaisé et produit une analyse confirmatoire plutôt qu'indépendante.
+2. **Refuser complètement de recueillir les opinions du client.** Les opinions ont de la valeur — elles révèlent ce que le client croit et ce qu'il souhaite être vrai. Il suffit de les étiqueter clairement.
+3. **Reclasser des opinions en Stone après un seul point de donnée confirmant.** La validation exige des preuves significatives, pas une simple anecdote.
+4. **Laisser des faits Stone sans citation.** Même les faits Stone ont besoin que leur source soit documentée. « Fondée en 2018 » sans source n'est qu'une opinion de plus.
+5. **Oublier de revisiter les opinions non résolues.** Les opinions qui restent « ouvertes » après la Partie 5 doivent être revisitées dans la Partie 12 (amélioration continue) au fur et à mesure que davantage de données s'accumulent.
 
-## Related references
+## Références associées
 
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — Part 1 context
-- [two-views-model.md](two-views-model.md) — how validated opinions feed v2
-- [living-instruction-file-spec.md](living-instruction-file-spec.md) — where validated facts live
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — contexte de la Partie 1
+- [two-views-model.md](two-views-model.md) — comment les opinions validées alimentent v2
+- [living-instruction-file-spec.md](living-instruction-file-spec.md) — où vivent les faits validés

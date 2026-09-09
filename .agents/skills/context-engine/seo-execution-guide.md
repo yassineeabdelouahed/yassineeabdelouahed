@@ -1,223 +1,223 @@
-# SEO Execution Guide
+# Guide d'exécution SEO
 
-Reference knowledge for SEO execution via CMS APIs, search console operations, schema deployment, rank monitoring, and technical SEO workflows. Use this when executing SEO tasks programmatically through MCP servers and scripts.
+Connaissances de référence pour l'exécution SEO via les API de CMS, les opérations Search Console, le déploiement de schémas, la surveillance de classement, et les flux de travail SEO techniques. Utilisez ce guide lors de l'exécution de tâches SEO de manière programmatique via les serveurs MCP et les scripts.
 
 ---
 
-## 1. WordPress SEO Field Updates
+## 1. Mises à jour des champs SEO WordPress
 
-### Yoast SEO Meta Fields
+### Champs méta Yoast SEO
 
-Update via `POST /wp-json/wp/v2/posts/{id}` with `meta` object:
+Mettre à jour via `POST /wp-json/wp/v2/posts/{id}` avec l'objet `meta` :
 
-| Meta Key | Max Length | Purpose |
+| Clé méta | Longueur max | Objectif |
 |---|---|---|
-| `_yoast_wpseo_title` | 60 chars | SEO title override. Supports variables: `%%title%%`, `%%sep%%`, `%%sitename%%`, `%%primary_category%%`. |
-| `_yoast_wpseo_metadesc` | 160 chars | Meta description for SERP snippet. Include primary keyword naturally. End with CTA or value proposition. |
-| `_yoast_wpseo_focuskw` | N/A | Focus keyphrase for Yoast content analysis. Single keyword or phrase. |
-| `_yoast_wpseo_canonical` | URL | Canonical URL override. Use when content is syndicated or duplicated. |
-| `_yoast_wpseo_opengraph-title` | 60 chars | OG title for social sharing. Falls back to `_yoast_wpseo_title` if empty. |
-| `_yoast_wpseo_opengraph-description` | 200 chars | OG description for social sharing. |
-| `_yoast_wpseo_opengraph-image` | URL | OG image URL. Recommended: 1200x630 px. |
-| `_yoast_wpseo_twitter-title` | 60 chars | Twitter card title override. Falls back to OG title. |
-| `_yoast_wpseo_twitter-description` | 200 chars | Twitter card description override. |
-| `_yoast_wpseo_schema_article_type` | enum | `Article`, `BlogPosting`, `NewsArticle`, `TechArticle`, `ScholarlyArticle`. |
+| `_yoast_wpseo_title` | 60 caractères | Remplacement du titre SEO. Prend en charge les variables : `%%title%%`, `%%sep%%`, `%%sitename%%`, `%%primary_category%%`. |
+| `_yoast_wpseo_metadesc` | 160 caractères | Méta-description pour l'extrait SERP. Inclure le mot-clé principal naturellement. Terminer par un CTA ou une proposition de valeur. |
+| `_yoast_wpseo_focuskw` | N/A | Mot-clé principal pour l'analyse de contenu Yoast. Un seul mot-clé ou une seule expression. |
+| `_yoast_wpseo_canonical` | URL | Remplacement de l'URL canonique. À utiliser lorsque le contenu est syndiqué ou dupliqué. |
+| `_yoast_wpseo_opengraph-title` | 60 caractères | Titre OG pour le partage social. Se replie sur `_yoast_wpseo_title` si vide. |
+| `_yoast_wpseo_opengraph-description` | 200 caractères | Description OG pour le partage social. |
+| `_yoast_wpseo_opengraph-image` | URL | URL de l'image OG. Recommandé : 1200x630 px. |
+| `_yoast_wpseo_twitter-title` | 60 caractères | Remplacement du titre de la carte Twitter. Se replie sur le titre OG. |
+| `_yoast_wpseo_twitter-description` | 200 caractères | Remplacement de la description de la carte Twitter. |
+| `_yoast_wpseo_schema_article_type` | énumération | `Article`, `BlogPosting`, `NewsArticle`, `TechArticle`, `ScholarlyArticle`. |
 
-### RankMath SEO Meta Fields
+### Champs méta RankMath SEO
 
-Update via the same WordPress REST API `meta` object:
+Mettre à jour via le même objet `meta` de l'API REST WordPress :
 
-| Meta Key | Max Length | Purpose |
+| Clé méta | Longueur max | Objectif |
 |---|---|---|
-| `rank_math_title` | 60 chars | SEO title. Supports variables: `%title%`, `%sep%`, `%sitename%`, `%category%`. |
-| `rank_math_description` | 160 chars | Meta description. |
-| `rank_math_focus_keyword` | N/A | Primary focus keyword. Comma-separated for multiple keywords. |
-| `rank_math_canonical_url` | URL | Canonical URL override. |
-| `rank_math_robots` | array | Index/noindex directives: `["index", "follow"]` or `["noindex", "nofollow"]`. |
-| `rank_math_advanced_robots` | object | `{ "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 }` |
-| `rank_math_schema_Article` | JSON | Full schema override. Allows custom JSON-LD injection. |
+| `rank_math_title` | 60 caractères | Titre SEO. Prend en charge les variables : `%title%`, `%sep%`, `%sitename%`, `%category%`. |
+| `rank_math_description` | 160 caractères | Méta-description. |
+| `rank_math_focus_keyword` | N/A | Mot-clé principal. Séparé par des virgules pour plusieurs mots-clés. |
+| `rank_math_canonical_url` | URL | Remplacement de l'URL canonique. |
+| `rank_math_robots` | tableau | Directives d'indexation : `["index", "follow"]` ou `["noindex", "nofollow"]`. |
+| `rank_math_advanced_robots` | objet | `{ "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 }` |
+| `rank_math_schema_Article` | JSON | Remplacement complet du schéma. Permet l'injection de JSON-LD personnalisé. |
 
-### RankMath Redirect Module
+### Module de redirection RankMath
 
-- **API endpoint**: `POST /wp-json/rankmath/v1/redirections`
-- **Fields**: `sources` (array of URL patterns), `url_to` (destination), `header_code` (301, 302, 307, 410), `status` (active/inactive)
-- **Regex support**: Set `comparison` to `regex` for pattern-based redirects
-- **Import**: Bulk import via CSV with columns: source, destination, type, category
+- **Point de terminaison API** : `POST /wp-json/rankmath/v1/redirections`
+- **Champs** : `sources` (tableau de motifs d'URL), `url_to` (destination), `header_code` (301, 302, 307, 410), `status` (actif/inactif)
+- **Prise en charge des expressions régulières** : Définir `comparison` sur `regex` pour les redirections basées sur des motifs
+- **Import** : Import en masse via CSV avec les colonnes : source, destination, type, catégorie
 
 ---
 
-## 2. Webflow SEO Field Updates
+## 2. Mises à jour des champs SEO Webflow
 
-### CMS Item SEO Fields
+### Champs SEO des éléments CMS
 
-Update via `PATCH /collections/{collection_id}/items/{item_id}` with `fields` object:
+Mettre à jour via `PATCH /collections/{collection_id}/items/{item_id}` avec l'objet `fields` :
 
-| Field Slug | Purpose | Details |
+| Slug de champ | Objectif | Détails |
 |---|---|---|
-| `name` | Page/item title | Primary display name used in CMS. |
-| `slug` | URL slug | Must be unique within collection. Lowercase, hyphens only. |
-| `post-body` (or custom) | Rich text content | HTML subset. Supports headings, paragraphs, lists, links, images. |
-| Custom SEO title field | SEO title | Map to your collection's custom SEO title field slug. |
-| Custom SEO description field | Meta description | Map to your collection's custom meta description field slug. |
-| Custom OG image field | Open Graph image | `{ "url": "https://...", "alt": "Description" }`. Must be publicly accessible. |
+| `name` | Titre de la page/de l'élément | Nom d'affichage principal utilisé dans le CMS. |
+| `slug` | Slug d'URL | Doit être unique au sein de la collection. Minuscules, tirets uniquement. |
+| `post-body` (ou personnalisé) | Contenu en texte enrichi | Sous-ensemble HTML. Prend en charge les titres, paragraphes, listes, liens, images. |
+| Champ de titre SEO personnalisé | Titre SEO | Faire correspondre au slug du champ de titre SEO personnalisé de votre collection. |
+| Champ de description SEO personnalisé | Méta-description | Faire correspondre au slug du champ de méta-description personnalisé de votre collection. |
+| Champ d'image OG personnalisé | Image Open Graph | `{ "url": "https://...", "alt": "Description" }`. Doit être accessible publiquement. |
 
-### Webflow Native SEO Settings
+### Paramètres SEO natifs Webflow
 
-- **Page-level SEO**: Set via `PATCH /pages/{page_id}` with `seo.title`, `seo.description`, `openGraph.title`, `openGraph.description`, `openGraph.titleCopy`, `openGraph.descriptionCopy`
-- **OG image**: Upload via `POST /sites/{site_id}/assets` then reference in `openGraph.image`
-- **Sitemap**: Auto-generated at `/sitemap.xml`. No API control — managed via Webflow dashboard
-- **Redirects**: `POST /sites/{site_id}/redirects` with `{ "path": "/old-path", "target": "/new-path", "statusCode": 301 }`
-- **Redirect limits**: Basic plan: 100 redirects. CMS plan: 500. Business plan: 2,000. Enterprise: unlimited
-- **Publish after changes**: Changes require `POST /sites/{site_id}/publish` — changes are not live until published
-
----
-
-## 3. Google Search Console API Operations
-
-### URL Inspection API
-
-- **Endpoint**: `POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect`
-- **Payload**: `{ "inspectionUrl": "https://example.com/page", "siteUrl": "https://example.com/" }`
-- **Response fields**: `indexStatusResult.verdict` (PASS, NEUTRAL, FAIL), `indexStatusResult.coverageState` (Submitted and indexed, Crawled - currently not indexed, Discovered - currently not indexed, etc.), `mobileUsabilityResult`, `richResultsResult`
-- **Use case**: Check indexing status before and after content updates. Verify new pages are indexed.
-
-### Indexing Request (URL Submission)
-
-- **Endpoint**: `POST https://indexing.googleapis.com/v3/urlNotifications:publish`
-- **Payload**: `{ "url": "https://example.com/page", "type": "URL_UPDATED" }` or `"type": "URL_DELETED"`
-- **Quota**: 200 publish requests per day per property (not 500 — the API documentation specifies 200 for most properties; high-volume sites may request increases)
-- **Scope**: Originally designed for `JobPosting` and `BroadcastEvent` schema pages. Google has expanded support but may not process all URL types equally
-- **Best practice**: Use for high-priority pages (new product launches, time-sensitive content). For bulk submissions, use sitemap submission instead
-
-### Sitemap Submission API
-
-- **Endpoint**: `PUT https://www.googleapis.com/webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}`
-- **Parameters**: `siteUrl` (URL-encoded property URL), `feedpath` (URL-encoded sitemap URL)
-- **Delete sitemap**: `DELETE /webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}`
-- **List sitemaps**: `GET /webmasters/v3/sites/{siteUrl}/sitemaps`
-- **Best practice**: Submit after bulk content updates, new section launches, or site restructuring. Ping Google after sitemap regeneration.
+- **SEO au niveau de la page** : Défini via `PATCH /pages/{page_id}` avec `seo.title`, `seo.description`, `openGraph.title`, `openGraph.description`, `openGraph.titleCopy`, `openGraph.descriptionCopy`
+- **Image OG** : Téléverser via `POST /sites/{site_id}/assets` puis référencer dans `openGraph.image`
+- **Sitemap** : Généré automatiquement à `/sitemap.xml`. Aucun contrôle via API — géré via le tableau de bord Webflow
+- **Redirections** : `POST /sites/{site_id}/redirects` avec `{ "path": "/old-path", "target": "/new-path", "statusCode": 301 }`
+- **Limites de redirection** : Plan Basic : 100 redirections. Plan CMS : 500. Plan Business : 2 000. Enterprise : illimité
+- **Publier après les changements** : Les changements nécessitent `POST /sites/{site_id}/publish` — les changements ne sont pas en ligne tant qu'ils ne sont pas publiés
 
 ---
 
-## 4. Redirect Implementation Patterns
+## 3. Opérations de l'API Google Search Console
 
-### WordPress — Redirection Plugin API
+### API d'inspection d'URL
 
-- **Plugin REST API base**: `/wp-json/redirection/v1/`
-- **Create redirect**: `POST /redirect` with `{ "url": "/old-path", "match_url": "/old-path", "action_data": { "url": "/new-path" }, "action_type": "url", "action_code": 301, "group_id": 1 }`
-- **Regex support**: Set `match_type` to `url` (exact) or `regex` (pattern match)
-- **Log access**: `GET /log` — redirect hit logs with timestamps, user agents, referrers
-- **404 monitoring**: `GET /404s` — unresolved 404 errors for redirect opportunity identification
+- **Point de terminaison** : `POST https://searchconsole.googleapis.com/v1/urlInspection/index:inspect`
+- **Charge utile** : `{ "inspectionUrl": "https://example.com/page", "siteUrl": "https://example.com/" }`
+- **Champs de réponse** : `indexStatusResult.verdict` (PASS, NEUTRAL, FAIL), `indexStatusResult.coverageState` (Envoyée et indexée, Explorée - actuellement non indexée, Découverte - actuellement non indexée, etc.), `mobileUsabilityResult`, `richResultsResult`
+- **Cas d'usage** : Vérifier le statut d'indexation avant et après les mises à jour de contenu. Vérifier que les nouvelles pages sont indexées.
 
-### Webflow — Native 301 Redirects
+### Demande d'indexation (soumission d'URL)
 
-- **Create**: `POST /sites/{site_id}/redirects` with `{ "path": "/old-path", "target": "/new-path", "statusCode": 301 }`
-- **Bulk create**: Loop through redirect list with 100ms delay between requests (60 req/min rate limit)
-- **Validation**: Path must start with `/`. Target can be relative (`/new-path`) or absolute (`https://example.com/new-path`)
-- **Plan limits enforced server-side**: API returns 429 or error when redirect limit reached
+- **Point de terminaison** : `POST https://indexing.googleapis.com/v3/urlNotifications:publish`
+- **Charge utile** : `{ "url": "https://example.com/page", "type": "URL_UPDATED" }` ou `"type": "URL_DELETED"`
+- **Quota** : 200 demandes de publication par jour et par propriété (pas 500 — la documentation de l'API précise 200 pour la plupart des propriétés ; les sites à fort volume peuvent demander des augmentations)
+- **Portée** : Conçue à l'origine pour les pages de schéma `JobPosting` et `BroadcastEvent`. Google a étendu la prise en charge mais peut ne pas traiter tous les types d'URL de façon égale
+- **Bonne pratique** : Utiliser pour les pages prioritaires (nouveaux lancements de produits, contenu sensible au temps). Pour les soumissions en masse, utiliser plutôt la soumission de sitemap
 
-### Bulk Redirect Safety Protocol
+### API de soumission de sitemap
 
-1. **Pre-edit snapshot**: Export current redirect list. Store as `redirects_backup_{timestamp}.json`
-2. **Validation pass**: For each redirect, verify source URL returns 200 (exists) and destination URL returns 200 (valid target). Flag redirect chains (A→B where B→C already exists)
-3. **Staged deployment**: Deploy in batches of 25. After each batch, spot-check 3 redirects via HTTP HEAD request
-4. **Post-deploy verification**: Crawl all source URLs. Confirm 301 status codes. Check for redirect loops. Verify final destination matches intent
-5. **Rollback**: If errors detected, restore from pre-edit snapshot. All redirect tools must support rollback within 30 minutes of deployment
-
----
-
-## 5. Schema Deployment Workflow
-
-### Step-by-Step Execution
-
-1. **Generate JSON-LD** — Build schema markup based on content type:
-   - `BlogPosting`: title, author, datePublished, dateModified, image, publisher, description
-   - `Product`: name, description, image, offers (price, priceCurrency, availability), aggregateRating, review
-   - `FAQ`: mainEntity array with Question/Answer pairs — **note:** FAQ rich results restricted (Aug 2023) to authoritative government and health sites only; markup still valid for structure, but expect no rich result on most sites
-   - `HowTo`: name, step array with name/text/image, totalTime, estimatedCost — **note:** HowTo rich results deprecated (Sept 2023); markup still valid for structure, but prefer Article format with step-by-step structure
-   - `LocalBusiness`: name, address, geo, telephone, openingHours, priceRange
-   - `Organization`: name, url, logo, sameAs (social profiles), contactPoint
-
-2. **Validate schema** — Run through Schema.org validator (`https://validator.schema.org/`). Zero errors required. Warnings acceptable but should be minimized.
-
-3. **Deploy to page** — Injection method depends on CMS:
-   - **WordPress**: Use `rank_math_schema_Article` meta field, or inject via `wp_head` action in custom plugin, or add to Yoast schema output filter
-   - **Webflow**: Inject in page Custom Code section (head or body), or embed in rich text via custom code block
-   - **Custom CMS**: Add `<script type="application/ld+json">` to page `<head>`
-
-4. **Verify with Rich Results Test** — `https://search.google.com/test/rich-results` — confirm all schema types detected and eligible for rich results. Screenshot result for documentation.
-
-5. **Monitor in GSC** — Check Enhancements reports: `Unparsable structured data`, `Product`, `Breadcrumb` (the `FAQ` and `How-to` reports were removed by Google along with those rich results). Alert on any new errors within 7 days of deployment.
+- **Point de terminaison** : `PUT https://www.googleapis.com/webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}`
+- **Paramètres** : `siteUrl` (URL de propriété encodée), `feedpath` (URL de sitemap encodée)
+- **Supprimer un sitemap** : `DELETE /webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}`
+- **Lister les sitemaps** : `GET /webmasters/v3/sites/{siteUrl}/sitemaps`
+- **Bonne pratique** : Soumettre après des mises à jour de contenu en masse, des lancements de nouvelles sections, ou une restructuration de site. Notifier Google après la régénération du sitemap.
 
 ---
 
-## 6. Rank Monitoring and SERP Feature Tracking
+## 4. Schémas d'implémentation des redirections
 
-### Rank Monitoring Setup
+### WordPress — API du plugin Redirection
 
-- **Keyword list definition**: Group by priority tier:
-  - **Tier 1** (brand + head terms, 10-30 keywords): Daily tracking. Alert on any position change >3 positions
-  - **Tier 2** (high-intent long-tail, 30-100 keywords): 3x/week tracking. Alert on >5 position drop
-  - **Tier 3** (informational + discovery, 100-500 keywords): Weekly tracking. Alert on >10 position drop or page 1 exit
-- **Baseline capture**: Record initial positions, SERP features present, URL ranking, date
-- **Data source**: GSC Performance API (`POST /searchAnalytics/query`) with dimensions `query`, `page`, `date`, `device`, `country`
-- **Alerting**: Calculate position delta between current and previous check. Trigger alerts per tier thresholds above
+- **Base de l'API REST du plugin** : `/wp-json/redirection/v1/`
+- **Créer une redirection** : `POST /redirect` avec `{ "url": "/old-path", "match_url": "/old-path", "action_data": { "url": "/new-path" }, "action_type": "url", "action_code": 301, "group_id": 1 }`
+- **Prise en charge des expressions régulières** : Définir `match_type` sur `url` (exact) ou `regex` (correspondance de motif)
+- **Accès aux journaux** : `GET /log` — journaux des redirections avec horodatages, agents utilisateurs, référents
+- **Surveillance des 404** : `GET /404s` — erreurs 404 non résolues pour l'identification d'opportunités de redirection
 
-### SERP Feature Tracking Methodology
+### Webflow — Redirections 301 natives
 
-| Feature | Detection Method | Optimization Signal |
+- **Créer** : `POST /sites/{site_id}/redirects` avec `{ "path": "/old-path", "target": "/new-path", "statusCode": 301 }`
+- **Création en masse** : Parcourir la liste de redirections avec un délai de 100 ms entre les requêtes (limite de 60 requêtes/min)
+- **Validation** : Le chemin doit commencer par `/`. La cible peut être relative (`/new-path`) ou absolue (`https://example.com/new-path`)
+- **Limites de plan appliquées côté serveur** : L'API renvoie 429 ou une erreur lorsque la limite de redirection est atteinte
+
+### Protocole de sécurité pour les redirections en masse
+
+1. **Instantané pré-édition** : Exporter la liste de redirections actuelle. Stocker sous forme de `redirects_backup_{timestamp}.json`
+2. **Passe de validation** : Pour chaque redirection, vérifier que l'URL source renvoie 200 (existe) et que l'URL de destination renvoie 200 (cible valide). Signaler les chaînes de redirection (A→B où B→C existe déjà)
+3. **Déploiement échelonné** : Déployer par lots de 25. Après chaque lot, vérifier ponctuellement 3 redirections via une requête HTTP HEAD
+4. **Vérification post-déploiement** : Explorer toutes les URL source. Confirmer les codes de statut 301. Vérifier l'absence de boucles de redirection. Vérifier que la destination finale correspond à l'intention
+5. **Annulation (rollback)** : Si des erreurs sont détectées, restaurer depuis l'instantané pré-édition. Tous les outils de redirection doivent prendre en charge l'annulation dans les 30 minutes suivant le déploiement
+
+---
+
+## 5. Flux de déploiement de schéma
+
+### Exécution étape par étape
+
+1. **Générer le JSON-LD** — Construire le balisage de schéma selon le type de contenu :
+   - `BlogPosting` : title, author, datePublished, dateModified, image, publisher, description
+   - `Product` : name, description, image, offers (price, priceCurrency, availability), aggregateRating, review
+   - `FAQ` : tableau mainEntity avec des paires Question/Answer — **remarque :** les résultats enrichis FAQ sont restreints (août 2023) aux sites gouvernementaux et de santé faisant autorité uniquement ; le balisage reste valide pour la structure, mais n'attendez pas de résultat enrichi sur la plupart des sites
+   - `HowTo` : name, tableau step avec name/text/image, totalTime, estimatedCost — **remarque :** les résultats enrichis HowTo sont dépréciés (septembre 2023) ; le balisage reste valide pour la structure, mais préférez un format Article avec une structure étape par étape
+   - `LocalBusiness` : name, address, geo, telephone, openingHours, priceRange
+   - `Organization` : name, url, logo, sameAs (profils sociaux), contactPoint
+
+2. **Valider le schéma** — Passer par le validateur Schema.org (`https://validator.schema.org/`). Zéro erreur requise. Les avertissements sont acceptables mais doivent être minimisés.
+
+3. **Déployer sur la page** — La méthode d'injection dépend du CMS :
+   - **WordPress** : Utiliser le champ méta `rank_math_schema_Article`, ou injecter via l'action `wp_head` dans un plugin personnalisé, ou ajouter au filtre de sortie de schéma Yoast
+   - **Webflow** : Injecter dans la section Custom Code de la page (head ou body), ou intégrer en texte enrichi via un bloc de code personnalisé
+   - **CMS personnalisé** : Ajouter `<script type="application/ld+json">` dans le `<head>` de la page
+
+4. **Vérifier avec le Rich Results Test** — `https://search.google.com/test/rich-results` — confirmer que tous les types de schéma sont détectés et éligibles aux résultats enrichis. Capturer le résultat en écran pour la documentation.
+
+5. **Surveiller dans GSC** — Vérifier les rapports Améliorations : `Données structurées non analysables`, `Product`, `Breadcrumb` (les rapports `FAQ` et `How-to` ont été retirés par Google en même temps que ces résultats enrichis). Alerter sur toute nouvelle erreur dans les 7 jours suivant le déploiement.
+
+---
+
+## 6. Surveillance de classement et suivi des fonctionnalités SERP
+
+### Configuration de la surveillance de classement
+
+- **Définition de la liste de mots-clés** : Regrouper par niveau de priorité :
+  - **Niveau 1** (marque + termes principaux, 10-30 mots-clés) : Suivi quotidien. Alerter sur tout changement de position >3 positions
+  - **Niveau 2** (longue traîne à forte intention, 30-100 mots-clés) : Suivi 3x/semaine. Alerter sur une baisse >5 positions
+  - **Niveau 3** (informationnel + découverte, 100-500 mots-clés) : Suivi hebdomadaire. Alerter sur une baisse >10 positions ou une sortie de la page 1
+- **Capture de référence** : Enregistrer les positions initiales, les fonctionnalités SERP présentes, l'URL classée, la date
+- **Source de données** : API de performance GSC (`POST /searchAnalytics/query`) avec les dimensions `query`, `page`, `date`, `device`, `country`
+- **Alertes** : Calculer le delta de position entre la vérification actuelle et précédente. Déclencher des alertes selon les seuils par niveau ci-dessus
+
+### Méthodologie de suivi des fonctionnalités SERP
+
+| Fonctionnalité | Méthode de détection | Signal d'optimisation |
 |---|---|---|
-| **AI Overview** | Query target keyword in Google, check for AI-generated summary above organic results | Content cited in AI Overview = high authority signal. Track citation presence. |
-| **Featured Snippet** | GSC data: filter by `searchAppearance = RICH_RESULT`. Manual: query and check position 0 | Optimize content format: paragraph (40-60 words), list (5-8 items), table (3+ rows) |
-| **People Also Ask** | Manual query observation. Track which PAA questions appear for target keywords | Create FAQ content targeting PAA questions. Use exact question as H2/H3 |
-| **Knowledge Panel** | Query brand name. Check for right-rail panel | Strengthen entity signals: Wikidata, Google Business Profile, structured data |
-| **Local Pack** | Query with local intent modifier. Check for map + 3-pack results | GBP optimization, local schema, citation consistency |
-| **Video Carousel** | Query and check for video results | Create video content for keywords showing video intent |
-| **Image Pack** | Query and check for image results inline | Optimize image alt text, filenames, surrounding context |
+| **AI Overview** | Rechercher le mot-clé cible sur Google, vérifier la présence d'un résumé généré par IA au-dessus des résultats organiques | Contenu cité dans l'AI Overview = signal d'autorité élevé. Suivre la présence de citation. |
+| **Extrait optimisé (Featured Snippet)** | Données GSC : filtrer par `searchAppearance = RICH_RESULT`. Manuel : rechercher et vérifier la position 0 | Optimiser le format de contenu : paragraphe (40-60 mots), liste (5-8 éléments), tableau (3+ lignes) |
+| **Autres questions posées (People Also Ask)** | Observation manuelle de recherche. Suivre quelles questions PAA apparaissent pour les mots-clés cibles | Créer du contenu FAQ ciblant les questions PAA. Utiliser la question exacte comme H2/H3 |
+| **Bloc de connaissances (Knowledge Panel)** | Rechercher le nom de marque. Vérifier la présence d'un panneau latéral droit | Renforcer les signaux d'entité : Wikidata, Google Business Profile, données structurées |
+| **Pack local (Local Pack)** | Rechercher avec un modificateur d'intention locale. Vérifier la présence d'une carte + de résultats à 3 | Optimisation GBP, schéma local, cohérence des citations |
+| **Carrousel vidéo** | Rechercher et vérifier la présence de résultats vidéo | Créer du contenu vidéo pour les mots-clés montrant une intention vidéo |
+| **Pack d'images** | Rechercher et vérifier la présence de résultats d'images en ligne | Optimiser le texte alt des images, les noms de fichiers, le contexte environnant |
 
-### Content Decay Detection and Refresh
+### Détection et renouvellement de la décroissance de contenu
 
-1. **Identify decaying content**: Pull GSC data for last 6 months. Flag pages where clicks dropped >30% or average position worsened >5 positions from peak
-2. **Prioritize by impact**: Sort decaying pages by peak traffic (highest former traffic = highest priority)
-3. **Refresh checklist**:
-   - Update outdated statistics, dates, and references
-   - Add new sections covering subtopics competitors now rank for
-   - Refresh internal links (add links to/from newer content)
-   - Update meta title and description if CTR has declined
-   - Add or update schema markup
-   - Refresh images and alt text
-4. **Re-index**: After refresh, submit URL via Indexing API. Monitor position recovery over 2-4 weeks
-5. **Document outcome**: Log pre-refresh metrics, changes made, post-refresh metrics at 2-week and 4-week marks
+1. **Identifier le contenu en décroissance** : Extraire les données GSC des 6 derniers mois. Signaler les pages où les clics ont chuté >30 % ou où la position moyenne s'est dégradée de plus de 5 positions par rapport au pic
+2. **Prioriser par impact** : Trier les pages en décroissance par trafic de pic (le plus fort trafic passé = la plus haute priorité)
+3. **Checklist de renouvellement** :
+   - Mettre à jour les statistiques, dates et références obsolètes
+   - Ajouter de nouvelles sections couvrant les sous-sujets pour lesquels les concurrents se classent désormais
+   - Renouveler les liens internes (ajouter des liens vers/depuis un contenu plus récent)
+   - Mettre à jour le titre méta et la description si le CTR a décliné
+   - Ajouter ou mettre à jour le balisage de schéma
+   - Renouveler les images et le texte alt
+4. **Ré-indexer** : Après le renouvellement, soumettre l'URL via l'API d'indexation. Surveiller la reprise de position sur 2 à 4 semaines
+5. **Documenter le résultat** : Consigner les métriques pré-renouvellement, les changements effectués, les métriques post-renouvellement aux marques de 2 et 4 semaines
 
 ---
 
-## 7. Technical SEO Execution
+## 7. Exécution SEO technique
 
-### Robots.txt Management
+### Gestion du Robots.txt
 
-- **WordPress**: Edit via `Settings > Reading` or direct file edit at site root. Use `Disallow` for thin/duplicate content paths, staging directories, internal search results
-- **Webflow**: Not directly editable via API. Managed in Project Settings > SEO > Robots.txt
-- **Critical rules**: Never block CSS/JS files (Googlebot needs them for rendering). Always include `Sitemap:` directive pointing to XML sitemap URL
+- **WordPress** : Éditer via `Réglages > Lecture` ou édition directe du fichier à la racine du site. Utiliser `Disallow` pour les chemins de contenu léger/dupliqué, les répertoires de staging, les résultats de recherche interne
+- **Webflow** : Non directement éditable via API. Géré dans Paramètres du projet > SEO > Robots.txt
+- **Règles critiques** : Ne jamais bloquer les fichiers CSS/JS (Googlebot en a besoin pour le rendu). Toujours inclure la directive `Sitemap:` pointant vers l'URL du sitemap XML
 
-### Canonical Tag Management
+### Gestion des balises canoniques
 
-- **Self-referencing canonicals**: Every indexable page should have a self-referencing canonical. Verify via page source or URL Inspection API
-- **Cross-domain canonicals**: Use when syndicating content. Set canonical on syndicated copy pointing to original
-- **Pagination**: Use `rel="canonical"` pointing to the paginated page itself (not to page 1). Google deprecated `rel="next/prev"` but canonical per page remains valid
-- **Common errors**: Mixed HTTP/HTTPS canonicals, trailing slash inconsistencies, canonical pointing to redirected URL, canonical pointing to non-200 page
+- **Canoniques auto-référençantes** : Chaque page indexable devrait avoir une canonique auto-référençante. Vérifier via le code source de la page ou l'API d'inspection d'URL
+- **Canoniques inter-domaines** : À utiliser lors de la syndication de contenu. Définir la canonique sur la copie syndiquée pointant vers l'original
+- **Pagination** : Utiliser `rel="canonical"` pointant vers la page paginée elle-même (pas vers la page 1). Google a déprécié `rel="next/prev"` mais la canonique par page reste valide
+- **Erreurs courantes** : Canoniques HTTP/HTTPS mixtes, incohérences de barre oblique finale, canonique pointant vers une URL redirigée, canonique pointant vers une page non-200
 
-### Hreflang Implementation
+### Implémentation Hreflang
 
-- **Format**: `<link rel="alternate" hreflang="en-us" href="https://example.com/page" />`
-- **Required**: Self-referencing hreflang tag on every page in the set. `x-default` tag for language/region selector or default page
-- **Validation**: Every hreflang must have a reciprocal tag on the target page. Non-reciprocal hreflang tags are ignored by Google
-- **Deployment options**: HTML `<head>` tags (small sites), HTTP headers (non-HTML files), XML sitemap `<xhtml:link>` elements (large sites, recommended)
+- **Format** : `<link rel="alternate" hreflang="en-us" href="https://example.com/page" />`
+- **Requis** : Balise hreflang auto-référençante sur chaque page de l'ensemble. Balise `x-default` pour le sélecteur de langue/région ou la page par défaut
+- **Validation** : Chaque hreflang doit avoir une balise réciproque sur la page cible. Les balises hreflang non réciproques sont ignorées par Google
+- **Options de déploiement** : Balises `<head>` HTML (petits sites), en-têtes HTTP (fichiers non-HTML), éléments `<xhtml:link>` du sitemap XML (grands sites, recommandé)
 
-### Title Tag A/B Testing Framework
+### Cadre de test A/B des balises de titre
 
-1. **Select test pages**: Choose pages with stable traffic (>100 clicks/week) and consistent ranking
-2. **Baseline**: Record current title, CTR, average position, clicks for 4 weeks
-3. **Implement change**: Update title tag via CMS API. Document exact change and timestamp
-4. **Measurement period**: 4 weeks minimum. Control for position changes (CTR comparison only valid at similar positions)
-5. **Decision criteria**: Statistically significant CTR improvement (use chi-squared test, p < 0.05). If CTR improves >10% relative with stable position, keep new title. If negative or inconclusive, revert
-6. **Revert protocol**: Restore original title via CMS API within 24 hours of decision. Re-submit URL for indexing
+1. **Sélectionner les pages de test** : Choisir des pages avec un trafic stable (>100 clics/semaine) et un classement cohérent
+2. **Référence** : Enregistrer le titre actuel, le CTR, la position moyenne, les clics pendant 4 semaines
+3. **Implémenter le changement** : Mettre à jour la balise de titre via l'API du CMS. Documenter le changement exact et l'horodatage
+4. **Période de mesure** : 4 semaines minimum. Contrôler les changements de position (la comparaison de CTR n'est valide qu'à des positions similaires)
+5. **Critères de décision** : Amélioration du CTR statistiquement significative (utiliser un test du khi-carré, p < 0,05). Si le CTR s'améliore de >10 % relativement avec une position stable, conserver le nouveau titre. Si négatif ou non concluant, revenir en arrière
+6. **Protocole de retour en arrière** : Restaurer le titre d'origine via l'API du CMS dans les 24 heures suivant la décision. Resoumettre l'URL pour indexation

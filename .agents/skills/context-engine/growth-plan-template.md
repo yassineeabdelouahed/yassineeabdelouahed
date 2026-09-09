@@ -1,223 +1,223 @@
-# Growth Plan Template
+# Modèle de plan de croissance
 
-The Growth Plan is the flagship client-facing deliverable produced in Part 8 of the engagement methodology. It synthesises every internal document (Parts 1–7) into a single narrative that answers: *"How will we grow this business digitally, and what will it cost?"*
+Le Plan de Croissance est le livrable phare destiné au client, produit dans la Partie 8 de la méthodologie d'engagement. Il synthétise chaque document interne (Parties 1 à 7) en un récit unique qui répond à : *« Comment allons-nous faire croître cette entreprise numériquement, et combien cela coûtera-t-il ? »*
 
-## What makes a good Growth Plan
+## Ce qui fait un bon Plan de Croissance
 
-1. **Tells a story** — flows logically from diagnosis (what we found) → strategy (what we recommend) → execution (how we do it) → measurement (how we know it is working)
-2. **Is evidence-based** — every recommendation grounded in data from the analysis phases. No "we think" — only "the data shows" with cited source
-3. **Sets clear expectations** — budget, timeline, expected outcomes (three scenarios), what the client needs to do
-4. **Is understandable by non-marketers** — the client CEO who reads this should understand the strategy without a marketing dictionary
-5. **Is actionable** — does not just say what to do; says who, when, with what resources, and how to measure success
+1. **Raconte une histoire** — s'écoule logiquement du diagnostic (ce que nous avons trouvé) → à la stratégie (ce que nous recommandons) → à l'exécution (comment nous le faisons) → à la mesure (comment nous savons que ça fonctionne)
+2. **Est fondé sur les preuves** — chaque recommandation ancrée dans les données des phases d'analyse. Pas de « nous pensons » — seulement « les données montrent » avec la source citée
+3. **Fixe des attentes claires** — budget, calendrier, résultats attendus (trois scénarios), ce que le client doit faire
+4. **Est compréhensible par des non-marketeurs** — le PDG client qui lit ceci devrait comprendre la stratégie sans dictionnaire marketing
+5. **Est exploitable** — ne dit pas seulement quoi faire ; dit qui, quand, avec quelles ressources, et comment mesurer le succès
 
-## The 11-Section Structure
+## La structure en 11 sections
 
-### Section 1: Executive Summary
+### Section 1 : Résumé exécutif
 
-**Purpose:** The CEO reads this. Make it count.
+**Objectif :** Le PDG lit ceci. Faites en sorte que ça compte.
 
-**Length:** 1 page maximum.
+**Longueur :** 1 page maximum.
 
-**Content:**
+**Contenu :**
 
-- Key findings (3–5 bullets — the most important things from the analysis)
-- Recommended strategy (the headline strategic move in 1–2 sentences)
-- Expected outcomes (the moderate scenario, with the conservative–aggressive band)
-- Investment required (total budget, breakdown into fixed + variable)
-- Timeline (the 30 / 60 / 90 / Q2 / Q3 / Q4 milestones in one sentence)
-- The single most important thing the client needs to know
+- Constats clés (3 à 5 puces — les éléments les plus importants de l'analyse)
+- Stratégie recommandée (le mouvement stratégique phare en 1 à 2 phrases)
+- Résultats attendus (le scénario modéré, avec la fourchette conservateur-agressif)
+- Investissement requis (budget total, décomposé en fixe + variable)
+- Calendrier (les jalons 30 / 60 / 90 jours / T2 / T3 / T4 en une phrase)
+- La chose la plus importante que le client doit savoir
 
-### Section 2: Business Context
+### Section 2 : Contexte business
 
-**Purpose:** Set the stage for why the strategy is what it is.
+**Objectif :** Poser le décor expliquant pourquoi la stratégie est ce qu'elle est.
 
-**Length:** 2–3 pages.
+**Longueur :** 2 à 3 pages.
 
-**Content:**
+**Contenu :**
 
-- Summary of business analysis (Core Doc 3.1) — what the business is, how it makes money, key strengths and constraints
-- Industry landscape — market size, growth trajectory, competitive intensity
-- Competitive position — where the brand sits, key competitors, positioning today
-- Critical assumptions — the major Stone facts and validated Opinions that shape the strategy
+- Résumé de l'analyse business (Document Central 3.1) — ce qu'est l'entreprise, comment elle génère de l'argent, forces et contraintes clés
+- Paysage sectoriel — taille du marché, trajectoire de croissance, intensité concurrentielle
+- Position concurrentielle — où se situe la marque, concurrents clés, positionnement actuel
+- Hypothèses critiques — les principaux faits Stone et Opinions validées qui façonnent la stratégie
 
-This section is grounded in Core Doc 3.1 (Business & SBU Analysis), Part 4.4 (Market Analysis), and Part 4.2 (Competitor Positioning). Do not re-state these documents in full — synthesise the most strategically relevant insights.
+Cette section s'appuie sur le Document Central 3.1 (Analyse Business & SBU), la Partie 4.4 (Analyse de Marché), et la Partie 4.2 (Positionnement Concurrentiel). Ne reformulez pas ces documents en entier — synthétisez les enseignements les plus stratégiquement pertinents.
 
-### Section 3: Target Audience
+### Section 3 : Audience cible
 
-**Purpose:** Who we are targeting and why.
+**Objectif :** Qui nous ciblons et pourquoi.
 
-**Length:** 2–3 pages.
+**Longueur :** 2 à 3 pages.
 
-**Content:**
+**Contenu :**
 
-- Primary persona summary (with the 6-question actionable persona format)
-- Secondary persona (if relevant)
-- Why these personas were chosen (tie back to TG scoring from Core Doc 3.2)
-- Anti-personas — who we explicitly do NOT target and why
-- For B2B: the Decision-Making Unit summary per persona
+- Résumé du persona principal (avec le format de persona exploitable à 6 questions)
+- Persona secondaire (si pertinent)
+- Pourquoi ces personas ont été choisis (en lien avec la notation TG du Document Central 3.2)
+- Anti-personas — qui nous ne ciblons explicitement PAS et pourquoi
+- Pour le B2B : le résumé de l'Unité de Décision par persona
 
-This section is grounded in Core Doc 3.2 (Segmentation Framework). The personas presented here are the priority personas, not all explored personas.
+Cette section s'appuie sur le Document Central 3.2 (Cadre de Segmentation). Les personas présentés ici sont les personas prioritaires, pas tous les personas explorés.
 
-### Section 4: Strategic Positioning
+### Section 4 : Positionnement stratégique
 
-**Purpose:** Where the brand sits in the market, how it differentiates, the core message.
+**Objectif :** Où se situe la marque sur le marché, comment elle se différencie, le message central.
 
-**Length:** 2 pages.
+**Longueur :** 2 pages.
 
-**Content:**
+**Contenu :**
 
-- Positioning statement (the formal one-sentence)
-- Brand promise + 3–5 supporting proof points
-- The 3–5 messaging pillars
-- Tone-of-voice profile (with one on-tone vs off-tone example)
-- What we are deliberately NOT saying (don't-say rules)
+- Déclaration de positionnement (la formule officielle en une phrase)
+- Promesse de marque + 3 à 5 points de preuve à l'appui
+- Les 3 à 5 piliers de message
+- Profil de ton de voix (avec un exemple dans le ton vs hors du ton)
+- Ce que nous ne disons délibérément PAS (règles de ce qu'il ne faut pas dire)
 
-This section is grounded in Core Doc 3.3 (Brand Positioning & Communications).
+Cette section s'appuie sur le Document Central 3.3 (Positionnement de Marque & Communications).
 
-### Section 5: Channel Strategy
+### Section 5 : Stratégie de canal
 
-**Purpose:** Which channels, why, and how they work together across the funnel.
+**Objectif :** Quels canaux, pourquoi, et comment ils fonctionnent ensemble à travers le tunnel.
 
-**Length:** 3–4 pages.
+**Longueur :** 3 à 4 pages.
 
-**Content:**
+**Contenu :**
 
-- Channel selection summary (which channels are in scope and which are explicitly deferred — see [channel-families.md](channel-families.md))
-- Per-channel role (which funnel stage each serves)
-- Channel sequencing logic (which feeds which)
-- In-Market vs Out-Market split (with rationale — see [in-market-out-market.md](in-market-out-market.md))
-- Media mix across paid / organic / earned / owned
+- Résumé de la sélection des canaux (quels canaux sont dans le périmètre et lesquels sont explicitement différés — voir [channel-families.md](channel-families.md))
+- Rôle par canal (quelle étape du tunnel chacun sert)
+- Logique de séquencement des canaux (lequel alimente lequel)
+- Répartition Sur-Marché vs Hors-Marché (avec justification — voir [in-market-out-market.md](in-market-out-market.md))
+- Mix média entre payant / organique / gagné / propriétaire
 
-This section is grounded in Core Doc 3.4 (DMFlow). The detailed per-channel docs (Part 9) are referenced but not reproduced here.
+Cette section s'appuie sur le Document Central 3.4 (DMFlow). Les documents détaillés par canal (Partie 9) sont référencés mais pas reproduits ici.
 
-### Section 6: Budget & Media Plan
+### Section 6 : Budget et plan média
 
-**Purpose:** Monthly / quarterly budget allocation by channel. Fixed vs Variable. Total investment.
+**Objectif :** Allocation budgétaire mensuelle / trimestrielle par canal. Fixe vs Variable. Investissement total.
 
-**Length:** 2–3 pages with tables.
+**Longueur :** 2 à 3 pages avec tableaux.
 
-**Content:**
+**Contenu :**
 
-- Total monthly fixed budget (committed)
-- Variable budget envelope (additional budget that can be deployed if performance warrants)
-- Per-channel allocation table (with rationale)
-- Quarterly budget pacing (how spend ramps quarter to quarter)
-- Year-1 total investment
-- Investment vs expected return (LTV:CAC math)
+- Budget fixe mensuel total (engagé)
+- Enveloppe de budget variable (budget additionnel pouvant être déployé si la performance le justifie)
+- Tableau d'allocation par canal (avec justification)
+- Rythme budgétaire trimestriel (comment la dépense monte en puissance trimestre après trimestre)
+- Investissement total pour l'Année 1
+- Investissement vs rendement attendu (calculs LTV:CAC)
 
-This section is grounded in Core Doc 3.4 Step 5 + Step 9. See [unit-economics-framework.md](unit-economics-framework.md) for the math.
+Cette section s'appuie sur le Document Central 3.4 Étape 5 + Étape 9. Voir [unit-economics-framework.md](unit-economics-framework.md) pour les calculs.
 
-### Section 7: KPI Framework
+### Section 7 : Cadre de KPI
 
-**Purpose:** What we measure, targets for each KPI, reporting cadence. How we know it is working.
+**Objectif :** Ce que nous mesurons, les objectifs pour chaque KPI, le rythme de reporting. Comment nous savons que ça fonctionne.
 
-**Length:** 2 pages with tables.
+**Longueur :** 2 pages avec tableaux.
 
-**Content:**
+**Contenu :**
 
-- Primary KPI (the one number that matters most for the period)
-- Secondary KPIs (3–5)
-- Per-channel KPIs
-- KPI targets in three scenarios (Conservative / Moderate / Aggressive)
-- Reporting cadence (daily / weekly / monthly / quarterly)
-- Attribution model used
-- Known measurement limitations
+- KPI principal (le seul chiffre qui compte le plus pour la période)
+- KPI secondaires (3 à 5)
+- KPI par canal
+- Objectifs de KPI selon trois scénarios (Conservateur / Modéré / Agressif)
+- Rythme de reporting (quotidien / hebdomadaire / mensuel / trimestriel)
+- Modèle d'attribution utilisé
+- Limitations de mesure connues
 
-### Section 8: Implementation Timeline
+### Section 8 : Calendrier de mise en œuvre
 
-**Purpose:** 30 / 60 / 90-day milestones. What happens first, second, third. Clear sequencing.
+**Objectif :** Jalons à 30 / 60 / 90 jours. Ce qui se passe en premier, en second, en troisième. Séquencement clair.
 
-**Length:** 2–3 pages with timeline visual.
+**Longueur :** 2 à 3 pages avec visuel de calendrier.
 
-**Content:**
+**Contenu :**
 
-- **Days 1–30 — Foundation:** tracking infrastructure, initial campaigns on proven channels, baseline metrics, creative assets, content calendar, keyword research, competitor monitoring setup
-- **Days 31–60 — Validation:** analyse initial performance vs KPI targets, first A/B tests, expand to secondary channels, begin SEO + content marketing, first monthly report
-- **Days 61–90 — Optimisation & Scale:** double down on winners, pause / restructure losers, variable budget recommendations, launch awareness layer (TOFU), begin email / WhatsApp nurture, first quarterly review
-- **Quarter 2 milestones:** what should be true by end of Q2
-- **Quarter 3 milestones:** what should be true by end of Q3
-- **Year-end goals**
+- **Jours 1 à 30 — Fondation :** infrastructure de suivi, campagnes initiales sur des canaux éprouvés, métriques de référence, actifs créatifs, calendrier de contenu, recherche de mots-clés, mise en place de la surveillance concurrentielle
+- **Jours 31 à 60 — Validation :** analyser la performance initiale vs objectifs de KPI, premiers tests A/B, étendre aux canaux secondaires, démarrer le SEO + marketing de contenu, premier rapport mensuel
+- **Jours 61 à 90 — Optimisation et mise à l'échelle :** doubler la mise sur les gagnants, mettre en pause/restructurer les perdants, recommandations de budget variable, lancer la couche de notoriété (TOFU), démarrer le nurturing e-mail/WhatsApp, première revue trimestrielle
+- **Jalons du Trimestre 2 :** ce qui devrait être vrai à la fin du T2
+- **Jalons du Trimestre 3 :** ce qui devrait être vrai à la fin du T3
+- **Objectifs de fin d'année**
 
-### Section 9: Team & Resource Plan
+### Section 9 : Plan d'équipe et de ressources
 
-**Purpose:** Who does what — agency team, client team, external partners.
+**Objectif :** Qui fait quoi — équipe agence, équipe client, partenaires externes.
 
-**Length:** 1–2 pages.
+**Longueur :** 1 à 2 pages.
 
-**Content:**
+**Contenu :**
 
-- Agency / consulting team roles and responsibilities
-- Client team roles (especially what the client must own — content approvals, brand assets, sales handoffs)
-- External partners (creative production, video, photography, influencer agencies, etc.)
-- Approval workflows and SLAs
-- Critical dependencies that could delay execution
+- Rôles et responsabilités de l'équipe agence/conseil
+- Rôles de l'équipe client (en particulier ce que le client doit posséder — approbations de contenu, actifs de marque, transmissions aux ventes)
+- Partenaires externes (production créative, vidéo, photographie, agences d'influenceurs, etc.)
+- Flux d'approbation et SLA
+- Dépendances critiques qui pourraient retarder l'exécution
 
-### Section 10: Risk & Contingency
+### Section 10 : Risques et plans de contingence
 
-**Purpose:** What could go wrong. What we do if it does.
+**Objectif :** Ce qui pourrait mal tourner. Ce que nous faisons si cela arrive.
 
-**Length:** 1–2 pages.
+**Longueur :** 1 à 2 pages.
 
-**Content:**
+**Contenu :**
 
-- Top 3–5 risks across market, competitive, regulatory, operational, and execution dimensions
-- For each risk: likelihood, impact, mitigation strategy, trigger conditions for invoking the mitigation
-- Contingency budget (typically 10–15% of total budget held in reserve)
-- Decision-making authority for invoking contingency
+- Top 3 à 5 des risques à travers les dimensions marché, concurrentielle, réglementaire, opérationnelle et d'exécution
+- Pour chaque risque : probabilité, impact, stratégie d'atténuation, conditions de déclenchement pour invoquer l'atténuation
+- Budget de contingence (typiquement 10 à 15 % du budget total en réserve)
+- Autorité de décision pour invoquer la contingence
 
-### Section 11: Expected Outcomes
+### Section 11 : Résultats attendus
 
-**Purpose:** Conservative, moderate, and aggressive projections. Never promise a single number.
+**Objectif :** Projections conservatrices, modérées et agressives. Ne jamais promettre un chiffre unique.
 
-**Length:** 2 pages with scenario tables.
+**Longueur :** 2 pages avec tableaux de scénarios.
 
-**Content:**
+**Contenu :**
 
-- The three-scenario forecast (see [three-scenario-forecasting.md](three-scenario-forecasting.md))
-- Per-quarter forecast (Q1 / Q2 / Q3 / Q4)
-- Triggers that move us between scenarios
-- What the team will be tracking to know which scenario is unfolding
-- Conditions under which the plan would be revised
+- La prévision à trois scénarios (voir [three-scenario-forecasting.md](three-scenario-forecasting.md))
+- Prévision par trimestre (T1 / T2 / T3 / T4)
+- Déclencheurs qui nous font basculer entre scénarios
+- Ce que l'équipe surveillera pour savoir quel scénario se déroule
+- Conditions dans lesquelles le plan serait révisé
 
-## Total Length Target
+## Objectif de longueur totale
 
-A complete Growth Plan typically lands at **20–30 pages**. Beyond 30 pages, the client stops reading. Below 20 pages, the depth is insufficient.
+Un Plan de Croissance complet atteint typiquement **20 à 30 pages**. Au-delà de 30 pages, le client arrête de lire. En dessous de 20 pages, la profondeur est insuffisante.
 
-If the engagement scope demands more depth, produce a separate Yearly Planner (Part 8 second deliverable) that goes deeper on the calendar / channel cadence.
+Si le périmètre de l'engagement exige plus de profondeur, produisez un Planificateur Annuel séparé (deuxième livrable de la Partie 8) qui approfondit le calendrier / rythme des canaux.
 
-## Quality Discipline
+## Rigueur qualité
 
-- **Every claim cites a source.** Sources include: client-provided data (cite document), public sources (cite URL), Core Doc references (cite document and version).
-- **Every projection states assumptions explicitly.** No naked numbers.
-- **Every recommendation flows from analysis.** No conclusions the body does not support.
-- **Visual evidence where helpful.** Charts, tables, scenario diagrams. But nothing decorative.
-- **Plain language.** The CEO who reads this is not a marketing specialist. Marketing jargon must be explained or avoided.
+- **Chaque affirmation cite une source.** Les sources incluent : données fournies par le client (citer le document), sources publiques (citer l'URL), références de Document Central (citer le document et la version).
+- **Chaque projection énonce explicitement ses hypothèses.** Aucun chiffre nu.
+- **Chaque recommandation découle de l'analyse.** Aucune conclusion que le corps du texte ne soutient pas.
+- **Preuve visuelle lorsque utile.** Graphiques, tableaux, diagrammes de scénario. Mais rien de décoratif.
+- **Langage simple.** Le PDG qui lit ceci n'est pas un spécialiste du marketing. Le jargon marketing doit être expliqué ou évité.
 
-## How the Growth Plan is produced
+## Comment le Plan de Croissance est produit
 
-The Growth Plan is not written from scratch — it is **synthesised** from the internal documents already produced in Parts 1–7. The skill that produces the Growth Plan reads:
+Le Plan de Croissance n'est pas écrit à partir de zéro — il est **synthétisé** à partir des documents internes déjà produits dans les Parties 1 à 7. La compétence qui produit le Plan de Croissance lit :
 
-- Living Project Instruction File (current truth)
-- Core Docs 3.1, 3.2, 3.3, 3.4 (v2 if available, v1 otherwise)
-- Part 4 documents (4.1, 4.2, 4.3, 4.4)
-- Part 7 preparation documents
-- Performance baseline data if any
+- Le Fichier d'Instructions Vivant du Projet (vérité actuelle)
+- Les Documents Centraux 3.1, 3.2, 3.3, 3.4 (v2 si disponible, v1 sinon)
+- Les documents de la Partie 4 (4.1, 4.2, 4.3, 4.4)
+- Les documents de préparation de la Partie 7
+- Les données de référence de performance, le cas échéant
 
-And produces the 11-section deliverable in client-facing language.
+Et produit le livrable en 11 sections dans un langage destiné au client.
 
-Use:
+Utiliser :
 
 ```
 /digital-marketing-pro:engagement growth-plan
 ```
 
-The output lands at `engagements/{engagement-id}/part-08-growth-plan/growth-plan.md` and is exported to PDF + DOCX for client delivery.
+Le livrable atterrit dans `engagements/{engagement-id}/part-08-growth-plan/growth-plan.md` et est exporté en PDF + DOCX pour livraison au client.
 
-## Related references
+## Références associées
 
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — Part 8 in context
-- [yearly-planner-template.md](yearly-planner-template.md) — companion deliverable
-- [three-scenario-forecasting.md](three-scenario-forecasting.md) — Section 11 forecasting
-- [unit-economics-framework.md](unit-economics-framework.md) — Section 6 + Section 7 math
-- [in-market-out-market.md](in-market-out-market.md) — Section 5 + Section 6 budget logic
-- [channel-families.md](channel-families.md) — Section 5 channel taxonomy
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — la Partie 8 en contexte
+- [yearly-planner-template.md](yearly-planner-template.md) — livrable compagnon
+- [three-scenario-forecasting.md](three-scenario-forecasting.md) — prévision de la Section 11
+- [unit-economics-framework.md](unit-economics-framework.md) — calculs de la Section 6 + Section 7
+- [in-market-out-market.md](in-market-out-market.md) — logique de budget des Sections 5 + 6
+- [channel-families.md](channel-families.md) — taxonomie de canaux de la Section 5

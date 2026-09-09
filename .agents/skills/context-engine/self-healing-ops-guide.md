@@ -1,134 +1,134 @@
-# Self-Healing Campaign Operations Guide — Automated Monitoring & Correction
+# Guide des opérations de campagne auto-réparatrices — Surveillance et correction automatisées
 
-## Overview
+## Vue d'ensemble
 
-Self-healing operations automatically detect campaign issues and apply corrections within predefined safety guardrails. The system continuously monitors active campaigns, scores their health, identifies anomalies, and either auto-corrects low-risk issues or escalates high-risk situations for human review.
+Les opérations auto-réparatrices détectent automatiquement les problèmes de campagne et appliquent des corrections dans des garde-fous de sécurité prédéfinis. Le système surveille en continu les campagnes actives, note leur santé, identifie les anomalies, et corrige automatiquement les problèmes à faible risque ou escalade les situations à haut risque pour une revue humaine.
 
 ```
 Monitor → Detect → Diagnose → Decide (auto-correct or escalate) → Act → Log → Learn
 ```
 
-The goal is not to replace human judgment but to catch and fix mechanical failures (broken landing pages, budget overspend, deliverability drops) before they waste significant budget, while flagging strategic issues (audience shift, competitive pressure, algorithm changes) for human decision-making.
+L'objectif n'est pas de remplacer le jugement humain mais de détecter et corriger les défaillances mécaniques (pages d'atterrissage cassées, dépassement de budget, baisses de délivrabilité) avant qu'elles ne gaspillent un budget significatif, tout en signalant les problèmes stratégiques (changement d'audience, pression concurrentielle, changements d'algorithme) pour la prise de décision humaine.
 
 ---
 
-## Campaign Health Scoring
+## Notation de santé de campagne
 
-### Methodology
+### Méthodologie
 
-Every active campaign receives a 0–100 health score, recalculated on each monitoring cycle. Scores are weighted by campaign type because different objectives have different critical metrics.
+Chaque campagne active reçoit un score de santé de 0 à 100, recalculé à chaque cycle de surveillance. Les scores sont pondérés selon le type de campagne car différents objectifs ont différentes métriques critiques.
 
-### Awareness Campaign Weights
+### Pondérations des campagnes de notoriété
 
-| Metric | Weight | Healthy (80–100) | Warning (50–79) | Critical (0–49) |
+| Métrique | Pondération | Saine (80-100) | Avertissement (50-79) | Critique (0-49) |
 |---|---|---|---|---|
-| **Reach pacing** | 30% | Within 10% of target | 10–25% off target | >25% off target |
-| **CPM efficiency** | 25% | At or below target CPM | 1–1.5x target CPM | >1.5x target CPM |
-| **Brand safety** | 20% | 0 violations | 1–2 minor violations | Any major violation |
-| **Frequency management** | 15% | Avg frequency 2–4x/week | 5–7x/week | >7x/week (fatigue risk) |
-| **Viewability** | 10% | 70%+ viewable | 50–69% viewable | <50% viewable |
+| **Rythme de portée** | 30 % | À moins de 10 % de l'objectif | 10-25 % d'écart avec l'objectif | >25 % d'écart avec l'objectif |
+| **Efficacité du CPM** | 25 % | À ou en dessous du CPM cible | 1-1,5x le CPM cible | >1,5x le CPM cible |
+| **Sécurité de marque** | 20 % | 0 violation | 1-2 violations mineures | Toute violation majeure |
+| **Gestion de la fréquence** | 15 % | Fréquence moyenne 2-4x/semaine | 5-7x/semaine | >7x/semaine (risque de lassitude) |
+| **Visibilité** | 10 % | 70 %+ visible | 50-69 % visible | <50 % visible |
 
-### Conversion Campaign Weights
+### Pondérations des campagnes de conversion
 
-| Metric | Weight | Healthy (80–100) | Warning (50–79) | Critical (0–49) |
+| Métrique | Pondération | Saine (80-100) | Avertissement (50-79) | Critique (0-49) |
 |---|---|---|---|---|
-| **CPA / ROAS** | 35% | At or better than target | 1–1.5x target CPA | >1.5x target CPA |
-| **Conversion volume pacing** | 25% | Within 15% of daily target | 15–35% off target | >35% off target |
-| **Landing page health** | 20% | 200 OK, <3s load time | 200 OK, 3–5s load time | Non-200, >5s, or broken |
-| **Quality score** | 10% | 7+ (Google), relevant (Meta) | 5–6 (Google), moderate | <5 (Google), low relevance |
-| **Budget pacing** | 10% | 90–110% of daily target | 60–89% or 111–120% | <60% or >120% |
+| **CPA / ROAS** | 35 % | À ou mieux que l'objectif | 1-1,5x le CPA cible | >1,5x le CPA cible |
+| **Rythme de volume de conversion** | 25 % | À moins de 15 % de l'objectif quotidien | 15-35 % d'écart avec l'objectif | >35 % d'écart avec l'objectif |
+| **Santé de la page d'atterrissage** | 20 % | 200 OK, temps de chargement <3s | 200 OK, temps de chargement 3-5s | Non-200, >5s, ou cassée |
+| **Score de qualité** | 10 % | 7+ (Google), pertinent (Meta) | 5-6 (Google), modéré | <5 (Google), faible pertinence |
+| **Rythme budgétaire** | 10 % | 90-110 % de l'objectif quotidien | 60-89 % ou 111-120 % | <60 % ou >120 % |
 
-### Retention Campaign Weights (Email/CRM)
+### Pondérations des campagnes de rétention (E-mail/CRM)
 
-| Metric | Weight | Healthy (80–100) | Warning (50–79) | Critical (0–49) |
+| Métrique | Pondération | Saine (80-100) | Avertissement (50-79) | Critique (0-49) |
 |---|---|---|---|---|
-| **Open / Click rates** | 30% | Above industry avg | At industry avg | >30% below avg |
-| **Unsubscribe rate** | 20% | <0.2% per send | 0.2–0.5% per send | >0.5% per send |
-| **Deliverability** | 20% | >95% inbox placement | 90–95% placement | <90% placement |
-| **Engagement depth** | 15% | Multiple clicks, forwards | Single click | Opens only, no clicks |
-| **List health** | 15% | <2% bounce rate | 2–5% bounce rate | >5% bounce rate |
+| **Taux d'ouverture / clic** | 30 % | Au-dessus de la moyenne sectorielle | À la moyenne sectorielle | >30 % en dessous de la moyenne |
+| **Taux de désabonnement** | 20 % | <0,2 % par envoi | 0,2-0,5 % par envoi | >0,5 % par envoi |
+| **Délivrabilité** | 20 % | >95 % placement en boîte de réception | 90-95 % de placement | <90 % de placement |
+| **Profondeur d'engagement** | 15 % | Clics multiples, transferts | Clic unique | Ouvertures uniquement, aucun clic |
+| **Santé de la liste** | 15 % | <2 % taux de rebond | 2-5 % taux de rebond | >5 % taux de rebond |
 
-### Health Score Thresholds
+### Seuils du score de santé
 
-| Score | Status | System Response |
+| Score | Statut | Réponse du système |
 |---|---|---|
-| **80–100** | Healthy | Monitor only — no action needed |
-| **60–79** | Warning | Increase monitoring frequency, prepare recommendations |
-| **40–59** | Degraded | Auto-correct within guardrails, alert operator |
-| **20–39** | Critical | Auto-pause affected elements, escalate immediately |
-| **0–19** | Emergency | Full campaign pause, incident response initiated |
+| **80-100** | Saine | Surveillance uniquement — aucune action nécessaire |
+| **60-79** | Avertissement | Augmenter la fréquence de surveillance, préparer des recommandations |
+| **40-59** | Dégradée | Auto-corriger dans les garde-fous, alerter l'opérateur |
+| **20-39** | Critique | Mettre en pause automatiquement les éléments affectés, escalader immédiatement |
+| **0-19** | Urgence | Pause complète de la campagne, réponse à incident initiée |
 
 ---
 
-## Issue Detection Patterns
+## Schémas de détection de problèmes
 
-### Landing Page Monitoring
+### Surveillance de la page d'atterrissage
 
-| Check | Method | Frequency | Failure Threshold |
+| Vérification | Méthode | Fréquence | Seuil d'échec |
 |---|---|---|---|
-| **HTTP status** | HEAD request to landing page URL | Every 15 minutes | Non-200 response |
-| **Page load time** | Full page load measurement | Every 30 minutes | >5 seconds |
-| **Render verification** | Check for key page elements (form, CTA, product) | Every 30 minutes | Missing critical elements |
-| **SSL certificate** | Certificate validity check | Daily | Expiring within 7 days or expired |
-| **Redirect chain** | Follow redirects, check final URL | Every 30 minutes | >3 redirects or redirect to error page |
+| **Statut HTTP** | Requête HEAD vers l'URL de la page d'atterrissage | Toutes les 15 minutes | Réponse non-200 |
+| **Temps de chargement de la page** | Mesure du chargement complet de la page | Toutes les 30 minutes | >5 secondes |
+| **Vérification du rendu** | Vérifier la présence d'éléments clés de la page (formulaire, CTA, produit) | Toutes les 30 minutes | Éléments critiques manquants |
+| **Certificat SSL** | Vérification de la validité du certificat | Quotidien | Expire sous 7 jours ou expiré |
+| **Chaîne de redirection** | Suivre les redirections, vérifier l'URL finale | Toutes les 30 minutes | >3 redirections ou redirection vers une page d'erreur |
 
-**Impact of broken landing pages:** A non-functional landing page wastes 100% of ad spend directed to it. This is the highest-priority detection — every other metric is irrelevant if users cannot reach the destination.
+**Impact des pages d'atterrissage cassées :** Une page d'atterrissage non fonctionnelle gaspille 100 % de la dépense publicitaire qui y est dirigée. C'est la détection la plus prioritaire — toute autre métrique est sans importance si les utilisateurs ne peuvent pas atteindre la destination.
 
-### Email Deliverability Monitoring
+### Surveillance de la délivrabilité e-mail
 
-| Check | Threshold | Diagnosis |
+| Vérification | Seuil | Diagnostic |
 |---|---|---|
-| **Bounce rate spike** | >3% on single send (from baseline <1%) | List hygiene issue or blocklisting |
-| **Spam folder placement** | >10% going to spam (seed test) | Authentication failure or content issue |
-| **DKIM failure** | Any DKIM failure on sent emails | DNS misconfiguration or key rotation needed |
-| **SPF failure** | Any SPF failure | Sending IP not in SPF record |
-| **DMARC failure** | Any DMARC failure | DKIM or SPF not aligned with From domain |
-| **Open rate collapse** | >40% drop from 7-day moving avg | Deliverability issue or list fatigue |
+| **Pic de taux de rebond** | >3 % sur un seul envoi (depuis une référence <1 %) | Problème d'hygiène de liste ou blocage |
+| **Placement en dossier spam** | >10 % allant en spam (test de sonde) | Échec d'authentification ou problème de contenu |
+| **Échec DKIM** | Tout échec DKIM sur les e-mails envoyés | Mauvaise configuration DNS ou rotation de clé nécessaire |
+| **Échec SPF** | Tout échec SPF | IP d'envoi absente de l'enregistrement SPF |
+| **Échec DMARC** | Tout échec DMARC | DKIM ou SPF non alignés avec le domaine From |
+| **Effondrement du taux d'ouverture** | >40 % de chute par rapport à la moyenne mobile sur 7 jours | Problème de délivrabilité ou lassitude de liste |
 
-### Pacing Analysis
+### Analyse du rythme
 
-| Condition | Signal | Likely Cause |
+| Condition | Signal | Cause probable |
 |---|---|---|
-| **Overspending** (>120% daily budget) | Spend accelerating beyond plan | Auction dynamics, bid too high, new competition |
-| **Underspending** (<60% daily budget) | Spend velocity too low | Targeting too narrow, bid too low, ad disapprovals |
-| **Front-loaded** (50%+ budget spent in first 25% of day) | Morning spike | Dayparting not set, accelerated delivery enabled |
-| **Stalled** (no spend for 2+ hours during business hours) | Zero delivery | Ad disapproved, payment issue, audience exhausted |
+| **Surdépense** (>120 % du budget quotidien) | La dépense s'accélère au-delà du plan | Dynamique d'enchère, enchère trop élevée, nouvelle concurrence |
+| **Sous-dépense** (<60 % du budget quotidien) | Vélocité de dépense trop faible | Ciblage trop étroit, enchère trop basse, désapprobations d'annonces |
+| **Chargée en avant** (50 %+ du budget dépensé dans les 25 premiers % de la journée) | Pic matinal | Découpage horaire non configuré, diffusion accélérée activée |
+| **Bloquée** (aucune dépense pendant 2+ heures durant les heures ouvrées) | Diffusion nulle | Annonce désapprouvée, problème de paiement, audience épuisée |
 
-### Engagement Anomalies
+### Anomalies d'engagement
 
-| Anomaly | Detection Rule | Possible Cause |
+| Anomalie | Règle de détection | Cause possible |
 |---|---|---|
-| **CTR drop >30%** | CTR falls below 70% of 7-day moving average | Creative fatigue, audience saturation, seasonal |
-| **CPC spike >40%** | CPC exceeds 140% of 7-day moving average | Auction competition increase, quality score drop |
-| **Conversion rate collapse** | CVR drops >50% from baseline | Landing page issue, tracking broken, offer changed |
-| **Unusual traffic pattern** | CTR high but CVR near zero | Click fraud or bot traffic |
-| **Frequency overexposure** | Avg frequency >7x/week | Audience too small for budget, no frequency cap |
+| **Chute de CTR >30 %** | Le CTR tombe sous 70 % de la moyenne mobile sur 7 jours | Lassitude créative, saturation d'audience, saisonnier |
+| **Pic de CPC >40 %** | Le CPC dépasse 140 % de la moyenne mobile sur 7 jours | Augmentation de la concurrence d'enchère, baisse du score de qualité |
+| **Effondrement du taux de conversion** | Le CVR chute de plus de 50 % par rapport à la référence | Problème de page d'atterrissage, suivi cassé, offre modifiée |
+| **Schéma de trafic inhabituel** | CTR élevé mais CVR proche de zéro | Fraude au clic ou trafic de bot |
+| **Surexposition en fréquence** | Fréquence moyenne >7x/semaine | Audience trop petite pour le budget, aucun plafond de fréquence |
 
 ---
 
-## Auto-Correction Guardrails
+## Garde-fous d'auto-correction
 
-### Default Safety Limits
+### Limites de sécurité par défaut
 
-These define what the system can do WITHOUT human approval:
+Celles-ci définissent ce que le système peut faire SANS approbation humaine :
 
-| Action | Allowed Automatically | Limit |
+| Action | Autorisée automatiquement | Limite |
 |---|---|---|
-| **Pause individual ads** | Yes | Any ad with health score <30 |
-| **Pause ad sets** | Yes, if all ads within are paused | Only when all child ads qualify |
-| **Reduce bid** | Yes | Up to 15% reduction per cycle |
-| **Throttle daily budget** | Yes | Up to 20% reduction per cycle |
-| **Pause campaign (landing page down)** | Yes | Immediate if non-200 for 2 consecutive checks |
-| **Resume campaign (landing page restored)** | Yes | After 2 consecutive healthy checks, at 80% of original bid |
-| **Swap to next creative variant** | No | Requires approval |
-| **Increase budget** | No | Always requires approval |
-| **Change targeting** | No | Always requires approval |
-| **Pause entire account** | No | Always requires approval |
-| **Change bidding strategy** | No | Always requires approval |
+| **Mettre en pause des publicités individuelles** | Oui | Toute publicité avec un score de santé <30 |
+| **Mettre en pause des ensembles d'annonces** | Oui, si toutes les publicités qu'ils contiennent sont en pause | Uniquement quand toutes les publicités enfants sont éligibles |
+| **Réduire l'enchère** | Oui | Jusqu'à 15 % de réduction par cycle |
+| **Réguler le budget quotidien** | Oui | Jusqu'à 20 % de réduction par cycle |
+| **Mettre en pause la campagne (page d'atterrissage en panne)** | Oui | Immédiat si non-200 pour 2 vérifications consécutives |
+| **Reprendre la campagne (page d'atterrissage rétablie)** | Oui | Après 2 vérifications saines consécutives, à 80 % de l'enchère d'origine |
+| **Basculer vers la prochaine variante créative** | Non | Nécessite une approbation |
+| **Augmenter le budget** | Non | Nécessite toujours une approbation |
+| **Changer le ciblage** | Non | Nécessite toujours une approbation |
+| **Mettre en pause tout le compte** | Non | Nécessite toujours une approbation |
+| **Changer la stratégie d'enchère** | Non | Nécessite toujours une approbation |
 
-### Guardrail Configuration
+### Configuration des garde-fous
 
-Guardrails are configurable per brand at `~/.claude-marketing/brands/{slug}/guardrails.json`:
+Les garde-fous sont configurables par marque à `~/.claude-marketing/brands/{slug}/guardrails.json` :
 
 ```json
 {
@@ -146,51 +146,51 @@ Guardrails are configurable per brand at `~/.claude-marketing/brands/{slug}/guar
 
 ---
 
-## Correction Types by Risk Level
+## Types de correction par niveau de risque
 
-| Risk Level | Correction | When Applied | Reversibility |
+| Niveau de risque | Correction | Quand appliquée | Réversibilité |
 |---|---|---|---|
-| **Lowest** | Pause individual ad | Ad health <30, creative fatigue detected | Re-enable manually |
-| **Low** | Reduce bid (up to 15%) | CPC spike, overspend pacing | Bid can be raised again |
-| **Low** | Throttle daily budget (up to 20%) | Overspend pacing, CPA exceeding target | Budget can be restored |
-| **Medium** | Budget shift between ad sets | One ad set outperforming another significantly | Rebalance manually |
-| **Medium** | Creative swap | Creative fatigue (CTR decline >20% from peak) | Rotate back if needed |
-| **High** | Pause entire campaign | Landing page down, account-level issue | Resume after investigation |
-| **Highest** | Pause entire account | Payment failure, policy violation, suspected fraud | Requires full human review |
+| **Le plus faible** | Mettre en pause une publicité individuelle | Santé de la publicité <30, lassitude créative détectée | Réactivable manuellement |
+| **Faible** | Réduire l'enchère (jusqu'à 15 %) | Pic de CPC, rythme de surdépense | L'enchère peut être remontée |
+| **Faible** | Réguler le budget quotidien (jusqu'à 20 %) | Rythme de surdépense, CPA dépassant l'objectif | Le budget peut être restauré |
+| **Moyen** | Transfert de budget entre ensembles d'annonces | Un ensemble d'annonces surperformant significativement un autre | Rééquilibrer manuellement |
+| **Moyen** | Basculement créatif | Lassitude créative (déclin du CTR >20 % par rapport au pic) | Faire tourner à nouveau si nécessaire |
+| **Élevé** | Mettre en pause toute la campagne | Page d'atterrissage en panne, problème au niveau du compte | Reprendre après investigation |
+| **Le plus élevé** | Mettre en pause tout le compte | Échec de paiement, violation de politique, fraude suspectée | Nécessite une revue humaine complète |
 
 ---
 
-## Self-Healing vs Alerting Decision Matrix
+## Matrice de décision auto-réparation vs alerte
 
-| Signal Clarity | Correction Risk | Action |
+| Clarté du signal | Risque de correction | Action |
 |---|---|---|
-| **Clear signal** (e.g., landing page 404) + **Low-risk correction** (pause campaign) | Low | **Auto-heal** — execute and notify |
-| **Clear signal** + **High-risk correction** (change targeting) | High | **Alert** — recommend correction, wait for approval |
-| **Ambiguous signal** (e.g., gradual CTR decline) + **Low-risk correction** | Low | **Alert** — notify with data, suggest investigation |
-| **Ambiguous signal** + **High-risk correction** | High | **Alert** — escalate with full diagnostic report |
-| **Multiple simultaneous issues** | Any | **Alert** — possible systemic problem, human review required |
-| **External factor suspected** (platform outage, algorithm change) | Any | **Alert** — gather evidence, do not auto-correct |
+| **Signal clair** (par ex., page d'atterrissage 404) + **correction à faible risque** (mettre en pause la campagne) | Faible | **Auto-réparation** — exécuter et notifier |
+| **Signal clair** + **correction à haut risque** (changer le ciblage) | Élevé | **Alerte** — recommander une correction, attendre l'approbation |
+| **Signal ambigu** (par ex., déclin graduel du CTR) + **correction à faible risque** | Faible | **Alerte** — notifier avec les données, suggérer une investigation |
+| **Signal ambigu** + **correction à haut risque** | Élevé | **Alerte** — escalader avec un rapport diagnostique complet |
+| **Problèmes multiples simultanés** | Tout | **Alerte** — problème systémique possible, revue humaine requise |
+| **Facteur externe suspecté** (panne de plateforme, changement d'algorithme) | Tout | **Alerte** — rassembler des preuves, ne pas corriger automatiquement |
 
-### Decision Rule
+### Règle de décision
 
 ```
-Auto-heal ONLY when ALL of these are true:
-  1. Diagnostic signal is unambiguous (clear metric threshold breach)
-  2. Correction is low-risk (pause, throttle, minor bid reduction)
-  3. Correction is fully reversible
-  4. Correction falls within configured guardrails
-  5. No other simultaneous issues detected on the same campaign
+Auto-réparation UNIQUEMENT quand TOUT ceci est vrai :
+  1. Le signal diagnostique n'est pas ambigu (dépassement de seuil de métrique clair)
+  2. La correction est à faible risque (pause, régulation, réduction mineure d'enchère)
+  3. La correction est entièrement réversible
+  4. La correction s'inscrit dans les garde-fous configurés
+  5. Aucun autre problème simultané détecté sur la même campagne
 
-Otherwise → Alert with recommendation and wait for approval
+Sinon → Alerter avec une recommandation et attendre l'approbation
 ```
 
 ---
 
-## Audit Trail
+## Piste d'audit
 
-Every auto-correction is logged with complete context for review and reversal.
+Chaque auto-correction est journalisée avec un contexte complet pour la revue et l'annulation.
 
-### Log Entry Structure
+### Structure d'entrée de journal
 
 ```json
 {
@@ -214,129 +214,129 @@ Every auto-correction is logged with complete context for review and reversal.
 }
 ```
 
-Logs stored at `~/.claude-marketing/brands/{slug}/ops-log.json` and surfaced via `/digital-marketing-pro:campaign-status` and `/digital-marketing-pro:anomaly-scan` commands.
+Journaux stockés à `~/.claude-marketing/brands/{slug}/ops-log.json` et remontés via les commandes `/digital-marketing-pro:campaign-status` et `/digital-marketing-pro:anomaly-scan`.
 
 ---
 
-## Platform-Specific Health Checks
+## Vérifications de santé spécifiques à la plateforme
 
 ### Google Ads
 
-| Check | Frequency | Critical Threshold | Action |
+| Vérification | Fréquence | Seuil critique | Action |
 |---|---|---|---|
-| Quality Score monitoring | Daily | Drop >2 points on high-spend keywords | Alert with keyword-level detail |
-| Ad disapprovals | Every 30 min | Any new disapproval | Pause ad, alert with policy violation detail |
-| Policy violations | Every 30 min | Any violation | Pause affected ad, escalate |
-| Auction insights shift | Weekly | Impression share drop >15% | Alert with competitor analysis |
-| Search term waste | Daily | >20% spend on irrelevant search terms | Alert with negative keyword recommendations |
+| Surveillance du score de qualité | Quotidien | Baisse de >2 points sur les mots-clés à forte dépense | Alerter avec le détail au niveau du mot-clé |
+| Désapprobations d'annonces | Toutes les 30 min | Toute nouvelle désapprobation | Mettre en pause la publicité, alerter avec le détail de la violation de politique |
+| Violations de politique | Toutes les 30 min | Toute violation | Mettre en pause la publicité affectée, escalader |
+| Changement des insights d'enchère | Hebdomadaire | Baisse de la part d'impressions >15 % | Alerter avec une analyse concurrentielle |
+| Gaspillage de termes de recherche | Quotidien | >20 % de dépense sur des termes de recherche non pertinents | Alerter avec des recommandations de mots-clés négatifs |
 
 ### Meta Ads
 
-| Check | Frequency | Critical Threshold | Action |
+| Vérification | Fréquence | Seuil critique | Action |
 |---|---|---|---|
-| Relevance / Quality score | Daily | Score drops to "Below Average" | Alert with creative refresh recommendation |
-| Frequency vs fatigue | Daily | Frequency >5 and CTR declining | Auto-pause ad, alert for creative swap |
-| Learning phase detection | After edits | Campaign re-enters learning phase | Alert — do not make further changes for 48h |
-| Account spending limit | Daily | Within 10% of limit | Alert to increase limit before campaigns pause |
-| Audience overlap | Weekly | >30% overlap between ad sets | Alert with consolidation recommendation |
+| Score de pertinence / qualité | Quotidien | Le score tombe à « Inférieur à la moyenne » | Alerter avec une recommandation de renouvellement créatif |
+| Fréquence vs lassitude | Quotidien | Fréquence >5 et CTR en déclin | Mettre en pause automatiquement la publicité, alerter pour un basculement créatif |
+| Détection de phase d'apprentissage | Après des modifications | La campagne réentre en phase d'apprentissage | Alerter — ne pas faire d'autres changements pendant 48h |
+| Limite de dépense du compte | Quotidien | À moins de 10 % de la limite | Alerter pour augmenter la limite avant que les campagnes ne se mettent en pause |
+| Chevauchement d'audience | Hebdomadaire | >30 % de chevauchement entre les ensembles d'annonces | Alerter avec une recommandation de consolidation |
 
-### Email Campaigns
+### Campagnes e-mail
 
-| Check | Frequency | Critical Threshold | Action |
+| Vérification | Fréquence | Seuil critique | Action |
 |---|---|---|---|
-| Deliverability score | Per send | Score <90 | Alert with authentication check |
-| Bounce classification | Per send | Hard bounce >1% | Auto-suppress bounced addresses, alert |
-| Engagement metrics | Per send | Open rate <50% of prior 5-send avg | Alert with subject line / list analysis |
-| List decay rate | Weekly | >2% invalid addresses per month | Alert with list cleaning recommendation |
-| Spam trap hits | Per send | Any spam trap hit | Alert immediately — potential blocklist risk |
+| Score de délivrabilité | Par envoi | Score <90 | Alerter avec une vérification d'authentification |
+| Classification des rebonds | Par envoi | Rebond dur >1 % | Supprimer automatiquement les adresses rebondies, alerter |
+| Métriques d'engagement | Par envoi | Taux d'ouverture <50 % de la moyenne des 5 derniers envois | Alerter avec une analyse de l'objet/liste |
+| Taux de décroissance de liste | Hebdomadaire | >2 % d'adresses invalides par mois | Alerter avec une recommandation de nettoyage de liste |
+| Frappes de piège à spam | Par envoi | Toute frappe de piège à spam | Alerter immédiatement — risque potentiel de liste noire |
 
 ### LinkedIn Ads
 
-| Check | Frequency | Critical Threshold | Action |
+| Vérification | Fréquence | Seuil critique | Action |
 |---|---|---|---|
-| Bid competitiveness | Daily | Suggested bid >2x current bid | Alert with bid adjustment recommendation |
-| Audience saturation | Weekly | Frequency >8 (small audience) | Alert — expand audience or reduce budget |
-| Lead form completion rate | Daily | Drop >30% from baseline | Alert — check form length, fields, mobile experience |
-| Content engagement rate | Daily | Engagement rate <0.3% | Alert with creative refresh recommendation |
+| Compétitivité d'enchère | Quotidien | Enchère suggérée >2x l'enchère actuelle | Alerter avec une recommandation d'ajustement d'enchère |
+| Saturation d'audience | Hebdomadaire | Fréquence >8 (petite audience) | Alerter — élargir l'audience ou réduire le budget |
+| Taux de complétion de formulaire de lead | Quotidien | Chute de >30 % par rapport à la référence | Alerter — vérifier la longueur du formulaire, les champs, l'expérience mobile |
+| Taux d'engagement du contenu | Quotidien | Taux d'engagement <0,3 % | Alerter avec une recommandation de renouvellement créatif |
 
 ---
 
-## Escalation Workflow
+## Flux d'escalade
 
-### Tier Structure
+### Structure des niveaux
 
-| Tier | Trigger | System Action | Human Action Required |
+| Niveau | Déclencheur | Action du système | Action humaine requise |
 |---|---|---|---|
-| **Tier 1** | Single issue, within guardrails | Auto-correct, log, notify via summary | Review next ops report (no immediate action) |
-| **Tier 2** | Single issue, exceeds guardrails | Alert with specific recommendation | Approve, modify, or reject recommendation |
-| **Tier 3** | Multiple simultaneous issues on same campaign | Full campaign pause (auto), incident report | Review incident, diagnose root cause, approve recovery plan |
-| **Tier 4** | Account-level issue (payment, policy, widespread failure) | All campaigns paused (auto), incident escalation | Full human investigation, contact platform support if needed |
+| **Niveau 1** | Problème unique, dans les garde-fous | Auto-corriger, journaliser, notifier via résumé | Revoir le prochain rapport d'opérations (aucune action immédiate) |
+| **Niveau 2** | Problème unique, dépasse les garde-fous | Alerter avec une recommandation spécifique | Approuver, modifier, ou rejeter la recommandation |
+| **Niveau 3** | Problèmes multiples simultanés sur la même campagne | Pause complète de la campagne (auto), rapport d'incident | Revoir l'incident, diagnostiquer la cause profonde, approuver le plan de récupération |
+| **Niveau 4** | Problème au niveau du compte (paiement, politique, panne généralisée) | Toutes les campagnes en pause (auto), escalade d'incident | Investigation humaine complète, contacter le support de la plateforme si nécessaire |
 
-### Escalation Timing
+### Timing d'escalade
 
-- **Tier 1:** Auto-corrected immediately. Summary in next `/digital-marketing-pro:campaign-status` report.
-- **Tier 2:** Alert sent immediately. Auto-escalates to Tier 3 if no response within 4 hours.
-- **Tier 3:** Alert sent immediately with "URGENT" flag. Campaigns remain paused until human responds.
-- **Tier 4:** Alert sent immediately. All activity halted. No auto-resume at any tier for Tier 4 events.
-
----
-
-## Recovery Patterns
-
-### After Auto-Pause (Landing Page Down)
-
-```
-1. Campaign auto-paused at detection
-2. Landing page monitoring continues at normal interval
-3. Landing page returns 200 OK for 2 consecutive checks (30 min apart)
-4. System auto-resumes campaign at 80% of pre-pause bid
-5. Monitor for 6 hours at elevated frequency
-6. If healthy for 6 hours → restore original bid
-7. If issue recurs within 6 hours → re-pause and escalate to Tier 2
-```
-
-### After Budget Throttle
-
-```
-1. Daily budget reduced by up to 20%
-2. Monitor spend pacing and CPA for 24 hours
-3. If pacing normalizes → gradual ramp: +5% per day until original budget
-4. If issue persists → maintain throttled budget, escalate for human review
-5. Full budget restoration takes 4–5 days (conservative ramp)
-```
-
-### After Creative Swap (When Approved)
-
-```
-1. Fatigued creative paused, next variant activated
-2. New creative enters evaluation period (24 hours minimum)
-3. Monitor CTR, CPC, and CVR vs campaign average
-4. If new creative performs within 80% of campaign avg → confirm and continue
-5. If new creative underperforms → alert with recommendation to test additional variants
-6. Old creative enters 7-day cooldown before re-eligible for rotation
-```
-
-### After Deliverability Issue (Email)
-
-```
-1. Affected send flagged, future sends to affected segment paused
-2. Run authentication diagnostics (DKIM, SPF, DMARC)
-3. If authentication issue found → alert with fix instructions, pause all sends
-4. If list quality issue → run list cleaning, remove bounced/unengaged
-5. After fix applied → send small test batch (1,000 addresses)
-6. If test batch delivers >95% to inbox → resume normal sending
-7. If test batch still fails → escalate to Tier 3 for ISP investigation
-```
+- **Niveau 1 :** Auto-corrigé immédiatement. Résumé dans le prochain rapport `/digital-marketing-pro:campaign-status`.
+- **Niveau 2 :** Alerte envoyée immédiatement. S'auto-escalade au Niveau 3 en l'absence de réponse sous 4 heures.
+- **Niveau 3 :** Alerte envoyée immédiatement avec un indicateur « URGENT ». Les campagnes restent en pause jusqu'à réponse humaine.
+- **Niveau 4 :** Alerte envoyée immédiatement. Toute activité arrêtée. Aucune reprise automatique à aucun niveau pour les événements de Niveau 4.
 
 ---
 
-## Continuous Learning
+## Schémas de récupération
 
-The self-healing system improves over time by recording what worked:
+### Après une auto-pause (page d'atterrissage en panne)
 
-- **False positive tracking:** When an auto-correction was unnecessary (metric dip was transient), log it and adjust thresholds
-- **Correction effectiveness:** Track whether health score improved after each correction. If not, the correction type may be wrong for that issue pattern.
-- **Threshold calibration:** Review thresholds quarterly. Tighten thresholds that catch real issues. Loosen thresholds that generate noise.
-- **Pattern library:** Build a library of issue → diagnosis → correction patterns. New patterns are added from Tier 2/3 incidents after human resolution.
+```
+1. Campagne mise en pause automatiquement à la détection
+2. La surveillance de la page d'atterrissage continue à l'intervalle normal
+3. La page d'atterrissage renvoie 200 OK pour 2 vérifications consécutives (30 min d'écart)
+4. Le système reprend automatiquement la campagne à 80 % de l'enchère pré-pause
+5. Surveiller pendant 6 heures à fréquence élevée
+6. Si saine pendant 6 heures → restaurer l'enchère d'origine
+7. Si le problème réapparaît sous 6 heures → remettre en pause et escalader au Niveau 2
+```
 
-> **Key principle:** Self-healing operations exist to protect budget and maintain campaign health during the hours when no human is watching. The system should be conservative — it is always better to pause and preserve budget than to attempt a risky correction that could make things worse. When in doubt, pause and escalate.
+### Après une régulation budgétaire
+
+```
+1. Budget quotidien réduit jusqu'à 20 %
+2. Surveiller le rythme de dépense et le CPA pendant 24 heures
+3. Si le rythme se normalise → montée en puissance progressive : +5 % par jour jusqu'au budget d'origine
+4. Si le problème persiste → maintenir le budget régulé, escalader pour revue humaine
+5. La restauration complète du budget prend 4-5 jours (montée en puissance prudente)
+```
+
+### Après un basculement créatif (une fois approuvé)
+
+```
+1. La création lassée est mise en pause, la variante suivante est activée
+2. La nouvelle création entre en période d'évaluation (24 heures minimum)
+3. Surveiller le CTR, le CPC, et le CVR vs la moyenne de campagne
+4. Si la nouvelle création performe dans les 80 % de la moyenne de campagne → confirmer et continuer
+5. Si la nouvelle création sous-performe → alerter avec une recommandation de tester des variantes supplémentaires
+6. L'ancienne création entre en refroidissement de 7 jours avant d'être à nouveau éligible à la rotation
+```
+
+### Après un problème de délivrabilité (e-mail)
+
+```
+1. L'envoi affecté est signalé, les futurs envois vers le segment affecté sont mis en pause
+2. Exécuter des diagnostics d'authentification (DKIM, SPF, DMARC)
+3. Si un problème d'authentification est trouvé → alerter avec des instructions de correction, mettre en pause tous les envois
+4. Si un problème de qualité de liste → exécuter un nettoyage de liste, retirer les adresses rebondies/non engagées
+5. Après application de la correction → envoyer un petit lot de test (1 000 adresses)
+6. Si le lot de test délivre >95 % en boîte de réception → reprendre l'envoi normal
+7. Si le lot de test échoue encore → escalader au Niveau 3 pour investigation FAI
+```
+
+---
+
+## Apprentissage continu
+
+Le système auto-réparateur s'améliore avec le temps en enregistrant ce qui a fonctionné :
+
+- **Suivi des faux positifs :** Quand une auto-correction était inutile (la baisse de métrique était transitoire), la journaliser et ajuster les seuils
+- **Efficacité de la correction :** Suivre si le score de santé s'est amélioré après chaque correction. Sinon, le type de correction est peut-être erroné pour ce schéma de problème.
+- **Calibration des seuils :** Revoir les seuils trimestriellement. Resserrer les seuils qui détectent de vrais problèmes. Assouplir les seuils qui génèrent du bruit.
+- **Bibliothèque de schémas :** Construire une bibliothèque de schémas problème → diagnostic → correction. De nouveaux schémas sont ajoutés à partir des incidents de Niveau 2/3 après résolution humaine.
+
+> **Principe clé :** Les opérations auto-réparatrices existent pour protéger le budget et maintenir la santé des campagnes durant les heures où aucun humain ne surveille. Le système devrait être prudent — il vaut toujours mieux mettre en pause et préserver le budget que de tenter une correction risquée qui pourrait aggraver les choses. En cas de doute, mettre en pause et escalader.

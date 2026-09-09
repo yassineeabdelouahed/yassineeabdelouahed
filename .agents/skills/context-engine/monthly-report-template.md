@@ -1,199 +1,199 @@
-# Monthly Report Template
+# Modèle de rapport mensuel
 
-Monthly reports are the primary communication tool with the client between strategic reviews. A good monthly report drives decisions; a bad one is just a data dump that nobody reads.
+Les rapports mensuels sont le principal outil de communication avec le client entre les revues stratégiques. Un bon rapport mensuel guide les décisions ; un mauvais n'est qu'un déversement de données que personne ne lit.
 
-This template enforces the discipline that makes monthly reports useful.
+Ce modèle impose la discipline qui rend les rapports mensuels utiles.
 
 ## Structure
 
-### Section 1: Executive Summary
+### Section 1 : Résumé exécutif
 
-**Length:** 3–5 sentences. No more.
+**Longueur :** 3 à 5 phrases. Pas plus.
 
-**Content:**
+**Contenu :**
 
-- What happened this month (1 sentence)
-- Are we on track to monthly / quarterly KPIs (1 sentence)
-- The single most important thing the client should know (1–3 sentences)
+- Ce qui s'est passé ce mois-ci (1 phrase)
+- Sommes-nous sur la bonne voie pour les KPI mensuels/trimestriels (1 phrase)
+- La chose la plus importante que le client doit savoir (1 à 3 phrases)
 
-The CEO reads this and stops if everything looks fine. Make it possible to absorb in 15 seconds.
+Le PDG lit ceci et s'arrête si tout semble aller bien. Rendez-le absorbable en 15 secondes.
 
-### Section 2: KPI Dashboard
+### Section 2 : Tableau de bord des KPI
 
-**Length:** 1 page.
+**Longueur :** 1 page.
 
-**Content:**
+**Contenu :**
 
-- Visual overview of all primary + secondary KPIs vs targets
-- Green / Yellow / Red status indicators
-- Trend arrow (↑ / → / ↓) vs prior month and vs same month prior year
-- One-line context per KPI ("Traffic up 18% MoM driven primarily by new SEO content")
+- Vue d'ensemble visuelle de tous les KPI principaux + secondaires vs objectifs
+- Indicateurs de statut Vert / Jaune / Rouge
+- Flèche de tendance (↑ / → / ↓) vs mois précédent et vs même mois l'année précédente
+- Contexte en une ligne par KPI (« Trafic en hausse de 18 % sur un mois, principalement porté par le nouveau contenu SEO »)
 
-Use a table or visual dashboard. Not a wall of text.
+Utilisez un tableau ou un tableau de bord visuel. Pas un mur de texte.
 
-### Section 3: Channel Performance
+### Section 3 : Performance par canal
 
-**Length:** 2–4 pages, one sub-section per active channel.
+**Longueur :** 2 à 4 pages, une sous-section par canal actif.
 
-For each channel:
+Pour chaque canal :
 
-- Performance vs target (with the actual numbers and the target)
-- Trend vs prior month
-- **Why** the result is what it is (this is the critical part — not "CPA increased" but "CPA increased because [specific reason] and here is what we are doing about it")
-- Key wins this month (1–2 bullets)
-- Key concerns this month (1–2 bullets)
-- Specific actions taken during the month (proactive management evidence)
+- Performance vs objectif (avec les chiffres réels et l'objectif)
+- Tendance vs mois précédent
+- **Pourquoi** le résultat est ce qu'il est (c'est la partie critique — pas « le CPA a augmenté » mais « le CPA a augmenté parce que [raison spécifique] et voici ce que nous faisons à ce sujet »)
+- Principaux succès du mois (1 à 2 puces)
+- Principales préoccupations du mois (1 à 2 puces)
+- Actions spécifiques prises durant le mois (preuve de gestion proactive)
 
-### Section 4: Creative Performance
+### Section 4 : Performance créative
 
-**Length:** 1–2 pages.
+**Longueur :** 1 à 2 pages.
 
-**Content:**
+**Contenu :**
 
-- Top-performing ads / posts / content pieces (with visual examples)
-- Bottom-performing ads / posts / content pieces (with visual examples)
-- What we learned about what is working
-- Creative refresh schedule for next month
+- Publicités/publications/contenus les plus performants (avec exemples visuels)
+- Publicités/publications/contenus les moins performants (avec exemples visuels)
+- Ce que nous avons appris sur ce qui fonctionne
+- Calendrier de renouvellement créatif pour le mois suivant
 
-Visual evidence is critical here. Embed actual screenshots / thumbnails.
+La preuve visuelle est essentielle ici. Intégrez de vraies captures d'écran/vignettes.
 
-### Section 5: Insights & Learnings
+### Section 5 : Enseignements et apprentissages
 
-**Length:** 1 page.
+**Longueur :** 1 page.
 
-**Content:**
+**Contenu :**
 
-- 3–5 specific insights the team learned this month
-- What surprised us (data that did not match expectations)
-- Hypotheses to test next month based on these learnings
+- 3 à 5 enseignements spécifiques appris par l'équipe ce mois-ci
+- Ce qui nous a surpris (données qui ne correspondaient pas aux attentes)
+- Hypothèses à tester le mois prochain sur la base de ces apprentissages
 
-This section captures the institutional learning. Without it, every month is starting from scratch.
+Cette section capture l'apprentissage institutionnel. Sans elle, chaque mois repart de zéro.
 
-### Section 6: Compliance & Quality
+### Section 6 : Conformité et qualité
 
-**Length:** ½ page.
+**Longueur :** ½ page.
 
-**Content:**
+**Contenu :**
 
-- Compliance violations detected and resolved (count + summary)
-- Brand voice consistency score (if applicable, from semantic checking)
-- Content quality scores (composite eval scores)
-- Any approval bottlenecks experienced
+- Violations de conformité détectées et résolues (nombre + résumé)
+- Score de cohérence de la voix de marque (le cas échéant, issu du contrôle sémantique)
+- Scores de qualité du contenu (scores d'évaluation composites)
+- Tout goulot d'étranglement d'approbation rencontré
 
-Most months this is a brief "all clear" — but when issues exist, they get visibility.
+La plupart des mois, il s'agit d'un bref « tout est en ordre » — mais lorsque des problèmes existent, ils sont mis en visibilité.
 
-### Section 7: Variable Budget Recommendation
+### Section 7 : Recommandation de budget variable
 
-**Length:** ½ to 1 page.
+**Longueur :** ½ à 1 page.
 
-**Content:**
+**Contenu :**
 
-- Which campaigns are below target CPA (candidates for budget increase)
-- Estimated additional revenue if budget +X%
-- New channel opportunities identified through testing this month
-- Specific recommendation (with the math)
+- Quelles campagnes sont sous l'objectif de CPA (candidates à une augmentation de budget)
+- Chiffre d'affaires additionnel estimé si le budget +X %
+- Nouvelles opportunités de canal identifiées grâce aux tests ce mois-ci
+- Recommandation spécifique (avec les calculs)
 
-This section turns the budget conversation from "can we spend more?" to "here is where additional spend generates proven returns." See [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md).
+Cette section transforme la conversation sur le budget de « pouvons-nous dépenser plus ? » à « voici où une dépense additionnelle génère des rendements prouvés ». Voir [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md).
 
-### Section 8: Next Month Plan
+### Section 8 : Plan du mois suivant
 
-**Length:** ½ page.
+**Longueur :** ½ page.
 
-**Content:**
+**Contenu :**
 
-- New campaigns launching
-- A/B tests planned
-- Optimisations queued
-- Risks being monitored
+- Nouvelles campagnes en lancement
+- Tests A/B prévus
+- Optimisations en file d'attente
+- Risques surveillés
 
-### Section 9: Asks of the Client
+### Section 9 : Demandes au client
 
-**Length:** ½ page.
+**Longueur :** ½ page.
 
-**Content:**
+**Contenu :**
 
-- Specific approvals needed (with deadlines)
-- Information / assets needed from client team
-- Decisions awaiting client input
+- Approbations spécifiques nécessaires (avec échéances)
+- Informations/actifs nécessaires de la part de l'équipe client
+- Décisions en attente de la contribution du client
 
-If there are no client asks, say so explicitly. If there are, list them clearly with deadlines.
+S'il n'y a aucune demande au client, indiquez-le explicitement. S'il y en a, listez-les clairement avec les échéances.
 
-## Total Length Target
+## Objectif de longueur totale
 
-A monthly report should be **8–12 pages**. Beyond 15 pages, clients stop reading. Below 8 pages, depth is usually insufficient.
+Un rapport mensuel devrait faire **8 à 12 pages**. Au-delà de 15 pages, les clients arrêtent de lire. En dessous de 8 pages, la profondeur est généralement insuffisante.
 
-If a particular month requires a deeper analysis (e.g., the post-mortem of a campaign), produce that as a separate deliverable rather than bloating the standard report.
+Si un mois particulier nécessite une analyse plus approfondie (par ex. le bilan (post-mortem) d'une campagne), produisez-la comme un livrable séparé plutôt que d'alourdir le rapport standard.
 
-## Writing Principles
+## Principes rédactionnels
 
-### 1. Lead with insight, not data
+### 1. Commencer par l'enseignement, pas par les données
 
-**Weak:** "Conversion rate: 2.1% (was 2.5%)."
+**Faible :** « Taux de conversion : 2,1 % (était 2,5 %). »
 
-**Strong:** "Conversion rate dropped 15% this month because our top-performing landing page had a 48-hour outage. Page is restored; expect rebound next month. Specific actions: [what we did]."
+**Fort :** « Le taux de conversion a chuté de 15 % ce mois-ci parce que notre page d'atterrissage la plus performante a subi une panne de 48 heures. La page est rétablie ; un rebond est attendu le mois prochain. Actions spécifiques : [ce que nous avons fait]. »
 
-### 2. Always explain why, not just what
+### 2. Toujours expliquer le pourquoi, pas seulement le quoi
 
-Numbers without context are noise. Every notable change needs a "because" with evidence.
+Les chiffres sans contexte sont du bruit. Chaque changement notable nécessite un « parce que » étayé par des preuves.
 
-### 3. Be honest about underperformance
+### 3. Être honnête sur la sous-performance
 
-Clients respect honesty and lose trust when agencies hide bad news. Bad performance with a clear explanation and action plan is better than bad performance with excuses.
+Les clients respectent l'honnêteté et perdent confiance lorsque les agences cachent les mauvaises nouvelles. Une mauvaise performance avec une explication claire et un plan d'action vaut mieux qu'une mauvaise performance avec des excuses.
 
-### 4. Include visual evidence
+### 4. Inclure des preuves visuelles
 
-- Screenshots of top-performing ads
-- Heatmap findings on landing pages
-- GA4 trend charts
-- Performance comparison tables
+- Captures d'écran des publicités les plus performantes
+- Constats de carte de chaleur sur les pages d'atterrissage
+- Graphiques de tendance GA4
+- Tableaux de comparaison de performance
 
-A monthly report is part-narrative, part-visual. Both matter.
+Un rapport mensuel est en partie narratif, en partie visuel. Les deux comptent.
 
-### 5. Distinguish "what we did" from "what happened"
+### 5. Distinguer « ce que nous avons fait » de « ce qui s'est passé »
 
-- **What we did** (proactive management): "We A/B tested two landing page variants; variant B won by 14%; deployed; expect to see lift in November."
-- **What happened** (results in the world): "Organic traffic grew 18% MoM, driven primarily by [specific drivers]."
+- **Ce que nous avons fait** (gestion proactive) : « Nous avons testé en A/B deux variantes de page d'atterrissage ; la variante B a gagné de 14 % ; déployée ; nous nous attendons à voir un lift en novembre. »
+- **Ce qui s'est passé** (résultats dans le monde réel) : « Le trafic organique a augmenté de 18 % sur un mois, principalement porté par [facteurs spécifiques]. »
 
-Both belong in the report, but mixing them causes confusion.
+Les deux ont leur place dans le rapport, mais les mélanger crée de la confusion.
 
-### 6. Keep the structure consistent month-to-month
+### 6. Garder une structure cohérente d'un mois à l'autre
 
-Clients build a mental model of the report structure over time. Inconsistent structure forces them to re-orient every month.
+Les clients construisent un modèle mental de la structure du rapport au fil du temps. Une structure incohérente les oblige à se réorienter chaque mois.
 
-### 7. Close every loop from the prior month
+### 7. Boucler chaque point du mois précédent
 
-If last month's report said "we will test X next month," this month's report says what happened with X. No silent dropping of past commitments.
+Si le rapport du mois dernier disait « nous testerons X le mois prochain », le rapport de ce mois dit ce qui s'est passé avec X. Aucun engagement passé ne doit être abandonné silencieusement.
 
-## Cadence-Specific Reports
+## Rapports spécifiques au rythme
 
-The plugin supports differentiated reports by cadence (see [reporting-cadence.md](reporting-cadence.md) for the full cadence framework):
+Le plugin prend en charge des rapports différenciés par rythme (voir [reporting-cadence.md](reporting-cadence.md) pour le cadre complet des rythmes) :
 
-- **Daily reports:** spend pace, anomalies, delivery status. Internal only, very brief.
-- **Weekly reports:** campaign-level performance, creative, search terms. Internal team operating doc.
-- **Monthly reports:** the structure above. Client-facing, primary communication tool.
-- **Quarterly reports:** strategy refresh, full retrospective, scenario re-forecast. Client-facing, decision document.
-- **Annual reports:** full year retrospective, new Growth Plan input. Client-facing, strategic.
+- **Rapports quotidiens :** rythme de dépense, anomalies, statut de diffusion. Interne uniquement, très bref.
+- **Rapports hebdomadaires :** performance au niveau campagne, créations, termes de recherche. Document d'exploitation de l'équipe interne.
+- **Rapports mensuels :** la structure ci-dessus. Destiné au client, principal outil de communication.
+- **Rapports trimestriels :** actualisation de la stratégie, rétrospective complète, re-prévision de scénarios. Destiné au client, document de décision.
+- **Rapports annuels :** rétrospective de l'année complète, apport au nouveau Plan de Croissance. Destiné au client, stratégique.
 
 ## Production
 
-Use:
+Utiliser :
 
 ```
 /digital-marketing-pro:performance-report --cadence monthly --period 2026-04
 ```
 
-The skill reads:
+La compétence lit :
 
-- Performance data from the cached daily pulls (GA4, ad platforms, CRM)
-- KPI targets from the Growth Plan and Yearly Planner
-- The prior month's report (to close loops)
-- The Living Project Instruction File (for current truth)
+- Les données de performance issues des extractions quotidiennes en cache (GA4, plateformes publicitaires, CRM)
+- Les objectifs de KPI du Plan de Croissance et du Planificateur Annuel
+- Le rapport du mois précédent (pour boucler les points)
+- Le Fichier d'Instructions Vivant du Projet (pour la vérité actuelle)
 
-And produces the 9-section report. Output lands at `engagements/{engagement-id}/reports/monthly/{period}-monthly-report.md` with PDF export.
+Et produit le rapport en 9 sections. Le livrable atterrit dans `engagements/{engagement-id}/reports/monthly/{period}-monthly-report.md` avec export PDF.
 
-## Related references
+## Références associées
 
-- [growth-plan-template.md](growth-plan-template.md) — KPIs are set in Section 7 of Growth Plan
-- [yearly-planner-template.md](yearly-planner-template.md) — monthly targets cascade from Yearly Planner
-- [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md) — Section 7 framework
-- [three-scenario-forecasting.md](three-scenario-forecasting.md) — actuals vs scenarios
+- [growth-plan-template.md](growth-plan-template.md) — les KPI sont définis dans la Section 7 du Plan de Croissance
+- [yearly-planner-template.md](yearly-planner-template.md) — les objectifs mensuels découlent du Planificateur Annuel
+- [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md) — cadre de la Section 7
+- [three-scenario-forecasting.md](three-scenario-forecasting.md) — réel vs scénarios

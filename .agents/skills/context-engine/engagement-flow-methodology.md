@@ -1,107 +1,107 @@
-# Engagement Flow Methodology
+# Méthodologie de flux d'engagement
 
-The 12-Part sequential engagement methodology used by every brand engagement in this plugin. This is the spine that every command, skill, and agent reads back to.
+La méthodologie séquentielle d'engagement en 12 parties utilisée par tout engagement de marque dans ce plugin. C'est l'ossature à laquelle chaque commande, compétence et agent se réfère.
 
-## Why this exists
+## Pourquoi cela existe
 
-Most marketing tools generate isolated outputs — a campaign brief here, an email there, a content piece somewhere else. There is no canonical sequence, no shared state, no enforced structure. The result is inconsistent depth, missed dependencies, and outputs that do not compound across engagements.
+La plupart des outils marketing génèrent des livrables isolés — un brief de campagne ici, un e-mail là, un contenu ailleurs. Il n'existe pas de séquence canonique, pas d'état partagé, pas de structure imposée. Le résultat est une profondeur incohérente, des dépendances manquées, et des livrables qui ne se cumulent pas d'un engagement à l'autre.
 
-This methodology fixes that by making every engagement run through the same 12-Part sequence, producing the same set of files in the same order, with explicit dependency rules between them.
+Cette méthodologie corrige cela en faisant passer chaque engagement par la même séquence en 12 parties, produisant le même ensemble de fichiers dans le même ordre, avec des règles de dépendance explicites entre eux.
 
-## The 12 Parts
+## Les 12 parties
 
-| Part | Name | Type | Output |
+| Partie | Nom | Type | Livrable |
 |------|------|------|--------|
-| 1 | Client Inputs | Intake | Stone vs Opinion intake document |
-| 2 | External Research | Unbiased research | 3 research documents (industry, customer demand signals, ecosystem scan) |
-| 3 | Four Core Documents | Proprietary strategy depth | 4 documents, 61 total steps |
-| 4 | Competitive + Customer + Market Analysis | Unbiased research | 4 documents (4.1–4.4) |
-| 5 | Client Validation Document | Client-facing | The one true stop. Client accepts/rejects/edits each finding |
-| 6 | Selective v2 Re-runs | Proprietary strategy depth | Subset of Part 3 + Part 4 docs re-run per Decision Matrix |
-| 7 | Preparation Documents | Internal operating | 6 documents (campaign architecture, naming conventions, approval chains, KPI tree, content pillars, asset inventory) |
-| 8 | Growth Plan + Yearly Planner | Client-facing | The flagship deliverables (11-section Growth Plan + 12-month Yearly Planner) |
-| 9 | Channel Strategy Fan-out | Channel execution | Up to 17 channel documents grouped into 7 families |
-| 10 | Execution Artefacts | Channel execution | Communication outputs (ad copy, post copy, headlines, CTAs) |
-| 11 | AI Creative Instructions | Channel execution | Visual asset briefs |
-| 12 | Continuous Improvement Loop | Continuous | Market + operating signals → product/offering decisions |
+| 1 | Éléments fournis par le client | Prise de connaissance | Document de prise de connaissance Stone vs Opinion |
+| 2 | Recherche externe | Recherche non biaisée | 3 documents de recherche (secteur, signaux de demande client, analyse de l'écosystème) |
+| 3 | Quatre documents centraux | Profondeur stratégique propriétaire | 4 documents, 61 étapes au total |
+| 4 | Analyse concurrentielle + client + marché | Recherche non biaisée | 4 documents (4.1–4.4) |
+| 5 | Document de validation client | Destiné au client | Le seul point d'arrêt véritable. Le client accepte/rejette/modifie chaque constat |
+| 6 | Relances sélectives v2 | Profondeur stratégique propriétaire | Sous-ensemble des documents de la Partie 3 + Partie 4 relancé selon la matrice de décision |
+| 7 | Documents de préparation | Exploitation interne | 6 documents (architecture de campagne, conventions de nommage, chaînes d'approbation, arbre de KPI, piliers de contenu, inventaire d'actifs) |
+| 8 | Plan de croissance + planificateur annuel | Destiné au client | Les livrables phares (Plan de Croissance en 11 sections + Planificateur Annuel sur 12 mois) |
+| 9 | Déploiement de la stratégie par canal | Exécution par canal | Jusqu'à 17 documents de canal regroupés en 7 familles |
+| 10 | Artefacts d'exécution | Exécution par canal | Livrables de communication (texte publicitaire, texte de publication, titres, CTA) |
+| 11 | Instructions créatives IA | Exécution par canal | Briefs d'actifs visuels |
+| 12 | Boucle d'amélioration continue | Continu | Signaux de marché + d'exploitation → décisions produit/offre |
 
-## Why this sequence
+## Pourquoi cette séquence
 
-The order is not arbitrary. Each part feeds the next:
+L'ordre n'est pas arbitraire. Chaque partie alimente la suivante :
 
-1. **Part 1 captures only what the client knows for certain (Stone) and what they believe (Opinion, tagged as hypothesis).** This separation matters — the unbiased research phase that follows must not be contaminated by what the client thinks about themselves.
+1. **La Partie 1 ne capture que ce que le client sait avec certitude (Stone) et ce qu'il croit (Opinion, étiquetée comme hypothèse).** Cette séparation est importante — la phase de recherche non biaisée qui suit ne doit pas être contaminée par ce que le client pense de lui-même.
 
-2. **Parts 2–4 are unbiased external research — no client documents used.** This produces a market view that is independently validated.
+2. **Les Parties 2 à 4 sont une recherche externe non biaisée — aucun document client n'est utilisé.** Cela produit une vision du marché validée de manière indépendante.
 
-3. **Part 5 is where the unbiased view meets the client.** The client accepts, rejects, or edits each element. This is the one true stop in the flow.
+3. **La Partie 5 est le moment où la vision non biaisée rencontre le client.** Le client accepte, rejette ou modifie chaque élément. C'est le seul point d'arrêt véritable du flux.
 
-4. **Part 6 selectively re-runs Parts 3 and 4 only where client validation materially changed something.** Most engagements need only a subset of these re-runs, not all.
+4. **La Partie 6 relance sélectivement les Parties 3 et 4 uniquement là où la validation client a matériellement changé quelque chose.** La plupart des engagements ne nécessitent qu'un sous-ensemble de ces relances, pas la totalité.
 
-5. **Parts 7–8 translate the validated position into the operating layer (preparation documents) and the client-facing deliverables (Growth Plan, Yearly Planner).**
+5. **Les Parties 7 à 8 traduisent la position validée en couche d'exploitation (documents de préparation) et en livrables destinés au client (Plan de Croissance, Planificateur Annuel).**
 
-6. **Part 9 produces the channel-by-channel strategies. Part 10 produces the execution artefacts. Part 11 produces the AI creative instructions for visual assets.**
+6. **La Partie 9 produit les stratégies canal par canal. La Partie 10 produit les artefacts d'exécution. La Partie 11 produit les instructions créatives IA pour les actifs visuels.**
 
-7. **Part 12 runs continuously from go-live**: market and operating signals flow back into product and offering decisions.
+7. **La Partie 12 s'exécute en continu à partir du lancement** : les signaux de marché et d'exploitation remontent vers les décisions produit et offre.
 
-## The Two-Views Model
+## Le modèle des deux vues (Two-Views Model)
 
-After Part 5, the engagement carries both views — never delete v1.
+Après la Partie 5, l'engagement porte les deux vues — ne jamais supprimer la v1.
 
-- **v1** = the unbiased market view from Parts 2–4 (what the market said before the client lens was applied)
-- **v2** = the client-validated view (after Part 5 acceptances/edits)
+- **v1** = la vision de marché non biaisée issue des Parties 2 à 4 (ce que le marché a dit avant l'application du prisme client)
+- **v2** = la vision validée par le client (après les acceptations/modifications de la Partie 5)
 
-Both views remain authoritative for different questions. The team and Claude select which view to consult based on the type of decision being made:
+Les deux vues restent faisant autorité pour des questions différentes. L'équipe et Claude choisissent quelle vue consulter selon le type de décision à prendre :
 
-- **Operating decisions** (channel execution, ad copy direction, content plan) — primarily v2. The business chose this path.
-- **Stress-testing or pivot conversations** (a campaign is not working; a segment is not converting as expected) — both views. v1 may have been right where v2 over-corrected, or vice versa.
-- **Ideation and suggestions** (new campaign concepts, untested segments, alternative positioning angles) — both views. Often the best ideas come from territory v1 identified that v2 deprioritised.
-- **Client conversations about why certain things are not performing** — both views. The team can articulate what the unbiased market said, what the client chose, and what the data is now suggesting.
+- **Décisions d'exploitation** (exécution des canaux, direction du texte publicitaire, plan de contenu) — principalement v2. L'entreprise a choisi cette voie.
+- **Tests de résistance ou conversations de pivot** (une campagne ne fonctionne pas ; un segment ne convertit pas comme prévu) — les deux vues. La v1 a pu avoir raison là où la v2 a sur-corrigé, ou l'inverse.
+- **Idéation et suggestions** (nouveaux concepts de campagne, segments non testés, angles de positionnement alternatifs) — les deux vues. Souvent, les meilleures idées viennent d'un territoire identifié par la v1 mais déprioritisé par la v2.
+- **Conversations client sur les raisons pour lesquelles certaines choses ne performent pas** — les deux vues. L'équipe peut articuler ce que le marché non biaisé a dit, ce que le client a choisi, et ce que les données suggèrent désormais.
 
-## Decision Matrix for v2 Re-runs
+## Matrice de décision pour les relances v2
 
-Not every Part 5 client validation triggers a full v2 re-build. The Decision Matrix governs which documents need re-running:
+Toute validation client de la Partie 5 ne déclenche pas une reconstruction complète de la v2. La matrice de décision détermine quels documents doivent être relancés :
 
-| If this changed in Part 5 | Re-run these documents |
+| Si ceci a changé dans la Partie 5 | Relancer ces documents |
 |---|---|
-| Competitors changed (added, removed, re-tiered) | All four Core Documents (3.1–3.4) AND 4.1 Competitor Ad Analysis AND 4.2 Competitor Positioning |
-| Target market data changed (geography, market size, segments) | 4.3 Customer Analysis AND 4.4 Market Analysis |
-| Audiences changed | Core Doc 3.2 (Segmentation) + Core Doc 3.3 (Brand Positioning) + Core Doc 3.4 (DMFlow) |
-| Positioning changed | Core Doc 3.3 (Brand Positioning) |
-| Budget / scope changed | Core Doc 3.4 (DMFlow) |
-| Minor corrections only | Update inline in v1, tag as v1.1. No full re-run |
+| Les concurrents ont changé (ajoutés, retirés, re-hiérarchisés) | Les quatre Documents Centraux (3.1–3.4) ET 4.1 Analyse Publicitaire Concurrentielle ET 4.2 Positionnement Concurrentiel |
+| Les données de marché cible ont changé (géographie, taille de marché, segments) | 4.3 Analyse Client ET 4.4 Analyse de Marché |
+| Les audiences ont changé | Document Central 3.2 (Segmentation) + Document Central 3.3 (Positionnement de Marque) + Document Central 3.4 (DMFlow) |
+| Le positionnement a changé | Document Central 3.3 (Positionnement de Marque) |
+| Le budget/périmètre a changé | Document Central 3.4 (DMFlow) |
+| Corrections mineures uniquement | Mettre à jour en ligne dans la v1, étiqueter comme v1.1. Aucune relance complète |
 
-Most engagements trigger only a subset of these. The matrix prevents over-re-running (which wastes tokens) and under-re-running (which leaves stale assumptions in the v2 layer).
+La plupart des engagements ne déclenchent qu'un sous-ensemble de ces cas. La matrice évite le sur-relancement (qui gaspille des tokens) et le sous-relancement (qui laisse des hypothèses obsolètes dans la couche v2).
 
-See [decision-matrix-rerun.md](decision-matrix-rerun.md) for the full specification.
+Voir [decision-matrix-rerun.md](decision-matrix-rerun.md) pour la spécification complète.
 
-## The Update-Back Rule
+## La règle de mise à jour rétroactive (Update-Back Rule)
 
-After Part 7 onwards, the team operates on v2. But corrections continue to surface — a TG definition turns out to be wrong in field, a competitor is mis-classified, a positioning claim does not hold up. When this happens, the correction is made in the source document, not just in the deliverable that caught the error.
+À partir de la Partie 7, l'équipe opère sur la v2. Mais des corrections continuent d'apparaître — une définition de TG s'avère incorrecte sur le terrain, un concurrent est mal classé, une affirmation de positionnement ne tient pas. Lorsque cela se produit, la correction est apportée au document source, pas seulement au livrable qui a révélé l'erreur.
 
-**Process:**
+**Processus :**
 
-1. Validate the correction with the senior project owner / strategy lead
-2. Update the source document as a new version (v2.1, v2.2, etc.)
-3. Record the change in the document's change log
-4. Log the update in the Living Project Instruction File so the rest of the team picks it up
+1. Valider la correction avec le responsable senior du projet / le lead stratégie
+2. Mettre à jour le document source en tant que nouvelle version (v2.1, v2.2, etc.)
+3. Enregistrer le changement dans le journal des modifications du document
+4. Consigner la mise à jour dans le Fichier d'Instructions Vivant du Projet afin que le reste de l'équipe en prenne connaissance
 
-This keeps the project honest over the life of the engagement instead of silently drifting.
+Cela maintient l'honnêteté du projet tout au long de la durée de l'engagement au lieu de dériver silencieusement.
 
-See [update-back-rule.md](update-back-rule.md) for the full protocol.
+Voir [update-back-rule.md](update-back-rule.md) pour le protocole complet.
 
-## File Counts per Engagement
+## Nombre de fichiers par engagement
 
-A typical full-suite engagement produces ~50–60 files. The breakdown:
+Un engagement complet type produit environ 50 à 60 fichiers. La répartition :
 
-- **Numbered flow files (Parts 1 through 11):** ~28 to 48 files depending on scope. The variability is mostly in Part 9 (1 to 17 channels in scope) and Part 6 (0 to 6 v2 re-runs).
-- **Project-layer files:** Living Project Instruction File, Setup + Orientation + Inventory guides, performance data exports (6 to 9 files), Current Standing Document, QC library (8 documents), reference framework guides (3 to 5).
-- **Supplementary research** as engagements demand it.
+- **Fichiers de flux numérotés (Parties 1 à 11) :** environ 28 à 48 fichiers selon le périmètre. La variabilité se situe principalement dans la Partie 9 (1 à 17 canaux dans le périmètre) et la Partie 6 (0 à 6 relances v2).
+- **Fichiers de la couche projet :** Fichier d'Instructions Vivant du Projet, guides de Configuration + Orientation + Inventaire, exports de données de performance (6 à 9 fichiers), Document de Situation Actuelle, bibliothèque QC (8 documents), guides de cadre de référence (3 à 5).
+- **Recherche complémentaire** selon les besoins de l'engagement.
 
-Out of the entire numbered flow, only **Parts 5 and 8 produce client-facing deliverables** — the Client Validation Document and the Growth Plan + Yearly Planner. That is two to three branded files out of ~30+ internal documents. This is intentional. The internal documents prioritise depth, rationale, and assumption discipline; the client-facing documents prioritise polish and narrative coherence.
+Sur l'ensemble du flux numéroté, seules les **Parties 5 et 8 produisent des livrables destinés au client** — le Document de Validation Client et le Plan de Croissance + Planificateur Annuel. Cela représente deux à trois fichiers à l'image de marque sur plus de 30 documents internes. C'est intentionnel. Les documents internes privilégient la profondeur, la justification et la rigueur des hypothèses ; les documents destinés au client privilégient la finition et la cohérence narrative.
 
-## The Engagement Directory Structure
+## La structure du répertoire d'engagement
 
-Every engagement lives at `~/.claude-marketing/brands/{brand-slug}/engagements/{engagement-id}/` with this canonical structure:
+Chaque engagement réside dans `~/.claude-marketing/brands/{brand-slug}/engagements/{engagement-id}/` avec cette structure canonique :
 
 ```
 engagements/{engagement-id}/
@@ -145,43 +145,43 @@ engagements/{engagement-id}/
     └── (signals + product/offering recommendations)
 ```
 
-## Account / Compute Split
+## Répartition compte / calcul
 
-The methodology supports running parts from different Claude accounts to leverage token limits. None of this is strict — any team can produce any part from any account. The recommendation simply optimises across token limits and the typical workflow:
+La méthodologie permet d'exécuter des parties depuis différents comptes Claude afin de tirer parti des limites de tokens. Rien de tout cela n'est strict — n'importe quelle équipe peut produire n'importe quelle partie depuis n'importe quel compte. La recommandation optimise simplement en fonction des limites de tokens et du flux de travail habituel :
 
-- **Part 1** (Client Inputs) — done during engagement setup
-- **Parts 2 and 4** (External research) — these do not depend on the proprietary framework library, so they can be produced without any setup overhead. This frees other accounts to focus on the deeper strategy work.
-- **Parts 3, 6, 7** (Proprietary strategy) — typically done where the Four Core Documents framework, B2B Pointers, Communication Playbook, and other reference guides are loaded.
-- **Part 5** (Client Validation Document) — requires branded output.
-- **Part 8** (Client-facing strategy) — same; client-branded.
-- **Part 9** (Channel strategy) — typically done where each channel doc benefits from access to the channel-specific guides.
-- **Parts 10 and 11** (Execution + AI Creative) — typically distributed to delivery teams' own accounts.
+- **Partie 1** (Éléments fournis par le client) — réalisée durant la configuration de l'engagement
+- **Parties 2 et 4** (Recherche externe) — ne dépendent pas de la bibliothèque de cadres propriétaires, elles peuvent donc être produites sans surcharge de configuration. Cela libère d'autres comptes pour se concentrer sur le travail stratégique plus approfondi.
+- **Parties 3, 6, 7** (Stratégie propriétaire) — généralement réalisées là où le cadre des Quatre Documents Centraux, les Pointeurs B2B, le Playbook de Communication et les autres guides de référence sont chargés.
+- **Partie 5** (Document de Validation Client) — nécessite un livrable à l'image de marque.
+- **Partie 8** (Stratégie destinée au client) — de même ; à l'image de marque du client.
+- **Partie 9** (Stratégie par canal) — généralement réalisée là où chaque document de canal bénéficie de l'accès aux guides spécifiques au canal.
+- **Parties 10 et 11** (Exécution + Créatif IA) — généralement distribuées aux propres comptes des équipes de livraison.
 
-All outputs land in the same per-engagement directory regardless of which account produced them.
+Tous les livrables aboutissent dans le même répertoire par engagement, quel que soit le compte qui les a produits.
 
-## How skills consult this methodology
+## Comment les compétences consultent cette méthodologie
 
-Every skill in this plugin that produces engagement-related output:
+Chaque compétence de ce plugin qui produit un livrable lié à un engagement :
 
-1. Reads the current part from `_engagement.json`
-2. Reads the Living Instruction File for "what is currently true"
-3. Reads the relevant v1/v2 source documents
-4. Produces output that lands in the canonical part directory
-5. Updates `_engagement.json` and the Living Instruction File on completion
+1. Lit la partie en cours depuis `_engagement.json`
+2. Lit le Fichier d'Instructions Vivant pour connaître « ce qui est actuellement vrai »
+3. Lit les documents source v1/v2 pertinents
+4. Produit un livrable qui aboutit dans le répertoire de partie canonique
+5. Met à jour `_engagement.json` et le Fichier d'Instructions Vivant à l'achèvement
 
-Skills must declare which part they belong to in their frontmatter:
+Les compétences doivent déclarer à quelle partie elles appartiennent dans leur en-tête (frontmatter) :
 
 ```yaml
 engagement-part: 3.1   # or "9", "8", "12", etc.
 ```
 
-## Related References
+## Références associées
 
-- [four-core-documents-spec.md](four-core-documents-spec.md) — 61-step specification for Part 3
-- [two-views-model.md](two-views-model.md) — full v1/v2 architecture
-- [decision-matrix-rerun.md](decision-matrix-rerun.md) — when to re-run what
-- [update-back-rule.md](update-back-rule.md) — versioning protocol
-- [stone-vs-opinion.md](stone-vs-opinion.md) — confidence tagging
-- [living-instruction-file-spec.md](living-instruction-file-spec.md) — LIF schema
-- [channel-families.md](channel-families.md) — Part 9 channel grouping
-- [growth-plan-template.md](growth-plan-template.md) — Part 8 deliverable template
+- [four-core-documents-spec.md](four-core-documents-spec.md) — spécification en 61 étapes pour la Partie 3
+- [two-views-model.md](two-views-model.md) — architecture complète v1/v2
+- [decision-matrix-rerun.md](decision-matrix-rerun.md) — quand relancer quoi
+- [update-back-rule.md](update-back-rule.md) — protocole de versioning
+- [stone-vs-opinion.md](stone-vs-opinion.md) — marquage de la fiabilité
+- [living-instruction-file-spec.md](living-instruction-file-spec.md) — schéma du LIF
+- [channel-families.md](channel-families.md) — regroupement des canaux de la Partie 9
+- [growth-plan-template.md](growth-plan-template.md) — modèle du livrable de la Partie 8

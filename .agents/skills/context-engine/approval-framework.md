@@ -1,91 +1,91 @@
-# Approval Framework — Risk Classification & Approval Rules
+# Cadre d'approbation — Classification des risques et règles d'approbation
 
-Every marketing action executed through the Digital Marketing Pro plugin is classified by risk level. This framework determines whether an action can auto-execute or requires explicit user approval. Agents must evaluate risk before any execution step.
+Chaque action marketing exécutée via le plugin Digital Marketing Pro est classée selon un niveau de risque. Ce cadre détermine si une action peut s'exécuter automatiquement ou nécessite l'approbation explicite de l'utilisateur. Les agents doivent évaluer le risque avant toute étape d'exécution.
 
 ---
 
-## 1. Risk Levels
+## 1. Niveaux de risque
 
-Actions are classified into four risk levels. The classification determines the approval flow.
+Les actions sont classées en quatre niveaux de risque. La classification détermine le flux d'approbation.
 
-| Risk Level | Approval Required | Response Time | Description |
+| Niveau de risque | Approbation requise | Délai de réponse | Description |
 |---|---|---|---|
-| **Low** | Auto-confirm + execute | Immediate | Read-only operations and internal-only outputs. No external audience impact, no budget spend, no data modification. |
-| **Medium** | Review + explicit approve | User confirms once | External-facing content with limited blast radius. Moderate audience size, no budget commitment, reversible actions. |
-| **High** | Budget/data confirmation required | User confirms with specifics (amount, count) | Actions involving money, large audiences, or bulk data changes. Requires the user to acknowledge the specific scope. |
-| **Critical** | Double confirmation + compliance review | User confirms twice; compliance rules auto-checked | High-spend actions, regulated industries, large-scale sends, or irreversible operations. |
+| **Faible** | Confirmation automatique + exécution | Immédiat | Opérations en lecture seule et livrables strictement internes. Aucun impact sur une audience externe, aucune dépense budgétaire, aucune modification de données. |
+| **Moyen** | Revue + approbation explicite | L'utilisateur confirme une fois | Contenu destiné à l'externe avec un rayon d'impact limité. Audience de taille modérée, aucun engagement budgétaire, actions réversibles. |
+| **Élevé** | Confirmation budget/données requise | L'utilisateur confirme avec des précisions (montant, nombre) | Actions impliquant de l'argent, de larges audiences, ou des modifications de données en masse. Nécessite que l'utilisateur reconnaisse la portée spécifique. |
+| **Critique** | Double confirmation + revue de conformité | L'utilisateur confirme deux fois ; les règles de conformité sont vérifiées automatiquement | Actions à forte dépense, secteurs réglementés, envois à grande échelle, ou opérations irréversibles. |
 
-### Low Risk — Auto-Confirm
+### Risque faible — Confirmation automatique
 
-| Action | Why Low |
+| Action | Pourquoi faible |
 |---|---|
-| Slack notifications and internal messages | Internal only, no external audience |
-| Google Sheets exports and data dumps | Read/write to user's own workspace |
-| Knowledge storage and memory operations | Internal persistence, no external impact |
-| Read-only analytics queries | No data modification, no audience impact |
-| Internal performance reports | Not client-facing, no external distribution |
-| Brand voice scoring and content grading | Analysis only, no publishing |
-| Keyword research and competitor lookups | Research only, no execution |
+| Notifications Slack et messages internes | Usage interne uniquement, aucune audience externe |
+| Exports Google Sheets et extractions de données | Lecture/écriture sur l'espace de travail propre de l'utilisateur |
+| Stockage de connaissances et opérations de mémoire | Persistance interne, aucun impact externe |
+| Requêtes analytiques en lecture seule | Aucune modification de données, aucun impact sur l'audience |
+| Rapports de performance internes | Non destinés au client, aucune diffusion externe |
+| Notation de la voix de marque et évaluation du contenu | Analyse uniquement, aucune publication |
+| Recherche de mots-clés et analyses concurrentielles | Recherche uniquement, aucune exécution |
 
-### Medium Risk — Review + Approve
+### Risque moyen — Revue + approbation
 
-| Action | Why Medium |
+| Action | Pourquoi moyen |
 |---|---|
-| Blog post publishing | External-facing but single URL, reversible (set to draft) |
-| Social media post scheduling | External-facing but limited to followers, deletable |
-| Email campaigns <1,000 recipients | External-facing, moderate audience, cannot recall but limited blast radius |
-| CRM individual contact creation (<10 records) | Data modification but small scope, reversible |
-| Audience segment creation | No direct send, but defines future targeting |
-| Report delivery to external recipients | Client-facing content, cannot unsend |
-| Content calendar updates | Planning artifact, no direct execution |
+| Publication d'un article de blog | Destiné à l'externe mais une seule URL, réversible (repasser en brouillon) |
+| Programmation de publications sur les réseaux sociaux | Destiné à l'externe mais limité aux abonnés, supprimable |
+| Campagnes e-mail <1 000 destinataires | Destiné à l'externe, audience modérée, non rappelable mais rayon d'impact limité |
+| Création de contacts CRM individuels (<10 enregistrements) | Modification de données mais portée réduite, réversible |
+| Création de segments d'audience | Aucun envoi direct, mais définit un ciblage futur |
+| Envoi de rapports à des destinataires externes | Contenu destiné au client, ne peut pas être annulé après envoi |
+| Mises à jour du calendrier de contenu | Artefact de planification, aucune exécution directe |
 
-### High Risk — Budget/Data Confirmation
+### Risque élevé — Confirmation budget/données
 
-| Action | Why High |
+| Action | Pourquoi élevé |
 |---|---|
-| Ad campaign creation (any platform) | Budget commitment begins immediately upon activation |
-| Budget changes >$100/day | Financial impact, may exceed approved spend |
-| Bulk email sends (1,000-10,000 recipients) | Large audience, cannot recall, reputation risk |
-| CRM bulk imports (100-1,000 records) | Data integrity risk at scale |
-| SMS campaigns (any size) | Per-message cost, compliance complexity, cannot recall |
-| CRM field updates affecting >10 records | Bulk data modification, potential data loss |
-| Ad creative refresh on active campaigns | May disrupt performing campaigns |
+| Création de campagne publicitaire (toute plateforme) | L'engagement budgétaire commence immédiatement à l'activation |
+| Modifications de budget >100 $/jour | Impact financier, peut dépasser la dépense approuvée |
+| Envois d'e-mails en masse (1 000-10 000 destinataires) | Large audience, non rappelable, risque pour la réputation |
+| Imports CRM en masse (100-1 000 enregistrements) | Risque d'intégrité des données à grande échelle |
+| Campagnes SMS (toute taille) | Coût par message, complexité de conformité, non rappelable |
+| Mises à jour de champs CRM affectant >10 enregistrements | Modification de données en masse, perte de données potentielle |
+| Renouvellement de créations publicitaires sur des campagnes actives | Peut perturber des campagnes performantes |
 
-### Critical Risk — Double Confirmation + Compliance
+### Risque critique — Double confirmation + conformité
 
-| Action | Why Critical |
+| Action | Pourquoi critique |
 |---|---|
-| Ad campaigns with daily budget >$1,000 | Significant financial exposure |
-| Bulk email sends >10,000 recipients | Major reputation risk, deliverability impact |
-| Regulated industry campaigns (healthcare, finance, alcohol, cannabis, gambling, pharmaceuticals) | Legal liability, potential fines |
-| CRM data deletion (any volume) | Irreversible data loss |
-| WhatsApp marketing campaigns | Per-conversation cost, template approval required, compliance complexity |
-| Actions on a new/untested platform | Unknown failure modes, no established playbook |
-| Cross-border campaigns into new jurisdictions | New compliance requirements may apply |
-| Campaigns targeting minors or age-restricted audiences | COPPA, GDPR Article 8, platform age-gate requirements |
+| Campagnes publicitaires avec budget quotidien >1 000 $ | Exposition financière significative |
+| Envois d'e-mails en masse >10 000 destinataires | Risque majeur pour la réputation, impact sur la délivrabilité |
+| Campagnes dans des secteurs réglementés (santé, finance, alcool, cannabis, jeux d'argent, pharmaceutique) | Responsabilité juridique, amendes potentielles |
+| Suppression de données CRM (tout volume) | Perte de données irréversible |
+| Campagnes marketing WhatsApp | Coût par conversation, approbation de modèle requise, complexité de conformité |
+| Actions sur une plateforme nouvelle/non testée | Modes de défaillance inconnus, aucun playbook établi |
+| Campagnes transfrontalières vers de nouvelles juridictions | De nouvelles exigences de conformité peuvent s'appliquer |
+| Campagnes ciblant des mineurs ou des audiences à accès restreint par l'âge | COPPA, article 8 du RGPD, exigences de contrôle d'âge des plateformes |
 
 ---
 
-## 2. Industry-Specific Gates
+## 2. Portes de contrôle sectorielles
 
-Campaigns in regulated industries require additional compliance checks before any risk level approval proceeds. These gates are mandatory and cannot be bypassed.
+Les campagnes dans des secteurs réglementés nécessitent des contrôles de conformité supplémentaires avant que toute approbation de niveau de risque ne puisse avancer. Ces portes sont obligatoires et ne peuvent pas être contournées.
 
-| Industry | Required Gate | Specific Checks |
+| Secteur | Porte requise | Contrôles spécifiques |
 |---|---|---|
-| **Healthcare** | HIPAA review | No PHI in marketing content; no unapproved treatment claims; "consult your healthcare provider" disclaimer; fair balance for Rx products; medical claims substantiation |
-| **Finance** | FINRA/SEC disclaimers | "Past performance" warning on any returns mention; APR disclosure for credit products; no guaranteed return language; fee disclosure; net-of-fee performance data |
-| **Alcohol** | Age gate + TTB compliance | 21+ age verification on landing pages; no minor-appealing imagery; responsible drinking messaging; no health claims; 70%+ adult audience threshold for ad placement |
-| **Cannabis** | Jurisdiction + platform check | Legal jurisdiction verification; no cross-border marketing; major ad platforms prohibit paid cannabis ads; no medical/health claims; state-specific warning language; license number disclosure |
-| **Gambling** | Responsible messaging | Responsible gambling messaging in all creatives; self-exclusion links; jurisdiction-specific licensing verification; no targeting minors; problem gambling helpline number |
-| **Pharmaceuticals** | FDA compliance | Fair balance requirement (risks and benefits); black box warning inclusion where required; no off-label promotion; DTC ad requirements; brief summary or adequate provision |
-| **Real Estate** | Fair Housing Act | Equal Housing Opportunity statement; no discriminatory language or targeting; Special Ad Category on Meta/Google; diverse imagery; no exclusionary audience criteria |
-| **Supplements** | FTC/FDA review | No disease claims; FDA structure/function disclaimer; "results not typical" for testimonials; substantiation for all efficacy claims; no "FDA approved" language |
+| **Santé** | Revue HIPAA | Aucune PHI (donnée de santé protégée) dans le contenu marketing ; aucune allégation de traitement non approuvée ; mention « consultez votre professionnel de santé » ; équilibre des informations pour les produits sur ordonnance ; justification des allégations médicales |
+| **Finance** | Mentions FINRA/SEC | Avertissement « performances passées » sur toute mention de rendement ; divulgation du TAEG pour les produits de crédit ; aucune promesse de rendement garanti ; divulgation des frais ; données de performance nettes de frais |
+| **Alcool** | Contrôle d'âge + conformité TTB | Vérification d'âge 21 ans et plus sur les pages d'atterrissage ; aucune imagerie attirante pour les mineurs ; message de consommation responsable ; aucune allégation de santé ; seuil d'audience adulte de 70 %+ pour le placement publicitaire |
+| **Cannabis** | Vérification de juridiction + plateforme | Vérification de la juridiction légale ; aucun marketing transfrontalier ; les principales plateformes publicitaires interdisent les publicités cannabis payantes ; aucune allégation médicale/de santé ; mentions d'avertissement spécifiques à l'état ; divulgation du numéro de licence |
+| **Jeux d'argent** | Message de jeu responsable | Message de jeu responsable dans toutes les créations ; liens d'auto-exclusion ; vérification des licences spécifiques à la juridiction ; aucun ciblage de mineurs ; numéro d'assistance pour le jeu problématique |
+| **Pharmaceutique** | Conformité FDA | Exigence d'équilibre des informations (risques et bénéfices) ; inclusion de l'avertissement encadré (« black box ») lorsque requis ; aucune promotion hors indication ; exigences de publicité DTC (grand public) ; résumé bref ou disposition adéquate |
+| **Immobilier** | Fair Housing Act | Déclaration d'égalité d'accès au logement ; aucun langage ou ciblage discriminatoire ; catégorie publicitaire spéciale sur Meta/Google ; imagerie diversifiée ; aucun critère d'audience excluant |
+| **Compléments alimentaires** | Revue FTC/FDA | Aucune allégation de maladie ; mention structure/fonction FDA ; « résultats non typiques » pour les témoignages ; justification pour toutes les allégations d'efficacité ; aucune mention « approuvé par la FDA » |
 
 ---
 
-## 3. Approval Flow
+## 3. Flux d'approbation
 
-Every action follows this decision tree from draft to execution.
+Chaque action suit cet arbre de décision, du brouillon à l'exécution.
 
 ```
 Draft Action
@@ -119,52 +119,52 @@ Risk Assessment (auto)
                                |-- User rejects --> Revise or cancel
 ```
 
-### Confirmation Message Templates
+### Modèles de messages de confirmation
 
-| Risk Level | Confirmation Prompt |
+| Niveau de risque | Invite de confirmation |
 |---|---|
-| **Medium** | "Ready to publish [action type] to [destination]. [Brief summary]. Proceed?" |
-| **High** | "This will [action] affecting [scope]. Daily budget: $[amount]. Audience size: [count]. Confirm to proceed." |
-| **Critical** | "CRITICAL ACTION: [action type] in [regulated industry / high-spend context]. Budget: $[amount]/day. Audience: [count] recipients in [jurisdictions]. Compliance checks passed. Please confirm to proceed." Then: "Please confirm one more time to execute this action." |
+| **Moyen** | « Prêt à publier [type d'action] vers [destination]. [Résumé bref]. Continuer ? » |
+| **Élevé** | « Ceci va [action] affectant [portée]. Budget quotidien : [montant] $. Taille de l'audience : [nombre]. Confirmez pour continuer. » |
+| **Critique** | « ACTION CRITIQUE : [type d'action] dans [secteur réglementé / contexte à forte dépense]. Budget : [montant] $/jour. Audience : [nombre] destinataires dans [juridictions]. Contrôles de conformité passés. Veuillez confirmer pour continuer. » Puis : « Veuillez confirmer une nouvelle fois pour exécuter cette action. » |
 
 ---
 
-## 4. Rollback Procedures
+## 4. Procédures d'annulation (rollback)
 
-When an executed action needs to be reversed, follow these procedures immediately.
+Lorsqu'une action exécutée doit être annulée, suivez immédiatement ces procédures.
 
-| Action Type | Rollback Procedure | Time Sensitivity | Data Recovery |
+| Type d'action | Procédure d'annulation | Sensibilité au temps | Récupération des données |
 |---|---|---|---|
-| **Blog post** | Set post status to "draft." Remove URL from sitemap. Request search engine re-crawl if indexed. Clear CDN cache. | Low (minutes to hours) | Full recovery |
-| **Email campaign** | Cannot recall sent emails. Immediately send a correction/retraction email if content was incorrect. Update suppression lists. Document the incident. | N/A — prevention is key | No recall possible |
-| **Ad campaign** | Pause campaign immediately. Review spend incurred. Document performance data before pausing. If compliance issue, also remove/archive creatives. | High (spend accumulates every minute) | Financial: partial (unspent budget returned) |
-| **Social media post** | Delete post from platform. Archive content locally. If screenshot has spread, prepare a response statement. | Medium (shares propagate quickly) | Post deleted; shares persist |
-| **CRM import** | Revert from pre-import backup snapshot (see CRM Operations Workflow step 4). Verify record count returns to pre-import state. Validate no orphaned records. | Medium | Full recovery from snapshot |
-| **SMS/WhatsApp** | Cannot recall sent messages. If ongoing campaign, pause immediately. For incorrect content, send a follow-up correction. Update opt-out lists. | N/A — prevention is key | No recall possible |
-| **Report delivery** | Send a correction notice to all recipients. Provide corrected report. Mark original as superseded. | Medium | Correction replaces original |
+| **Article de blog** | Repasser le statut de l'article en « brouillon ». Retirer l'URL du sitemap. Demander une nouvelle exploration au moteur de recherche si indexé. Vider le cache CDN. | Faible (minutes à heures) | Récupération complète |
+| **Campagne e-mail** | Impossible de rappeler les e-mails envoyés. Envoyer immédiatement un e-mail de correction/rétractation si le contenu était incorrect. Mettre à jour les listes de suppression. Documenter l'incident. | N/A — la prévention est essentielle | Aucun rappel possible |
+| **Campagne publicitaire** | Mettre la campagne en pause immédiatement. Examiner la dépense engagée. Documenter les données de performance avant la mise en pause. En cas de problème de conformité, retirer/archiver également les créations. | Élevée (la dépense s'accumule à chaque minute) | Financier : partielle (budget non dépensé restitué) |
+| **Publication sur les réseaux sociaux** | Supprimer la publication de la plateforme. Archiver le contenu localement. Si une capture d'écran a circulé, préparer une déclaration de réponse. | Moyenne (les partages se propagent rapidement) | Publication supprimée ; les partages persistent |
+| **Import CRM** | Revenir à l'instantané de sauvegarde pré-import (voir l'étape 4 du flux d'opérations CRM). Vérifier que le nombre d'enregistrements revient à l'état pré-import. Valider l'absence d'enregistrements orphelins. | Moyenne | Récupération complète depuis l'instantané |
+| **SMS/WhatsApp** | Impossible de rappeler les messages envoyés. Si la campagne est en cours, la mettre en pause immédiatement. Pour un contenu incorrect, envoyer une correction de suivi. Mettre à jour les listes de désabonnement. | N/A — la prévention est essentielle | Aucun rappel possible |
+| **Envoi de rapport** | Envoyer un avis de correction à tous les destinataires. Fournir le rapport corrigé. Marquer l'original comme remplacé. | Moyenne | La correction remplace l'original |
 
-### Rollback Logging
+### Journalisation des annulations
 
-Every rollback must be logged with:
-- Original action ID and timestamp
-- Rollback reason (compliance issue, incorrect content, user request, error)
-- Rollback steps taken
-- Verification that rollback completed successfully
-- Incident review notes (what went wrong, how to prevent recurrence)
+Chaque annulation doit être journalisée avec :
+- L'ID et l'horodatage de l'action d'origine
+- Le motif de l'annulation (problème de conformité, contenu incorrect, demande de l'utilisateur, erreur)
+- Les étapes d'annulation effectuées
+- La vérification que l'annulation s'est terminée avec succès
+- Les notes de revue d'incident (ce qui s'est mal passé, comment éviter que cela se reproduise)
 
 ---
 
-## 5. Escalation Rules
+## 5. Règles d'escalade
 
-Escalate to the user immediately (do not proceed with execution) when any of the following conditions are detected.
+Escaladez vers l'utilisateur immédiatement (ne poursuivez pas l'exécution) lorsque l'une des conditions suivantes est détectée.
 
-| Trigger | Threshold | Escalation Action |
+| Déclencheur | Seuil | Action d'escalade |
 |---|---|---|
-| **Budget overrun** | Actual spend exceeds planned budget by >10% | Pause campaign. Report: planned vs. actual spend, projected overage, recommended action. |
-| **Compliance flag** | Any BLOCK-level compliance violation detected (see `compliance-rules.md` severity levels) | Halt execution. Report: specific rule violated, content that triggered the flag, recommended fix. |
-| **Platform error** | API returns error on campaign creation or modification | Retry once after 60 seconds. If second attempt fails, report: error code, error message, platform status page link. |
-| **Unexpected audience size** | Audience size differs from estimate by >50% (either direction) | Pause before send/launch. Report: expected vs. actual count, possible causes (segment definition change, list growth/decay). |
-| **Negative sentiment spike** | Social listening or engagement metrics show >3x normal negative response rate within 2 hours | Alert user. Provide: negative comment samples, sentiment score, recommended response (pause campaign, prepare statement, or monitor). |
-| **Deliverability drop** | Email bounce rate >5% or spam complaint rate >0.3% during a send | Pause remaining sends. Report: bounce/complaint count, affected ISPs, recommended list hygiene actions. |
-| **Performance anomaly** | Any primary KPI drops >50% vs. previous period with no known cause | Alert user. Provide: metric comparison, possible causes (tracking issue, platform change, competitive action, seasonality). |
-| **Data integrity issue** | CRM import validation finds >5% of records failing validation | Halt import. Report: failure count, failure reasons, sample of failed records, recommended fix. |
+| **Dépassement de budget** | La dépense réelle dépasse le budget prévu de plus de 10 % | Mettre la campagne en pause. Rapport : dépense prévue vs réelle, dépassement projeté, action recommandée. |
+| **Signalement de conformité** | Toute violation de conformité de niveau BLOCAGE détectée (voir les niveaux de gravité dans `compliance-rules.md`) | Arrêter l'exécution. Rapport : règle spécifique violée, contenu ayant déclenché le signalement, correction recommandée. |
+| **Erreur de plateforme** | L'API renvoie une erreur lors de la création ou de la modification de campagne | Réessayer une fois après 60 secondes. Si la seconde tentative échoue, rapport : code d'erreur, message d'erreur, lien vers la page de statut de la plateforme. |
+| **Taille d'audience inattendue** | La taille de l'audience diffère de l'estimation de plus de 50 % (dans un sens ou dans l'autre) | Mettre en pause avant l'envoi/le lancement. Rapport : nombre attendu vs réel, causes possibles (changement de définition du segment, croissance/déclin de la liste). |
+| **Pic de sentiment négatif** | L'écoute sociale ou les métriques d'engagement montrent un taux de réponse négative supérieur à 3 fois la normale en 2 heures | Alerter l'utilisateur. Fournir : exemples de commentaires négatifs, score de sentiment, réponse recommandée (mettre en pause la campagne, préparer une déclaration, ou surveiller). |
+| **Baisse de délivrabilité** | Taux de rebond e-mail >5 % ou taux de plaintes pour spam >0,3 % durant un envoi | Mettre en pause les envois restants. Rapport : nombre de rebonds/plaintes, FAI affectés, actions d'hygiène de liste recommandées. |
+| **Anomalie de performance** | Tout KPI principal chute de plus de 50 % par rapport à la période précédente sans cause connue | Alerter l'utilisateur. Fournir : comparaison de métriques, causes possibles (problème de suivi, changement de plateforme, action concurrentielle, saisonnalité). |
+| **Problème d'intégrité des données** | La validation de l'import CRM détecte plus de 5 % d'enregistrements en échec de validation | Arrêter l'import. Rapport : nombre d'échecs, motifs d'échec, échantillon d'enregistrements en échec, correction recommandée. |

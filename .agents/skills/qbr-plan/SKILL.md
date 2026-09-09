@@ -1,63 +1,63 @@
 ---
 name: qbr-plan
-description: "Prepare a complete Quarterly Business Review package from the quarter's campaign data: a performance scorecard of goals vs actuals vs benchmarks, top-3 wins with attribution stories, underperformance root-cause analysis, ROI and budget-efficiency breakdowns, 3-5 strategic recommendations, upsell business cases, a next-quarter roadmap, action items with owners, and an account health score. Triggers on \"/digital-marketing-pro:qbr-plan\", \"prepare the QBR\", \"build the quarterly review for this client\", \"quarterly business review deck\", \"summarize the quarter for the client meeting\". Reads the brand profile, guidelines, custom templates, and agency SOPs; works from campaign data the user supplies and structures the presentation content — it does not pull live platform metrics itself."
+description: "Préparer un package complet de Revue Business Trimestrielle à partir des données de campagne du trimestre : une scorecard de performance objectifs vs réels vs benchmarks, top 3 des réussites avec histoires d'attribution, analyse des causes racines des sous-performances, décomposition du ROI et de l'efficacité budgétaire, 3-5 recommandations stratégiques, cas d'affaires d'upsell, une feuille de route pour le prochain trimestre, des éléments d'action avec responsables, et un score de santé de compte. Se déclenche sur \"/digital-marketing-pro:qbr-plan\", \"prepare the QBR\", \"build the quarterly review for this client\", \"quarterly business review deck\", \"summarize the quarter for the client meeting\". Lit le profil de marque, les guidelines, les modèles personnalisés, et les procédures d'agence ; travaille à partir des données de campagne fournies par l'utilisateur et structure le contenu de la présentation — il ne récupère pas lui-même les métriques de plateforme en direct."
 ---
 
 # /digital-marketing-pro:qbr-plan
 
-## Purpose
+## Objectif
 
-Prepare a comprehensive Quarterly Business Review presentation with performance retrospective, strategic insights, and forward-looking roadmap. Translates raw campaign data into a compelling narrative that demonstrates value, addresses challenges transparently, and builds confidence in the next quarter's strategy.
+Préparer une présentation de Revue Business Trimestrielle complète avec rétrospective de performance, insights stratégiques, et feuille de route prospective. Traduit les données brutes de campagne en un récit convaincant qui démontre la valeur, adresse les défis avec transparence, et construit la confiance dans la stratégie du prochain trimestre.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Quarter being reviewed**: Specific quarter and year (e.g., Q4 2025) and the exact date range covered
-- **Active campaigns and channels**: All campaigns that ran during the quarter with channels, objectives, and status (active, paused, completed)
-- **Goals vs actual results**: Original quarterly targets and actual performance for each KPI — traffic, leads, conversions, revenue, ROAS, etc.
-- **Budget vs actual spend**: Planned budget allocation by channel and actual spend with variance explanations
-- **Key wins and challenges**: Notable successes worth highlighting and obstacles encountered with impact assessment
-- **Next quarter objectives**: Business goals and marketing priorities already identified for the upcoming quarter
-- **Client satisfaction signals**: NPS scores, feedback received, support tickets, or qualitative sentiment from the client team
-- **Upsell/cross-sell opportunities**: Additional services, expanded scope, or new channels the client could benefit from
-- **Competitive shifts**: Notable competitor moves, market changes, or industry trends observed during the quarter
-- **Team changes**: Any staffing changes on agency or client side that affected the engagement
+- **Trimestre en revue** : Trimestre et année spécifiques (par exemple, Q4 2025) et la plage de dates exacte couverte
+- **Campagnes et canaux actifs** : Toutes les campagnes ayant tourné pendant le trimestre avec les canaux, objectifs, et statut (actif, en pause, terminé)
+- **Objectifs vs résultats réels** : Cibles trimestrielles initiales et performance réelle pour chaque KPI — trafic, leads, conversions, revenu, ROAS, etc.
+- **Budget vs dépense réelle** : Allocation budgétaire planifiée par canal et dépense réelle avec explications des écarts
+- **Réussites et défis clés** : Succès notables méritant d'être mis en avant et obstacles rencontrés avec évaluation de l'impact
+- **Objectifs du prochain trimestre** : Objectifs métier et priorités marketing déjà identifiés pour le trimestre à venir
+- **Signaux de satisfaction client** : Scores NPS, retours reçus, tickets de support, ou sentiment qualitatif de l'équipe cliente
+- **Opportunités d'upsell/cross-sell** : Services additionnels, périmètre élargi, ou nouveaux canaux dont le client pourrait bénéficier
+- **Évolutions concurrentielles** : Mouvements notables des concurrents, changements de marché, ou tendances sectorielles observées pendant le trimestre
+- **Changements d'équipe** : Tout changement de staffing côté agence ou client ayant affecté l'engagement
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Aggregate campaign performance data**: Organize all campaign metrics by channel and objective — impressions, clicks, conversions, spend, revenue, and derived metrics (CTR, CPC, CPA, ROAS, conversion rate)
-3. **Compare results against goals and benchmarks**: Map actual performance to quarterly targets, prior quarter results, and industry benchmarks to show progress, regression, or breakthrough performance
-4. **Identify top wins with attribution**: Select the 3 most impactful wins from the quarter and build attribution stories — what was done, why it worked, and how it connects to business outcomes
-5. **Analyze underperformance with root causes**: For any KPI that missed target, conduct root cause analysis — external factors (market, seasonality, competition), internal factors (budget, creative, timing), and corrective actions taken or recommended
-6. **Calculate ROI and budget efficiency**: Compute overall and per-channel ROI, cost-per-acquisition trends, budget utilization rate, and efficiency gains or losses compared to prior quarters
-7. **Assess competitive landscape changes**: Summarize notable competitor activity — new campaigns, market entries, pricing changes, or positioning shifts that affected or could affect performance
-8. **Develop strategic recommendations for next quarter**: Formulate 3-5 specific, actionable recommendations tied to data insights — what to scale, what to cut, what to test, and what to monitor
-9. **Identify upsell opportunities**: Map gaps in current coverage or emerging opportunities to additional services with business case justification (projected impact and investment required)
-10. **Build executive slide structure**: Design the presentation flow — executive summary first, then performance deep-dive, strategic insights, and forward plan — optimized for a 45-60 minute meeting
-11. **Create appendix with detailed data**: Compile granular data tables, campaign-level breakdowns, and supporting metrics that back up the main narrative without cluttering the core slides
-12. **Add next-steps action items with owners**: Define specific action items emerging from the QBR with responsible party (agency or client), deadline, and success criteria for each
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également les guidelines** à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et fichiers de catégorie pertinents. Vérifier les modèles personnalisés à `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les procédures d'agence à `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Agréger les données de performance de campagne** : Organiser toutes les métriques de campagne par canal et objectif — impressions, clics, conversions, dépense, revenu, et métriques dérivées (CTR, CPC, CPA, ROAS, taux de conversion)
+3. **Comparer les résultats aux objectifs et benchmarks** : Mapper la performance réelle aux cibles trimestrielles, aux résultats du trimestre précédent, et aux benchmarks sectoriels pour montrer la progression, la régression, ou une performance exceptionnelle
+4. **Identifier les principales réussites avec attribution** : Sélectionner les 3 réussites les plus impactantes du trimestre et construire des histoires d'attribution — ce qui a été fait, pourquoi ça a fonctionné, et comment ça se connecte aux résultats métier
+5. **Analyser les sous-performances avec causes racines** : Pour tout KPI ayant manqué son objectif, mener une analyse de cause racine — facteurs externes (marché, saisonnalité, concurrence), facteurs internes (budget, créatif, timing), et actions correctives prises ou recommandées
+6. **Calculer le ROI et l'efficacité budgétaire** : Calculer le ROI global et par canal, les tendances de coût par acquisition, le taux d'utilisation du budget, et les gains ou pertes d'efficacité par rapport aux trimestres précédents
+7. **Évaluer les évolutions du paysage concurrentiel** : Résumer l'activité concurrentielle notable — nouvelles campagnes, entrées de marché, changements de prix, ou évolutions de positionnement ayant affecté ou pouvant affecter la performance
+8. **Développer des recommandations stratégiques pour le prochain trimestre** : Formuler 3 à 5 recommandations spécifiques et actionnables liées aux insights de données — quoi mettre à l'échelle, quoi arrêter, quoi tester, et quoi surveiller
+9. **Identifier les opportunités d'upsell** : Mapper les lacunes de couverture actuelle ou les opportunités émergentes vers des services additionnels avec une justification de cas d'affaires (impact projeté et investissement requis)
+10. **Construire la structure des slides exécutives** : Concevoir le flux de la présentation — synthèse exécutive d'abord, puis analyse approfondie de la performance, insights stratégiques, et plan prospectif — optimisé pour une réunion de 45-60 minutes
+11. **Créer une annexe avec les données détaillées** : Compiler les tableaux de données granulaires, les répartitions au niveau campagne, et les métriques à l'appui qui étayent le récit principal sans encombrer les slides centraux
+12. **Ajouter les éléments d'action des prochaines étapes avec responsables** : Définir les éléments d'action spécifiques émergeant de la QBR avec la partie responsable (agence ou client), l'échéance, et les critères de succès pour chacun
 
-## Output
+## Résultat
 
-A structured QBR presentation package containing:
+Un package de présentation QBR structuré contenant :
 
-- **Executive summary slide**: One-page overview with quarter highlights, overall score against goals, and key takeaway for leadership
-- **Performance scorecard**: Goals vs actuals vs benchmarks in a scannable table format with color-coded status indicators (on track, at risk, missed)
-- **Campaign-by-campaign analysis**: Individual campaign performance summaries with metrics, insights, and optimization actions taken
-- **Budget efficiency analysis**: Spend vs return by channel with utilization rate, cost trend lines, and efficiency comparison to prior quarters
-- **Top 3 wins with attribution story**: Detailed breakdown of biggest successes — what drove them, measured impact, and how to replicate
-- **Underperformance analysis with corrective actions**: Honest assessment of misses with root cause, impact quantification, and specific corrective steps (taken and planned)
-- **Competitive intelligence update**: Summary of notable competitor moves and market shifts with implications for strategy
-- **Strategic recommendations (3-5)**: Data-backed recommendations for next quarter with expected impact, investment needed, and implementation timeline
-- **Upsell/cross-sell opportunities with business case**: Additional service or scope recommendations with projected ROI and investment requirements
-- **Next quarter roadmap with milestones**: Phase-based plan for the upcoming quarter with key deliverables, launch dates, and checkpoint reviews
-- **Appendix with raw data tables**: Granular performance data, full campaign metrics, and supporting calculations for reference
-- **Action items with owners and deadlines**: Specific next steps from the QBR with assigned owner (agency/client), due date, and success criteria
-- **Account health score (1-10)**: Composite score based on performance, relationship health, growth trajectory, and risk factors with scoring rationale
+- **Slide de synthèse exécutive** : Aperçu d'une page avec les points forts du trimestre, le score global par rapport aux objectifs, et le principal enseignement pour la direction
+- **Scorecard de performance** : Objectifs vs réels vs benchmarks dans un format tableau lisible d'un coup d'œil avec des indicateurs de statut codés par couleur (dans les temps, à risque, manqué)
+- **Analyse campagne par campagne** : Résumés de performance de chaque campagne individuelle avec métriques, insights, et actions d'optimisation prises
+- **Analyse d'efficacité budgétaire** : Dépense vs retour par canal avec taux d'utilisation, lignes de tendance de coût, et comparaison d'efficacité aux trimestres précédents
+- **Top 3 des réussites avec histoire d'attribution** : Décomposition détaillée des plus grands succès — ce qui les a portés, l'impact mesuré, et comment le reproduire
+- **Analyse des sous-performances avec actions correctives** : Évaluation honnête des manquements avec cause racine, quantification de l'impact, et étapes correctives spécifiques (prises et planifiées)
+- **Mise à jour d'intelligence concurrentielle** : Résumé des mouvements concurrentiels notables et des évolutions de marché avec implications pour la stratégie
+- **Recommandations stratégiques (3-5)** : Recommandations étayées par les données pour le prochain trimestre avec impact attendu, investissement nécessaire, et calendrier de mise en œuvre
+- **Opportunités d'upsell/cross-sell avec cas d'affaires** : Recommandations de service ou périmètre additionnel avec ROI projeté et exigences d'investissement
+- **Feuille de route du prochain trimestre avec jalons** : Plan par phase pour le trimestre à venir avec livrables clés, dates de lancement, et revues de points de contrôle
+- **Annexe avec tableaux de données brutes** : Données de performance granulaires, métriques complètes de campagne, et calculs à l'appui pour référence
+- **Éléments d'action avec responsables et échéances** : Prochaines étapes spécifiques issues de la QBR avec responsable assigné (agence/client), date d'échéance, et critères de succès
+- **Score de santé de compte (1-10)** : Score composite basé sur la performance, la santé de la relation, la trajectoire de croissance, et les facteurs de risque avec la justification de la notation
 
-## Agents Used
+## Agents utilisés
 
-- **analytics-analyst** — Performance data aggregation, goal vs actual analysis, ROI calculations, benchmarking, budget efficiency analysis, scorecard design, and appendix data compilation
-- **marketing-strategist** — Strategic recommendations, competitive assessment, upsell opportunity identification, executive narrative, roadmap development, and account health scoring
+- **analytics-analyst** — Agrégation des données de performance, analyse objectif vs réel, calculs de ROI, benchmarking, analyse d'efficacité budgétaire, conception de scorecard, et compilation des données d'annexe
+- **marketing-strategist** — Recommandations stratégiques, évaluation concurrentielle, identification d'opportunités d'upsell, récit exécutif, développement de feuille de route, et scoring de santé de compte

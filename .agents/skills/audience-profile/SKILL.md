@@ -6,47 +6,47 @@ argument-hint: "[audience-segment]"
 
 # /digital-marketing-pro:audience-profile
 
-## Purpose
+## Objectif
 
-Build a rich, actionable buyer persona that goes beyond basic demographics. Captures psychographic drivers, behavioral patterns, jobs-to-be-done, objections, and content consumption preferences to inform all marketing activities.
+Construire un buyer persona riche et actionnable qui va au-delà des données démographiques de base. Capture les moteurs psychographiques, les motifs comportementaux, les jobs-to-be-done, les objections, et les préférences de consommation de contenu pour éclairer toutes les activités marketing.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Product/service**: What the brand offers
-- **Customer type**: B2B buyer, B2C consumer, or both
-- **Existing data**: Any customer research, survey data, analytics demographics, CRM data, or interview insights
-- **Number of personas**: How many distinct personas to create (recommend 2-4)
-- **Hypothesis**: Who the user thinks their ideal customer is (starting point)
+- **Produit/service** : ce que propose la marque
+- **Type de client** : acheteur B2B, consommateur B2C, ou les deux
+- **Données existantes** : toute recherche client, données d'enquête, données démographiques analytiques, données CRM, ou insights d'entretien
+- **Nombre de personas** : combien de personas distincts créer (2-4 recommandé)
+- **Hypothèse** : qui l'utilisateur pense être son client idéal (point de départ)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Gather inputs through structured questions if data is limited
-3. Build demographic profile: age range, role/title, company size (B2B), income range, geography, education
-4. Develop psychographic profile: values, motivations, fears, aspirations, identity markers
-5. Map behavioral patterns: where they spend time online, content formats preferred, purchase behavior, decision-making process
-6. Define jobs-to-be-done: functional, emotional, and social jobs the product helps accomplish
-7. Identify objections and barriers to purchase with counter-messaging
-8. Document the buyer journey: trigger events, research process, evaluation criteria, decision influencers
-9. Specify content preferences: platforms, formats, tone, topics they engage with
-10. Give the persona a name and narrative summary for team alignment
+1. **Charger le contexte de marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de la marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également l'existence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier l'existence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. Rassembler les informations via des questions structurées si les données sont limitées
+3. Construire le profil démographique : tranche d'âge, rôle/titre, taille d'entreprise (B2B), tranche de revenu, géographie, éducation
+4. Développer le profil psychographique : valeurs, motivations, peurs, aspirations, marqueurs identitaires
+5. Cartographier les motifs comportementaux : où ils passent du temps en ligne, formats de contenu préférés, comportement d'achat, processus de décision
+6. Définir les jobs-to-be-done : tâches fonctionnelles, émotionnelles, et sociales que le produit aide à accomplir
+7. Identifier les objections et les freins à l'achat avec un contre-message
+8. Documenter le parcours d'achat : événements déclencheurs, processus de recherche, critères d'évaluation, influenceurs de décision
+9. Préciser les préférences de contenu : plateformes, formats, ton, sujets qui les engagent
+10. Donner au persona un nom et un résumé narratif pour l'alignement de l'équipe
 
-## Output
+## Résultat
 
-A structured buyer persona document containing:
+Un document de buyer persona structuré contenant :
 
-- Persona name and one-paragraph narrative
-- Demographic snapshot
-- Psychographic profile with motivations and values
-- Jobs-to-be-done framework (functional, emotional, social)
-- Day-in-the-life scenario
-- Buyer journey map with touchpoints and decision criteria
-- Objections and counter-messaging guide
-- Content and channel preferences
-- Messaging do's and don'ts for this persona
+- Nom du persona et récit d'un paragraphe
+- Instantané démographique
+- Profil psychographique avec motivations et valeurs
+- Cadre jobs-to-be-done (fonctionnel, émotionnel, social)
+- Scénario d'une journée dans la vie du persona
+- Carte du parcours d'achat avec points de contact et critères de décision
+- Guide des objections et contre-messages
+- Préférences de contenu et de canal
+- À faire et à ne pas faire en matière de message pour ce persona
 
-## Agents Used
+## Agents utilisés
 
-- **marketing-strategist** — Persona development, JTBD framework, buyer journey mapping, audience segmentation
+- **marketing-strategist** — Développement de persona, cadre JTBD, cartographie du parcours d'achat, segmentation d'audience

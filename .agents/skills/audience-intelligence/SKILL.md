@@ -5,172 +5,172 @@ description: "Audience research module — builds six-dimension buyer personas (
 
 # Audience Intelligence
 
-## When to Use This Skill
+## Quand utiliser cette compétence
 
-Activate this module when the user's request involves any of the following:
+Activer ce module lorsque la demande de l'utilisateur porte sur l'un des éléments suivants :
 
-- **Buyer Persona Creation**: Building detailed profiles of ideal customers for marketing and product decisions
-- **Audience Research**: Understanding who a brand's customers or prospects are at a demographic, psychographic, and behavioral level
-- **Segmentation Strategy**: Dividing an audience into meaningful groups for targeted marketing
-- **Jobs-to-Be-Done (JTBD) Analysis**: Identifying the functional, social, and emotional jobs customers hire a product to do
-- **Psychographic Profiling**: Understanding audience values, attitudes, interests, lifestyles, and motivations
-- **Anti-Persona Definition**: Defining who is NOT the target customer to prevent wasted spend
-- **Audience Sizing & TAM Estimation**: Estimating the size of addressable audience segments
+- **Création de buyer persona** : construire des profils détaillés de clients idéaux pour les décisions marketing et produit
+- **Recherche d'audience** : comprendre qui sont les clients ou prospects d'une marque au niveau démographique, psychographique, et comportemental
+- **Stratégie de segmentation** : diviser une audience en groupes pertinents pour un marketing ciblé
+- **Analyse Jobs-to-Be-Done (JTBD)** : identifier les tâches fonctionnelles, sociales, et émotionnelles pour lesquelles les clients « embauchent » un produit
+- **Profilage psychographique** : comprendre les valeurs, attitudes, intérêts, styles de vie, et motivations de l'audience
+- **Définition d'anti-persona** : définir qui N'EST PAS le client cible pour éviter le gaspillage de dépense
+- **Dimensionnement d'audience et estimation du TAM** : estimer la taille des segments d'audience adressables
 
-**Trigger phrases**: "buyer persona," "target audience," "who are our customers," "customer profile," "segmentation," "audience segments," "Jobs-to-Be-Done," "JTBD," "psychographic," "ideal customer profile," "ICP," "anti-persona," "lookalike audience," "audience research," "buying committee," "customer avatar"
+**Expressions déclenchantes** : « buyer persona », « audience cible », « qui sont nos clients », « profil client », « segmentation », « segments d'audience », « Jobs-to-Be-Done », « JTBD », « psychographique », « profil client idéal », « ICP », « anti-persona », « audience similaire (lookalike) », « recherche d'audience », « comité d'achat », « avatar client »
 
-## Brand Context (Auto-Applied)
+## Contexte de marque (appliqué automatiquement)
 
-Before producing any marketing output from this module:
+Avant de produire tout résultat marketing depuis ce module :
 
-1. **Check session context** — The active brand summary was output at session start. Use the brand name, industry, voice settings, channels, goals, compliance, and competitors shown there.
-2. **If you need the full profile**, read: `~/.claude-marketing/brands/{slug}/profile.json`
-3. **Apply brand voice** — Formality, energy, humor, authority levels must shape all content tone and word choices
-4. **Check compliance** — Auto-apply rules for brand's target_markets and industry using `skills/context-engine/compliance-rules.md`
-5. **Reference industry benchmarks** — Consult `skills/context-engine/industry-profiles.md` for the brand's industry
-6. **Use platform specs** — Reference `skills/context-engine/platform-specs.md` for character limits and format requirements
-7. **Check campaign history** — Run `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` before planning new work
-8. **If no brand exists**, say: "No brand profile found. Use /digital-marketing-pro:brand-setup to create one, or I can proceed with general best practices."
-9. **Check brand guidelines** — If `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` exists, load and enforce: `restrictions.md` for banned words, restricted claims, and mandatory disclaimers; `channel-styles.md` for channel-specific tone overrides (may differ from base voice); `messaging.md` for approved key messages, taglines, and positioning language; `voice-and-tone.md` for detailed voice rules beyond the 4 numeric scores. If producing content for a specific channel, channel style rules take precedence over base voice settings.
+1. **Vérifier le contexte de session** — le résumé de marque actif a été affiché au démarrage de la session. Utiliser le nom de la marque, le secteur, les paramètres de voix, les canaux, les objectifs, la conformité et les concurrents indiqués.
+2. **Si le profil complet est nécessaire**, lire : `~/.claude-marketing/brands/{slug}/profile.json`
+3. **Appliquer la voix de marque** — les niveaux de formalité, d'énergie, d'humour et d'autorité doivent façonner le ton et le choix des mots de tout le contenu
+4. **Vérifier la conformité** — appliquer automatiquement les règles pour les target_markets et le secteur de la marque via `skills/context-engine/compliance-rules.md`
+5. **Se référer aux benchmarks sectoriels** — consulter `skills/context-engine/industry-profiles.md` pour le secteur de la marque
+6. **Utiliser les spécifications de plateforme** — se référer à `skills/context-engine/platform-specs.md` pour les limites de caractères et les exigences de format
+7. **Vérifier l'historique des campagnes** — exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action list-campaigns` avant de planifier un nouveau travail
+8. **Si aucune marque n'existe**, dire : « Aucun profil de marque trouvé. Utilisez /digital-marketing-pro:brand-setup pour en créer un, ou je peux continuer avec les bonnes pratiques générales. »
+9. **Vérifier les guidelines de marque** — si `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` existe, charger et appliquer : `restrictions.md` pour les mots interdits, les allégations restreintes et les mentions légales obligatoires ; `channel-styles.md` pour les adaptations de ton spécifiques à chaque canal (peuvent différer de la voix de base) ; `messaging.md` pour les messages clés approuvés, les slogans et le langage de positionnement ; `voice-and-tone.md` pour des règles de voix détaillées au-delà des 4 scores numériques. Pour produire du contenu destiné à un canal spécifique, les règles de style de ce canal prévalent sur les paramètres de voix de base.
 
-Do not ask the user for information that already exists in their brand profile.
+Ne pas demander à l'utilisateur des informations qui existent déjà dans son profil de marque.
 
-## Required Context
+## Contexte requis
 
-Before executing audience intelligence work, gather:
+Avant d'exécuter un travail d'audience intelligence, rassembler :
 
-1. **Business Description**: What does the company sell, to whom, and what problem does it solve?
-2. **Existing Customer Data**: Any analytics, CRM data, survey results, or customer interviews available
-3. **Product/Service Details**: Features, pricing, positioning, and key differentiators
-4. **Current Audience Assumptions**: Who does the team think their customers are today?
-5. **Market Context**: Industry, competitive landscape, market maturity
-6. **Geographic Scope**: Local, regional, national, or global audience
-7. **Business Model**: B2B, B2C, B2B2C, D2C — this fundamentally shapes persona structure
-8. **Sales Process**: Self-serve, sales-assisted, enterprise sales — determines decision-maker mapping
+1. **Description de l'entreprise** : que vend l'entreprise, à qui, et quel problème résout-elle ?
+2. **Données clients existantes** : tout analytics, données CRM, résultats d'enquête, ou entretiens clients disponibles
+3. **Détails du produit/service** : fonctionnalités, tarification, positionnement, et différenciateurs clés
+4. **Hypothèses d'audience actuelles** : qui l'équipe pense-t-elle être ses clients aujourd'hui ?
+5. **Contexte de marché** : secteur, paysage concurrentiel, maturité du marché
+6. **Portée géographique** : audience locale, régionale, nationale, ou mondiale
+7. **Modèle économique** : B2B, B2C, B2B2C, D2C — cela façonne fondamentalement la structure des personas
+8. **Processus de vente** : libre-service, assisté par les ventes, vente entreprise — détermine la cartographie des décideurs
 
-If the user has minimal data, build hypothesis-driven personas based on business model, product, and market analysis. Label these clearly as hypotheses to be validated.
+Si l'utilisateur dispose de peu de données, construire des personas basés sur des hypothèses, fondées sur l'analyse du modèle économique, du produit, et du marché. Étiqueter clairement celles-ci comme des hypothèses à valider.
 
-## Capabilities
+## Capacités
 
-- **Multi-Dimensional Persona Building**: Personas built across six dimensions:
-  - **Demographic**: Age, gender, location, income, education, job title, company size
-  - **Psychographic**: Values, attitudes, lifestyle, personality traits, motivations
-  - **Behavioral**: Purchase patterns, channel preferences, content consumption, decision-making style
-  - **Need-State**: Current pain points, unmet needs, desired outcomes, urgency level
-  - **Information**: Where they research, who they trust, content format preferences, information journey
-  - **Decision**: Decision criteria, objections, influencers, timeline, risk tolerance
-- **JTBD Framework**: Mapping functional jobs (what they need done), social jobs (how they want to be perceived), and emotional jobs (how they want to feel) with outcome-driven innovation metrics
-- **RFM Segmentation**: Recency, Frequency, Monetary value analysis for customer base segmentation
-- **Behavioral Segmentation**: Grouping by usage patterns, engagement levels, and purchase behavior
-- **Value-Based Segmentation**: Grouping by customer lifetime value and profitability potential
-- **Lifecycle Segmentation**: Grouping by customer lifecycle stage (prospect, new, active, at-risk, churned, win-back)
-- **Lookalike Audience Guidance**: Defining seed audience characteristics for platform-based lookalike targeting
-- **Anti-Persona Definition**: Explicitly defining who should be excluded from targeting to prevent wasted spend and misaligned messaging
-- **Buying Committee Mapping**: For B2B, mapping all roles involved in purchase decisions with their individual motivations and objections
+- **Construction de persona multidimensionnelle** : personas construits sur six dimensions :
+  - **Démographique** : âge, genre, localisation, revenu, éducation, poste, taille d'entreprise
+  - **Psychographique** : valeurs, attitudes, style de vie, traits de personnalité, motivations
+  - **Comportemental** : motifs d'achat, préférences de canal, consommation de contenu, style de prise de décision
+  - **État de besoin** : points de douleur actuels, besoins non satisfaits, résultats désirés, niveau d'urgence
+  - **Information** : où ils font leurs recherches, en qui ils ont confiance, préférences de format de contenu, parcours d'information
+  - **Décision** : critères de décision, objections, influenceurs, calendrier, tolérance au risque
+- **Cadre JTBD** : cartographier les tâches fonctionnelles (ce qu'ils ont besoin d'accomplir), les tâches sociales (comment ils veulent être perçus), et les tâches émotionnelles (comment ils veulent se sentir) avec des métriques d'innovation orientée résultats
+- **Segmentation RFM** : analyse de récence, fréquence, valeur monétaire pour la segmentation de la base clients
+- **Segmentation comportementale** : regroupement par motifs d'usage, niveaux d'engagement, et comportement d'achat
+- **Segmentation basée sur la valeur** : regroupement par valeur vie client et potentiel de rentabilité
+- **Segmentation de cycle de vie** : regroupement par étape de cycle de vie client (prospect, nouveau, actif, à risque, désabonné, reconquête)
+- **Guidance d'audience similaire (lookalike)** : définir les caractéristiques d'audience de départ pour le ciblage lookalike sur les plateformes
+- **Définition d'anti-persona** : définir explicitement qui devrait être exclu du ciblage pour éviter le gaspillage de dépense et les messages mal alignés
+- **Cartographie du comité d'achat** : pour le B2B, cartographier tous les rôles impliqués dans les décisions d'achat avec leurs motivations et objections individuelles
 
-## Process
+## Processus
 
-**Primary Workflow: Persona Development & Segmentation**
+**Workflow principal : développement de persona et segmentation**
 
-1. **Discovery & Data Collection**
-   - Gather all available customer data (analytics, CRM exports, survey results, interview transcripts)
-   - Review existing marketing materials, landing pages, and ads for implicit audience assumptions
-   - Analyze competitor targeting (who are they going after? what messaging do they use?)
-   - If no data exists, conduct a market analysis to build hypothesis personas
-   - Document the data quality level: data-rich, data-limited, or hypothesis-only
+1. **Découverte et collecte de données**
+   - Rassembler toutes les données clients disponibles (analytics, exports CRM, résultats d'enquête, transcriptions d'entretien)
+   - Revoir les supports marketing existants, landing pages, et publicités pour les hypothèses d'audience implicites
+   - Analyser le ciblage des concurrents (qui visent-ils ? quel message utilisent-ils ?)
+   - Si aucune donnée n'existe, mener une analyse de marché pour construire des personas hypothétiques
+   - Documenter le niveau de qualité des données : riche en données, limité en données, ou hypothèse uniquement
 
-2. **JTBD Analysis**
-   - Identify the core job the customer is hiring the product to do
-   - Map functional jobs: What task needs to be accomplished?
-   - Map social jobs: How does the customer want to be perceived by others?
-   - Map emotional jobs: How does the customer want to feel?
-   - Identify the "struggling moment" — what triggers the search for a solution?
-   - Document competing solutions (including non-consumption and manual workarounds)
-   - Define desired outcomes and how customers measure success
+2. **Analyse JTBD**
+   - Identifier la tâche centrale pour laquelle le client « embauche » le produit
+   - Cartographier les tâches fonctionnelles : quelle tâche doit être accomplie ?
+   - Cartographier les tâches sociales : comment le client veut-il être perçu par les autres ?
+   - Cartographier les tâches émotionnelles : comment le client veut-il se sentir ?
+   - Identifier le « moment de difficulté » — qu'est-ce qui déclenche la recherche d'une solution ?
+   - Documenter les solutions concurrentes (y compris la non-consommation et les contournements manuels)
+   - Définir les résultats désirés et comment les clients mesurent le succès
 
-3. **Persona Construction**
-   - Build 3-5 primary personas (avoid persona proliferation)
-   - For each persona, complete all six dimensions:
-     - **Demographic profile**: Concrete characteristics with ranges, not single points
-     - **Psychographic profile**: Values, beliefs, lifestyle factors that influence purchase decisions
-     - **Behavioral profile**: How they buy, where they spend time, what content they consume
-     - **Need-state profile**: Specific pain points, urgency drivers, and desired outcomes
-     - **Information profile**: Research behavior, trusted sources, content preferences
-     - **Decision profile**: Criteria, objections, influencers, and timeline
-   - Give each persona a memorable name and narrative (but avoid stereotyping)
-   - Assign estimated segment size and revenue potential
-   - Prioritize personas by business impact
+3. **Construction des personas**
+   - Construire 3 à 5 personas principaux (éviter la prolifération de personas)
+   - Pour chaque persona, compléter les six dimensions :
+     - **Profil démographique** : caractéristiques concrètes avec des fourchettes, pas des points uniques
+     - **Profil psychographique** : valeurs, croyances, facteurs de style de vie influençant les décisions d'achat
+     - **Profil comportemental** : comment ils achètent, où ils passent du temps, quel contenu ils consomment
+     - **Profil d'état de besoin** : points de douleur spécifiques, déclencheurs d'urgence, et résultats désirés
+     - **Profil d'information** : comportement de recherche, sources de confiance, préférences de contenu
+     - **Profil de décision** : critères, objections, influenceurs, et calendrier
+   - Donner à chaque persona un nom mémorable et un récit (mais éviter les stéréotypes)
+   - Assigner une taille de segment estimée et un potentiel de revenu
+   - Prioriser les personas par impact commercial
 
-4. **Anti-Persona Development**
-   - Define 1-3 anti-personas: people who may seem like targets but are poor fits
-   - Common anti-persona types: price-sensitive bargain hunters (for premium brands), feature-seekers who will never buy (tire kickers), wrong company size or industry
-   - Document specific signals that identify anti-personas in your data
-   - Create exclusion criteria for ad targeting and lead qualification
+4. **Développement des anti-personas**
+   - Définir 1 à 3 anti-personas : des personnes qui peuvent sembler des cibles mais qui correspondent mal
+   - Types courants d'anti-persona : chasseurs de bonnes affaires sensibles au prix (pour les marques premium), curieux qui n'achèteront jamais (tire-kickers), mauvaise taille d'entreprise ou mauvais secteur
+   - Documenter les signaux spécifiques qui identifient les anti-personas dans vos données
+   - Créer des critères d'exclusion pour le ciblage publicitaire et la qualification de leads
 
-5. **Segmentation Strategy**
-   - Select the segmentation approach based on available data and business needs:
-     - **RFM**: When transaction data is available — score by recency, frequency, monetary value
-     - **Behavioral**: When usage/engagement data exists — group by behavior patterns
-     - **Value-based**: When LTV data is available — prioritize high-value segments
-     - **Lifecycle**: When customer journey stage data exists — customize by stage
-     - **Needs-based**: When qualitative research is available — group by pain point
-   - Define segment boundaries and naming conventions
-   - Map segments to personas (segments are data-driven groups; personas are the human stories within them)
-   - Assign channel and messaging strategies per segment
+5. **Stratégie de segmentation**
+   - Sélectionner l'approche de segmentation selon les données disponibles et les besoins métier :
+     - **RFM** : lorsque des données de transaction sont disponibles — noter par récence, fréquence, valeur monétaire
+     - **Comportementale** : lorsque des données d'usage/engagement existent — regrouper par motifs de comportement
+     - **Basée sur la valeur** : lorsque des données de LTV sont disponibles — prioriser les segments à forte valeur
+     - **Cycle de vie** : lorsque des données d'étape de parcours client existent — personnaliser par étape
+     - **Basée sur les besoins** : lorsque de la recherche qualitative est disponible — regrouper par point de douleur
+   - Définir les frontières de segment et les conventions de nommage
+   - Cartographier les segments vers les personas (les segments sont des groupes fondés sur les données ; les personas sont les récits humains qui s'y trouvent)
+   - Assigner des stratégies de canal et de message par segment
 
-6. **Activation Planning**
-   - For each persona/segment, define:
-     - Priority channels for reaching them
-     - Messaging themes and value propositions that resonate
-     - Content types and formats they prefer
-     - Lookalike audience seed criteria for paid platforms
-     - Lead scoring rules based on persona fit
-   - Create a persona-to-campaign mapping guide
-   - Build a validation plan to test persona hypotheses with real campaign data
+6. **Planification de l'activation**
+   - Pour chaque persona/segment, définir :
+     - Les canaux prioritaires pour les atteindre
+     - Les thèmes de message et les propositions de valeur qui résonnent
+     - Les types et formats de contenu qu'ils préfèrent
+     - Les critères d'audience de départ lookalike pour les plateformes payantes
+     - Les règles de notation de lead basées sur l'adéquation au persona
+   - Créer un guide de correspondance persona-vers-campagne
+   - Construire un plan de validation pour tester les hypothèses de persona avec des données de campagne réelles
 
-## Reference Files
+## Fichiers de référence
 
-- `persona-builder.md` — Six-dimension persona template, persona interview guide, data-to-persona methodology, and persona validation framework
-- `jtbd-framework.md` — Jobs-to-Be-Done analysis methodology, job mapping canvas, outcome-driven innovation scoring, and competing solutions analysis
-- `segmentation.md` — RFM scoring model, behavioral segmentation framework, lifecycle segmentation definitions, and segment-to-action mapping
-- `psychographic-profiling.md` — Values and attitudes framework, lifestyle analysis, motivation mapping, and psychographic data collection methods
-- `customer-research-methods.md` — Quantitative and qualitative research methods: survey design, interview techniques, voice-of-customer programs, and synthesis methods with budget guidance
+- `persona-builder.md` — modèle de persona à six dimensions, guide d'entretien de persona, méthodologie données-vers-persona, et cadre de validation de persona
+- `jtbd-framework.md` — méthodologie d'analyse Jobs-to-Be-Done, canevas de cartographie des tâches, notation d'innovation orientée résultats, et analyse des solutions concurrentes
+- `segmentation.md` — modèle de notation RFM, cadre de segmentation comportementale, définitions de segmentation de cycle de vie, et cartographie segment-vers-action
+- `psychographic-profiling.md` — cadre des valeurs et attitudes, analyse de style de vie, cartographie des motivations, et méthodes de collecte de données psychographiques
+- `customer-research-methods.md` — méthodes de recherche quantitative et qualitative : conception d'enquête, techniques d'entretien, programmes voix du client, et méthodes de synthèse avec guidance budgétaire
 
-## Output Formats
+## Formats de livrables
 
-| Deliverable | Format | Description |
+| Livrable | Format | Description |
 |---|---|---|
-| Buyer Persona Document | Document (per persona) | Complete six-dimension persona with narrative, data points, and activation guidance |
-| Persona Summary Card | One-page visual | Quick-reference persona card for team alignment |
-| JTBD Analysis | Document | Job map, struggling moments, desired outcomes, and competing solutions |
-| Segmentation Model | Spreadsheet + document | Segment definitions, criteria, sizes, and strategy per segment |
-| Anti-Persona Profiles | Document | Who to exclude, why, and identification signals |
-| Buying Committee Map | Visual diagram + document | B2B decision-maker map with roles, motivations, and influence paths |
-| Audience Activation Guide | Document | Channel, messaging, and content recommendations per persona/segment |
-| Lookalike Audience Spec | Document | Seed audience criteria and platform-specific setup instructions |
+| Document de buyer persona | Document (par persona) | Persona complet à six dimensions avec récit, points de données, et guidance d'activation |
+| Fiche récapitulative de persona | Visuel d'une page | Fiche de référence rapide pour l'alignement de l'équipe |
+| Analyse JTBD | Document | Carte des tâches, moments de difficulté, résultats désirés, et solutions concurrentes |
+| Modèle de segmentation | Feuille de calcul + document | Définitions de segment, critères, tailles, et stratégie par segment |
+| Profils d'anti-persona | Document | Qui exclure, pourquoi, et signaux d'identification |
+| Carte du comité d'achat | Diagramme visuel + document | Carte des décideurs B2B avec rôles, motivations, et chemins d'influence |
+| Guide d'activation d'audience | Document | Recommandations de canal, message, et contenu par persona/segment |
+| Spécification d'audience lookalike | Document | Critères d'audience de départ et instructions de configuration spécifiques par plateforme |
 
-## Edge Cases
+## Cas particuliers
 
-### B2B Buying Committees (Multiple Personas per Deal)
-- **Situation**: Enterprise B2B purchases involve 6-10 decision-makers with different roles, motivations, and objections
-- **Approach**: Build individual personas for each buying committee role: Champion (internal advocate), Economic Buyer (controls budget), Technical Evaluator (assesses capabilities), End User (daily user), Legal/Procurement (risk and compliance), Executive Sponsor (strategic alignment). Map influence relationships between roles. Design content and messaging specific to each role's concerns. Create a "buying committee journey" that shows how roles engage at different stages. Note that the Champion persona is usually the most critical — they sell internally on your behalf.
+### Comités d'achat B2B (plusieurs personas par transaction)
+- **Situation** : les achats B2B en entreprise impliquent 6 à 10 décideurs avec des rôles, motivations, et objections différents
+- **Approche** : construire des personas individuels pour chaque rôle du comité d'achat : le Champion (avocat interne), l'Acheteur économique (contrôle le budget), l'Évaluateur technique (évalue les capacités), l'Utilisateur final (usage quotidien), le Juridique/Achats (risque et conformité), le Sponsor exécutif (alignement stratégique). Cartographier les relations d'influence entre les rôles. Concevoir un contenu et un message spécifiques aux préoccupations de chaque rôle. Créer un « parcours du comité d'achat » montrant comment les rôles s'engagent à différentes étapes. Noter que le persona Champion est généralement le plus critique — il vend en interne en votre nom.
 
-### Two-Sided Marketplace Audiences
-- **Situation**: Platform serves both supply side (sellers, creators, providers) and demand side (buyers, consumers)
-- **Approach**: Build completely separate persona sets for each side. Map the interdependencies — how does the supply-side experience affect demand-side personas, and vice versa? Identify the "chicken and egg" constraint: which side must be built first? Create cross-side personas that exist on both sides (e.g., a seller who also buys). Design distinct messaging, channels, and value propositions for each side.
+### Audiences de marketplace bilatérale
+- **Situation** : la plateforme sert à la fois le côté offre (vendeurs, créateurs, fournisseurs) et le côté demande (acheteurs, consommateurs)
+- **Approche** : construire des ensembles de personas complètement séparés pour chaque côté. Cartographier les interdépendances — comment l'expérience côté offre affecte-t-elle les personas côté demande, et vice versa ? Identifier la contrainte de « l'œuf et la poule » : quel côté doit être construit en premier ? Créer des personas cross-side qui existent des deux côtés (par ex. un vendeur qui achète aussi). Concevoir des messages, canaux, et propositions de valeur distincts pour chaque côté.
 
-### Limited Data Environments
-- **Situation**: Startup or new market entry with no customer data, no CRM, no analytics history
-- **Approach**: Build hypothesis personas using market research, competitor analysis, industry reports, and founder/team domain knowledge. Label all personas explicitly as "Hypothesis — Version 1" to set expectations. Design a rapid validation plan: run small targeted campaigns to test persona assumptions. Define specific signals that would confirm or invalidate each persona. Plan to iterate personas after 30-60 days of market data. Use JTBD analysis (which can be done through market observation) as the primary framework when demographic data is unavailable.
+### Environnements à données limitées
+- **Situation** : startup ou entrée sur un nouveau marché sans données clients, sans CRM, sans historique analytique
+- **Approche** : construire des personas hypothétiques à l'aide de la recherche de marché, de l'analyse concurrentielle, des rapports sectoriels, et de la connaissance du domaine des fondateurs/de l'équipe. Étiqueter explicitement tous les personas comme « Hypothèse — Version 1 » pour cadrer les attentes. Concevoir un plan de validation rapide : lancer de petites campagnes ciblées pour tester les hypothèses de persona. Définir des signaux spécifiques qui confirmeraient ou invalideraient chaque persona. Prévoir d'itérer les personas après 30-60 jours de données de marché. Utiliser l'analyse JTBD (qui peut se faire par observation de marché) comme cadre principal lorsque les données démographiques ne sont pas disponibles.
 
-### Global Audiences with Cultural Differences
-- **Situation**: Audience spans multiple countries, cultures, and languages with fundamentally different values and behaviors
-- **Approach**: Do NOT create a single global persona. Build regional persona variants that share a core structure but diverge on cultural dimensions: communication style, decision-making process, trust signals, channel preferences, and value hierarchy. Research cultural dimensions (Hofstede framework as a starting point) for key markets. Flag markets where the product positioning may need fundamental reframing, not just translation. Recommend local market validation before scaling campaigns internationally. Be explicit about the limits of cultural generalization — personas are starting points, not stereotypes.
+### Audiences mondiales avec différences culturelles
+- **Situation** : l'audience s'étend sur plusieurs pays, cultures, et langues avec des valeurs et comportements fondamentalement différents
+- **Approche** : NE PAS créer un seul persona mondial. Construire des variantes de persona régionales qui partagent une structure centrale mais divergent sur les dimensions culturelles : style de communication, processus de prise de décision, signaux de confiance, préférences de canal, et hiérarchie de valeurs. Rechercher les dimensions culturelles (le cadre de Hofstede comme point de départ) pour les marchés clés. Signaler les marchés où le positionnement produit pourrait nécessiter un recadrage fondamental, pas seulement une traduction. Recommander une validation locale du marché avant de faire évoluer les campagnes à l'international. Être explicite sur les limites de la généralisation culturelle — les personas sont des points de départ, pas des stéréotypes.
 
-## Related Skills
+## Compétences associées
 
-- **Funnel Architect** — For mapping personas to funnel stages and designing stage-appropriate touchpoints for each audience segment
-- **Content Engine** — For creating persona-specific content, messaging, and creative assets
-- **Campaign Orchestrator** — For targeting personas through campaigns and allocating budget by segment priority
-- **Analytics & Insights** — For validating persona hypotheses with behavioral data and refining segments over time
-- **AEO/GEO Intelligence** — For understanding what AI platforms tell your audience about your brand and optimizing for their AI-powered research behavior
+- **Funnel Architect** — pour cartographier les personas vers les étapes du tunnel et concevoir des points de contact adaptés à chaque étape pour chaque segment d'audience
+- **Content Engine** — pour créer du contenu, des messages, et des assets créatifs spécifiques à chaque persona
+- **Campaign Orchestrator** — pour cibler les personas à travers les campagnes et allouer le budget selon la priorité des segments
+- **Analytics & Insights** — pour valider les hypothèses de persona avec des données comportementales et affiner les segments dans le temps
+- **AEO/GEO Intelligence** — pour comprendre ce que les plateformes IA disent de votre marque à votre audience et optimiser pour leur comportement de recherche assisté par IA

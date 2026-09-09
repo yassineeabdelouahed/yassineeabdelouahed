@@ -1,136 +1,137 @@
-# Three-Scenario Forecasting
+# Prévision à trois scénarios
 
-Every projection in this plugin — revenue forecast, campaign outcome, channel performance, growth trajectory — is presented as three scenarios, never as a single number.
+Chaque projection dans ce plugin — prévision de revenu, résultat de campagne, performance de canal, trajectoire de croissance — est présentée sous forme de trois scénarios, jamais comme un chiffre unique.
 
-A single number forecast destroys client trust the first time it is missed (which it will be). Three scenarios with explicit assumptions create a band of expectation that is honest about uncertainty and resilient to outcomes within the band.
+Une prévision à chiffre unique détruit la confiance du client dès la première fois qu'elle est manquée (ce qui arrivera). Trois scénarios avec des hypothèses explicites créent une bande d'attente honnête sur l'incertitude et résiliente aux résultats à l'intérieur de la bande.
 
-## The Three Scenarios
+## Les trois scénarios
 
-### Conservative
+### Conservateur
 
-**Definition:** What results look like if conditions are tough — competition increases, market softens, some campaigns underperform, execution delays occur.
+**Définition :** À quoi ressemblent les résultats si les conditions sont difficiles — la concurrence augmente, le marché se ramollit, certaines campagnes sous-performent, des retards d'exécution surviennent.
 
-**This is the floor.** The minimum the client should expect. If results fall below this, something fundamental went wrong and triggers an emergency review.
+**C'est le plancher.** Le minimum que le client devrait attendre. Si les résultats tombent en dessous, quelque chose de fondamental s'est mal passé et déclenche une revue d'urgence.
 
-**Assumptions to use for Conservative:**
+**Hypothèses à utiliser pour le conservateur :**
 
-- Take the moderate baseline and reduce key inputs by 20–30%
-- Assume one major channel underperforms by 30–50%
-- Assume one major risk materialises (e.g., key competitor doubles ad spend, regulatory change, seasonality miss)
-- Assume team / approval delays push some initiatives back by a month
-- Apply the lower bound of conversion rate ranges, the upper bound of CAC ranges
+- Prendre la référence modérée et réduire les intrants clés de 20 à 30 %
+- Supposer qu'un canal majeur sous-performe de 30 à 50 %
+- Supposer qu'un risque majeur se matérialise (par exemple, un concurrent clé double sa dépense publicitaire, un changement réglementaire, un raté de saisonnalité)
+- Supposer que des retards d'équipe / d'approbation repoussent certaines initiatives d'un mois
+- Appliquer la borne inférieure des fourchettes de taux de conversion, la borne supérieure des fourchettes de CAC
 
-### Moderate
+### Modéré
 
-**Definition:** What results look like under normal conditions with solid execution.
+**Définition :** À quoi ressemblent les résultats dans des conditions normales avec une exécution solide.
 
-**This is the most likely scenario** and should be the planning baseline. Most decisions (budget, hiring, expectations setting) should reference this.
+**C'est le scénario le plus probable** et devrait être la référence de planification. La plupart des décisions (budget, recrutement, gestion des attentes) devraient s'y référer.
 
-**Assumptions to use for Moderate:**
+**Hypothèses à utiliser pour le modéré :**
 
-- Use historical performance benchmarks (yours if available, category benchmarks if not)
-- Assume execution runs at typical agency / team competence (not exceptional, not poor)
-- Assume no major external disruption
-- Apply the midpoint of conversion rate ranges and CAC ranges
-- Assume normal seasonality
+- Utiliser les repères de performance historiques (les vôtres si disponibles, les repères de catégorie sinon)
+- Supposer que l'exécution se déroule à une compétence d'agence / d'équipe typique (ni exceptionnelle, ni faible)
+- Supposer aucune perturbation externe majeure
+- Appliquer le point médian des fourchettes de taux de conversion et de CAC
+- Supposer une saisonnalité normale
 
-### Aggressive
+### Agressif
 
-**Definition:** What results look like if everything goes well — campaigns outperform, market conditions favour the brand, scaling opportunities materialise faster than expected, no significant execution friction.
+**Définition :** À quoi ressemblent les résultats si tout se passe bien — les campagnes surperforment, les conditions de marché favorisent la marque, les opportunités de mise à l'échelle se matérialisent plus vite que prévu, aucune friction d'exécution significative.
 
-**This is the ceiling.** The upside the client should be aware of but not plan around.
+**C'est le plafond.** Le potentiel dont le client devrait être conscient mais sur lequel il ne devrait pas planifier.
 
-**Assumptions to use for Aggressive:**
+**Hypothèses à utiliser pour l'agressif :**
 
-- Take the moderate baseline and increase key inputs by 20–30%
-- Assume one or two campaigns produce outsized results (e.g., a content piece goes viral, a campaign concept resonates more than expected)
-- Assume favourable market conditions (e.g., favourable regulatory change, competitor weakness, category tailwind)
-- Apply the upper bound of conversion rate ranges, the lower bound of CAC ranges
-- Assume capacity to capture upside (team is ready to scale fast)
+- Prendre la référence modérée et augmenter les intrants clés de 20 à 30 %
+- Supposer qu'une ou deux campagnes produisent des résultats disproportionnés (par exemple, un contenu devient viral, un concept de campagne résonne plus que prévu)
+- Supposer des conditions de marché favorables (par exemple, changement réglementaire favorable, faiblesse d'un concurrent, vent porteur de catégorie)
+- Appliquer la borne supérieure des fourchettes de taux de conversion, la borne inférieure des fourchettes de CAC
+- Supposer une capacité à capter le potentiel (l'équipe est prête à monter en échelle rapidement)
 
-## How to present three scenarios
+## Comment présenter trois scénarios
 
-Every forecast presented to the client must include all three scenarios with the assumptions for each.
+Chaque prévision présentée au client doit inclure les trois scénarios avec les hypothèses de chacun.
 
 ### Format
 
 ```markdown
-## Forecast — {Period} {Outcome}
+## Prévision — {Période} {Résultat}
 
-| Scenario | Outcome | Key Assumptions |
+| Scénario | Résultat | Hypothèses clés |
 |----------|---------|-----------------|
-| **Conservative** | {value or range} | {2–3 key assumptions} |
-| **Moderate** | {value or range} | {2–3 key assumptions} |
-| **Aggressive** | {value or range} | {2–3 key assumptions} |
+| **Conservateur** | {valeur ou fourchette} | {2-3 hypothèses clés} |
+| **Modéré** | {valeur ou fourchette} | {2-3 hypothèses clés} |
+| **Agressif** | {valeur ou fourchette} | {2-3 hypothèses clés} |
 
-### Triggers that move us between scenarios
+### Déclencheurs qui nous font basculer entre scénarios
 
-- We move toward Aggressive if: {specific signal 1}, {specific signal 2}
-- We move toward Conservative if: {specific signal 1}, {specific signal 2}
+- Nous nous rapprochons de l'agressif si : {signal précis 1}, {signal précis 2}
+- Nous nous rapprochons du conservateur si : {signal précis 1}, {signal précis 2}
 
-### What we are watching
+### Ce que nous surveillons
 
-- {Metric or indicator 1 — what we will track to know which scenario is unfolding}
-- {Metric or indicator 2}
+- {Indicateur ou signal 1 — ce que nous suivrons pour savoir quel scénario se déroule}
+- {Indicateur ou signal 2}
 ```
 
-## Worked example — Q1 Revenue Forecast for a B2B SaaS engagement
+## Exemple travaillé — Prévision de revenu T1 pour un engagement SaaS B2B
 
 ```markdown
-## Forecast — Q1 2026 New ARR from Marketing-Sourced Pipeline
+## Prévision — ARR nouveau du T1 2026 issu du pipeline sourcé par le marketing
 
-| Scenario | New ARR | Key Assumptions |
+| Scénario | Nouvel ARR | Hypothèses clés |
 |----------|---------|-----------------|
-| **Conservative** | INR 1.8 Crore | Google Ads CPL stays at INR 1,800 (current); LinkedIn Ads CPL rises 20% due to Q1 budget influx in category; close rate stays at current 18%; one large enterprise deal slips into Q2. |
-| **Moderate** | INR 2.6 Crore | CPLs stay flat across channels; close rate improves to 22% as sales team adopts new lead-scoring; large enterprise deal closes in Q1 as forecast. |
-| **Aggressive** | INR 3.4 Crore | Q1 industry conference produces 40+ qualified leads (vs typical 25); a planned product release closes the most-objected-to feature gap and lifts close rate to 27%; large enterprise deal closes plus one upsell. |
+| **Conservateur** | 1,8 crore INR | Le CPL de Google Ads reste à 1 800 INR (actuel) ; le CPL de LinkedIn Ads augmente de 20 % en raison de l'afflux budgétaire du T1 dans la catégorie ; le taux de clôture reste au niveau actuel de 18 % ; un gros deal entreprise glisse au T2. |
+| **Modéré** | 2,6 crore INR | Les CPL restent stables sur tous les canaux ; le taux de clôture s'améliore à 22 % à mesure que l'équipe commerciale adopte le nouveau lead scoring ; le gros deal entreprise se clôture au T1 comme prévu. |
+| **Agressif** | 3,4 crore INR | La conférence sectorielle du T1 produit 40+ leads qualifiés (contre 25 habituellement) ; une sortie de produit planifiée comble la lacune de fonctionnalité la plus contestée et fait passer le taux de clôture à 27 % ; le gros deal entreprise se clôture plus une vente incitative. |
 
-### Triggers that move us between scenarios
+### Déclencheurs qui nous font basculer entre scénarios
 
-- Toward Aggressive: Industry conference attendance > 200, ad CPL drops 15%+, close rate above 25% by week 6
-- Toward Conservative: Industry conference cancelled or under-attended, ad costs rise 25%+, sales team capacity drops below planned
+- Vers l'agressif : fréquentation de la conférence sectorielle > 200, CPL publicitaire en baisse de 15 %+, taux de clôture au-dessus de 25 % d'ici la semaine 6
+- Vers le conservateur : conférence sectorielle annulée ou sous-fréquentée, coûts publicitaires en hausse de 25 %+, capacité de l'équipe commerciale en dessous du planifié
 
-### What we are watching
+### Ce que nous surveillons
 
-- Weekly: pipeline-generated, MQL-to-SQL conversion, ad CPL trend
-- Monthly: close rate, enterprise deal stage progression, channel mix actuals vs plan
+- Hebdomadaire : pipeline généré, conversion MQL-vers-SQL, tendance du CPL publicitaire
+- Mensuel : taux de clôture, progression des étapes des deals entreprise, mix de canaux réel vs plan
 ```
 
-## Why three scenarios matter
+## Pourquoi trois scénarios comptent
 
-1. **They prevent over-promising.** A single number is interpreted as a commitment. A range with assumptions is interpreted as honest forecasting.
+1. **Ils empêchent les promesses excessives.** Un chiffre unique est interprété comme un engagement. Une fourchette avec hypothèses est interprétée comme une prévision honnête.
 
-2. **They make assumptions visible.** When the moderate scenario assumes a 22% close rate but the actual is 17%, the conversation is "the close-rate assumption was wrong, here is why" — not "your forecast was wrong, you under-delivered."
+2. **Ils rendent les hypothèses visibles.** Lorsque le scénario modéré suppose un taux de clôture de 22 % mais que le réel est de 17 %, la conversation est « l'hypothèse de taux de clôture était fausse, voici pourquoi » — pas « votre prévision était fausse, vous avez sous-livré ».
 
-3. **They invite collaboration.** The client can challenge assumptions. "Why do you assume CPLs will stay flat? We are launching a new product that should pull bidders into the category." This produces a better forecast collaboratively.
+3. **Ils invitent à la collaboration.** Le client peut remettre en question les hypothèses. « Pourquoi supposez-vous que les CPL resteront stables ? Nous lançons un nouveau produit qui devrait attirer des enchérisseurs dans la catégorie. » Cela produit une meilleure prévision de manière collaborative.
 
-4. **They define triggers for action.** If we hit Conservative-level signals by mid-quarter, the team knows to pivot. If we hit Aggressive-level signals, the team knows to scale.
+4. **Ils définissent des déclencheurs d'action.** Si nous atteignons des signaux de niveau conservateur à mi-trimestre, l'équipe sait qu'il faut pivoter. Si nous atteignons des signaux de niveau agressif, l'équipe sait qu'il faut monter en échelle.
 
-5. **They protect against attribution disputes.** When results land in the Conservative-to-Aggressive band, the conversation is about which assumptions held vs not — not about whether the forecast was wrong.
+5. **Ils protègent contre les disputes d'attribution.** Lorsque les résultats se situent dans la bande conservateur-à-agressif, la conversation porte sur quelles hypothèses ont tenu ou non — pas sur si la prévision était fausse.
 
-## What three scenarios are NOT
+## Ce que trois scénarios ne sont PAS
 
-- **Not "low / medium / high estimate" with no rigor.** Each scenario must have explicit assumptions.
-- **Not a way to hide uncertainty by giving a wide band.** If Conservative is 30% of Moderate, the model is too uncertain — refine it before presenting.
-- **Not a ceiling on accountability.** Aggressive is what is achievable with great execution; the team is still accountable to Moderate as the planning baseline.
-- **Not a substitute for tracking.** The point of triggers and "what we are watching" is to know early which scenario is unfolding so the team can react.
+- **Pas une « estimation basse / moyenne / haute » sans rigueur.** Chaque scénario doit avoir des hypothèses explicites.
+- **Pas un moyen de cacher l'incertitude en donnant une large bande.** Si le conservateur est à 30 % du modéré, le modèle est trop incertain — l'affiner avant de le présenter.
+- **Pas un plafond de responsabilité.** L'agressif est ce qui est atteignable avec une excellente exécution ; l'équipe reste responsable du modéré comme référence de planification.
+- **Pas un substitut au suivi.** L'intérêt des déclencheurs et de « ce que nous surveillons » est de savoir tôt quel scénario se déroule afin que l'équipe puisse réagir.
 
-## When to update scenarios
+## Quand mettre à jour les scénarios
 
-- **Monthly:** at the monthly performance review, scenarios for the remainder of the quarter are recalibrated based on actual data
-- **At major events:** product launches, competitor moves, market shifts, regulatory changes
-- **At quarterly strategy refresh:** full re-forecast for the next quarter with new scenarios
+- **Mensuellement :** lors de la revue de performance mensuelle, les scénarios pour le reste du trimestre sont recalibrés selon les données réelles
+- **Aux événements majeurs :** lancements de produit, mouvements de concurrents, évolutions de marché, changements réglementaires
+- **À l'actualisation stratégique trimestrielle :** nouvelle prévision complète pour le trimestre suivant avec de nouveaux scénarios
 
-## Where forecasts live in the engagement
+## Où les prévisions se situent dans l'engagement
 
-- **Core Doc 3.4 (DMFlow), Step 9:** strategic implications include forecast directionally
-- **Growth Plan (Part 8):** Expected Outcomes section presents the three scenarios formally
-- **Yearly Planner (Part 8):** annual forecast as three scenarios per quarter
-- **Monthly performance reports:** actuals vs scenarios + recalibrated forward forecasts
-- **Quarterly strategy refresh:** full re-forecast for the next quarter
+- **Document central 3.4 (DMFlow), étape 9 :** les implications stratégiques incluent une prévision directionnelle
+- **Growth Plan (partie 8) :** la section Résultats attendus présente formellement les trois scénarios
+- **Planificateur annuel (partie 8) :** prévision annuelle sous forme de trois scénarios par trimestre
+- **Rapports de performance mensuels :** réel vs scénarios + prévisions à terme recalibrées
+- **Actualisation stratégique trimestrielle :** nouvelle prévision complète pour le trimestre suivant
 
-## Related references
+## Références liées
 
-- [growth-plan-template.md](growth-plan-template.md) — Expected Outcomes section uses three scenarios
-- [unit-economics-framework.md](unit-economics-framework.md) — CAC / LTV inputs to forecasts
-- [monthly-report-template.md](monthly-report-template.md) — actuals vs scenarios reporting
+- [growth-plan-template.md](growth-plan-template.md) — la section Résultats attendus utilise trois scénarios
+- [unit-economics-framework.md](unit-economics-framework.md) — intrants CAC / LTV pour les prévisions
+- [monthly-report-template.md](monthly-report-template.md) — reporting réel vs scénarios
+</content>

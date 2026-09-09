@@ -1,79 +1,79 @@
 ---
 name: publish-blog
-description: "Publish a blog post to WordPress or Webflow through the connected CMS MCP with SEO metadata, categories and tags, featured image, slug optimization, and optional scheduling. Runs pre-publish gates — content-scorer.py, brand-voice-scorer.py, SEO and compliance checks — and a MANDATORY approval gate: an Execution Summary the user must approve with an explicit typed yes (logged via approval-manager.py) before anything goes live, then verifies the live URL and schema markup and submits to Google Search Console if connected. Triggers on \"/digital-marketing-pro:publish-blog\", \"publish this post to WordPress\", \"push the draft live on Webflow\", \"schedule this article for Monday\", \"take this blog post live\". Reads the brand profile and platform-publishing-specs.md for CMS field mappings."
+description: "Publier un article de blog sur WordPress ou Webflow via le MCP CMS connecté avec les métadonnées SEO, les catégories et tags, l'image mise en avant, l'optimisation du slug, et une planification optionnelle. Exécute des portes avant publication — content-scorer.py, brand-voice-scorer.py, vérifications SEO et de conformité — et une porte d'approbation OBLIGATOIRE : un Résumé d'exécution que l'utilisateur doit approuver avec un oui explicite tapé (journalisé via approval-manager.py) avant que quoi que ce soit ne parte en ligne, puis vérifie l'URL en direct et le balisage schema et soumet à Google Search Console si connecté. Se déclenche sur \"/digital-marketing-pro:publish-blog\", \"publish this post to WordPress\", \"push the draft live on Webflow\", \"schedule this article for Monday\", \"take this blog post live\". Lit le profil de marque et platform-publishing-specs.md pour les correspondances de champs par CMS."
 disable-model-invocation: false
 argument-hint: "[--platform=wordpress|webflow]"
 ---
 
 # /digital-marketing-pro:publish-blog
 
-## Purpose
+## Objectif
 
-Publish a fully optimized blog post to the brand's CMS (WordPress or Webflow) with SEO metadata, categories and tags, featured image, and optional scheduling. Includes pre-publish quality checks for content scoring and brand voice alignment, plus post-publish verification to confirm the live URL is accessible and rendering correctly. Designed to be the final step in a content workflow — taking a draft from ready to live with all optimization gates enforced.
+Publier un article de blog entièrement optimisé sur le CMS de la marque (WordPress ou Webflow) avec les métadonnées SEO, les catégories et tags, l'image mise en avant, et une planification optionnelle. Inclut des contrôles qualité avant publication pour le scoring de contenu et l'alignement à la voix de marque, plus une vérification après publication pour confirmer que l'URL en direct est accessible et s'affiche correctement. Conçu comme l'étape finale d'un workflow de contenu — faisant passer un brouillon prêt à un état en ligne avec toutes les portes d'optimisation appliquées.
 
-## Execution gate (MANDATORY — cannot be skipped)
+## Porte d'exécution (OBLIGATOIRE — ne peut pas être contournée)
 
-1. Present the full preview — recipients / spend / changes / compliance — as an **Execution Summary** before touching any live system.
-2. The user must type `yes` (or an equivalent explicit approval). ANY other input — ambiguous, implied, partial, or absent approval — cancels the run.
-3. Never proceed on ambiguous input. Never auto-retry a failed execution; a failure needs human review before any re-run.
-4. Record the approval with `python "${CLAUDE_PLUGIN_ROOT}/scripts/approval-manager.py" --brand {slug} --action create-approval --data '{"risk_level":"<tier>","summary":"..."}'` **before** executing, then `python "${CLAUDE_PLUGIN_ROOT}/scripts/approval-manager.py" --brand {slug} --action mark-executed --id {approval_id}` after the platform confirms success.
+1. Présenter l'aperçu complet — destinataires / dépense / changements / conformité — sous forme de **Résumé d'exécution** avant de toucher un quelconque système en production.
+2. L'utilisateur doit taper `yes` (ou une approbation explicite équivalente). TOUTE autre saisie — ambiguë, implicite, partielle, ou absente — annule l'exécution.
+3. Ne jamais procéder sur une saisie ambiguë. Ne jamais relancer automatiquement une exécution échouée ; un échec nécessite une revue humaine avant toute relance.
+4. Enregistrer l'approbation avec `python "${CLAUDE_PLUGIN_ROOT}/scripts/approval-manager.py" --brand {slug} --action create-approval --data '{"risk_level":"<tier>","summary":"..."}'` **avant** l'exécution, puis `python "${CLAUDE_PLUGIN_ROOT}/scripts/approval-manager.py" --brand {slug} --action mark-executed --id {approval_id}` une fois que la plateforme confirme le succès.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Blog content**: The full blog post draft or a rough draft to refine — title, body, any inline images or embeds, and blockquotes or callout boxes
-- **Target CMS platform**: Which publishing platform to use — WordPress or Webflow — must have the corresponding MCP server connected
-- **Publish date**: Immediate publish or a scheduled date and time with timezone — scheduling uses the platform's native scheduling feature
-- **Categories and tags**: Content categories and taxonomy tags for organization and discoverability, or allow auto-suggestion based on content analysis and existing taxonomy
-- **Featured image**: Image file path, URL, or description for generation — used as the hero image and social sharing thumbnail (Open Graph and Twitter Card)
-- **SEO metadata**: Primary keyword, secondary keywords, meta title (50-60 chars), meta description (150-160 chars) — or request auto-generation based on content analysis and keyword strategy
-- **Author attribution**: Author name and bio link if different from the default brand author configured in the CMS
-- **Slug preference**: Custom URL slug or auto-generate from the title with keyword optimization and stop-word removal
-- **Internal links**: Specific internal pages to link to within the post, or allow auto-detection of linking opportunities based on existing site content
-- **Social sharing text**: Custom Open Graph title and description for social previews, or auto-generate from the meta title and description
-- **Content format**: Post format — standard article, listicle, how-to guide, case study, or thought leadership — determines schema markup type and structural expectations
-- **Excerpt or summary**: A 1-2 sentence excerpt for archive pages, RSS feeds, and social cards, or auto-generate from the opening paragraph
-- **Related posts**: Optional — specific posts to link as related content at the end of the article, or auto-detect based on category and topic overlap
-- **CTA block**: Optional — custom call-to-action block to append at the end of the post (newsletter signup, product trial, content upgrade, consultation booking)
+- **Contenu du blog** : Le brouillon complet de l'article ou un brouillon approximatif à affiner — titre, corps, tout média intégré, et citations ou encadrés
+- **Plateforme CMS cible** : Quelle plateforme de publication utiliser — WordPress ou Webflow — le MCP correspondant doit être connecté
+- **Date de publication** : Publication immédiate ou date et heure planifiées avec fuseau horaire — la planification utilise la fonction de planification native de la plateforme
+- **Catégories et tags** : Catégories de contenu et tags de taxonomie pour l'organisation et la découvrabilité, ou permettre l'auto-suggestion basée sur l'analyse du contenu et la taxonomie existante
+- **Image mise en avant** : Chemin de fichier image, URL, ou description pour la génération — utilisée comme image héro et vignette de partage social (Open Graph et Twitter Card)
+- **Métadonnées SEO** : Mot-clé principal, mots-clés secondaires, meta title (50-60 caractères), meta description (150-160 caractères) — ou demander l'auto-génération basée sur l'analyse du contenu et la stratégie de mots-clés
+- **Attribution de l'auteur** : Nom de l'auteur et lien de bio si différent de l'auteur de marque par défaut configuré dans le CMS
+- **Préférence de slug** : Slug d'URL personnalisé ou auto-génération à partir du titre avec optimisation de mots-clés et suppression des mots vides
+- **Liens internes** : Pages internes spécifiques à lier au sein de l'article, ou permettre la détection automatique des opportunités de maillage basée sur le contenu existant du site
+- **Texte de partage social** : Titre et description Open Graph personnalisés pour les aperçus sociaux, ou auto-génération à partir du meta title et de la meta description
+- **Format de contenu** : Format d'article — article standard, liste, guide comment faire, étude de cas, ou leadership éclairé — détermine le type de balisage schema et les attentes structurelles
+- **Extrait ou résumé** : Un extrait de 1-2 phrases pour les pages d'archive, les flux RSS, et les cartes sociales, ou auto-génération à partir du paragraphe d'ouverture
+- **Articles associés** : Optionnel — articles spécifiques à lier comme contenu associé à la fin de l'article, ou détection automatique basée sur le chevauchement de catégorie et de sujet
+- **Bloc CTA** : Optionnel — bloc d'appel à l'action personnalisé à ajouter à la fin de l'article (inscription newsletter, essai produit, contenu additionnel, réservation de consultation)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Verify CMS connection**: Check which CMS MCP server is connected (wordpress or webflow) and confirm it matches the user's target platform. If not connected, instruct the user to configure the MCP server first and provide the relevant setup link.
-3. **Score content quality**: Run `content-scorer.py` on the blog draft to evaluate readability (Flesch-Kincaid grade), structure (heading hierarchy, paragraph length, list usage), depth (word count vs topic complexity), and engagement potential. Flag any issues that need fixing before publish.
-4. **Score brand voice alignment**: Run `brand-voice-scorer.py` to verify the content matches the brand's tone, vocabulary, and messaging guidelines. Suggest specific edits if the score falls below the brand's minimum threshold defined in profile.json.
-5. **Optimize for SEO**: Ensure the primary keyword appears in the title, H1, first 100 words, URL slug, and meta description. Verify meta description is 150-160 characters and meta title is 50-60 characters. Check internal linking opportunities, image alt text, and heading keyword usage. Validate schema markup compatibility for the content type (article, how-to, FAQ).
-6. **Format for platform API**: Structure the content payload per the target CMS requirements — consult `skills/context-engine/platform-publishing-specs.md` for field mappings, HTML formatting, image handling, category/tag taxonomy IDs, featured image upload, Open Graph meta fields, and any platform-specific quirks like WordPress custom fields or Webflow CMS collection structure.
-7. **Run compliance check**: Verify content meets regulatory requirements for the brand's target markets — disclosure statements, affiliate link disclaimers, medical or financial disclaimers, and copyright attribution for any third-party content or images referenced.
-8. **Create approval record**: Create the record via `approval-manager.py --action create-approval` with the risk level inside the `--data` JSON — `{"risk_level":"medium",...}`. There is no `--risk-level` flag; see the Execution gate above for the exact command. Generate a pre-publish summary showing title, URL slug, publish time, SEO score, brand voice score, content quality score, categories, tags, featured image preview, and compliance status.
-9. **Present pre-publish summary**: Display the complete summary for user review and approval. Highlight any warnings from content scoring, SEO analysis, or compliance checks. Show a side-by-side preview of how the post will appear in search results and social sharing cards. Wait for explicit user confirmation before proceeding.
-10. **Execute publish via CMS MCP**: On approval, send the formatted payload to the CMS through the connected MCP server. Handle scheduling if a future publish date was specified. Confirm the API response indicates success.
-11. **Verify live URL**: After publish, request the live URL from the CMS API and verify it returns a 200 status. Confirm the title, meta description, featured image, canonical URL, and Open Graph tags are rendering correctly. Check that the page is not blocked by robots.txt or noindex tags.
-12. **Validate schema markup**: Confirm the published page includes the correct structured data (Article, HowTo, FAQ, or BreadcrumbList) and that it passes validation for rich snippet eligibility in search results.
-13. **Submit to search engines**: If the brand has Google Search Console connected, submit the new URL for indexing to accelerate discovery. Log the submission timestamp.
-14. **Log execution and save insight**: Run `execution-tracker.py` to log the publish event with timestamp, platform, URL, scores, and categories. Save an insight about the published content — topic, keywords, performance predictions — for future content strategy reference and gap analysis.
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. Vérifier également les guidelines à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions. Vérifier les procédures d'agence à `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Vérifier la connexion CMS** : Vérifier quel serveur MCP CMS est connecté (wordpress ou webflow) et confirmer qu'il correspond à la plateforme cible de l'utilisateur. S'il n'est pas connecté, indiquer à l'utilisateur de configurer d'abord le serveur MCP et fournir le lien de configuration pertinent.
+3. **Noter la qualité du contenu** : Exécuter `content-scorer.py` sur le brouillon de blog pour évaluer la lisibilité (niveau Flesch-Kincaid), la structure (hiérarchie des titres, longueur des paragraphes, usage des listes), la profondeur (nombre de mots vs complexité du sujet), et le potentiel d'engagement. Signaler tout problème à corriger avant publication.
+4. **Noter l'alignement à la voix de marque** : Exécuter `brand-voice-scorer.py` pour vérifier que le contenu correspond au ton, au vocabulaire, et aux guidelines de messages de la marque. Suggérer des modifications spécifiques si le score tombe en dessous du seuil minimum de la marque défini dans profile.json.
+5. **Optimiser pour le SEO** : S'assurer que le mot-clé principal apparaît dans le titre, le H1, les 100 premiers mots, le slug d'URL, et la meta description. Vérifier que la meta description compte 150-160 caractères et que le meta title compte 50-60 caractères. Vérifier les opportunités de maillage interne, le texte alt des images, et l'usage des mots-clés dans les titres. Valider la compatibilité du balisage schema pour le type de contenu (article, comment faire, FAQ).
+6. **Formater pour l'API de la plateforme** : Structurer la charge utile de contenu selon les exigences du CMS cible — consulter `skills/context-engine/platform-publishing-specs.md` pour les correspondances de champs, le formatage HTML, la gestion des images, les ID de taxonomie catégorie/tag, l'upload de l'image mise en avant, les champs meta Open Graph, et toute particularité spécifique à la plateforme comme les champs personnalisés WordPress ou la structure de collection CMS Webflow.
+7. **Exécuter le contrôle de conformité** : Vérifier que le contenu répond aux exigences réglementaires pour les marchés cibles de la marque — déclarations de divulgation, avertissements de liens affiliés, avertissements médicaux ou financiers, et attribution de droits d'auteur pour tout contenu ou image tiers référencé.
+8. **Créer l'enregistrement d'approbation** : Créer l'enregistrement via `approval-manager.py --action create-approval` avec le niveau de risque à l'intérieur du JSON `--data` — `{"risk_level":"medium",...}`. Il n'y a pas de flag `--risk-level` ; voir la Porte d'exécution ci-dessus pour la commande exacte. Générer un résumé avant publication montrant le titre, le slug d'URL, l'heure de publication, le score SEO, le score de voix de marque, le score de qualité de contenu, les catégories, les tags, l'aperçu de l'image mise en avant, et le statut de conformité.
+9. **Présenter le résumé avant publication** : Afficher le résumé complet pour revue et approbation de l'utilisateur. Mettre en évidence tout avertissement issu du scoring de contenu, de l'analyse SEO, ou des contrôles de conformité. Montrer un aperçu côte à côte de la façon dont l'article apparaîtra dans les résultats de recherche et les cartes de partage social. Attendre la confirmation explicite de l'utilisateur avant de procéder.
+10. **Exécuter la publication via le MCP CMS** : Sur approbation, envoyer la charge utile formatée au CMS à travers le serveur MCP connecté. Gérer la planification si une date de publication future a été spécifiée. Confirmer que la réponse de l'API indique un succès.
+11. **Vérifier l'URL en direct** : Après publication, demander l'URL en direct depuis l'API CMS et vérifier qu'elle retourne un statut 200. Confirmer que le titre, la meta description, l'image mise en avant, l'URL canonique, et les tags Open Graph s'affichent correctement. Vérifier que la page n'est pas bloquée par robots.txt ou des balises noindex.
+12. **Valider le balisage schema** : Confirmer que la page publiée inclut les données structurées correctes (Article, HowTo, FAQ, ou BreadcrumbList) et qu'elles passent la validation pour l'éligibilité aux résultats enrichis dans les résultats de recherche.
+13. **Soumettre aux moteurs de recherche** : Si la marque a Google Search Console connecté, soumettre la nouvelle URL pour indexation afin d'accélérer la découverte. Journaliser l'horodatage de soumission.
+14. **Journaliser l'exécution et enregistrer un insight** : Exécuter `execution-tracker.py` pour journaliser l'événement de publication avec l'horodatage, la plateforme, l'URL, les scores, et les catégories. Enregistrer un insight sur le contenu publié — sujet, mots-clés, prédictions de performance — pour référence future dans la stratégie de contenu et l'analyse de lacunes.
 
-## Output
+## Résultat
 
-A structured publish confirmation containing:
+Une confirmation de publication structurée contenant :
 
-- **Published URL**: The live or scheduled URL where the blog post is accessible, with confirmation of correct canonical URL
-- **SEO score**: Content SEO score with breakdown — keyword placement, meta title and description quality, internal links count, image alt text coverage, heading structure, and URL slug optimization
-- **Brand voice score**: Alignment score with notes on tone, vocabulary, messaging consistency, and any adjustments made during optimization
-- **Content quality score**: Readability grade (Flesch-Kincaid), structure assessment (heading hierarchy, paragraph balance), word count, and engagement potential rating
-- **Pre-publish checklist results**: Pass/fail status for each quality gate — content score, brand voice, SEO optimization, compliance review, and platform formatting validation
-- **Publish details**: Platform, publish status (live or scheduled with date), author, categories, tags, featured image confirmation, canonical URL, and Open Graph preview
-- **Social sharing preview**: How the post will appear when shared on Facebook, Twitter/X, and LinkedIn — including Open Graph image, title, and description rendering
-- **Compliance status**: Verification of all required disclaimers, disclosures, and attribution included per brand market regulations
-- **Schema markup validation**: Structured data type applied, validation status, and rich snippet eligibility for the content format
-- **Search engine submission**: Indexing request status via Google Search Console (if connected) with submission timestamp
-- **Performance baseline**: Initial metrics snapshot — page load time, Core Web Vitals scores, and crawl status — as a baseline for post-publish performance monitoring
-- **Related posts linked**: List of related content linked at the end of the article with titles and URLs for internal traffic flow
-- **CTA block confirmation**: The call-to-action block rendered at the end of the post with type, copy, and destination URL
-- **Execution log entry**: Timestamped record of the publish action with all metadata for audit trail and performance tracking
+- **URL publiée** : L'URL en direct ou planifiée où l'article de blog est accessible, avec confirmation de l'URL canonique correcte
+- **Score SEO** : Score SEO du contenu avec répartition — placement des mots-clés, qualité du meta title et de la meta description, nombre de liens internes, couverture du texte alt des images, structure des titres, et optimisation du slug d'URL
+- **Score de voix de marque** : Score d'alignement avec des notes sur le ton, le vocabulaire, la cohérence des messages, et tout ajustement effectué pendant l'optimisation
+- **Score de qualité de contenu** : Niveau de lisibilité (Flesch-Kincaid), évaluation de la structure (hiérarchie des titres, équilibre des paragraphes), nombre de mots, et notation du potentiel d'engagement
+- **Résultats de la checklist avant publication** : Statut réussite/échec pour chaque porte qualité — score de contenu, voix de marque, optimisation SEO, revue de conformité, et validation du formatage de la plateforme
+- **Détails de publication** : Plateforme, statut de publication (en direct ou planifié avec date), auteur, catégories, tags, confirmation de l'image mise en avant, URL canonique, et aperçu Open Graph
+- **Aperçu de partage social** : À quoi ressemblera l'article lorsqu'il sera partagé sur Facebook, Twitter/X, et LinkedIn — incluant le rendu de l'image, du titre, et de la description Open Graph
+- **Statut de conformité** : Vérification de toutes les mentions légales, divulgations, et attributions requises incluses selon les réglementations du marché de la marque
+- **Validation du balisage schema** : Type de données structurées appliqué, statut de validation, et éligibilité aux résultats enrichis pour le format de contenu
+- **Soumission aux moteurs de recherche** : Statut de la demande d'indexation via Google Search Console (si connecté) avec horodatage de soumission
+- **Référence de performance** : Instantané de métriques initial — temps de chargement de la page, scores Core Web Vitals, et statut de crawl — comme référence pour le suivi de performance post-publication
+- **Articles associés liés** : Liste du contenu associé lié à la fin de l'article avec titres et URL pour le flux de trafic interne
+- **Confirmation du bloc CTA** : Le bloc d'appel à l'action rendu à la fin de l'article avec le type, le texte, et l'URL de destination
+- **Entrée du journal d'exécution** : Enregistrement horodaté de l'action de publication avec toutes les métadonnées pour l'audit et le suivi de performance
 
-## Agents Used
+## Agents utilisés
 
-- **content-creator** — Content quality scoring, SEO optimization, brand voice alignment, keyword placement, meta description writing, internal linking recommendations, schema markup guidance, and social sharing text generation
-- **execution-coordinator** — Approval workflow, CMS API execution, post-publish verification, live URL validation, execution logging, and insight capture for content strategy
+- **content-creator** — Scoring de la qualité de contenu, optimisation SEO, alignement à la voix de marque, placement des mots-clés, rédaction de meta description, recommandations de maillage interne, conseils de balisage schema, et génération de texte de partage social
+- **execution-coordinator** — Workflow d'approbation, exécution de l'API CMS, vérification après publication, validation de l'URL en direct, journalisation d'exécution, et capture d'insight pour la stratégie de contenu

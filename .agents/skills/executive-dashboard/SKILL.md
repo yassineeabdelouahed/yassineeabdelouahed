@@ -1,59 +1,59 @@
 ---
 name: executive-dashboard
-description: "Design an executive marketing dashboard as a build-ready specification — 5-7 north-star metrics with rationale, metric hierarchy, chart choices, alert thresholds, data-source mapping, wireframe layout, drill-down structure, and a mobile variant. It designs the dashboard; it does not build or connect a live one. Triggers on \"/digital-marketing-pro:executive-dashboard\", \"design a CMO dashboard\", \"what metrics should the board see\", \"our exec report is too noisy\", \"create a leadership reporting view\". Reads the brand profile and guidelines; pairs with /digital-marketing-pro:exec-summary for the written companion narrative."
+description: "Concevez un tableau de bord marketing exécutif sous forme de spécification prête à construire — 5 à 7 métriques nord-étoile avec justification, hiérarchie des métriques, choix de graphiques, seuils d'alerte, mapping des sources de données, mise en page en wireframe, structure de drill-down, et une variante mobile. Conçoit le tableau de bord ; ne le construit ni ne le connecte en direct. Se déclenche sur « /digital-marketing-pro:executive-dashboard », « conçois un tableau de bord CMO », « quelles métriques le conseil d'administration devrait-il voir », « notre rapport exécutif est trop bruyant », « crée une vue de reporting pour la direction ». Lit le profil de marque et les guidelines ; se combine avec /digital-marketing-pro:exec-summary pour le récit écrit compagnon."
 ---
 
 # /digital-marketing-pro:executive-dashboard
 
-## Purpose
+## Objectif
 
-Design a C-suite marketing dashboard that translates marketing metrics into business outcomes for executive decision-making. Bridges the gap between marketing activity data and business impact, giving senior leaders the clarity to make faster, better-informed strategic decisions without drowning in operational detail.
+Concevoir un tableau de bord marketing pour le comité de direction qui traduit les métriques marketing en résultats business pour la prise de décision exécutive. Comble l'écart entre les données d'activité marketing et l'impact business, donnant aux dirigeants seniors la clarté nécessaire pour prendre des décisions stratégiques plus rapides et mieux informées sans se noyer dans le détail opérationnel.
 
-## Input Required
+## Entrées requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Executive role**: Primary audience — CEO, CMO, CFO, VP Marketing, or board — each requires different metric emphasis and abstraction level
-- **Business model and revenue drivers**: How the company makes money — SaaS, e-commerce, lead gen, marketplace, subscription — and the key revenue levers marketing influences
-- **Strategic priorities this quarter**: The 2-4 business priorities the executive team is focused on that marketing should ladder up to
-- **Reporting frequency**: How often the dashboard will be reviewed — weekly executive standup, monthly leadership meeting, quarterly board review
-- **Current data sources and tools**: Analytics platforms, CRM, ad platforms, attribution tools, and BI systems currently in use with data freshness and reliability notes
-- **Existing reports being replaced**: Current reporting artifacts the dashboard will consolidate or replace — helps identify gaps and redundancies
-- **Key decisions the dashboard should inform**: Specific decisions executives make that this dashboard should support — budget allocation, channel mix, hiring, campaign scaling, market expansion
-- **Stakeholder data literacy level**: How comfortable the audience is with marketing metrics — determines labeling, context, and narrative density needed
+- **Rôle exécutif** : audience principale — CEO, CMO, CFO, VP Marketing, ou conseil d'administration — chacun nécessite un accent différent sur les métriques et un niveau d'abstraction différent
+- **Modèle économique et leviers de chiffre d'affaires** : comment l'entreprise gagne de l'argent — SaaS, e-commerce, génération de leads, marketplace, abonnement — et les leviers de chiffre d'affaires clés que le marketing influence
+- **Priorités stratégiques ce trimestre** : les 2 à 4 priorités business sur lesquelles l'équipe de direction se concentre et auxquelles le marketing doit contribuer
+- **Fréquence de reporting** : à quelle fréquence le tableau de bord sera revu — standup exécutif hebdomadaire, réunion mensuelle de direction, revue trimestrielle du conseil d'administration
+- **Sources de données et outils actuels** : plateformes analytics, CRM, plateformes publicitaires, outils d'attribution, et systèmes BI actuellement utilisés avec des notes de fraîcheur et de fiabilité des données
+- **Rapports existants à remplacer** : artefacts de reporting actuels que le tableau de bord va consolider ou remplacer — aide à identifier les lacunes et les redondances
+- **Décisions clés que le tableau de bord doit éclairer** : décisions précises que les dirigeants prennent et que ce tableau de bord doit soutenir — allocation budgétaire, mix de canaux, recrutement, montée en puissance de campagne, expansion de marché
+- **Niveau de maîtrise des données des parties prenantes** : à quel point l'audience est à l'aise avec les métriques marketing — détermine le libellé, le contexte, et la densité narrative nécessaires
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Identify north-star metrics**: Select 5-7 metrics that directly tie marketing activity to business outcomes — revenue influenced, pipeline generated, customer acquisition cost, lifetime value, market share, brand equity indicators
-3. **Design metric hierarchy**: Organize metrics into three tiers — leading indicators (predict future performance), lagging indicators (confirm past results), and health metrics (signal system stability and sustainability)
-4. **Select visualization type per metric**: Choose the optimal chart type for each metric based on data shape and decision context — trend lines for trajectory, gauges for targets, bar charts for comparisons, sparklines for density
-5. **Define alert thresholds and anomaly triggers**: Set green/yellow/red thresholds for each metric with specific trigger values, and configure anomaly detection rules for unexpected spikes or drops
-6. **Map data sources to each metric**: Document which system provides each metric, how it is calculated, data freshness (real-time, daily, weekly), and known limitations or lag
-7. **Design layout for scanning speed**: Structure the dashboard for F-pattern or Z-pattern scanning — most critical metrics top-left, summary before detail, consistent visual hierarchy, minimal cognitive load
-8. **Add narrative guidance**: Write "how to read this" instructions for each section — what good looks like, what bad looks like, and what action to take in each scenario
-9. **Build drill-down structure**: Design three levels of depth — summary view (the dashboard itself), detail view (campaign or channel breakdowns), and root cause view (diagnostic data for investigating anomalies)
-10. **Create mobile-friendly variant**: Adapt the dashboard layout for mobile or tablet viewing — prioritize top 3-5 metrics, stack vertically, enlarge touch targets, and simplify visualizations
-11. **Add comparison baselines**: Define what each metric is compared against — plan/target, prior period (MoM, QoQ, YoY), industry benchmark, and competitive estimate — with comparison display format
+1. **Charger le contexte de la marque** : lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également la présence de guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier la présence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier la présence de SOP d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou procéder avec les valeurs par défaut.
+2. **Identifier les métriques nord-étoile** : sélectionner 5 à 7 métriques reliant directement l'activité marketing aux résultats business — chiffre d'affaires influencé, pipeline généré, coût d'acquisition client, valeur vie client, part de marché, indicateurs de capital de marque
+3. **Concevoir la hiérarchie des métriques** : organiser les métriques en trois niveaux — indicateurs avancés (prédisent la performance future), indicateurs retardés (confirment les résultats passés), et métriques de santé (signalent la stabilité et la durabilité du système)
+4. **Sélectionner le type de visualisation par métrique** : choisir le type de graphique optimal pour chaque métrique selon la forme des données et le contexte de décision — courbes de tendance pour la trajectoire, jauges pour les objectifs, graphiques à barres pour les comparaisons, sparklines pour la densité
+5. **Définir les seuils d'alerte et déclencheurs d'anomalie** : fixer des seuils vert/jaune/rouge pour chaque métrique avec des valeurs de déclenchement précises, et configurer des règles de détection d'anomalie pour les pics ou baisses inattendus
+6. **Cartographier les sources de données pour chaque métrique** : documenter quel système fournit chaque métrique, comment elle est calculée, la fraîcheur des données (temps réel, quotidien, hebdomadaire), et les limites ou délais connus
+7. **Concevoir la mise en page pour la vitesse de balayage** : structurer le tableau de bord pour un balayage en motif F ou Z — métriques les plus critiques en haut à gauche, résumé avant le détail, hiérarchie visuelle cohérente, charge cognitive minimale
+8. **Ajouter des consignes narratives** : rédiger des instructions « comment lire ceci » pour chaque section — à quoi ressemble le bon, à quoi ressemble le mauvais, et quelle action entreprendre dans chaque scénario
+9. **Construire la structure de drill-down** : concevoir trois niveaux de profondeur — vue résumée (le tableau de bord lui-même), vue détaillée (répartitions par campagne ou canal), et vue de cause racine (données diagnostiques pour investiguer les anomalies)
+10. **Créer une variante adaptée au mobile** : adapter la mise en page du tableau de bord pour un affichage mobile ou tablette — prioriser les 3 à 5 principales métriques, empiler verticalement, agrandir les zones tactiles, et simplifier les visualisations
+11. **Ajouter des références de comparaison** : définir à quoi chaque métrique est comparée — plan/objectif, période précédente (MoM, QoQ, YoY), benchmark sectoriel, et estimation concurrentielle — avec le format d'affichage de la comparaison
 
-## Output
+## Sortie
 
-A structured executive dashboard design containing:
+Une conception de tableau de bord exécutif structurée contenant :
 
-- **North-star metrics (5-7)**: Selected metrics with business rationale explaining why each matters to the executive audience and how it connects to strategic priorities
-- **Metric hierarchy diagram**: Visual framework showing leading, lagging, and health metrics with causal relationships and directional influence between them
-- **Visualization recommendations**: Chart type, scale, color coding, and annotation style for each metric with rationale for the design choice
-- **Alert threshold definitions**: Green/yellow/red boundaries for each metric with specific trigger values, anomaly detection rules, and notification routing
-- **Data source mapping**: Metric-by-metric documentation of source system, calculation method, refresh frequency, data latency, and known quality issues
-- **Dashboard wireframe layout**: Spatial layout showing metric placement, section grouping, visual hierarchy, and scanning flow optimized for the target audience
-- **Narrative guide**: Section-by-section presentation guide explaining how to read each area, what questions it answers, and what actions to consider based on the data shown
-- **Drill-down structure**: Three-level depth design — summary (dashboard), detail (channel/campaign breakdown), and root cause (diagnostic investigation) with navigation flow
-- **Mobile layout variant**: Adapted design for mobile viewing with prioritized metrics, vertical stacking, simplified charts, and touch-optimized interactions
-- **Comparison baseline definitions**: For each metric, the comparison standard (target, prior period, benchmark, competitive) with display format and context notes
-- **Refresh cadence and data latency notes**: Documentation of how often each metric updates, expected data lag, and implications for decision timing
-- **Executive summary template**: A 3-sentence written narrative template that synthesizes dashboard findings into a verbal briefing — what happened, why it matters, what to do next
-- **Glossary of terms**: Plain-language definitions of all metrics and marketing terminology for non-marketing stakeholders with examples and context
+- **Métriques nord-étoile (5-7)** : métriques sélectionnées avec une justification business expliquant pourquoi chacune compte pour l'audience exécutive et comment elle se rattache aux priorités stratégiques
+- **Diagramme de hiérarchie des métriques** : cadre visuel montrant les métriques avancées, retardées, et de santé avec les relations causales et l'influence directionnelle entre elles
+- **Recommandations de visualisation** : type de graphique, échelle, codage couleur, et style d'annotation pour chaque métrique avec la justification du choix de conception
+- **Définitions des seuils d'alerte** : limites vert/jaune/rouge pour chaque métrique avec des valeurs de déclenchement précises, des règles de détection d'anomalie, et le routage de notification
+- **Mapping des sources de données** : documentation métrique par métrique du système source, de la méthode de calcul, de la fréquence de rafraîchissement, de la latence des données, et des problèmes de qualité connus
+- **Mise en page en wireframe du tableau de bord** : disposition spatiale montrant le placement des métriques, le regroupement par section, la hiérarchie visuelle, et le flux de balayage optimisé pour l'audience cible
+- **Guide narratif** : guide de présentation section par section expliquant comment lire chaque zone, quelles questions elle répond, et quelles actions envisager selon les données affichées
+- **Structure de drill-down** : conception à trois niveaux de profondeur — résumé (tableau de bord), détail (répartition canal/campagne), et cause racine (investigation diagnostique) avec le flux de navigation
+- **Variante de mise en page mobile** : conception adaptée pour l'affichage mobile avec métriques priorisées, empilement vertical, graphiques simplifiés, et interactions optimisées pour le tactile
+- **Définitions des références de comparaison** : pour chaque métrique, le standard de comparaison (objectif, période précédente, benchmark, concurrentiel) avec le format d'affichage et les notes de contexte
+- **Cadence de rafraîchissement et notes de latence des données** : documentation de la fréquence de mise à jour de chaque métrique, du délai de données attendu, et des implications pour le timing de décision
+- **Modèle de synthèse exécutive** : un modèle narratif écrit en 3 phrases synthétisant les constats du tableau de bord en un briefing oral — ce qui s'est passé, pourquoi c'est important, quoi faire ensuite
+- **Glossaire de termes** : définitions en langage clair de toutes les métriques et de la terminologie marketing pour les parties prenantes non marketing, avec exemples et contexte
 
-## Agents Used
+## Agents utilisés
 
-- **analytics-analyst** — Metric selection, hierarchy design, visualization recommendations, data source mapping, alert thresholds, drill-down architecture, refresh cadence, and dashboard layout optimization
+- **analytics-analyst** — sélection des métriques, conception de la hiérarchie, recommandations de visualisation, mapping des sources de données, seuils d'alerte, architecture de drill-down, cadence de rafraîchissement, et optimisation de la mise en page du tableau de bord

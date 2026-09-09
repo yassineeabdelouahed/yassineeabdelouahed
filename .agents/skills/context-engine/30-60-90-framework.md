@@ -1,132 +1,133 @@
-# The 30 / 60 / 90-Day Framework
+# Le cadre 30 / 60 / 90 jours
 
-No marketing strategy should be planned as a single 12-month block. Breaking the first quarter into 30 / 60 / 90-day phases creates milestones that allow early-stage course correction and prevent slow-rolling failure.
+Aucune stratégie marketing ne devrait être planifiée comme un bloc unique de 12 mois. Découper le premier trimestre en phases de 30 / 60 / 90 jours crée des jalons qui permettent une correction de trajectoire précoce et évitent un échec qui s'installe lentement.
 
-This framework is the default phasing for the Implementation Timeline in the Growth Plan (Section 8) and for the start of every new engagement.
+Ce cadre est le phasage par défaut du calendrier de mise en œuvre dans le Growth Plan (section 8) et pour le démarrage de chaque nouvel engagement.
 
-## The Three Phases
+## Les trois phases
 
-### Days 1–30 — Foundation
+### Jours 1-30 — Fondation
 
-**Goal:** establish the operational base. Get tracking right. Launch on proven channels. Build the assets the strategy depends on.
+**Objectif :** établir la base opérationnelle. Bien mettre en place le suivi. Lancer sur les canaux éprouvés. Construire les actifs dont dépend la stratégie.
 
-**Standard activities:**
+**Activités standards :**
 
-1. **Tracking infrastructure setup** — GA4 properly configured (events, conversions, audiences mirroring the channel strategy), Google Tag Manager firing correctly, ad platform pixels deployed, server-side tracking (CAPI) where applicable, conversion events validated end-to-end
-2. **Initial campaigns on proven channels** — typically Google Search (brand + non-brand high-intent keywords) + retargeting (anyone who visits the site gets retargeted). These are the highest-ROI channels for most businesses; start here while building toward more sophisticated activity.
-3. **Establish baseline metrics** — first 2–3 weeks of data become the baseline against which all future periods are compared. Document carefully.
-4. **Finalise creative assets** — landing pages live, ad creative produced, content calendar planned, brand voice references documented
-5. **Initial keyword research and competitor monitoring setup** — Ahrefs / Semrush projects created, weekly competitor watching automated
+1. **Mise en place de l'infrastructure de suivi** — GA4 correctement configuré (événements, conversions, audiences reflétant la stratégie de canal), Google Tag Manager se déclenchant correctement, pixels de plateforme publicitaire déployés, suivi côté serveur (CAPI) le cas échéant, événements de conversion validés de bout en bout
+2. **Campagnes initiales sur les canaux éprouvés** — généralement Google Search (mots-clés de marque + hors marque à forte intention) + retargeting (toute personne visitant le site est retargetée). Ce sont les canaux au meilleur ROI pour la plupart des entreprises ; commencer ici tout en construisant vers une activité plus sophistiquée.
+3. **Établir les indicateurs de référence** — les 2 à 3 premières semaines de données deviennent la référence à laquelle toutes les périodes futures sont comparées. Documenter soigneusement.
+4. **Finaliser les actifs créatifs** — landing pages en ligne, créations publicitaires produites, calendrier de contenu planifié, références de voix de marque documentées
+5. **Recherche de mots-clés initiale et mise en place de la surveillance concurrentielle** — projets Ahrefs / Semrush créés, surveillance hebdomadaire des concurrents automatisée
 
-**What success looks like by Day 30:**
+**À quoi ressemble le succès au jour 30 :**
 
-- Tracking is verified working end-to-end
-- Initial campaigns running with first performance data
-- Baseline metrics documented
-- Creative production rhythm established
-- Team operating cadence (daily / weekly cadences) established
+- Le suivi est vérifié comme fonctionnant de bout en bout
+- Les campagnes initiales tournent avec les premières données de performance
+- Les indicateurs de référence sont documentés
+- Le rythme de production créative est établi
+- La cadence opérationnelle de l'équipe (cadences quotidiennes / hebdomadaires) est établie
 
-**Common Day 30 anti-patterns:**
+**Anti-schémas courants au jour 30 :**
 
-- Tracking not validated → measurement breaks the moment scaling starts
-- Launching too many channels at once → impossible to attribute what is working
-- Not documenting baseline → no reference point for evaluating future performance
-- Skipping competitor monitoring setup → blind to market context
+- Suivi non validé → la mesure se casse au moment où la mise à l'échelle commence
+- Lancer trop de canaux à la fois → impossible d'attribuer ce qui fonctionne
+- Ne pas documenter la référence → aucun point de comparaison pour évaluer la performance future
+- Sauter la mise en place de la surveillance concurrentielle → aveugle au contexte de marché
 
-### Days 31–60 — Validation
+### Jours 31-60 — Validation
 
-**Goal:** confirm the initial channels are working. Begin first optimisations. Expand cautiously to secondary channels. Establish reporting rhythm.
+**Objectif :** confirmer que les canaux initiaux fonctionnent. Commencer les premières optimisations. S'étendre prudemment aux canaux secondaires. Établir un rythme de reporting.
 
-**Standard activities:**
+**Activités standards :**
 
-1. **Analyse initial campaign performance vs KPI targets** — first real comparison of plan vs reality
-2. **Run first A/B tests** — typically on ad copy variants, landing page headlines, CTA wording. Tests run for at least 2 weeks for statistical significance.
-3. **Expand to secondary channels** if primary channels are performing — typically Meta or LinkedIn (depending on B2C vs B2B), email lifecycle flows, organic social posting cadence
-4. **Begin content marketing and SEO activities** — content takes months to rank, so start producing in earnest now even though impact is later
-5. **First monthly performance report** — full structured report (see [monthly-report-template.md](monthly-report-template.md))
+1. **Analyser la performance des campagnes initiales par rapport aux objectifs de KPI** — première comparaison réelle du plan vs la réalité
+2. **Exécuter les premiers tests A/B** — généralement sur des variantes de texte publicitaire, des titres de landing page, une formulation d'appel à l'action. Les tests durent au moins 2 semaines pour la significativité statistique.
+3. **S'étendre aux canaux secondaires** si les canaux principaux performent — généralement Meta ou LinkedIn (selon B2C vs B2B), flux de cycle de vie e-mail, cadence de publication sociale organique
+4. **Commencer les activités de marketing de contenu et de SEO** — le contenu met des mois à se classer, donc commencer à produire sérieusement dès maintenant même si l'impact vient plus tard
+5. **Premier rapport de performance mensuel** — rapport structuré complet (voir [monthly-report-template.md](monthly-report-template.md))
 
-**What success looks like by Day 60:**
+**À quoi ressemble le succès au jour 60 :**
 
-- Primary channels validated as on-track or course-corrected if not
-- First A/B test results in hand (some winners, some learnings)
-- Secondary channels launched with initial data
-- Content engine producing per the plan
-- First monthly report delivered to client; client knows where things stand
+- Canaux principaux validés comme sur la bonne voie ou corrigés sinon
+- Premiers résultats de tests A/B en main (certains gagnants, certains enseignements)
+- Canaux secondaires lancés avec les premières données
+- Le moteur de contenu produit selon le plan
+- Premier rapport mensuel livré au client ; le client sait où en sont les choses
 
-**Common Day 60 anti-patterns:**
+**Anti-schémas courants au jour 60 :**
 
-- Not running A/B tests because "we are still optimising" — without tests there is no systematic optimisation
-- Adding too many channels in this phase — Days 31–60 should add 1–2 secondary channels max
-- Reactive ad-hoc reporting instead of structured monthly report
+- Ne pas exécuter de tests A/B parce que « nous optimisons encore » — sans tests, il n'y a pas d'optimisation systématique
+- Ajouter trop de canaux à cette phase — les jours 31-60 ne devraient ajouter que 1 à 2 canaux secondaires maximum
+- Reporting réactif et ponctuel au lieu d'un rapport mensuel structuré
 
-### Days 61–90 — Optimisation & Scale
+### Jours 61-90 — Optimisation et mise à l'échelle
 
-**Goal:** double down on winners. Pause losers. Begin scaling. Launch awareness layer. Establish the optimisation rhythm that will continue indefinitely.
+**Objectif :** miser davantage sur les gagnants. Mettre en pause les perdants. Commencer la mise à l'échelle. Lancer la couche de notoriété. Établir le rythme d'optimisation qui se poursuivra indéfiniment.
 
-**Standard activities:**
+**Activités standards :**
 
-1. **Double down on winning campaigns** — Variable budget deployed toward proven below-target CPA campaigns (see [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md))
-2. **Pause or restructure losers** — campaigns consistently above target CPA for 3+ weeks get restructured or paused
-3. **Introduce variable budget recommendations** — first formal Variable budget conversation with client
-4. **Launch awareness-layer campaigns (TOFU)** — now that conversion tracking is proven, brand-building investment can be measured for indirect impact
-5. **Begin email / WhatsApp nurture flows** for leads captured in Days 1–60
-6. **Quarterly strategy review** — what is working, what is not, what to change for Q2
+1. **Miser davantage sur les campagnes gagnantes** — budget variable déployé vers les campagnes prouvées sous le CPA cible (voir [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md))
+2. **Mettre en pause ou restructurer les perdants** — les campagnes constamment au-dessus du CPA cible pendant 3 semaines ou plus sont restructurées ou mises en pause
+3. **Introduire les recommandations de budget variable** — première conversation formelle sur le budget variable avec le client
+4. **Lancer les campagnes de la couche notoriété (TOFU)** — maintenant que le suivi de conversion est prouvé, l'investissement en construction de marque peut être mesuré pour son impact indirect
+5. **Commencer les flux de nurturing e-mail / WhatsApp** pour les leads capturés durant les jours 1-60
+6. **Revue de stratégie trimestrielle** — ce qui fonctionne, ce qui ne fonctionne pas, ce qu'il faut changer pour le T2
 
-**What success looks like by Day 90:**
+**À quoi ressemble le succès au jour 90 :**
 
-- Performance data shows clear winners and losers
-- Variable budget mechanism in active use
-- TOFU campaigns running for awareness building
-- Lifecycle nurture flows active
-- Quarterly review completed; Q2 plan refined
+- Les données de performance montrent des gagnants et des perdants clairs
+- Le mécanisme de budget variable est en usage actif
+- Les campagnes TOFU tournent pour construire la notoriété
+- Les flux de nurturing de cycle de vie sont actifs
+- La revue trimestrielle est terminée ; le plan du T2 est affiné
 
-**Common Day 90 anti-patterns:**
+**Anti-schémas courants au jour 90 :**
 
-- Scaling too aggressively (jumping from INR 1L/day to INR 5L/day overnight) — the platform learning algorithms reset and performance temporarily collapses
-- Pausing campaigns too quickly (before 3-week trend is clear) — kills campaigns that need more time
-- Skipping the quarterly review — locks in problems that should have been corrected for Q2
+- Mettre à l'échelle trop agressivement (passer de 1 lakh INR/jour à 5 lakh INR/jour du jour au lendemain) — les algorithmes d'apprentissage des plateformes se réinitialisent et la performance s'effondre temporairement
+- Mettre en pause les campagnes trop vite (avant qu'une tendance de 3 semaines ne soit claire) — tue des campagnes qui avaient besoin de plus de temps
+- Sauter la revue trimestrielle — fige des problèmes qui auraient dû être corrigés pour le T2
 
-## Why this phasing
+## Pourquoi ce phasage
 
-The 30 / 60 / 90 sequencing reflects how digital marketing campaigns mature:
+La séquence 30 / 60 / 90 reflète la façon dont les campagnes de marketing digital mûrissent :
 
-- **Foundation work matters disproportionately** — tracking errors caught in Day 1 cost INR X to fix; tracking errors caught in Day 90 cost INR 100X (because all data since is suspect)
-- **Channels need 14–30 days of data before optimisation decisions are reliable** — earlier "winners" and "losers" are usually noise
-- **A/B tests need 14+ days to reach significance** for typical conversion volumes
-- **Content marketing has a 90+ day lead time** — start producing in Days 1–60 so content has time to compound by Days 91–180
-- **Brand awareness investment compounds over months** — start TOFU in Day 61–90 so it has time to lift conversion in Q2
+- **Le travail de fondation compte de manière disproportionnée** — les erreurs de suivi détectées au jour 1 coûtent X INR à corriger ; les erreurs de suivi détectées au jour 90 coûtent 100X INR (car toutes les données depuis lors sont suspectes)
+- **Les canaux ont besoin de 14 à 30 jours de données avant que les décisions d'optimisation soient fiables** — les « gagnants » et « perdants » précoces sont généralement du bruit
+- **Les tests A/B ont besoin de 14+ jours pour atteindre la significativité** pour des volumes de conversion typiques
+- **Le marketing de contenu a un délai de mise en route de 90+ jours** — commencer à produire dans les jours 1-60 pour que le contenu ait le temps de se composer d'ici les jours 91-180
+- **L'investissement en notoriété de marque se compose sur des mois** — commencer le TOFU aux jours 61-90 pour qu'il ait le temps d'améliorer la conversion au T2
 
-Trying to compress the sequence (e.g., scaling at Day 30) consistently underperforms the disciplined sequence.
+Essayer de compresser la séquence (par exemple, mettre à l'échelle au jour 30) sous-performe systématiquement par rapport à la séquence disciplinée.
 
-## Beyond Day 90
+## Au-delà du jour 90
 
-The 30 / 60 / 90 framework is the **first quarter** structure. After Day 90, the engagement transitions to a quarterly cadence:
+Le cadre 30 / 60 / 90 est la structure du **premier trimestre**. Après le jour 90, l'engagement passe à une cadence trimestrielle :
 
-- **Monthly:** performance review + Variable budget recommendation + tactical adjustments
-- **Quarterly:** strategy refresh — channel mix re-evaluation, budget re-allocation, KPI target reset
-- **Annually:** full Growth Plan refresh + new Yearly Planner
+- **Mensuelle :** revue de performance + recommandation de budget variable + ajustements tactiques
+- **Trimestrielle :** actualisation de la stratégie — réévaluation du mix de canaux, réallocation budgétaire, réinitialisation des objectifs de KPI
+- **Annuelle :** actualisation complète du Growth Plan + nouveau planificateur annuel
 
-The discipline established in Days 1–90 (tracking accuracy, A/B testing rigor, structured reporting, Variable budget mechanism) carries through every subsequent quarter.
+La discipline établie durant les jours 1-90 (précision du suivi, rigueur des tests A/B, reporting structuré, mécanisme de budget variable) se poursuit à chaque trimestre suivant.
 
-## When to deviate from the standard 30 / 60 / 90
+## Quand s'écarter du 30 / 60 / 90 standard
 
-- **Major product launch in Days 1–30:** front-load creative and campaign setup; defer secondary channel expansion until post-launch
-- **Active competitive crisis:** front-load competitive response; defer infrastructure work to Days 31–60
-- **Highly seasonal business with critical season in Days 1–60:** front-load all critical-season activity; treat Days 61–90 as the "Days 1–30 equivalent" for the off-season
-- **Tracking infrastructure already in place:** skip much of Days 1–30 setup; start at Days 31–60 equivalent
+- **Lancement de produit majeur durant les jours 1-30 :** anticiper la création et la configuration de campagne ; différer l'expansion vers des canaux secondaires jusqu'après le lancement
+- **Crise concurrentielle active :** anticiper la réponse concurrentielle ; différer le travail d'infrastructure aux jours 31-60
+- **Entreprise très saisonnière avec une saison critique durant les jours 1-60 :** anticiper toute l'activité de saison critique ; traiter les jours 61-90 comme « l'équivalent des jours 1-30 » pour la basse saison
+- **Infrastructure de suivi déjà en place :** sauter une grande partie de la configuration des jours 1-30 ; commencer à l'équivalent des jours 31-60
 
-The framework is a default, not a constraint. Adapt to engagement specifics, but always document why standard phasing is not being used.
+Le cadre est une valeur par défaut, pas une contrainte. Adaptez-le aux spécificités de l'engagement, mais documentez toujours pourquoi le phasage standard n'est pas utilisé.
 
-## Where the 30 / 60 / 90 lives in the engagement
+## Où le 30 / 60 / 90 se situe dans l'engagement
 
-- **Growth Plan Section 8 (Implementation Timeline):** the 30 / 60 / 90 milestones for the engagement
-- **Yearly Planner:** the first three months expand the 30 / 60 / 90 phases
-- **Living Project Instruction File:** current phase + day count visible
-- **Monthly reports:** explicitly reference which phase the engagement is in
+- **Growth Plan, section 8 (calendrier de mise en œuvre) :** les jalons 30 / 60 / 90 de l'engagement
+- **Planificateur annuel :** les trois premiers mois développent les phases 30 / 60 / 90
+- **Fichier d'instructions vivant du projet :** phase actuelle + décompte de jours visible
+- **Rapports mensuels :** référencent explicitement dans quelle phase se trouve l'engagement
 
-## Related references
+## Références liées
 
-- [growth-plan-template.md](growth-plan-template.md) — Section 8 implementation timeline
-- [monthly-report-template.md](monthly-report-template.md) — monthly cadence after Day 30
-- [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md) — Variable budget introduced in Days 61–90
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — engagement structure context
+- [growth-plan-template.md](growth-plan-template.md) — calendrier de mise en œuvre de la section 8
+- [monthly-report-template.md](monthly-report-template.md) — cadence mensuelle après le jour 30
+- [fixed-vs-variable-budget.md](fixed-vs-variable-budget.md) — budget variable introduit aux jours 61-90
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — contexte de la structure d'engagement
+</content>

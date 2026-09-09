@@ -1,268 +1,269 @@
-# Form Optimization — Field-by-Field Guide
+# Optimisation des formulaires — Guide champ par champ
 
-A comprehensive reference for designing, optimizing, and measuring forms that maximize completion rates without sacrificing data quality. Every field, label, validation rule, and layout decision either helps or hurts conversion — this guide covers them all.
+Une référence complète pour concevoir, optimiser, et mesurer des formulaires qui maximisent les taux d'achèvement sans sacrifier la qualité des données. Chaque champ, libellé, règle de validation, et décision de mise en page aide ou nuit à la conversion — ce guide les couvre tous.
 
 ---
 
-## Field Retention Matrix — Keep, Remove, or Make Optional
+## Matrice de rétention des champs — Garder, retirer, ou rendre optionnel
 
-### Lead Generation Forms
+### Formulaires de génération de leads
 
-| Field | Keep | Optional | Remove | Rationale |
+| Champ | Garder | Optionnel | Retirer | Justification |
 |---|---|---|---|---|
-| Email | Yes | — | — | Required for follow-up; non-negotiable |
-| First Name | Yes | — | — | Enables personalization; low friction |
-| Last Name | — | Yes | — | Adds marginal value; increases friction slightly |
-| Phone Number | — | Yes | — | High friction; only keep if sales will call within 24h |
-| Company Name | — | Yes | — | Useful for B2B qualification but can be enriched post-submission |
-| Job Title | — | Yes | — | Valuable for segmentation; use a dropdown, not free text |
-| Company Size | — | Yes | — | Critical for enterprise qualification; use ranges, not exact numbers |
-| Industry | — | — | Yes | Rarely actionable at form stage; enrich via Clearbit/ZoomInfo instead |
-| Address | — | — | Yes | Almost never needed for lead gen; massive friction |
-| "How did you hear about us?" | — | — | Yes | Attribution should come from analytics, not self-reported data |
-| Message / Comments | — | Yes | — | Useful for demo requests; creates commitment but adds friction |
+| E-mail | Oui | — | — | Requis pour le suivi ; non négociable |
+| Prénom | Oui | — | — | Permet la personnalisation ; friction faible |
+| Nom de famille | — | Oui | — | Apporte une valeur marginale ; augmente légèrement la friction |
+| Numéro de téléphone | — | Oui | — | Friction élevée ; ne garder que si les commerciaux appelleront sous 24h |
+| Nom de l'entreprise | — | Oui | — | Utile pour la qualification B2B mais peut être enrichi après soumission |
+| Intitulé de poste | — | Oui | — | Précieux pour la segmentation ; utiliser un menu déroulant, pas du texte libre |
+| Taille de l'entreprise | — | Oui | — | Critique pour la qualification entreprise ; utiliser des tranches, pas des nombres exacts |
+| Secteur d'activité | — | — | Oui | Rarement exploitable au stade du formulaire ; enrichir via Clearbit/ZoomInfo à la place |
+| Adresse | — | — | Oui | Presque jamais nécessaire pour la génération de leads ; friction massive |
+| « Comment avez-vous entendu parler de nous ? » | — | — | Oui | L'attribution devrait venir de l'analytique, pas de données auto-déclarées |
+| Message / Commentaires | — | Oui | — | Utile pour les demandes de démo ; crée un engagement mais ajoute de la friction |
 
-### E-commerce Checkout Forms
+### Formulaires de paiement e-commerce
 
-| Field | Keep | Optional | Remove | Rationale |
+| Champ | Garder | Optionnel | Retirer | Justification |
 |---|---|---|---|---|
-| Email | Yes | — | — | Order confirmation and receipt delivery |
-| Full Name | Yes | — | — | Required for shipping and payment processing |
-| Shipping Address | Yes | — | — | Essential; use address autocomplete to reduce effort |
-| Billing Address | — | Yes | — | Default to "same as shipping" with toggle to override |
-| Phone Number | Yes | — | — | Required by most carriers for delivery coordination |
-| Payment Information | Yes | — | — | Core transaction data |
-| Promo Code | — | Yes | — | Display as expandable link, not prominent field (reduces "coupon hunting" exits) |
-| Gift Message | — | Yes | — | Show only when "This is a gift" is checked |
-| Account Password | — | — | Yes | Offer account creation on the confirmation page, not during checkout |
+| E-mail | Oui | — | — | Confirmation de commande et livraison du reçu |
+| Nom complet | Oui | — | — | Requis pour la livraison et le traitement du paiement |
+| Adresse de livraison | Oui | — | — | Essentiel ; utiliser l'autocomplétion d'adresse pour réduire l'effort |
+| Adresse de facturation | — | Oui | — | Par défaut « identique à la livraison » avec bascule pour modifier |
+| Numéro de téléphone | Oui | — | — | Requis par la plupart des transporteurs pour la coordination de livraison |
+| Informations de paiement | Oui | — | — | Données de transaction essentielles |
+| Code promo | — | Oui | — | Afficher comme lien dépliable, pas un champ proéminent (réduit les sorties de « chasse au coupon ») |
+| Message cadeau | — | Oui | — | Afficher uniquement quand « Ceci est un cadeau » est coché |
+| Mot de passe de compte | — | — | Oui | Proposer la création de compte sur la page de confirmation, pas pendant le paiement |
 
-### SaaS Free Trial / Signup Forms
+### Formulaires d'inscription/essai gratuit SaaS
 
-| Field | Keep | Optional | Remove | Rationale |
+| Champ | Garder | Optionnel | Retirer | Justification |
 |---|---|---|---|---|
-| Email | Yes | — | — | Account identifier |
-| Password | Yes | — | — | Account security; show strength meter |
-| First Name | — | Yes | — | Can be collected during onboarding instead |
-| Company Name | — | — | Yes | Collect during onboarding or enrich automatically |
-| Credit Card | — | — | Yes | Unless your model requires it; removing increases signups 20–40% |
-| Phone | — | — | Yes | Extremely high friction for trial signup; collect later if needed |
-| Use Case / Role | — | — | Yes | Ask during onboarding flow when user is already invested |
+| E-mail | Oui | — | — | Identifiant de compte |
+| Mot de passe | Oui | — | — | Sécurité du compte ; afficher un indicateur de robustesse |
+| Prénom | — | Oui | — | Peut être collecté pendant l'intégration à la place |
+| Nom de l'entreprise | — | — | Oui | Collecter pendant l'intégration ou enrichir automatiquement |
+| Carte de crédit | — | — | Oui | Sauf si votre modèle l'exige ; la retirer augmente les inscriptions de 20 à 40 % |
+| Téléphone | — | — | Oui | Friction extrêmement élevée pour l'inscription à l'essai ; collecter plus tard si nécessaire |
+| Cas d'usage / Rôle | — | — | Oui | Demander pendant le flux d'intégration lorsque l'utilisateur est déjà investi |
 
-**Core principle:** Every field you add reduces conversion rate by 2–7%. The question is never "would this data be useful?" — it is always "is this data worth the submissions we will lose?"
-
----
-
-## Progressive Profiling Implementation
-
-Progressive profiling collects information gradually across multiple interactions rather than requesting everything upfront.
-
-### How It Works
-
-| Interaction | Data Collected | Mechanism |
-|---|---|---|
-| First visit | Email + First Name | Gated content download |
-| Second visit | Company + Job Title | Form pre-fills known fields; asks new questions |
-| Third visit | Company Size + Budget | Personalized CTA with context-aware form |
-| Sales handoff | Full qualification data | Profile is complete without the user ever filling a long form |
-
-### Implementation Requirements
-
-- [ ] Marketing automation platform with progressive profiling support (HubSpot, Marketo, Pardot)
-- [ ] Cookie/identity tracking to recognize returning visitors
-- [ ] Dynamic form rendering that suppresses already-known fields
-- [ ] Fallback logic for cleared cookies or new devices — re-collect critical fields gracefully
-- [ ] CRM sync to maintain a single, accumulating contact record
-
-### Progressive Profiling Rules
-
-1. Never ask for information you already have
-2. Each interaction should request no more than 2–3 new fields
-3. Increase field sensitivity gradually — ask job title before asking budget
-4. Always provide increasing value in exchange for increasing data (ebook, then webinar, then consultation)
+**Principe fondamental :** Chaque champ que vous ajoutez réduit le taux de conversion de 2 à 7 %. La question n'est jamais « cette donnée serait-elle utile ? » — c'est toujours « cette donnée vaut-elle les soumissions que nous allons perdre ? »
 
 ---
 
-## Form UX Patterns
+## Mise en œuvre du profilage progressif
 
-### Inline Validation
+Le profilage progressif collecte les informations progressivement sur plusieurs interactions plutôt que de tout demander d'emblée.
 
-| Pattern | Implementation | Impact |
+### Comment cela fonctionne
+
+| Interaction | Données collectées | Mécanisme |
 |---|---|---|
-| Real-time success feedback | Green checkmark appears as each field is completed correctly | Reduces form anxiety; confirms progress |
-| Error on blur | Error message appears when user tabs/clicks away from an invalid field | Catches errors early without interrupting typing |
-| Error on submit (fallback) | All errors shown at top of form after submit attempt | Only use as a supplement, never as the sole validation method |
-| Format hints | Show expected format (e.g., "MM/DD/YYYY") before user types | Prevents formatting errors proactively |
+| Première visite | E-mail + prénom | Téléchargement de contenu protégé |
+| Deuxième visite | Entreprise + intitulé de poste | Le formulaire pré-remplit les champs connus ; pose de nouvelles questions |
+| Troisième visite | Taille de l'entreprise + budget | Appel à l'action personnalisé avec formulaire contextuel |
+| Transfert aux commerciaux | Données de qualification complètes | Le profil est complet sans que l'utilisateur ait jamais rempli un long formulaire |
 
-**Inline validation increases form completion by 10–22%** (Baymard Institute). The key is timing — validate on blur, not on keystroke.
+### Exigences de mise en œuvre
 
-### Smart Defaults & Autofill
+- [ ] Plateforme d'automatisation marketing prenant en charge le profilage progressif (HubSpot, Marketo, Pardot)
+- [ ] Suivi par cookie/identité pour reconnaître les visiteurs récurrents
+- [ ] Rendu de formulaire dynamique qui supprime les champs déjà connus
+- [ ] Logique de repli pour les cookies effacés ou les nouveaux appareils — recollecter les champs critiques avec élégance
+- [ ] Synchronisation CRM pour maintenir un enregistrement de contact unique et cumulatif
 
-| Technique | Example | Benefit |
-|---|---|---|
-| Browser autofill support | Use standard `name`, `autocomplete` attributes on inputs | Reduces typing effort by 30–50% |
-| Geolocation defaults | Pre-select country and state based on IP | Eliminates 2+ field interactions |
-| Contextual pre-fill | UTM-based pre-selection (e.g., if UTM = "enterprise", pre-select "500+ employees") | Reduces friction and improves data accuracy |
-| Remembered preferences | Return visitors see previously entered company, role | Prevents redundant data entry |
-| Address autocomplete | Google Places API for address fields | Reduces address entry from 30+ seconds to 5 seconds |
+### Règles du profilage progressif
 
-### Conditional Logic
-
-Show or hide fields based on previous answers to keep forms short and relevant.
-
-| Trigger Field | Condition | Fields Shown |
-|---|---|---|
-| "I'm interested in..." | "Enterprise plan" | Company size, annual budget, timeline |
-| "I'm interested in..." | "Free trial" | None — submit immediately |
-| Country | United States | State dropdown (US states) |
-| Country | Canada | Province dropdown (CA provinces) |
-| "How would you like to be contacted?" | "Phone" | Phone number field |
-| "How would you like to be contacted?" | "Email" | No additional fields |
+1. Ne jamais demander une information que vous possédez déjà
+2. Chaque interaction ne devrait demander pas plus de 2 à 3 nouveaux champs
+3. Augmenter progressivement la sensibilité des champs — demander l'intitulé de poste avant de demander le budget
+4. Toujours offrir une valeur croissante en échange de données croissantes (e-book, puis webinaire, puis consultation)
 
 ---
 
-## Multi-Step Form Design
+## Schémas d'expérience utilisateur de formulaire
 
-Multi-step forms break a long form into smaller, sequential screens. They consistently outperform single-step forms when more than 5 fields are required.
+### Validation en ligne
 
-### When to Use Multi-Step Forms
-
-| Scenario | Single-Step | Multi-Step |
+| Schéma | Mise en œuvre | Impact |
 |---|---|---|
-| 3–4 fields | Preferred | Unnecessary overhead |
-| 5–8 fields | Depends on complexity | Usually better |
-| 9+ fields | Overwhelming; will underperform | Strongly recommended |
-| Mixed field types (text + selects + uploads) | Cluttered | Cleaner UX |
-| Qualification forms | Poor experience | Natural questioning flow |
+| Retour de succès en temps réel | Une coche verte apparaît lorsque chaque champ est correctement rempli | Réduit l'anxiété liée au formulaire ; confirme la progression |
+| Erreur au blur | Un message d'erreur apparaît quand l'utilisateur tabule/clique hors d'un champ invalide | Détecte les erreurs tôt sans interrompre la saisie |
+| Erreur à la soumission (repli) | Toutes les erreurs affichées en haut du formulaire après tentative de soumission | À n'utiliser qu'en complément, jamais comme seule méthode de validation |
+| Indices de format | Afficher le format attendu (par exemple, « JJ/MM/AAAA ») avant que l'utilisateur ne saisisse | Prévient proactivement les erreurs de formatage |
 
-### Multi-Step Best Practices
+**La validation en ligne augmente l'achèvement du formulaire de 10 à 22 %** (Baymard Institute). La clé est le timing — valider au blur, pas à chaque frappe.
 
-- [ ] Put the easiest, lowest-friction question first (name, email)
-- [ ] Show a progress bar with step count ("Step 2 of 3")
-- [ ] Allow backward navigation without losing entered data
-- [ ] Use the first step as the commitment trigger — once they start, completion rates jump
-- [ ] Save partial submissions — if someone completes steps 1 and 2 but abandons step 3, you still have actionable data
-- [ ] Place the most sensitive or highest-friction questions (phone, budget) on the final step
-- [ ] Each step should have its own "Next" button with forward momentum language ("Continue", "Almost done")
+### Valeurs par défaut intelligentes et autocomplétion
 
-### Optimal Step Structure
-
-| Step | Content | Psychology |
+| Technique | Exemple | Bénéfice |
 |---|---|---|
-| Step 1 | Contact info (email, name) | Commitment and consistency — they have started |
-| Step 2 | Qualifying info (company, role, use case) | Sunk cost — they have already invested effort |
-| Step 3 | Sensitive info (phone, budget, timeline) | Social proof + urgency — show what they will get upon completion |
+| Support de l'autocomplétion du navigateur | Utiliser les attributs standards `name`, `autocomplete` sur les champs | Réduit l'effort de frappe de 30 à 50 % |
+| Valeurs par défaut de géolocalisation | Présélectionner le pays et la région selon l'IP | Élimine 2 interactions de champ ou plus |
+| Pré-remplissage contextuel | Présélection basée sur l'UTM (par exemple, si UTM = « enterprise », présélectionner « 500+ employés ») | Réduit la friction et améliore la précision des données |
+| Préférences mémorisées | Les visiteurs récurrents voient l'entreprise, le rôle précédemment saisis | Évite la saisie redondante de données |
+| Autocomplétion d'adresse | API Google Places pour les champs d'adresse | Réduit la saisie d'adresse de 30+ secondes à 5 secondes |
+
+### Logique conditionnelle
+
+Afficher ou masquer des champs selon les réponses précédentes pour garder les formulaires courts et pertinents.
+
+| Champ déclencheur | Condition | Champs affichés |
+|---|---|---|
+| « Je suis intéressé par... » | « Plan Enterprise » | Taille de l'entreprise, budget annuel, calendrier |
+| « Je suis intéressé par... » | « Essai gratuit » | Aucun — soumission immédiate |
+| Pays | États-Unis | Menu déroulant État (États américains) |
+| Pays | Canada | Menu déroulant Province (provinces canadiennes) |
+| « Comment souhaitez-vous être contacté ? » | « Téléphone » | Champ numéro de téléphone |
+| « Comment souhaitez-vous être contacté ? » | « E-mail » | Aucun champ supplémentaire |
 
 ---
 
-## Mobile Form Optimization
+## Conception de formulaire multi-étapes
 
-### Input Type Specification
+Les formulaires multi-étapes décomposent un long formulaire en écrans plus petits et séquentiels. Ils surpassent systématiquement les formulaires à une seule étape lorsque plus de 5 champs sont requis.
 
-| Field | HTML Input Type | Mobile Keyboard |
+### Quand utiliser des formulaires multi-étapes
+
+| Scénario | Étape unique | Multi-étapes |
 |---|---|---|
-| Email | `type="email"` | Keyboard with @ and .com |
-| Phone | `type="tel"` | Numeric keypad |
-| ZIP/Postal Code | `type="text" inputmode="numeric"` | Numeric keypad without phone formatting |
-| URL | `type="url"` | Keyboard with / and .com |
-| Quantity | `type="number"` | Numeric keypad with +/- |
-| Date | `type="date"` | Native date picker |
-| Search | `type="search"` | Keyboard with search button |
+| 3-4 champs | Préféré | Charge inutile |
+| 5-8 champs | Selon la complexité | Généralement meilleur |
+| 9+ champs | Écrasant ; sous-performera | Fortement recommandé |
+| Types de champs mixtes (texte + sélections + téléversements) | Encombré | Expérience utilisateur plus propre |
+| Formulaires de qualification | Mauvaise expérience | Flux de questionnement naturel |
 
-### Mobile-Specific Checklist
+### Meilleures pratiques multi-étapes
 
-- [ ] All tap targets are minimum 44x44px (Apple HIG) or 48x48px (Material Design)
-- [ ] Spacing between tappable elements is at least 8px to prevent mis-taps
-- [ ] Labels are above fields (not beside — side labels fail on narrow screens)
-- [ ] Form does not require horizontal scrolling at any viewport width
-- [ ] Keyboard does not obscure the active field (page scrolls to keep it visible)
-- [ ] Dropdowns with fewer than 7 options are replaced with radio buttons or segmented controls
-- [ ] Submit button is full-width and reachable by thumb
-- [ ] Auto-zoom is prevented (font-size minimum 16px on iOS inputs)
-- [ ] Form state is preserved if the user switches apps or rotates the device
+- [ ] Placer en premier la question la plus facile, à moindre friction (nom, e-mail)
+- [ ] Afficher une barre de progression avec le nombre d'étapes (« Étape 2 sur 3 »)
+- [ ] Permettre la navigation arrière sans perdre les données saisies
+- [ ] Utiliser la première étape comme déclencheur d'engagement — une fois qu'ils commencent, les taux d'achèvement bondissent
+- [ ] Sauvegarder les soumissions partielles — si quelqu'un termine les étapes 1 et 2 mais abandonne l'étape 3, vous disposez tout de même de données exploitables
+- [ ] Placer les questions les plus sensibles ou à plus forte friction (téléphone, budget) à la dernière étape
+- [ ] Chaque étape devrait avoir son propre bouton « Suivant » avec un langage d'élan vers l'avant (« Continuer », « Presque terminé »)
+
+### Structure optimale des étapes
+
+| Étape | Contenu | Psychologie |
+|---|---|---|
+| Étape 1 | Informations de contact (e-mail, nom) | Engagement et cohérence — ils ont commencé |
+| Étape 2 | Informations de qualification (entreprise, rôle, cas d'usage) | Coût irrécupérable — ils ont déjà investi de l'effort |
+| Étape 3 | Informations sensibles (téléphone, budget, calendrier) | Preuve sociale + urgence — montrer ce qu'ils obtiendront à l'achèvement |
 
 ---
 
-## Form Analytics Setup
+## Optimisation des formulaires mobiles
 
-### Key Metrics to Track
+### Spécification du type de saisie
 
-| Metric | Definition | Benchmark |
+| Champ | Type de saisie HTML | Clavier mobile |
 |---|---|---|
-| Form view rate | % of page visitors who see the form | 60–90% (depends on form placement) |
-| Form start rate | % of form viewers who interact with the first field | 40–70% |
-| Completion rate | % of form starters who submit successfully | 50–80% |
-| Overall conversion | % of page visitors who submit the form | 15–50% (depends on form length, offer) |
-| Field drop-off rate | % of users who abandon at each specific field | Varies — flags problem fields |
-| Time per field | Average seconds spent on each field | >15s per field indicates confusion |
-| Error rate per field | % of submissions with validation errors per field | >10% indicates UX or copy issue |
-| Correction rate | % of users who edit a field after initial entry | High rates suggest confusing labels |
+| E-mail | `type="email"` | Clavier avec @ et .com |
+| Téléphone | `type="tel"` | Clavier numérique |
+| Code postal | `type="text" inputmode="numeric"` | Clavier numérique sans formatage téléphonique |
+| URL | `type="url"` | Clavier avec / et .com |
+| Quantité | `type="number"` | Clavier numérique avec +/- |
+| Date | `type="date"` | Sélecteur de date natif |
+| Recherche | `type="search"` | Clavier avec bouton de recherche |
 
-### Recommended Tracking Stack
+### Checklist spécifique au mobile
 
-| Tool | Purpose | Setup |
-|---|---|---|
-| Google Analytics 4 | Form submission events, funnel visualization | Custom events on form start, field focus, submit |
-| Hotjar / Microsoft Clarity | Session recordings, heatmaps on form interactions | Auto-capture with form-specific filters |
-| Platform-native analytics | HubSpot, Marketo, Typeform built-in reporting | Enabled by default; configure drop-off tracking |
-| Custom field-level tracking | JavaScript events on focus, blur, error per field | GTM tags firing on form field interactions |
+- [ ] Toutes les zones tactiles font au minimum 44x44px (Apple HIG) ou 48x48px (Material Design)
+- [ ] L'espacement entre les éléments tactiles est d'au moins 8px pour éviter les erreurs de frappe
+- [ ] Les libellés sont au-dessus des champs (pas à côté — les libellés latéraux échouent sur les écrans étroits)
+- [ ] Le formulaire ne nécessite jamais de défilement horizontal, quelle que soit la largeur d'écran
+- [ ] Le clavier n'obscurcit pas le champ actif (la page défile pour le garder visible)
+- [ ] Les menus déroulants de moins de 7 options sont remplacés par des boutons radio ou des contrôles segmentés
+- [ ] Le bouton de soumission est pleine largeur et accessible au pouce
+- [ ] Le zoom automatique est évité (taille de police minimum 16px sur les champs iOS)
+- [ ] L'état du formulaire est préservé si l'utilisateur change d'application ou tourne l'appareil
 
 ---
 
-## Form Copy Optimization
+## Configuration de l'analytique de formulaire
 
-### Labels
+### Indicateurs clés à suivre
 
-| Pattern | Example | When to Use |
+| Indicateur | Définition | Repère |
 |---|---|---|
-| Descriptive label | "Work Email Address" | When clarity prevents errors and wasted submissions |
-| Short label | "Email" | When the context makes the field unambiguous |
-| Question label | "What's the best email to reach you?" | Conversational forms (Typeform-style); increases completion on casual audiences |
+| Taux d'affichage du formulaire | % de visiteurs de la page qui voient le formulaire | 60-90 % (selon le placement du formulaire) |
+| Taux de démarrage du formulaire | % de personnes ayant vu le formulaire qui interagissent avec le premier champ | 40-70 % |
+| Taux d'achèvement | % de personnes ayant démarré le formulaire qui soumettent avec succès | 50-80 % |
+| Conversion globale | % de visiteurs de la page qui soumettent le formulaire | 15-50 % (selon la longueur du formulaire, l'offre) |
+| Taux d'abandon par champ | % d'utilisateurs qui abandonnent à un champ spécifique | Varie — signale les champs problématiques |
+| Temps par champ | Secondes moyennes passées sur chaque champ | >15s par champ indique de la confusion |
+| Taux d'erreur par champ | % de soumissions avec erreurs de validation par champ | >10 % indique un problème d'expérience utilisateur ou de texte |
+| Taux de correction | % d'utilisateurs qui modifient un champ après la saisie initiale | Des taux élevés suggèrent des libellés confus |
 
-### Placeholder Text
+### Pile de suivi recommandée
 
-| Do | Don't |
+| Outil | Objectif | Configuration |
+|---|---|---|
+| Google Analytics 4 | Événements de soumission de formulaire, visualisation de tunnel | Événements personnalisés au démarrage du formulaire, focus de champ, soumission |
+| Hotjar / Microsoft Clarity | Enregistrements de session, cartes de chaleur sur les interactions de formulaire | Capture automatique avec filtres spécifiques au formulaire |
+| Analytique native de la plateforme | Reporting intégré HubSpot, Marketo, Typeform | Activé par défaut ; configurer le suivi d'abandon |
+| Suivi personnalisé au niveau du champ | Événements JavaScript sur focus, blur, erreur par champ | Tags GTM se déclenchant sur les interactions de champ de formulaire |
+
+---
+
+## Optimisation du texte de formulaire
+
+### Libellés
+
+| Schéma | Exemple | Quand l'utiliser |
+|---|---|---|
+| Libellé descriptif | « Adresse e-mail professionnelle » | Quand la clarté prévient les erreurs et les soumissions perdues |
+| Libellé court | « E-mail » | Quand le contexte rend le champ sans ambiguïté |
+| Libellé sous forme de question | « Quel est le meilleur e-mail pour vous joindre ? » | Formulaires conversationnels (style Typeform) ; augmente l'achèvement auprès d'audiences décontractées |
+
+### Texte d'exemple (placeholder)
+
+| À faire | À éviter |
 |---|---|
-| Use as format examples: "jane@company.com" | Use as the label — placeholder disappears on focus, losing context |
-| Keep it short and obviously an example | Write instructional text in placeholders |
-| Gray it out sufficiently to distinguish from entered data | Use placeholder for required/optional indicators |
+| L'utiliser comme exemple de format : « jane@company.com » | L'utiliser comme libellé — le texte d'exemple disparaît au focus, perdant le contexte |
+| Le garder court et évidemment un exemple | Écrire du texte instructif dans les exemples |
+| Le griser suffisamment pour le distinguer des données saisies | Utiliser le texte d'exemple pour les indicateurs obligatoire/optionnel |
 
-### Error Messages
+### Messages d'erreur
 
-| Bad | Better | Best |
+| Mauvais | Meilleur | Optimal |
 |---|---|---|
-| "Invalid input" | "Please enter a valid email address" | "This doesn't look like an email — did you mean jane@company.com?" |
-| "Required field" | "Email is required" | "We need your email to send you the report" |
-| "Error" | "Phone number must be 10 digits" | "Looks like your phone number is missing a digit (we see 9 of 10)" |
+| « Saisie invalide » | « Veuillez saisir une adresse e-mail valide » | « Cela ne ressemble pas à un e-mail — vouliez-vous dire jane@company.com ? » |
+| « Champ obligatoire » | « L'e-mail est requis » | « Nous avons besoin de votre e-mail pour vous envoyer le rapport » |
+| « Erreur » | « Le numéro de téléphone doit comporter 10 chiffres » | « On dirait qu'il manque un chiffre à votre numéro de téléphone (nous en voyons 9 sur 10) » |
 
-### Submit Button Copy
+### Texte du bouton de soumission
 
-| Generic (Avoid) | Value-Oriented (Preferred) | Context |
+| Générique (à éviter) | Orienté valeur (préféré) | Contexte |
 |---|---|---|
-| Submit | Get My Free Audit | Lead gen — ebook, audit, demo |
-| Register | Reserve My Spot | Event registration |
-| Sign Up | Start My Free Trial | SaaS trial |
-| Buy Now | Complete My Order | E-commerce checkout |
-| Send | Send My Message | Contact form |
+| Soumettre | Obtenir mon audit gratuit | Génération de leads — e-book, audit, démo |
+| S'inscrire | Réserver ma place | Inscription à un événement |
+| S'inscrire | Démarrer mon essai gratuit | Essai SaaS |
+| Acheter maintenant | Finaliser ma commande | Paiement e-commerce |
+| Envoyer | Envoyer mon message | Formulaire de contact |
 
 ---
 
-## Privacy & Consent Field Requirements
+## Exigences relatives aux champs de confidentialité et de consentement
 
-### Requirements by Regulation
+### Exigences par réglementation
 
-| Regulation | Consent Field Needed? | Specifics |
+| Réglementation | Champ de consentement nécessaire ? | Spécificités |
 |---|---|---|
-| GDPR (EU/EEA) | Yes — explicit, unbundled, freely given | Separate checkbox per purpose (marketing, analytics); cannot be pre-checked; must link to privacy policy |
-| CCPA/CPRA (California) | Disclosure required | "Do Not Sell My Personal Information" link; no checkbox required at collection point |
-| CAN-SPAM (US Email) | No checkbox required at collection | Must honor unsubscribe requests; include physical address in emails |
-| CASL (Canada) | Yes — express consent | Checkbox must not be pre-checked; must state purpose and identify sender |
-| LGPD (Brazil) | Yes — explicit consent | Similar to GDPR; separate consent per purpose |
+| RGPD (UE/EEE) | Oui — explicite, non groupé, librement donné | Case à cocher séparée par finalité (marketing, analytique) ; ne peut pas être précochée ; doit renvoyer à la politique de confidentialité |
+| CCPA/CPRA (Californie) | Divulgation requise | Lien « Ne pas vendre mes informations personnelles » ; aucune case à cocher requise au point de collecte |
+| CAN-SPAM (e-mail aux États-Unis) | Aucune case à cocher requise à la collecte | Doit honorer les demandes de désabonnement ; inclure l'adresse physique dans les e-mails |
+| CASL (Canada) | Oui — consentement exprès | La case à cocher ne doit pas être précochée ; doit indiquer la finalité et identifier l'expéditeur |
+| LGPD (Brésil) | Oui — consentement explicite | Similaire au RGPD ; consentement séparé par finalité |
 
-### Consent Copy Best Practices
+### Meilleures pratiques pour le texte de consentement
 
-- [ ] Use plain language, not legalese
-- [ ] State specifically what you will send ("weekly marketing tips") rather than vague terms ("communications")
-- [ ] Keep the consent text to 1–2 sentences — link to full privacy policy for details
-- [ ] Place consent checkbox directly above the submit button
-- [ ] Never bundle marketing consent with terms of service acceptance
-- [ ] Record consent timestamp, IP address, and exact copy shown for compliance documentation
+- [ ] Utiliser un langage simple, pas du jargon juridique
+- [ ] Indiquer précisément ce que vous enverrez (« conseils marketing hebdomadaires ») plutôt que des termes vagues (« communications »)
+- [ ] Limiter le texte de consentement à 1-2 phrases — renvoyer vers la politique de confidentialité complète pour les détails
+- [ ] Placer la case de consentement directement au-dessus du bouton de soumission
+- [ ] Ne jamais regrouper le consentement marketing avec l'acceptation des conditions générales
+- [ ] Enregistrer l'horodatage du consentement, l'adresse IP, et le texte exact affiché pour la documentation de conformité
+</content>

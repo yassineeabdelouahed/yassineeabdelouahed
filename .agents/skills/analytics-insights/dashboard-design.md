@@ -1,10 +1,10 @@
-# Marketing Dashboard Design — Architecture & Best Practices
+# Conception de tableau de bord marketing — Architecture et bonnes pratiques
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** les montants en dollars de ce document sont des a priori de planification, pas des cotations — les taux de marché et d'enchère évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, rafraîchissez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et consignez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le registre (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Dashboard Hierarchy
+## Hiérarchie des tableaux de bord
 
-Marketing dashboards should exist in three tiers, each serving a different audience, cadence, and depth of detail.
+Les tableaux de bord marketing devraient exister en trois niveaux, chacun servant une audience, une cadence, et une profondeur de détail différentes.
 
 ```
 Executive Dashboard (C-Suite, VP)
@@ -17,32 +17,32 @@ Campaign Dashboard (Specialists, Analysts)
 └── 30+ metrics | Daily/real-time | Execution optimization
 ```
 
-| Tier | Audience | KPI Count | Review Cadence | Time Range | Update Frequency |
+| Niveau | Audience | Nombre de KPI | Cadence de revue | Plage temporelle | Fréquence de mise à jour |
 |------|----------|-----------|----------------|------------|-----------------|
-| Executive | C-suite, VP, Board | 5-7 | Monthly | MoM, QoQ, YoY | Weekly refresh |
-| Operational | Directors, Managers | 15-20 | Weekly | WoW, MoM | Daily refresh |
-| Campaign | Specialists, Analysts | 30+ | Daily | Daily, hourly | Real-time or hourly |
+| Exécutif | C-suite, VP, conseil d'administration | 5-7 | Mensuelle | MoM, QoQ, YoY | Rafraîchissement hebdomadaire |
+| Opérationnel | Directeurs, managers | 15-20 | Hebdomadaire | WoW, MoM | Rafraîchissement quotidien |
+| Campagne | Spécialistes, analystes | 30+ | Quotidienne | Quotidien, horaire | Temps réel ou horaire |
 
 ---
 
-## Executive Dashboard Template
+## Modèle de tableau de bord exécutif
 
-### Purpose
-Give leadership a single-screen view of marketing's impact on business outcomes. No scrolling. No tabs. Every metric has context (vs. target, vs. prior period).
+### Objectif
+Donner à la direction une vue en un seul écran de l'impact du marketing sur les résultats de l'entreprise. Pas de défilement. Pas d'onglets. Chaque métrique a un contexte (vs objectif, vs période précédente).
 
-### Required Metrics (5-7 maximum)
+### Métriques requises (5-7 maximum)
 
-| Metric | Visualization | Context Needed |
+| Métrique | Visualisation | Contexte nécessaire |
 |--------|--------------|----------------|
-| Marketing-sourced revenue | Scorecard with sparkline | vs. target, vs. same month last year |
-| Blended CAC | Scorecard with trend arrow | vs. target, MoM change |
-| Marketing-influenced pipeline | Scorecard with sparkline | vs. target, vs. prior month |
-| Blended ROAS or ROI | Scorecard with trend arrow | vs. target, channel breakdown in tooltip |
-| Total qualified leads (MQL/SQL/PQL) | Bar chart (monthly, 6-month trend) | vs. target line overlay |
-| Channel mix (% revenue by channel) | Stacked bar or donut | MoM shift highlighted |
-| Funnel conversion rate | Horizontal funnel chart | vs. benchmark, vs. prior period |
+| Revenu généré par le marketing | Fiche de score avec sparkline | vs objectif, vs même mois l'année dernière |
+| CAC mixte | Fiche de score avec flèche de tendance | vs objectif, changement MoM |
+| Pipeline influencé par le marketing | Fiche de score avec sparkline | vs objectif, vs mois précédent |
+| ROAS ou ROI mixte | Fiche de score avec flèche de tendance | vs objectif, répartition par canal en infobulle |
+| Total des leads qualifiés (MQL/SQL/PQL) | Graphique à barres (mensuel, tendance sur 6 mois) | Superposition de la ligne d'objectif |
+| Mix de canaux (% de revenu par canal) | Barres empilées ou donut | Changement MoM mis en évidence |
+| Taux de conversion du tunnel | Graphique de tunnel horizontal | vs benchmark, vs période précédente |
 
-### Executive Dashboard Layout
+### Mise en page du tableau de bord exécutif
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
@@ -63,101 +63,101 @@ Give leadership a single-screen view of marketing's impact on business outcomes.
 └────────────────────────────────────────────────────────────────┘
 ```
 
-### Executive Dashboard Rules
+### Règles du tableau de bord exécutif
 
-- [ ] Every metric shows comparison context (vs. target, vs. prior period, vs. same period last year)
-- [ ] Color coding: green = on track, yellow = within 10% of target, red = more than 10% off target
-- [ ] No more than 7 metrics on the primary view
-- [ ] Trend direction arrows on every scorecard
-- [ ] Date range selector defaults to current month with prior month comparison
-- [ ] No jargon — use business language, not platform-specific terms
-
----
-
-## Operational Dashboard Template
-
-### Purpose
-Enable marketing managers to identify issues, spot opportunities, and make weekly tactical adjustments across all channels.
-
-### Metric Groups
-
-#### Traffic & Acquisition
-
-| Metric | Visualization | Alert Threshold |
-|--------|--------------|-----------------|
-| Daily sessions (total + by channel) | Line chart with channel breakdown | >20% drop vs. 7-day average |
-| New vs returning visitors | Stacked area chart | Returning visitor share drop >15% |
-| Organic search sessions | Line chart with trend | >15% WoW decline |
-| Paid traffic sessions | Line chart by platform | Budget pacing >120% or <80% |
-| Referral traffic | Bar chart top 10 sources | New high-volume referrer alert |
-| Direct traffic | Line chart | Spike may indicate tracking issue |
-
-#### Conversion & Revenue
-
-| Metric | Visualization | Alert Threshold |
-|--------|--------------|-----------------|
-| Overall conversion rate | Line chart with 30-day average | >15% drop vs. 30-day average |
-| Conversion rate by channel | Bar chart (horizontal) | Any channel >20% below average |
-| Revenue by channel (daily) | Stacked area chart | >25% drop in any channel |
-| Average order value | Line chart with trend | >10% drop vs. trailing average |
-| Cart abandonment rate | Line chart | >5 point increase over baseline |
-| Lead-to-MQL rate | Funnel percentage | Drop below 20% |
-| MQL-to-SQL rate | Funnel percentage | Drop below 30% |
-
-#### Email Performance
-
-| Metric | Visualization | Alert Threshold |
-|--------|--------------|-----------------|
-| Email send volume (weekly) | Bar chart | N/A |
-| Open rate by campaign type | Grouped bar chart | Drop below 15% |
-| Click rate by campaign type | Grouped bar chart | Drop below 2% |
-| Unsubscribe rate | Line chart | Spike above 0.5% per campaign |
-| List growth rate (net) | Line chart | Negative growth for 2+ weeks |
-| Revenue per email sent | Scorecard with trend | Drop below $0.10 |
-
-#### Social Media
-
-| Metric | Visualization | Alert Threshold |
-|--------|--------------|-----------------|
-| Engagement rate by platform | Bar chart (horizontal) | Drop >25% vs. trailing average |
-| Follower growth (net) | Line chart by platform | Negative growth on any platform |
-| Social traffic to website | Line chart | >30% drop WoW |
-| Top-performing posts (weekly) | Table with engagement metrics | N/A (informational) |
-
-#### Paid Advertising
-
-| Metric | Visualization | Alert Threshold |
-|--------|--------------|-----------------|
-| Daily spend by platform | Stacked bar chart | Pacing >120% of daily budget |
-| CPA by platform | Line chart | CPA >130% of target |
-| ROAS by platform | Bar chart | ROAS <80% of target |
-| Impression share (search) | Line chart | Drop below 70% for brand terms |
-| Quality Score distribution | Histogram | >30% of keywords below QS 5 |
+- [ ] Chaque métrique affiche un contexte de comparaison (vs objectif, vs période précédente, vs même période l'année dernière)
+- [ ] Codage couleur : vert = dans les temps, jaune = à moins de 10 % de l'objectif, rouge = plus de 10 % d'écart avec l'objectif
+- [ ] Pas plus de 7 métriques sur la vue principale
+- [ ] Flèches de direction de tendance sur chaque fiche de score
+- [ ] Le sélecteur de plage de dates est par défaut sur le mois en cours avec comparaison au mois précédent
+- [ ] Pas de jargon — utiliser le langage métier, pas des termes spécifiques à la plateforme
 
 ---
 
-## Campaign Dashboard Template
+## Modèle de tableau de bord opérationnel
 
-### Purpose
-Provide real-time performance data for active campaigns so specialists can optimize execution daily.
+### Objectif
+Permettre aux responsables marketing d'identifier les problèmes, repérer les opportunités, et effectuer des ajustements tactiques hebdomadaires sur tous les canaux.
 
-### Campaign-Level Metrics
+### Groupes de métriques
 
-| Metric | Update Frequency | Visualization |
+#### Trafic et acquisition
+
+| Métrique | Visualisation | Seuil d'alerte |
+|--------|--------------|-----------------|
+| Sessions quotidiennes (total + par canal) | Graphique linéaire avec répartition par canal | Baisse >20 % vs moyenne sur 7 jours |
+| Nouveaux vs visiteurs récurrents | Graphique en aires empilées | Baisse de la part de visiteurs récurrents >15 % |
+| Sessions de recherche organique | Graphique linéaire avec tendance | Déclin >15 % semaine sur semaine |
+| Sessions de trafic payant | Graphique linéaire par plateforme | Rythme budgétaire >120 % ou <80 % |
+| Trafic de référence | Graphique à barres top 10 sources | Alerte de nouveau référent à fort volume |
+| Trafic direct | Graphique linéaire | Un pic peut indiquer un problème de suivi |
+
+#### Conversion et revenu
+
+| Métrique | Visualisation | Seuil d'alerte |
+|--------|--------------|-----------------|
+| Taux de conversion global | Graphique linéaire avec moyenne sur 30 jours | Baisse >15 % vs moyenne sur 30 jours |
+| Taux de conversion par canal | Graphique à barres (horizontal) | Tout canal >20 % sous la moyenne |
+| Revenu par canal (quotidien) | Graphique en aires empilées | Baisse >25 % sur tout canal |
+| Panier moyen | Graphique linéaire avec tendance | Baisse >10 % vs moyenne glissante |
+| Taux d'abandon de panier | Graphique linéaire | Hausse de plus de 5 points par rapport à la référence |
+| Taux lead-vers-MQL | Pourcentage de tunnel | Baisse sous 20 % |
+| Taux MQL-vers-SQL | Pourcentage de tunnel | Baisse sous 30 % |
+
+#### Performance e-mail
+
+| Métrique | Visualisation | Seuil d'alerte |
+|--------|--------------|-----------------|
+| Volume d'envoi e-mail (hebdomadaire) | Graphique à barres | N/A |
+| Taux d'ouverture par type de campagne | Graphique à barres groupées | Baisse sous 15 % |
+| Taux de clic par type de campagne | Graphique à barres groupées | Baisse sous 2 % |
+| Taux de désabonnement | Graphique linéaire | Pic au-dessus de 0,5 % par campagne |
+| Taux de croissance de la liste (net) | Graphique linéaire | Croissance négative pendant 2 semaines ou plus |
+| Revenu par e-mail envoyé | Fiche de score avec tendance | Baisse sous 0,10 $ |
+
+#### Réseaux sociaux
+
+| Métrique | Visualisation | Seuil d'alerte |
+|--------|--------------|-----------------|
+| Taux d'engagement par plateforme | Graphique à barres (horizontal) | Baisse >25 % vs moyenne glissante |
+| Croissance des abonnés (net) | Graphique linéaire par plateforme | Croissance négative sur toute plateforme |
+| Trafic social vers le site web | Graphique linéaire | Baisse >30 % semaine sur semaine |
+| Publications les plus performantes (hebdomadaire) | Tableau avec métriques d'engagement | N/A (informationnel) |
+
+#### Publicité payante
+
+| Métrique | Visualisation | Seuil d'alerte |
+|--------|--------------|-----------------|
+| Dépense quotidienne par plateforme | Graphique à barres empilées | Rythme >120 % du budget quotidien |
+| CPA par plateforme | Graphique linéaire | CPA >130 % de l'objectif |
+| ROAS par plateforme | Graphique à barres | ROAS <80 % de l'objectif |
+| Part d'impressions (recherche) | Graphique linéaire | Baisse sous 70 % pour les termes de marque |
+| Distribution du Quality Score | Histogramme | >30 % des mots-clés sous un QS de 5 |
+
+---
+
+## Modèle de tableau de bord de campagne
+
+### Objectif
+Fournir des données de performance en temps réel pour les campagnes actives afin que les spécialistes puissent optimiser l'exécution au quotidien.
+
+### Métriques au niveau de la campagne
+
+| Métrique | Fréquence de mise à jour | Visualisation |
 |--------|-----------------|--------------|
-| Impressions (cumulative + daily) | Real-time | Line chart with target pace line |
-| Clicks and CTR | Real-time | Scorecard + line chart |
-| Conversions and CVR | Hourly | Scorecard + line chart |
-| Cost and CPA | Hourly | Scorecard + budget burn-down chart |
-| ROAS | Hourly | Scorecard with trend |
-| Budget pacing | Real-time | Progress bar (% of budget spent vs. % of period elapsed) |
-| A/B test status | Daily | Table (variant, impressions, CVR, confidence level) |
-| Ad-level performance | Daily | Table sortable by CTR, CPA, ROAS |
-| Keyword performance | Daily | Table with QS, CPC, conversions |
-| Audience performance | Daily | Table by audience segment |
-| Placement performance | Daily | Table by device, location, time of day |
+| Impressions (cumulées + quotidiennes) | Temps réel | Graphique linéaire avec ligne de rythme cible |
+| Clics et CTR | Temps réel | Fiche de score + graphique linéaire |
+| Conversions et CVR | Horaire | Fiche de score + graphique linéaire |
+| Coût et CPA | Horaire | Fiche de score + graphique de consommation budgétaire |
+| ROAS | Horaire | Fiche de score avec tendance |
+| Rythme budgétaire | Temps réel | Barre de progression (% du budget dépensé vs % de la période écoulée) |
+| Statut des tests A/B | Quotidienne | Tableau (variante, impressions, CVR, niveau de confiance) |
+| Performance au niveau de l'annonce | Quotidienne | Tableau triable par CTR, CPA, ROAS |
+| Performance des mots-clés | Quotidienne | Tableau avec QS, CPC, conversions |
+| Performance de l'audience | Quotidienne | Tableau par segment d'audience |
+| Performance de l'emplacement | Quotidienne | Tableau par appareil, lieu, heure de la journée |
 
-### Budget Pacing Visualization
+### Visualisation du rythme budgétaire
 
 ```
 Budget: $10,000 | Period: Nov 1-30 | Today: Nov 15 (50% elapsed)
@@ -170,87 +170,87 @@ Status: Over-pacing by 8% — reduce bids by 5-10% or pause low-performers
 
 ---
 
-## Visualization Best Practices
+## Bonnes pratiques de visualisation
 
-### Chart Type Selection Guide
+### Guide de sélection du type de graphique
 
-| Data Type | Best Visualization | When to Use | Avoid |
+| Type de données | Meilleure visualisation | Quand l'utiliser | À éviter |
 |-----------|-------------------|-------------|-------|
-| Single KPI (current value) | Scorecard / Big number | Executive summary, key metrics | Using a chart for a single number |
-| Trend over time (1 metric) | Line chart with sparkline | Traffic, conversion rate, revenue trends | Pie chart for time-series data |
-| Trend over time (multiple) | Multi-line or stacked area | Channel comparison over time | More than 5 lines on one chart |
-| Comparison (categories) | Horizontal bar chart | Channel performance, campaign comparison | 3D charts, vertical bars with long labels |
-| Part of whole | Donut chart or stacked bar | Budget allocation, traffic mix | Pie chart with more than 6 slices |
-| Distribution | Histogram | Quality Score distribution, CPC ranges | Line chart for non-continuous data |
-| Funnel / flow | Funnel chart or Sankey | Conversion funnel stages | Bar chart for sequential flow data |
-| Performance vs target | Bullet chart or gauge | KPI vs target tracking | Complicated gauge with multiple needles |
-| Two metrics correlation | Scatter plot | CPC vs conversion rate, spend vs revenue | Without clear axis labels and context |
-| Time-of-day/day-of-week | Heatmap | Engagement patterns, conversion timing | Line chart with 168 hourly data points |
-| Geographic | Choropleth map | Regional performance | Maps for non-geographic data |
-| Comparison of many items | Table with conditional formatting | Keyword reports, ad comparisons | Overly complex charts |
+| KPI unique (valeur actuelle) | Fiche de score / grand chiffre | Résumé exécutif, métriques clés | Utiliser un graphique pour un seul chiffre |
+| Tendance dans le temps (1 métrique) | Graphique linéaire avec sparkline | Trafic, taux de conversion, tendances de revenu | Camembert pour des données de série temporelle |
+| Tendance dans le temps (plusieurs) | Multi-lignes ou aires empilées | Comparaison de canaux dans le temps | Plus de 5 lignes sur un même graphique |
+| Comparaison (catégories) | Graphique à barres horizontal | Performance de canal, comparaison de campagnes | Graphiques 3D, barres verticales avec de longs libellés |
+| Partie d'un tout | Donut ou barres empilées | Allocation budgétaire, mix de trafic | Camembert avec plus de 6 parts |
+| Distribution | Histogramme | Distribution du Quality Score, fourchettes de CPC | Graphique linéaire pour des données non continues |
+| Tunnel / flux | Graphique de tunnel ou Sankey | Étapes du tunnel de conversion | Graphique à barres pour des données de flux séquentiel |
+| Performance vs objectif | Graphique à puces (bullet chart) ou jauge | Suivi KPI vs objectif | Jauge compliquée avec plusieurs aiguilles |
+| Corrélation de deux métriques | Nuage de points | CPC vs taux de conversion, dépense vs revenu | Sans libellés d'axes clairs et de contexte |
+| Heure de la journée/jour de la semaine | Carte de chaleur | Motifs d'engagement, timing de conversion | Graphique linéaire avec 168 points de données horaires |
+| Géographique | Carte choroplèthe | Performance régionale | Cartes pour des données non géographiques |
+| Comparaison de nombreux éléments | Tableau avec mise en forme conditionnelle | Rapports de mots-clés, comparaisons d'annonces | Graphiques trop complexes |
 
-### Design Principles
+### Principes de conception
 
-- [ ] Use consistent color palettes across all dashboards (assign one color per channel permanently)
-- [ ] Left-to-right reading order: most important metrics on the top-left
-- [ ] White space between sections — do not cram metrics together
-- [ ] Every chart has a title that states the insight, not just the metric name ("Revenue is trending 12% above target" not "Revenue")
-- [ ] Include the date range and last refresh time on every dashboard page
-- [ ] Use consistent number formatting (currency, percentages, abbreviations)
-- [ ] Add annotations for known events (campaign launch, site outage, holiday, algorithm update)
-- [ ] Sparklines for compact trend visualization on scorecards
-- [ ] Conditional formatting: red/yellow/green tied to specific thresholds, not arbitrary ranges
-
----
-
-## Alert Threshold Configuration
-
-### Critical Alerts (Immediate Notification)
-
-| Condition | Threshold | Action |
-|-----------|-----------|--------|
-| Website traffic drop | >30% vs. 7-day average (hourly check) | Check for site issues, tracking breaks, algorithm changes |
-| Conversion rate collapse | >40% drop vs. 7-day average | Check landing pages, checkout, forms, tracking |
-| Ad spend spike | >150% of daily budget | Check for automated bid runaway, budget caps |
-| Revenue drop | >25% vs. same day last week | Cross-reference traffic, CVR, AOV to diagnose |
-| Campaign disapprovals | Any ad or keyword disapproved | Review disapproval reason, fix, resubmit |
-
-### Warning Alerts (Next Business Day)
-
-| Condition | Threshold | Action |
-|-----------|-----------|--------|
-| Traffic decline | >20% vs. 7-day average (daily check) | Investigate by channel |
-| Conversion rate drop | >15% vs. 30-day average | A/B test check, landing page audit |
-| CPA increase | >20% above target for 3+ consecutive days | Bid adjustments, audience review |
-| Email bounce rate | >5% on any send | List hygiene, domain reputation check |
-| Bounce rate spike | >10 point increase over baseline | Content relevance, page speed, mobile UX |
-| Ad budget under-spend | <70% of daily budget by end of day | Check bid competitiveness, targeting restrictions |
-
-### Informational Alerts (Weekly Review)
-
-| Condition | Threshold | Action |
-|-----------|-----------|--------|
-| Keyword quality score drop | Any keyword drops 2+ points | Review ad relevance and landing page |
-| New high-traffic referrer | Referral source sends 100+ sessions/week | Investigate source, consider partnership |
-| Audience fatigue | Frequency >10 per user per week | Refresh creative, expand audience |
-| Organic ranking change | Any top-10 keyword drops out of page 1 | Content refresh, technical audit |
+- [ ] Utiliser des palettes de couleurs cohérentes sur tous les tableaux de bord (assigner une couleur par canal de façon permanente)
+- [ ] Ordre de lecture de gauche à droite : les métriques les plus importantes en haut à gauche
+- [ ] Espace blanc entre les sections — ne pas entasser les métriques
+- [ ] Chaque graphique a un titre qui énonce l'insight, pas seulement le nom de la métrique (« Le revenu est en tendance de +12 % au-dessus de l'objectif » plutôt que « Revenu »)
+- [ ] Inclure la plage de dates et l'heure du dernier rafraîchissement sur chaque page de tableau de bord
+- [ ] Utiliser un formatage numérique cohérent (devise, pourcentages, abréviations)
+- [ ] Ajouter des annotations pour les événements connus (lancement de campagne, panne du site, jour férié, mise à jour d'algorithme)
+- [ ] Sparklines pour une visualisation de tendance compacte sur les fiches de score
+- [ ] Mise en forme conditionnelle : rouge/jaune/vert liés à des seuils spécifiques, pas des plages arbitraires
 
 ---
 
-## Tool Recommendations
+## Configuration des seuils d'alerte
 
-| Tool | Price | Best For | Key Strengths |
+### Alertes critiques (notification immédiate)
+
+| Condition | Seuil | Action |
+|-----------|-----------|--------|
+| Baisse du trafic du site | >30 % vs moyenne sur 7 jours (vérification horaire) | Vérifier les problèmes du site, les ruptures de suivi, les changements d'algorithme |
+| Effondrement du taux de conversion | Baisse >40 % vs moyenne sur 7 jours | Vérifier les landing pages, le paiement, les formulaires, le suivi |
+| Pic de dépense publicitaire | >150 % du budget quotidien | Vérifier un emballement d'enchère automatisée, les plafonds budgétaires |
+| Baisse de revenu | >25 % vs même jour la semaine dernière | Recouper trafic, CVR, AOV pour diagnostiquer |
+| Refus de campagne | Toute annonce ou mot-clé refusé | Revoir la raison du refus, corriger, re-soumettre |
+
+### Alertes d'avertissement (jour ouvré suivant)
+
+| Condition | Seuil | Action |
+|-----------|-----------|--------|
+| Déclin du trafic | >20 % vs moyenne sur 7 jours (vérification quotidienne) | Investiguer par canal |
+| Baisse du taux de conversion | >15 % vs moyenne sur 30 jours | Vérification de test A/B, audit de landing page |
+| Hausse du CPA | >20 % au-dessus de l'objectif pendant 3 jours consécutifs ou plus | Ajustements d'enchère, revue d'audience |
+| Taux de rebond d'e-mail | >5 % sur un envoi | Hygiène de liste, vérification de la réputation de domaine |
+| Pic de taux de rebond | Hausse de plus de 10 points par rapport à la référence | Pertinence du contenu, vitesse de page, UX mobile |
+| Sous-dépense publicitaire | <70 % du budget quotidien en fin de journée | Vérifier la compétitivité des enchères, les restrictions de ciblage |
+
+### Alertes informationnelles (revue hebdomadaire)
+
+| Condition | Seuil | Action |
+|-----------|-----------|--------|
+| Baisse du Quality Score d'un mot-clé | Tout mot-clé perd 2 points ou plus | Revoir la pertinence de l'annonce et la landing page |
+| Nouveau référent à fort trafic | Une source de référence envoie 100+ sessions/semaine | Investiguer la source, envisager un partenariat |
+| Fatigue d'audience | Fréquence >10 par utilisateur par semaine | Rafraîchir la création, élargir l'audience |
+| Changement de classement organique | Tout mot-clé du top 10 sort de la page 1 | Rafraîchissement de contenu, audit technique |
+
+---
+
+## Recommandations d'outils
+
+| Outil | Prix | Idéal pour | Forces clés |
 |------|-------|----------|---------------|
-| Google Looker Studio | Free | GA4-native dashboards, small teams | Deep Google integration, custom connectors, shareable links |
-| Tableau | $70-150/user/mo | Enterprise analytics, complex data blending | Powerful data modeling, advanced visualizations, large datasets |
-| Power BI | $10-20/user/mo | Microsoft ecosystem teams | Excel integration, affordable, DAX for custom calculations |
-| Databox | $0-199/mo | Multi-source dashboard aggregation | 70+ native integrations, mobile-first, goal tracking |
-| Klipfolio | $90-400/mo | Agency reporting (multi-client) | White-label, automated distribution, 100+ data sources |
-| Supermetrics | $29-579/mo | Data pipeline to spreadsheets/BI tools | Pulls from 100+ marketing platforms, scheduled refreshes |
-| Google Sheets + Supermetrics | ~$30/mo | Lean teams, custom analysis | Flexible, scriptable, familiar interface |
-| Mixpanel / Amplitude | $0-custom | Product and growth dashboards | Event-based analytics, funnel and cohort analysis |
+| Google Looker Studio | Gratuit | Tableaux de bord natifs GA4, petites équipes | Intégration Google poussée, connecteurs personnalisés, liens partageables |
+| Tableau | 70-150 $/utilisateur/mois | Analytics d'entreprise, mélange de données complexe | Modélisation de données puissante, visualisations avancées, grands jeux de données |
+| Power BI | 10-20 $/utilisateur/mois | Équipes de l'écosystème Microsoft | Intégration Excel, abordable, DAX pour des calculs personnalisés |
+| Databox | 0-199 $/mois | Agrégation de tableaux de bord multi-sources | 70+ intégrations natives, mobile-first, suivi d'objectifs |
+| Klipfolio | 90-400 $/mois | Reporting d'agence (multi-client) | Marque blanche, distribution automatisée, 100+ sources de données |
+| Supermetrics | 29-579 $/mois | Pipeline de données vers tableurs/outils BI | Extrait de 100+ plateformes marketing, rafraîchissements planifiés |
+| Google Sheets + Supermetrics | ~30 $/mois | Équipes légères, analyse personnalisée | Flexible, scriptable, interface familière |
+| Mixpanel / Amplitude | 0 $-sur mesure | Tableaux de bord produit et croissance | Analytics basé sur les événements, analyse de tunnel et de cohorte |
 
-### Tool Selection Decision Tree
+### Arbre de décision de sélection d'outil
 
 ```
 Do you primarily use Google ecosystem (GA4, Google Ads)?
@@ -267,94 +267,94 @@ Do you primarily use Google ecosystem (GA4, Google Ads)?
 
 ---
 
-## Data Freshness Trade-offs
+## Arbitrages de fraîcheur des données
 
-| Freshness Level | Update Frequency | Typical Use | Trade-off |
+| Niveau de fraîcheur | Fréquence de mise à jour | Usage typique | Arbitrage |
 |----------------|-----------------|-------------|-----------|
-| Real-time | Continuous/seconds | Campaign dashboards, spend monitoring | Higher API costs, more complex infrastructure |
-| Near-real-time | Every 15-60 minutes | Operational dashboards, budget pacing | Moderate complexity, most actionable |
-| Daily | Once per day (overnight) | Operational and executive dashboards | Simple to build, sufficient for most decisions |
-| Weekly aggregate | Weekly rollup | Executive dashboards, trend analysis | Smooths noise, misses daily anomalies |
-| Monthly aggregate | Monthly rollup | Board reports, strategic reviews | Long-term trends only, no tactical value |
+| Temps réel | Continu/secondes | Tableaux de bord de campagne, suivi de la dépense | Coûts d'API plus élevés, infrastructure plus complexe |
+| Quasi-temps réel | Toutes les 15-60 minutes | Tableaux de bord opérationnels, rythme budgétaire | Complexité modérée, le plus actionnable |
+| Quotidien | Une fois par jour (nuit) | Tableaux de bord opérationnels et exécutifs | Simple à construire, suffisant pour la plupart des décisions |
+| Agrégat hebdomadaire | Cumul hebdomadaire | Tableaux de bord exécutifs, analyse de tendance | Lisse le bruit, manque les anomalies quotidiennes |
+| Agrégat mensuel | Cumul mensuel | Rapports au conseil, revues stratégiques | Tendances à long terme uniquement, pas de valeur tactique |
 
-### Recommended Freshness by Dashboard
+### Fraîcheur recommandée par tableau de bord
 
-- **Executive:** Daily refresh is sufficient (decisions are monthly/quarterly)
-- **Operational:** Daily refresh minimum, hourly for paid advertising metrics
-- **Campaign:** Real-time for spend and impressions, hourly for conversions and CPA
+- **Exécutif :** un rafraîchissement quotidien est suffisant (les décisions sont mensuelles/trimestrielles)
+- **Opérationnel :** rafraîchissement quotidien minimum, horaire pour les métriques de publicité payante
+- **Campagne :** temps réel pour la dépense et les impressions, horaire pour les conversions et le CPA
 
 ---
 
-## Dashboard Anti-Patterns
+## Anti-modèles de tableau de bord
 
-| Anti-Pattern | Why It Fails | Fix |
+| Anti-modèle | Pourquoi il échoue | Correction |
 |-------------|-------------|-----|
-| Vanity metrics only | Impressions and followers without business outcomes mislead leadership | Always tie to revenue, pipeline, or conversion |
-| Too many metrics | 50+ metrics on one screen causes analysis paralysis | Enforce the tier system — 7 max for executive |
-| No comparison context | A number without context is meaningless ("1,234 conversions" — is that good?) | Always show vs. target, vs. prior period, vs. benchmark |
-| Missing date range | Metrics without clear time period are uninterpretable | Display date range prominently on every page |
-| Stale data without notice | Dashboard shows data from 3 days ago without indicating it | Show "Last updated: [timestamp]" prominently |
-| Inconsistent definitions | "Conversion" means different things on different charts | Include metric definitions in a glossary tab |
-| No drill-down path | Executive sees a red metric but can't investigate further | Link executive → operational → campaign dashboards |
-| Chart overload | Every metric in a complex chart when a table would be clearer | Use the simplest effective visualization |
-| No annotations | Sudden metric changes with no context on what happened | Add event markers (launches, outages, holidays, updates) |
-| Platform-specific jargon | Using "CPM" and "ROAS" with a non-marketing executive audience | Translate to business language for executive dashboards |
+| Métriques de vanité uniquement | Les impressions et abonnés sans résultats commerciaux induisent la direction en erreur | Toujours relier au revenu, au pipeline, ou à la conversion |
+| Trop de métriques | 50+ métriques sur un écran provoque une paralysie d'analyse | Appliquer le système de niveaux — maximum 7 pour l'exécutif |
+| Pas de contexte de comparaison | Un chiffre sans contexte est dénué de sens (« 1 234 conversions » — est-ce bon ?) | Toujours montrer vs objectif, vs période précédente, vs benchmark |
+| Plage de dates manquante | Des métriques sans période claire sont impossibles à interpréter | Afficher la plage de dates de manière visible sur chaque page |
+| Données obsolètes sans mention | Le tableau de bord affiche des données vieilles de 3 jours sans l'indiquer | Afficher « Dernière mise à jour : [horodatage] » de manière visible |
+| Définitions incohérentes | « Conversion » signifie des choses différentes sur différents graphiques | Inclure les définitions de métriques dans un onglet glossaire |
+| Pas de chemin d'approfondissement | L'exécutif voit une métrique rouge mais ne peut pas investiguer davantage | Relier les tableaux de bord exécutif → opérationnel → campagne |
+| Surcharge de graphiques | Chaque métrique dans un graphique complexe alors qu'un tableau serait plus clair | Utiliser la visualisation la plus simple et efficace |
+| Pas d'annotations | Changements de métrique soudains sans contexte sur ce qui s'est passé | Ajouter des marqueurs d'événement (lancements, pannes, jours fériés, mises à jour) |
+| Jargon spécifique à la plateforme | Utiliser « CPM » et « ROAS » avec une audience exécutive non-marketing | Traduire en langage métier pour les tableaux de bord exécutifs |
 
 ---
 
-## Business Model Templates
+## Modèles par modèle économique
 
-### SaaS Dashboard Focus Areas
+### Zones d'intérêt du tableau de bord SaaS
 
-| Dashboard Tier | Key Metrics | Unique Considerations |
+| Niveau de tableau de bord | Métriques clés | Considérations particulières |
 |---------------|------------|----------------------|
-| Executive | MRR, NRR, CAC, LTV:CAC, Qualified Pipeline | Show MRR waterfall (new + expansion - contraction - churn) |
-| Operational | Lead velocity, activation rate, trial-to-paid, feature adoption | Track product-qualified leads alongside marketing-qualified leads |
-| Campaign | Demo requests, free trial starts, content downloads by stage | Attribution to pipeline is critical — track through CRM |
+| Exécutif | MRR, NRR, CAC, LTV:CAC, pipeline qualifié | Afficher la cascade de MRR (nouveau + expansion - contraction - désabonnement) |
+| Opérationnel | Vélocité de leads, taux d'activation, essai-vers-payant, adoption de fonctionnalités | Suivre les leads qualifiés produit aux côtés des leads qualifiés marketing |
+| Campagne | Demandes de démo, débuts d'essai gratuit, téléchargements de contenu par étape | L'attribution au pipeline est critique — suivre à travers le CRM |
 
-### eCommerce Dashboard Focus Areas
+### Zones d'intérêt du tableau de bord e-commerce
 
-| Dashboard Tier | Key Metrics | Unique Considerations |
+| Niveau de tableau de bord | Métriques clés | Considérations particulières |
 |---------------|------------|----------------------|
-| Executive | Revenue, AOV, CVR, ROAS, Repeat Purchase Rate | Revenue by channel with margin overlay |
-| Operational | Traffic by source, cart abandonment, email revenue %, product performance | Segment by new vs returning customer revenue |
-| Campaign | ROAS by campaign, product-level performance, dynamic ad metrics | Daily stock-level feed health monitoring |
+| Exécutif | Revenu, AOV, CVR, ROAS, taux de rachat | Revenu par canal avec superposition de marge |
+| Opérationnel | Trafic par source, abandon de panier, % de revenu e-mail, performance produit | Segmenter par revenu de client nouveau vs récurrent |
+| Campagne | ROAS par campagne, performance au niveau produit, métriques d'annonces dynamiques | Suivi quotidien de la santé du flux de stock |
 
-### B2B Lead Gen Dashboard Focus Areas
+### Zones d'intérêt du tableau de bord de génération de leads B2B
 
-| Dashboard Tier | Key Metrics | Unique Considerations |
+| Niveau de tableau de bord | Métriques clés | Considérations particulières |
 |---------------|------------|----------------------|
-| Executive | Pipeline generated, marketing-sourced revenue, CAC by channel | Long attribution windows (60-180 days) |
-| Operational | MQLs, SQLs, lead-to-opportunity rate, content engagement | Track by persona and account tier |
-| Campaign | CPL, lead quality score, form completion rate, content downloads | Lead scoring alignment with sales feedback |
+| Exécutif | Pipeline généré, revenu généré par le marketing, CAC par canal | Fenêtres d'attribution longues (60-180 jours) |
+| Opérationnel | MQL, SQL, taux lead-vers-opportunité, engagement de contenu | Suivre par persona et niveau de compte |
+| Campagne | CPL, score de qualité de lead, taux de complétion de formulaire, téléchargements de contenu | Alignement de la notation des leads avec le retour commercial |
 
-### Agency Dashboard Focus Areas
+### Zones d'intérêt du tableau de bord d'agence
 
-| Dashboard Tier | Key Metrics | Unique Considerations |
+| Niveau de tableau de bord | Métriques clés | Considérations particulières |
 |---------------|------------|----------------------|
-| Client executive | Client-specific KPIs, ROAS, goal progress | White-labeled, branded, simple |
-| Account manager | Cross-client performance, at-risk accounts, upsell signals | Efficiency metrics (hours per account, margin) |
-| Specialist | Platform-specific performance, optimization opportunities | Deep platform metrics with benchmark context |
+| Exécutif client | KPI spécifiques au client, ROAS, progression des objectifs | En marque blanche, aux couleurs de la marque, simple |
+| Responsable de compte | Performance cross-client, comptes à risque, signaux de vente incitative | Métriques d'efficacité (heures par compte, marge) |
+| Spécialiste | Performance spécifique à la plateforme, opportunités d'optimisation | Métriques de plateforme approfondies avec contexte de benchmark |
 
 ---
 
-## Implementation Checklist
+## Liste de contrôle de mise en œuvre
 
-- [ ] Dashboard hierarchy defined (executive, operational, campaign)
-- [ ] Metric owners assigned for every metric on every dashboard
-- [ ] Data sources connected and validated (cross-check with platform native reports)
-- [ ] Refresh frequency configured per dashboard tier
-- [ ] Color palette standardized across all dashboards (one color per channel/source)
-- [ ] Alert thresholds configured for critical and warning conditions
-- [ ] Comparison context added to every metric (vs. target, vs. prior period)
-- [ ] Drill-down paths linked between dashboard tiers
-- [ ] Glossary tab with metric definitions added to each dashboard
-- [ ] Event annotations configured for campaigns, launches, outages
-- [ ] Access permissions set (executives see executive tier, not campaign noise)
-- [ ] Automated distribution scheduled (email PDFs weekly, link sharing)
-- [ ] Quarterly dashboard audit scheduled (remove unused metrics, add new ones)
-- [ ] User training completed for all dashboard consumers
+- [ ] Hiérarchie de tableau de bord définie (exécutif, opérationnel, campagne)
+- [ ] Propriétaires de métrique assignés pour chaque métrique de chaque tableau de bord
+- [ ] Sources de données connectées et validées (recoupement avec les rapports natifs de la plateforme)
+- [ ] Fréquence de rafraîchissement configurée par niveau de tableau de bord
+- [ ] Palette de couleurs standardisée sur tous les tableaux de bord (une couleur par canal/source)
+- [ ] Seuils d'alerte configurés pour les conditions critiques et d'avertissement
+- [ ] Contexte de comparaison ajouté à chaque métrique (vs objectif, vs période précédente)
+- [ ] Chemins d'approfondissement reliés entre les niveaux de tableau de bord
+- [ ] Onglet glossaire avec les définitions de métriques ajouté à chaque tableau de bord
+- [ ] Annotations d'événements configurées pour les campagnes, lancements, pannes
+- [ ] Permissions d'accès définies (les exécutifs voient le niveau exécutif, pas le bruit de campagne)
+- [ ] Distribution automatisée planifiée (PDF par e-mail hebdomadaire, partage de lien)
+- [ ] Audit trimestriel du tableau de bord planifié (retirer les métriques inutilisées, en ajouter de nouvelles)
+- [ ] Formation des utilisateurs terminée pour tous les consommateurs du tableau de bord
 
 ---
 
-*A dashboard that nobody checks is worse than no dashboard at all. Design for your audience's decisions, not your analyst's curiosity. Every metric on screen should answer a question someone actually asks, and every answer should suggest an action they can actually take.*
+*Un tableau de bord que personne ne consulte est pire que pas de tableau de bord du tout. Concevez pour les décisions de votre audience, pas pour la curiosité de votre analyste. Chaque métrique à l'écran devrait répondre à une question que quelqu'un pose réellement, et chaque réponse devrait suggérer une action qu'il peut réellement entreprendre.*

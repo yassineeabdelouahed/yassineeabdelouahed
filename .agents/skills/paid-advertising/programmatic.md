@@ -1,239 +1,239 @@
-# Programmatic Advertising — DSP, CTV & DOOH
+# Publicité programmatique — DSP, CTV et DOOH
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des hypothèses de planification, pas des cotations — les taux de marché et d'enchères évoluent en continu. Avant qu'un chiffre n'entre dans un plan média, un budget ou un livrable client, actualisez-le en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et enregistrez-le avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citez-le ensuite depuis le carnet (`--action quote`). Ne présentez jamais un chiffre non horodaté comme un fait de marché actuel.
 
-## Programmatic Ecosystem Overview
+## Vue d'ensemble de l'écosystème programmatique
 
-### How Programmatic Works
+### Fonctionnement du programmatique
 ```
-Advertiser → DSP → Ad Exchange → SSP → Publisher
+Annonceur → DSP → Ad Exchange → SSP → Éditeur
      ↑                  ↑
-     └── DMP ──────────┘ (Audience Data)
+     └── DMP ──────────┘ (données d'audience)
 ```
 
-### Key Components
+### Composantes clés
 
-| Component | Role | Examples |
+| Composante | Rôle | Exemples |
 |---|---|---|
-| **DSP** (Demand-Side Platform) | Buys ad inventory on behalf of advertisers | DV360, The Trade Desk, Amazon DSP, Xandr |
-| **SSP** (Supply-Side Platform) | Sells ad inventory on behalf of publishers | Google Ad Manager, Magnite, PubMatic, Index Exchange |
-| **Ad Exchange** | Marketplace connecting DSPs and SSPs | Google AdX, OpenX, Xandr Marketplace |
-| **DMP** (Data Management Platform) | Aggregates and segments audience data | Lotame, LiveRamp, Adobe Real-Time CDP |
-| **CDP** (Customer Data Platform) | Unifies first-party customer data | Segment, mParticle, Tealium |
-| **Ad Server** | Serves ads and tracks delivery/performance | Campaign Manager 360 (CM360), Innovid, Flashtalking |
-| **Verification** | Brand safety, viewability, fraud detection | IAS, DoubleVerify, MOAT, Pixalate |
+| **DSP** (plateforme côté demande) | Achète l'inventaire publicitaire pour le compte des annonceurs | DV360, The Trade Desk, Amazon DSP, Xandr |
+| **SSP** (plateforme côté offre) | Vend l'inventaire publicitaire pour le compte des éditeurs | Google Ad Manager, Magnite, PubMatic, Index Exchange |
+| **Ad Exchange** | Marketplace connectant les DSP et les SSP | Google AdX, OpenX, Xandr Marketplace |
+| **DMP** (plateforme de gestion de données) | Agrège et segmente les données d'audience | Lotame, LiveRamp, Adobe Real-Time CDP |
+| **CDP** (plateforme de données client) | Unifie les données clients propriétaires | Segment, mParticle, Tealium |
+| **Ad Server** | Diffuse les publicités et suit la livraison/performance | Campaign Manager 360 (CM360), Innovid, Flashtalking |
+| **Vérification** | Sécurité de marque, visibilité, détection de fraude | IAS, DoubleVerify, MOAT, Pixalate |
 
-### Transaction Flow (RTB)
-1. User visits a web page or opens an app
-2. Publisher's SSP sends a bid request with user/context data to the exchange
-3. Exchange forwards bid request to connected DSPs
-4. DSPs evaluate user data, campaign criteria, and bid in real-time (<100ms)
-5. Highest bidder wins the impression
-6. Winning ad is served to the user
-7. Impression, click, and conversion data flows back for optimization
+### Flux de transaction (RTB)
+1. Un utilisateur visite une page web ou ouvre une app
+2. Le SSP de l'éditeur envoie une demande d'enchère avec les données utilisateur/contexte à l'exchange
+3. L'exchange transmet la demande d'enchère aux DSP connectés
+4. Les DSP évaluent les données utilisateur, les critères de campagne, et enchérissent en temps réel (<100ms)
+5. Le plus offrant remporte l'impression
+6. La publicité gagnante est diffusée à l'utilisateur
+7. Les données d'impression, de clic, et de conversion remontent pour l'optimisation
 
-## DSP Selection Criteria
+## Critères de sélection du DSP
 
-| Criteria | DV360 (Google) | The Trade Desk (TTD) | Amazon DSP | Xandr (Microsoft) |
+| Critère | DV360 (Google) | The Trade Desk (TTD) | Amazon DSP | Xandr (Microsoft) |
 |---|---|---|---|---|
-| **Inventory access** | Google + open exchange | Open exchange (broadest) | Amazon + open exchange | Microsoft + open exchange |
-| **Unique advantage** | YouTube integration, Google ecosystem | Independent, transparent, unified ID 2.0 | Amazon shopper data, retail signals | LinkedIn data, Netflix CTV |
-| **CTV strength** | Strong (YouTube CTV) | Strongest (broadest CTV supply) | Moderate (Fire TV, Freevee) | Growing (Netflix partnership) |
-| **Data/Targeting** | Google audiences, 1P data | 3P data marketplace, UID2 | Purchase intent, in-market | LinkedIn B2B, Microsoft graph |
-| **Self-serve** | Yes (via DV360) | Yes | Limited (managed + self-serve) | Yes (via Invest) |
-| **Minimum spend** | No minimum (self-serve) | $25K/month (typical) | $35K+ (managed); lower self-serve | Varies by contract |
-| **Best for** | Google-centric stacks, YouTube | Independent, transparent buying | E-commerce, CPG, retail | B2B, Microsoft ecosystem |
-| **Reporting** | Good (CM360 integration) | Excellent (Koa AI insights) | Good (Amazon Attribution) | Good |
+| **Accès à l'inventaire** | Google + échange ouvert | Échange ouvert (le plus large) | Amazon + échange ouvert | Microsoft + échange ouvert |
+| **Avantage unique** | Intégration YouTube, écosystème Google | Indépendant, transparent, Unified ID 2.0 | Données d'acheteur Amazon, signaux retail | Données LinkedIn, Netflix CTV |
+| **Force CTV** | Forte (YouTube CTV) | La plus forte (offre CTV la plus large) | Modérée (Fire TV, Freevee) | Croissante (partenariat Netflix) |
+| **Données/Ciblage** | Audiences Google, données propriétaires | Marketplace de données tierces, UID2 | Intention d'achat, in-market | LinkedIn B2B, graphe Microsoft |
+| **Self-serve** | Oui (via DV360) | Oui | Limité (géré + self-serve) | Oui (via Invest) |
+| **Dépense minimum** | Aucun minimum (self-serve) | 25K $/mois (typique) | 35K $+ (géré) ; plus bas en self-serve | Varie selon le contrat |
+| **Idéal pour** | Piles centrées sur Google, YouTube | Achat indépendant, transparent | E-commerce, CPG, retail | B2B, écosystème Microsoft |
+| **Reporting** | Bon (intégration CM360) | Excellent (insights Koa AI) | Bon (Amazon Attribution) | Bon |
 
-### DSP Selection Decision Tree
+### Arbre de décision de sélection du DSP
 ```
-START: What is your primary goal?
+DÉBUT : Quel est votre objectif principal ?
 │
-├── E-commerce / Retail → Amazon DSP (shopper data advantage)
-├── B2B / Enterprise → Xandr (LinkedIn targeting)
-├── Video / YouTube focus → DV360 (exclusive YouTube inventory)
-├── CTV / Streaming priority → The Trade Desk (broadest CTV)
-├── Transparency / Independence → The Trade Desk (no walled garden)
-└── Already in Google stack → DV360 (ecosystem integration)
+├── E-commerce / Retail → Amazon DSP (avantage des données d'acheteur)
+├── B2B / Entreprise → Xandr (ciblage LinkedIn)
+├── Focus vidéo / YouTube → DV360 (inventaire YouTube exclusif)
+├── Priorité CTV / streaming → The Trade Desk (CTV le plus large)
+├── Transparence / indépendance → The Trade Desk (pas de walled garden)
+└── Déjà dans la pile Google → DV360 (intégration écosystème)
 ```
 
-## Deal Types
+## Types de deals
 
-| Deal Type | How It Works | Pricing | Inventory Guarantee | Best For |
+| Type de deal | Fonctionnement | Tarification | Garantie d'inventaire | Idéal pour |
 |---|---|---|---|---|
-| **Open Exchange (RTB)** | Real-time auction; anyone can bid | Market rate (CPM varies) | None | Scale, prospecting, testing |
-| **Private Marketplace (PMP)** | Invite-only auction with select buyers | Floor price CPM | None (preferred access) | Premium inventory at competitive rates |
-| **Preferred Deal** | Fixed CPM; buyer has first look before PMP/RTB | Negotiated fixed CPM | None (right of first refusal) | Consistent pricing, priority access |
-| **Programmatic Guaranteed (PG)** | Fixed CPM, fixed impressions; reserved | Negotiated fixed CPM | Yes (guaranteed volume) | Tentpole events, must-have placements |
+| **Échange ouvert (RTB)** | Enchère en temps réel ; tout le monde peut enchérir | Taux de marché (CPM variable) | Aucune | Échelle, prospecting, test |
+| **Private Marketplace (PMP)** | Enchère sur invitation avec des acheteurs sélectionnés | CPM plancher | Aucune (accès privilégié) | Inventaire premium à des tarifs compétitifs |
+| **Preferred Deal** | CPM fixe ; l'acheteur a un premier regard avant PMP/RTB | CPM fixe négocié | Aucune (droit de premier refus) | Tarification cohérente, accès prioritaire |
+| **Programmatic Guaranteed (PG)** | CPM fixe, impressions fixes ; réservé | CPM fixe négocié | Oui (volume garanti) | Événements phares, emplacements incontournables |
 
-### Deal Type Selection Guide
+### Guide de sélection du type de deal
 
-| Scenario | Recommended Deal Type |
+| Scénario | Type de deal recommandé |
 |---|---|
-| Testing new publishers or inventory | Open Exchange |
-| Access premium inventory at scale | PMP |
-| Consistent CPMs with priority access | Preferred Deal |
-| Guaranteed delivery for a product launch or event | Programmatic Guaranteed |
-| Brand-safe environments required | PMP or PG (curated supply) |
+| Tester de nouveaux éditeurs ou de l'inventaire | Échange ouvert |
+| Accéder à de l'inventaire premium à l'échelle | PMP |
+| CPM cohérents avec accès prioritaire | Preferred Deal |
+| Livraison garantie pour un lancement de produit ou un événement | Programmatic Guaranteed |
+| Environnements sûrs pour la marque requis | PMP ou PG (offre curatée) |
 
-## CTV (Connected TV) Planning Guide
+## Guide de planification CTV (télévision connectée)
 
-### CTV Landscape
+### Paysage de la CTV
 
-| Platform / Service | Ad-Supported Tier | Inventory Access Via |
+| Plateforme / Service | Palier soutenu par la publicité | Accès à l'inventaire via |
 |---|---|---|
-| Hulu | Yes | Disney DSP, TTD, DV360 |
-| Peacock (NBC) | Yes | TTD, DV360, Xandr |
-| Max (HBO) | Yes (with ads tier) | TTD, DV360 |
-| Paramount+ | Yes | TTD, DV360 |
-| Netflix | Yes (with ads tier) | Netflix Ads Suite (first-party) + The Trade Desk, DV360, Magnite |
-| Disney+ | Yes (with ads tier) | Disney DSP, TTD |
-| Amazon Prime Video (ad tier) | Yes | Amazon DSP |
-| YouTube CTV | Yes | DV360 |
-| Roku | Yes | TTD, DV360, Roku OneView |
-| Samsung TV+ | Yes | TTD, DV360 |
-| Tubi (Fox) | Yes (FAST) | TTD, DV360 |
-| Pluto TV (Paramount) | Yes (FAST) | TTD, DV360 |
+| Hulu | Oui | Disney DSP, TTD, DV360 |
+| Peacock (NBC) | Oui | TTD, DV360, Xandr |
+| Max (HBO) | Oui (avec le palier avec publicité) | TTD, DV360 |
+| Paramount+ | Oui | TTD, DV360 |
+| Netflix | Oui (avec le palier avec publicité) | Netflix Ads Suite (propriétaire) + The Trade Desk, DV360, Magnite |
+| Disney+ | Oui (avec le palier avec publicité) | Disney DSP, TTD |
+| Amazon Prime Video (palier avec publicité) | Oui | Amazon DSP |
+| YouTube CTV | Oui | DV360 |
+| Roku | Oui | TTD, DV360, Roku OneView |
+| Samsung TV+ | Oui | TTD, DV360 |
+| Tubi (Fox) | Oui (FAST) | TTD, DV360 |
+| Pluto TV (Paramount) | Oui (FAST) | TTD, DV360 |
 
-### CTV Campaign Planning Checklist
-- [ ] Define target audience and geographic focus
-- [ ] Select DSP(s) based on inventory and data needs
-- [ ] Choose deal type: PMP for premium, open exchange for scale
-- [ ] Set frequency cap: 3–5 impressions per household per week
-- [ ] Prepare video assets: 15-second and 30-second spots (1920x1080 minimum)
-- [ ] Implement cross-device tracking (household graph)
-- [ ] Set up conversion tracking: website visits, app installs, or offline attribution
-- [ ] Apply brand safety filters and content targeting
-- [ ] Plan measurement: reach/frequency, brand lift, tune-in, foot traffic
+### Checklist de planification de campagne CTV
+- [ ] Définir l'audience cible et le focus géographique
+- [ ] Sélectionner le(s) DSP selon l'inventaire et les besoins de données
+- [ ] Choisir le type de deal : PMP pour le premium, échange ouvert pour l'échelle
+- [ ] Fixer le plafond de fréquence : 3–5 impressions par foyer et par semaine
+- [ ] Préparer les actifs vidéo : spots de 15 et 30 secondes (1920x1080 minimum)
+- [ ] Mettre en œuvre le suivi cross-appareil (graphe de foyer)
+- [ ] Configurer le suivi de conversion : visites de site, installations d'app, ou attribution hors ligne
+- [ ] Appliquer des filtres de sécurité de marque et de ciblage de contenu
+- [ ] Planifier la mesure : portée/fréquence, brand lift, tune-in, trafic en magasin
 
-### CTV Creative Specs
+### Spécifications créatives CTV
 
-| Specification | Requirement |
+| Spécification | Exigence |
 |---|---|
-| Resolution | 1920x1080 (Full HD) minimum; 3840x2160 (4K) preferred |
-| Aspect ratio | 16:9 |
-| Duration | 15s or 30s (6s bumpers available on some platforms) |
-| File format | MP4 (H.264 codec) |
-| File size | Under 1 GB (varies by platform) |
-| Audio | Required — CTV is a lean-back, sound-on environment |
-| Companion banner | 300x250 or 728x90 (optional, increases engagement) |
+| Résolution | 1920x1080 (Full HD) minimum ; 3840x2160 (4K) préféré |
+| Ratio d'aspect | 16:9 |
+| Durée | 15s ou 30s (bumpers de 6s disponibles sur certaines plateformes) |
+| Format de fichier | MP4 (codec H.264) |
+| Taille de fichier | Moins de 1 Go (varie selon la plateforme) |
+| Audio | Requis — la CTV est un environnement passif, son activé |
+| Bannière compagnon | 300x250 ou 728x90 (optionnel, augmente l'engagement) |
 
-### CTV Benchmarks
+### Benchmarks CTV
 
-| Metric | Average | Good | Excellent |
+| Métrique | Moyenne | Bon | Excellent |
 |---|---|---|---|
-| VCR (Video Completion Rate) | 90–95% | 95%+ | 97%+ |
-| CPM | $25–$45 | $20–$30 | < $20 |
-| Reach (per $10K) | 50K–150K HH | 150K+ HH | 250K+ HH |
-| Brand Lift | 3–8% | 8–15% | 15%+ |
+| VCR (taux d'achèvement vidéo) | 90–95 % | 95 %+ | 97 %+ |
+| CPM | 25–45 $ | 20–30 $ | < 20 $ |
+| Portée (par 10K $) | 50K–150K foyers | 150K+ foyers | 250K+ foyers |
+| Brand Lift | 3–8 % | 8–15 % | 15 %+ |
 
-## DOOH (Digital Out-of-Home) Strategy
+## Stratégie DOOH (affichage numérique extérieur)
 
-### DOOH Venue Types
+### Types d'emplacements DOOH
 
-| Venue Category | Examples | Audience Context | Best For |
+| Catégorie d'emplacement | Exemples | Contexte de l'audience | Idéal pour |
 |---|---|---|---|
-| Roadside / Billboard | Digital billboards, highways | Commuters, mass reach | Brand awareness, directional |
-| Transit | Bus shelters, subway, airports | Urban commuters, travelers | Local, frequency-driven campaigns |
-| Retail / Point-of-Purchase | In-store screens, mall kiosks | Shoppers near purchase moment | Retail, CPG, QSR |
-| Place-Based | Gyms, doctors' offices, elevators | Captive, context-rich audience | Health, fitness, professional services |
-| Spectaculars | Times Square, iconic locations | Tourists, event audiences | Tentpole moments, PR-worthy brand statements |
+| Bord de route / Panneaux | Panneaux numériques, autoroutes | Navetteurs, portée de masse | Notoriété de marque, directionnel |
+| Transport | Abris bus, métro, aéroports | Navetteurs urbains, voyageurs | Campagnes locales, orientées fréquence |
+| Retail / Point de vente | Écrans en magasin, kiosques de centre commercial | Acheteurs proches du moment d'achat | Retail, CPG, restauration rapide |
+| Basé sur le lieu | Salles de sport, cabinets médicaux, ascenseurs | Audience captive, riche en contexte | Santé, fitness, services professionnels |
+| Spectaculaires | Times Square, emplacements iconiques | Touristes, audiences d'événement | Moments phares, déclarations de marque médiatiques |
 
-### Programmatic DOOH Platforms
+### Plateformes DOOH programmatiques
 
-| Platform | Strength | Inventory |
+| Plateforme | Force | Inventaire |
 |---|---|---|
-| Vistar Media | Largest pDOOH marketplace | 500K+ screens globally |
-| Hivestack | Programmatic infrastructure | Global SSP partnerships |
-| Place Exchange | SSP for OOH | Clear Channel, Lamar, JCDecaux |
-| The Trade Desk | DSP with DOOH access | Via SSP integrations |
-| DV360 | DSP with DOOH access | Via SSP integrations |
+| Vistar Media | Plus grand marketplace pDOOH | 500K+ écrans dans le monde |
+| Hivestack | Infrastructure programmatique | Partenariats SSP mondiaux |
+| Place Exchange | SSP pour l'OOH | Clear Channel, Lamar, JCDecaux |
+| The Trade Desk | DSP avec accès DOOH | Via intégrations SSP |
+| DV360 | DSP avec accès DOOH | Via intégrations SSP |
 
-### DOOH Planning Checklist
-- [ ] Define geographic targeting (DMA, zip code, POI radius)
-- [ ] Select venue types aligned with audience behavior
-- [ ] Choose buy type: programmatic guaranteed for premium, open exchange for flexibility
-- [ ] Set dayparting aligned with audience presence (commute hours, lunch, evening)
-- [ ] Prepare creative: simple, bold, max 5–7 words, high contrast
-- [ ] Plan measurement: foot traffic lift, brand lift, QR code scans, promo code redemption
-- [ ] Set frequency: 3–5 exposures per audience member over campaign flight
-- [ ] Consider weather and event triggers for dynamic creative
+### Checklist de planification DOOH
+- [ ] Définir le ciblage géographique (DMA, code postal, rayon POI)
+- [ ] Sélectionner les types d'emplacement alignés avec le comportement de l'audience
+- [ ] Choisir le type d'achat : programmatic guaranteed pour le premium, échange ouvert pour la flexibilité
+- [ ] Fixer le dayparting aligné avec la présence de l'audience (heures de trajet, déjeuner, soirée)
+- [ ] Préparer le créatif : simple, audacieux, max 5–7 mots, contraste élevé
+- [ ] Planifier la mesure : lift de trafic en magasin, brand lift, scans de code QR, utilisation de code promo
+- [ ] Fixer la fréquence : 3–5 expositions par membre de l'audience sur la durée de la campagne
+- [ ] Envisager des déclencheurs météo et événementiels pour le créatif dynamique
 
-## Audience Targeting Methods
+## Méthodes de ciblage d'audience
 
-| Method | Description | Data Source | Privacy Compliance |
+| Méthode | Description | Source de données | Conformité vie privée |
 |---|---|---|---|
-| **First-Party Data** | Your own CRM, website, app data | CDP, CRM | Highest (consent-based) |
-| **Contextual Targeting** | Target based on page content, not user | Real-time content analysis | Cookie-free, fully compliant |
-| **Behavioral / Interest** | User browsing and purchase signals | DMP, DSP data marketplace | Requires consent; addressability reduced by Safari/Firefox blocking, iOS ATT, and consent regimes (Chrome retains third-party cookies — deprecation cancelled) |
-| **Lookalike / Modeled** | Expand from seed audience using ML | DSP modeling, LiveRamp | Moderate; depends on seed data |
-| **Geofencing / Location** | Target users in/near physical locations | Mobile location data (Foursquare, etc.) | Requires opt-in location services |
-| **Seller-Defined Audiences** | Publisher-created audience segments | Publisher first-party data | High (publisher consent flow) |
-| **Universal ID** | Cross-site identity without cookies | UID2, RampID, ID5, SharedID | Consent-based, industry-supported |
+| **Données propriétaires (first-party)** | Vos propres données CRM, site, app | CDP, CRM | La plus élevée (basée sur le consentement) |
+| **Ciblage contextuel** | Cibler selon le contenu de la page, pas l'utilisateur | Analyse de contenu en temps réel | Sans cookie, entièrement conforme |
+| **Comportemental / Intérêt** | Signaux de navigation et d'achat de l'utilisateur | DMP, marketplace de données DSP | Nécessite le consentement ; adressabilité réduite par le blocage Safari/Firefox, l'ATT iOS, et les régimes de consentement (Chrome conserve les cookies tiers — la dépréciation est annulée) |
+| **Lookalike / Modélisé** | Étendre depuis une audience seed via ML | Modélisation DSP, LiveRamp | Modérée ; dépend des données seed |
+| **Géofencing / Localisation** | Cibler les utilisateurs dans/près de lieux physiques | Données de localisation mobile (Foursquare, etc.) | Nécessite l'opt-in des services de localisation |
+| **Audiences définies par le vendeur** | Segments d'audience créés par l'éditeur | Données propriétaires de l'éditeur | Élevée (flux de consentement éditeur) |
+| **Universal ID** | Identité cross-site sans cookies | UID2, RampID, ID5, SharedID | Basé sur le consentement, soutenu par l'industrie |
 
-### Post-Cookie Strategy Checklist
-- [ ] Prioritize first-party data collection (email, login, loyalty programs)
-- [ ] Implement contextual targeting as primary scale driver
-- [ ] Test Universal ID solutions (UID2 via TTD, RampID via LiveRamp)
-- [ ] Evaluate seller-defined audiences from premium publishers
-- [ ] Invest in Google Privacy Sandbox APIs (Topics, Attribution Reporting)
-- [ ] Shift measurement from last-click to incrementality and media mix modeling
+### Checklist de stratégie post-cookie
+- [ ] Prioriser la collecte de données propriétaires (email, connexion, programmes de fidélité)
+- [ ] Mettre en œuvre le ciblage contextuel comme moteur d'échelle principal
+- [ ] Tester les solutions Universal ID (UID2 via TTD, RampID via LiveRamp)
+- [ ] Évaluer les audiences définies par le vendeur des éditeurs premium
+- [ ] Investir dans les API Google Privacy Sandbox (Topics, Attribution Reporting)
+- [ ] Faire passer la mesure du dernier clic vers l'incrémentalité et la modélisation du mix média
 
-## Brand Safety & Fraud Prevention
+## Sécurité de marque et prévention de la fraude
 
-### Brand Safety Framework
+### Cadre de sécurité de marque
 
-| Layer | Solution | What It Does |
+| Couche | Solution | Ce qu'elle fait |
 |---|---|---|
-| Pre-bid | IAS, DoubleVerify, Oracle Contextual | Blocks unsafe inventory before bidding |
-| Inclusion lists | Curated publisher lists | Only buy from approved sources |
-| Exclusion lists | Block lists by domain, app, category | Prevent ads on specific content |
-| Content categories | GARM framework alignment | Block by risk category (misinformation, hate speech, etc.) |
-| Keyword blocking | Custom keyword lists | Avoid pages with specific terms |
-| Post-bid monitoring | IAS, DV, MOAT | Verify where ads actually ran |
+| Avant l'enchère | IAS, DoubleVerify, Oracle Contextual | Bloque l'inventaire non sûr avant l'enchère |
+| Listes d'inclusion | Listes d'éditeurs curées | N'acheter qu'auprès de sources approuvées |
+| Listes d'exclusion | Listes de blocage par domaine, app, catégorie | Empêcher les publicités sur du contenu spécifique |
+| Catégories de contenu | Alignement au cadre GARM | Bloquer par catégorie de risque (désinformation, discours de haine, etc.) |
+| Blocage de mots-clés | Listes de mots-clés personnalisées | Éviter les pages avec des termes spécifiques |
+| Surveillance après l'enchère | IAS, DV, MOAT | Vérifier où les publicités ont réellement été diffusées |
 
-### Ad Fraud Prevention
+### Prévention de la fraude publicitaire
 
-| Fraud Type | Description | Prevention |
+| Type de fraude | Description | Prévention |
 |---|---|---|
-| Bot traffic | Non-human impressions and clicks | Pre-bid fraud filtering (IAS, DV) |
-| Domain spoofing | Fake sites mimicking premium publishers | Ads.txt / app-ads.txt verification |
-| Ad stacking | Multiple ads layered in one slot | Viewability verification |
-| Pixel stuffing | Ad served in 1x1 pixel | Viewability standards (MRC) |
-| Click injection | Mobile apps generating fake clicks | App-ads.txt, SDK-level validation |
+| Trafic bot | Impressions et clics non humains | Filtrage de fraude avant enchère (IAS, DV) |
+| Usurpation de domaine | Faux sites imitant des éditeurs premium | Vérification ads.txt / app-ads.txt |
+| Empilement d'annonces | Plusieurs publicités superposées dans un seul emplacement | Vérification de visibilité |
+| Pixel stuffing | Publicité diffusée dans un pixel 1x1 | Standards de visibilité (MRC) |
+| Injection de clic | Apps mobiles générant de faux clics | App-ads.txt, validation au niveau du SDK |
 
-### Fraud Prevention Checklist
-- [ ] Enable pre-bid fraud filtering on all campaigns
-- [ ] Verify ads.txt / app-ads.txt for all publishers
-- [ ] Set viewability targets: 70%+ (display), 70%+ VCR (video)
-- [ ] Monitor invalid traffic (IVT) rates — flag if > 5%
-- [ ] Review placement reports weekly for suspicious domains/apps
-- [ ] Use PMPs or PG deals for highest-value campaigns
+### Checklist de prévention de la fraude
+- [ ] Activer le filtrage de fraude avant enchère sur toutes les campagnes
+- [ ] Vérifier ads.txt / app-ads.txt pour tous les éditeurs
+- [ ] Fixer des cibles de visibilité : 70 %+ (display), 70 %+ VCR (vidéo)
+- [ ] Surveiller les taux de trafic invalide (IVT) — signaler si > 5 %
+- [ ] Revoir les rapports d'emplacement chaque semaine pour les domaines/apps suspects
+- [ ] Utiliser des deals PMP ou PG pour les campagnes à plus haute valeur
 
-## Viewability Standards
+## Standards de visibilité
 
-| Standard | Display | Video |
+| Standard | Display | Vidéo |
 |---|---|---|
-| **MRC Standard** | 50% of pixels in view for 1 continuous second | 50% of pixels in view for 2 continuous seconds |
-| **GroupM Standard** | 100% of pixels in view for 1 second | 100% of pixels in view, 50% duration |
-| **Industry Target** | 70%+ viewability | 70%+ VCR |
+| **Standard MRC** | 50 % des pixels visibles pendant 1 seconde continue | 50 % des pixels visibles pendant 2 secondes continues |
+| **Standard GroupM** | 100 % des pixels visibles pendant 1 seconde | 100 % des pixels visibles, 50 % de la durée |
+| **Cible sectorielle** | 70 %+ de visibilité | 70 %+ VCR |
 
-### Viewability Optimization Tips
-- [ ] Prioritize above-the-fold placements
-- [ ] Use high-impact formats (interstitial, adhesion, in-read video)
-- [ ] Avoid infinite scroll pages and below-fold standard display
-- [ ] Set viewability targets in DSP (minimum 60%, target 70%+)
-- [ ] Use verified viewability vendors for third-party measurement
-- [ ] Consider attention metrics beyond viewability (eye-tracking, dwell time)
+### Conseils d'optimisation de la visibilité
+- [ ] Prioriser les emplacements au-dessus de la ligne de flottaison
+- [ ] Utiliser des formats à fort impact (interstitiel, adhésion, vidéo in-read)
+- [ ] Éviter les pages à défilement infini et le display standard sous la ligne de flottaison
+- [ ] Fixer des cibles de visibilité dans le DSP (minimum 60 %, cible 70 %+)
+- [ ] Utiliser des fournisseurs de visibilité vérifiée pour la mesure tierce
+- [ ] Envisager des métriques d'attention au-delà de la visibilité (eye-tracking, temps de séjour)
 
-## Key Programmatic Benchmarks
+## Benchmarks programmatiques clés
 
-| Metric | Display (Open Exchange) | Display (PMP) | Video (Pre-roll) | CTV | DOOH |
+| Métrique | Display (échange ouvert) | Display (PMP) | Vidéo (pre-roll) | CTV | DOOH |
 |---|---|---|---|---|---|
-| CPM | $1–$5 | $5–$15 | $10–$25 | $25–$45 | $5–$15 |
-| CTR | 0.05–0.15% | 0.10–0.30% | 0.3–0.8% | N/A | N/A |
-| Viewability | 50–65% | 65–80% | 70–85% | 95%+ | 90%+ (by design) |
-| VCR | N/A | N/A | 65–80% | 90–97% | N/A |
-| Fraud Rate | 5–15% | 2–5% | 3–8% | 1–3% | < 1% |
+| CPM | 1–5 $ | 5–15 $ | 10–25 $ | 25–45 $ | 5–15 $ |
+| CTR | 0,05–0,15 % | 0,10–0,30 % | 0,3–0,8 % | N/A | N/A |
+| Visibilité | 50–65 % | 65–80 % | 70–85 % | 95 %+ | 90 %+ (par conception) |
+| VCR | N/A | N/A | 65–80 % | 90–97 % | N/A |
+| Taux de fraude | 5–15 % | 2–5 % | 3–8 % | 1–3 % | < 1 % |
 
-> **Note:** Programmatic benchmarks vary enormously by inventory source, deal type, targeting precision, and vertical. Open exchange carries the most variability. PMP and PG deals provide more predictable performance. Always layer verification vendors to ensure accuracy.
+> **Remarque :** Les benchmarks programmatiques varient énormément selon la source d'inventaire, le type de deal, la précision du ciblage, et la verticale. L'échange ouvert présente la plus grande variabilité. Les deals PMP et PG offrent une performance plus prévisible. Toujours superposer des fournisseurs de vérification pour garantir la précision.

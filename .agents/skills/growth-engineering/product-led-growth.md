@@ -1,12 +1,14 @@
-# Product-Led Growth — Strategy & Frameworks
+# Product-Led Growth — Stratégie & cadres
 
-> PLG is a go-to-market strategy where the product itself drives acquisition, expansion, and retention. Users experience value before committing budget.
+> Le PLG est une stratégie de mise sur le marché où le produit lui-même pilote
+> l'acquisition, l'expansion, et la rétention. Les utilisateurs expérimentent la
+> valeur avant d'engager un budget.
 
 ---
 
-## PLG Flywheel
+## Le flywheel PLG
 
-The PLG engine follows a four-stage flywheel. Each stage feeds the next.
+Le moteur PLG suit un flywheel en quatre étapes. Chaque étape alimente la suivante.
 
 ```
 Value Delivery → Habit Formation → Expansion → Advocacy
@@ -14,152 +16,157 @@ Value Delivery → Habit Formation → Expansion → Advocacy
       └──────────────────────────────────────────┘
 ```
 
-| Stage | Objective | Key Lever | Example |
+| Étape | Objectif | Levier clé | Exemple |
 |---|---|---|---|
-| Value Delivery | Get user to "aha moment" fast | Frictionless onboarding | Slack — send first message in <2 min |
-| Habit Formation | Embed product into daily workflow | Triggers + variable rewards | Notion — daily workspace opens |
-| Expansion | Grow revenue within accounts | Usage-based pricing, seat expansion | Figma — designer invites developer |
-| Advocacy | Turn users into acquisition channels | Referral loops, social proof | Calendly — every invite link = marketing |
+| Livraison de valeur | Amener l'utilisateur au « moment aha » rapidement | Onboarding sans friction | Slack — envoyer le premier message en <2 min |
+| Formation d'habitude | Intégrer le produit dans le workflow quotidien | Déclencheurs + récompenses variables | Notion — ouvertures quotidiennes de l'espace de travail |
+| Expansion | Faire croître le revenu au sein des comptes | Tarification à l'usage, expansion de sièges | Figma — un designer invite un développeur |
+| Advocacy (recommandation) | Transformer les utilisateurs en canaux d'acquisition | Boucles de parrainage, preuve sociale | Calendly — chaque lien d'invitation = marketing |
 
 ---
 
-## Freemium vs Free Trial Decision Tree
+## Arbre de décision Freemium vs Essai gratuit
 
-Use this framework to select the right model for your product.
+Utiliser ce cadre pour sélectionner le bon modèle pour votre produit.
 
-| Factor | Favors Freemium | Favors Free Trial |
+| Facteur | Favorise Freemium | Favorise l'essai gratuit |
 |---|---|---|
-| Time-to-value | Long (user needs weeks to see ROI) | Short (value apparent within days) |
-| Marginal cost per user | Near zero | Meaningful infrastructure cost |
-| Network effects | Strong (more users = more value) | Weak or absent |
-| Product complexity | Low — self-explanatory UI | High — requires setup, training |
-| Competitive landscape | Crowded — need to remove risk | Differentiated — value is clear |
-| Virality potential | High (free users spread product) | Low (usage is private/internal) |
-| Average deal size | Low ACV (<$5K/yr) | High ACV (>$15K/yr) |
-| Sales involvement | Minimal — self-serve dominant | Required — consultative sale |
+| Temps de mise en valeur | Long (l'utilisateur a besoin de semaines pour voir le ROI) | Court (la valeur est apparente en quelques jours) |
+| Coût marginal par utilisateur | Proche de zéro | Coût d'infrastructure significatif |
+| Effets de réseau | Forts (plus d'utilisateurs = plus de valeur) | Faibles ou absents |
+| Complexité du produit | Faible — UI auto-explicative | Élevée — nécessite mise en place, formation |
+| Paysage concurrentiel | Encombré — besoin de retirer le risque | Différencié — la valeur est claire |
+| Potentiel viral | Élevé (les utilisateurs gratuits diffusent le produit) | Faible (l'usage est privé/interne) |
+| Taille de deal moyenne | ACV faible (<5 000 $/an) | ACV élevée (>15 000 $/an) |
+| Implication commerciale | Minimale — le libre-service domine | Requise — vente consultative |
 
-**Hybrid approach:** Offer freemium for individuals and free trials for team/enterprise tiers. This captures both bottoms-up adoption and top-down evaluation.
+**Approche hybride :** Offrir le freemium pour les individus et des essais gratuits
+pour les paliers équipe/entreprise. Cela capture à la fois l'adoption ascendante et
+l'évaluation descendante.
 
 ---
 
-## Activation Metric Identification
+## Identification de la métrique d'activation
 
-Activation is the single most important PLG metric. It defines the moment a user first experiences meaningful value.
+L'activation est la métrique PLG la plus importante. Elle définit le moment où un
+utilisateur expérimente pour la première fois une valeur significative.
 
-### How to Find Your Activation Metric
+### Comment trouver votre métrique d'activation
 
-1. **Pull behavioral data** — Export event logs for the first 7-14 days of all users
-2. **Segment by outcome** — Split users into retained (active at Day 30+) vs churned
-3. **Compare behaviors** — Identify actions that retained users performed at significantly higher rates
-4. **Rank by correlation** — Find the action with the strongest correlation to retention
-5. **Validate causation** — Run an experiment: guide new users toward that action and measure retention lift
-6. **Set the threshold** — Define the minimum frequency or depth (e.g., "created 3 projects in first 7 days")
+1. **Extraire les données comportementales** — Exporter les journaux d'événements des 7-14 premiers jours de tous les utilisateurs
+2. **Segmenter par résultat** — Diviser les utilisateurs entre retenus (actifs au Jour 30+) vs churnés
+3. **Comparer les comportements** — Identifier les actions que les utilisateurs retenus ont réalisées à des taux significativement plus élevés
+4. **Classer par corrélation** — Trouver l'action avec la corrélation la plus forte avec la rétention
+5. **Valider la causalité** — Exécuter une expérience : guider les nouveaux utilisateurs vers cette action et mesurer le gain de rétention
+6. **Fixer le seuil** — Définir la fréquence ou profondeur minimale (par exemple, « a créé 3 projets dans les 7 premiers jours »)
 
-### Activation Metric Examples
+### Exemples de métrique d'activation
 
-| Product | Activation Metric | Threshold |
+| Produit | Métrique d'activation | Seuil |
 |---|---|---|
-| Slack | Messages sent in a channel | 2,000 team messages |
-| Dropbox | File saved in Dropbox folder | 1 file in first session |
-| HubSpot | Contacts imported + email sent | Within first 7 days |
-| Zoom | Hosted a meeting with 2+ participants | First 48 hours |
-| Figma | Created and shared a design file | First 7 days |
+| Slack | Messages envoyés dans un canal | 2 000 messages d'équipe |
+| Dropbox | Fichier sauvegardé dans le dossier Dropbox | 1 fichier lors de la première session |
+| HubSpot | Contacts importés + e-mail envoyé | Dans les 7 premiers jours |
+| Zoom | A organisé une réunion avec 2+ participants | Dans les 48 premières heures |
+| Figma | A créé et partagé un fichier de design | Dans les 7 premiers jours |
 
 ---
 
-## PQL (Product-Qualified Lead) Scoring Model
+## Modèle de notation PQL (Product-Qualified Lead)
 
-PQLs replace MQLs in PLG. A PQL is a user whose product behavior signals buying intent.
+Les PQL remplacent les MQL dans le PLG. Un PQL est un utilisateur dont le
+comportement produit signale une intention d'achat.
 
-### PQL Scoring Components
+### Composantes de la notation PQL
 
-| Signal Category | Weight | Examples |
+| Catégorie de signal | Poids | Exemples |
 |---|---|---|
-| Activation completion | 25% | Completed onboarding, hit aha moment |
-| Usage depth | 25% | Features used, frequency, session duration |
-| Usage breadth | 15% | Number of team members active, departments involved |
-| Growth signals | 20% | Seat additions, hitting plan limits, API usage |
-| Firmographic fit | 15% | Company size, industry, tech stack match |
+| Complétion de l'activation | 25% | Onboarding complété, moment aha atteint |
+| Profondeur d'usage | 25% | Fonctionnalités utilisées, fréquence, durée de session |
+| Étendue d'usage | 15% | Nombre de membres d'équipe actifs, départements impliqués |
+| Signaux de croissance | 20% | Ajouts de sièges, atteinte des limites de plan, usage d'API |
+| Adéquation firmographique | 15% | Taille d'entreprise, secteur, correspondance de stack technique |
 
-### Scoring Tiers
+### Paliers de notation
 
-| Tier | Score Range | Action |
+| Palier | Fourchette de score | Action |
 |---|---|---|
-| Hot PQL | 80-100 | Sales outreach within 24 hours |
-| Warm PQL | 60-79 | Automated nurture + contextual in-app upgrade prompts |
-| Developing PQL | 40-59 | Product-led nurture sequences, feature discovery nudges |
-| Early PQL | 0-39 | Onboarding optimization, activation campaigns |
+| PQL chaud | 80-100 | Contact commercial sous 24 heures |
+| PQL tiède | 60-79 | Nurturing automatisé + invites de mise à niveau contextuelles dans l'app |
+| PQL en développement | 40-59 | Séquences de nurturing pilotées par le produit, incitations de découverte de fonctionnalité |
+| PQL précoce | 0-39 | Optimisation d'onboarding, campagnes d'activation |
 
 ---
 
-## Self-Serve Onboarding Optimization
+## Optimisation de l'onboarding en libre-service
 
-### Onboarding Checklist
+### Checklist d'onboarding
 
-- [ ] Time-to-first-value is under 5 minutes
-- [ ] Sign-up requires no more than 3 fields (email, name, password — or SSO)
-- [ ] Welcome flow asks 1-2 segmentation questions to personalize experience
-- [ ] Empty states include templates, sample data, or guided actions
-- [ ] Progress indicators show completion status
-- [ ] Tooltips and contextual help are triggered by user behavior, not timers
-- [ ] Email sequence supplements in-app guidance (Day 0, 1, 3, 7)
-- [ ] Users can invite teammates before completing onboarding
-- [ ] Mobile experience is functional even if desktop is primary
-- [ ] Exit points offer help (chat, docs, video) before abandonment
+- [ ] Le temps de première valeur est inférieur à 5 minutes
+- [ ] L'inscription ne nécessite pas plus de 3 champs (e-mail, nom, mot de passe — ou SSO)
+- [ ] Le flux de bienvenue pose 1-2 questions de segmentation pour personnaliser l'expérience
+- [ ] Les états vides incluent des modèles, données d'exemple, ou actions guidées
+- [ ] Les indicateurs de progression montrent le statut de complétion
+- [ ] Les info-bulles et l'aide contextuelle sont déclenchées par le comportement utilisateur, pas par des minuteurs
+- [ ] La séquence e-mail complète la guidance dans l'app (Jour 0, 1, 3, 7)
+- [ ] Les utilisateurs peuvent inviter des coéquipiers avant de terminer l'onboarding
+- [ ] L'expérience mobile est fonctionnelle même si le desktop est prioritaire
+- [ ] Les points de sortie offrent de l'aide (chat, docs, vidéo) avant l'abandon
 
-### Onboarding Anti-Patterns
+### Anti-motifs d'onboarding
 
-| Anti-Pattern | Why It Hurts | Fix |
+| Anti-motif | Pourquoi c'est nuisible | Correction |
 |---|---|---|
-| Feature tour on first login | Overwhelms user before they have context | Defer tours until relevant feature is needed |
-| Mandatory profile completion | Adds friction before value delivery | Make optional, ask progressively |
-| No segmentation | Generic experience misses user needs | Ask role/goal upfront, customize flow |
-| Long email verification loop | Delays activation by hours or days | Allow limited access immediately, verify later |
-| Hiding the upgrade path | Users can't self-serve to paid | Show pricing contextually at limit moments |
+| Visite guidée des fonctionnalités à la première connexion | Submerge l'utilisateur avant qu'il ait du contexte | Différer les visites guidées jusqu'à ce que la fonctionnalité pertinente soit nécessaire |
+| Complétion de profil obligatoire | Ajoute de la friction avant la livraison de valeur | Rendre optionnel, demander progressivement |
+| Pas de segmentation | Une expérience générique manque les besoins de l'utilisateur | Demander le rôle/objectif dès le départ, personnaliser le flux |
+| Boucle de vérification e-mail longue | Retarde l'activation de plusieurs heures ou jours | Autoriser un accès limité immédiatement, vérifier plus tard |
+| Cacher le chemin de mise à niveau | Les utilisateurs ne peuvent pas passer au payant en libre-service | Montrer la tarification de façon contextuelle aux moments de limite |
 
 ---
 
-## PLG Metrics Dashboard
+## Tableau de bord des métriques PLG
 
-### Primary Metrics
+### Métriques principales
 
-| Metric | Formula | Benchmark (B2B SaaS) |
+| Métrique | Formule | Benchmark (SaaS B2B) |
 |---|---|---|
-| Activation Rate | Activated users / Sign-ups | 20-40% |
-| Time-to-Value (TTV) | Median time from sign-up to activation | <5 minutes (ideal), <24 hours (acceptable) |
-| Free-to-Paid Conversion | Paid users / Free users | 2-5% (freemium), 10-25% (free trial) |
-| Expansion Revenue (% of ARR) | Expansion MRR / Starting MRR | >30% Net Revenue Retention |
-| Viral Coefficient (K-factor) | Avg invites per user x invite conversion rate | >0.5 (good), >1.0 (viral) |
-| Revenue Per User (RPU) | Total revenue / Active users | Varies — track trend over time |
-| Natural Rate of Growth (NRG) | Annual growth rate from organic + PLG channels | >50% = strong PLG motion |
+| Taux d'activation | Utilisateurs activés / Inscriptions | 20-40% |
+| Temps de mise en valeur (TTV) | Temps médian de l'inscription à l'activation | <5 minutes (idéal), <24 heures (acceptable) |
+| Conversion gratuit-vers-payant | Utilisateurs payants / Utilisateurs gratuits | 2-5% (freemium), 10-25% (essai gratuit) |
+| Revenu d'expansion (% de l'ARR) | MRR d'expansion / MRR de départ | >30% de Net Revenue Retention |
+| Coefficient viral (K-factor) | Invitations moyennes par utilisateur x taux de conversion des invitations | >0,5 (bon), >1,0 (viral) |
+| Revenu par utilisateur (RPU) | Revenu total / Utilisateurs actifs | Variable — suivre la tendance dans le temps |
+| Taux de croissance naturelle (NRG) | Taux de croissance annuel issu des canaux organiques + PLG | >50% = mécanique PLG solide |
 
-### Cohort Tracking
+### Suivi de cohorte
 
-Track these for each weekly or monthly sign-up cohort:
+Suivre ces éléments pour chaque cohorte d'inscription hebdomadaire ou mensuelle :
 
-- [ ] Day 1, Day 7, Day 30, Day 90 retention
-- [ ] Activation rate within first 7 days
-- [ ] Median time-to-activation
-- [ ] Free-to-paid conversion by Day 30, 60, 90
-- [ ] Expansion revenue generated by Day 180
-- [ ] Referrals generated per cohort
+- [ ] Rétention Jour 1, Jour 7, Jour 30, Jour 90
+- [ ] Taux d'activation dans les 7 premiers jours
+- [ ] Temps médian jusqu'à l'activation
+- [ ] Conversion gratuit-vers-payant au Jour 30, 60, 90
+- [ ] Revenu d'expansion généré au Jour 180
+- [ ] Parrainages générés par cohorte
 
 ---
 
-## PLG for Different Business Models
+## PLG pour différents modèles économiques
 
-| Business Model | PLG Approach | Key Challenge | Example |
+| Modèle économique | Approche PLG | Défi clé | Exemple |
 |---|---|---|---|
-| Horizontal SaaS | Freemium + viral sharing | Activation across many use cases | Notion, Airtable |
-| Vertical SaaS | Free trial + guided setup | Domain-specific onboarding required | Gusto, Procore |
-| API / Developer Tools | Free tier + usage-based pricing | Docs and DX are the product | Stripe, Twilio |
-| Marketplace / Platform | Free buyer side, monetize supply | Cold start problem | Airbnb, Upwork |
-| Infrastructure | Free tier with generous limits | Expansion triggers at scale | AWS, Vercel |
-| Collaboration Tools | Free for small teams, paid at scale | Must reach team-level adoption | Slack, Figma |
+| SaaS horizontal | Freemium + partage viral | Activation à travers de nombreux cas d'usage | Notion, Airtable |
+| SaaS vertical | Essai gratuit + mise en place guidée | Onboarding spécifique au domaine requis | Gusto, Procore |
+| API / Outils développeur | Palier gratuit + tarification à l'usage | La doc et le DX sont le produit | Stripe, Twilio |
+| Marketplace / Plateforme | Côté acheteur gratuit, monétiser l'offre | Problème de démarrage à froid | Airbnb, Upwork |
+| Infrastructure | Palier gratuit avec des limites généreuses | Déclencheurs d'expansion à l'échelle | AWS, Vercel |
+| Outils de collaboration | Gratuit pour petites équipes, payant à l'échelle | Doit atteindre l'adoption au niveau de l'équipe | Slack, Figma |
 
-### PLG + Sales-Assist Hybrid
+### Hybride PLG + Sales-Assist
 
-Most successful PLG companies add sales as they scale. The model evolves:
+La plupart des entreprises PLG réussies ajoutent des ventes à mesure qu'elles se
+développent. Le modèle évolue :
 
 ```
 Stage 1: Pure self-serve (0 → $1M ARR)
@@ -168,17 +175,19 @@ Stage 3: PLG-qualified pipeline feeds AE team ($10M → $50M ARR)
 Stage 4: Full hybrid — PLG for SMB, sales-led for enterprise ($50M+ ARR)
 ```
 
-### Implementation Priority
+### Priorité de mise en œuvre
 
-| Priority | Action | Impact |
+| Priorité | Action | Impact |
 |---|---|---|
-| 1 | Define and instrument activation metric | Foundation for all PLG |
-| 2 | Reduce time-to-value to under 5 minutes | Directly lifts conversion |
-| 3 | Build PQL scoring and alerting | Connects product usage to revenue |
-| 4 | Implement in-app upgrade prompts at limit moments | Captures expansion intent |
-| 5 | Add viral loops (invites, sharing, embedding) | Compounds growth over time |
-| 6 | Launch referral program for activated users | Reduces CAC systematically |
+| 1 | Définir et instrumenter la métrique d'activation | Fondation pour tout le PLG |
+| 2 | Réduire le temps de mise en valeur à moins de 5 minutes | Améliore directement la conversion |
+| 3 | Construire la notation et l'alerte PQL | Relie l'usage produit au revenu |
+| 4 | Mettre en œuvre des invites de mise à niveau dans l'app aux moments de limite | Capture l'intention d'expansion |
+| 5 | Ajouter des boucles virales (invitations, partage, intégration) | Compose la croissance dans le temps |
+| 6 | Lancer un programme de parrainage pour les utilisateurs activés | Réduit systématiquement le CAC |
 
 ---
 
-*PLG compounds because every user is a potential acquisition channel, every team is an expansion opportunity, and every integration deepens retention. The product is the growth engine.*
+*Le PLG compose parce que chaque utilisateur est un canal d'acquisition potentiel,
+chaque équipe est une opportunité d'expansion, et chaque intégration approfondit la
+rétention. Le produit est le moteur de croissance.*

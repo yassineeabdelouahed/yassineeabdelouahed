@@ -1,82 +1,82 @@
-# UTM Tracking — Naming Conventions & Governance
+# UTM Tracking — Conventions de nommage et gouvernance
 
-## UTM Parameter Definitions
+## Définitions des paramètres UTM
 
-| Parameter | Required | Purpose | Example |
+| Paramètre | Requis | Objectif | Exemple |
 |-----------|----------|---------|---------|
-| `utm_source` | Yes | Where the traffic comes from | google, facebook, linkedin, newsletter |
-| `utm_medium` | Yes | How the traffic arrives | cpc, social, email, referral, organic |
-| `utm_campaign` | Yes | Which campaign | 2026-q2-product-launch |
-| `utm_term` | Optional | Paid keyword (search ads) | project-management-software |
-| `utm_content` | Optional | Which creative/variation | hero-image-v2, cta-blue |
+| `utm_source` | Oui | D'où vient le trafic | google, facebook, linkedin, newsletter |
+| `utm_medium` | Oui | Comment le trafic arrive | cpc, social, email, referral, organic |
+| `utm_campaign` | Oui | Quelle campagne | 2026-q2-product-launch |
+| `utm_term` | Facultatif | Mot-clé payant (annonces de recherche) | project-management-software |
+| `utm_content` | Facultatif | Quelle création/variation | hero-image-v2, cta-blue |
 
 ---
 
-## Naming Convention Rules
+## Règles de convention de nommage
 
-1. **Always lowercase**: `facebook` not `Facebook`
-2. **Hyphens for spaces**: `product-launch` not `product_launch` or `product launch`
-3. **No special characters**: Only a-z, 0-9, and hyphens
-4. **Consistent terminology**: Use the standardized source/medium values below
-5. **Date format**: YYYY-QN or YYYY-MM (e.g., `2026-q2` or `2026-06`)
-6. **Descriptive but concise**: Enough to identify, not a full sentence
+1. **Toujours en minuscules** : `facebook` et non `Facebook`
+2. **Tirets pour les espaces** : `product-launch` et non `product_launch` ou `product launch`
+3. **Aucun caractère spécial** : uniquement a-z, 0-9, et des tirets
+4. **Terminologie cohérente** : utilisez les valeurs source/medium standardisées ci-dessous
+5. **Format de date** : YYYY-QN ou YYYY-MM (ex. : `2026-q2` ou `2026-06`)
+6. **Descriptif mais concis** : suffisant pour identifier, pas une phrase complète
 
 ---
 
-## Standardized Source/Medium Values
+## Valeurs standardisées de source/medium
 
 ### Sources (utm_source)
 
-| Value | Use For |
+| Valeur | À utiliser pour |
 |-------|---------|
-| `google` | Google Ads, organic |
-| `facebook` | Facebook/Meta organic and paid |
-| `instagram` | Instagram organic and paid |
-| `linkedin` | LinkedIn organic and paid |
+| `google` | Google Ads, organique |
+| `facebook` | Facebook/Meta organique et payant |
+| `instagram` | Instagram organique et payant |
+| `linkedin` | LinkedIn organique et payant |
 | `twitter` | Twitter/X |
-| `tiktok` | TikTok organic and paid |
+| `tiktok` | TikTok organique et payant |
 | `youtube` | YouTube |
 | `pinterest` | Pinterest |
 | `bing` | Microsoft/Bing Ads |
-| `email` | Email campaigns (your ESP) |
-| `newsletter` | Newsletter specifically |
-| `partner-[name]` | Co-marketing partner |
-| `influencer-[name]` | Influencer campaigns |
-| `podcast-[name]` | Podcast sponsorship |
-| `qr` | QR code scans |
-| `direct-mail` | Physical direct mail |
-| `event-[name]` | In-person events |
+| `email` | Campagnes e-mail (votre ESP) |
+| `newsletter` | Newsletter spécifiquement |
+| `partner-[name]` | Partenaire de co-marketing |
+| `influencer-[name]` | Campagnes d'influence |
+| `podcast-[name]` | Sponsoring de podcast |
+| `qr` | Scans de code QR |
+| `direct-mail` | Courrier direct physique |
+| `event-[name]` | Événements en présentiel |
 
 ### Mediums (utm_medium)
 
-| Value | Use For |
+| Valeur | À utiliser pour |
 |-------|---------|
-| `cpc` | Paid search (cost per click) |
-| `paid-social` | Paid social media ads |
-| `social` | Organic social media |
-| `email` | Email marketing |
-| `referral` | Partner/affiliate referral |
-| `display` | Display/banner advertising |
-| `video` | Video advertising (YouTube, CTV) |
-| `affiliate` | Affiliate marketing |
-| `influencer` | Influencer partnerships |
-| `organic` | Organic search (not typically tagged) |
-| `pr` | Press/media coverage |
-| `podcast` | Podcast advertising |
-| `sms` | SMS/text message marketing |
-| `push` | Push notification |
-| `direct-mail` | Physical mail |
-| `qr` | QR code |
+| `cpc` | Recherche payante (coût par clic) |
+| `paid-social` | Publicités sur réseaux sociaux payantes |
+| `social` | Réseaux sociaux organiques |
+| `email` | Marketing par e-mail |
+| `referral` | Recommandation partenaire/affiliation |
+| `display` | Publicité display/bannière |
+| `video` | Publicité vidéo (YouTube, CTV) |
+| `affiliate` | Marketing d'affiliation |
+| `influencer` | Partenariats d'influence |
+| `organic` | Recherche organique (généralement non taguée) |
+| `pr` | Couverture presse/médias |
+| `podcast` | Publicité podcast |
+| `sms` | Marketing SMS/texte |
+| `push` | Notification push |
+| `direct-mail` | Courrier physique |
+| `qr` | Code QR |
 
 ---
 
-## Campaign Naming Format
+## Format de nommage des campagnes
 
 ```
 utm_campaign = [year]-[quarter]-[type]-[audience]-[description]
 ```
 
-**Examples**:
+**Exemples** :
 - `2026-q2-launch-enterprise-ai-features`
 - `2026-q3-promo-all-summer-sale`
 - `2026-q1-abm-target-accounts-nurture`
@@ -84,51 +84,51 @@ utm_campaign = [year]-[quarter]-[type]-[audience]-[description]
 
 ---
 
-## UTM Content Tag Patterns
+## Schémas de tag utm_content
 
-Use `utm_content` to differentiate:
+Utilisez `utm_content` pour différencier :
 
-| Pattern | Example | Use Case |
+| Schéma | Exemple | Cas d'usage |
 |---------|---------|----------|
-| `[format]-[variant]` | `carousel-v2` | Ad format testing |
-| `[position]-[cta]` | `hero-signup` | Email link position |
-| `[audience]-[message]` | `cfo-roi-focus` | Audience-message testing |
-| `[creative-id]` | `creative-2026-0142` | Linking to creative asset tracking |
+| `[format]-[variant]` | `carousel-v2` | Test de format d'annonce |
+| `[position]-[cta]` | `hero-signup` | Position du lien dans l'e-mail |
+| `[audience]-[message]` | `cfo-roi-focus` | Test audience-message |
+| `[creative-id]` | `creative-2026-0142` | Lien vers le suivi de l'actif créatif |
 
 ---
 
-## Common UTM Mistakes
+## Erreurs UTM courantes
 
-| Mistake | Problem | Fix |
+| Erreur | Problème | Correction |
 |---------|---------|-----|
-| Inconsistent capitalization | `Facebook` and `facebook` appear as separate sources | Always use lowercase |
-| Spaces in parameters | Breaks URL encoding | Use hyphens |
-| No UTM on email links | Cannot track email-driven traffic | Tag every email link |
-| UTM on internal links | Overwrites the original source attribution | NEVER use UTMs on internal site links |
-| Different mediums for same channel | `social`, `social-media`, `organic-social` all different | Standardize to the list above |
-| No campaign naming convention | Impossible to aggregate campaigns | Follow naming format |
-| Not shortening URLs | Ugly, untrustworthy links in visible placements | Use URL shortener for visible links |
+| Capitalisation incohérente | `Facebook` et `facebook` apparaissent comme des sources séparées | Toujours utiliser des minuscules |
+| Espaces dans les paramètres | Casse l'encodage de l'URL | Utiliser des tirets |
+| Pas d'UTM sur les liens e-mail | Impossible de suivre le trafic généré par e-mail | Taguer chaque lien e-mail |
+| UTM sur des liens internes | Écrase l'attribution de source d'origine | Ne JAMAIS utiliser d'UTM sur les liens internes du site |
+| Mediums différents pour le même canal | `social`, `social-media`, `organic-social` tous différents | Standardiser sur la liste ci-dessus |
+| Pas de convention de nommage de campagne | Impossible d'agréger les campagnes | Suivre le format de nommage |
+| URL non raccourcies | Liens laids, peu fiables dans les emplacements visibles | Utiliser un raccourcisseur d'URL pour les liens visibles |
 
 ---
 
-## UTM for Offline-to-Online
+## UTM pour l'offline-vers-online
 
-| Offline Channel | UTM Implementation |
+| Canal offline | Implémentation UTM |
 |----------------|-------------------|
-| Direct mail | Short URL or QR code with UTMs baked in |
-| Print ad | Vanity URL redirecting to UTM-tagged page |
-| Event booth | QR code on signage → UTM-tagged landing page |
-| Business card | QR code → UTM-tagged URL |
-| TV/Radio | Vanity URL (`brand.com/tv`) redirecting with UTMs |
-| Billboard | Short URL or QR → UTM-tagged page |
+| Courrier direct | URL courte ou code QR avec UTM intégrés |
+| Publicité imprimée | URL vanity redirigeant vers une page taguée UTM |
+| Stand d'événement | Code QR sur la signalétique → landing page taguée UTM |
+| Carte de visite | Code QR → URL taguée UTM |
+| TV/Radio | URL vanity (`brand.com/tv`) redirigeant avec des UTM |
+| Panneau publicitaire | URL courte ou QR → page taguée UTM |
 
 ---
 
-## Governance Rules
+## Règles de gouvernance
 
-1. **Single owner**: One person/team owns the UTM taxonomy document
-2. **Centralized tracker**: Maintain a spreadsheet of all active UTM parameters
-3. **No freelancing**: All team members use standardized values from this document
-4. **URL builder tool**: Use a shared UTM builder that enforces naming rules
-5. **Quarterly audit**: Review analytics for non-standard UTM values and clean up
-6. **New value requests**: Adding a new source/medium value requires updating the standard
+1. **Propriétaire unique** : une personne/équipe possède le document de taxonomie UTM
+2. **Suivi centralisé** : maintenir un tableur de tous les paramètres UTM actifs
+3. **Pas d'improvisation** : tous les membres de l'équipe utilisent les valeurs standardisées de ce document
+4. **Outil de générateur d'URL** : utiliser un générateur UTM partagé qui applique les règles de nommage
+5. **Audit trimestriel** : revoir l'analytics pour les valeurs UTM non standard et nettoyer
+6. **Demandes de nouvelles valeurs** : ajouter une nouvelle valeur source/medium nécessite une mise à jour du standard

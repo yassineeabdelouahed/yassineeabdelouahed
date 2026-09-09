@@ -1,239 +1,240 @@
-# Reputation Recovery — 30/60/90 Day Plans
+# Récupération de réputation — Plans 30/60/90 jours
 
-> When brand reputation takes a hit, recovery is not automatic. It requires a structured, phased approach that addresses search results, social sentiment, stakeholder trust, and long-term brand perception. This playbook gives you the plan.
+> Lorsque la réputation d'une marque est touchée, la récupération n'est pas automatique. Elle nécessite une approche structurée et progressive qui traite les résultats de recherche, le sentiment social, la confiance des parties prenantes, et la perception de marque à long terme. Ce playbook vous donne le plan.
 
 ---
 
-## Reputation Audit Framework (Day 0 — Before Recovery Begins)
+## Cadre d'audit de réputation (jour 0 — avant que la récupération ne commence)
 
-Before building a recovery plan, assess the damage.
+Avant de construire un plan de récupération, évaluer les dégâts.
 
-### SERP Audit
+### Audit SERP
 
-| Search Query | Page 1 Results (Top 10) | Sentiment | Owned? | Actionable? |
+| Requête de recherche | Résultats page 1 (top 10) | Sentiment | Détenu ? | Actionnable ? |
 |-------------|------------------------|-----------|--------|-------------|
-| "{{brand name}}" | List each result | Pos/Neu/Neg | Y/N | Y/N |
-| "{{brand name}} reviews" | List each result | Pos/Neu/Neg | Y/N | Y/N |
-| "{{brand name}} scam" | List each result | Pos/Neu/Neg | Y/N | Y/N |
-| "{{brand name}} {{crisis keyword}}" | List each result | Pos/Neu/Neg | Y/N | Y/N |
-| "{{CEO name}}" | List each result | Pos/Neu/Neg | Y/N | Y/N |
+| « {{nom de marque}} » | Lister chaque résultat | Pos/Neu/Nég | O/N | O/N |
+| « {{nom de marque}} avis » | Lister chaque résultat | Pos/Neu/Nég | O/N | O/N |
+| « {{nom de marque}} arnaque » | Lister chaque résultat | Pos/Neu/Nég | O/N | O/N |
+| « {{nom de marque}} {{mot-clé de crise}} » | Lister chaque résultat | Pos/Neu/Nég | O/N | O/N |
+| « {{nom du PDG}} » | Lister chaque résultat | Pos/Neu/Nég | O/N | O/N |
 
-### Sentiment Baseline
+### Référence de sentiment
 
-| Channel | Current Sentiment | Pre-Crisis Sentiment | Gap |
+| Canal | Sentiment actuel | Sentiment avant crise | Écart |
 |---------|------------------|---------------------|-----|
-| Google Reviews | | | |
-| Social Media (aggregate) | | | |
-| News Coverage | | | |
-| Industry Forums | | | |
-| Employee Reviews (Glassdoor) | | | |
-| Overall Weighted Score | | | |
+| Avis Google | | | |
+| Réseaux sociaux (agrégé) | | | |
+| Couverture presse | | | |
+| Forums sectoriels | | | |
+| Avis d'employés (Glassdoor) | | | |
+| Score pondéré global | | | |
 
-### Stakeholder Trust Assessment
+### Évaluation de la confiance des parties prenantes
 
-| Stakeholder Group | Trust Level (1-10) | Key Concerns | Priority |
+| Groupe de parties prenantes | Niveau de confiance (1-10) | Préoccupations clés | Priorité |
 |-------------------|-------------------|--------------|----------|
-| Customers | | | |
-| Employees | | | |
-| Partners / Vendors | | | |
-| Investors | | | |
-| Media | | | |
-| Regulators | | | |
+| Clients | | | |
+| Employés | | | |
+| Partenaires / Fournisseurs | | | |
+| Investisseurs | | | |
+| Médias | | | |
+| Régulateurs | | | |
 
 ---
 
-## 30-Day Plan — Stabilize & Control the Narrative
+## Plan à 30 jours — Stabiliser et maîtriser le narratif
 
-**Objective:** Stop the bleeding. Own the narrative. Establish credibility through action.
+**Objectif :** Arrêter l'hémorragie. Maîtriser le narratif. Établir la crédibilité par l'action.
 
-### Week 1-2: Immediate Actions
+### Semaines 1-2 : Actions immédiates
 
-| Action | Owner | Details |
+| Action | Responsable | Détails |
 |--------|-------|---------|
-| Publish CEO/leadership statement | CEO + PR | Transparent account of what happened, accountability, concrete steps |
-| Create crisis FAQ page on website | Content + Legal | Address every known question, keep updated |
-| Claim and optimize all brand profiles | SEO + Social | Google Business, social profiles, review platforms — ensure consistent messaging |
-| Launch proactive customer outreach | CS + CRM | Personal outreach to top accounts, offer remediation |
-| Begin positive content production | Content Team | Op-eds, thought leadership, customer success stories (pipeline for weeks 3-4) |
-| Activate employee ambassadors | Internal Comms | Brief employees, provide talking points, encourage authentic advocacy |
+| Publier une déclaration du PDG/de la direction | PDG + RP | Compte-rendu transparent de ce qui s'est passé, responsabilisation, mesures concrètes |
+| Créer une page FAQ de crise sur le site web | Contenu + Légal | Traiter chaque question connue, tenir à jour |
+| Revendiquer et optimiser tous les profils de marque | SEO + Social | Google Business, profils sociaux, plateformes d'avis — assurer un message cohérent |
+| Lancer une prise de contact client proactive | Service client + CRM | Prise de contact personnelle avec les grands comptes, offrir une remédiation |
+| Commencer la production de contenu positif | Équipe contenu | Tribunes, leadership éclairé, témoignages clients (pipeline pour les semaines 3-4) |
+| Activer les ambassadeurs employés | Communication interne | Informer les employés, fournir des éléments de langage, encourager une défense authentique |
 
-### Week 3-4: Narrative Building
+### Semaines 3-4 : Construction du narratif
 
-| Action | Owner | Details |
+| Action | Responsable | Détails |
 |--------|-------|---------|
-| Publish 4-6 pieces of positive owned content | Content Team | Blog posts, case studies, behind-the-scenes of improvements |
-| Secure 2-3 earned media placements | PR | Offer exclusive interviews, data, or access to journalists |
-| Launch review generation campaign | Marketing | Target satisfied customers for fresh positive reviews |
-| Begin SEO displacement strategy | SEO Team | Target negative SERP results with optimized positive content |
-| Host stakeholder Q&A or town hall | Leadership | Transparent forum for customers, employees, or partners |
+| Publier 4-6 pièces de contenu détenu positif | Équipe contenu | Articles de blog, études de cas, coulisses des améliorations |
+| Sécuriser 2-3 placements médias gagnés | RP | Offrir des interviews exclusives, des données, ou un accès aux journalistes |
+| Lancer une campagne de génération d'avis | Marketing | Cibler les clients satisfaits pour des avis positifs frais |
+| Commencer une stratégie de déplacement SEO | Équipe SEO | Cibler les résultats SERP négatifs avec du contenu positif optimisé |
+| Organiser une session de questions-réponses ou un town hall des parties prenantes | Direction | Forum transparent pour les clients, employés, ou partenaires |
 
-### 30-Day KPIs
+### KPI à 30 jours
 
-| Metric | Target |
+| Métrique | Cible |
 |--------|--------|
-| Negative SERP results on Page 1 | Reduced by 20-30% |
-| New positive reviews generated | 25-50 (platform-dependent) |
-| Positive media placements | 2-3 |
-| Customer churn rate | Stabilized (no further increase) |
-| Social sentiment (negative %) | Declining week over week |
+| Résultats SERP négatifs en page 1 | Réduits de 20-30 % |
+| Nouveaux avis positifs générés | 25-50 (selon la plateforme) |
+| Placements médias positifs | 2-3 |
+| Taux de churn client | Stabilisé (pas d'augmentation supplémentaire) |
+| Sentiment social (% négatif) | En baisse semaine après semaine |
 
 ---
 
-## 60-Day Plan — Rebuild & Demonstrate Change
+## Plan à 60 jours — Reconstruire et démontrer le changement
 
-**Objective:** Show — do not just tell — that meaningful change has occurred.
+**Objectif :** Montrer — pas seulement dire — qu'un changement significatif a eu lieu.
 
-### Week 5-6: Proof Points
+### Semaines 5-6 : Preuves concrètes
 
-| Action | Owner | Details |
+| Action | Responsable | Détails |
 |--------|-------|---------|
-| Announce and implement structural changes | Operations + Exec | New policies, hires, processes that address root cause |
-| Publish transparency report | Content + Legal | Data on what changed, progress metrics, what's next |
-| Launch customer advocacy program | Marketing | Identify and empower loyal customers to share stories |
-| Expand positive content pipeline | Content Team | 8-12 pieces targeting recovery keywords |
-| Pitch bylines and op-eds to industry publications | PR | Position leaders as thoughtful, accountable |
+| Annoncer et mettre en œuvre des changements structurels | Opérations + Direction | Nouvelles politiques, embauches, processus traitant la cause profonde |
+| Publier un rapport de transparence | Contenu + Légal | Données sur ce qui a changé, métriques de progrès, prochaines étapes |
+| Lancer un programme de défense client | Marketing | Identifier et responsabiliser les clients fidèles pour partager leurs histoires |
+| Étendre le pipeline de contenu positif | Équipe contenu | 8-12 pièces ciblant les mots-clés de récupération |
+| Proposer des tribunes et articles d'opinion aux publications sectorielles | RP | Positionner les dirigeants comme réfléchis et responsables |
 
-### Week 7-8: Amplification
+### Semaines 7-8 : Amplification
 
-| Action | Owner | Details |
+| Action | Responsable | Détails |
 |--------|-------|---------|
-| Activate influencer partnerships | Influencer Team | Partner with credible voices for authentic endorsement |
-| Launch community initiative or CSR program | Marketing + Exec | Demonstrate values through action (charity, initiative, policy) |
-| Begin paid media support for positive content | Media Team | Amplify best-performing positive stories |
-| Conduct mid-recovery stakeholder survey | Research | Measure trust recovery progress |
-| Update FAQ/crisis page with progress | Content | Show accountability and follow-through |
+| Activer les partenariats d'influenceurs | Équipe influenceurs | S'associer à des voix crédibles pour un endossement authentique |
+| Lancer une initiative communautaire ou un programme RSE | Marketing + Direction | Démontrer les valeurs par l'action (charité, initiative, politique) |
+| Commencer un soutien média payant pour le contenu positif | Équipe média | Amplifier les histoires positives les plus performantes |
+| Réaliser un sondage de mi-récupération des parties prenantes | Recherche | Mesurer la progression de la récupération de la confiance |
+| Mettre à jour la FAQ/page de crise avec les progrès | Contenu | Montrer la responsabilisation et le suivi |
 
-### 60-Day KPIs
+### KPI à 60 jours
 
-| Metric | Target |
+| Métrique | Cible |
 |--------|--------|
-| Negative SERP results on Page 1 | Reduced by 50-60% |
-| Overall sentiment score | Approaching pre-crisis baseline |
-| Customer NPS | Trending upward |
-| Employee sentiment (eNPS) | Stabilized or improving |
-| Positive media placements (cumulative) | 6-10 |
-| Advocacy program members | 20-50 active advocates |
+| Résultats SERP négatifs en page 1 | Réduits de 50-60 % |
+| Score de sentiment global | S'approchant de la référence avant crise |
+| NPS client | En tendance à la hausse |
+| Sentiment employé (eNPS) | Stabilisé ou en amélioration |
+| Placements médias positifs (cumulés) | 6-10 |
+| Membres du programme de défense | 20-50 défenseurs actifs |
 
 ---
 
-## 90-Day Plan — Strengthen & Future-Proof
+## Plan à 90 jours — Renforcer et se prémunir pour l'avenir
 
-**Objective:** Fully restore reputation and build resilience against future incidents.
+**Objectif :** Restaurer pleinement la réputation et construire une résilience contre les futurs incidents.
 
-### Week 9-10: Long-Term Positioning
+### Semaines 9-10 : Positionnement à long terme
 
-| Action | Owner | Details |
+| Action | Responsable | Détails |
 |--------|-------|---------|
-| Publish industry thought leadership report | Content + Research | Original research or insights that position brand as a leader |
-| Launch ongoing brand monitoring program | Marketing Ops | Permanent sentiment monitoring (see `sentiment-monitoring.md`) |
-| Formalize crisis prevention protocols | Risk + Marketing | Document everything learned, update crisis plan (see `crisis-communication.md`) |
-| Establish advisory board or customer council | Exec + CS | External accountability and early warning mechanism |
+| Publier un rapport de leadership éclairé sectoriel | Contenu + Recherche | Recherche ou insights originaux positionnant la marque comme leader |
+| Lancer un programme de suivi de marque continu | Marketing Ops | Suivi de sentiment permanent (voir `sentiment-monitoring.md`) |
+| Formaliser les protocoles de prévention de crise | Risque + Marketing | Documenter tous les apprentissages, mettre à jour le plan de crise (voir `crisis-communication.md`) |
+| Établir un conseil consultatif ou un conseil client | Direction + Service client | Responsabilisation externe et mécanisme d'alerte précoce |
 
-### Week 11-12: Sustained Growth
+### Semaines 11-12 : Croissance soutenue
 
-| Action | Owner | Details |
+| Action | Responsable | Détails |
 |--------|-------|---------|
-| Conduct 90-day retrospective | Full team | What worked, what didn't, systemic improvements |
-| Transition from recovery to growth marketing | Marketing | Shift budget from defensive to offensive |
-| Launch brand campaign (optional) | Creative + Media | If appropriate, reintroduce brand with refreshed positioning |
-| Set up annual reputation health review | Marketing Ops | Recurring quarterly audits |
+| Réaliser une rétrospective à 90 jours | Équipe complète | Ce qui a fonctionné, ce qui n'a pas fonctionné, améliorations systémiques |
+| Passer de la récupération au marketing de croissance | Marketing | Déplacer le budget du défensif vers l'offensif |
+| Lancer une campagne de marque (optionnel) | Créatif + Média | Si approprié, réintroduire la marque avec un positionnement rafraîchi |
+| Mettre en place une revue annuelle de santé de la réputation | Marketing Ops | Audits trimestriels récurrents |
 
-### 90-Day KPIs
+### KPI à 90 jours
 
-| Metric | Target |
+| Métrique | Cible |
 |--------|--------|
-| Negative SERP results on Page 1 | 0-1 (displaced by positive content) |
-| Overall sentiment score | At or above pre-crisis baseline |
-| Customer retention rate | Returned to pre-crisis levels |
-| Brand consideration (survey) | Recovered to within 10% of pre-crisis |
-| Review rating (avg across platforms) | 4.0+ (or pre-crisis level) |
-| Crisis preparedness score (internal audit) | 90%+ |
+| Résultats SERP négatifs en page 1 | 0-1 (déplacés par du contenu positif) |
+| Score de sentiment global | Au niveau ou au-dessus de la référence avant crise |
+| Taux de rétention client | Revenu aux niveaux avant crise |
+| Considération de marque (sondage) | Récupérée à moins de 10 % du niveau avant crise |
+| Note d'avis (moyenne sur les plateformes) | 4,0+ (ou niveau avant crise) |
+| Score de préparation à la crise (audit interne) | 90 %+ |
 
 ---
 
-## SEO-for-Reputation Tactics
+## Tactiques SEO pour la réputation
 
-### SERP Displacement Strategy
+### Stratégie de déplacement SERP
 
-The goal is to push negative results off Page 1 by creating and optimizing positive content that outranks them.
+L'objectif est de repousser les résultats négatifs hors de la page 1 en créant et optimisant du contenu positif qui les surclasse.
 
-| Tactic | Details | Timeline |
+| Tactique | Détails | Chronologie |
 |--------|---------|----------|
-| Optimize owned properties | Website, blog, About page — target branded keywords with fresh, authoritative content | Week 1-2 |
-| Create satellite content | LinkedIn articles, Medium posts, guest posts on high-DA sites — all targeting brand name keywords | Week 2-4 |
-| Build profile pages | Crunchbase, LinkedIn Company, Wikipedia (if notable), industry directories | Week 1-2 |
-| Press releases | Distribute through PR Newswire, BusinessWire — these rank well for brand queries | Week 2-6 |
-| Video content | YouTube videos targeting "[brand] + [crisis keyword]" — YouTube results get SERP placement | Week 3-6 |
-| Review platform optimization | Claim and optimize Trustpilot, G2, Capterra profiles — these rank for brand queries | Week 1-4 |
-| Social media profiles | Optimize all social bios, post consistently — social profiles rank on Page 1 | Ongoing |
-| Structured data | Add Organization schema, FAQ schema to website for enhanced SERP features | Week 1-2 |
+| Optimiser les propriétés détenues | Site web, blog, page À propos — cibler les mots-clés de marque avec un contenu frais et faisant autorité | Semaine 1-2 |
+| Créer du contenu satellite | Articles LinkedIn, publications Medium, articles invités sur des sites à forte autorité — tous ciblant les mots-clés du nom de marque | Semaine 2-4 |
+| Construire des pages de profil | Crunchbase, LinkedIn Company, Wikipédia (si notable), annuaires sectoriels | Semaine 1-2 |
+| Communiqués de presse | Diffuser via PR Newswire, BusinessWire — ceux-ci se classent bien pour les requêtes de marque | Semaine 2-6 |
+| Contenu vidéo | Vidéos YouTube ciblant « [marque] + [mot-clé de crise] » — les résultats YouTube obtiennent un placement SERP | Semaine 3-6 |
+| Optimisation des plateformes d'avis | Revendiquer et optimiser les profils Trustpilot, G2, Capterra — ceux-ci se classent pour les requêtes de marque | Semaine 1-4 |
+| Profils sur les réseaux sociaux | Optimiser toutes les bios sociales, publier régulièrement — les profils sociaux se classent en page 1 | Continu |
+| Données structurées | Ajouter le schema Organization, le schema FAQ au site web pour des fonctionnalités SERP enrichies | Semaine 1-2 |
 
-### Content Calendar for Recovery
+### Calendrier de contenu pour la récupération
 
-| Week | Content Piece | Target Keyword | Channel |
+| Semaine | Pièce de contenu | Mot-clé cible | Canal |
 |------|--------------|---------------|---------|
-| 1 | CEO statement / blog post | "{{brand}} update" | Website |
-| 2 | Customer success story | "{{brand}} reviews" | Website + social |
-| 3 | Behind-the-scenes improvement article | "{{brand}} changes" | Website + LinkedIn |
-| 4 | Industry thought leadership | "{{brand}} {{industry}}" | Guest post (high-DA site) |
-| 5 | Transparency report | "{{brand}} report" | Website + press release |
-| 6 | Video: leadership Q&A | "{{brand}} CEO" | YouTube |
-| 7 | Case study with customer | "{{brand}} experience" | Website + social |
-| 8 | Op-ed in trade publication | "{{brand}} future" | Trade publication |
+| 1 | Déclaration du PDG / article de blog | « mise à jour {{marque}} » | Site web |
+| 2 | Témoignage client de succès | « avis {{marque}} » | Site web + social |
+| 3 | Article sur les coulisses des améliorations | « changements {{marque}} » | Site web + LinkedIn |
+| 4 | Leadership éclairé sectoriel | « {{marque}} {{secteur}} » | Article invité (site à forte autorité) |
+| 5 | Rapport de transparence | « rapport {{marque}} » | Site web + communiqué de presse |
+| 6 | Vidéo : questions-réponses de la direction | « PDG {{marque}} » | YouTube |
+| 7 | Étude de cas avec un client | « expérience {{marque}} » | Site web + social |
+| 8 | Tribune dans une publication sectorielle | « avenir {{marque}} » | Publication sectorielle |
 
 ---
 
-## Advocacy Program Design
+## Conception du programme de défense
 
 ### Structure
 
-| Element | Details |
+| Élément | Détails |
 |---------|---------|
-| Eligibility | Customers with NPS 9-10, repeat purchasers, engaged community members |
-| Invitation | Personal outreach from account manager or customer success |
-| Benefits | Early access, exclusive events, direct line to product team, recognition |
-| Asks | Reviews, testimonials, case studies, referrals, social shares |
-| Management | Dedicated community manager, quarterly check-ins, feedback loop |
-| Size | Start with 20-30 advocates, grow to 100+ over 6 months |
+| Éligibilité | Clients avec NPS 9-10, acheteurs récurrents, membres engagés de la communauté |
+| Invitation | Prise de contact personnelle du gestionnaire de compte ou de la réussite client |
+| Avantages | Accès anticipé, événements exclusifs, ligne directe avec l'équipe produit, reconnaissance |
+| Demandes | Avis, témoignages, études de cas, recommandations, partages sociaux |
+| Gestion | Community manager dédié, points réguliers trimestriels, boucle de retour |
+| Taille | Démarrer avec 20-30 défenseurs, croître jusqu'à 100+ sur 6 mois |
 
-### Advocate Activation Sequence
+### Séquence d'activation des défenseurs
 
-1. **Week 1:** Personal invitation + welcome package
-2. **Week 2:** First ask — leave a review on primary platform
-3. **Week 4:** Second ask — participate in case study or testimonial
-4. **Week 6:** Third ask — share positive experience on social media
-5. **Ongoing:** Quarterly events, product feedback sessions, referral program
+1. **Semaine 1 :** Invitation personnelle + pack de bienvenue
+2. **Semaine 2 :** Première demande — laisser un avis sur la plateforme principale
+3. **Semaine 4 :** Deuxième demande — participer à une étude de cas ou un témoignage
+4. **Semaine 6 :** Troisième demande — partager une expérience positive sur les réseaux sociaux
+5. **Continu :** Événements trimestriels, sessions de retour produit, programme de parrainage
 
 ---
 
-## Reputation KPIs — Ongoing Tracking
+## KPI de réputation — Suivi continu
 
-| KPI | Definition | Measurement Frequency | Target |
+| KPI | Définition | Fréquence de mesure | Cible |
 |-----|-----------|----------------------|--------|
-| Net Sentiment Score | (Positive - Negative) / Total mentions | Weekly | > 60% |
-| Share of Positive SERP | % of Page 1 results that are positive/neutral | Monthly | > 80% |
-| Review Rating (weighted) | Average rating across all platforms | Monthly | 4.2+ |
-| Review Volume | New reviews per month | Monthly | Steady or increasing |
-| Brand Search Volume | Branded search queries (Google Search Console) | Monthly | Recovering to baseline |
-| NPS (Net Promoter Score) | Customer survey | Quarterly | Pre-crisis level or higher |
-| Employee NPS | Employee survey | Quarterly | Stable or improving |
-| Media Sentiment | Positive/neutral/negative media mentions | Monthly | > 70% positive/neutral |
-| Crisis Preparedness Score | Internal audit of plans, training, tools | Quarterly | 90%+ |
-| Stakeholder Trust Index | Weighted survey across all stakeholder groups | Quarterly | Trending upward |
+| Score de sentiment net | (Positif - Négatif) / Total des mentions | Hebdomadaire | > 60 % |
+| Part de SERP positive | % des résultats page 1 qui sont positifs/neutres | Mensuelle | > 80 % |
+| Note d'avis (pondérée) | Note moyenne sur toutes les plateformes | Mensuelle | 4,2+ |
+| Volume d'avis | Nouveaux avis par mois | Mensuelle | Stable ou croissant |
+| Volume de recherche de marque | Requêtes de recherche de marque (Google Search Console) | Mensuelle | En récupération vers la référence |
+| NPS (Net Promoter Score) | Sondage client | Trimestrielle | Niveau avant crise ou plus élevé |
+| NPS employé | Sondage employé | Trimestrielle | Stable ou en amélioration |
+| Sentiment média | Mentions médias positives/neutres/négatives | Mensuelle | > 70 % positif/neutre |
+| Score de préparation à la crise | Audit interne des plans, formations, outils | Trimestrielle | 90 %+ |
+| Indice de confiance des parties prenantes | Sondage pondéré sur tous les groupes de parties prenantes | Trimestrielle | En tendance à la hausse |
 
 ---
 
-## Stakeholder Re-Engagement Playbook
+## Playbook de réengagement des parties prenantes
 
-| Stakeholder | Re-Engagement Tactic | Timeline | Owner |
+| Partie prenante | Tactique de réengagement | Chronologie | Responsable |
 |-------------|---------------------|----------|-------|
-| Churned customers | Personal outreach + special offer + "here's what changed" messaging | Day 30-60 | CS + Sales |
-| At-risk customers | Proactive check-ins, dedicated support, loyalty incentives | Day 1-30 | CS |
-| Employees | Town halls, transparency updates, recognition programs | Ongoing | HR + Exec |
-| Partners | Executive-to-executive outreach, joint value reassessment | Day 14-30 | BD + Exec |
-| Investors | Quarterly update with recovery metrics, forward strategy | Day 30, 60, 90 | CFO + CEO |
-| Media | Exclusive access to recovery story, data, or leadership interviews | Day 30-60 | PR |
+| Clients ayant churné | Prise de contact personnelle + offre spéciale + message « voici ce qui a changé » | Jour 30-60 | Service client + Ventes |
+| Clients à risque | Points réguliers proactifs, support dédié, incitations de fidélité | Jour 1-30 | Service client |
+| Employés | Town halls, mises à jour de transparence, programmes de reconnaissance | Continu | RH + Direction |
+| Partenaires | Prise de contact exécutif-à-exécutif, réévaluation conjointe de la valeur | Jour 14-30 | Développement commercial + Direction |
+| Investisseurs | Mise à jour trimestrielle avec les métriques de récupération, stratégie future | Jour 30, 60, 90 | CFO + PDG |
+| Médias | Accès exclusif à l'histoire de récupération, données, ou interviews de la direction | Jour 30-60 | RP |
 
 ---
 
-> **Reputation recovery is a marathon, not a sprint.** The brands that recover strongest are those that treat the crisis as a catalyst for genuine improvement — not just a PR problem to manage. Actions speak; messaging amplifies.
+> **La récupération de réputation est un marathon, pas un sprint.** Les marques qui se rétablissent le plus fortement sont celles qui traitent la crise comme un catalyseur d'amélioration véritable — pas seulement un problème de RP à gérer. Les actions parlent ; le message amplifie.
+</content>

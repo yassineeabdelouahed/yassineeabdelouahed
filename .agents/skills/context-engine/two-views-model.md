@@ -1,97 +1,98 @@
-# The Two-Views Model
+# Le modèle à deux vues
 
-After Part 5 (Client Validation), every engagement carries two views of the world. Both remain authoritative for different questions. Neither is deleted.
+Après la partie 5 (validation client), chaque engagement porte deux vues du monde. Les deux restent faisant autorité pour des questions différentes. Aucune n'est supprimée.
 
-## Why two views
+## Pourquoi deux vues
 
-The unbiased market research from Parts 2–4 produces a view of the brand that is independent of what the client thinks about themselves. The client validation in Part 5 then layers in client knowledge, client priorities, and client constraints — which often correct the unbiased view in some places and over-correct it in others.
+L'étude de marché non biaisée des parties 2 à 4 produit une vue de la marque indépendante de ce que le client pense de lui-même. La validation client de la partie 5 superpose ensuite la connaissance client, les priorités client, et les contraintes client — ce qui corrige souvent la vue non biaisée à certains endroits et la sur-corrige à d'autres.
 
-Keeping both views available means the engagement can:
+Conserver les deux vues disponibles permet à l'engagement de :
 
-1. Run operations on what the business chose (v2)
-2. Stress-test assumptions when something is not working (compare v1 vs v2)
-3. Generate ideation from territory v2 deprioritised but v1 identified (v1 is a goldmine for fresh angles)
-4. Have honest client conversations about why something is underperforming (cite both views)
+1. Exécuter les opérations sur ce que l'entreprise a choisi (v2)
+2. Éprouver les hypothèses lorsque quelque chose ne fonctionne pas (comparer v1 vs v2)
+3. Générer de l'idéation à partir du territoire que v2 a déprioritisé mais que v1 a identifié (v1 est une mine d'or pour des angles nouveaux)
+4. Avoir des conversations client honnêtes sur les raisons de la sous-performance (citer les deux vues)
 
-If only v2 existed, the engagement would silently inherit every client bias as if it were ground truth. Maintaining v1 keeps the marketing strategy intellectually honest.
+Si seule la v2 existait, l'engagement hériterait silencieusement de chaque biais client comme s'il s'agissait de la vérité terrain. Maintenir la v1 garde la stratégie marketing intellectuellement honnête.
 
-## What is in each view
+## Ce que contient chaque vue
 
-### v1 — The Unbiased Market View
+### v1 — La vue de marché non biaisée
 
-Produced in Parts 2–4, before any client document is consulted.
+Produite dans les parties 2 à 4, avant que tout document client ne soit consulté.
 
-- All four Core Documents (3.1 Business & SBU, 3.2 Segmentation, 3.3 Brand Positioning, 3.4 DMFlow)
-- All four Part 4 documents (4.1 Competitor Ad Analysis, 4.2 Competitor Positioning, 4.3 Customer Analysis, 4.4 Market Analysis)
-- Part 2 external research outputs (industry analysis, customer demand signals, ecosystem scan)
+- Les quatre documents centraux (3.1 Business et SBU, 3.2 Segmentation, 3.3 Positionnement de marque, 3.4 DMFlow)
+- Les quatre documents de la partie 4 (4.1 Analyse publicitaire concurrentielle, 4.2 Positionnement concurrentiel, 4.3 Analyse client, 4.4 Analyse de marché)
+- Les résultats de recherche externe de la partie 2 (analyse sectorielle, signaux de demande client, balayage de l'écosystème)
 
-Stored at: `engagements/{engagement-id}/part-03-four-core-documents/v1/` and `engagements/{engagement-id}/part-04-competitive-customer-market/v1/`
+Stockée à : `engagements/{engagement-id}/part-03-four-core-documents/v1/` et `engagements/{engagement-id}/part-04-competitive-customer-market/v1/`
 
-### v2 — The Client-Validated View
+### v2 — La vue validée par le client
 
-Produced selectively in Part 6 based on what changed in Part 5.
+Produite sélectivement dans la partie 6 en fonction de ce qui a changé dans la partie 5.
 
-Only the documents flagged for re-run by the Decision Matrix get a v2. Documents not re-run inherit v1 as their canonical version (no v2 file exists).
+Seuls les documents signalés pour relance par la matrice de décision reçoivent une v2. Les documents non relancés héritent de la v1 comme version canonique (aucun fichier v2 n'existe).
 
-Stored at: `engagements/{engagement-id}/part-03-four-core-documents/v2/` and `engagements/{engagement-id}/part-04-competitive-customer-market/v2/`
+Stockée à : `engagements/{engagement-id}/part-03-four-core-documents/v2/` et `engagements/{engagement-id}/part-04-competitive-customer-market/v2/`
 
-## Decision Rule: Which View to Consult
+## Règle de décision : quelle vue consulter
 
-Skills, agents, and conversations should select the view based on the type of decision:
+Les compétences, agents, et conversations devraient sélectionner la vue selon le type de décision :
 
-| Decision type | Primary view | Use both? |
+| Type de décision | Vue principale | Utiliser les deux ? |
 |---|---|---|
-| Operating decisions (channel execution, ad copy direction, content plan, budget allocation per campaign) | v2 | No — v2 only |
-| Stress-testing or pivot conversations (a campaign is not working; segment not converting as expected) | Both | Yes — compare to identify whether v2 over-corrected |
-| Ideation and suggestions (new campaign concepts, untested segments, alternative positioning angles) | Both | Yes — v1 often holds the most creative territory |
-| Client conversations about underperformance | Both | Yes — articulate what unbiased market said, what client chose, what data is now suggesting |
-| Competitive response decisions | Both | Yes — v1 holds the unfiltered competitor positioning; v2 holds how the client wants to be positioned vs them |
-| Quarterly strategy refresh | Both | Yes — re-evaluate the v1→v2 transition with 3 months of data |
+| Décisions opérationnelles (exécution de canal, direction du texte publicitaire, plan de contenu, allocation budgétaire par campagne) | v2 | Non — v2 uniquement |
+| Éprouver les hypothèses ou conversations de pivot (une campagne ne fonctionne pas ; un segment ne convertit pas comme attendu) | Les deux | Oui — comparer pour identifier si v2 a sur-corrigé |
+| Idéation et suggestions (nouveaux concepts de campagne, segments non testés, angles de positionnement alternatifs) | Les deux | Oui — v1 contient souvent le territoire le plus créatif |
+| Conversations client sur la sous-performance | Les deux | Oui — articuler ce que le marché non biaisé a dit, ce que le client a choisi, ce que les données suggèrent désormais |
+| Décisions de réponse concurrentielle | Les deux | Oui — v1 contient le positionnement concurrentiel non filtré ; v2 contient la façon dont le client veut se positionner face à eux |
+| Actualisation stratégique trimestrielle | Les deux | Oui — réévaluer la transition v1→v2 avec 3 mois de données |
 
-## How skills declare which view they need
+## Comment les compétences déclarent la vue dont elles ont besoin
 
-Skills add a `view-preference` field in frontmatter:
+Les compétences ajoutent un champ `view-preference` dans le frontmatter :
 
 ```yaml
 ---
 name: skill-name
-view-preference: v2-primary   # or "v1-primary", "both", "v1-only", "v2-only"
+view-preference: v2-primary   # ou "v1-primary", "both", "v1-only", "v2-only"
 ---
 ```
 
-When a skill loads engagement context:
+Lorsqu'une compétence charge le contexte d'engagement :
 
-- `v2-primary`: Load v2 docs; fall back to v1 only if a specific doc has no v2 (i.e., wasn't re-run)
-- `v1-primary`: Load v1 docs always
-- `both`: Load both v1 and v2 versions of every doc; the skill content compares them
-- `v1-only`: Load only v1 (used by ideation skills)
-- `v2-only`: Load only v2 (used by execution skills)
+- `v2-primary` : Charger les documents v2 ; se replier sur la v1 uniquement si un document précis n'a pas de v2 (c'est-à-dire n'a pas été relancé)
+- `v1-primary` : Toujours charger les documents v1
+- `both` : Charger les versions v1 et v2 de chaque document ; le contenu de la compétence les compare
+- `v1-only` : Charger uniquement la v1 (utilisé par les compétences d'idéation)
+- `v2-only` : Charger uniquement la v2 (utilisé par les compétences d'exécution)
 
-## The "gap between views" as strategic information
+## L'« écart entre les vues » comme information stratégique
 
-When v1 and v2 diverge significantly on a specific element (e.g., the unbiased research identified Segment X as highest-priority, but the client moved it to tertiary), that gap itself is strategic information.
+Lorsque v1 et v2 divergent significativement sur un élément précis (par exemple, la recherche non biaisée a identifié le segment X comme le plus prioritaire, mais le client l'a relégué en tertiaire), cet écart lui-même est une information stratégique.
 
-Reasons the gap exists:
+Raisons pour lesquelles l'écart existe :
 
-1. **Client has private information the unbiased research could not access** (e.g., supply constraints that make a high-volume segment unserviceable)
-2. **Client over-weighted internal preferences** (e.g., founder's pet segment that data does not support)
-3. **Client under-weighted competitive risk** (e.g., dismissed a segment because the current offering "isn't ready")
-4. **Both views are partially right** (e.g., client knows the segment is hard, but the unbiased research identifies the long-term opportunity)
+1. **Le client dispose d'informations privées inaccessibles à la recherche non biaisée** (par exemple, des contraintes d'approvisionnement rendant un segment à fort volume impossible à servir)
+2. **Le client a surpondéré des préférences internes** (par exemple, le segment de prédilection du fondateur que les données ne soutiennent pas)
+3. **Le client a sous-pondéré le risque concurrentiel** (par exemple, a écarté un segment parce que l'offre actuelle « n'est pas encore prête »)
+4. **Les deux vues ont partiellement raison** (par exemple, le client sait que le segment est difficile, mais la recherche non biaisée identifie l'opportunité à long terme)
 
-When stress-testing or generating ideas, the gap conversation goes:
+Lors de l'épreuve des hypothèses ou de la génération d'idées, la conversation sur l'écart se déroule ainsi :
 
-> "v1 identified [X] as [characterisation]. v2 deprioritised it because [client reason]. The data over the past [period] suggests [observation]. Should we revisit?"
+> « v1 a identifié [X] comme [caractérisation]. v2 l'a déprioritisé parce que [raison client]. Les données de la [période] passée suggèrent [observation]. Devrions-nous revoir cela ? »
 
-This is the most strategically valuable use of the two-views model.
+C'est l'usage le plus stratégiquement précieux du modèle à deux vues.
 
-## File operations
+## Opérations sur les fichiers
 
-When v1 documents change after Part 5 (e.g., minor v1.1 corrections per the Decision Matrix), the file is renamed `3.1-business-and-sbu-analysis.v1.1.md` (and so on). The change log within the document records what changed and why.
+Lorsque les documents v1 changent après la partie 5 (par exemple, corrections mineures v1.1 selon la matrice de décision), le fichier est renommé `3.1-business-and-sbu-analysis.v1.1.md` (et ainsi de suite). Le journal des modifications au sein du document consigne ce qui a changé et pourquoi.
 
-When a v2 re-run produces a new document, it goes into `v2/` with the same filename pattern. The v2 document includes a header section: "v1 → v2 changes" listing what was modified vs the v1 version, with rationale.
+Lorsqu'une relance v2 produit un nouveau document, il va dans `v2/` avec le même schéma de nommage de fichier. Le document v2 inclut une section d'en-tête : « changements v1 → v2 » listant ce qui a été modifié par rapport à la version v1, avec justification.
 
-## Related references
+## Références liées
 
-- [decision-matrix-rerun.md](decision-matrix-rerun.md) — the matrix that governs which docs get a v2
-- [update-back-rule.md](update-back-rule.md) — versioning protocol for in-life corrections
-- [living-instruction-file-spec.md](living-instruction-file-spec.md) — where the team's "currently true" state lives
+- [decision-matrix-rerun.md](decision-matrix-rerun.md) — la matrice qui détermine quels documents reçoivent une v2
+- [update-back-rule.md](update-back-rule.md) — protocole de versionnage pour les corrections en cours de vie
+- [living-instruction-file-spec.md](living-instruction-file-spec.md) — où se trouve l'état « actuellement vrai » de l'équipe
+</content>

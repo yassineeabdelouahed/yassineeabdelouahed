@@ -1,117 +1,117 @@
-# Social Content — Platform-by-Platform Guide
+# Contenu social — Guide plateforme par plateforme
 
 ## LinkedIn
 
-### Post Types & Performance
-| Type | Avg Engagement | Best For |
+### Types de post et performance
+| Type | Engagement moyen | Idéal pour |
 |------|---------------|----------|
-| Text-only (with line breaks) | High | Thought leadership, stories |
-| Carousel (PDF document) | Very High | Frameworks, step-by-step, data |
-| Poll | High | Engagement, research, conversation |
-| Video (native) | Medium-High | Expert commentary, behind-scenes |
-| Newsletter article | Medium | Long-form thought leadership |
-| Image + text | Medium | Data visualizations, quotes |
+| Texte uniquement (avec sauts de ligne) | Élevé | Leadership éclairé, histoires |
+| Carrousel (document PDF) | Très élevé | Cadres, étape par étape, données |
+| Sondage | Élevé | Engagement, recherche, conversation |
+| Vidéo (native) | Moyen-élevé | Commentaire d'expert, coulisses |
+| Article newsletter | Moyen | Leadership éclairé long format |
+| Image + texte | Moyen | Visualisations de données, citations |
 
-### Hook Formulas for LinkedIn
-1. **Bold claim**: "Most marketing teams waste 60% of their ad budget. Here's why:"
-2. **Personal story**: "I was fired from my first marketing job. Best thing that ever happened."
-3. **Contrarian take**: "Unpopular opinion: SEO is not dead. Your strategy is."
-4. **Data drop**: "We analyzed 10,000 LinkedIn posts. Here's what gets engagement:"
-5. **Question**: "What's the one metric you'd save if you could only track one?"
+### Formules d'accroche pour LinkedIn
+1. **Affirmation forte** : « La plupart des équipes marketing gaspillent 60 % de leur budget publicitaire. Voici pourquoi : »
+2. **Histoire personnelle** : « J'ai été licencié de mon premier emploi en marketing. La meilleure chose qui me soit arrivée. »
+3. **Position contrarian** : « Opinion impopulaire : le SEO n'est pas mort. Votre stratégie l'est. »
+4. **Chute de données** : « Nous avons analysé 10 000 posts LinkedIn. Voici ce qui génère de l'engagement : »
+5. **Question** : « Quelle est la seule métrique que vous garderiez si vous ne pouviez en suivre qu'une ? »
 
-### Optimal Length: 1,200-1,500 characters. Use line breaks every 1-2 sentences. Hashtags: 3-5 relevant.
+### Longueur optimale : 1 200-1 500 caractères. Utiliser des sauts de ligne tous les 1-2 phrases. Hashtags : 3-5 pertinents.
 
 ---
 
 ## Twitter/X
 
-### Thread Structure
-- **Tweet 1**: Hook + promise (what they'll learn)
-- **Tweets 2-8**: One point per tweet, numbered
-- **Final tweet**: Summary + CTA (follow, retweet, link)
+### Structure de fil
+- **Tweet 1** : Accroche + promesse (ce qu'ils vont apprendre)
+- **Tweets 2-8** : Un point par tweet, numéroté
+- **Tweet final** : Résumé + CTA (suivre, retweeter, lien)
 
-### Engagement Tactics
-- Reply to comments within first hour (boosts algorithm visibility)
-- Quote tweet relevant industry conversations with a take
-- Use polls for easy engagement
-- Pin your best-performing tweet
+### Tactiques d'engagement
+- Répondre aux commentaires dans la première heure (booste la visibilité algorithmique)
+- Citer des conversations sectorielles pertinentes avec une prise de position
+- Utiliser des sondages pour un engagement facile
+- Épingler votre tweet le plus performant
 
-### Hashtags: 1-2 maximum (more looks spammy on Twitter)
-### Optimal length: 100-200 characters for single tweets (under max for retweet room)
+### Hashtags : 1-2 maximum (plus semble spam sur Twitter)
+### Longueur optimale : 100-200 caractères pour les tweets simples (sous le maximum pour laisser de la place au retweet)
 
 ---
 
 ## Instagram
 
-### Feed vs Stories vs Reels Strategy
-| Format | Purpose | Cadence |
+### Stratégie Feed vs Stories vs Reels
+| Format | Objectif | Cadence |
 |--------|---------|---------|
-| Feed posts | Polished, evergreen brand content | 3-5/week |
-| Stories | Behind-the-scenes, polls, daily engagement | Daily |
-| Reels | Reach and discovery (algorithm-favored) | 3-5/week |
+| Posts de fil | Contenu de marque poli, intemporel | 3-5/semaine |
+| Stories | Coulisses, sondages, engagement quotidien | Quotidien |
+| Reels | Portée et découverte (favorisé par l'algorithme) | 3-5/semaine |
 
-### Caption Formula
-1. **Hook** (first line — shown before "...more"): Strong statement or question
-2. **Value** (body): 3-5 tips, story, or insight
-3. **CTA** (end): Ask a question, prompt saves/shares
-4. **Hashtags** (after): 5-15 relevant hashtags
+### Formule de légende
+1. **Accroche** (première ligne — montrée avant « ...plus ») : Déclaration forte ou question
+2. **Valeur** (corps) : 3-5 conseils, histoire, ou insight
+3. **CTA** (fin) : Poser une question, inciter aux sauvegardes/partages
+4. **Hashtags** (après) : 5-15 hashtags pertinents
 
-### Hashtag Tiers
-| Tier | Volume | Example |
+### Niveaux de hashtags
+| Niveau | Volume | Exemple |
 |------|--------|---------|
-| Branded | Any | #YourBrandName |
-| Community | 10K-100K posts | #MarketingTips |
-| Industry | 100K-500K posts | #DigitalMarketing |
-| Trending | 500K+ posts | #Marketing (use sparingly) |
+| De marque | Tout | #VotreNomDeMarque |
+| Communauté | 10K-100K posts | #ConseilsMarketing |
+| Sectoriel | 100K-500K posts | #MarketingDigital |
+| Tendance | 500K+ posts | #Marketing (à utiliser avec parcimonie) |
 
-Mix: 3-5 community + 3-5 industry + 1-2 branded + 1-2 trending
+Mix : 3-5 communauté + 3-5 sectoriel + 1-2 de marque + 1-2 tendance
 
 ---
 
 ## TikTok
 
-### Hook Techniques (First 1-3 Seconds)
-- Start mid-action (don't lead with intro)
-- Text overlay with bold claim
-- "Wait for it..." pattern interrupt
-- Address audience directly: "If you're a [role], watch this"
-- Trending sound + relevant content
+### Techniques d'accroche (première 1-3 secondes)
+- Commencer en pleine action (ne pas mener avec une intro)
+- Surimpression de texte avec affirmation forte
+- Pattern interrupt « Attendez de voir... »
+- S'adresser directement à l'audience : « Si vous êtes [rôle], regardez ça »
+- Son tendance + contenu pertinent
 
-### Content Format Templates
-| Format | Description | Example |
+### Modèles de format de contenu
+| Format | Description | Exemple |
 |--------|-------------|---------|
-| Talking head | Direct-to-camera expert tip | "3 things nobody tells you about..." |
-| Before/after | Transformation reveal | Before optimization vs after |
-| Day in the life | Behind-scenes of work | "Day in the life of a marketing manager" |
-| Trend adaptation | Current trend + your expertise | Trending audio + marketing insight |
-| Stitch/Duet | React to another creator's content | Add expert context to viral clip |
+| Face caméra | Conseil d'expert direct caméra | « 3 choses que personne ne vous dit sur... » |
+| Avant/après | Révélation de transformation | Avant optimisation vs après |
+| Une journée dans la vie | Coulisses du travail | « Une journée dans la vie d'un responsable marketing » |
+| Adaptation de tendance | Tendance actuelle + votre expertise | Audio tendance + insight marketing |
+| Stitch/Duet | Réagir au contenu d'un autre créateur | Ajouter un contexte d'expert à un clip viral |
 
 ---
 
 ## Facebook
 
-### Group vs Page Strategy
-- **Pages**: Brand presence, ads, customer service
-- **Groups**: Community building, organic engagement, direct conversations
-- Groups get 5-10x more organic reach than pages
+### Stratégie Groupe vs Page
+- **Pages** : Présence de marque, publicités, service client
+- **Groupes** : Construction de communauté, engagement organique, conversations directes
+- Les groupes obtiennent 5-10x plus de portée organique que les pages
 
-### Best-Performing Content
-- Video (especially Live) gets highest reach
-- Questions and polls drive comments
-- User-generated content builds community
-- Share wins and behind-the-scenes
+### Contenu le plus performant
+- La vidéo (surtout Live) obtient la plus grande portée
+- Les questions et sondages génèrent des commentaires
+- Le contenu généré par les utilisateurs construit la communauté
+- Partager les réussites et les coulisses
 
 ---
 
 ## YouTube
 
-### Title Optimization
-- Include primary keyword near the beginning
-- 50-70 characters optimal
-- Use numbers when possible ("7 Ways to...")
-- Create curiosity gap (don't give away the answer)
+### Optimisation du titre
+- Inclure le mot-clé primaire près du début
+- 50-70 caractères optimal
+- Utiliser des chiffres quand possible (« 7 façons de... »)
+- Créer un écart de curiosité (ne pas révéler la réponse)
 
-### Description Template
+### Modèle de description
 ```
 [First 2 sentences: keyword-rich summary — this shows in search results]
 
@@ -131,12 +131,12 @@ Resources mentioned:
 
 ---
 
-## Content Repurposing Matrix
+## Matrice de recyclage de contenu
 
-| Original Format | LinkedIn | Twitter | Instagram | TikTok | Email | Blog |
+| Format d'origine | LinkedIn | Twitter | Instagram | TikTok | E-mail | Blog |
 |----------------|----------|---------|-----------|--------|-------|------|
-| Blog post | Key takeaway post | Thread (5-8 tweets) | Carousel infographic | Quick tip video | Newsletter summary | Original |
-| Podcast episode | Quote graphic | Quote thread | Audiogram story | Clip (30-60s) | Recap email | Show notes |
-| Webinar | Key insights carousel | Live tweet highlights | Reels (key moments) | Speaker clips | Replay + notes | Blog recap |
-| Case study | Results-focused post | Stats thread | Before/after reel | Testimonial clip | Feature email | Full write-up |
-| Data/Research | Data visualization | Key stat tweets | Infographic carousel | Data reveal video | Report email | Full report |
+| Article de blog | Post à emporter clé | Fil (5-8 tweets) | Carrousel infographique | Vidéo de conseil rapide | Résumé newsletter | Original |
+| Épisode de podcast | Graphique citation | Fil de citation | Story audiogramme | Clip (30-60s) | E-mail récap | Notes d'émission |
+| Webinaire | Carrousel d'insights clés | Highlights de live-tweet | Reels (moments clés) | Clips d'intervenant | Replay + notes | Récap blog |
+| Étude de cas | Post axé résultats | Fil de statistiques | Reel avant/après | Clip témoignage | E-mail de mise en avant | Rédaction complète |
+| Données/Recherche | Visualisation de données | Tweets de statistique clé | Carrousel infographique | Vidéo de révélation de données | E-mail de rapport | Rapport complet |

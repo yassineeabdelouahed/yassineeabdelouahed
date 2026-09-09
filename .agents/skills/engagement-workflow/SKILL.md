@@ -1,6 +1,6 @@
 ---
 name: engagement-workflow
-description: "Orchestrate a full marketing engagement through the 12-Part methodology — Stone vs Opinion intake, external research, Four Core Documents, client validation, Decision Matrix v2 re-runs, growth planning, channel fan-out, and the continuous-improvement loop — with checkpointed, resumable state at every part. Triggers on \"/digital-marketing-pro:engagement-workflow\", \"start a new engagement\", \"what part of the engagement are we on\", \"apply the decision matrix\", \"advance to the next part\". Reads and writes engagement state via engagement-state.py only, and dispatches to /digital-marketing-pro:four-core-documents, growth-plan, yearly-planner, and continuous-improvement-loop."
+description: "Orchestrez un engagement marketing complet à travers la méthodologie en 12 parties — intake Stone vs Opinion, recherche externe, Four Core Documents, validation client, relances de la Decision Matrix v2, planification de croissance, déclinaison par canal, et la boucle d'amélioration continue — avec un état persisté et reprenable à chaque étape. Se déclenche sur « /digital-marketing-pro:engagement-workflow », « start a new engagement », « what part of the engagement are we on », « apply the decision matrix », « advance to the next part ». Lit et écrit l'état d'engagement uniquement via engagement-state.py, et route vers /digital-marketing-pro:four-core-documents, growth-plan, yearly-planner, et continuous-improvement-loop."
 user-invocable: true
 triggers:
   - start a new engagement
@@ -16,50 +16,50 @@ engagement-part: orchestrator
 view-preference: both
 ---
 
-# /digital-marketing-pro:engagement-workflow — 12-Part Engagement Orchestrator
+# /digital-marketing-pro:engagement-workflow — Orchestrateur d'engagement en 12 parties
 
-This skill orchestrates the full marketing engagement using the 12-Part sequential methodology. Every brand engagement runs through the same 12 parts in sequence, producing a canonical set of files at each stage.
+Cette compétence orchestre l'engagement marketing complet selon la méthodologie séquentielle en 12 parties. Chaque engagement de marque traverse les mêmes 12 parties dans l'ordre, produisant un ensemble canonique de fichiers à chaque étape.
 
-## Context efficiency
+## Efficacité contextuelle
 
-Heavy skill. **Grep before Read** any referenced file, then `Read` only matched ranges with `offset` + `limit`. List the brand's workspace at `~/.claude-marketing/brands/{slug}/` (or `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` when that env var is set) before opening files. On re-invocation mid-session, skip files already in context.
+Compétence lourde. **Grep avant Read** sur tout fichier référencé, puis `Read` uniquement les plages correspondantes avec `offset` + `limit`. Lister l'espace de travail de la marque sous `~/.claude-marketing/brands/{slug}/` (ou `$CLAUDE_PLUGIN_DATA/digital-marketing-pro/brands/{slug}/` quand cette variable d'environnement est définie) avant d'ouvrir des fichiers. En cas de réinvocation en cours de session, ignorer les fichiers déjà en contexte.
 
-Read these references before producing output:
-- [engagement-flow-methodology.md](../context-engine/engagement-flow-methodology.md) — the full 12-Part flow
-- [two-views-model.md](../context-engine/two-views-model.md) — v1 / v2 architecture
-- [stone-vs-opinion.md](../context-engine/stone-vs-opinion.md) — confidence tagging
-- [decision-matrix-rerun.md](../context-engine/decision-matrix-rerun.md) — when to re-run what
-- [update-back-rule.md](../context-engine/update-back-rule.md) — versioning protocol
-- [living-instruction-file-spec.md](../context-engine/living-instruction-file-spec.md) — LIF schema
+Lire ces références avant de produire un résultat :
+- [engagement-flow-methodology.md](../context-engine/engagement-flow-methodology.md) — le flux complet en 12 parties
+- [two-views-model.md](../context-engine/two-views-model.md) — architecture v1 / v2
+- [stone-vs-opinion.md](../context-engine/stone-vs-opinion.md) — marquage de confiance
+- [decision-matrix-rerun.md](../context-engine/decision-matrix-rerun.md) — quand relancer quoi
+- [update-back-rule.md](../context-engine/update-back-rule.md) — protocole de versioning
+- [living-instruction-file-spec.md](../context-engine/living-instruction-file-spec.md) — schéma du LIF
 
-## Operating Mode
+## Mode de fonctionnement
 
-This skill is invoked via the `/digital-marketing-pro:engagement` command family. The command is a thin router — **this skill is the single source of truth** for the engagement lifecycle, the checkpoint protocol, and the per-part production contract. Each subcommand maps to a specific lifecycle action. The skill calls `engagement-state.py` for persistence via:
+Cette compétence est invoquée via la famille de commandes `/digital-marketing-pro:engagement`. La commande est un simple routeur — **cette compétence est la source de vérité unique** pour le cycle de vie de l'engagement, le protocole de point de contrôle, et le contrat de production par partie. Chaque sous-commande correspond à une action précise du cycle de vie. La compétence appelle `engagement-state.py` pour la persistance via :
 
 ```
 python "${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py" <subcommand> ...
 ```
 
-You should never hand-edit `_engagement.json` — always go through `engagement-state.py`.
+Vous ne devez jamais éditer `_engagement.json` à la main — toujours passer par `engagement-state.py`.
 
-## Checkpointing & Resume (single source of truth)
+## Points de contrôle & reprise (source de vérité unique)
 
-Every long engagement run is resumable. The checkpoint protocol is: **init a run → save each part as it completes → finalize → publish to the visible output folder.** This lets an interrupted run (context exhaustion, user cancel, machine sleep) resume from the next un-checkpointed part instead of restarting from Part 1.
+Chaque exécution longue d'engagement est reprenable. Le protocole de point de contrôle est : **initialiser une exécution → enregistrer chaque partie au fur et à mesure → finaliser → publier dans le dossier de sortie visible.** Cela permet à une exécution interrompue (épuisement du contexte, annulation utilisateur, mise en veille de la machine) de reprendre à partir de la prochaine partie non enregistrée plutôt que de repartir de la Partie 1.
 
-**1. On `start`, after the brand pre-condition passes, open a checkpoint run and link it to engagement state:**
+**1. Au `start`, une fois la précondition de marque validée, ouvrir une exécution de point de contrôle et la lier à l'état d'engagement :**
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/checkpoint-manager.py" init \
     --brand "{brand_slug}" --workflow engagement --topic "{engagement_id}"
 
-# Record the returned run_id into _engagement.json so resume can find it:
+# Enregistrer le run_id retourné dans _engagement.json pour que la reprise puisse le retrouver :
 python "${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py" set-checkpoint-run \
     --brand "{brand_slug}" --id "{engagement_id}" --run-id "{run_id}"
 ```
 
-`set-checkpoint-run` stores the run_id in `_engagement.json`, making the resume linkage real (previously the run_id was never persisted).
+`set-checkpoint-run` stocke le run_id dans `_engagement.json`, rendant le lien de reprise réel (auparavant le run_id n'était jamais persisté).
 
-**2. After each part completes and passes its quality gate, the orchestrator saves that part's output:**
+**2. Une fois chaque partie terminée et sa porte qualité franchie, l'orchestrateur enregistre le résultat de cette partie :**
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/checkpoint-manager.py" save \
@@ -67,18 +67,18 @@ python "${CLAUDE_PLUGIN_ROOT}/scripts/checkpoint-manager.py" save \
     --step {part_number} --content-file "{path_to_that_part_deliverable}" --extension md
 ```
 
-Pass the **actual deliverable path for that part** (e.g. Part 3 saves the Four Core Documents path; Part 8 saves the Growth Plan path) — never a placeholder for a different part.
+Passer le **chemin réel du livrable de cette partie** (par ex. la Partie 3 enregistre le chemin des Four Core Documents ; la Partie 8 enregistre le chemin du Growth Plan) — jamais un placeholder pour une partie différente.
 
-**3. Before saving Part 5 (Client Validation) and Part 8 (Growth Plan) deliverables, run the full quality gate:**
+**3. Avant d'enregistrer les livrables de la Partie 5 (Validation client) et de la Partie 8 (Growth Plan), exécuter la porte qualité complète :**
 
 ```bash
-# BLOCKING gate — Part 5 and Part 8 deliverables cannot be checkpointed until this passes
+# Porte BLOQUANTE — les livrables de la Partie 5 et de la Partie 8 ne peuvent pas être enregistrés en point de contrôle tant que ceci ne réussit pas
 /digital-marketing-pro:check "{path_to_deliverable}" --full --brand {brand}
 ```
 
-If `/digital-marketing-pro:check --full` returns BLOCKED, fix the CRITICAL issues before checkpointing the part.
+Si `/digital-marketing-pro:check --full` retourne BLOCKED, corriger les problèmes CRITIQUES avant d'enregistrer la partie en point de contrôle.
 
-**4. After the final part, publish every artifact to the user-visible folder and finalize:**
+**4. Après la dernière partie, publier tous les artefacts dans le dossier visible par l'utilisateur et finaliser :**
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/scripts/output-publisher.py" publish-run \
@@ -88,260 +88,260 @@ python "${CLAUDE_PLUGIN_ROOT}/scripts/checkpoint-manager.py" finalize \
     --brand "{brand}" --run-id "{run_id}" --status completed
 ```
 
-Then point the user at the visible output folder via `/digital-marketing-pro:output-folder {brand}`.
+Puis orienter l'utilisateur vers le dossier de sortie visible via `/digital-marketing-pro:output-folder {brand}`.
 
-To resume an interrupted run, use `/digital-marketing-pro:resume` — it reloads every saved part and continues from the next un-checkpointed part.
+Pour reprendre une exécution interrompue, utiliser `/digital-marketing-pro:resume` — il recharge chaque partie enregistrée et continue à partir de la prochaine partie non enregistrée en point de contrôle.
 
-## State validation & rework caps
+## Validation d'état & plafonds de reprise
 
-- **Validate a part's outputs against the manifest** before marking it complete:
+- **Valider les résultats d'une partie par rapport au manifeste** avant de la marquer comme terminée :
   ```bash
   python "${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py" validate-part \
       --brand "{brand}" --id "{id}" --part {N}
   ```
-  This diffs the actual files on disk against the `PART_DEFINITIONS` manifest and flags missing deliverables. Use it in `file-tree` and before `next`.
+  Ceci compare les fichiers réels présents sur le disque au manifeste `PART_DEFINITIONS` et signale les livrables manquants. À utiliser dans `file-tree` et avant `next`.
 
-- **Repair a partially-initialised engagement directory** (instead of crashing on a non-empty dir):
+- **Réparer un répertoire d'engagement partiellement initialisé** (plutôt que de planter sur un répertoire non vide) :
   ```bash
   python "${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py" init --repair \
       --brand "{brand}" --id "{id}"
   ```
-  `--repair` completes the canonical directory tree and state file on a dir that holds only partial state.
+  `--repair` complète l'arborescence de répertoires canonique et le fichier d'état sur un répertoire ne contenant qu'un état partiel.
 
-- **v2 re-run cap:** a maximum of **2 v2 re-run rounds per part** is allowed without explicit user override. The round count is stored in `_engagement.json`. If a part would exceed 2 rounds, stop and ask the user to explicitly approve further re-runs (records the override in state). This prevents unbounded re-run loops.
+- **Plafond de relance v2 :** un maximum de **2 cycles de relance v2 par partie** est autorisé sans dérogation explicite de l'utilisateur. Le nombre de cycles est stocké dans `_engagement.json`. Si une partie dépasserait 2 cycles, s'arrêter et demander à l'utilisateur d'approuver explicitement des relances supplémentaires (la dérogation est enregistrée dans l'état). Cela évite les boucles de relance illimitées.
 
-## Subcommands
+## Sous-commandes
 
 ### `/digital-marketing-pro:engagement start <brand-slug> <engagement-id>`
 
-**Purpose:** Initialise a new engagement.
+**Objectif :** initialiser un nouvel engagement.
 
-**Steps:**
+**Étapes :**
 
-1. Validate that the brand profile exists at `~/.claude-marketing/brands/{brand-slug}/profile.json`. If not, instruct the user to run `/digital-marketing-pro:brand-setup` first.
-2. Run `python ${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py init --brand {brand-slug} --id {engagement-id}`.
-3. Confirm the directory tree was created and report the next required action (Part 1 intake).
-4. Walk the user through Part 1 Stone vs Opinion intake by asking the questions one batch at a time.
+1. Valider que le profil de marque existe à `~/.claude-marketing/brands/{brand-slug}/profile.json`. Si non, indiquer à l'utilisateur d'exécuter d'abord `/digital-marketing-pro:brand-setup`.
+2. Exécuter `python ${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py init --brand {brand-slug} --id {engagement-id}`.
+3. Confirmer que l'arborescence de répertoires a été créée et rapporter la prochaine action requise (intake de la Partie 1).
+4. Guider l'utilisateur à travers l'intake Stone vs Opinion de la Partie 1 en posant les questions un lot à la fois.
 
-**Part 1 intake questions (ask in this order):**
+**Questions d'intake de la Partie 1 (poser dans cet ordre) :**
 
-**Stone — what the client knows for certain:**
+**Stone — ce que le client sait avec certitude :**
 
-1. Company basics: founded year, employee count, headquarters location, geographic operations
-2. Business model: revenue streams, pricing tiers, primary product/service categories
-3. Current marketing: channels currently active, monthly marketing spend, current measurable KPIs
-4. Tech stack: CRM, email service provider, analytics setup, ad accounts
-5. Customer base scale: customer count, biggest named customer, average order value if known
+1. Bases de l'entreprise : année de fondation, effectif, localisation du siège, zones d'opération géographiques
+2. Modèle économique : sources de revenu, niveaux de tarification, catégories de produit/service principales
+3. Marketing actuel : canaux actuellement actifs, dépense marketing mensuelle, KPI mesurables actuels
+4. Stack technique : CRM, fournisseur de service email, configuration analytics, comptes publicitaires
+5. Échelle de la base client : nombre de clients, plus gros client nommé, valeur de commande moyenne si connue
 
-For each Stone fact, capture:
-- The fact itself
-- Source (how the user knows / what document confirmed it)
+Pour chaque fait Stone, capturer :
+- Le fait lui-même
+- La source (comment l'utilisateur le sait / quel document l'a confirmé)
 
-Save each via:
+Enregistrer chacun via :
 ```
 python ${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py add-stone-fact --brand {slug} --id {id} --fact-json '{"category":"...","fact":"...","source":"..."}'
 ```
 
-**Opinion — what the client believes:**
+**Opinion — ce que le client croit :**
 
-1. Brand positioning: how does the client describe their position in the market?
-2. Customer base: who do they think their customers are? Why do they buy?
-3. Competitors: who do they consider their main competitors?
-4. Growth opportunities: where do they think the biggest opportunity is?
-5. What is working: what marketing activity does the client believe is working?
-6. What is not working: what does the client believe is not working?
+1. Positionnement de marque : comment le client décrit-il sa position sur le marché ?
+2. Base client : qui pensent-ils que sont leurs clients ? Pourquoi achètent-ils ?
+3. Concurrents : qui considèrent-ils comme leurs principaux concurrents ?
+4. Opportunités de croissance : où pensent-ils que se trouve la plus grande opportunité ?
+5. Ce qui fonctionne : quelle activité marketing le client croit-il fonctionner ?
+6. Ce qui ne fonctionne pas : que croit le client ne pas fonctionner ?
 
-For each Opinion, capture:
-- The hypothesis
-- Client's evidence for it (could be intuition, anecdote, partial data)
-- Research question — what would the unbiased research need to verify or refute?
+Pour chaque Opinion, capturer :
+- L'hypothèse
+- Les preuves du client à son sujet (peut être une intuition, une anecdote, des données partielles)
+- Question de recherche — que devrait vérifier ou réfuter la recherche non biaisée ?
 
-Save each via:
+Enregistrer chacune via :
 ```
 python ${CLAUDE_PLUGIN_ROOT}/scripts/engagement-state.py add-opinion --brand {slug} --id {id} --hypothesis-json '{"category":"...","hypothesis":"...","client_evidence":"...","research_question":"..."}'
 ```
 
-**On completion of Part 1:** mark Part 1 as completed via `mark-part-completed --part 1`, advise the user to proceed to Part 2 (External Research).
+**À l'issue de la Partie 1 :** marquer la Partie 1 comme terminée via `mark-part-completed --part 1`, conseiller à l'utilisateur de passer à la Partie 2 (Recherche externe).
 
 ### `/digital-marketing-pro:engagement next [brand] [id]`
 
-**Purpose:** Advance to the next part.
+**Objectif :** avancer à la partie suivante.
 
-**Steps:**
+**Étapes :**
 
-1. Read engagement status via `engagement-state.py status`
-2. Identify the current part and next not-yet-completed part
-3. Confirm with the user that the current part is genuinely complete (do not auto-advance — ask)
-4. On confirmation, mark current as completed, advance current_part pointer
-5. Brief the user on what the new part requires
+1. Lire le statut d'engagement via `engagement-state.py status`
+2. Identifier la partie actuelle et la prochaine partie non encore terminée
+3. Confirmer avec l'utilisateur que la partie actuelle est réellement terminée (ne jamais avancer automatiquement — demander)
+4. Sur confirmation, marquer l'actuelle comme terminée, avancer le pointeur current_part
+5. Informer l'utilisateur de ce que requiert la nouvelle partie
 
 ### `/digital-marketing-pro:engagement status [brand] [id]`
 
-**Purpose:** Show engagement status.
+**Objectif :** afficher le statut de l'engagement.
 
-**Steps:**
+**Étapes :**
 
-1. Run `engagement-state.py status` — get the full state
-2. Read the Living Project Instruction File header
-3. Format a human-readable summary:
-   - Engagement: brand + id + start date
-   - Current part: part name + days in
-   - Completed parts: list
-   - Pending parts: list
-   - Open re-run decisions: count
-   - LIF last updated: date
-4. If the engagement has open items needing resolution, list them
+1. Exécuter `engagement-state.py status` — obtenir l'état complet
+2. Lire l'en-tête du Living Project Instruction File
+3. Formater un résumé lisible par un humain :
+   - Engagement : marque + id + date de début
+   - Partie actuelle : nom de la partie + jours écoulés
+   - Parties terminées : liste
+   - Parties en attente : liste
+   - Décisions de relance ouvertes : nombre
+   - Dernière mise à jour du LIF : date
+4. Si l'engagement a des éléments ouverts nécessitant une résolution, les lister
 
 ### `/digital-marketing-pro:engagement file-tree [brand] [id]`
 
-**Purpose:** Show the engagement directory file tree.
+**Objectif :** afficher l'arborescence de fichiers du répertoire d'engagement.
 
-**Steps:**
+**Étapes :**
 
-1. Run `engagement-state.py file-tree`
-2. Format as an indented tree
-3. Highlight files that are missing per the canonical structure. Use `engagement-state.py validate-part --part {N}` to diff each completed part's actual files against the `PART_DEFINITIONS` manifest (e.g., if Part 3 is marked completed but `3.1-business-and-sbu-analysis.md` is missing, `validate-part` flags it deterministically instead of eyeballing).
+1. Exécuter `engagement-state.py file-tree`
+2. Formater sous forme d'arbre indenté
+3. Mettre en évidence les fichiers manquants par rapport à la structure canonique. Utiliser `engagement-state.py validate-part --part {N}` pour comparer les fichiers réels de chaque partie terminée au manifeste `PART_DEFINITIONS` (par ex. si la Partie 3 est marquée terminée mais que `3.1-business-and-sbu-analysis.md` est manquant, `validate-part` le signale de façon déterministe plutôt qu'à l'œil).
 
 ### `/digital-marketing-pro:engagement validate [brand] [id]`
 
-**Purpose:** Run the Part 5 Client Validation flow.
+**Objectif :** exécuter le flux de Validation client de la Partie 5.
 
-**Pre-condition:** Parts 2, 3, 4 must be completed.
+**Précondition :** les Parties 2, 3, 4 doivent être terminées.
 
-**Steps:**
+**Étapes :**
 
-1. Verify pre-conditions (Parts 2, 3, 4 completed)
-2. Invoke the `client-validation-document` skill — it produces the Part 5 deliverable: a structured document presenting each finding from v1 with ACCEPT/REJECT/EDIT/DEFER options
-3. **Run the full quality gate on the Part 5 deliverable before it goes to the client:** `/digital-marketing-pro:check "{part5_path}" --full --brand {brand}`. If it returns BLOCKED, fix the CRITICAL issues first (this gate is mandatory before Part 5 and Part 8 deliverables).
-4. After the user reviews and provides decisions, parse them into a triggers list per the Decision Matrix categories
-5. Run `engagement-state.py decision-matrix --triggers "{comma-separated}"` to compute the v2 re-run plan
-6. Present the re-run plan to the user
-7. Mark Part 5 completed; on user approval of the re-run plan, advance to Part 6
+1. Vérifier les préconditions (Parties 2, 3, 4 terminées)
+2. Invoquer la compétence `client-validation-document` — elle produit le livrable de la Partie 5 : un document structuré présentant chaque constat de la v1 avec des options ACCEPTER/REJETER/MODIFIER/DIFFÉRER
+3. **Exécuter la porte qualité complète sur le livrable de la Partie 5 avant qu'il ne parte au client :** `/digital-marketing-pro:check "{part5_path}" --full --brand {brand}`. S'il retourne BLOCKED, corriger d'abord les problèmes CRITIQUES (cette porte est obligatoire avant les livrables de la Partie 5 et de la Partie 8).
+4. Après que l'utilisateur a revu et fourni ses décisions, les analyser sous forme de liste de déclencheurs selon les catégories de la Decision Matrix
+5. Exécuter `engagement-state.py decision-matrix --triggers "{comma-separated}"` pour calculer le plan de relance v2
+6. Présenter le plan de relance à l'utilisateur
+7. Marquer la Partie 5 comme terminée ; sur approbation du plan de relance par l'utilisateur, avancer à la Partie 6
 
 ### `/digital-marketing-pro:engagement re-run-decision [brand] [id]`
 
-**Purpose:** Apply the Decision Matrix to compute v2 re-runs.
+**Objectif :** appliquer la Decision Matrix pour calculer les relances v2.
 
-**Steps:**
+**Étapes :**
 
-1. Read the Part 5 Client Validation Document
-2. Categorise rejected/edited findings into Decision Matrix triggers
-3. Show the triggers and the computed re-runs
-4. Estimate the cost (rough token count) of each re-run
-5. Await user approval — they can accept, modify (skip some, add others), or reject
-6. Record the executed plan via `engagement-state.py record-rerun-execution`
+1. Lire le Document de validation client de la Partie 5
+2. Catégoriser les constats rejetés/modifiés en déclencheurs de la Decision Matrix
+3. Afficher les déclencheurs et les relances calculées
+4. Estimer le coût (nombre de tokens approximatif) de chaque relance
+5. Attendre l'approbation de l'utilisateur — il peut accepter, modifier (ignorer certaines, en ajouter d'autres), ou rejeter
+6. Enregistrer le plan exécuté via `engagement-state.py record-rerun-execution`
 
 ### `/digital-marketing-pro:engagement update-back [brand] [id] --doc <doc-id> --reason <reason>`
 
-**Purpose:** Apply the Update-Back Rule to bump a source document version after Part 7+.
+**Objectif :** appliquer la règle Update-Back pour incrémenter la version d'un document source après la Partie 7+.
 
-**Pre-condition:** The user has already drafted the corrected document content.
+**Précondition :** l'utilisateur a déjà rédigé le contenu du document corrigé.
 
-**Steps:**
+**Étapes :**
 
-1. Read the current version of the doc
-2. Confirm the correction with the user (validation step per the Update-Back Rule)
-3. Bump the version via `engagement-state.py bump-version --doc {id} --reason "{reason}"`
-4. Save the new version file with a header noting v(prev) → v(new) changes
-5. Update the Living Project Instruction File via `lif-log-change` — it now appends the change to `living-instruction-file.md` and refreshes the header date, so the LIF reflects the correction immediately
-6. Identify downstream documents that may need review and add to the engagement's review queue
+1. Lire la version actuelle du document
+2. Confirmer la correction avec l'utilisateur (étape de validation selon la règle Update-Back)
+3. Incrémenter la version via `engagement-state.py bump-version --doc {id} --reason "{reason}"`
+4. Enregistrer le nouveau fichier de version avec un en-tête notant les changements v(préc) → v(nouv)
+5. Mettre à jour le Living Project Instruction File via `lif-log-change` — il ajoute désormais le changement à `living-instruction-file.md` et actualise la date d'en-tête, de sorte que le LIF reflète la correction immédiatement
+6. Identifier les documents en aval pouvant nécessiter une revue et les ajouter à la file de revue de l'engagement
 
 ### `/digital-marketing-pro:engagement lif-show [brand] [id]`
 
-**Purpose:** Display the Living Project Instruction File.
+**Objectif :** afficher le Living Project Instruction File.
 
-**Steps:** Run `engagement-state.py lif-show` and format the markdown output for readability.
+**Étapes :** exécuter `engagement-state.py lif-show` et formater la sortie markdown pour la lisibilité.
 
 ### `/digital-marketing-pro:engagement list-engagements [brand]`
 
-**Purpose:** List all engagements (optionally filtered by brand).
+**Objectif :** lister tous les engagements (optionnellement filtrés par marque).
 
-**Steps:** Run `engagement-state.py list-engagements --brand {slug}` and format as a table.
+**Étapes :** exécuter `engagement-state.py list-engagements --brand {slug}` et formater sous forme de tableau.
 
-### Production shorthands
+### Raccourcis de production
 
-The command family also exposes four production shorthands that route straight to the part-producing skills (documented in *Per-Part Production Targets* below). These match the command surface one-to-one:
+La famille de commandes expose également quatre raccourcis de production qui routent directement vers les compétences productrices de partie (documentées dans *Cibles de production par partie* ci-dessous). Ils correspondent un à un à la surface de commande :
 
-- `/digital-marketing-pro:engagement four-core <brand> <id> [--doc 3.X] [--view v2] [--combined]` — Part 3, invokes the `four-core-documents` skill
-- `/digital-marketing-pro:engagement growth-plan <brand> <id>` — Part 8, invokes the `growth-plan` skill
-- `/digital-marketing-pro:engagement yearly-planner <brand> <id>` — Part 8 companion, invokes the `yearly-planner` skill
-- `/digital-marketing-pro:engagement loop <brand> <id>` — Part 12, invokes the `continuous-improvement-loop` skill
+- `/digital-marketing-pro:engagement four-core <brand> <id> [--doc 3.X] [--view v2] [--combined]` — Partie 3, invoque la compétence `four-core-documents`
+- `/digital-marketing-pro:engagement growth-plan <brand> <id>` — Partie 8, invoque la compétence `growth-plan`
+- `/digital-marketing-pro:engagement yearly-planner <brand> <id>` — complément de la Partie 8, invoque la compétence `yearly-planner`
+- `/digital-marketing-pro:engagement loop <brand> <id>` — Partie 12, invoque la compétence `continuous-improvement-loop`
 
-## Per-Part Production Targets
+## Cibles de production par partie
 
-Each part is produced by real, existing agents and skills. This orchestrator dispatches to the targets below — there are **no** wrapper skills named `external-research` / `preparation-documents` / `channel-strategy-fanout` / `execution-artefacts` / `ai-creative-instructions`; those never existed. Use the exact targets named here:
+Chaque partie est produite par des agents et compétences réels et existants. Cet orchestrateur route vers les cibles ci-dessous — il n'existe **aucune** compétence enveloppe nommée `external-research` / `preparation-documents` / `channel-strategy-fanout` / `execution-artefacts` / `ai-creative-instructions` ; celles-ci n'ont jamais existé. Utiliser exactement les cibles nommées ici :
 
-| Part | Real target(s) |
+| Partie | Cible(s) réelle(s) |
 |------|----------------|
-| 1 | (this skill — intake walked here directly) |
-| 2 | agents `market-intelligence` + `competitive-intel`; skill `audience-intelligence` (invoke as a skill); reference `compliance-rules.md` (load as context) |
-| 3 | skill `four-core-documents` (produces 3.1, 3.2, 3.3, 3.4) |
-| 4 | command `competitor-analysis` + skills `audience-intelligence` + agent `market-intelligence` |
-| 5 | skill `client-validation-document` |
-| 6 | re-runs invoke skill `four-core-documents` with `--view v2` |
-| 7 | skills `content-engine` + `campaign-orchestrator` + `analytics-insights` |
-| 8 | skills `growth-plan` + `yearly-planner` |
-| 9 | per-channel skills — `paid-advertising`, `aeo-geo`, `social-strategy`, `seo-plan`, `email-sequence` (one per channel family) |
-| 10 | skill `content-engine` (execution / output mode) |
-| 11 | skills `content-engine` + `ad-creative` + `video-script` (creative briefs); asset rendering happens in your own creative tooling (design team, AI image/video tools, or a connected design platform), then finished assets are signed via `c2pa-metadata` |
-| 12 | skill `continuous-improvement-loop` |
+| 1 | (cette compétence — l'intake est guidé directement ici) |
+| 2 | agents `market-intelligence` + `competitive-intel` ; compétence `audience-intelligence` (invoquer comme une compétence) ; référence `compliance-rules.md` (charger comme contexte) |
+| 3 | compétence `four-core-documents` (produit 3.1, 3.2, 3.3, 3.4) |
+| 4 | commande `competitor-analysis` + compétences `audience-intelligence` + agent `market-intelligence` |
+| 5 | compétence `client-validation-document` |
+| 6 | les relances invoquent la compétence `four-core-documents` avec `--view v2` |
+| 7 | compétences `content-engine` + `campaign-orchestrator` + `analytics-insights` |
+| 8 | compétences `growth-plan` + `yearly-planner` |
+| 9 | compétences par canal — `paid-advertising`, `aeo-geo`, `social-strategy`, `seo-plan`, `email-sequence` (une par famille de canal) |
+| 10 | compétence `content-engine` (mode exécution / production) |
+| 11 | compétences `content-engine` + `ad-creative` + `video-script` (briefs créatifs) ; le rendu des actifs se fait dans votre propre outillage créatif (équipe design, outils IA image/vidéo, ou une plateforme de design connectée), puis les actifs finalisés sont signés via `c2pa-metadata` |
+| 12 | compétence `continuous-improvement-loop` |
 
-## Parallel Dispatch
+## Dispatch parallèle
 
-Several parts of the engagement contain **independent sub-tasks** that should be dispatched **in parallel via multiple `Task` tool calls in a single message** — not sequentially. Dispatching independent sub-tasks concurrently is substantially faster than running them one after another; actual time varies by engagement depth, model, and rate limits. Keep concurrent subagents to a handful (roughly 3–8) — past that you queue against API rate limits and the win drops; under 3 there is nothing to parallelize.
+Plusieurs parties de l'engagement contiennent des **sous-tâches indépendantes** qui doivent être dispatchées **en parallèle via plusieurs appels d'outil `Task` dans un seul message** — pas séquentiellement. Dispatcher des sous-tâches indépendantes de façon concurrente est nettement plus rapide que de les exécuter les unes après les autres ; le temps réel varie selon la profondeur de l'engagement, le modèle, et les limites de débit. Garder les sous-agents concurrents à une poignée (environ 3 à 8) — au-delà, on se met en file d'attente contre les limites de débit de l'API et le gain diminue ; en dessous de 3, il n'y a rien à paralléliser.
 
-**Cost note:** total token usage is broadly similar (you're doing the same work) but billed-per-turn input costs trend up slightly because each parallel subagent re-loads its context.
+**Note de coût :** l'usage total de tokens est globalement similaire (le même travail est effectué), mais les coûts d'entrée facturés par tour tendent légèrement à la hausse car chaque sous-agent parallèle recharge son propre contexte.
 
-**Parts that benefit from parallel dispatch:**
+**Parties bénéficiant du dispatch parallèle :**
 
-| Part | Parallel-eligible work | How to dispatch |
+| Partie | Travail éligible au parallélisme | Comment dispatcher |
 |---|---|---|
-| **Part 2 — External Research** | Market sizing, competitor landscape, customer signals, regulatory landscape — none depend on each other | Dispatch the `market-intelligence` agent and the `competitive-intel` agent as parallel `Task` calls; invoke `audience-intelligence` as a skill; load `compliance-rules.md` (a reference file) as context — not as a subagent |
-| **Part 4 — Competitive + Customer + Market** | Four documents (4.1, 4.2, 4.3, 4.4) are independent — they reference Part 2 only | Dispatch all four in a single message with the four respective subagents |
-| **Part 9 — Channel Strategy Fan-out** | Up to 17 channel docs in 7 families. Families 2 (Paid platforms), 3 (Organic & Influencer), 4 (Marketplace & CRM), 5 (Content/ATL/BTL/PR) are independent after Families 1 (Search & Campaign) and 6 (Web + Measurement) complete | Sequence: F1 → (F2 ∥ F3 ∥ F4 ∥ F5 in parallel) → F6 → F7. The middle batch is four parallel `Task` calls in one message. |
-| **Part 10 — Execution Artefacts** | Ad copy, post copy, headlines, CTAs across channels — independent per channel | Dispatch one subagent per channel in parallel |
-| **Part 11 — AI Creative Instructions** | Visual asset briefs — independent per asset | Dispatch in parallel per asset |
+| **Partie 2 — Recherche externe** | Dimensionnement du marché, paysage concurrentiel, signaux clients, paysage réglementaire — aucun ne dépend des autres | Dispatcher l'agent `market-intelligence` et l'agent `competitive-intel` en appels `Task` parallèles ; invoquer `audience-intelligence` comme une compétence ; charger `compliance-rules.md` (un fichier de référence) comme contexte — pas comme un sous-agent |
+| **Partie 4 — Concurrentiel + Client + Marché** | Les quatre documents (4.1, 4.2, 4.3, 4.4) sont indépendants — ils référencent uniquement la Partie 2 | Dispatcher les quatre en un seul message avec les quatre sous-agents respectifs |
+| **Partie 9 — Déclinaison de la stratégie par canal** | Jusqu'à 17 documents de canal en 7 familles. Les familles 2 (Plateformes payantes), 3 (Organique & Influence), 4 (Marketplace & CRM), 5 (Contenu/ATL/BTL/RP) sont indépendantes une fois les familles 1 (Recherche & Campagne) et 6 (Web + Mesure) terminées | Séquence : F1 → (F2 ∥ F3 ∥ F4 ∥ F5 en parallèle) → F6 → F7. Le lot du milieu correspond à quatre appels `Task` parallèles en un seul message. |
+| **Partie 10 — Artefacts d'exécution** | Texte publicitaire, texte de post, titres, CTA sur les canaux — indépendants par canal | Dispatcher un sous-agent par canal en parallèle |
+| **Partie 11 — Instructions créatives IA** | Briefs d'actifs visuels — indépendants par actif | Dispatcher en parallèle par actif |
 
-**Parts that MUST stay sequential** (have hard data dependencies):
+**Parties devant rester séquentielles** (dépendances de données strictes) :
 
-- Part 1 → Part 2 (intake feeds research scope)
-- Part 3 → Part 4 (Four Core Documents feed competitive/customer/market analysis)
-- Part 5 → Part 6 (Client Validation drives which docs need v2 re-runs)
-- Part 7 → Part 8 (prep docs feed the Growth Plan)
-- Part 8 → Part 9 (Growth Plan drives channel fan-out)
+- Partie 1 → Partie 2 (l'intake alimente le périmètre de la recherche)
+- Partie 3 → Partie 4 (les Four Core Documents alimentent l'analyse concurrentielle/client/marché)
+- Partie 5 → Partie 6 (la Validation client détermine quels documents nécessitent une relance v2)
+- Partie 7 → Partie 8 (les documents de préparation alimentent le Growth Plan)
+- Partie 8 → Partie 9 (le Growth Plan pilote la déclinaison par canal)
 
-**Cross-cutting rules:**
+**Règles transversales :**
 
-1. Never dispatch parallel agents that need to write to the same file simultaneously — chunk by output file.
-2. Each parallel subagent gets the engagement slug and the LIF path so it can read shared context, but writes ONLY to its own numbered per-part subdirectory (01-… 12-…).
-3. **Subagents never mutate engagement state.** A subagent must NOT call `lif-log-change`, `mark-part-completed`, `bump-version`, or any other `engagement-state.py` write, and must NOT touch `_engagement.json` or `living-instruction-file.md`. Those are unlocked read-modify-write files; concurrent writers lose updates. Each subagent returns its output as per-part files only. After a parallel batch completes, the **orchestrator alone** applies state mutations — one `lif-log-change` per batch, plus `mark-part-completed` / `bump-version` as needed — and then re-reads the LIF before the next step.
-4. If a parallel batch fails partway, the failed subagent's outputs are NOT auto-rolled-back — re-dispatch only the failed ones; the successful peers stay valid.
+1. Ne jamais dispatcher des agents parallèles devant écrire simultanément dans le même fichier — découper par fichier de sortie.
+2. Chaque sous-agent parallèle reçoit le slug de l'engagement et le chemin du LIF pour pouvoir lire le contexte partagé, mais n'écrit QUE dans son propre sous-répertoire numéroté par partie (01-… 12-…).
+3. **Les sous-agents ne modifient jamais l'état de l'engagement.** Un sous-agent ne doit PAS appeler `lif-log-change`, `mark-part-completed`, `bump-version`, ni aucune autre écriture `engagement-state.py`, et ne doit PAS toucher à `_engagement.json` ou `living-instruction-file.md`. Ce sont des fichiers de lecture-modification-écriture non verrouillés ; des écrivains concurrents perdent des mises à jour. Chaque sous-agent ne renvoie ses résultats que sous forme de fichiers par partie. Une fois un lot parallèle terminé, **seul l'orchestrateur** applique les mutations d'état — un `lif-log-change` par lot, plus `mark-part-completed` / `bump-version` selon les besoins — puis relit le LIF avant l'étape suivante.
+4. Si un lot parallèle échoue en cours de route, les résultats du sous-agent en échec ne sont PAS automatiquement annulés — ne redispatcher que ceux en échec ; les pairs ayant réussi restent valides.
 
-For multi-dimensional commands outside the 12-part flow (e.g. `/digital-marketing-pro:competitor-analysis`, `/digital-marketing-pro:seo-audit`, `/digital-marketing-pro:content-engine`), the same pattern applies — dispatch independent dimensions in parallel via multiple `Task` calls in a single message.
+Pour les commandes multidimensionnelles en dehors du flux en 12 parties (par ex. `/digital-marketing-pro:competitor-analysis`, `/digital-marketing-pro:seo-audit`, `/digital-marketing-pro:content-engine`), le même schéma s'applique — dispatcher les dimensions indépendantes en parallèle via plusieurs appels `Task` dans un seul message.
 
-## Running an engagement in a single conversation
+## Mener un engagement dans une seule conversation
 
-A large-context model can hold much of an engagement — intake, external research, the Four Core Documents (61 steps), competitive/customer/market analysis, Client Validation, selective v2 re-runs, preparation docs, Growth Plan + Yearly Planner, channel fan-out, execution artefacts, creative briefs, and the continuous-improvement loop — within one working session (a full engagement typically produces 50–60 canonical documents).
+Un modèle à grand contexte peut contenir une grande partie d'un engagement — intake, recherche externe, les Four Core Documents (61 étapes), analyse concurrentielle/client/marché, Validation client, relances v2 sélectives, documents de préparation, Growth Plan + Yearly Planner, déclinaison par canal, artefacts d'exécution, briefs créatifs, et la boucle d'amélioration continue — au sein d'une seule session de travail (un engagement complet produit typiquement 50 à 60 documents canoniques).
 
-**The checkpoint + persistence pattern is still the default — always.** Even when everything fits in one conversation:
+**Le schéma de point de contrôle + persistance reste la valeur par défaut — toujours.** Même quand tout tient dans une seule conversation :
 
-- `engagement-state.py` + `checkpoint-manager.py` remain the system of record: audit trail, cross-conversation resume, and multi-user / multi-day continuity all depend on persisted state.
-- Do NOT skip LIF updates or state writes on the assumption that "it's all in context." An interruption still loses in-memory work, and a teammate resuming the engagement reads persisted state — not your conversation.
-- The only single-conversation convenience is that you re-read fewer files mid-session because they are already in context. It does not remove the need to persist, checkpoint, and update the LIF.
+- `engagement-state.py` + `checkpoint-manager.py` restent le système de référence : la piste d'audit, la reprise inter-conversation, et la continuité multi-utilisateur/multi-jour en dépendent toutes.
+- Ne PAS sauter les mises à jour du LIF ou les écritures d'état en supposant que « tout est dans le contexte ». Une interruption perd quand même le travail en mémoire, et un coéquipier reprenant l'engagement lit l'état persisté — pas votre conversation.
+- La seule commodité d'une conversation unique est de relire moins de fichiers en cours de session car ils sont déjà en contexte. Cela ne supprime pas le besoin de persister, de créer des points de contrôle, et de mettre à jour le LIF.
 
-## Quality Discipline
+## Discipline qualité
 
-1. **Never hand-edit `_engagement.json`.** Always go through `engagement-state.py`.
-2. **Never delete v1.** When v2 is produced, both stay.
-3. **Always update the LIF when source docs change.** Use `lif-log-change` — it appends to the change-log section of `living-instruction-file.md` and refreshes the header date, so the LIF never goes stale.
-4. **Always cite source per fact.** Stone facts cite the validation source; Opinion hypotheses cite the client's evidence.
-5. **Never auto-advance parts.** The user confirms part completion explicitly.
-6. **Always parallelize independent work.** When a Part has 2+ independent sub-tasks (see Parallel Dispatch above), dispatch them in a single message with multiple Task calls. Sequential dispatch of independent work wastes wall-clock time and API turns.
-7. **Never auto-execute v2 re-runs without user approval.** Show the plan, get approval, then run. Cap: 2 v2 re-run rounds per part without an explicit user override (stored in state).
+1. **Ne jamais éditer `_engagement.json` à la main.** Toujours passer par `engagement-state.py`.
+2. **Ne jamais supprimer la v1.** Quand la v2 est produite, les deux restent.
+3. **Toujours mettre à jour le LIF quand les documents source changent.** Utiliser `lif-log-change` — il ajoute au journal des changements de `living-instruction-file.md` et actualise la date d'en-tête, de sorte que le LIF ne devienne jamais obsolète.
+4. **Toujours citer la source de chaque fait.** Les faits Stone citent la source de validation ; les hypothèses Opinion citent les preuves du client.
+5. **Ne jamais avancer automatiquement les parties.** L'utilisateur confirme explicitement l'achèvement d'une partie.
+6. **Toujours paralléliser le travail indépendant.** Quand une Partie a 2+ sous-tâches indépendantes (voir Dispatch parallèle ci-dessus), les dispatcher en un seul message avec plusieurs appels Task. Le dispatch séquentiel de travail indépendant gaspille du temps réel et des tours d'API.
+7. **Ne jamais exécuter automatiquement les relances v2 sans approbation de l'utilisateur.** Montrer le plan, obtenir l'approbation, puis exécuter. Plafond : 2 cycles de relance v2 par partie sans dérogation explicite de l'utilisateur.
 
-## Examples
+## Exemples
 
-### Example: Starting a new engagement
+### Exemple : démarrer un nouvel engagement
 
 ```
 User: I want to start a new engagement for Acme Corp this quarter.
@@ -359,7 +359,7 @@ Skill response:
 8. Mark Part 1 completed. Advise: "Part 1 is complete. The unbiased External Research (Part 2) is next — recommend running it now or scheduling it for the next session."
 ```
 
-### Example: Mid-engagement status check
+### Exemple : vérification de statut en cours d'engagement
 
 ```
 User: Where are we on the Beta Industries engagement?
@@ -378,7 +378,7 @@ Skill response:
   Next required action: complete remaining Part 9 channel docs (5 of 9 complete)
 ```
 
-### Example: Applying the Decision Matrix
+### Exemple : application de la Decision Matrix
 
 ```
 User: We just finished Part 5 client validation. The client rejected our positioning recommendation and added two new competitors. What re-runs do we need?
@@ -396,7 +396,7 @@ Skill response:
 6. On user approval, mark Part 6 started and invoke four-core-documents skill with view=v2 for each triggered doc
 ```
 
-### Example: Update-Back correction in flight
+### Exemple : correction Update-Back en cours de route
 
 ```
 User: We've been live for two months. Q1 channel data shows our actual CAC for Segment X is INR 4,800 — but Core Doc 3.1 v2.0 had it estimated at INR 3,000. Need to update.
@@ -411,14 +411,14 @@ Skill response:
 7. Add to engagement review queue
 ```
 
-## Related skills
+## Compétences associées
 
-- `four-core-documents` — produces Part 3 deliverables
-- `client-validation-document` — produces Part 5 deliverable
-- `growth-plan` + `yearly-planner` — produce Part 8 deliverables
-- `continuous-improvement-loop` — handles Part 12
+- `four-core-documents` — produit les livrables de la Partie 3
+- `client-validation-document` — produit le livrable de la Partie 5
+- `growth-plan` + `yearly-planner` — produisent les livrables de la Partie 8
+- `continuous-improvement-loop` — gère la Partie 12
 
-## Related references
+## Références associées
 
 - [engagement-flow-methodology.md](../context-engine/engagement-flow-methodology.md)
 - [four-core-documents-spec.md](../context-engine/four-core-documents-spec.md)

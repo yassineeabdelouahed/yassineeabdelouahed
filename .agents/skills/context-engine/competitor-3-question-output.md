@@ -1,125 +1,126 @@
-# Competitor Analysis — The Three-Question Output
+# Analyse concurrentielle — Le livrable en trois questions
 
-Competitive intelligence is only valuable when it leads to action. A competitor analysis that lists what each competitor does, without translating it into strategic moves, is research theatre.
+La veille concurrentielle n'a de valeur que si elle mène à l'action. Une analyse concurrentielle qui liste ce que fait chaque concurrent, sans le traduire en mouvements stratégiques, est du théâtre de recherche.
 
-Every competitor analysis output in this plugin must answer three questions for each competitor analysed.
+Chaque livrable d'analyse concurrentielle de ce plugin doit répondre à trois questions pour chaque concurrent analysé.
 
-## The Three Questions
+## Les trois questions
 
-### Question 1: What are they doing well that we should learn from (NOT copy)?
+### Question 1 : Que font-ils bien dont nous devrions nous inspirer (PAS copier) ?
 
-**The discipline:** Identify what is working for them. Then ask why it works for them — and whether the conditions that make it work are present in our context.
+**La discipline :** Identifier ce qui fonctionne pour eux. Puis se demander pourquoi cela fonctionne pour eux — et si les conditions qui le font fonctionner sont présentes dans notre contexte.
 
-**Why "learn from, not copy":** Their context is different. Their brand strength, their competitive position, their team, their budget, their audience composition — all different from ours. A tactic that works for them may flop for us if the underlying conditions differ.
+**Pourquoi « s'inspirer, pas copier » :** Leur contexte est différent. La force de leur marque, leur position concurrentielle, leur équipe, leur budget, la composition de leur audience — tout diffère du nôtre. Une tactique qui fonctionne pour eux peut échouer pour nous si les conditions sous-jacentes diffèrent.
 
-**Example output:**
+**Exemple de résultat :**
 
-> **Competitor X is doing well: Document Carousels on LinkedIn**
+> **Le concurrent X excelle : les carrousels de documents sur LinkedIn**
 >
-> What they do: 3-4 document carousel posts per week, each 12-18 slides, deeply educational on procurement automation topics. Average 200+ reactions per post; 30+ comments.
+> Ce qu'ils font : 3-4 posts de carrousel de documents par semaine, chacun de 12 à 18 diapositives, profondément éducatifs sur les sujets d'automatisation des achats. En moyenne plus de 200 réactions par post ; plus de 30 commentaires.
 >
-> Why it works for them: They have built credibility over 3 years as procurement experts; their audience is procurement professionals who actively want educational content; their team has dedicated content production capacity.
+> Pourquoi cela fonctionne pour eux : ils ont construit leur crédibilité pendant 3 ans en tant qu'experts des achats ; leur audience est composée de professionnels des achats qui souhaitent activement du contenu éducatif ; leur équipe dispose d'une capacité de production de contenu dédiée.
 >
-> What we can learn: Document Carousels are an underused format on LinkedIn for our space. The format suits "depth" content (multi-step guides, frameworks, comparisons).
+> Ce que nous pouvons en apprendre : les carrousels de documents sont un format sous-utilisé sur LinkedIn dans notre secteur. Le format convient au contenu « en profondeur » (guides multi-étapes, cadres, comparaisons).
 >
-> What we should NOT copy directly: We do not yet have the credibility or audience size to expect 200+ reactions; starting with 3-4 carousels per week would burn our content team. Our adapted approach: start with 1 carousel per week as a 90-day test, focus on our specific differentiation (not procurement generally), measure engagement, scale only if working.
+> Ce que nous ne devrions PAS copier directement : nous n'avons pas encore la crédibilité ni la taille d'audience pour espérer plus de 200 réactions ; commencer avec 3-4 carrousels par semaine épuiserait notre équipe de contenu. Notre approche adaptée : commencer avec 1 carrousel par semaine comme test de 90 jours, se concentrer sur notre différenciation spécifique (pas les achats en général), mesurer l'engagement, ne passer à l'échelle que si cela fonctionne.
 
-### Question 2: What are they doing poorly that creates an opportunity for us?
+### Question 2 : Que font-ils mal qui crée une opportunité pour nous ?
 
-**The discipline:** Identify their weaknesses. Then ask whether we can credibly fill the gap they leave.
+**La discipline :** Identifier leurs faiblesses. Puis se demander si nous pouvons combler de manière crédible l'écart qu'ils laissent.
 
-**Why this matters:** Most competitive analysis focuses on what competitors do well (which is intimidating but not actionable). The strategic opportunity is in what they do poorly — that is where space exists for us.
+**Pourquoi c'est important :** La plupart des analyses concurrentielles se concentrent sur ce que les concurrents font bien (ce qui est intimidant mais non exploitable). L'opportunité stratégique se trouve dans ce qu'ils font mal — c'est là qu'existe l'espace pour nous.
 
-**Example output:**
+**Exemple de résultat :**
 
-> **Competitor X is doing poorly: Customer support responsiveness**
+> **Le concurrent X est faible : réactivité du support client**
 >
-> What they do (poorly): Average response time to support tickets is 18-36 hours per public reviews on G2 and Capterra. Multiple reviews mention "frustrating to get help."
+> Ce qu'ils font (mal) : le temps de réponse moyen aux tickets de support est de 18 à 36 heures selon les avis publics sur G2 et Capterra. Plusieurs avis mentionnent qu'il est « frustrant d'obtenir de l'aide ».
 >
-> Why this is an opportunity: Our smaller scale lets us promise and deliver 4-hour response time. This is a credible differentiator we can lead with in messaging, social proof (response-time stats published transparently), and product (in-app live chat).
+> Pourquoi c'est une opportunité : notre échelle plus réduite nous permet de promettre et de tenir un temps de réponse de 4 heures. C'est un différenciateur crédible que nous pouvons mettre en avant dans le message, la preuve sociale (statistiques de temps de réponse publiées avec transparence), et le produit (chat en direct dans l'application).
 >
-> Our strategic move: lead with "4-hour response time guaranteed" in BOFU messaging; produce a comparison page that publishes our response-time data alongside category-stated norms; enable in-app live chat as a product investment.
+> Notre mouvement stratégique : mettre en avant « temps de réponse garanti de 4 heures » dans le message BOFU ; produire une page comparative publiant nos données de temps de réponse à côté des normes déclarées de la catégorie ; activer le chat en direct dans l'application comme investissement produit.
 
-### Question 3: What are they NOT doing that represents white space we can own?
+### Question 3 : Que ne font-ils PAS qui représente un espace blanc que nous pouvons occuper ?
 
-**The discipline:** Identify what no competitor is doing that the market would respond to. White space is the most valuable strategic territory.
+**La discipline :** Identifier ce qu'aucun concurrent ne fait et auquel le marché répondrait. L'espace blanc est le territoire stratégique le plus précieux.
 
-**Why this matters:** Markets are dynamic. Categories that look saturated often have unoccupied positions. Finding the unoccupied position before others do creates a defensible moat.
+**Pourquoi c'est important :** Les marchés sont dynamiques. Les catégories qui paraissent saturées ont souvent des positions inoccupées. Trouver la position inoccupée avant les autres crée un fossé défendable.
 
-**Example output:**
+**Exemple de résultat :**
 
-> **No competitor is occupying: Localised vernacular content for procurement in tier-2 Indian cities**
+> **Aucun concurrent n'occupe : le contenu vernaculaire localisé pour les achats dans les villes indiennes de niveau 2**
 >
-> The observation: All three major competitors produce content exclusively in English, primarily for tier-1 metros. Our market analysis (Part 4.4) identified procurement decision-makers in tier-2 manufacturing belts (Surat, Ludhiana, Coimbatore) who increasingly do digital research but in vernacular (Hindi, Gujarati, Tamil).
+> L'observation : les trois principaux concurrents produisent du contenu exclusivement en anglais, principalement pour les métropoles de niveau 1. Notre analyse de marché (partie 4.4) a identifié des décideurs d'achat dans les ceintures manufacturières de niveau 2 (Surat, Ludhiana, Coimbatore) qui font de plus en plus de recherches numériques mais en langue vernaculaire (hindi, gujarati, tamoul).
 >
-> Why this is white space: Vernacular procurement content for tier-2 manufacturing audiences is unaddressed. Audience exists; competition is zero.
+> Pourquoi c'est un espace blanc : le contenu vernaculaire d'achat pour les audiences manufacturières de niveau 2 n'est pas traité. L'audience existe ; la concurrence est nulle.
 >
-> Our strategic move: produce a Hindi-language pillar on procurement automation specifically for manufacturing-belt SMEs. Launch with 6 articles + 3 videos as a 90-day test. If engagement signals interest, expand to Gujarati and Tamil.
+> Notre mouvement stratégique : produire un pilier en langue hindi sur l'automatisation des achats spécifiquement pour les PME des ceintures manufacturières. Lancer avec 6 articles + 3 vidéos comme test de 90 jours. Si l'engagement signale un intérêt, étendre au gujarati et au tamoul.
 >
-> Risk: vernacular SEO may not produce immediate traffic (Google Hindi index quality varies by topic); even if SEO is slow, the content can be distributed via LinkedIn-Hindi posts and WhatsApp channels.
+> Risque : le SEO vernaculaire peut ne pas produire de trafic immédiat (la qualité de l'index Google en hindi varie selon le sujet) ; même si le SEO est lent, le contenu peut être distribué via des posts LinkedIn en hindi et des canaux WhatsApp.
 
-## Why all three questions matter
+## Pourquoi les trois questions comptent toutes
 
-Each question surfaces a different type of strategic move:
+Chaque question fait émerger un type de mouvement stratégique différent :
 
-| Question | Type of move | Risk profile |
+| Question | Type de mouvement | Profil de risque |
 |---|---|---|
-| 1 — Learn from | **Adopt-and-adapt** | Low risk (proven concept, adapted to our context) |
-| 2 — They do poorly | **Differentiate-against** | Medium risk (we credibly outperform on a specific dimension) |
-| 3 — White space | **Create-new-territory** | Higher risk (unproven), higher reward |
+| 1 — S'inspirer de | **Adopter et adapter** | Risque faible (concept éprouvé, adapté à notre contexte) |
+| 2 — Ils font mal | **Se différencier contre** | Risque moyen (nous surperformons de manière crédible sur une dimension précise) |
+| 3 — Espace blanc | **Créer un nouveau territoire** | Risque plus élevé (non prouvé), récompense plus élevée |
 
-A complete competitive strategy uses all three. Relying only on Question 1 produces "me-too" strategies. Relying only on Question 2 produces narrow positioning. Relying only on Question 3 produces unproven bets.
+Une stratégie concurrentielle complète utilise les trois. Ne s'appuyer que sur la question 1 produit des stratégies « moi aussi ». Ne s'appuyer que sur la question 2 produit un positionnement étroit. Ne s'appuyer que sur la question 3 produit des paris non éprouvés.
 
-## How skills enforce this
+## Comment les compétences appliquent cela
 
-Every skill that produces competitive analysis output (`/digital-marketing-pro:competitor-analysis`, `/digital-marketing-pro:competitor-monitor`, `/digital-marketing-pro:share-of-voice`, the four-core-documents skill at Section 4 of Core Doc 3.1) must close with a Three-Question Output section.
+Chaque compétence produisant un résultat d'analyse concurrentielle (`/digital-marketing-pro:competitor-analysis`, `/digital-marketing-pro:competitor-monitor`, `/digital-marketing-pro:share-of-voice`, la compétence des quatre documents centraux à la section 4 du document central 3.1) doit se conclure par une section de livrable en trois questions.
 
-Skills that fail to produce this section are flagged as incomplete. The output is not considered shipped until the three questions are answered.
+Les compétences qui ne produisent pas cette section sont signalées comme incomplètes. Le résultat n'est pas considéré comme livré tant que les trois questions ne sont pas répondues.
 
-## Output format
+## Format de résultat
 
 ```markdown
-## Three-Question Strategic Output
+## Livrable stratégique en trois questions
 
-### Competitor: {Name}
+### Concurrent : {Nom}
 
-**1. What they do well that we can learn from:**
-{Specific observation, why it works for them, what we can adapt, what we should NOT copy}
+**1. Ce qu'ils font bien dont nous pouvons nous inspirer :**
+{Observation précise, pourquoi cela fonctionne pour eux, ce que nous pouvons adapter, ce que nous ne devrions PAS copier}
 
-**2. What they do poorly that creates opportunity:**
-{Specific weakness, why it is a credible opportunity for us, our strategic move}
+**2. Ce qu'ils font mal qui crée une opportunité :**
+{Faiblesse précise, pourquoi c'est une opportunité crédible pour nous, notre mouvement stratégique}
 
-**3. White space they are NOT occupying:**
-{Specific unoccupied territory, market evidence it would resonate, our strategic move, risk}
+**3. L'espace blanc qu'ils n'occupent PAS :**
+{Territoire inoccupé précis, preuve de marché qu'il résonnerait, notre mouvement stratégique, risque}
 
-### Competitor: {Next competitor}
+### Concurrent : {Concurrent suivant}
 ...
 ```
 
-The output for an analysis covering 3-5 competitors typically runs 3–6 pages. The depth is in the strategic moves, not the description of what competitors do.
+Le résultat pour une analyse couvrant 3 à 5 concurrents fait généralement 3 à 6 pages. La profondeur réside dans les mouvements stratégiques, pas dans la description de ce que font les concurrents.
 
-## Common pitfalls
+## Pièges courants
 
-1. **Listing competitor activities without translating to action.** A bullet list of "they do X, Y, Z" is research, not analysis. The questions force translation.
+1. **Lister les activités des concurrents sans les traduire en action.** Une liste à puces « ils font X, Y, Z » est de la recherche, pas de l'analyse. Les questions forcent la traduction.
 
-2. **Generic answers ("they have a strong brand" / "they are weak in customer service" / "AI is white space"):** generic claims do not pass the three-question discipline. Specific observations with evidence required.
+2. **Réponses génériques (« ils ont une marque forte » / « ils sont faibles en service client » / « l'IA est un espace blanc ») :** les affirmations génériques ne passent pas la discipline des trois questions. Des observations précises avec preuves sont requises.
 
-3. **Recommending we copy what competitors do well.** This is the most common mistake. Adapting is fine; copying without context is dangerous.
+3. **Recommander de copier ce que les concurrents font bien.** C'est l'erreur la plus courante. S'adapter est acceptable ; copier sans contexte est dangereux.
 
-4. **Overlooking white space because it is uncomfortable to commit to unproven territory.** White space is uncomfortable precisely because it is unproven — but it is also where the upside lives.
+4. **Négliger l'espace blanc parce qu'il est inconfortable de s'engager sur un territoire non prouvé.** L'espace blanc est inconfortable précisément parce qu'il n'est pas prouvé — mais c'est aussi là que réside le potentiel de gain.
 
-5. **Treating the three-question output as decoration rather than the conclusion.** The questions are the deliverable. The competitor descriptions are the supporting research.
+5. **Traiter le livrable en trois questions comme une décoration plutôt que comme la conclusion.** Les questions sont le livrable. Les descriptions de concurrents sont la recherche de soutien.
 
-## Where this lives in the engagement
+## Où cela se situe dans l'engagement
 
-- **Core Doc 3.1 Step 16 (Risk profile):** competitive risks identified
-- **Part 4.1 Competitor Ad Analysis:** Three-Question Output for each competitor's ad strategy
-- **Part 4.2 Competitor Positioning:** Three-Question Output for each competitor's positioning
-- **`/digital-marketing-pro:competitor-analysis` skill output:** always closes with Three-Question Output
-- **`/digital-marketing-pro:competitor-monitor` ongoing monitoring:** changes detected get a mini Three-Question framing
+- **Document central 3.1, étape 16 (profil de risque) :** risques concurrentiels identifiés
+- **Partie 4.1, analyse publicitaire concurrentielle :** livrable en trois questions pour la stratégie publicitaire de chaque concurrent
+- **Partie 4.2, positionnement concurrentiel :** livrable en trois questions pour le positionnement de chaque concurrent
+- **Résultat de la compétence `/digital-marketing-pro:competitor-analysis` :** se conclut toujours par le livrable en trois questions
+- **Surveillance continue de `/digital-marketing-pro:competitor-monitor` :** les changements détectés reçoivent un mini cadrage en trois questions
 
-## Related references
+## Références liées
 
-- [decision-framework.md](decision-framework.md) — multi-dimensional decision making for evaluating strategic moves
-- [four-core-documents-spec.md](four-core-documents-spec.md) — Core Doc 3.1 includes competitor analysis
-- [engagement-flow-methodology.md](engagement-flow-methodology.md) — Part 4.1, 4.2 in context
+- [decision-framework.md](decision-framework.md) — prise de décision multidimensionnelle pour évaluer les mouvements stratégiques
+- [four-core-documents-spec.md](four-core-documents-spec.md) — le document central 3.1 inclut l'analyse concurrentielle
+- [engagement-flow-methodology.md](engagement-flow-methodology.md) — parties 4.1, 4.2 en contexte
+</content>

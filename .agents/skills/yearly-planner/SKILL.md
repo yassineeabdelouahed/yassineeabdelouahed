@@ -1,176 +1,177 @@
 ---
 name: yearly-planner
-description: "Produce the 12-month operational Yearly Planner — the Part 8 calendar companion to the Growth Plan — with quarterly themes, 12 monthly sections (initiatives with owners, key dates, budget, KPI targets), seasonal strategy, campaign and content-pillar calendars, and channel cadence, delivered as markdown, PDF, and XLSX. Triggers on \"/digital-marketing-pro:yearly-planner\", \"produce the yearly planner\", \"month-by-month execution plan\", \"operational calendar for the year\", \"quarterly themes and monthly initiatives\". Requires a completed Growth Plan and Part 7 preparation docs; reads the brand profile for geography-driven seasonality and marks Part 8 complete in the engagement workflow."
+description: "Produire le Planificateur Annuel opérationnel sur 12 mois — le compagnon calendrier de la Partie 8 du Growth Plan — avec des thèmes trimestriels, 12 sections mensuelles (initiatives avec responsables, dates clés, budget, objectifs de KPI), une stratégie saisonnière, des calendriers de campagne et de piliers de contenu, et une cadence par canal, livré en markdown, PDF, et XLSX. Se déclenche sur \"/digital-marketing-pro:yearly-planner\", \"produce the yearly planner\", \"month-by-month execution plan\", \"operational calendar for the year\", \"quarterly themes and monthly initiatives\". Nécessite un Growth Plan terminé et les documents de préparation de la Partie 7 ; lit le profil de marque pour la saisonnalité liée à la géographie et marque la Partie 8 comme terminée dans le flux de travail d'engagement."
 user-invocable: true
 triggers:
-  - produce the yearly planner
-  - generate 12-month operational calendar
-  - run part 8 yearly planner
-  - month-by-month execution plan
-  - quarterly themes and monthly initiatives
-  - operational calendar for the year
+  - produire le planificateur annuel
+  - générer le calendrier opérationnel sur 12 mois
+  - exécuter la partie 8 planificateur annuel
+  - plan d'exécution mois par mois
+  - thèmes trimestriels et initiatives mensuelles
+  - calendrier opérationnel pour l'année
 allowed-tools: Read Write Edit Bash Glob Grep
 engagement-part: "8"
 view-preference: v2-primary
 ---
 
-# /digital-marketing-pro:yearly-planner — Part 8 Operational Companion
+# /digital-marketing-pro:yearly-planner — Compagnon opérationnel de la Partie 8
 
-The Yearly Planner complements the Growth Plan with a 12-month operational calendar that ties strategy to date-by-date execution. If the Growth Plan answers *"How will we grow this business?"*, the Yearly Planner answers *"What will we do, week by week, month by month?"*
+Le Planificateur Annuel complète le Growth Plan avec un calendrier opérationnel sur 12 mois qui relie la stratégie à une exécution date par date. Si le Growth Plan répond à *« Comment allons-nous faire croître cette entreprise ? »*, le Planificateur Annuel répond à *« Que ferons-nous, semaine par semaine, mois par mois ? »*
 
-**Specification:** [yearly-planner-template.md](../context-engine/yearly-planner-template.md) — the canonical structure.
+**Spécification :** [yearly-planner-template.md](../context-engine/yearly-planner-template.md) — la structure canonique.
 
-## Pre-conditions
+## Pré-conditions
 
-The Yearly Planner is produced **after** the Growth Plan. It operationalises the Growth Plan's strategic decisions.
+Le Planificateur Annuel est produit **après** le Growth Plan. Il opérationnalise les décisions stratégiques du Growth Plan.
 
-Before producing, verify:
+Avant de produire, vérifier :
 
-1. **Growth Plan completed** at `part-08-growth-plan/growth-plan.md`
-2. **Part 7 preparation documents available** (campaign architecture, content pillars, KPI tree)
-3. **Living Project Instruction File current**
-4. **Brand profile** specifies geographic operations (so seasonal context can be applied)
+1. **Growth Plan terminé** à `part-08-growth-plan/growth-plan.md`
+2. **Documents de préparation de la Partie 7 disponibles** (architecture de campagne, piliers de contenu, arbre de KPI)
+3. **Fichier d'instructions vivant du projet à jour**
+4. **Profil de marque** précisant les opérations géographiques (afin que le contexte saisonnier puisse être appliqué)
 
 ## Structure (8 sections)
 
 | # | Section | Source |
 |---|---------|--------|
-| 1 | Annual Themes | Synthesis of Growth Plan strategy across 4 quarters |
-| 2 | Monthly Calendar | 12 monthly sub-sections; Growth Plan Section 8 expanded |
-| 3 | Seasonal Strategy | Industry + cultural / festival seasonality (regional context) |
-| 4 | Campaign Architecture | Part 7 campaign architecture detailed by quarter |
-| 5 | Content Pillars Calendar | Core Doc 3.3 messaging pillars × Part 7 content pillars |
-| 6 | Channel-Specific Cadence | One sub-section per active channel family |
-| 7 | Resource & Budget Pacing | Quarterly budget pacing + resource plan |
-| 8 | Quarterly Review Schedule | QBR dates + decision authority per [reporting-cadence.md](../context-engine/reporting-cadence.md) |
+| 1 | Thèmes annuels | Synthèse de la stratégie du Growth Plan sur 4 trimestres |
+| 2 | Calendrier mensuel | 12 sous-sections mensuelles ; Section 8 du Growth Plan développée |
+| 3 | Stratégie saisonnière | Saisonnalité sectorielle + culturelle/festive (contexte régional) |
+| 4 | Architecture de campagne | Architecture de campagne de la Partie 7 détaillée par trimestre |
+| 5 | Calendrier des piliers de contenu | Piliers de messaging du Document de base 3.3 × piliers de contenu de la Partie 7 |
+| 6 | Cadence spécifique par canal | Une sous-section par famille de canal active |
+| 7 | Rythme des ressources et du budget | Rythme budgétaire trimestriel + plan de ressources |
+| 8 | Calendrier de revue trimestrielle | Dates de QBR + autorité de décision selon [reporting-cadence.md](../context-engine/reporting-cadence.md) |
 
-## Production process
+## Processus de production
 
-### Step 1: Read sources
+### Étape 1 : lire les sources
 
-- Growth Plan (canonical version)
-- Living Project Instruction File
-- Part 7 preparation documents
-- Brand profile (for geography → seasonality)
-- For India-operating brands: [india-market-context.md](../context-engine/india-market-context.md)
+- Growth Plan (version canonique)
+- Fichier d'instructions vivant du projet
+- Documents de préparation de la Partie 7
+- Profil de marque (pour la géographie → saisonnalité)
+- Pour les marques opérant en Inde : [india-market-context.md](../context-engine/india-market-context.md)
 
-### Step 2: Build the Annual Themes
+### Étape 2 : construire les thèmes annuels
 
-Identify 4 quarterly themes that organise the year. Each theme is one sentence with strategic rationale and ladders into the overall positioning. Themes might be (this is one example pattern, customise per engagement):
+Identifier 4 thèmes trimestriels qui organisent l'année. Chaque thème est une phrase avec une justification stratégique et s'articule avec le positionnement global. Les thèmes pourraient être (ceci est un exemple de schéma, à personnaliser selon l'engagement) :
 
-- Q1: Foundation + initial demand capture
-- Q2: Demand generation activation
-- Q3: Account expansion + community
-- Q4: Festive surge + awards / press push
+- T1 : Fondation + capture initiale de la demande
+- T2 : Activation de la génération de demande
+- T3 : Expansion de compte + communauté
+- T4 : Pic festif + poussée récompenses/presse
 
-### Step 3: Detail the Monthly Calendar
+### Étape 3 : détailler le calendrier mensuel
 
-12 sub-sections, ~1 page each. For each month:
+12 sous-sections, ~1 page chacune. Pour chaque mois :
 
-- **Theme** — one sentence summary
-- **Major initiatives** — 2-4 specific initiatives with owner and deadline
-- **Always-on activity** — what continues from the prior month (paid ads at fixed budget, organic posting cadence, email programme, SEO content production)
-- **Key dates** — product launches, industry events, holidays / festivals relevant to the brand, planned PR moments
-- **Content calendar overview** — themes per week, content pillars covered, target volume per channel
-- **Budget** — monthly fixed spend by channel, variable budget reserve
-- **KPI targets** — primary + 2-3 secondary KPIs for the month
+- **Thème** — résumé en une phrase
+- **Initiatives majeures** — 2-4 initiatives précises avec responsable et échéance
+- **Activité permanente** — ce qui se poursuit depuis le mois précédent (publicités payantes à budget fixe, cadence de publication organique, programme e-mail, production de contenu SEO)
+- **Dates clés** — lancements de produit, événements sectoriels, jours fériés/fêtes pertinents pour la marque, moments de RP planifiés
+- **Aperçu du calendrier de contenu** — thèmes par semaine, piliers de contenu couverts, volume cible par canal
+- **Budget** — dépenses fixes mensuelles par canal, réserve de budget variable
+- **Objectifs de KPI** — KPI principal + 2-3 KPI secondaires pour le mois
 
-### Step 4: Map Seasonal Strategy
+### Étape 4 : cartographier la stratégie saisonnière
 
-For India-operating brands, reference the seasonality table from [india-market-context.md](../context-engine/india-market-context.md):
+Pour les marques opérant en Inde, référencer le tableau de saisonnalité de [india-market-context.md](../context-engine/india-market-context.md) :
 
-- Dussehra → Diwali (Sept-Nov) festive peak
-- Wedding season (Nov-Feb)
-- End of financial year (Jan-Mar) — B2B budget spend
-- Back-to-school (Apr-Jun)
-- Monsoon (Jun-Sep)
-- Cricket / IPL season (Mar-May)
+- Dussehra → Diwali (sept-nov) pic festif
+- Saison des mariages (nov-fév)
+- Fin d'année fiscale (jan-mars) — dépenses budgétaires B2B
+- Rentrée scolaire (avr-juin)
+- Mousson (juin-sept)
+- Saison cricket/IPL (mars-mai)
 
-For other markets, apply equivalent seasonality. For B2B globally, fiscal year-end and major industry events are universal seasonality drivers.
+Pour les autres marchés, appliquer une saisonnalité équivalente. Pour le B2B à l'échelle mondiale, la fin d'exercice fiscal et les grands événements sectoriels sont des moteurs de saisonnalité universels.
 
-### Step 5: Map Campaign Architecture
+### Étape 5 : cartographier l'architecture de campagne
 
-The Part 7 campaign architecture document defines the year's major campaigns. The Yearly Planner places each campaign in its calendar slot with:
+Le document d'architecture de campagne de la Partie 7 définit les grandes campagnes de l'année. Le Planificateur Annuel place chaque campagne dans son créneau calendaire avec :
 
-- Campaign name + theme
-- Target persona
-- Primary channels
-- Timing (start, peak, wind-down)
-- KPIs
-- Expected outcome
+- Nom de campagne + thème
+- Persona cible
+- Canaux principaux
+- Chronologie (début, pic, désengagement)
+- KPI
+- Résultat attendu
 
-### Step 6: Map Content Pillars Calendar
+### Étape 6 : cartographier le calendrier des piliers de contenu
 
-The 3-5 content pillars from Core Doc 3.3 are scheduled across the year:
+Les 3-5 piliers de contenu du Document de base 3.3 sont planifiés tout au long de l'année :
 
-- Per-pillar production target for the year (volume per format)
-- Quarterly distribution (how content mix shifts)
-- Repurposing flow (long-form blog → social posts → video → email)
+- Objectif de production annuel par pilier (volume par format)
+- Répartition trimestrielle (comment le mix de contenu évolue)
+- Flux de recyclage (article de blog long format → publications sociales → vidéo → e-mail)
 
-### Step 7: Map Channel-Specific Cadence
+### Étape 7 : cartographier la cadence spécifique par canal
 
-For each active channel family:
+Pour chaque famille de canal active :
 
-- Posting / sending / publishing cadence (e.g., LinkedIn: 4 posts/week; Email: 1 broadcast/week + lifecycle flows; SEO: 6 articles/month)
-- Volume targets for the year
-- Quarterly emphasis shifts
-- Resource requirements (creative production, copywriting, design, video)
+- Cadence de publication/envoi (par ex. LinkedIn : 4 publications/semaine ; E-mail : 1 diffusion/semaine + flux de cycle de vie ; SEO : 6 articles/mois)
+- Objectifs de volume pour l'année
+- Évolutions d'accent trimestrielles
+- Besoins en ressources (production créative, rédaction, design, vidéo)
 
-### Step 8: Produce companion files
+### Étape 8 : produire les fichiers compagnons
 
-The Yearly Planner is delivered as:
+Le Planificateur Annuel est livré sous forme de :
 
-- **`yearly-planner.md`** (canonical)
-- **`yearly-planner.pdf`** (client distribution via `pdf-generator.py`)
-- **`yearly-planner.xlsx`** (calendar in spreadsheet form for ongoing operational use)
+- **`yearly-planner.md`** (canonique)
+- **`yearly-planner.pdf`** (distribution client via `pdf-generator.py`)
+- **`yearly-planner.xlsx`** (calendrier sous forme de tableur pour un usage opérationnel continu)
 
-Save all to `engagements/{id}/part-08-growth-plan/`.
+Enregistrer le tout dans `engagements/{id}/part-08-growth-plan/`.
 
-## Quality discipline
+## Discipline qualité
 
-1. **Every initiative has an owner.** "Marketing team will do X" is not actionable.
-2. **Every quarter has measurable KPI targets.** "Improve traffic" is not a target.
-3. **Always-on activity distinguished from initiatives.** Always-on is the baseline; initiatives are time-bounded efforts on top.
-4. **Realistic capacity respected.** Sequence prevents burnout.
-5. **Living document.** Reviewed and adjusted at each Quarterly Business Review.
-6. **Aligns with Growth Plan.** No contradictions between the two.
+1. **Chaque initiative a un responsable.** « L'équipe marketing fera X » n'est pas actionnable.
+2. **Chaque trimestre a des objectifs de KPI mesurables.** « Améliorer le trafic » n'est pas un objectif.
+3. **L'activité permanente est distinguée des initiatives.** Le permanent est la référence de base ; les initiatives sont des efforts limités dans le temps qui s'y ajoutent.
+4. **Capacité réaliste respectée.** Le séquençage évite l'épuisement.
+5. **Document vivant.** Revu et ajusté à chaque Revue commerciale trimestrielle.
+6. **Aligné avec le Growth Plan.** Aucune contradiction entre les deux.
 
-## After production
+## Après la production
 
-1. Save all formats to `part-08-growth-plan/`
-2. Mark Part 8 fully completed via `engagement-state.py mark-part-completed --part 8`
-3. Update LIF: Engagement phase = "Strategy approved; Channel Build (Part 9) ready to begin"
-4. Brief: "Yearly Planner complete. Operational calendar covers 12 months with quarterly themes, monthly initiatives, and channel-specific cadence. Recommend reviewing with the client before kicking off Part 9 channel build. /digital-marketing-pro:engagement next to advance."
+1. Enregistrer tous les formats dans `part-08-growth-plan/`
+2. Marquer la Partie 8 comme entièrement terminée via `engagement-state.py mark-part-completed --part 8`
+3. Mettre à jour le LIF : phase d'engagement = « Stratégie approuvée ; Construction des canaux (Partie 9) prête à démarrer »
+4. Brief : « Planificateur Annuel terminé. Le calendrier opérationnel couvre 12 mois avec des thèmes trimestriels, des initiatives mensuelles, et une cadence spécifique par canal. Recommandation : le revoir avec le client avant de lancer la construction des canaux de la Partie 9. /digital-marketing-pro:engagement pour avancer ensuite. »
 
-## Examples
+## Exemples
 
-### Example 1: Standard Yearly Planner production
+### Exemple 1 : production standard du Planificateur Annuel
 
 ```
-User: Produce the Yearly Planner for Acme.
+Utilisateur : Produis le Planificateur Annuel pour Acme.
 
-Skill response:
-1. Verify Growth Plan exists ✓; Part 7 preparation docs available ✓
-2. Read Growth Plan, Part 7 docs, brand profile (geography: India)
-3. Apply India seasonality: Q3 includes Dussehra-Diwali surge planning; Q4 includes wedding season prep
-4. Build 4 quarterly themes
-5. Detail 12 monthly sections with initiatives, dates, budget, KPIs
-6. Schedule 6 major campaigns across the year (Q1: launch; Q2: growth-acceleration; Q3: festive; Q4: awards-PR push)
-7. Map content pillars: Pillar A 40%, B 25%, C 20%, D 15% of annual production
-8. Generate markdown + PDF + XLSX
-9. Mark Part 8 complete
-10. Brief: "Yearly Planner complete. 12 months, 6 major campaigns, 48 content pieces planned, 4 quarterly review checkpoints. Festive season Q3 has 2x normal budget pacing per Diwali surge. /digital-marketing-pro:engagement next moves to Part 9."
+Réponse de la compétence :
+1. Vérifier que le Growth Plan existe ✓ ; documents de préparation de la Partie 7 disponibles ✓
+2. Lire le Growth Plan, les documents de la Partie 7, le profil de marque (géographie : Inde)
+3. Appliquer la saisonnalité indienne : le T3 inclut la planification du pic Dussehra-Diwali ; le T4 inclut la préparation de la saison des mariages
+4. Construire 4 thèmes trimestriels
+5. Détailler 12 sections mensuelles avec initiatives, dates, budget, KPI
+6. Planifier 6 grandes campagnes tout au long de l'année (T1 : lancement ; T2 : accélération de croissance ; T3 : festif ; T4 : poussée récompenses-RP)
+7. Cartographier les piliers de contenu : Pilier A 40 %, B 25 %, C 20 %, D 15 % de la production annuelle
+8. Générer markdown + PDF + XLSX
+9. Marquer la Partie 8 comme terminée
+10. Brief : « Planificateur Annuel terminé. 12 mois, 6 grandes campagnes, 48 pièces de contenu planifiées, 4 points de contrôle de revue trimestrielle. La saison festive du T3 a un rythme budgétaire 2x la normale pour le pic de Diwali. /digital-marketing-pro:engagement passe ensuite à la Partie 9. »
 ```
 
-## Related skills
+## Compétences associées
 
-- `growth-plan` — companion deliverable; produced first
-- `engagement-workflow` — orchestrates Part 8
+- `growth-plan` — livrable compagnon ; produit en premier
+- `engagement-workflow` — orchestre la Partie 8
 
-## Related references
+## Références associées
 
-- [yearly-planner-template.md](../context-engine/yearly-planner-template.md) — canonical structure
-- [growth-plan-template.md](../context-engine/growth-plan-template.md) — companion deliverable
-- [india-market-context.md](../context-engine/india-market-context.md) — seasonality
-- [reporting-cadence.md](../context-engine/reporting-cadence.md) — Section 8 QBR cadence
-- [fixed-vs-variable-budget.md](../context-engine/fixed-vs-variable-budget.md) — monthly budget structure
+- [yearly-planner-template.md](../context-engine/yearly-planner-template.md) — structure canonique
+- [growth-plan-template.md](../context-engine/growth-plan-template.md) — livrable compagnon
+- [india-market-context.md](../context-engine/india-market-context.md) — saisonnalité
+- [reporting-cadence.md](../context-engine/reporting-cadence.md) — cadence QBR de la Section 8
+- [fixed-vs-variable-budget.md](../context-engine/fixed-vs-variable-budget.md) — structure budgétaire mensuelle
+</content>

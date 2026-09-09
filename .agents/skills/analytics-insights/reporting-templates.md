@@ -1,316 +1,316 @@
-# Reporting Templates — Weekly, Monthly, Quarterly
+# Modèles de reporting — Hebdomadaire, mensuel, trimestriel
 
-## Reporting Philosophy
+## Philosophie du reporting
 
-Reports exist to drive decisions, not to display data. Every section of every report should answer one of three questions: What happened? Why did it happen? What should we do about it?
+Les rapports existent pour piloter des décisions, pas pour afficher des données. Chaque section de chaque rapport devrait répondre à l'une de ces trois questions : que s'est-il passé ? pourquoi cela s'est-il passé ? que devrions-nous faire à ce sujet ?
 
-### Report Design Principles
+### Principes de conception des rapports
 
-| Principle | Application |
+| Principe | Application |
 |-----------|-------------|
-| **Lead with the answer** | Start with the headline insight, not the methodology |
-| **Compare to something** | Every number needs context — prior period, target, or benchmark |
-| **Separate signal from noise** | Only flag metrics that moved beyond normal variance |
-| **End with action** | Every report closes with recommended next steps |
-| **Match the audience** | Executives get summaries; operators get detail |
+| **Commencer par la réponse** | Débuter par l'insight principal, pas par la méthodologie |
+| **Comparer à quelque chose** | Chaque chiffre a besoin de contexte — période précédente, objectif, ou benchmark |
+| **Séparer le signal du bruit** | Ne signaler que les métriques ayant dépassé la variance normale |
+| **Terminer par une action** | Chaque rapport se conclut par des prochaines étapes recommandées |
+| **S'adapter à l'audience** | Les exécutifs reçoivent des synthèses ; les opérationnels reçoivent le détail |
 
 ---
 
-## Weekly Performance Report Template
+## Modèle de rapport de performance hebdomadaire
 
-**Purpose:** Surface what changed this week, why it matters, and what to do next week.
-**Audience:** Marketing team, department leads.
-**Delivery:** Every Monday by 10am.
+**Objectif :** faire ressortir ce qui a changé cette semaine, pourquoi cela compte, et quoi faire la semaine prochaine.
+**Audience :** équipe marketing, responsables de département.
+**Livraison :** chaque lundi avant 10h.
 
-### Section 1: Executive Summary (3-5 sentences)
+### Section 1 : résumé exécutif (3-5 phrases)
 
-Write a brief narrative covering:
-- Overall performance vs. target (on track / off track / ahead)
-- The single most important thing that happened this week
-- The single most important action for next week
+Rédiger un bref récit couvrant :
+- La performance globale vs objectif (dans les temps / hors des temps / en avance)
+- La chose la plus importante qui s'est produite cette semaine
+- L'action la plus importante pour la semaine prochaine
 
-### Section 2: Scorecard
+### Section 2 : fiche de score
 
-| Metric | This Week | Last Week | WoW Change | Target | vs Target |
+| Métrique | Cette semaine | Semaine dernière | Variation WoW | Objectif | vs Objectif |
 |--------|-----------|-----------|------------|--------|-----------|
-| Revenue | $X | $X | +X% | $X | +/-X% |
-| Sessions | X | X | +X% | X | +/-X% |
-| Leads / Conversions | X | X | +X% | X | +/-X% |
-| CAC / CPA | $X | $X | +X% | $X | +/-X% |
-| ROAS (Blended) | X.Xx | X.Xx | +X% | X.Xx | +/-X% |
-| Email Revenue | $X | $X | +X% | $X | +/-X% |
+| Revenu | X $ | X $ | +X % | X $ | +/-X % |
+| Sessions | X | X | +X % | X | +/-X % |
+| Leads / Conversions | X | X | +X % | X | +/-X % |
+| CAC / CPA | X $ | X $ | +X % | X $ | +/-X % |
+| ROAS (mixte) | X,Xx | X,Xx | +X % | X,Xx | +/-X % |
+| Revenu e-mail | X $ | X $ | +X % | X $ | +/-X % |
 
-**Color coding convention:**
-- Green: > 5% above target
-- Yellow: Within 5% of target
-- Red: > 5% below target
+**Convention de codage couleur :**
+- Vert : > 5 % au-dessus de l'objectif
+- Jaune : à moins de 5 % de l'objectif
+- Rouge : > 5 % en dessous de l'objectif
 
-### Section 3: Channel Performance Snapshot
+### Section 3 : instantané de performance par canal
 
-| Channel | Spend | Revenue | ROAS | CPA | Sessions | CVR | Notes |
+| Canal | Dépense | Revenu | ROAS | CPA | Sessions | CVR | Notes |
 |---------|-------|---------|------|-----|----------|-----|-------|
-| Paid Search | | | | | | | |
-| Paid Social | | | | | | | |
-| Organic Search | — | | — | — | | | |
-| Email / SMS | — | | — | — | | | |
+| Recherche payante | | | | | | | |
+| Social payant | | | | | | | |
+| Recherche organique | — | | — | — | | | |
+| E-mail / SMS | — | | — | — | | | |
 | Direct | — | | — | — | | | |
-| Referral | — | | — | — | | | |
+| Recommandation | — | | — | — | | | |
 
-### Section 4: Alerts & Anomalies
+### Section 4 : alertes et anomalies
 
-For each anomaly detected:
-1. **What:** Which metric moved and by how much
-2. **Why:** Root cause (confirmed or hypothesized)
-3. **So what:** Impact if left unaddressed
-4. **Now what:** Recommended action
+Pour chaque anomalie détectée :
+1. **Quoi :** quelle métrique a évolué et de combien
+2. **Pourquoi :** cause profonde (confirmée ou hypothétique)
+3. **Et alors :** impact si non traité
+4. **Et maintenant :** action recommandée
 
-### Section 5: This Week's Tests & Experiments
+### Section 5 : tests et expériences de la semaine
 
-| Test Name | Status | Channel | Hypothesis | Preliminary Results | Decision |
+| Nom du test | Statut | Canal | Hypothèse | Résultats préliminaires | Décision |
 |-----------|--------|---------|------------|--------------------|---------|
-| | Running / Complete | | | | Continue / Stop / Scale |
+| | En cours / Terminé | | | | Continuer / Arrêter / Étendre |
 
-### Section 6: Next Week Priorities
+### Section 6 : priorités de la semaine prochaine
 
-- [ ] Priority 1: [Action] — Owner — Due date
-- [ ] Priority 2: [Action] — Owner — Due date
-- [ ] Priority 3: [Action] — Owner — Due date
+- [ ] Priorité 1 : [Action] — Propriétaire — Date d'échéance
+- [ ] Priorité 2 : [Action] — Propriétaire — Date d'échéance
+- [ ] Priorité 3 : [Action] — Propriétaire — Date d'échéance
 
 ---
 
-## Monthly Performance Report Template
+## Modèle de rapport de performance mensuel
 
-**Purpose:** Full performance review with trend analysis and strategic implications.
-**Audience:** Marketing leadership, cross-functional stakeholders, finance.
-**Delivery:** By the 5th business day of the following month.
+**Objectif :** revue de performance complète avec analyse de tendance et implications stratégiques.
+**Audience :** direction marketing, parties prenantes cross-fonctionnelles, finance.
+**Livraison :** avant le 5e jour ouvré du mois suivant.
 
-### Section 1: Executive Summary
+### Section 1 : résumé exécutif
 
-| Item | Detail |
+| Élément | Détail |
 |------|--------|
-| **Month** | [Month Year] |
-| **Revenue vs Target** | $X vs $X target (+/-X%) |
-| **Spend vs Budget** | $X vs $X budget (+/-X%) |
-| **Efficiency Trend** | Blended ROAS / CAC trend direction and magnitude |
-| **Headline Win** | Single biggest positive outcome |
-| **Headline Risk** | Single biggest concern requiring attention |
-| **Key Decision Needed** | What leadership needs to decide based on this data |
+| **Mois** | [Mois Année] |
+| **Revenu vs objectif** | X $ vs X $ objectif (+/-X %) |
+| **Dépense vs budget** | X $ vs X $ budget (+/-X %) |
+| **Tendance d'efficacité** | Direction et ampleur de la tendance du ROAS/CAC mixte |
+| **Réussite principale** | Le résultat positif le plus important |
+| **Risque principal** | La préoccupation la plus importante nécessitant une attention |
+| **Décision clé nécessaire** | Ce que la direction doit décider sur la base de ces données |
 
-### Section 2: Revenue & Conversion Funnel
+### Section 2 : tunnel de revenu et de conversion
 
-| Funnel Stage | This Month | Last Month | MoM Change | YoY Change | Target |
+| Étape du tunnel | Ce mois | Mois dernier | Variation MoM | Variation YoY | Objectif |
 |-------------|------------|------------|------------|------------|--------|
-| Impressions / Reach | | | | | |
-| Sessions / Traffic | | | | | |
-| Leads / Add-to-Cart | | | | | |
-| MQLs / Checkout Initiated | | | | | |
-| Customers / Orders | | | | | |
-| Revenue | | | | | |
+| Impressions / Portée | | | | | |
+| Sessions / Trafic | | | | | |
+| Leads / Ajouts au panier | | | | | |
+| MQL / Paiements initiés | | | | | |
+| Clients / Commandes | | | | | |
+| Revenu | | | | | |
 
-**Stage-by-stage conversion rates:**
+**Taux de conversion étape par étape :**
 
-| Transition | Rate | MoM Change | Benchmark |
+| Transition | Taux | Variation MoM | Benchmark |
 |-----------|------|------------|-----------|
-| Session → Lead | X% | | |
-| Lead → MQL | X% | | |
-| MQL → Customer | X% | | |
-| Overall (Session → Customer) | X% | | |
+| Session → Lead | X % | | |
+| Lead → MQL | X % | | |
+| MQL → Client | X % | | |
+| Global (Session → Client) | X % | | |
 
-### Section 3: Channel Deep-Dive
+### Section 3 : analyse approfondie par canal
 
-For each active channel, report:
+Pour chaque canal actif, rapporter :
 
-**Paid Search**
-- Spend: $X (vs $X budget)
-- Revenue attributed: $X
-- ROAS: X.Xx
-- Top performing campaigns (top 3 by revenue)
-- Underperforming campaigns flagged
-- Keyword-level insights (new winners, rising CPCs)
+**Recherche payante**
+- Dépense : X $ (vs X $ budget)
+- Revenu attribué : X $
+- ROAS : X,Xx
+- Campagnes les plus performantes (top 3 par revenu)
+- Campagnes sous-performantes signalées
+- Insights au niveau des mots-clés (nouveaux gagnants, CPC en hausse)
 
-**Paid Social**
-- Spend: $X (vs $X budget)
-- Revenue attributed: $X
-- ROAS: X.Xx
-- Creative performance summary (top 3 ads by ROAS, creative fatigue alerts)
-- Audience insights (best segments, saturation signals)
+**Social payant**
+- Dépense : X $ (vs X $ budget)
+- Revenu attribué : X $
+- ROAS : X,Xx
+- Résumé de performance créative (top 3 des annonces par ROAS, alertes de fatigue créative)
+- Insights d'audience (meilleurs segments, signaux de saturation)
 
-**SEO / Organic**
-- Sessions: X (MoM trend)
-- Keyword rankings: Movement summary
-- Content performance: Top pages by traffic and conversion
-- Technical health: Core Web Vitals, crawl errors
+**SEO / Organique**
+- Sessions : X (tendance MoM)
+- Classements de mots-clés : résumé des mouvements
+- Performance du contenu : pages les plus performantes par trafic et conversion
+- Santé technique : Core Web Vitals, erreurs de crawl
 
-**Email / SMS**
-- Revenue: $X
-- Revenue as % of total: X%
-- List growth: +X net new subscribers
-- Campaign performance: Open rate, CTR, revenue per send
-- Flow performance: Revenue from automated flows
+**E-mail / SMS**
+- Revenu : X $
+- Revenu en % du total : X %
+- Croissance de la liste : +X nouveaux abonnés nets
+- Performance de campagne : taux d'ouverture, CTR, revenu par envoi
+- Performance des flux : revenu des flux automatisés
 
-**Referral / Affiliate / Partnerships**
-- Revenue: $X
-- Top referral sources
-- Partner performance
+**Recommandation / Affiliation / Partenariats**
+- Revenu : X $
+- Principales sources de recommandation
+- Performance des partenaires
 
-### Section 4: Cohort & Retention Analysis (if applicable)
+### Section 4 : analyse de cohorte et de rétention (le cas échéant)
 
-| Acquisition Month | Month 0 | Month 1 | Month 2 | Month 3 | Month 6 | Month 12 |
+| Mois d'acquisition | Mois 0 | Mois 1 | Mois 2 | Mois 3 | Mois 6 | Mois 12 |
 |-------------------|---------|---------|---------|---------|---------|----------|
-| [3 months ago] | 100% | X% | X% | X% | | |
-| [2 months ago] | 100% | X% | X% | | | |
-| [1 month ago] | 100% | X% | | | | |
-| [This month] | 100% | | | | | |
+| [il y a 3 mois] | 100 % | X % | X % | X % | | |
+| [il y a 2 mois] | 100 % | X % | X % | | | |
+| [il y a 1 mois] | 100 % | X % | | | | |
+| [ce mois] | 100 % | | | | | |
 
-### Section 5: Budget Reconciliation
+### Section 5 : réconciliation budgétaire
 
-| Channel | Budget | Actual Spend | Variance | Efficiency (ROAS/CPA) | Recommendation |
+| Canal | Budget | Dépense réelle | Écart | Efficacité (ROAS/CPA) | Recommandation |
 |---------|--------|-------------|----------|----------------------|----------------|
-| | | | | | Increase / Maintain / Decrease |
+| | | | | | Augmenter / Maintenir / Diminuer |
 
-### Section 6: Experiment Results
+### Section 6 : résultats des expériences
 
-| Test | Channel | Hypothesis | Result | Stat. Sig? | Impact Estimate | Next Step |
+| Test | Canal | Hypothèse | Résultat | Sig. stat. ? | Estimation d'impact | Prochaine étape |
 |------|---------|------------|--------|-----------|-----------------|-----------|
-| | | | Win / Loss / Inconclusive | Yes / No | $X/month | Scale / Iterate / Kill |
+| | | | Victoire / Défaite / Non concluant | Oui / Non | X $/mois | Étendre / Itérer / Arrêter |
 
-### Section 7: Next Month Plan
+### Section 7 : plan du mois suivant
 
-- Top 3 priorities with owners and success criteria
-- Budget allocation changes (if any)
-- Planned experiments
-- Known risks or dependencies
+- Les 3 principales priorités avec propriétaires et critères de succès
+- Changements d'allocation budgétaire (le cas échéant)
+- Expériences planifiées
+- Risques ou dépendances connus
 
 ---
 
-## Quarterly Business Review (QBR) Template
+## Modèle de revue d'activité trimestrielle (QBR)
 
-**Purpose:** Strategic review connecting marketing performance to business outcomes.
-**Audience:** Executive team, board (if applicable).
-**Delivery:** Within 10 business days of quarter end.
+**Objectif :** revue stratégique reliant la performance marketing aux résultats de l'entreprise.
+**Audience :** équipe exécutive, conseil d'administration (le cas échéant).
+**Livraison :** sous 10 jours ouvrés après la fin du trimestre.
 
-### QBR Structure
+### Structure du QBR
 
-1. **Quarter Summary** (1 slide / section)
-   - Revenue vs target, spend vs budget, key efficiency metrics
-   - 3 headline wins, 1 headline miss
+1. **Résumé du trimestre** (1 diapositive / section)
+   - Revenu vs objectif, dépense vs budget, métriques d'efficacité clés
+   - 3 réussites principales, 1 échec principal
 
-2. **Goal Scorecard** (1 slide / section)
+2. **Fiche de score des objectifs** (1 diapositive / section)
 
-   | Q[X] Goal | Target | Actual | Status | Commentary |
+   | Objectif T[X] | Cible | Réel | Statut | Commentaire |
    |-----------|--------|--------|--------|------------|
-   | Revenue | $X | $X | On/Off Track | |
-   | New Customers | X | X | | |
-   | CAC | $X | $X | | |
+   | Revenu | X $ | X $ | Dans/Hors des temps | |
+   | Nouveaux clients | X | X | | |
+   | CAC | X $ | X $ | | |
    | LTV:CAC | X:1 | X:1 | | |
-   | Brand Metric | X | X | | |
+   | Métrique de marque | X | X | | |
 
-3. **Channel Portfolio Review** (1 slide per channel)
-   - Quarterly performance, trend vs prior quarters, efficiency, saturation signals
+3. **Revue du portefeuille de canaux** (1 diapositive par canal)
+   - Performance trimestrielle, tendance vs trimestres précédents, efficacité, signaux de saturation
 
-4. **Customer Insights** (1 slide / section)
-   - Acquisition channel mix shift, retention trends, segment-level performance
+4. **Insights clients** (1 diapositive / section)
+   - Évolution du mix de canaux d'acquisition, tendances de rétention, performance au niveau segment
 
-5. **Competitive Landscape** (1 slide / section)
-   - Market share movement, competitor activity, share of voice
+5. **Paysage concurrentiel** (1 diapositive / section)
+   - Évolution de la part de marché, activité des concurrents, part de voix
 
-6. **Experiment Learnings** (1 slide / section)
-   - All tests run in quarter, results, cumulative impact
+6. **Enseignements des expériences** (1 diapositive / section)
+   - Tous les tests exécutés dans le trimestre, résultats, impact cumulé
 
-7. **Next Quarter Strategy** (2-3 slides / sections)
-   - Goals, budget request, channel strategy, key bets, risk mitigation
+7. **Stratégie du trimestre suivant** (2-3 diapositives / sections)
+   - Objectifs, demande de budget, stratégie de canal, paris clés, atténuation des risques
 
-8. **Appendix**
-   - Detailed data tables, methodology notes, glossary
+8. **Annexe**
+   - Tableaux de données détaillés, notes de méthodologie, glossaire
 
 ---
 
-## Campaign Report Template
+## Modèle de rapport de campagne
 
-**Purpose:** Evaluate a specific campaign's performance against its objectives.
-**Use:** Post-campaign (within 5 business days of campaign end).
+**Objectif :** évaluer la performance d'une campagne spécifique par rapport à ses objectifs.
+**Usage :** post-campagne (sous 5 jours ouvrés après la fin de la campagne).
 
-### Campaign Overview
+### Vue d'ensemble de la campagne
 
-| Field | Detail |
+| Champ | Détail |
 |-------|--------|
-| Campaign Name | |
-| Objective | Awareness / Consideration / Conversion |
-| Flight Dates | Start — End |
-| Total Budget | $X |
-| Total Spend | $X |
-| Target Audience | |
-| Channels Used | |
+| Nom de la campagne | |
+| Objectif | Notoriété / Considération / Conversion |
+| Dates de diffusion | Début — Fin |
+| Budget total | X $ |
+| Dépense totale | X $ |
+| Audience cible | |
+| Canaux utilisés | |
 
-### Performance vs Objectives
+### Performance vs objectifs
 
-| Objective Metric | Target | Actual | % of Target | Verdict |
+| Métrique d'objectif | Cible | Réel | % de la cible | Verdict |
 |-----------------|--------|--------|------------|---------|
-| | | | | Met / Missed / Exceeded |
+| | | | | Atteint / Manqué / Dépassé |
 
-### Creative Performance
+### Performance créative
 
-| Creative Variant | Impressions | CTR | CPA | ROAS | Engagement Rate |
+| Variante créative | Impressions | CTR | CPA | ROAS | Taux d'engagement |
 |-----------------|-------------|-----|-----|------|----------------|
 | | | | | | |
 
-### Audience Performance
+### Performance d'audience
 
-| Segment | Spend Share | Revenue Share | CPA | ROAS |
+| Segment | Part de dépense | Part de revenu | CPA | ROAS |
 |---------|------------|---------------|-----|------|
 | | | | | |
 
-### Key Learnings
+### Enseignements clés
 
-1. What worked and should be repeated
-2. What underperformed and why
-3. What should be tested next time
+1. Ce qui a fonctionné et devrait être répété
+2. Ce qui a sous-performé et pourquoi
+3. Ce qui devrait être testé la prochaine fois
 
 ---
 
-## Data Visualization Best Practices
+## Bonnes pratiques de visualisation de données
 
-| Chart Type | Best For | Avoid When |
+| Type de graphique | Idéal pour | À éviter quand |
 |-----------|----------|------------|
-| Line chart | Trends over time | Fewer than 4 data points |
-| Bar chart | Comparing categories | More than 10 categories |
-| Stacked bar | Part-to-whole over time | More than 5 segments |
-| Pie chart | Simple share (2-4 segments max) | More than 4 segments (use bar) |
-| Scatter plot | Correlation between two metrics | Small datasets |
-| Table | Precise values matter | Audience needs pattern recognition |
-| Sparkline | Inline trend in a scorecard | When detail is needed |
+| Graphique linéaire | Tendances dans le temps | Moins de 4 points de données |
+| Graphique à barres | Comparer des catégories | Plus de 10 catégories |
+| Barres empilées | Partie-vers-tout dans le temps | Plus de 5 segments |
+| Camembert | Part simple (2-4 segments max) | Plus de 4 segments (utiliser des barres) |
+| Nuage de points | Corrélation entre deux métriques | Petits jeux de données |
+| Tableau | Les valeurs précises comptent | L'audience a besoin de reconnaissance de motif |
+| Sparkline | Tendance en ligne dans une fiche de score | Quand le détail est nécessaire |
 
-### Formatting Rules for Executive Dashboards
+### Règles de formatage pour les tableaux de bord exécutifs
 
-- [ ] No more than 6-8 metrics visible without scrolling
-- [ ] Every metric has comparison context (vs target, vs prior period)
-- [ ] Color is used for status, not decoration (red/yellow/green only)
-- [ ] Titles are insights, not labels ("Revenue up 12% MoM" not "Revenue Chart")
-- [ ] Filters default to the most common view (last 30 days, all channels)
-- [ ] Mobile-readable if stakeholders access on phone
-- [ ] Data refreshes automatically — no manual updates required
+- [ ] Pas plus de 6-8 métriques visibles sans défilement
+- [ ] Chaque métrique a un contexte de comparaison (vs objectif, vs période précédente)
+- [ ] La couleur est utilisée pour le statut, pas la décoration (rouge/jaune/vert uniquement)
+- [ ] Les titres sont des insights, pas des libellés (« Revenu en hausse de 12 % MoM » et non « Graphique du revenu »)
+- [ ] Les filtres sont par défaut sur la vue la plus courante (30 derniers jours, tous les canaux)
+- [ ] Lisible sur mobile si les parties prenantes y accèdent depuis un téléphone
+- [ ] Les données se rafraîchissent automatiquement — aucune mise à jour manuelle requise
 
 ---
 
-## Stakeholder Formatting Guide
+## Guide de formatage par partie prenante
 
-| Audience | Format | Length | Focus | Update Cadence |
+| Audience | Format | Longueur | Focus | Cadence de mise à jour |
 |----------|--------|--------|-------|----------------|
-| CEO / Board | Slide deck or 1-pager | 3-5 slides | Business impact, strategic decisions | Quarterly |
-| VP Marketing | Dashboard + narrative | 2-3 pages | Performance vs goals, resource allocation | Monthly |
-| Channel Managers | Detailed tables + analysis | 3-5 pages | Tactical optimization, test results | Weekly |
-| Cross-functional (Sales, Product) | Shared dashboard | 1 page | Shared metrics, pipeline, attribution | Monthly |
-| Finance | Spreadsheet + summary | Budget reconciliation | Spend vs budget, ROI, forecasts | Monthly |
+| PDG / Conseil | Présentation ou one-pager | 3-5 diapositives | Impact commercial, décisions stratégiques | Trimestrielle |
+| VP Marketing | Tableau de bord + récit | 2-3 pages | Performance vs objectifs, allocation des ressources | Mensuelle |
+| Responsables de canal | Tableaux détaillés + analyse | 3-5 pages | Optimisation tactique, résultats de tests | Hebdomadaire |
+| Cross-fonctionnel (Ventes, Produit) | Tableau de bord partagé | 1 page | Métriques partagées, pipeline, attribution | Mensuelle |
+| Finance | Feuille de calcul + résumé | Réconciliation budgétaire | Dépense vs budget, ROI, prévisions | Mensuelle |
 
 ---
 
-## Checklist: Before Sending Any Report
+## Liste de contrôle : avant d'envoyer tout rapport
 
-- [ ] Every metric has comparison context (prior period, target, or benchmark)
-- [ ] Anomalies are explained, not just flagged
-- [ ] The executive summary can stand alone without reading the full report
-- [ ] Action items have owners and deadlines
-- [ ] Data has been validated against source of truth
-- [ ] Visualization choices match the message (trend = line, comparison = bar)
-- [ ] Report was reviewed by at least one other team member
-- [ ] Sent on schedule (never late — set expectations if data is delayed)
+- [ ] Chaque métrique a un contexte de comparaison (période précédente, objectif, ou benchmark)
+- [ ] Les anomalies sont expliquées, pas seulement signalées
+- [ ] Le résumé exécutif peut se suffire à lui-même sans lire le rapport complet
+- [ ] Les éléments d'action ont des propriétaires et des échéances
+- [ ] Les données ont été validées par rapport à la source de vérité
+- [ ] Les choix de visualisation correspondent au message (tendance = ligne, comparaison = barres)
+- [ ] Le rapport a été revu par au moins un autre membre de l'équipe
+- [ ] Envoyé selon le calendrier (jamais en retard — fixer des attentes si les données sont retardées)

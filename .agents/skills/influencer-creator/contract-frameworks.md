@@ -1,209 +1,209 @@
-# Influencer Contracts — Templates & Negotiation
+# Contrats d'influenceurs — Modèles & négociation
 
-> **Benchmark provenance (as of 2026-08):** Dollar figures in this document are planning priors, not quotes — market and auction rates drift continuously. Before any figure enters a media plan, budget, or client deliverable, refresh it live (platform dashboards and current published reports beat memory) and record it with `python scripts/benchmark_book.py --action record ... --source <url>`; quote from the book thereafter (`--action quote`). Never present an unstamped figure as current market fact.
+> **Provenance des benchmarks (au 2026-08) :** Les montants en dollars de ce document sont des a priori de planification, pas des cotations — les taux de marché et d'enchère dérivent continuellement. Avant qu'un chiffre n'entre dans un plan média, un budget, ou un livrable client, l'actualiser en direct (les tableaux de bord de plateforme et les rapports publiés actuels valent mieux que la mémoire) et l'enregistrer avec `python scripts/benchmark_book.py --action record ... --source <url>` ; citer depuis le livre ensuite (`--action quote`). Ne jamais présenter un chiffre non horodaté comme un fait de marché actuel.
 
-## Full Contract Template — Key Clauses
+## Modèle de contrat complet — Clauses clés
 
-### 1. Scope of Work
+### 1. Périmètre du travail
 
-> **Deliverables**: Creator shall produce and publish the following content on behalf of Brand:
+> **Livrables** : Le créateur devra produire et publier le contenu suivant au nom de la marque :
 >
-> | # | Platform | Format | Quantity | Timeline |
+> | # | Plateforme | Format | Quantité | Calendrier |
 > |---|----------|--------|----------|----------|
 > | 1 | | | | |
 > | 2 | | | | |
 > | 3 | | | | |
 >
-> **Content specifications**: All deliverables shall comply with the Creative Brief (Exhibit A) and meet the technical specifications outlined therein, including but not limited to resolution, aspect ratio, caption requirements, and disclosure obligations.
+> **Spécifications du contenu** : Tous les livrables devront se conformer au brief créatif (Annexe A) et respecter les spécifications techniques qui y sont décrites, incluant sans s'y limiter la résolution, le ratio d'aspect, les exigences de légende, et les obligations de divulgation.
 >
-> **Exclusions**: This agreement does not include [event appearances, product design input, email marketing, additional platforms] unless explicitly agreed in writing.
+> **Exclusions** : Cet accord n'inclut pas [apparitions en événement, contribution à la conception de produit, marketing par e-mail, plateformes additionnelles] sauf accord explicite par écrit.
 
-### 2. Compensation Types
+### 2. Types de rémunération
 
-| Compensation Model | Description | When to Use |
+| Modèle de rémunération | Description | Quand l'utiliser |
 |--------------------|-------------|-------------|
-| **Flat fee** | Fixed payment per deliverable or per campaign | Standard campaigns with defined deliverables |
-| **Performance-based** | Payment tied to metrics (views, clicks, conversions) | Direct response campaigns; measurable KPIs |
-| **Hybrid** | Base fee + performance bonus above threshold | Balanced risk-sharing between brand and creator |
-| **Product-only (gifting)** | Free product in exchange for content; no cash payment | Nano creators, product seeding, low-budget campaigns |
-| **Affiliate / Commission** | Percentage of sales generated via unique tracking link | Always-on partnerships; aligns incentives |
-| **Revenue share** | Percentage of revenue from co-created product or collection | Long-term brand partnerships, co-branded lines |
-| **Retainer** | Monthly fee for ongoing content production and availability | Brand ambassadors, long-term relationships |
+| **Forfait fixe** | Paiement fixe par livrable ou par campagne | Campagnes standards avec des livrables définis |
+| **Basé sur la performance** | Paiement lié à des métriques (vues, clics, conversions) | Campagnes de réponse directe ; KPI mesurables |
+| **Hybride** | Honoraires de base + bonus de performance au-dessus d'un seuil | Partage de risque équilibré entre marque et créateur |
+| **Produit uniquement (gifting)** | Produit gratuit en échange de contenu ; pas de paiement en espèces | Créateurs nano, seeding de produit, campagnes à petit budget |
+| **Affiliation / Commission** | Pourcentage des ventes générées via un lien de suivi unique | Partenariats permanents ; aligne les incitations |
+| **Partage de revenu** | Pourcentage du revenu issu d'un produit ou d'une collection co-créée | Partenariats de marque à long terme, lignes co-brandées |
+| **Retainer** | Frais mensuel pour la production de contenu continue et la disponibilité | Ambassadeurs de marque, relations à long terme |
 
-> **Compensation clause**: Brand shall pay Creator a total fee of $[amount] for the deliverables outlined in Section 1. Payment shall be made as follows: [50% upon contract execution / 50% upon publication of all deliverables] OR [100% within 30 days of publication].
+> **Clause de rémunération** : La Marque paiera au Créateur des honoraires totaux de [montant] $ pour les livrables décrits à la Section 1. Le paiement sera effectué comme suit : [50% à l'exécution du contrat / 50% à la publication de tous les livrables] OU [100% dans les 30 jours suivant la publication].
 
-### 3. Content Ownership & Usage Rights
+### 3. Propriété du contenu & droits d'usage
 
-| Rights Tier | Description | Typical Premium | Duration |
+| Palier de droits | Description | Prime typique | Durée |
 |-------------|-------------|----------------|----------|
-| **Organic only** | Brand may repost on owned channels with creator credit | Included in base rate | Campaign duration + 30 days |
-| **Organic extended** | Brand may repost on owned channels indefinitely | +10% – 15% of base | Perpetual |
-| **Paid media (whitelisting)** | Brand may run content as paid ads from creator's handle | +25% – 50% per month | 30–90 day terms, renewable |
-| **Paid media (dark posting)** | Brand may run content as paid ads from brand's handle | +20% – 40% per month | 30–90 day terms |
-| **Full buyout** | Brand owns all content with unlimited usage rights | +100% – 200% of base | Perpetual, all media |
-| **Derivative works** | Brand may edit, crop, remix content for any purpose | +30% – 60% of base | Per agreement |
+| **Organique uniquement** | La marque peut republier sur les canaux propres avec crédit au créateur | Inclus dans le tarif de base | Durée de la campagne + 30 jours |
+| **Organique étendu** | La marque peut republier sur les canaux propres indéfiniment | +10% – 15% du tarif de base | Perpétuel |
+| **Média payant (whitelisting)** | La marque peut diffuser le contenu comme publicité payante depuis le compte du créateur | +25% – 50% par mois | Termes de 30–90 jours, renouvelables |
+| **Média payant (dark posting)** | La marque peut diffuser le contenu comme publicité payante depuis le compte de la marque | +20% – 40% par mois | Termes de 30–90 jours |
+| **Rachat complet** | La marque possède tout le contenu avec des droits d'usage illimités | +100% – 200% du tarif de base | Perpétuel, tous médias |
+| **Œuvres dérivées** | La marque peut éditer, recadrer, remixer le contenu pour tout usage | +30% – 60% du tarif de base | Selon accord |
 
-> **Usage rights clause**: Brand is granted a [non-exclusive / exclusive] license to use, reproduce, distribute, and display the Content for [organic social media / paid advertising / all media channels] for a period of [X months / in perpetuity] from the date of publication. Creator retains ownership of the original Content. Any use beyond the licensed scope requires written consent and additional compensation.
+> **Clause de droits d'usage** : La marque se voit accorder une licence [non-exclusive / exclusive] d'utiliser, reproduire, distribuer, et afficher le Contenu pour [les réseaux sociaux organiques / la publicité payante / tous les canaux médias] pour une période de [X mois / à perpétuité] à partir de la date de publication. Le Créateur conserve la propriété du Contenu original. Tout usage au-delà du périmètre concédé nécessite un consentement écrit et une rémunération additionnelle.
 
-### 4. Exclusivity
+### 4. Exclusivité
 
-> **Exclusivity clause**: During the term of this agreement and for [30/60/90] days following completion, Creator shall not create sponsored content for, endorse, or publicly promote any product or service in the [category] category that directly competes with Brand. Competing brands include but are not limited to: [list specific competitors].
+> **Clause d'exclusivité** : Pendant la durée de cet accord et pendant les [30/60/90] jours suivant sa fin, le Créateur ne créera pas de contenu sponsorisé pour, n'approuvera pas, et ne promouvra pas publiquement un produit ou service dans la catégorie [catégorie] qui concurrence directement la Marque. Les marques concurrentes incluent sans s'y limiter : [liste des concurrents spécifiques].
 >
-> **Exclusivity compensation**: The exclusivity period is compensated at [X% of total campaign fee / $X per month of exclusivity].
+> **Rémunération d'exclusivité** : La période d'exclusivité est rémunérée à [X% des honoraires totaux de campagne / X $ par mois d'exclusivité].
 
-| Exclusivity Level | Scope | Typical Premium |
+| Niveau d'exclusivité | Périmètre | Prime typique |
 |-------------------|-------|-----------------|
-| **Category exclusive** | Cannot promote competing products in the same category | +30% – 100% of base rate |
-| **Platform exclusive** | Cannot promote competitors on the specified platform only | +15% – 40% |
-| **No exclusivity** | Creator is free to work with competitors | No premium |
-| **Non-compete window** | Post-campaign blackout period for competitor work | +10% – 25% per month |
+| **Exclusivité de catégorie** | Ne peut pas promouvoir des produits concurrents dans la même catégorie | +30% – 100% du tarif de base |
+| **Exclusivité de plateforme** | Ne peut pas promouvoir des concurrents sur la plateforme spécifiée uniquement | +15% – 40% |
+| **Pas d'exclusivité** | Le créateur est libre de travailler avec des concurrents | Pas de prime |
+| **Fenêtre de non-concurrence** | Période d'interdiction post-campagne pour le travail concurrent | +10% – 25% par mois |
 
-### 5. Approval Process
+### 5. Processus d'approbation
 
-> **Approval workflow**:
-> 1. Creator submits content concept / storyboard by [date] for Brand review
-> 2. Brand provides written approval or revision notes within [48/72] hours
-> 3. Creator submits draft content (photo/video + caption) by [date]
-> 4. Brand provides approval or one (1) round of revisions within [48] hours
-> 5. Creator delivers revised content within [48] hours of receiving feedback
-> 6. Brand provides final written approval prior to publication
+> **Workflow d'approbation** :
+> 1. Le Créateur soumet un concept/storyboard de contenu avant le [date] pour revue de la Marque
+> 2. La Marque fournit une approbation écrite ou des notes de révision dans les [48/72] heures
+> 3. Le Créateur soumet un brouillon de contenu (photo/vidéo + légende) avant le [date]
+> 4. La Marque fournit une approbation ou un (1) tour de révisions dans les [48] heures
+> 5. Le Créateur livre le contenu révisé dans les [48] heures suivant la réception du feedback
+> 6. La Marque fournit une approbation écrite finale avant la publication
 >
-> **Auto-approval**: If Brand fails to respond within the designated review window, content shall be deemed approved.
+> **Approbation automatique** : Si la Marque échoue à répondre dans le délai de revue désigné, le contenu sera réputé approuvé.
 >
-> **Revision limits**: One (1) round of revisions is included in the agreed compensation. Additional revisions beyond the included round shall be billed at [15%–25%] of the deliverable fee per round.
+> **Limites de révision** : Un (1) tour de révisions est inclus dans la rémunération convenue. Les révisions additionnelles au-delà du tour inclus seront facturées à [15%–25%] des honoraires du livrable par tour.
 
-### 6. FTC Compliance
+### 6. Conformité FTC
 
-> **Disclosure obligation**: Creator shall comply with all applicable advertising disclosure laws, including the FTC Endorsement Guides (16 CFR Part 255) and any applicable international regulations. Creator shall include clear and conspicuous disclosure in every piece of sponsored Content, including but not limited to:
-> - Activating the platform's native branded content/paid partnership tool
-> - Including "#ad" or "Paid partnership with [Brand]" in a prominent position
+> **Obligation de divulgation** : Le Créateur devra se conformer à toutes les lois de divulgation publicitaire applicables, incluant les guides d'approbation de la FTC (16 CFR Part 255) et toute réglementation internationale applicable. Le Créateur devra inclure une divulgation claire et non équivoque dans chaque pièce de Contenu sponsorisé, incluant sans s'y limiter :
+> - Activer l'outil de contenu de marque/partenariat payant natif de la plateforme
+> - Inclure « #ad » ou « Paid partnership with [Brand] » dans une position bien visible
 >
-> **Liability**: Creator acknowledges personal liability for FTC compliance. Brand shall provide disclosure guidelines, but Creator is independently responsible for ensuring compliant disclosure in all published content.
+> **Responsabilité** : Le Créateur reconnaît sa responsabilité personnelle pour la conformité FTC. La Marque fournira des guidelines de divulgation, mais le Créateur est indépendamment responsable d'assurer une divulgation conforme dans tout contenu publié.
 
-### 7. Termination
+### 7. Résiliation
 
-> **Termination for convenience**: Either party may terminate this agreement with [30] days' written notice. Creator shall be compensated for all deliverables completed and approved prior to termination.
+> **Résiliation de convenance** : L'une ou l'autre partie peut résilier cet accord avec un préavis écrit de [30] jours. Le Créateur sera rémunéré pour tous les livrables complétés et approuvés avant la résiliation.
 >
-> **Termination for cause**: Either party may terminate immediately if the other party:
-> - Commits a material breach that remains uncured after [10] days' written notice
-> - Engages in conduct that brings the other party into public disrepute
-> - Files for bankruptcy or becomes insolvent
+> **Résiliation pour cause** : L'une ou l'autre partie peut résilier immédiatement si l'autre partie :
+> - Commet une violation matérielle qui reste non corrigée après [10] jours de préavis écrit
+> - Se livre à une conduite qui porte atteinte à la réputation publique de l'autre partie
+> - Dépose une demande de faillite ou devient insolvable
 >
-> **Effect of termination**: Upon termination, Brand retains usage rights for all content delivered and approved prior to termination, subject to the terms of Section 3. Creator shall return or destroy any Brand materials, samples, or confidential information within [14] days.
+> **Effet de la résiliation** : À la résiliation, la Marque conserve les droits d'usage pour tout contenu livré et approuvé avant la résiliation, sous réserve des termes de la Section 3. Le Créateur devra retourner ou détruire tout matériel, échantillon, ou information confidentielle de la Marque dans les [14] jours.
 
-### 8. Morality Clause
+### 8. Clause de moralité
 
-> **Morality clause**: Creator warrants that Creator shall not engage in any conduct that is illegal, immoral, or otherwise likely to bring Creator or Brand into public disrepute, ridicule, or scandal. Such conduct includes but is not limited to: criminal activity, hate speech, discrimination, substance abuse, fraud, or any behavior that materially conflicts with Brand's values as communicated in writing. Brand reserves the right to terminate this agreement immediately and withhold unpaid compensation if Creator's conduct triggers this clause.
+> **Clause de moralité** : Le Créateur garantit qu'il ne se livrera à aucune conduite illégale, immorale, ou susceptible autrement de porter atteinte à la réputation publique du Créateur ou de la Marque, de les exposer au ridicule, ou au scandale. Une telle conduite inclut sans s'y limiter : l'activité criminelle, le discours de haine, la discrimination, l'abus de substances, la fraude, ou tout comportement en conflit matériel avec les valeurs de la Marque telles que communiquées par écrit. La Marque se réserve le droit de résilier cet accord immédiatement et de retenir la rémunération non payée si la conduite du Créateur déclenche cette clause.
 >
-> **Mutual morality**: Creator reserves the right to terminate this agreement if Brand engages in conduct that would materially damage Creator's reputation or violate Creator's stated values.
+> **Moralité mutuelle** : Le Créateur se réserve le droit de résilier cet accord si la Marque se livre à une conduite qui endommagerait matériellement la réputation du Créateur ou violerait les valeurs déclarées du Créateur.
 
 ---
 
-## Negotiation Guides by Tier
+## Guides de négociation par palier
 
-### Nano Creators (< 10K followers)
-| Aspect | Typical Terms | Negotiation Notes |
+### Créateurs nano (< 10K abonnés)
+| Aspect | Termes typiques | Notes de négociation |
 |--------|--------------|-------------------|
-| Compensation | Product gifting or $50–$250 per post | Many accept product-only; small cash payments build goodwill |
-| Usage rights | Organic repost included; paid media rarely requested | If requesting paid media rights, add $50–$100 |
-| Exclusivity | Rarely enforced | Not cost-effective to enforce at this tier |
-| Approval | Flexible; light-touch review | Over-prescribing kills authenticity at this tier |
-| Contracts | Simple one-page agreement or email confirmation | Full contracts may intimidate; keep it simple |
+| Rémunération | Don de produit ou 50–250 $ par post | Beaucoup acceptent le produit uniquement ; de petits paiements en espèces construisent la bonne volonté |
+| Droits d'usage | Republication organique incluse ; média payant rarement demandé | Si des droits de média payant sont demandés, ajouter 50–100 $ |
+| Exclusivité | Rarement appliquée | Pas rentable à faire appliquer à ce palier |
+| Approbation | Flexible ; revue légère | Trop prescrire tue l'authenticité à ce palier |
+| Contrats | Accord simple d'une page ou confirmation par e-mail | Des contrats complets peuvent intimider ; garder simple |
 
-### Micro Creators (10K–100K)
-| Aspect | Typical Terms | Negotiation Notes |
+### Créateurs micro (10K–100K)
+| Aspect | Termes typiques | Notes de négociation |
 |--------|--------------|-------------------|
-| Compensation | $250–$1,500 per post; hybrid models work well | Offer performance bonuses to align incentives |
-| Usage rights | Organic included; paid media at +25%–40% | Negotiate 60-day paid media windows for cost efficiency |
-| Exclusivity | 30-day category exclusivity standard | Keep exclusivity windows short; premium adds up |
-| Approval | One concept review + one revision round | Standard workflow; respect their creative instincts |
-| Contracts | 2–3 page agreement covering key terms | Professional but not overly legalistic |
+| Rémunération | 250–1 500 $ par post ; les modèles hybrides fonctionnent bien | Proposer des bonus de performance pour aligner les incitations |
+| Droits d'usage | Organique inclus ; média payant à +25%–40% | Négocier des fenêtres de média payant de 60 jours pour l'efficacité de coût |
+| Exclusivité | Exclusivité de catégorie de 30 jours standard | Garder les fenêtres d'exclusivité courtes ; la prime s'accumule |
+| Approbation | Un tour de revue de concept + un tour de révision | Workflow standard ; respecter leur instinct créatif |
+| Contrats | Accord de 2–3 pages couvrant les termes clés | Professionnel mais pas trop légaliste |
 
-### Mid-Tier Creators (100K–500K)
-| Aspect | Typical Terms | Negotiation Notes |
+### Créateurs mid-tier (100K–500K)
+| Aspect | Termes typiques | Notes de négociation |
 |--------|--------------|-------------------|
-| Compensation | $1,500–$5,000 per post; retainers viable | Multi-post packages unlock 15%–20% discounts |
-| Usage rights | Negotiate explicitly; paid media at +30%–50% | Define clear windows and channels for usage |
-| Exclusivity | 30–60 day category exclusivity | Price exclusivity separately; avoid bundling |
-| Approval | Structured workflow with defined timelines | Expect professional turnaround expectations |
-| Contracts | Full contract with all standard clauses | May have management or legal review |
+| Rémunération | 1 500–5 000 $ par post ; retainers viables | Les packages multi-post débloquent des remises de 15%–20% |
+| Droits d'usage | Négocier explicitement ; média payant à +30%–50% | Définir clairement les fenêtres et canaux d'usage |
+| Exclusivité | Exclusivité de catégorie de 30–60 jours | Tarifer l'exclusivité séparément ; éviter le regroupement |
+| Approbation | Workflow structuré avec des délais définis | S'attendre à des exigences de délai professionnelles |
+| Contrats | Contrat complet avec toutes les clauses standards | Peut faire l'objet d'une revue de management ou juridique |
 
-### Macro Creators (500K–1M)
-| Aspect | Typical Terms | Negotiation Notes |
+### Créateurs macro (500K–1M)
+| Aspect | Termes typiques | Notes de négociation |
 |--------|--------------|-------------------|
-| Compensation | $5,000–$15,000 per post; agency-negotiated | Expect rate cards and agency markups (15%–20%) |
-| Usage rights | Heavily negotiated; paid media at premium rates | Full buyouts are expensive — license specific channels/durations |
-| Exclusivity | 60–90 days standard; expensive | Exclusivity at this tier can exceed the content fee |
-| Approval | Formal workflow; expect creative pushback | These creators protect their brand — respect their creative vision |
-| Contracts | 5–10 page agreements; talent agency involved | Legal review from both sides is standard |
+| Rémunération | 5 000–15 000 $ par post ; négocié par agence | S'attendre à des grilles tarifaires et des majorations d'agence (15%–20%) |
+| Droits d'usage | Fortement négocié ; média payant à taux premium | Les rachats complets sont chers — concéder des canaux/durées spécifiques |
+| Exclusivité | 60–90 jours standard ; coûteux | L'exclusivité à ce palier peut dépasser les honoraires de contenu |
+| Approbation | Workflow formel ; s'attendre à des retours créatifs | Ces créateurs protègent leur marque — respecter leur vision créative |
+| Contrats | Accords de 5–10 pages ; agence de talent impliquée | La revue juridique des deux côtés est standard |
 
-### Mega Creators (1M+)
-| Aspect | Typical Terms | Negotiation Notes |
+### Créateurs mega (1M+)
+| Aspect | Termes typiques | Notes de négociation |
 |--------|--------------|-------------------|
-| Compensation | $15,000–$100K+ per post | Talent management firms set terms; limited flexibility |
-| Usage rights | Highly restricted and expensively licensed | Every right is a separate line item |
-| Exclusivity | Lengthy windows at significant premiums | May require six-figure exclusivity fees |
-| Approval | Complex multi-stakeholder approval process | Longer timelines; build in 2x the expected review time |
-| Contracts | Extensive agreements; multiple addenda | Expect 4–6 week negotiation cycles |
+| Rémunération | 15 000–100K $+ par post | Les firmes de gestion de talent fixent les termes ; flexibilité limitée |
+| Droits d'usage | Fortement restreint et concédé à cher prix | Chaque droit est une ligne budgétaire séparée |
+| Exclusivité | Fenêtres longues à primes significatives | Peut nécessiter des frais d'exclusivité à six chiffres |
+| Approbation | Processus d'approbation multi-parties prenantes complexe | Délais plus longs ; prévoir 2x le temps de revue attendu |
+| Contrats | Accords étendus ; addenda multiples | S'attendre à des cycles de négociation de 4–6 semaines |
 
 ---
 
-## Rate Benchmarking by Tier and Platform
+## Benchmarking des tarifs par palier et plateforme
 
-| Tier | Instagram Post | Instagram Reel | TikTok Video | YouTube Dedicated | YouTube Integration | LinkedIn Post |
+| Palier | Post Instagram | Reel Instagram | Vidéo TikTok | YouTube dédié | Intégration YouTube | Post LinkedIn |
 |------|---------------|----------------|-------------|-------------------|--------------------|--------------|
-| **Nano** | $50–$250 | $75–$300 | $50–$200 | $200–$500 | $100–$300 | $50–$200 |
-| **Micro** | $250–$1,500 | $350–$2,000 | $200–$1,000 | $1,000–$5,000 | $500–$2,500 | $200–$1,000 |
-| **Mid** | $1,500–$5,000 | $2,000–$6,000 | $1,000–$5,000 | $5,000–$15,000 | $2,500–$7,500 | $1,000–$3,000 |
-| **Macro** | $5,000–$15,000 | $6,000–$18,000 | $5,000–$15,000 | $15,000–$50,000 | $7,500–$25,000 | $3,000–$8,000 |
-| **Mega** | $15,000–$100K+ | $18,000–$120K+ | $15,000–$80K+ | $50,000–$250K+ | $25,000–$100K+ | $8,000–$25K+ |
+| **Nano** | 50–250 $ | 75–300 $ | 50–200 $ | 200–500 $ | 100–300 $ | 50–200 $ |
+| **Micro** | 250–1 500 $ | 350–2 000 $ | 200–1 000 $ | 1 000–5 000 $ | 500–2 500 $ | 200–1 000 $ |
+| **Mid** | 1 500–5 000 $ | 2 000–6 000 $ | 1 000–5 000 $ | 5 000–15 000 $ | 2 500–7 500 $ | 1 000–3 000 $ |
+| **Macro** | 5 000–15 000 $ | 6 000–18 000 $ | 5 000–15 000 $ | 15 000–50 000 $ | 7 500–25 000 $ | 3 000–8 000 $ |
+| **Mega** | 15 000–100K $+ | 18 000–120K $+ | 15 000–80K $+ | 50 000–250K $+ | 25 000–100K $+ | 8 000–25K $+ |
 
-**Rate modifiers:**
-- Stories (add-on): +15%–25% of post rate for 3–5 story frames
-- Bundle discount (3+ deliverables): -15%–25% off total
-- Exclusivity: +30%–100% depending on category and duration
-- Paid media usage rights: +25%–50% per month of usage
-- Rush delivery (< 7 days): +25%–50% surcharge
+**Modificateurs de tarif :**
+- Stories (add-on) : +15%–25% du tarif du post pour 3–5 frames de story
+- Remise de bundle (3+ livrables) : -15%–25% du total
+- Exclusivité : +30%–100% selon la catégorie et la durée
+- Droits d'usage média payant : +25%–50% par mois d'usage
+- Livraison rush (< 7 jours) : +25%–50% de surcharge
 
 ---
 
-## Payment Terms
+## Conditions de paiement
 
-### Standard Payment Structures
-| Structure | When Payment is Made | Best For |
+### Structures de paiement standards
+| Structure | Quand le paiement est effectué | Idéal pour |
 |-----------|---------------------|----------|
-| **100% upfront** | Upon contract execution | Nano/micro creators; builds trust |
-| **50/50 split** | 50% on signing, 50% on publication | Standard for mid-tier and above |
-| **Milestone-based** | Payments tied to concept approval, draft delivery, publication | Complex multi-deliverable campaigns |
-| **Net 30** | Full payment within 30 days of content going live | Enterprise brands; requires creator cash flow tolerance |
-| **Net 60** | Full payment within 60 days | Large corporations; unpopular with creators |
-| **Performance holdback** | Base fee upfront + performance bonus paid after 30 days based on metrics | Performance-oriented campaigns |
+| **100% initial** | À l'exécution du contrat | Créateurs nano/micro ; construit la confiance |
+| **Répartition 50/50** | 50% à la signature, 50% à la publication | Standard pour mid-tier et au-dessus |
+| **Basé sur jalon** | Paiements liés à l'approbation du concept, la livraison du brouillon, la publication | Campagnes multi-livrables complexes |
+| **Net 30** | Paiement complet dans les 30 jours suivant la mise en ligne du contenu | Marques entreprise ; nécessite une tolérance de trésorerie du créateur |
+| **Net 60** | Paiement complet dans les 60 jours | Grandes entreprises ; impopulaire auprès des créateurs |
+| **Retenue de performance** | Honoraires de base initiaux + bonus de performance payé après 30 jours selon les métriques | Campagnes orientées performance |
 
-### Payment Method Preferences
-- Wire transfer / ACH: Professional standard for $1,000+
-- PayPal: Common for smaller payments; creator-friendly
-- Platform-native (e.g., TikTok Creator Marketplace): Handles tax documentation
-- Agency pass-through: Payment to talent agency who distributes to creator
+### Préférences de méthode de paiement
+- Virement bancaire / ACH : Standard professionnel pour 1 000 $+
+- PayPal : Courant pour les petits paiements ; adapté aux créateurs
+- Natif de plateforme (par exemple, TikTok Creator Marketplace) : Gère la documentation fiscale
+- Passage par agence : Paiement à l'agence de talent qui distribue au créateur
 
-### Tax Considerations
-- Issue 1099-NEC for US-based creators paid $600+ annually
-- Collect W-9 before first payment
-- International creators: Collect W-8BEN; withhold 30% unless tax treaty applies
-- Keep records of all payments, deliverables, and contracts for minimum 7 years
+### Considérations fiscales
+- Émettre un 1099-NEC pour les créateurs basés aux US payés 600 $+ annuellement
+- Collecter le W-9 avant le premier paiement
+- Créateurs internationaux : Collecter le W-8BEN ; retenir 30% sauf traité fiscal applicable
+- Conserver les enregistrements de tous les paiements, livrables, et contrats pendant au moins 7 ans
 
 ---
 
-## Non-Compete Considerations
+## Considérations de non-concurrence
 
-### Key Non-Compete Factors
-| Factor | Consideration |
+### Facteurs clés de non-concurrence
+| Facteur | Considération |
 |--------|--------------|
-| **Scope** | Define the exact product category — too broad is unenforceable |
-| **Duration** | 30–90 days post-campaign is standard; longer requires higher compensation |
-| **Geography** | Typically not limited by geography in digital influencer contracts |
-| **Enforcement** | Difficult to enforce; rely on relationship and fair compensation |
-| **Compensation** | Must be proportionate — courts may void unreasonable restrictions |
-| **Existing relationships** | Grandfather in pre-existing brand deals to avoid conflicts |
+| **Périmètre** | Définir la catégorie de produit exacte — trop large est inapplicable |
+| **Durée** | 30–90 jours post-campagne est standard ; plus long nécessite une rémunération plus élevée |
+| **Géographie** | Typiquement non limitée géographiquement dans les contrats d'influence numériques |
+| **Application** | Difficile à faire appliquer ; s'appuyer sur la relation et une rémunération équitable |
+| **Rémunération** | Doit être proportionnée — les tribunaux peuvent annuler des restrictions déraisonnables |
+| **Relations existantes** | Antérioriser les accords de marque préexistants pour éviter les conflits |
 
-### Non-Compete Clause Template
-> During the Exclusivity Period defined in this agreement, Creator shall not, directly or indirectly: (a) promote, endorse, or create sponsored content for any Competing Brand as defined in Exhibit B; (b) post organic content that prominently features a Competing Brand's product; or (c) enter into negotiations for future partnerships with Competing Brands that would commence during the Exclusivity Period. Creator's pre-existing partnerships listed in Exhibit C are excluded from this restriction.
+### Modèle de clause de non-concurrence
+> Pendant la Période d'Exclusivité définie dans cet accord, le Créateur ne devra pas, directement ou indirectement : (a) promouvoir, approuver, ou créer du contenu sponsorisé pour toute Marque Concurrente telle que définie à l'Annexe B ; (b) publier du contenu organique qui met en avant de façon prééminente le produit d'une Marque Concurrente ; ou (c) entamer des négociations pour de futurs partenariats avec des Marques Concurrentes qui commenceraient pendant la Période d'Exclusivité. Les partenariats préexistants du Créateur listés à l'Annexe C sont exclus de cette restriction.

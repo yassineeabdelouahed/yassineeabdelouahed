@@ -1,21 +1,21 @@
-# SEO Content — Optimization & Strategy Guide
+# Contenu SEO — Guide d'optimisation et de stratégie
 
-## Keyword Optimization Checklist
+## Checklist d'optimisation de mots-clés
 
-- [ ] Primary keyword in title tag (ideally near the beginning)
-- [ ] Primary keyword in H1 heading
-- [ ] Primary keyword in first 100 words of body
-- [ ] Primary keyword in URL slug
-- [ ] Primary keyword in meta description
-- [ ] Primary keyword in at least one image alt text
-- [ ] Secondary keywords in H2/H3 subheadings
-- [ ] Primary keyword placed in title, intro, ≥2 H2s, and the conclusion (density is not a target — write naturally and cover the topic; keyword-density percentages are a discredited metric, not a ranking factor)
-- [ ] Related and co-occurring terms used naturally where the topic calls for them (there is no "LSI keyword" ranking signal — this is about genuinely covering the subject, not hitting a term list)
-- [ ] Long-tail variations included in body text
+- [ ] Mot-clé primaire dans la balise title (idéalement près du début)
+- [ ] Mot-clé primaire dans le titre H1
+- [ ] Mot-clé primaire dans les 100 premiers mots du corps
+- [ ] Mot-clé primaire dans le slug d'URL
+- [ ] Mot-clé primaire dans la meta description
+- [ ] Mot-clé primaire dans au moins un texte alt d'image
+- [ ] Mots-clés secondaires dans les sous-titres H2/H3
+- [ ] Mot-clé primaire placé dans le titre, l'intro, ≥2 H2, et la conclusion (la densité n'est pas une cible — écrivez naturellement et couvrez le sujet ; les pourcentages de densité de mots-clés sont une métrique discréditée, pas un facteur de classement)
+- [ ] Termes connexes et co-occurrents utilisés naturellement là où le sujet l'exige (il n'existe pas de signal de classement « mot-clé LSI » — il s'agit de couvrir véritablement le sujet, pas de cocher une liste de termes)
+- [ ] Variations longue traîne incluses dans le corps de texte
 
 ---
 
-## Topic Cluster Design
+## Conception de cluster thématique
 
 ### Structure
 ```
@@ -27,114 +27,114 @@ Pillar Page (broad topic, 3,000+ words)
 Pillar links back to each cluster article
 ```
 
-### Building a Topic Cluster
-1. Choose a core topic (broad, high-volume keyword)
-2. Identify 8-15 subtopics (long-tail keywords with clear search intent)
-3. Write the pillar page covering the broad topic comprehensively
-4. Write individual cluster articles going deep on each subtopic
-5. Interlink: every cluster article links to pillar, pillar links to every cluster article
-6. Update pillar page as new cluster articles are published
+### Construire un cluster thématique
+1. Choisir un sujet central (mot-clé large, à fort volume)
+2. Identifier 8 à 15 sous-thèmes (mots-clés longue traîne avec une intention de recherche claire)
+3. Rédiger la page pilier couvrant le sujet large de façon exhaustive
+4. Rédiger des articles de cluster individuels approfondissant chaque sous-thème
+5. Maillage interne : chaque article de cluster lie vers le pilier, le pilier lie vers chaque article de cluster
+6. Mettre à jour la page pilier au fur et à mesure que de nouveaux articles de cluster sont publiés
 
 ---
 
-## Search Intent Matching
+## Correspondance de l'intention de recherche
 
-| Intent Type | Query Signals | Content Format | CTA |
+| Type d'intention | Signaux de requête | Format de contenu | CTA |
 |-------------|--------------|---------------|-----|
-| **Informational** | "what is," "how to," "guide," "tips" | Blog post, guide, how-to, video | Subscribe, download |
-| **Navigational** | Brand name, product name | Homepage, product page, login | Sign in, get started |
-| **Commercial** | "best," "vs," "review," "top 10" | Comparison, review, listicle | Free trial, demo |
-| **Transactional** | "buy," "pricing," "discount," "sign up" | Product page, pricing page, landing page | Buy, sign up, start trial |
+| **Informationnel** | « qu'est-ce que », « comment faire », « guide », « conseils » | Article de blog, guide, tutoriel, vidéo | S'abonner, télécharger |
+| **Navigationnel** | Nom de marque, nom de produit | Page d'accueil, page produit, connexion | Se connecter, commencer |
+| **Commercial** | « meilleur », « vs », « avis », « top 10 » | Comparaison, avis, liste | Essai gratuit, démo |
+| **Transactionnel** | « acheter », « tarif », « remise », « s'inscrire » | Page produit, page de tarification, landing page | Acheter, s'inscrire, démarrer l'essai |
 
 ---
 
-## Featured Snippet Optimization
+## Optimisation des featured snippets
 
-### Paragraph Snippets (most common)
-- Answer the question in 40-60 words immediately after the heading
-- Use the exact question as an H2, then answer directly below
-- Start the answer with a definitive statement, not hedging
+### Snippets de paragraphe (les plus courants)
+- Répondre à la question en 40-60 mots immédiatement après le titre
+- Utiliser la question exacte comme H2, puis répondre directement en dessous
+- Commencer la réponse par une déclaration définitive, sans faux-fuyants
 
-### List Snippets
-- Use H2 for the question, then ordered/unordered list with 5-8 items
-- Each list item should be a concise, complete thought
+### Snippets de liste
+- Utiliser un H2 pour la question, puis une liste ordonnée/non ordonnée avec 5-8 éléments
+- Chaque élément de liste doit être une pensée concise et complète
 
-### Table Snippets
-- Structure data in clean HTML/markdown tables
-- Include headers, consistent columns, and organized data
-- Google pulls tables that directly answer comparison queries
-
----
-
-## On-Page SEO Checklist (25 Items)
-
-### Technical
-- [ ] Page loads in <3 seconds
-- [ ] Mobile-responsive design
-- [ ] HTTPS enabled
-- [ ] Clean URL structure (no parameters, lowercase, hyphens)
-- [ ] Canonical tag set correctly
-- [ ] No duplicate content issues
-
-### Content Structure
-- [ ] Single H1 tag containing primary keyword
-- [ ] Logical heading hierarchy (H1 → H2 → H3, no skips)
-- [ ] Short paragraphs (2-4 sentences)
-- [ ] Bullet points and numbered lists for key information
-- [ ] Table of contents for long-form content (1,500+ words)
-- [ ] Bold key phrases and important terms
-
-### On-Page Elements
-- [ ] Title tag: 50-60 characters, keyword near front
-- [ ] Meta description: 120-160 characters, includes keyword and CTA
-- [ ] Image alt text: descriptive, includes keyword where natural
-- [ ] Image file names: descriptive (not IMG_001.jpg)
-- [ ] Images compressed and in WebP/AVIF format
-- [ ] Open Graph and Twitter Card meta tags set
-
-### Internal Linking
-- [ ] 3-5 internal links to relevant pages
-- [ ] Descriptive anchor text (not "click here")
-- [ ] Links to pillar page from cluster articles
-- [ ] Links from high-authority pages to new content
-
-### Schema Markup
-- [ ] Article schema with author, datePublished, dateModified
-- [ ] FAQ schema for question-based content
-- [ ] HowTo schema for procedural content
-- [ ] Breadcrumb schema
-- [ ] Organization schema on homepage
+### Snippets de tableau
+- Structurer les données dans des tableaux HTML/markdown propres
+- Inclure des en-têtes, des colonnes cohérentes, et des données organisées
+- Google extrait les tableaux qui répondent directement aux requêtes de comparaison
 
 ---
 
-## Content Length Guidelines by Intent
+## Checklist SEO on-page (25 éléments)
 
-| Search Intent | Recommended Length | Rationale |
+### Technique
+- [ ] La page se charge en <3 secondes
+- [ ] Design réactif mobile
+- [ ] HTTPS activé
+- [ ] Structure d'URL propre (pas de paramètres, minuscules, tirets)
+- [ ] Balise canonique correctement définie
+- [ ] Aucun problème de contenu dupliqué
+
+### Structure de contenu
+- [ ] Une seule balise H1 contenant le mot-clé primaire
+- [ ] Hiérarchie de titres logique (H1 → H2 → H3, pas de niveaux sautés)
+- [ ] Paragraphes courts (2-4 phrases)
+- [ ] Puces et listes numérotées pour les informations clés
+- [ ] Table des matières pour le contenu long (1 500+ mots)
+- [ ] Phrases clés et termes importants en gras
+
+### Éléments on-page
+- [ ] Balise title : 50-60 caractères, mot-clé près du début
+- [ ] Meta description : 120-160 caractères, inclut le mot-clé et un CTA
+- [ ] Texte alt d'image : descriptif, inclut le mot-clé lorsque naturel
+- [ ] Noms de fichiers d'image : descriptifs (pas IMG_001.jpg)
+- [ ] Images compressées et au format WebP/AVIF
+- [ ] Balises meta Open Graph et Twitter Card définies
+
+### Maillage interne
+- [ ] 3-5 liens internes vers des pages pertinentes
+- [ ] Texte d'ancre descriptif (pas « cliquez ici »)
+- [ ] Liens vers la page pilier depuis les articles de cluster
+- [ ] Liens depuis des pages à forte autorité vers le nouveau contenu
+
+### Balisage de schéma
+- [ ] Schéma Article avec author, datePublished, dateModified
+- [ ] Schéma FAQ pour le contenu à base de questions
+- [ ] Schéma HowTo pour le contenu procédural
+- [ ] Schéma Breadcrumb
+- [ ] Schéma Organization sur la page d'accueil
+
+---
+
+## Guidelines de longueur de contenu par intention
+
+| Intention de recherche | Longueur recommandée | Justification |
 |--------------|-------------------|-----------|
-| Quick answer / definition | 300-800 words | User wants a fast answer |
-| How-to / tutorial | 1,000-2,500 words | Enough depth to be complete |
-| Comprehensive guide | 2,500-5,000 words | Competes with existing thorough content |
-| Comparison / vs | 1,500-3,000 words | Needs to cover both options fairly |
-| Listicle / roundup | 1,500-4,000 words | Depends on number of items |
-| Product/service page | 500-1,500 words | Focused on conversion, not reading |
+| Réponse rapide / définition | 300-800 mots | L'utilisateur veut une réponse rapide |
+| Comment faire / tutoriel | 1 000-2 500 mots | Assez de profondeur pour être complet |
+| Guide complet | 2 500-5 000 mots | Rivalise avec le contenu approfondi existant |
+| Comparaison / vs | 1 500-3 000 mots | Doit couvrir les deux options équitablement |
+| Liste / tour d'horizon | 1 500-4 000 mots | Dépend du nombre d'éléments |
+| Page produit/service | 500-1 500 mots | Axé conversion, pas lecture |
 
 ---
 
-## Content Refresh Strategy
+## Stratégie de rafraîchissement de contenu
 
-### When to Refresh
-- Traffic declined >20% from peak
-- Rankings dropped 5+ positions
-- Content is >12 months old with dated information
-- Competitor published better content on the same topic
-- Search intent has shifted (informational → commercial)
+### Quand rafraîchir
+- Le trafic a décliné de >20 % par rapport au pic
+- Les classements ont chuté de 5+ positions
+- Le contenu a >12 mois avec des informations datées
+- Un concurrent a publié un meilleur contenu sur le même sujet
+- L'intention de recherche a évolué (informationnel → commercial)
 
-### Refresh Checklist
-- [ ] Update statistics and data with current year sources
-- [ ] Add new sections covering topics that competitors added
-- [ ] Refresh examples and screenshots
-- [ ] Update internal links (add links to newer content)
-- [ ] Optimize for any new keyword opportunities
-- [ ] Update dateModified in schema markup
-- [ ] Improve readability (shorter sentences, better formatting)
-- [ ] Add FAQ section if one doesn't exist
+### Checklist de rafraîchissement
+- [ ] Mettre à jour les statistiques et données avec des sources de l'année en cours
+- [ ] Ajouter de nouvelles sections couvrant les sujets que les concurrents ont ajoutés
+- [ ] Rafraîchir les exemples et captures d'écran
+- [ ] Mettre à jour les liens internes (ajouter des liens vers du contenu plus récent)
+- [ ] Optimiser pour toute nouvelle opportunité de mot-clé
+- [ ] Mettre à jour dateModified dans le balisage de schéma
+- [ ] Améliorer la lisibilité (phrases plus courtes, meilleur formatage)
+- [ ] Ajouter une section FAQ si elle n'existe pas

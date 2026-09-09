@@ -1,112 +1,113 @@
-# EU Code of Practice on AI-Generated Content — context for marketing teams
+# Code de bonnes pratiques de l'UE sur le contenu généré par IA — contexte pour les équipes marketing
 
-**Status as of 29 July 2026:** the European AI Office published the **FINAL Code of Practice on Transparency of AI-Generated Content on 10 June 2026** — ahead of the **2 August 2026** applicability date for **AI Act Article 50 transparency obligations**. The Commission has confirmed the Code as an **"adequate voluntary tool"** for demonstrating Article 50 compliance, and has also adopted its **final Guidelines on Article 50**. The final Code is now the operative reference (superseding the 5 March 2026 second draft). The **initial-signatory window closed 22 July 2026**; late signing remains possible. (Re-verify this status line at each release.)
+**Statut au 29 juillet 2026 :** l'Office européen de l'IA a publié le **Code de bonnes pratiques FINAL sur la transparence du contenu généré par IA le 10 juin 2026** — avant la date d'application du **2 août 2026** pour les **obligations de transparence de l'article 50 de l'AI Act**. La Commission a confirmé le Code comme un **« outil volontaire adéquat »** pour démontrer la conformité à l'article 50, et a également adopté ses **lignes directrices finales sur l'article 50**. Le Code final est désormais la référence opérationnelle (remplaçant le deuxième projet du 5 mars 2026). La **fenêtre de signature initiale s'est fermée le 22 juillet 2026** ; une signature tardive reste possible. (Revérifiez cette ligne de statut à chaque publication.)
 
-Sources: [Code of Practice on Transparency of AI-Generated Content — official page](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content) · [final Code PDF](https://ec.europa.eu/newsroom/dae/redirection/document/129555) (10 June 2026).
+Sources : [Code de bonnes pratiques sur la transparence du contenu généré par IA — page officielle](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content) · [PDF du Code final](https://ec.europa.eu/newsroom/dae/redirection/document/129555) (10 juin 2026).
 
-This document is the canonical reference for any DMP skill that produces, validates, or distributes AI-generated marketing content into EU markets.
+Ce document est la référence canonique pour toute compétence DMP qui produit, valide, ou distribue du contenu marketing généré par IA vers les marchés de l'UE.
 
-### July 2026 verification notes (re-check before each release)
+### Notes de vérification de juillet 2026 (à revérifier avant chaque publication)
 
-- **Final EU Code of Practice** — ✅ PUBLISHED 10 June 2026. Citations in this doc now point at the final text. The **initial-signatory window closed 22 July 2026** (late signing remains possible); one time-sensitive obligation remains: Article 50 obligations **apply from 2 August 2026**.
-- **Standardized EU disclosure icons** — ✅ published with the final Code. Use the official EU icons for visible AI-generation labels on EU-targeted assets; source them from the final Code annex rather than recreating them.
-- **FTC endorsement guidance (May 2026)** — the US FTC's updated endorsement/testimonial guidance covers AI-generated testimonials and synthetic-creator content. Verify the current text against ftc.gov and fold specifics into `skills/influencer-creator/ftc-compliance.md` and `skills/c2pa-metadata/SKILL.md`.
-- **New York synthetic-performer disclosure law (effective June 2026)** — applies to synthetic influencers and AI-generated endorsements ($1K–$5K per violation, $10K repeat). Verify scope/effective date against a primary source before relying on the figures.
+- **Code de bonnes pratiques final de l'UE** — ✅ PUBLIÉ le 10 juin 2026. Les citations de ce document pointent désormais vers le texte final. La **fenêtre de signature initiale s'est fermée le 22 juillet 2026** (une signature tardive reste possible) ; une obligation sensible au temps demeure : les obligations de l'article 50 **s'appliquent à partir du 2 août 2026**.
+- **Icônes de divulgation standardisées de l'UE** — ✅ publiées avec le Code final. Utilisez les icônes officielles de l'UE pour les mentions visibles de génération par IA sur les actifs ciblant l'UE ; récupérez-les dans l'annexe du Code final plutôt que de les recréer.
+- **Directives de la FTC américaine sur l'approbation (mai 2026)** — les directives mises à jour de la FTC américaine sur l'approbation/le témoignage couvrent les témoignages générés par IA et le contenu de créateurs synthétiques. Vérifiez le texte actuel sur ftc.gov et intégrez les précisions dans `skills/influencer-creator/ftc-compliance.md` et `skills/c2pa-metadata/SKILL.md`.
+- **Loi de l'État de New York sur la divulgation des interprètes synthétiques (en vigueur depuis juin 2026)** — s'applique aux influenceurs synthétiques et aux approbations générées par IA (1 000 $ à 5 000 $ par infraction, 10 000 $ en cas de récidive). Vérifiez le périmètre/la date d'entrée en vigueur auprès d'une source primaire avant de vous fier à ces chiffres.
 
-## What Article 50 actually requires
+## Ce que l'article 50 exige réellement
 
-Two distinct obligations:
+Deux obligations distinctes :
 
-1. **Providers** of generative AI systems (the model builders — OpenAI, Anthropic, Google, etc.) must ensure outputs are marked in a **machine-readable format** detectable as AI-generated. The mark must be implemented "in the design of the AI system" and be "effective, interoperable, robust and reliable as far as technically feasible."
-2. **Deployers** (the marketing teams, agencies, and platforms using those systems to produce content) must **disclose** that the content is AI-generated when:
-   - It is a **deep fake** (image, audio, or video that appreciably resembles real persons, objects, places, etc.) — disclosure is mandatory, with an exception for editorial/artistic expression where the disclosure must not hamper the work.
-   - It is **AI-generated text published to inform the public on matters of public interest** — unless the content has undergone human editorial review with editorial responsibility for publication.
+1. Les **fournisseurs** de systèmes d'IA générative (les concepteurs de modèles — OpenAI, Anthropic, Google, etc.) doivent s'assurer que les résultats sont marqués dans un **format lisible par machine** détectable comme généré par IA. Le marquage doit être mis en œuvre « dans la conception du système d'IA » et être « efficace, interopérable, robuste et fiable dans la mesure techniquement possible ».
+2. Les **déployeurs** (les équipes marketing, agences, et plateformes utilisant ces systèmes pour produire du contenu) doivent **divulguer** que le contenu est généré par IA lorsque :
+   - Il s'agit d'un **deepfake** (image, audio, ou vidéo qui ressemble sensiblement à des personnes, objets, lieux, etc. réels) — la divulgation est obligatoire, avec une exception pour l'expression éditoriale/artistique où la divulgation ne doit pas entraver l'œuvre.
+   - Il s'agit de **texte généré par IA publié pour informer le public sur des sujets d'intérêt public** — sauf si le contenu a fait l'objet d'une revue éditoriale humaine avec responsabilité éditoriale de la publication.
 
-Penalty for non-compliance: up to **€15 million or 3% of total worldwide annual turnover**, whichever is higher.
+Pénalité en cas de non-conformité : jusqu'à **15 millions d'euros ou 3 % du chiffre d'affaires annuel mondial total**, le montant le plus élevé étant retenu.
 
-## What the final Code requires
+## Ce que le Code final exige
 
-The final Code (10 June 2026) carries forward the second draft's structure with the requirements now settled:
+Le Code final (10 juin 2026) reprend la structure du deuxième projet, les exigences étant désormais fixées :
 
-### Section 1 — Providers
-The final Code consolidates provider obligations around **two-layered marking**:
+### Section 1 — Fournisseurs
+Le Code final consolide les obligations des fournisseurs autour d'un **marquage à deux couches** :
 
-| Layer | Required? | Mechanism |
+| Couche | Requise ? | Mécanisme |
 |---|---|---|
-| **Secured metadata** | Required | C2PA-style content credentials embedded in the file (PNG, JPEG, MP4, WAV, OGG, PDF, DOCX, EXIF on raw images, etc.) |
-| **Watermarking** | Required | Robust signal embedded in pixels / audio samples / token distributions that survives compression, screenshotting, format conversion |
-| Fingerprinting | Optional | Perceptual hash registered in a detection database; useful when the marked file is re-encoded or transformed |
-| Logging | Optional | Provider-side log of generated content for downstream takedown / verification requests |
+| **Métadonnées sécurisées** | Requise | Identifiants de contenu de type C2PA intégrés dans le fichier (PNG, JPEG, MP4, WAV, OGG, PDF, DOCX, EXIF sur les images brutes, etc.) |
+| **Filigranage** | Requis | Signal robuste intégré dans les pixels / échantillons audio / distributions de tokens qui survit à la compression, aux captures d'écran, à la conversion de format |
+| Empreinte digitale (fingerprinting) | Optionnel | Hachage perceptuel enregistré dans une base de données de détection ; utile lorsque le fichier marqué est réencodé ou transformé |
+| Journalisation | Optionnel | Journal côté fournisseur du contenu généré pour les demandes de retrait / de vérification en aval |
 
-The final Code also requires **detection and verification protocols** so a deployer or platform can programmatically verify a mark is present.
+Le Code final exige également des **protocoles de détection et de vérification** afin qu'un déployeur ou une plateforme puisse vérifier de manière programmatique qu'un marquage est présent.
 
-The Code explicitly supports **open standards** to keep compliance costs low — **C2PA satisfies the secured-metadata layer**.
+Le Code soutient explicitement les **normes ouvertes** pour maintenir de faibles coûts de conformité — **C2PA satisfait la couche de métadonnées sécurisées**.
 
-### Section 2 — Deployers
-Carried over from the second draft into the final text: **the prior taxonomy distinguishing AI-generated content from AI-assisted content is dropped**. The approach focuses on:
+### Section 2 — Déployeurs
+Repris du deuxième projet dans le texte final : **la taxonomie antérieure distinguant le contenu généré par IA du contenu assisté par IA est abandonnée**. L'approche se concentre sur :
 
-| What | Disclosure requirement |
+| Quoi | Exigence de divulgation |
 |---|---|
-| **Deepfakes** (images/audio/video resembling real persons, objects, places) | Visible icon / label / disclaimer required. Design and placement specifications in the Code annex. **The standardized EU icons are published with the final Code — use them.** |
-| **Text publications on matters of public interest** | Disclosure required UNLESS human editorial review with editorial responsibility was applied |
-| **Artistic, creative, satirical, fictional, or editorially-controlled content** | Simplified / reduced requirements — disclosure must not hamper the work |
+| **Deepfakes** (images/audio/vidéo ressemblant à des personnes, objets, lieux réels) | Icône / mention / avertissement visible requis. Spécifications de conception et de placement dans l'annexe du Code. **Les icônes standardisées de l'UE sont publiées avec le Code final — utilisez-les.** |
+| **Publications de texte sur des sujets d'intérêt public** | Divulgation requise SAUF si une revue éditoriale humaine avec responsabilité éditoriale a été appliquée |
+| **Contenu artistique, créatif, satirique, fictionnel, ou sous contrôle éditorial** | Exigences simplifiées / réduites — la divulgation ne doit pas entraver l'œuvre |
 
-The Section 2 changes mean DMP no longer needs to maintain a "AI-generated vs AI-assisted" classifier on every output. Every AI-touched asset that meets the deepfake or public-interest-text criteria carries the same disclosure obligation.
+Les changements de la Section 2 signifient que DMP n'a plus besoin de maintenir un classificateur « généré par IA vs assisté par IA » sur chaque résultat. Tout actif touché par l'IA qui répond aux critères de deepfake ou de texte d'intérêt public porte la même obligation de divulgation.
 
-Source: [final Code of Practice (EU Commission, 10 June 2026)](https://ec.europa.eu/newsroom/dae/redirection/document/129555).
+Source : [Code de bonnes pratiques final (Commission européenne, 10 juin 2026)](https://ec.europa.eu/newsroom/dae/redirection/document/129555).
 
-## Voluntary status
+## Statut volontaire
 
-The Code is a **voluntary compliance tool** — it does not replace Article 50, it just provides a presumption-of-conformity path for signatories. If you don't sign, you still need to comply with Article 50 via your own mechanism. Marketing teams running multi-brand portfolios should consider signing on behalf of each brand whose target market includes any EU jurisdiction.
+Le Code est un **outil de conformité volontaire** — il ne remplace pas l'article 50, il fournit simplement une voie de présomption de conformité pour les signataires. Si vous ne signez pas, vous devez tout de même vous conformer à l'article 50 via votre propre mécanisme. Les équipes marketing gérant des portefeuilles multi-marques devraient envisager de signer au nom de chaque marque dont le marché cible inclut une juridiction de l'UE.
 
-## What this means for DMP-generated content
+## Ce que cela signifie pour le contenu généré par DMP
 
-DMP is a **deployer**, not a provider — and the same logic applies to any other AI content tooling in your stack. Article 50 deployer obligations apply when:
+DMP est un **déployeur**, pas un fournisseur — et la même logique s'applique à tout autre outil de contenu IA dans votre pile technologique. Les obligations de déployeur de l'article 50 s'appliquent lorsque :
 
-- The brand's target market includes any EU jurisdiction (check `brand.profile.json → target_markets` for any of: AT, BE, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR, HU, IE, IT, LV, LT, LU, MT, NL, PL, PT, RO, SK, SI, ES, SE)
-- AND the content is AI-generated (image, video, audio, or text-published-to-inform-public)
-- AND the disclosure exception does not apply (no human editorial review with editorial responsibility, or the asset is a deep fake)
+- Le marché cible de la marque inclut une juridiction de l'UE (vérifier `brand.profile.json → target_markets` pour l'une des suivantes : AT, BE, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR, HU, IE, IT, LV, LT, LU, MT, NL, PL, PT, RO, SK, SI, ES, SE)
+- ET le contenu est généré par IA (image, vidéo, audio, ou texte publié pour informer le public)
+- ET l'exception de divulgation ne s'applique pas (aucune revue éditoriale humaine avec responsabilité éditoriale, ou l'actif est un deepfake)
 
-### Mandatory disclosure paths used by the plugin
+### Voies de divulgation obligatoires utilisées par le plugin
 
-1. **Machine-readable mark** — embed a C2PA manifest with the `c2pa.ai-disclosure` assertion (spec 2.4, April 2026) via `/digital-marketing-pro:c2pa-metadata`. **This satisfies the Section 1 secured-metadata requirement automatically.** Note: the Code Section 1 also requires a watermarking layer — this is a *provider* obligation, but if you're stitching together outputs from multiple providers (e.g., AI-generated images composited in a separate design tool), verify the marks survive your post-processing pipeline.
-2. **Visible deepfake disclosure** — for any AI-generated image/video/audio that resembles a real person, place, or object: visible icon/label/disclaimer on the asset OR in the adjacent caption / alt text / publication metadata. DMP's content pipeline auto-adds this when `c2pa_auto_sign: true` is on for the brand and the generator emitted `ai-claim: ai-generated-content`. **Anticipate the standardized EU icon** — the standardized EU disclosure icons shipped in the final Code annex (10 June 2026), DMP will adopt the standardized EU disclosure icon from the annex.
-3. **Editorial-review proof for AI-generated text** — if you're publishing long-form AI-written articles to inform the public on matters of public interest, the editorial-review exception applies only if a human editor signed off with editorial responsibility. Your documented review records (the quality-assurance agent's logged evals, reviewer scorecards, sign-off notes) serve as evidence; **archive them for at least 3 years** (typical regulatory retention).
+1. **Marquage lisible par machine** — intégrer un manifeste C2PA avec l'assertion `c2pa.ai-disclosure` (spécification 2.4, avril 2026) via `/digital-marketing-pro:c2pa-metadata`. **Cela satisfait automatiquement l'exigence de métadonnées sécurisées de la Section 1.** Remarque : la Section 1 du Code exige également une couche de filigranage — il s'agit d'une obligation de *fournisseur*, mais si vous assemblez des résultats provenant de plusieurs fournisseurs (par exemple, des images générées par IA composées dans un outil de conception séparé), vérifiez que les marquages survivent à votre pipeline de post-traitement.
+2. **Divulgation visible de deepfake** — pour toute image/vidéo/audio généré par IA ressemblant à une personne, un lieu, ou un objet réel : icône/mention/avertissement visible sur l'actif OU dans la légende adjacente / texte alternatif / métadonnées de publication. Le pipeline de contenu de DMP ajoute cela automatiquement lorsque `c2pa_auto_sign: true` est activé pour la marque et que le générateur a émis `ai-claim: ai-generated-content`. **Anticipez l'icône standardisée de l'UE** — les icônes de divulgation standardisées de l'UE ont été livrées dans l'annexe du Code final (10 juin 2026), DMP adoptera l'icône de divulgation standardisée de l'UE issue de l'annexe.
+3. **Preuve de revue éditoriale pour le texte généré par IA** — si vous publiez des articles longs rédigés par IA pour informer le public sur des sujets d'intérêt public, l'exception de revue éditoriale ne s'applique que si un éditeur humain a validé avec responsabilité éditoriale. Vos registres de revue documentés (les évaluations journalisées de l'agent d'assurance qualité, les grilles de notation des relecteurs, les notes de validation) servent de preuve ; **archivez-les pendant au moins 3 ans** (conservation réglementaire typique).
 
-## The final Code is published — signatory decision and adoption
+## Le Code final est publié — décision de signature et adoption
 
-The final Code landed 10 June 2026. What that changes operationally:
+Le Code final est arrivé le 10 juin 2026. Ce que cela change opérationnellement :
 
-- **Signatory decision is now live.** The Commission confirmed the Code as an adequate voluntary tool: signatories gain legal predictability across EU Member States, while non-signatories must demonstrate that their alternative measures meet the standard through individual market-surveillance assessment. The **initial-signatory window closed 22 July 2026** (late signing remains possible). Document the decision in `brand.profile.json → compliance.eu_code_of_practice_signatory: true|false`.
-- **Cite the final Code URL** (done throughout this doc) and **use the standardized EU disclosure icons** from the final Code annex for visible labels.
-- Adopt the final disclosure-language templates as the AI Office publishes annex updates, and fold vertical-specific samples into `industry-profiles.md` as they appear.
+- **La décision de signature est désormais en vigueur.** La Commission a confirmé le Code comme un outil volontaire adéquat : les signataires bénéficient d'une prévisibilité juridique dans tous les États membres de l'UE, tandis que les non-signataires doivent démontrer que leurs mesures alternatives répondent à la norme via une évaluation individuelle de surveillance du marché. La **fenêtre de signature initiale s'est fermée le 22 juillet 2026** (une signature tardive reste possible). Documentez la décision dans `brand.profile.json → compliance.eu_code_of_practice_signatory: true|false`.
+- **Citez l'URL du Code final** (fait tout au long de ce document) et **utilisez les icônes de divulgation standardisées de l'UE** de l'annexe du Code final pour les mentions visibles.
+- Adoptez les modèles de langage de divulgation finaux à mesure que l'Office de l'IA publie les mises à jour d'annexe, et intégrez les exemples spécifiques à chaque secteur dans `industry-profiles.md` à mesure qu'ils apparaissent.
 
-Under the final Code, the C2PA `c2pa.ai-disclosure` + IPTC digital-source-type pairing already shipped by DMP remains the canonical machine-readable mark for the Section 1 secured-metadata layer — C2PA is referenced as satisfying that layer.
+Sous le Code final, l'association C2PA `c2pa.ai-disclosure` + type de source numérique IPTC déjà livrée par DMP reste le marquage lisible par machine canonique pour la couche de métadonnées sécurisées de la Section 1 — C2PA est référencé comme satisfaisant cette couche.
 
-## Operational checklist for marketing teams (Aug 2 readiness)
+## Checklist opérationnelle pour les équipes marketing (préparation au 2 août)
 
-Run this checklist before 2 August 2026 for any brand with EU target markets:
+Exécutez cette checklist avant le 2 août 2026 pour toute marque ayant des marchés cibles dans l'UE :
 
-- [ ] `brand.profile.json → target_markets` reviewed; EU jurisdictions identified
-- [ ] `c2pa_auto_sign: true` enabled for any brand with EU markets
-- [ ] All AI image/video generation paths route through `/digital-marketing-pro:c2pa-metadata` (verify with `/digital-marketing-pro:check`)
-- [ ] Visible deepfake disclosure language drafted in EU languages relevant to target markets (DE / FR / IT / ES / NL / PL at minimum for major-EU brands)
-- [ ] Editorial-review logs archived for any AI-generated long-form content in `archives/` directory (3+ year retention)
-- [ ] Marketing platforms (CMS, social schedulers, email tools) confirmed to preserve C2PA metadata on re-upload (some platforms strip it — verify with `/digital-marketing-pro:c2pa-metadata --verify-roundtrip`)
-- [ ] Decide whether brand/parent will sign the Code as a signatory and document in `brand.profile.json` — **initial-signatory window closed 22 July 2026; late signing remains possible**
-- [ ] Replace any placeholder AI-disclosure labels with the standardized EU icons from the final Code annex
+- [ ] `brand.profile.json → target_markets` révisé ; juridictions de l'UE identifiées
+- [ ] `c2pa_auto_sign: true` activé pour toute marque ayant des marchés dans l'UE
+- [ ] Tous les chemins de génération d'image/vidéo IA passent par `/digital-marketing-pro:c2pa-metadata` (vérifier avec `/digital-marketing-pro:check`)
+- [ ] Langage de divulgation visible de deepfake rédigé dans les langues de l'UE pertinentes pour les marchés cibles (DE / FR / IT / ES / NL / PL au minimum pour les grandes marques de l'UE)
+- [ ] Journaux de revue éditoriale archivés pour tout contenu long généré par IA dans le répertoire `archives/` (conservation de 3 ans ou plus)
+- [ ] Plateformes marketing (CMS, planificateurs sociaux, outils e-mail) confirmées comme préservant les métadonnées C2PA lors d'un nouveau téléversement (certaines plateformes les suppriment — vérifier avec `/digital-marketing-pro:c2pa-metadata --verify-roundtrip`)
+- [ ] Décider si la marque/société mère signera le Code en tant que signataire et documenter cela dans `brand.profile.json` — **la fenêtre de signature initiale s'est fermée le 22 juillet 2026 ; une signature tardive reste possible**
+- [ ] Remplacer toute mention de divulgation IA provisoire par les icônes standardisées de l'UE de l'annexe du Code final
 
-## Related skills
+## Compétences liées
 
-- `skills/c2pa-metadata/SKILL.md` — embed C2PA manifest including 2.4 `c2pa.ai-disclosure` assertion
-- `skills/check/SKILL.md` — pre-publish gate, includes EU-market compliance check
-- `skills/context-engine/compliance-rules.md` — jurisdiction-specific compliance rules (16+ privacy laws, AI labelling rules, advertising standards)
-- `skills/context-engine/industry-profiles.md` — industry-specific transparency expectations
+- `skills/c2pa-metadata/SKILL.md` — intégrer un manifeste C2PA incluant l'assertion `c2pa.ai-disclosure` 2.4
+- `skills/check/SKILL.md` — porte avant publication, inclut la vérification de conformité pour le marché de l'UE
+- `skills/context-engine/compliance-rules.md` — règles de conformité spécifiques à chaque juridiction (16+ lois sur la vie privée, règles d'étiquetage IA, normes publicitaires)
+- `skills/context-engine/industry-profiles.md` — attentes de transparence spécifiques à chaque secteur
 
-## Primary references
+## Références principales
 
-- [FINAL Code of Practice on Transparency of AI-Generated Content (10 June 2026) — PDF](https://ec.europa.eu/newsroom/dae/redirection/document/129555)
-- [EU Digital Strategy — Code of Practice for AI-generated content (official overview page + signatory form)](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content)
-- [EU AI Act Article 50 (Regulation (EU) 2024/1689)](https://artificialintelligenceact.eu/article/50/)
-- [C2PA Specification 2.4 (April 2026)](https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html) — `c2pa.ai-disclosure` assertion definition
-- Historical: [second draft (5 March 2026)](https://digital-strategy.ec.europa.eu/en/library/commission-publishes-second-draft-code-practice-marking-and-labelling-ai-generated-content) — superseded by the final Code
+- [Code de bonnes pratiques FINAL sur la transparence du contenu généré par IA (10 juin 2026) — PDF](https://ec.europa.eu/newsroom/dae/redirection/document/129555)
+- [Stratégie numérique de l'UE — Code de bonnes pratiques pour le contenu généré par IA (page de présentation officielle + formulaire de signature)](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content)
+- [Article 50 de l'AI Act de l'UE (Règlement (UE) 2024/1689)](https://artificialintelligenceact.eu/article/50/)
+- [Spécification C2PA 2.4 (avril 2026)](https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html) — définition de l'assertion `c2pa.ai-disclosure`
+- Historique : [deuxième projet (5 mars 2026)](https://digital-strategy.ec.europa.eu/en/library/commission-publishes-second-draft-code-practice-marking-and-labelling-ai-generated-content) — remplacé par le Code final
+</content>

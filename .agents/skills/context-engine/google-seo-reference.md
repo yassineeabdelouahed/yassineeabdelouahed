@@ -1,131 +1,132 @@
-# Google SEO Quick Reference (July 2026)
+# Référence rapide SEO Google (juillet 2026)
 
-Concise reference guide for agents and skills. Not a reproduction of Google's documentation — see Official Documentation Links at the bottom for full details. Volatile items (surfaces, schema status, algorithm dates) carry a date — re-verify anything older than ~3 months against the official docs and the [Search Status Dashboard](https://status.search.google.com/).
-
----
-
-## How Google Search Works
-
-Three stages: **Crawling** (Googlebot discovers pages via links and sitemaps), **Indexing** (processes and stores content, metadata, signals), **Serving** (ranks indexed pages by relevance, quality, usability). Pages must be crawlable and indexable to appear.
+Guide de référence concis pour les agents et compétences. Il ne s'agit pas d'une reproduction de la documentation de Google — voir les liens vers la documentation officielle en bas de page pour les détails complets. Les éléments volatils (surfaces, statut des schémas, dates d'algorithme) portent une date — revérifiez tout élément vieux de plus de ~3 mois par rapport à la documentation officielle et au [tableau de bord de statut de la recherche](https://status.search.google.com/).
 
 ---
 
-## Google Search Essentials
+## Comment fonctionne la recherche Google
 
-### Technical Requirements
-- Pages accessible to Googlebot (not blocked by robots.txt or noindex)
-- HTTP 200 for indexable content
-- HTML preferred; JS-rendered content supported but slower to index
-- HTTPS required
-
-### Spam Policies
-- No cloaking, doorway pages, hidden text/links
-- No keyword stuffing, link spam (buying links, excessive exchanges)
-- No scraped or auto-generated content without added value
-- No sneaky redirects, thin affiliate pages
-- **Scaled Content Abuse** (March 2024): AI-generated content at scale without unique value — major enforcement since June 2025
-- **Site Reputation Abuse** (November 2024): Third-party content on high-authority domains without editorial oversight
-
-### Key Best Practices
-- Content for users, not search engines
-- Clear hierarchy, descriptive unique titles and meta descriptions
-- Heading tags (H1-H6) for logical structure
-- Image alt text and appropriate file sizes
-- Mobile-friendly responsive design
-- Core Web Vitals optimization
-- XML sitemap in Search Console
-- JSON-LD structured data
+Trois étapes : **exploration (crawling)** (Googlebot découvre les pages via les liens et les sitemaps), **indexation** (traite et stocke le contenu, les métadonnées, les signaux), **diffusion (serving)** (classe les pages indexées par pertinence, qualité, utilisabilité). Les pages doivent être explorables et indexables pour apparaître.
 
 ---
 
-## E-E-A-T (Content Quality)
+## Fondamentaux de la recherche Google
 
-- **Experience**: First-hand experience (original photos, personal stories, demonstrated use)
-- **Expertise**: Relevant knowledge or credentials (professional background, technical depth)
-- **Authoritativeness**: Recognized as a go-to source (citations, brand mentions, expert recognition)
-- **Trustworthiness**: Reliable and transparent (contact info, secure site, editorial standards)
+### Exigences techniques
+- Pages accessibles à Googlebot (non bloquées par robots.txt ou noindex)
+- HTTP 200 pour le contenu indexable
+- HTML préféré ; le contenu rendu en JS est pris en charge mais plus lent à indexer
+- HTTPS requis
 
-**YMYL**: Health, finance, safety, legal topics held to highest E-E-A-T standards.
+### Politiques anti-spam
+- Pas de cloaking, de pages passerelles, de texte/liens cachés
+- Pas de bourrage de mots-clés, de spam de liens (achat de liens, échanges excessifs)
+- Pas de contenu extrait ou généré automatiquement sans valeur ajoutée
+- Pas de redirections furtives, de pages d'affiliation légères
+- **Abus de contenu à l'échelle** (mars 2024) : contenu généré par IA à grande échelle sans valeur unique — application majeure depuis juin 2025
+- **Abus de réputation de site** (novembre 2024) : contenu tiers sur des domaines à forte autorité sans supervision éditoriale
 
-**December 2025 update**: E-E-A-T evaluation now extends to ALL competitive queries, not just YMYL topics.
+### Meilleures pratiques clés
+- Contenu pour les utilisateurs, pas pour les moteurs de recherche
+- Hiérarchie claire, titres et meta descriptions uniques et descriptifs
+- Balises de titre (H1-H6) pour une structure logique
+- Texte alternatif d'image et tailles de fichier appropriées
+- Design responsive adapté au mobile
+- Optimisation des Core Web Vitals
+- Sitemap XML dans Search Console
+- Données structurées JSON-LD
+
+---
+
+## E-E-A-T (qualité du contenu)
+
+- **Expérience** : expérience de première main (photos originales, histoires personnelles, usage démontré)
+- **Expertise** : connaissance ou qualifications pertinentes (parcours professionnel, profondeur technique)
+- **Autorité** : reconnu comme une source de référence (citations, mentions de marque, reconnaissance d'experts)
+- **Fiabilité** : fiable et transparent (coordonnées, site sécurisé, normes éditoriales)
+
+**YMYL** : les sujets liés à la santé, la finance, la sécurité, le juridique sont soumis aux normes E-E-A-T les plus élevées.
+
+**Mise à jour de décembre 2025** : l'évaluation E-E-A-T s'étend désormais à TOUTES les requêtes concurrentielles, pas seulement aux sujets YMYL.
 
 ---
 
 ## Core Web Vitals
 
-Measured at the 75th percentile of real user data (field data).
+Mesurés au 75e centile des données réelles des utilisateurs (données de terrain).
 
-| Metric | Good | Needs Improvement | Poor |
+| Indicateur | Bon | À améliorer | Faible |
 |--------|------|-------------------|------|
-| **LCP** (Largest Contentful Paint) | ≤ 2.5s | 2.5s – 4.0s | > 4.0s |
+| **LCP** (Largest Contentful Paint) | ≤ 2,5s | 2,5s – 4,0s | > 4,0s |
 | **INP** (Interaction to Next Paint) | ≤ 200ms | 200ms – 500ms | > 500ms |
-| **CLS** (Cumulative Layout Shift) | ≤ 0.1 | 0.1 – 0.25 | > 0.25 |
+| **CLS** (Cumulative Layout Shift) | ≤ 0,1 | 0,1 – 0,25 | > 0,25 |
 
-- INP replaced FID on March 12, 2024. FID fully removed from all Chrome tools September 9, 2024. Do NOT reference FID.
-- CWV are a confirmed ranking signal (since June 2021)
-- Field data (CrUX) preferred over lab data (Lighthouse)
+- INP a remplacé FID le 12 mars 2024. FID entièrement retiré de tous les outils Chrome le 9 septembre 2024. NE PAS référencer FID.
+- Les CWV sont un signal de classement confirmé (depuis juin 2021)
+- Les données de terrain (CrUX) sont préférées aux données de laboratoire (Lighthouse)
 
 ---
 
-## Schema Markup Status (July 2026)
+## Statut du balisage de schéma (juillet 2026)
 
-### Active and Supported
+### Actif et pris en charge
 Article, BreadcrumbList, Course, Dataset, Event, ItemList, JobPosting, LocalBusiness, Organization, Person, Product, ProductGroup, ProfilePage, Recipe, Review, SoftwareApplication, SoftwareSourceCode, VideoObject, Clip, SeekToAction, BroadcastEvent, Certification, OfferShippingDetails, MerchantReturnPolicy, DiscussionForumPosting
 
-### Deprecated / Restricted
-- **HowTo**: Deprecated (Sept 2023) — rich results removed
-- **FAQ**: Restricted to gov/health sites only (Aug 2023)
-- **SpecialAnnouncement**: Deprecated (July 2025)
-- **EnergyConsumptionDetails**: Replaced by Certification (April 2025)
+### Déprécié / restreint
+- **HowTo** : déprécié (septembre 2023) — résultats enrichis retirés
+- **FAQ** : restreint aux sites gouvernementaux/santé uniquement (août 2023)
+- **SpecialAnnouncement** : déprécié (juillet 2025)
+- **EnergyConsumptionDetails** : remplacé par Certification (avril 2025)
 
-### JSON-LD Required
-Google recommends JSON-LD for all structured data. Microdata and RDFa are supported but not preferred.
-
----
-
-## Image SEO Best Practices
-
-- **Format**: WebP (97%+ support) or AVIF (92%+) over JPEG/PNG
-- **`<picture>`**: Progressive enhancement with AVIF > WebP > JPEG fallback
-- **LCP image**: `fetchpriority="high"`, NO `loading="lazy"`, NO `decoding="async"`
-- **Non-LCP images**: `loading="lazy"` + `decoding="async"`
-- **Dimensions**: Always set `width` and `height` on `<img>` for CLS prevention
-- **Alt text**: Descriptive (10-125 chars), natural keyword inclusion, not "image.jpg"
-- **File names**: Descriptive, hyphenated, lowercase (`blue-running-shoes.webp`)
-- **JPEG XL**: Chrome support being restored (Nov 2025 announcement) — not yet in stable. Monitor.
+### JSON-LD requis
+Google recommande le JSON-LD pour toutes les données structurées. Microdata et RDFa sont pris en charge mais non privilégiés.
 
 ---
 
-## AI Search Optimization (GEO/AEO)
+## Meilleures pratiques SEO pour les images
 
-### Canonical surfaces (6, mid-2026)
-The plugin scores AI visibility across six surfaces (the `PLATFORMS` constant in `scripts/geo-tracker.py`; scored with the rubric in `/digital-marketing-pro:aeo-audit`):
-- **Google AI Mode** — conversational search tab; became the default experience for opted-in users at Google I/O (19 May 2026), ~1B MAUs, Gemini 3.5 Flash backbone. **Distinct from AI Overviews** — different citation pattern for the same query; audit it separately.
-- **Google AI Overviews** — summary block above classic SERP results
-- ChatGPT (web search mode)
+- **Format** : WebP (support 97 %+) ou AVIF (92 %+) plutôt que JPEG/PNG
+- **`<picture>`** : amélioration progressive avec repli AVIF > WebP > JPEG
+- **Image LCP** : `fetchpriority="high"`, PAS de `loading="lazy"`, PAS de `decoding="async"`
+- **Images non-LCP** : `loading="lazy"` + `decoding="async"`
+- **Dimensions** : toujours définir `width` et `height` sur `<img>` pour prévenir le CLS
+- **Texte alternatif** : descriptif (10-125 caractères), inclusion naturelle de mots-clés, pas « image.jpg »
+- **Noms de fichiers** : descriptifs, avec tirets, en minuscules (`blue-running-shoes.webp`)
+- **JPEG XL** : le support Chrome est en cours de restauration (annonce de novembre 2025) — pas encore en version stable. À surveiller.
+
+---
+
+## Optimisation pour la recherche IA (GEO/AEO)
+
+### Surfaces canoniques (6, mi-2026)
+Le plugin note la visibilité IA sur six surfaces (la constante `PLATFORMS` dans `scripts/geo-tracker.py` ; notée avec la grille de `/digital-marketing-pro:aeo-audit`) :
+- **Google AI Mode** — onglet de recherche conversationnelle ; devenu l'expérience par défaut pour les utilisateurs ayant opté pour cette fonctionnalité lors de Google I/O (19 mai 2026), ~1 milliard d'utilisateurs actifs mensuels, propulsé par Gemini 3.5 Flash. **Distinct des AI Overviews** — schéma de citation différent pour la même requête ; à auditer séparément.
+- **Google AI Overviews** — bloc de synthèse au-dessus des résultats SERP classiques
+- ChatGPT (mode recherche web)
 - Perplexity
 - Gemini
 - Microsoft Copilot
 
-### What's new since March 2026
-- **GSC AI Performance Report (3 Jun 2026, UK-first then global):** actual impressions in AI Overviews + AI Mode for verified properties, plus a property-level **AI opt-out toggle** (no AI-specific robots directive needed). Excludes click data. See `/digital-marketing-pro:gsc-ai-performance`.
-- **GA4 `AI Assistant` channel group (13 May 2026):** captures `Medium=ai-assistant` referrals from ChatGPT / Gemini / Claude — the click-side complement to the GSC report.
-- **Official Google position (AI Optimization Guide, 15 May 2026):** no `llms.txt`, no AI-specific schema, no separate AI eligibility gate — pages eligible for snippets in classic Search are eligible for AI features.
-- **`Google-Extended`** (robots.txt) still controls Google's *other* AI systems (Gemini training, Vertex grounding), distinct from the in-Search-Console AI Overviews/AI Mode toggle.
+### Nouveautés depuis mars 2026
+- **Rapport AI Performance de GSC (3 juin 2026, d'abord au Royaume-Uni puis mondial) :** impressions réelles dans les AI Overviews + AI Mode pour les propriétés vérifiées, plus une **bascule de retrait IA** au niveau de la propriété (aucune directive robots spécifique à l'IA nécessaire). Exclut les données de clic. Voir `/digital-marketing-pro:gsc-ai-performance`.
+- **Groupe de canaux GA4 « Assistant IA » (13 mai 2026) :** capture les référencements `Medium=ai-assistant` depuis ChatGPT / Gemini / Claude — le complément côté clic au rapport GSC.
+- **Position officielle de Google (guide d'optimisation IA, 15 mai 2026) :** pas de `llms.txt`, pas de schéma spécifique à l'IA, pas de porte d'éligibilité IA séparée — les pages éligibles aux extraits dans la recherche classique sont éligibles aux fonctionnalités IA.
+- **`Google-Extended`** (robots.txt) contrôle toujours les *autres* systèmes IA de Google (entraînement Gemini, ancrage Vertex), distinct de la bascule AI Overviews/AI Mode dans Search Console.
 
-### Optimization Signals
-- **Entity consistency**: Brand name, descriptions, key claims consistent across website, social profiles, directories, third-party mentions
-- **Citation-worthy content**: Stats, original research, expert quotes, structured data
-- **Structured answers**: Concise answer blocks suitable for featured snippets and AI extraction
-- **Speakable content**: Short, clear answers for voice search and AI assistants
-- **Source authority**: Established domain authority, quality backlinks, E-E-A-T signals
+### Signaux d'optimisation
+- **Cohérence d'entité** : nom de marque, descriptions, revendications clés cohérents sur le site web, les profils sociaux, les annuaires, les mentions tierces
+- **Contenu digne de citation** : statistiques, recherche originale, citations d'experts, données structurées
+- **Réponses structurées** : blocs de réponse concis adaptés aux extraits enrichis et à l'extraction IA
+- **Contenu « speakable »** : réponses courtes et claires pour la recherche vocale et les assistants IA
+- **Autorité de source** : autorité de domaine établie, backlinks de qualité, signaux E-E-A-T
 
 ---
 
-## Official Documentation Links
+## Liens vers la documentation officielle
 
-- Google Search Central: https://developers.google.com/search
-- Search Console Help: https://support.google.com/webmasters
-- Structured Data: https://developers.google.com/search/docs/appearance/structured-data
-- Core Web Vitals: https://web.dev/vitals/
-- Search Quality Rater Guidelines: https://guidelines.raterhub.com/
+- Google Search Central : https://developers.google.com/search
+- Aide Search Console : https://support.google.com/webmasters
+- Données structurées : https://developers.google.com/search/docs/appearance/structured-data
+- Core Web Vitals : https://web.dev/vitals/
+- Directives pour les évaluateurs de qualité de recherche : https://guidelines.raterhub.com/
+</content>

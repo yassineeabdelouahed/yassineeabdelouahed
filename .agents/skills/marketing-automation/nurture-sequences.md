@@ -1,351 +1,351 @@
-# Nurture Sequences Reference
+# Référence des séquences de nurturing
 
-Comprehensive reference for designing lifecycle-stage nurture sequences that move contacts from initial awareness through purchase and into advocacy.
+Référence complète pour concevoir des séquences de nurturing par étape de cycle de vie qui font progresser les contacts de la notoriété initiale jusqu'à l'achat et l'engagement en tant qu'ambassadeur.
 
 ---
 
-## Lifecycle Stages
+## Étapes de cycle de vie
 
-Every contact moves through stages. Each stage has a distinct mindset, need, and content appetite. Nurture sequences bridge the gaps between stages.
+Chaque contact traverse des étapes. Chaque étape a un état d'esprit, un besoin, et un appétit de contenu distincts. Les séquences de nurturing font le pont entre les étapes.
 
-| Stage | Mindset | Primary Need | Content Focus |
+| Étape | État d'esprit | Besoin principal | Focus du contenu |
 |---|---|---|---|
-| **Subscriber** | Curious but uncommitted | Value without commitment | Educational blog posts, newsletters, tips |
-| **Lead** | Problem-aware, exploring options | Understanding of the problem space | Guides, checklists, industry reports, webinars |
-| **MQL** | Solution-aware, evaluating fit | Proof that your approach works | Case studies, comparisons, demos, ROI calculators |
-| **SQL** | Decision-ready, comparing vendors | Confidence to choose you | Proposals, trials, consultations, custom demos |
-| **Opportunity** | In active sales process | Deal-specific support | Technical docs, executive summaries, references |
-| **Customer** | Just purchased, onboarding | Quick time-to-value, confidence in decision | Onboarding guides, tutorials, best practices |
-| **Advocate** | Satisfied, willing to recommend | Recognition and community | Referral programs, case study participation, beta access |
+| **Abonné** | Curieux mais non engagé | De la valeur sans engagement | Articles de blog éducatifs, newsletters, conseils |
+| **Lead** | Conscient du problème, explore les options | Compréhension de l'espace du problème | Guides, checklists, rapports sectoriels, webinaires |
+| **MQL** | Conscient de la solution, évalue l'adéquation | Preuve que votre approche fonctionne | Études de cas, comparaisons, démos, calculateurs de ROI |
+| **SQL** | Prêt à décider, compare les fournisseurs | Confiance pour vous choisir | Propositions, essais, consultations, démos personnalisées |
+| **Opportunité** | En processus de vente actif | Support spécifique au deal | Documents techniques, résumés exécutifs, références |
+| **Client** | Vient d'acheter, en onboarding | Délai de valeur rapide, confiance dans la décision | Guides d'onboarding, tutoriels, bonnes pratiques |
+| **Ambassadeur** | Satisfait, disposé à recommander | Reconnaissance et communauté | Programmes de parrainage, participation à des études de cas, accès bêta |
 
 ---
 
-## Sequence Types by Lifecycle Stage
+## Types de séquences par étape de cycle de vie
 
-### 1. Awareness Nurture (Subscriber to Lead)
+### 1. Nurturing de notoriété (Abonné vers Lead)
 
-| Element | Detail |
+| Élément | Détail |
 |---|---|
-| **Goal** | Educate on the problem space, establish credibility, earn permission to deepen the relationship |
-| **Entry trigger** | Blog subscription, newsletter signup, social follow + email capture |
-| **Cadence** | Every 7-10 days |
-| **Touchpoints** | 4-6 emails |
-| **Content themes** | Industry trends, common mistakes, educational frameworks, quick wins |
-| **Exit triggers** | Downloaded gated content (→ Lead), booked demo (→ MQL), unsubscribed |
+| **Objectif** | Éduquer sur l'espace du problème, établir la crédibilité, gagner la permission d'approfondir la relation |
+| **Déclencheur d'entrée** | Abonnement au blog, inscription à la newsletter, suivi social + capture d'e-mail |
+| **Cadence** | Tous les 7-10 jours |
+| **Points de contact** | 4 à 6 e-mails |
+| **Thèmes de contenu** | Tendances sectorielles, erreurs courantes, cadres éducatifs, gains rapides |
+| **Déclencheurs de sortie** | Contenu verrouillé téléchargé (→ Lead), démo réservée (→ MQL), désabonné |
 
-**Email sequence:**
-1. **Welcome + best content** — Deliver immediate value. Link to your top 3 most-read articles.
-2. **Problem education** — Frame the core problem your product/service solves. Use data and industry context.
-3. **Common mistakes** — "5 mistakes companies make with [problem]" — positions you as the expert.
-4. **Quick win** — An actionable tip they can implement today. Builds reciprocity.
-5. **Framework/methodology** — Share your approach to solving the problem. Thought leadership without sales pitch.
-6. **Soft CTA** — Invite to download a deeper resource (gated) to identify those ready to move to Lead stage.
+**Séquence e-mail :**
+1. **Bienvenue + meilleur contenu** — Livrer une valeur immédiate. Lien vers vos 3 articles les plus lus.
+2. **Éducation au problème** — Cadrer le problème central que votre produit/service résout. Utiliser des données et du contexte sectoriel.
+3. **Erreurs courantes** — « 5 erreurs que les entreprises commettent avec [problème] » — vous positionne comme expert.
+4. **Gain rapide** — Un conseil actionnable qu'ils peuvent appliquer aujourd'hui. Construit la réciprocité.
+5. **Cadre/méthodologie** — Partager votre approche pour résoudre le problème. Leadership éclairé sans argumentaire de vente.
+6. **CTA doux** — Inviter à télécharger une ressource plus approfondie (verrouillée) pour identifier ceux prêts à passer à l'étape Lead.
 
-### 2. Consideration Nurture (Lead to MQL)
+### 2. Nurturing de considération (Lead vers MQL)
 
-| Element | Detail |
+| Élément | Détail |
 |---|---|
-| **Goal** | Demonstrate expertise, prove your solution works, build trust through evidence |
-| **Entry trigger** | Gated content download, webinar registration, return visit to site after 7+ days |
-| **Cadence** | Every 5-7 days (B2B), every 3-5 days (B2C) |
-| **Touchpoints** | 5-8 emails |
-| **Content themes** | Case studies, how-to guides, product/service deep dives, social proof, comparisons |
-| **Exit triggers** | MQL score reached, demo requested, unsubscribed, 90 days with no engagement |
+| **Objectif** | Démontrer l'expertise, prouver que votre solution fonctionne, construire la confiance par la preuve |
+| **Déclencheur d'entrée** | Téléchargement de contenu verrouillé, inscription à un webinaire, visite de retour sur le site après 7+ jours |
+| **Cadence** | Tous les 5-7 jours (B2B), tous les 3-5 jours (B2C) |
+| **Points de contact** | 5 à 8 e-mails |
+| **Thèmes de contenu** | Études de cas, guides pratiques, approfondissements produit/service, preuve sociale, comparaisons |
+| **Déclencheurs de sortie** | Score MQL atteint, démo demandée, désabonné, 90 jours sans engagement |
 
-**Email sequence:**
-1. **Content delivery + context** — Deliver the gated asset. Add context on why this matters for their situation.
-2. **Related case study** — Show how a similar company/person solved this exact problem.
-3. **Deep-dive educational** — Longer-form content that showcases depth (whitepaper, video series, guide).
-4. **Social proof compilation** — Customer quotes, stats, logos, or before/after results.
-5. **Comparison/evaluation framework** — Help them evaluate solutions (including yours). Honesty builds trust.
-6. **Expert content** — Webinar recording, podcast episode, or interview that demonstrates authority.
-7. **ROI/value framing** — Quantify the cost of inaction or the value of solving the problem.
-8. **Demo/consultation CTA** — Direct invitation to take the next step. Clear, specific, low-friction.
+**Séquence e-mail :**
+1. **Livraison de contenu + contexte** — Livrer l'actif verrouillé. Ajouter du contexte sur pourquoi cela compte pour leur situation.
+2. **Étude de cas connexe** — Montrer comment une entreprise/personne similaire a résolu exactement ce problème.
+3. **Éducatif approfondi** — Contenu plus long qui démontre la profondeur (livre blanc, série vidéo, guide).
+4. **Compilation de preuve sociale** — Citations clients, statistiques, logos, ou résultats avant/après.
+5. **Cadre de comparaison/évaluation** — Les aider à évaluer les solutions (y compris la vôtre). L'honnêteté construit la confiance.
+6. **Contenu d'expert** — Enregistrement de webinaire, épisode de podcast, ou interview démontrant l'autorité.
+7. **Cadrage ROI/valeur** — Quantifier le coût de l'inaction ou la valeur de résoudre le problème.
+8. **CTA de démo/consultation** — Invitation directe à passer à l'étape suivante. Claire, spécifique, à faible friction.
 
-### 3. Decision Nurture (MQL to SQL)
+### 3. Nurturing de décision (MQL vers SQL)
 
-| Element | Detail |
+| Élément | Détail |
 |---|---|
-| **Goal** | Remove final objections, provide confidence to commit, facilitate the sales conversation |
-| **Entry trigger** | MQL score reached, demo completed but not converted, free trial started |
-| **Cadence** | Every 3-5 days (urgency is appropriate at this stage) |
-| **Touchpoints** | 3-5 emails |
-| **Content themes** | Objection handling, implementation details, ROI proof, customer references, competitive differentiation |
-| **Exit triggers** | SQL conversion (meeting booked, trial converted, purchase), 30 days no engagement (→ recycle to consideration) |
+| **Objectif** | Lever les dernières objections, donner la confiance de s'engager, faciliter la conversation commerciale |
+| **Déclencheur d'entrée** | Score MQL atteint, démo terminée mais non convertie, essai gratuit commencé |
+| **Cadence** | Tous les 3-5 jours (l'urgence est appropriée à cette étape) |
+| **Points de contact** | 3 à 5 e-mails |
+| **Thèmes de contenu** | Traitement des objections, détails de mise en œuvre, preuve de ROI, références clients, différenciation concurrentielle |
+| **Déclencheurs de sortie** | Conversion SQL (réunion réservée, essai converti, achat), 30 jours sans engagement (→ recycler vers la considération) |
 
-**Email sequence:**
-1. **Recap + next steps** — Summarize the value proposition. Make the next step crystal clear.
-2. **Objection handling** — Address the top 3 objections sales hears most. FAQ format works well.
-3. **Implementation/onboarding preview** — Show them what happens after they say yes. Reduce fear of commitment.
-4. **Customer reference/results** — Specific, measurable results from a customer in their industry or of similar size.
-5. **Final CTA with urgency** — Time-limited offer, onboarding capacity, or simply a direct "ready to move forward?" with a calendar link.
+**Séquence e-mail :**
+1. **Récapitulatif + prochaines étapes** — Résumer la proposition de valeur. Rendre la prochaine étape parfaitement claire.
+2. **Traitement des objections** — Répondre aux 3 objections les plus fréquentes entendues par les ventes. Le format FAQ fonctionne bien.
+3. **Aperçu de mise en œuvre/onboarding** — Leur montrer ce qui se passe après qu'ils disent oui. Réduire la peur de l'engagement.
+4. **Référence client/résultats** — Résultats spécifiques et mesurables d'un client de leur secteur ou de taille similaire.
+5. **CTA final avec urgence** — Offre à durée limitée, capacité d'onboarding, ou simplement un « prêt à avancer ? » direct avec un lien de calendrier.
 
-### 4. Onboarding Nurture (New Customer)
+### 4. Nurturing d'onboarding (nouveau client)
 
-| Element | Detail |
+| Élément | Détail |
 |---|---|
-| **Goal** | Drive product/service adoption, reduce time-to-value, prevent early churn |
-| **Entry trigger** | Purchase completed, contract signed, account provisioned |
-| **Cadence** | Days 1, 3, 7, 14, 21, 30 (front-loaded, then tapering) |
-| **Touchpoints** | 5-7 emails + in-app messages (if applicable) |
-| **Content themes** | Getting started, feature guides, best practices, milestone celebrations, support resources |
-| **Exit triggers** | Activation milestones completed, 30-day onboarding period ended |
+| **Objectif** | Stimuler l'adoption du produit/service, réduire le délai de valeur, prévenir le churn précoce |
+| **Déclencheur d'entrée** | Achat finalisé, contrat signé, compte provisionné |
+| **Cadence** | Jours 1, 3, 7, 14, 21, 30 (concentré en début, puis dégressif) |
+| **Points de contact** | 5 à 7 e-mails + messages in-app (le cas échéant) |
+| **Thèmes de contenu** | Premiers pas, guides de fonctionnalités, bonnes pratiques, célébrations de jalons, ressources de support |
+| **Déclencheurs de sortie** | Jalons d'activation terminés, période d'onboarding de 30 jours terminée |
 
-**Email sequence:**
-1. **Welcome + first step** (day 1) — Congratulate, set expectations, give ONE action to complete.
-2. **Setup guide** (day 3) — Complete account setup, import data, configure settings.
-3. **Core feature tutorial** (day 7) — Guide to the feature most correlated with long-term retention.
-4. **Best practices** (day 14) — How successful customers use the product. Tips and workflows.
-5. **Milestone celebration** (day 21) — If they completed key actions, celebrate. If not, offer help.
-6. **Feedback request** (day 30) — NPS or CSAT survey. "How are we doing?"
-7. **Next-level features** (day 30+) — Advanced capabilities, integrations, team collaboration features.
+**Séquence e-mail :**
+1. **Bienvenue + première étape** (jour 1) — Féliciter, fixer les attentes, donner UNE action à accomplir.
+2. **Guide de configuration** (jour 3) — Terminer la configuration du compte, importer les données, configurer les paramètres.
+3. **Tutoriel de fonctionnalité principale** (jour 7) — Guide sur la fonctionnalité la plus corrélée à la rétention à long terme.
+4. **Bonnes pratiques** (jour 14) — Comment les clients à succès utilisent le produit. Conseils et workflows.
+5. **Célébration de jalon** (jour 21) — S'ils ont accompli les actions clés, célébrer. Sinon, proposer de l'aide.
+6. **Demande de feedback** (jour 30) — Sondage NPS ou CSAT. « Comment nous en sortons-nous ? »
+7. **Fonctionnalités de niveau supérieur** (jour 30+) — Capacités avancées, intégrations, fonctionnalités de collaboration d'équipe.
 
-### 5. Expansion/Upsell Nurture (Customer to Higher-Value Customer)
+### 5. Nurturing d'expansion/upsell (client vers client à plus haute valeur)
 
-| Element | Detail |
+| Élément | Détail |
 |---|---|
-| **Goal** | Increase account value through upsells, cross-sells, plan upgrades, or add-ons |
-| **Entry trigger** | Usage threshold reached, approaching plan limit, 90 days post-purchase (proven value), renewal approaching |
-| **Cadence** | Every 7-14 days (gentle — do not pressure happy customers) |
-| **Touchpoints** | 3-5 emails |
-| **Content themes** | Advanced features, success stories of upgraded customers, ROI of expansion, new product announcements |
-| **Exit triggers** | Upgraded, declined (suppress for 90 days), unsubscribed from marketing |
+| **Objectif** | Augmenter la valeur du compte via des ventes additionnelles, croisées, upgrades de plan, ou add-ons |
+| **Déclencheur d'entrée** | Seuil d'usage atteint, approche de la limite de plan, 90 jours après achat (valeur prouvée), renouvellement approchant |
+| **Cadence** | Tous les 7-14 jours (doux — ne pas mettre de pression sur les clients satisfaits) |
+| **Points de contact** | 3 à 5 e-mails |
+| **Thèmes de contenu** | Fonctionnalités avancées, histoires de succès de clients ayant upgradé, ROI de l'expansion, annonces de nouveaux produits |
+| **Déclencheurs de sortie** | Upgrade effectué, refusé (supprimer pendant 90 jours), désabonné du marketing |
 
-### 6. Re-Engagement Nurture (Inactive Contact)
+### 6. Nurturing de ré-engagement (contact inactif)
 
-| Element | Detail |
+| Élément | Détail |
 |---|---|
-| **Goal** | Reactivate dormant contacts or cleanly remove them from active lists |
-| **Entry trigger** | No email engagement in 60 days (B2C) or 90 days (B2B); no website visit in 90 days |
-| **Cadence** | Every 7 days over 3-4 weeks |
-| **Touchpoints** | 3-4 emails |
-| **Content themes** | "We miss you," best recent content, preference update, sunset warning |
-| **Exit triggers** | Re-engaged (opened/clicked), updated preferences, confirmed unsubscribe, or completed sunset (suppressed) |
+| **Objectif** | Réactiver les contacts dormants ou les retirer proprement des listes actives |
+| **Déclencheur d'entrée** | Aucun engagement e-mail depuis 60 jours (B2C) ou 90 jours (B2B) ; aucune visite de site depuis 90 jours |
+| **Cadence** | Tous les 7 jours sur 3-4 semaines |
+| **Points de contact** | 3 à 4 e-mails |
+| **Thèmes de contenu** | « Vous nous manquez », meilleur contenu récent, mise à jour des préférences, avertissement de sunset |
+| **Déclencheurs de sortie** | Ré-engagé (ouvert/cliqué), préférences mises à jour, désabonnement confirmé, ou sunset terminé (supprimé) |
 
-**Email sequence:**
-1. **"Here is what you missed"** — Highlight the best content, product updates, or announcements since they disengaged.
-2. **Best-of content** — Your single highest-performing piece of content. Maximum chance of re-engagement.
-3. **Preference center** — "Want to hear from us less often? Update your preferences." Give control.
-4. **Sunset warning** — "We will remove you from our list unless you click here." Clean removal of truly inactive contacts.
+**Séquence e-mail :**
+1. **« Voici ce que vous avez manqué »** — Mettre en avant le meilleur contenu, les mises à jour produit, ou les annonces depuis leur désengagement.
+2. **Meilleur du meilleur** — Votre pièce de contenu la plus performante. Chance maximale de ré-engagement.
+3. **Centre de préférences** — « Vous voulez entendre parler de nous moins souvent ? Mettez à jour vos préférences. » Donner le contrôle.
+4. **Avertissement de sunset** — « Nous vous retirerons de notre liste sauf si vous cliquez ici. » Suppression propre des contacts véritablement inactifs.
 
-**Critical**: The sunset email is not optional. Continuing to email inactive contacts destroys sender reputation.
+**Critique** : L'e-mail de sunset n'est pas optionnel. Continuer à envoyer des e-mails à des contacts inactifs détruit la réputation d'expéditeur.
 
-### 7. Win-Back Nurture (Churned Customer)
+### 7. Nurturing de win-back (client churné)
 
-| Element | Detail |
+| Élément | Détail |
 |---|---|
-| **Goal** | Recover customers who cancelled, churned, or lapsed |
-| **Entry trigger** | Subscription cancelled, no purchase in 2x average purchase cycle, account closed |
-| **Cadence** | Spread over 60-90 days post-churn |
-| **Touchpoints** | 4-5 emails |
-| **Content themes** | What is new since they left, competitive comparison refresh, special return offer, success stories of returning customers |
-| **Exit triggers** | Reactivated, unsubscribed, completed series (move to long-term dormant, check back in 6 months) |
+| **Objectif** | Récupérer les clients ayant annulé, churné, ou expiré |
+| **Déclencheur d'entrée** | Abonnement annulé, aucun achat depuis 2x le cycle d'achat moyen, compte fermé |
+| **Cadence** | Étalé sur 60-90 jours après le churn |
+| **Points de contact** | 4 à 5 e-mails |
+| **Thèmes de contenu** | Ce qui est nouveau depuis leur départ, rafraîchissement de la comparaison concurrentielle, offre de retour spéciale, histoires de succès de clients revenus |
+| **Déclencheurs de sortie** | Réactivé, désabonné, série terminée (déplacer vers dormant long terme, revérifier dans 6 mois) |
 
-**Email sequence:**
-1. **Acknowledgment** (day 3-7) — "We are sorry to see you go. Here is what we have improved." No desperation.
-2. **What is new** (day 14-21) — Product updates, new features, resolved pain points since they left.
-3. **Social proof** (day 30) — Story of a customer who returned and found new value.
-4. **Return offer** (day 45) — Incentive to come back (discount, free month, concierge onboarding).
-5. **Final check-in** (day 60-90) — "Door is always open." No pressure. Include easy reactivation link.
+**Séquence e-mail :**
+1. **Reconnaissance** (jour 3-7) — « Nous sommes désolés de vous voir partir. Voici ce que nous avons amélioré. » Pas de désespoir.
+2. **Ce qui est nouveau** (jour 14-21) — Mises à jour produit, nouvelles fonctionnalités, points de douleur résolus depuis leur départ.
+3. **Preuve sociale** (jour 30) — Histoire d'un client revenu et ayant trouvé une nouvelle valeur.
+4. **Offre de retour** (jour 45) — Incitation à revenir (réduction, mois gratuit, onboarding concierge).
+5. **Dernier point de contact** (jour 60-90) — « La porte est toujours ouverte. » Aucune pression. Inclure un lien de réactivation facile.
 
 ---
 
-## Content Mapping by Lifecycle Stage
+## Cartographie du contenu par étape de cycle de vie
 
-| Stage | Content Types That Work | Content Types That Do Not Work |
+| Étape | Types de contenu qui fonctionnent | Types de contenu qui ne fonctionnent pas |
 |---|---|---|
-| **Subscriber** | Blog posts, infographics, newsletters, short videos, social posts | Product demos, pricing, case studies (too early) |
-| **Lead** | Ebooks, guides, webinars, checklists, templates, industry reports | Sales decks, proposals, contract terms (way too early) |
-| **MQL** | Case studies, comparison guides, ROI calculators, demo recordings, free tools | Generic blog content (too shallow for this stage) |
-| **SQL** | Custom proposals, free trials, consultation calls, reference calls, implementation plans | Educational content (they already know enough — help them decide) |
-| **Customer** | Onboarding guides, tutorials, best practice guides, community access, training | Top-of-funnel educational content (irrelevant now) |
-| **Advocate** | Referral program materials, co-marketing opportunities, beta access, executive events | Hard sales content (they already bought — nurture the relationship) |
+| **Abonné** | Articles de blog, infographies, newsletters, courtes vidéos, posts sociaux | Démos produit, tarification, études de cas (trop tôt) |
+| **Lead** | Ebooks, guides, webinaires, checklists, modèles, rapports sectoriels | Présentations commerciales, propositions, conditions contractuelles (bien trop tôt) |
+| **MQL** | Études de cas, guides de comparaison, calculateurs de ROI, enregistrements de démo, outils gratuits | Contenu de blog générique (trop superficiel pour cette étape) |
+| **SQL** | Propositions personnalisées, essais gratuits, appels de consultation, appels de référence, plans de mise en œuvre | Contenu éducatif (ils en savent déjà assez — aidez-les à décider) |
+| **Client** | Guides d'onboarding, tutoriels, guides de bonnes pratiques, accès communautaire, formation | Contenu éducatif haut de tunnel (non pertinent désormais) |
+| **Ambassadeur** | Matériel de programme de parrainage, opportunités de co-marketing, accès bêta, événements exécutifs | Contenu commercial dur (ils ont déjà acheté — nourrir la relation) |
 
 ---
 
-## Personalization Layers
+## Couches de personnalisation
 
-### Layer 1: Basic Personalization (Required)
-- First name in subject line and greeting
-- Company name in body copy
-- Sender name (from a real person, not "Marketing Team")
-- Reply-to a monitored inbox
+### Couche 1 : personnalisation de base (requise)
+- Prénom dans l'objet et la salutation
+- Nom de l'entreprise dans le corps du texte
+- Nom d'expéditeur (d'une vraie personne, pas « Équipe Marketing »)
+- Réponse vers une boîte de réception surveillée
 
-### Layer 2: Segment-Based Personalization
-- Industry-specific examples and language
-- Company-size-appropriate recommendations (SMB vs. enterprise)
-- Role-based content (technical audience gets specs; executive audience gets ROI)
-- Geographic references (local market, regional events, time zone-appropriate send times)
+### Couche 2 : personnalisation basée sur le segment
+- Exemples et langage spécifiques au secteur
+- Recommandations adaptées à la taille de l'entreprise (PME vs. entreprise)
+- Contenu basé sur le rôle (l'audience technique reçoit des spécifications ; l'audience exécutive reçoit du ROI)
+- Références géographiques (marché local, événements régionaux, heures d'envoi adaptées au fuseau horaire)
 
-### Layer 3: Behavior-Based Personalization
-- Content recommendations based on previous downloads/views
-- Dynamic content blocks that change based on pages visited
-- Subject lines referencing their most recent action ("Following up on the webinar you attended")
-- Product recommendations based on browse/purchase history (eCommerce)
+### Couche 3 : personnalisation basée sur le comportement
+- Recommandations de contenu basées sur les téléchargements/vues précédents
+- Blocs de contenu dynamique qui changent selon les pages visitées
+- Objets faisant référence à leur action la plus récente (« Suite au webinaire auquel vous avez assisté »)
+- Recommandations produit basées sur l'historique de navigation/achat (e-commerce)
 
-### Layer 4: Stage-Based Personalization
-- Different CTAs for different lifecycle stages within the same email (using dynamic content)
-- Stage-appropriate language: "learn more" for early stage vs. "get started" for decision stage
-- Suppression of content they have already consumed
-- Progressive disclosure: each email builds on what they have already seen
+### Couche 4 : personnalisation basée sur l'étape
+- CTA différents pour différentes étapes de cycle de vie au sein du même e-mail (contenu dynamique)
+- Langage adapté à l'étape : « en savoir plus » pour l'étape précoce vs. « démarrer » pour l'étape de décision
+- Suppression du contenu déjà consommé
+- Divulgation progressive : chaque e-mail s'appuie sur ce qu'ils ont déjà vu
 
-### Layer 5: AI-Driven Personalization (Advanced)
-- Predictive send time optimization per contact
-- Next-best-content recommendation engines
-- Subject line optimization per segment
-- Dynamic cadence adjustment based on individual engagement patterns
+### Couche 5 : personnalisation pilotée par l'IA (avancée)
+- Optimisation prédictive de l'heure d'envoi par contact
+- Moteurs de recommandation du meilleur prochain contenu
+- Optimisation de l'objet par segment
+- Ajustement dynamique de la cadence basé sur les schémas d'engagement individuels
 
 ---
 
-## Multi-Channel Nurture Strategy
+## Stratégie de nurturing multi-canal
 
-### Email as Primary Channel
+### L'e-mail comme canal principal
 
-Email remains the primary nurture channel because it supports long-form content, is owned (not algorithmically suppressed), and has the broadest reach. But email alone is insufficient for modern nurture.
+L'e-mail reste le canal de nurturing principal car il supporte le contenu long format, est possédé (non supprimé algorithmiquement), et a la portée la plus large. Mais l'e-mail seul est insuffisant pour le nurturing moderne.
 
-### Supporting Channels
+### Canaux de soutien
 
-| Channel | Role in Nurture | When to Use |
+| Canal | Rôle dans le nurturing | Quand l'utiliser |
 |---|---|---|
-| **Social retargeting** | Reinforcement and brand awareness between emails | Always-on for MQL+ contacts via custom audiences |
-| **Content syndication** | Expand reach of nurture content beyond email subscribers | For lead-to-MQL acceleration in target accounts |
-| **SMS** | Time-sensitive messages and high-urgency touchpoints | Abandoned cart, appointment reminders, flash offers (with consent) |
-| **Push notifications** | In-the-moment engagement for app users | Feature adoption nudges, usage milestone celebrations |
-| **In-app messaging** | Contextual guidance within the product | Onboarding sequences, feature discovery, upgrade prompts |
-| **Direct mail** | High-touch moments for high-value accounts | Enterprise ABM, welcome kits, renewal gifts |
-| **Community** | Peer-to-peer nurture and ongoing engagement | Post-purchase advocacy, user groups, forums |
+| **Retargeting social** | Renforcement et notoriété de marque entre les e-mails | Toujours actif pour les contacts MQL+ via des audiences personnalisées |
+| **Syndication de contenu** | Étendre la portée du contenu de nurturing au-delà des abonnés e-mail | Pour accélérer lead-vers-MQL dans les comptes cibles |
+| **SMS** | Messages sensibles au temps et points de contact de forte urgence | Panier abandonné, rappels de rendez-vous, offres flash (avec consentement) |
+| **Notifications push** | Engagement dans l'instant pour les utilisateurs d'application | Relances d'adoption de fonctionnalité, célébrations de jalon d'usage |
+| **Messagerie in-app** | Guidage contextuel au sein du produit | Séquences d'onboarding, découverte de fonctionnalités, invites d'upgrade |
+| **Courrier direct** | Moments à fort contact pour les comptes à haute valeur | ABM entreprise, kits de bienvenue, cadeaux de renouvellement |
+| **Communauté** | Nurturing entre pairs et engagement continu | Advocacy post-achat, groupes d'utilisateurs, forums |
 
-### Orchestration Pattern
+### Schéma d'orchestration
 
 ```
-Email sends → No open after 48 hours → Retargeting ad activated
-Email sends → Clicked through → Suppress retargeting (they engaged)
-Email sends → MQL threshold reached → Pause nurture + alert SDR + launch LinkedIn ad for account
-Customer onboarding email → No product login → Push notification (if app) or SMS (if mobile)
+Envoi d'e-mail → Aucune ouverture après 48 heures → Publicité de retargeting activée
+Envoi d'e-mail → A cliqué → Suspendre le retargeting (ils se sont engagés)
+Envoi d'e-mail → Seuil MQL atteint → Mettre en pause le nurturing + alerter le SDR + lancer une publicité LinkedIn pour le compte
+E-mail d'onboarding client → Aucune connexion produit → Notification push (si application) ou SMS (si mobile)
 ```
 
 ---
 
-## Timing and Cadence
+## Timing et cadence
 
-### B2B Optimal Cadence
+### Cadence optimale B2B
 
-| Stage | Frequency | Rationale |
+| Étape | Fréquence | Justification |
 |---|---|---|
-| Awareness | Every 7-10 days | Subscribers are not invested yet. Respect their inbox. |
-| Consideration | Every 5-7 days | Engaged leads can handle more frequent, higher-value content. |
-| Decision | Every 3-5 days | Urgency is appropriate when they are actively evaluating. |
-| Onboarding | Front-loaded (days 1, 3, 7, 14, 21, 30) | Speed to value matters most in the first 30 days. |
-| Retention | Every 10-14 days | Customers need ongoing value, not inbox clutter. |
+| Notoriété | Tous les 7-10 jours | Les abonnés ne sont pas encore investis. Respecter leur boîte de réception. |
+| Considération | Tous les 5-7 jours | Les leads engagés peuvent gérer du contenu plus fréquent et à plus haute valeur. |
+| Décision | Tous les 3-5 jours | L'urgence est appropriée lorsqu'ils évaluent activement. |
+| Onboarding | Concentré en début (jours 1, 3, 7, 14, 21, 30) | La vitesse de valeur compte le plus durant les 30 premiers jours. |
+| Rétention | Tous les 10-14 jours | Les clients ont besoin de valeur continue, pas d'encombrement de boîte de réception. |
 
-### B2C Optimal Cadence
+### Cadence optimale B2C
 
-| Stage | Frequency | Rationale |
+| Étape | Fréquence | Justification |
 |---|---|---|
-| Welcome/Onboarding | Daily for 3-5 days, then 2-3x/week | Fast engagement window. B2C attention spans are shorter. |
-| Active nurture | 2-4x per week | B2C tolerates higher frequency when content is relevant. |
-| Promotional | 1-2x per week max | Separate promotional from value-add content. |
-| Re-engagement | Weekly for 3-4 weeks | Give them time to respond, but do not drag it out. |
+| Bienvenue/Onboarding | Quotidien pendant 3-5 jours, puis 2-3x/semaine | Fenêtre d'engagement rapide. Les durées d'attention B2C sont plus courtes. |
+| Nurturing actif | 2-4x par semaine | Le B2C tolère une fréquence plus élevée quand le contenu est pertinent. |
+| Promotionnel | 1-2x par semaine max | Séparer le contenu promotionnel du contenu à valeur ajoutée. |
+| Ré-engagement | Hebdomadaire pendant 3-4 semaines | Leur laisser le temps de répondre, mais ne pas s'éterniser. |
 
-### Send Time Benchmarks
+### Benchmarks d'heure d'envoi
 
-| Business Type | Best Days | Best Times | Worst Times |
+| Type d'entreprise | Meilleurs jours | Meilleures heures | Pires heures |
 |---|---|---|---|
-| B2B | Tuesday-Thursday | 9-11 AM recipient local time | Friday afternoon, weekends |
-| B2C (general) | Tuesday, Thursday, Saturday | 10 AM, 1 PM, 8 PM recipient local time | Late night (11 PM - 6 AM) |
-| eCommerce | Thursday-Sunday | 10 AM, 8 PM recipient local time | Monday morning |
-| SaaS onboarding | Any day (time-to-value matters more) | Morning of recipient local time | — |
+| B2B | Mardi-jeudi | 9h-11h heure locale du destinataire | Vendredi après-midi, week-ends |
+| B2C (général) | Mardi, jeudi, samedi | 10h, 13h, 20h heure locale du destinataire | Tard le soir (23h-6h) |
+| E-commerce | Jeudi-dimanche | 10h, 20h heure locale du destinataire | Lundi matin |
+| Onboarding SaaS | N'importe quel jour (le délai de valeur compte plus) | Matin heure locale du destinataire | — |
 
-**Note**: These are starting points. Always A/B test send times with your specific audience. Industry, audience demographics, and content type all shift optimal timing.
+**Note** : Ce sont des points de départ. Toujours tester A/B les heures d'envoi avec votre audience spécifique. Le secteur, la démographie de l'audience, et le type de contenu déplacent tous le timing optimal.
 
 ---
 
-## Measurement by Sequence
+## Mesure par séquence
 
-### Engagement Metrics (Per Email)
+### Métriques d'engagement (par e-mail)
 
-| Metric | Good | Needs Work | Alarm |
+| Métrique | Bon | À améliorer | Alarme |
 |---|---|---|---|
-| **Open rate** | >25% | 15-25% | <15% |
-| **Click rate** | >3.5% | 1.5-3.5% | <1.5% |
-| **Click-to-open rate** | >15% | 8-15% | <8% |
-| **Unsubscribe rate** | <0.3% | 0.3-0.5% | >0.5% |
-| **Spam complaint rate** | <0.05% | 0.05-0.1% | >0.1% |
+| **Taux d'ouverture** | >25 % | 15-25 % | <15 % |
+| **Taux de clic** | >3,5 % | 1,5-3,5 % | <1,5 % |
+| **Taux de clic sur ouverture** | >15 % | 8-15 % | <8 % |
+| **Taux de désabonnement** | <0,3 % | 0,3-0,5 % | >0,5 % |
+| **Taux de plainte spam** | <0,05 % | 0,05-0,1 % | >0,1 % |
 
-### Sequence-Level Metrics
+### Métriques au niveau séquence
 
-| Metric | What It Measures | How to Interpret |
+| Métrique | Ce qu'elle mesure | Comment l'interpréter |
 |---|---|---|
-| **Completion rate** | % of contacts who reach the final email | Low = contacts dropping out or exiting early. Check for fatigue. |
-| **Goal conversion rate** | % of contacts who achieve the sequence's defined goal | The primary success metric. Compare across sequences. |
-| **Time-to-conversion** | Average days from sequence entry to goal achievement | Shorter = better. Optimize by removing unnecessary steps. |
-| **Step-by-step drop-off** | Engagement change between consecutive emails | Identify the specific email where engagement drops — fix that email. |
-| **Revenue influenced** | Revenue from contacts who completed the sequence | Ties nurture to business outcomes. Essential for ROI justification. |
+| **Taux de complétion** | % de contacts atteignant le dernier e-mail | Faible = contacts qui abandonnent ou sortent tôt. Vérifier la fatigue. |
+| **Taux de conversion d'objectif** | % de contacts atteignant l'objectif défini de la séquence | La métrique de succès principale. Comparer entre séquences. |
+| **Délai de conversion** | Nombre moyen de jours entre l'entrée en séquence et l'atteinte de l'objectif | Plus court = mieux. Optimiser en supprimant les étapes inutiles. |
+| **Abandon étape par étape** | Changement d'engagement entre e-mails consécutifs | Identifier l'e-mail spécifique où l'engagement chute — corriger cet e-mail. |
+| **Chiffre d'affaires influencé** | Chiffre d'affaires des contacts ayant terminé la séquence | Relie le nurturing aux résultats business. Essentiel pour la justification du ROI. |
 
-### Sequence Comparison Benchmarks
+### Benchmarks de comparaison de séquence
 
-| Sequence Type | Avg. Open Rate | Avg. Click Rate | Avg. Conversion Rate |
+| Type de séquence | Taux d'ouverture moyen | Taux de clic moyen | Taux de conversion moyen |
 |---|---|---|---|
-| Welcome series | 50-60% | 10-15% | 15-25% (to next stage) |
-| Abandoned cart | 40-50% | 8-12% | 5-15% (purchase recovery) |
-| Lead nurture (B2B) | 20-30% | 2-5% | 5-15% (to MQL) |
-| Onboarding | 60-70% | 15-25% | 30-50% (activation) |
-| Re-engagement | 10-20% | 2-4% | 5-12% (reactivation) |
-| Win-back | 12-18% | 2-3% | 3-8% (reactivation) |
+| Série de bienvenue | 50-60 % | 10-15 % | 15-25 % (vers l'étape suivante) |
+| Panier abandonné | 40-50 % | 8-12 % | 5-15 % (récupération d'achat) |
+| Nurturing de lead (B2B) | 20-30 % | 2-5 % | 5-15 % (vers MQL) |
+| Onboarding | 60-70 % | 15-25 % | 30-50 % (activation) |
+| Ré-engagement | 10-20 % | 2-4 % | 5-12 % (réactivation) |
+| Win-back | 12-18 % | 2-3 % | 3-8 % (réactivation) |
 
 ---
 
-## Sequence Templates
+## Modèles de séquence
 
-### Template 1: 7-Email B2B SaaS Lead Nurture
+### Modèle 1 : nurturing de lead B2B SaaS en 7 e-mails
 
-**Goal**: Move lead from content download to demo request
-**Cadence**: Every 5-6 days over 5 weeks
+**Objectif** : Faire passer le lead du téléchargement de contenu à la demande de démo
+**Cadence** : Tous les 5-6 jours sur 5 semaines
 
-| # | Day | Subject Line Angle | Content | CTA |
+| # | Jour | Angle d'objet | Contenu | CTA |
 |---|---|---|---|---|
-| 1 | 0 | Content delivery + welcome | Deliver downloaded asset + brand introduction | Read the guide |
-| 2 | 5 | Problem amplification | Data on the cost of the unsolved problem | Read blog post |
-| 3 | 11 | Framework/methodology | Your approach to solving the problem | Download framework |
-| 4 | 17 | Case study | Customer success story (same industry/size) | Read case study |
-| 5 | 22 | Comparison/evaluation | How to evaluate solutions in this space | Use comparison tool |
-| 6 | 28 | ROI quantification | Calculator or data proving the value | Try ROI calculator |
-| 7 | 34 | Direct CTA | "See how it works for your team" | Book a demo |
+| 1 | 0 | Livraison de contenu + bienvenue | Livrer l'actif téléchargé + présentation de la marque | Lire le guide |
+| 2 | 5 | Amplification du problème | Données sur le coût du problème non résolu | Lire l'article de blog |
+| 3 | 11 | Cadre/méthodologie | Votre approche pour résoudre le problème | Télécharger le cadre |
+| 4 | 17 | Étude de cas | Histoire de succès client (même secteur/taille) | Lire l'étude de cas |
+| 5 | 22 | Comparaison/évaluation | Comment évaluer les solutions dans cet espace | Utiliser l'outil de comparaison |
+| 6 | 28 | Quantification du ROI | Calculateur ou données prouvant la valeur | Essayer le calculateur de ROI |
+| 7 | 34 | CTA direct | « Voyez comment ça fonctionne pour votre équipe » | Réserver une démo |
 
-### Template 2: 5-Email eCommerce Win-Back
+### Modèle 2 : win-back e-commerce en 5 e-mails
 
-**Goal**: Re-engage lapsed customers who have not purchased in 60+ days
-**Cadence**: Spread over 30 days
+**Objectif** : Ré-engager les clients inactifs n'ayant pas acheté depuis 60+ jours
+**Cadence** : Étalé sur 30 jours
 
-| # | Day | Subject Line Angle | Content | CTA |
+| # | Jour | Angle d'objet | Contenu | CTA |
 |---|---|---|---|---|
-| 1 | 0 | "We noticed you have been away" | Highlight new arrivals since last purchase | Shop new arrivals |
-| 2 | 7 | Social proof | Best-selling products + customer reviews | Shop bestsellers |
-| 3 | 14 | Personalized recommendations | Products based on past purchase/browse history | View picks for you |
-| 4 | 21 | Incentive | 15% off or free shipping on next order | Claim your offer |
-| 5 | 30 | Sunset/final | "We do not want to bother you" + last chance for offer | Stay subscribed / unsubscribe |
+| 1 | 0 | « Nous avons remarqué votre absence » | Mettre en avant les nouveautés depuis le dernier achat | Découvrir les nouveautés |
+| 2 | 7 | Preuve sociale | Meilleures ventes + avis clients | Voir les best-sellers |
+| 3 | 14 | Recommandations personnalisées | Produits basés sur l'historique d'achat/navigation | Voir votre sélection |
+| 4 | 21 | Incitation | 15 % de réduction ou livraison gratuite sur la prochaine commande | Profiter de l'offre |
+| 5 | 30 | Sunset/final | « Nous ne voulons pas vous déranger » + dernière chance pour l'offre | Rester abonné / se désabonner |
 
-### Template 3: 3-Email Webinar Follow-Up
+### Modèle 3 : suivi de webinaire en 3 e-mails
 
-**Goal**: Convert webinar attendees to demo/consultation
-**Cadence**: Days 1, 3, 7 post-webinar
+**Objectif** : Convertir les participants au webinaire en démo/consultation
+**Cadence** : Jours 1, 3, 7 après le webinaire
 
-| # | Day | Subject Line Angle | Content | CTA |
+| # | Jour | Angle d'objet | Contenu | CTA |
 |---|---|---|---|---|
-| 1 | 1 | Recording + resources | On-demand recording, slides, Q&A summary | Watch recording |
-| 2 | 3 | Key takeaway deep-dive | Expand on the most-asked question or most-engaged topic | Read the guide |
-| 3 | 7 | Next step | "Ready to apply what you learned?" + personalized offer | Book consultation |
+| 1 | 1 | Enregistrement + ressources | Enregistrement à la demande, diapositives, résumé des Q&R | Voir l'enregistrement |
+| 2 | 3 | Approfondissement du point clé | Développer sur la question la plus posée ou le sujet le plus engagé | Lire le guide |
+| 3 | 7 | Prochaine étape | « Prêt à appliquer ce que vous avez appris ? » + offre personnalisée | Réserver une consultation |
 
-**Branch for no-shows**: Replace email 1 with "Sorry we missed you — here is the recording" and extend the sequence by one email at day 10 with a softer CTA.
+**Branche pour les absents** : Remplacer l'e-mail 1 par « Désolés de vous avoir manqué — voici l'enregistrement » et prolonger la séquence d'un e-mail au jour 10 avec un CTA plus doux.
 
 ---
 
-## Sequence Governance Rules
+## Règles de gouvernance de séquence
 
-1. **One primary nurture at a time** — A contact should never be in two active nurture sequences simultaneously. If they qualify for a new one, exit them from the current and enroll in the higher-priority sequence.
-2. **Transactional emails are never suppressed** — Order confirmations, password resets, and billing notices always send regardless of nurture status.
-3. **Global frequency cap** — No contact receives more than the defined weekly maximum across all automated and manual sends combined.
-4. **Sunset is mandatory** — Every nurture sequence must end. There is no such thing as an evergreen sequence that runs indefinitely without engagement checks.
-5. **Test before launch** — Every sequence must be tested with at least 3 internal contacts through every branch path before going live.
-6. **Quarterly review** — All active sequences are audited for performance, relevance, and content freshness every quarter.
-7. **Document everything** — Every sequence has a documented purpose, entry/exit criteria, content map, and owner. No undocumented automations.
+1. **Un nurturing principal à la fois** — Un contact ne devrait jamais être dans deux séquences de nurturing actives simultanément. S'il se qualifie pour une nouvelle, le sortir de la séquence actuelle et l'inscrire dans la séquence à plus haute priorité.
+2. **Les e-mails transactionnels ne sont jamais supprimés** — Les confirmations de commande, réinitialisations de mot de passe, et avis de facturation s'envoient toujours quel que soit le statut de nurturing.
+3. **Plafond de fréquence global** — Aucun contact ne reçoit plus que le maximum hebdomadaire défini sur tous les envois automatisés et manuels combinés.
+4. **Le sunset est obligatoire** — Chaque séquence de nurturing doit se terminer. Il n'existe pas de séquence evergreen qui tourne indéfiniment sans vérification d'engagement.
+5. **Tester avant le lancement** — Chaque séquence doit être testée avec au moins 3 contacts internes à travers chaque chemin de branchement avant la mise en direct.
+6. **Revue trimestrielle** — Toutes les séquences actives sont auditées pour la performance, la pertinence, et la fraîcheur du contenu chaque trimestre.
+7. **Tout documenter** — Chaque séquence a un objectif documenté, des critères d'entrée/sortie, une carte de contenu, et un responsable. Aucune automatisation non documentée.

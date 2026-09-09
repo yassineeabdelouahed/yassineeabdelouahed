@@ -1,62 +1,62 @@
 ---
 name: media-plan
-description: "Build a ready-to-implement paid media plan — efficiency-weighted budget allocation across channels, a week-by-week flight schedule, an audience-by-channel targeting matrix, a creative rotation calendar with fatigue thresholds, reach and frequency projections, a measurement framework, platform setup checklists, and a 10-15% contingency reserve with reallocation triggers. Triggers on \"/digital-marketing-pro:media-plan\", \"plan our Q4 ad budget\", \"how should we split spend between Google and Meta\", \"build the media buy schedule\", \"we have 50K for paid — where does it go\". Planning only — it launches no campaigns and spends nothing. Reads the brand profile, guidelines, and compliance rules for the target markets."
+description: "Construire un plan média payant prêt à l'implémentation — allocation budgétaire pondérée par l'efficacité entre canaux, un calendrier de diffusion semaine par semaine, une matrice de ciblage audience par canal, un calendrier de rotation créative avec seuils de fatigue, des projections de portée et de fréquence, un cadre de mesure, des checklists de configuration de plateforme, et une réserve de contingence de 10-15 % avec déclencheurs de réallocation. Se déclenche sur \"/digital-marketing-pro:media-plan\", \"plan our Q4 ad budget\", \"how should we split spend between Google and Meta\", \"build the media buy schedule\", \"we have 50K for paid — where does it go\". Planification uniquement — cela ne lance aucune campagne et ne dépense rien. Lit le profil de marque, les guidelines, et les règles de conformité pour les marchés cibles."
 argument-hint: "[--budget=amount --channels=list]"
 ---
 
 # /digital-marketing-pro:media-plan
 
-## Purpose
+## Objectif
 
-Generate a holistic paid media plan that coordinates budget, channels, audiences, creative, and timing across all advertising platforms. Balances reach and efficiency objectives with practical execution constraints to produce a ready-to-implement plan with clear pacing targets and contingency protocols.
+Générer un plan média payant holistique qui coordonne le budget, les canaux, les audiences, les créations, et le timing sur toutes les plateformes publicitaires. Équilibre les objectifs de portée et d'efficacité avec des contraintes d'exécution pratiques pour produire un plan prêt à l'implémentation avec des objectifs de rythme clairs et des protocoles de contingence.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Campaign dates**: Start date, end date, and any blackout periods or mandatory flight windows
-- **Total paid media budget**: Aggregate budget for the campaign period with any channel-specific floors or caps
-- **Channels available**: Platforms in consideration — Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, programmatic display, connected TV, native, audio, out-of-home, etc.
-- **Campaign objectives**: Primary and secondary objectives — awareness (reach/impressions), consideration (traffic/engagement), conversion (leads/sales/ROAS)
-- **Target audiences with segments**: Audience definitions including demographics, interests, behaviors, custom audiences, lookalikes, and retargeting pools
-- **Creative assets available**: Existing ad formats and sizes, video lengths, static variants, and any creative production timelines for new assets
-- **Geographic targeting**: Markets, regions, DMAs, or countries to target with any geo-specific budget weighting
-- **Competitive spending intelligence**: Known or estimated competitor ad spend, share of voice benchmarks, and auction pressure indicators
-- **Historical performance by channel**: Past campaign data — CPC, CPM, CPA, ROAS, conversion rates — by channel and audience segment
-- **Seasonality factors**: Demand fluctuations, industry events, holidays, promotional periods, or competitive surges that affect costs or performance
+- **Dates de campagne** : Date de début, date de fin, et toute période de blackout ou fenêtre de diffusion obligatoire
+- **Budget média payant total** : Budget agrégé pour la période de campagne avec tout plancher ou plafond spécifique à un canal
+- **Canaux disponibles** : Plateformes envisagées — Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, display programmatique, TV connectée, native, audio, affichage extérieur, etc.
+- **Objectifs de campagne** : Objectifs principaux et secondaires — notoriété (portée/impressions), considération (trafic/engagement), conversion (leads/ventes/ROAS)
+- **Audiences cibles avec segments** : Définitions d'audience incluant démographie, intérêts, comportements, audiences personnalisées, lookalikes, et pools de retargeting
+- **Actifs créatifs disponibles** : Formats et tailles publicitaires existants, durées vidéo, variantes statiques, et tout calendrier de production créative pour de nouveaux actifs
+- **Ciblage géographique** : Marchés, régions, zones de diffusion (DMA), ou pays à cibler avec toute pondération budgétaire géo-spécifique
+- **Intelligence sur les dépenses concurrentielles** : Dépenses publicitaires concurrentes connues ou estimées, benchmarks de part de voix, et indicateurs de pression aux enchères
+- **Performance historique par canal** : Données de campagnes passées — CPC, CPM, CPA, ROAS, taux de conversion — par canal et segment d'audience
+- **Facteurs de saisonnalité** : Fluctuations de la demande, événements sectoriels, jours fériés, périodes promotionnelles, ou pics concurrentiels affectant les coûts ou la performance
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Assess channel-objective fit**: Evaluate each available channel against campaign objectives using reach capability, targeting precision, cost benchmarks, creative format support, and measurement reliability
-3. **Allocate budget across channels**: Distribute budget using efficiency-weighted allocation — factor in historical performance, diminishing returns curves, minimum effective spend thresholds, and strategic importance per channel
-4. **Design flight schedule**: Structure campaign timing as continuous, pulsing, or flighting based on objectives, seasonality, and budget — define weekly spend levels and heavy-up periods
-5. **Build audience targeting matrix**: Map each audience segment to its optimal channel(s) with targeting parameters, expected reach, estimated frequency, and overlap management between platforms
-6. **Plan creative rotation**: Schedule creative variants across channels with rotation frequency, fatigue thresholds (impressions or frequency caps), A/B test windows, and refresh dates for new assets
-7. **Define measurement framework**: Establish KPIs per channel, tracking requirements (pixels, UTMs, offline conversion imports), attribution model, and reporting cadence
-8. **Set contingency holdback**: Reserve 10-15% of budget as contingency for opportunistic scaling, underperformance reallocation, or emerging platform opportunities — define trigger criteria for deployment
-9. **Create platform setup checklists**: Build channel-specific setup checklists covering account structure, campaign naming conventions, tracking implementation, audience uploads, and creative specs
-10. **Model reach and frequency estimates**: Project total reach, average frequency, and effective frequency per channel and in aggregate — flag oversaturation or underspend risks
-11. **Compile unified media plan calendar**: Assemble all components into a single calendar view showing budget pacing, creative rotation, audience activation, and measurement milestones week by week
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier aussi les guidelines** dans `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et les fichiers de catégorie pertinents. Vérifier l'existence de modèles personnalisés dans `~/.claude-marketing/brands/{slug}/templates/`. Vérifier l'existence de procédures d'agence dans `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Évaluer l'adéquation canal-objectif** : Évaluer chaque canal disponible par rapport aux objectifs de campagne en utilisant la capacité de portée, la précision de ciblage, les benchmarks de coût, le support de format créatif, et la fiabilité de mesure
+3. **Allouer le budget entre canaux** : Répartir le budget en utilisant une allocation pondérée par l'efficacité — tenir compte de la performance historique, des courbes de rendements décroissants, des seuils de dépense minimale efficace, et de l'importance stratégique par canal
+4. **Concevoir le calendrier de diffusion** : Structurer le timing de campagne en continu, pulsé, ou par vagues selon les objectifs, la saisonnalité, et le budget — définir les niveaux de dépense hebdomadaire et les périodes d'intensification
+5. **Construire la matrice de ciblage d'audience** : Associer chaque segment d'audience à son/ses canal/canaux optimal(aux) avec les paramètres de ciblage, la portée attendue, la fréquence estimée, et la gestion du chevauchement entre plateformes
+6. **Planifier la rotation créative** : Planifier les variantes créatives sur les canaux avec la fréquence de rotation, les seuils de fatigue (plafonds d'impressions ou de fréquence), les fenêtres de test A/B, et les dates de rafraîchissement pour les nouveaux actifs
+7. **Définir le cadre de mesure** : Établir les KPI par canal, les exigences de suivi (pixels, UTM, imports de conversion hors ligne), le modèle d'attribution, et la cadence de reporting
+8. **Fixer la réserve de contingence** : Réserver 10-15 % du budget comme contingence pour la mise à l'échelle opportuniste, la réallocation en cas de sous-performance, ou les opportunités de plateformes émergentes — définir les critères de déclenchement pour le déploiement
+9. **Créer les checklists de configuration de plateforme** : Construire des checklists de configuration spécifiques à chaque canal couvrant la structure de compte, les conventions de nommage de campagne, la mise en œuvre du suivi, les téléversements d'audience, et les spécifications créatives
+10. **Modéliser les estimations de portée et de fréquence** : Projeter la portée totale, la fréquence moyenne, et la fréquence effective par canal et en agrégat — signaler les risques de sursaturation ou de sous-dépense
+11. **Compiler un calendrier de plan média unifié** : Assembler tous les composants en une seule vue de calendrier montrant le rythme budgétaire, la rotation créative, l'activation d'audience, et les jalons de mesure semaine par semaine
 
-## Output
+## Résultat
 
-A structured paid media plan containing:
+Un plan média payant structuré contenant :
 
-- **Channel allocation table**: Budget amount, percentage share, and strategic rationale for each channel with minimum and maximum spend guardrails
-- **Flight schedule with weekly budget waves**: Week-by-week spend plan showing ramp-up, steady state, heavy-up, and wind-down phases per channel
-- **Audience targeting matrix**: Segment-by-channel-by-creative mapping showing targeting parameters, expected reach, frequency caps, and overlap management
-- **Creative rotation calendar**: Asset schedule per channel with rotation dates, fatigue thresholds, A/B test windows, and refresh milestones for new creative
-- **Reach and frequency estimates**: Projected reach, average frequency, and effective frequency per channel and in aggregate with confidence ranges
-- **Measurement framework**: KPIs per channel, tracking requirements, attribution model, reporting cadence, and data integration points
-- **Platform setup checklists**: Channel-specific implementation checklists covering account structure, naming conventions, tracking, audiences, and creative specs
-- **Contingency budget plan**: Reserve amount, deployment trigger criteria (over/underperformance thresholds), and reallocation decision framework
-- **Competitive spending comparison**: Estimated share of voice, auction overlap indicators, and competitive pressure assessment by channel
-- **Daily/weekly pacing targets**: Spend and performance pacing benchmarks for in-flight monitoring with acceptable variance thresholds
-- **Cross-channel synergy map**: Retargeting flows between channels, sequential messaging paths, and audience progression logic from awareness to conversion
-- **Risk scenarios with budget reallocation triggers**: Defined scenarios (platform outage, CPM spikes, underperformance, budget cuts) with pre-approved reallocation responses
+- **Tableau d'allocation par canal** : Montant budgétaire, part en pourcentage, et justification stratégique pour chaque canal avec des garde-fous de dépense minimale et maximale
+- **Calendrier de diffusion avec vagues budgétaires hebdomadaires** : Plan de dépense semaine par semaine montrant les phases de montée en charge, de régime stable, d'intensification, et de ralentissement par canal
+- **Matrice de ciblage d'audience** : Association segment-par-canal-par-créative montrant les paramètres de ciblage, la portée attendue, les plafonds de fréquence, et la gestion du chevauchement
+- **Calendrier de rotation créative** : Calendrier des actifs par canal avec les dates de rotation, les seuils de fatigue, les fenêtres de test A/B, et les jalons de rafraîchissement pour les nouvelles créations
+- **Estimations de portée et de fréquence** : Portée projetée, fréquence moyenne, et fréquence effective par canal et en agrégat avec des plages de confiance
+- **Cadre de mesure** : KPI par canal, exigences de suivi, modèle d'attribution, cadence de reporting, et points d'intégration de données
+- **Checklists de configuration de plateforme** : Checklists de mise en œuvre spécifiques à chaque canal couvrant la structure de compte, les conventions de nommage, le suivi, les audiences, et les spécifications créatives
+- **Plan de budget de contingence** : Montant de réserve, critères de déclenchement de déploiement (seuils de sur/sous-performance), et cadre de décision de réallocation
+- **Comparaison des dépenses concurrentielles** : Part de voix estimée, indicateurs de chevauchement aux enchères, et évaluation de la pression concurrentielle par canal
+- **Objectifs de rythme quotidien/hebdomadaire** : Benchmarks de rythme de dépense et de performance pour la surveillance en cours de diffusion avec des seuils de variance acceptables
+- **Carte de synergie cross-canal** : Flux de retargeting entre canaux, parcours de messages séquentiels, et logique de progression d'audience de la notoriété à la conversion
+- **Scénarios de risque avec déclencheurs de réallocation budgétaire** : Scénarios définis (panne de plateforme, pics de CPM, sous-performance, coupes budgétaires) avec des réponses de réallocation pré-approuvées
 
-## Agents Used
+## Agents utilisés
 
-- **media-buyer** — Channel allocation, budget pacing, auction dynamics, platform setup, reach/frequency modeling, competitive spending analysis, and creative rotation planning
-- **marketing-strategist** — Objective-channel alignment, audience strategy, cross-channel synergy design, contingency planning, and measurement framework architecture
+- **media-buyer** — Allocation par canal, rythme budgétaire, dynamiques d'enchères, configuration de plateforme, modélisation de portée/fréquence, analyse des dépenses concurrentielles, et planification de la rotation créative
+- **marketing-strategist** — Alignement objectif-canal, stratégie d'audience, conception de synergie cross-canal, planification de contingence, et architecture du cadre de mesure

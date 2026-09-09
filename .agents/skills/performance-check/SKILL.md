@@ -1,6 +1,6 @@
 ---
 name: performance-check
-description: "Pull live metrics from every connected analytics MCP into one cross-channel snapshot: KPI scoreboard with RAG status vs profile targets, period-over-period trends, industry benchmarks, top wins and concerns, and 3-5 recommended actions — then persist the snapshot via performance-monitor.py for trend history. Triggers on \"/digital-marketing-pro:performance-check\", \"how are our marketing metrics\", \"pull current KPIs\", \"quick performance snapshot\", \"are we hitting our targets\". Reads the brand profile for KPI targets and industry benchmarks; reports data gaps for unconnected platforms. Pairs with /digital-marketing-pro:performance-report, which turns these snapshots into the stakeholder narrative."
+description: "Puiser des métriques en direct depuis chaque MCP analytique connecté vers un instantané cross-canal unique : tableau de bord KPI avec statut RAG vs objectifs du profil, tendances période sur période, benchmarks sectoriels, principales réussites et préoccupations, et 3-5 actions recommandées — puis persister l'instantané via performance-monitor.py pour l'historique de tendance. Se déclenche sur \"/digital-marketing-pro:performance-check\", \"how are our marketing metrics\", \"pull current KPIs\", \"quick performance snapshot\", \"are we hitting our targets\". Lit le profil de marque pour les objectifs KPI et les benchmarks sectoriels ; signale les lacunes de données pour les plateformes non connectées. Se combine avec /digital-marketing-pro:performance-report, qui transforme ces instantanés en récit pour les parties prenantes."
 user-invocable: true
 triggers:
   - check marketing performance
@@ -15,81 +15,73 @@ triggers:
 
 # /digital-marketing-pro:performance-check
 
-## Purpose
+## Objectif
 
-Pull live metrics from all connected analytics MCPs and produce a comprehensive performance snapshot. Compares current performance to KPI targets defined in the brand profile, previous-period benchmarks, and industry averages. Designed for quick health checks — run it daily, weekly, or on-demand to stay on top of marketing performance without switching between platforms.
+Puiser des métriques en direct depuis tous les MCP analytiques connectés et produire un instantané de performance complet. Compare la performance actuelle aux objectifs KPI définis dans le profil de marque, aux benchmarks de la période précédente, et aux moyennes sectorielles. Conçu pour des contrôles de santé rapides — à exécuter quotidiennement, hebdomadairement, ou à la demande pour rester au fait de la performance marketing sans naviguer entre les plateformes.
 
-**Scope (vs `/digital-marketing-pro:performance-report`):** this skill is the **live-pull + snapshot-persistence** layer — it fetches current metrics from the platforms and saves a snapshot for trend history. When you need a formatted, narrative deliverable for stakeholders (executive summary, channel commentary, prioritized recommendations, branded formatting), run `/digital-marketing-pro:performance-report`, which consumes the snapshots this skill persists rather than re-pulling. Use `performance-check` to *see the numbers now*; use `performance-report` to *tell the story*.
+**Périmètre (vs `/digital-marketing-pro:performance-report`) :** ce skill est la couche de **récupération en direct + persistance d'instantané** — il récupère les métriques actuelles depuis les plateformes et enregistre un instantané pour l'historique de tendance. Lorsqu'un livrable narratif et formaté pour les parties prenantes est nécessaire (synthèse exécutive, commentaire par canal, recommandations priorisées, formatage à l'image de la marque), exécuter `/digital-marketing-pro:performance-report`, qui consomme les instantanés persistés par ce skill plutôt que de les récupérer à nouveau. Utiliser `performance-check` pour *voir les chiffres maintenant* ; utiliser `performance-report` pour *raconter l'histoire*.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Time period**: Today, this week, this month, this quarter, or a custom date range (e.g., "last 14 days", "Jan 1 - Jan 31")
-- **Channel focus** (optional): Specific channels or platforms to prioritize (e.g., "paid search only", "email and social").
-  If omitted, all connected platforms are included
-- **Comparison period** (optional): Period to compare against — previous period, same period last year, or custom range.
-  Defaults to the equivalent previous period
-- **KPI targets** (optional): Override targets for this check.
-  If omitted, targets are pulled from profile.json goals and KPI settings
-- **Granularity** (optional): Daily, weekly, or aggregate view. Defaults to aggregate for the selected period
+- **Période** : Aujourd'hui, cette semaine, ce mois, ce trimestre, ou une plage de dates personnalisée (par exemple, « 14 derniers jours », « 1er janvier - 31 janvier »)
+- **Focus par canal** (optionnel) : Canaux ou plateformes spécifiques à prioriser (par exemple, « recherche payante uniquement », « email et social »).
+  Si omis, toutes les plateformes connectées sont incluses
+- **Période de comparaison** (optionnel) : Période à comparer — période précédente, même période l'an dernier, ou plage personnalisée.
+  Par défaut, la période précédente équivalente
+- **Objectifs KPI** (optionnel) : Remplacer les objectifs pour ce contrôle.
+  Si omis, les objectifs sont puisés depuis les objectifs et paramètres KPI de profile.json
+- **Granularité** (optionnel) : Vue journalière, hebdomadaire, ou agrégée. Par défaut, vue agrégée pour la période sélectionnée
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. Also check for guidelines at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. **Detect connected analytics MCPs**: Check `.mcp.json` and active MCP connections to identify which platforms are available
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. Vérifier également les guidelines à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions. Vérifier les procédures d'agence à `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. **Détecter les MCP analytiques connectés** : Vérifier `.mcp.json` et les connexions MCP actives pour identifier quelles plateformes sont disponibles
    (google-analytics, google-ads, meta-marketing, linkedin-marketing, tiktok-ads, mailchimp, stripe, mixpanel, amplitude, shopify, etc.).
-   Log any expected platforms that are not connected so the user knows about gaps in coverage.
-3. **Pull metrics from each connected platform**: Request key metrics for the specified time period:
-   - Traffic: sessions, users, pageviews, new vs returning (break out GA4's **"AI Assistant"** default channel — referrals from ChatGPT, Gemini, Copilot, Perplexity, etc. — so AI-sourced traffic isn't buried under Referral/Direct)
-   - Ads: impressions, clicks, spend, CPC, CPM
-   - Conversions: leads, purchases, sign-ups, goal completions
-   - Revenue: total revenue, average order value, transaction count
-   - Engagement: open rate, click rate, bounce rate, time on site
-   - Platform-specific: email deliverability, social reach, video views, app installs
-4. **Aggregate into unified dashboard**: Normalize metrics across platforms into a single cross-channel view with consistent
-   naming, currency conversion if multi-currency, and de-duplicated conversion counts where platforms overlap
-5. **Calculate KPIs vs targets**: Compare actuals to targets from `profile.json` goals — flag green (on track or exceeding),
-   yellow (within 10% of target), or red (missing by >10%). Include absolute and percentage variance for each KPI.
-6. **Compare to previous period**: Calculate period-over-period change for every metric and attach trend direction
-   (up/down/flat) with percentage change. If year-over-year data is available, include as a secondary reference point.
-7. **Benchmark against industry**: Reference `skills/context-engine/industry-profiles.md` for the brand's industry to
-   contextualize performance relative to category averages. Flag metrics significantly above or below industry norms.
-8. **Identify notable findings**: Surface the top 3 wins (best-performing metrics or biggest improvements), top 3 concerns
-   (underperforming or declining metrics), and any material changes that warrant deeper investigation. Before labelling a
-   conversion-rate change "statistically significant," confirm it with `python "${CLAUDE_PLUGIN_ROOT}/scripts/significance-tester.py" --control-visitors {n} --control-conversions {n} --variant-visitors {n} --variant-conversions {n} --confidence 0.95` — do not call a movement significant off a raw percentage delta.
-9. **Generate recommended actions**: Based on the data, produce 3-5 specific, actionable next steps — e.g., "Pause
-   underperforming ad set X", "Increase budget on high-ROAS channel Y", "Investigate traffic drop on Z",
-   "Scale winning creative variant", "Run /digital-marketing-pro:anomaly-scan for deeper diagnosis".
-10. **Save performance snapshot**: Execute `python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand {slug} --action save-snapshot --data '{...current metrics...}'`
-    to persist the snapshot for historical comparison and trend tracking across future runs.
-11. **Log significant insights**: For any metric with a notable deviation, save via
+   Journaliser toute plateforme attendue mais non connectée afin que l'utilisateur soit informé des lacunes de couverture.
+3. **Puiser les métriques depuis chaque plateforme connectée** : Demander les métriques clés pour la période spécifiée :
+   - Trafic : sessions, utilisateurs, pages vues, nouveaux vs récurrents (isoler le canal par défaut GA4 **« AI Assistant »** — les référencements depuis ChatGPT, Gemini, Copilot, Perplexity, etc. — pour que le trafic issu de l'IA ne soit pas noyé sous Référent/Direct)
+   - Publicités : impressions, clics, dépense, CPC, CPM
+   - Conversions : leads, achats, inscriptions, réalisations d'objectifs
+   - Revenu : revenu total, valeur moyenne de commande, nombre de transactions
+   - Engagement : taux d'ouverture, taux de clic, taux de rebond, temps sur le site
+   - Spécifique à la plateforme : délivrabilité email, portée sociale, vues vidéo, installations d'app
+4. **Agréger en un tableau de bord unifié** : Normaliser les métriques entre plateformes en une vue cross-canal unique avec une nomenclature cohérente, conversion de devise si multi-devises, et comptages de conversion dédupliqués là où les plateformes se chevauchent
+5. **Calculer les KPI vs objectifs** : Comparer les valeurs réelles aux objectifs de `profile.json` — signaler en vert (dans les temps ou dépassant), jaune (dans les 10 % de l'objectif), ou rouge (manqué de plus de 10 %). Inclure la variance absolue et en pourcentage pour chaque KPI.
+6. **Comparer à la période précédente** : Calculer le changement période sur période pour chaque métrique et associer une direction de tendance (hausse/baisse/stable) avec le pourcentage de changement. Si des données d'une année sur l'autre sont disponibles, les inclure comme point de référence secondaire.
+7. **Benchmarker par rapport au secteur** : Référencer `skills/context-engine/industry-profiles.md` pour le secteur de la marque afin de contextualiser la performance par rapport aux moyennes de la catégorie. Signaler les métriques significativement au-dessus ou en dessous des normes sectorielles.
+8. **Identifier les constats notables** : Faire ressortir les 3 principales réussites (métriques les plus performantes ou plus grandes améliorations), les 3 principales préoccupations (métriques sous-performantes ou en déclin), et tout changement matériel justifiant une investigation plus approfondie. Avant de qualifier un changement de taux de conversion de « statistiquement significatif », le confirmer avec `python "${CLAUDE_PLUGIN_ROOT}/scripts/significance-tester.py" --control-visitors {n} --control-conversions {n} --variant-visitors {n} --variant-conversions {n} --confidence 0.95` — ne jamais qualifier un mouvement de significatif sur la seule base d'un écart de pourcentage brut.
+9. **Générer des actions recommandées** : Sur la base des données, produire 3 à 5 prochaines étapes spécifiques et actionnables — par exemple, « Mettre en pause l'ad set X sous-performant », « Augmenter le budget sur le canal Y à fort ROAS », « Investiguer la baisse de trafic sur Z », « Mettre à l'échelle la variante créative gagnante », « Exécuter /digital-marketing-pro:anomaly-scan pour un diagnostic plus approfondi ».
+10. **Enregistrer l'instantané de performance** : Exécuter `python "${CLAUDE_PLUGIN_ROOT}/scripts/performance-monitor.py" --brand {slug} --action save-snapshot --data '{...métriques actuelles...}'`
+    pour persister l'instantané pour la comparaison historique et le suivi de tendance sur les futures exécutions.
+11. **Journaliser les insights significatifs** : Pour toute métrique présentant une déviation notable, enregistrer via
     `python "${CLAUDE_PLUGIN_ROOT}/scripts/campaign-tracker.py" --brand {slug} --action save-insight --data '{"type":"anomaly","insight":"...","context":"..."}'`
-    so findings surface in future reports and campaign planning.
+    afin que les constats apparaissent dans les futurs rapports et la planification de campagne.
 
-## Output
+## Résultat
 
-A structured performance snapshot containing:
+Un instantané de performance structuré contenant :
 
-- **Executive summary**: 2-3 sentence overview of overall marketing health with the single most important finding highlighted
-- **Channel-by-channel metrics table**: Traffic, impressions, clicks, conversions, revenue, spend, CPA, ROAS, and engagement
-  rate per platform — sortable by any column
-- **KPI scoreboard**: Each tracked KPI with actual value, target value, percentage to target, variance (absolute and %),
-  trend arrow (vs previous period), and RAG status (red/amber/green)
-- **Cross-channel summary**: Total spend, total conversions, blended CPA, blended ROAS, total revenue, marketing efficiency
-  ratio, and overall health assessment
-- **Period-over-period comparison**: Percentage change for all key metrics vs the comparison period with directional
-  indicators and sparkline-style trend data
-- **Industry benchmark context**: How key metrics compare to industry averages from industry-profiles.md, with percentile
-  ranking where data is available
-- **Notable findings**: Top 3 wins, top 3 concerns, and any anomalies worth investigating further — each with supporting
-  data points and severity indicator
-- **Recommended actions**: 3-5 specific next steps with priority ranking, expected impact, and the platform or campaign
-  each action applies to
-- **Data gaps**: Any platforms that were expected but not connected, metrics that could not be retrieved, or time periods
-  with incomplete data — so the user knows what is missing from the picture
+- **Synthèse exécutive** : Aperçu de 2-3 phrases de la santé marketing globale avec le constat le plus important mis en évidence
+- **Tableau de métriques canal par canal** : Trafic, impressions, clics, conversions, revenu, dépense, CPA, ROAS, et taux d'engagement
+  par plateforme — triable par n'importe quelle colonne
+- **Tableau de bord KPI** : Chaque KPI suivi avec valeur réelle, valeur cible, pourcentage de l'objectif, variance (absolue et %),
+  flèche de tendance (vs période précédente), et statut RAG (rouge/orange/vert)
+- **Résumé cross-canal** : Dépense totale, conversions totales, CPA consolidé, ROAS consolidé, revenu total, ratio
+  d'efficacité marketing, et évaluation globale de la santé
+- **Comparaison période sur période** : Changement en pourcentage pour toutes les métriques clés vs la période de comparaison avec des
+  indicateurs directionnels et des données de tendance de type sparkline
+- **Contexte de benchmark sectoriel** : Comparaison des métriques clés aux moyennes sectorielles issues de industry-profiles.md, avec un
+  classement en percentile là où les données sont disponibles
+- **Constats notables** : Top 3 des réussites, top 3 des préoccupations, et toute anomalie méritant une investigation plus approfondie — chacune avec des
+  points de données à l'appui et un indicateur de sévérité
+- **Actions recommandées** : 3 à 5 prochaines étapes spécifiques avec classement de priorité, impact attendu, et la plateforme ou campagne
+  à laquelle chaque action s'applique
+- **Lacunes de données** : Toute plateforme attendue mais non connectée, métriques n'ayant pas pu être récupérées, ou périodes
+  avec des données incomplètes — afin que l'utilisateur sache ce qui manque au tableau
 
-## Agents Used
+## Agents utilisés
 
-- **analytics-analyst** — Metrics interpretation, KPI analysis, cross-channel normalization, trend identification, industry benchmarking, insight generation, and action recommendation
-- **performance-monitor-agent** — Data aggregation from connected MCPs, baseline comparison, snapshot persistence, historical trend analysis, and gap detection
+- **analytics-analyst** — Interprétation des métriques, analyse des KPI, normalisation cross-canal, identification des tendances, benchmarking sectoriel, génération d'insights, et recommandation d'actions
+- **performance-monitor-agent** — Agrégation des données depuis les MCP connectés, comparaison de référence, persistance des instantanés, analyse de tendance historique, et détection des lacunes

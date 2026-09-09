@@ -1,52 +1,52 @@
 ---
 name: performance-report
-description: "Turn marketing data into a stakeholder-ready performance report: executive summary, channel-by-channel KPI dashboard, trend analysis, anomaly alerts with root-cause hypotheses, and recommendations ranked by expected impact — formatted for an executive or tactical audience. Triggers on \"/digital-marketing-pro:performance-report\", \"write the monthly performance report\", \"summarize campaign results for stakeholders\", \"why did performance change last quarter\", \"turn these metrics into a report\". Consumes snapshots persisted by /digital-marketing-pro:performance-check rather than re-pulling platforms itself; reads the brand profile, custom templates, and agency SOPs. Hands deeper anomaly diagnosis to /digital-marketing-pro:anomaly-scan."
+description: "Transformer les données marketing en un rapport de performance prêt pour les parties prenantes : synthèse exécutive, tableau de bord KPI canal par canal, analyse de tendance, alertes d'anomalie avec hypothèses de cause racine, et recommandations classées par impact attendu — formaté pour une audience exécutive ou tactique. Se déclenche sur \"/digital-marketing-pro:performance-report\", \"write the monthly performance report\", \"summarize campaign results for stakeholders\", \"why did performance change last quarter\", \"turn these metrics into a report\". Consomme les instantanés persistés par /digital-marketing-pro:performance-check plutôt que de les récupérer lui-même depuis les plateformes ; lit le profil de marque, les modèles personnalisés, et les SOP d'agence. Transmet le diagnostic d'anomalie plus approfondi à /digital-marketing-pro:anomaly-scan."
 argument-hint: "[time-period]"
 ---
 
 # /digital-marketing-pro:performance-report
 
-## Purpose
+## Objectif
 
-Generate a structured marketing performance report that transforms raw data into insights. Covers KPI tracking, trend analysis, anomaly detection, and prioritized recommendations for optimization.
+Générer un rapport de performance marketing structuré qui transforme les données brutes en insights. Couvre le suivi des KPI, l'analyse de tendance, la détection d'anomalie, et des recommandations priorisées pour l'optimisation.
 
-**Scope (vs `/digital-marketing-pro:performance-check`):** this skill is the **narrative formatting layer** — it turns metrics into a stakeholder-ready deliverable (executive summary, channel commentary, trend narrative, prioritized recommendations, audience-appropriate formatting). It consumes the live pulls and persisted snapshots that `/digital-marketing-pro:performance-check` produces rather than re-pulling from the platforms itself. Use `performance-check` to *see the numbers now*; use `performance-report` to *tell the story*. For deeper anomaly diagnosis, hand off to `/digital-marketing-pro:anomaly-scan`.
+**Périmètre (vs `/digital-marketing-pro:performance-check`) :** ce skill est la **couche de formatage narratif** — il transforme les métriques en un livrable prêt pour les parties prenantes (synthèse exécutive, commentaire par canal, récit de tendance, recommandations priorisées, formatage adapté à l'audience). Il consomme les récupérations en direct et les instantanés persistés que produit `/digital-marketing-pro:performance-check` plutôt que de récupérer à nouveau les données depuis les plateformes lui-même. Utiliser `performance-check` pour *voir les chiffres maintenant* ; utiliser `performance-report` pour *raconter l'histoire*. Pour un diagnostic d'anomalie plus approfondi, transmettre à `/digital-marketing-pro:anomaly-scan`.
 
-## Input Required
+## Informations requises
 
-The user must provide (or will be prompted for):
+L'utilisateur doit fournir (ou se verra demander) :
 
-- **Reporting period**: Date range for the report
-- **Channels to cover**: Which marketing channels to include (all, or specific ones)
-- **Data source**: Raw data (paste, CSV, or connected platform)
-- **KPIs of interest**: Specific metrics to focus on (or use defaults for the channel)
-- **Comparison period**: Previous period, YoY, or custom benchmark
-- **Audience**: Who will read the report (executive summary vs. tactical detail)
+- **Période de reporting** : Plage de dates pour le rapport
+- **Canaux à couvrir** : Quels canaux marketing inclure (tous, ou spécifiques)
+- **Source de données** : Données brutes (collées, CSV, ou plateforme connectée)
+- **KPI d'intérêt** : Métriques spécifiques sur lesquelles se concentrer (ou utiliser les valeurs par défaut pour le canal)
+- **Période de comparaison** : Période précédente, année sur année, ou benchmark personnalisé
+- **Audience** : Qui va lire le rapport (synthèse exécutive vs détail tactique)
 
-## Process
+## Processus
 
-1. **Load brand context**: Read `~/.claude-marketing/brands/_active-brand.json` for the active slug, then load `~/.claude-marketing/brands/{slug}/profile.json`. Apply brand voice, compliance rules for target markets (`skills/context-engine/compliance-rules.md`), and industry context. **Also check for guidelines** at `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — if present, load restrictions and relevant category files. Check for custom templates at `~/.claude-marketing/brands/{slug}/templates/`. Check for agency SOPs at `~/.claude-marketing/sops/`. If no brand exists, ask: "Set up a brand first (/digital-marketing-pro:brand-setup)?" — or proceed with defaults.
-2. Ingest and validate the provided performance data
-3. Calculate core KPIs per channel: traffic, conversions, revenue, ROAS, CPA, engagement, growth. Break out GA4's **"AI Assistant"** default channel (referrals from ChatGPT, Gemini, Copilot, Perplexity, etc.) as its own line so AI-sourced traffic and conversions are visible rather than folded into Referral/Direct
-4. Run trend analysis: period-over-period changes, trajectory, seasonality adjustments
-5. Detect anomalies: significant spikes or drops with likely root causes
-6. Benchmark against industry averages and brand targets
-7. Generate insights: what worked, what underperformed, and why
-8. Produce prioritized recommendations for the next period
-9. Format report for the specified audience (executive vs. tactical)
+1. **Charger le contexte de marque** : Lire `~/.claude-marketing/brands/_active-brand.json` pour obtenir le slug actif, puis charger `~/.claude-marketing/brands/{slug}/profile.json`. Appliquer la voix de marque, les règles de conformité pour les marchés cibles (`skills/context-engine/compliance-rules.md`), et le contexte sectoriel. **Vérifier également les guidelines** à `~/.claude-marketing/brands/{slug}/guidelines/_manifest.json` — si présentes, charger les restrictions et fichiers de catégorie pertinents. Vérifier les modèles personnalisés à `~/.claude-marketing/brands/{slug}/templates/`. Vérifier les procédures d'agence à `~/.claude-marketing/sops/`. Si aucune marque n'existe, demander : « Configurer d'abord une marque (/digital-marketing-pro:brand-setup) ? » — ou continuer avec les valeurs par défaut.
+2. Ingérer et valider les données de performance fournies
+3. Calculer les KPI centraux par canal : trafic, conversions, revenu, ROAS, CPA, engagement, croissance. Isoler le canal par défaut GA4 **« AI Assistant »** (référencements depuis ChatGPT, Gemini, Copilot, Perplexity, etc.) comme ligne à part afin que le trafic et les conversions issus de l'IA soient visibles plutôt que noyés dans Référent/Direct
+4. Exécuter une analyse de tendance : changements période sur période, trajectoire, ajustements de saisonnalité
+5. Détecter les anomalies : pics ou baisses significatifs avec causes racines probables
+6. Benchmarker par rapport aux moyennes sectorielles et aux objectifs de marque
+7. Générer des insights : ce qui a fonctionné, ce qui a sous-performé, et pourquoi
+8. Produire des recommandations priorisées pour la prochaine période
+9. Formater le rapport pour l'audience spécifiée (exécutive vs tactique)
 
-## Output
+## Résultat
 
-A structured performance report containing:
+Un rapport de performance structuré contenant :
 
-- Executive summary with headline metrics and overall assessment
-- Channel-by-channel KPI dashboard with period-over-period comparison
-- Trend analysis with visualizable data points
-- Anomaly alerts with root cause hypotheses
-- Top wins and underperformers with context
-- Actionable recommendations ranked by expected impact
-- Next period goals and focus areas
+- Synthèse exécutive avec les métriques phares et une évaluation globale
+- Tableau de bord KPI canal par canal avec comparaison période sur période
+- Analyse de tendance avec des points de données visualisables
+- Alertes d'anomalie avec hypothèses de cause racine
+- Principales réussites et sous-performances avec contexte
+- Recommandations actionnables classées par impact attendu
+- Objectifs et axes de focus pour la prochaine période
 
-## Agents Used
+## Agents utilisés
 
-- **analytics-analyst** — Data analysis, KPI calculation, trend detection, anomaly identification, recommendations
+- **analytics-analyst** — Analyse des données, calcul des KPI, détection de tendance, identification d'anomalie, recommandations

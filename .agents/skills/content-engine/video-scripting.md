@@ -1,104 +1,104 @@
-# Video Scripting Reference
+# Référence d'écriture de script vidéo
 
-## Platform-Specific Formats
+## Formats spécifiques à la plateforme
 
-| Platform | Aspect Ratio | Max Length | Optimal Length | Autoplay | Caption Support |
+| Plateforme | Format d'image | Durée max | Durée optimale | Lecture auto | Support de sous-titres |
 |----------|-------------|-----------|----------------|----------|-----------------|
-| YouTube (long-form) | 16:9 | 12 hours | 8-15 minutes | No (click to play) | SRT, VTT, auto-generated |
-| YouTube Shorts | 9:16 | 3 minutes | 30-45 seconds | Yes (in feed) | Auto-generated, burned-in recommended |
-| TikTok | 9:16 | 10 minutes | 15-60 seconds | Yes (sound on) | Auto-generated, SRT, burned-in |
-| Instagram Reels | 9:16 | 3 minutes | 15-30 seconds | Yes (sound off in feed) | Auto-generated, burned-in recommended |
-| Instagram Stories | 9:16 | 60 seconds | 15 seconds | Yes (sound off) | Burned-in only |
-| LinkedIn Video | 1:1 or 16:9 | 10 minutes | 30-90 seconds | Yes (sound off) | SRT upload, burned-in recommended |
-| Facebook In-Feed | 16:9, 1:1, or 4:5 | 240 minutes | 15-60 seconds | Yes (sound off) | SRT, auto-generated |
-| Facebook Stories | 9:16 | 20 seconds | 15 seconds | Yes (sound off) | Burned-in only |
+| YouTube (long format) | 16:9 | 12 heures | 8-15 minutes | Non (cliquer pour lire) | SRT, VTT, auto-généré |
+| YouTube Shorts | 9:16 | 3 minutes | 30-45 secondes | Oui (dans le fil) | Auto-généré, incrusté recommandé |
+| TikTok | 9:16 | 10 minutes | 15-60 secondes | Oui (son activé) | Auto-généré, SRT, incrusté |
+| Instagram Reels | 9:16 | 3 minutes | 15-30 secondes | Oui (son coupé dans le fil) | Auto-généré, incrusté recommandé |
+| Instagram Stories | 9:16 | 60 secondes | 15 secondes | Oui (son coupé) | Incrusté uniquement |
+| LinkedIn Video | 1:1 ou 16:9 | 10 minutes | 30-90 secondes | Oui (son coupé) | Import SRT, incrusté recommandé |
+| Facebook In-Feed | 16:9, 1:1, ou 4:5 | 240 minutes | 15-60 secondes | Oui (son coupé) | SRT, auto-généré |
+| Facebook Stories | 9:16 | 20 secondes | 15 secondes | Oui (son coupé) | Incrusté uniquement |
 
-### Platform Behavioral Notes
+### Notes comportementales par plateforme
 
-1. **YouTube** — Viewers actively choose to watch; longer attention spans. Optimize for watch time and session duration. Thumbnails and titles drive clicks; the first 30 seconds determine retention.
-2. **TikTok** — Sound-on environment; music and voiceover are expected. Algorithm rewards completion rate and rewatches. Authenticity outperforms polish.
-3. **Instagram Reels** — Hybrid behavior; some sound-on, many sound-off. On-screen text is essential. Trending audio can boost distribution.
-4. **LinkedIn** — Professional context; sound-off default. Burned-in captions are mandatory for engagement. Talking-head and thought-leadership formats perform best.
-5. **Facebook** — Declining organic reach; paid distribution is primary. Sound-off default. Thumb-stopping visuals in the first frame are critical.
+1. **YouTube** — Les spectateurs choisissent activement de regarder ; attention plus longue. Optimiser pour le temps de visionnage et la durée de session. Les miniatures et titres génèrent les clics ; les 30 premières secondes déterminent la rétention.
+2. **TikTok** — Environnement son activé ; musique et voix off sont attendues. L'algorithme récompense le taux d'achèvement et les revisionnages. L'authenticité surpasse le poli.
+3. **Instagram Reels** — Comportement hybride ; certains son activé, beaucoup son coupé. Le texte à l'écran est essentiel. L'audio tendance peut booster la distribution.
+4. **LinkedIn** — Contexte professionnel ; son coupé par défaut. Les sous-titres incrustés sont indispensables pour l'engagement. Les formats face caméra et leadership éclairé performent le mieux.
+5. **Facebook** — Portée organique en déclin ; la distribution payante est primordiale. Son coupé par défaut. Les visuels accrocheurs dès la première image sont critiques.
 
 ---
 
-## Video Script Structures
+## Structures de script vidéo
 
-| Structure | Pattern | When to Use |
+| Structure | Schéma | Quand l'utiliser |
 |-----------|---------|-------------|
-| AIDA | Attention > Interest > Desire > Action | Product launches, direct response ads |
-| PAS | Problem > Agitate > Solve | Pain-point driven products, B2B solutions |
-| Before-After-Bridge | Before state > After state > Bridge (product) | Transformation-focused products, fitness, SaaS |
-| Problem-Solve-CTA | State problem > Present solution > Call to action | Short-form ads (15-30s), simple value props |
-| Testimonial | Social proof hook > Customer story > Result > CTA | Trust-building, mid-funnel retargeting |
-| Explainer (What-How-Why) | What it is > How it works > Why it matters | New product categories, complex offerings |
-| Product Demo | Hook > Feature walkthrough > Key benefit > CTA | E-commerce, software, physical products |
-| Listicle/Tips | Hook > Tip 1 > Tip 2 > Tip 3 > CTA | Educational content, thought leadership, organic social |
+| AIDA | Attention > Intérêt > Désir > Action | Lancements de produits, publicités de réponse directe |
+| PAS | Problème > Agitation > Solution | Produits axés point de douleur, solutions B2B |
+| Avant-Après-Pont | État avant > État après > Pont (produit) | Produits axés transformation, fitness, SaaS |
+| Problème-Solution-CTA | Énoncer le problème > Présenter la solution > Appel à l'action | Publicités courtes (15-30s), propositions de valeur simples |
+| Témoignage | Accroche preuve sociale > Histoire client > Résultat > CTA | Construction de confiance, retargeting milieu de tunnel |
+| Explicatif (Quoi-Comment-Pourquoi) | Ce que c'est > Comment ça marche > Pourquoi c'est important | Nouvelles catégories de produit, offres complexes |
+| Démo produit | Accroche > Tour d'horizon des fonctionnalités > Bénéfice clé > CTA | E-commerce, logiciel, produits physiques |
+| Liste/Conseils | Accroche > Conseil 1 > Conseil 2 > Conseil 3 > CTA | Contenu éducatif, leadership éclairé, social organique |
 
-### Choosing a Structure
+### Choisir une structure
 
-- For awareness campaigns with cold audiences, use AIDA or Before-After-Bridge to create desire.
-- For consideration campaigns targeting warm audiences, use Explainer or Product Demo to educate.
-- For conversion campaigns targeting hot audiences, use PAS or Testimonial to overcome objections.
-- For organic/content marketing, use Listicle/Tips to deliver value and build authority.
-
----
-
-## Hook Formulas (First 3 Seconds)
-
-The first 3 seconds determine whether a viewer watches or scrolls. Every video script must open with a deliberate hook. Below are 12 proven patterns:
-
-1. **Question Hook** — Open with a question the viewer wants answered.
-   - Example: "Did you know 73% of carts get abandoned before checkout?"
-
-2. **Stat Hook** — Lead with a surprising or counterintuitive statistic.
-   - Example: "87% of marketers say video gives them positive ROI."
-
-3. **Controversy Hook** — Challenge a common belief or practice.
-   - Example: "Stop posting on social media every day. Here's why."
-
-4. **Before/After Hook** — Show the transformation immediately.
-   - Example: [Visual: messy dashboard] "This was our reporting..." [Visual: clean dashboard] "...and this is it now."
-
-5. **Direct Address Hook** — Speak directly to the viewer's identity or situation.
-   - Example: "If you're a SaaS founder spending more than $10K/month on ads, watch this."
-
-6. **Pattern Interrupt Hook** — Break expectations with an unexpected visual or statement.
-   - Example: [Person walks into frame and drops a stack of papers] "This is everything your team does manually that should be automated."
-
-7. **Social Proof Hook** — Lead with credibility or numbers.
-   - Example: "10,000 marketers switched to this tool last quarter. Here's what happened."
-
-8. **Fear/Urgency Hook** — Highlight a risk or time-sensitive opportunity.
-   - Example: "Google just changed its algorithm and most sites are about to lose traffic."
-
-9. **Curiosity Gap Hook** — Tease information without revealing it.
-   - Example: "There's one setting in your ad account that's wasting 30% of your budget."
-
-10. **Demonstration Hook** — Show the product or result immediately.
-    - Example: [Screen recording: 3 clicks to generate a report] "Watch how fast this is."
-
-11. **Story Opener Hook** — Begin with a brief, relatable narrative.
-    - Example: "Last month, a client came to us spending $50K on ads with zero leads. Here's what we found."
-
-12. **Bold Claim Hook** — Make a strong, specific promise.
-    - Example: "This framework doubled our conversion rate in 14 days."
-
-### Hook Selection by Platform
-
-- **TikTok/Reels:** Pattern interrupt, controversy, curiosity gap, bold claim (visual-first, fast-paced)
-- **YouTube:** Question, story opener, stat hook (viewers chose to click, reward with depth)
-- **LinkedIn:** Stat hook, direct address, social proof (professional credibility matters)
-- **Facebook Ads:** Before/after, demonstration, fear/urgency (thumb-stopping in sound-off feed)
+- Pour les campagnes de notoriété avec des audiences froides, utiliser AIDA ou Avant-Après-Pont pour créer le désir.
+- Pour les campagnes de considération ciblant des audiences chaudes, utiliser Explicatif ou Démo produit pour éduquer.
+- Pour les campagnes de conversion ciblant des audiences très chaudes, utiliser PAS ou Témoignage pour surmonter les objections.
+- Pour le marketing organique/de contenu, utiliser Liste/Conseils pour apporter de la valeur et construire l'autorité.
 
 ---
 
-## Timestamp Annotation Format
+## Formules d'accroche (premières 3 secondes)
 
-Use timestamp annotations to define pacing and ensure every second has purpose. Standard format:
+Les 3 premières secondes déterminent si un spectateur regarde ou défile. Chaque script vidéo doit s'ouvrir avec une accroche délibérée. Voici 12 schémas éprouvés :
 
-### 15-Second Script Template
+1. **Accroche question** — S'ouvrir sur une question dont le spectateur veut la réponse.
+   - Exemple : « Saviez-vous que 73 % des paniers sont abandonnés avant le checkout ? »
+
+2. **Accroche statistique** — Mener avec une statistique surprenante ou contre-intuitive.
+   - Exemple : « 87 % des marketeurs disent que la vidéo leur apporte un ROI positif. »
+
+3. **Accroche controverse** — Contester une croyance ou pratique courante.
+   - Exemple : « Arrêtez de poster sur les réseaux sociaux tous les jours. Voici pourquoi. »
+
+4. **Accroche avant/après** — Montrer la transformation immédiatement.
+   - Exemple : [Visuel : tableau de bord en désordre] « Voilà à quoi ressemblait notre reporting... » [Visuel : tableau de bord propre] « ...et voilà à quoi il ressemble maintenant. »
+
+5. **Accroche adresse directe** — S'adresser directement à l'identité ou à la situation du spectateur.
+   - Exemple : « Si vous êtes fondateur SaaS et dépensez plus de 10K$/mois en publicité, regardez ça. »
+
+6. **Accroche pattern interrupt** — Rompre les attentes avec un visuel ou une déclaration inattendue.
+   - Exemple : [Une personne entre dans le cadre et lâche une pile de papiers] « Voici tout ce que votre équipe fait manuellement et qui devrait être automatisé. »
+
+7. **Accroche preuve sociale** — Mener avec la crédibilité ou les chiffres.
+   - Exemple : « 10 000 marketeurs sont passés à cet outil le trimestre dernier. Voici ce qui s'est passé. »
+
+8. **Accroche peur/urgence** — Mettre en avant un risque ou une opportunité sensible au temps.
+   - Exemple : « Google vient de changer son algorithme et la plupart des sites sont sur le point de perdre du trafic. »
+
+9. **Accroche écart de curiosité** — Teaser l'information sans la révéler.
+   - Exemple : « Il y a un paramètre dans votre compte publicitaire qui gaspille 30 % de votre budget. »
+
+10. **Accroche démonstration** — Montrer le produit ou le résultat immédiatement.
+    - Exemple : [Enregistrement d'écran : 3 clics pour générer un rapport] « Regardez à quelle vitesse ça va. »
+
+11. **Accroche ouverture d'histoire** — Commencer par un court récit relatable.
+    - Exemple : « Le mois dernier, un client est venu nous voir en dépensant 50K$ en publicité sans aucun lead. Voici ce qu'on a trouvé. »
+
+12. **Accroche affirmation forte** — Faire une promesse forte et spécifique.
+    - Exemple : « Ce cadre a doublé notre taux de conversion en 14 jours. »
+
+### Sélection d'accroche par plateforme
+
+- **TikTok/Reels :** Pattern interrupt, controverse, écart de curiosité, affirmation forte (visuel d'abord, rythme rapide)
+- **YouTube :** Question, ouverture d'histoire, accroche statistique (les spectateurs ont choisi de cliquer, récompensez avec de la profondeur)
+- **LinkedIn :** Accroche statistique, adresse directe, preuve sociale (la crédibilité professionnelle compte)
+- **Facebook Ads :** Avant/après, démonstration, peur/urgence (accrocheur dans un fil son coupé)
+
+---
+
+## Format d'annotation d'horodatage
+
+Utiliser des annotations d'horodatage pour définir le rythme et s'assurer que chaque seconde a un objectif. Format standard :
+
+### Modèle de script 15 secondes
 ```
 0:00-0:03  HOOK — Grab attention (visual + text/VO)
 0:03-0:10  CORE MESSAGE — Single key point or benefit
@@ -106,7 +106,7 @@ Use timestamp annotations to define pacing and ensure every second has purpose. 
 0:13-0:15  CTA — Clear single action
 ```
 
-### 30-Second Script Template
+### Modèle de script 30 secondes
 ```
 0:00-0:03  HOOK — Pattern interrupt or question
 0:03-0:08  PROBLEM — Establish the pain point
@@ -115,7 +115,7 @@ Use timestamp annotations to define pacing and ensure every second has purpose. 
 0:25-0:30  CTA — Direct call to action with urgency
 ```
 
-### 60-Second Script Template
+### Modèle de script 60 secondes
 ```
 0:00-0:03  HOOK — Strong opening to stop the scroll
 0:03-0:10  CONTEXT — Set up the problem or situation
@@ -125,7 +125,7 @@ Use timestamp annotations to define pacing and ensure every second has purpose. 
 0:55-1:00  CTA — Specific next step
 ```
 
-### 2-Minute Script Template
+### Modèle de script 2 minutes
 ```
 0:00-0:05  HOOK — Compelling opening
 0:05-0:15  SETUP — Problem or context establishment
@@ -136,7 +136,7 @@ Use timestamp annotations to define pacing and ensure every second has purpose. 
 1:50-2:00  CTA — Call to action
 ```
 
-### 5-Minute+ Script Template
+### Modèle de script 5 minutes+
 ```
 0:00-0:10  HOOK — Strong opening + preview of value
 0:10-0:30  INTRO — Context, credibility, agenda
@@ -150,26 +150,26 @@ Use timestamp annotations to define pacing and ensure every second has purpose. 
 
 ---
 
-## Visual Direction Notes
+## Notes de direction visuelle
 
-### Camera Direction Vocabulary
+### Vocabulaire de direction de caméra
 
-Use these standard terms in script annotations to communicate visual intent:
+Utiliser ces termes standards dans les annotations de script pour communiquer l'intention visuelle :
 
-- **CU (Close-Up)** — Tight framing on face or product detail; conveys emotion or highlights specific features
-- **WS (Wide Shot)** — Full scene establishing context, environment, or scale
-- **MS (Medium Shot)** — Waist-up framing; standard for talking-head content
-- **B-Roll** — Supplementary footage that visually supports the voiceover or main content
-- **Lower Third** — Text overlay in the bottom third of the screen for names, titles, or key points
-- **Text Overlay** — On-screen text reinforcing spoken words; essential for sound-off viewing
-- **Split Screen** — Two frames side by side for comparison (before/after, competitor vs. product)
-- **Transition** — Visual shift between scenes (cut, dissolve, swipe, zoom); match to platform style
-- **Screen Recording** — Capture of software/app in use; standard for product demos and tutorials
-- **Talking Head** — Single person speaking directly to camera; builds trust and personal connection
+- **CU (Gros plan)** — Cadrage serré sur le visage ou détail du produit ; transmet de l'émotion ou met en avant des fonctionnalités spécifiques
+- **WS (Plan large)** — Scène complète établissant le contexte, l'environnement, ou l'échelle
+- **MS (Plan moyen)** — Cadrage de la taille au visage ; standard pour le contenu face caméra
+- **B-Roll** — Images supplémentaires soutenant visuellement la voix off ou le contenu principal
+- **Tiers inférieur** — Surimpression de texte dans le tiers inférieur de l'écran pour les noms, titres, ou points clés
+- **Surimpression de texte** — Texte à l'écran renforçant les paroles ; essentiel pour le visionnage son coupé
+- **Écran partagé** — Deux cadres côte à côte pour la comparaison (avant/après, concurrent vs produit)
+- **Transition** — Changement visuel entre scènes (coupe, fondu, glissement, zoom) ; à adapter au style de plateforme
+- **Enregistrement d'écran** — Capture de logiciel/appli en usage ; standard pour les démos produit et tutoriels
+- **Face caméra** — Une seule personne parlant directement à la caméra ; construit la confiance et la connexion personnelle
 
-### B-Roll Cue Format
+### Format des indications B-roll
 
-In scripts, annotate B-roll cues in brackets:
+Dans les scripts, annoter les indications B-roll entre crochets :
 
 ```
 [B-ROLL: Team working at desks, overhead angle]
@@ -178,16 +178,16 @@ In scripts, annotate B-roll cues in brackets:
 [B-ROLL: Customer using product in real environment]
 ```
 
-### On-Screen Text Timing
+### Timing du texte à l'écran
 
-- Display text for a minimum of 2 seconds or long enough to read twice at normal speed
-- Maximum 6-8 words per text overlay for mobile viewing
-- Animate text in on the beat of the voiceover — not before, not after
-- Use contrasting background (semi-transparent bar or drop shadow) for readability
+- Afficher le texte pendant au moins 2 secondes ou suffisamment longtemps pour le lire deux fois à vitesse normale
+- Maximum 6-8 mots par surimpression de texte pour le visionnage mobile
+- Animer le texte à l'entrée sur le rythme de la voix off — ni avant, ni après
+- Utiliser un arrière-plan contrastant (barre semi-transparente ou ombre portée) pour la lisibilité
 
-### Motion Graphics Triggers
+### Déclencheurs de motion design
 
-Annotate motion graphics cues in scripts as:
+Annoter les indications de motion design dans les scripts comme suit :
 
 ```
 [GFX: Animated stat counter — "10,000+ customers"]
@@ -198,102 +198,102 @@ Annotate motion graphics cues in scripts as:
 
 ---
 
-## Audio Direction
+## Direction audio
 
-### Voiceover Pacing
+### Rythme de la voix off
 
-- **Standard narration:** 130-150 words per minute for clear comprehension
-- **Energetic/promotional:** 150-170 words per minute for urgency and excitement
-- **Thoughtful/premium:** 110-130 words per minute for gravitas and authority
-- **Quick-hit social (TikTok/Reels):** 160-180 words per minute to match platform energy
+- **Narration standard :** 130-150 mots par minute pour une compréhension claire
+- **Énergique/promotionnel :** 150-170 mots par minute pour l'urgence et l'enthousiasme
+- **Réfléchi/premium :** 110-130 mots par minute pour la gravité et l'autorité
+- **Social rapide (TikTok/Reels) :** 160-180 mots par minute pour correspondre à l'énergie de la plateforme
 
-For a 60-second video at standard pacing, plan for approximately 130-150 words of script.
+Pour une vidéo de 60 secondes à un rythme standard, prévoir environ 130-150 mots de script.
 
-### Music Mood Mapping
+### Cartographie de l'ambiance musicale
 
-| Video Tone | Music Style | Tempo (BPM) | Instruments |
-|------------|------------|-------------|-------------|
-| Upbeat/Energetic | Pop, electronic, indie | 120-140 | Synths, claps, guitar |
-| Corporate/Professional | Ambient, light orchestral | 90-110 | Piano, strings, soft percussion |
-| Emotional/Inspirational | Cinematic, acoustic | 70-100 | Piano, strings, vocals |
-| Minimal/Clean | Lo-fi, ambient pads | 80-100 | Soft synths, minimal percussion |
-| Urgent/Exciting | Driving electronic, rock | 130-160 | Drums, bass, distorted synths |
-| Playful/Fun | Ukulele, whistling, bouncy | 110-130 | Acoustic guitar, xylophone, claps |
+| Ton vidéo | Style musical | Tempo (BPM) | Instruments |
+|------------|------------|-------------|--------------|
+| Dynamique/Énergique | Pop, électronique, indie | 120-140 | Synthés, claps, guitare |
+| Corporate/Professionnel | Ambiant, orchestral léger | 90-110 | Piano, cordes, percussion douce |
+| Émotionnel/Inspirant | Cinématique, acoustique | 70-100 | Piano, cordes, voix |
+| Minimal/Épuré | Lo-fi, nappes ambiantes | 80-100 | Synthés doux, percussion minimale |
+| Urgent/Excitant | Électronique entraînant, rock | 130-160 | Batterie, basse, synthés distordus |
+| Ludique/Amusant | Ukulélé, sifflement, rebondissant | 110-130 | Guitare acoustique, xylophone, claps |
 
-### Sound Effects Usage
+### Utilisation des effets sonores
 
-- Use sound effects sparingly — 2-3 per 60-second video maximum
-- Effective uses: whoosh on transitions, pop on text appearance, notification ding for CTA
-- Avoid overuse; excessive sound effects feel amateurish
-- Match sound effects to brand tone (tech brands: digital/clean; lifestyle brands: organic/natural)
+- Utiliser les effets sonores avec parcimonie — 2-3 maximum par vidéo de 60 secondes
+- Usages efficaces : whoosh sur les transitions, pop à l'apparition du texte, notification ding pour le CTA
+- Éviter la surutilisation ; des effets sonores excessifs paraissent amateurs
+- Adapter les effets sonores au ton de marque (marques tech : numérique/propre ; marques lifestyle : organique/naturel)
 
-### Silence as Emphasis
+### Le silence comme emphase
 
-Strategic silence (0.5-1.5 seconds) after a key statement forces the viewer to process the message. Use before a major reveal, after a surprising statistic, or before the CTA. Silence is especially powerful in long-form content where viewers are accustomed to continuous audio.
+Le silence stratégique (0,5-1,5 seconde) après une déclaration clé force le spectateur à traiter le message. À utiliser avant une révélation majeure, après une statistique surprenante, ou avant le CTA. Le silence est particulièrement puissant dans le contenu long où les spectateurs sont habitués à un audio continu.
 
 ---
 
-## CTA Placement by Video Length
+## Placement du CTA par durée de vidéo
 
-| Video Length | CTA Placement | CTA Type | Notes |
+| Durée de vidéo | Placement du CTA | Type de CTA | Notes |
 |-------------|--------------|----------|-------|
-| 15 seconds | 0:13-0:15 (end only) | Single, direct | One action, no ambiguity |
-| 30 seconds | 0:25-0:30 (end only) | Single, direct | Brief supporting text overlay |
-| 60 seconds | 0:28-0:32 (mid) + 0:55-1:00 (end) | Soft mid + hard end | Mid-CTA can be verbal mention; end-CTA is visual + verbal |
-| 2 minutes | 0:05 (tease) + 1:00 (mid) + 1:50-2:00 (end) | Tease + soft + hard | Tease: "Stay to the end for..."; mid: verbal; end: full CTA |
-| 5+ minutes | Multiple soft CTAs + hard end CTA | Layered | Soft CTAs every 90-120 seconds; hard CTA in final 15 seconds |
+| 15 secondes | 0:13-0:15 (fin uniquement) | Unique, direct | Une action, aucune ambiguïté |
+| 30 secondes | 0:25-0:30 (fin uniquement) | Unique, direct | Bref texte de soutien à l'écran |
+| 60 secondes | 0:28-0:32 (milieu) + 0:55-1:00 (fin) | Doux au milieu + fort à la fin | Le CTA milieu peut être une mention verbale ; le CTA final est visuel + verbal |
+| 2 minutes | 0:05 (teaser) + 1:00 (milieu) + 1:50-2:00 (fin) | Teaser + doux + fort | Teaser : « Restez jusqu'à la fin pour... » ; milieu : verbal ; fin : CTA complet |
+| 5+ minutes | Plusieurs CTA doux + CTA fort en fin | Étagé | CTA doux toutes les 90-120 secondes ; CTA fort dans les 15 dernières secondes |
 
-### CTA Best Practices
+### Meilleures pratiques CTA
 
-1. **Be specific** — "Click the link in bio to download the free template" beats "Check it out"
-2. **One primary CTA per video** — Multiple competing actions reduce conversion
-3. **Verbal + visual** — Say the CTA and show it on screen simultaneously
-4. **Reduce friction** — Tell the viewer exactly what happens after they take the action
-5. **Match CTA to funnel stage** — Awareness: "Follow for more"; Consideration: "Watch this next"; Conversion: "Sign up now"
-
----
-
-## Accessibility Requirements
-
-Accessible video is not optional — it expands audience reach, improves engagement metrics, and is legally required in many contexts.
-
-### Mandatory Elements
-
-1. **Closed Captions** — Provide for every video, on every platform. Use platform-native caption tools or upload SRT/VTT files. Auto-generated captions must be reviewed and corrected for accuracy before publishing.
-
-2. **Burned-In Captions** — Required for platforms that do not reliably display caption files (Instagram Stories, TikTok, most social feeds). Style guidelines:
-   - Font: Sans-serif, bold weight, minimum 24pt equivalent on mobile
-   - Contrast: White text on semi-transparent dark background, or outlined text
-   - Position: Lower third of frame, avoiding overlap with platform UI elements
-   - Timing: Sync to speech with 0.5-1 second display buffer
-
-3. **Audio Descriptions** — When critical information is conveyed only visually (charts, on-screen text not read aloud, visual demonstrations), provide audio description either as a separate audio track or by scripting narration that describes what is shown.
-
-4. **Transcripts** — Make full text transcripts available for long-form content. Post in video description, linked document, or companion blog post.
-
-5. **Color Contrast for On-Screen Text** — Maintain WCAG AA minimum contrast ratio (4.5:1 for normal text, 3:1 for large text) for all text overlays, lower thirds, and graphics.
-
-6. **Alternative Text** — When embedding video on websites, provide descriptive alt text for the video thumbnail and a text summary of video content for screen readers.
+1. **Être spécifique** — « Cliquez sur le lien en bio pour télécharger le modèle gratuit » vaut mieux que « Regardez ça »
+2. **Un CTA principal par vidéo** — Plusieurs actions concurrentes réduisent la conversion
+3. **Verbal + visuel** — Dire le CTA et le montrer à l'écran simultanément
+4. **Réduire la friction** — Dire au spectateur exactement ce qui se passe après avoir agi
+5. **Adapter le CTA à l'étape du tunnel** — Notoriété : « Suivez pour plus » ; Considération : « Regardez ceci ensuite » ; Conversion : « Inscrivez-vous maintenant »
 
 ---
 
-## Platform Technical Specs
+## Exigences d'accessibilité
 
-| Platform | Aspect Ratio | Min Resolution | Max Resolution | Max File Size | Max Length | Caption Format | Thumbnail |
+La vidéo accessible n'est pas optionnelle — elle élargit la portée d'audience, améliore les métriques d'engagement, et est légalement requise dans de nombreux contextes.
+
+### Éléments obligatoires
+
+1. **Sous-titres codés** — À fournir pour chaque vidéo, sur chaque plateforme. Utiliser les outils de sous-titrage natifs de la plateforme ou téléverser des fichiers SRT/VTT. Les sous-titres auto-générés doivent être revus et corrigés pour leur exactitude avant publication.
+
+2. **Sous-titres incrustés** — Requis pour les plateformes n'affichant pas de façon fiable les fichiers de sous-titres (Instagram Stories, TikTok, la plupart des fils sociaux). Guidelines de style :
+   - Police : Sans-serif, graisse grasse, minimum équivalent 24pt sur mobile
+   - Contraste : Texte blanc sur fond sombre semi-transparent, ou texte contouré
+   - Position : Tiers inférieur du cadre, en évitant le chevauchement avec les éléments d'interface de la plateforme
+   - Timing : Synchronisé à la parole avec un tampon d'affichage de 0,5-1 seconde
+
+3. **Descriptions audio** — Lorsque des informations critiques sont transmises uniquement visuellement (graphiques, texte à l'écran non lu à voix haute, démonstrations visuelles), fournir une description audio soit comme piste audio séparée, soit en scriptant une narration décrivant ce qui est montré.
+
+4. **Transcriptions** — Rendre disponibles des transcriptions textuelles complètes pour le contenu long. Publier dans la description vidéo, un document lié, ou un article de blog compagnon.
+
+5. **Contraste de couleur pour le texte à l'écran** — Maintenir un rapport de contraste minimum WCAG AA (4,5:1 pour le texte normal, 3:1 pour le texte large) pour toutes les surimpressions de texte, tiers inférieurs, et graphiques.
+
+6. **Texte alternatif** — Lors de l'intégration de vidéo sur des sites web, fournir un texte alt descriptif pour la miniature vidéo et un résumé textuel du contenu vidéo pour les lecteurs d'écran.
+
+---
+
+## Spécifications techniques par plateforme
+
+| Plateforme | Format d'image | Résolution min | Résolution max | Taille de fichier max | Durée max | Format de sous-titres | Miniature |
 |----------|-------------|---------------|---------------|--------------|-----------|----------------|-----------|
-| YouTube | 16:9 | 426x240 | 3840x2160 (4K) | 256 GB | 12 hours | SRT, VTT, SBV | 1280x720 JPG/PNG, <2MB |
-| YouTube Shorts | 9:16 | 1080x1920 | 1080x1920 | 256 GB | 3 minutes | Auto-generated | Auto-selected from video |
-| TikTok | 9:16 | 720x1280 | 1080x1920 | 287 MB (web), 72 MB (app) | 10 minutes | SRT, auto-generated | Auto-selected, can edit |
-| Instagram Reels | 9:16 | 720x1280 | 1080x1920 | 4 GB | 3 minutes | Auto-generated, burned-in | 1080x1920 from video |
-| Instagram Stories | 9:16 | 720x1280 | 1080x1920 | 4 GB | 60 seconds | Burned-in only | N/A |
-| LinkedIn | 1:1, 16:9, 9:16 | 256x144 | 4096x2304 | 5 GB | 10 minutes | SRT upload | Auto-selected |
-| Facebook In-Feed | 16:9, 1:1, 4:5 | 720p | 4K | 10 GB | 240 minutes | SRT, auto-generated | 1200x675 or 1080x1080 |
-| Facebook Stories | 9:16 | 720x1280 | 1080x1920 | 4 GB | 20 seconds | Burned-in only | N/A |
+| YouTube | 16:9 | 426x240 | 3840x2160 (4K) | 256 Go | 12 heures | SRT, VTT, SBV | 1280x720 JPG/PNG, <2Mo |
+| YouTube Shorts | 9:16 | 1080x1920 | 1080x1920 | 256 Go | 3 minutes | Auto-généré | Auto-sélectionnée depuis la vidéo |
+| TikTok | 9:16 | 720x1280 | 1080x1920 | 287 Mo (web), 72 Mo (app) | 10 minutes | SRT, auto-généré | Auto-sélectionnée, modifiable |
+| Instagram Reels | 9:16 | 720x1280 | 1080x1920 | 4 Go | 3 minutes | Auto-généré, incrusté | 1080x1920 depuis la vidéo |
+| Instagram Stories | 9:16 | 720x1280 | 1080x1920 | 4 Go | 60 secondes | Incrusté uniquement | S.O. |
+| LinkedIn | 1:1, 16:9, 9:16 | 256x144 | 4096x2304 | 5 Go | 10 minutes | Import SRT | Auto-sélectionnée |
+| Facebook In-Feed | 16:9, 1:1, 4:5 | 720p | 4K | 10 Go | 240 minutes | SRT, auto-généré | 1200x675 ou 1080x1080 |
+| Facebook Stories | 9:16 | 720x1280 | 1080x1920 | 4 Go | 20 secondes | Incrusté uniquement | S.O. |
 
-### File Format Notes
+### Notes de format de fichier
 
-- **Preferred codec:** H.264 with AAC audio across all platforms
-- **Frame rate:** 24-30 fps standard; 60 fps for action/demo content
-- **Bitrate:** 10-20 Mbps for 1080p; 35-45 Mbps for 4K
-- **Audio:** Stereo, 128-256 kbps AAC, -14 LUFS to -16 LUFS for loudness normalization
-- **Export tip:** Always export at the highest quality available and let platforms handle compression; uploading pre-compressed files results in double compression artifacts
+- **Codec préféré :** H.264 avec audio AAC sur toutes les plateformes
+- **Fréquence d'images :** 24-30 fps standard ; 60 fps pour l'action/les démos
+- **Débit binaire :** 10-20 Mbps pour le 1080p ; 35-45 Mbps pour le 4K
+- **Audio :** Stéréo, 128-256 kbps AAC, -14 LUFS à -16 LUFS pour la normalisation du volume
+- **Conseil d'export :** Toujours exporter à la meilleure qualité disponible et laisser les plateformes gérer la compression ; téléverser des fichiers pré-compressés produit des artefacts de double compression

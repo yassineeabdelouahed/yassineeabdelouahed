@@ -7,6 +7,7 @@ import { Prisma } from "@/generated/prisma/client";
 import { createJobPostingSchema, jobApplicationSchema } from "@/lib/validations/jobs";
 import { notifyMatchingAlerts } from "@/server/actions/jobAlerts";
 import { enforceRateLimit, RateLimitError } from "@/lib/rateLimit";
+import { syncJobToBoards } from "@/server/services/jobBoardSync";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -124,6 +125,9 @@ export async function createJobPostingAction(formData: FormData): Promise<Action
   });
 
   await notifyMatchingAlerts(job);
+  // Best-effort : ne bloque jamais la publication interne si un job board
+  // externe est indisponible ou mal configuré.
+  await syncJobToBoards(job.id).catch((err) => console.error("[jobBoardSync]", err));
 
   revalidatePath("/");
   revalidatePath("/results");
@@ -139,6 +143,7 @@ export async function listJobPostingsForClient() {
     include: {
       applications: { select: { id: true } },
       sponsorships: { where: { paymentStatus: { not: "CANCELLED" } }, orderBy: { createdAt: "desc" }, take: 1 },
+      boardSyncs: true,
     },
   });
 }

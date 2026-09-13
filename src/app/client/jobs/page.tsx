@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { LinkButton } from "@/components/ui/Button";
 import { SponsorshipButton } from "@/components/client/SponsorshipButton";
+import { JobBoardBadges } from "@/components/jobs/JobBoardBadges";
 
 export default async function ClientJobsPage() {
   const jobs = await listJobPostingsForClient();
@@ -51,6 +52,7 @@ export default async function ClientJobsPage() {
                   <Tag tone={job.status === "PUBLISHED" ? "success" : "neutral"}>{job.status}</Tag>
                 </div>
               </div>
+              {job.status === "PUBLISHED" && <JobBoardBadges boardSyncs={job.boardSyncs} />}
               {job.status === "PUBLISHED" && (
                 <div className="mt-3 pt-3 border-t border-border-soft">
                   <SponsorshipButton

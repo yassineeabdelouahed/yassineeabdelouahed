@@ -68,6 +68,32 @@ Optionnel — sans `RESEND_API_KEY`, les e-mails (notifications, vérification d
    EMAIL_FROM="Talentis Connect <noreply@talentisconsult.com>"
    ```
 
+### Diffusion des offres sur les job boards externes
+
+Quand une offre est publiée, Talentis Connect tente de la diffuser vers des
+plateformes externes. Le niveau d'intégration réellement possible varie
+beaucoup selon la plateforme — aucune d'elles à part France Travail n'offre
+d'API de publication en libre-service à un tiers :
+
+| Plateforme | Ce qui est fait | Action manuelle nécessaire |
+|---|---|---|
+| **France Travail** | Vraie API (OAuth2), appelée automatiquement si configurée | Demander l'accréditation « diffuseur d'offres » sur [francetravail.io](https://francetravail.io) pour obtenir `FRANCE_TRAVAIL_WRITE_ENDPOINT` et le scope d'écriture — voir `src/lib/jobBoards/franceTravail.ts` |
+| **Indeed** | Flux XML public généré à `/api/feeds/indeed.xml` (format feed employeur Indeed) | Soumettre cette URL une fois via votre compte employeur Indeed pour que le flux soit recrawlé périodiquement |
+| **LinkedIn Jobs** | Données structurées `JobPosting` (schema.org) sur chaque page d'offre publique | Aucune — aide l'indexation organique de LinkedIn/Google for Jobs, mais LinkedIn ne propose pas d'API de publication tierce sans partenariat Recruiter System Connect |
+| **Welcome to the Jungle** | Rien côté code — pas d'API publique | Nécessite un partenariat commercial direct avec leurs équipes |
+
+Variables optionnelles pour France Travail (aucun effet si absentes — le
+statut de l'offre reste `UNAVAILABLE`/`FAILED` avec un message explicite,
+jamais d'erreur silencieuse) :
+```
+FRANCE_TRAVAIL_CLIENT_ID="..."
+FRANCE_TRAVAIL_CLIENT_SECRET="..."
+FRANCE_TRAVAIL_WRITE_ENDPOINT="..."   # fourni par France Travail à l'accréditation
+FRANCE_TRAVAIL_WRITE_SCOPE="..."      # idem
+```
+
+Le statut de diffusion par offre est visible dans `/client/jobs`.
+
 ## Tests
 
 ```

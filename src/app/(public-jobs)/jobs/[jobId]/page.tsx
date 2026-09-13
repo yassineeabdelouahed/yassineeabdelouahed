@@ -7,6 +7,83 @@ import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
 import { ApplyButton } from "@/components/jobs/ApplyButton";
 
+const CONTRACT_TYPE_SCHEMA: Record<string, string> = {
+  CDI: "FULL_TIME",
+  CDD: "TEMPORARY",
+  Stage: "INTERN",
+  "Freelance / Indépendant": "CONTRACTOR",
+  Alternance: "OTHER",
+};
+
+/**
+ * Balisage schema.org JobPosting — c'est ce que Google for Jobs indexe
+ * directement, et ce que l'exploration organique de LinkedIn/Indeed utilise
+ * pour découvrir une offre sans passer par une API de publication (aucune
+ * des deux n'en propose une en libre-service pour un tiers). Gratuit,
+ * aucune clé API requise, aucun partenariat nécessaire.
+ */
+function jobPostingJsonLd(
+  job: {
+    id: string;
+    title: string;
+    description: string;
+    city: string | null;
+    contractType: string | null;
+    salaryMin: number | null;
+    salaryMax: number | null;
+    publishedAt: Date | null;
+    createdAt: Date;
+    company: { name: string };
+  },
+  appUrl: string
+) {
+  const datePosted = (job.publishedAt ?? job.createdAt).toISOString();
+  const validThrough = new Date(new Date(datePosted).getTime() + 90 * 24 * 60 * 60 * 1000).toISOString();
+
+  return {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    title: job.title,
+    description: job.description,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Talentis Connect",
+      value: job.id,
+    },
+    datePosted,
+    validThrough,
+    employmentType: job.contractType ? CONTRACT_TYPE_SCHEMA[job.contractType] || "OTHER" : undefined,
+    hiringOrganization: {
+      "@type": "Organization",
+      name: job.company.name,
+    },
+    jobLocation: job.city
+      ? {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: job.city,
+            addressCountry: "MA",
+          },
+        }
+      : undefined,
+    baseSalary:
+      job.salaryMin || job.salaryMax
+        ? {
+            "@type": "MonetaryAmount",
+            currency: "MAD",
+            value: {
+              "@type": "QuantitativeValue",
+              minValue: job.salaryMin ?? undefined,
+              maxValue: job.salaryMax ?? undefined,
+              unitText: "MONTH",
+            },
+          }
+        : undefined,
+    url: `${appUrl}/jobs/${job.id}`,
+  };
+}
+
 function formatSalary(min: number | null, max: number | null): string | null {
   if (!min && !max) return null;
   const fmt = (n: number) => n.toLocaleString("fr-FR");
@@ -27,6 +104,8 @@ export default async function JobDetailPage({ params }: { params: Promise<{ jobI
   ]);
 
   const salary = formatSalary(job.salaryMin, job.salaryMax);
+  const appUrl = process.env.NEXTAUTH_URL || "http://localhost:3000";
+  const jsonLd = jobPostingJsonLd(job, appUrl);
   const initials = job.company.name
     .split(" ")
     .map((w) => w[0])
@@ -36,6 +115,10 @@ export default async function JobDetailPage({ params }: { params: Promise<{ jobI
 
   return (
     <div className="max-w-[1180px] mx-auto px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/results" className="text-sm font-semibold text-teal hover:text-teal-hover">
         ‹ Retour aux résultats
       </Link>

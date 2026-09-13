@@ -402,8 +402,37 @@ model JobPosting {
 
   applications  JobApplication[]
   sponsorships  JobSponsorship[]
+  boardSyncs    JobBoardSync[]
 
   @@map("job_postings")
+}
+
+enum JobBoardSyncStatus {
+  PENDING
+  SYNCED
+  FAILED
+  UNAVAILABLE
+}
+
+// One row per (offre, plateforme externe) — statut de diffusion externe.
+// "UNAVAILABLE" = plateforme sans API de publication accessible (LinkedIn
+// Jobs, Welcome to the Jungle) : la ligne documente pourquoi, elle ne
+// représente jamais un appel API réel.
+model JobBoardSync {
+  id           String             @id @default(cuid())
+  jobPostingId String
+  board        String
+  status       JobBoardSyncStatus @default(PENDING)
+  externalId   String?
+  error        String?
+  syncedAt     DateTime?
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  jobPosting JobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+
+  @@unique([jobPostingId, board])
+  @@map("job_board_syncs")
 }
 
 enum JobApplicationStatus {

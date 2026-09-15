@@ -17,9 +17,14 @@ export default async function CabinetProspectsPage() {
           <h1 className="font-heading font-extrabold text-2xl text-ink-900">Prospection commerciale</h1>
           <p className="text-ink-500 mt-2">Entreprises en cours de prospection, avant de devenir clientes.</p>
         </div>
-        <LinkButton href="/cabinet/prospects/new" variant="accent">
-          Nouveau prospect
-        </LinkButton>
+        <div className="flex items-center gap-3">
+          <LinkButton href="/cabinet/prospects/import" variant="secondary">
+            Importer depuis Google Maps
+          </LinkButton>
+          <LinkButton href="/cabinet/prospects/new" variant="accent">
+            Nouveau prospect
+          </LinkButton>
+        </div>
       </div>
 
       {prospects.length === 0 ? (

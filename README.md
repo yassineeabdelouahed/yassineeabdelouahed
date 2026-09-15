@@ -87,6 +87,18 @@ chaque push/pull request sur `main`, contre une base PostgreSQL éphémère.
 3. Renseigner les variables d'environnement ci-dessus dans les réglages du projet Vercel
 4. Le script `npm run vercel-build` (déjà configuré) applique les migrations Prisma puis build l'app automatiquement au déploiement
 
+## Génération de leads (Google Maps)
+
+La page **Prospection → Importer depuis Google Maps** (`/cabinet/prospects/import`) convertit en prospects le JSON
+produit par [google-maps-scraper-kit](https://github.com/Mahanaicoach/google-maps-scraper-kit), un outil local
+(Docker) qui scrape Google Maps par mot-clé/zone géographique (ex. `"cabinets RH à Casablanca"`). Utilisation :
+
+1. Lancer le kit en local (voir son README) et exporter les résultats d'une recherche en JSON.
+2. Copier ce JSON dans le formulaire d'import — les entreprises déjà présentes dans la liste de prospection
+   (même nom) sont ignorées automatiquement.
+
+Aucune dépendance au scraper n'est ajoutée à ce dépôt : l'import se fait par simple copier-coller du JSON exporté.
+
 ## Comptes de démo (après `npm run db:seed`)
 
 | Rôle | Email | Mot de passe |

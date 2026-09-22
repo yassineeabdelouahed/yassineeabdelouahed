@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "clean-user-facing-text": {
+      "source": "guillaumemeyer/watermarks-remover",
+      "sourceType": "github",
+      "skillPath": "skills/clean-user-facing-text/SKILL.md",
+      "computedHash": "92530695d79f1fe4cbe1357e2e6fa4d515eae4daebd007cfd9a88a2242b977f4"
+    },
     "prisma-cli": {
       "source": "prisma/skills",
       "sourceType": "github",
@@ -54,6 +60,12 @@
       "sourceType": "github",
       "skillPath": "prisma-upgrade-v7/SKILL.md",
       "computedHash": "0e07dc2831f86cf27627df914db43d862b0fc75d72c1f9070434aab7940bad7c"
+    },
+    "remove-ai-marks": {
+      "source": "guillaumemeyer/watermarks-remover",
+      "sourceType": "github",
+      "skillPath": "skills/remove-ai-marks/SKILL.md",
+      "computedHash": "39eb1573e9e95ddb57ff9894b48d93e1622a61e866a37e95e9e9f53298315ee7"
     }
   }
 }

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored career-ops tool has its own tooling.
+    "career-ops/**",
   ]),
 ]);
 
